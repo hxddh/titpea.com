@@ -53,6 +53,7 @@ a {
 
 .brand,
 .nav,
+.header-actions,
 .socials,
 .actions {
   display: flex;
@@ -82,15 +83,29 @@ a {
   font-size: 14px;
 }
 
-.nav a {
+.header-actions {
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.nav a,
+.language-switch {
   border-radius: 999px;
   padding: 8px 12px;
 }
 
 .nav a:hover,
-.nav a[aria-current="page"] {
+.nav a[aria-current="page"],
+.language-switch:hover {
   background: rgba(15, 118, 110, 0.1);
   color: var(--accent-dark);
+}
+
+.language-switch {
+  border: 1px solid var(--line);
+  color: var(--accent-dark);
+  font-size: 14px;
+  font-weight: 720;
 }
 
 .home-hero,
@@ -781,6 +796,11 @@ h2 {
 @media (max-width: 860px) {
   .site-header,
   .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
     align-items: flex-start;
     flex-direction: column;
   }

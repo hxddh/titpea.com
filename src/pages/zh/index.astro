@@ -1,0 +1,102 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const productLines = [
+  {
+    label: "存储工具",
+    title: "面向基础设施的诊断与清单工具。",
+    items: [
+      {
+        name: "s3-turbo-list",
+        href: "/zh/s3-turbo-list/",
+        text: "高速列举 S3 兼容存储桶，支持追踪、差异对比、断点续跑和 Parquet 导出。",
+      },
+      {
+        name: "StorageOps",
+        href: "/zh/storageops/",
+        text: "面向对象存储问题诊断的 Pi 扩展和技能包。",
+      },
+      {
+        name: "https-traffic-inspector",
+        href: "https://github.com/hxddh/https-traffic-inspector",
+        text: "用于分析 HTTPS 请求行为和兼容性的流量检查工作台。",
+      },
+    ],
+  },
+  {
+    label: "浏览器扩展",
+    title: "为日常浏览准备的小工具。",
+    items: [
+      {
+        name: "世界时钟",
+        href: "/zh/world-clock/",
+        text: "快速查看主要城市的当前时间。",
+      },
+      {
+        name: "豆瓣电影评分助手",
+        href: "/zh/douban-movie-rating/",
+        text: "在豆瓣电影页面显示 IMDb 和 Rotten Tomatoes 评分。",
+      },
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="Titpea"
+  description="Titpea 是 hxddh 的个人网站和产品索引。"
+  current="home"
+  locale="zh"
+>
+  <section class="home-hero home-hero-modern shell">
+    <div class="home-copy">
+      <p class="eyebrow">hxddh / 产品索引</p>
+      <h1>小而专注的实用工具。</h1>
+      <p class="lead">
+        面向对象存储、诊断、时间查询和电影评分的浏览器扩展与基础设施工具。
+      </p>
+      <div class="actions">
+        <a class="button primary" href="/zh/s3-turbo-list/">s3-turbo-list</a>
+        <a class="button ghost" href="/zh/storageops/">StorageOps</a>
+        <a class="button ghost" href="/zh/about/">关于</a>
+      </div>
+    </div>
+
+    <div class="home-panel" aria-label="精选项目">
+      <a class="featured-product featured-primary" href="/zh/s3-turbo-list/">
+        <span>01 / 存储</span>
+        <strong>s3-turbo-list</strong>
+        <p>并发生成 S3 兼容存储桶清单，保留追踪并导出 Parquet。</p>
+      </a>
+      <div class="featured-row">
+        <a class="featured-product" href="/zh/storageops/">
+          <span>02 / 诊断</span>
+          <strong>StorageOps</strong>
+        </a>
+        <a class="featured-product" href="/zh/world-clock/">
+          <span>03 / 浏览器</span>
+          <strong>世界时钟</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-products shell">
+    {productLines.map((line) => (
+      <section class="product-line" aria-label={line.label}>
+        <div class="product-line-heading">
+          <p class="section-kicker">{line.label}</p>
+          <h2>{line.title}</h2>
+        </div>
+        <div class="compact-list">
+          {line.items.map((item) => (
+            <a class="compact-link" href={item.href}>
+              <span>{item.name}</span>
+              <p>{item.text}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+</SiteLayout>

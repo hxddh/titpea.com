@@ -5,14 +5,41 @@ interface Props {
   title: string;
   description: string;
   current?: "home" | "about" | "s3-turbo-list" | "storageops" | "world-clock" | "douban";
+  locale?: "en" | "zh";
 }
 
-const { title, description, current = "home" } = Astro.props;
+const { title, description, current = "home", locale = "en" } = Astro.props;
 const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
+const isZh = locale === "zh";
+const htmlLang = isZh ? "zh-CN" : "en";
+const prefix = isZh ? "/zh" : "";
+const currentPath =
+  current === "home" ? "" :
+  current === "about" ? "about" :
+  current === "s3-turbo-list" ? "s3-turbo-list" :
+  current === "storageops" ? "storageops" :
+  current === "world-clock" ? "world-clock" :
+  "douban-movie-rating";
+const englishHref = `/${currentPath ? `${currentPath}/` : ""}`;
+const chineseHref = `/zh/${currentPath ? `${currentPath}/` : ""}`;
+const alternateLocale = isZh ? "en" : "zh";
+const alternateLabel = isZh ? "English" : "中文";
+const homeHref = isZh ? "/zh/" : "/";
+const aboutHref = `${prefix}/about/`;
+const s3Href = `${prefix}/s3-turbo-list/`;
+const storageopsHref = `${prefix}/storageops/`;
+const worldClockHref = `${prefix}/world-clock/`;
+const doubanHref = `${prefix}/douban-movie-rating/`;
+const alternateHref = isZh ? englishHref : chineseHref;
+const aboutCurrent = current === "about" ? "page" : undefined;
+const s3Current = current === "s3-turbo-list" ? "page" : undefined;
+const storageopsCurrent = current === "storageops" ? "page" : undefined;
+const worldClockCurrent = current === "world-clock" ? "page" : undefined;
+const doubanCurrent = current === "douban" ? "page" : undefined;
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,24 +49,31 @@ const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#f7f3ea" />
+    <link rel="alternate" hreflang="en" href={englishHref} />
+    <link rel="alternate" hreflang="zh-CN" href={chineseHref} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <title>{siteTitle}</title>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Titpea home">
+      <a class="brand" href={homeHref} aria-label="Titpea home">
         <span class="brand-mark" aria-hidden="true">T</span>
         <span>Titpea</span>
       </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="/about/" aria-current={current === "about" ? "page" : undefined}>About</a>
-        <a href="/s3-turbo-list/" aria-current={current === "s3-turbo-list" ? "page" : undefined}>S3 Turbo</a>
-        <a href="/storageops/" aria-current={current === "storageops" ? "page" : undefined}>StorageOps</a>
-        <a href="/world-clock/" aria-current={current === "world-clock" ? "page" : undefined}>World Clock</a>
-        <a href="/douban-movie-rating/" aria-current={current === "douban" ? "page" : undefined}>Douban</a>
-        <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
-      </nav>
+      <div class="header-actions">
+        <nav class="nav" aria-label={isZh ? "主导航" : "Primary"}>
+          <a href={aboutHref} aria-current={aboutCurrent}>{isZh ? "关于" : "About"}</a>
+          <a href={s3Href} aria-current={s3Current}>S3 Turbo</a>
+          <a href={storageopsHref} aria-current={storageopsCurrent}>StorageOps</a>
+          <a href={worldClockHref} aria-current={worldClockCurrent}>{isZh ? "世界时钟" : "World Clock"}</a>
+          <a href={doubanHref} aria-current={doubanCurrent}>{isZh ? "豆瓣评分" : "Douban"}</a>
+          <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
+        </nav>
+        <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
+          {alternateLabel}
+        </a>
+      </div>
     </header>
     <main>
       <slot />
