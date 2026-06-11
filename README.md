@@ -12,7 +12,13 @@ npm run build
 
 ## Cloudflare Pages
 
-Create a Pages project and use:
+The site is deployed to the existing Cloudflare Pages project `titpea`.
+
+GitHub Actions builds and deploys on every push to `main`. Configure this repository secret before running the deployment workflow:
+
+- `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with Cloudflare Pages edit access for the account.
+
+Build settings:
 
 - Build command: `npm run build`
 - Build output directory: `dist`
