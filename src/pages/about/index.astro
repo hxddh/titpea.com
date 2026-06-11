@@ -1,0 +1,107 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const products = [
+  {
+    name: "World Clock",
+    href: "/world-clock/",
+    summary: "A minimalist Chrome extension showing live time across major cities. Version 7.0, updated June 1, 2026.",
+  },
+  {
+    name: "豆瓣电影评分助手",
+    href: "/douban-movie-rating/",
+    summary: "A Chrome extension that shows IMDb ratings and Rotten Tomatoes freshness directly on Douban movie pages.",
+  },
+  {
+    name: "s3-turbo-list",
+    href: "/s3-turbo-list/",
+    summary: "High-performance S3-compatible bucket listing, tracing, diffing, checkpoint/resume, and Parquet export tool.",
+  },
+  {
+    name: "storageops",
+    href: "/storageops/",
+    summary: "Object storage diagnostic system for inspecting S3-compatible behavior and operational signals.",
+  },
+  {
+    name: "https-traffic-inspector",
+    href: "https://github.com/hxddh/https-traffic-inspector",
+    summary: "HTTPS traffic inspection workbench for request analysis and compatibility testing.",
+  },
+];
+
+const writing = [
+  "Object storage diagnostics and compatibility testing",
+  "S3-compatible listing, tracing, diffing, and Parquet export",
+  "Chrome extension products for small everyday workflows",
+];
+---
+
+<SiteLayout
+  title="About"
+  description="Personal profile, Chrome extensions, and infrastructure projects by hxddh."
+  current="about"
+>
+  <section class="about-hero shell">
+    <div>
+      <p class="eyebrow">hxddh</p>
+      <h1>Building focused tools for browsers, storage systems, and daily technical work.</h1>
+      <p class="lead">
+        I build small products and developer tools: Chrome extensions for everyday use,
+      plus infrastructure utilities around S3-compatible storage, diagnostics, and HTTPS traffic inspection.
+      </p>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
+        <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer">Chrome Web Store</a>
+        <a href="mailto:info@titpea.com">Email</a>
+      </div>
+    </div>
+    <figure class="portrait-card">
+      <div class="portrait-grid" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <figcaption>Chrome extensions / storage tools / technical notes</figcaption>
+    </figure>
+  </section>
+
+  <section class="shell content-section">
+    <p class="section-kicker">Products and Projects</p>
+    <div class="product-list">
+      {products.map((product) => (
+        <a class="product-row" href={product.href}>
+          <span>{product.name}</span>
+          <p>{product.summary}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell split-content">
+      <div>
+        <p class="section-kicker">Profile</p>
+        <h2>Practical software with a narrow job and a clear owner.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          The current portfolio has two public Chrome extensions: World Clock for
+          quick timezone checks, and 豆瓣电影评分助手 for bringing international
+          movie ratings into Douban pages.
+        </p>
+        <p>
+          On the developer-tool side, the main GitHub projects are s3-turbo-list,
+          storageops, and https-traffic-inspector: listing performance, diagnostics,
+          compatibility checks, tracing, export workflows, and request inspection.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell content-section" id="writing">
+    <p class="section-kicker">Focus Areas</p>
+    <ul class="writing-list">
+      {writing.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+</SiteLayout>

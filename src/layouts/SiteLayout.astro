@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  current?: "home" | "about" | "s3-turbo-list" | "storageops" | "world-clock" | "douban";
+}
+
+const { title, description, current = "home" } = Astro.props;
+const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f7f3ea" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{siteTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Titpea home">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span>Titpea</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/about/" aria-current={current === "about" ? "page" : undefined}>About</a>
+        <a href="/s3-turbo-list/" aria-current={current === "s3-turbo-list" ? "page" : undefined}>S3 Turbo</a>
+        <a href="/storageops/" aria-current={current === "storageops" ? "page" : undefined}>StorageOps</a>
+        <a href="/world-clock/" aria-current={current === "world-clock" ? "page" : undefined}>World Clock</a>
+        <a href="/douban-movie-rating/" aria-current={current === "douban" ? "page" : undefined}>Douban</a>
+        <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <span>© 2026 Titpea</span>
+      <span>info@titpea.com</span>
+    </footer>
+  </body>
+</html>
