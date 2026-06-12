@@ -10,6 +10,13 @@ interface Props {
 
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
+const navItems = [
+  ["positioning", copy.positioningLabel],
+  ["features", copy.featuresLabel],
+  copy.workflow && copy.workflowLabel ? ["workflow", copy.workflowLabel] : null,
+  copy.cases && copy.casesLabel ? ["cases", copy.casesLabel] : null,
+  copy.faq && copy.faqLabel ? ["faq", copy.faqLabel] : null,
+].filter(Boolean) as Array<[string, string]>;
 ---
 
 <SiteLayout
@@ -36,7 +43,11 @@ const copy = product.locales[locale];
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  <section class="shell positioning-section">
+  <nav class="product-anchor-nav shell" aria-label={locale === "zh" ? "页面导航" : "Page navigation"}>
+    {navItems.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
+  </nav>
+
+  <section id="positioning" class="shell positioning-section">
     <p class="section-kicker">{copy.positioningLabel}</p>
     <div class="positioning-grid">
       {copy.positioning.map(([title, body]) => (
@@ -48,7 +59,7 @@ const copy = product.locales[locale];
     </div>
   </section>
 
-  <section class="shell content-section">
+  <section id="features" class="shell content-section">
     <p class="section-kicker">{copy.featuresLabel}</p>
     <div class="feature-grid">
       {copy.features.map(([title, body]) => (
@@ -60,7 +71,7 @@ const copy = product.locales[locale];
     </div>
   </section>
 
-  <section class="band">
+  <section class="band product-story">
     <div class="shell split-content">
       <div>
         <p class="section-kicker">{copy.rationaleLabel}</p>
@@ -73,7 +84,7 @@ const copy = product.locales[locale];
   </section>
 
   {copy.workflow && copy.workflowLabel && (
-    <section class="shell content-section">
+    <section id="workflow" class="shell content-section">
       <p class="section-kicker">{copy.workflowLabel}</p>
       <div class="workflow-grid">
         {copy.workflow.map(([title, body], index) => (
@@ -88,7 +99,7 @@ const copy = product.locales[locale];
   )}
 
   {copy.cases && copy.casesLabel && copy.casesTitle && (
-    <section class="band">
+    <section id="cases" class="band">
       <div class="shell split-content">
         <div>
           <p class="section-kicker">{copy.casesLabel}</p>
@@ -100,6 +111,20 @@ const copy = product.locales[locale];
           </div>
           {copy.casesBody && <p class="prose">{copy.casesBody}</p>}
         </div>
+      </div>
+    </section>
+  )}
+
+  {copy.faq && copy.faqLabel && (
+    <section id="faq" class="shell content-section faq-section">
+      <p class="section-kicker">{copy.faqLabel}</p>
+      <div class="faq-list">
+        {copy.faq.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
       </div>
     </section>
   )}

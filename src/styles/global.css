@@ -333,7 +333,35 @@ h2 {
 
 .product-hero + .proof-strip {
   padding-top: 0;
-  padding-bottom: 12px;
+  padding-bottom: 22px;
+}
+
+.product-anchor-nav {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  background: rgba(247, 243, 234, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.product-anchor-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.product-anchor-nav a:hover {
+  border-color: rgba(15, 118, 110, 0.42);
+  background: rgba(15, 118, 110, 0.08);
 }
 
 .narrative-band .split-content {
@@ -563,6 +591,7 @@ h2 {
 }
 
 .positioning-section {
+  scroll-margin-top: 74px;
   padding: 54px 0 26px;
 }
 
@@ -614,13 +643,33 @@ h2 {
   font-size: 18px;
 }
 
+.product-story {
+  scroll-margin-top: 74px;
+}
+
+#features,
+#workflow,
+#cases,
+#faq {
+  scroll-margin-top: 74px;
+}
+
 .product-hero {
   min-height: auto;
-  padding-top: 64px;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 52px;
 }
 
 .product-copy .lead {
   max-width: 620px;
+}
+
+.product-hero .terminal-visual,
+.product-hero .diagnostic-visual,
+.product-hero .clock-visual,
+.product-hero .rating-visual {
+  min-height: 420px;
 }
 
 .meta-line {
@@ -907,6 +956,35 @@ h2 {
   background: rgba(255, 250, 241, 0.72);
   color: var(--accent-dark);
   font-weight: 720;
+}
+
+.faq-section {
+  padding-top: 72px;
+}
+
+.faq-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.faq-list p {
+  max-width: 760px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
 }
 
 .final-cta {

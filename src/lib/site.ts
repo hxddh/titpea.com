@@ -34,6 +34,8 @@ export type ProductCopy = {
   cases?: string[];
   finalCta?: string;
   finalCtaLabel?: string;
+  faqLabel?: string;
+  faq?: Array<[string, string]>;
 };
 
 export type Product = {
@@ -193,6 +195,12 @@ export const products: Record<ProductSlug, Product> = {
         cases: ["AWS S3", "MinIO", "Cloudflare R2", "BOS", "OSS", "B2"],
         finalCta: "Start with a dry-run, then keep the trace.",
         finalCtaLabel: "Open repository",
+        faqLabel: "Questions & how-to",
+        faq: [
+          ["Why not just use aws s3 ls?", "For small buckets, a sequential listing is fine. s3-turbo-list is for large or operationally important buckets where you need parallelism, resumability, traces, and output that can be queried after the run."],
+          ["Do I need to know the prefix structure first?", "No. The tool can probe the bucket at startup, discover key-space boundaries, and split skewed segments while it runs. Hints are useful for repeated jobs, but not required for the first inventory."],
+          ["What should I inspect after a slow run?", "Start with the run manifest and trace JSONL. They show how the provider responded across segments, which makes it easier to distinguish normal object count, skewed prefixes, endpoint behavior, and retry patterns."],
+        ],
       },
       zh: {
         title: "s3-turbo-list",
@@ -236,6 +244,12 @@ export const products: Record<ProductSlug, Product> = {
         cases: ["AWS S3", "MinIO", "Cloudflare R2", "BOS", "OSS", "B2"],
         finalCta: "先 dry-run，再保留 trace。",
         finalCtaLabel: "打开仓库",
+        faqLabel: "问题与用法",
+        faq: [
+          ["为什么不用 aws s3 ls？", "小桶当然可以用顺序列举。s3-turbo-list 面向的是大桶或关键运维场景：需要并发、断点续跑、trace，以及运行后可以继续查询分析的输出。"],
+          ["必须提前知道 prefix 结构吗？", "不需要。工具启动时可以探测桶结构，自动发现 key-space 边界，并在运行中拆分偏斜分段。你可以给重复任务提供 hints，但第一次清点不依赖它。"],
+          ["一次运行很慢时应该先看什么？", "先看 run manifest 和 trace JSONL。它们能展示 provider 在各个分段上的响应情况，帮助区分对象数量本身、prefix 偏斜、endpoint 行为和重试模式。"],
+        ],
       },
     },
   },
@@ -289,6 +303,12 @@ export const products: Record<ProductSlug, Product> = {
         cases: ["AccessDenied", "SlowDown", "SignatureDoesNotMatch", "BadDigest", "stale reads", "lifecycle surprises", "failed notifications", "migration drift"],
         finalCta: "Bring the error, keep the credentials out of the answer.",
         finalCtaLabel: "Open repository",
+        faqLabel: "Questions & how-to",
+        faq: [
+          ["What should I paste first?", "Start with the smallest useful bundle: the exact error, command or SDK call, endpoint style, relevant config names, and a redacted log excerpt. StorageOps is designed to ask for narrower evidence when needed."],
+          ["How does it avoid leaking secrets?", "The workflow emphasizes bounded evidence and redaction-first helpers such as secret scanning and HTTP trace capture that strips sensitive values before they become diagnostic context."],
+          ["When should I use httpmon with it?", "Use httpmon when the failure depends on request details hidden by a CLI or SDK: canonical request shape, headers, redirects, retry behavior, payload hashes, or provider-specific response metadata."],
+        ],
       },
       zh: {
         title: "StorageOps",
@@ -332,6 +352,12 @@ export const products: Record<ProductSlug, Product> = {
         cases: ["AccessDenied", "SlowDown", "SignatureDoesNotMatch", "BadDigest", "stale reads", "lifecycle surprises", "failed notifications", "migration drift"],
         finalCta: "带上错误信息，但不要把凭据带进答案。",
         finalCtaLabel: "打开仓库",
+        faqLabel: "问题与用法",
+        faq: [
+          ["一开始应该粘贴什么？", "先给最小但有用的信息：完整错误、命令或 SDK 调用、endpoint 形式、相关配置名，以及脱敏后的日志片段。StorageOps 会在需要时继续收窄证据。"],
+          ["它如何避免泄漏密钥？", "流程强调有界证据和脱敏优先，配合 secret scanning、HTTP trace capture 等工具，在诊断上下文形成前尽量移除敏感值。"],
+          ["什么时候要配合 httpmon？", "当故障取决于 CLI 或 SDK 隐藏的请求细节时使用：canonical request、headers、redirect、retry、payload hash 或 provider 特有响应元数据。"],
+        ],
       },
     },
   },
@@ -372,6 +398,11 @@ export const products: Record<ProductSlug, Product> = {
           "The extension is listed under Tools in the Chrome Web Store, offered by titpea.com, and is sized for a lightweight install.",
           "Use it as a quick timezone glance for remote work, travel coordination, or checking whether a city is in business hours.",
         ],
+        faqLabel: "Questions & how-to",
+        faq: [
+          ["Does it collect my location?", "The Chrome Web Store listing discloses no user-data collection. The extension is meant for manual city-time lookup, not location tracking."],
+          ["Is it for scheduling meetings?", "No. It is intentionally simpler than a scheduler: open the popup, check the time, and return to what you were doing."],
+        ],
       },
       zh: {
         title: "世界时钟",
@@ -401,6 +432,11 @@ export const products: Record<ProductSlug, Product> = {
         rationaleBody: [
           "该扩展在 Chrome Web Store 中归类为 Tools，由 titpea.com 提供，安装包体积很轻。",
           "适合远程协作、旅行安排，或快速确认某个城市是否处于工作时间。",
+        ],
+        faqLabel: "问题与用法",
+        faq: [
+          ["会收集我的位置吗？", "Chrome Web Store 信息显示该扩展不收集用户数据。它的定位是手动查看城市时间，不做位置追踪。"],
+          ["它适合排会议吗？", "不适合。它刻意比排期工具简单：打开弹窗，看一眼时间，然后回到当前工作。"],
         ],
       },
     },
@@ -442,6 +478,11 @@ export const products: Record<ProductSlug, Product> = {
           "The Chrome Web Store listing places the extension under Entertainment and identifies titpea.com as the publisher.",
           "The store privacy disclosure states that the developer does not collect or use user data and links to the privacy policy on GitHub.",
         ],
+        faqLabel: "Questions & how-to",
+        faq: [
+          ["What happens when a movie cannot be matched?", "The extension only shows external ratings when it can find a reliable match. The Douban page remains usable without the extra context."],
+          ["Does it replace Douban ratings?", "No. It keeps Douban as the main page and adds IMDb or Rotten Tomatoes context so you can compare rating systems in place."],
+        ],
       },
       zh: {
         title: "豆瓣电影评分助手",
@@ -471,6 +512,11 @@ export const products: Record<ProductSlug, Product> = {
         rationaleBody: [
           "Chrome Web Store 信息显示，该扩展属于 Entertainment 分类，由 titpea.com 提供。",
           "商店隐私说明显示开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
+        ],
+        faqLabel: "问题与用法",
+        faq: [
+          ["匹配不到电影时怎么办？", "只有在能找到可靠匹配时才显示外部评分。匹配不到时，豆瓣页面本身仍然正常使用。"],
+          ["它会替代豆瓣评分吗？", "不会。它保留豆瓣页面作为主体验，只补充 IMDb 或 Rotten Tomatoes 上下文，方便原地对比不同评分体系。"],
         ],
       },
     },
