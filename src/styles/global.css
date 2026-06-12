@@ -126,7 +126,7 @@ a {
 
 .about-hero h1,
 .product-hero h1 {
-  font-size: clamp(42px, 6vw, 74px);
+  font-size: 68px;
   line-height: 0.98;
 }
 
@@ -149,13 +149,13 @@ p {
 h1 {
   max-width: 900px;
   margin-bottom: 24px;
-  font-size: clamp(44px, 8vw, 96px);
+  font-size: 84px;
   line-height: 0.95;
   letter-spacing: 0;
 }
 
 h2 {
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: 46px;
   line-height: 1.02;
   letter-spacing: 0;
 }
@@ -223,7 +223,7 @@ h2 {
 
 .home-hero-modern h1 {
   max-width: 760px;
-  font-size: clamp(58px, 10vw, 118px);
+  font-size: 76px;
 }
 
 .home-hero-modern .lead {
@@ -233,6 +233,31 @@ h2 {
 .home-panel {
   display: grid;
   gap: 14px;
+}
+
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0 0 46px;
+}
+
+.proof-strip span {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.product-hero + .proof-strip {
+  padding-top: 0;
+  padding-bottom: 12px;
+}
+
+.narrative-band .split-content {
+  padding: 64px 0;
 }
 
 .featured-product {
@@ -270,7 +295,7 @@ h2 {
 
 .featured-product strong {
   display: block;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: 42px;
   line-height: 1;
 }
 
@@ -301,7 +326,7 @@ h2 {
 
 .product-line h2 {
   max-width: 430px;
-  font-size: clamp(28px, 3.6vw, 44px);
+  font-size: 40px;
 }
 
 .compact-list {
@@ -313,6 +338,11 @@ h2 {
   gap: 8px;
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
+}
+
+.compact-link:hover span,
+.featured-product:hover span {
+  color: var(--brick);
 }
 
 .compact-link:first-child {
@@ -569,7 +599,7 @@ h2 {
 
 .terminal-visual code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: clamp(13px, 1.4vw, 16px);
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -606,7 +636,7 @@ h2 {
 }
 
 .incident-card strong {
-  font-size: clamp(20px, 3vw, 34px);
+  font-size: 30px;
   line-height: 1.1;
 }
 
@@ -654,7 +684,7 @@ h2 {
 }
 
 .clock-city strong {
-  font-size: clamp(26px, 4vw, 48px);
+  font-size: 42px;
   line-height: 1;
 }
 
@@ -835,7 +865,22 @@ h2 {
   }
 
   h1 {
-    font-size: clamp(42px, 14vw, 72px);
+    font-size: 54px;
+  }
+
+  .about-hero h1,
+  .product-hero h1,
+  .home-hero-modern h1 {
+    font-size: 54px;
+  }
+
+  h2,
+  .product-line h2 {
+    font-size: 34px;
+  }
+
+  .featured-product strong {
+    font-size: 32px;
   }
 
   .lead {
@@ -853,7 +898,8 @@ h2 {
   }
 
   .feature-grid,
-  .workflow-grid {
+  .workflow-grid,
+  .proof-strip {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -877,7 +923,8 @@ h2 {
   }
 
   .feature-grid,
-  .workflow-grid {
+  .workflow-grid,
+  .proof-strip {
     grid-template-columns: 1fr;
   }
 
@@ -894,6 +941,21 @@ h2 {
     min-width: 96px;
     padding: 10px 12px;
     font-size: 14px;
+  }
+
+  h1,
+  .about-hero h1,
+  .product-hero h1,
+  .home-hero-modern h1 {
+    font-size: 42px;
+  }
+
+  .incident-card strong {
+    font-size: 24px;
+  }
+
+  .clock-city strong {
+    font-size: 32px;
   }
 
   .node-a { left: 18px; }

@@ -40,20 +40,34 @@ const itemHref = (item: ProductLineItem) => item.slug ? pathFor(locale, item.slu
 
     <div class="home-panel" aria-label={copy.featuredLabel}>
       <a class="featured-product featured-primary" href={pathFor(locale, "s3-turbo-list")}>
-        <span>{locale === "zh" ? "01 / 存储" : "01 / Storage"}</span>
+        <span>{locale === "zh" ? "01 / 大桶清单" : "01 / Large bucket inventory"}</span>
         <strong>s3-turbo-list</strong>
-        <p>{locale === "zh" ? "并发生成 S3 兼容存储桶清单，保留追踪并导出 Parquet。" : "Concurrent S3-compatible bucket inventory with traces and Parquet output."}</p>
+        <p>{locale === "zh" ? "自动发现 key-space 边界，并发列举，输出可分析的 Parquet 清单。" : "Auto-discover key-space boundaries, list in parallel, and produce analysis-ready Parquet inventory."}</p>
       </a>
       <div class="featured-row">
         <a class="featured-product" href={pathFor(locale, "storageops")}>
-          <span>{locale === "zh" ? "02 / 诊断" : "02 / Diagnosis"}</span>
+          <span>{locale === "zh" ? "02 / 故障诊断" : "02 / Failure diagnosis"}</span>
           <strong>StorageOps</strong>
         </a>
-        <a class="featured-product" href={pathFor(locale, "world-clock")}>
-          <span>{locale === "zh" ? "03 / 浏览器" : "03 / Browser"}</span>
-          <strong>{products["world-clock"].locales[locale].title}</strong>
+        <a class="featured-product" href="https://github.com/hxddh/https-traffic-inspector">
+          <span>{locale === "zh" ? "03 / 流量证据" : "03 / Traffic evidence"}</span>
+          <strong>httpmon</strong>
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="proof-strip shell" aria-label={copy.thesisLabel}>
+    {copy.proofItems.map((item) => <span>{item}</span>)}
+  </section>
+
+  <section class="band narrative-band">
+    <div class="shell split-content">
+      <div>
+        <p class="section-kicker">{copy.thesisLabel}</p>
+        <h2>{copy.thesisTitle}</h2>
+      </div>
+      <p class="prose">{copy.thesisBody}</p>
     </div>
   </section>
 

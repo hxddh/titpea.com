@@ -18,6 +18,7 @@ export type ProductCopy = {
   primaryCta: Link;
   secondaryCta: Link;
   meta: string;
+  proof: string[];
   featuresLabel: string;
   features: Array<[string, string]>;
   rationaleLabel: string;
@@ -38,6 +39,7 @@ export type Product = {
   current: CurrentPage;
   name: string;
   category: "storage" | "browser";
+  role: "inventory" | "diagnosis" | "traffic" | "time" | "ratings";
   visual: "terminal" | "diagnostic" | "clock" | "rating";
   locales: Localized<ProductCopy>;
 };
@@ -58,32 +60,36 @@ export const ui = {
     },
     language: "中文",
     productIndex: "hxddh / product index",
-    homeTitle: "Useful tools, kept small.",
-    homeLead: "Chrome extensions and infrastructure utilities for object storage, diagnostics, time, and movies.",
+    homeTitle: "Tools for storage evidence and small daily decisions.",
+    homeLead: "A focused product line around S3-compatible operations, HTTPS inspection, and browser utilities that stay compact enough to trust.",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "About",
     featuredLabel: "Featured projects",
-    storageLine: "Storage tools",
-    storageTitle: "Infrastructure diagnostics and inventory.",
-    browserLine: "Browser extensions",
-    browserTitle: "Focused helpers for everyday browsing.",
+    storageLine: "Storage operations",
+    storageTitle: "Inventory, diagnose, inspect.",
+    browserLine: "Browser utilities",
+    browserTitle: "Small context helpers.",
+    thesisLabel: "Product thesis",
+    thesisTitle: "Make opaque systems observable, then keep the interface quiet.",
+    thesisBody: "The storage tools are built for evidence: traces, manifests, Parquet, redacted HTTP summaries, and repeatable diagnostics. The browser extensions take the same restraint into everyday workflows: one job, one surface, no data collection.",
+    proofItems: ["S3-compatible operations", "Traceable CLI workflows", "Chrome Web Store products", "Bilingual site"],
     aboutTitle: "About",
     aboutDescription: "Personal profile, Chrome extensions, and infrastructure projects by hxddh.",
-    aboutHeadline: "Building focused tools for browsers, storage systems, and daily technical work.",
-    aboutLead: "I build small products and developer tools: Chrome extensions for everyday use, plus infrastructure utilities around S3-compatible storage, diagnostics, and HTTPS traffic inspection.",
+    aboutHeadline: "Building evidence-first tools for storage systems, traffic inspection, and everyday browser workflows.",
+    aboutLead: "I make compact products with a narrow job: storage tools that explain what happened, and browser extensions that remove one small daily friction.",
     productsLabel: "Products and Projects",
     profileLabel: "Profile",
     profileTitle: "Practical software with a narrow job and a clear owner.",
     profileBody: [
-      "The current portfolio has two public Chrome extensions: World Clock for quick timezone checks, and Douban Movie Rating Assistant for bringing international movie ratings into Douban pages.",
-      "On the developer-tool side, the main GitHub projects are s3-turbo-list, StorageOps, and https-traffic-inspector: listing performance, diagnostics, compatibility checks, tracing, export workflows, and request inspection.",
+      "The storage line starts from the same premise: before changing a system, capture enough evidence to understand it. s3-turbo-list inventories large buckets; StorageOps diagnoses failures; httpmon exposes command-line HTTP and HTTPS traffic.",
+      "The browser line is deliberately smaller: World Clock gives quick time context, and Douban Movie Rating Assistant brings IMDb and Rotten Tomatoes context into Douban pages.",
     ],
     focusLabel: "Focus Areas",
     focusItems: [
-      "Object storage diagnostics and compatibility testing",
-      "S3-compatible listing, tracing, diffing, and Parquet export",
-      "Chrome extension products for small everyday workflows",
+      "S3-compatible inventory, diagnostics, and migration evidence",
+      "HTTP/HTTPS traffic inspection for command-line tools",
+      "Small Chrome extensions with explicit privacy posture",
     ],
   },
   zh: {
@@ -94,32 +100,36 @@ export const ui = {
     },
     language: "English",
     productIndex: "hxddh / 产品索引",
-    homeTitle: "小而专注的实用工具。",
-    homeLead: "面向对象存储、诊断、时间查询和电影评分的浏览器扩展与基础设施工具。",
+    homeTitle: "为存储证据和日常判断构建的小工具。",
+    homeLead: "围绕 S3 兼容运维、HTTPS 流量检查和浏览器日常场景的一组专注产品：足够有用，也足够克制。",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "关于",
     featuredLabel: "精选项目",
-    storageLine: "存储工具",
-    storageTitle: "面向基础设施的诊断与清单工具。",
-    browserLine: "浏览器扩展",
-    browserTitle: "为日常浏览准备的小工具。",
+    storageLine: "存储运维",
+    storageTitle: "清单、诊断、检查。",
+    browserLine: "浏览器工具",
+    browserTitle: "小而确定的上下文助手。",
+    thesisLabel: "产品主线",
+    thesisTitle: "先让不透明系统变得可观察，再把界面保持安静。",
+    thesisBody: "存储工具线强调证据：trace、manifest、Parquet、脱敏 HTTP 摘要和可重复诊断。浏览器扩展把同样的克制带到日常工作流：一个清晰任务，一个轻量界面，不收集用户数据。",
+    proofItems: ["S3 兼容运维", "可追踪 CLI 工作流", "Chrome 商店产品", "中英双语站点"],
     aboutTitle: "关于",
     aboutDescription: "hxddh 的个人简介、Chrome 扩展和基础设施项目。",
-    aboutHeadline: "构建面向浏览器、存储系统和日常技术工作的专注工具。",
-    aboutLead: "我做小产品和开发者工具：用于日常场景的 Chrome 扩展，以及围绕 S3 兼容存储、诊断和 HTTPS 流量检查的基础设施工具。",
+    aboutHeadline: "构建证据优先的存储、流量检查和浏览器工作流工具。",
+    aboutLead: "我做边界清晰的小产品：能解释发生了什么的存储工具，以及减少一个日常摩擦的浏览器扩展。",
     productsLabel: "产品和项目",
     profileLabel: "简介",
     profileTitle: "做目标清晰、边界明确、能被长期维护的软件。",
     profileBody: [
-      "当前的产品组合包含两个公开 Chrome 扩展：用于快速查看时区的世界时钟，以及把国际电影评分带到豆瓣页面的豆瓣电影评分助手。",
-      "开发者工具方向主要是 s3-turbo-list、StorageOps 和 https-traffic-inspector，覆盖列举性能、诊断、兼容性检查、追踪、导出流程和请求检查。",
+      "存储工具线从同一个前提出发：在改变系统之前，先捕获足够证据理解它。s3-turbo-list 生成大桶清单，StorageOps 诊断故障，httpmon 暴露命令行 HTTP 和 HTTPS 流量。",
+      "浏览器工具线更小：世界时钟提供快速时间上下文，豆瓣电影评分助手把 IMDb 和 Rotten Tomatoes 上下文带到豆瓣页面。",
     ],
     focusLabel: "关注方向",
     focusItems: [
-      "对象存储诊断与兼容性测试",
-      "S3 兼容列举、追踪、差异对比和 Parquet 导出",
-      "服务日常工作流的 Chrome 扩展产品",
+      "S3 兼容清单、诊断和迁移证据",
+      "命令行工具的 HTTP/HTTPS 流量检查",
+      "隐私姿态清晰的小型 Chrome 扩展",
     ],
   },
 } as const;
@@ -130,6 +140,7 @@ export const products: Record<ProductSlug, Product> = {
     current: "s3-turbo-list",
     name: "s3-turbo-list",
     category: "storage",
+    role: "inventory",
     visual: "terminal",
     locales: {
       en: {
@@ -137,16 +148,17 @@ export const products: Record<ProductSlug, Product> = {
         description: "High-performance S3-compatible bucket listing, tracing, diffing, checkpoint/resume, and Parquet export.",
         eyebrow: "Rust CLI / Object Storage",
         headline: "List huge S3-compatible buckets without waiting on one slow chain.",
-        lead: "s3-turbo-list is a high-performance CLI for operations teams and data engineers: concurrent bucket inventory, provider diagnostics, traceable runs, diffing, checkpoint/resume, and Parquet outputs for analysis.",
+        lead: "s3-turbo-list turns very large S3-compatible buckets into auditable data: auto-discovered key-space segments, parallel listing, runtime splitting for skewed prefixes, checkpoint/resume, diffing, and Parquet output for DuckDB or pandas.",
         primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
         secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
         meta: "Rust · MIT License · S3-compatible · Parquet · Trace JSONL",
+        proof: ["Automatic key-space discovery", "Runtime segment splitting", "Parquet / NDJSON / TSV / summary modes", "Dry-run and agent-friendly plans"],
         featuresLabel: "Features",
         features: [
-          ["Segmented listing", "Split the key space into independent segments and scan them concurrently instead of walking one long chain."],
+          ["Auto-discovered segments", "Probe real CommonPrefixes at startup, cache boundaries, and begin parallel recursive listing without hand tuning."],
           ["Trace JSONL", "Record every S3 API call as structured JSONL so provider behavior is observable after the run."],
           ["Checkpoint / resume", "Resume interrupted scans from saved segment progress with identity checks to avoid mismatched runs."],
-          ["Parquet export", "Write inventory and diff results directly into compressed Parquet for DuckDB, pandas, and audit workflows."],
+          ["Analysis-ready output", "Write streaming Parquet by default, or use NDJSON, TSV, summary-only, and dry-run modes for shell and CI workflows."],
         ],
         rationaleLabel: "Why it exists",
         rationaleTitle: "Sequential listing works until the bucket is large enough to become an operation.",
@@ -156,9 +168,9 @@ export const products: Record<ProductSlug, Product> = {
         ],
         workflowLabel: "Workflow",
         workflow: [
-          ["Probe", "Run compat-probe or doctor first to validate endpoint behavior before a large listing."],
-          ["Plan", "Use dry-run and agent-friendly JSON to inspect output paths, hints, and warnings."],
-          ["Scan", "List with parallel segments, bounded memory, run manifests, and trace output."],
+          ["Preflight", "Run local doctor or dry-run first; no S3 requests are needed to inspect planned outputs and warnings."],
+          ["Discover", "Let startup discovery find key-space boundaries, or provide hints for repeated inventories."],
+          ["Scan", "List recursive buckets with parallel segments, bounded memory, run manifests, and trace output."],
           ["Analyze", "Load Parquet in DuckDB or pandas, or inspect trace JSONL for provider-level behavior."],
         ],
         casesLabel: "Compatibility",
@@ -177,6 +189,7 @@ export const products: Record<ProductSlug, Product> = {
         primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
         secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
         meta: "Rust · MIT License · S3-compatible · Parquet · Trace JSONL",
+        proof: ["自动 key-space discovery", "运行时分段拆分", "Parquet / NDJSON / TSV / summary 输出", "Dry-run 和 agent-friendly plan"],
         featuresLabel: "功能",
         features: [
           ["分段列举", "把 key 空间拆成独立分段并发扫描，而不是等待一条很长的分页链。"],
@@ -211,6 +224,7 @@ export const products: Record<ProductSlug, Product> = {
     current: "storageops",
     name: "StorageOps",
     category: "storage",
+    role: "diagnosis",
     visual: "diagnostic",
     locales: {
       en: {
@@ -218,10 +232,11 @@ export const products: Record<ProductSlug, Product> = {
         description: "StorageOps is a Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage problems.",
         eyebrow: "Pi Extension / Object Storage Diagnostics",
         headline: "Diagnose S3-compatible storage failures from the evidence you already have.",
-        lead: "StorageOps is a Pi Coding Agent extension and skill pack for investigating object storage problems: auth failures, throttling, signature mismatches, checksum errors, lifecycle rules, migrations, consistency, and provider quirks.",
+        lead: "StorageOps packages S3-compatible storage diagnosis into Pi: 16 skill packs, redaction-first evidence tools, deterministic helper scripts, and compact eval cases for repeatable answers.",
         primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/storageops" },
         secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/storageops#quick-start" },
         meta: "Python · Pi Coding Agent · S3-compatible · Redacted traces · Diagnostic skills",
+        proof: ["16 skill/eval packs", "4 Pi extension tools", "Managed httpmon helper", "Golden cases and size gates"],
         featuresLabel: "Features",
         features: [
           ["Diagnostic skills", "15 object-storage skill packs cover security, protocol compatibility, SDK behavior, performance, migration, consistency, logs, lifecycle, and notifications."],
@@ -254,10 +269,11 @@ export const products: Record<ProductSlug, Product> = {
         description: "StorageOps 是用于诊断 S3 兼容对象存储问题的 Pi Coding Agent 扩展和技能包。",
         eyebrow: "Pi 扩展 / 对象存储诊断",
         headline: "用你手头已有的证据诊断 S3 兼容存储故障。",
-        lead: "StorageOps 是一个 Pi Coding Agent 扩展和技能包，用于调查对象存储问题：鉴权失败、限流、签名不匹配、checksum 错误、生命周期规则、迁移、一致性和 provider 差异。",
+        lead: "StorageOps 把 S3 兼容存储诊断打包进 Pi：16 个技能/评测包、脱敏优先的证据工具、确定性辅助脚本，以及让答案可重复的 compact eval cases。",
         primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/storageops" },
         secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/storageops#quick-start" },
         meta: "Python · Pi Coding Agent · S3-compatible · Redacted traces · Diagnostic skills",
+        proof: ["16 个技能/评测包", "4 个 Pi 扩展工具", "托管 httpmon helper", "Golden cases 和 size gates"],
         featuresLabel: "功能",
         features: [
           ["诊断技能", "15 个对象存储技能包覆盖安全、协议兼容、SDK 行为、性能、迁移、一致性、日志、生命周期和通知。"],
@@ -292,6 +308,7 @@ export const products: Record<ProductSlug, Product> = {
     current: "world-clock",
     name: "World Clock",
     category: "browser",
+    role: "time",
     visual: "clock",
     locales: {
       en: {
@@ -303,6 +320,7 @@ export const products: Record<ProductSlug, Product> = {
         primaryCta: { label: "Install", href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" },
         secondaryCta: { label: "Back to profile", href: "/about/" },
         meta: "Version 7.0 · Updated June 1, 2026 · 138 users · 44.08 KiB",
+        proof: ["Chrome Web Store: Tools", "Version 7.0", "138 users", "No data collection disclosed"],
         featuresLabel: "Features",
         features: [
           ["Live city times", "Quickly check the current time in major cities around the world."],
@@ -326,6 +344,7 @@ export const products: Record<ProductSlug, Product> = {
         primaryCta: { label: "安装扩展", href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
         meta: "Version 7.0 · Updated June 1, 2026 · 138 users · 44.08 KiB",
+        proof: ["Chrome Web Store: Tools", "Version 7.0", "138 users", "声明不收集数据"],
         featuresLabel: "功能",
         features: [
           ["实时城市时间", "快速查看全球主要城市的当前时间。"],
@@ -347,6 +366,7 @@ export const products: Record<ProductSlug, Product> = {
     current: "douban",
     name: "Douban Movie Rating Assistant",
     category: "browser",
+    role: "ratings",
     visual: "rating",
     locales: {
       en: {
@@ -357,7 +377,8 @@ export const products: Record<ProductSlug, Product> = {
         lead: "Douban Movie Rating Assistant automatically shows IMDb ratings and Rotten Tomatoes freshness on Douban movie pages so you can compare rating systems in one place.",
         primaryCta: { label: "Install", href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif" },
         secondaryCta: { label: "Back to profile", href: "/about/" },
-        meta: "Version 1.2 · Updated May 31, 2026 · 39 users · 35.42 KiB",
+        meta: "Version 1.3 · Updated June 1, 2026 · 52 users · 33.68 KiB",
+        proof: ["Chrome Web Store: Entertainment", "5.0 rating", "Version 1.3", "No data collection disclosed"],
         featuresLabel: "Features",
         features: [
           ["IMDb rating", "Automatically shows IMDb scores on Douban movie detail pages."],
@@ -380,7 +401,8 @@ export const products: Record<ProductSlug, Product> = {
         lead: "豆瓣电影评分助手会在豆瓣电影详情页自动显示 IMDb 评分和烂番茄新鲜度，帮你在同一个页面里快速对照不同评分体系。",
         primaryCta: { label: "安装扩展", href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif" },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
-        meta: "Version 1.2 · Updated May 31, 2026 · 39 users · 35.42 KiB",
+        meta: "Version 1.3 · Updated June 1, 2026 · 52 users · 33.68 KiB",
+        proof: ["Chrome Web Store: Entertainment", "5.0 评分", "Version 1.3", "声明不收集数据"],
         featuresLabel: "功能",
         features: [
           ["IMDb 评分", "在豆瓣电影详情页自动显示 IMDb 分数。"],

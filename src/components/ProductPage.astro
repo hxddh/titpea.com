@@ -32,6 +32,10 @@ const copy = product.locales[locale];
     <ProductVisual product={product} />
   </section>
 
+  <section class="proof-strip shell" aria-label="Product evidence">
+    {copy.proof.map((item) => <span>{item}</span>)}
+  </section>
+
   <section class="shell content-section">
     <p class="section-kicker">{copy.featuresLabel}</p>
     <div class="feature-grid">
