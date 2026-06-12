@@ -8,6 +8,18 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = ui[locale];
+const isZh = locale === "zh";
+const productGroups = isZh
+  ? [
+      ["对象存储工具线", "s3-turbo-list、StorageOps 和 httpmon 处理同一条运维链路：先 list / diff，再诊断故障，必要时看 HTTP 层。"],
+      ["浏览器工具线", "世界时钟和豆瓣电影评分助手更轻，只解决一个明确的小问题，不做复杂平台。"],
+      ["维护方式", "偏向小而稳定的工具：命令清楚、输出可继续处理、默认行为可解释。"],
+    ]
+  : [
+      ["Object storage line", "s3-turbo-list, StorageOps, and httpmon sit on the same operations path: list and diff first, diagnose failures, inspect HTTP when needed."],
+      ["Browser utility line", "World Clock and Douban Movie Rating Assistant are deliberately smaller: one job, compact surface, no platform ambition."],
+      ["Maintenance style", "The bias is toward small stable tools: clear commands, outputs that can be processed elsewhere, and behavior that is easy to explain."],
+    ];
 ---
 
 <SiteLayout
@@ -16,44 +28,59 @@ const copy = ui[locale];
   current="about"
   locale={locale}
 >
-  <section class="about-hero shell">
-    <div>
+  <section class="about-hero about-redesign-hero shell">
+    <div class="about-redesign-copy">
       <p class="eyebrow">hxddh</p>
       <h1>{copy.aboutHeadline}</h1>
       <p class="lead">{copy.aboutLead}</p>
-      <div class="socials" aria-label={locale === "zh" ? "社交链接" : "Social links"}>
+      <div class="socials about-contact-row" aria-label={isZh ? "联系方式" : "Contact links"}>
         <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
         <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer">Chrome Web Store</a>
         <a href="mailto:info@titpea.com">Email</a>
       </div>
     </div>
-    <figure class="portrait-card">
-      <div class="portrait-grid" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
-      </div>
-      <figcaption>Chrome extensions / storage tools / technical notes</figcaption>
-    </figure>
+    <aside class="about-system-panel" aria-label={isZh ? "产品线" : "Product lines"}>
+      {productGroups.map(([title, body]) => (
+        <div>
+          <span>{title}</span>
+          <p>{body}</p>
+        </div>
+      ))}
+    </aside>
   </section>
 
-  <section class="shell content-section">
-    <p class="section-kicker">{copy.productsLabel}</p>
-    <div class="product-list">
-      {aboutProducts.map((slug) => (
-        <a class="product-row" href={pathFor(locale, slug)}>
+  <section class="about-products shell">
+    <div class="about-section-heading">
+      <p class="section-kicker">{copy.productsLabel}</p>
+      <h2>{isZh ? "当前主要产品" : "Current Products"}</h2>
+    </div>
+    <div class="about-product-grid">
+      <a class="about-product-card primary" href={pathFor(locale, "s3-turbo-list")}>
+        <span>s3-turbo-list</span>
+        <strong>{isZh ? "高性能对象存储 list / diff CLI" : "High-performance object storage list / diff CLI"}</strong>
+        <p>{products["s3-turbo-list"].locales[locale].description}</p>
+      </a>
+      <a class="about-product-card primary" href={pathFor(locale, "storageops")}>
+        <span>StorageOps</span>
+        <strong>{isZh ? "基于 Pi 的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
+        <p>{products.storageops.locales[locale].description}</p>
+      </a>
+      <a class="about-product-card" href="https://github.com/hxddh/https-traffic-inspector">
+        <span>https-traffic-inspector</span>
+        <strong>{isZh ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection"}</strong>
+        <p>{isZh ? "当 SDK 或 CLI 隐藏请求细节时，用它查看真实 HTTP 请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
+      </a>
+      {aboutProducts.filter((slug) => slug === "world-clock" || slug === "douban-movie-rating").map((slug) => (
+        <a class="about-product-card" href={pathFor(locale, slug)}>
           <span>{products[slug].locales[locale].title}</span>
+          <strong>{products[slug].category === "browser" ? (isZh ? "轻量 Chrome 扩展" : "Lightweight Chrome extension") : products[slug].name}</strong>
           <p>{products[slug].locales[locale].description}</p>
         </a>
       ))}
-      <a class="product-row" href="https://github.com/hxddh/https-traffic-inspector">
-        <span>https-traffic-inspector</span>
-        <p>{locale === "zh" ? "用于请求分析和兼容性测试的 HTTPS 流量检查工作台。" : "HTTPS traffic inspection workbench for request analysis and compatibility testing."}</p>
-      </a>
     </div>
   </section>
 
-  <section class="band">
+  <section class="about-principles">
     <div class="shell split-content">
       <div>
         <p class="section-kicker">{copy.profileLabel}</p>
@@ -65,8 +92,11 @@ const copy = ui[locale];
     </div>
   </section>
 
-  <section class="shell content-section" id="writing">
-    <p class="section-kicker">{copy.focusLabel}</p>
+  <section class="shell about-focus-section" id="writing">
+    <div class="about-section-heading">
+      <p class="section-kicker">{copy.focusLabel}</p>
+      <h2>{isZh ? "关注的边界" : "Working Boundaries"}</h2>
+    </div>
     <ul class="writing-list">
       {copy.focusItems.map((item) => <li>{item}</li>)}
     </ul>

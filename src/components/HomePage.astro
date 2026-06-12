@@ -29,6 +29,15 @@ const storageFlow = locale === "zh"
       ["02", "Agent", "StorageOps", "Install object-storage diagnostic skills, Pi extension tools, helper scripts, and eval cases.", pathFor(locale, "storageops")],
       ["03", "Inspect", "httpmon", "Capture real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details.", "https://github.com/hxddh/https-traffic-inspector"],
     ];
+const browserTools = locale === "zh"
+  ? [
+      ["世界时钟", "快速看几个城市的当前时间，不打开日历，不进入排期流程。", pathFor(locale, "world-clock")],
+      ["豆瓣电影评分助手", "在豆瓣电影页补充 IMDb 和 Rotten Tomatoes 评分，保留原页面阅读节奏。", pathFor(locale, "douban-movie-rating")],
+    ]
+  : [
+      ["World Clock", "Check city time quickly without opening a calendar or starting a scheduling workflow.", pathFor(locale, "world-clock")],
+      ["Douban Movie Rating Assistant", "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.", pathFor(locale, "douban-movie-rating")],
+    ];
 ---
 
 <SiteLayout
@@ -37,8 +46,8 @@ const storageFlow = locale === "zh"
   current="home"
   locale={locale}
 >
-  <section class="home-hero home-hero-modern shell">
-    <div class="home-copy">
+  <section class="home-hero home-workbench-hero shell">
+    <div class="home-copy home-workbench-copy">
       <p class="eyebrow">{copy.productIndex}</p>
       <h1>{copy.homeTitle}</h1>
       <p class="lead">{copy.homeLead}</p>
@@ -49,15 +58,15 @@ const storageFlow = locale === "zh"
       </div>
     </div>
 
-    <div class="home-panel product-map" aria-label={copy.featuredLabel}>
-      <div class="map-intro">
+    <div class="home-workbench-panel" aria-label={copy.featuredLabel}>
+      <div class="workbench-panel-head">
         <p class="section-kicker">{copy.flowLabel}</p>
         <h2>{copy.flowTitle}</h2>
         <p>{copy.flowBody}</p>
       </div>
-      <div class="flow-list">
+      <div class="workbench-flow-list">
         {storageFlow.map(([number, verb, name, body, href]) => (
-          <a class="flow-card" href={href}>
+          <a class="workbench-flow-card" href={href}>
             <span>{number}</span>
             <div>
               <strong>{verb}</strong>
@@ -70,36 +79,46 @@ const storageFlow = locale === "zh"
     </div>
   </section>
 
-  <section class="proof-strip shell" aria-label={copy.thesisLabel}>
-    {copy.proofItems.map((item) => <span>{item}</span>)}
-  </section>
-
-  <section class="band narrative-band">
-    <div class="shell split-content">
+  <section class="home-principle shell">
+    <div>
       <div>
         <p class="section-kicker">{copy.thesisLabel}</p>
         <h2>{copy.thesisTitle}</h2>
       </div>
       <p class="prose">{copy.thesisBody}</p>
     </div>
+    <div class="home-proof-list" aria-label={copy.thesisLabel}>
+      {copy.proofItems.map((item) => <span>{item}</span>)}
+    </div>
   </section>
 
-  <section class="home-products shell">
-    {productLines.map((line) => (
-      <section class="product-line" aria-label={line.label}>
-        <div class="product-line-heading">
-          <p class="section-kicker">{line.label}</p>
-          <h2>{line.title}</h2>
-        </div>
-        <div class="compact-list">
-          {line.items.map((item) => (
-            <a class="compact-link" href={itemHref(item)}>
-              <span>{itemName(item)}</span>
-              <p>{item.text}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-    ))}
+  <section class="home-catalog shell">
+    <div class="catalog-heading">
+      <p class="section-kicker">{copy.storageLine}</p>
+      <h2>{copy.storageTitle}</h2>
+    </div>
+    <div class="catalog-grid">
+      {productLines[0].items.map((item) => (
+        <a class="catalog-card" href={itemHref(item)}>
+          <span>{itemName(item)}</span>
+          <p>{item.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-browser-band shell">
+    <div>
+      <p class="section-kicker">{copy.browserLine}</p>
+      <h2>{copy.browserTitle}</h2>
+    </div>
+    <div class="browser-tool-list">
+      {browserTools.map(([name, body, href]) => (
+        <a href={href}>
+          <span>{name}</span>
+          <p>{body}</p>
+        </a>
+      ))}
+    </div>
   </section>
 </SiteLayout>

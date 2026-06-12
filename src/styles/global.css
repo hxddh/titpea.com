@@ -2537,3 +2537,339 @@ h2 {
     font-size: 46px;
   }
 }
+
+.home-workbench-hero {
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 0.92fr);
+  gap: 72px;
+  align-items: center;
+  padding-top: 86px;
+  padding-bottom: 72px;
+}
+
+.home-workbench-copy h1 {
+  max-width: 9.5ch;
+  font-size: clamp(3.6rem, 8vw, 6.3rem);
+}
+
+.home-workbench-copy .lead {
+  max-width: 48ch;
+}
+
+.home-workbench-panel {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.workbench-panel-head,
+.workbench-flow-card {
+  background: #ffffff;
+}
+
+.workbench-panel-head {
+  display: grid;
+  gap: 10px;
+  padding: 28px;
+}
+
+.workbench-panel-head h2 {
+  max-width: 16ch;
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+}
+
+.workbench-panel-head p:not(.section-kicker) {
+  margin: 0;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.workbench-flow-list {
+  display: grid;
+  gap: 1px;
+}
+
+.workbench-flow-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding: 22px 26px;
+}
+
+.workbench-flow-card > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 7px;
+  background: #111827;
+  color: #ffffff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.workbench-flow-card strong,
+.catalog-card span,
+.browser-tool-list span,
+.about-system-panel span,
+.about-product-card span {
+  color: #111827;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.workbench-flow-card h3 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.workbench-flow-card p,
+.catalog-card p,
+.browser-tool-list p,
+.about-system-panel p,
+.about-product-card p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.home-principle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 64px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+.home-principle > div:first-child {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 54px;
+}
+
+.home-principle h2,
+.catalog-heading h2,
+.about-section-heading h2,
+.about-principles h2 {
+  max-width: 14ch;
+}
+
+.home-proof-list {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.home-proof-list span {
+  border: 1px solid var(--soft-line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: #ffffff;
+  color: #374151;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+}
+
+.home-catalog,
+.about-products,
+.about-focus-section {
+  display: grid;
+  gap: 28px;
+  padding-top: 76px;
+  padding-bottom: 84px;
+}
+
+.catalog-heading,
+.about-section-heading {
+  display: grid;
+  gap: 8px;
+}
+
+.catalog-grid,
+.about-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.catalog-card,
+.about-product-card {
+  display: grid;
+  gap: 14px;
+  min-height: 220px;
+  align-content: space-between;
+  padding: 26px;
+  background: #ffffff;
+}
+
+.catalog-card span,
+.about-product-card span {
+  color: #6b7280;
+}
+
+.catalog-card p,
+.about-product-card p {
+  align-self: end;
+}
+
+.home-browser-band {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 54px;
+  border-top: 1px solid var(--line);
+  padding-top: 58px;
+  padding-bottom: 96px;
+}
+
+.browser-tool-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.browser-tool-list a {
+  display: grid;
+  gap: 12px;
+  min-height: 160px;
+  align-content: space-between;
+  padding: 24px;
+  background: #ffffff;
+}
+
+.about-redesign-hero {
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.82fr);
+  gap: 72px;
+  padding-top: 92px;
+  padding-bottom: 74px;
+}
+
+.about-redesign-copy h1 {
+  max-width: 12ch;
+}
+
+.about-redesign-copy .lead {
+  max-width: 52ch;
+}
+
+.about-contact-row a {
+  border: 1px solid var(--soft-line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: #ffffff;
+  color: #111827;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.about-system-panel {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.about-system-panel div {
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+  background: #ffffff;
+}
+
+.about-product-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-product-card strong {
+  max-width: 22ch;
+  color: #111827;
+  font-size: 22px;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+
+.about-product-card.primary {
+  min-height: 260px;
+}
+
+.about-principles {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+@media (max-width: 900px) {
+  .home-workbench-hero,
+  .home-principle,
+  .home-principle > div:first-child,
+  .home-browser-band,
+  .about-redesign-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-grid,
+  .about-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-principle {
+    gap: 30px;
+  }
+
+  .home-workbench-copy h1 {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-workbench-hero,
+  .about-redesign-hero {
+    gap: 36px;
+    padding-top: 52px;
+    padding-bottom: 56px;
+  }
+
+  .home-workbench-copy h1 {
+    font-size: clamp(3.1rem, 16vw, 4.4rem);
+  }
+
+  .workbench-panel-head,
+  .workbench-flow-card,
+  .catalog-card,
+  .about-product-card,
+  .browser-tool-list a,
+  .about-system-panel div {
+    padding: 20px;
+  }
+
+  .workbench-flow-card {
+    grid-template-columns: 1fr;
+  }
+
+  .browser-tool-list {
+    grid-template-columns: 1fr;
+  }
+}
