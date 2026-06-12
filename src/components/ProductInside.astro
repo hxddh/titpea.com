@@ -19,31 +19,19 @@ const isZh = locale === "zh";
     </div>
     <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
       <div class="workbench-top">
-        <span>mode: list / diff</span>
-        <strong>parquet ready</strong>
+        <span>s3-turbo-list v0.5.0</span>
+        <strong>{isZh ? "压测摘要" : "benchmark summary"}</strong>
       </div>
-      <div class="inventory-grid">
-        <div class="metric-tile strong">
-          <span>{isZh ? "list" : "list"}</span>
-          <strong>64</strong>
-          <p>{isZh ? "并发 key-space segments" : "concurrent key-space segments"}</p>
-        </div>
-        <div class="metric-tile">
-          <span>{isZh ? "diff" : "diff"}</span>
-          <strong>DiffFlag</strong>
-          <p>{isZh ? "标记相同、独有和变更对象" : "marks equal, only, and changed rows"}</p>
-        </div>
-        <div class="metric-tile">
-          <span>{isZh ? "trace" : "trace"}</span>
-          <strong>JSONL</strong>
-          <p>{isZh ? "每次 S3 API 调用可回放" : "each S3 API call remains inspectable"}</p>
-        </div>
+      <div class="inventory-grid benchmark-metrics">
+        <div class="metric-tile strong"><span>{isZh ? "对象数" : "objects"}</span><strong>1,000,078</strong><p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p></div>
+        <div class="metric-tile"><span>{isZh ? "最高吞吐" : "peak throughput"}</span><strong>54,667/s</strong><p>{isZh ? "c=4, T=2 自动发现" : "c=4, T=2 with auto discovery"}</p></div>
+        <div class="metric-tile"><span>{isZh ? "单段提升" : "single segment"}</span><strong>+18.8%</strong><p>{isZh ? "v0.5.0 相比 v0.4.0" : "v0.5.0 over v0.4.0"}</p></div>
       </div>
-      <div class="artifact-table" aria-label="Run artifacts">
-        <div><span>objects.parquet</span><strong>{isZh ? "list 模式：对象 Key、Size、LastModified、ETag" : "list mode: Key, Size, LastModified, ETag"}</strong></div>
-        <div><span>diff.parquet</span><strong>{isZh ? "diff 模式：每行带 DiffFlag" : "diff mode: every row carries DiffFlag"}</strong></div>
-        <div><span>checkpoint.db</span><strong>{isZh ? "中断后继续，不重扫已完成分段" : "resume without rescanning completed segments"}</strong></div>
-        <div><span>trace.jsonl</span><strong>{isZh ? "provider 行为有证据可查" : "provider behavior has evidence"}</strong></div>
+      <div class="artifact-table benchmark-table" aria-label="Benchmark report">
+        <div><span>{isZh ? "并发矩阵" : "parallel matrix"}</span><strong>18.29s-20.88s · 47,906-54,667 objects/s</strong></div>
+        <div><span>{isZh ? "连续压力" : "stress rounds"}</span><strong>c=64 · 3 rounds · 49,367-51,854 objects/s</strong></div>
+        <div><span>{isZh ? "输出格式" : "output formats"}</span><strong>Parquet zstd 3.0 MB · NDJSON 76M · TSV 61M</strong></div>
+        <div><span>{isZh ? "客户端" : "client"}</span><strong>ECS 2 vCPU · 3.4 GiB RAM · Ubuntu 24.04</strong></div>
       </div>
     </div>
   </section>
@@ -56,31 +44,16 @@ const isZh = locale === "zh";
       <h2>{isZh ? "给 Pi 补上存储诊断能力" : "Turn Pi into a storage diagnosis agent"}</h2>
       <p>{isZh ? "StorageOps 不是一组排查说明，而是一套给 Pi 安装的诊断能力：对象存储 skills、extension tools、helper scripts 和 eval cases。" : "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures."}</p>
     </div>
-    <div class="inside-workbench diagnosis-workbench" aria-label="StorageOps diagnosis workbench">
+    <div class="inside-workbench agent-evidence-panel" aria-label="StorageOps skills and tools summary">
       <div class="workbench-top">
         <span>pi extension: storageops</span>
         <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
       </div>
-      <div class="diagnosis-timeline">
-        <div>
-          <span>01</span>
-          <strong>{isZh ? "Skills" : "Skills"}</strong>
-          <p>{isZh ? "15 个对象存储诊断领域" : "15 object-storage diagnosis domains"}</p>
-        </div>
-        <div>
-          <span>02</span>
-          <strong>{isZh ? "Tools" : "Tools"}</strong>
-          <p>{isZh ? "scan_secrets、detect_domain、search_memory、capture_http_trace" : "scan_secrets, detect_domain, search_memory, capture_http_trace"}</p>
-        </div>
-        <div>
-          <span>03</span>
-          <strong>{isZh ? "Helpers" : "Helpers"}</strong>
-          <p>{isZh ? "SigV4、ETag、payload hash、access log、migration scripts" : "SigV4, ETag, payload hash, access log, migration scripts"}</p>
-        </div>
-      </div>
-      <div class="diagnosis-result">
-        <span>{isZh ? "agent 输出" : "agent output"}</span>
-        <p>{isZh ? "基于 skills 和 tool output 的故障领域、证据、置信度、下一步检查和安全修改建议。" : "Domain, evidence, confidence, next checks, and safe changes grounded in skills and tool output."}</p>
+      <div class="agent-evidence-grid">
+        <div><span>01</span><strong>{isZh ? "15 个诊断 skills" : "15 diagnostic skills"}</strong><p>{isZh ? "按鉴权、签名、限流、一致性、迁移、日志等对象存储领域组织。" : "Organized around auth, signing, throttling, consistency, migration, logs, and other storage domains."}</p></div>
+        <div><span>02</span><strong>{isZh ? "4 个 Pi tools" : "4 Pi tools"}</strong><p>{isZh ? "detect_domain、scan_secrets、search_memory、capture_http_trace 负责路由和取证。" : "detect_domain, scan_secrets, search_memory, and capture_http_trace route and gather evidence."}</p></div>
+        <div><span>03</span><strong>{isZh ? "确定性 helpers" : "deterministic helpers"}</strong><p>{isZh ? "检查 SigV4、ETag、payload hash、限流、访问日志和 endpoint 可达性。" : "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability."}</p></div>
+        <div><span>04</span><strong>{isZh ? "eval cases" : "eval cases"}</strong><p>{isZh ? "用 golden cases 约束 agent 行为，避免每次修改后诊断口径漂移。" : "Golden cases keep agent behavior stable as skills and tools change."}</p></div>
       </div>
     </div>
   </section>

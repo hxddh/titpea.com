@@ -3,68 +3,98 @@ import type { Product } from "../lib/site";
 
 interface Props {
   product: Product;
+  locale?: "en" | "zh";
 }
 
-const { product } = Astro.props;
+const { product, locale = "en" } = Astro.props;
+const isZh = locale === "zh";
+const parallelRuns = [
+  ["c4 T2", 54667, 18.29],
+  ["c8 T4", 54422, 18.38],
+  ["c16 T6", 53961, 18.53],
+  ["c24 T8", 49658, 20.14],
+  ["c32 T10", 49686, 20.13],
+  ["c48 T12", 48511, 20.61],
+  ["c64 T16", 47906, 20.88],
+] as const;
+const stressRuns = [
+  ["R1", 50243],
+  ["R2", 49367],
+  ["R3", 51854],
+] as const;
+const baselineRuns = [
+  ["v0.4.0", 19602],
+  ["v0.5.0", 23277],
+] as const;
+const chartWidth = 920;
+const chartHeight = 360;
+const plot = { left: 62, top: 34, width: 810, height: 244 };
+const yMax = 60000;
+const xFor = (index: number, total: number) => plot.left + (total === 1 ? 0 : (plot.width / (total - 1)) * index);
+const yFor = (value: number) => plot.top + plot.height - (value / yMax) * plot.height;
+const parallelPoints = parallelRuns.map(([, throughput], index) => `${xFor(index, parallelRuns.length)},${yFor(throughput)}`).join(" ");
+const stressPoints = stressRuns.map(([, throughput], index) => `${xFor(index + 2, parallelRuns.length)},${yFor(throughput)}`).join(" ");
+const baselinePoints = baselineRuns.map(([, throughput], index) => `${xFor(index, baselineRuns.length)},${yFor(throughput)}`).join(" ");
 ---
 
 {product.visual === "terminal" && (
-  <div class="terminal-visual product-scene inventory-scene" aria-label="s3-turbo-list inventory preview">
-    <div class="scene-topbar">
-      <div class="window-bar"><span></span><span></span><span></span></div>
-      <strong>s3://archive</strong>
-      <span>list / diff run</span>
-    </div>
-    <div class="inventory-layout">
-      <div class="scan-map" aria-hidden="true">
-        <div class="scan-map-head">
-          <span>list key-space</span>
-          <strong>64 segments</strong>
-        </div>
-        <div class="segment-grid">
-          <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span>
-          <span class="done"></span><span class="done"></span><span class="active"></span><span class="done"></span>
-          <span class="done"></span><span class="split"></span><span class="done"></span><span class="done"></span>
-          <span class="done"></span><span class="done"></span><span></span><span></span>
-        </div>
-        <div class="scan-progress"><span style="width: 72%"></span></div>
+  <div class="terminal-visual benchmark-visual" aria-label="s3-turbo-list v0.5.0 benchmark chart">
+    <div class="benchmark-head">
+      <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
+      <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
+      <p>{isZh ? "ECS 2 vCPU / 3.4 GiB RAM。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。" : "Measured on ECS 2 vCPU / 3.4 GiB RAM. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}</p>
+      <div class="benchmark-meta">
+        <span>{isZh ? "1,000,078 对象" : "1,000,078 objects"}</span>
+        <span>680.0 MiB</span>
+        <span>v0.5.0</span>
       </div>
-      <div class="artifact-stack">
-        <div><span>objects.parquet</span><strong>list output</strong></div>
-        <div><span>diff.parquet</span><strong>DiffFlag rows</strong></div>
-        <div><span>checkpoint.db</span><strong>resume enabled</strong></div>
+      <div class="benchmark-toggle" aria-label={isZh ? "图表指标" : "Chart metrics"}>
+        <span class="active">objects/s</span>
+        <span>{isZh ? "耗时" : "elapsed"}</span>
       </div>
     </div>
-    <div class="command-strip">
-      <code>s3-turbo-list diff --bucket source --target-bucket target</code>
-      <span>DiffFlag != 0</span>
+    <div class="benchmark-chart-wrap">
+      <svg class="benchmark-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={isZh ? "s3-turbo-list 吞吐量折线图" : "s3-turbo-list throughput line chart"}>
+        <line x1={plot.left} y1={yFor(0)} x2={plot.left + plot.width} y2={yFor(0)} />
+        <line x1={plot.left} y1={yFor(20000)} x2={plot.left + plot.width} y2={yFor(20000)} />
+        <line x1={plot.left} y1={yFor(40000)} x2={plot.left + plot.width} y2={yFor(40000)} />
+        <text x="18" y={yFor(0) + 4}>0</text>
+        <text x="18" y={yFor(20000) + 4}>20k</text>
+        <text x="18" y={yFor(40000) + 4}>40k</text>
+        <text class="axis-label" x="6" y="174" transform="rotate(-90 6 174)">objects / s</text>
+        <polyline class="parallel-line" points={parallelPoints} />
+        <polyline class="stress-line" points={stressPoints} />
+        <polyline class="baseline-line" points={baselinePoints} />
+        {parallelRuns.map(([label, throughput], index) => (
+          <>
+            <circle class="parallel-dot" cx={xFor(index, parallelRuns.length)} cy={yFor(throughput)} r="5" />
+            <text class="x-label" x={xFor(index, parallelRuns.length)} y="316">{label}</text>
+          </>
+        ))}
+        {stressRuns.map(([, throughput], index) => (
+          <circle class="stress-dot" cx={xFor(index + 2, parallelRuns.length)} cy={yFor(throughput)} r="5" />
+        ))}
+        {baselineRuns.map(([label, throughput], index) => (
+          <>
+            <circle class="baseline-dot" cx={xFor(index, baselineRuns.length)} cy={yFor(throughput)} r="5" />
+            <text class="baseline-label" x={xFor(index, baselineRuns.length)} y={yFor(throughput) - 12}>{label}</text>
+          </>
+        ))}
+        <text class="x-title" x="456" y="348">{isZh ? "并发配置" : "parallel configuration"}</text>
+      </svg>
+    </div>
+    <div class="benchmark-legend">
+      <span><i class="parallel"></i>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
+      <span><i class="stress"></i>{isZh ? "c64 连续压力" : "c64 stress rounds"}</span>
+      <span><i class="baseline"></i>{isZh ? "单段基线" : "Single-segment baseline"}</span>
     </div>
   </div>
 )}
 
 {product.visual === "diagnostic" && (
   <div class="diagnostic-visual product-scene diagnosis-scene" aria-label="StorageOps diagnostic preview">
-    <div class="scene-topbar">
-      <div class="window-bar"><span></span><span></span><span></span></div>
-      <strong>Pi + StorageOps</strong>
-      <span>skills + tools</span>
-    </div>
-    <div class="diagnosis-board">
-      <div class="incident-card">
-        <span>agent input</span>
-        <strong>s5cmd sync reports 429 SlowDown</strong>
-        <p>Pi loads storageops skills and extension tools</p>
-      </div>
-      <div class="diagnosis-path">
-        <div><span>01</span><strong>detect_domain</strong><p>route to performance skill</p></div>
-        <div><span>02</span><strong>capture_http_trace</strong><p>sanitized httpmon summary</p></div>
-        <div><span>03</span><strong>helper scripts</strong><p>throttling and retry checks</p></div>
-      </div>
-      <div class="confidence-card">
-        <span>loaded</span>
-        <strong>15 skills · 4 tools</strong>
-        <div><span style="width: 82%"></span></div>
-      </div>
+    <div class="pi-agent-shot">
+      <img src="/assets/storageops-pi-agent.png" alt="Rendered Pi Coding Agent session with StorageOps skills and tools" loading="eager" />
     </div>
   </div>
 )}
