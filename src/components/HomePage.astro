@@ -108,17 +108,28 @@ const browserTools = locale === "zh"
   </section>
 
   <section class="home-browser-band shell">
-    <div>
+    <div class="browser-band-copy">
       <p class="section-kicker">{copy.browserLine}</p>
       <h2>{copy.browserTitle}</h2>
+      <p>{locale === "zh" ? "这两件工具不追求做大，只把一个浏览器里的小问题处理干净：一个看时间，一个补评分。" : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."}</p>
     </div>
-    <div class="browser-tool-list">
-      {browserTools.map(([name, body, href]) => (
-        <a href={href}>
-          <span>{name}</span>
-          <p>{body}</p>
+    <div class="browser-band-body">
+      <div class="browser-tool-list">
+        {browserTools.map(([name, body, href]) => (
+          <a href={href}>
+            <span>{name}</span>
+            <p>{body}</p>
+          </a>
+        ))}
+      </div>
+      <div class="browser-screenshot-row" aria-label={locale === "zh" ? "浏览器扩展截图" : "Browser extension screenshots"}>
+        <a href={pathFor(locale, "world-clock")} class="browser-screenshot clock">
+          <img src="/assets/world-clock-dark.png" alt={locale === "zh" ? "世界时钟深色界面截图" : "World Clock dark interface screenshot"} loading="lazy" />
         </a>
-      ))}
+        <a href={pathFor(locale, "douban-movie-rating")} class="browser-screenshot douban">
+          <img src="/assets/douban-rating-assistant.png" alt={locale === "zh" ? "豆瓣电影评分助手页面截图" : "Douban Movie Rating Assistant page screenshot"} loading="lazy" />
+        </a>
+      </div>
     </div>
   </section>
 </SiteLayout>

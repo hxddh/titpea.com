@@ -11,14 +11,14 @@ const copy = ui[locale];
 const isZh = locale === "zh";
 const productGroups = isZh
   ? [
-      ["对象存储工具线", "s3-turbo-list、StorageOps 和 httpmon 处理同一条运维链路：先 list / diff，再诊断故障，必要时看 HTTP 层。"],
-      ["浏览器工具线", "世界时钟和豆瓣电影评分助手更轻，只解决一个明确的小问题，不做复杂平台。"],
-      ["维护方式", "偏向小而稳定的工具：命令清楚、输出可继续处理、默认行为可解释。"],
+      ["对象存储", "先把大桶列清楚，再把两个 bucket 的差异算清楚；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
+      ["浏览器扩展", "世界时钟和豆瓣评分助手都很小：不做平台，不抢主流程，只把当前页面缺的一点信息补上。"],
+      ["做事方式", "偏向可解释、可继续处理的工具。命令要清楚，输出要能接 DuckDB、pandas、日志或下一步排查。"],
     ]
   : [
-      ["Object storage line", "s3-turbo-list, StorageOps, and httpmon sit on the same operations path: list and diff first, diagnose failures, inspect HTTP when needed."],
-      ["Browser utility line", "World Clock and Douban Movie Rating Assistant are deliberately smaller: one job, compact surface, no platform ambition."],
-      ["Maintenance style", "The bias is toward small stable tools: clear commands, outputs that can be processed elsewhere, and behavior that is easy to explain."],
+      ["Object storage", "List the bucket, compare object state, then use Pi and HTTP traces when a failure needs diagnosis."],
+      ["Browser extensions", "World Clock and Douban Movie Rating Assistant stay small: no platform ambition, no workflow takeover."],
+      ["Working style", "The bias is toward explainable tools with clear commands and outputs that can move into DuckDB, pandas, logs, or the next diagnostic step."],
     ];
 ---
 
@@ -52,23 +52,23 @@ const productGroups = isZh
   <section class="about-products shell">
     <div class="about-section-heading">
       <p class="section-kicker">{copy.productsLabel}</p>
-      <h2>{isZh ? "当前主要产品" : "Current Products"}</h2>
+      <h2>{isZh ? "当前产品" : "Current products"}</h2>
     </div>
     <div class="about-product-grid">
       <a class="about-product-card primary" href={pathFor(locale, "s3-turbo-list")}>
         <span>s3-turbo-list</span>
-        <strong>{isZh ? "高性能对象存储 list / diff CLI" : "High-performance object storage list / diff CLI"}</strong>
+        <strong>{isZh ? "高速对象存储 list / diff CLI" : "High-performance object storage list / diff CLI"}</strong>
         <p>{products["s3-turbo-list"].locales[locale].description}</p>
       </a>
       <a class="about-product-card primary" href={pathFor(locale, "storageops")}>
         <span>StorageOps</span>
-        <strong>{isZh ? "基于 Pi 的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
+        <strong>{isZh ? "给 Pi 用的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
         <p>{products.storageops.locales[locale].description}</p>
       </a>
       <a class="about-product-card" href="https://github.com/hxddh/https-traffic-inspector">
         <span>https-traffic-inspector</span>
         <strong>{isZh ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection"}</strong>
-        <p>{isZh ? "当 SDK 或 CLI 隐藏请求细节时，用它查看真实 HTTP 请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
+        <p>{isZh ? "当 SDK 或 CLI 把细节藏起来，用它查看真实 HTTP 请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
       </a>
       {aboutProducts.filter((slug) => slug === "world-clock" || slug === "douban-movie-rating").map((slug) => (
         <a class="about-product-card" href={pathFor(locale, slug)}>
@@ -95,7 +95,7 @@ const productGroups = isZh
   <section class="shell about-focus-section" id="writing">
     <div class="about-section-heading">
       <p class="section-kicker">{copy.focusLabel}</p>
-      <h2>{isZh ? "关注的边界" : "Working Boundaries"}</h2>
+      <h2>{isZh ? "关注边界" : "Working boundaries"}</h2>
     </div>
     <ul class="writing-list">
       {copy.focusItems.map((item) => <li>{item}</li>)}

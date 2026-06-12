@@ -71,46 +71,17 @@ const { product } = Astro.props;
 
 {product.visual === "clock" && (
   <div class="clock-visual product-scene clock-scene" aria-label="World Clock preview">
-    <div class="extension-shell">
-      <div class="extension-head">
-        <strong>World Clock</strong>
-        <span>4 cities</span>
-      </div>
-      <div class="local-time">
-        <span>Singapore</span>
-        <strong>00:06</strong>
-        <small>Friday · UTC+8</small>
-      </div>
-      <div class="clock-list">
-        <div><span>Tokyo</span><strong>01:06</strong><small>+1h</small></div>
-        <div><span>London</span><strong>17:06</strong><small>-7h</small></div>
-        <div><span>New York</span><strong>12:06</strong><small>-12h</small></div>
-      </div>
-      <div class="day-strip" aria-hidden="true">
-        <span></span><span></span><span class="active"></span><span></span><span></span><span></span>
-      </div>
+    <div class="clock-shot-stack">
+      <img class="clock-shot light" src="/assets/world-clock-light.png" alt="World Clock light theme timezone feed screenshot" loading="eager" />
+      <img class="clock-shot dark" src="/assets/world-clock-dark.png" alt="World Clock dark theme timezone feed screenshot" loading="eager" />
     </div>
   </div>
 )}
 
 {product.visual === "rating" && (
   <div class="rating-visual product-scene rating-scene" aria-label="Douban movie rating assistant preview">
-    <div class="browser-page">
-      <div class="browser-line"></div>
-      <div class="movie-card">
-        <div class="poster-chip"></div>
-        <div class="movie-copy">
-          <span class="movie-title">Movie details</span>
-          <strong>External ratings matched</strong>
-          <p>Chinese and English title match · direct source links</p>
-        </div>
-      </div>
-      <div class="score-panel">
-        <div class="score-row douban"><span>Douban</span><strong>8.7</strong></div>
-        <div class="score-row imdb"><span>IMDb</span><strong>8.4</strong></div>
-        <div class="score-row tomato"><span>Rotten Tomatoes</span><strong>94%</strong></div>
-      </div>
-      <div class="match-row"><span>match confidence</span><strong>verified</strong></div>
+    <div class="douban-shot-frame">
+      <img src="/assets/douban-rating-assistant.png" alt="Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page" loading="eager" />
     </div>
   </div>
 )}

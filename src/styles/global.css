@@ -2547,7 +2547,7 @@ h2 {
 }
 
 .home-workbench-copy h1 {
-  max-width: 9.5ch;
+  max-width: 12ch;
   font-size: clamp(3.6rem, 8vw, 6.3rem);
 }
 
@@ -2731,11 +2731,30 @@ h2 {
 
 .home-browser-band {
   display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
+  grid-template-columns: 0.62fr 1.38fr;
   gap: 54px;
   border-top: 1px solid var(--line);
   padding-top: 58px;
   padding-bottom: 96px;
+}
+
+.browser-band-copy {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.browser-band-copy p:not(.section-kicker) {
+  max-width: 32ch;
+  margin: 0;
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.64;
+}
+
+.browser-band-body {
+  display: grid;
+  gap: 18px;
 }
 
 .browser-tool-list {
@@ -2755,6 +2774,35 @@ h2 {
   align-content: space-between;
   padding: 24px;
   background: #ffffff;
+}
+
+.browser-screenshot-row {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.browser-screenshot {
+  display: block;
+  min-height: 270px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.browser-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+.browser-screenshot.clock img {
+  object-position: top center;
 }
 
 .about-redesign-hero {
@@ -2871,5 +2919,98 @@ h2 {
 
   .browser-tool-list {
     grid-template-columns: 1fr;
+  }
+
+  .browser-screenshot-row {
+    grid-template-columns: 1fr;
+  }
+
+  .browser-screenshot {
+    min-height: 230px;
+  }
+}
+
+.clock-scene {
+  overflow: hidden;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(1, 22, 9, 0.98), rgba(2, 16, 8, 0.96) 46%, rgba(234, 228, 211, 0.92));
+}
+
+.clock-shot-stack {
+  position: relative;
+  width: min(100%, 560px);
+  min-height: 440px;
+}
+
+.clock-shot {
+  position: absolute;
+  display: block;
+  width: 72%;
+  max-width: 360px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+}
+
+.clock-shot.dark {
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.clock-shot.light {
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0.96;
+}
+
+.rating-scene {
+  overflow: hidden;
+  place-items: center;
+  background:
+    linear-gradient(135deg, #fff7ed, #f8fafc 45%, #e5e7eb);
+}
+
+.douban-shot-frame {
+  width: min(100%, 620px);
+  overflow: hidden;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(17, 24, 39, 0.18);
+}
+
+.douban-shot-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1454 / 918;
+  object-fit: cover;
+  object-position: top left;
+}
+
+@media (max-width: 900px) {
+  .clock-shot-stack {
+    min-height: 380px;
+  }
+
+  .clock-shot {
+    width: 68%;
+  }
+}
+
+@media (max-width: 640px) {
+  .clock-shot-stack {
+    min-height: 330px;
+  }
+
+  .clock-shot {
+    width: 74%;
+  }
+
+  .douban-shot-frame {
+    width: 100%;
   }
 }
