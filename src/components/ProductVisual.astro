@@ -9,83 +9,108 @@ const { product } = Astro.props;
 ---
 
 {product.visual === "terminal" && (
-  <div class="terminal-visual" aria-label="s3-turbo-list terminal preview">
-    <div class="window-bar"><span></span><span></span><span></span></div>
-    <div class="terminal-hero-grid">
-      <pre><code>$ s3-turbo-list list s3://archive \
-  --output objects.parquet \
-  --trace trace.jsonl
-
-discovering key-space…
-listing segment 42/64
-writing parquet row groups</code></pre>
-      <div class="terminal-summary">
-        <div><span>segments</span><strong>64</strong></div>
-        <div><span>checkpoint</span><strong>ready</strong></div>
-        <div><span>objects.parquet</span><strong>written</strong></div>
-        <div><span>trace.jsonl</span><strong>captured</strong></div>
+  <div class="terminal-visual product-scene inventory-scene" aria-label="s3-turbo-list inventory preview">
+    <div class="scene-topbar">
+      <div class="window-bar"><span></span><span></span><span></span></div>
+      <strong>s3://archive</strong>
+      <span>inventory run</span>
+    </div>
+    <div class="inventory-layout">
+      <div class="scan-map" aria-hidden="true">
+        <div class="scan-map-head">
+          <span>key-space</span>
+          <strong>64 segments</strong>
+        </div>
+        <div class="segment-grid">
+          <span class="done"></span><span class="done"></span><span class="done"></span><span class="done"></span>
+          <span class="done"></span><span class="done"></span><span class="active"></span><span class="done"></span>
+          <span class="done"></span><span class="split"></span><span class="done"></span><span class="done"></span>
+          <span class="done"></span><span class="done"></span><span></span><span></span>
+        </div>
+        <div class="scan-progress"><span style="width: 72%"></span></div>
       </div>
+      <div class="artifact-stack">
+        <div><span>objects.parquet</span><strong>analysis ready</strong></div>
+        <div><span>trace.jsonl</span><strong>api calls captured</strong></div>
+        <div><span>checkpoint.db</span><strong>resume enabled</strong></div>
+      </div>
+    </div>
+    <div class="command-strip">
+      <code>s3-turbo-list list --output objects.parquet --trace trace.jsonl</code>
+      <span>segment 42/64</span>
     </div>
   </div>
 )}
 
 {product.visual === "diagnostic" && (
-  <div class="diagnostic-visual" aria-label="StorageOps diagnostic preview">
-    <div class="window-bar"><span></span><span></span><span></span></div>
-    <div class="incident-card">
-      <span>Input</span>
-      <strong>s5cmd sync reports 429 SlowDown</strong>
+  <div class="diagnostic-visual product-scene diagnosis-scene" aria-label="StorageOps diagnostic preview">
+    <div class="scene-topbar">
+      <div class="window-bar"><span></span><span></span><span></span></div>
+      <strong>StorageOps</strong>
+      <span>bounded diagnosis</span>
     </div>
-    <div class="diagnosis-grid">
-      <div>
-        <span>Domain</span>
-        <strong>performance / throttling</strong>
+    <div class="diagnosis-board">
+      <div class="incident-card">
+        <span>incident</span>
+        <strong>s5cmd sync reports 429 SlowDown</strong>
+        <p>endpoint: s3-compatible · credentials redacted</p>
       </div>
-      <div>
-        <span>Evidence</span>
-        <strong>redacted HTTP trace</strong>
+      <div class="diagnosis-path">
+        <div><span>01</span><strong>classify</strong><p>performance / throttling</p></div>
+        <div><span>02</span><strong>collect</strong><p>retry headers, trace, concurrency</p></div>
+        <div><span>03</span><strong>decide</strong><p>reduce parallelism, verify provider limits</p></div>
+      </div>
+      <div class="confidence-card">
+        <span>confidence</span>
+        <strong>high</strong>
+        <div><span style="width: 82%"></span></div>
       </div>
     </div>
   </div>
 )}
 
 {product.visual === "clock" && (
-  <div class="clock-visual" aria-label="World Clock preview">
-    <div class="clock-city primary-city">
-      <span>Singapore</span>
-      <strong>00:06</strong>
-    </div>
-    <div class="clock-city">
-      <span>Tokyo</span>
-      <strong>01:06</strong>
-    </div>
-    <div class="clock-city">
-      <span>London</span>
-      <strong>17:06</strong>
-    </div>
-    <div class="clock-city">
-      <span>New York</span>
-      <strong>12:06</strong>
+  <div class="clock-visual product-scene clock-scene" aria-label="World Clock preview">
+    <div class="extension-shell">
+      <div class="extension-head">
+        <strong>World Clock</strong>
+        <span>4 cities</span>
+      </div>
+      <div class="local-time">
+        <span>Singapore</span>
+        <strong>00:06</strong>
+        <small>Friday · UTC+8</small>
+      </div>
+      <div class="clock-list">
+        <div><span>Tokyo</span><strong>01:06</strong><small>+1h</small></div>
+        <div><span>London</span><strong>17:06</strong><small>-7h</small></div>
+        <div><span>New York</span><strong>12:06</strong><small>-12h</small></div>
+      </div>
+      <div class="day-strip" aria-hidden="true">
+        <span></span><span></span><span class="active"></span><span></span><span></span><span></span>
+      </div>
     </div>
   </div>
 )}
 
 {product.visual === "rating" && (
-  <div class="rating-visual" aria-label="Douban movie rating assistant preview">
-    <div class="movie-panel">
-      <span class="movie-title">Movie details</span>
-      <div class="score-row">
-        <span>Douban</span>
-        <strong>8.7</strong>
+  <div class="rating-visual product-scene rating-scene" aria-label="Douban movie rating assistant preview">
+    <div class="browser-page">
+      <div class="browser-line"></div>
+      <div class="movie-card">
+        <div class="poster-chip"></div>
+        <div class="movie-copy">
+          <span class="movie-title">Movie details</span>
+          <strong>External ratings matched</strong>
+          <p>Chinese and English title match · direct source links</p>
+        </div>
       </div>
-      <div class="score-row imdb">
-        <span>IMDb</span>
-        <strong>8.4</strong>
+      <div class="score-panel">
+        <div class="score-row douban"><span>Douban</span><strong>8.7</strong></div>
+        <div class="score-row imdb"><span>IMDb</span><strong>8.4</strong></div>
+        <div class="score-row tomato"><span>Rotten Tomatoes</span><strong>94%</strong></div>
       </div>
-      <div class="score-row tomato">
-        <span>Rotten Tomatoes</span>
-        <strong>94%</strong>
-      </div>
+      <div class="match-row"><span>match confidence</span><strong>verified</strong></div>
     </div>
   </div>
 )}
