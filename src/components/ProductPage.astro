@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ProductInside from "./ProductInside.astro";
 import ProductVisual from "./ProductVisual.astro";
 import type { Locale, Product } from "../lib/site";
 
@@ -11,6 +12,7 @@ interface Props {
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
 const navItems = [
+  ["inside", locale === "zh" ? "内部视角" : "Inside"],
   ["positioning", copy.positioningLabel],
   ["features", copy.featuresLabel],
   copy.workflow && copy.workflowLabel ? ["workflow", copy.workflowLabel] : null,
@@ -25,7 +27,7 @@ const navItems = [
   current={product.current}
   locale={locale}
 >
-  <section class="product-hero shell">
+  <section class="product-hero product-launch-hero shell">
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
@@ -36,7 +38,9 @@ const navItems = [
       </div>
       <p class="meta-line">{copy.meta}</p>
     </div>
-    <ProductVisual product={product} />
+    <div class="hero-visual-frame">
+      <ProductVisual product={product} />
+    </div>
   </section>
 
   <section class="proof-strip shell" aria-label="Product evidence">
@@ -46,6 +50,8 @@ const navItems = [
   <nav class="product-anchor-nav shell" aria-label={locale === "zh" ? "页面导航" : "Page navigation"}>
     {navItems.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
   </nav>
+
+  <ProductInside locale={locale} product={product} />
 
   <section id="positioning" class="shell positioning-section">
     <p class="section-kicker">{copy.positioningLabel}</p>

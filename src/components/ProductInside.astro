@@ -1,0 +1,107 @@
+---
+import type { Locale, Product } from "../lib/site";
+
+interface Props {
+  locale: Locale;
+  product: Product;
+}
+
+const { locale, product } = Astro.props;
+const isZh = locale === "zh";
+---
+
+{product.role === "inventory" && (
+  <section id="inside" class="inside-section shell">
+    <div class="inside-copy">
+      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+      <h2>{isZh ? "一次清点，不只是拿到对象列表。" : "A bucket inventory run should leave a trail."}</h2>
+      <p>{isZh ? "s3-turbo-list 的页面重点从“更快列举”转向“可解释的清点流程”：计划、发现、扫描、产物和后续分析都能在一次运行里串起来。" : "The page moves beyond “faster listing” and shows the actual shape of the workflow: plan the run, discover the key space, scan in parallel, then keep artifacts that explain what happened."}</p>
+    </div>
+    <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
+      <div class="workbench-top">
+        <span>run: bucket-inventory-2026-06-12</span>
+        <strong>ready for analysis</strong>
+      </div>
+      <div class="inventory-grid">
+        <div class="metric-tile strong">
+          <span>{isZh ? "segments" : "segments"}</span>
+          <strong>64</strong>
+          <p>{isZh ? "自动发现并发边界" : "auto-discovered boundaries"}</p>
+        </div>
+        <div class="metric-tile">
+          <span>{isZh ? "output" : "output"}</span>
+          <strong>Parquet</strong>
+          <p>{isZh ? "DuckDB / pandas 可直接读取" : "queryable in DuckDB or pandas"}</p>
+        </div>
+        <div class="metric-tile">
+          <span>{isZh ? "trace" : "trace"}</span>
+          <strong>JSONL</strong>
+          <p>{isZh ? "每次 S3 API 调用可回放" : "each S3 API call remains inspectable"}</p>
+        </div>
+      </div>
+      <div class="artifact-table" aria-label="Run artifacts">
+        <div><span>run.json</span><strong>{isZh ? "运行身份、参数、输出路径" : "run identity, options, output paths"}</strong></div>
+        <div><span>checkpoint.db</span><strong>{isZh ? "中断后继续，不重扫已完成分段" : "resume without rescanning completed segments"}</strong></div>
+        <div><span>objects.parquet</span><strong>{isZh ? "对象元数据进入分析流程" : "object metadata enters the analysis workflow"}</strong></div>
+        <div><span>trace.jsonl</span><strong>{isZh ? "provider 行为有证据可查" : "provider behavior has evidence"}</strong></div>
+      </div>
+    </div>
+  </section>
+)}
+
+{product.role === "diagnosis" && (
+  <section id="inside" class="inside-section shell">
+    <div class="inside-copy">
+      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+      <h2>{isZh ? "把一个错误字符串，变成可验证的诊断路径。" : "Turn one error string into a verifiable diagnosis path."}</h2>
+      <p>{isZh ? "StorageOps 页面的重点应该是诊断节奏：先收窄领域，再收集脱敏证据，然后给出置信度和下一步，而不是泛泛列出工具名。" : "The page should make the diagnostic rhythm visible: narrow the domain, collect redacted evidence, then return confidence and next steps instead of listing tool names in the abstract."}</p>
+    </div>
+    <div class="inside-workbench diagnosis-workbench" aria-label="StorageOps diagnosis workbench">
+      <div class="workbench-top">
+        <span>incident: s5cmd sync 429 SlowDown</span>
+        <strong>{isZh ? "evidence bounded" : "evidence bounded"}</strong>
+      </div>
+      <div class="diagnosis-timeline">
+        <div>
+          <span>01</span>
+          <strong>{isZh ? "分类" : "Classify"}</strong>
+          <p>{isZh ? "performance / throttling" : "performance / throttling"}</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>{isZh ? "取证" : "Collect"}</strong>
+          <p>{isZh ? "脱敏 HTTP trace、retry headers、并发参数" : "redacted HTTP trace, retry headers, concurrency settings"}</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>{isZh ? "判断" : "Decide"}</strong>
+          <p>{isZh ? "降低并发，检查 provider 限流响应和 SDK retry" : "reduce concurrency, inspect provider throttling and SDK retry behavior"}</p>
+        </div>
+      </div>
+      <div class="diagnosis-result">
+        <span>{isZh ? "输出格式" : "answer shape"}</span>
+        <p>{isZh ? "可能原因、置信度、证据、下一步验证项、避免泄漏凭据的安全修改建议。" : "Likely cause, confidence, supporting evidence, next verification step, and safe changes that avoid leaking credentials."}</p>
+      </div>
+    </div>
+  </section>
+)}
+
+{product.role === "time" && (
+  <section id="inside" class="inside-section shell">
+    <div class="inside-copy">
+      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+      <h2>{isZh ? "查时间应该是一次很短的动作。" : "Checking time should be a tiny action."}</h2>
+      <p>{isZh ? "世界时钟页面要强调它不是排期系统，而是一个快速上下文工具：打开、看一眼、回到当前任务。" : "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task."}</p>
+    </div>
+  </section>
+)}
+
+{product.role === "ratings" && (
+  <section id="inside" class="inside-section shell">
+    <div class="inside-copy">
+      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+      <h2>{isZh ? "不要离开豆瓣，也能对照外部评分。" : "Compare external ratings without leaving Douban."}</h2>
+      <p>{isZh ? "豆瓣电影评分助手的页面重点应该是“补充上下文”而不是替代豆瓣：匹配到时显示 IMDb 和 Rotten Tomatoes，并保留原页面阅读节奏。" : "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb and Rotten Tomatoes appear in the page you are already reading."}</p>
+    </div>
+  </section>
+)}

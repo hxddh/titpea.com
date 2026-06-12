@@ -364,6 +364,174 @@ h2 {
   background: rgba(15, 118, 110, 0.08);
 }
 
+.inside-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 42px;
+  align-items: center;
+  scroll-margin-top: 74px;
+  padding: 76px 0 72px;
+}
+
+.inside-copy h2 {
+  max-width: 520px;
+  margin-bottom: 18px;
+  font-size: 48px;
+}
+
+.inside-copy p:not(.section-kicker) {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.inside-workbench {
+  overflow: hidden;
+  border: 1px solid rgba(32, 29, 26, 0.12);
+  border-radius: 8px;
+  background: #111817;
+  color: #eef9f4;
+  box-shadow: var(--shadow);
+}
+
+.workbench-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 16px;
+  color: rgba(238, 249, 244, 0.7);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+}
+
+.workbench-top strong {
+  color: #80cbc4;
+  font-weight: 760;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.metric-tile {
+  display: grid;
+  gap: 8px;
+  min-height: 142px;
+  align-content: end;
+  padding: 18px;
+  background: #121d1b;
+}
+
+.metric-tile.strong {
+  background:
+    linear-gradient(135deg, rgba(128, 203, 196, 0.2), transparent),
+    #121d1b;
+}
+
+.metric-tile span,
+.artifact-table span,
+.diagnosis-result span {
+  color: rgba(238, 249, 244, 0.58);
+  font-size: 12px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.metric-tile strong {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.metric-tile p {
+  margin: 0;
+  color: rgba(238, 249, 244, 0.68);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.artifact-table {
+  display: grid;
+  padding: 10px 16px 16px;
+}
+
+.artifact-table div {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 0;
+}
+
+.artifact-table div:last-child {
+  border-bottom: 0;
+}
+
+.artifact-table strong {
+  color: rgba(238, 249, 244, 0.82);
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.diagnosis-workbench {
+  background: #121923;
+}
+
+.diagnosis-timeline {
+  display: grid;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.diagnosis-timeline div {
+  display: grid;
+  grid-template-columns: 44px 130px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
+  background: #141e2a;
+}
+
+.diagnosis-timeline span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(128, 203, 196, 0.16);
+  color: #80cbc4;
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.diagnosis-timeline strong {
+  color: #f7f3ea;
+  font-size: 18px;
+}
+
+.diagnosis-timeline p {
+  margin: 0;
+  color: rgba(238, 245, 255, 0.7);
+  font-size: 15px;
+}
+
+.diagnosis-result {
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.2), transparent),
+    #101722;
+}
+
+.diagnosis-result p {
+  max-width: 660px;
+  margin: 8px 0 0;
+  color: rgba(238, 245, 255, 0.84);
+  font-size: 18px;
+}
+
 .narrative-band .split-content {
   padding: 64px 0;
 }
@@ -592,7 +760,7 @@ h2 {
 
 .positioning-section {
   scroll-margin-top: 74px;
-  padding: 54px 0 26px;
+  padding: 40px 0 26px;
 }
 
 .positioning-grid {
@@ -648,6 +816,7 @@ h2 {
 }
 
 #features,
+#inside,
 #workflow,
 #cases,
 #faq {
@@ -661,15 +830,56 @@ h2 {
   padding-bottom: 52px;
 }
 
+.product-launch-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  justify-items: center;
+  text-align: center;
+  padding-top: 58px;
+  padding-bottom: 44px;
+}
+
+.product-launch-hero .product-copy {
+  display: grid;
+  justify-items: center;
+}
+
+.product-launch-hero h1 {
+  max-width: 980px;
+  margin-bottom: 22px;
+  font-size: 72px;
+  line-height: 0.96;
+}
+
+.product-launch-hero .lead {
+  max-width: 780px;
+  margin-inline: auto;
+}
+
+.product-launch-hero .actions {
+  justify-content: center;
+}
+
 .product-copy .lead {
   max-width: 620px;
+}
+
+.product-launch-hero .product-copy .lead {
+  max-width: 780px;
+}
+
+.hero-visual-frame {
+  width: min(920px, 100%);
 }
 
 .product-hero .terminal-visual,
 .product-hero .diagnostic-visual,
 .product-hero .clock-visual,
 .product-hero .rating-visual {
-  min-height: 420px;
+  min-height: 390px;
+  text-align: left;
+  box-shadow: 0 28px 100px rgba(32, 29, 26, 0.16);
 }
 
 .meta-line {
@@ -1085,6 +1295,7 @@ h2 {
 
   .feature-grid,
   .workflow-grid,
+  .inside-section,
   .positioning-grid,
   .proof-strip {
     grid-template-columns: 1fr 1fr;
@@ -1111,9 +1322,24 @@ h2 {
 
   .feature-grid,
   .workflow-grid,
+  .inside-section,
   .positioning-grid,
   .proof-strip {
     grid-template-columns: 1fr;
+  }
+
+  .inside-copy h2 {
+    font-size: 34px;
+  }
+
+  .inventory-grid,
+  .diagnosis-timeline div {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-table div {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .featured-row {
