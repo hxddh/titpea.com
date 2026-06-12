@@ -152,12 +152,14 @@ h1 {
   font-size: 84px;
   line-height: 0.95;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h2 {
   font-size: 46px;
   line-height: 1.02;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .lead {
@@ -165,6 +167,7 @@ h2 {
   color: var(--muted);
   font-size: 20px;
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .actions {
@@ -333,7 +336,7 @@ h2 {
 
 .product-hero + .proof-strip {
   padding-top: 0;
-  padding-bottom: 22px;
+  padding-bottom: 18px;
 }
 
 .product-anchor-nav {
@@ -345,7 +348,7 @@ h2 {
   gap: 8px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 12px 0;
+  padding: 10px 0;
   background: rgba(247, 243, 234, 0.92);
   backdrop-filter: blur(10px);
 }
@@ -353,7 +356,7 @@ h2 {
 .product-anchor-nav a {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 7px 12px;
+  padding: 6px 11px;
   color: var(--accent-dark);
   font-size: 13px;
   font-weight: 720;
@@ -370,7 +373,7 @@ h2 {
   gap: 42px;
   align-items: center;
   scroll-margin-top: 74px;
-  padding: 76px 0 72px;
+  padding: 68px 0 66px;
 }
 
 .inside-copy h2 {
@@ -833,11 +836,11 @@ h2 {
 .product-launch-hero {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 34px;
+  gap: 24px;
   justify-items: center;
   text-align: center;
-  padding-top: 58px;
-  padding-bottom: 44px;
+  padding-top: 38px;
+  padding-bottom: 30px;
 }
 
 .product-launch-hero .product-copy {
@@ -846,19 +849,22 @@ h2 {
 }
 
 .product-launch-hero h1 {
-  max-width: 980px;
-  margin-bottom: 22px;
-  font-size: 72px;
-  line-height: 0.96;
+  max-width: 1060px;
+  margin-bottom: 18px;
+  font-size: 56px;
+  line-height: 1.02;
 }
 
 .product-launch-hero .lead {
   max-width: 780px;
   margin-inline: auto;
+  font-size: 19px;
+  line-height: 1.58;
 }
 
 .product-launch-hero .actions {
   justify-content: center;
+  margin-top: 22px;
 }
 
 .product-copy .lead {
@@ -870,14 +876,14 @@ h2 {
 }
 
 .hero-visual-frame {
-  width: min(920px, 100%);
+  width: min(820px, 100%);
 }
 
 .product-hero .terminal-visual,
 .product-hero .diagnostic-visual,
 .product-hero .clock-visual,
 .product-hero .rating-visual {
-  min-height: 390px;
+  min-height: 250px;
   text-align: left;
   box-shadow: 0 28px 100px rgba(32, 29, 26, 0.16);
 }
@@ -951,7 +957,7 @@ h2 {
 .terminal-visual {
   display: grid;
   align-content: start;
-  padding: 18px;
+  padding: 16px;
   background:
     linear-gradient(135deg, rgba(128, 203, 196, 0.12), transparent),
     #111817;
@@ -964,17 +970,51 @@ h2 {
   white-space: pre-wrap;
 }
 
+.terminal-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: stretch;
+}
+
 .terminal-visual code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.58;
+}
+
+.terminal-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.terminal-summary div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid rgba(238, 249, 244, 0.09);
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: rgba(238, 249, 244, 0.045);
+}
+
+.terminal-summary span {
+  color: rgba(238, 249, 244, 0.56);
+  font-size: 10px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.terminal-summary strong {
+  color: #dff5ee;
   font-size: 14px;
-  line-height: 1.75;
 }
 
 .diagnostic-visual {
   display: grid;
   align-content: start;
-  gap: 14px;
-  padding: 18px;
+  gap: 12px;
+  padding: 16px;
   background:
     linear-gradient(135deg, rgba(37, 99, 235, 0.16), transparent),
     #121923;
@@ -991,7 +1031,7 @@ h2 {
 .incident-card {
   display: grid;
   gap: 8px;
-  padding: 18px;
+  padding: 16px;
 }
 
 .incident-card span,
@@ -1003,12 +1043,13 @@ h2 {
 }
 
 .incident-card strong {
-  font-size: 30px;
+  font-size: 26px;
   line-height: 1.1;
 }
 
 .diagnosis-grid {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
@@ -1293,6 +1334,13 @@ h2 {
     min-height: 340px;
   }
 
+  .product-launch-hero .terminal-visual,
+  .product-launch-hero .diagnostic-visual,
+  .product-launch-hero .clock-visual,
+  .product-launch-hero .rating-visual {
+    min-height: 260px;
+  }
+
   .feature-grid,
   .workflow-grid,
   .inside-section,
@@ -1333,6 +1381,8 @@ h2 {
   }
 
   .inventory-grid,
+  .terminal-hero-grid,
+  .diagnosis-grid,
   .diagnosis-timeline div {
     grid-template-columns: 1fr;
   }
@@ -1362,6 +1412,15 @@ h2 {
   .product-hero h1,
   .home-hero-modern h1 {
     font-size: 42px;
+  }
+
+  .product-launch-hero h1 {
+    font-size: 38px;
+    line-height: 1.06;
+  }
+
+  .product-launch-hero .terminal-summary {
+    display: none;
   }
 
   .incident-card strong {

@@ -11,19 +11,21 @@ const { product } = Astro.props;
 {product.visual === "terminal" && (
   <div class="terminal-visual" aria-label="s3-turbo-list terminal preview">
     <div class="window-bar"><span></span><span></span><span></span></div>
-    <pre><code>$ s3-turbo-list --dry-run --agent \
-  --output-dir out --delimiter '' \
-  list --region us-east-2 --bucket my-bucket
+    <div class="terminal-hero-grid">
+      <pre><code>$ s3-turbo-list list s3://archive \
+  --output objects.parquet \
+  --trace trace.jsonl
 
-plan.segments        64
-plan.output          out/*.parquet
-trace.enabled        true
-checkpoint.resume    ready
-
-$ s3-turbo-list manifest-summary run.json --check
-artifacts            ok
-parquet.rows         verified
-exit_code            0</code></pre>
+discovering key-space…
+listing segment 42/64
+writing parquet row groups</code></pre>
+      <div class="terminal-summary">
+        <div><span>segments</span><strong>64</strong></div>
+        <div><span>checkpoint</span><strong>ready</strong></div>
+        <div><span>objects.parquet</span><strong>written</strong></div>
+        <div><span>trace.jsonl</span><strong>captured</strong></div>
+      </div>
+    </div>
   </div>
 )}
 
@@ -42,10 +44,6 @@ exit_code            0</code></pre>
       <div>
         <span>Evidence</span>
         <strong>redacted HTTP trace</strong>
-      </div>
-      <div>
-        <span>Next step</span>
-        <strong>reduce concurrency, inspect retry headers</strong>
       </div>
     </div>
   </div>
