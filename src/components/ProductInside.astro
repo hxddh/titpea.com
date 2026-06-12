@@ -14,24 +14,24 @@ const isZh = locale === "zh";
   <section id="inside" class="inside-section shell">
     <div class="inside-copy">
       <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "清点之后，留下证据。" : "Inventory with a trail."}</h2>
-      <p>{isZh ? "s3-turbo-list 的页面重点从“更快列举”转向“可解释的清点流程”：计划、发现、扫描、产物和后续分析都能在一次运行里串起来。" : "The page moves beyond “faster listing” and shows the actual shape of the workflow: plan the run, discover the key space, scan in parallel, then keep artifacts that explain what happened."}</p>
+      <h2>{isZh ? "list、diff，然后分析。" : "List, diff, then analyze."}</h2>
+      <p>{isZh ? "s3-turbo-list 的核心是一个高性能对象存储 CLI：并发 list 大桶，权威 diff 两个桶，并把结果写成后续工具能直接查询的 Parquet。" : "s3-turbo-list is a high-performance object storage CLI: list large buckets concurrently, diff two buckets authoritatively, then hand clean Parquet to the tools that analyze the result."}</p>
     </div>
     <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
       <div class="workbench-top">
-        <span>run: bucket-inventory-2026-06-12</span>
-        <strong>ready for analysis</strong>
+        <span>mode: list / diff</span>
+        <strong>parquet ready</strong>
       </div>
       <div class="inventory-grid">
         <div class="metric-tile strong">
-          <span>{isZh ? "segments" : "segments"}</span>
+          <span>{isZh ? "list" : "list"}</span>
           <strong>64</strong>
-          <p>{isZh ? "自动发现并发边界" : "auto-discovered boundaries"}</p>
+          <p>{isZh ? "并发 key-space segments" : "concurrent key-space segments"}</p>
         </div>
         <div class="metric-tile">
-          <span>{isZh ? "output" : "output"}</span>
-          <strong>Parquet</strong>
-          <p>{isZh ? "DuckDB / pandas 可直接读取" : "queryable in DuckDB or pandas"}</p>
+          <span>{isZh ? "diff" : "diff"}</span>
+          <strong>DiffFlag</strong>
+          <p>{isZh ? "标记相同、独有和变更对象" : "marks equal, only, and changed rows"}</p>
         </div>
         <div class="metric-tile">
           <span>{isZh ? "trace" : "trace"}</span>
@@ -40,9 +40,9 @@ const isZh = locale === "zh";
         </div>
       </div>
       <div class="artifact-table" aria-label="Run artifacts">
-        <div><span>run.json</span><strong>{isZh ? "运行身份、参数、输出路径" : "run identity, options, output paths"}</strong></div>
+        <div><span>objects.parquet</span><strong>{isZh ? "list 模式：对象 Key、Size、LastModified、ETag" : "list mode: Key, Size, LastModified, ETag"}</strong></div>
+        <div><span>diff.parquet</span><strong>{isZh ? "diff 模式：每行带 DiffFlag" : "diff mode: every row carries DiffFlag"}</strong></div>
         <div><span>checkpoint.db</span><strong>{isZh ? "中断后继续，不重扫已完成分段" : "resume without rescanning completed segments"}</strong></div>
-        <div><span>objects.parquet</span><strong>{isZh ? "对象元数据进入分析流程" : "object metadata enters the analysis workflow"}</strong></div>
         <div><span>trace.jsonl</span><strong>{isZh ? "provider 行为有证据可查" : "provider behavior has evidence"}</strong></div>
       </div>
     </div>
@@ -53,34 +53,34 @@ const isZh = locale === "zh";
   <section id="inside" class="inside-section shell">
     <div class="inside-copy">
       <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "从错误走向诊断。" : "From error to diagnosis."}</h2>
-      <p>{isZh ? "StorageOps 页面的重点应该是诊断节奏：先收窄领域，再收集脱敏证据，然后给出置信度和下一步，而不是泛泛列出工具名。" : "The page should make the diagnostic rhythm visible: narrow the domain, collect redacted evidence, then return confidence and next steps instead of listing tool names in the abstract."}</p>
+      <h2>{isZh ? "把 Pi 变成存储诊断 agent。" : "Turn Pi into a storage diagnosis agent."}</h2>
+      <p>{isZh ? "StorageOps 的主体不是一组说明文档，而是给 Pi 安装的对象存储 skills、extension tools、helper scripts 和 eval cases。" : "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures."}</p>
     </div>
     <div class="inside-workbench diagnosis-workbench" aria-label="StorageOps diagnosis workbench">
       <div class="workbench-top">
-        <span>incident: s5cmd sync 429 SlowDown</span>
-        <strong>{isZh ? "evidence bounded" : "evidence bounded"}</strong>
+        <span>pi extension: storageops</span>
+        <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
       </div>
       <div class="diagnosis-timeline">
         <div>
           <span>01</span>
-          <strong>{isZh ? "分类" : "Classify"}</strong>
-          <p>{isZh ? "performance / throttling" : "performance / throttling"}</p>
+          <strong>{isZh ? "Skills" : "Skills"}</strong>
+          <p>{isZh ? "15 个对象存储诊断领域" : "15 object-storage diagnosis domains"}</p>
         </div>
         <div>
           <span>02</span>
-          <strong>{isZh ? "取证" : "Collect"}</strong>
-          <p>{isZh ? "脱敏 HTTP trace、retry headers、并发参数" : "redacted HTTP trace, retry headers, concurrency settings"}</p>
+          <strong>{isZh ? "Tools" : "Tools"}</strong>
+          <p>{isZh ? "scan_secrets、detect_domain、search_memory、capture_http_trace" : "scan_secrets, detect_domain, search_memory, capture_http_trace"}</p>
         </div>
         <div>
           <span>03</span>
-          <strong>{isZh ? "判断" : "Decide"}</strong>
-          <p>{isZh ? "降低并发，检查 provider 限流响应和 SDK retry" : "reduce concurrency, inspect provider throttling and SDK retry behavior"}</p>
+          <strong>{isZh ? "Helpers" : "Helpers"}</strong>
+          <p>{isZh ? "SigV4、ETag、payload hash、access log、migration scripts" : "SigV4, ETag, payload hash, access log, migration scripts"}</p>
         </div>
       </div>
       <div class="diagnosis-result">
-        <span>{isZh ? "输出格式" : "answer shape"}</span>
-        <p>{isZh ? "可能原因、置信度、证据、下一步验证项、避免泄漏凭据的安全修改建议。" : "Likely cause, confidence, supporting evidence, next verification step, and safe changes that avoid leaking credentials."}</p>
+        <span>{isZh ? "agent 输出" : "agent output"}</span>
+        <p>{isZh ? "基于 skills 和 tool output 的故障领域、证据、置信度、下一步检查和安全修改建议。" : "Domain, evidence, confidence, next checks, and safe changes grounded in skills and tool output."}</p>
       </div>
     </div>
   </section>
