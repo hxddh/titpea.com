@@ -36,6 +36,18 @@ const copy = product.locales[locale];
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
+  <section class="shell positioning-section">
+    <p class="section-kicker">{copy.positioningLabel}</p>
+    <div class="positioning-grid">
+      {copy.positioning.map(([title, body]) => (
+        <article class="positioning-card">
+          <h2>{title}</h2>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
   <section class="shell content-section">
     <p class="section-kicker">{copy.featuresLabel}</p>
     <div class="feature-grid">

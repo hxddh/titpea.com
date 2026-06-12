@@ -18,6 +18,17 @@ const copy = ui[locale];
 const productLines = homeProductLines[locale];
 const itemName = (item: ProductLineItem) => item.slug ? products[item.slug].locales[locale].title : item.name;
 const itemHref = (item: ProductLineItem) => item.slug ? pathFor(locale, item.slug) : item.href;
+const storageFlow = locale === "zh"
+  ? [
+      ["01", "清点", "s3-turbo-list", "把超大桶变成可查询、可对比、可审计的 Parquet 清单。", pathFor(locale, "s3-turbo-list")],
+      ["02", "诊断", "StorageOps", "把错误、配置、日志和脱敏 trace 组织成有证据的排查路径。", pathFor(locale, "storageops")],
+      ["03", "下钻", "httpmon", "当 SDK 或 CLI 隐藏细节时，捕获真实 HTTP 请求、响应、重试和签名上下文。", "https://github.com/hxddh/https-traffic-inspector"],
+    ]
+  : [
+      ["01", "Inventory", "s3-turbo-list", "Turn huge buckets into queryable, comparable, auditable Parquet inventory.", pathFor(locale, "s3-turbo-list")],
+      ["02", "Diagnose", "StorageOps", "Turn errors, configs, logs, and redacted traces into an evidence-backed investigation path.", pathFor(locale, "storageops")],
+      ["03", "Inspect", "httpmon", "Capture real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details.", "https://github.com/hxddh/https-traffic-inspector"],
+    ];
 ---
 
 <SiteLayout
@@ -38,21 +49,23 @@ const itemHref = (item: ProductLineItem) => item.slug ? pathFor(locale, item.slu
       </div>
     </div>
 
-    <div class="home-panel" aria-label={copy.featuredLabel}>
-      <a class="featured-product featured-primary" href={pathFor(locale, "s3-turbo-list")}>
-        <span>{locale === "zh" ? "01 / 大桶清单" : "01 / Large bucket inventory"}</span>
-        <strong>s3-turbo-list</strong>
-        <p>{locale === "zh" ? "自动发现 key-space 边界，并发列举，输出可分析的 Parquet 清单。" : "Auto-discover key-space boundaries, list in parallel, and produce analysis-ready Parquet inventory."}</p>
-      </a>
-      <div class="featured-row">
-        <a class="featured-product" href={pathFor(locale, "storageops")}>
-          <span>{locale === "zh" ? "02 / 故障诊断" : "02 / Failure diagnosis"}</span>
-          <strong>StorageOps</strong>
-        </a>
-        <a class="featured-product" href="https://github.com/hxddh/https-traffic-inspector">
-          <span>{locale === "zh" ? "03 / 流量证据" : "03 / Traffic evidence"}</span>
-          <strong>httpmon</strong>
-        </a>
+    <div class="home-panel product-map" aria-label={copy.featuredLabel}>
+      <div class="map-intro">
+        <p class="section-kicker">{copy.flowLabel}</p>
+        <h2>{copy.flowTitle}</h2>
+        <p>{copy.flowBody}</p>
+      </div>
+      <div class="flow-list">
+        {storageFlow.map(([number, verb, name, body, href]) => (
+          <a class="flow-card" href={href}>
+            <span>{number}</span>
+            <div>
+              <strong>{verb}</strong>
+              <h3>{name}</h3>
+              <p>{body}</p>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
