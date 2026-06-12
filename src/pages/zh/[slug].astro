@@ -1,0 +1,19 @@
+---
+import ProductPage from "../../components/ProductPage.astro";
+import { productSlugs, products, type ProductSlug } from "../../lib/site";
+
+export function getStaticPaths() {
+  return productSlugs.map((slug) => ({
+    params: { slug },
+    props: { product: products[slug] },
+  }));
+}
+
+interface Props {
+  product: (typeof products)[ProductSlug];
+}
+
+const { product } = Astro.props;
+---
+
+<ProductPage locale="zh" product={product} />

@@ -1,0 +1,74 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { aboutProducts, pathFor, products, ui, type Locale } from "../lib/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = ui[locale];
+---
+
+<SiteLayout
+  title={copy.aboutTitle}
+  description={copy.aboutDescription}
+  current="about"
+  locale={locale}
+>
+  <section class="about-hero shell">
+    <div>
+      <p class="eyebrow">hxddh</p>
+      <h1>{copy.aboutHeadline}</h1>
+      <p class="lead">{copy.aboutLead}</p>
+      <div class="socials" aria-label={locale === "zh" ? "社交链接" : "Social links"}>
+        <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
+        <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer">Chrome Web Store</a>
+        <a href="mailto:info@titpea.com">Email</a>
+      </div>
+    </div>
+    <figure class="portrait-card">
+      <div class="portrait-grid" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <figcaption>Chrome extensions / storage tools / technical notes</figcaption>
+    </figure>
+  </section>
+
+  <section class="shell content-section">
+    <p class="section-kicker">{copy.productsLabel}</p>
+    <div class="product-list">
+      {aboutProducts.map((slug) => (
+        <a class="product-row" href={pathFor(locale, slug)}>
+          <span>{products[slug].locales[locale].title}</span>
+          <p>{products[slug].locales[locale].description}</p>
+        </a>
+      ))}
+      <a class="product-row" href="https://github.com/hxddh/https-traffic-inspector">
+        <span>https-traffic-inspector</span>
+        <p>{locale === "zh" ? "用于请求分析和兼容性测试的 HTTPS 流量检查工作台。" : "HTTPS traffic inspection workbench for request analysis and compatibility testing."}</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell split-content">
+      <div>
+        <p class="section-kicker">{copy.profileLabel}</p>
+        <h2>{copy.profileTitle}</h2>
+      </div>
+      <div class="prose">
+        {copy.profileBody.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="shell content-section" id="writing">
+    <p class="section-kicker">{copy.focusLabel}</p>
+    <ul class="writing-list">
+      {copy.focusItems.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+</SiteLayout>

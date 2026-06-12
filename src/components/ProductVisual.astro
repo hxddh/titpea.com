@@ -1,0 +1,93 @@
+---
+import type { Product } from "../lib/site";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+{product.visual === "terminal" && (
+  <div class="terminal-visual" aria-label="s3-turbo-list terminal preview">
+    <div class="window-bar"><span></span><span></span><span></span></div>
+    <pre><code>$ s3-turbo-list --dry-run --agent \
+  --output-dir out --delimiter '' \
+  list --region us-east-2 --bucket my-bucket
+
+plan.segments        64
+plan.output          out/*.parquet
+trace.enabled        true
+checkpoint.resume    ready
+
+$ s3-turbo-list manifest-summary run.json --check
+artifacts            ok
+parquet.rows         verified
+exit_code            0</code></pre>
+  </div>
+)}
+
+{product.visual === "diagnostic" && (
+  <div class="diagnostic-visual" aria-label="StorageOps diagnostic preview">
+    <div class="window-bar"><span></span><span></span><span></span></div>
+    <div class="incident-card">
+      <span>Input</span>
+      <strong>s5cmd sync reports 429 SlowDown</strong>
+    </div>
+    <div class="diagnosis-grid">
+      <div>
+        <span>Domain</span>
+        <strong>performance / throttling</strong>
+      </div>
+      <div>
+        <span>Evidence</span>
+        <strong>redacted HTTP trace</strong>
+      </div>
+      <div>
+        <span>Next step</span>
+        <strong>reduce concurrency, inspect retry headers</strong>
+      </div>
+    </div>
+  </div>
+)}
+
+{product.visual === "clock" && (
+  <div class="clock-visual" aria-label="World Clock preview">
+    <div class="clock-city primary-city">
+      <span>Singapore</span>
+      <strong>00:06</strong>
+    </div>
+    <div class="clock-city">
+      <span>Tokyo</span>
+      <strong>01:06</strong>
+    </div>
+    <div class="clock-city">
+      <span>London</span>
+      <strong>17:06</strong>
+    </div>
+    <div class="clock-city">
+      <span>New York</span>
+      <strong>12:06</strong>
+    </div>
+  </div>
+)}
+
+{product.visual === "rating" && (
+  <div class="rating-visual" aria-label="Douban movie rating assistant preview">
+    <div class="movie-panel">
+      <span class="movie-title">Movie details</span>
+      <div class="score-row">
+        <span>Douban</span>
+        <strong>8.7</strong>
+      </div>
+      <div class="score-row imdb">
+        <span>IMDb</span>
+        <strong>8.4</strong>
+      </div>
+      <div class="score-row tomato">
+        <span>Rotten Tomatoes</span>
+        <strong>94%</strong>
+      </div>
+    </div>
+  </div>
+)}
