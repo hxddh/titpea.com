@@ -1679,9 +1679,9 @@ h2 {
 }
 
 .product-launch-hero h1 {
-  max-width: 14ch;
+  max-width: 19ch;
   margin-bottom: 18px;
-  font-size: clamp(2.35rem, 5.2vw, 3.35rem);
+  font-size: clamp(2.35rem, 5vw, 3.28rem);
   line-height: 1.04;
   letter-spacing: -0.03em;
   font-weight: 650;
@@ -1790,14 +1790,14 @@ h2 {
 }
 
 .inside-section {
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 54px;
   border-bottom: 1px solid var(--line);
   padding: 76px 0;
 }
 
 .inside-copy h2 {
-  max-width: 11ch;
+  max-width: 20ch;
   margin-bottom: 18px;
   font-size: clamp(2.1rem, 4.4vw, 3.1rem);
   line-height: 1.02;
@@ -1858,7 +1858,7 @@ h2 {
 .positioning-card h2,
 .feature h2,
 .workflow-step h2 {
-  max-width: 16ch;
+  max-width: 22ch;
   margin-bottom: 12px;
   font-size: 21px;
   line-height: 1.12;
@@ -1893,14 +1893,14 @@ h2 {
 
 .product-story .split-content,
 #cases .split-content {
-  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 70px;
   padding: 84px 0;
 }
 
 .product-story h2,
 #cases h2 {
-  max-width: 10ch;
+  max-width: 18ch;
 }
 
 .prose {
@@ -1943,7 +1943,7 @@ h2 {
 }
 
 .final-cta h2 {
-  max-width: 12ch;
+  max-width: 20ch;
   font-size: clamp(2.1rem, 4.4vw, 3rem);
 }
 
@@ -2017,7 +2017,7 @@ h2 {
   .product-story h2,
   #cases h2,
   .product-line h2 {
-    max-width: 16ch;
+    max-width: 22ch;
   }
 
   .inside-copy p:not(.section-kicker) {
@@ -2060,8 +2060,8 @@ h2 {
   }
 
   .product-launch-hero h1 {
-    max-width: 12ch;
-    font-size: clamp(2.15rem, 11vw, 3.05rem);
+    max-width: 18ch;
+    font-size: clamp(2.05rem, 10vw, 2.85rem);
   }
 
   .positioning-grid,
