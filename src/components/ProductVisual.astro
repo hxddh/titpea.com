@@ -26,19 +26,13 @@ const baselineRuns = [
   ["v0.4.0", 19602],
   ["v0.5.0", 23277],
 ] as const;
-const chartWidth = 920;
-const chartHeight = 360;
-const plot = { left: 62, top: 34, width: 810, height: 244 };
-const yMax = 60000;
-const xFor = (index: number, total: number) => plot.left + (total === 1 ? 0 : (plot.width / (total - 1)) * index);
-const yFor = (value: number) => plot.top + plot.height - (value / yMax) * plot.height;
-const parallelPoints = parallelRuns.map(([, throughput], index) => `${xFor(index, parallelRuns.length)},${yFor(throughput)}`).join(" ");
-const stressPoints = stressRuns.map(([, throughput], index) => `${xFor(index + 2, parallelRuns.length)},${yFor(throughput)}`).join(" ");
-const baselinePoints = baselineRuns.map(([, throughput], index) => `${xFor(index, baselineRuns.length)},${yFor(throughput)}`).join(" ");
+const maxThroughput = 55000;
+const bestParallel = parallelRuns[0];
+const averageStress = Math.round(stressRuns.reduce((sum, [, throughput]) => sum + throughput, 0) / stressRuns.length);
 ---
 
 {product.visual === "terminal" && (
-  <div class="terminal-visual benchmark-visual" aria-label="s3-turbo-list v0.5.0 benchmark chart">
+  <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list v0.5.0 benchmark report">
     <div class="benchmark-head">
       <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
       <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
@@ -48,53 +42,49 @@ const baselinePoints = baselineRuns.map(([, throughput], index) => `${xFor(index
         <span>680.0 MiB</span>
         <span>v0.5.0</span>
       </div>
-      <div class="benchmark-toggle" aria-label={isZh ? "图表指标" : "Chart metrics"}>
-        <span class="active">objects/s</span>
-        <span>{isZh ? "耗时" : "elapsed"}</span>
+    </div>
+    <div class="benchmark-kpis">
+      <div><span>{isZh ? "最佳并发配置" : "best parallel run"}</span><strong>{bestParallel[0]}</strong><p>{bestParallel[1].toLocaleString()}/s · {bestParallel[2]}s</p></div>
+      <div><span>{isZh ? "单段提升" : "single segment gain"}</span><strong>+18.8%</strong><p>19,602/s → 23,277/s</p></div>
+      <div><span>{isZh ? "c64 三轮均值" : "c64 average"}</span><strong>{averageStress.toLocaleString()}/s</strong><p>49,367-51,854/s</p></div>
+    </div>
+    <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
+      <div class="bars-head">
+        <span>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
+        <span>objects/s</span>
       </div>
+      {parallelRuns.map(([label, throughput, seconds]) => (
+        <div class="bar-row">
+          <span class="bar-label">{label}</span>
+          <div class="bar-track"><span style={`width: ${(throughput / maxThroughput) * 100}%`}></span></div>
+          <strong>{throughput.toLocaleString()}</strong>
+          <em>{seconds}s</em>
+        </div>
+      ))}
     </div>
-    <div class="benchmark-chart-wrap">
-      <svg class="benchmark-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={isZh ? "s3-turbo-list 吞吐量折线图" : "s3-turbo-list throughput line chart"}>
-        <line x1={plot.left} y1={yFor(0)} x2={plot.left + plot.width} y2={yFor(0)} />
-        <line x1={plot.left} y1={yFor(20000)} x2={plot.left + plot.width} y2={yFor(20000)} />
-        <line x1={plot.left} y1={yFor(40000)} x2={plot.left + plot.width} y2={yFor(40000)} />
-        <text x="18" y={yFor(0) + 4}>0</text>
-        <text x="18" y={yFor(20000) + 4}>20k</text>
-        <text x="18" y={yFor(40000) + 4}>40k</text>
-        <text class="axis-label" x="6" y="174" transform="rotate(-90 6 174)">objects / s</text>
-        <polyline class="parallel-line" points={parallelPoints} />
-        <polyline class="stress-line" points={stressPoints} />
-        <polyline class="baseline-line" points={baselinePoints} />
-        {parallelRuns.map(([label, throughput], index) => (
-          <>
-            <circle class="parallel-dot" cx={xFor(index, parallelRuns.length)} cy={yFor(throughput)} r="5" />
-            <text class="x-label" x={xFor(index, parallelRuns.length)} y="316">{label}</text>
-          </>
-        ))}
-        {stressRuns.map(([, throughput], index) => (
-          <circle class="stress-dot" cx={xFor(index + 2, parallelRuns.length)} cy={yFor(throughput)} r="5" />
-        ))}
-        {baselineRuns.map(([label, throughput], index) => (
-          <>
-            <circle class="baseline-dot" cx={xFor(index, baselineRuns.length)} cy={yFor(throughput)} r="5" />
-            <text class="baseline-label" x={xFor(index, baselineRuns.length)} y={yFor(throughput) - 12}>{label}</text>
-          </>
-        ))}
-        <text class="x-title" x="456" y="348">{isZh ? "并发配置" : "parallel configuration"}</text>
-      </svg>
-    </div>
-    <div class="benchmark-legend">
-      <span><i class="parallel"></i>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
-      <span><i class="stress"></i>{isZh ? "c64 连续压力" : "c64 stress rounds"}</span>
-      <span><i class="baseline"></i>{isZh ? "单段基线" : "Single-segment baseline"}</span>
+    <div class="benchmark-footnotes">
+      <span>{isZh ? "输出：Parquet zstd 3.0 MB；NDJSON 76M；TSV 61M" : "Output: Parquet zstd 3.0 MB; NDJSON 76M; TSV 61M"}</span>
+      <span>{isZh ? "运行时分裂：所有并发配置均为 0" : "Runtime splits: 0 across all parallel configurations"}</span>
     </div>
   </div>
 )}
 
 {product.visual === "diagnostic" && (
-  <div class="diagnostic-visual product-scene diagnosis-scene" aria-label="StorageOps diagnostic preview">
-    <div class="pi-agent-shot">
-      <img src="/assets/storageops-pi-agent.png" alt="Rendered Pi Coding Agent session with StorageOps skills and tools" loading="eager" />
+  <div class="diagnostic-visual agent-manifest-visual" aria-label="StorageOps agent capability manifest">
+    <div class="agent-manifest-head">
+      <p class="section-kicker">{isZh ? "Pi Agent package" : "Pi Agent package"}</p>
+      <h2>{isZh ? "用 skills 和 tools 约束诊断" : "Skills and tools define the diagnosis"}</h2>
+      <p>{isZh ? "StorageOps 给 Pi 安装一套对象存储诊断能力：诊断 skills、扩展 tools、确定性的 helper 脚本，以及用于回归校验的 eval cases。" : "StorageOps installs an object-storage diagnosis package into Pi: diagnostic skills, extension tools, deterministic helpers, and compact eval cases."}</p>
+    </div>
+    <div class="agent-manifest-grid">
+      <div><span>01</span><strong>{isZh ? "15 diagnostic skills" : "15 diagnostic skills"}</strong><p>{isZh ? "安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和 triage。" : "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage."}</p></div>
+      <div><span>02</span><strong>{isZh ? "4 Pi extension tools" : "4 Pi extension tools"}</strong><p>scan_secrets · detect_domain · search_memory · capture_http_trace</p></div>
+      <div><span>03</span><strong>{isZh ? "deterministic helper scripts" : "deterministic helper scripts"}</strong><p>{isZh ? "检查 policy、SigV4、payload hash、ETag、限流、访问日志、迁移估算和 endpoint 可达性。" : "Inspect policy, SigV4, payload hashes, ETags, throttling, access logs, migration estimates, and endpoint reachability."}</p></div>
+      <div><span>04</span><strong>{isZh ? "golden-case evals" : "golden-case evals"}</strong><p>{isZh ? "用可复现 case 约束 agent 输出，避免诊断口径漂移。" : "Regression cases keep agent output stable as skills and tools evolve."}</p></div>
+    </div>
+    <div class="agent-flow-line">
+      <span>{isZh ? "输入：错误、命令、配置、脱敏日志" : "input: error, command, config, redacted log"}</span>
+      <span>{isZh ? "输出：原因、证据、置信度、下一步检查" : "output: cause, evidence, confidence, next checks"}</span>
     </div>
   </div>
 )}
