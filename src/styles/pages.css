@@ -45,7 +45,7 @@
 .home-evidence-grid,
 .catalog-grid,
 .about-product-grid,
-.examples-list {
+.examples-grid {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -59,7 +59,7 @@
 .about-system-panel div,
 .about-product-card,
 .browser-tool-list a,
-.examples-list article {
+.examples-card {
   background: var(--panel);
 }
 
@@ -368,9 +368,9 @@
 }
 
 .positioning-grid,
-.feature-grid,
+.features-grid,
 .workflow-grid,
-.examples-list {
+.examples-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
@@ -380,7 +380,7 @@
   background: var(--line);
 }
 
-.examples-list {
+.examples-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 

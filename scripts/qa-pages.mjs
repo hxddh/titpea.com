@@ -8,20 +8,28 @@ const pages = [
   "/about/",
   "/s3-turbo-list/",
   "/storageops/",
+  "/world-clock/",
+  "/douban-movie-rating/",
   "/zh/",
   "/zh/about/",
   "/zh/s3-turbo-list/",
   "/zh/storageops/",
+  "/zh/world-clock/",
+  "/zh/douban-movie-rating/",
 ];
 const expectedText = {
   "/": ["S3 operations toolkit", "Product evidence"],
   "/about/": ["Object storage tools", "A narrow product line"],
   "/s3-turbo-list/": ["Fast list and diff for S3 buckets", "Usage examples"],
   "/storageops/": ["S3 diagnosis agent for Pi", "Usage examples"],
+  "/world-clock/": ["A timezone feed in one click", "Questions & how-to"],
+  "/douban-movie-rating/": ["IMDb and Rotten Tomatoes inside Douban", "Questions & how-to"],
   "/zh/": ["S3 运维工具集", "先看事实"],
   "/zh/about/": ["对象存储工具", "一条很窄的产品线"],
   "/zh/s3-turbo-list/": ["高速 S3 list / diff CLI", "用法示例"],
   "/zh/storageops/": ["Pi 的 S3 诊断 agent", "用法示例"],
+  "/zh/world-clock/": ["一键看世界时间", "问题与用法"],
+  "/zh/douban-movie-rating/": ["把海外评分补到豆瓣电影页", "问题与用法"],
 };
 const viewports = [
   { name: "desktop", width: 1440, height: 1100 },
@@ -64,6 +72,13 @@ for (const viewport of viewports) {
         h1: h1?.textContent?.trim() ?? "",
         h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
         anchorCount: document.querySelectorAll(".product-anchor-nav a").length,
+        featuresGrid: document.querySelector(".features-grid")
+          ? getComputedStyle(document.querySelector(".features-grid")).display
+          : null,
+        imageCount: document.querySelectorAll("img").length,
+        brokenImages: Array.from(document.querySelectorAll("img")).filter(
+          (image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
+        ).length,
         text: document.body.innerText,
       };
     });
@@ -105,13 +120,24 @@ console.table(results);
 
 const failures = results.filter((result) => {
   const isDesktop = result.viewport === "desktop";
-  const isProductPage = result.path.includes("s3-turbo-list") || result.path.includes("storageops");
+  const isProductPage =
+    result.path.includes("s3-turbo-list") ||
+    result.path.includes("storageops") ||
+    result.path.includes("world-clock") ||
+    result.path.includes("douban-movie-rating");
+  const isMainProductPage = result.path.includes("s3-turbo-list") || result.path.includes("storageops");
+  const isBrowserProductPage = result.path.includes("world-clock") || result.path.includes("douban-movie-rating");
   const navOk = isDesktop
     ? result.nav === "flex" && result.mobile === "none"
     : result.nav === "none" && result.mobile === "block";
-  const anchorOk = isProductPage && !result.path.includes("menu") ? result.anchorCount >= 7 : true;
+  const anchorOk =
+    isProductPage && !result.path.includes("menu") ? result.anchorCount >= (isMainProductPage ? 7 : 5) : true;
+  const featuresGridOk = isProductPage && !result.path.includes("menu") ? result.featuresGrid === "grid" : true;
+  const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
 
-  return result.overflow > 1 || result.h1Lines > 3 || !result.textOk || !navOk || !anchorOk;
+  return (
+    result.overflow > 1 || result.h1Lines > 3 || !result.textOk || !navOk || !anchorOk || !featuresGridOk || !imagesOk
+  );
 });
 if (failures.length > 0) {
   console.error("QA failed:", failures);

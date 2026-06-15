@@ -1,0 +1,21 @@
+---
+import type { ProductSection } from "../content/productSections";
+
+interface Props {
+  section: Extract<ProductSection, { kind: "story" }>;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="band product-story">
+  <div class="shell split-content">
+    <div>
+      <p class="section-kicker">{section.label}</p>
+      <h2>{section.title}</h2>
+    </div>
+    <div class="prose">
+      {section.body.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+  </div>
+</section>

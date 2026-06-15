@@ -1,32 +1,22 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
+import { pathFor, slugForCurrentPage, type CurrentPage, type Locale } from "../lib/site";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description: string;
-  current?: "home" | "about" | "s3-turbo-list" | "storageops" | "world-clock" | "douban";
-  locale?: "en" | "zh";
+  current?: CurrentPage;
+  locale?: Locale;
 }
 
 const { title, description, current = "home", locale = "en" } = Astro.props;
 const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
 const isZh = locale === "zh";
 const htmlLang = isZh ? "zh-CN" : "en";
-const currentPath =
-  current === "home"
-    ? ""
-    : current === "about"
-      ? "about"
-      : current === "s3-turbo-list"
-        ? "s3-turbo-list"
-        : current === "storageops"
-          ? "storageops"
-          : current === "world-clock"
-            ? "world-clock"
-            : "douban-movie-rating";
-const englishHref = `/${currentPath ? `${currentPath}/` : ""}`;
-const chineseHref = `/zh/${currentPath ? `${currentPath}/` : ""}`;
+const currentSlug = slugForCurrentPage(current);
+const englishHref = pathFor("en", currentSlug);
+const chineseHref = pathFor("zh", currentSlug);
 const canonicalPath = isZh ? chineseHref : englishHref;
 const canonicalUrl = `https://titpea.com${canonicalPath}`;
 const englishUrl = `https://titpea.com${englishHref}`;

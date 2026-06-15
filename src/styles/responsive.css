@@ -42,13 +42,10 @@
   .catalog-grid,
   .about-product-grid,
   .positioning-grid,
-  .feature-grid,
+  .features-grid,
   .workflow-grid,
-  .examples-list,
-  .benchmark-kpis,
-  .agent-manifest-grid,
-  .inventory-grid,
-  .agent-evidence-grid {
+  .examples-grid,
+  .inventory-grid {
     grid-template-columns: 1fr;
   }
 
@@ -86,6 +83,12 @@
   .proof-strip {
     justify-content: flex-start;
     padding-bottom: 44px;
+  }
+
+  .benchmark-kpis,
+  .agent-manifest-grid,
+  .agent-evidence-grid {
+    grid-template-columns: 1fr;
   }
 
   .bars-head {

@@ -66,3 +66,9 @@ export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";
   return locale === "zh" ? `/zh/${path}` : `/${path}`;
 }
+
+export function slugForCurrentPage(current: CurrentPage): ProductSlug | "about" | undefined {
+  if (current === "home") return undefined;
+  if (current === "douban") return "douban-movie-rating";
+  return current;
+}
