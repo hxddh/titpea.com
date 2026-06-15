@@ -23,7 +23,7 @@ const expectedText = {
   "/s3-turbo-list/": ["Fast list and diff for S3 buckets", "Usage examples"],
   "/storageops/": ["S3 diagnosis agent for Pi", "Usage examples"],
   "/world-clock/": ["A timezone feed in one click", "Questions & how-to"],
-  "/douban-movie-rating/": ["IMDb and Rotten Tomatoes inside Douban", "Questions & how-to"],
+  "/douban-movie-rating/": ["Global ratings inside Douban", "Questions & how-to"],
   "/zh/": ["S3 运维工具集", "先看事实"],
   "/zh/about/": ["对象存储工具", "一条很窄的产品线"],
   "/zh/s3-turbo-list/": ["高速 S3 list / diff CLI", "用法示例"],
