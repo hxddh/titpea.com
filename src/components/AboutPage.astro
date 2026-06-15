@@ -1,6 +1,8 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { aboutProducts, pathFor, products, ui, type Locale } from "../lib/site";
+import { pathFor, type Locale } from "../lib/site";
+import { ui } from "../content/home";
+import { aboutProducts, products } from "../content/products";
 
 interface Props {
   locale: Locale;
@@ -16,18 +18,22 @@ const productGroups = isZh
       ["做事方式", "命令要清楚，输出要能继续处理，最好能接到 DuckDB、pandas、日志或下一步排查。"],
     ]
   : [
-      ["Object storage", "List the bucket, compare object state, then use Pi and HTTP traces when a failure needs diagnosis."],
-      ["Browser extensions", "World Clock and Douban Movie Rating Assistant stay small: no platform ambition, no workflow takeover."],
-      ["Working style", "The bias is toward explainable tools with clear commands and outputs that can move into DuckDB, pandas, logs, or the next diagnostic step."],
+      [
+        "Object storage",
+        "List the bucket, compare object state, then use Pi and HTTP traces when a failure needs diagnosis.",
+      ],
+      [
+        "Browser extensions",
+        "World Clock and Douban Movie Rating Assistant stay small: no platform ambition, no workflow takeover.",
+      ],
+      [
+        "Working style",
+        "The bias is toward explainable tools with clear commands and outputs that can move into DuckDB, pandas, logs, or the next diagnostic step.",
+      ],
     ];
 ---
 
-<SiteLayout
-  title={copy.aboutTitle}
-  description={copy.aboutDescription}
-  current="about"
-  locale={locale}
->
+<SiteLayout title={copy.aboutTitle} description={copy.aboutDescription} current="about" locale={locale}>
   <section class="about-hero about-redesign-hero shell">
     <div class="about-redesign-copy">
       <p class="eyebrow">hxddh</p>
@@ -35,17 +41,21 @@ const productGroups = isZh
       <p class="lead">{copy.aboutLead}</p>
       <div class="socials about-contact-row" aria-label={isZh ? "联系方式" : "Contact links"}>
         <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
-        <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer">Chrome Web Store</a>
+        <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer"
+          >Chrome Web Store</a
+        >
         <a href="mailto:info@titpea.com">Email</a>
       </div>
     </div>
     <aside class="about-system-panel" aria-label={isZh ? "产品线" : "Product lines"}>
-      {productGroups.map(([title, body]) => (
-        <div>
-          <span>{title}</span>
-          <p>{body}</p>
-        </div>
-      ))}
+      {
+        productGroups.map(([title, body]) => (
+          <div>
+            <span>{title}</span>
+            <p>{body}</p>
+          </div>
+        ))
+      }
     </aside>
   </section>
 
@@ -68,15 +78,31 @@ const productGroups = isZh
       <a class="about-product-card" href="https://github.com/hxddh/https-traffic-inspector">
         <span>https-traffic-inspector</span>
         <strong>{isZh ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection"}</strong>
-        <p>{isZh ? "当 SDK 或 CLI 把细节藏起来，用它看真实请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
+        <p>
+          {
+            isZh
+              ? "当 SDK 或 CLI 把细节藏起来，用它看真实请求、响应、重试和签名上下文。"
+              : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."
+          }
+        </p>
       </a>
-      {aboutProducts.filter((slug) => slug === "world-clock" || slug === "douban-movie-rating").map((slug) => (
-        <a class="about-product-card" href={pathFor(locale, slug)}>
-          <span>{products[slug].locales[locale].title}</span>
-          <strong>{products[slug].category === "browser" ? (isZh ? "轻量 Chrome 扩展" : "Lightweight Chrome extension") : products[slug].name}</strong>
-          <p>{products[slug].locales[locale].description}</p>
-        </a>
-      ))}
+      {
+        aboutProducts
+          .filter((slug) => slug === "world-clock" || slug === "douban-movie-rating")
+          .map((slug) => (
+            <a class="about-product-card" href={pathFor(locale, slug)}>
+              <span>{products[slug].locales[locale].title}</span>
+              <strong>
+                {products[slug].category === "browser"
+                  ? isZh
+                    ? "轻量 Chrome 扩展"
+                    : "Lightweight Chrome extension"
+                  : products[slug].name}
+              </strong>
+              <p>{products[slug].locales[locale].description}</p>
+            </a>
+          ))
+      }
     </div>
   </section>
 

@@ -1,0 +1,122 @@
+@media (max-width: 900px) {
+  .shell,
+  .site-header,
+  .site-footer {
+    width: min(1080px, calc(100% - 32px));
+  }
+
+  .site-header {
+    flex-direction: row;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .home-hero,
+  .about-hero,
+  .product-hero {
+    gap: 42px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .home-hero h1,
+  .about-hero h1,
+  .product-hero h1 {
+    max-width: 18ch;
+    font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+
+  .home-evidence,
+  .home-browser-band,
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .catalog-grid,
+  .about-product-grid,
+  .positioning-grid,
+  .feature-grid,
+  .workflow-grid,
+  .examples-list,
+  .benchmark-kpis,
+  .agent-manifest-grid,
+  .inventory-grid,
+  .agent-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .browser-screenshot-row {
+    grid-template-columns: 1fr;
+  }
+
+  .benchmark-visual,
+  .agent-manifest-visual,
+  .inside-workbench {
+    padding: 20px;
+  }
+
+  .product-anchor-nav {
+    top: 60px;
+    justify-content: flex-start;
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .actions {
+    margin-top: 26px;
+  }
+
+  .button {
+    width: auto;
+    min-height: 46px;
+  }
+
+  .lead {
+    font-size: 17px;
+  }
+
+  .proof-strip {
+    justify-content: flex-start;
+    padding-bottom: 44px;
+  }
+
+  .bars-head {
+    display: none;
+  }
+
+  .bar-row {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 8px 10px;
+  }
+
+  .bar-row strong,
+  .bar-row em {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .artifact-table div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .clock-shot-stack {
+    min-height: 330px;
+  }
+
+  .clock-shot {
+    width: min(88%, 320px);
+  }
+
+  .site-footer {
+    flex-direction: column;
+  }
+}

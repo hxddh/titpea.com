@@ -29,8 +29,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Build
         run: npm run build
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Page QA
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
+          echo $! > /tmp/titpea-preview.pid
+          trap 'kill "$(cat /tmp/titpea-preview.pid)"' EXIT
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4321/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          npm run qa:pages
 
       - name: Deploy
         run: npx wrangler@latest pages deploy dist --project-name=titpea --branch=main

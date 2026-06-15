@@ -2,6 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import ProductInside from "./ProductInside.astro";
 import ProductVisual from "./ProductVisual.astro";
+import { productSections } from "../content/productSections";
 import type { Locale, Product } from "../lib/site";
 
 interface Props {
@@ -11,23 +12,14 @@ interface Props {
 
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
+const sections = productSections(locale, copy);
 const navItems = [
   ["inside", locale === "zh" ? "内部视角" : "Inside"],
-  ["positioning", copy.positioningLabel],
-  ["features", copy.featuresLabel],
-  copy.workflow && copy.workflowLabel ? ["workflow", copy.workflowLabel] : null,
-  copy.cases && copy.casesLabel ? ["cases", copy.casesLabel] : null,
-  copy.examples && copy.examplesLabel ? ["examples", copy.examplesLabel] : null,
-  copy.faq && copy.faqLabel ? ["faq", copy.faqLabel] : null,
-].filter(Boolean) as Array<[string, string]>;
+  ...sections.map((section) => [section.id, section.label]),
+];
 ---
 
-<SiteLayout
-  title={copy.title}
-  description={copy.description}
-  current={product.current}
-  locale={locale}
->
+<SiteLayout title={copy.title} description={copy.description} current={product.current} locale={locale}>
   <section class="product-hero product-launch-hero shell">
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
@@ -54,106 +46,88 @@ const navItems = [
 
   <ProductInside locale={locale} product={product} />
 
-  <section id="positioning" class="shell positioning-section">
-    <p class="section-kicker">{copy.positioningLabel}</p>
-    <div class="positioning-grid">
-      {copy.positioning.map(([title, body]) => (
-        <article class="positioning-card">
-          <h2>{title}</h2>
-          <p>{body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+  {
+    sections.map((section) => {
+      if (section.kind === "story") {
+        return (
+          <section id={section.id} class="band product-story">
+            <div class="shell split-content">
+              <div>
+                <p class="section-kicker">{section.label}</p>
+                <h2>{section.title}</h2>
+              </div>
+              <div class="prose">
+                {section.body.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
 
-  <section id="features" class="shell content-section">
-    <p class="section-kicker">{copy.featuresLabel}</p>
-    <div class="feature-grid">
-      {copy.features.map(([title, body]) => (
-        <article class="feature">
-          <h2>{title}</h2>
-          <p>{body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+      if (section.kind === "cases") {
+        return (
+          <section id={section.id} class="band">
+            <div class="shell split-content">
+              <div>
+                <p class="section-kicker">{section.label}</p>
+                <h2>{section.title}</h2>
+              </div>
+              <div>
+                <div class="provider-list" aria-label={section.label}>
+                  {section.items.map((item) => (
+                    <span>{item}</span>
+                  ))}
+                </div>
+                {section.body && <p class="prose">{section.body}</p>}
+              </div>
+            </div>
+          </section>
+        );
+      }
 
-  <section class="band product-story">
-    <div class="shell split-content">
-      <div>
-        <p class="section-kicker">{copy.rationaleLabel}</p>
-        <h2>{copy.rationaleTitle}</h2>
-      </div>
-      <div class="prose">
-        {copy.rationaleBody.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </div>
-  </section>
+      if (section.kind === "faq") {
+        return (
+          <section id={section.id} class="shell content-section faq-section">
+            <p class="section-kicker">{section.label}</p>
+            <div class="faq-list">
+              {section.items.map(([question, answer]) => (
+                <details>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        );
+      }
 
-  {copy.workflow && copy.workflowLabel && (
-    <section id="workflow" class="shell content-section">
-      <p class="section-kicker">{copy.workflowLabel}</p>
-      <div class="workflow-grid">
-        {copy.workflow.map(([title, body], index) => (
-          <article class="workflow-step">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h2>{title}</h2>
-            <p>{body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {copy.cases && copy.casesLabel && copy.casesTitle && (
-    <section id="cases" class="band">
-      <div class="shell split-content">
-        <div>
-          <p class="section-kicker">{copy.casesLabel}</p>
-          <h2>{copy.casesTitle}</h2>
-        </div>
-        <div>
-          <div class="provider-list" aria-label={copy.casesLabel}>
-            {copy.cases.map((item) => <span>{item}</span>)}
+      return (
+        <section id={section.id} class={`shell content-section ${section.id}-section`}>
+          <p class="section-kicker">{section.label}</p>
+          <div class={`${section.id}-grid`}>
+            {section.items.map(([title, body], index) => (
+              <article class={section.numbered ? "workflow-step" : `${section.id}-card`}>
+                {section.numbered && <span>{String(index + 1).padStart(2, "0")}</span>}
+                <h2>{title}</h2>
+                <p>{body}</p>
+              </article>
+            ))}
           </div>
-          {copy.casesBody && <p class="prose">{copy.casesBody}</p>}
-        </div>
-      </div>
-    </section>
-  )}
+        </section>
+      );
+    })
+  }
 
-  {copy.examples && copy.examplesLabel && (
-    <section id="examples" class="shell content-section examples-section">
-      <p class="section-kicker">{copy.examplesLabel}</p>
-      <div class="examples-list">
-        {copy.examples.map(([title, body]) => (
-          <article>
-            <h2>{title}</h2>
-            <p>{body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {copy.faq && copy.faqLabel && (
-    <section id="faq" class="shell content-section faq-section">
-      <p class="section-kicker">{copy.faqLabel}</p>
-      <div class="faq-list">
-        {copy.faq.map(([question, answer]) => (
-          <details>
-            <summary>{question}</summary>
-            <p>{answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {copy.finalCta && (
-    <section class="shell final-cta">
-      <h2>{copy.finalCta}</h2>
-      <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.finalCtaLabel ?? copy.primaryCta.label}</a>
-    </section>
-  )}
+  {
+    copy.finalCta && (
+      <section class="shell final-cta">
+        <h2>{copy.finalCta}</h2>
+        <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">
+          {copy.finalCtaLabel ?? copy.primaryCta.label}
+        </a>
+      </section>
+    )
+  }
 </SiteLayout>

@@ -1,5 +1,6 @@
 ---
-import { s3BenchmarkEvidence, type Product } from "../lib/site";
+import type { Product } from "../lib/site";
+import { s3BenchmarkEvidence } from "../content/evidence";
 
 interface Props {
   product: Product;
@@ -16,77 +17,169 @@ const bestParallel = s3BenchmarkEvidence.peak;
 const averageStress = Math.round(stressRuns.reduce((sum, run) => sum + run.throughput, 0) / stressRuns.length);
 ---
 
-{product.visual === "terminal" && (
-  <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list v0.5.0 benchmark report">
-    <div class="benchmark-head">
-      <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
-      <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
-      <p>{isZh ? "2 vCPU / 3.4 GiB ECS。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。" : "Measured on a 2 vCPU / 3.4 GiB ECS instance. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}</p>
-      <div class="benchmark-meta">
-        <span>{isZh ? `${s3BenchmarkEvidence.objectCount} 对象` : `${s3BenchmarkEvidence.objectCount} objects`}</span>
-        <span>{s3BenchmarkEvidence.datasetSize}</span>
-        <span>{s3BenchmarkEvidence.version}</span>
-      </div>
-    </div>
-    <div class="benchmark-kpis">
-      <div><span>{isZh ? "最佳并发配置" : "best parallel run"}</span><strong>{bestParallel.label}</strong><p>{bestParallel.throughput.toLocaleString()}/s · {bestParallel.seconds}s</p></div>
-      <div><span>{isZh ? "单段提升" : "single segment gain"}</span><strong>+18.8%</strong><p>{baselineRuns[0].throughput.toLocaleString()}/s → {baselineRuns[1].throughput.toLocaleString()}/s</p></div>
-      <div><span>{isZh ? "c64 三轮均值" : "c64 average"}</span><strong>{averageStress.toLocaleString()}/s</strong><p>49,367-51,854/s</p></div>
-    </div>
-    <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
-      <div class="bars-head">
-        <span>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
-        <span>objects/s</span>
-      </div>
-      {parallelRuns.map(({ label, throughput, seconds }) => (
-        <div class="bar-row">
-          <span class="bar-label">{label}</span>
-          <div class="bar-track"><span style={`width: ${(throughput / maxThroughput) * 100}%`}></span></div>
-          <strong>{throughput.toLocaleString()}</strong>
-          <em>{seconds}s</em>
+{
+  product.visual === "terminal" && (
+    <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list v0.5.0 benchmark report">
+      <div class="benchmark-head">
+        <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
+        <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
+        <p>
+          {isZh
+            ? "2 vCPU / 3.4 GiB ECS。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。"
+            : "Measured on a 2 vCPU / 3.4 GiB ECS instance. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}
+        </p>
+        <div class="benchmark-meta">
+          <span>{isZh ? `${s3BenchmarkEvidence.objectCount} 对象` : `${s3BenchmarkEvidence.objectCount} objects`}</span>
+          <span>{s3BenchmarkEvidence.datasetSize}</span>
+          <span>{s3BenchmarkEvidence.version}</span>
         </div>
-      ))}
+      </div>
+      <div class="benchmark-kpis">
+        <div>
+          <>
+            <span>{isZh ? "最佳并发配置" : "best parallel run"}</span>
+            <strong>{bestParallel.label}</strong>
+            <p>
+              {bestParallel.throughput.toLocaleString()}/s · {bestParallel.seconds}s
+            </p>
+          </>
+        </div>
+        <div>
+          <>
+            <span>{isZh ? "单段提升" : "single segment gain"}</span>
+            <strong>+18.8%</strong>
+            <p>
+              {baselineRuns[0].throughput.toLocaleString()}/s → {baselineRuns[1].throughput.toLocaleString()}/s
+            </p>
+          </>
+        </div>
+        <div>
+          <>
+            <span>{isZh ? "c64 三轮均值" : "c64 average"}</span>
+            <strong>{averageStress.toLocaleString()}/s</strong>
+            <p>49,367-51,854/s</p>
+          </>
+        </div>
+      </div>
+      <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
+        <div class="bars-head">
+          <span>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
+          <span>objects/s</span>
+        </div>
+        {parallelRuns.map(({ label, throughput, seconds }) => (
+          <div class="bar-row">
+            <span class="bar-label">{label}</span>
+            <div class="bar-track">
+              <span style={`width: ${(throughput / maxThroughput) * 100}%`} />
+            </div>
+            <strong>{throughput.toLocaleString()}</strong>
+            <em>{seconds}s</em>
+          </div>
+        ))}
+      </div>
+      <div class="benchmark-footnotes">
+        <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>
+        <span>{isZh ? "运行时分裂：所有并发配置均为 0" : `Runtime splits: ${s3BenchmarkEvidence.runtimeSplits}`}</span>
+      </div>
     </div>
-    <div class="benchmark-footnotes">
-      <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>
-      <span>{isZh ? "运行时分裂：所有并发配置均为 0" : `Runtime splits: ${s3BenchmarkEvidence.runtimeSplits}`}</span>
-    </div>
-  </div>
-)}
+  )
+}
 
-{product.visual === "diagnostic" && (
-  <div class="diagnostic-visual agent-manifest-visual" aria-label="StorageOps agent capability manifest">
-    <div class="agent-manifest-head">
-      <p class="section-kicker">{isZh ? "Pi Agent package" : "Pi Agent package"}</p>
-      <h2>{isZh ? "用 skills 和 tools 约束诊断" : "Skills and tools define the diagnosis"}</h2>
-      <p>{isZh ? "StorageOps 给 Pi 安装一套对象存储诊断能力：诊断 skills、扩展 tools、确定性的 helper 脚本，以及用于回归校验的 eval cases。" : "StorageOps installs an object-storage diagnosis package into Pi: diagnostic skills, extension tools, deterministic helpers, and compact eval cases."}</p>
+{
+  product.visual === "diagnostic" && (
+    <div class="diagnostic-visual agent-manifest-visual" aria-label="StorageOps agent capability manifest">
+      <div class="agent-manifest-head">
+        <p class="section-kicker">{isZh ? "Pi Agent package" : "Pi Agent package"}</p>
+        <h2>{isZh ? "用技能和工具约束诊断" : "Skills and tools define the diagnosis"}</h2>
+        <p>
+          {isZh
+            ? "StorageOps 给 Pi 安装一套对象存储诊断能力：诊断技能、扩展工具、确定性脚本，以及用于回归校验的用例。"
+            : "StorageOps installs an object-storage diagnosis package into Pi: diagnostic skills, extension tools, deterministic helpers, and compact eval cases."}
+        </p>
+      </div>
+      <div class="agent-manifest-grid">
+        <div>
+          <>
+            <span>01</span>
+            <strong>{isZh ? "15 个诊断技能" : "15 diagnostic skills"}</strong>
+            <p>
+              {isZh
+                ? "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步分诊。"
+                : "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage."}
+            </p>
+          </>
+        </div>
+        <div>
+          <>
+            <span>02</span>
+            <strong>{isZh ? "4 个 Pi 扩展工具" : "4 Pi extension tools"}</strong>
+            <p>scan_secrets · detect_domain · search_memory · capture_http_trace</p>
+          </>
+        </div>
+        <div>
+          <>
+            <span>03</span>
+            <strong>{isZh ? "确定性脚本" : "deterministic helper scripts"}</strong>
+            <p>
+              {isZh
+                ? "检查 policy、SigV4、payload hash、ETag、限流、访问日志、迁移估算和 endpoint 可达性。"
+                : "Inspect policy, SigV4, payload hashes, ETags, throttling, access logs, migration estimates, and endpoint reachability."}
+            </p>
+          </>
+        </div>
+        <div>
+          <>
+            <span>04</span>
+            <strong>{isZh ? "回归用例" : "golden-case evals"}</strong>
+            <p>
+              {isZh
+                ? "用可复现 case 约束 agent 输出，避免诊断口径漂移。"
+                : "Regression cases keep agent output stable as skills and tools evolve."}
+            </p>
+          </>
+        </div>
+      </div>
+      <div class="agent-flow-line">
+        <span>{isZh ? "输入：错误、命令、配置、脱敏日志" : "input: error, command, config, redacted log"}</span>
+        <span>
+          {isZh ? "输出：原因、证据、置信度、下一步检查" : "output: cause, evidence, confidence, next checks"}
+        </span>
+      </div>
     </div>
-    <div class="agent-manifest-grid">
-      <div><span>01</span><strong>{isZh ? "15 diagnostic skills" : "15 diagnostic skills"}</strong><p>{isZh ? "安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和 triage。" : "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage."}</p></div>
-      <div><span>02</span><strong>{isZh ? "4 Pi extension tools" : "4 Pi extension tools"}</strong><p>scan_secrets · detect_domain · search_memory · capture_http_trace</p></div>
-      <div><span>03</span><strong>{isZh ? "deterministic helper scripts" : "deterministic helper scripts"}</strong><p>{isZh ? "检查 policy、SigV4、payload hash、ETag、限流、访问日志、迁移估算和 endpoint 可达性。" : "Inspect policy, SigV4, payload hashes, ETags, throttling, access logs, migration estimates, and endpoint reachability."}</p></div>
-      <div><span>04</span><strong>{isZh ? "golden-case evals" : "golden-case evals"}</strong><p>{isZh ? "用可复现 case 约束 agent 输出，避免诊断口径漂移。" : "Regression cases keep agent output stable as skills and tools evolve."}</p></div>
-    </div>
-    <div class="agent-flow-line">
-      <span>{isZh ? "输入：错误、命令、配置、脱敏日志" : "input: error, command, config, redacted log"}</span>
-      <span>{isZh ? "输出：原因、证据、置信度、下一步检查" : "output: cause, evidence, confidence, next checks"}</span>
-    </div>
-  </div>
-)}
+  )
+}
 
-{product.visual === "clock" && (
-  <div class="clock-visual product-scene clock-scene" aria-label="World Clock preview">
-    <div class="clock-shot-stack">
-      <img class="clock-shot light" src="/assets/world-clock-light.png" alt="World Clock light theme timezone feed screenshot" loading="eager" />
-      <img class="clock-shot dark" src="/assets/world-clock-dark.png" alt="World Clock dark theme timezone feed screenshot" loading="eager" />
+{
+  product.visual === "clock" && (
+    <div class="clock-visual product-scene clock-scene" aria-label="World Clock preview">
+      <div class="clock-shot-stack">
+        <img
+          class="clock-shot light"
+          src="/assets/world-clock-light.png"
+          alt="World Clock light theme timezone feed screenshot"
+          loading="eager"
+        />
+        <img
+          class="clock-shot dark"
+          src="/assets/world-clock-dark.png"
+          alt="World Clock dark theme timezone feed screenshot"
+          loading="eager"
+        />
+      </div>
     </div>
-  </div>
-)}
+  )
+}
 
-{product.visual === "rating" && (
-  <div class="rating-visual product-scene rating-scene" aria-label="Douban movie rating assistant preview">
-    <div class="douban-shot-frame">
-      <img src="/assets/douban-rating-assistant.png" alt="Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page" loading="eager" />
+{
+  product.visual === "rating" && (
+    <div class="rating-visual product-scene rating-scene" aria-label="Douban movie rating assistant preview">
+      <div class="douban-shot-frame">
+        <img
+          src="/assets/douban-rating-assistant.png"
+          alt="Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page"
+          loading="eager"
+        />
+      </div>
     </div>
-  </div>
-)}
+  )
+}

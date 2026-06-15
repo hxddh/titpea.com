@@ -1,6 +1,7 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
-import { productSlugs, products, type ProductSlug } from "../lib/site";
+import type { ProductSlug } from "../lib/site";
+import { productSlugs, products } from "../content/products";
 
 export function getStaticPaths() {
   return productSlugs.map((slug) => ({

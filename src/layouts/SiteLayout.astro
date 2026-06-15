@@ -14,12 +14,17 @@ const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
 const isZh = locale === "zh";
 const htmlLang = isZh ? "zh-CN" : "en";
 const currentPath =
-  current === "home" ? "" :
-  current === "about" ? "about" :
-  current === "s3-turbo-list" ? "s3-turbo-list" :
-  current === "storageops" ? "storageops" :
-  current === "world-clock" ? "world-clock" :
-  "douban-movie-rating";
+  current === "home"
+    ? ""
+    : current === "about"
+      ? "about"
+      : current === "s3-turbo-list"
+        ? "s3-turbo-list"
+        : current === "storageops"
+          ? "storageops"
+          : current === "world-clock"
+            ? "world-clock"
+            : "douban-movie-rating";
 const englishHref = `/${currentPath ? `${currentPath}/` : ""}`;
 const chineseHref = `/zh/${currentPath ? `${currentPath}/` : ""}`;
 const canonicalPath = isZh ? chineseHref : englishHref;

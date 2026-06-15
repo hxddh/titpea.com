@@ -1,6 +1,9 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { homeProductLines, pathFor, productEvidence, products, ui, type Locale, type ProductSlug } from "../lib/site";
+import { pathFor, type Locale, type ProductSlug } from "../lib/site";
+import { productEvidence } from "../content/evidence";
+import { homeProductLines, ui } from "../content/home";
+import { products } from "../content/products";
 
 interface Props {
   locale: Locale;
@@ -17,33 +20,85 @@ const { locale } = Astro.props;
 const copy = ui[locale];
 const productLines = homeProductLines[locale];
 const evidenceCards = productEvidence(locale);
-const itemName = (item: ProductLineItem) => item.slug ? products[item.slug].locales[locale].title : item.name;
-const itemHref = (item: ProductLineItem) => item.slug ? pathFor(locale, item.slug) : item.href;
-const storageFlow = locale === "zh"
-  ? [
-      ["01", "List / Diff", "s3-turbo-list", "并发列举大型 S3 兼容桶，对比两个 bucket，输出可继续分析的 Parquet。", pathFor(locale, "s3-turbo-list")],
-      ["02", "Agent", "StorageOps", "给 Pi 安装对象存储诊断 skills、tools、helpers 和 eval cases。", pathFor(locale, "storageops")],
-      ["03", "Trace", "httpmon", "当 SDK 或 CLI 把细节藏起来，捕获真实 HTTP 请求、重试和签名上下文。", "https://github.com/hxddh/https-traffic-inspector"],
-    ]
-  : [
-      ["01", "List / Diff", "s3-turbo-list", "List large S3-compatible buckets fast, diff two buckets, and write Parquet rows with DiffFlag.", pathFor(locale, "s3-turbo-list")],
-      ["02", "Agent", "StorageOps", "Install object-storage diagnostic skills, Pi extension tools, helper scripts, and eval cases.", pathFor(locale, "storageops")],
-      ["03", "Inspect", "httpmon", "Capture real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details.", "https://github.com/hxddh/https-traffic-inspector"],
-    ];
-const browserTools = locale === "zh"
-  ? [
-      ["世界时钟", "快速看几个城市的当前时间，不打开日历，不进入排期流程。", pathFor(locale, "world-clock")],
-      ["豆瓣电影评分助手", "在豆瓣电影页补充 IMDb 和 Rotten Tomatoes 评分，保留原页面阅读节奏。", pathFor(locale, "douban-movie-rating")],
-    ]
-  : [
-      ["World Clock", "Check city time quickly without opening a calendar or starting a scheduling workflow.", pathFor(locale, "world-clock")],
-      ["Douban Movie Rating Assistant", "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.", pathFor(locale, "douban-movie-rating")],
-    ];
+const itemName = (item: ProductLineItem) => (item.slug ? products[item.slug].locales[locale].title : item.name);
+const itemHref = (item: ProductLineItem) => (item.slug ? pathFor(locale, item.slug) : item.href);
+const storageFlow =
+  locale === "zh"
+    ? [
+        [
+          "01",
+          "List / Diff",
+          "s3-turbo-list",
+          "并发列举大型 S3 兼容桶，对比两个 bucket，输出可继续分析的 Parquet。",
+          pathFor(locale, "s3-turbo-list"),
+        ],
+        [
+          "02",
+          "Agent",
+          "StorageOps",
+          "给 Pi 安装对象存储诊断技能、取证工具、确定性脚本和回归用例。",
+          pathFor(locale, "storageops"),
+        ],
+        [
+          "03",
+          "Trace",
+          "httpmon",
+          "当 SDK 或 CLI 把细节藏起来，捕获真实 HTTP 请求、重试和签名上下文。",
+          "https://github.com/hxddh/https-traffic-inspector",
+        ],
+      ]
+    : [
+        [
+          "01",
+          "List / Diff",
+          "s3-turbo-list",
+          "List large S3-compatible buckets fast, diff two buckets, and write Parquet rows with DiffFlag.",
+          pathFor(locale, "s3-turbo-list"),
+        ],
+        [
+          "02",
+          "Agent",
+          "StorageOps",
+          "Install object-storage diagnostic skills, Pi extension tools, helper scripts, and eval cases.",
+          pathFor(locale, "storageops"),
+        ],
+        [
+          "03",
+          "Inspect",
+          "httpmon",
+          "Capture real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details.",
+          "https://github.com/hxddh/https-traffic-inspector",
+        ],
+      ];
+const browserTools =
+  locale === "zh"
+    ? [
+        ["世界时钟", "快速看几个城市的当前时间，不打开日历，不进入排期流程。", pathFor(locale, "world-clock")],
+        [
+          "豆瓣电影评分助手",
+          "在豆瓣电影页补充 IMDb 和 Rotten Tomatoes 评分，保留原页面阅读节奏。",
+          pathFor(locale, "douban-movie-rating"),
+        ],
+      ]
+    : [
+        [
+          "World Clock",
+          "Check city time quickly without opening a calendar or starting a scheduling workflow.",
+          pathFor(locale, "world-clock"),
+        ],
+        [
+          "Douban Movie Rating Assistant",
+          "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.",
+          pathFor(locale, "douban-movie-rating"),
+        ],
+      ];
 ---
 
 <SiteLayout
   title="Titpea"
-  description={locale === "zh" ? "Titpea 是 hxddh 的个人网站和产品索引。" : "Titpea is the personal site and product index for hxddh."}
+  description={locale === "zh"
+    ? "Titpea 是 hxddh 的个人网站和产品索引。"
+    : "Titpea is the personal site and product index for hxddh."}
   current="home"
   locale={locale}
 >
@@ -66,16 +121,18 @@ const browserTools = locale === "zh"
         <p>{copy.flowBody}</p>
       </div>
       <div class="workbench-flow-list">
-        {storageFlow.map(([number, verb, name, body, href]) => (
-          <a class="workbench-flow-card" href={href}>
-            <span>{number}</span>
-            <div>
-              <strong>{verb}</strong>
-              <h3>{name}</h3>
-              <p>{body}</p>
-            </div>
-          </a>
-        ))}
+        {
+          storageFlow.map(([number, verb, name, body, href]) => (
+            <a class="workbench-flow-card" href={href}>
+              <span>{number}</span>
+              <div>
+                <strong>{verb}</strong>
+                <h3>{name}</h3>
+                <p>{body}</p>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -84,19 +141,29 @@ const browserTools = locale === "zh"
     <div class="home-evidence-heading">
       <p class="section-kicker">{locale === "zh" ? "主产品证据" : "Product evidence"}</p>
       <h2>{locale === "zh" ? "先看事实，再看功能" : "Evidence before features"}</h2>
-      <p>{locale === "zh" ? "主产品先给可检查的证据：一个有压测结果，一个说明 agent package 到底装了什么。" : "The main products lead with checkable evidence: one shows benchmark data, the other shows what the agent package installs."}</p>
+      <p>
+        {
+          locale === "zh"
+            ? "主产品先给可检查的证据：一个有压测结果，一个说明 Pi 诊断包到底装了什么。"
+            : "The main products lead with checkable evidence: one shows benchmark data, the other shows what the agent package installs."
+        }
+      </p>
     </div>
     <div class="home-evidence-grid">
-      {evidenceCards.map((card) => (
-        <a class="home-evidence-card" href={card.href}>
-          <span>{card.label}</span>
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
-          <div>
-            {card.stats.map((stat) => <strong>{stat}</strong>)}
-          </div>
-        </a>
-      ))}
+      {
+        evidenceCards.map((card) => (
+          <a class="home-evidence-card" href={card.href}>
+            <span>{card.label}</span>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+            <div>
+              {card.stats.map((stat) => (
+                <strong>{stat}</strong>
+              ))}
+            </div>
+          </a>
+        ))
+      }
     </div>
   </section>
 
@@ -106,12 +173,14 @@ const browserTools = locale === "zh"
       <h2>{copy.storageTitle}</h2>
     </div>
     <div class="catalog-grid">
-      {productLines[0].items.map((item) => (
-        <a class="catalog-card" href={itemHref(item)}>
-          <span>{itemName(item)}</span>
-          <p>{item.text}</p>
-        </a>
-      ))}
+      {
+        productLines[0].items.map((item) => (
+          <a class="catalog-card" href={itemHref(item)}>
+            <span>{itemName(item)}</span>
+            <p>{item.text}</p>
+          </a>
+        ))
+      }
     </div>
   </section>
 
@@ -119,23 +188,42 @@ const browserTools = locale === "zh"
     <div class="browser-band-copy">
       <p class="section-kicker">{copy.browserLine}</p>
       <h2>{copy.browserTitle}</h2>
-      <p>{locale === "zh" ? "这两件工具不做平台，只解决一个浏览器里的小问题：一个看时间，一个补评分。" : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."}</p>
+      <p>
+        {
+          locale === "zh"
+            ? "这两件工具不做平台，只解决一个浏览器里的小问题：一个看时间，一个补评分。"
+            : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."
+        }
+      </p>
     </div>
     <div class="browser-band-body">
       <div class="browser-tool-list">
-        {browserTools.map(([name, body, href]) => (
-          <a href={href}>
-            <span>{name}</span>
-            <p>{body}</p>
-          </a>
-        ))}
+        {
+          browserTools.map(([name, body, href]) => (
+            <a href={href}>
+              <span>{name}</span>
+              <p>{body}</p>
+            </a>
+          ))
+        }
       </div>
-      <div class="browser-screenshot-row" aria-label={locale === "zh" ? "浏览器扩展截图" : "Browser extension screenshots"}>
+      <div
+        class="browser-screenshot-row"
+        aria-label={locale === "zh" ? "浏览器扩展截图" : "Browser extension screenshots"}
+      >
         <a href={pathFor(locale, "world-clock")} class="browser-screenshot clock">
-          <img src="/assets/world-clock-dark.png" alt={locale === "zh" ? "世界时钟深色界面截图" : "World Clock dark interface screenshot"} loading="lazy" />
+          <img
+            src="/assets/world-clock-dark.png"
+            alt={locale === "zh" ? "世界时钟深色界面截图" : "World Clock dark interface screenshot"}
+            loading="lazy"
+          />
         </a>
         <a href={pathFor(locale, "douban-movie-rating")} class="browser-screenshot douban">
-          <img src="/assets/douban-rating-assistant.png" alt={locale === "zh" ? "豆瓣电影评分助手页面截图" : "Douban Movie Rating Assistant page screenshot"} loading="lazy" />
+          <img
+            src="/assets/douban-rating-assistant.png"
+            alt={locale === "zh" ? "豆瓣电影评分助手页面截图" : "Douban Movie Rating Assistant page screenshot"}
+            loading="lazy"
+          />
         </a>
       </div>
     </div>

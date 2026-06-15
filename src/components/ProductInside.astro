@@ -1,5 +1,6 @@
 ---
-import { s3BenchmarkEvidence, type Locale, type Product } from "../lib/site";
+import type { Locale, Product } from "../lib/site";
+import { s3BenchmarkEvidence } from "../content/evidence";
 
 interface Props {
   locale: Locale;
@@ -10,71 +11,177 @@ const { locale, product } = Astro.props;
 const isZh = locale === "zh";
 ---
 
-{product.role === "inventory" && (
-  <section id="inside" class="inside-section shell">
-    <div class="inside-copy">
-      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "list、diff，然后分析" : "List, diff, then analyze"}</h2>
-      <p>{isZh ? "s3-turbo-list 的核心很直接：并发 list 大桶，可靠 diff 两个 bucket，再把结果写成后续工具能直接查询的 Parquet。" : "s3-turbo-list is a high-performance object storage CLI: list large buckets concurrently, diff two buckets authoritatively, then hand clean Parquet to the tools that analyze the result."}</p>
-    </div>
-    <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
-      <div class="workbench-top">
-        <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
-        <strong>{isZh ? "压测摘要" : "benchmark summary"}</strong>
+{
+  product.role === "inventory" && (
+    <section id="inside" class="inside-section shell">
+      <div class="inside-copy">
+        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+        <h2>{isZh ? "list、diff，然后分析" : "List, diff, then analyze"}</h2>
+        <p>
+          {isZh
+            ? "s3-turbo-list 的核心很直接：并发 list 大桶，可靠 diff 两个 bucket，再把结果写成后续工具能直接查询的 Parquet。"
+            : "s3-turbo-list is a high-performance object storage CLI: list large buckets concurrently, diff two buckets authoritatively, then hand clean Parquet to the tools that analyze the result."}
+        </p>
       </div>
-      <div class="inventory-grid benchmark-metrics">
-        <div class="metric-tile strong"><span>{isZh ? "对象数" : "objects"}</span><strong>{s3BenchmarkEvidence.objectCount}</strong><p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p></div>
-        <div class="metric-tile"><span>{isZh ? "最高吞吐" : "peak throughput"}</span><strong>{s3BenchmarkEvidence.peak.throughput.toLocaleString()}/s</strong><p>{isZh ? `${s3BenchmarkEvidence.peak.label} 自动发现` : `${s3BenchmarkEvidence.peak.label} with auto discovery`}</p></div>
-        <div class="metric-tile"><span>{isZh ? "单段提升" : "single segment"}</span><strong>+18.8%</strong><p>{isZh ? "v0.5.0 相比 v0.4.0" : "v0.5.0 over v0.4.0"}</p></div>
+      <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
+        <div class="workbench-top">
+          <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
+          <strong>{isZh ? "压测摘要" : "benchmark summary"}</strong>
+        </div>
+        <div class="inventory-grid benchmark-metrics">
+          <div class="metric-tile strong">
+            <>
+              <span>{isZh ? "对象数" : "objects"}</span>
+              <strong>{s3BenchmarkEvidence.objectCount}</strong>
+              <p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p>
+            </>
+          </div>
+          <div class="metric-tile">
+            <>
+              <span>{isZh ? "最高吞吐" : "peak throughput"}</span>
+              <strong>{s3BenchmarkEvidence.peak.throughput.toLocaleString()}/s</strong>
+              <p>
+                {isZh
+                  ? `${s3BenchmarkEvidence.peak.label} 自动发现`
+                  : `${s3BenchmarkEvidence.peak.label} with auto discovery`}
+              </p>
+            </>
+          </div>
+          <div class="metric-tile">
+            <>
+              <span>{isZh ? "单段提升" : "single segment"}</span>
+              <strong>+18.8%</strong>
+              <p>{isZh ? "v0.5.0 相比 v0.4.0" : "v0.5.0 over v0.4.0"}</p>
+            </>
+          </div>
+        </div>
+        <div class="artifact-table benchmark-table" aria-label="Benchmark report">
+          <div>
+            <>
+              <span>{isZh ? "并发矩阵" : "parallel matrix"}</span>
+              <strong>18.29s-20.88s · 47,906-54,667 objects/s</strong>
+            </>
+          </div>
+          <div>
+            <>
+              <span>{isZh ? "连续压力" : "stress rounds"}</span>
+              <strong>c=64 · 3 rounds · 49,367-51,854 objects/s</strong>
+            </>
+          </div>
+          <div>
+            <>
+              <span>{isZh ? "输出格式" : "output formats"}</span>
+              <strong>{s3BenchmarkEvidence.outputs}</strong>
+            </>
+          </div>
+          <div>
+            <>
+              <span>{isZh ? "客户端" : "client"}</span>
+              <strong>{s3BenchmarkEvidence.environment}</strong>
+            </>
+          </div>
+        </div>
       </div>
-      <div class="artifact-table benchmark-table" aria-label="Benchmark report">
-        <div><span>{isZh ? "并发矩阵" : "parallel matrix"}</span><strong>18.29s-20.88s · 47,906-54,667 objects/s</strong></div>
-        <div><span>{isZh ? "连续压力" : "stress rounds"}</span><strong>c=64 · 3 rounds · 49,367-51,854 objects/s</strong></div>
-        <div><span>{isZh ? "输出格式" : "output formats"}</span><strong>{s3BenchmarkEvidence.outputs}</strong></div>
-        <div><span>{isZh ? "客户端" : "client"}</span><strong>{s3BenchmarkEvidence.environment}</strong></div>
-      </div>
-    </div>
-  </section>
-)}
+    </section>
+  )
+}
 
-{product.role === "diagnosis" && (
-  <section id="inside" class="inside-section shell">
-    <div class="inside-copy">
-      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "给 Pi 补上存储诊断能力" : "Turn Pi into a storage diagnosis agent"}</h2>
-      <p>{isZh ? "StorageOps 不是一组排查说明，而是一套给 Pi 安装的诊断能力：对象存储 skills、extension tools、helper scripts 和 eval cases。" : "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures."}</p>
-    </div>
-    <div class="inside-workbench agent-evidence-panel" aria-label="StorageOps skills and tools summary">
-      <div class="workbench-top">
-        <span>pi extension: storageops</span>
-        <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
+{
+  product.role === "diagnosis" && (
+    <section id="inside" class="inside-section shell">
+      <div class="inside-copy">
+        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+        <h2>{isZh ? "让 Pi 会诊断对象存储问题" : "Turn Pi into a storage diagnosis agent"}</h2>
+        <p>
+          {isZh
+            ? "StorageOps 不是一组排查说明，而是一套给 Pi 安装的能力：对象存储诊断技能、扩展工具、确定性脚本和回归用例。"
+            : "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures."}
+        </p>
       </div>
-      <div class="agent-evidence-grid">
-        <div><span>01</span><strong>{isZh ? "15 个诊断 skills" : "15 diagnostic skills"}</strong><p>{isZh ? "按鉴权、签名、限流、一致性、迁移、日志等对象存储领域组织。" : "Organized around auth, signing, throttling, consistency, migration, logs, and other storage domains."}</p></div>
-        <div><span>02</span><strong>{isZh ? "4 个 Pi tools" : "4 Pi tools"}</strong><p>{isZh ? "detect_domain、scan_secrets、search_memory、capture_http_trace 负责路由和取证。" : "detect_domain, scan_secrets, search_memory, and capture_http_trace route and gather evidence."}</p></div>
-        <div><span>03</span><strong>{isZh ? "确定性 helpers" : "deterministic helpers"}</strong><p>{isZh ? "检查 SigV4、ETag、payload hash、限流、访问日志和 endpoint 可达性。" : "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability."}</p></div>
-        <div><span>04</span><strong>{isZh ? "eval cases" : "eval cases"}</strong><p>{isZh ? "用 golden cases 约束 agent 行为，避免每次修改后诊断口径漂移。" : "Golden cases keep agent behavior stable as skills and tools change."}</p></div>
+      <div class="inside-workbench agent-evidence-panel" aria-label="StorageOps skills and tools summary">
+        <div class="workbench-top">
+          <span>pi extension: storageops</span>
+          <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
+        </div>
+        <div class="agent-evidence-grid">
+          <div>
+            <>
+              <span>01</span>
+              <strong>{isZh ? "15 个诊断技能" : "15 diagnostic skills"}</strong>
+              <p>
+                {isZh
+                  ? "按鉴权、签名、限流、一致性、迁移、日志等对象存储领域组织。"
+                  : "Organized around auth, signing, throttling, consistency, migration, logs, and other storage domains."}
+              </p>
+            </>
+          </div>
+          <div>
+            <>
+              <span>02</span>
+              <strong>{isZh ? "4 个 Pi 工具" : "4 Pi tools"}</strong>
+              <p>
+                {isZh
+                  ? "detect_domain、scan_secrets、search_memory、capture_http_trace 负责路由和取证。"
+                  : "detect_domain, scan_secrets, search_memory, and capture_http_trace route and gather evidence."}
+              </p>
+            </>
+          </div>
+          <div>
+            <>
+              <span>03</span>
+              <strong>{isZh ? "确定性脚本" : "deterministic helpers"}</strong>
+              <p>
+                {isZh
+                  ? "检查 SigV4、ETag、payload hash、限流、访问日志和 endpoint 可达性。"
+                  : "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability."}
+              </p>
+            </>
+          </div>
+          <div>
+            <>
+              <span>04</span>
+              <strong>{isZh ? "回归用例" : "eval cases"}</strong>
+              <p>
+                {isZh
+                  ? "用 golden cases 约束 agent 行为，避免每次修改后诊断口径漂移。"
+                  : "Golden cases keep agent behavior stable as skills and tools change."}
+              </p>
+            </>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-)}
+    </section>
+  )
+}
 
-{product.role === "time" && (
-  <section id="inside" class="inside-section shell">
-    <div class="inside-copy">
-      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "查时间应该很短" : "Time, checked quickly"}</h2>
-      <p>{isZh ? "世界时钟不是排期系统。它是一个快速上下文工具：打开弹窗，看一眼城市时间、工作时段和日期，然后回到当前任务。" : "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task."}</p>
-    </div>
-  </section>
-)}
+{
+  product.role === "time" && (
+    <section id="inside" class="inside-section shell">
+      <div class="inside-copy">
+        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+        <h2>{isZh ? "查时间应该很短" : "Time, checked quickly"}</h2>
+        <p>
+          {isZh
+            ? "世界时钟不是排期系统。它是一个快速上下文工具：打开弹窗，看一眼城市时间、工作时段和日期，然后回到当前任务。"
+            : "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task."}
+        </p>
+      </div>
+    </section>
+  )
+}
 
-{product.role === "ratings" && (
-  <section id="inside" class="inside-section shell">
-    <div class="inside-copy">
-      <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-      <h2>{isZh ? "不离开豆瓣，对照评分" : "Ratings without leaving Douban"}</h2>
-      <p>{isZh ? "豆瓣电影评分助手只做补充上下文：匹配到影片时，把 IMDb、Rotten Tomatoes 和 Metacritic 放进豆瓣详情页，原来的阅读节奏不变。" : "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading."}</p>
-    </div>
-  </section>
-)}
+{
+  product.role === "ratings" && (
+    <section id="inside" class="inside-section shell">
+      <div class="inside-copy">
+        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
+        <h2>{isZh ? "不离开豆瓣，对照评分" : "Ratings without leaving Douban"}</h2>
+        <p>
+          {isZh
+            ? "豆瓣电影评分助手只做补充上下文：匹配到影片时，把 IMDb、Rotten Tomatoes 和 Metacritic 放进豆瓣详情页，原来的阅读节奏不变。"
+            : "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading."}
+        </p>
+      </div>
+    </section>
+  )
+}
