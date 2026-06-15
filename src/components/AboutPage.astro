@@ -11,9 +11,9 @@ const copy = ui[locale];
 const isZh = locale === "zh";
 const productGroups = isZh
   ? [
-      ["对象存储", "先把大桶列清楚，再把两个 bucket 的差异算清楚；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
-      ["浏览器扩展", "世界时钟和豆瓣评分助手都很小：不做平台，不抢主流程，只把当前页面缺的一点信息补上。"],
-      ["做事方式", "偏向可解释、可继续处理的工具。命令要清楚，输出要能接 DuckDB、pandas、日志或下一步排查。"],
+      ["对象存储", "先把大桶列清楚，再把两个 bucket 的差异算清；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
+      ["浏览器扩展", "世界时钟和豆瓣评分助手都很小：不做平台，不抢流程，只补当前页面缺的一点信息。"],
+      ["做事方式", "命令要清楚，输出要能继续处理，最好能接到 DuckDB、pandas、日志或下一步排查。"],
     ]
   : [
       ["Object storage", "List the bucket, compare object state, then use Pi and HTTP traces when a failure needs diagnosis."],
@@ -62,13 +62,13 @@ const productGroups = isZh
       </a>
       <a class="about-product-card primary" href={pathFor(locale, "storageops")}>
         <span>StorageOps</span>
-        <strong>{isZh ? "给 Pi 用的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
+        <strong>{isZh ? "Pi 的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
         <p>{products.storageops.locales[locale].description}</p>
       </a>
       <a class="about-product-card" href="https://github.com/hxddh/https-traffic-inspector">
         <span>https-traffic-inspector</span>
         <strong>{isZh ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection"}</strong>
-        <p>{isZh ? "当 SDK 或 CLI 把细节藏起来，用它查看真实 HTTP 请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
+        <p>{isZh ? "当 SDK 或 CLI 把细节藏起来，用它看真实请求、响应、重试和签名上下文。" : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."}</p>
       </a>
       {aboutProducts.filter((slug) => slug === "world-clock" || slug === "douban-movie-rating").map((slug) => (
         <a class="about-product-card" href={pathFor(locale, slug)}>

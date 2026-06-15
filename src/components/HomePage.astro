@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { homeProductLines, pathFor, products, ui, type Locale, type ProductSlug } from "../lib/site";
+import { homeProductLines, pathFor, productEvidence, products, ui, type Locale, type ProductSlug } from "../lib/site";
 
 interface Props {
   locale: Locale;
@@ -16,13 +16,14 @@ type ProductLineItem = {
 const { locale } = Astro.props;
 const copy = ui[locale];
 const productLines = homeProductLines[locale];
+const evidenceCards = productEvidence(locale);
 const itemName = (item: ProductLineItem) => item.slug ? products[item.slug].locales[locale].title : item.name;
 const itemHref = (item: ProductLineItem) => item.slug ? pathFor(locale, item.slug) : item.href;
 const storageFlow = locale === "zh"
   ? [
-      ["01", "List / Diff", "s3-turbo-list", "高性能列举大型 S3 兼容桶，对比两个 bucket，并写出带 DiffFlag 的 Parquet。", pathFor(locale, "s3-turbo-list")],
-      ["02", "Agent", "StorageOps", "给 Pi 安装对象存储诊断 skills、extension tools、helper scripts 和 eval cases。", pathFor(locale, "storageops")],
-      ["03", "下钻", "httpmon", "当 SDK 或 CLI 隐藏细节时，捕获真实 HTTP 请求、响应、重试和签名上下文。", "https://github.com/hxddh/https-traffic-inspector"],
+      ["01", "List / Diff", "s3-turbo-list", "并发列举大型 S3 兼容桶，对比两个 bucket，输出可继续分析的 Parquet。", pathFor(locale, "s3-turbo-list")],
+      ["02", "Agent", "StorageOps", "给 Pi 安装对象存储诊断 skills、tools、helpers 和 eval cases。", pathFor(locale, "storageops")],
+      ["03", "Trace", "httpmon", "当 SDK 或 CLI 把细节藏起来，捕获真实 HTTP 请求、重试和签名上下文。", "https://github.com/hxddh/https-traffic-inspector"],
     ]
   : [
       ["01", "List / Diff", "s3-turbo-list", "List large S3-compatible buckets fast, diff two buckets, and write Parquet rows with DiffFlag.", pathFor(locale, "s3-turbo-list")],
@@ -37,39 +38,6 @@ const browserTools = locale === "zh"
   : [
       ["World Clock", "Check city time quickly without opening a calendar or starting a scheduling workflow.", pathFor(locale, "world-clock")],
       ["Douban Movie Rating Assistant", "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.", pathFor(locale, "douban-movie-rating")],
-    ];
-const evidenceCards = locale === "zh"
-  ? [
-      {
-        label: "s3-turbo-list benchmark",
-        title: "100 万对象，最高 54,667 objects/s",
-        body: "v0.5.0 在 ECS 2 vCPU / 3.4 GiB RAM 上完成测试：并发扫描稳定在 48k-55k objects/s，单段吞吐较 v0.4.0 提升 18.8%。",
-        href: pathFor(locale, "s3-turbo-list"),
-        stats: ["1,000,078 objects", "Parquet zstd 3.0 MB", "checkpoint / resume"],
-      },
-      {
-        label: "StorageOps agent package",
-        title: "skills、tools、helpers、evals",
-        body: "StorageOps 给 Pi 安装对象存储诊断能力：15 个诊断 skills、4 个 Pi extension tools、确定性 helper scripts，以及 golden-case evals。",
-        href: pathFor(locale, "storageops"),
-        stats: ["15 diagnostic skills", "4 Pi tools", "golden-case evals"],
-      },
-    ]
-  : [
-      {
-        label: "s3-turbo-list benchmark",
-        title: "1M objects, up to 54,667 objects/s",
-        body: "v0.5.0 measured on ECS 2 vCPU / 3.4 GiB RAM: parallel scans hold around 48k-55k objects/s, with single-segment throughput up 18.8% from v0.4.0.",
-        href: pathFor(locale, "s3-turbo-list"),
-        stats: ["1,000,078 objects", "Parquet zstd 3.0 MB", "checkpoint / resume"],
-      },
-      {
-        label: "StorageOps agent package",
-        title: "Skills, tools, helpers, evals",
-        body: "StorageOps installs object-storage diagnosis into Pi: 15 diagnostic skills, 4 Pi extension tools, deterministic helper scripts, and golden-case evals.",
-        href: pathFor(locale, "storageops"),
-        stats: ["15 diagnostic skills", "4 Pi tools", "golden-case evals"],
-      },
     ];
 ---
 
@@ -116,7 +84,7 @@ const evidenceCards = locale === "zh"
     <div class="home-evidence-heading">
       <p class="section-kicker">{locale === "zh" ? "主产品证据" : "Product evidence"}</p>
       <h2>{locale === "zh" ? "先看事实，再看功能" : "Evidence before features"}</h2>
-      <p>{locale === "zh" ? "两个主产品都尽量用可检查的输出说明自己：一个给出压测数据，一个给出 agent package 的组成。" : "The two main products lead with checkable evidence: one shows benchmark data, the other shows the agent package structure."}</p>
+      <p>{locale === "zh" ? "主产品先给可检查的证据：一个有压测结果，一个说明 agent package 到底装了什么。" : "The main products lead with checkable evidence: one shows benchmark data, the other shows what the agent package installs."}</p>
     </div>
     <div class="home-evidence-grid">
       {evidenceCards.map((card) => (
@@ -129,19 +97,6 @@ const evidenceCards = locale === "zh"
           </div>
         </a>
       ))}
-    </div>
-  </section>
-
-  <section class="home-principle shell">
-    <div>
-      <div>
-        <p class="section-kicker">{copy.thesisLabel}</p>
-        <h2>{copy.thesisTitle}</h2>
-      </div>
-      <p class="prose">{copy.thesisBody}</p>
-    </div>
-    <div class="home-proof-list" aria-label={copy.thesisLabel}>
-      {copy.proofItems.map((item) => <span>{item}</span>)}
     </div>
   </section>
 
@@ -164,7 +119,7 @@ const evidenceCards = locale === "zh"
     <div class="browser-band-copy">
       <p class="section-kicker">{copy.browserLine}</p>
       <h2>{copy.browserTitle}</h2>
-      <p>{locale === "zh" ? "这两件工具不追求做大，只把一个浏览器里的小问题处理干净：一个看时间，一个补评分。" : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."}</p>
+      <p>{locale === "zh" ? "这两件工具不做平台，只解决一个浏览器里的小问题：一个看时间，一个补评分。" : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."}</p>
     </div>
     <div class="browser-band-body">
       <div class="browser-tool-list">

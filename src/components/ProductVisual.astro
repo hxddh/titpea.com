@@ -1,5 +1,5 @@
 ---
-import type { Product } from "../lib/site";
+import { s3BenchmarkEvidence, type Product } from "../lib/site";
 
 interface Props {
   product: Product;
@@ -8,27 +8,12 @@ interface Props {
 
 const { product, locale = "en" } = Astro.props;
 const isZh = locale === "zh";
-const parallelRuns = [
-  ["c4 T2", 54667, 18.29],
-  ["c8 T4", 54422, 18.38],
-  ["c16 T6", 53961, 18.53],
-  ["c24 T8", 49658, 20.14],
-  ["c32 T10", 49686, 20.13],
-  ["c48 T12", 48511, 20.61],
-  ["c64 T16", 47906, 20.88],
-] as const;
-const stressRuns = [
-  ["R1", 50243],
-  ["R2", 49367],
-  ["R3", 51854],
-] as const;
-const baselineRuns = [
-  ["v0.4.0", 19602],
-  ["v0.5.0", 23277],
-] as const;
+const parallelRuns = s3BenchmarkEvidence.parallelRuns;
+const stressRuns = s3BenchmarkEvidence.stressRuns;
+const baselineRuns = s3BenchmarkEvidence.baselineRuns;
 const maxThroughput = 55000;
-const bestParallel = parallelRuns[0];
-const averageStress = Math.round(stressRuns.reduce((sum, [, throughput]) => sum + throughput, 0) / stressRuns.length);
+const bestParallel = s3BenchmarkEvidence.peak;
+const averageStress = Math.round(stressRuns.reduce((sum, run) => sum + run.throughput, 0) / stressRuns.length);
 ---
 
 {product.visual === "terminal" && (
@@ -36,16 +21,16 @@ const averageStress = Math.round(stressRuns.reduce((sum, [, throughput]) => sum 
     <div class="benchmark-head">
       <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
       <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
-      <p>{isZh ? "ECS 2 vCPU / 3.4 GiB RAM。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。" : "Measured on ECS 2 vCPU / 3.4 GiB RAM. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}</p>
+      <p>{isZh ? "2 vCPU / 3.4 GiB ECS。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。" : "Measured on a 2 vCPU / 3.4 GiB ECS instance. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}</p>
       <div class="benchmark-meta">
-        <span>{isZh ? "1,000,078 对象" : "1,000,078 objects"}</span>
-        <span>680.0 MiB</span>
-        <span>v0.5.0</span>
+        <span>{isZh ? `${s3BenchmarkEvidence.objectCount} 对象` : `${s3BenchmarkEvidence.objectCount} objects`}</span>
+        <span>{s3BenchmarkEvidence.datasetSize}</span>
+        <span>{s3BenchmarkEvidence.version}</span>
       </div>
     </div>
     <div class="benchmark-kpis">
-      <div><span>{isZh ? "最佳并发配置" : "best parallel run"}</span><strong>{bestParallel[0]}</strong><p>{bestParallel[1].toLocaleString()}/s · {bestParallel[2]}s</p></div>
-      <div><span>{isZh ? "单段提升" : "single segment gain"}</span><strong>+18.8%</strong><p>19,602/s → 23,277/s</p></div>
+      <div><span>{isZh ? "最佳并发配置" : "best parallel run"}</span><strong>{bestParallel.label}</strong><p>{bestParallel.throughput.toLocaleString()}/s · {bestParallel.seconds}s</p></div>
+      <div><span>{isZh ? "单段提升" : "single segment gain"}</span><strong>+18.8%</strong><p>{baselineRuns[0].throughput.toLocaleString()}/s → {baselineRuns[1].throughput.toLocaleString()}/s</p></div>
       <div><span>{isZh ? "c64 三轮均值" : "c64 average"}</span><strong>{averageStress.toLocaleString()}/s</strong><p>49,367-51,854/s</p></div>
     </div>
     <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
@@ -53,7 +38,7 @@ const averageStress = Math.round(stressRuns.reduce((sum, [, throughput]) => sum 
         <span>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
         <span>objects/s</span>
       </div>
-      {parallelRuns.map(([label, throughput, seconds]) => (
+      {parallelRuns.map(({ label, throughput, seconds }) => (
         <div class="bar-row">
           <span class="bar-label">{label}</span>
           <div class="bar-track"><span style={`width: ${(throughput / maxThroughput) * 100}%`}></span></div>
@@ -63,8 +48,8 @@ const averageStress = Math.round(stressRuns.reduce((sum, [, throughput]) => sum 
       ))}
     </div>
     <div class="benchmark-footnotes">
-      <span>{isZh ? "输出：Parquet zstd 3.0 MB；NDJSON 76M；TSV 61M" : "Output: Parquet zstd 3.0 MB; NDJSON 76M; TSV 61M"}</span>
-      <span>{isZh ? "运行时分裂：所有并发配置均为 0" : "Runtime splits: 0 across all parallel configurations"}</span>
+      <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>
+      <span>{isZh ? "运行时分裂：所有并发配置均为 0" : `Runtime splits: ${s3BenchmarkEvidence.runtimeSplits}`}</span>
     </div>
   </div>
 )}

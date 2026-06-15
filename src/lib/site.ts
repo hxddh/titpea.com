@@ -6,6 +6,7 @@ export type HeaderNavItem = {
   href: string;
   current?: CurrentPage;
   external?: boolean;
+  showInPrimary?: boolean;
 };
 
 export type HeaderNavGroup = {
@@ -39,6 +40,8 @@ export type ProductCopy = {
   rationaleBody: string[];
   workflowLabel?: string;
   workflow?: Array<[string, string]>;
+  examplesLabel?: string;
+  examples?: Array<[string, string]>;
   casesLabel?: string;
   casesTitle?: string;
   casesBody?: string;
@@ -47,6 +50,86 @@ export type ProductCopy = {
   finalCtaLabel?: string;
   faqLabel?: string;
   faq?: Array<[string, string]>;
+};
+
+export type ProductEvidence = {
+  label: string;
+  title: string;
+  body: string;
+  href: string;
+  stats: string[];
+};
+
+export type S3BenchmarkRun = {
+  label: string;
+  throughput: number;
+  seconds: number;
+};
+
+export type S3BenchmarkEvidence = {
+  objectCount: string;
+  datasetSize: string;
+  environment: string;
+  version: string;
+  peak: S3BenchmarkRun;
+  parallelRuns: S3BenchmarkRun[];
+  stressRuns: Array<{ label: string; throughput: number }>;
+  baselineRuns: Array<{ label: string; throughput: number }>;
+  outputs: string;
+  runtimeSplits: string;
+};
+
+export const s3BenchmarkEvidence: S3BenchmarkEvidence = {
+  objectCount: "1,000,078",
+  datasetSize: "680.0 MiB",
+  environment: "ECS 2 vCPU / 3.4 GiB RAM · Ubuntu 24.04",
+  version: "v0.5.0",
+  peak: { label: "c4 T2", throughput: 54667, seconds: 18.29 },
+  parallelRuns: [
+    { label: "c4 T2", throughput: 54667, seconds: 18.29 },
+    { label: "c8 T4", throughput: 54422, seconds: 18.38 },
+    { label: "c16 T6", throughput: 53961, seconds: 18.53 },
+    { label: "c24 T8", throughput: 49658, seconds: 20.14 },
+    { label: "c32 T10", throughput: 49686, seconds: 20.13 },
+    { label: "c48 T12", throughput: 48511, seconds: 20.61 },
+    { label: "c64 T16", throughput: 47906, seconds: 20.88 },
+  ],
+  stressRuns: [
+    { label: "R1", throughput: 50243 },
+    { label: "R2", throughput: 49367 },
+    { label: "R3", throughput: 51854 },
+  ],
+  baselineRuns: [
+    { label: "v0.4.0", throughput: 19602 },
+    { label: "v0.5.0", throughput: 23277 },
+  ],
+  outputs: "Parquet zstd 3.0 MB · NDJSON 76M · TSV 61M",
+  runtimeSplits: "0 across all parallel configurations",
+};
+
+export const productEvidence = (locale: Locale): ProductEvidence[] => {
+  const isZh = locale === "zh";
+
+  return [
+    {
+      label: "s3-turbo-list benchmark",
+      title: isZh ? "100 万对象，54,667 objects/s" : "1M objects, 54,667 objects/s",
+      body: isZh
+        ? "v0.5.0 在 2 vCPU / 3.4 GiB ECS 上测试。并发扫描稳定在 48k-55k objects/s，结果直接写成 Parquet。"
+        : "v0.5.0 on a 2 vCPU / 3.4 GiB ECS instance. Parallel scans hold 48k-55k objects/s and write analysis-ready Parquet.",
+      href: pathFor(locale, "s3-turbo-list"),
+      stats: [s3BenchmarkEvidence.objectCount, "Parquet zstd 3.0 MB", "checkpoint / resume"],
+    },
+    {
+      label: "StorageOps agent package",
+      title: isZh ? "Pi 的对象存储诊断层" : "The storage diagnosis layer for Pi",
+      body: isZh
+        ? "StorageOps 不是提示词集合，而是给 Pi 装上的 skills、tools、helpers 和 evals，用来约束诊断路径和证据边界。"
+        : "StorageOps is not a prompt pack. It gives Pi skills, tools, helpers, and evals that constrain the diagnostic path and evidence boundary.",
+      href: pathFor(locale, "storageops"),
+      stats: ["15 diagnostic skills", "4 Pi tools", "golden-case evals"],
+    },
+  ];
 };
 
 export type Product = {
@@ -75,8 +158,8 @@ export const ui = {
     },
     language: "中文",
     productIndex: "hxddh / object storage workbench",
-    homeTitle: "S3 toolkit",
-    homeLead: "A compact product line for object storage work: list and diff large buckets, give Pi the skills and tools to diagnose S3-compatible failures, and inspect the HTTP layer when SDKs hide the details.",
+    homeTitle: "S3 operations toolkit",
+    homeLead: "Tools for the first hard parts of object storage work: list large buckets, diff object state, give Pi a diagnosis layer, and inspect HTTP traffic when the SDK hides the clue.",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "About",
@@ -95,10 +178,10 @@ export const ui = {
     aboutTitle: "About",
     aboutDescription: "Personal profile, Chrome extensions, and infrastructure projects by hxddh.",
     aboutHeadline: "Object storage tools",
-    aboutLead: "I build small tools around a narrow set of practical problems: inventory large buckets, compare object state, diagnose S3-compatible failures, and keep browser utilities small enough to stay out of the way.",
+    aboutLead: "I build focused tools for object storage and a few small browser utilities. The common thread is practical: clear commands, inspectable output, and enough evidence to keep debugging honest.",
     productsLabel: "Products and Projects",
     profileLabel: "Profile",
-    profileTitle: "A small product line, not a grab bag",
+    profileTitle: "A narrow product line",
     profileBody: [
       "The storage line stays close to the terminal: s3-turbo-list lists and diffs large S3-compatible buckets; StorageOps gives Pi Agent object-storage diagnostic skills and tools; httpmon exposes command-line HTTP and HTTPS traffic.",
       "The browser line stays small by design: World Clock is a fast timezone popup, and Douban Movie Rating Assistant adds IMDb and Rotten Tomatoes context directly inside Douban pages.",
@@ -118,30 +201,30 @@ export const ui = {
     },
     language: "English",
     productIndex: "hxddh / 对象存储工作台",
-    homeTitle: "S3 运维工具",
-    homeLead: "这里主要放 hxddh 正在维护的对象存储工具：s3-turbo-list 做大桶 list / diff，StorageOps 给 Pi 补上 S3 诊断能力，httpmon 用来看清 CLI 和 SDK 背后的 HTTP 请求。另有两个很小的 Chrome 扩展。",
+    homeTitle: "S3 运维工具集",
+    homeLead: "围绕对象存储最常见的几个难点做工具：列大桶、对比对象差异、让 Pi 参与诊断，以及在 SDK 隐藏细节时看见真实 HTTP 流量。",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "关于",
     featuredLabel: "产品地图",
     storageLine: "存储运维",
-    storageTitle: "List / diff / 诊断",
+    storageTitle: "列举、对比、诊断",
     browserLine: "浏览器工具",
-    browserTitle: "两个小型浏览器工具",
+    browserTitle: "两个轻量浏览器工具",
     thesisLabel: "产品主线",
-    thesisTitle: "主线是对象存储，旁支是浏览器小工具",
+    thesisTitle: "主线是对象存储",
     thesisBody: "s3-turbo-list 负责把对象列出来、把两个桶的差异算清楚；StorageOps 负责让 Pi 按对象存储的 skills 和 tools 做诊断；httpmon 负责在签名、重试、跳转或 provider 行为说不清时，把真实 HTTP 流量拿出来看。两个 Chrome 扩展则更轻，只补一个日常使用的小缺口。",
     flowLabel: "存储运维流",
     flowTitle: "存储运维链路",
     flowBody: "需要快速列一个 bucket 或对比两个 bucket，用 s3-turbo-list；需要 Pi 根据 skills 和 tools 诊断 S3 兼容故障，用 StorageOps；线索藏在 SDK 下面的真实 HTTP 请求和响应里，用 httpmon。",
     proofItems: ["S3 兼容 list/diff", "Pi 诊断 agent", "HTTP 流量检查", "Chrome 商店产品"],
     aboutTitle: "关于",
-    aboutDescription: "hxddh 的个人简介、Chrome 扩展和基础设施项目。",
-    aboutHeadline: "对象存储小工具",
-    aboutLead: "我主要做几件很具体的事：更快列出大桶，更清楚地对比两个 bucket，更容易诊断 S3 兼容故障，也更方便看见命令行工具背后的 HTTP 请求。浏览器扩展只保留一个小而明确的用途。",
-    productsLabel: "产品和项目",
+    aboutDescription: "hxddh 的个人简介、对象存储工具和 Chrome 扩展。",
+    aboutHeadline: "对象存储工具",
+    aboutLead: "我做的东西都比较窄：把大桶列快，把两个 bucket 的差异算清，把 S3 兼容故障拆开看。浏览器扩展也一样，只补一个明确的小缺口。",
+    productsLabel: "产品与项目",
     profileLabel: "简介",
-    profileTitle: "不是随手放在一起的项目",
+    profileTitle: "一条很窄的产品线",
     profileBody: [
       "存储工具线贴近终端和运维现场：s3-turbo-list 用来 list / diff 大型 S3 兼容桶；StorageOps 给 Pi Agent 安装对象存储诊断 skills 和 tools；httpmon 暴露命令行里的 HTTP 和 HTTPS 流量。",
       "浏览器工具线刻意做轻：世界时钟只负责快速看时间，豆瓣电影评分助手只把 IMDb 和 Rotten Tomatoes 的参考评分补到豆瓣页面里。",
@@ -194,12 +277,18 @@ export const products: Record<ProductSlug, Product> = {
           "s3-turbo-list keeps the surface small: list and diff extremely fast, export clean Parquet, and add just enough checkpointing and observability for long operational runs.",
         ],
         workflowLabel: "Workflow",
-        workflow: [
-          ["List", "Scan one bucket recursively with segmented concurrency and write object rows to Parquet or shell-friendly streams."],
-          ["Diff", "Compare source and target buckets and keep every object row annotated with a stable `DiffFlag`."],
-          ["Resume", "Continue interrupted list runs from checkpoint state instead of starting over after a long scan fails."],
-          ["Analyze", "Load Parquet into DuckDB, pandas, or CI checks to count, filter, compare, and report object state."],
-        ],
+	        workflow: [
+	          ["List", "Scan one bucket recursively with segmented concurrency and write object rows to Parquet or shell-friendly streams."],
+	          ["Diff", "Compare source and target buckets and keep every object row annotated with a stable `DiffFlag`."],
+	          ["Resume", "Continue interrupted list runs from checkpoint state instead of starting over after a long scan fails."],
+	          ["Analyze", "Load Parquet into DuckDB, pandas, or CI checks to count, filter, compare, and report object state."],
+	        ],
+	        examplesLabel: "Usage examples",
+	        examples: [
+	          ["Migration baseline", "Inventory the source bucket before migration, inventory the target after sync, then diff both sides into one Parquet file."],
+	          ["Large bucket audit", "Run a segmented list with checkpointing, keep the manifest and trace summary, then query the Parquet output with DuckDB."],
+	          ["Provider check", "Use dry-run, endpoint presets, compat-probe, and trace output before committing a long scan to a new S3-compatible provider."],
+	        ],
         casesLabel: "Compatibility",
         casesTitle: "Real S3-compatible endpoints",
         casesBody: "Endpoint presets, compat-probe, trace output, and validation reports make it easier to understand how each provider behaves before scaling up a scan.",
@@ -243,12 +332,18 @@ export const products: Record<ProductSlug, Product> = {
           "s3-turbo-list 的产品面很小：把 list 和 diff 做快，把结果写干净，再给长任务补上 checkpoint 和必要的可观测性。",
         ],
         workflowLabel: "怎么用",
-        workflow: [
-          ["List", "并发递归扫描一个 bucket，把对象行写入 Parquet，或输出成 shell 友好的流式格式。"],
-          ["Diff", "对比 source 和 target bucket，用稳定的 `DiffFlag` 标记每个对象的差异状态。"],
-          ["Resume", "长时间 list 中断后，从 checkpoint 继续，不必重新扫完整个桶。"],
-          ["Analyze", "用 DuckDB、pandas 或 CI 读取 Parquet，做统计、过滤、对比和报告。"],
-        ],
+	        workflow: [
+	          ["List", "并发递归扫描一个 bucket，把对象行写入 Parquet，或输出成 shell 友好的流式格式。"],
+	          ["Diff", "对比 source 和 target bucket，用稳定的 `DiffFlag` 标记每个对象的差异状态。"],
+	          ["Resume", "长时间 list 中断后，从 checkpoint 继续，不必重新扫完整个桶。"],
+	          ["Analyze", "用 DuckDB、pandas 或 CI 读取 Parquet，做统计、过滤、对比和报告。"],
+	        ],
+	        examplesLabel: "用法示例",
+	        examples: [
+	          ["迁移基线", "迁移前列 source，迁移后列 target，再把两侧 diff 成一份带 DiffFlag 的 Parquet。"],
+	          ["大桶审计", "用分段并发和 checkpoint 跑完整 list，保留 manifest 与 trace summary，再用 DuckDB 查询结果。"],
+	          ["Provider 检查", "接入新的 S3 兼容服务前，先跑 dry-run、endpoint preset、compat-probe 和 trace。"],
+	        ],
         casesLabel: "兼容性",
         casesTitle: "面向真实 S3 兼容 endpoint",
         casesBody: "先用 endpoint preset、compat-probe、trace 和校验报告摸清 provider 行为，再扩大扫描规模。",
@@ -302,12 +397,18 @@ export const products: Record<ProductSlug, Product> = {
           "The product is useful because the agent has a taxonomy, tools, helper scripts, and regression cases. It is not a generic chatbot wrapper around S3 error messages.",
         ],
         workflowLabel: "Workflow",
-        workflow: [
-          ["Invoke Pi", "Run `storageops --print` or start an interactive Pi session with logs, errors, configs, or a short failure description."],
-          ["Route to skills", "`detect_domain` and the skill taxonomy steer Pi toward auth, signing, throttling, consistency, lifecycle, migration, or another storage domain."],
-          ["Use tools", "Pi can scan secrets, search prior sessions, or capture a sanitized HTTP trace through the managed httpmon helper."],
-          ["Diagnose", "The agent returns likely cause, confidence, evidence, next checks, and safe changes grounded in the selected skills and tool output."],
-        ],
+	        workflow: [
+	          ["Invoke Pi", "Run `storageops --print` or start an interactive Pi session with logs, errors, configs, or a short failure description."],
+	          ["Route to skills", "`detect_domain` and the skill taxonomy steer Pi toward auth, signing, throttling, consistency, lifecycle, migration, or another storage domain."],
+	          ["Use tools", "Pi can scan secrets, search prior sessions, or capture a sanitized HTTP trace through the managed httpmon helper."],
+	          ["Diagnose", "The agent returns likely cause, confidence, evidence, next checks, and safe changes grounded in the selected skills and tool output."],
+	        ],
+	        examplesLabel: "Usage examples",
+	        examples: [
+	          ["Signature mismatch", "Route SignatureDoesNotMatch into signing skills, inspect canonical request inputs, and compare provider-specific behavior."],
+	          ["Slow or throttled list", "Use performance and throttling skills with bounded helper output instead of guessing from SDK retries."],
+	          ["Migration drift", "Combine inventory evidence, lifecycle rules, checksum hints, and redacted traces before recommending the next check."],
+	        ],
         casesLabel: "Cases",
         casesTitle: "Object storage diagnosis domains",
         casesBody: "StorageOps is organized around recurring S3-compatible failure domains, with skills and tools that help Pi reason inside each one.",
@@ -351,12 +452,18 @@ export const products: Record<ProductSlug, Product> = {
           "它的价值不在于“把错误丢给模型”，而在于 taxonomy、tools、helper scripts 和 regression cases 共同限定了 agent 的工作方式。",
         ],
         workflowLabel: "怎么用",
-        workflow: [
-          ["启动 Pi", "用 `storageops --print` 或交互式 Pi session 输入日志、错误、配置或简短故障描述。"],
-          ["路由 skills", "`detect_domain` 和 skill taxonomy 把问题导向鉴权、签名、限流、一致性、生命周期、迁移等领域。"],
-          ["调用 tools", "Pi 可以扫描 secrets、搜索历史 session，或通过托管 httpmon helper 捕获脱敏 HTTP trace。"],
-          ["生成诊断", "agent 基于选中的 skills 和 tool output 返回可能原因、置信度、证据、下一步检查和安全修改建议。"],
-        ],
+	        workflow: [
+	          ["启动 Pi", "用 `storageops --print` 或交互式 Pi session 输入日志、错误、配置或简短故障描述。"],
+	          ["路由 skills", "`detect_domain` 和 skill taxonomy 把问题导向鉴权、签名、限流、一致性、生命周期、迁移等领域。"],
+	          ["调用 tools", "Pi 可以扫描 secrets、搜索历史 session，或通过托管 httpmon helper 捕获脱敏 HTTP trace。"],
+	          ["生成诊断", "agent 基于选中的 skills 和 tool output 返回可能原因、置信度、证据、下一步检查和安全修改建议。"],
+	        ],
+	        examplesLabel: "用法示例",
+	        examples: [
+	          ["签名错误", "把 SignatureDoesNotMatch 路由到签名 skills，检查 canonical request 输入，并对照 provider 行为。"],
+	          ["List 变慢或被限流", "用性能和限流 skills 加上 helper 输出判断，而不是只看 SDK 重试日志猜原因。"],
+	          ["迁移差异", "先组合 inventory、生命周期规则、checksum 线索和脱敏 trace，再给下一步检查建议。"],
+	        ],
         casesLabel: "场景",
         casesTitle: "对象存储诊断领域",
         casesBody: "StorageOps 围绕常见 S3 兼容故障领域组织 skills 和 tools，让 Pi 在具体领域内推理，而不是泛泛回答。",
@@ -592,28 +699,28 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
       label: isZh ? "主要页面" : "Main",
       items: [
         { label: isZh ? "首页" : "Home", href: pathFor(locale), current: "home" },
-        { label: isZh ? "关于" : "About", href: pathFor(locale, "about"), current: "about" },
+	        { label: isZh ? "关于" : "About", href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
     {
       label: isZh ? "对象存储" : "Storage",
       items: [
-        { label: "s3-turbo-list", href: pathFor(locale, "s3-turbo-list"), current: "s3-turbo-list" },
-        { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops" },
+	        { label: "s3-turbo-list", href: pathFor(locale, "s3-turbo-list"), current: "s3-turbo-list", showInPrimary: true },
+	        { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops", showInPrimary: true },
         { label: "httpmon", href: "https://github.com/hxddh/https-traffic-inspector", external: true },
       ],
     },
     {
       label: isZh ? "浏览器工具" : "Browser",
       items: [
-        { label: isZh ? "世界时钟" : "World Clock", href: pathFor(locale, "world-clock"), current: "world-clock" },
-        { label: isZh ? "豆瓣评分" : "Douban", href: pathFor(locale, "douban-movie-rating"), current: "douban" },
+	        { label: isZh ? "世界时钟" : "World Clock", href: pathFor(locale, "world-clock"), current: "world-clock", showInPrimary: true },
+	        { label: isZh ? "豆瓣评分" : "Douban", href: pathFor(locale, "douban-movie-rating"), current: "douban", showInPrimary: true },
       ],
     },
     {
       label: isZh ? "外部链接" : "External",
       items: [
-        { label: "GitHub", href: "https://github.com/hxddh", external: true },
+	        { label: "GitHub", href: "https://github.com/hxddh", external: true, showInPrimary: true },
       ],
     },
   ];
@@ -622,5 +729,5 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
 export function primaryNavItems(locale: Locale): HeaderNavItem[] {
   return headerNavGroups(locale)
     .flatMap((group) => group.items)
-    .filter((item) => item.current !== "home" && item.label !== "httpmon");
+    .filter((item) => item.showInPrimary);
 }

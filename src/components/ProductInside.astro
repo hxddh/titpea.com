@@ -1,5 +1,5 @@
 ---
-import type { Locale, Product } from "../lib/site";
+import { s3BenchmarkEvidence, type Locale, type Product } from "../lib/site";
 
 interface Props {
   locale: Locale;
@@ -19,19 +19,19 @@ const isZh = locale === "zh";
     </div>
     <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
       <div class="workbench-top">
-        <span>s3-turbo-list v0.5.0</span>
+        <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
         <strong>{isZh ? "压测摘要" : "benchmark summary"}</strong>
       </div>
       <div class="inventory-grid benchmark-metrics">
-        <div class="metric-tile strong"><span>{isZh ? "对象数" : "objects"}</span><strong>1,000,078</strong><p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p></div>
-        <div class="metric-tile"><span>{isZh ? "最高吞吐" : "peak throughput"}</span><strong>54,667/s</strong><p>{isZh ? "c=4, T=2 自动发现" : "c=4, T=2 with auto discovery"}</p></div>
+        <div class="metric-tile strong"><span>{isZh ? "对象数" : "objects"}</span><strong>{s3BenchmarkEvidence.objectCount}</strong><p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p></div>
+        <div class="metric-tile"><span>{isZh ? "最高吞吐" : "peak throughput"}</span><strong>{s3BenchmarkEvidence.peak.throughput.toLocaleString()}/s</strong><p>{isZh ? `${s3BenchmarkEvidence.peak.label} 自动发现` : `${s3BenchmarkEvidence.peak.label} with auto discovery`}</p></div>
         <div class="metric-tile"><span>{isZh ? "单段提升" : "single segment"}</span><strong>+18.8%</strong><p>{isZh ? "v0.5.0 相比 v0.4.0" : "v0.5.0 over v0.4.0"}</p></div>
       </div>
       <div class="artifact-table benchmark-table" aria-label="Benchmark report">
         <div><span>{isZh ? "并发矩阵" : "parallel matrix"}</span><strong>18.29s-20.88s · 47,906-54,667 objects/s</strong></div>
         <div><span>{isZh ? "连续压力" : "stress rounds"}</span><strong>c=64 · 3 rounds · 49,367-51,854 objects/s</strong></div>
-        <div><span>{isZh ? "输出格式" : "output formats"}</span><strong>Parquet zstd 3.0 MB · NDJSON 76M · TSV 61M</strong></div>
-        <div><span>{isZh ? "客户端" : "client"}</span><strong>ECS 2 vCPU · 3.4 GiB RAM · Ubuntu 24.04</strong></div>
+        <div><span>{isZh ? "输出格式" : "output formats"}</span><strong>{s3BenchmarkEvidence.outputs}</strong></div>
+        <div><span>{isZh ? "客户端" : "client"}</span><strong>{s3BenchmarkEvidence.environment}</strong></div>
       </div>
     </div>
   </section>

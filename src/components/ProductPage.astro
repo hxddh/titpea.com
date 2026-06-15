@@ -17,6 +17,7 @@ const navItems = [
   ["features", copy.featuresLabel],
   copy.workflow && copy.workflowLabel ? ["workflow", copy.workflowLabel] : null,
   copy.cases && copy.casesLabel ? ["cases", copy.casesLabel] : null,
+  copy.examples && copy.examplesLabel ? ["examples", copy.examplesLabel] : null,
   copy.faq && copy.faqLabel ? ["faq", copy.faqLabel] : null,
 ].filter(Boolean) as Array<[string, string]>;
 ---
@@ -117,6 +118,20 @@ const navItems = [
           </div>
           {copy.casesBody && <p class="prose">{copy.casesBody}</p>}
         </div>
+      </div>
+    </section>
+  )}
+
+  {copy.examples && copy.examplesLabel && (
+    <section id="examples" class="shell content-section examples-section">
+      <p class="section-kicker">{copy.examplesLabel}</p>
+      <div class="examples-list">
+        {copy.examples.map(([title, body]) => (
+          <article>
+            <h2>{title}</h2>
+            <p>{body}</p>
+          </article>
+        ))}
       </div>
     </section>
   )}

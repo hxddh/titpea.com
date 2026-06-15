@@ -1267,13 +1267,7 @@ h2 {
 }
 
 @media (max-width: 860px) {
-  .site-header,
   .site-footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .header-actions {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -1521,14 +1515,14 @@ h1 {
   margin-bottom: 22px;
   font-size: clamp(3rem, 8vw, 5.25rem);
   line-height: 0.94;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   font-weight: 650;
 }
 
 h2 {
   font-size: clamp(2rem, 4.2vw, 3rem);
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-weight: 650;
 }
 
@@ -1590,7 +1584,7 @@ h2 {
 }
 
 .home-hero-modern h1 {
-  max-width: 11ch;
+  max-width: 22ch;
   font-size: clamp(3.25rem, 7.6vw, 5.6rem);
   line-height: 0.94;
 }
@@ -1606,7 +1600,7 @@ h2 {
 
 .map-intro h2 {
   font-size: 22px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .flow-card > span {
@@ -1634,7 +1628,7 @@ h2 {
 }
 
 .product-line h2 {
-  max-width: 10ch;
+  max-width: 22ch;
   font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
@@ -1672,7 +1666,7 @@ h2 {
 }
 
 .about-hero h1 {
-  max-width: 11ch;
+  max-width: 22ch;
   font-size: clamp(3rem, 7vw, 5.1rem);
 }
 
@@ -1687,7 +1681,7 @@ h2 {
   margin-bottom: 18px;
   font-size: clamp(2.35rem, 5vw, 3.28rem);
   line-height: 1.04;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   font-weight: 650;
 }
 
@@ -1868,7 +1862,7 @@ h2 {
   margin-bottom: 12px;
   font-size: 21px;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .positioning-card p,
@@ -1940,7 +1934,7 @@ h2 {
   color: #111827;
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .final-cta {
@@ -1964,28 +1958,19 @@ h2 {
 @media (max-width: 900px) {
   .site-header {
     height: auto;
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
     gap: 10px;
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
   .header-actions {
-    width: 100%;
+    width: auto;
     align-items: center;
     flex-direction: row;
     gap: 12px;
     min-width: 0;
-  }
-
-  .nav {
-    flex: 1 1 auto;
-    width: auto;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    white-space: nowrap;
   }
 
   .language-switch {
@@ -2386,7 +2371,7 @@ h2 {
   color: #f8fafc;
   font-size: 56px;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .clock-list {
@@ -2562,7 +2547,7 @@ h2 {
 }
 
 .home-workbench-copy h1 {
-  max-width: 12ch;
+  max-width: 22ch;
   font-size: clamp(3.6rem, 8vw, 6.3rem);
 }
 
@@ -2591,10 +2576,10 @@ h2 {
 }
 
 .workbench-panel-head h2 {
-  max-width: 16ch;
+  max-width: 24ch;
   margin: 0;
   font-size: 30px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .workbench-panel-head p:not(.section-kicker) {
@@ -2645,7 +2630,7 @@ h2 {
   margin: 0 0 6px;
   font-size: 22px;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .workbench-flow-card p,
@@ -2679,7 +2664,7 @@ h2 {
 .catalog-heading h2,
 .about-section-heading h2,
 .about-principles h2 {
-  max-width: 14ch;
+  max-width: 24ch;
 }
 
 .home-proof-list {
@@ -2828,7 +2813,7 @@ h2 {
 }
 
 .about-redesign-copy h1 {
-  max-width: 12ch;
+  max-width: 22ch;
 }
 
 .about-redesign-copy .lead {
@@ -2871,7 +2856,7 @@ h2 {
   color: #111827;
   font-size: 22px;
   line-height: 1.16;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .about-product-card.primary {
@@ -2903,7 +2888,7 @@ h2 {
   }
 
   .home-workbench-copy h1 {
-    max-width: 12ch;
+    max-width: 20ch;
   }
 }
 
@@ -3385,10 +3370,6 @@ h2 {
   padding-top: 76px;
 }
 
-.product-anchor-nav {
-  display: none;
-}
-
 .product-hero + .proof-strip {
   justify-content: center;
   border: 0;
@@ -3411,7 +3392,7 @@ h2 {
 }
 
 .inside-copy h2 {
-  max-width: 16ch;
+  max-width: 22ch;
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 680;
 }
@@ -3503,7 +3484,7 @@ h2 {
 
 .product-story h2,
 #cases h2 {
-  max-width: 16ch;
+  max-width: 22ch;
   font-size: clamp(2.1rem, 4vw, 2.7rem);
   line-height: 1.08;
 }
@@ -3566,7 +3547,7 @@ h2 {
   }
 
   .product-launch-hero h1 {
-    max-width: 14ch;
+    max-width: 18ch;
     font-size: clamp(2.35rem, 11vw, 3rem);
   }
 
@@ -3669,8 +3650,7 @@ h2 {
   }
 }
 
-/* Final order-sensitive corrections. Keep this at EOF so older theme layers
-   cannot pull the site back into the heavier previous treatment. */
+/* vNext site system: concentrated layout rules for the current design. */
 .product-launch-hero,
 .home-workbench-hero,
 .about-redesign-hero {
@@ -3691,11 +3671,11 @@ h2 {
 .product-launch-hero h1,
 .home-workbench-hero h1,
 .about-redesign-hero h1 {
-  max-width: 15ch;
+  max-width: 22ch;
   margin-inline: auto;
   font-size: clamp(2.25rem, 5.1vw, 3.5rem);
   line-height: 1.04;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   text-align: center;
 }
 
@@ -3730,10 +3710,6 @@ h2 {
   background: #111827;
 }
 
-.product-anchor-nav {
-  display: none;
-}
-
 .inside-section {
   grid-template-columns: 1fr;
   gap: 34px;
@@ -3764,6 +3740,37 @@ h2 {
   margin-bottom: 10px;
   font-size: 17px;
   line-height: 1.25;
+}
+
+.examples-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.examples-list article {
+  min-height: 190px;
+  padding: 28px;
+  background: #ffffff;
+}
+
+.examples-list h2 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.examples-list p {
+  margin: 0;
+  color: #5f6877;
+  font-size: 15px;
+  line-height: 1.58;
 }
 
 .proof-strip,
@@ -3904,7 +3911,7 @@ h2 {
   margin: 0 0 14px;
   font-size: clamp(1.75rem, 3.4vw, 2.35rem);
   line-height: 1.08;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .home-evidence-heading p:not(.section-kicker) {
@@ -3941,7 +3948,7 @@ h2 {
   color: #111827;
   font-size: 24px;
   line-height: 1.12;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .home-evidence-card p {
@@ -3969,10 +3976,17 @@ h2 {
   font-weight: 500;
 }
 
-@media (max-width: 820px) {
+@media (min-width: 901px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
   .site-header {
     align-items: center;
     flex-direction: row;
+    width: min(1080px, calc(100% - 32px));
   }
 
   .header-actions {
@@ -4000,7 +4014,7 @@ h2 {
   .product-launch-hero h1,
   .home-workbench-hero h1,
   .about-redesign-hero h1 {
-    max-width: 13ch;
+    max-width: 18ch;
     font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
@@ -4011,7 +4025,8 @@ h2 {
 
   .positioning-grid,
   .feature-grid,
-  .workflow-grid {
+  .workflow-grid,
+  .examples-list {
     grid-template-columns: 1fr;
   }
 
