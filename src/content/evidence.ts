@@ -35,8 +35,6 @@ export const s3BenchmarkEvidence: S3BenchmarkEvidence = {
   parallelRuns: [
     { label: "single stream", throughput: 18182, seconds: 55 },
     { label: "-c 8 automatic", throughput: 52632, seconds: 19 },
-    { label: "startup discovery", throughput: 52632, seconds: 19 },
-    { label: "runtime split", throughput: 52632, seconds: 19 },
   ],
   headlineRuns: [
     { label: "benchmark", value: "1M objects", detail: "Alibaba Cloud OSS third-party run" },

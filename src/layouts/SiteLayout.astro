@@ -8,9 +8,11 @@ interface Props {
   description: string;
   current?: CurrentPage;
   locale?: Locale;
+  image?: string;
+  structuredData?: Record<string, unknown>;
 }
 
-const { title, description, current = "home", locale = "en" } = Astro.props;
+const { title, description, current = "home", locale = "en", image, structuredData } = Astro.props;
 const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
 const isZh = locale === "zh";
 const htmlLang = isZh ? "zh-CN" : "en";
@@ -24,6 +26,7 @@ const chineseUrl = `https://titpea.com${chineseHref}`;
 const alternateLocale = isZh ? "en" : "zh";
 const alternateLabel = isZh ? "English" : "中文";
 const alternateHref = isZh ? englishHref : chineseHref;
+const imageUrl = image ? `https://titpea.com${image}` : "https://titpea.com/favicon.svg";
 ---
 
 <!doctype html>
@@ -37,6 +40,11 @@ const alternateHref = isZh ? englishHref : chineseHref;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <meta name="theme-color" content="#f9fafc" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={englishUrl} />
@@ -44,6 +52,7 @@ const alternateHref = isZh ? englishHref : chineseHref;
     <link rel="alternate" hreflang="x-default" href={englishUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
     <title>{siteTitle}</title>
   </head>
   <body>

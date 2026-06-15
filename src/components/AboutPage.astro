@@ -1,7 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pathFor, type Locale } from "../lib/site";
-import { ui } from "../content/home";
+import { aboutProductGroups, ui } from "../content/home";
 import { aboutProducts, products } from "../content/products";
 
 interface Props {
@@ -11,26 +11,7 @@ interface Props {
 const { locale } = Astro.props;
 const copy = ui[locale];
 const isZh = locale === "zh";
-const productGroups = isZh
-  ? [
-      ["对象存储", "先把大桶自动列清楚，再把两个 bucket 的差异算清；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
-      ["浏览器扩展", "世界时钟和豆瓣评分助手都很小：不做平台，不抢流程，只补当前页面缺的一点信息。"],
-      ["做事方式", "命令要清楚，输出要能继续处理，最好能接到 DuckDB、pandas、日志或下一步排查。"],
-    ]
-  : [
-      [
-        "Object storage",
-        "Inventory the bucket automatically, compare object state, then use Pi and HTTP traces when a failure needs diagnosis.",
-      ],
-      [
-        "Browser extensions",
-        "World Clock and Douban Movie Rating Assistant stay small: no platform ambition, no workflow takeover.",
-      ],
-      [
-        "Working style",
-        "The bias is toward explainable tools with clear commands and outputs that can move into DuckDB, pandas, logs, or the next diagnostic step.",
-      ],
-    ];
+const productGroups = aboutProductGroups[locale];
 ---
 
 <SiteLayout title={copy.aboutTitle} description={copy.aboutDescription} current="about" locale={locale}>
@@ -49,10 +30,10 @@ const productGroups = isZh
     </div>
     <aside class="about-system-panel" aria-label={isZh ? "产品线" : "Product lines"}>
       {
-        productGroups.map(([title, body]) => (
+        productGroups.map((group) => (
           <div>
-            <span>{title}</span>
-            <p>{body}</p>
+            <span>{group.title}</span>
+            <p>{group.text}</p>
           </div>
         ))
       }

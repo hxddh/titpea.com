@@ -335,6 +335,13 @@
   padding: 94px 0;
 }
 
+.inside-section,
+.content-section,
+.product-story,
+#cases {
+  scroll-margin-top: 28px;
+}
+
 .inside-section {
   display: grid;
   grid-template-columns: 1fr;
@@ -385,6 +392,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.automation-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .positioning-card,
 .features-card,
 .workflow-step,
@@ -400,6 +411,7 @@
 .workflow-step h2,
 .automation-card h2,
 .examples-card h2 {
+  max-width: 28ch;
   margin: 0 0 10px;
   font-size: 17px;
   line-height: 1.28;

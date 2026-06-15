@@ -16,14 +16,66 @@ interface Props {
 
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
-const sections = productSections(locale, copy);
+const sections = productSections(locale, copy, product);
+const navLabel = (id: string, label: string) => {
+  const labels = {
+    en: {
+      inside: "Overview",
+      positioning: "Fit",
+      features: "Capabilities",
+      workflow: "Flow",
+      automation: "Automation",
+      cases: "Compatibility",
+      faq: "FAQ",
+      story: "Details",
+      examples: "Examples",
+    },
+    zh: {
+      inside: "概览",
+      positioning: "定位",
+      features: "能力",
+      workflow: "流程",
+      automation: "自动化",
+      cases: "兼容性",
+      faq: "FAQ",
+      story: "细节",
+      examples: "示例",
+    },
+  } as const;
+
+  return labels[locale][id as keyof (typeof labels)["en"]] ?? label;
+};
 const navItems = [
-  ["inside", locale === "zh" ? "内部视角" : "Inside"],
-  ...sections.map((section) => [section.id, section.label]),
+  ["inside", navLabel("inside", "Inside")],
+  ...sections.map((section) => [section.id, navLabel(section.id, section.label)]),
 ];
+const showSectionIndex = product.category === "storage";
+const socialImage =
+  product.visual === "clock"
+    ? "/assets/world-clock-dark.png"
+    : product.visual === "rating"
+      ? "/assets/douban-rating-assistant.png"
+      : "/favicon.svg";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: copy.title,
+  description: copy.description,
+  applicationCategory: product.category === "browser" ? "BrowserApplication" : "DeveloperApplication",
+  operatingSystem: product.category === "browser" ? "Chrome" : "Cross-platform",
+  url: `https://titpea.com${locale === "zh" ? `/zh/${product.slug}/` : `/${product.slug}/`}`,
+  sameAs: copy.primaryCta.href,
+};
 ---
 
-<SiteLayout title={copy.title} description={copy.description} current={product.current} locale={locale}>
+<SiteLayout
+  title={copy.title}
+  description={copy.description}
+  current={product.current}
+  locale={locale}
+  image={socialImage}
+  structuredData={structuredData}
+>
   <section class="product-hero product-launch-hero shell">
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
@@ -44,9 +96,18 @@ const navItems = [
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  <nav class="product-anchor-nav shell" aria-label={locale === "zh" ? "页面导航" : "Page navigation"}>
-    {navItems.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
-  </nav>
+  {
+    showSectionIndex && (
+      <nav class="product-section-index shell" aria-label={locale === "zh" ? "页面目录" : "Page index"}>
+        <span>{locale === "zh" ? "阅读路径" : "Read this page"}</span>
+        <div>
+          {navItems.map(([id, label]) => (
+            <a href={`#${id}`}>{label}</a>
+          ))}
+        </div>
+      </nav>
+    )
+  }
 
   <ProductInside locale={locale} product={product} />
 

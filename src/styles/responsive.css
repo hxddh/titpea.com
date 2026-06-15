@@ -60,10 +60,13 @@
     padding: 20px;
   }
 
-  .product-anchor-nav {
-    top: 60px;
+  .product-section-index {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .product-section-index div {
     justify-content: flex-start;
-    padding-inline: 18px;
   }
 }
 
@@ -88,7 +91,8 @@
 
   .benchmark-kpis,
   .agent-manifest-grid,
-  .agent-evidence-grid {
+  .agent-evidence-grid,
+  .benchmark-layout {
     grid-template-columns: 1fr;
   }
 

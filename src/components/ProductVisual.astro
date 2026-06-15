@@ -42,21 +42,36 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
           </div>
         ))}
       </div>
-      <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
-        <div class="bars-head">
-          <span>{isZh ? "自动化路径" : "Automatic path"}</span>
-          <span>{isZh ? "约 objects/s" : "approx objects/s"}</span>
-        </div>
-        {parallelRuns.map(({ label, throughput, seconds }) => (
-          <div class="bar-row">
-            <span class="bar-label">{label}</span>
-            <div class="bar-track">
-              <span style={`width: ${(throughput / maxThroughput) * 100}%`} />
-            </div>
-            <strong>{throughput.toLocaleString()}</strong>
-            <em>{seconds}s</em>
+      <div class="benchmark-layout">
+        <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
+          <div class="bars-head">
+            <span>{isZh ? "测试路径" : "Benchmark path"}</span>
+            <span>{isZh ? "约 objects/s" : "approx objects/s"}</span>
           </div>
-        ))}
+          {parallelRuns.map(({ label, throughput, seconds }) => (
+            <div class="bar-row">
+              <span class="bar-label">{label}</span>
+              <div class="bar-track">
+                <span style={`width: ${(throughput / maxThroughput) * 100}%`} />
+              </div>
+              <strong>{throughput.toLocaleString()}</strong>
+              <em>{seconds}s</em>
+            </div>
+          ))}
+        </div>
+        <div class="automation-path">
+          <span>{isZh ? "默认自动化路径" : "Default automation path"}</span>
+          <ol>
+            <li>{isZh ? "启动发现真实 prefix 边界" : "Discover real prefix boundaries"}</li>
+            <li>{isZh ? "运行时按吞吐拆分长尾 segment" : "Split long-tail segments while throughput improves"}</li>
+            <li>{isZh ? "写出 Parquet、plan、manifest 和 trace" : "Write Parquet, plans, manifests, and traces"}</li>
+          </ol>
+          <p>
+            {isZh
+              ? "图表只展示测试数据；自动化能力放在流程里说明，避免混淆。"
+              : "The chart stays limited to benchmark data; automation is shown as product behavior."}
+          </p>
+        </div>
       </div>
       <div class="benchmark-footnotes">
         <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>

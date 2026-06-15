@@ -2,7 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pathFor, type Locale, type ProductSlug } from "../lib/site";
 import { productEvidence } from "../content/evidence";
-import { homeProductLines, ui } from "../content/home";
+import { homeBrowserTools, homeProductLines, homeStorageFlow, ui } from "../content/home";
 import { products } from "../content/products";
 
 interface Props {
@@ -22,76 +22,10 @@ const productLines = homeProductLines[locale];
 const evidenceCards = productEvidence(locale);
 const itemName = (item: ProductLineItem) => (item.slug ? products[item.slug].locales[locale].title : item.name);
 const itemHref = (item: ProductLineItem) => (item.slug ? pathFor(locale, item.slug) : item.href);
-const storageFlow =
-  locale === "zh"
-    ? [
-        [
-          "01",
-          "Inventory / Diff",
-          "s3-turbo-list",
-          "自动发现 key-space，列举或对比大型 S3 兼容桶，输出 Parquet、plan 和 manifest。",
-          pathFor(locale, "s3-turbo-list"),
-        ],
-        [
-          "02",
-          "Agent",
-          "StorageOps",
-          "给 Pi 安装对象存储诊断技能、取证工具、确定性脚本和回归用例。",
-          pathFor(locale, "storageops"),
-        ],
-        [
-          "03",
-          "Trace",
-          "httpmon",
-          "当 SDK 或 CLI 把细节藏起来，捕获真实 HTTP 请求、重试和签名上下文。",
-          "https://github.com/hxddh/https-traffic-inspector",
-        ],
-      ]
-    : [
-        [
-          "01",
-          "Inventory / Diff",
-          "s3-turbo-list",
-          "Automatically inventory or diff large S3-compatible buckets, then keep Parquet, plans, and manifests.",
-          pathFor(locale, "s3-turbo-list"),
-        ],
-        [
-          "02",
-          "Agent",
-          "StorageOps",
-          "Install object-storage diagnostic skills, Pi extension tools, helper scripts, and eval cases.",
-          pathFor(locale, "storageops"),
-        ],
-        [
-          "03",
-          "Inspect",
-          "httpmon",
-          "Capture real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details.",
-          "https://github.com/hxddh/https-traffic-inspector",
-        ],
-      ];
-const browserTools =
-  locale === "zh"
-    ? [
-        ["世界时钟", "快速看几个城市的当前时间，不打开日历，不进入排期流程。", pathFor(locale, "world-clock")],
-        [
-          "豆瓣电影评分助手",
-          "在豆瓣电影页补充 IMDb 和 Rotten Tomatoes 评分，保留原页面阅读节奏。",
-          pathFor(locale, "douban-movie-rating"),
-        ],
-      ]
-    : [
-        [
-          "World Clock",
-          "Check city time quickly without opening a calendar or starting a scheduling workflow.",
-          pathFor(locale, "world-clock"),
-        ],
-        [
-          "Douban Movie Rating Assistant",
-          "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.",
-          pathFor(locale, "douban-movie-rating"),
-        ],
-      ];
+const storageFlow = homeStorageFlow[locale];
+const browserTools = homeBrowserTools[locale];
+const flowHref = (item: (typeof storageFlow)[number]) => ("slug" in item ? pathFor(locale, item.slug) : item.href);
+const browserHref = (item: (typeof browserTools)[number]) => pathFor(locale, item.slug);
 ---
 
 <SiteLayout
@@ -122,13 +56,13 @@ const browserTools =
       </div>
       <div class="workbench-flow-list">
         {
-          storageFlow.map(([number, verb, name, body, href]) => (
-            <a class="workbench-flow-card" href={href}>
-              <span>{number}</span>
+          storageFlow.map((item) => (
+            <a class="workbench-flow-card" href={flowHref(item)}>
+              <span>{item.number}</span>
               <div>
-                <strong>{verb}</strong>
-                <h3>{name}</h3>
-                <p>{body}</p>
+                <strong>{item.verb}</strong>
+                <h3>{item.name}</h3>
+                <p>{item.text}</p>
               </div>
             </a>
           ))
@@ -199,10 +133,10 @@ const browserTools =
     <div class="browser-band-body">
       <div class="browser-tool-list">
         {
-          browserTools.map(([name, body, href]) => (
-            <a href={href}>
-              <span>{name}</span>
-              <p>{body}</p>
+          browserTools.map((item) => (
+            <a href={browserHref(item)}>
+              <span>{item.name}</span>
+              <p>{item.text}</p>
             </a>
           ))
         }

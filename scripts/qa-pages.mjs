@@ -21,13 +21,13 @@ const expectedText = {
   "/": ["S3 automation toolkit", "Product evidence"],
   "/about/": ["Object storage tools", "A narrow product line"],
   "/s3-turbo-list/": ["Automatic S3 inventory and diff", "Automation"],
-  "/storageops/": ["S3 diagnosis agent for Pi", "Usage examples"],
+  "/storageops/": ["S3 diagnosis agent for Pi", "Skills and tools"],
   "/world-clock/": ["A timezone feed in one click", "Questions & how-to"],
   "/douban-movie-rating/": ["Global ratings inside Douban", "Questions & how-to"],
   "/zh/": ["S3 自动化工具集", "先看事实"],
   "/zh/about/": ["对象存储工具", "一条很窄的产品线"],
   "/zh/s3-turbo-list/": ["自动化 S3 list / diff CLI", "自动化"],
-  "/zh/storageops/": ["Pi 的 S3 诊断 agent", "用法示例"],
+  "/zh/storageops/": ["Pi 的 S3 诊断 agent", "技能和工具"],
   "/zh/world-clock/": ["一键看世界时间", "问题与用法"],
   "/zh/douban-movie-rating/": ["把海外评分补到豆瓣电影页", "问题与用法"],
 };
@@ -71,9 +71,19 @@ for (const viewport of viewports) {
         mobile: mobile ? getComputedStyle(mobile).display : null,
         h1: h1?.textContent?.trim() ?? "",
         h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
-        anchorCount: document.querySelectorAll(".product-anchor-nav a").length,
-        featuresGrid: document.querySelector(".features-grid")
-          ? getComputedStyle(document.querySelector(".features-grid")).display
+        anchorCount: document.querySelectorAll(".product-section-index a").length,
+        productIndex: (() => {
+          const index = document.querySelector(".product-section-index");
+          if (!index) return null;
+          const style = getComputedStyle(index);
+          return {
+            position: style.position,
+            overflow: index.scrollWidth - index.clientWidth,
+            top: Math.round(index.getBoundingClientRect().top),
+          };
+        })(),
+        featuresGrid: document.querySelector(".features-grid, .automation-grid")
+          ? getComputedStyle(document.querySelector(".features-grid, .automation-grid")).display
           : null,
         imageCount: document.querySelectorAll("img").length,
         brokenImages: Array.from(document.querySelectorAll("img")).filter(
@@ -113,6 +123,43 @@ for (const viewport of viewports) {
     });
   }
 
+  for (const path of ["/s3-turbo-list/", "/zh/s3-turbo-list/", "/storageops/", "/zh/storageops/"]) {
+    await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
+    const target = page.locator(".product-section-index a").first();
+    if ((await target.count()) === 0) continue;
+    await target.click();
+    await page.waitForTimeout(150);
+    const scrollState = await page.evaluate(() => {
+      const index = document.querySelector(".product-section-index");
+      const inside = document.querySelector("#inside");
+      const rect = inside?.getBoundingClientRect();
+      return {
+        indexPosition: index ? getComputedStyle(index).position : null,
+        indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
+        targetTop: rect ? Math.round(rect.top) : 0,
+      };
+    });
+    await page.screenshot({
+      path: `${outDir}/${viewport.name}${path.replaceAll("/", "_")}_anchor-click.png`,
+      fullPage: false,
+    });
+    results.push({
+      viewport: viewport.name,
+      path: `${path} anchor-click`,
+      overflow: 0,
+      nav: viewport.name === "desktop" ? "flex" : "none",
+      mobile: viewport.name === "desktop" ? "none" : "block",
+      h1: "anchor-click",
+      h1Lines: 1,
+      anchorCount: 1,
+      textOk:
+        scrollState.indexPosition !== "sticky" &&
+        scrollState.indexOverflow <= 1 &&
+        scrollState.targetTop >= 0 &&
+        scrollState.targetTop < viewport.height * 0.4,
+    });
+  }
+
   await page.close();
 }
 
@@ -131,9 +178,13 @@ const failures = results.filter((result) => {
   const navOk = isDesktop
     ? result.nav === "flex" && result.mobile === "none"
     : result.nav === "none" && result.mobile === "block";
+  const isAuxCheck = result.path.includes("menu") || result.path.includes("anchor-click");
   const anchorOk =
-    isProductPage && !result.path.includes("menu") ? result.anchorCount >= (isMainProductPage ? 8 : 5) : true;
-  const featuresGridOk = isProductPage && !result.path.includes("menu") ? result.featuresGrid === "grid" : true;
+    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 5 : result.anchorCount === 0) : true;
+  const productIndexOk = result.productIndex
+    ? result.productIndex.position !== "sticky" && result.productIndex.overflow <= 1
+    : true;
+  const featuresGridOk = isProductPage && !isAuxCheck ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
 
   return (
@@ -143,6 +194,7 @@ const failures = results.filter((result) => {
     !result.textOk ||
     !navOk ||
     !anchorOk ||
+    !productIndexOk ||
     !featuresGridOk ||
     !imagesOk
   );

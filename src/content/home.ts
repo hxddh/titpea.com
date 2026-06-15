@@ -174,3 +174,110 @@ export const homeProductLines = {
     },
   ],
 };
+
+export const homeStorageFlow = {
+  en: [
+    {
+      number: "01",
+      verb: "Inventory / Diff",
+      name: "s3-turbo-list",
+      text: "Run automatic inventory or diff on large S3-compatible buckets, then keep Parquet, JSON plans, and run manifests.",
+      slug: "s3-turbo-list" as ProductSlug,
+    },
+    {
+      number: "02",
+      verb: "Diagnose",
+      name: "StorageOps",
+      text: "Give Pi a storage diagnosis layer: domain skills, bounded tools, deterministic helpers, and eval-backed routing.",
+      slug: "storageops" as ProductSlug,
+    },
+    {
+      number: "03",
+      verb: "Inspect",
+      name: "httpmon",
+      text: "Capture the real HTTP request and response when signing, retries, redirects, or provider behavior hide the clue.",
+      href: "https://github.com/hxddh/https-traffic-inspector",
+    },
+  ],
+  zh: [
+    {
+      number: "01",
+      verb: "Inventory / Diff",
+      name: "s3-turbo-list",
+      text: "自动列举或对比大型 S3 兼容 bucket，留下 Parquet、JSON plan 和 run manifest。",
+      slug: "s3-turbo-list" as ProductSlug,
+    },
+    {
+      number: "02",
+      verb: "Diagnose",
+      name: "StorageOps",
+      text: "给 Pi 一层对象存储诊断能力：领域技能、有边界的工具、确定性脚本和回归用例。",
+      slug: "storageops" as ProductSlug,
+    },
+    {
+      number: "03",
+      verb: "Inspect",
+      name: "httpmon",
+      text: "当签名、重试、跳转或服务商行为藏在 SDK 下面时，直接看真实 HTTP 请求和响应。",
+      href: "https://github.com/hxddh/https-traffic-inspector",
+    },
+  ],
+} as const;
+
+export const homeBrowserTools = {
+  en: [
+    {
+      name: "World Clock",
+      text: "A fast city-time popup for remote work, travel, and quick context checks.",
+      slug: "world-clock" as ProductSlug,
+    },
+    {
+      name: "Douban Movie Rating Assistant",
+      text: "Adds IMDb, Rotten Tomatoes, and Metacritic context inside Douban movie pages.",
+      slug: "douban-movie-rating" as ProductSlug,
+    },
+  ],
+  zh: [
+    {
+      name: "世界时钟",
+      text: "快速查看几个城市的当前时间，适合远程协作、旅行和临时确认时区。",
+      slug: "world-clock" as ProductSlug,
+    },
+    {
+      name: "豆瓣电影评分助手",
+      text: "把 IMDb、Rotten Tomatoes 和 Metacritic 参考评分补到豆瓣电影页里。",
+      slug: "douban-movie-rating" as ProductSlug,
+    },
+  ],
+} as const;
+
+export const aboutProductGroups = {
+  en: [
+    {
+      title: "Object storage",
+      text: "One path for inventory, diff, diagnosis, and request-level evidence.",
+    },
+    {
+      title: "Browser utilities",
+      text: "Small extensions that add missing context without taking over the page.",
+    },
+    {
+      title: "Working style",
+      text: "Clear commands, inspectable output, and artifacts that can move into CI, DuckDB, logs, or the next diagnostic step.",
+    },
+  ],
+  zh: [
+    {
+      title: "对象存储",
+      text: "围绕 inventory、diff、诊断和请求级证据，做一条能接起来的工具线。",
+    },
+    {
+      title: "浏览器工具",
+      text: "只补当前页面缺的一点上下文，不把小工具做成平台。",
+    },
+    {
+      title: "做事方式",
+      text: "命令要清楚，输出要能检查，artifact 要能继续进入 CI、DuckDB、日志或下一步排查。",
+    },
+  ],
+} as const;

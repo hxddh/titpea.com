@@ -59,7 +59,7 @@
 .language-switch,
 .button,
 .mobile-menu summary,
-.product-anchor-nav a,
+.product-section-index a,
 .proof-strip span,
 .provider-list span,
 .home-evidence-card strong,
@@ -204,33 +204,38 @@
   font-weight: 500;
 }
 
-.product-anchor-nav {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  display: flex;
-  width: 100%;
-  max-width: 1080px;
-  margin-inline: auto;
-  overflow-x: auto;
+.product-section-index {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 10px 24px;
-  background: rgba(249, 250, 252, 0.88);
-  backdrop-filter: blur(12px);
-  scrollbar-width: none;
-  white-space: nowrap;
+  padding-block: 14px;
 }
 
-.product-anchor-nav::-webkit-scrollbar {
-  display: none;
+.product-section-index > span {
+  color: #667085;
+  font-family: var(--mono);
+  font-size: 12px;
 }
 
-.product-anchor-nav a {
-  flex: 0 0 auto;
+.product-section-index div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.product-section-index a {
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 6px 11px;
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
+}
+
+.product-section-index a:hover,
+.product-section-index a:focus-visible {
+  border-color: var(--ink);
 }
