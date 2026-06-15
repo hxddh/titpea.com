@@ -98,7 +98,11 @@ const structuredData = {
 
   {
     showSectionIndex && (
-      <nav class="product-section-index shell" aria-label={locale === "zh" ? "页面目录" : "Page index"}>
+      <nav
+        class="product-section-index shell"
+        aria-label={locale === "zh" ? "页面目录" : "Page index"}
+        data-section-index
+      >
         <span>{locale === "zh" ? "阅读路径" : "Read this page"}</span>
         <div>
           {navItems.map(([id, label]) => (
@@ -108,6 +112,48 @@ const structuredData = {
       </nav>
     )
   }
+
+  <script>
+    const sectionIndexes = document.querySelectorAll<HTMLElement>("[data-section-index]");
+
+    sectionIndexes.forEach((index) => {
+      const links = Array.from(index.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+      const sections = links
+        .map((link) => {
+          const id = decodeURIComponent(link.hash.slice(1));
+          return { id, link, section: document.getElementById(id) };
+        })
+        .filter((item): item is { id: string; link: HTMLAnchorElement; section: HTMLElement } => Boolean(item.section));
+
+      const setActive = (id: string) => {
+        sections.forEach((item) => {
+          if (item.id === id) {
+            item.link.setAttribute("aria-current", "true");
+          } else {
+            item.link.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      setActive(sections[0]?.id ?? "");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+
+          if (visible?.target.id) setActive(visible.target.id);
+        },
+        {
+          rootMargin: "-18% 0px -68% 0px",
+          threshold: [0, 0.1, 0.35],
+        },
+      );
+
+      sections.forEach((item) => observer.observe(item.section));
+    });
+  </script>
 
   <ProductInside locale={locale} product={product} />
 

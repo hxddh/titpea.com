@@ -80,6 +80,7 @@ for (const viewport of viewports) {
             position: style.position,
             overflow: index.scrollWidth - index.clientWidth,
             top: Math.round(index.getBoundingClientRect().top),
+            currentCount: index.querySelectorAll('a[aria-current="true"]').length,
           };
         })(),
         featuresGrid: document.querySelector(".features-grid, .automation-grid")
@@ -128,14 +129,18 @@ for (const viewport of viewports) {
     const target = page.locator(".product-section-index a").first();
     if ((await target.count()) === 0) continue;
     await target.click();
-    await page.waitForTimeout(150);
+    await page.waitForTimeout(700);
     const scrollState = await page.evaluate(() => {
       const index = document.querySelector(".product-section-index");
       const inside = document.querySelector("#inside");
+      const indexRect = index?.getBoundingClientRect();
       const rect = inside?.getBoundingClientRect();
       return {
         indexPosition: index ? getComputedStyle(index).position : null,
         indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
+        indexTop: indexRect ? Math.round(indexRect.top) : null,
+        indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
+        currentCount: index ? index.querySelectorAll('a[aria-current="true"]').length : 0,
         targetTop: rect ? Math.round(rect.top) : 0,
       };
     });
@@ -153,10 +158,45 @@ for (const viewport of viewports) {
       h1Lines: 1,
       anchorCount: 1,
       textOk:
-        scrollState.indexPosition !== "sticky" &&
+        scrollState.indexPosition === "sticky" &&
         scrollState.indexOverflow <= 1 &&
-        scrollState.targetTop >= 0 &&
+        scrollState.indexTop !== null &&
+        scrollState.indexTop >= 0 &&
+        scrollState.currentCount === 1 &&
+        scrollState.targetTop >= (scrollState.indexBottom ?? 0) &&
         scrollState.targetTop < viewport.height * 0.4,
+    });
+
+    await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
+    await page.waitForTimeout(100);
+    const stickyState = await page.evaluate(() => {
+      const index = document.querySelector(".product-section-index");
+      const rect = index?.getBoundingClientRect();
+      return {
+        indexPosition: index ? getComputedStyle(index).position : null,
+        indexTop: rect ? Math.round(rect.top) : null,
+        indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
+        currentCount: index ? index.querySelectorAll('a[aria-current="true"]').length : 0,
+      };
+    });
+    await page.screenshot({
+      path: `${outDir}/${viewport.name}${path.replaceAll("/", "_")}_sticky-scroll.png`,
+      fullPage: false,
+    });
+    results.push({
+      viewport: viewport.name,
+      path: `${path} sticky-scroll`,
+      overflow: 0,
+      nav: viewport.name === "desktop" ? "flex" : "none",
+      mobile: viewport.name === "desktop" ? "none" : "block",
+      h1: "sticky-scroll",
+      h1Lines: 1,
+      anchorCount: 1,
+      textOk:
+        stickyState.indexPosition === "sticky" &&
+        stickyState.indexTop === 0 &&
+        stickyState.indexOverflow <= 1 &&
+        stickyState.currentCount === 1,
     });
   }
 
@@ -178,11 +218,14 @@ const failures = results.filter((result) => {
   const navOk = isDesktop
     ? result.nav === "flex" && result.mobile === "none"
     : result.nav === "none" && result.mobile === "block";
-  const isAuxCheck = result.path.includes("menu") || result.path.includes("anchor-click");
+  const isAuxCheck =
+    result.path.includes("menu") || result.path.includes("anchor-click") || result.path.includes("sticky-scroll");
   const anchorOk =
     isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 5 : result.anchorCount === 0) : true;
   const productIndexOk = result.productIndex
-    ? result.productIndex.position !== "sticky" && result.productIndex.overflow <= 1
+    ? result.productIndex.position === "sticky" &&
+      result.productIndex.overflow <= 1 &&
+      result.productIndex.currentCount === 1
     : true;
   const featuresGridOk = isProductPage && !isAuxCheck ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
