@@ -13,14 +13,14 @@ const copy = ui[locale];
 const isZh = locale === "zh";
 const productGroups = isZh
   ? [
-      ["对象存储", "先把大桶列清楚，再把两个 bucket 的差异算清；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
+      ["对象存储", "先把大桶自动列清楚，再把两个 bucket 的差异算清；出问题时，让 Pi 和 HTTP trace 接上诊断链路。"],
       ["浏览器扩展", "世界时钟和豆瓣评分助手都很小：不做平台，不抢流程，只补当前页面缺的一点信息。"],
       ["做事方式", "命令要清楚，输出要能继续处理，最好能接到 DuckDB、pandas、日志或下一步排查。"],
     ]
   : [
       [
         "Object storage",
-        "List the bucket, compare object state, then use Pi and HTTP traces when a failure needs diagnosis.",
+        "Inventory the bucket automatically, compare object state, then use Pi and HTTP traces when a failure needs diagnosis.",
       ],
       [
         "Browser extensions",
@@ -67,7 +67,7 @@ const productGroups = isZh
     <div class="about-product-grid">
       <a class="about-product-card primary" href={pathFor(locale, "s3-turbo-list")}>
         <span>s3-turbo-list</span>
-        <strong>{isZh ? "高速对象存储 list / diff CLI" : "High-performance object storage list / diff CLI"}</strong>
+        <strong>{isZh ? "自动化对象存储 list / diff CLI" : "Automatic object storage list / diff CLI"}</strong>
         <p>{products["s3-turbo-list"].locales[locale].description}</p>
       </a>
       <a class="about-product-card primary" href={pathFor(locale, "storageops")}>

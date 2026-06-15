@@ -16,68 +16,64 @@ const isZh = locale === "zh";
     <section id="inside" class="inside-section shell">
       <div class="inside-copy">
         <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-        <h2>{isZh ? "list、diff，然后分析" : "List, diff, then analyze"}</h2>
+        <h2>{isZh ? "默认路径自动完成繁琐部分" : "The default path handles the hard parts"}</h2>
         <p>
           {isZh
-            ? "s3-turbo-list 的核心很直接：并发 list 大桶，可靠 diff 两个 bucket，再把结果写成后续工具能直接查询的 Parquet。"
-            : "s3-turbo-list is a high-performance object storage CLI: list large buckets concurrently, diff two buckets authoritatively, then hand clean Parquet to the tools that analyze the result."}
+            ? "s3-turbo-list 现在更像一个自动化 inventory / diff 工具：启动发现、运行时拆分、dry-run plan、run manifest 和 artifact 校验都在默认路径里。"
+            : "s3-turbo-list now behaves more like an automated inventory and diff tool: startup discovery, runtime splitting, dry-run plans, run manifests, and artifact checks sit on the default path."}
         </p>
       </div>
       <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
         <div class="workbench-top">
           <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
-          <strong>{isZh ? "压测摘要" : "benchmark summary"}</strong>
+          <strong>{isZh ? "automatic inventory path" : "automatic inventory path"}</strong>
         </div>
         <div class="inventory-grid benchmark-metrics">
           <div class="metric-tile strong">
             <>
-              <span>{isZh ? "对象数" : "objects"}</span>
-              <strong>{s3BenchmarkEvidence.objectCount}</strong>
-              <p>{isZh ? "测试 bucket 规模" : "objects in the benchmark bucket"}</p>
+              <span>{isZh ? "自动发现" : "startup discovery"}</span>
+              <strong>{isZh ? "零 hints" : "zero hints"}</strong>
+              <p>{isZh ? "第一次递归 list 就能并发" : "first recursive list can run in parallel"}</p>
             </>
           </div>
           <div class="metric-tile">
             <>
-              <span>{isZh ? "最高吞吐" : "peak throughput"}</span>
-              <strong>{s3BenchmarkEvidence.peak.throughput.toLocaleString()}/s</strong>
-              <p>
-                {isZh
-                  ? `${s3BenchmarkEvidence.peak.label} 自动发现`
-                  : `${s3BenchmarkEvidence.peak.label} with auto discovery`}
-              </p>
+              <span>{isZh ? "OSS benchmark" : "OSS benchmark"}</span>
+              <strong>~19s</strong>
+              <p>{isZh ? "1M 对象，-c 8" : "1M objects at -c 8"}</p>
             </>
           </div>
           <div class="metric-tile">
             <>
-              <span>{isZh ? "单段提升" : "single segment"}</span>
-              <strong>+18.8%</strong>
-              <p>{isZh ? "v0.5.0 相比 v0.4.0" : "v0.5.0 over v0.4.0"}</p>
+              <span>{isZh ? "协议" : "license"}</span>
+              <strong>Apache-2.0</strong>
+              <p>{isZh ? "v0.18.0 起" : "from v0.18.0 onward"}</p>
             </>
           </div>
         </div>
-        <div class="artifact-table benchmark-table" aria-label="Benchmark report">
+        <div class="artifact-table benchmark-table" aria-label="Automation surfaces">
           <div>
             <>
-              <span>{isZh ? "并发矩阵" : "parallel matrix"}</span>
-              <strong>18.29s-20.88s · 47,906-54,667 objects/s</strong>
+              <span>{isZh ? "preflight" : "preflight"}</span>
+              <strong>doctor --json · --dry-run --agent · --plan-json</strong>
             </>
           </div>
           <div>
             <>
-              <span>{isZh ? "连续压力" : "stress rounds"}</span>
-              <strong>c=64 · 3 rounds · 49,367-51,854 objects/s</strong>
+              <span>{isZh ? "artifacts" : "artifacts"}</span>
+              <strong>Parquet · key-space CSV · run manifest · trace JSONL</strong>
             </>
           </div>
           <div>
             <>
-              <span>{isZh ? "输出格式" : "output formats"}</span>
-              <strong>{s3BenchmarkEvidence.outputs}</strong>
+              <span>{isZh ? "verify" : "verify"}</span>
+              <strong>manifest-summary --check · hashes · row counts · schema</strong>
             </>
           </div>
           <div>
             <>
-              <span>{isZh ? "客户端" : "client"}</span>
-              <strong>{s3BenchmarkEvidence.environment}</strong>
+              <span>{isZh ? "provider logs" : "provider logs"}</span>
+              <strong>app/s3-turbo-list User-Agent · compat-probe</strong>
             </>
           </div>
         </div>

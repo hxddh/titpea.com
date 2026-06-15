@@ -370,6 +370,7 @@
 .positioning-grid,
 .features-grid,
 .workflow-grid,
+.automation-grid,
 .examples-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -387,6 +388,7 @@
 .positioning-card,
 .features-card,
 .workflow-step,
+.automation-card,
 .examples-card {
   min-height: 0;
   padding: 28px;
@@ -396,6 +398,7 @@
 .positioning-card h2,
 .features-card h2,
 .workflow-step h2,
+.automation-card h2,
 .examples-card h2 {
   margin: 0 0 10px;
   font-size: 17px;
@@ -405,6 +408,7 @@
 .positioning-card p,
 .features-card p,
 .workflow-step p,
+.automation-card p,
 .examples-card p {
   margin: 0;
   color: var(--muted);

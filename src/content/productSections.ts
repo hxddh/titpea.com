@@ -2,7 +2,7 @@ import type { Locale, ProductCopy } from "../lib/site";
 
 export type ProductSection =
   | {
-      id: "positioning" | "features" | "workflow" | "examples";
+      id: "positioning" | "features" | "workflow" | "automation" | "examples";
       kind: "cards";
       label: string;
       items: Array<[string, string]>;
@@ -58,6 +58,14 @@ export function productSections(_locale: Locale, copy: ProductCopy): ProductSect
           label: copy.workflowLabel,
           items: copy.workflow,
           numbered: true,
+        }
+      : null,
+    copy.automation && copy.automationLabel
+      ? {
+          id: "automation",
+          kind: "cards",
+          label: copy.automationLabel,
+          items: copy.automation,
         }
       : null,
     copy.cases && copy.casesLabel && copy.casesTitle

@@ -18,15 +18,15 @@ const pages = [
   "/zh/douban-movie-rating/",
 ];
 const expectedText = {
-  "/": ["S3 operations toolkit", "Product evidence"],
+  "/": ["S3 automation toolkit", "Product evidence"],
   "/about/": ["Object storage tools", "A narrow product line"],
-  "/s3-turbo-list/": ["Fast list and diff for S3 buckets", "Usage examples"],
+  "/s3-turbo-list/": ["Automatic S3 inventory and diff", "Automation"],
   "/storageops/": ["S3 diagnosis agent for Pi", "Usage examples"],
   "/world-clock/": ["A timezone feed in one click", "Questions & how-to"],
   "/douban-movie-rating/": ["Global ratings inside Douban", "Questions & how-to"],
-  "/zh/": ["S3 运维工具集", "先看事实"],
+  "/zh/": ["S3 自动化工具集", "先看事实"],
   "/zh/about/": ["对象存储工具", "一条很窄的产品线"],
-  "/zh/s3-turbo-list/": ["高速 S3 list / diff CLI", "用法示例"],
+  "/zh/s3-turbo-list/": ["自动化 S3 list / diff CLI", "自动化"],
   "/zh/storageops/": ["Pi 的 S3 诊断 agent", "用法示例"],
   "/zh/world-clock/": ["一键看世界时间", "问题与用法"],
   "/zh/douban-movie-rating/": ["把海外评分补到豆瓣电影页", "问题与用法"],
@@ -79,6 +79,7 @@ for (const viewport of viewports) {
         brokenImages: Array.from(document.querySelectorAll("img")).filter(
           (image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
         ).length,
+        oldS3Facts: document.body.innerText.includes("MIT License") || document.body.innerText.includes("v0.5.0"),
         text: document.body.innerText,
       };
     });
@@ -131,12 +132,19 @@ const failures = results.filter((result) => {
     ? result.nav === "flex" && result.mobile === "none"
     : result.nav === "none" && result.mobile === "block";
   const anchorOk =
-    isProductPage && !result.path.includes("menu") ? result.anchorCount >= (isMainProductPage ? 7 : 5) : true;
+    isProductPage && !result.path.includes("menu") ? result.anchorCount >= (isMainProductPage ? 8 : 5) : true;
   const featuresGridOk = isProductPage && !result.path.includes("menu") ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
 
   return (
-    result.overflow > 1 || result.h1Lines > 3 || !result.textOk || !navOk || !anchorOk || !featuresGridOk || !imagesOk
+    result.overflow > 1 ||
+    result.h1Lines > 3 ||
+    result.oldS3Facts ||
+    !result.textOk ||
+    !navOk ||
+    !anchorOk ||
+    !featuresGridOk ||
+    !imagesOk
   );
 });
 if (failures.length > 0) {

@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "facts:check": "node scripts/check-product-facts.mjs",
     "qa:pages": "node scripts/qa-pages.mjs",
     "astro": "astro"
   },

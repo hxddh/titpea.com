@@ -27,9 +27,9 @@ const storageFlow =
     ? [
         [
           "01",
-          "List / Diff",
+          "Inventory / Diff",
           "s3-turbo-list",
-          "并发列举大型 S3 兼容桶，对比两个 bucket，输出可继续分析的 Parquet。",
+          "自动发现 key-space，列举或对比大型 S3 兼容桶，输出 Parquet、plan 和 manifest。",
           pathFor(locale, "s3-turbo-list"),
         ],
         [
@@ -50,9 +50,9 @@ const storageFlow =
     : [
         [
           "01",
-          "List / Diff",
+          "Inventory / Diff",
           "s3-turbo-list",
-          "List large S3-compatible buckets fast, diff two buckets, and write Parquet rows with DiffFlag.",
+          "Automatically inventory or diff large S3-compatible buckets, then keep Parquet, plans, and manifests.",
           pathFor(locale, "s3-turbo-list"),
         ],
         [

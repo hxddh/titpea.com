@@ -21,38 +21,30 @@ export type S3BenchmarkEvidence = {
   version: string;
   peak: S3BenchmarkRun;
   parallelRuns: S3BenchmarkRun[];
-  stressRuns: Array<{ label: string; throughput: number }>;
-  baselineRuns: Array<{ label: string; throughput: number }>;
+  headlineRuns: Array<{ label: string; value: string; detail: string }>;
   outputs: string;
   runtimeSplits: string;
 };
 
 export const s3BenchmarkEvidence: S3BenchmarkEvidence = {
-  objectCount: "1,000,078",
-  datasetSize: "680.0 MiB",
-  environment: "ECS 2 vCPU / 3.4 GiB RAM · Ubuntu 24.04",
-  version: "v0.5.0",
-  peak: { label: "c4 T2", throughput: 54667, seconds: 18.29 },
+  objectCount: "1M",
+  datasetSize: "Alibaba Cloud OSS",
+  environment: "Third-party OSS benchmark · 1M objects",
+  version: "v0.18.0",
+  peak: { label: "-c 8", throughput: 52632, seconds: 19 },
   parallelRuns: [
-    { label: "c4 T2", throughput: 54667, seconds: 18.29 },
-    { label: "c8 T4", throughput: 54422, seconds: 18.38 },
-    { label: "c16 T6", throughput: 53961, seconds: 18.53 },
-    { label: "c24 T8", throughput: 49658, seconds: 20.14 },
-    { label: "c32 T10", throughput: 49686, seconds: 20.13 },
-    { label: "c48 T12", throughput: 48511, seconds: 20.61 },
-    { label: "c64 T16", throughput: 47906, seconds: 20.88 },
+    { label: "single stream", throughput: 18182, seconds: 55 },
+    { label: "-c 8 automatic", throughput: 52632, seconds: 19 },
+    { label: "startup discovery", throughput: 52632, seconds: 19 },
+    { label: "runtime split", throughput: 52632, seconds: 19 },
   ],
-  stressRuns: [
-    { label: "R1", throughput: 50243 },
-    { label: "R2", throughput: 49367 },
-    { label: "R3", throughput: 51854 },
+  headlineRuns: [
+    { label: "benchmark", value: "1M objects", detail: "Alibaba Cloud OSS third-party run" },
+    { label: "speedup", value: "~55s to ~19s", detail: "single stream vs -c 8" },
+    { label: "release", value: "Apache-2.0", detail: "v0.18.0 and later" },
   ],
-  baselineRuns: [
-    { label: "v0.4.0", throughput: 19602 },
-    { label: "v0.5.0", throughput: 23277 },
-  ],
-  outputs: "Parquet zstd 3.0 MB · NDJSON 76M · TSV 61M",
-  runtimeSplits: "0 across all parallel configurations",
+  outputs: "Parquet · key-space CSV · NDJSON · TSV · run manifest",
+  runtimeSplits: "Startup discovery + throughput-aware runtime splitting",
 };
 
 export const productEvidence = (locale: Locale): ProductEvidence[] => {
@@ -61,12 +53,12 @@ export const productEvidence = (locale: Locale): ProductEvidence[] => {
   return [
     {
       label: "s3-turbo-list benchmark",
-      title: isZh ? "100 万对象，54,667 objects/s" : "1M objects, 54,667 objects/s",
+      title: isZh ? "1M 对象，~55s 到 ~19s" : "1M objects, ~55s to ~19s",
       body: isZh
-        ? "v0.5.0 在 2 vCPU / 3.4 GiB ECS 上测试。并发扫描稳定在 48k-55k objects/s，结果直接写成 Parquet。"
-        : "v0.5.0 on a 2 vCPU / 3.4 GiB ECS instance. Parallel scans hold 48k-55k objects/s and write analysis-ready Parquet.",
+        ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试：1M 对象单流约 55s，`-c 8` 约 19s。默认路径会自动发现和并发。"
+        : "The current README cites a third-party Alibaba Cloud OSS benchmark: 1M objects in ~55s single-stream and ~19s with `-c 8`.",
       href: pathFor(locale, "s3-turbo-list"),
-      stats: [s3BenchmarkEvidence.objectCount, "Parquet zstd 3.0 MB", "checkpoint / resume"],
+      stats: [s3BenchmarkEvidence.version, "Apache-2.0", "agent-safe JSON"],
     },
     {
       label: "StorageOps agent package",

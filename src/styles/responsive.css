@@ -44,6 +44,7 @@
   .positioning-grid,
   .features-grid,
   .workflow-grid,
+  .automation-grid,
   .examples-grid,
   .inventory-grid {
     grid-template-columns: 1fr;

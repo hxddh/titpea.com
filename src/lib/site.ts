@@ -40,6 +40,8 @@ export type ProductCopy = {
   rationaleBody: string[];
   workflowLabel?: string;
   workflow?: Array<[string, string]>;
+  automationLabel?: string;
+  automation?: Array<[string, string]>;
   examplesLabel?: string;
   examples?: Array<[string, string]>;
   casesLabel?: string;

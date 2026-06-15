@@ -10,23 +10,20 @@ interface Props {
 const { product, locale = "en" } = Astro.props;
 const isZh = locale === "zh";
 const parallelRuns = s3BenchmarkEvidence.parallelRuns;
-const stressRuns = s3BenchmarkEvidence.stressRuns;
-const baselineRuns = s3BenchmarkEvidence.baselineRuns;
 const maxThroughput = 55000;
-const bestParallel = s3BenchmarkEvidence.peak;
-const averageStress = Math.round(stressRuns.reduce((sum, run) => sum + run.throughput, 0) / stressRuns.length);
+const headlineRuns = s3BenchmarkEvidence.headlineRuns;
 ---
 
 {
   product.visual === "terminal" && (
-    <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list v0.5.0 benchmark report">
+    <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list current benchmark summary">
       <div class="benchmark-head">
-        <p class="section-kicker">{isZh ? "压测报告" : "Benchmark"}</p>
-        <h2>{isZh ? "100 万对象，最高 54,667 objects/s" : "1M objects, up to 54,667 objects/s"}</h2>
+        <p class="section-kicker">{isZh ? "当前证据" : "Current evidence"}</p>
+        <h2>{isZh ? "1M 对象，单流约 55s，-c 8 约 19s" : "1M objects, ~55s single-stream, ~19s at -c 8"}</h2>
         <p>
           {isZh
-            ? "2 vCPU / 3.4 GiB ECS。v0.5.0 单段吞吐较 v0.4.0 提升 18.8%，并发扫描稳定在约 48k-55k objects/s。"
-            : "Measured on a 2 vCPU / 3.4 GiB ECS instance. v0.5.0 improves single-segment throughput by 18.8% and keeps parallel scans around 48k-55k objects/s."}
+            ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试。现在的重点不是让用户先调参数，而是默认启动发现、运行时拆分和可校验 artifact。"
+            : "The current README cites a third-party Alibaba Cloud OSS benchmark. The product direction is now automatic first: startup discovery, runtime splitting, and verifiable artifacts."}
         </p>
         <div class="benchmark-meta">
           <span>{isZh ? `${s3BenchmarkEvidence.objectCount} 对象` : `${s3BenchmarkEvidence.objectCount} objects`}</span>
@@ -35,36 +32,20 @@ const averageStress = Math.round(stressRuns.reduce((sum, run) => sum + run.throu
         </div>
       </div>
       <div class="benchmark-kpis">
-        <div>
-          <>
-            <span>{isZh ? "最佳并发配置" : "best parallel run"}</span>
-            <strong>{bestParallel.label}</strong>
-            <p>
-              {bestParallel.throughput.toLocaleString()}/s · {bestParallel.seconds}s
-            </p>
-          </>
-        </div>
-        <div>
-          <>
-            <span>{isZh ? "单段提升" : "single segment gain"}</span>
-            <strong>+18.8%</strong>
-            <p>
-              {baselineRuns[0].throughput.toLocaleString()}/s → {baselineRuns[1].throughput.toLocaleString()}/s
-            </p>
-          </>
-        </div>
-        <div>
-          <>
-            <span>{isZh ? "c64 三轮均值" : "c64 average"}</span>
-            <strong>{averageStress.toLocaleString()}/s</strong>
-            <p>49,367-51,854/s</p>
-          </>
-        </div>
+        {headlineRuns.map((run) => (
+          <div>
+            <>
+              <span>{run.label}</span>
+              <strong>{run.value}</strong>
+              <p>{run.detail}</p>
+            </>
+          </div>
+        ))}
       </div>
       <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
         <div class="bars-head">
-          <span>{isZh ? "并发扫描矩阵" : "Parallel scan matrix"}</span>
-          <span>objects/s</span>
+          <span>{isZh ? "自动化路径" : "Automatic path"}</span>
+          <span>{isZh ? "约 objects/s" : "approx objects/s"}</span>
         </div>
         {parallelRuns.map(({ label, throughput, seconds }) => (
           <div class="bar-row">
@@ -79,7 +60,7 @@ const averageStress = Math.round(stressRuns.reduce((sum, run) => sum + run.throu
       </div>
       <div class="benchmark-footnotes">
         <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>
-        <span>{isZh ? "运行时分裂：所有并发配置均为 0" : `Runtime splits: ${s3BenchmarkEvidence.runtimeSplits}`}</span>
+        <span>{s3BenchmarkEvidence.runtimeSplits}</span>
       </div>
     </div>
   )
