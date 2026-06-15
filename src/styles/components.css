@@ -242,11 +242,11 @@
 
 .product-section-index a:hover,
 .product-section-index a:focus-visible,
-.product-section-index a[aria-current="true"] {
+.product-section-index a[aria-current] {
   border-color: var(--ink);
 }
 
-.product-section-index a[aria-current="true"] {
+.product-section-index a[aria-current] {
   background: var(--ink);
   color: #ffffff;
 }

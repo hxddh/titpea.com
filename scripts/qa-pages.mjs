@@ -53,6 +53,11 @@ fs.mkdirSync(outDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const results = [];
 
+function screenshotName(viewport, path, suffix = "") {
+  const cleanPath = path.replaceAll("/", "_") || "_home";
+  return `${viewport}${cleanPath}${suffix}.png`;
+}
+
 for (const viewport of viewports) {
   const page = await browser.newPage({ viewport });
 
@@ -80,7 +85,7 @@ for (const viewport of viewports) {
             position: style.position,
             overflow: index.scrollWidth - index.clientWidth,
             top: Math.round(index.getBoundingClientRect().top),
-            currentCount: index.querySelectorAll('a[aria-current="true"]').length,
+            currentCount: index.querySelectorAll("a[aria-current]").length,
           };
         })(),
         featuresGrid: document.querySelector(".features-grid, .automation-grid")
@@ -95,7 +100,7 @@ for (const viewport of viewports) {
       };
     });
 
-    const filename = `${viewport.name}${path.replaceAll("/", "_") || "_home"}.png`;
+    const filename = screenshotName(viewport.name, path);
     await page.screenshot({ path: `${outDir}/${filename}`, fullPage: false });
     const textOk = (expectedText[path] ?? []).every((text) => metrics.text.includes(text));
     delete metrics.text;
@@ -126,46 +131,66 @@ for (const viewport of viewports) {
 
   for (const path of ["/s3-turbo-list/", "/zh/s3-turbo-list/", "/storageops/", "/zh/storageops/"]) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
-    const target = page.locator(".product-section-index a").first();
-    if ((await target.count()) === 0) continue;
-    await target.click();
-    await page.waitForTimeout(700);
-    const scrollState = await page.evaluate(() => {
-      const index = document.querySelector(".product-section-index");
-      const inside = document.querySelector("#inside");
-      const indexRect = index?.getBoundingClientRect();
-      const rect = inside?.getBoundingClientRect();
-      return {
-        indexPosition: index ? getComputedStyle(index).position : null,
-        indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-        indexTop: indexRect ? Math.round(indexRect.top) : null,
-        indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
-        currentCount: index ? index.querySelectorAll('a[aria-current="true"]').length : 0,
-        targetTop: rect ? Math.round(rect.top) : 0,
-      };
-    });
-    await page.screenshot({
-      path: `${outDir}/${viewport.name}${path.replaceAll("/", "_")}_anchor-click.png`,
-      fullPage: false,
-    });
-    results.push({
-      viewport: viewport.name,
-      path: `${path} anchor-click`,
-      overflow: 0,
-      nav: viewport.name === "desktop" ? "flex" : "none",
-      mobile: viewport.name === "desktop" ? "none" : "block",
-      h1: "anchor-click",
-      h1Lines: 1,
-      anchorCount: 1,
-      textOk:
-        scrollState.indexPosition === "sticky" &&
-        scrollState.indexOverflow <= 1 &&
-        scrollState.indexTop !== null &&
-        scrollState.indexTop >= 0 &&
-        scrollState.currentCount === 1 &&
-        scrollState.targetTop >= (scrollState.indexBottom ?? 0) &&
-        scrollState.targetTop < viewport.height * 0.4,
-    });
+    const anchors = await page.locator(".product-section-index a").evaluateAll((links) =>
+      links.map((link, index) => ({
+        index,
+        href: link.getAttribute("href") ?? "",
+        label: link.textContent?.trim() ?? "",
+      })),
+    );
+
+    for (const anchor of anchors) {
+      await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
+      await page.locator(".product-section-index a").nth(anchor.index).click();
+      await page.waitForTimeout(700);
+      const scrollState = await page.evaluate((href) => {
+        const targetId = decodeURIComponent(href.slice(1));
+        const index = document.querySelector(".product-section-index");
+        const target = document.getElementById(targetId);
+        const indexRect = index?.getBoundingClientRect();
+        const rect = target?.getBoundingClientRect();
+        const active = index?.querySelector("a[aria-current]");
+        return {
+          targetId,
+          indexPosition: index ? getComputedStyle(index).position : null,
+          indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
+          indexTop: indexRect ? Math.round(indexRect.top) : null,
+          indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
+          currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
+          currentHref: active?.getAttribute("href") ?? null,
+          targetTop: rect ? Math.round(rect.top) : null,
+          targetExists: Boolean(target),
+        };
+      }, anchor.href);
+      const anchorScreenshot = screenshotName(viewport.name, path, `_anchor-${scrollState.targetId}`);
+      await page.screenshot({
+        path: `${outDir}/${anchorScreenshot}`,
+        fullPage: false,
+      });
+      results.push({
+        viewport: viewport.name,
+        path: `${path} anchor:${anchor.label}`,
+        overflow: 0,
+        nav: viewport.name === "desktop" ? "flex" : "none",
+        mobile: viewport.name === "desktop" ? "none" : "block",
+        h1: "anchor-click",
+        h1Lines: 1,
+        anchorCount: anchors.length,
+        textOk:
+          scrollState.targetExists &&
+          scrollState.indexPosition === "sticky" &&
+          scrollState.indexOverflow <= 1 &&
+          scrollState.indexTop !== null &&
+          scrollState.indexTop >= 0 &&
+          scrollState.currentCount === 1 &&
+          scrollState.currentHref === anchor.href &&
+          scrollState.targetTop !== null &&
+          scrollState.targetTop >= (scrollState.indexBottom ?? 0) &&
+          scrollState.targetTop < viewport.height - 24,
+        details: scrollState,
+        screenshot: anchorScreenshot,
+      });
+    }
 
     await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
     await page.waitForTimeout(100);
@@ -176,11 +201,11 @@ for (const viewport of viewports) {
         indexPosition: index ? getComputedStyle(index).position : null,
         indexTop: rect ? Math.round(rect.top) : null,
         indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-        currentCount: index ? index.querySelectorAll('a[aria-current="true"]').length : 0,
+        currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
       };
     });
     await page.screenshot({
-      path: `${outDir}/${viewport.name}${path.replaceAll("/", "_")}_sticky-scroll.png`,
+      path: `${outDir}/${screenshotName(viewport.name, path, "_sticky-scroll")}`,
       fullPage: false,
     });
     results.push({
@@ -197,6 +222,8 @@ for (const viewport of viewports) {
         stickyState.indexTop === 0 &&
         stickyState.indexOverflow <= 1 &&
         stickyState.currentCount === 1,
+      details: stickyState,
+      screenshot: screenshotName(viewport.name, path, "_sticky-scroll"),
     });
   }
 
@@ -206,7 +233,7 @@ for (const viewport of viewports) {
 await browser.close();
 console.table(results);
 
-const failures = results.filter((result) => {
+const failures = results.flatMap((result) => {
   const isDesktop = result.viewport === "desktop";
   const isProductPage =
     result.path.includes("s3-turbo-list") ||
@@ -219,7 +246,10 @@ const failures = results.filter((result) => {
     ? result.nav === "flex" && result.mobile === "none"
     : result.nav === "none" && result.mobile === "block";
   const isAuxCheck =
-    result.path.includes("menu") || result.path.includes("anchor-click") || result.path.includes("sticky-scroll");
+    result.path.includes("menu") ||
+    result.path.includes("anchor-click") ||
+    result.path.includes("anchor:") ||
+    result.path.includes("sticky-scroll");
   const anchorOk =
     isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 5 : result.anchorCount === 0) : true;
   const productIndexOk = result.productIndex
@@ -229,18 +259,25 @@ const failures = results.filter((result) => {
     : true;
   const featuresGridOk = isProductPage && !isAuxCheck ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
+  const reasons = [];
 
-  return (
-    result.overflow > 1 ||
-    result.h1Lines > 3 ||
-    result.oldS3Facts ||
-    !result.textOk ||
-    !navOk ||
-    !anchorOk ||
-    !productIndexOk ||
-    !featuresGridOk ||
-    !imagesOk
-  );
+  if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
+  if (result.h1Lines > 3) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
+  if (result.oldS3Facts) reasons.push("outdated s3-turbo-list facts are still visible");
+  if (!result.textOk)
+    reasons.push(`content or interaction check failed${result.details ? `: ${JSON.stringify(result.details)}` : ""}`);
+  if (!navOk) reasons.push(`navigation visibility mismatch: nav=${result.nav}, mobile=${result.mobile}`);
+  if (!anchorOk) reasons.push(`anchor count mismatch: ${result.anchorCount}`);
+  if (!productIndexOk) reasons.push(`product index state invalid: ${JSON.stringify(result.productIndex)}`);
+  if (!featuresGridOk) reasons.push(`feature grid display mismatch: ${result.featuresGrid}`);
+  if (!imagesOk) reasons.push(`image check failed: imageCount=${result.imageCount}, broken=${result.brokenImages}`);
+
+  return reasons.map((reason) => ({
+    viewport: result.viewport,
+    path: result.path,
+    reason,
+    screenshot: result.screenshot ?? screenshotName(result.viewport, result.path.split(" ")[0]),
+  }));
 });
 if (failures.length > 0) {
   console.error("QA failed:", failures);

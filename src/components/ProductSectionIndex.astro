@@ -1,0 +1,108 @@
+---
+import type { Locale } from "../lib/site";
+
+interface Props {
+  locale: Locale;
+  items: Array<[string, string]>;
+}
+
+const { locale, items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <nav
+      class="product-section-index shell"
+      aria-label={locale === "zh" ? "页面目录" : "Page index"}
+      data-section-index
+    >
+      <span>{locale === "zh" ? "阅读路径" : "Read this page"}</span>
+      <div>
+        {items.map(([id, label]) => (
+          <a href={`#${id}`} data-section-link={id}>
+            {label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  )
+}
+
+<script>
+  const indexes = document.querySelectorAll<HTMLElement>("[data-section-index]");
+
+  indexes.forEach((index) => {
+    const links = Array.from(index.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+    const sections = links
+      .map((link) => {
+        const id = decodeURIComponent(link.hash.slice(1));
+        const section = document.getElementById(id);
+        return section ? { id, link, section } : null;
+      })
+      .filter((item): item is { id: string; link: HTMLAnchorElement; section: HTMLElement } => item !== null);
+
+    if (sections.length === 0) return;
+
+    const setActive = (id: string) => {
+      sections.forEach((item) => {
+        if (item.id === id) {
+          item.link.setAttribute("aria-current", "location");
+        } else {
+          item.link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const currentSection = () => {
+      const indexRect = index.getBoundingClientRect();
+      const lowerEdge = indexRect.bottom + 2;
+      const readingLine = Math.min(window.innerHeight - 1, indexRect.bottom + Math.max(44, window.innerHeight * 0.18));
+      const hashId = decodeURIComponent(window.location.hash.slice(1));
+      const hashed = sections.find((item) => item.id === hashId);
+
+      if (hashed) {
+        const rect = hashed.section.getBoundingClientRect();
+        if (rect.top >= lowerEdge && rect.top < window.innerHeight - 24) {
+          return hashed;
+        }
+      }
+
+      let active = sections[0];
+
+      for (const item of sections) {
+        const rect = item.section.getBoundingClientRect();
+        if (rect.top <= readingLine && rect.bottom > lowerEdge) {
+          active = item;
+        }
+      }
+
+      return active;
+    };
+
+    let scheduled = false;
+    const update = () => {
+      scheduled = false;
+      setActive(currentSection().id);
+    };
+
+    const scheduleUpdate = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    };
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const id = decodeURIComponent(link.hash.slice(1));
+        setActive(id);
+        window.setTimeout(scheduleUpdate, 450);
+      });
+    });
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("hashchange", scheduleUpdate);
+    setActive(sections[0].id);
+    scheduleUpdate();
+  });
+</script>

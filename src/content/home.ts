@@ -75,17 +75,17 @@ export const ui = {
     thesisLabel: "产品主线",
     thesisTitle: "主线是对象存储",
     thesisBody:
-      "s3-turbo-list 负责自动 inventory 和 diff，并留下机器可读 artifact；StorageOps 让 Pi 按对象存储的诊断技能和取证工具工作；httpmon 负责在签名、重试、跳转或服务商行为说不清时，把真实 HTTP 流量拿出来看。两个 Chrome 扩展则更轻，只补一个日常使用的小缺口。",
+      "s3-turbo-list 负责自动生成对象清单和差异结果，并留下机器可读产物；StorageOps 让 Pi 按对象存储的诊断技能和取证工具工作；httpmon 负责在签名、重试、跳转或服务商行为说不清时，把真实 HTTP 流量拿出来看。两个 Chrome 扩展则更轻，只补一个日常使用的小缺口。",
     flowLabel: "存储运维流",
     flowTitle: "存储运维链路",
     flowBody:
-      "需要自动化 inventory 或 diff，用 s3-turbo-list；需要 Pi 按诊断技能和取证工具排查 S3 兼容故障，用 StorageOps；线索藏在 SDK 下面的真实 HTTP 请求和响应里，用 httpmon。",
-    proofItems: ["S3 兼容 list/diff", "Pi 诊断 agent", "HTTP 流量检查", "Chrome 商店产品"],
+      "需要自动生成对象清单或差异结果，用 s3-turbo-list；需要 Pi 按诊断技能和取证工具排查 S3 兼容故障，用 StorageOps；线索藏在 SDK 下面的真实 HTTP 请求和响应里，用 httpmon。",
+    proofItems: ["S3 兼容 list / diff", "Pi 诊断 agent", "HTTP 流量检查", "Chrome 商店产品"],
     aboutTitle: "关于",
     aboutDescription: "hxddh 的个人简介、对象存储工具和 Chrome 扩展。",
     aboutHeadline: "对象存储工具",
     aboutLead:
-      "我做的东西都比较窄：把大桶列快，把两个 bucket 的差异算清，把 S3 兼容故障拆开看。浏览器扩展也一样，只补一个明确的小缺口。",
+      "我做的东西都比较窄：把大型存储桶列快，把两个存储桶的差异算清，把 S3 兼容故障拆开看。浏览器扩展也一样，只补一个明确的小缺口。",
     productsLabel: "产品与项目",
     profileLabel: "简介",
     profileTitle: "一条很窄的产品线",
@@ -95,7 +95,7 @@ export const ui = {
     ],
     focusLabel: "关注方向",
     focusItems: [
-      "S3 兼容 inventory、diff、诊断和迁移检查",
+      "S3 兼容对象清单、差异对比、诊断和迁移检查",
       "命令行工具的 HTTP/HTTPS 流量检查",
       "隐私姿态清晰的小型 Chrome 扩展",
     ],
@@ -145,7 +145,7 @@ export const homeProductLines = {
       items: [
         {
           slug: "s3-turbo-list" as ProductSlug,
-          text: "当大型 bucket 的 inventory 或 diff 需要自动运行、留下 Parquet artifact，并给 CI / agent 提供 JSON plan 和 manifest。",
+          text: "当大型存储桶的对象清单或差异结果需要自动生成，留下 Parquet 产物，并给 CI / agent 提供 JSON plan 和运行记录。",
         },
         {
           slug: "storageops" as ProductSlug,
@@ -204,7 +204,7 @@ export const homeStorageFlow = {
       number: "01",
       verb: "Inventory / Diff",
       name: "s3-turbo-list",
-      text: "自动列举或对比大型 S3 兼容 bucket，留下 Parquet、JSON plan 和 run manifest。",
+      text: "自动列举或对比大型 S3 兼容存储桶，留下 Parquet、JSON plan 和运行记录。",
       slug: "s3-turbo-list" as ProductSlug,
     },
     {
@@ -269,7 +269,7 @@ export const aboutProductGroups = {
   zh: [
     {
       title: "对象存储",
-      text: "围绕 inventory、diff、诊断和请求级证据，做一条能接起来的工具线。",
+      text: "围绕对象清单、差异对比、诊断和请求级证据，做一条能接起来的工具线。",
     },
     {
       title: "浏览器工具",
@@ -277,7 +277,7 @@ export const aboutProductGroups = {
     },
     {
       title: "做事方式",
-      text: "命令要清楚，输出要能检查，artifact 要能继续进入 CI、DuckDB、日志或下一步排查。",
+      text: "命令要清楚，输出要能检查，产物要能继续进入 CI、DuckDB、日志或下一步排查。",
     },
   ],
 } as const;

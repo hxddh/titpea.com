@@ -19,14 +19,14 @@ const isZh = locale === "zh";
         <h2>{isZh ? "默认路径自动完成繁琐部分" : "The default path handles the hard parts"}</h2>
         <p>
           {isZh
-            ? "s3-turbo-list 现在更像一个自动化 inventory / diff 工具：启动发现、运行时拆分、dry-run plan、run manifest 和 artifact 校验都在默认路径里。"
+            ? "s3-turbo-list 现在更像一个自动化对象清单 / diff 工具：启动发现、运行时拆分、dry-run plan、运行记录和产物校验都在默认路径里。"
             : "s3-turbo-list now behaves more like an automated inventory and diff tool: startup discovery, runtime splitting, dry-run plans, run manifests, and artifact checks sit on the default path."}
         </p>
       </div>
       <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
         <div class="workbench-top">
           <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
-          <strong>{isZh ? "automatic inventory path" : "automatic inventory path"}</strong>
+          <strong>{isZh ? "自动对象清单路径" : "automatic inventory path"}</strong>
         </div>
         <div class="inventory-grid benchmark-metrics">
           <div class="metric-tile strong">
@@ -60,7 +60,7 @@ const isZh = locale === "zh";
           </div>
           <div>
             <>
-              <span>{isZh ? "artifacts" : "artifacts"}</span>
+              <span>{isZh ? "产物" : "artifacts"}</span>
               <strong>Parquet · key-space CSV · run manifest · trace JSONL</strong>
             </>
           </div>
@@ -72,7 +72,7 @@ const isZh = locale === "zh";
           </div>
           <div>
             <>
-              <span>{isZh ? "provider logs" : "provider logs"}</span>
+              <span>{isZh ? "服务商日志" : "provider logs"}</span>
               <strong>app/s3-turbo-list User-Agent · compat-probe</strong>
             </>
           </div>
@@ -128,7 +128,7 @@ const isZh = locale === "zh";
               <strong>{isZh ? "确定性脚本" : "deterministic helpers"}</strong>
               <p>
                 {isZh
-                  ? "检查 SigV4、ETag、payload hash、限流、访问日志和 endpoint 可达性。"
+                  ? "检查 SigV4、ETag、payload hash、限流、访问日志和端点可达性。"
                   : "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability."}
               </p>
             </>

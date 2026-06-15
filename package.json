@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "assets:og": "node scripts/generate-og-images.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "facts:check": "node scripts/check-product-facts.mjs",

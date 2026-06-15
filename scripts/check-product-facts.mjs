@@ -2,10 +2,30 @@ import fs from "node:fs";
 
 const productFile = new URL("../src/content/products.ts", import.meta.url);
 const evidenceFile = new URL("../src/content/evidence.ts", import.meta.url);
+const factsFile = new URL("../src/content/productFacts.json", import.meta.url);
 const content = `${fs.readFileSync(productFile, "utf8")}\n${fs.readFileSync(evidenceFile, "utf8")}`;
+const facts = JSON.parse(fs.readFileSync(factsFile, "utf8"));
 
-const requiredFacts = ["Apache-2.0", "v0.18.0", "Agent-safe JSON"];
-const forbiddenFacts = ["MIT License", "v0.5.0"];
+const s3Facts = facts["s3-turbo-list"];
+const chromeFacts = [facts["world-clock"], facts["douban-movie-rating"]];
+const requiredFacts = [
+  s3Facts.licenseLabel,
+  s3Facts.latestRelease,
+  ...s3Facts.stableFacts.filter((fact) => fact === "Agent-safe JSON"),
+];
+const forbiddenFacts = [
+  "MIT License",
+  "v0.5.0",
+  "Version 7.0",
+  "Version 1.3",
+  "Updated June",
+  "138 users",
+  "52 users",
+  "5.0 rating",
+  "5.0 评分",
+  "44.08 KiB",
+  "33.68 KiB",
+];
 
 const failures = [];
 
@@ -42,15 +62,23 @@ try {
     getJson("https://api.github.com/repos/hxddh/s3-turbo-list/releases/latest"),
   ]);
 
-  if (repo.license?.key !== "apache-2.0") {
-    failures.push(`GitHub license mismatch: expected apache-2.0, got ${repo.license?.key ?? "none"}`);
+  if (repo.license?.key !== s3Facts.licenseKey) {
+    failures.push(`GitHub license mismatch: expected ${s3Facts.licenseKey}, got ${repo.license?.key ?? "none"}`);
   }
 
-  if (release.tag_name !== "v0.18.0") {
-    failures.push(`GitHub latest release mismatch: expected v0.18.0, got ${release.tag_name ?? "none"}`);
+  if (release.tag_name !== s3Facts.latestRelease) {
+    failures.push(
+      `GitHub latest release mismatch: expected ${s3Facts.latestRelease}, got ${release.tag_name ?? "none"}`,
+    );
   }
 } catch (error) {
   failures.push(`Could not verify GitHub product facts: ${error.message}`);
+}
+
+for (const fact of chromeFacts) {
+  if (!fact.volatileFactsPolicy) {
+    failures.push(`Missing Chrome volatile fact policy for ${fact.listingUrl}`);
+  }
 }
 
 if (failures.length > 0) {
@@ -61,4 +89,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("Product facts verified: s3-turbo-list Apache-2.0 / v0.18.0");
+console.log(`Product facts verified: s3-turbo-list ${s3Facts.licenseLabel} / ${s3Facts.latestRelease}`);

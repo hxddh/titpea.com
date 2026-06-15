@@ -22,7 +22,7 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         <h2>{isZh ? "1M 对象，单流约 55s，-c 8 约 19s" : "1M objects, ~55s single-stream, ~19s at -c 8"}</h2>
         <p>
           {isZh
-            ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试。现在的重点不是让用户先调参数，而是默认启动发现、运行时拆分和可校验 artifact。"
+            ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试。现在的重点不是让用户先调参数，而是默认启动发现、运行时拆分和可校验产物。"
             : "The current README cites a third-party Alibaba Cloud OSS benchmark. The product direction is now automatic first: startup discovery, runtime splitting, and verifiable artifacts."}
         </p>
         <div class="benchmark-meta">
@@ -62,9 +62,9 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         <div class="automation-path">
           <span>{isZh ? "默认自动化路径" : "Default automation path"}</span>
           <ol>
-            <li>{isZh ? "启动发现真实 prefix 边界" : "Discover real prefix boundaries"}</li>
-            <li>{isZh ? "运行时按吞吐拆分长尾 segment" : "Split long-tail segments while throughput improves"}</li>
-            <li>{isZh ? "写出 Parquet、plan、manifest 和 trace" : "Write Parquet, plans, manifests, and traces"}</li>
+            <li>{isZh ? "启动发现真实前缀边界" : "Discover real prefix boundaries"}</li>
+            <li>{isZh ? "运行时按吞吐拆分长尾片段" : "Split long-tail segments while throughput improves"}</li>
+            <li>{isZh ? "写出 Parquet、plan、运行记录和 trace" : "Write Parquet, plans, manifests, and traces"}</li>
           </ol>
           <p>
             {isZh
@@ -118,7 +118,7 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
             <strong>{isZh ? "确定性脚本" : "deterministic helper scripts"}</strong>
             <p>
               {isZh
-                ? "检查 policy、SigV4、payload hash、ETag、限流、访问日志、迁移估算和 endpoint 可达性。"
+                ? "检查 policy、SigV4、payload hash、ETag、限流、访问日志、迁移估算和端点可达性。"
                 : "Inspect policy, SigV4, payload hashes, ETags, throttling, access logs, migration estimates, and endpoint reachability."}
             </p>
           </>

@@ -1,0 +1,34 @@
+{
+  "s3-turbo-list": {
+    "source": "github-api",
+    "repository": "hxddh/s3-turbo-list",
+    "licenseKey": "apache-2.0",
+    "licenseLabel": "Apache-2.0",
+    "latestRelease": "v0.18.0",
+    "stableFacts": ["S3-compatible", "Parquet output", "Agent-safe JSON", "run manifests"]
+  },
+  "storageops": {
+    "source": "manual",
+    "repository": "hxddh/storageops",
+    "stableFacts": ["Pi Agent", "object-storage diagnosis", "skills", "tools", "eval-backed routing"]
+  },
+  "https-traffic-inspector": {
+    "source": "manual",
+    "repository": "hxddh/https-traffic-inspector",
+    "stableFacts": ["HTTP/HTTPS inspection", "CLI traffic evidence", "request and response capture"]
+  },
+  "world-clock": {
+    "source": "chrome-web-store",
+    "listingUrl": "https://chromewebstore.google.com/detail/mghphbjnicggehnhbjbpjddfidkepnfp",
+    "category": "Tools",
+    "stableFacts": ["timezone popup", "light and dark themes", "no data collection disclosed"],
+    "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
+  },
+  "douban-movie-rating": {
+    "source": "chrome-web-store",
+    "listingUrl": "https://chromewebstore.google.com/detail/alhcfchcficmeggkhcpkojoipdkkgoif",
+    "category": "Entertainment",
+    "stableFacts": ["IMDb context", "Rotten Tomatoes context", "Metacritic context", "no data collection disclosed"],
+    "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
+  }
+}

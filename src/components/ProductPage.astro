@@ -4,6 +4,7 @@ import ProductCardsSection from "./ProductCardsSection.astro";
 import ProductCasesSection from "./ProductCasesSection.astro";
 import ProductFaqSection from "./ProductFaqSection.astro";
 import ProductInside from "./ProductInside.astro";
+import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
 import { productSections } from "../content/productSections";
@@ -50,12 +51,13 @@ const navItems = [
   ...sections.map((section) => [section.id, navLabel(section.id, section.label)]),
 ];
 const showSectionIndex = product.category === "storage";
-const socialImage =
-  product.visual === "clock"
-    ? "/assets/world-clock-dark.png"
-    : product.visual === "rating"
-      ? "/assets/douban-rating-assistant.png"
-      : "/favicon.svg";
+const socialImages = {
+  "s3-turbo-list": "/assets/og-s3-turbo-list.png",
+  storageops: "/assets/og-storageops.png",
+  "world-clock": "/assets/og-world-clock.png",
+  "douban-movie-rating": "/assets/og-douban-movie-rating.png",
+} as const;
+const socialImage = socialImages[product.slug];
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -96,64 +98,7 @@ const structuredData = {
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  {
-    showSectionIndex && (
-      <nav
-        class="product-section-index shell"
-        aria-label={locale === "zh" ? "页面目录" : "Page index"}
-        data-section-index
-      >
-        <span>{locale === "zh" ? "阅读路径" : "Read this page"}</span>
-        <div>
-          {navItems.map(([id, label]) => (
-            <a href={`#${id}`}>{label}</a>
-          ))}
-        </div>
-      </nav>
-    )
-  }
-
-  <script>
-    const sectionIndexes = document.querySelectorAll<HTMLElement>("[data-section-index]");
-
-    sectionIndexes.forEach((index) => {
-      const links = Array.from(index.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
-      const sections = links
-        .map((link) => {
-          const id = decodeURIComponent(link.hash.slice(1));
-          return { id, link, section: document.getElementById(id) };
-        })
-        .filter((item): item is { id: string; link: HTMLAnchorElement; section: HTMLElement } => Boolean(item.section));
-
-      const setActive = (id: string) => {
-        sections.forEach((item) => {
-          if (item.id === id) {
-            item.link.setAttribute("aria-current", "true");
-          } else {
-            item.link.removeAttribute("aria-current");
-          }
-        });
-      };
-
-      setActive(sections[0]?.id ?? "");
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-
-          if (visible?.target.id) setActive(visible.target.id);
-        },
-        {
-          rootMargin: "-18% 0px -68% 0px",
-          threshold: [0, 0.1, 0.35],
-        },
-      );
-
-      sections.forEach((item) => observer.observe(item.section));
-    });
-  </script>
+  {showSectionIndex && <ProductSectionIndex locale={locale} items={navItems} />}
 
   <ProductInside locale={locale} product={product} />
 

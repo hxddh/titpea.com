@@ -146,107 +146,89 @@ export const products: Record<ProductSlug, Product> = {
       zh: {
         title: "s3-turbo-list",
         description:
-          "自动化 S3 兼容对象存储 list / diff CLI，支持启动发现、agent-safe plan、run manifest 和 Parquet 输出。",
-        eyebrow: "Rust CLI / 自动化 S3 Inventory",
+          "自动化 S3 兼容对象存储 list / diff CLI，支持启动发现、适合 agent 的 plan、运行记录和 Parquet 输出。",
+        eyebrow: "Rust CLI / 自动化 S3 对象清单",
         headline: "自动化 S3 list / diff CLI",
-        lead: "s3-turbo-list 把命令面收得很小：列大桶、对比两个 bucket、输出 Parquet；prefix 发现、运行时拆分、dry-run plan 和 run manifest 交给默认路径处理。",
+        lead: "s3-turbo-list 把命令面收得很小：列举大型存储桶、对比两个存储桶、输出 Parquet；前缀发现、运行时拆分、dry-run plan 和运行记录交给默认路径处理。",
         primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
         secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
         meta: "Rust · Apache-2.0 · v0.18.0 · S3-compatible · Parquet · Agent-safe JSON",
-        proof: ["默认启动发现", "吞吐感知运行时拆分", "agent-safe dry-run plan", "可校验 run manifest"],
+        proof: ["默认启动发现", "吞吐感知运行时拆分", "适合 agent 的 dry-run plan", "可校验运行记录"],
         positioningLabel: "边界",
         positioning: [
           [
             "什么时候用",
-            "需要列一个很大的 S3 兼容 bucket，或对比两个 bucket，但不想先设计分区方案，也不想调一堆参数。",
+            "需要列举一个很大的 S3 兼容存储桶，或对比两个存储桶，但不想先设计分区方案，也不想调一堆参数。",
           ],
           [
             "它不是什么",
-            "不是备份工具，不是同步引擎，也不是图形化存储浏览器。它是一个聚焦的二进制：自动 list、可靠 diff、留下机器可读证据。",
+            "不是备份工具，不是同步引擎，也不是图形化存储浏览器。它是一个聚焦的二进制：自动 list、可靠 diff，并留下机器可读证据。",
           ],
           [
             "哪里保持简单",
-            "第一次运行不需要 hints 文件。默认路径负责并发，Parquet、manifest、trace JSONL 和稳定 exit codes 负责后续检查。",
+            "第一次运行不需要 hints 文件。默认路径负责并发，Parquet、运行记录、trace JSONL 和稳定退出码负责后续检查。",
           ],
         ],
         featuresLabel: "能力",
         features: [
-          [
-            "自动发现 key-space",
-            "启动时用少量 delimiter probe 找真实 prefix 边界并缓存，第一次递归 list 就能并发运行。",
-          ],
-          [
-            "吞吐感知 fan-out",
-            "运行时拆分长尾 segment；只有吞吐继续上升时才增加 fan-out，把 concurrency 当上限而不是目标。",
-          ],
+          ["自动发现 key 空间", "启动时用少量 delimiter probe 找真实前缀边界并缓存，第一次递归 list 就能并发运行。"],
+          ["吞吐感知并发展开", "运行时拆分长尾片段；只有吞吐继续上升时才增加并发，把并发数当上限而不是目标。"],
           [
             "有界 diff",
-            "两侧 bucket 并行列举，按 key order 流式合并，写出带 `DiffFlag` 的 Parquet，不把两边 keyspace 全放进内存。",
+            "两侧存储桶并行列举，按 key 顺序流式合并，写出带 `DiffFlag` 的 Parquet，不把两边 key 空间全放进内存。",
           ],
           [
             "自适应 Parquet 输出",
-            "受限于 provider 时保持单文件；只有 Parquet 编码成为瓶颈时，才自动扩展成多个 part-file writer。",
+            "受限于服务商吞吐时保持单文件；只有 Parquet 编码成为瓶颈时，才自动扩展成多个 part-file writer。",
           ],
         ],
         rationaleLabel: "为什么做",
         rationaleTitle: "产品核心是自动化",
         rationaleBody: [
           "对象存储工作经常从两个问题开始：这个桶里有什么？它和另一个桶有什么不同？难点不是继续加参数，而是让默认路径足够快、足够清楚、能被自动化系统信任。",
-          "s3-turbo-list 刻意保持命令面很小：发现结构、调整 fan-out、写出可分析 artifact，并提供 JSON plan 和 manifest，让人、CI 和 agent 都能判断一次运行是否可信。",
+          "s3-turbo-list 刻意保持命令面很小：发现结构、调整并发、写出可分析产物，并提供 JSON plan 和运行记录，让人、CI 和 agent 都能判断一次运行是否可信。",
         ],
         workflowLabel: "怎么用",
         workflow: [
           [
             "Preflight",
-            "先跑 `doctor --json`、`doctor --simple` 或 `--dry-run --agent`，在访问 S3 前解析配置、输出路径和 warnings。",
+            "先跑 `doctor --json`、`doctor --simple` 或 `--dry-run --agent`，在访问 S3 前解析配置、输出路径和 warning。",
           ],
-          ["List / Diff", "直接 list 或 diff；启动发现和 hints cache 会自动提供并发 segment。"],
-          ["Verify", "写出 run manifest，再用 `manifest-summary --check` 检查状态、hash、行数、schema 和 exit class。"],
+          ["List / Diff", "直接 list 或 diff；启动发现和 hints cache 会自动提供并发片段。"],
+          ["Verify", "写出运行记录，再用 `manifest-summary --check` 检查状态、hash、行数、schema 和退出分类。"],
           ["Analyze", "用 DuckDB、pandas 或 pyarrow 读取 Parquet；需要流式处理时输出 TSV / NDJSON。"],
         ],
         automationLabel: "自动化",
         automation: [
           [
             "Dry-run plan",
-            "`--dry-run --agent` 和 `--plan-json` 在不访问 S3 的情况下输出配置来源、计划 artifact、warnings 和文件冲突。",
+            "`--dry-run --agent` 和 `--plan-json` 在不访问 S3 的情况下输出配置来源、计划产物、warning 和文件冲突。",
           ],
-          [
-            "Run manifest",
-            "`--run-manifest` 记录 status、metrics、artifacts、warnings、SHA256、Parquet 行数和 schema metadata。",
-          ],
-          [
-            "稳定 exit codes",
-            "把参数校验、provider 配置、网络、输出、数据校验和中断分成稳定退出码，方便 CI 和 agent 接入。",
-          ],
-          ["Provider trace", "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露 endpoint 行为和真实 S3 API 调用。"],
+          ["Run manifest", "`--run-manifest` 记录状态、指标、产物、warning、SHA256、Parquet 行数和 schema 元数据。"],
+          ["稳定退出码", "把参数校验、服务商配置、网络、输出、数据校验和中断分成稳定退出码，方便 CI 和 agent 接入。"],
+          ["Provider trace", "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露端点行为和真实 S3 API 调用。"],
         ],
         examplesLabel: "用法示例",
         examples: [
-          [
-            "第一次 inventory",
-            "只给 bucket 和 region 跑 `list`，启动发现会自动找边界，输出 Parquet 和 key-space 计数。",
-          ],
-          ["Agent preflight", "扫描前生成 dry-run JSON plan，让 agent 先检查 warnings、计划 artifact 和配置来源。"],
-          [
-            "迁移 diff",
-            "把 source 和 target diff 成一份带 `DiffFlag` 的 Parquet，下游再过滤变更、左侧独有和右侧独有对象。",
-          ],
+          ["第一次对象清单", "只给存储桶和 region 跑 `list`，启动发现会自动找边界，输出 Parquet 和 key 空间计数。"],
+          ["Agent preflight", "扫描前生成 dry-run JSON plan，让 agent 先检查 warning、计划产物和配置来源。"],
+          ["迁移 diff", "把源端和目标端 diff 成一份带 `DiffFlag` 的 Parquet，下游再过滤变更、左侧独有和右侧独有对象。"],
         ],
         casesLabel: "兼容性",
-        casesTitle: "面向真实 S3 兼容 endpoint",
-        casesBody: "先用 endpoint preset、compat-probe、trace JSONL 和 provider warning 摸清行为，再扩大扫描规模。",
+        casesTitle: "面向真实 S3 兼容端点",
+        casesBody: "先用端点 preset、compat-probe、trace JSONL 和服务商 warning 摸清行为，再扩大扫描规模。",
         cases: ["AWS S3", "MinIO", "Cloudflare R2", "BOS", "OSS", "B2"],
-        finalCta: "先做 agent-safe dry-run",
+        finalCta: "先做适合 agent 的 dry-run",
         finalCtaLabel: "打开仓库",
         faqLabel: "问题与用法",
         faq: [
           [
             "为什么不用 aws s3 ls？",
-            "小桶当然可以。s3-turbo-list 面向的是大桶：默认路径要能自动发现结构、并发列举，并留下结构化 artifact。",
+            "小桶当然可以。s3-turbo-list 面向的是大桶：默认路径要能自动发现结构、并发列举，并留下结构化产物。",
           ],
           [
             "必须提前准备 hints 吗？",
-            "不需要。启动发现会探测真实 `CommonPrefixes` 边界并缓存。hints 文件只是给重复 inventory 用的可选控制。",
+            "不需要。启动发现会探测真实 `CommonPrefixes` 边界并缓存。hints 文件只是重复生成对象清单时的可选控制。",
           ],
           [
             "v0.18.0 变了什么？",
@@ -417,13 +399,10 @@ export const products: Record<ProductSlug, Product> = {
             "Pi 工具",
             "`scan_secrets`、`detect_domain`、`search_memory`、`capture_http_trace` 负责路由问题和收集脱敏上下文。",
           ],
-          [
-            "Helper scripts",
-            "确定性脚本检查 policy、SigV4 输入、payload hash、ETag、限流、访问日志、迁移估算和 endpoint 可达性。",
-          ],
+          ["辅助脚本", "确定性脚本检查 policy、SigV4 输入、payload hash、ETag、限流、访问日志、迁移估算和端点可达性。"],
           [
             "回归约束",
-            "Golden cases、技能/评测包、size gates 和验证目标让 agent package 保持紧凑、可重复，也更容易安全修改。",
+            "Golden cases、技能/评测包、size gates 和验证目标让 agent 包保持紧凑、可重复，也更容易安全修改。",
           ],
         ],
         rationaleLabel: "为什么做",
@@ -436,14 +415,14 @@ export const products: Record<ProductSlug, Product> = {
         workflow: [
           ["启动 Pi", "用 `storageops --print` 或交互式 Pi session 输入日志、错误、配置或简短故障描述。"],
           ["路由技能", "`detect_domain` 和技能分类把问题导向鉴权、签名、限流、一致性、生命周期、迁移等领域。"],
-          ["调用工具", "Pi 可以扫描 secrets、搜索历史 session，或通过托管 httpmon helper 捕获脱敏 HTTP trace。"],
+          ["调用工具", "Pi 可以扫描密钥、搜索历史 session，或通过托管 httpmon helper 捕获脱敏 HTTP trace。"],
           ["生成诊断", "agent 基于选中的技能和工具输出返回可能原因、置信度、证据、下一步检查和安全修改建议。"],
         ],
         examplesLabel: "用法示例",
         examples: [
           ["签名错误", "把 SignatureDoesNotMatch 路由到签名诊断，检查 canonical request 输入，并对照服务商行为。"],
           ["List 变慢或被限流", "用性能和限流诊断加上 helper 输出判断，而不是只看 SDK 重试日志猜原因。"],
-          ["迁移差异", "先组合 inventory、生命周期规则、checksum 线索和脱敏 trace，再给下一步检查建议。"],
+          ["迁移差异", "先组合对象清单、生命周期规则、checksum 线索和脱敏 trace，再给下一步检查建议。"],
         ],
         casesLabel: "场景",
         casesTitle: "对象存储诊断领域",
@@ -468,11 +447,11 @@ export const products: Record<ProductSlug, Product> = {
           ],
           [
             "一开始应该粘贴什么？",
-            "先给完整错误、命令或 SDK 调用、endpoint 形式、相关配置名，以及脱敏后的日志片段。技能和工具会继续收窄证据。",
+            "先给完整错误、命令或 SDK 调用、端点形式、相关配置名，以及脱敏后的日志片段。技能和工具会继续收窄证据。",
           ],
           [
             "什么时候需要 capture_http_trace？",
-            "当诊断依赖 CLI 或 SDK 隐藏的请求细节时使用：headers、redirect、retry、canonical request、payload hash 或 provider 响应元数据。",
+            "当诊断依赖 CLI 或 SDK 隐藏的请求细节时使用：headers、redirect、retry、canonical request、payload hash 或服务商响应元数据。",
           ],
         ],
       },
@@ -497,8 +476,8 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
         },
         secondaryCta: { label: "Back to profile", href: "/about/" },
-        meta: "Version 7.0 · Updated June 1, 2026 · 138 users · 44.08 KiB",
-        proof: ["Chrome Web Store: Tools", "Version 7.0", "138 users", "No data collection disclosed"],
+        meta: "Chrome Web Store · Tools · No data collection disclosed",
+        proof: ["Chrome Web Store: Tools", "Live city rows", "Light and dark themes", "No data collection disclosed"],
         positioningLabel: "Positioning",
         positioning: [
           [
@@ -533,7 +512,7 @@ export const products: Record<ProductSlug, Product> = {
         rationaleLabel: "Details",
         rationaleTitle: "Small, fast, and browser-native",
         rationaleBody: [
-          "The extension is listed under Tools in the Chrome Web Store, offered by titpea.com, and is sized for a lightweight install.",
+          "The extension is listed under Tools in the Chrome Web Store and offered by titpea.com.",
           "Use it as a quick timezone glance for remote work, travel coordination, or checking whether a city is in business hours.",
         ],
         faqLabel: "Questions & how-to",
@@ -559,8 +538,8 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
         },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
-        meta: "Version 7.0 · Updated June 1, 2026 · 138 users · 44.08 KiB",
-        proof: ["Chrome Web Store: Tools", "Version 7.0", "138 users", "声明不收集数据"],
+        meta: "Chrome Web Store · Tools · 声明不收集数据",
+        proof: ["Chrome Web Store: Tools", "城市时间行", "浅色和深色主题", "声明不收集数据"],
         positioningLabel: "边界",
         positioning: [
           ["什么时候用", "远程协作、旅行安排、跨地区沟通前，想快速确认几个城市现在几点、是不是工作时间。"],
@@ -577,7 +556,7 @@ export const products: Record<ProductSlug, Product> = {
         rationaleLabel: "详情",
         rationaleTitle: "小、快，直接运行在浏览器里",
         rationaleBody: [
-          "该扩展在 Chrome Web Store 中归类为 Tools，由 titpea.com 提供，安装包体积很轻。",
+          "该扩展在 Chrome Web Store 中归类为 Tools，由 titpea.com 提供。",
           "适合远程协作、旅行安排，或快速确认某个城市是否处于工作时间。",
         ],
         faqLabel: "问题与用法",
@@ -607,8 +586,13 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
         },
         secondaryCta: { label: "Back to profile", href: "/about/" },
-        meta: "Version 1.3 · Updated June 1, 2026 · 52 users · 33.68 KiB",
-        proof: ["Chrome Web Store: Entertainment", "5.0 rating", "Version 1.3", "No data collection disclosed"],
+        meta: "Chrome Web Store · Entertainment · No data collection disclosed",
+        proof: [
+          "Chrome Web Store: Entertainment",
+          "IMDb context",
+          "Rotten Tomatoes context",
+          "No data collection disclosed",
+        ],
         positioningLabel: "Positioning",
         positioning: [
           [
@@ -661,8 +645,8 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
         },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
-        meta: "Version 1.3 · Updated June 1, 2026 · 52 users · 33.68 KiB",
-        proof: ["Chrome Web Store: Entertainment", "5.0 评分", "Version 1.3", "声明不收集数据"],
+        meta: "Chrome Web Store · Entertainment · 声明不收集数据",
+        proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
         positioningLabel: "边界",
         positioning: [
           ["什么时候用", "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。"],

@@ -14,7 +14,13 @@ const isZh = locale === "zh";
 const productGroups = aboutProductGroups[locale];
 ---
 
-<SiteLayout title={copy.aboutTitle} description={copy.aboutDescription} current="about" locale={locale}>
+<SiteLayout
+  title={copy.aboutTitle}
+  description={copy.aboutDescription}
+  current="about"
+  locale={locale}
+  image="/assets/og-about.png"
+>
   <section class="about-hero about-redesign-hero shell">
     <div class="about-redesign-copy">
       <p class="eyebrow">hxddh</p>
