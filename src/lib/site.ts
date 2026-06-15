@@ -1,6 +1,17 @@
 export type Locale = "en" | "zh";
 export type ProductSlug = "s3-turbo-list" | "storageops" | "world-clock" | "douban-movie-rating";
 export type CurrentPage = "home" | "about" | "s3-turbo-list" | "storageops" | "world-clock" | "douban";
+export type HeaderNavItem = {
+  label: string;
+  href: string;
+  current?: CurrentPage;
+  external?: boolean;
+};
+
+export type HeaderNavGroup = {
+  label: string;
+  items: HeaderNavItem[];
+};
 
 type Link = {
   label: string;
@@ -571,4 +582,45 @@ export const aboutProducts = ["world-clock", "douban-movie-rating", "s3-turbo-li
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";
   return locale === "zh" ? `/zh/${path}` : `/${path}`;
+}
+
+export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
+  const isZh = locale === "zh";
+
+  return [
+    {
+      label: isZh ? "主要页面" : "Main",
+      items: [
+        { label: isZh ? "首页" : "Home", href: pathFor(locale), current: "home" },
+        { label: isZh ? "关于" : "About", href: pathFor(locale, "about"), current: "about" },
+      ],
+    },
+    {
+      label: isZh ? "对象存储" : "Storage",
+      items: [
+        { label: "s3-turbo-list", href: pathFor(locale, "s3-turbo-list"), current: "s3-turbo-list" },
+        { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops" },
+        { label: "httpmon", href: "https://github.com/hxddh/https-traffic-inspector", external: true },
+      ],
+    },
+    {
+      label: isZh ? "浏览器工具" : "Browser",
+      items: [
+        { label: isZh ? "世界时钟" : "World Clock", href: pathFor(locale, "world-clock"), current: "world-clock" },
+        { label: isZh ? "豆瓣评分" : "Douban", href: pathFor(locale, "douban-movie-rating"), current: "douban" },
+      ],
+    },
+    {
+      label: isZh ? "外部链接" : "External",
+      items: [
+        { label: "GitHub", href: "https://github.com/hxddh", external: true },
+      ],
+    },
+  ];
+}
+
+export function primaryNavItems(locale: Locale): HeaderNavItem[] {
+  return headerNavGroups(locale)
+    .flatMap((group) => group.items)
+    .filter((item) => item.current !== "home" && item.label !== "httpmon");
 }

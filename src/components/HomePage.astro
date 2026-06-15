@@ -38,6 +38,39 @@ const browserTools = locale === "zh"
       ["World Clock", "Check city time quickly without opening a calendar or starting a scheduling workflow.", pathFor(locale, "world-clock")],
       ["Douban Movie Rating Assistant", "Add IMDb and Rotten Tomatoes context to Douban movie pages without replacing the page.", pathFor(locale, "douban-movie-rating")],
     ];
+const evidenceCards = locale === "zh"
+  ? [
+      {
+        label: "s3-turbo-list benchmark",
+        title: "100 万对象，最高 54,667 objects/s",
+        body: "v0.5.0 在 ECS 2 vCPU / 3.4 GiB RAM 上完成测试：并发扫描稳定在 48k-55k objects/s，单段吞吐较 v0.4.0 提升 18.8%。",
+        href: pathFor(locale, "s3-turbo-list"),
+        stats: ["1,000,078 objects", "Parquet zstd 3.0 MB", "checkpoint / resume"],
+      },
+      {
+        label: "StorageOps agent package",
+        title: "skills、tools、helpers、evals",
+        body: "StorageOps 给 Pi 安装对象存储诊断能力：15 个诊断 skills、4 个 Pi extension tools、确定性 helper scripts，以及 golden-case evals。",
+        href: pathFor(locale, "storageops"),
+        stats: ["15 diagnostic skills", "4 Pi tools", "golden-case evals"],
+      },
+    ]
+  : [
+      {
+        label: "s3-turbo-list benchmark",
+        title: "1M objects, up to 54,667 objects/s",
+        body: "v0.5.0 measured on ECS 2 vCPU / 3.4 GiB RAM: parallel scans hold around 48k-55k objects/s, with single-segment throughput up 18.8% from v0.4.0.",
+        href: pathFor(locale, "s3-turbo-list"),
+        stats: ["1,000,078 objects", "Parquet zstd 3.0 MB", "checkpoint / resume"],
+      },
+      {
+        label: "StorageOps agent package",
+        title: "Skills, tools, helpers, evals",
+        body: "StorageOps installs object-storage diagnosis into Pi: 15 diagnostic skills, 4 Pi extension tools, deterministic helper scripts, and golden-case evals.",
+        href: pathFor(locale, "storageops"),
+        stats: ["15 diagnostic skills", "4 Pi tools", "golden-case evals"],
+      },
+    ];
 ---
 
 <SiteLayout
@@ -76,6 +109,26 @@ const browserTools = locale === "zh"
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="home-evidence shell">
+    <div class="home-evidence-heading">
+      <p class="section-kicker">{locale === "zh" ? "主产品证据" : "Product evidence"}</p>
+      <h2>{locale === "zh" ? "先看事实，再看功能" : "Evidence before features"}</h2>
+      <p>{locale === "zh" ? "两个主产品都尽量用可检查的输出说明自己：一个给出压测数据，一个给出 agent package 的组成。" : "The two main products lead with checkable evidence: one shows benchmark data, the other shows the agent package structure."}</p>
+    </div>
+    <div class="home-evidence-grid">
+      {evidenceCards.map((card) => (
+        <a class="home-evidence-card" href={card.href}>
+          <span>{card.label}</span>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+          <div>
+            {card.stats.map((stat) => <strong>{stat}</strong>)}
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 

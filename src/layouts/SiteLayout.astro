@@ -1,4 +1,5 @@
 ---
+import SiteHeader from "../components/SiteHeader.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -12,7 +13,6 @@ const { title, description, current = "home", locale = "en" } = Astro.props;
 const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
 const isZh = locale === "zh";
 const htmlLang = isZh ? "zh-CN" : "en";
-const prefix = isZh ? "/zh" : "";
 const currentPath =
   current === "home" ? "" :
   current === "about" ? "about" :
@@ -28,18 +28,7 @@ const englishUrl = `https://titpea.com${englishHref}`;
 const chineseUrl = `https://titpea.com${chineseHref}`;
 const alternateLocale = isZh ? "en" : "zh";
 const alternateLabel = isZh ? "English" : "中文";
-const homeHref = isZh ? "/zh/" : "/";
-const aboutHref = `${prefix}/about/`;
-const s3Href = `${prefix}/s3-turbo-list/`;
-const storageopsHref = `${prefix}/storageops/`;
-const worldClockHref = `${prefix}/world-clock/`;
-const doubanHref = `${prefix}/douban-movie-rating/`;
 const alternateHref = isZh ? englishHref : chineseHref;
-const aboutCurrent = current === "about" ? "page" : undefined;
-const s3Current = current === "s3-turbo-list" ? "page" : undefined;
-const storageopsCurrent = current === "storageops" ? "page" : undefined;
-const worldClockCurrent = current === "world-clock" ? "page" : undefined;
-const doubanCurrent = current === "douban" ? "page" : undefined;
 ---
 
 <!doctype html>
@@ -63,25 +52,13 @@ const doubanCurrent = current === "douban" ? "page" : undefined;
     <title>{siteTitle}</title>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href={homeHref} aria-label="Titpea home">
-        <span class="brand-mark" aria-hidden="true">T</span>
-        <span>Titpea</span>
-      </a>
-      <div class="header-actions">
-        <nav class="nav" aria-label={isZh ? "主导航" : "Primary"}>
-          <a href={aboutHref} aria-current={aboutCurrent}>{isZh ? "关于" : "About"}</a>
-          <a href={s3Href} aria-current={s3Current}>s3-turbo-list</a>
-          <a href={storageopsHref} aria-current={storageopsCurrent}>StorageOps</a>
-          <a href={worldClockHref} aria-current={worldClockCurrent}>{isZh ? "世界时钟" : "World Clock"}</a>
-          <a href={doubanHref} aria-current={doubanCurrent}>{isZh ? "豆瓣评分" : "Douban"}</a>
-          <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
-        </nav>
-        <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
-          {alternateLabel}
-        </a>
-      </div>
-    </header>
+    <SiteHeader
+      current={current}
+      locale={locale}
+      alternateHref={alternateHref}
+      alternateLabel={alternateLabel}
+      alternateLocale={alternateLocale}
+    />
     <main>
       <slot />
     </main>

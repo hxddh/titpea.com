@@ -1,0 +1,62 @@
+---
+import { headerNavGroups, pathFor, primaryNavItems, type CurrentPage, type Locale } from "../lib/site";
+
+interface Props {
+  current: CurrentPage;
+  locale: Locale;
+  alternateHref: string;
+  alternateLabel: string;
+  alternateLocale: Locale;
+}
+
+const { current, locale, alternateHref, alternateLabel, alternateLocale } = Astro.props;
+const isZh = locale === "zh";
+const homeHref = pathFor(locale);
+const primaryItems = primaryNavItems(locale);
+const navGroups = headerNavGroups(locale);
+---
+
+<header class="site-header">
+  <a class="brand" href={homeHref} aria-label="Titpea home">
+    <span class="brand-mark" aria-hidden="true">T</span>
+    <span>Titpea</span>
+  </a>
+
+  <div class="header-actions">
+    <nav class="nav" aria-label={isZh ? "主导航" : "Primary"}>
+      {primaryItems.map((item) => (
+        <a
+          href={item.href}
+          aria-current={item.current === current ? "page" : undefined}
+          rel={item.external ? "noreferrer" : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
+      {alternateLabel}
+    </a>
+
+    <details class="mobile-menu">
+      <summary>{isZh ? "菜单" : "Menu"}</summary>
+      <div class="mobile-menu-panel">
+        {navGroups.map((group) => (
+          <section class="mobile-menu-group" aria-label={group.label}>
+            <p>{group.label}</p>
+            {group.items.map((item) => (
+              <a
+                href={item.href}
+                aria-current={item.current === current ? "page" : undefined}
+                rel={item.external ? "noreferrer" : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
+          </section>
+        ))}
+      </div>
+    </details>
+  </div>
+</header>
