@@ -35,8 +35,14 @@ jobs:
       - name: Check product facts
         run: npm run facts:check
 
+      - name: Check OG assets
+        run: npm run assets:check
+
       - name: Build
         run: npm run build
+
+      - name: Lint copy
+        run: npm run copy:lint
 
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium

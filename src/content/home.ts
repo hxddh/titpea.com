@@ -179,7 +179,7 @@ export const homeStorageFlow = {
   en: [
     {
       number: "01",
-      verb: "Inventory / Diff",
+      verb: "List / Diff",
       name: "s3-turbo-list",
       text: "Run automatic inventory or diff on large S3-compatible buckets, then keep Parquet, JSON plans, and run manifests.",
       slug: "s3-turbo-list" as ProductSlug,
@@ -202,7 +202,7 @@ export const homeStorageFlow = {
   zh: [
     {
       number: "01",
-      verb: "Inventory / Diff",
+      verb: "List / Diff",
       name: "s3-turbo-list",
       text: "自动列举或对比大型 S3 兼容存储桶，留下 Parquet、JSON plan 和运行记录。",
       slug: "s3-turbo-list" as ProductSlug,

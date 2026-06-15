@@ -335,8 +335,98 @@
   padding: 94px 0;
 }
 
+.product-deep-dive {
+  display: grid;
+  gap: 26px;
+  border-top: 1px solid var(--line);
+  padding-top: 86px;
+  padding-bottom: 86px;
+}
+
+.deep-dive-heading {
+  display: grid;
+  max-width: 760px;
+  gap: 12px;
+}
+
+.deep-dive-heading h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
+  line-height: 1.06;
+}
+
+.deep-dive-heading p:not(.section-kicker) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.deep-dive-grid,
+.agent-topology,
+.deep-dive-benchmark {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+  gap: 1px;
+}
+
+.deep-dive-grid,
+.deep-dive-benchmark {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.agent-topology {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.deep-dive-grid article,
+.agent-topology article,
+.deep-dive-benchmark div {
+  display: grid;
+  gap: 12px;
+  min-height: 170px;
+  padding: 26px;
+  background: var(--panel);
+}
+
+.deep-dive-grid span,
+.agent-topology span,
+.deep-dive-benchmark span {
+  color: #667085;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.deep-dive-grid h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.12;
+}
+
+.agent-topology strong,
+.deep-dive-benchmark strong {
+  color: var(--ink);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.deep-dive-grid p,
+.agent-topology p,
+.deep-dive-benchmark p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .inside-section,
 .content-section,
+.product-deep-dive,
 .product-story,
 #cases {
   scroll-margin-top: 92px;

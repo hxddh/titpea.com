@@ -10,9 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "assets:og": "node scripts/generate-og-images.mjs",
+    "assets:check": "npm run assets:og && git diff --exit-code public/assets/og-*.png",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "facts:check": "node scripts/check-product-facts.mjs",
+    "copy:lint": "node scripts/lint-copy.mjs",
     "qa:pages": "node scripts/qa-pages.mjs",
     "astro": "astro"
   },

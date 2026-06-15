@@ -3,8 +3,9 @@ import fs from "node:fs";
 const productFile = new URL("../src/content/products.ts", import.meta.url);
 const evidenceFile = new URL("../src/content/evidence.ts", import.meta.url);
 const factsFile = new URL("../src/content/productFacts.json", import.meta.url);
-const content = `${fs.readFileSync(productFile, "utf8")}\n${fs.readFileSync(evidenceFile, "utf8")}`;
-const facts = JSON.parse(fs.readFileSync(factsFile, "utf8"));
+const factsContent = fs.readFileSync(factsFile, "utf8");
+const content = `${fs.readFileSync(productFile, "utf8")}\n${fs.readFileSync(evidenceFile, "utf8")}\n${factsContent}`;
+const facts = JSON.parse(factsContent);
 
 const s3Facts = facts["s3-turbo-list"];
 const chromeFacts = [facts["world-clock"], facts["douban-movie-rating"]];

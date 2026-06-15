@@ -4,6 +4,7 @@ import { pathFor, type Locale, type ProductSlug } from "../lib/site";
 import { productEvidence } from "../content/evidence";
 import { homeBrowserTools, homeProductLines, homeStorageFlow, ui } from "../content/home";
 import { products } from "../content/products";
+import { routeForPage } from "../content/siteManifest";
 
 interface Props {
   locale: Locale;
@@ -26,6 +27,7 @@ const storageFlow = homeStorageFlow[locale];
 const browserTools = homeBrowserTools[locale];
 const flowHref = (item: (typeof storageFlow)[number]) => ("slug" in item ? pathFor(locale, item.slug) : item.href);
 const browserHref = (item: (typeof browserTools)[number]) => pathFor(locale, item.slug);
+const route = routeForPage(locale, "home");
 ---
 
 <SiteLayout
@@ -35,7 +37,7 @@ const browserHref = (item: (typeof browserTools)[number]) => pathFor(locale, ite
     : "Titpea is the personal site and product index for hxddh."}
   current="home"
   locale={locale}
-  image="/assets/og-home.png"
+  image={route?.ogImage ?? "/assets/og-home.png"}
 >
   <section class="home-hero home-workbench-hero shell">
     <div class="home-copy home-workbench-copy">

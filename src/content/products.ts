@@ -1,6 +1,13 @@
 import type { Product, ProductSlug } from "../lib/site";
+import { s3MetaLine, s3TurboListFacts, worldClockFacts, doubanMovieRatingFacts } from "./productFacts";
 
 export const productSlugs: ProductSlug[] = ["s3-turbo-list", "storageops", "world-clock", "douban-movie-rating"];
+const s3Release = s3TurboListFacts.latestRelease ?? "current release";
+const s3License = s3TurboListFacts.licenseLabel ?? "current license";
+const worldClockMeta = `Chrome Web Store · ${worldClockFacts.category} · No data collection disclosed`;
+const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声明不收集数据`;
+const doubanMeta = `Chrome Web Store · ${doubanMovieRatingFacts.category} · No data collection disclosed`;
+const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 声明不收集数据`;
 
 export const products: Record<ProductSlug, Product> = {
   "s3-turbo-list": {
@@ -20,7 +27,7 @@ export const products: Record<ProductSlug, Product> = {
         lead: "s3-turbo-list keeps the CLI small: list a large bucket, diff two buckets, and export Parquet while startup discovery, runtime splitting, dry-run plans, and run manifests handle the operational detail.",
         primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
         secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
-        meta: "Rust · Apache-2.0 · v0.18.0 · S3-compatible · Parquet · Agent-safe JSON",
+        meta: s3MetaLine(),
         proof: [
           "Startup discovery by default",
           "Throughput-aware runtime splitting",
@@ -138,8 +145,8 @@ export const products: Record<ProductSlug, Product> = {
             "No. Startup discovery probes real `CommonPrefixes` boundaries and caches them. Hints files are optional controls for repeated inventories.",
           ],
           [
-            "What changed in v0.18.0?",
-            "The project moved to Apache-2.0, adds `app/s3-turbo-list` to the S3 User-Agent for provider logs, and corrects the declared Rust MSRV.",
+            `What changed in ${s3Release}?`,
+            `The project moved to ${s3License}, adds \`app/s3-turbo-list\` to the S3 User-Agent for provider logs, and corrects the declared Rust MSRV.`,
           ],
         ],
       },
@@ -152,7 +159,7 @@ export const products: Record<ProductSlug, Product> = {
         lead: "s3-turbo-list 把命令面收得很小：列举大型存储桶、对比两个存储桶、输出 Parquet；前缀发现、运行时拆分、dry-run plan 和运行记录交给默认路径处理。",
         primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
         secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
-        meta: "Rust · Apache-2.0 · v0.18.0 · S3-compatible · Parquet · Agent-safe JSON",
+        meta: s3MetaLine(),
         proof: ["默认启动发现", "吞吐感知运行时拆分", "适合 agent 的 dry-run plan", "可校验运行记录"],
         positioningLabel: "边界",
         positioning: [
@@ -206,7 +213,7 @@ export const products: Record<ProductSlug, Product> = {
           ],
           ["Run manifest", "`--run-manifest` 记录状态、指标、产物、warning、SHA256、Parquet 行数和 schema 元数据。"],
           ["稳定退出码", "把参数校验、服务商配置、网络、输出、数据校验和中断分成稳定退出码，方便 CI 和 agent 接入。"],
-          ["Provider trace", "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露端点行为和真实 S3 API 调用。"],
+          ["服务商 trace", "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露端点行为和真实 S3 API 调用。"],
         ],
         examplesLabel: "用法示例",
         examples: [
@@ -231,8 +238,8 @@ export const products: Record<ProductSlug, Product> = {
             "不需要。启动发现会探测真实 `CommonPrefixes` 边界并缓存。hints 文件只是重复生成对象清单时的可选控制。",
           ],
           [
-            "v0.18.0 变了什么？",
-            "项目切到 Apache-2.0，S3 User-Agent 增加 `app/s3-turbo-list`，并修正 Rust MSRV 声明。",
+            `${s3Release} 变了什么？`,
+            `项目切到 ${s3License}，S3 User-Agent 增加 \`app/s3-turbo-list\`，并修正 Rust MSRV 声明。`,
           ],
         ],
       },
@@ -476,7 +483,7 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
         },
         secondaryCta: { label: "Back to profile", href: "/about/" },
-        meta: "Chrome Web Store · Tools · No data collection disclosed",
+        meta: worldClockMeta,
         proof: ["Chrome Web Store: Tools", "Live city rows", "Light and dark themes", "No data collection disclosed"],
         positioningLabel: "Positioning",
         positioning: [
@@ -538,7 +545,7 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
         },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
-        meta: "Chrome Web Store · Tools · 声明不收集数据",
+        meta: worldClockMetaZh,
         proof: ["Chrome Web Store: Tools", "城市时间行", "浅色和深色主题", "声明不收集数据"],
         positioningLabel: "边界",
         positioning: [
@@ -586,7 +593,7 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
         },
         secondaryCta: { label: "Back to profile", href: "/about/" },
-        meta: "Chrome Web Store · Entertainment · No data collection disclosed",
+        meta: doubanMeta,
         proof: [
           "Chrome Web Store: Entertainment",
           "IMDb context",
@@ -645,7 +652,7 @@ export const products: Record<ProductSlug, Product> = {
           href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
         },
         secondaryCta: { label: "返回简介", href: "/zh/about/" },
-        meta: "Chrome Web Store · Entertainment · 声明不收集数据",
+        meta: doubanMetaZh,
         proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
         positioningLabel: "边界",
         positioning: [

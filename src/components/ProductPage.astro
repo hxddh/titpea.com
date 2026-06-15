@@ -2,12 +2,14 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import ProductCardsSection from "./ProductCardsSection.astro";
 import ProductCasesSection from "./ProductCasesSection.astro";
+import ProductDeepDive from "./ProductDeepDive.astro";
 import ProductFaqSection from "./ProductFaqSection.astro";
 import ProductInside from "./ProductInside.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
 import { productSections } from "../content/productSections";
+import { routeForProduct } from "../content/siteManifest";
 import type { Locale, Product } from "../lib/site";
 
 interface Props {
@@ -26,6 +28,7 @@ const navLabel = (id: string, label: string) => {
       features: "Capabilities",
       workflow: "Flow",
       automation: "Automation",
+      evidence: "Evidence",
       cases: "Compatibility",
       faq: "FAQ",
       story: "Details",
@@ -37,6 +40,7 @@ const navLabel = (id: string, label: string) => {
       features: "能力",
       workflow: "流程",
       automation: "自动化",
+      evidence: "证据",
       cases: "兼容性",
       faq: "FAQ",
       story: "细节",
@@ -48,16 +52,12 @@ const navLabel = (id: string, label: string) => {
 };
 const navItems = [
   ["inside", navLabel("inside", "Inside")],
+  ...(product.category === "storage" ? [["evidence", navLabel("evidence", "Evidence")]] : []),
   ...sections.map((section) => [section.id, navLabel(section.id, section.label)]),
 ];
 const showSectionIndex = product.category === "storage";
-const socialImages = {
-  "s3-turbo-list": "/assets/og-s3-turbo-list.png",
-  storageops: "/assets/og-storageops.png",
-  "world-clock": "/assets/og-world-clock.png",
-  "douban-movie-rating": "/assets/og-douban-movie-rating.png",
-} as const;
-const socialImage = socialImages[product.slug];
+const route = routeForProduct(locale, product.slug);
+const socialImage = route?.ogImage ?? "/assets/og-home.png";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -101,6 +101,7 @@ const structuredData = {
   {showSectionIndex && <ProductSectionIndex locale={locale} items={navItems} />}
 
   <ProductInside locale={locale} product={product} />
+  {showSectionIndex && <ProductDeepDive locale={locale} product={product} />}
 
   {
     sections.map((section) => {

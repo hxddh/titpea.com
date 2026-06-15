@@ -1,0 +1,115 @@
+---
+import type { Locale, Product } from "../lib/site";
+import { s3BenchmarkEvidence } from "../content/evidence";
+
+interface Props {
+  locale: Locale;
+  product: Product;
+}
+
+const { locale, product } = Astro.props;
+const isZh = locale === "zh";
+---
+
+{
+  product.role === "inventory" && (
+    <section id="evidence" class="shell product-deep-dive s3-deep-dive">
+      <div class="deep-dive-heading">
+        <p class="section-kicker">{isZh ? "证据链" : "Evidence chain"}</p>
+        <h2>{isZh ? "从发现到校验，一次运行闭环" : "One run from discovery to verification"}</h2>
+        <p>
+          {isZh
+            ? "s3-turbo-list 的重点不是多给参数，而是把大型对象存储 list / diff 里最容易出错的步骤收进默认路径。"
+            : "s3-turbo-list is not a pile of knobs. It pulls the error-prone parts of large object-storage list and diff runs into the default path."}
+        </p>
+      </div>
+      <div class="deep-dive-grid s3-run-grid">
+        <article>
+          <span>01</span>
+          <h3>{isZh ? "启动发现" : "Startup discovery"}</h3>
+          <p>
+            {isZh
+              ? "少量 delimiter probe 找真实前缀边界，第一次递归 list 也能并发。"
+              : "Delimiter probes find real prefix boundaries before a first recursive list fans out."}
+          </p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>{isZh ? "吞吐拆分" : "Throughput splitting"}</h3>
+          <p>
+            {isZh
+              ? "运行时只在吞吐继续上升时拆分长尾片段，把并发当上限。"
+              : "Runtime splitting fans out long-tail segments only while throughput is still improving."}
+          </p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>{isZh ? "产物校验" : "Artifact checks"}</h3>
+          <p>
+            {isZh
+              ? "Parquet、运行记录、hash、行数和 schema 元数据让结果能被 CI 和 agent 复查。"
+              : "Parquet, manifests, hashes, row counts, and schema metadata keep CI and agents honest."}
+          </p>
+        </article>
+      </div>
+      <div class="deep-dive-benchmark">
+        <div>
+          <span>{isZh ? "第三方 OSS 测试" : "Third-party OSS run"}</span>
+          <strong>{isZh ? "1M 对象" : "1M objects"}</strong>
+        </div>
+        {s3BenchmarkEvidence.parallelRuns.map((run) => (
+          <div>
+            <span>{run.label}</span>
+            <strong>{run.seconds}s</strong>
+            <p>{run.throughput.toLocaleString()} objects/s</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+{
+  product.role === "diagnosis" && (
+    <section id="evidence" class="shell product-deep-dive storageops-deep-dive">
+      <div class="deep-dive-heading">
+        <p class="section-kicker">{isZh ? "Agent 拓扑" : "Agent topology"}</p>
+        <h2>{isZh ? "技能决定判断，工具负责取证" : "Skills decide; tools collect evidence"}</h2>
+        <p>
+          {isZh
+            ? "StorageOps 的核心不是提示词，而是把 Pi 的诊断过程拆成领域技能、取证工具、确定性脚本和回归评测。"
+            : "StorageOps is not a prompt pack. It breaks Pi diagnosis into domain skills, evidence tools, deterministic helpers, and evals."}
+        </p>
+      </div>
+      <div class="agent-topology">
+        <article>
+          <span>{isZh ? "技能" : "Skills"}</span>
+          <strong>15</strong>
+          <p>
+            {isZh
+              ? "鉴权、签名、限流、一致性、迁移、日志、通知等领域。"
+              : "Auth, signing, throttling, consistency, migration, logs, notifications, and more."}
+          </p>
+        </article>
+        <article>
+          <span>{isZh ? "工具" : "Tools"}</span>
+          <strong>4</strong>
+          <p>
+            {isZh
+              ? "detect_domain、scan_secrets、search_memory、capture_http_trace。"
+              : "detect_domain, scan_secrets, search_memory, and capture_http_trace."}
+          </p>
+        </article>
+        <article>
+          <span>{isZh ? "约束" : "Evals"}</span>
+          <strong>golden</strong>
+          <p>
+            {isZh
+              ? "Golden cases 和 size gates 限制输出口径，避免 agent 漂移。"
+              : "Golden cases and size gates keep the agent package compact and repeatable."}
+          </p>
+        </article>
+      </div>
+    </section>
+  )
+}

@@ -92,10 +92,29 @@ const { locale, items } = Astro.props;
     };
 
     links.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
         const id = decodeURIComponent(link.hash.slice(1));
+        const target = sections.find((item) => item.id === id)?.section;
+
         setActive(id);
-        window.setTimeout(scheduleUpdate, 450);
+        link.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+
+        if (target) {
+          const root = document.documentElement;
+          const previousScrollBehavior = root.style.scrollBehavior;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY;
+          const targetMargin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+
+          root.style.scrollBehavior = "auto";
+          window.scrollTo({ top: Math.max(0, targetTop - targetMargin), left: 0, behavior: "auto" });
+          window.requestAnimationFrame(() => {
+            root.style.scrollBehavior = previousScrollBehavior;
+          });
+          history.pushState(null, "", `#${encodeURIComponent(id)}`);
+        }
+
+        window.setTimeout(scheduleUpdate, 80);
       });
     });
 

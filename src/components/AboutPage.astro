@@ -3,6 +3,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { pathFor, type Locale } from "../lib/site";
 import { aboutProductGroups, ui } from "../content/home";
 import { aboutProducts, products } from "../content/products";
+import { routeForPage } from "../content/siteManifest";
 
 interface Props {
   locale: Locale;
@@ -12,6 +13,7 @@ const { locale } = Astro.props;
 const copy = ui[locale];
 const isZh = locale === "zh";
 const productGroups = aboutProductGroups[locale];
+const route = routeForPage(locale, "about");
 ---
 
 <SiteLayout
@@ -19,7 +21,7 @@ const productGroups = aboutProductGroups[locale];
   description={copy.aboutDescription}
   current="about"
   locale={locale}
-  image="/assets/og-about.png"
+  image={route?.ogImage ?? "/assets/og-about.png"}
 >
   <section class="about-hero about-redesign-hero shell">
     <div class="about-redesign-copy">

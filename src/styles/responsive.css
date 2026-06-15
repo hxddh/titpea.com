@@ -46,7 +46,10 @@
   .workflow-grid,
   .automation-grid,
   .examples-grid,
-  .inventory-grid {
+  .inventory-grid,
+  .deep-dive-grid,
+  .deep-dive-benchmark,
+  .agent-topology {
     grid-template-columns: 1fr;
   }
 
@@ -63,7 +66,8 @@
   .product-section-index {
     grid-template-columns: 1fr;
     gap: 0;
-    padding-block: 10px;
+    width: 100%;
+    padding: 9px 16px;
   }
 
   .product-section-index > span {
@@ -71,11 +75,27 @@
   }
 
   .product-section-index div {
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 16px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .product-section-index div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-section-index a {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .inside-section,
   .content-section,
+  .product-deep-dive,
   .product-story,
   #cases {
     scroll-margin-top: 124px;
