@@ -50,10 +50,13 @@ const route = routeForPage(locale, "home");
         <a class="button ghost" href={pathFor(locale, "storageops")}>{copy.homeSecondary}</a>
         <a class="button ghost" href={pathFor(locale, "about")}>{copy.homeAbout}</a>
       </div>
+      <div class="home-proof-rail" aria-label={locale === "zh" ? "产品主线" : "Product spine"}>
+        {copy.proofItems.map((item) => <span>{item}</span>)}
+      </div>
     </div>
 
     <div class="home-workbench-panel" aria-label={copy.featuredLabel}>
-      <div class="workbench-panel-head">
+      <div class="workbench-panel-head editorial-panel-head">
         <p class="section-kicker">{copy.flowLabel}</p>
         <h2>{copy.flowTitle}</h2>
         <p>{copy.flowBody}</p>
@@ -102,6 +105,16 @@ const route = routeForPage(locale, "home");
           </a>
         ))
       }
+    </div>
+  </section>
+
+  <section class="home-thesis-band">
+    <div class="shell split-content">
+      <div>
+        <p class="section-kicker">{copy.thesisLabel}</p>
+        <h2>{copy.thesisTitle}</h2>
+      </div>
+      <p class="prose">{copy.thesisBody}</p>
     </div>
   </section>
 

@@ -29,12 +29,14 @@ const route = routeForPage(locale, "about");
       <p class="eyebrow">hxddh</p>
       <h1>{copy.aboutHeadline}</h1>
       <p class="lead">{copy.aboutLead}</p>
-      <div class="socials about-contact-row" aria-label={isZh ? "联系方式" : "Contact links"}>
-        <a href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
-        <a href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp" rel="noreferrer"
-          >Chrome Web Store</a
+      <div class="actions about-contact-row" aria-label={isZh ? "联系方式" : "Contact links"}>
+        <a class="button primary" href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
+        <a
+          href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp"
+          rel="noreferrer"
+          class="button ghost">Chrome Web Store</a
         >
-        <a href="mailto:info@titpea.com">Email</a>
+        <a class="button ghost" href="mailto:info@titpea.com">Email</a>
       </div>
     </div>
     <aside class="about-system-panel" aria-label={isZh ? "产品线" : "Product lines"}>
@@ -52,7 +54,7 @@ const route = routeForPage(locale, "about");
   <section class="about-products shell">
     <div class="about-section-heading">
       <p class="section-kicker">{copy.productsLabel}</p>
-      <h2>{isZh ? "主线产品和旁支工具" : "Main products and side tools"}</h2>
+      <h2>{isZh ? "先是存储主线，然后是轻工具" : "Storage first, utilities second"}</h2>
     </div>
     <div class="about-product-grid">
       <a class="about-product-card primary" href={pathFor(locale, "s3-turbo-list")}>

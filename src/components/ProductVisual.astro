@@ -19,7 +19,7 @@ const headlineRuns = s3EvidenceFacts.headlineRuns;
     <div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list current benchmark summary">
       <div class="benchmark-head">
         <p class="section-kicker">{isZh ? "当前证据" : "Current evidence"}</p>
-        <h2>{isZh ? "1M 对象，单流约 55s，-c 8 约 19s" : "1M objects, ~55s single-stream, ~19s at -c 8"}</h2>
+        <h2>{isZh ? "1M 对象，-c 8 约 19s" : "1M objects, ~19s at -c 8"}</h2>
         <p>
           {isZh
             ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试。现在的重点不是让用户先调参数，而是默认启动发现、运行时拆分和可校验产物。"

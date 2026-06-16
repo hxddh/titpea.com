@@ -20,6 +20,7 @@ interface Props {
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
 const sections = productSections(locale, copy, product);
+const pageClass = `product-page product-page-${product.archetype}`;
 const navLabel = (id: string, label: string) => {
   const labels = {
     en: {
@@ -79,7 +80,7 @@ const structuredData = {
   route={route}
   structuredData={structuredData}
 >
-  <section class="product-hero product-launch-hero shell">
+  <section class:list={["product-hero product-launch-hero shell", pageClass]}>
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
@@ -99,7 +100,7 @@ const structuredData = {
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  {showSectionIndex && <ProductSectionIndex locale={locale} items={navItems} />}
+  {showSectionIndex && <ProductSectionIndex locale={locale} items={navItems} archetype={product.archetype} />}
 
   <ProductInside locale={locale} product={product} />
   {showSectionIndex && <ProductDeepDive locale={locale} product={product} />}

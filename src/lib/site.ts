@@ -59,6 +59,7 @@ export type Product = {
   current: CurrentPage;
   name: string;
   category: "storage" | "browser";
+  archetype: "storageCli" | "agentPackage" | "browserExtension";
   role: "inventory" | "diagnosis" | "traffic" | "time" | "ratings";
   visual: "terminal" | "diagnostic" | "clock" | "rating";
   locales: Localized<ProductCopy>;

@@ -51,12 +51,23 @@ for (const viewport of viewports) {
         const nav = document.querySelector(".nav");
         const mobile = document.querySelector(".mobile-menu");
         const h1 = document.querySelector("h1");
+        const lead = document.querySelector(".lead");
         const rect = h1?.getBoundingClientRect();
         const lineHeight = h1 ? Number.parseFloat(getComputedStyle(h1).lineHeight) : 0;
+        const leadRect = lead?.getBoundingClientRect();
+        const leadLineHeight = lead ? Number.parseFloat(getComputedStyle(lead).lineHeight) : 0;
         const origin = window.location.origin;
         const expectedPrimary = route.primaryCta ? new URL(route.primaryCta, origin).href : null;
         const primaryCta = document.querySelector(".button.primary");
         const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
+        const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
+        const heroActions = hero?.querySelectorAll(".actions a") ?? [];
+        const cards = Array.from(
+          document.querySelectorAll(
+            ".catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
+          ),
+        );
+        const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
 
         return {
           overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -82,6 +93,10 @@ for (const viewport of viewports) {
           mobile: mobile ? getComputedStyle(mobile).display : null,
           h1: h1?.textContent?.trim() ?? "",
           h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
+          leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
+          heroCtaCount: heroActions.length,
+          heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
+          cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
           anchorCount: document.querySelectorAll(".product-section-index a").length,
           productIndex: (() => {
             const index = document.querySelector(".product-section-index");
@@ -134,9 +149,10 @@ for (const viewport of viewports) {
 
     const filename = screenshotName(viewport.name, path);
     await page.screenshot({ path: `${outDir}/${filename}`, fullPage: false });
+    const screenshotSize = fs.statSync(`${outDir}/${filename}`).size;
     const textOk = route.expectedText.every((text) => metrics.text.includes(text));
     delete metrics.text;
-    results.push({ viewport: viewport.name, path, textOk, route, ...metrics });
+    results.push({ viewport: viewport.name, path, textOk, route, screenshotSize, ...metrics });
   }
 
   if (viewport.name === "mobile") {
@@ -393,6 +409,18 @@ const failures = results.flatMap((result) => {
 
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
   if (result.h1Lines > 3) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
+  if (!isAsset && !isAuxCheck && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
+    reasons.push(`lead wraps to ${result.leadLines} lines`);
+  }
+  if (!isAsset && !isAuxCheck && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
+    reasons.push(`hero CTA count should be 2-3, got ${result.heroCtaCount}`);
+  }
+  if (!isAsset && !isAuxCheck && result.cardHeightSpread > 220) {
+    reasons.push(`card height spread too large: ${result.cardHeightSpread}px`);
+  }
+  if (!isAsset && !isAuxCheck && result.screenshotSize < 20_000) {
+    reasons.push(`screenshot too small: ${result.screenshotSize}`);
+  }
   if (route && result.title !== route.title)
     reasons.push(`title mismatch: expected ${route.title}, got ${result.title}`);
   if (route && result.canonical !== `https://titpea.com${route.canonicalPath}`)

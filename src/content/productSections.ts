@@ -101,7 +101,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
 
   if (!product) return baseSections;
 
-  if (product.category === "browser") {
+  if (product.archetype === "browserExtension") {
     return [
       section({
         id: "positioning",
@@ -135,7 +135,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
     ];
   }
 
-  if (product.role === "inventory") {
+  if (product.archetype === "storageCli") {
     return [
       section({
         id: "positioning",
@@ -149,6 +149,13 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
         label: isZh ? "自动化路径" : "Automation path",
         items: [...copy.features, ...(copy.automation ?? [])],
       }),
+      section({
+        id: "story",
+        kind: "story",
+        label: copy.rationaleLabel,
+        title: copy.rationaleTitle,
+        body: copy.rationaleBody,
+      }),
       ...(copy.workflow && copy.workflowLabel
         ? [
             section({
@@ -157,6 +164,16 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
               label: isZh ? "一次运行" : "One run",
               items: copy.workflow,
               numbered: true,
+            }),
+          ]
+        : []),
+      ...(copy.examples && copy.examplesLabel
+        ? [
+            section({
+              id: "examples",
+              kind: "cards",
+              label: isZh ? "实际用法" : "Practical runs",
+              items: copy.examples,
             }),
           ]
         : []),
@@ -185,7 +202,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
     ];
   }
 
-  if (product.role === "diagnosis") {
+  if (product.archetype === "agentPackage") {
     return [
       section({
         id: "positioning",
@@ -198,6 +215,13 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
         kind: "cards",
         label: isZh ? "技能和工具" : "Skills and tools",
         items: copy.features,
+      }),
+      section({
+        id: "story",
+        kind: "story",
+        label: copy.rationaleLabel,
+        title: copy.rationaleTitle,
+        body: copy.rationaleBody,
       }),
       ...(copy.workflow && copy.workflowLabel
         ? [

@@ -33,6 +33,26 @@
   font-size: 12px;
 }
 
+.home-proof-rail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 760px;
+  margin: 26px auto 0;
+}
+
+.home-proof-rail span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 11px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
 .hero-visual-frame,
 .home-workbench-panel,
 .about-system-panel {
@@ -67,6 +87,10 @@
   display: grid;
   gap: 10px;
   padding: 28px;
+}
+
+.editorial-panel-head {
+  padding: 34px;
 }
 
 .workbench-panel-head h2,
@@ -147,11 +171,31 @@
 .home-evidence,
 .home-catalog,
 .home-browser-band,
+.home-thesis-band,
 .about-products,
 .about-focus-section {
   border-top: 1px solid var(--line);
   padding-top: 72px;
   padding-bottom: 72px;
+}
+
+.home-thesis-band {
+  background: var(--panel);
+}
+
+.home-thesis-band h2 {
+  max-width: 18ch;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.06;
+}
+
+.home-thesis-band .prose {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .home-evidence {
@@ -341,6 +385,11 @@
   border-top: 1px solid var(--line);
   padding-top: 86px;
   padding-bottom: 86px;
+}
+
+.product-page-agentPackage .agent-manifest-visual,
+.product-page-storageCli .benchmark-visual {
+  box-shadow: 0 24px 80px rgba(17, 24, 39, 0.08);
 }
 
 .deep-dive-heading {

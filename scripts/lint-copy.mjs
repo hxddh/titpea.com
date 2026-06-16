@@ -1,6 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-import { headingIssues, zhAwkwardPatterns, zhForbiddenTerms } from "./copy-rules.mjs";
+import {
+  headingIssues,
+  zhAwkwardPatterns,
+  zhForbiddenTerms,
+  zhMixedSpacingIssues,
+  zhSentenceIssues,
+} from "./copy-rules.mjs";
 
 const distDir = new URL("../dist/zh/", import.meta.url).pathname;
 
@@ -24,6 +30,15 @@ function textFromHtml(value) {
     .trim();
 }
 
+function visibleBlocks(html) {
+  const blocks = [];
+  for (const match of html.matchAll(/<(h[1-6]|p|li|summary|strong|span)\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
+    const text = textFromHtml(match[2]);
+    if (text) blocks.push(text);
+  }
+  return blocks;
+}
+
 function checkHeadings(html, fullPath) {
   for (const match of html.matchAll(/<(h[1-3])\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
     const [, level, content] = match;
@@ -41,14 +56,19 @@ function walk(dir) {
     } else if (entry.name.endsWith(".html")) {
       const html = fs.readFileSync(fullPath, "utf8");
       const visibleText = htmlToVisibleText(html);
+      const blocks = visibleBlocks(html);
       const visibleTextLower = visibleText.toLowerCase();
       const matched = zhForbiddenTerms.filter((term) => visibleTextLower.includes(term.trim().toLowerCase()));
       if (matched.length > 0) {
         failures.push(`${fullPath}: ${matched.join(", ")}`);
       }
       for (const { pattern, label } of zhAwkwardPatterns) {
-        const sentences = visibleText.split(/[。！？；]/).map((sentence) => sentence.trim());
+        const sentences = blocks.flatMap((block) => block.split(/[。！？；]/).map((sentence) => sentence.trim()));
         if (sentences.some((sentence) => pattern.test(sentence))) failures.push(`${fullPath}: ${label}`);
+      }
+      for (const issue of zhMixedSpacingIssues(visibleText)) failures.push(`${fullPath}: ${issue}`);
+      for (const sentence of blocks.flatMap((block) => block.split(/[。！？；]/))) {
+        for (const issue of zhSentenceIssues(sentence)) failures.push(`${fullPath}: ${issue}`);
       }
       checkHeadings(html, fullPath);
     }

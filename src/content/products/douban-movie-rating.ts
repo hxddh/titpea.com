@@ -1,0 +1,118 @@
+import type { Product } from "../../lib/site";
+import { doubanMovieRatingFacts } from "../productFacts";
+
+const doubanMeta = `Chrome Web Store · ${doubanMovieRatingFacts.category} · No data collection disclosed`;
+const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 声明不收集数据`;
+
+export const doubanMovieRatingProduct: Product = {
+  slug: "douban-movie-rating",
+  current: "douban",
+  name: "Douban Movie Rating Assistant",
+  category: "browser",
+  archetype: "browserExtension",
+  role: "ratings",
+  visual: "rating",
+  locales: {
+    en: {
+      title: "Douban Movie Rating Assistant",
+      description: "A Chrome extension that shows IMDb and Rotten Tomatoes ratings on Douban movie pages.",
+      eyebrow: "Chrome Extension",
+      headline: "Global ratings inside Douban",
+      lead: "Douban Movie Rating Assistant adds IMDb, Rotten Tomatoes, and Metacritic context to Douban movie pages while keeping Douban as the page you are reading.",
+      primaryCta: {
+        label: "Install",
+        href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
+      },
+      secondaryCta: { label: "Back to profile", href: "/about/" },
+      meta: doubanMeta,
+      proof: [
+        "Chrome Web Store: Entertainment",
+        "IMDb context",
+        "Rotten Tomatoes context",
+        "No data collection disclosed",
+      ],
+      positioningLabel: "Positioning",
+      positioning: [
+        [
+          "Use it when",
+          "You browse Douban movie pages but want quick context from IMDb and Rotten Tomatoes before deciding what to watch.",
+        ],
+        [
+          "It is not",
+          "A rating authority or recommendation engine. It simply brings external rating context into the page you are already reading.",
+        ],
+        [
+          "What you get",
+          "IMDb score, Rotten Tomatoes freshness, Metacritic score when available, direct links, runtime and genre context, and title matching across Chinese and English names.",
+        ],
+      ],
+      featuresLabel: "Capabilities",
+      features: [
+        ["IMDb rating", "Automatically shows IMDb scores on Douban movie detail pages."],
+        ["Rotten Tomatoes", "Adds Rotten Tomatoes freshness when a reliable match is available."],
+        ["Metacritic", "Shows Metacritic when the source data is available for the matched movie."],
+        ["Direct jumps", "Click a rating to open the matching IMDb or Rotten Tomatoes page."],
+        ["Title matching", "Supports intelligent matching across Chinese and English movie titles."],
+      ],
+      rationaleLabel: "Details",
+      rationaleTitle: "Ratings in one view",
+      rationaleBody: [
+        "The Chrome Web Store listing places the extension under Entertainment and identifies titpea.com as the publisher.",
+        "The store privacy disclosure states that the developer does not collect or use user data and links to the privacy policy on GitHub.",
+      ],
+      faqLabel: "Questions & how-to",
+      faq: [
+        [
+          "What happens when a movie cannot be matched?",
+          "The extension only shows external ratings when it can find a reliable match. The Douban page remains usable without the extra context.",
+        ],
+        [
+          "Does it replace Douban ratings?",
+          "No. It keeps Douban as the main page and adds IMDb or Rotten Tomatoes context so you can compare rating systems in place.",
+        ],
+      ],
+    },
+    zh: {
+      title: "豆瓣电影评分助手",
+      description: "在豆瓣电影页面补充 IMDb、Rotten Tomatoes 和 Metacritic 评分的 Chrome 扩展。",
+      eyebrow: "Chrome 扩展",
+      headline: "把海外评分补到豆瓣电影页",
+      lead: "不替代豆瓣页面，只在电影详情里补上 IMDb、Rotten Tomatoes 和 Metacritic 信息，让你原地对照不同评分体系。",
+      primaryCta: {
+        label: "安装扩展",
+        href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
+      },
+      secondaryCta: { label: "返回简介", href: "/zh/about/" },
+      meta: doubanMetaZh,
+      proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
+      positioningLabel: "边界",
+      positioning: [
+        ["什么时候用", "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。"],
+        ["它不是什么", "不是评分权威，也不是推荐引擎。它只是把外部评分补到你正在看的豆瓣页面里。"],
+        [
+          "页面里会多什么",
+          "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型/片长信息、直接跳转链接，以及中英文片名匹配。",
+        ],
+      ],
+      featuresLabel: "能力",
+      features: [
+        ["IMDb 评分", "在豆瓣电影详情页显示 IMDb 分数。"],
+        ["烂番茄新鲜度", "匹配可靠时，补充 Rotten Tomatoes 新鲜度。"],
+        ["Metacritic", "有可用数据时，继续补充 Metacritic 分数。"],
+        ["直接跳转", "点击评分，打开对应 IMDb 或 Rotten Tomatoes 页面。"],
+        ["片名匹配", "支持中英文电影标题匹配。"],
+      ],
+      rationaleLabel: "详情",
+      rationaleTitle: "一个页面里看完中外电影评分",
+      rationaleBody: [
+        "Chrome Web Store 信息显示，该扩展属于 Entertainment 分类，由 titpea.com 提供。",
+        "商店隐私说明显示开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
+      ],
+      faqLabel: "问题与用法",
+      faq: [
+        ["匹配不到电影时怎么办？", "找不到可靠匹配就不显示外部评分，豆瓣页面本身照常使用。"],
+        ["它会替代豆瓣评分吗？", "不会。豆瓣仍然是主页面，它只是在旁边补充 IMDb 或 Rotten Tomatoes，方便原地对比。"],
+      ],
+    },
+  },
+};

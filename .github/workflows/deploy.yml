@@ -67,6 +67,7 @@ jobs:
           done
           npm run qa:pages
           npm run visual:check
+          npm run review:screens
 
       - name: Deploy
         run: npx wrangler@latest pages deploy dist --project-name=titpea --branch=main

@@ -19,6 +19,7 @@
     "copy:lint": "node scripts/lint-copy.mjs",
     "qa:pages": "tsx scripts/qa-pages.mjs",
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
+    "review:screens": "node scripts/capture-review-screenshots.mjs",
     "astro": "astro"
   },
   "dependencies": {
