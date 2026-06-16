@@ -9,7 +9,7 @@ export const ui = {
     },
     language: "中文",
     productIndex: "hxddh / object storage systems",
-    homeTitle: "Tools for storage work that needs evidence",
+    homeTitle: "Storage tools with evidence",
     homeLead:
       "Titpea collects focused tools for object storage work: automatic bucket inventory, reproducible diff artifacts, Pi-based diagnosis, and request-level inspection when the SDK hides the clue.",
     homePrimary: "s3-turbo-list",
@@ -36,9 +36,9 @@ export const ui = {
     ],
     aboutTitle: "About",
     aboutDescription: "Personal profile, Chrome extensions, and infrastructure projects by hxddh.",
-    aboutHeadline: "Building small tools around storage evidence",
+    aboutHeadline: "Small tools, clear evidence",
     aboutLead:
-      "I build focused tools for object storage work and a few browser utilities. The common thread is evidence: clear commands, inspectable output, and enough context to keep debugging honest.",
+      "I build focused tools for object storage work and a few browser utilities. The common thread is clear output, inspectable evidence, and honest debugging.",
     productsLabel: "Products and Projects",
     profileLabel: "Profile",
     profileTitle: "A narrow product line, deliberately kept narrow",
