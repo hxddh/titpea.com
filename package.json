@@ -10,12 +10,15 @@
     "build": "astro build",
     "preview": "astro preview",
     "assets:og": "node scripts/generate-og-images.mjs",
-    "assets:check": "npm run assets:og && node scripts/check-og-assets.mjs",
+    "assets:check": "npm run assets:og && tsx scripts/check-og-assets.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "facts:check": "node scripts/check-product-facts.mjs",
+    "facts:external": "node scripts/check-external-facts.mjs",
+    "manifest:check": "tsx scripts/check-site-manifest.mjs",
     "copy:lint": "node scripts/lint-copy.mjs",
-    "qa:pages": "node scripts/qa-pages.mjs",
+    "qa:pages": "tsx scripts/qa-pages.mjs",
+    "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -24,6 +27,7 @@
   "devDependencies": {
     "playwright": "^1.60.0",
     "prettier": "^3.8.4",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "tsx": "^4.22.4"
   }
 }

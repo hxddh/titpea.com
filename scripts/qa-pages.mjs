@@ -1,11 +1,10 @@
 import fs from "node:fs";
 import { createRequire } from "node:module";
+import { zhForbiddenTerms } from "./copy-rules.mjs";
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://127.0.0.1:4321";
 const outDir = process.env.QA_OUT_DIR ?? "/tmp/titpea-page-qa";
-const manifest = JSON.parse(fs.readFileSync(new URL("../src/content/siteManifest.json", import.meta.url), "utf8"));
-const routes = manifest.routes;
-const zhForbiddenTerms = [" inventory", " artifact", " bucket", " endpoint", " provider", "warnings", "exit codes"];
+const { siteRoutes: routes } = await import(new URL("../src/content/siteManifest.ts", import.meta.url));
 const viewports = [
   { name: "desktop", width: 1440, height: 1100 },
   { name: "tablet", width: 850, height: 1100 },
@@ -105,6 +104,27 @@ for (const viewport of viewports) {
           brokenImages: Array.from(document.querySelectorAll("img")).filter(
             (image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
           ).length,
+          browserVisual:
+            route.kind === "product" && !route.sectionIndex
+              ? (() => {
+                  const images = Array.from(document.querySelectorAll(".product-scene img"));
+                  return {
+                    imageCount: images.length,
+                    hasChromeCta: Boolean(
+                      document.querySelector(`a.button.primary[href^="https://chromewebstore.google.com/detail"]`),
+                    ),
+                    hasPrivacyText: (document.body.innerText ?? "").includes(
+                      route.locale === "zh" ? "声明不收集数据" : "No data collection disclosed",
+                    ),
+                    images: images.map((image) => ({
+                      src: image.getAttribute("src"),
+                      alt: image.getAttribute("alt") ?? "",
+                      naturalWidth: image.naturalWidth,
+                      naturalHeight: image.naturalHeight,
+                    })),
+                  };
+                })()
+              : null,
           oldS3Facts: document.body.innerText.includes("MIT License") || document.body.innerText.includes("v0.5.0"),
           text: document.body.innerText,
         };
@@ -206,6 +226,62 @@ for (const viewport of viewports) {
         details: scrollState,
         screenshot: anchorScreenshot,
       });
+
+      if (viewport.name !== "desktop") {
+        await visit(page, path, `${viewport.name} pointer ${anchor.label}`);
+        const pointerAnchor = page.locator(".product-section-index a").nth(anchor.index);
+        await pointerAnchor.evaluate((link) => {
+          link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
+        });
+        await pointerAnchor.click();
+        await page.waitForTimeout(700);
+        const pointerState = await page.evaluate((href) => {
+          const targetId = decodeURIComponent(href.slice(1));
+          const index = document.querySelector(".product-section-index");
+          const target = document.getElementById(targetId);
+          const indexRect = index?.getBoundingClientRect();
+          const rect = target?.getBoundingClientRect();
+          const active = index?.querySelector("a[aria-current]");
+          return {
+            targetId,
+            indexPosition: index ? getComputedStyle(index).position : null,
+            indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
+            indexTop: indexRect ? Math.round(indexRect.top) : null,
+            indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
+            currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
+            currentHref: active?.getAttribute("href") ?? null,
+            targetTop: rect ? Math.round(rect.top) : null,
+            targetExists: Boolean(target),
+          };
+        }, anchor.href);
+        const pointerScreenshot = screenshotName(viewport.name, path, `_pointer-${pointerState.targetId}`);
+        await page.screenshot({
+          path: `${outDir}/${pointerScreenshot}`,
+          fullPage: false,
+        });
+        results.push({
+          viewport: viewport.name,
+          path: `${path} pointer:${anchor.label}`,
+          overflow: 0,
+          nav: "none",
+          mobile: "block",
+          h1: "pointer-click",
+          h1Lines: 1,
+          anchorCount: anchors.length,
+          textOk:
+            pointerState.targetExists &&
+            pointerState.indexPosition === "sticky" &&
+            pointerState.indexTop !== null &&
+            pointerState.indexTop >= 0 &&
+            pointerState.currentCount === 1 &&
+            pointerState.currentHref === anchor.href &&
+            pointerState.targetTop !== null &&
+            pointerState.targetTop >= (pointerState.indexBottom ?? 0) &&
+            pointerState.targetTop < viewport.height - 24,
+          details: pointerState,
+          screenshot: pointerScreenshot,
+        });
+      }
     }
 
     await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
@@ -292,6 +368,7 @@ const failures = results.flatMap((result) => {
     result.path.includes("menu") ||
     result.path.includes("anchor-click") ||
     result.path.includes("anchor:") ||
+    result.path.includes("pointer:") ||
     result.path.includes("sticky-scroll");
   const anchorOk =
     isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 5 : result.anchorCount === 0) : true;
@@ -303,6 +380,14 @@ const failures = results.flatMap((result) => {
     : true;
   const featuresGridOk = isProductPage && !isAuxCheck ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
+  const browserVisualOk = result.browserVisual
+    ? result.browserVisual.hasChromeCta &&
+      result.browserVisual.hasPrivacyText &&
+      result.browserVisual.imageCount > 0 &&
+      result.browserVisual.images.every(
+        (image) => image.alt.length > 12 && image.naturalWidth >= 600 && image.naturalHeight >= 600,
+      )
+    : true;
   const reasons = [];
   const route = result.route;
 
@@ -332,6 +417,7 @@ const failures = results.flatMap((result) => {
   if (!productIndexOk) reasons.push(`product index state invalid: ${JSON.stringify(result.productIndex)}`);
   if (!featuresGridOk) reasons.push(`feature grid display mismatch: ${result.featuresGrid}`);
   if (!imagesOk) reasons.push(`image check failed: imageCount=${result.imageCount}, broken=${result.brokenImages}`);
+  if (!browserVisualOk) reasons.push(`browser visual invalid: ${JSON.stringify(result.browserVisual)}`);
 
   return reasons.map((reason) => ({
     viewport: result.viewport,

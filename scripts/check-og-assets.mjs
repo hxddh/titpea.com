@@ -1,10 +1,10 @@
-import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import fs from "node:fs";
 
-const manifest = JSON.parse(fs.readFileSync(new URL("../src/content/siteManifest.json", import.meta.url), "utf8"));
+const { siteRoutes } = await import(new URL("../src/content/siteManifest.ts", import.meta.url));
 const assetsDir = new URL("../public", import.meta.url);
-const uniqueImages = [...new Set(manifest.routes.map((route) => route.ogImage))];
+const uniqueImages = [...new Set(siteRoutes.map((route) => route.ogImage))];
 const failures = [];
 
 for (const imagePath of uniqueImages) {

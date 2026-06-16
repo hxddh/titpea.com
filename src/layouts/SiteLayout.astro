@@ -1,6 +1,7 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
 import { pathFor, slugForCurrentPage, type CurrentPage, type Locale } from "../lib/site";
+import type { SiteRoute } from "../content/siteManifest";
 import "../styles/global.css";
 
 interface Props {
@@ -9,24 +10,28 @@ interface Props {
   current?: CurrentPage;
   locale?: Locale;
   image?: string;
+  route?: SiteRoute;
   structuredData?: Record<string, unknown>;
 }
 
-const { title, description, current = "home", locale = "en", image, structuredData } = Astro.props;
-const siteTitle = title === "Titpea" ? title : `${title} - Titpea`;
+const { title, description, current = "home", locale = "en", image, route, structuredData } = Astro.props;
+const siteTitle = route?.title ?? (title === "Titpea" ? title : `${title} - Titpea`);
 const isZh = locale === "zh";
 const htmlLang = isZh ? "zh-CN" : "en";
 const currentSlug = slugForCurrentPage(current);
-const englishHref = pathFor("en", currentSlug);
-const chineseHref = pathFor("zh", currentSlug);
+const fallbackEnglishHref = pathFor("en", currentSlug);
+const fallbackChineseHref = pathFor("zh", currentSlug);
+const englishHref = route ? (isZh ? route.alternatePath : route.canonicalPath) : fallbackEnglishHref;
+const chineseHref = route ? (isZh ? route.canonicalPath : route.alternatePath) : fallbackChineseHref;
 const canonicalPath = isZh ? chineseHref : englishHref;
 const canonicalUrl = `https://titpea.com${canonicalPath}`;
 const englishUrl = `https://titpea.com${englishHref}`;
 const chineseUrl = `https://titpea.com${chineseHref}`;
 const alternateLocale = isZh ? "en" : "zh";
 const alternateLabel = isZh ? "English" : "中文";
-const alternateHref = isZh ? englishHref : chineseHref;
-const imageUrl = image ? `https://titpea.com${image}` : "https://titpea.com/favicon.svg";
+const alternateHref = route?.alternatePath ?? (isZh ? englishHref : chineseHref);
+const imagePath = route?.ogImage ?? image;
+const imageUrl = imagePath ? `https://titpea.com${imagePath}` : "https://titpea.com/favicon.svg";
 ---
 
 <!doctype html>

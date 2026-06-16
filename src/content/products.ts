@@ -1,4 +1,5 @@
 import type { Product, ProductSlug } from "../lib/site";
+import { storageOpsEvidenceFacts } from "./productEvidenceFacts";
 import { s3MetaLine, s3TurboListFacts, worldClockFacts, doubanMovieRatingFacts } from "./productFacts";
 
 export const productSlugs: ProductSlug[] = ["s3-turbo-list", "storageops", "world-clock", "douban-movie-rating"];
@@ -8,6 +9,19 @@ const worldClockMeta = `Chrome Web Store · ${worldClockFacts.category} · No da
 const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声明不收集数据`;
 const doubanMeta = `Chrome Web Store · ${doubanMovieRatingFacts.category} · No data collection disclosed`;
 const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 声明不收集数据`;
+const storageOpsMeta = `Python · Pi Coding Agent · S3-compatible · ${storageOpsEvidenceFacts.skillsCount} skills · ${storageOpsEvidenceFacts.toolsCount} tools`;
+const storageOpsProof = [
+  `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`,
+  `${storageOpsEvidenceFacts.toolsCount} Pi extension tools`,
+  "Managed httpmon helper",
+  "Golden-case evals",
+];
+const storageOpsProofZh = [
+  `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`,
+  `${storageOpsEvidenceFacts.toolsCount} 个 Pi 扩展工具`,
+  "托管 httpmon helper",
+  "Golden-case evals",
+];
 
 export const products: Record<ProductSlug, Product> = {
   "s3-turbo-list": {
@@ -146,7 +160,7 @@ export const products: Record<ProductSlug, Product> = {
           ],
           [
             `What changed in ${s3Release}?`,
-            `The project moved to ${s3License}, adds \`app/s3-turbo-list\` to the S3 User-Agent for provider logs, and corrects the declared Rust MSRV.`,
+            `The release fixes root-segment retry resume behavior, adds timeouts to runtime split-probe requests, and keeps clean interrupts from inflating run-manifest fatal errors. The project remains ${s3License}.`,
           ],
         ],
       },
@@ -239,7 +253,7 @@ export const products: Record<ProductSlug, Product> = {
           ],
           [
             `${s3Release} 变了什么？`,
-            `项目切到 ${s3License}，S3 User-Agent 增加 \`app/s3-turbo-list\`，并修正 Rust MSRV 声明。`,
+            `这版修复 root segment retry 的续扫边界，给运行时 split probe 加 timeout，并避免干净中断把 run manifest 的 fatal errors 计高。项目仍然是 ${s3License}。`,
           ],
         ],
       },
@@ -262,8 +276,8 @@ export const products: Record<ProductSlug, Product> = {
         lead: "StorageOps turns Pi Coding Agent into an object storage specialist by installing S3 diagnostic skills, Pi extension tools, deterministic helpers, and compact eval cases.",
         primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/storageops" },
         secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/storageops#quick-start" },
-        meta: "Python · Pi Coding Agent · S3-compatible · Redacted traces · Diagnostic skills",
-        proof: ["15 diagnostic skills", "4 Pi extension tools", "Managed httpmon helper", "Golden-case evals"],
+        meta: storageOpsMeta,
+        proof: storageOpsProof,
         positioningLabel: "Positioning",
         positioning: [
           [
@@ -276,7 +290,7 @@ export const products: Record<ProductSlug, Product> = {
           ],
           [
             "What you install",
-            "A Pi extension, 15 diagnostic skill packs, 4 tools for bounded evidence collection, a managed httpmon helper, deterministic scripts, and eval cases.",
+            `A Pi extension, ${storageOpsEvidenceFacts.skillsCount} diagnostic skill packs, ${storageOpsEvidenceFacts.toolsCount} tools for bounded evidence collection, a managed httpmon helper, deterministic scripts, and eval cases.`,
           ],
         ],
         featuresLabel: "Capabilities",
@@ -379,8 +393,8 @@ export const products: Record<ProductSlug, Product> = {
         lead: "StorageOps 给 Pi 装上一套对象存储诊断能力：领域诊断技能、扩展工具、确定性脚本，以及约束输出口径的回归用例。",
         primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/storageops" },
         secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/storageops#quick-start" },
-        meta: "Python · Pi Coding Agent · S3-compatible · Redacted traces · Diagnostic skills",
-        proof: ["15 个诊断技能", "4 个 Pi 扩展工具", "托管 httpmon helper", "Golden-case evals"],
+        meta: storageOpsMeta,
+        proof: storageOpsProofZh,
         positioningLabel: "边界",
         positioning: [
           [
@@ -393,7 +407,7 @@ export const products: Record<ProductSlug, Product> = {
           ],
           [
             "安装后有什么",
-            "Pi extension、15 个诊断技能包、4 个有界取证工具、托管的 httpmon helper、确定性脚本和回归用例。",
+            `Pi extension、${storageOpsEvidenceFacts.skillsCount} 个诊断技能包、${storageOpsEvidenceFacts.toolsCount} 个有界取证工具、托管的 httpmon helper、确定性脚本和回归用例。`,
           ],
         ],
         featuresLabel: "能力",

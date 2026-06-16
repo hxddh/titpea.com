@@ -35,6 +35,13 @@ jobs:
       - name: Check product facts
         run: npm run facts:check
 
+      - name: Check external fact freshness
+        continue-on-error: true
+        run: npm run facts:external
+
+      - name: Check site manifest
+        run: npm run manifest:check
+
       - name: Check OG assets
         run: npm run assets:check
 
@@ -59,6 +66,7 @@ jobs:
             sleep 1
           done
           npm run qa:pages
+          npm run visual:check
 
       - name: Deploy
         run: npx wrangler@latest pages deploy dist --project-name=titpea --branch=main

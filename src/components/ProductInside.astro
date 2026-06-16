@@ -1,6 +1,6 @@
 ---
 import type { Locale, Product } from "../lib/site";
-import { s3BenchmarkEvidence } from "../content/evidence";
+import { s3EvidenceFacts, storageOpsEvidenceFacts } from "../content/productEvidenceFacts";
 
 interface Props {
   locale: Locale;
@@ -9,6 +9,28 @@ interface Props {
 
 const { locale, product } = Astro.props;
 const isZh = locale === "zh";
+const s3MetricValue = (value: string) => {
+  if (!isZh) return value;
+  if (value === "zero hints") return "零 hints";
+  return value;
+};
+const storageOpsValue = (value: string) => {
+  if (!isZh) return value;
+  return value
+    .replace("15 diagnostic skills", `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`)
+    .replace("4 Pi tools", `${storageOpsEvidenceFacts.toolsCount} 个 Pi 工具`)
+    .replace("deterministic helpers", "确定性脚本")
+    .replace("eval cases", "回归用例");
+};
+const s3ArtifactLabel = (label: string) => {
+  if (!isZh) return label;
+  return (
+    {
+      artifacts: "产物",
+      "provider logs": "服务商日志",
+    }[label] ?? label
+  );
+};
 ---
 
 {
@@ -25,57 +47,25 @@ const isZh = locale === "zh";
       </div>
       <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
         <div class="workbench-top">
-          <span>s3-turbo-list {s3BenchmarkEvidence.version}</span>
+          <span>s3-turbo-list {s3EvidenceFacts.version}</span>
           <strong>{isZh ? "自动对象清单路径" : "automatic inventory path"}</strong>
         </div>
         <div class="inventory-grid benchmark-metrics">
-          <div class="metric-tile strong">
-            <>
-              <span>{isZh ? "自动发现" : "startup discovery"}</span>
-              <strong>{isZh ? "零 hints" : "zero hints"}</strong>
-              <p>{isZh ? "第一次递归 list 就能并发" : "first recursive list can run in parallel"}</p>
-            </>
-          </div>
-          <div class="metric-tile">
-            <>
-              <span>{isZh ? "OSS benchmark" : "OSS benchmark"}</span>
-              <strong>~19s</strong>
-              <p>{isZh ? "1M 对象，-c 8" : "1M objects at -c 8"}</p>
-            </>
-          </div>
-          <div class="metric-tile">
-            <>
-              <span>{isZh ? "协议" : "license"}</span>
-              <strong>Apache-2.0</strong>
-              <p>{isZh ? "v0.18.0 起" : "from v0.18.0 onward"}</p>
-            </>
-          </div>
+          {s3EvidenceFacts.insideMetrics.map((metric, index) => (
+            <div class={index === 0 ? "metric-tile strong" : "metric-tile"}>
+              <span>{metric.label[locale]}</span>
+              <strong>{s3MetricValue(metric.value)}</strong>
+              <p>{metric.body[locale]}</p>
+            </div>
+          ))}
         </div>
         <div class="artifact-table benchmark-table" aria-label="Automation surfaces">
-          <div>
-            <>
-              <span>{isZh ? "preflight" : "preflight"}</span>
-              <strong>doctor --json · --dry-run --agent · --plan-json</strong>
-            </>
-          </div>
-          <div>
-            <>
-              <span>{isZh ? "产物" : "artifacts"}</span>
-              <strong>Parquet · key-space CSV · run manifest · trace JSONL</strong>
-            </>
-          </div>
-          <div>
-            <>
-              <span>{isZh ? "verify" : "verify"}</span>
-              <strong>manifest-summary --check · hashes · row counts · schema</strong>
-            </>
-          </div>
-          <div>
-            <>
-              <span>{isZh ? "服务商日志" : "provider logs"}</span>
-              <strong>app/s3-turbo-list User-Agent · compat-probe</strong>
-            </>
-          </div>
+          {s3EvidenceFacts.artifactRows.map(([label, value]) => (
+            <div>
+              <span>{s3ArtifactLabel(label)}</span>
+              <strong>{value}</strong>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -100,50 +90,13 @@ const isZh = locale === "zh";
           <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
         </div>
         <div class="agent-evidence-grid">
-          <div>
-            <>
-              <span>01</span>
-              <strong>{isZh ? "15 个诊断技能" : "15 diagnostic skills"}</strong>
-              <p>
-                {isZh
-                  ? "按鉴权、签名、限流、一致性、迁移、日志等对象存储领域组织。"
-                  : "Organized around auth, signing, throttling, consistency, migration, logs, and other storage domains."}
-              </p>
-            </>
-          </div>
-          <div>
-            <>
-              <span>02</span>
-              <strong>{isZh ? "4 个 Pi 工具" : "4 Pi tools"}</strong>
-              <p>
-                {isZh
-                  ? "detect_domain、scan_secrets、search_memory、capture_http_trace 负责路由和取证。"
-                  : "detect_domain, scan_secrets, search_memory, and capture_http_trace route and gather evidence."}
-              </p>
-            </>
-          </div>
-          <div>
-            <>
-              <span>03</span>
-              <strong>{isZh ? "确定性脚本" : "deterministic helpers"}</strong>
-              <p>
-                {isZh
-                  ? "检查 SigV4、ETag、payload hash、限流、访问日志和端点可达性。"
-                  : "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability."}
-              </p>
-            </>
-          </div>
-          <div>
-            <>
-              <span>04</span>
-              <strong>{isZh ? "回归用例" : "eval cases"}</strong>
-              <p>
-                {isZh
-                  ? "用 golden cases 约束 agent 行为，避免每次修改后诊断口径漂移。"
-                  : "Golden cases keep agent behavior stable as skills and tools change."}
-              </p>
-            </>
-          </div>
+          {storageOpsEvidenceFacts.insideMetrics.map((metric) => (
+            <div>
+              <span>{metric.label[locale]}</span>
+              <strong>{storageOpsValue(metric.value)}</strong>
+              <p>{metric.body[locale]}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

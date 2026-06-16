@@ -1,6 +1,6 @@
 ---
 import type { Locale, Product } from "../lib/site";
-import { s3BenchmarkEvidence } from "../content/evidence";
+import { s3EvidenceFacts, storageOpsEvidenceFacts } from "../content/productEvidenceFacts";
 
 interface Props {
   locale: Locale;
@@ -24,40 +24,20 @@ const isZh = locale === "zh";
         </p>
       </div>
       <div class="deep-dive-grid s3-run-grid">
-        <article>
-          <span>01</span>
-          <h3>{isZh ? "启动发现" : "Startup discovery"}</h3>
-          <p>
-            {isZh
-              ? "少量 delimiter probe 找真实前缀边界，第一次递归 list 也能并发。"
-              : "Delimiter probes find real prefix boundaries before a first recursive list fans out."}
-          </p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>{isZh ? "吞吐拆分" : "Throughput splitting"}</h3>
-          <p>
-            {isZh
-              ? "运行时只在吞吐继续上升时拆分长尾片段，把并发当上限。"
-              : "Runtime splitting fans out long-tail segments only while throughput is still improving."}
-          </p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>{isZh ? "产物校验" : "Artifact checks"}</h3>
-          <p>
-            {isZh
-              ? "Parquet、运行记录、hash、行数和 schema 元数据让结果能被 CI 和 agent 复查。"
-              : "Parquet, manifests, hashes, row counts, and schema metadata keep CI and agents honest."}
-          </p>
-        </article>
+        {s3EvidenceFacts.deepDiveCards.map((card, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{card.label[locale]}</h3>
+            <p>{card.body[locale]}</p>
+          </article>
+        ))}
       </div>
       <div class="deep-dive-benchmark">
         <div>
           <span>{isZh ? "第三方 OSS 测试" : "Third-party OSS run"}</span>
           <strong>{isZh ? "1M 对象" : "1M objects"}</strong>
         </div>
-        {s3BenchmarkEvidence.parallelRuns.map((run) => (
+        {s3EvidenceFacts.parallelRuns.map((run) => (
           <div>
             <span>{run.label}</span>
             <strong>{run.seconds}s</strong>
@@ -82,33 +62,13 @@ const isZh = locale === "zh";
         </p>
       </div>
       <div class="agent-topology">
-        <article>
-          <span>{isZh ? "技能" : "Skills"}</span>
-          <strong>15</strong>
-          <p>
-            {isZh
-              ? "鉴权、签名、限流、一致性、迁移、日志、通知等领域。"
-              : "Auth, signing, throttling, consistency, migration, logs, notifications, and more."}
-          </p>
-        </article>
-        <article>
-          <span>{isZh ? "工具" : "Tools"}</span>
-          <strong>4</strong>
-          <p>
-            {isZh
-              ? "detect_domain、scan_secrets、search_memory、capture_http_trace。"
-              : "detect_domain, scan_secrets, search_memory, and capture_http_trace."}
-          </p>
-        </article>
-        <article>
-          <span>{isZh ? "约束" : "Evals"}</span>
-          <strong>golden</strong>
-          <p>
-            {isZh
-              ? "Golden cases 和 size gates 限制输出口径，避免 agent 漂移。"
-              : "Golden cases and size gates keep the agent package compact and repeatable."}
-          </p>
-        </article>
+        {storageOpsEvidenceFacts.capabilityCards.map((card) => (
+          <article>
+            <span>{card.label[locale]}</span>
+            <strong>{card.value}</strong>
+            <p>{card.body[locale]}</p>
+          </article>
+        ))}
       </div>
     </section>
   )

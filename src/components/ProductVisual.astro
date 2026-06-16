@@ -1,6 +1,6 @@
 ---
 import type { Product } from "../lib/site";
-import { s3BenchmarkEvidence } from "../content/evidence";
+import { s3EvidenceFacts, storageOpsEvidenceFacts } from "../content/productEvidenceFacts";
 
 interface Props {
   product: Product;
@@ -9,9 +9,9 @@ interface Props {
 
 const { product, locale = "en" } = Astro.props;
 const isZh = locale === "zh";
-const parallelRuns = s3BenchmarkEvidence.parallelRuns;
+const parallelRuns = s3EvidenceFacts.parallelRuns;
 const maxThroughput = 55000;
-const headlineRuns = s3BenchmarkEvidence.headlineRuns;
+const headlineRuns = s3EvidenceFacts.headlineRuns;
 ---
 
 {
@@ -26,18 +26,18 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
             : "The current README cites a third-party Alibaba Cloud OSS benchmark. The product direction is now automatic first: startup discovery, runtime splitting, and verifiable artifacts."}
         </p>
         <div class="benchmark-meta">
-          <span>{isZh ? `${s3BenchmarkEvidence.objectCount} 对象` : `${s3BenchmarkEvidence.objectCount} objects`}</span>
-          <span>{s3BenchmarkEvidence.datasetSize}</span>
-          <span>{s3BenchmarkEvidence.version}</span>
+          <span>{isZh ? `${s3EvidenceFacts.objectCount} 对象` : `${s3EvidenceFacts.objectCount} objects`}</span>
+          <span>{s3EvidenceFacts.datasetSize}</span>
+          <span>{s3EvidenceFacts.version}</span>
         </div>
       </div>
       <div class="benchmark-kpis">
         {headlineRuns.map((run) => (
           <div>
             <>
-              <span>{run.label}</span>
+              <span>{run.label[locale]}</span>
               <strong>{run.value}</strong>
-              <p>{run.detail}</p>
+              <p>{run.body[locale]}</p>
             </>
           </div>
         ))}
@@ -62,9 +62,9 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         <div class="automation-path">
           <span>{isZh ? "默认自动化路径" : "Default automation path"}</span>
           <ol>
-            <li>{isZh ? "启动发现真实前缀边界" : "Discover real prefix boundaries"}</li>
-            <li>{isZh ? "运行时按吞吐拆分长尾片段" : "Split long-tail segments while throughput improves"}</li>
-            <li>{isZh ? "写出 Parquet、plan、运行记录和 trace" : "Write Parquet, plans, manifests, and traces"}</li>
+            {s3EvidenceFacts.defaultPath.map((item) => (
+              <li>{item[locale]}</li>
+            ))}
           </ol>
           <p>
             {isZh
@@ -74,8 +74,8 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         </div>
       </div>
       <div class="benchmark-footnotes">
-        <span>{isZh ? `输出：${s3BenchmarkEvidence.outputs}` : `Output: ${s3BenchmarkEvidence.outputs}`}</span>
-        <span>{s3BenchmarkEvidence.runtimeSplits}</span>
+        <span>{isZh ? `输出：${s3EvidenceFacts.outputLine}` : `Output: ${s3EvidenceFacts.outputLine}`}</span>
+        <span>{s3EvidenceFacts.runtimeLine}</span>
       </div>
     </div>
   )
@@ -97,7 +97,11 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         <div>
           <>
             <span>01</span>
-            <strong>{isZh ? "15 个诊断技能" : "15 diagnostic skills"}</strong>
+            <strong>
+              {isZh
+                ? `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`
+                : `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`}
+            </strong>
             <p>
               {isZh
                 ? "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步分诊。"
@@ -108,8 +112,12 @@ const headlineRuns = s3BenchmarkEvidence.headlineRuns;
         <div>
           <>
             <span>02</span>
-            <strong>{isZh ? "4 个 Pi 扩展工具" : "4 Pi extension tools"}</strong>
-            <p>scan_secrets · detect_domain · search_memory · capture_http_trace</p>
+            <strong>
+              {isZh
+                ? `${storageOpsEvidenceFacts.toolsCount} 个 Pi 扩展工具`
+                : `${storageOpsEvidenceFacts.toolsCount} Pi extension tools`}
+            </strong>
+            <p>{storageOpsEvidenceFacts.tools.join(" · ")}</p>
           </>
         </div>
         <div>
