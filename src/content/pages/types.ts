@@ -49,12 +49,6 @@ export type HomePageModel = BasePageModel & {
     proofItems: readonly string[];
   };
   flow: ProductCatalogBlock;
-  evidence: {
-    kicker: string;
-    title: string;
-    body: string;
-    cards: EvidenceSummaryModel[];
-  };
   browser: {
     label: string;
     title: string;
@@ -74,23 +68,11 @@ export type AboutPageModel = BasePageModel & {
     lead: string;
     contactLabel: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
-    systemLabel: string;
-    groups: Array<{ title: string; text: string }>;
   };
   products: {
     label: string;
     title: string;
     items: ProductCatalogItemModel[];
-  };
-  profile: {
-    label: string;
-    title: string;
-    body: readonly string[];
-  };
-  focus: {
-    label: string;
-    title: string;
-    items: readonly string[];
   };
 };
 

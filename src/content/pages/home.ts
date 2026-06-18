@@ -21,7 +21,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     path,
     alternatePath,
     primaryCta: catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, pageCopy.expectedEvidence],
+    expectedText: [copy.homeTitle, copy.flowTitle],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
       description,
@@ -48,12 +48,6 @@ export function buildHomePage(locale: Locale): HomePageModel {
       title: copy.flowTitle,
       body: copy.flowBody,
       items: catalog.storage,
-    },
-    evidence: {
-      kicker: pageCopy.evidenceKicker,
-      title: pageCopy.evidenceTitle,
-      body: pageCopy.evidenceBody,
-      cards: catalog.evidence,
     },
     browser: {
       label: copy.browserLine,

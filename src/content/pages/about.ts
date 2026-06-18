@@ -19,7 +19,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.profileTitle],
+    expectedText: [copy.aboutHeadline, pageCopy.productsTitle],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -39,23 +39,11 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
         { label: "Chrome Web Store", href: siteConfig.externalLinks.worldClockChrome, style: "ghost" },
         { label: "Email", href: `mailto:${siteConfig.email}`, style: "ghost" },
       ],
-      systemLabel: pageCopy.systemLabel,
-      groups: catalog.groups,
     },
     products: {
       label: copy.productsLabel,
       title: pageCopy.productsTitle,
       items: catalog.all,
-    },
-    profile: {
-      label: copy.profileLabel,
-      title: copy.profileTitle,
-      body: copy.profileBody,
-    },
-    focus: {
-      label: copy.focusLabel,
-      title: pageCopy.focusTitle,
-      items: copy.focusItems,
     },
   };
 }

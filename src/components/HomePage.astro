@@ -52,30 +52,6 @@ const { model } = Astro.props;
     </div>
   </section>
 
-  <section class="home-evidence shell">
-    <div class="home-evidence-heading">
-      <p class="section-kicker">{model.evidence.kicker}</p>
-      <h2>{model.evidence.title}</h2>
-      <p>{model.evidence.body}</p>
-    </div>
-    <div class="home-evidence-grid">
-      {
-        model.evidence.cards.map((card) => (
-          <a class="home-evidence-card" href={card.href}>
-            <span>{card.label}</span>
-            <h3>{card.title}</h3>
-            <p>{card.body}</p>
-            <div>
-              {card.stats.map((stat) => (
-                <strong>{stat}</strong>
-              ))}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-
   <section class="home-browser-band shell">
     <div class="browser-band-copy">
       <p class="section-kicker">{model.browser.label}</p>

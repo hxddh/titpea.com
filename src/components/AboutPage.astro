@@ -25,16 +25,6 @@ const { model } = Astro.props;
         }
       </div>
     </div>
-    <aside class="about-system-panel" aria-label={model.hero.systemLabel}>
-      {
-        model.hero.groups.map((group) => (
-          <div>
-            <span>{group.title}</span>
-            <p>{group.text}</p>
-          </div>
-        ))
-      }
-    </aside>
   </section>
 
   <section class="about-products shell">
@@ -53,27 +43,5 @@ const { model } = Astro.props;
         ))
       }
     </div>
-  </section>
-
-  <section class="about-principles">
-    <div class="shell split-content">
-      <div>
-        <p class="section-kicker">{model.profile.label}</p>
-        <h2>{model.profile.title}</h2>
-      </div>
-      <div class="prose">
-        {model.profile.body.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </div>
-  </section>
-
-  <section class="shell about-focus-section" id="writing">
-    <div class="about-section-heading">
-      <p class="section-kicker">{model.focus.label}</p>
-      <h2>{model.focus.title}</h2>
-    </div>
-    <ul class="writing-list">
-      {model.focus.items.map((item) => <li>{item}</li>)}
-    </ul>
   </section>
 </SiteLayout>
