@@ -2,7 +2,7 @@ import path from "node:path";
 import sharp from "sharp";
 import fs from "node:fs";
 
-const { siteRoutes } = await import(new URL("../src/content/siteManifest.ts", import.meta.url));
+const { siteRoutes } = await import(new URL("../src/content/siteModel.ts", import.meta.url));
 const assetsDir = new URL("../public", import.meta.url);
 const uniqueImages = [...new Set(siteRoutes.map((route) => route.ogImage))];
 const failures = [];

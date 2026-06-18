@@ -1,38 +1,20 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
-import { absoluteUrl, siteConfig } from "../content/siteConfig";
-import { pathFor, slugForCurrentPage, type CurrentPage, type Locale } from "../lib/site";
-import type { SiteRoute } from "../content/siteManifest";
+import { siteConfig } from "../content/siteConfig";
+import type { PageLanguageLink, PageSeo } from "../content/siteModel";
+import type { CurrentPage, Locale } from "../lib/site";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
   current?: CurrentPage;
   locale?: Locale;
-  image?: string;
-  route?: SiteRoute;
-  structuredData?: Record<string, unknown>;
+  seo: PageSeo;
+  language: PageLanguageLink;
 }
 
-const { title, description, current = "home", locale = "en", image, route, structuredData } = Astro.props;
-const siteTitle = route?.title ?? (title === "Titpea" ? title : `${title} - Titpea`);
-const isZh = locale === "zh";
-const htmlLang = isZh ? "zh-CN" : "en";
-const currentSlug = slugForCurrentPage(current);
-const fallbackEnglishHref = pathFor("en", currentSlug);
-const fallbackChineseHref = pathFor("zh", currentSlug);
-const englishHref = route ? (isZh ? route.alternatePath : route.canonicalPath) : fallbackEnglishHref;
-const chineseHref = route ? (isZh ? route.canonicalPath : route.alternatePath) : fallbackChineseHref;
-const canonicalPath = isZh ? chineseHref : englishHref;
-const canonicalUrl = absoluteUrl(canonicalPath);
-const englishUrl = absoluteUrl(englishHref);
-const chineseUrl = absoluteUrl(chineseHref);
-const alternateLocale = isZh ? "en" : "zh";
-const alternateLabel = isZh ? "English" : "中文";
-const alternateHref = route?.alternatePath ?? (isZh ? englishHref : chineseHref);
-const imagePath = route?.ogImage ?? image;
-const imageUrl = imagePath ? absoluteUrl(imagePath) : absoluteUrl(siteConfig.assets.favicon);
+const { current = "home", locale = "en", seo, language } = Astro.props;
+const htmlLang = locale === "zh" ? "zh-CN" : "en";
+const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
 ---
 
 <!doctype html>
@@ -41,33 +23,37 @@ const imageUrl = imagePath ? absoluteUrl(imagePath) : absoluteUrl(siteConfig.ass
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={description} />
+    <meta name="description" content={seo.description} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:url" content={seo.canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
     <meta name="theme-color" content="#f9fafc" />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="en" href={englishUrl} />
-    <link rel="alternate" hreflang="zh-CN" href={chineseUrl} />
-    <link rel="alternate" hreflang="x-default" href={englishUrl} />
+    <link rel="canonical" href={seo.canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={seo.alternates.en} />
+    <link rel="alternate" hreflang="zh-CN" href={seo.alternates.zh} />
+    <link rel="alternate" hreflang="x-default" href={seo.alternates.xDefault} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
-    <title>{siteTitle}</title>
+    {
+      seo.structuredData && (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(seo.structuredData)} />
+      )
+    }
+    <title>{seo.title}</title>
   </head>
   <body>
     <SiteHeader
       current={current}
       locale={locale}
-      alternateHref={alternateHref}
-      alternateLabel={alternateLabel}
-      alternateLocale={alternateLocale}
+      alternateHref={language.href}
+      alternateLabel={language.label}
+      alternateLocale={language.locale}
     />
     <main>
       <slot />

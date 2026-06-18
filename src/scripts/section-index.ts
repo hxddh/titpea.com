@@ -1,3 +1,5 @@
+import { sectionIndexPolicy } from "./section-index-policy";
+
 type SectionLink = {
   id: string;
   link: HTMLAnchorElement;
@@ -29,7 +31,14 @@ function setActive(sections: SectionLink[], id: string) {
 function activeSection(index: HTMLElement, sections: SectionLink[]) {
   const indexRect = index.getBoundingClientRect();
   const lowerEdge = indexRect.bottom + 2;
-  const readingLine = Math.min(window.innerHeight - 1, indexRect.bottom + Math.max(44, window.innerHeight * 0.18));
+  const readingLine = Math.min(
+    window.innerHeight - 1,
+    indexRect.bottom +
+      Math.max(
+        sectionIndexPolicy.minimumActivationOffsetPx,
+        window.innerHeight * sectionIndexPolicy.activationViewportRatio,
+      ),
+  );
   const hashed = sections.find((item) => item.id === decodeHash(window.location.hash));
 
   if (hashed) {
@@ -79,7 +88,7 @@ function mountSectionIndex(index: HTMLElement) {
     item.link.addEventListener("click", (event) => {
       event.preventDefault();
       scrollToSection(index, item);
-      window.setTimeout(scheduleUpdate, 80);
+      window.setTimeout(scheduleUpdate, sectionIndexPolicy.clickStabilizeDelayMs);
     });
   });
 

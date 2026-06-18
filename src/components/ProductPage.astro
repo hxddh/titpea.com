@@ -8,30 +8,17 @@ import ProductInside from "./ProductInside.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
-import { productPageModel } from "../content/productPageModel";
-import { routeForProduct } from "../content/siteManifest";
-import type { Locale, Product } from "../lib/site";
+import type { ProductPageModel } from "../content/siteModel";
 
 interface Props {
-  locale: Locale;
-  product: Product;
+  model: ProductPageModel;
 }
 
-const { locale, product } = Astro.props;
-const model = productPageModel(product, locale);
+const { model } = Astro.props;
 const copy = model.copy;
-const route = routeForProduct(locale, model.slug);
 ---
 
-<SiteLayout
-  title={model.title}
-  description={model.description}
-  current={model.current}
-  locale={locale}
-  image={model.ogImage}
-  route={route}
-  structuredData={model.structuredData}
->
+<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <section class:list={["product-hero product-launch-hero shell", model.pageClass]}>
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>

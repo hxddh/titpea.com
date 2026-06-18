@@ -1,5 +1,8 @@
 ---
 import HomePage from "../../components/HomePage.astro";
+import { homeModel } from "../../content/siteModel";
+
+const model = homeModel("zh");
 ---
 
-<HomePage locale="zh" />
+<HomePage model={model} />

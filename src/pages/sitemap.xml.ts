@@ -1,4 +1,4 @@
-import { siteRoutes } from "../content/sitePageModels";
+import { siteRoutes } from "../content/siteModel";
 import { siteConfig } from "../content/siteConfig";
 
 const paths = siteRoutes.map((route) => route.path);

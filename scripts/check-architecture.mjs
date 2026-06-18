@@ -86,8 +86,8 @@ assertNoMatch(
 );
 
 assertNoMatch(
-  "site manifest is derived from page model",
-  ["src/content/siteManifest.ts"],
+  "site routes are derived from site model",
+  ["src/content/siteModel.ts"],
   /product\.(role|category|archetype|current|visual)|productExpectedText|sectionIndex:\s*product\./,
 );
 
@@ -99,14 +99,14 @@ assertNoMatch(
 
 assertNoMatch(
   "home copy has no retired duplicate content models",
-  ["src/content/home.ts", "src/content/productCatalogModel.ts"],
+  ["src/content/i18n/siteCopy.ts", "src/content/productCatalogModel.ts"],
   /homeProductLines|homeStorageFlow|homeBrowserTools|aboutProductGroups|productSystem|productEvidence\s*\(/,
 );
 
 assertNoMatch(
   "legacy content sources stay deleted",
-  ["src/components/HomePage.astro", "src/components/AboutPage.astro", "src/content/sitePageModels.ts"],
-  /content\/productSystem|content\/evidence/,
+  ["src/components/HomePage.astro", "src/components/AboutPage.astro", "src/content/siteModel.ts"],
+  /content\/productSystem|content\/evidence|siteManifest|sitePageModels|homePageModel|aboutPageModel/,
 );
 
 assertNoMatch(
@@ -128,9 +128,9 @@ const qaPagesLines = lineCount("scripts/qa-pages.mjs");
 if (qaPagesLines > 80) fail("qa-pages.mjs stays an orchestrator", `scripts/qa-pages.mjs has ${qaPagesLines} lines`);
 else pass("qa-pages.mjs stays an orchestrator");
 
-const productPageModelLines = lineCount("src/content/productPageModel.ts");
+const productPageModelLines = lineCount("src/content/pages/product.ts");
 if (productPageModelLines > 140)
-  fail("productPageModel stays an assembler", `src/content/productPageModel.ts has ${productPageModelLines} lines`);
+  fail("product page model stays an assembler", `src/content/pages/product.ts has ${productPageModelLines} lines`);
 else pass("productPageModel stays an assembler");
 
 const homePageLines = lineCount("src/components/HomePage.astro");

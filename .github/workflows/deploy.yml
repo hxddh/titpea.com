@@ -32,11 +32,20 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Check types
+        run: npm run typecheck
+
+      - name: Check dependency boundaries
+        run: npm run boundaries:check
+
       - name: Check product facts
         run: npm run facts:check
 
       - name: Check architecture
         run: npm run architecture:check
+
+      - name: Check model contracts
+        run: npm run contracts:check
 
       - name: Check product page model
         run: npm run model:check

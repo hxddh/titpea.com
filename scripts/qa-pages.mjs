@@ -6,7 +6,7 @@ import { printQaReport } from "./qa/report.mjs";
 import { checkRoute } from "./qa/routeMetrics.mjs";
 import { checkSectionIndex } from "./qa/sectionIndexChecks.mjs";
 
-const { siteRoutes: routes } = await import(new URL("../src/content/siteManifest.ts", import.meta.url));
+const { siteRoutes: routes } = await import(new URL("../src/content/siteModel.ts", import.meta.url));
 const chromium = loadChromium();
 
 prepareOutputDir();

@@ -1,10 +1,10 @@
 import { absoluteUrl } from "./siteConfig";
 import type { ProductArchetypeContract } from "./productArchetypes";
-import type { Locale, Product } from "../lib/site";
+import { pathFor, type Locale, type Product } from "../lib/site";
 
 export function productStructuredData(product: Product, locale: Locale, contract: ProductArchetypeContract) {
   const copy = product.locales[locale];
-  const path = locale === "zh" ? `/zh/${product.slug}/` : `/${product.slug}/`;
+  const path = pathFor(locale, product.slug);
 
   return {
     "@context": "https://schema.org",

@@ -1,26 +1,15 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { homePageModel } from "../content/homePageModel";
-import { routeForPage } from "../content/siteManifest";
-import type { Locale } from "../lib/site";
+import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
-  locale: Locale;
+  model: HomePageModel;
 }
 
-const { locale } = Astro.props;
-const model = homePageModel(locale);
-const route = routeForPage(locale, "home");
+const { model } = Astro.props;
 ---
 
-<SiteLayout
-  title={model.title}
-  description={model.description}
-  current={model.current}
-  locale={locale}
-  image={model.ogImage}
-  route={route}
->
+<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <section class="home-hero home-workbench-hero shell">
     <div class="home-copy home-workbench-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>

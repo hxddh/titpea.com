@@ -1,12 +1,15 @@
-import { productArchetypeContracts, type PageSectionId } from "./productArchetypes";
-import { productEvidenceModel } from "./productEvidenceModels";
-import { productInsideModel } from "./productInsideModels";
-import { productPageRegistry } from "./productPageRegistry";
-import { productStructuredData } from "./productSeo";
-import { productSections } from "./productSections";
-import type { ProductPageModel, ProductPageSection } from "./productPageTypes";
-import { visualModel } from "./visualModels";
-import { pathFor, type Locale, type Product } from "../lib/site";
+import { productArchetypeContracts, type PageSectionId } from "../productArchetypes";
+import { productEvidenceModel } from "../productEvidenceModels";
+import { productInsideModel } from "../productInsideModels";
+import { productPageRegistry } from "../productPageRegistry";
+import { productStructuredData } from "../productSeo";
+import { productSections } from "../productSections";
+import { visualModel } from "../visualModels";
+import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
+import type { ProductPageModel } from "./types";
+import type { ProductPageSection } from "../productPageTypes";
+import type { Locale, Product, ProductSlug } from "../../lib/site";
+import { products } from "../products";
 
 function requiredSections(sections: ProductPageSection[], expectedIds: PageSectionId[], slug: string) {
   const ids = new Set(sections.map((section) => section.id));
@@ -24,15 +27,16 @@ function assertRequiredCopy(product: Product, locale: Locale) {
   if (missing.length > 0) throw new Error(`${product.slug} ${locale}: missing required copy: ${missing.join(", ")}`);
 }
 
-export function productPageModel(product: Product, locale: Locale): ProductPageModel {
+export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPageModel {
+  const product = products[slug];
   assertRequiredCopy(product, locale);
 
   const contract = productArchetypeContracts[product.archetype];
-  const registry = productPageRegistry[product.slug];
+  const registry = productPageRegistry[slug];
   const copy = product.locales[locale];
   const contentSections = productSections(locale, copy, product.archetype);
-  const inside = productInsideModel(product.slug, locale);
-  const evidence = productEvidenceModel(product.slug, locale);
+  const inside = productInsideModel(slug, locale);
+  const evidence = productEvidenceModel(slug, locale);
 
   const sectionById = new Map<ProductPageSection["id"], ProductPageSection>([
     [inside.id, inside],
@@ -41,18 +45,27 @@ export function productPageModel(product: Product, locale: Locale): ProductPageM
   ]);
   const sections = contract.sections.flatMap((spec) => {
     const section = sectionById.get(spec.id);
-    if (!section && spec.required)
-      throw new Error(`${product.slug} ${locale}: required section ${spec.id} was not built`);
+    if (!section && spec.required) throw new Error(`${slug} ${locale}: required section ${spec.id} was not built`);
     return section ? [section] : [];
   });
   requiredSections(
     sections,
     contract.sections.filter((section) => section.required).map((section) => section.id),
-    product.slug,
+    slug,
   );
 
-  const path = pathFor(locale, product.slug);
-  const alternatePath = pathFor(locale === "zh" ? "en" : "zh", product.slug);
+  const path = pagePath(locale, slug);
+  const alternatePath = pagePath(alternateLocale(locale), slug);
+  const structuredData = productStructuredData(product, locale, contract);
+  const seo = buildPageSeo({
+    title: pageTitle(copy.title),
+    description: copy.description,
+    path,
+    alternatePath,
+    locale,
+    ogImage: registry.ogImage,
+    structuredData,
+  });
   const navItems = contract.sections
     .filter((spec) => sections.some((section) => section.id === spec.id))
     .map((spec) => ({ id: spec.id, label: spec.label[locale] }));
@@ -60,8 +73,8 @@ export function productPageModel(product: Product, locale: Locale): ProductPageM
   return {
     kind: "product",
     locale,
-    slug: product.slug,
-    current: product.slug,
+    slug,
+    current: slug,
     path,
     alternatePath,
     pageClass: contract.pageClass,
@@ -70,16 +83,18 @@ export function productPageModel(product: Product, locale: Locale): ProductPageM
     ogImage: registry.ogImage,
     primaryCta: copy.primaryCta.href,
     expectedText: registry.expectedText(copy, locale),
+    seo,
+    language: languageLink(locale, alternatePath),
     sectionIndex: contract.sectionIndex,
     indexLabel: contract.indexLabel[locale],
     navItems,
     visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title),
-    structuredData: productStructuredData(product, locale, contract),
+    structuredData,
     copy,
     sections,
   };
 }
 
-export function productPageModels(products: Product[], locale: Locale) {
-  return products.map((product) => productPageModel(product, locale));
+export function productPageModels(locale: Locale) {
+  return Object.keys(products).map((slug) => buildProductPage(slug as ProductSlug, locale));
 }

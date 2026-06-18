@@ -13,9 +13,12 @@
     "assets:check": "npm run assets:og && tsx scripts/check-og-assets.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "typecheck": "astro check",
     "facts:check": "node scripts/check-product-facts.mjs",
     "facts:external": "node scripts/check-external-facts.mjs",
     "model:check": "tsx scripts/check-site-page-model.mjs",
+    "contracts:check": "tsx scripts/check-page-model-contracts.mjs && tsx scripts/check-section-contracts.mjs",
+    "boundaries:check": "node scripts/check-dependency-boundaries.mjs && node scripts/check-i18n-boundaries.mjs",
     "architecture:check": "node scripts/check-architecture.mjs",
     "manifest:check": "tsx scripts/check-site-manifest.mjs",
     "copy:lint": "node scripts/lint-copy.mjs",
@@ -28,9 +31,11 @@
     "astro": "^6.4.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "playwright": "^1.60.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "tsx": "^4.22.4"
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   }
 }

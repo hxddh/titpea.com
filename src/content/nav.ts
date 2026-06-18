@@ -1,28 +1,29 @@
 import { pathFor, type HeaderNavGroup, type HeaderNavItem, type Locale } from "../lib/site";
+import { headerCopy } from "./i18n/navCopy";
 import { siteConfig } from "./siteConfig";
 
 export function headerUi(locale: Locale) {
-  const isZh = locale === "zh";
+  const copy = headerCopy[locale];
   return {
-    primaryLabel: isZh ? "主导航" : "Primary",
-    menuLabel: isZh ? "打开站点菜单" : "Open site menu",
-    menuText: isZh ? "菜单" : "Menu",
+    primaryLabel: copy.primaryLabel,
+    menuLabel: copy.menuLabel,
+    menuText: copy.menuText,
   };
 }
 
 export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
-  const isZh = locale === "zh";
+  const copy = headerCopy[locale];
 
   return [
     {
-      label: isZh ? "主要页面" : "Main",
+      label: copy.groups.main,
       items: [
-        { label: isZh ? "首页" : "Home", href: pathFor(locale), current: "home" },
-        { label: isZh ? "关于" : "About", href: pathFor(locale, "about"), current: "about", showInPrimary: true },
+        { label: copy.links.home, href: pathFor(locale), current: "home" },
+        { label: copy.links.about, href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
     {
-      label: isZh ? "对象存储" : "Storage",
+      label: copy.groups.storage,
       items: [
         {
           label: "s3-turbo-list",
@@ -35,16 +36,16 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
       ],
     },
     {
-      label: isZh ? "浏览器工具" : "Browser",
+      label: copy.groups.browser,
       items: [
         {
-          label: isZh ? "世界时钟" : "World Clock",
+          label: copy.links.worldClock,
           href: pathFor(locale, "world-clock"),
           current: "world-clock",
           showInPrimary: true,
         },
         {
-          label: isZh ? "豆瓣评分" : "Douban",
+          label: copy.links.douban,
           href: pathFor(locale, "douban-movie-rating"),
           current: "douban-movie-rating",
           showInPrimary: true,
@@ -52,7 +53,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
       ],
     },
     {
-      label: isZh ? "外部链接" : "External",
+      label: copy.groups.external,
       items: [{ label: "GitHub", href: siteConfig.externalLinks.github, external: true, showInPrimary: true }],
     },
   ];

@@ -98,7 +98,7 @@
   .product-deep-dive,
   .product-story,
   #cases {
-    scroll-margin-top: 124px;
+    scroll-margin-top: var(--section-index-mobile-scroll-margin);
   }
 }
 

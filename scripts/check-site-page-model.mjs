@@ -1,4 +1,4 @@
-import { allSitePageModels, siteRoutes } from "../src/content/sitePageModels.ts";
+import { allPageModels, siteRoutes } from "../src/content/siteModel.ts";
 import { productArchetypeContracts } from "../src/content/productArchetypes.ts";
 import { products } from "../src/content/products.ts";
 import { siteConfig } from "../src/content/siteConfig.ts";
@@ -12,7 +12,7 @@ function visibleStrings(value) {
   return [];
 }
 
-for (const model of allSitePageModels) {
+for (const model of allPageModels) {
   const visible = visibleStrings(model).join("\n");
   const route = siteRoutes.find((item) => item.path === model.path);
 
@@ -64,4 +64,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Site page model check passed: ${allSitePageModels.length} page models`);
+console.log(`Site page model check passed: ${allPageModels.length} page models`);

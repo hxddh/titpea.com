@@ -1,4 +1,5 @@
 import { siteConfig } from "./siteConfig";
+import { productRegistryCopy } from "./i18n/productRegistryCopy";
 import type { VisualPolicy } from "./productArchetypes";
 import type { Locale, Product, ProductSlug } from "../lib/site";
 
@@ -12,12 +13,12 @@ export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> =
   "s3-turbo-list": {
     ogImage: siteConfig.assets.og["s3-turbo-list"],
     visual: "s3Benchmark",
-    expectedText: (copy, locale) => [copy.headline, locale === "zh" ? "自动化" : "Automation"],
+    expectedText: (copy, locale) => [copy.headline, productRegistryCopy[locale].automation],
   },
   storageops: {
     ogImage: siteConfig.assets.og.storageops,
     visual: "storageAgent",
-    expectedText: (copy, locale) => [copy.headline, locale === "zh" ? "技能和工具" : "Skills and tools"],
+    expectedText: (copy, locale) => [copy.headline, productRegistryCopy[locale].skillsAndTools],
   },
   "world-clock": {
     ogImage: siteConfig.assets.og["world-clock"],

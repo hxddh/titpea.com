@@ -56,10 +56,11 @@ function cardItems(copy: ProductCopy, spec: ArchetypeSectionSpec) {
 
 function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSectionSpec): ProductSection | null {
   if (!contentIds.has(spec.id as ContentSectionId)) return null;
+  const id = spec.id as ContentSectionId;
 
   const label = spec.label[locale];
 
-  if (spec.id === "story") {
+  if (id === "story") {
     return section({
       id: "story",
       kind: "story",
@@ -69,7 +70,7 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
     });
   }
 
-  if (spec.id === "cases") {
+  if (id === "cases") {
     if (!copy.cases || !copy.casesTitle) return null;
     return section({
       id: "cases",
@@ -81,7 +82,7 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
     });
   }
 
-  if (spec.id === "faq") {
+  if (id === "faq") {
     if (!copy.faq) return null;
     return section({
       id: "faq",
@@ -95,7 +96,7 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
   if (items.length === 0) return null;
 
   return section({
-    id: spec.id,
+    id,
     kind: "cards",
     label,
     items,

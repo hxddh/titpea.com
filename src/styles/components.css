@@ -206,7 +206,7 @@
 
 .product-section-index {
   position: sticky;
-  top: 0;
+  top: var(--section-index-sticky-top);
   z-index: 50;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

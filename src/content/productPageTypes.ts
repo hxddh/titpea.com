@@ -1,7 +1,4 @@
-import type { PageSectionId } from "./productArchetypes";
 import type { ProductSection } from "./productSections";
-import type { ProductVisualModel } from "./visualModels";
-import type { CurrentPage, Locale, Product, ProductSlug } from "../lib/site";
 
 export type ProductInsideModel = {
   id: "inside";
@@ -39,25 +36,3 @@ export type ProductEvidenceModel = {
 };
 
 export type ProductPageSection = ProductInsideModel | ProductEvidenceModel | ProductSection;
-
-export type ProductPageModel = {
-  kind: "product";
-  locale: Locale;
-  slug: ProductSlug;
-  current: CurrentPage;
-  path: string;
-  alternatePath: string;
-  pageClass: string;
-  title: string;
-  description: string;
-  ogImage: string;
-  primaryCta: string;
-  expectedText: string[];
-  sectionIndex: boolean;
-  indexLabel: string;
-  navItems: Array<{ id: PageSectionId; label: string }>;
-  visual: ProductVisualModel;
-  structuredData: Record<string, unknown>;
-  copy: Product["locales"][Locale];
-  sections: ProductPageSection[];
-};

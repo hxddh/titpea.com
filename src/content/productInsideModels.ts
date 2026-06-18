@@ -1,26 +1,23 @@
 import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { insideValueCopy } from "./i18n/insideCopy";
 import type { ProductInsideModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
 type LocalizedText = Record<Locale, string>;
 
 const s3MetricValue = (locale: Locale, value: string) => {
-  if (locale !== "zh") return value;
-  return value === "zero hints" ? "零 hints" : value;
+  const localized = insideValueCopy.s3MetricValues[locale];
+  return value in localized ? localized[value as keyof typeof localized] : value;
 };
 
 const s3ArtifactLabel = (locale: Locale, label: string) => {
-  if (locale !== "zh") return label;
-  return { artifacts: "产物", "provider logs": "服务商日志" }[label] ?? label;
+  const localized = insideValueCopy.s3ArtifactLabels[locale];
+  return label in localized ? localized[label as keyof typeof localized] : label;
 };
 
 const storageOpsValue = (locale: Locale, value: string) => {
-  if (locale !== "zh") return value;
-  return value
-    .replace("15 diagnostic skills", `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`)
-    .replace("4 Pi tools", `${storageOpsEvidenceFacts.toolsCount} 个 Pi 工具`)
-    .replace("deterministic helpers", "确定性脚本")
-    .replace("eval cases", "回归用例");
+  const localized = insideValueCopy.storageOpsValues[locale];
+  return value in localized ? localized[value as keyof typeof localized] : value;
 };
 
 const browserInside = (title: LocalizedText, body: LocalizedText): Record<Locale, ProductInsideModel> => ({

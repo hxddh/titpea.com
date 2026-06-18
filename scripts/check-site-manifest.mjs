@@ -1,4 +1,4 @@
-import { siteRoutes } from "../src/content/siteManifest.ts";
+import { siteRoutes } from "../src/content/siteModel.ts";
 import { productSlugs } from "../src/content/products.ts";
 
 const failures = [];
