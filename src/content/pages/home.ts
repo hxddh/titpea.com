@@ -1,6 +1,4 @@
-import { homeModelCopy } from "../i18n/pageCopy";
 import { ui } from "../i18n/siteCopy";
-import { productCatalogModel } from "../productCatalogModel";
 import { siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
@@ -8,11 +6,9 @@ import type { Locale } from "../../lib/site";
 
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
-  const pageCopy = homeModelCopy[locale];
-  const catalog = productCatalogModel(locale);
   const path = pagePath(locale);
   const alternatePath = pagePath(alternateLocale(locale));
-  const description = pageCopy.description;
+  const description = copy.homeDescription;
 
   return {
     kind: "home",
@@ -20,8 +16,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
     current: "home",
     path,
     alternatePath,
-    primaryCta: catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, copy.flowTitle],
+    primaryCta: pagePath(locale, "s3-turbo-list"),
+    expectedText: [copy.homeTitle, copy.homeLead],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
       description,
@@ -36,38 +32,9 @@ export function buildHomePage(locale: Locale): HomePageModel {
       title: copy.homeTitle,
       lead: copy.homeLead,
       actions: [
-        { label: copy.homePrimary, href: catalog.featuredProductPath, style: "primary" },
-        { label: copy.homeSecondary, href: catalog.secondaryProductPath, style: "ghost" },
-        { label: copy.homeAbout, href: pagePath(locale, "about"), style: "ghost" },
-      ],
-      proofLabel: pageCopy.proofLabel,
-      proofItems: copy.proofItems,
-    },
-    flow: {
-      label: copy.flowLabel,
-      title: copy.flowTitle,
-      body: copy.flowBody,
-      items: catalog.storage,
-    },
-    browser: {
-      label: copy.browserLine,
-      title: copy.browserTitle,
-      body: pageCopy.browserBody,
-      tools: catalog.browser,
-      screenshotLabel: pageCopy.screenshotLabel,
-      screenshots: [
-        {
-          href: pagePath(locale, "world-clock"),
-          className: "browser-screenshot clock",
-          src: siteConfig.assets.screenshots.worldClockDark,
-          alt: pageCopy.worldClockAlt,
-        },
-        {
-          href: pagePath(locale, "douban-movie-rating"),
-          className: "browser-screenshot douban",
-          src: siteConfig.assets.screenshots.doubanRatingAssistant,
-          alt: pageCopy.doubanAlt,
-        },
+        { label: "s3-turbo-list", href: pagePath(locale, "s3-turbo-list"), style: "primary" },
+        { label: "StorageOps", href: pagePath(locale, "storageops"), style: "ghost" },
+        { label: "httpmon", href: siteConfig.externalLinks.httpmon, style: "ghost" },
       ],
     },
   };

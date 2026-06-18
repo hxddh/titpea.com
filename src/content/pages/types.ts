@@ -45,17 +45,6 @@ export type HomePageModel = BasePageModel & {
     title: string;
     lead: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
-    proofLabel: string;
-    proofItems: readonly string[];
-  };
-  flow: ProductCatalogBlock;
-  browser: {
-    label: string;
-    title: string;
-    body: string;
-    tools: ProductCatalogItemModel[];
-    screenshotLabel: string;
-    screenshots: Array<{ href: string; className: string; src: string; alt: string }>;
   };
 };
 
@@ -68,11 +57,6 @@ export type AboutPageModel = BasePageModel & {
     lead: string;
     contactLabel: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
-  };
-  products: {
-    label: string;
-    title: string;
-    items: ProductCatalogItemModel[];
   };
 };
 
@@ -88,13 +72,6 @@ export type ProductCatalogItemModel = {
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "browser" | "external";
-};
-
-export type ProductCatalogBlock = {
-  label: string;
-  title: string;
-  body?: string;
-  items: ProductCatalogItemModel[];
 };
 
 export type EvidenceSummaryModel = {

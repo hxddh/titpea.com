@@ -24,60 +24,6 @@ const { model } = Astro.props;
           ))
         }
       </div>
-      <div class="home-proof-rail" aria-label={model.hero.proofLabel}>
-        {model.hero.proofItems.map((item) => <span>{item}</span>)}
-      </div>
-    </div>
-
-    <div class="home-workbench-panel" aria-label={model.flow.label}>
-      <div class="workbench-panel-head editorial-panel-head">
-        <p class="section-kicker">{model.flow.label}</p>
-        <h2>{model.flow.title}</h2>
-        <p>{model.flow.body}</p>
-      </div>
-      <div class="workbench-flow-list">
-        {
-          model.flow.items.map((item) => (
-            <a class="workbench-flow-card" href={item.href}>
-              <span>{item.number}</span>
-              <div>
-                <strong>{item.verb}</strong>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="home-browser-band shell">
-    <div class="browser-band-copy">
-      <p class="section-kicker">{model.browser.label}</p>
-      <h2>{model.browser.title}</h2>
-      <p>{model.browser.body}</p>
-    </div>
-    <div class="browser-band-body">
-      <div class="browser-tool-list">
-        {
-          model.browser.tools.map((item) => (
-            <a href={item.href}>
-              <span>{item.name}</span>
-              <p>{item.text}</p>
-            </a>
-          ))
-        }
-      </div>
-      <div class="browser-screenshot-row" aria-label={model.browser.screenshotLabel}>
-        {
-          model.browser.screenshots.map((screenshot) => (
-            <a href={screenshot.href} class={screenshot.className}>
-              <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
-            </a>
-          ))
-        }
-      </div>
     </div>
   </section>
 </SiteLayout>
