@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 const facts = JSON.parse(fs.readFileSync(new URL("../src/content/productFacts.json", import.meta.url), "utf8"));
 const s3Facts = facts["s3-turbo-list"];
+const githubFacts = Object.entries(facts).filter(([, fact]) => fact.repository);
 const failures = [];
 const warnings = [];
 
@@ -29,19 +30,20 @@ async function getJson(url) {
 }
 
 try {
-  const [repo, release] = await Promise.all([
-    getJson("https://api.github.com/repos/hxddh/s3-turbo-list"),
-    getJson("https://api.github.com/repos/hxddh/s3-turbo-list/releases/latest"),
-  ]);
-
-  if (repo.license?.key !== s3Facts.licenseKey) {
-    failures.push(`GitHub license mismatch: expected ${s3Facts.licenseKey}, got ${repo.license?.key ?? "none"}`);
-  }
-
-  if (release.tag_name !== s3Facts.latestRelease) {
-    failures.push(
-      `GitHub latest release mismatch: expected ${s3Facts.latestRelease}, got ${release.tag_name ?? "none"}`,
-    );
+  for (const [id, fact] of githubFacts) {
+    const repo = await getJson(`https://api.github.com/repos/${fact.repository}`);
+    if (!repo.full_name) failures.push(`${id}: GitHub repository is not readable`);
+    if (fact.licenseKey && repo.license?.key !== fact.licenseKey) {
+      failures.push(`${id}: GitHub license mismatch: expected ${fact.licenseKey}, got ${repo.license?.key ?? "none"}`);
+    }
+    if (fact.latestRelease) {
+      const release = await getJson(`https://api.github.com/repos/${fact.repository}/releases/latest`);
+      if (release.tag_name !== fact.latestRelease) {
+        failures.push(
+          `${id}: GitHub latest release mismatch: expected ${fact.latestRelease}, got ${release.tag_name ?? "none"}`,
+        );
+      }
+    }
   }
 } catch (error) {
   if (error.transient) warnings.push(`Could not verify GitHub product facts: ${error.message}`);
@@ -60,4 +62,6 @@ if (warnings.length > 0) {
   process.exit(0);
 }
 
-console.log(`External facts verified: s3-turbo-list ${s3Facts.licenseLabel} / ${s3Facts.latestRelease}`);
+console.log(
+  `External facts verified: ${githubFacts.length} GitHub repositories; s3-turbo-list ${s3Facts.licenseLabel} / ${s3Facts.latestRelease}`,
+);

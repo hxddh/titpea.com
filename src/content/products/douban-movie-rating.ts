@@ -1,5 +1,6 @@
 import type { Product } from "../../lib/site";
 import { doubanMovieRatingFacts } from "../productFacts";
+import { siteConfig } from "../siteConfig";
 
 const doubanMeta = `Chrome Web Store · ${doubanMovieRatingFacts.category} · No data collection disclosed`;
 const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 声明不收集数据`;
@@ -17,7 +18,7 @@ export const doubanMovieRatingProduct: Product = {
       lead: "Douban Movie Rating Assistant adds IMDb, Rotten Tomatoes, and Metacritic context to Douban movie pages while keeping Douban as the page you are reading.",
       primaryCta: {
         label: "Install",
-        href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
+        href: siteConfig.externalLinks.doubanChrome,
       },
       secondaryCta: { label: "Back to profile", href: "/about/" },
       meta: doubanMeta,
@@ -108,7 +109,7 @@ export const doubanMovieRatingProduct: Product = {
       lead: "不替代豆瓣页面，只在电影详情里补上 IMDb、Rotten Tomatoes 和 Metacritic 信息，让你原地对照不同评分体系。",
       primaryCta: {
         label: "安装扩展",
-        href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
+        href: siteConfig.externalLinks.doubanChrome,
       },
       secondaryCta: { label: "返回简介", href: "/zh/about/" },
       meta: doubanMetaZh,

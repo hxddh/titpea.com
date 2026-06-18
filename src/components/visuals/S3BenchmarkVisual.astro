@@ -1,58 +1,45 @@
 ---
-import { s3EvidenceFacts } from "../../content/productEvidenceFacts";
-import type { Locale } from "../../lib/site";
+import type { S3BenchmarkVisualModel } from "../../content/visualModels";
 
 interface Props {
-  locale: Locale;
+  visual: S3BenchmarkVisualModel;
 }
 
-const { locale } = Astro.props;
-const isZh = locale === "zh";
-const parallelRuns = s3EvidenceFacts.parallelRuns;
-const maxThroughput = 55000;
-const headlineRuns = s3EvidenceFacts.headlineRuns;
+const { visual } = Astro.props;
 ---
 
-<div class="terminal-visual benchmark-visual benchmark-report" aria-label="s3-turbo-list current benchmark summary">
+<div class="terminal-visual benchmark-visual benchmark-report" aria-label={visual.label}>
   <div class="benchmark-head">
-    <p class="section-kicker">{isZh ? "当前证据" : "Current evidence"}</p>
-    <h2>{isZh ? "1M 对象，-c 8 约 19s" : "1M objects, ~19s at -c 8"}</h2>
-    <p>
-      {
-        isZh
-          ? "README 引用的第三方 Alibaba Cloud OSS 测试。页面只把可复查的测试结果放进图表，产品能力则放回自动化路径。"
-          : "The README cites a third-party Alibaba Cloud OSS benchmark. The chart stays on checkable measurements; product behavior lives in the automation path."
-      }
-    </p>
+    <p class="section-kicker">{visual.kicker}</p>
+    <h2>{visual.title}</h2>
+    <p>{visual.body}</p>
     <div class="benchmark-meta">
-      <span>{isZh ? `${s3EvidenceFacts.objectCount} 对象` : `${s3EvidenceFacts.objectCount} objects`}</span>
-      <span>{s3EvidenceFacts.datasetSize}</span>
-      <span>{s3EvidenceFacts.version}</span>
+      {visual.meta.map((item) => <span>{item}</span>)}
     </div>
   </div>
   <div class="benchmark-kpis">
     {
-      headlineRuns.map((run) => (
+      visual.kpis.map((run) => (
         <div>
-          <span>{run.label[locale]}</span>
+          <span>{run.label}</span>
           <strong>{run.value}</strong>
-          <p>{run.body[locale]}</p>
+          <p>{run.body}</p>
         </div>
       ))
     }
   </div>
   <div class="benchmark-layout">
-    <div class="throughput-bars" aria-label={isZh ? "并发扫描吞吐量" : "Parallel scan throughput"}>
+    <div class="throughput-bars" aria-label={visual.barsLabel}>
       <div class="bars-head">
-        <span>{isZh ? "测试路径" : "Benchmark path"}</span>
-        <span>{isZh ? "约 objects/s" : "approx objects/s"}</span>
+        <span>{visual.barsHead[0]}</span>
+        <span>{visual.barsHead[1]}</span>
       </div>
       {
-        parallelRuns.map(({ label, throughput, seconds }) => (
+        visual.bars.map(({ label, throughput, seconds }) => (
           <div class="bar-row">
             <span class="bar-label">{label}</span>
             <div class="bar-track">
-              <span style={`width: ${(throughput / maxThroughput) * 100}%`} />
+              <span style={`width: ${(throughput / visual.maxThroughput) * 100}%`} />
             </div>
             <strong>{throughput.toLocaleString()}</strong>
             <em>{seconds}s</em>
@@ -61,21 +48,14 @@ const headlineRuns = s3EvidenceFacts.headlineRuns;
       }
     </div>
     <div class="automation-path">
-      <span>{isZh ? "默认自动化路径" : "Default automation path"}</span>
+      <span>{visual.pathLabel}</span>
       <ol>
-        {s3EvidenceFacts.defaultPath.map((item) => <li>{item[locale]}</li>)}
+        {visual.pathItems.map((item) => <li>{item}</li>)}
       </ol>
-      <p>
-        {
-          isZh
-            ? "自动发现、运行时拆分、dry-run plan 和运行记录，是同一条默认路径。"
-            : "Startup discovery, runtime splitting, dry-run plans, and manifests sit on one default path."
-        }
-      </p>
+      <p>{visual.pathBody}</p>
     </div>
   </div>
   <div class="benchmark-footnotes">
-    <span>{isZh ? `输出：${s3EvidenceFacts.outputLine}` : `Output: ${s3EvidenceFacts.outputLine}`}</span>
-    <span>{s3EvidenceFacts.runtimeLine}</span>
+    {visual.footnotes.map((item) => <span>{item}</span>)}
   </div>
 </div>

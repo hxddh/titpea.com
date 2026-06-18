@@ -1,9 +1,16 @@
-<div class="rating-visual product-scene rating-scene" aria-label="Douban movie rating assistant preview">
+---
+import type { ScreenshotVisualModel } from "../../content/visualModels";
+
+interface Props {
+  visual: ScreenshotVisualModel;
+}
+
+const { visual } = Astro.props;
+const image = visual.images[0];
+---
+
+<div class="rating-visual product-scene rating-scene" aria-label={visual.label}>
   <div class="douban-shot-frame">
-    <img
-      src="/assets/douban-rating-assistant.png"
-      alt="Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page"
-      loading="eager"
-    />
+    <img src={image.src} alt={image.alt} loading="eager" />
   </div>
 </div>

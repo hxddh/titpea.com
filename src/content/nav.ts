@@ -1,4 +1,14 @@
 import { pathFor, type HeaderNavGroup, type HeaderNavItem, type Locale } from "../lib/site";
+import { siteConfig } from "./siteConfig";
+
+export function headerUi(locale: Locale) {
+  const isZh = locale === "zh";
+  return {
+    primaryLabel: isZh ? "主导航" : "Primary",
+    menuLabel: isZh ? "打开站点菜单" : "Open site menu",
+    menuText: isZh ? "菜单" : "Menu",
+  };
+}
 
 export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
   const isZh = locale === "zh";
@@ -21,7 +31,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
           showInPrimary: true,
         },
         { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops", showInPrimary: true },
-        { label: "httpmon", href: "https://github.com/hxddh/https-traffic-inspector", external: true },
+        { label: "httpmon", href: siteConfig.externalLinks.httpmon, external: true },
       ],
     },
     {
@@ -43,7 +53,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
     },
     {
       label: isZh ? "外部链接" : "External",
-      items: [{ label: "GitHub", href: "https://github.com/hxddh", external: true, showInPrimary: true }],
+      items: [{ label: "GitHub", href: siteConfig.externalLinks.github, external: true, showInPrimary: true }],
     },
   ];
 }

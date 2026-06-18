@@ -1,5 +1,6 @@
 import type { Product } from "../../lib/site";
 import { s3MetaLine, s3TurboListFacts } from "../productFacts";
+import { siteConfig } from "../siteConfig";
 
 const s3Release = s3TurboListFacts.latestRelease ?? "current release";
 const s3License = s3TurboListFacts.licenseLabel ?? "current license";
@@ -16,8 +17,8 @@ export const s3TurboListProduct: Product = {
       eyebrow: "Rust CLI / Automatic S3 Inventory",
       headline: "Automatic S3 inventory and diff",
       lead: "A focused CLI for large S3-compatible buckets: list, diff, and export Parquet while startup discovery, runtime splitting, dry-run plans, and run manifests handle the operational detail.",
-      primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
-      secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
+      primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
+      secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
       proof: [
         "Startup discovery by default",
@@ -191,8 +192,8 @@ export const s3TurboListProduct: Product = {
       eyebrow: "Rust CLI / 自动化对象清单",
       headline: "自动化 S3 list / diff CLI",
       lead: "一个聚焦的大桶 list / diff 工具：列举、对比、输出 Parquet；前缀发现、运行时拆分、dry-run plan 和运行记录由默认路径完成。",
-      primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/s3-turbo-list" },
-      secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/s3-turbo-list#quick-start" },
+      primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.s3TurboList },
+      secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
       proof: ["默认启动发现", "按吞吐拆分长尾片段", "dry-run plan", "可校验运行记录"],
       positioningLabel: "边界",

@@ -1,5 +1,6 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
+import { absoluteUrl, siteConfig } from "../content/siteConfig";
 import { pathFor, slugForCurrentPage, type CurrentPage, type Locale } from "../lib/site";
 import type { SiteRoute } from "../content/siteManifest";
 import "../styles/global.css";
@@ -24,14 +25,14 @@ const fallbackChineseHref = pathFor("zh", currentSlug);
 const englishHref = route ? (isZh ? route.alternatePath : route.canonicalPath) : fallbackEnglishHref;
 const chineseHref = route ? (isZh ? route.canonicalPath : route.alternatePath) : fallbackChineseHref;
 const canonicalPath = isZh ? chineseHref : englishHref;
-const canonicalUrl = `https://titpea.com${canonicalPath}`;
-const englishUrl = `https://titpea.com${englishHref}`;
-const chineseUrl = `https://titpea.com${chineseHref}`;
+const canonicalUrl = absoluteUrl(canonicalPath);
+const englishUrl = absoluteUrl(englishHref);
+const chineseUrl = absoluteUrl(chineseHref);
 const alternateLocale = isZh ? "en" : "zh";
 const alternateLabel = isZh ? "English" : "中文";
 const alternateHref = route?.alternatePath ?? (isZh ? englishHref : chineseHref);
 const imagePath = route?.ogImage ?? image;
-const imageUrl = imagePath ? `https://titpea.com${imagePath}` : "https://titpea.com/favicon.svg";
+const imageUrl = imagePath ? absoluteUrl(imagePath) : absoluteUrl(siteConfig.assets.favicon);
 ---
 
 <!doctype html>
@@ -72,8 +73,8 @@ const imageUrl = imagePath ? `https://titpea.com${imagePath}` : "https://titpea.
       <slot />
     </main>
     <footer class="site-footer">
-      <span>© 2026 Titpea</span>
-      <span>info@titpea.com</span>
+      <span>© 2026 {siteConfig.brand}</span>
+      <span>{siteConfig.email}</span>
     </footer>
   </body>
 </html>

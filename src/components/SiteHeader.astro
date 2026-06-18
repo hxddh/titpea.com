@@ -1,6 +1,6 @@
 ---
 import { pathFor, type CurrentPage, type Locale } from "../lib/site";
-import { headerNavGroups, primaryNavItems } from "../content/nav";
+import { headerNavGroups, headerUi, primaryNavItems } from "../content/nav";
 
 interface Props {
   current: CurrentPage;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { current, locale, alternateHref, alternateLabel, alternateLocale } = Astro.props;
-const isZh = locale === "zh";
+const copy = headerUi(locale);
 const homeHref = pathFor(locale);
 const primaryItems = primaryNavItems(locale);
 const navGroups = headerNavGroups(locale);
@@ -24,7 +24,7 @@ const navGroups = headerNavGroups(locale);
   </a>
 
   <div class="header-actions">
-    <nav class="nav" aria-label={isZh ? "主导航" : "Primary"}>
+    <nav class="nav" aria-label={copy.primaryLabel}>
       {
         primaryItems.map((item) => (
           <a
@@ -43,7 +43,7 @@ const navGroups = headerNavGroups(locale);
     </a>
 
     <details class="mobile-menu">
-      <summary aria-label={isZh ? "打开站点菜单" : "Open site menu"}>{isZh ? "菜单" : "Menu"}</summary>
+      <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>
       <div class="mobile-menu-panel">
         {
           navGroups.map((group) => (

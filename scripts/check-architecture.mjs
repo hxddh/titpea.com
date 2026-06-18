@@ -63,6 +63,29 @@ assertNoMatch(
 );
 
 assertNoMatch(
+  "page components render models without business-copy locale branching",
+  [
+    "src/components/HomePage.astro",
+    "src/components/AboutPage.astro",
+    "src/components/ProductPage.astro",
+    "src/components/SiteHeader.astro",
+  ],
+  /locale\s*===|isZh|productSystem|productEvidence\s*\(|from\s+["']\.\.\/content\/home["']/,
+);
+
+assertNoMatch(
+  "visual components render visual models without facts or locale branching",
+  [
+    "src/components/ProductVisual.astro",
+    "src/components/visuals/S3BenchmarkVisual.astro",
+    "src/components/visuals/StorageOpsAgentVisual.astro",
+    "src/components/visuals/WorldClockVisual.astro",
+    "src/components/visuals/DoubanRatingVisual.astro",
+  ],
+  /locale\s*===|isZh|productEvidenceFacts|s3EvidenceFacts|storageOpsEvidenceFacts/,
+);
+
+assertNoMatch(
   "site manifest is derived from page model",
   ["src/content/siteManifest.ts"],
   /product\.(role|category|archetype|current|visual)|productExpectedText|sectionIndex:\s*product\./,
@@ -76,8 +99,14 @@ assertNoMatch(
 
 assertNoMatch(
   "home copy has no retired duplicate content models",
-  ["src/content/home.ts"],
-  /homeProductLines|homeStorageFlow|homeBrowserTools|aboutProductGroups/,
+  ["src/content/home.ts", "src/content/productCatalogModel.ts"],
+  /homeProductLines|homeStorageFlow|homeBrowserTools|aboutProductGroups|productSystem|productEvidence\s*\(/,
+);
+
+assertNoMatch(
+  "legacy content sources stay deleted",
+  ["src/components/HomePage.astro", "src/components/AboutPage.astro", "src/content/sitePageModels.ts"],
+  /content\/productSystem|content\/evidence/,
 );
 
 assertNoMatch(
@@ -98,6 +127,15 @@ else pass("pages.css stays thin");
 const qaPagesLines = lineCount("scripts/qa-pages.mjs");
 if (qaPagesLines > 80) fail("qa-pages.mjs stays an orchestrator", `scripts/qa-pages.mjs has ${qaPagesLines} lines`);
 else pass("qa-pages.mjs stays an orchestrator");
+
+const productPageModelLines = lineCount("src/content/productPageModel.ts");
+if (productPageModelLines > 140)
+  fail("productPageModel stays an assembler", `src/content/productPageModel.ts has ${productPageModelLines} lines`);
+else pass("productPageModel stays an assembler");
+
+const homePageLines = lineCount("src/components/HomePage.astro");
+if (homePageLines > 180) fail("HomePage stays a renderer", `src/components/HomePage.astro has ${homePageLines} lines`);
+else pass("HomePage stays a renderer");
 
 const failures = checks.filter((check) => !check.ok);
 if (failures.length > 0) {

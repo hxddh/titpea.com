@@ -1,18 +1,12 @@
-import { productSlugs } from "../content/products";
+import { siteRoutes } from "../content/sitePageModels";
+import { siteConfig } from "../content/siteConfig";
 
-const site = "https://titpea.com";
-const staticPaths = ["", "about"];
-const paths = [
-  ...staticPaths,
-  ...productSlugs,
-  ...staticPaths.map((path) => (path ? `zh/${path}` : "zh")),
-  ...productSlugs.map((slug) => `zh/${slug}`),
-];
+const paths = siteRoutes.map((route) => route.path);
 
 export function GET() {
   const urls = paths
     .map((path) => {
-      const loc = `${site}/${path ? `${path}/` : ""}`;
+      const loc = `${siteConfig.baseUrl}${path}`;
       return `<url><loc>${loc}</loc></url>`;
     })
     .join("");

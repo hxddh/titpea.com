@@ -1,7 +1,11 @@
-import { pathFor, type Locale, type ProductSlug } from "../lib/site";
+import { productPageModel } from "./productPageModel";
 import { products } from "./products";
+import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { s3TurboListFacts } from "./productFacts";
+import { siteConfig } from "./siteConfig";
+import { pathFor, type Locale, type ProductSlug } from "../lib/site";
 
-export type ProductSystemItem = {
+export type ProductCatalogItem = {
   id: string;
   number?: string;
   verb?: string;
@@ -15,6 +19,14 @@ export type ProductSystemItem = {
   group: "storage" | "browser" | "external";
 };
 
+export type EvidenceSummary = {
+  label: string;
+  title: string;
+  body: string;
+  href: string;
+  stats: string[];
+};
+
 const externalProjects = {
   en: {
     httpmon:
@@ -25,14 +37,19 @@ const externalProjects = {
   },
 } as const;
 
-export function storageWorkflow(locale: Locale): ProductSystemItem[] {
-  return [
+export function productCatalogModel(locale: Locale) {
+  const s3 = productPageModel(products["s3-turbo-list"], locale);
+  const storageops = productPageModel(products.storageops, locale);
+  const worldClock = productPageModel(products["world-clock"], locale);
+  const douban = productPageModel(products["douban-movie-rating"], locale);
+
+  const storage: ProductCatalogItem[] = [
     {
       id: "s3-turbo-list",
       number: "01",
       verb: "List / Diff",
       name: products["s3-turbo-list"].name,
-      href: pathFor(locale, "s3-turbo-list"),
+      href: s3.path,
       text:
         locale === "zh"
           ? "自动列举或对比大型 S3 兼容存储桶，留下 Parquet、JSON plan 和运行记录。"
@@ -48,7 +65,7 @@ export function storageWorkflow(locale: Locale): ProductSystemItem[] {
       number: "02",
       verb: "Diagnose",
       name: products.storageops.name,
-      href: pathFor(locale, "storageops"),
+      href: storageops.path,
       text:
         locale === "zh"
           ? "给 Pi 一层对象存储诊断能力：领域技能、有边界的工具、确定性脚本和回归用例。"
@@ -64,21 +81,19 @@ export function storageWorkflow(locale: Locale): ProductSystemItem[] {
       number: "03",
       verb: "Inspect",
       name: "https-traffic-inspector",
-      href: "https://github.com/hxddh/https-traffic-inspector",
+      href: siteConfig.externalLinks.httpmon,
       text: externalProjects[locale].httpmon,
       tagline: locale === "zh" ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection",
       displayRole: locale === "zh" ? "流量检查" : "Traffic inspection",
       group: "external",
     },
   ];
-}
 
-export function browserUtilities(locale: Locale): ProductSystemItem[] {
-  return [
+  const browser: ProductCatalogItem[] = [
     {
       id: "world-clock",
-      name: products["world-clock"].locales[locale].title,
-      href: pathFor(locale, "world-clock"),
+      name: worldClock.title,
+      href: worldClock.path,
       text:
         locale === "zh"
           ? "快速查看几个城市的当前时间，适合远程协作、旅行和临时确认时区。"
@@ -90,8 +105,8 @@ export function browserUtilities(locale: Locale): ProductSystemItem[] {
     },
     {
       id: "douban-movie-rating",
-      name: products["douban-movie-rating"].locales[locale].title,
-      href: pathFor(locale, "douban-movie-rating"),
+      name: douban.title,
+      href: douban.path,
       text:
         locale === "zh"
           ? "把 IMDb、Rotten Tomatoes 和 Metacritic 参考评分补到豆瓣电影页里。"
@@ -102,13 +117,39 @@ export function browserUtilities(locale: Locale): ProductSystemItem[] {
       group: "browser",
     },
   ];
-}
 
-export function productSystem(locale: Locale) {
+  const evidence: EvidenceSummary[] = [
+    {
+      label: "s3-turbo-list benchmark",
+      title: locale === "zh" ? "1M 对象，~55s 到 ~19s" : "1M objects, ~55s to ~19s",
+      body:
+        locale === "zh"
+          ? "最新 README 引用的第三方 Alibaba Cloud OSS 测试：1M 对象单流约 55s，`-c 8` 约 19s。默认路径会自动发现和并发。"
+          : "The current README cites a third-party Alibaba Cloud OSS benchmark: 1M objects in ~55s single-stream and ~19s with `-c 8`.",
+      href: s3.path,
+      stats: [s3EvidenceFacts.version, s3TurboListFacts.licenseLabel ?? "current license", "agent-safe JSON"],
+    },
+    {
+      label: "StorageOps agent package",
+      title: locale === "zh" ? "Pi 的对象存储诊断层" : "The storage diagnosis layer for Pi",
+      body:
+        locale === "zh"
+          ? "StorageOps 不是提示词集合。它把诊断技能、取证工具、确定性脚本和回归用例装进 Pi，让诊断路径和证据边界更清楚。"
+          : "StorageOps is not a prompt pack. It gives Pi skills, tools, helpers, and evals that constrain the diagnostic path and evidence boundary.",
+      href: storageops.path,
+      stats: [
+        `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`,
+        `${storageOpsEvidenceFacts.toolsCount} Pi tools`,
+        "golden-case evals",
+      ],
+    },
+  ];
+
   return {
-    storage: storageWorkflow(locale),
-    browser: browserUtilities(locale),
-    all: [...storageWorkflow(locale), ...browserUtilities(locale)],
+    storage,
+    browser,
+    evidence,
+    all: [...storage, ...browser],
     groups: [
       {
         title: locale === "zh" ? "对象存储" : "Object storage",
@@ -132,5 +173,7 @@ export function productSystem(locale: Locale) {
             : "Clear commands, inspectable output, and artifacts that can move into CI, DuckDB, logs, or the next diagnostic step.",
       },
     ],
+    featuredProductPath: pathFor(locale, "s3-turbo-list"),
+    secondaryProductPath: pathFor(locale, "storageops"),
   };
 }

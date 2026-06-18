@@ -1,5 +1,6 @@
 import type { Product } from "../../lib/site";
 import { worldClockFacts } from "../productFacts";
+import { siteConfig } from "../siteConfig";
 
 const worldClockMeta = `Chrome Web Store · ${worldClockFacts.category} · No data collection disclosed`;
 const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声明不收集数据`;
@@ -17,7 +18,7 @@ export const worldClockProduct: Product = {
       lead: "World Clock is a small Chrome popup for live city time. It opens fast, shows work-hours context, and gets out of the way.",
       primaryCta: {
         label: "Install",
-        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
+        href: siteConfig.externalLinks.worldClockChrome,
       },
       secondaryCta: { label: "Back to profile", href: "/about/" },
       meta: worldClockMeta,
@@ -98,7 +99,7 @@ export const worldClockProduct: Product = {
       lead: "一个很小的 Chrome 弹窗。打开后直接看到城市、时区、当前时间、工作时段和日期，看完就回到手头的事。",
       primaryCta: {
         label: "安装扩展",
-        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
+        href: siteConfig.externalLinks.worldClockChrome,
       },
       secondaryCta: { label: "返回简介", href: "/zh/about/" },
       meta: worldClockMetaZh,

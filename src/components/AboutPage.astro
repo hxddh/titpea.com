@@ -1,48 +1,44 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { type Locale } from "../lib/site";
-import { ui } from "../content/home";
-import { productSystem } from "../content/productSystem";
+import { aboutPageModel } from "../content/aboutPageModel";
 import { routeForPage } from "../content/siteManifest";
+import { type Locale } from "../lib/site";
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const copy = ui[locale];
-const isZh = locale === "zh";
-const system = productSystem(locale);
-const productGroups = system.groups;
+const model = aboutPageModel(locale);
 const route = routeForPage(locale, "about");
 ---
 
 <SiteLayout
-  title={copy.aboutTitle}
-  description={copy.aboutDescription}
-  current="about"
+  title={model.title}
+  description={model.description}
+  current={model.current}
   locale={locale}
-  image={route?.ogImage ?? "/assets/og-about.png"}
+  image={model.ogImage}
   route={route}
 >
   <section class="about-hero about-redesign-hero shell">
     <div class="about-redesign-copy">
-      <p class="eyebrow">hxddh</p>
-      <h1>{copy.aboutHeadline}</h1>
-      <p class="lead">{copy.aboutLead}</p>
-      <div class="actions about-contact-row" aria-label={isZh ? "联系方式" : "Contact links"}>
-        <a class="button primary" href="https://github.com/hxddh" rel="noreferrer">GitHub</a>
-        <a
-          href="https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp"
-          rel="noreferrer"
-          class="button ghost">Chrome Web Store</a
-        >
-        <a class="button ghost" href="mailto:info@titpea.com">Email</a>
+      <p class="eyebrow">{model.hero.eyebrow}</p>
+      <h1>{model.hero.title}</h1>
+      <p class="lead">{model.hero.lead}</p>
+      <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
+        {
+          model.hero.actions.map((action) => (
+            <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
+              {action.label}
+            </a>
+          ))
+        }
       </div>
     </div>
-    <aside class="about-system-panel" aria-label={isZh ? "产品线" : "Product lines"}>
+    <aside class="about-system-panel" aria-label={model.hero.systemLabel}>
       {
-        productGroups.map((group) => (
+        model.hero.groups.map((group) => (
           <div>
             <span>{group.title}</span>
             <p>{group.text}</p>
@@ -54,12 +50,12 @@ const route = routeForPage(locale, "about");
 
   <section class="about-products shell">
     <div class="about-section-heading">
-      <p class="section-kicker">{copy.productsLabel}</p>
-      <h2>{isZh ? "先是存储主线，然后是轻工具" : "Storage first, utilities second"}</h2>
+      <p class="section-kicker">{model.products.label}</p>
+      <h2>{model.products.title}</h2>
     </div>
     <div class="about-product-grid">
       {
-        system.all.map((item) => (
+        model.products.items.map((item) => (
           <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
             <span>{item.name}</span>
             <strong>{item.tagline}</strong>
@@ -73,22 +69,22 @@ const route = routeForPage(locale, "about");
   <section class="about-principles">
     <div class="shell split-content">
       <div>
-        <p class="section-kicker">{copy.profileLabel}</p>
-        <h2>{copy.profileTitle}</h2>
+        <p class="section-kicker">{model.profile.label}</p>
+        <h2>{model.profile.title}</h2>
       </div>
       <div class="prose">
-        {copy.profileBody.map((paragraph) => <p>{paragraph}</p>)}
+        {model.profile.body.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </div>
   </section>
 
   <section class="shell about-focus-section" id="writing">
     <div class="about-section-heading">
-      <p class="section-kicker">{copy.focusLabel}</p>
-      <h2>{isZh ? "关注边界" : "Working boundaries"}</h2>
+      <p class="section-kicker">{model.focus.label}</p>
+      <h2>{model.focus.title}</h2>
     </div>
     <ul class="writing-list">
-      {copy.focusItems.map((item) => <li>{item}</li>)}
+      {model.focus.items.map((item) => <li>{item}</li>)}
     </ul>
   </section>
 </SiteLayout>

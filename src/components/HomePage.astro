@@ -1,58 +1,54 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pathFor, type Locale } from "../lib/site";
-import { productEvidence } from "../content/evidence";
-import { ui } from "../content/home";
-import { productSystem } from "../content/productSystem";
+import { homePageModel } from "../content/homePageModel";
 import { routeForPage } from "../content/siteManifest";
+import type { Locale } from "../lib/site";
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const copy = ui[locale];
-const evidenceCards = productEvidence(locale);
-const system = productSystem(locale);
-const storageFlow = system.storage;
-const browserTools = system.browser;
+const model = homePageModel(locale);
 const route = routeForPage(locale, "home");
 ---
 
 <SiteLayout
-  title="Titpea"
-  description={locale === "zh"
-    ? "Titpea 是 hxddh 的个人网站和产品索引。"
-    : "Titpea is the personal site and product index for hxddh."}
-  current="home"
+  title={model.title}
+  description={model.description}
+  current={model.current}
   locale={locale}
-  image={route?.ogImage ?? "/assets/og-home.png"}
+  image={model.ogImage}
   route={route}
 >
   <section class="home-hero home-workbench-hero shell">
     <div class="home-copy home-workbench-copy">
-      <p class="eyebrow">{copy.productIndex}</p>
-      <h1>{copy.homeTitle}</h1>
-      <p class="lead">{copy.homeLead}</p>
+      <p class="eyebrow">{model.hero.eyebrow}</p>
+      <h1>{model.hero.title}</h1>
+      <p class="lead">{model.hero.lead}</p>
       <div class="actions">
-        <a class="button primary" href={pathFor(locale, "s3-turbo-list")}>{copy.homePrimary}</a>
-        <a class="button ghost" href={pathFor(locale, "storageops")}>{copy.homeSecondary}</a>
-        <a class="button ghost" href={pathFor(locale, "about")}>{copy.homeAbout}</a>
+        {
+          model.hero.actions.map((action) => (
+            <a class:list={["button", action.style]} href={action.href}>
+              {action.label}
+            </a>
+          ))
+        }
       </div>
-      <div class="home-proof-rail" aria-label={locale === "zh" ? "产品主线" : "Product spine"}>
-        {copy.proofItems.map((item) => <span>{item}</span>)}
+      <div class="home-proof-rail" aria-label={model.hero.proofLabel}>
+        {model.hero.proofItems.map((item) => <span>{item}</span>)}
       </div>
     </div>
 
-    <div class="home-workbench-panel" aria-label={copy.featuredLabel}>
+    <div class="home-workbench-panel" aria-label={model.flow.label}>
       <div class="workbench-panel-head editorial-panel-head">
-        <p class="section-kicker">{copy.flowLabel}</p>
-        <h2>{copy.flowTitle}</h2>
-        <p>{copy.flowBody}</p>
+        <p class="section-kicker">{model.flow.label}</p>
+        <h2>{model.flow.title}</h2>
+        <p>{model.flow.body}</p>
       </div>
       <div class="workbench-flow-list">
         {
-          storageFlow.map((item) => (
+          model.flow.items.map((item) => (
             <a class="workbench-flow-card" href={item.href}>
               <span>{item.number}</span>
               <div>
@@ -69,19 +65,13 @@ const route = routeForPage(locale, "home");
 
   <section class="home-evidence shell">
     <div class="home-evidence-heading">
-      <p class="section-kicker">{locale === "zh" ? "主产品证据" : "Product evidence"}</p>
-      <h2>{locale === "zh" ? "先看事实，再看功能" : "Evidence before features"}</h2>
-      <p>
-        {
-          locale === "zh"
-            ? "主产品先给可检查的证据：一个有压测结果，一个说明 Pi 诊断包到底装了什么。"
-            : "The main products lead with checkable evidence: one shows benchmark data, the other shows what the agent package installs."
-        }
-      </p>
+      <p class="section-kicker">{model.evidence.kicker}</p>
+      <h2>{model.evidence.title}</h2>
+      <p>{model.evidence.body}</p>
     </div>
     <div class="home-evidence-grid">
       {
-        evidenceCards.map((card) => (
+        model.evidence.cards.map((card) => (
           <a class="home-evidence-card" href={card.href}>
             <span>{card.label}</span>
             <h3>{card.title}</h3>
@@ -100,21 +90,21 @@ const route = routeForPage(locale, "home");
   <section class="home-thesis-band">
     <div class="shell split-content">
       <div>
-        <p class="section-kicker">{copy.thesisLabel}</p>
-        <h2>{copy.thesisTitle}</h2>
+        <p class="section-kicker">{model.thesis.label}</p>
+        <h2>{model.thesis.title}</h2>
       </div>
-      <p class="prose">{copy.thesisBody}</p>
+      <p class="prose">{model.thesis.body}</p>
     </div>
   </section>
 
   <section class="home-catalog shell">
     <div class="catalog-heading">
-      <p class="section-kicker">{copy.storageLine}</p>
-      <h2>{copy.storageTitle}</h2>
+      <p class="section-kicker">{model.catalog.label}</p>
+      <h2>{model.catalog.title}</h2>
     </div>
     <div class="catalog-grid">
       {
-        system.storage.map((item) => (
+        model.catalog.items.map((item) => (
           <a class="catalog-card" href={item.href}>
             <span>{item.name}</span>
             <p>{item.text}</p>
@@ -126,20 +116,14 @@ const route = routeForPage(locale, "home");
 
   <section class="home-browser-band shell">
     <div class="browser-band-copy">
-      <p class="section-kicker">{copy.browserLine}</p>
-      <h2>{copy.browserTitle}</h2>
-      <p>
-        {
-          locale === "zh"
-            ? "这两件工具不做平台，只解决一个浏览器里的小问题：一个看时间，一个补评分。"
-            : "These two tools stay intentionally narrow: one checks time, the other adds rating context where you are already reading."
-        }
-      </p>
+      <p class="section-kicker">{model.browser.label}</p>
+      <h2>{model.browser.title}</h2>
+      <p>{model.browser.body}</p>
     </div>
     <div class="browser-band-body">
       <div class="browser-tool-list">
         {
-          browserTools.map((item) => (
+          model.browser.tools.map((item) => (
             <a href={item.href}>
               <span>{item.name}</span>
               <p>{item.text}</p>
@@ -147,24 +131,14 @@ const route = routeForPage(locale, "home");
           ))
         }
       </div>
-      <div
-        class="browser-screenshot-row"
-        aria-label={locale === "zh" ? "浏览器扩展截图" : "Browser extension screenshots"}
-      >
-        <a href={pathFor(locale, "world-clock")} class="browser-screenshot clock">
-          <img
-            src="/assets/world-clock-dark.png"
-            alt={locale === "zh" ? "世界时钟深色界面截图" : "World Clock dark interface screenshot"}
-            loading="lazy"
-          />
-        </a>
-        <a href={pathFor(locale, "douban-movie-rating")} class="browser-screenshot douban">
-          <img
-            src="/assets/douban-rating-assistant.png"
-            alt={locale === "zh" ? "豆瓣电影评分助手页面截图" : "Douban Movie Rating Assistant page screenshot"}
-            loading="lazy"
-          />
-        </a>
+      <div class="browser-screenshot-row" aria-label={model.browser.screenshotLabel}>
+        {
+          model.browser.screenshots.map((screenshot) => (
+            <a href={screenshot.href} class={screenshot.className}>
+              <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>

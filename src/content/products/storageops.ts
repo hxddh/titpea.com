@@ -1,5 +1,6 @@
 import type { Product } from "../../lib/site";
 import { storageOpsEvidenceFacts } from "../productEvidenceFacts";
+import { siteConfig } from "../siteConfig";
 
 const storageOpsMeta = `Python · Pi Coding Agent · S3-compatible · ${storageOpsEvidenceFacts.skillsCount} skills · ${storageOpsEvidenceFacts.toolsCount} tools`;
 const storageOpsProof = [
@@ -27,8 +28,8 @@ export const storageOpsProduct: Product = {
       eyebrow: "Pi Agent / Object Storage Diagnosis",
       headline: "S3 diagnosis agent for Pi",
       lead: "StorageOps turns Pi Coding Agent into an object storage specialist by installing S3 diagnostic skills, Pi extension tools, deterministic helpers, and compact eval cases.",
-      primaryCta: { label: "View on GitHub", href: "https://github.com/hxddh/storageops" },
-      secondaryCta: { label: "Quick start", href: "https://github.com/hxddh/storageops#quick-start" },
+      primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
+      secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta: storageOpsMeta,
       proof: storageOpsProof,
       positioningLabel: "Positioning",
@@ -176,8 +177,8 @@ export const storageOpsProduct: Product = {
       eyebrow: "Pi Agent / 对象存储诊断",
       headline: "Pi 的 S3 诊断 agent",
       lead: "StorageOps 给 Pi 装上一套对象存储诊断能力：领域技能、扩展工具、确定性脚本，以及约束输出口径的回归用例。",
-      primaryCta: { label: "查看 GitHub", href: "https://github.com/hxddh/storageops" },
-      secondaryCta: { label: "快速开始", href: "https://github.com/hxddh/storageops#quick-start" },
+      primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
+      secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta: storageOpsMeta,
       proof: storageOpsProofZh,
       positioningLabel: "边界",
