@@ -1,32 +1,21 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pathFor, type Locale, type ProductSlug } from "../lib/site";
+import { pathFor, type Locale } from "../lib/site";
 import { productEvidence } from "../content/evidence";
-import { homeBrowserTools, homeProductLines, homeStorageFlow, ui } from "../content/home";
-import { products } from "../content/products";
+import { ui } from "../content/home";
+import { productSystem } from "../content/productSystem";
 import { routeForPage } from "../content/siteManifest";
 
 interface Props {
   locale: Locale;
 }
 
-type ProductLineItem = {
-  slug?: ProductSlug;
-  name?: string;
-  href?: string;
-  text: string;
-};
-
 const { locale } = Astro.props;
 const copy = ui[locale];
-const productLines = homeProductLines[locale];
 const evidenceCards = productEvidence(locale);
-const itemName = (item: ProductLineItem) => (item.slug ? products[item.slug].locales[locale].title : item.name);
-const itemHref = (item: ProductLineItem) => (item.slug ? pathFor(locale, item.slug) : item.href);
-const storageFlow = homeStorageFlow[locale];
-const browserTools = homeBrowserTools[locale];
-const flowHref = (item: (typeof storageFlow)[number]) => ("slug" in item ? pathFor(locale, item.slug) : item.href);
-const browserHref = (item: (typeof browserTools)[number]) => pathFor(locale, item.slug);
+const system = productSystem(locale);
+const storageFlow = system.storage;
+const browserTools = system.browser;
 const route = routeForPage(locale, "home");
 ---
 
@@ -64,7 +53,7 @@ const route = routeForPage(locale, "home");
       <div class="workbench-flow-list">
         {
           storageFlow.map((item) => (
-            <a class="workbench-flow-card" href={flowHref(item)}>
+            <a class="workbench-flow-card" href={item.href}>
               <span>{item.number}</span>
               <div>
                 <strong>{item.verb}</strong>
@@ -125,9 +114,9 @@ const route = routeForPage(locale, "home");
     </div>
     <div class="catalog-grid">
       {
-        productLines[0].items.map((item) => (
-          <a class="catalog-card" href={itemHref(item)}>
-            <span>{itemName(item)}</span>
+        system.storage.map((item) => (
+          <a class="catalog-card" href={item.href}>
+            <span>{item.name}</span>
             <p>{item.text}</p>
           </a>
         ))
@@ -151,7 +140,7 @@ const route = routeForPage(locale, "home");
       <div class="browser-tool-list">
         {
           browserTools.map((item) => (
-            <a href={browserHref(item)}>
+            <a href={item.href}>
               <span>{item.name}</span>
               <p>{item.text}</p>
             </a>

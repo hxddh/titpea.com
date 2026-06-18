@@ -1,11 +1,13 @@
-import type { Locale, Product, ProductCopy } from "../lib/site";
+import type { Locale, Product, ProductContentCard, ProductContentInput, ProductCopy } from "../lib/site";
+import { archetypeSpec } from "./productArchetypes";
 
 export type ProductSection =
   | {
       id: "positioning" | "features" | "workflow" | "automation" | "examples";
       kind: "cards";
       label: string;
-      items: Array<[string, string]>;
+      items: ProductContentCard[];
+      layout?: "balanced" | "steps" | "dense" | "evidence";
       numbered?: boolean;
     }
   | {
@@ -27,25 +29,29 @@ export type ProductSection =
       id: "faq";
       kind: "faq";
       label: string;
-      items: Array<[string, string]>;
+      items: ProductContentCard[];
     };
 
 const section = <T extends ProductSection>(value: T) => value;
+const cards = (items: ProductContentInput[] = []): ProductContentCard[] =>
+  items.map((item) => (Array.isArray(item) ? { title: item[0], body: item[1] } : item));
 
 export function productSections(locale: Locale, copy: ProductCopy, product?: Product): ProductSection[] {
   const isZh = locale === "zh";
+  const spec = (id: ProductSection["id"]) => (product ? archetypeSpec(product, id) : undefined);
+  const specLabel = (id: ProductSection["id"], fallback: string) => spec(id)?.label[locale] ?? fallback;
   const baseSections = [
     {
       id: "positioning",
       kind: "cards",
       label: copy.positioningLabel,
-      items: copy.positioning,
+      items: cards(copy.positioning),
     },
     {
       id: "features",
       kind: "cards",
       label: copy.featuresLabel,
-      items: copy.features,
+      items: cards(copy.features),
     },
     {
       id: "story",
@@ -59,7 +65,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
           id: "workflow",
           kind: "cards",
           label: copy.workflowLabel,
-          items: copy.workflow,
+          items: cards(copy.workflow),
           numbered: true,
         }
       : null,
@@ -68,7 +74,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
           id: "automation",
           kind: "cards",
           label: copy.automationLabel,
-          items: copy.automation,
+          items: cards(copy.automation),
         }
       : null,
     copy.cases && copy.casesLabel && copy.casesTitle
@@ -86,7 +92,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
           id: "examples",
           kind: "cards",
           label: copy.examplesLabel,
-          items: copy.examples,
+          items: cards(copy.examples),
         }
       : null,
     copy.faq && copy.faqLabel
@@ -94,7 +100,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
           id: "faq",
           kind: "faq",
           label: copy.faqLabel,
-          items: copy.faq,
+          items: cards(copy.faq),
         }
       : null,
   ].filter((item): item is ProductSection => item !== null);
@@ -106,14 +112,14 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
       section({
         id: "positioning",
         kind: "cards",
-        label: isZh ? "适合谁" : "Best for",
-        items: copy.positioning,
+        label: specLabel("positioning", isZh ? "适合谁" : "Best for"),
+        items: cards(copy.positioning),
       }),
       section({
         id: "features",
         kind: "cards",
-        label: isZh ? "页面里有什么" : "What appears",
-        items: copy.features,
+        label: specLabel("features", isZh ? "页面里有什么" : "What appears"),
+        items: cards(copy.features),
       }),
       section({
         id: "story",
@@ -128,7 +134,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
               id: "faq",
               kind: "faq",
               label: copy.faqLabel,
-              items: copy.faq,
+              items: cards(copy.faq),
             }),
           ]
         : []),
@@ -140,14 +146,15 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
       section({
         id: "positioning",
         kind: "cards",
-        label: isZh ? "它解决什么" : "What it solves",
-        items: copy.positioning,
+        label: specLabel("positioning", isZh ? "它解决什么" : "What it solves"),
+        items: cards(copy.positioning),
       }),
       section({
         id: "automation",
         kind: "cards",
-        label: isZh ? "自动化路径" : "Automation path",
-        items: [...copy.features, ...(copy.automation ?? [])],
+        label: specLabel("automation", isZh ? "自动化路径" : "Automation path"),
+        items: cards([...copy.features, ...(copy.automation ?? [])]),
+        layout: spec("automation")?.layout ?? "evidence",
       }),
       section({
         id: "story",
@@ -161,9 +168,10 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
             section({
               id: "workflow",
               kind: "cards",
-              label: isZh ? "一次运行" : "One run",
-              items: copy.workflow,
-              numbered: true,
+              label: specLabel("workflow", isZh ? "一次运行" : "One run"),
+              items: cards(copy.workflow),
+              layout: spec("workflow")?.layout ?? "steps",
+              numbered: spec("workflow")?.numbered ?? true,
             }),
           ]
         : []),
@@ -172,8 +180,9 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
             section({
               id: "examples",
               kind: "cards",
-              label: isZh ? "实际用法" : "Practical runs",
-              items: copy.examples,
+              label: specLabel("examples", isZh ? "实际用法" : "Practical runs"),
+              items: cards(copy.examples),
+              layout: spec("examples")?.layout ?? "dense",
             }),
           ]
         : []),
@@ -182,7 +191,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
             section({
               id: "cases",
               kind: "cases",
-              label: isZh ? "兼容端点" : "Compatible endpoints",
+              label: specLabel("cases", isZh ? "兼容端点" : "Compatible endpoints"),
               title: copy.casesTitle,
               body: copy.casesBody,
               items: copy.cases,
@@ -195,7 +204,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
               id: "faq",
               kind: "faq",
               label: copy.faqLabel,
-              items: copy.faq,
+              items: cards(copy.faq),
             }),
           ]
         : []),
@@ -207,14 +216,15 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
       section({
         id: "positioning",
         kind: "cards",
-        label: isZh ? "它解决什么" : "What it solves",
-        items: copy.positioning,
+        label: specLabel("positioning", isZh ? "它解决什么" : "What it solves"),
+        items: cards(copy.positioning),
       }),
       section({
         id: "features",
         kind: "cards",
-        label: isZh ? "技能和工具" : "Skills and tools",
-        items: copy.features,
+        label: specLabel("features", isZh ? "技能和工具" : "Skills and tools"),
+        items: cards(copy.features),
+        layout: spec("features")?.layout ?? "evidence",
       }),
       section({
         id: "story",
@@ -228,9 +238,10 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
             section({
               id: "workflow",
               kind: "cards",
-              label: isZh ? "诊断流程" : "Diagnosis flow",
-              items: copy.workflow,
-              numbered: true,
+              label: specLabel("workflow", isZh ? "诊断流程" : "Diagnosis flow"),
+              items: cards(copy.workflow),
+              layout: spec("workflow")?.layout ?? "steps",
+              numbered: spec("workflow")?.numbered ?? true,
             }),
           ]
         : []),
@@ -239,7 +250,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
             section({
               id: "cases",
               kind: "cases",
-              label: isZh ? "故障领域" : "Failure domains",
+              label: specLabel("cases", isZh ? "故障领域" : "Failure domains"),
               title: copy.casesTitle,
               body: copy.casesBody,
               items: copy.cases,
@@ -252,7 +263,7 @@ export function productSections(locale: Locale, copy: ProductCopy, product?: Pro
               id: "faq",
               kind: "faq",
               label: copy.faqLabel,
-              items: copy.faq,
+              items: cards(copy.faq),
             }),
           ]
         : []),

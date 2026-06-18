@@ -12,10 +12,10 @@ const { section } = Astro.props;
   <p class="section-kicker">{section.label}</p>
   <div class="faq-list">
     {
-      section.items.map(([question, answer]) => (
+      section.items.map((item) => (
         <details>
-          <summary>{question}</summary>
-          <p>{answer}</p>
+          <summary>{item.title}</summary>
+          <p>{item.body}</p>
         </details>
       ))
     }

@@ -8,6 +8,7 @@ import ProductInside from "./ProductInside.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
+import { productArchetypeLayouts } from "../content/productArchetypes";
 import { productSections } from "../content/productSections";
 import { routeForProduct } from "../content/siteManifest";
 import type { Locale, Product } from "../lib/site";
@@ -21,41 +22,14 @@ const { locale, product } = Astro.props;
 const copy = product.locales[locale];
 const sections = productSections(locale, copy, product);
 const pageClass = `product-page product-page-${product.archetype}`;
-const navLabel = (id: string, label: string) => {
-  const labels = {
-    en: {
-      inside: "Overview",
-      positioning: "Fit",
-      features: "Capabilities",
-      workflow: "Flow",
-      automation: "Automation",
-      evidence: "Evidence",
-      cases: "Compatibility",
-      faq: "FAQ",
-      story: "Details",
-      examples: "Examples",
-    },
-    zh: {
-      inside: "概览",
-      positioning: "定位",
-      features: "能力",
-      workflow: "流程",
-      automation: "自动化",
-      evidence: "证据",
-      cases: "兼容性",
-      faq: "FAQ",
-      story: "细节",
-      examples: "示例",
-    },
-  } as const;
-
-  return labels[locale][id as keyof (typeof labels)["en"]] ?? label;
-};
-const navItems = [
-  ["inside", navLabel("inside", "Inside")],
-  ...(product.category === "storage" ? [["evidence", navLabel("evidence", "Evidence")]] : []),
-  ...sections.map((section) => [section.id, navLabel(section.id, section.label)]),
-];
+const sectionIds = new Set([
+  "inside",
+  ...(product.category === "storage" ? ["evidence"] : []),
+  ...sections.map((section) => section.id),
+]);
+const navItems = productArchetypeLayouts[product.archetype]
+  .filter((item) => sectionIds.has(item.id))
+  .map((item) => [item.id, item.label[locale]]);
 const showSectionIndex = product.category === "storage";
 const route = routeForProduct(locale, product.slug);
 const socialImage = route?.ogImage ?? "/assets/og-home.png";

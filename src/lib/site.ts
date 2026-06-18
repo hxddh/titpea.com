@@ -21,6 +21,18 @@ type Link = {
 
 type Localized<T> = Record<Locale, T>;
 
+export type ProductContentCard = {
+  title: string;
+  body: string;
+  intent?: "fit" | "boundary" | "capability" | "workflow" | "automation" | "evidence" | "example";
+  evidence?: string;
+  surface?: "cli" | "agent" | "browser" | "artifact" | "protocol";
+  priority?: "primary" | "secondary";
+  compact?: boolean;
+};
+
+export type ProductContentInput = ProductContentCard | [string, string];
+
 export type ProductCopy = {
   title: string;
   description: string;
@@ -32,18 +44,18 @@ export type ProductCopy = {
   meta: string;
   proof: string[];
   positioningLabel: string;
-  positioning: Array<[string, string]>;
+  positioning: ProductContentInput[];
   featuresLabel: string;
-  features: Array<[string, string]>;
+  features: ProductContentInput[];
   rationaleLabel: string;
   rationaleTitle: string;
   rationaleBody: string[];
   workflowLabel?: string;
-  workflow?: Array<[string, string]>;
+  workflow?: ProductContentInput[];
   automationLabel?: string;
-  automation?: Array<[string, string]>;
+  automation?: ProductContentInput[];
   examplesLabel?: string;
-  examples?: Array<[string, string]>;
+  examples?: ProductContentInput[];
   casesLabel?: string;
   casesTitle?: string;
   casesBody?: string;
@@ -51,7 +63,7 @@ export type ProductCopy = {
   finalCta?: string;
   finalCtaLabel?: string;
   faqLabel?: string;
-  faq?: Array<[string, string]>;
+  faq?: ProductContentInput[];
 };
 
 export type Product = {

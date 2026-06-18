@@ -2,5 +2,7 @@
 @import "./base.css";
 @import "./components.css";
 @import "./pages.css";
+@import "./layouts.css";
+@import "./cards.css";
 @import "./visuals.css";
 @import "./responsive.css";

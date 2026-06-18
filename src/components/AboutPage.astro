@@ -1,8 +1,8 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pathFor, type Locale } from "../lib/site";
-import { aboutProductGroups, ui } from "../content/home";
-import { aboutProducts, products } from "../content/products";
+import { type Locale } from "../lib/site";
+import { ui } from "../content/home";
+import { productSystem } from "../content/productSystem";
 import { routeForPage } from "../content/siteManifest";
 
 interface Props {
@@ -12,7 +12,8 @@ interface Props {
 const { locale } = Astro.props;
 const copy = ui[locale];
 const isZh = locale === "zh";
-const productGroups = aboutProductGroups[locale];
+const system = productSystem(locale);
+const productGroups = system.groups;
 const route = routeForPage(locale, "about");
 ---
 
@@ -57,43 +58,30 @@ const route = routeForPage(locale, "about");
       <h2>{isZh ? "先是存储主线，然后是轻工具" : "Storage first, utilities second"}</h2>
     </div>
     <div class="about-product-grid">
-      <a class="about-product-card primary" href={pathFor(locale, "s3-turbo-list")}>
-        <span>s3-turbo-list</span>
-        <strong>{isZh ? "自动化对象存储 list / diff CLI" : "Automatic object storage list / diff CLI"}</strong>
-        <p>{products["s3-turbo-list"].locales[locale].description}</p>
-      </a>
-      <a class="about-product-card primary" href={pathFor(locale, "storageops")}>
-        <span>StorageOps</span>
-        <strong>{isZh ? "Pi 的对象存储诊断 agent" : "Pi-based object storage diagnosis agent"}</strong>
-        <p>{products.storageops.locales[locale].description}</p>
-      </a>
-      <a class="about-product-card" href="https://github.com/hxddh/https-traffic-inspector">
-        <span>https-traffic-inspector</span>
-        <strong>{isZh ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection"}</strong>
-        <p>
-          {
-            isZh
-              ? "当 SDK 或 CLI 把细节藏起来，用它看真实请求、响应、重试和签名上下文。"
-              : "Inspect real HTTP requests, responses, retries, and signing context when SDKs or CLIs hide the details."
-          }
-        </p>
-      </a>
       {
-        aboutProducts
-          .filter((slug) => slug === "world-clock" || slug === "douban-movie-rating")
-          .map((slug) => (
-            <a class="about-product-card" href={pathFor(locale, slug)}>
-              <span>{products[slug].locales[locale].title}</span>
-              <strong>
-                {products[slug].category === "browser"
+        system.all.map((item) => (
+          <a class:list={["about-product-card", item.kind === "primary" && "primary"]} href={item.href}>
+            <span>{item.name}</span>
+            <strong>
+              {item.kind === "primary"
+                ? item.id === "s3-turbo-list"
                   ? isZh
+                    ? "自动化对象存储 list / diff CLI"
+                    : "Automatic object storage list / diff CLI"
+                  : isZh
+                    ? "Pi 的对象存储诊断 agent"
+                    : "Pi-based object storage diagnosis agent"
+                : item.kind === "external"
+                  ? isZh
+                    ? "命令行 HTTP / HTTPS 流量检查"
+                    : "Command-line HTTP / HTTPS inspection"
+                  : isZh
                     ? "轻量 Chrome 扩展"
-                    : "Lightweight Chrome extension"
-                  : products[slug].name}
-              </strong>
-              <p>{products[slug].locales[locale].description}</p>
-            </a>
-          ))
+                    : "Lightweight Chrome extension"}
+            </strong>
+            <p>{item.text}</p>
+          </a>
+        ))
       }
     </div>
   </section>

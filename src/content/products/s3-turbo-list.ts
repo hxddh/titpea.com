@@ -31,37 +31,56 @@ export const s3TurboListProduct: Product = {
       ],
       positioningLabel: "Positioning",
       positioning: [
-        [
-          "Use it when",
-          "You need an inventory or diff of a large S3-compatible bucket without first designing a partitioning plan or tuning a pile of flags.",
-        ],
-        [
-          "It is not",
-          "A backup tool, sync engine, or storage browser. It is one focused binary for automatic listing, bounded diffing, and machine-readable evidence.",
-        ],
-        [
-          "What stays simple",
-          "First runs parallelize with no hints file. Defaults choose the common path; Parquet, manifests, trace JSONL, and stable exit codes keep the result inspectable.",
-        ],
+        {
+          title: "Use it when",
+          body: "You need an inventory or diff of a large S3-compatible bucket without first designing a partitioning plan or tuning a pile of flags.",
+          intent: "fit",
+          surface: "cli",
+          priority: "primary",
+        },
+        {
+          title: "It is not",
+          body: "A backup tool, sync engine, or storage browser. It is one focused binary for automatic listing, bounded diffing, and machine-readable evidence.",
+          intent: "boundary",
+          surface: "cli",
+        },
+        {
+          title: "What stays simple",
+          body: "First runs parallelize with no hints file. Defaults choose the common path; Parquet, manifests, trace JSONL, and stable exit codes keep the result inspectable.",
+          intent: "fit",
+          surface: "artifact",
+        },
       ],
       featuresLabel: "Capabilities",
       features: [
-        [
-          "Automatic key-space discovery",
-          "Startup delimiter probes find real prefix boundaries and cache them, so a first recursive list can run in parallel with no setup.",
-        ],
-        [
-          "Throughput-aware fan-out",
-          "Runtime splitting fans out long-tail segments while throughput is still improving, treating concurrency as an upper bound rather than a target.",
-        ],
-        [
-          "Bounded diff",
-          "Diff partitions both sides, lists them in parallel, and streams an ordered merge with `DiffFlag` rows without holding the combined keyspace in memory.",
-        ],
-        [
-          "Adaptive Parquet output",
-          "The writer stays single-file on rate-limited stores and adds part-file writers only when Parquet encoding becomes the bottleneck.",
-        ],
+        {
+          title: "Automatic key-space discovery",
+          body: "Startup delimiter probes find real prefix boundaries and cache them, so a first recursive list can run in parallel with no setup.",
+          intent: "capability",
+          evidence: "startup discovery",
+          surface: "protocol",
+        },
+        {
+          title: "Throughput-aware fan-out",
+          body: "Runtime splitting fans out long-tail segments while throughput is still improving, treating concurrency as an upper bound rather than a target.",
+          intent: "capability",
+          evidence: "runtime split",
+          surface: "cli",
+        },
+        {
+          title: "Bounded diff",
+          body: "Diff partitions both sides, lists them in parallel, and streams an ordered merge with `DiffFlag` rows without holding the combined keyspace in memory.",
+          intent: "capability",
+          evidence: "DiffFlag rows",
+          surface: "artifact",
+        },
+        {
+          title: "Adaptive Parquet output",
+          body: "The writer stays single-file on rate-limited stores and adds part-file writers only when Parquet encoding becomes the bottleneck.",
+          intent: "capability",
+          evidence: "Parquet artifacts",
+          surface: "artifact",
+        },
       ],
       rationaleLabel: "Why it exists",
       rationaleTitle: "Automation is the product",
@@ -71,56 +90,81 @@ export const s3TurboListProduct: Product = {
       ],
       workflowLabel: "Workflow",
       workflow: [
-        [
-          "Preflight",
-          "Run `doctor --json`, `doctor --simple`, or `--dry-run --agent` to resolve local config, planned outputs, and warnings before touching S3.",
-        ],
-        [
-          "List or diff",
-          "Use the default recursive list path, or diff two buckets; startup discovery and cached hints provide parallel segments automatically.",
-        ],
-        [
-          "Verify artifacts",
-          "Write a run manifest, then use `manifest-summary --check` to validate status, artifact hashes, row counts, schema metadata, and exit class.",
-        ],
-        [
-          "Analyze",
-          "Load Parquet into DuckDB, pandas, or pyarrow, or stream TSV/NDJSON when shell tools or agents need rows directly.",
-        ],
+        {
+          title: "Preflight",
+          body: "Run `doctor --json`, `doctor --simple`, or `--dry-run --agent` to resolve local config, planned outputs, and warnings before touching S3.",
+          intent: "workflow",
+          surface: "cli",
+        },
+        {
+          title: "List or diff",
+          body: "Use the default recursive list path, or diff two buckets; startup discovery and cached hints provide parallel segments automatically.",
+          intent: "workflow",
+          surface: "cli",
+        },
+        {
+          title: "Verify artifacts",
+          body: "Write a run manifest, then use `manifest-summary --check` to validate status, artifact hashes, row counts, schema metadata, and exit class.",
+          intent: "workflow",
+          surface: "artifact",
+        },
+        {
+          title: "Analyze",
+          body: "Load Parquet into DuckDB, pandas, or pyarrow, or stream TSV/NDJSON when shell tools or agents need rows directly.",
+          intent: "workflow",
+          surface: "artifact",
+        },
       ],
       automationLabel: "Automation",
       automation: [
-        [
-          "Dry-run plans",
-          "`--dry-run --agent` and `--plan-json` emit the resolved plan, output paths, config source, warnings, and file conflicts without S3 requests.",
-        ],
-        [
-          "Run manifests",
-          "`--run-manifest` records status, metrics, artifacts, warnings, SHA256, Parquet row counts, and schema metadata for completed runs.",
-        ],
-        [
-          "Stable exit codes",
-          "Exit classes distinguish validation, provider setup, network, output, data validation, and interrupted runs for CI and agents.",
-        ],
-        [
-          "Traceable provider behavior",
-          "`compat-probe` and `--trace-compat` make endpoint behavior and S3 API calls visible before scaling a run.",
-        ],
+        {
+          title: "Dry-run plans",
+          body: "`--dry-run --agent` and `--plan-json` emit the resolved plan, output paths, config source, warnings, and file conflicts without S3 requests.",
+          intent: "automation",
+          evidence: "plan JSON",
+          surface: "artifact",
+        },
+        {
+          title: "Run manifests",
+          body: "`--run-manifest` records status, metrics, artifacts, warnings, SHA256, Parquet row counts, and schema metadata for completed runs.",
+          intent: "automation",
+          evidence: "manifest-summary",
+          surface: "artifact",
+        },
+        {
+          title: "Stable exit codes",
+          body: "Exit classes distinguish validation, provider setup, network, output, data validation, and interrupted runs for CI and agents.",
+          intent: "automation",
+          surface: "cli",
+        },
+        {
+          title: "Traceable provider behavior",
+          body: "`compat-probe` and `--trace-compat` make endpoint behavior and S3 API calls visible before scaling a run.",
+          intent: "automation",
+          evidence: "trace JSONL",
+          surface: "protocol",
+        },
       ],
       examplesLabel: "Usage examples",
       examples: [
-        [
-          "First bucket inventory",
-          "Run `list` with a bucket and region; startup discovery finds boundaries and writes Parquet plus key-space counts automatically.",
-        ],
-        [
-          "Agent-safe preflight",
-          "Generate a dry-run JSON plan before the scan, then let an agent inspect warnings, planned artifacts, and config source.",
-        ],
-        [
-          "Migration diff",
-          "Diff source and target buckets into one Parquet dataset with `DiffFlag`, then filter changed, left-only, and right-only rows downstream.",
-        ],
+        {
+          title: "First bucket inventory",
+          body: "Run `list` with a bucket and region; startup discovery finds boundaries and writes Parquet plus key-space counts automatically.",
+          intent: "example",
+          surface: "cli",
+        },
+        {
+          title: "Agent-safe preflight",
+          body: "Generate a dry-run JSON plan before the scan, then let an agent inspect warnings, planned artifacts, and config source.",
+          intent: "example",
+          surface: "agent",
+        },
+        {
+          title: "Migration diff",
+          body: "Diff source and target buckets into one Parquet dataset with `DiffFlag`, then filter changed, left-only, and right-only rows downstream.",
+          intent: "example",
+          surface: "artifact",
+        },
       ],
       casesLabel: "Compatibility",
       casesTitle: "Real S3-compatible endpoints",
@@ -131,18 +175,18 @@ export const s3TurboListProduct: Product = {
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & how-to",
       faq: [
-        [
-          "Why not just use aws s3 ls?",
-          "For small buckets, sequential listing is fine. s3-turbo-list is for large buckets where the default path should discover structure, list in parallel, and leave structured artifacts.",
-        ],
-        [
-          "Do I need to prepare hints first?",
-          "No. Startup discovery probes real `CommonPrefixes` boundaries and caches them. Hints files are optional controls for repeated inventories.",
-        ],
-        [
-          `What changed in ${s3Release}?`,
-          `The release fixes root-segment retry resume behavior, adds timeouts to runtime split-probe requests, and keeps clean interrupts from inflating run-manifest fatal errors. The project remains ${s3License}.`,
-        ],
+        {
+          title: "Why not just use aws s3 ls?",
+          body: "For small buckets, sequential listing is fine. s3-turbo-list is for large buckets where the default path should discover structure, list in parallel, and leave structured artifacts.",
+        },
+        {
+          title: "Do I need to prepare hints first?",
+          body: "No. Startup discovery probes real `CommonPrefixes` boundaries and caches them. Hints files are optional controls for repeated inventories.",
+        },
+        {
+          title: `What changed in ${s3Release}?`,
+          body: `The release fixes root-segment retry resume behavior, adds timeouts to runtime split-probe requests, and keeps clean interrupts from inflating run-manifest fatal errors. The project remains ${s3License}.`,
+        },
       ],
     },
     zh: {
@@ -157,22 +201,56 @@ export const s3TurboListProduct: Product = {
       proof: ["默认启动发现", "按吞吐拆分长尾片段", "dry-run plan", "可校验运行记录"],
       positioningLabel: "边界",
       positioning: [
-        ["什么时候用", "需要列举很大的 S3 兼容桶，或对比两个桶，但不想先设计分区方案，也不想调一堆参数。"],
-        ["它不是什么", "不是备份工具、同步引擎或图形化存储浏览器。它只做自动 list、可靠 diff 和机器可读证据。"],
-        [
-          "哪里保持简单",
-          "第一次运行不需要 hints 文件。默认路径负责并发；Parquet、运行记录、trace JSONL 和稳定退出码负责后续检查。",
-        ],
+        {
+          title: "什么时候用",
+          body: "需要列举很大的 S3 兼容桶，或对比两个桶，但不想先设计分区方案，也不想调一堆参数。",
+          intent: "fit",
+          surface: "cli",
+          priority: "primary",
+        },
+        {
+          title: "它不是什么",
+          body: "不是备份工具、同步引擎或图形化存储浏览器。它只做自动 list、可靠 diff 和机器可读证据。",
+          intent: "boundary",
+          surface: "cli",
+        },
+        {
+          title: "哪里保持简单",
+          body: "第一次运行不需要 hints 文件。默认路径负责并发；Parquet、运行记录、trace JSONL 和稳定退出码负责后续检查。",
+          intent: "fit",
+          surface: "artifact",
+        },
       ],
       featuresLabel: "能力",
       features: [
-        ["自动发现 key 空间", "启动时用少量 delimiter probe 找真实前缀边界并缓存，第一次递归 list 就能并发运行。"],
-        ["按吞吐展开并发", "运行时拆分长尾片段；只有吞吐继续上升时才增加并发，把并发数当上限而不是目标。"],
-        ["有界 diff", "两侧桶并行列举，按 key 顺序流式合并，写出带 `DiffFlag` 的 Parquet，不把两边 key 全放进内存。"],
-        [
-          "自适应 Parquet 输出",
-          "受限于服务商吞吐时保持单文件；只有 Parquet 编码成为瓶颈时，才扩展成多个 part-file writer。",
-        ],
+        {
+          title: "自动发现 key 空间",
+          body: "启动时用少量 delimiter probe 找真实前缀边界并缓存，第一次递归 list 就能并发运行。",
+          intent: "capability",
+          evidence: "startup discovery",
+          surface: "protocol",
+        },
+        {
+          title: "按吞吐展开并发",
+          body: "运行时拆分长尾片段；只有吞吐继续上升时才增加并发，把并发数当上限而不是目标。",
+          intent: "capability",
+          evidence: "runtime split",
+          surface: "cli",
+        },
+        {
+          title: "有界 diff",
+          body: "两侧桶并行列举，按 key 顺序流式合并，写出带 `DiffFlag` 的 Parquet，不把两边 key 全放进内存。",
+          intent: "capability",
+          evidence: "DiffFlag rows",
+          surface: "artifact",
+        },
+        {
+          title: "自适应 Parquet 输出",
+          body: "受限于服务商吞吐时保持单文件；只有 Parquet 编码成为瓶颈时，才扩展成多个 part-file writer。",
+          intent: "capability",
+          evidence: "Parquet 产物",
+          surface: "artifact",
+        },
       ],
       rationaleLabel: "为什么做",
       rationaleTitle: "产品核心是自动化",
@@ -182,29 +260,81 @@ export const s3TurboListProduct: Product = {
       ],
       workflowLabel: "怎么用",
       workflow: [
-        [
-          "Preflight",
-          "先跑 `doctor --json`、`doctor --simple` 或 `--dry-run --agent`，在访问 S3 前解析配置、输出路径和 warning。",
-        ],
-        ["List / Diff", "直接 list 或 diff；启动发现和 hints cache 会自动提供并发片段。"],
-        ["Verify", "写出运行记录，再用 `manifest-summary --check` 检查状态、hash、行数、schema 和退出分类。"],
-        ["Analyze", "用 DuckDB、pandas 或 pyarrow 读取 Parquet；需要流式处理时输出 TSV / NDJSON。"],
+        {
+          title: "Preflight",
+          body: "先跑 `doctor --json`、`doctor --simple` 或 `--dry-run --agent`，在访问 S3 前解析配置、输出路径和 warning。",
+          intent: "workflow",
+          surface: "cli",
+        },
+        {
+          title: "List / Diff",
+          body: "直接 list 或 diff；启动发现和 hints cache 会自动提供并发片段。",
+          intent: "workflow",
+          surface: "cli",
+        },
+        {
+          title: "Verify",
+          body: "写出运行记录，再用 `manifest-summary --check` 检查状态、hash、行数、schema 和退出分类。",
+          intent: "workflow",
+          surface: "artifact",
+        },
+        {
+          title: "Analyze",
+          body: "用 DuckDB、pandas 或 pyarrow 读取 Parquet；需要流式处理时输出 TSV / NDJSON。",
+          intent: "workflow",
+          surface: "artifact",
+        },
       ],
       automationLabel: "自动化",
       automation: [
-        [
-          "Dry-run plan",
-          "`--dry-run --agent` 和 `--plan-json` 在不访问 S3 的情况下输出配置来源、计划产物、warning 和文件冲突。",
-        ],
-        ["Run manifest", "`--run-manifest` 记录状态、指标、产物、warning、SHA256、Parquet 行数和 schema 元数据。"],
-        ["稳定退出码", "把参数校验、服务商配置、网络、输出、数据校验和中断分成稳定退出码，方便 CI 和 agent 接入。"],
-        ["服务商 trace", "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露端点行为和真实 S3 API 调用。"],
+        {
+          title: "Dry-run plan",
+          body: "`--dry-run --agent` 和 `--plan-json` 在不访问 S3 的情况下输出配置来源、计划产物、warning 和文件冲突。",
+          intent: "automation",
+          evidence: "plan JSON",
+          surface: "artifact",
+        },
+        {
+          title: "Run manifest",
+          body: "`--run-manifest` 记录状态、指标、产物、warning、SHA256、Parquet 行数和 schema 元数据。",
+          intent: "automation",
+          evidence: "manifest-summary",
+          surface: "artifact",
+        },
+        {
+          title: "稳定退出码",
+          body: "把参数校验、服务商配置、网络、输出、数据校验和中断分成稳定退出码，方便 CI 和 agent 接入。",
+          intent: "automation",
+          surface: "cli",
+        },
+        {
+          title: "服务商 trace",
+          body: "`compat-probe` 和 `--trace-compat` 在扩大扫描前暴露端点行为和真实 S3 API 调用。",
+          intent: "automation",
+          evidence: "trace JSONL",
+          surface: "protocol",
+        },
       ],
       examplesLabel: "用法示例",
       examples: [
-        ["第一次对象清单", "只给桶和 region 跑 `list`，启动发现会自动找边界，输出 Parquet 和 key 空间计数。"],
-        ["Agent preflight", "扫描前生成 dry-run JSON plan，让 agent 先检查 warning、计划产物和配置来源。"],
-        ["迁移 diff", "把源端和目标端 diff 成一份带 `DiffFlag` 的 Parquet，下游再过滤变更、左侧独有和右侧独有对象。"],
+        {
+          title: "第一次对象清单",
+          body: "只给桶和 region 跑 `list`，启动发现会自动找边界，输出 Parquet 和 key 空间计数。",
+          intent: "example",
+          surface: "cli",
+        },
+        {
+          title: "Agent preflight",
+          body: "扫描前生成 dry-run JSON plan，让 agent 先检查 warning、计划产物和配置来源。",
+          intent: "example",
+          surface: "agent",
+        },
+        {
+          title: "迁移 diff",
+          body: "把源端和目标端 diff 成一份带 `DiffFlag` 的 Parquet，下游再过滤变更、左侧独有和右侧独有对象。",
+          intent: "example",
+          surface: "artifact",
+        },
       ],
       casesLabel: "兼容性",
       casesTitle: "面向真实 S3 兼容端点",
@@ -214,18 +344,18 @@ export const s3TurboListProduct: Product = {
       finalCtaLabel: "打开仓库",
       faqLabel: "问题与用法",
       faq: [
-        [
-          "为什么不用 aws s3 ls？",
-          "小桶当然可以。s3-turbo-list 面向大桶：默认路径要能自动发现结构、并发列举，并留下结构化产物。",
-        ],
-        [
-          "必须提前准备 hints 吗？",
-          "不需要。启动发现会探测真实 `CommonPrefixes` 边界并缓存。hints 文件只是重复生成对象清单时的可选控制。",
-        ],
-        [
-          `${s3Release} 变了什么？`,
-          `这版修复 root segment retry 的续扫边界，给运行时 split probe 加 timeout，并避免干净中断把 run manifest 的 fatal errors 计高。项目仍然是 ${s3License}。`,
-        ],
+        {
+          title: "为什么不用 aws s3 ls？",
+          body: "小桶当然可以。s3-turbo-list 面向大桶：默认路径要能自动发现结构、并发列举，并留下结构化产物。",
+        },
+        {
+          title: "必须提前准备 hints 吗？",
+          body: "不需要。启动发现会探测真实 `CommonPrefixes` 边界并缓存。hints 文件只是重复生成对象清单时的可选控制。",
+        },
+        {
+          title: `${s3Release} 变了什么？`,
+          body: `这版修复 root segment retry 的续扫边界，给运行时 split probe 加 timeout，并避免干净中断把 run manifest 的 fatal errors 计高。项目仍然是 ${s3License}。`,
+        },
       ],
     },
   },
