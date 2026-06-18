@@ -66,9 +66,11 @@ jobs:
         run: npm run copy:lint
 
       - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 5
+        run: npx playwright install chromium
 
       - name: Page QA
+        timeout-minutes: 8
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
           echo $! > /tmp/titpea-preview.pid
