@@ -55,12 +55,6 @@ export type HomePageModel = BasePageModel & {
     body: string;
     cards: EvidenceSummaryModel[];
   };
-  thesis: {
-    label: string;
-    title: string;
-    body: string;
-  };
-  catalog: ProductCatalogBlock;
   browser: {
     label: string;
     title: string;

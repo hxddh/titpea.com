@@ -55,16 +55,6 @@ export function buildHomePage(locale: Locale): HomePageModel {
       body: pageCopy.evidenceBody,
       cards: catalog.evidence,
     },
-    thesis: {
-      label: copy.thesisLabel,
-      title: copy.thesisTitle,
-      body: copy.thesisBody,
-    },
-    catalog: {
-      label: copy.storageLine,
-      title: copy.storageTitle,
-      items: catalog.storage,
-    },
     browser: {
       label: copy.browserLine,
       title: copy.browserTitle,
