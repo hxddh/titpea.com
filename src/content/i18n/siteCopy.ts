@@ -25,7 +25,7 @@ export const ui = {
     proofItems: ["High-performance listing", "Checkpoint / resume", "Pi skill pack", "Terminal HTTPS inspection"],
     aboutTitle: "About",
     aboutDescription: "Personal profile and product index for hxddh.",
-    aboutHeadline: "I build narrow tools for storage debugging",
+    aboutHeadline: "Storage debugging tools",
     aboutLead:
       "Most of the work is around S3-compatible storage: fast inventory, bucket diff, endpoint behavior, Pi-assisted diagnosis, and request-level inspection.",
     productsLabel: "Products and Projects",
