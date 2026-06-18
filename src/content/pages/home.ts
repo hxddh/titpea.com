@@ -20,9 +20,6 @@ export function buildHomePage(locale: Locale): HomePageModel {
     current: "home",
     path,
     alternatePath,
-    title: siteConfig.brand,
-    description,
-    ogImage: siteConfig.assets.og.home,
     primaryCta: catalog.featuredProductPath,
     expectedText: [copy.homeTitle, pageCopy.expectedEvidence],
     seo: buildPageSeo({

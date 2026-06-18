@@ -1,11 +1,11 @@
-import type { Product } from "../../lib/site";
+import type { StorageCliProduct } from "../../lib/site";
 import { s3MetaLine, s3TurboListFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const s3Release = s3TurboListFacts.latestRelease ?? "current release";
 const s3License = s3TurboListFacts.licenseLabel ?? "current license";
 
-export const s3TurboListProduct: Product = {
+export const s3TurboListProduct: StorageCliProduct = {
   slug: "s3-turbo-list",
   name: "s3-turbo-list",
   archetype: "storageCli",

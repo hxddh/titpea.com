@@ -64,12 +64,53 @@ export type ProductCopy = {
   faq?: ProductContentCard[];
 };
 
-export type Product = {
+export type StorageCliProductCopy = ProductCopy & {
+  workflow: ProductContentCard[];
+  automation: ProductContentCard[];
+  examples: ProductContentCard[];
+  casesTitle: string;
+  cases: string[];
+  faq: ProductContentCard[];
+};
+
+export type AgentPackageProductCopy = ProductCopy & {
+  workflow: ProductContentCard[];
+  features: ProductContentCard[];
+  casesTitle: string;
+  cases: string[];
+  faq: ProductContentCard[];
+};
+
+export type BrowserExtensionProductCopy = ProductCopy & {
+  features: ProductContentCard[];
+  faq: ProductContentCard[];
+};
+
+export type StorageCliProduct = {
   slug: ProductSlug;
   name: string;
-  archetype: ProductArchetype;
-  locales: Localized<ProductCopy>;
+  archetype: "storageCli";
+  locales: Localized<StorageCliProductCopy>;
 };
+
+export type AgentPackageProduct = {
+  slug: ProductSlug;
+  name: string;
+  archetype: "agentPackage";
+  locales: Localized<AgentPackageProductCopy>;
+};
+
+export type BrowserExtensionProduct = {
+  slug: ProductSlug;
+  name: string;
+  archetype: "browserExtension";
+  locales: Localized<BrowserExtensionProductCopy>;
+};
+
+export type Product = StorageCliProduct | AgentPackageProduct | BrowserExtensionProduct;
+
+export type ProductForArchetype<T extends ProductArchetype> = Extract<Product, { archetype: T }>;
+export type ProductCopyForArchetype<T extends ProductArchetype> = ProductForArchetype<T>["locales"][Locale];
 
 export type ProductArchetype = "storageCli" | "agentPackage" | "browserExtension";
 

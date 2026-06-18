@@ -1,4 +1,4 @@
-import type { Product } from "../../lib/site";
+import type { AgentPackageProduct } from "../../lib/site";
 import { storageOpsEvidenceFacts } from "../productEvidenceFacts";
 import { siteConfig } from "../siteConfig";
 
@@ -16,7 +16,7 @@ const storageOpsProofZh = [
   "Golden-case evals",
 ];
 
-export const storageOpsProduct: Product = {
+export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",
   name: "StorageOps",
   archetype: "agentPackage",

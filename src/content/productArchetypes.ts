@@ -36,7 +36,6 @@ export type ProductArchetypeContract = {
   applicationCategory: "DeveloperApplication" | "BrowserApplication";
   operatingSystem: "Cross-platform" | "Chrome";
   defaultVisual: VisualPolicy;
-  requiredCopy: Array<keyof ProductCopy>;
   sections: ArchetypeSectionSpec[];
 };
 
@@ -49,7 +48,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "s3Benchmark",
-    requiredCopy: ["workflow", "automation", "examples", "cases", "faq", "casesTitle"],
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       { id: "evidence", label: { en: "Evidence", zh: "证据" }, required: true },
@@ -83,7 +81,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "storageAgent",
-    requiredCopy: ["workflow", "features", "cases", "faq", "casesTitle"],
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       { id: "evidence", label: { en: "Evidence", zh: "证据" }, required: true },
@@ -116,7 +113,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     applicationCategory: "BrowserApplication",
     operatingSystem: "Chrome",
     defaultVisual: "worldClockScreenshot",
-    requiredCopy: ["features", "faq"],
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       { id: "positioning", label: { en: "Best for", zh: "适合谁" }, source: "positioning", required: true },

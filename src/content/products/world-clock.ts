@@ -1,11 +1,11 @@
-import type { Product } from "../../lib/site";
+import type { BrowserExtensionProduct } from "../../lib/site";
 import { worldClockFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const worldClockMeta = `Chrome Web Store · ${worldClockFacts.category} · No data collection disclosed`;
 const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声明不收集数据`;
 
-export const worldClockProduct: Product = {
+export const worldClockProduct: BrowserExtensionProduct = {
   slug: "world-clock",
   name: "World Clock",
   archetype: "browserExtension",

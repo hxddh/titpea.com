@@ -8,7 +8,7 @@ import { visualModel } from "../visualModels";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { ProductPageModel } from "./types";
 import type { ProductPageSection } from "../productPageTypes";
-import type { Locale, Product, ProductSlug } from "../../lib/site";
+import type { Locale, ProductSlug } from "../../lib/site";
 import { products } from "../products";
 
 function requiredSections(sections: ProductPageSection[], expectedIds: PageSectionId[], slug: string) {
@@ -17,19 +17,8 @@ function requiredSections(sections: ProductPageSection[], expectedIds: PageSecti
   if (missing.length > 0) throw new Error(`${slug}: missing required page sections: ${missing.join(", ")}`);
 }
 
-function assertRequiredCopy(product: Product, locale: Locale) {
-  const copy = product.locales[locale];
-  const contract = productArchetypeContracts[product.archetype];
-  const missing = contract.requiredCopy.filter((key) => {
-    const value = copy[key];
-    return Array.isArray(value) ? value.length === 0 : !value;
-  });
-  if (missing.length > 0) throw new Error(`${product.slug} ${locale}: missing required copy: ${missing.join(", ")}`);
-}
-
 export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPageModel {
   const product = products[slug];
-  assertRequiredCopy(product, locale);
 
   const contract = productArchetypeContracts[product.archetype];
   const registry = productPageRegistry[slug];
@@ -78,9 +67,6 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     path,
     alternatePath,
     pageClass: contract.pageClass,
-    title: copy.title,
-    description: copy.description,
-    ogImage: registry.ogImage,
     primaryCta: copy.primaryCta.href,
     expectedText: registry.expectedText(copy, locale),
     seo,

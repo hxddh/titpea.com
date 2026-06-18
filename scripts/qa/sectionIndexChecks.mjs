@@ -1,5 +1,6 @@
 import { baseUrl, outDir, screenshotName } from "./config.mjs";
 import { visit } from "./browser.mjs";
+import { sectionIndexPolicy } from "../../src/scripts/section-index-policy.ts";
 
 async function sectionState(page, href) {
   return page.evaluate((href) => {
@@ -68,7 +69,7 @@ export async function checkSectionIndex(page, viewport, route) {
       link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
       link.click();
     });
-    await page.waitForTimeout(700);
+    await page.waitForTimeout(sectionIndexPolicy.qaClickWaitMs);
     const scrollState = await sectionState(page, anchor.href);
     const anchorScreenshot = screenshotName(viewport.name, path, `_anchor-${scrollState.targetId}`);
     await page.screenshot({ path: `${outDir}/${anchorScreenshot}`, fullPage: false });
@@ -81,7 +82,7 @@ export async function checkSectionIndex(page, viewport, route) {
         link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
       });
       await pointerAnchor.click();
-      await page.waitForTimeout(700);
+      await page.waitForTimeout(sectionIndexPolicy.qaClickWaitMs);
       const pointerState = await sectionState(page, anchor.href);
       const pointerScreenshot = screenshotName(viewport.name, path, `_pointer-${pointerState.targetId}`);
       await page.screenshot({ path: `${outDir}/${pointerScreenshot}`, fullPage: false });
@@ -90,7 +91,7 @@ export async function checkSectionIndex(page, viewport, route) {
   }
 
   await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(sectionIndexPolicy.qaStickyWaitMs);
   const stickyState = await page.evaluate(() => {
     const index = document.querySelector(".product-section-index");
     const rect = index?.getBoundingClientRect();
@@ -114,7 +115,7 @@ export async function checkSectionIndex(page, viewport, route) {
     anchorCount: 1,
     textOk:
       stickyState.indexPosition === "sticky" &&
-      stickyState.indexTop === 0 &&
+      stickyState.indexTop === sectionIndexPolicy.stickyTopPx &&
       (viewport.name === "desktop" ? stickyState.indexOverflow <= 1 : stickyState.indexOverflow >= 0) &&
       stickyState.currentCount === 1,
     details: stickyState,

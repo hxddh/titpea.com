@@ -103,7 +103,7 @@
 .product-deep-dive,
 .product-story,
 #cases {
-  scroll-margin-top: 92px;
+  scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
 .inside-section {

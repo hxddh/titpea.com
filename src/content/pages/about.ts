@@ -19,9 +19,6 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    title: copy.aboutTitle,
-    description: copy.aboutDescription,
-    ogImage: siteConfig.assets.og.about,
     expectedText: [copy.aboutHeadline, copy.profileTitle],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),

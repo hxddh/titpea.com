@@ -53,4 +53,16 @@ export const visualCopy = {
       flow: ["输入：错误、命令、配置、脱敏日志", "输出：原因、证据、置信度、下一步检查"],
     },
   },
+  screenshots: {
+    en: {
+      worldClockLight: "World Clock light theme timezone feed screenshot",
+      worldClockDark: "World Clock dark theme timezone feed screenshot",
+      douban: "Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page",
+    },
+    zh: {
+      worldClockLight: "世界时钟浅色主题时区列表截图",
+      worldClockDark: "世界时钟深色主题时区列表截图",
+      douban: "豆瓣电影评分助手在豆瓣电影页中显示 IMDb、Rotten Tomatoes 和 Metacritic 评分的截图",
+    },
+  },
 } as const;

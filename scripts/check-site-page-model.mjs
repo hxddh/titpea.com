@@ -18,8 +18,8 @@ for (const model of allPageModels) {
 
   if (!route) failures.push(`${model.path}: missing route`);
   if (!model.locale) failures.push(`${model.path}: missing locale`);
-  if (!model.title || !model.description) failures.push(`${model.path}: missing title or description`);
-  if (!model.ogImage?.startsWith("/assets/og-")) failures.push(`${model.path}: invalid og image`);
+  if (!model.seo?.title || !model.seo?.description) failures.push(`${model.path}: missing seo title or description`);
+  if (!model.seo?.ogImage?.startsWith("/assets/og-")) failures.push(`${model.path}: invalid seo og image`);
   if (!model.expectedText.every((text) => visible.includes(text))) {
     failures.push(`${model.path}: expectedText is not visible in page model`);
   }

@@ -15,6 +15,9 @@ for (const route of siteRoutes) {
   if (!route.ogImage.startsWith("/assets/og-") || !route.ogImage.endsWith(".png")) {
     failures.push(`${route.path}: invalid ogImage ${route.ogImage}`);
   }
+  if (!route.ogImageUrl || !route.ogImageUrl.endsWith(route.ogImage)) {
+    failures.push(`${route.path}: invalid ogImageUrl ${route.ogImageUrl}`);
+  }
   if (route.expectedText.length < 2) failures.push(`${route.path}: expectedText must include at least two entries`);
 
   const alternateLocale = route.locale === "zh" ? "en" : "zh";

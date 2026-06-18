@@ -11,6 +11,9 @@ for (const model of allPageModels) {
   if (!model.seo?.alternates?.en || !model.seo?.alternates?.zh || !model.seo?.alternates?.xDefault) {
     failures.push(`${model.path}: missing seo alternates`);
   }
+  if (model.seo?.ogImageUrl !== `https://titpea.com${model.seo.ogImage}`) {
+    failures.push(`${model.path}: ogImageUrl must be derived from seo ogImage`);
+  }
   if (!model.language?.href || model.language.href !== model.alternatePath) {
     failures.push(`${model.path}: language switch must point at alternatePath`);
   }
@@ -23,6 +26,9 @@ for (const route of siteRoutes) {
   const model = allPageModels.find((item) => item.path === route.path);
   if (!model) failures.push(`${route.path}: route has no page model`);
   if (model && route.title !== model.seo.title) failures.push(`${route.path}: route title must come from seo`);
+  if (model && route.ogImage !== model.seo.ogImage) failures.push(`${route.path}: route ogImage must come from seo`);
+  if (model && route.ogImageUrl !== model.seo.ogImageUrl)
+    failures.push(`${route.path}: route ogImageUrl must come from seo`);
 }
 
 if (failures.length > 0) {

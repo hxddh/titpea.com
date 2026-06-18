@@ -31,9 +31,6 @@ export type BasePageModel = {
   current: CurrentPage;
   path: string;
   alternatePath: string;
-  title: string;
-  description: string;
-  ogImage: string;
   expectedText: string[];
   seo: PageSeo;
   language: PageLanguageLink;
@@ -159,6 +156,7 @@ export type SiteRoute = {
   canonicalPath: string;
   alternatePath: string;
   ogImage: string;
+  ogImageUrl: string;
   expectedText: string[];
   primaryCta?: string;
   sectionIndex?: boolean;

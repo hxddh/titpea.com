@@ -101,6 +101,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
   }
 
   if (kind === "worldClockScreenshot") {
+    const copy = visualCopy.screenshots[locale];
     return {
       kind,
       label,
@@ -108,12 +109,12 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
         {
           src: siteConfig.assets.screenshots.worldClockLight,
           className: "clock-shot light",
-          alt: "World Clock light theme timezone feed screenshot",
+          alt: copy.worldClockLight,
         },
         {
           src: siteConfig.assets.screenshots.worldClockDark,
           className: "clock-shot dark",
-          alt: "World Clock dark theme timezone feed screenshot",
+          alt: copy.worldClockDark,
         },
       ],
     };
@@ -125,7 +126,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
     images: [
       {
         src: siteConfig.assets.screenshots.doubanRatingAssistant,
-        alt: "Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page",
+        alt: visualCopy.screenshots[locale].douban,
       },
     ],
   };
