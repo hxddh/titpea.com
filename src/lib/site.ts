@@ -31,8 +31,6 @@ export type ProductContentCard = {
   compact?: boolean;
 };
 
-export type ProductContentInput = ProductContentCard | [string, string];
-
 export type ProductCopy = {
   title: string;
   description: string;
@@ -44,18 +42,18 @@ export type ProductCopy = {
   meta: string;
   proof: string[];
   positioningLabel: string;
-  positioning: ProductContentInput[];
+  positioning: ProductContentCard[];
   featuresLabel: string;
-  features: ProductContentInput[];
+  features: ProductContentCard[];
   rationaleLabel: string;
   rationaleTitle: string;
   rationaleBody: string[];
   workflowLabel?: string;
-  workflow?: ProductContentInput[];
+  workflow?: ProductContentCard[];
   automationLabel?: string;
-  automation?: ProductContentInput[];
+  automation?: ProductContentCard[];
   examplesLabel?: string;
-  examples?: ProductContentInput[];
+  examples?: ProductContentCard[];
   casesLabel?: string;
   casesTitle?: string;
   casesBody?: string;
@@ -63,7 +61,7 @@ export type ProductCopy = {
   finalCta?: string;
   finalCtaLabel?: string;
   faqLabel?: string;
-  faq?: ProductContentInput[];
+  faq?: ProductContentCard[];
 };
 
 export type Product = {

@@ -8,7 +8,7 @@ import ProductInside from "./ProductInside.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
-import { productArchetypeLayouts } from "../content/productArchetypes";
+import { productNavItems, productPageProfile } from "../content/productArchetypes";
 import { productSections } from "../content/productSections";
 import { routeForProduct } from "../content/siteManifest";
 import type { Locale, Product } from "../lib/site";
@@ -21,16 +21,13 @@ interface Props {
 const { locale, product } = Astro.props;
 const copy = product.locales[locale];
 const sections = productSections(locale, copy, product);
-const pageClass = `product-page product-page-${product.archetype}`;
+const pageProfile = productPageProfile(product);
 const sectionIds = new Set([
   "inside",
-  ...(product.category === "storage" ? ["evidence"] : []),
+  ...(pageProfile.hasSectionIndex ? ["evidence"] : []),
   ...sections.map((section) => section.id),
 ]);
-const navItems = productArchetypeLayouts[product.archetype]
-  .filter((item) => sectionIds.has(item.id))
-  .map((item) => [item.id, item.label[locale]]);
-const showSectionIndex = product.category === "storage";
+const navItems = productNavItems(product, locale, sectionIds);
 const route = routeForProduct(locale, product.slug);
 const socialImage = route?.ogImage ?? "/assets/og-home.png";
 const structuredData = {
@@ -38,8 +35,8 @@ const structuredData = {
   "@type": "SoftwareApplication",
   name: copy.title,
   description: copy.description,
-  applicationCategory: product.category === "browser" ? "BrowserApplication" : "DeveloperApplication",
-  operatingSystem: product.category === "browser" ? "Chrome" : "Cross-platform",
+  applicationCategory: pageProfile.applicationCategory,
+  operatingSystem: pageProfile.operatingSystem,
   url: `https://titpea.com${locale === "zh" ? `/zh/${product.slug}/` : `/${product.slug}/`}`,
   sameAs: copy.primaryCta.href,
 };
@@ -54,7 +51,7 @@ const structuredData = {
   route={route}
   structuredData={structuredData}
 >
-  <section class:list={["product-hero product-launch-hero shell", pageClass]}>
+  <section class:list={["product-hero product-launch-hero shell", pageProfile.pageClass]}>
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
@@ -74,10 +71,10 @@ const structuredData = {
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  {showSectionIndex && <ProductSectionIndex locale={locale} items={navItems} archetype={product.archetype} />}
+  {pageProfile.hasSectionIndex && <ProductSectionIndex label={pageProfile.indexLabel[locale]} items={navItems} />}
 
   <ProductInside locale={locale} product={product} />
-  {showSectionIndex && <ProductDeepDive locale={locale} product={product} />}
+  {pageProfile.hasSectionIndex && <ProductDeepDive locale={locale} product={product} />}
 
   {
     sections.map((section) => {

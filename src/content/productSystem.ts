@@ -8,8 +8,11 @@ export type ProductSystemItem = {
   name: string;
   href: string;
   text: string;
+  tagline: string;
+  displayRole: string;
+  isPrimary?: boolean;
   slug?: ProductSlug;
-  kind: "primary" | "utility" | "external";
+  group: "storage" | "browser" | "external";
 };
 
 const externalProjects = {
@@ -34,8 +37,11 @@ export function storageWorkflow(locale: Locale): ProductSystemItem[] {
         locale === "zh"
           ? "自动列举或对比大型 S3 兼容存储桶，留下 Parquet、JSON plan 和运行记录。"
           : "Run automatic inventory or diff on large S3-compatible buckets, then keep Parquet, JSON plans, and run manifests.",
+      tagline: locale === "zh" ? "自动化对象存储 list / diff CLI" : "Automatic object storage list / diff CLI",
+      displayRole: locale === "zh" ? "对象清单 / Diff" : "Inventory / Diff",
       slug: "s3-turbo-list",
-      kind: "primary",
+      isPrimary: true,
+      group: "storage",
     },
     {
       id: "storageops",
@@ -47,8 +53,11 @@ export function storageWorkflow(locale: Locale): ProductSystemItem[] {
         locale === "zh"
           ? "给 Pi 一层对象存储诊断能力：领域技能、有边界的工具、确定性脚本和回归用例。"
           : "Give Pi a storage diagnosis layer: domain skills, bounded tools, deterministic helpers, and eval-backed routing.",
+      tagline: locale === "zh" ? "Pi 的对象存储诊断 agent" : "Pi-based object storage diagnosis agent",
+      displayRole: locale === "zh" ? "诊断 Agent" : "Diagnosis agent",
       slug: "storageops",
-      kind: "primary",
+      isPrimary: true,
+      group: "storage",
     },
     {
       id: "https-traffic-inspector",
@@ -57,7 +66,9 @@ export function storageWorkflow(locale: Locale): ProductSystemItem[] {
       name: "https-traffic-inspector",
       href: "https://github.com/hxddh/https-traffic-inspector",
       text: externalProjects[locale].httpmon,
-      kind: "external",
+      tagline: locale === "zh" ? "命令行 HTTP / HTTPS 流量检查" : "Command-line HTTP / HTTPS inspection",
+      displayRole: locale === "zh" ? "流量检查" : "Traffic inspection",
+      group: "external",
     },
   ];
 }
@@ -72,8 +83,10 @@ export function browserUtilities(locale: Locale): ProductSystemItem[] {
         locale === "zh"
           ? "快速查看几个城市的当前时间，适合远程协作、旅行和临时确认时区。"
           : "A fast city-time popup for remote work, travel, and quick context checks.",
+      tagline: locale === "zh" ? "轻量 Chrome 扩展" : "Lightweight Chrome extension",
+      displayRole: locale === "zh" ? "时区工具" : "Timezone utility",
       slug: "world-clock",
-      kind: "utility",
+      group: "browser",
     },
     {
       id: "douban-movie-rating",
@@ -83,8 +96,10 @@ export function browserUtilities(locale: Locale): ProductSystemItem[] {
         locale === "zh"
           ? "把 IMDb、Rotten Tomatoes 和 Metacritic 参考评分补到豆瓣电影页里。"
           : "Adds IMDb, Rotten Tomatoes, and Metacritic context inside Douban movie pages.",
+      tagline: locale === "zh" ? "轻量 Chrome 扩展" : "Lightweight Chrome extension",
+      displayRole: locale === "zh" ? "评分辅助" : "Rating context",
       slug: "douban-movie-rating",
-      kind: "utility",
+      group: "browser",
     },
   ];
 }

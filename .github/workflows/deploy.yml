@@ -35,6 +35,9 @@ jobs:
       - name: Check product facts
         run: npm run facts:check
 
+      - name: Check architecture
+        run: npm run architecture:check
+
       - name: Check external fact freshness
         continue-on-error: true
         run: npm run facts:external

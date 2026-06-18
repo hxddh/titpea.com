@@ -58,7 +58,7 @@ function productExpectedText(locale: Locale, slug: ProductSlug) {
 
   if (product.role === "inventory") return [copy.headline, locale === "zh" ? "自动化" : "Automation"];
   if (product.role === "diagnosis") return [copy.headline, locale === "zh" ? "技能和工具" : "Skills and tools"];
-  return [copy.headline, copy.faqLabel ?? (locale === "zh" ? "问题与用法" : "Questions & how-to")];
+  return [copy.headline, "FAQ"];
 }
 
 function productRoute(locale: Locale, slug: ProductSlug): SiteRoute {

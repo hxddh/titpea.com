@@ -1,35 +1,20 @@
 ---
-import type { Locale } from "../lib/site";
-
 interface Props {
-  locale: Locale;
-  items: Array<[string, string]>;
-  archetype?: "storageCli" | "agentPackage" | "browserExtension";
+  label: string;
+  items: Array<{ id: string; label: string }>;
 }
 
-const { locale, items, archetype } = Astro.props;
-const label =
-  locale === "zh"
-    ? archetype === "agentPackage"
-      ? "诊断路径"
-      : "阅读路径"
-    : archetype === "agentPackage"
-      ? "Diagnosis path"
-      : "Read this page";
+const { label, items } = Astro.props;
 ---
 
 {
   items.length > 0 && (
-    <nav
-      class="product-section-index shell"
-      aria-label={locale === "zh" ? "页面目录" : "Page index"}
-      data-section-index
-    >
+    <nav class="product-section-index shell" aria-label={label} data-section-index>
       <span>{label}</span>
       <div>
-        {items.map(([id, label]) => (
-          <a href={`#${id}`} data-section-link={id}>
-            {label}
+        {items.map((item) => (
+          <a href={`#${item.id}`} data-section-link={item.id}>
+            {item.label}
           </a>
         ))}
       </div>

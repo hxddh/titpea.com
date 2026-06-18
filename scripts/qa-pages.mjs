@@ -1,354 +1,37 @@
-import fs from "node:fs";
-import { createRequire } from "node:module";
-import { zhForbiddenTerms } from "./copy-rules.mjs";
-import { baseUrl, outDir, screenshotName, viewports } from "./qa/config.mjs";
+import { viewports } from "./qa/config.mjs";
+import { checkOgAssets } from "./qa/assetChecks.mjs";
+import { loadChromium, prepareOutputDir } from "./qa/browser.mjs";
+import { checkMobileMenu } from "./qa/navigationChecks.mjs";
 import { printQaReport } from "./qa/report.mjs";
+import { checkRoute } from "./qa/routeMetrics.mjs";
+import { checkSectionIndex } from "./qa/sectionIndexChecks.mjs";
 
 const { siteRoutes: routes } = await import(new URL("../src/content/siteManifest.ts", import.meta.url));
+const chromium = loadChromium();
 
-const require = createRequire(import.meta.url);
-let chromium;
-try {
-  ({ chromium } = require("playwright"));
-} catch {
-  console.error(
-    "Playwright is required for qa:pages. Install it locally or run this script in the Codex bundled runtime.",
-  );
-  process.exit(1);
-}
-
-fs.rmSync(outDir, { recursive: true, force: true });
-fs.mkdirSync(outDir, { recursive: true });
-
+prepareOutputDir();
 const browser = await chromium.launch({ headless: true });
 const results = [];
-
-async function visit(page, path, label) {
-  console.error(`[qa] ${label}: ${path}`);
-  await page.goto(`${baseUrl}${path}`, { waitUntil: "domcontentloaded", timeout: 8_000 });
-  await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
-}
 
 for (const viewport of viewports) {
   const page = await browser.newPage({ viewport });
   page.setDefaultTimeout(8_000);
 
   for (const route of routes) {
-    const path = route.path;
-    await visit(page, path, `${viewport.name} route`);
-    const metrics = await page.evaluate(
-      ({ route, zhForbiddenTerms }) => {
-        const nav = document.querySelector(".nav");
-        const mobile = document.querySelector(".mobile-menu");
-        const h1 = document.querySelector("h1");
-        const lead = document.querySelector(".lead");
-        const rect = h1?.getBoundingClientRect();
-        const lineHeight = h1 ? Number.parseFloat(getComputedStyle(h1).lineHeight) : 0;
-        const leadRect = lead?.getBoundingClientRect();
-        const leadLineHeight = lead ? Number.parseFloat(getComputedStyle(lead).lineHeight) : 0;
-        const origin = window.location.origin;
-        const expectedPrimary = route.primaryCta ? new URL(route.primaryCta, origin).href : null;
-        const primaryCta = document.querySelector(".button.primary");
-        const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
-        const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
-        const heroActions = hero?.querySelectorAll(".actions a") ?? [];
-        const cards = Array.from(
-          document.querySelectorAll(
-            ".catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
-          ),
-        );
-        const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
-
-        return {
-          overflow: document.documentElement.scrollWidth - window.innerWidth,
-          title: document.title,
-          canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? null,
-          alternate:
-            document
-              .querySelector(`link[rel="alternate"][hreflang="${route.locale === "zh" ? "en" : "zh-CN"}"]`)
-              ?.getAttribute("href") ?? null,
-          ogImage: document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? null,
-          twitterImage: document.querySelector('meta[name="twitter:image"]')?.getAttribute("content") ?? null,
-          primaryCta: primaryCta instanceof HTMLAnchorElement ? primaryCta.href : null,
-          expectedPrimary,
-          structuredDataOk:
-            route.kind === "product" ? Boolean(structuredData?.includes('"SoftwareApplication"')) : true,
-          visibleForbiddenTerms:
-            route.locale === "zh"
-              ? zhForbiddenTerms.filter((term) =>
-                  (document.body.innerText ?? "").toLowerCase().includes(term.trim().toLowerCase()),
-                )
-              : [],
-          nav: nav ? getComputedStyle(nav).display : null,
-          mobile: mobile ? getComputedStyle(mobile).display : null,
-          h1: h1?.textContent?.trim() ?? "",
-          h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
-          leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
-          heroCtaCount: heroActions.length,
-          heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
-          cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
-          anchorCount: document.querySelectorAll(".product-section-index a").length,
-          productIndex: (() => {
-            const index = document.querySelector(".product-section-index");
-            if (!index) return null;
-            const style = getComputedStyle(index);
-            return {
-              position: style.position,
-              overflow: index.scrollWidth - index.clientWidth,
-              top: Math.round(index.getBoundingClientRect().top),
-              currentCount: index.querySelectorAll("a[aria-current]").length,
-              linkRows: new Set(
-                Array.from(index.querySelectorAll("a")).map((link) => Math.round(link.getBoundingClientRect().top)),
-              ).size,
-            };
-          })(),
-          featuresGrid: document.querySelector(".features-grid, .automation-grid")
-            ? getComputedStyle(document.querySelector(".features-grid, .automation-grid")).display
-            : null,
-          imageCount: document.querySelectorAll("img").length,
-          brokenImages: Array.from(document.querySelectorAll("img")).filter(
-            (image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
-          ).length,
-          browserVisual:
-            route.kind === "product" && !route.sectionIndex
-              ? (() => {
-                  const images = Array.from(document.querySelectorAll(".product-scene img"));
-                  return {
-                    imageCount: images.length,
-                    hasChromeCta: Boolean(
-                      document.querySelector(`a.button.primary[href^="https://chromewebstore.google.com/detail"]`),
-                    ),
-                    hasPrivacyText: (document.body.innerText ?? "").includes(
-                      route.locale === "zh" ? "声明不收集数据" : "No data collection disclosed",
-                    ),
-                    images: images.map((image) => ({
-                      src: image.getAttribute("src"),
-                      alt: image.getAttribute("alt") ?? "",
-                      naturalWidth: image.naturalWidth,
-                      naturalHeight: image.naturalHeight,
-                    })),
-                  };
-                })()
-              : null,
-          oldS3Facts: document.body.innerText.includes("MIT License") || document.body.innerText.includes("v0.5.0"),
-          text: document.body.innerText,
-        };
-      },
-      { route, zhForbiddenTerms },
-    );
-
-    const filename = screenshotName(viewport.name, path);
-    await page.screenshot({ path: `${outDir}/${filename}`, fullPage: false });
-    const screenshotSize = fs.statSync(`${outDir}/${filename}`).size;
-    const textOk = route.expectedText.every((text) => metrics.text.includes(text));
-    delete metrics.text;
-    results.push({ viewport: viewport.name, path, textOk, route, screenshotSize, ...metrics });
+    results.push(await checkRoute(page, viewport, route));
   }
 
   if (viewport.name === "mobile") {
-    await visit(page, "/zh/s3-turbo-list/", "mobile menu");
-    await page.locator(".mobile-menu summary").click();
-    const menuState = await page.evaluate(() => ({
-      open: document.querySelector(".mobile-menu")?.hasAttribute("open") ?? false,
-      linkCount: document.querySelectorAll(".mobile-menu-panel a").length,
-      currentCount: document.querySelectorAll(".mobile-menu-panel a[aria-current='page']").length,
-    }));
-    await page.screenshot({ path: `${outDir}/mobile-menu-open.png`, fullPage: false });
-    results.push({
-      viewport: "mobile",
-      path: "/zh/s3-turbo-list/ menu",
-      overflow: 0,
-      nav: "none",
-      mobile: "block",
-      h1: "menu",
-      h1Lines: 1,
-      anchorCount: 0,
-      textOk: menuState.open && menuState.linkCount >= 8 && menuState.currentCount === 1,
-    });
+    results.push(await checkMobileMenu(page));
   }
 
-  for (const { path } of routes.filter((route) => route.sectionIndex)) {
-    await visit(page, path, `${viewport.name} anchors`);
-    const anchors = await page.locator(".product-section-index a").evaluateAll((links) =>
-      links.map((link, index) => ({
-        index,
-        href: link.getAttribute("href") ?? "",
-        label: link.textContent?.trim() ?? "",
-      })),
-    );
-
-    for (const anchor of anchors) {
-      await visit(page, path, `${viewport.name} anchor ${anchor.label}`);
-      const anchorLink = page.locator(".product-section-index a").nth(anchor.index);
-      await anchorLink.evaluate((link) => {
-        link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
-        link.click();
-      });
-      await page.waitForTimeout(700);
-      const scrollState = await page.evaluate((href) => {
-        const targetId = decodeURIComponent(href.slice(1));
-        const index = document.querySelector(".product-section-index");
-        const target = document.getElementById(targetId);
-        const indexRect = index?.getBoundingClientRect();
-        const rect = target?.getBoundingClientRect();
-        const active = index?.querySelector("a[aria-current]");
-        return {
-          targetId,
-          indexPosition: index ? getComputedStyle(index).position : null,
-          indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-          indexTop: indexRect ? Math.round(indexRect.top) : null,
-          indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
-          currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
-          currentHref: active?.getAttribute("href") ?? null,
-          targetTop: rect ? Math.round(rect.top) : null,
-          targetExists: Boolean(target),
-        };
-      }, anchor.href);
-      const anchorScreenshot = screenshotName(viewport.name, path, `_anchor-${scrollState.targetId}`);
-      await page.screenshot({
-        path: `${outDir}/${anchorScreenshot}`,
-        fullPage: false,
-      });
-      results.push({
-        viewport: viewport.name,
-        path: `${path} anchor:${anchor.label}`,
-        overflow: 0,
-        nav: viewport.name === "desktop" ? "flex" : "none",
-        mobile: viewport.name === "desktop" ? "none" : "block",
-        h1: "anchor-click",
-        h1Lines: 1,
-        anchorCount: anchors.length,
-        textOk:
-          scrollState.targetExists &&
-          scrollState.indexPosition === "sticky" &&
-          (viewport.name === "desktop" ? scrollState.indexOverflow <= 1 : scrollState.indexOverflow >= 0) &&
-          scrollState.indexTop !== null &&
-          scrollState.indexTop >= 0 &&
-          scrollState.currentCount === 1 &&
-          scrollState.currentHref === anchor.href &&
-          scrollState.targetTop !== null &&
-          scrollState.targetTop >= (scrollState.indexBottom ?? 0) &&
-          scrollState.targetTop < viewport.height - 24,
-        details: scrollState,
-        screenshot: anchorScreenshot,
-      });
-
-      if (viewport.name !== "desktop") {
-        await visit(page, path, `${viewport.name} pointer ${anchor.label}`);
-        const pointerAnchor = page.locator(".product-section-index a").nth(anchor.index);
-        await pointerAnchor.evaluate((link) => {
-          link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
-        });
-        await pointerAnchor.click();
-        await page.waitForTimeout(700);
-        const pointerState = await page.evaluate((href) => {
-          const targetId = decodeURIComponent(href.slice(1));
-          const index = document.querySelector(".product-section-index");
-          const target = document.getElementById(targetId);
-          const indexRect = index?.getBoundingClientRect();
-          const rect = target?.getBoundingClientRect();
-          const active = index?.querySelector("a[aria-current]");
-          return {
-            targetId,
-            indexPosition: index ? getComputedStyle(index).position : null,
-            indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-            indexTop: indexRect ? Math.round(indexRect.top) : null,
-            indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
-            currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
-            currentHref: active?.getAttribute("href") ?? null,
-            targetTop: rect ? Math.round(rect.top) : null,
-            targetExists: Boolean(target),
-          };
-        }, anchor.href);
-        const pointerScreenshot = screenshotName(viewport.name, path, `_pointer-${pointerState.targetId}`);
-        await page.screenshot({
-          path: `${outDir}/${pointerScreenshot}`,
-          fullPage: false,
-        });
-        results.push({
-          viewport: viewport.name,
-          path: `${path} pointer:${anchor.label}`,
-          overflow: 0,
-          nav: "none",
-          mobile: "block",
-          h1: "pointer-click",
-          h1Lines: 1,
-          anchorCount: anchors.length,
-          textOk:
-            pointerState.targetExists &&
-            pointerState.indexPosition === "sticky" &&
-            pointerState.indexTop !== null &&
-            pointerState.indexTop >= 0 &&
-            pointerState.currentCount === 1 &&
-            pointerState.currentHref === anchor.href &&
-            pointerState.targetTop !== null &&
-            pointerState.targetTop >= (pointerState.indexBottom ?? 0) &&
-            pointerState.targetTop < viewport.height - 24,
-          details: pointerState,
-          screenshot: pointerScreenshot,
-        });
-      }
-    }
-
-    await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
-    await page.waitForTimeout(100);
-    const stickyState = await page.evaluate(() => {
-      const index = document.querySelector(".product-section-index");
-      const rect = index?.getBoundingClientRect();
-      return {
-        indexPosition: index ? getComputedStyle(index).position : null,
-        indexTop: rect ? Math.round(rect.top) : null,
-        indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-        currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
-      };
-    });
-    await page.screenshot({
-      path: `${outDir}/${screenshotName(viewport.name, path, "_sticky-scroll")}`,
-      fullPage: false,
-    });
-    results.push({
-      viewport: viewport.name,
-      path: `${path} sticky-scroll`,
-      overflow: 0,
-      nav: viewport.name === "desktop" ? "flex" : "none",
-      mobile: viewport.name === "desktop" ? "none" : "block",
-      h1: "sticky-scroll",
-      h1Lines: 1,
-      anchorCount: 1,
-      textOk:
-        stickyState.indexPosition === "sticky" &&
-        stickyState.indexTop === 0 &&
-        (viewport.name === "desktop" ? stickyState.indexOverflow <= 1 : stickyState.indexOverflow >= 0) &&
-        stickyState.currentCount === 1,
-      details: stickyState,
-      screenshot: screenshotName(viewport.name, path, "_sticky-scroll"),
-    });
+  for (const route of routes.filter((route) => route.sectionIndex)) {
+    results.push(...(await checkSectionIndex(page, viewport, route)));
   }
 
   await page.close();
 }
 
 await browser.close();
-
-for (const route of routes) {
-  const imageUrl = new URL(route.ogImage, baseUrl);
-  const response = await fetch(imageUrl, { method: "HEAD" });
-  results.push({
-    viewport: "asset",
-    path: `${route.path} og-image`,
-    overflow: 0,
-    nav: "asset",
-    mobile: "asset",
-    h1: "og-image",
-    h1Lines: 1,
-    anchorCount: 0,
-    textOk: response.ok && (response.headers.get("content-type") ?? "").includes("image/png"),
-    details: {
-      url: imageUrl.href,
-      status: response.status,
-      contentType: response.headers.get("content-type"),
-    },
-  });
-}
-
+results.push(...(await checkOgAssets(routes)));
 printQaReport(results);

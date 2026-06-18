@@ -60,25 +60,9 @@ const route = routeForPage(locale, "about");
     <div class="about-product-grid">
       {
         system.all.map((item) => (
-          <a class:list={["about-product-card", item.kind === "primary" && "primary"]} href={item.href}>
+          <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
             <span>{item.name}</span>
-            <strong>
-              {item.kind === "primary"
-                ? item.id === "s3-turbo-list"
-                  ? isZh
-                    ? "自动化对象存储 list / diff CLI"
-                    : "Automatic object storage list / diff CLI"
-                  : isZh
-                    ? "Pi 的对象存储诊断 agent"
-                    : "Pi-based object storage diagnosis agent"
-                : item.kind === "external"
-                  ? isZh
-                    ? "命令行 HTTP / HTTPS 流量检查"
-                    : "Command-line HTTP / HTTPS inspection"
-                  : isZh
-                    ? "轻量 Chrome 扩展"
-                    : "Lightweight Chrome extension"}
-            </strong>
+            <strong>{item.tagline}</strong>
             <p>{item.text}</p>
           </a>
         ))

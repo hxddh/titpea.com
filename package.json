@@ -15,6 +15,7 @@
     "format:check": "prettier --check .",
     "facts:check": "node scripts/check-product-facts.mjs",
     "facts:external": "node scripts/check-external-facts.mjs",
+    "architecture:check": "node scripts/check-architecture.mjs",
     "manifest:check": "tsx scripts/check-site-manifest.mjs",
     "copy:lint": "node scripts/lint-copy.mjs",
     "qa:pages": "tsx scripts/qa-pages.mjs",

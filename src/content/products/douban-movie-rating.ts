@@ -33,26 +33,58 @@ export const doubanMovieRatingProduct: Product = {
       ],
       positioningLabel: "Positioning",
       positioning: [
-        [
-          "Use it when",
-          "You browse Douban movie pages but want quick context from IMDb and Rotten Tomatoes before deciding what to watch.",
-        ],
-        [
-          "It is not",
-          "A rating authority or recommendation engine. It simply brings external rating context into the page you are already reading.",
-        ],
-        [
-          "What you get",
-          "IMDb score, Rotten Tomatoes freshness, Metacritic score when available, direct links, runtime and genre context, and title matching across Chinese and English names.",
-        ],
+        {
+          title: "Use it when",
+          body: "You browse Douban movie pages but want quick context from IMDb and Rotten Tomatoes before deciding what to watch.",
+          intent: "fit",
+          surface: "browser",
+          priority: "primary",
+        },
+        {
+          title: "It is not",
+          body: "A rating authority or recommendation engine. It simply brings external rating context into the page you are already reading.",
+          intent: "boundary",
+          surface: "browser",
+        },
+        {
+          title: "What you get",
+          body: "IMDb score, Rotten Tomatoes freshness, Metacritic score when available, direct links, runtime and genre context, and title matching across Chinese and English names.",
+          intent: "fit",
+          surface: "browser",
+        },
       ],
       featuresLabel: "Capabilities",
       features: [
-        ["IMDb rating", "Automatically shows IMDb scores on Douban movie detail pages."],
-        ["Rotten Tomatoes", "Adds Rotten Tomatoes freshness when a reliable match is available."],
-        ["Metacritic", "Shows Metacritic when the source data is available for the matched movie."],
-        ["Direct jumps", "Click a rating to open the matching IMDb or Rotten Tomatoes page."],
-        ["Title matching", "Supports intelligent matching across Chinese and English movie titles."],
+        {
+          title: "IMDb rating",
+          body: "Automatically shows IMDb scores on Douban movie detail pages.",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "Rotten Tomatoes",
+          body: "Adds Rotten Tomatoes freshness when a reliable match is available.",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "Metacritic",
+          body: "Shows Metacritic when the source data is available for the matched movie.",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "Direct jumps",
+          body: "Click a rating to open the matching IMDb or Rotten Tomatoes page.",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "Title matching",
+          body: "Supports intelligent matching across Chinese and English movie titles.",
+          intent: "capability",
+          surface: "browser",
+        },
       ],
       rationaleLabel: "Details",
       rationaleTitle: "Ratings in one view",
@@ -62,14 +94,14 @@ export const doubanMovieRatingProduct: Product = {
       ],
       faqLabel: "Questions & how-to",
       faq: [
-        [
-          "What happens when a movie cannot be matched?",
-          "The extension only shows external ratings when it can find a reliable match. The Douban page remains usable without the extra context.",
-        ],
-        [
-          "Does it replace Douban ratings?",
-          "No. It keeps Douban as the main page and adds IMDb or Rotten Tomatoes context so you can compare rating systems in place.",
-        ],
+        {
+          title: "What happens when a movie cannot be matched?",
+          body: "The extension only shows external ratings when it can find a reliable match. The Douban page remains usable without the extra context.",
+        },
+        {
+          title: "Does it replace Douban ratings?",
+          body: "No. It keeps Douban as the main page and adds IMDb or Rotten Tomatoes context so you can compare rating systems in place.",
+        },
       ],
     },
     zh: {
@@ -87,20 +119,58 @@ export const doubanMovieRatingProduct: Product = {
       proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
       positioningLabel: "边界",
       positioning: [
-        ["什么时候用", "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。"],
-        ["它不是什么", "不是评分权威，也不是推荐引擎。它只是把外部评分补到你正在看的豆瓣页面里。"],
-        [
-          "页面里会多什么",
-          "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型/片长信息、直接跳转链接，以及中英文片名匹配。",
-        ],
+        {
+          title: "什么时候用",
+          body: "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。",
+          intent: "fit",
+          surface: "browser",
+          priority: "primary",
+        },
+        {
+          title: "它不是什么",
+          body: "不是评分权威，也不是推荐引擎。它只是把外部评分补到你正在看的豆瓣页面里。",
+          intent: "boundary",
+          surface: "browser",
+        },
+        {
+          title: "页面里会多什么",
+          body: "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型/片长信息、直接跳转链接，以及中英文片名匹配。",
+          intent: "fit",
+          surface: "browser",
+        },
       ],
       featuresLabel: "能力",
       features: [
-        ["IMDb 评分", "在豆瓣电影详情页显示 IMDb 分数。"],
-        ["烂番茄新鲜度", "匹配可靠时，补充 Rotten Tomatoes 新鲜度。"],
-        ["Metacritic", "有可用数据时，继续补充 Metacritic 分数。"],
-        ["直接跳转", "点击评分，打开对应 IMDb 或 Rotten Tomatoes 页面。"],
-        ["片名匹配", "支持中英文电影标题匹配。"],
+        {
+          title: "IMDb 评分",
+          body: "在豆瓣电影详情页显示 IMDb 分数。",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "烂番茄新鲜度",
+          body: "匹配可靠时，补充 Rotten Tomatoes 新鲜度。",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "Metacritic",
+          body: "有可用数据时，继续补充 Metacritic 分数。",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "直接跳转",
+          body: "点击评分，打开对应 IMDb 或 Rotten Tomatoes 页面。",
+          intent: "capability",
+          surface: "browser",
+        },
+        {
+          title: "片名匹配",
+          body: "支持中英文电影标题匹配。",
+          intent: "capability",
+          surface: "browser",
+        },
       ],
       rationaleLabel: "详情",
       rationaleTitle: "一个页面里看完中外电影评分",
@@ -110,8 +180,14 @@ export const doubanMovieRatingProduct: Product = {
       ],
       faqLabel: "问题与用法",
       faq: [
-        ["匹配不到电影时怎么办？", "找不到可靠匹配就不显示外部评分，豆瓣页面本身照常使用。"],
-        ["它会替代豆瓣评分吗？", "不会。豆瓣仍然是主页面，它只是在旁边补充 IMDb 或 Rotten Tomatoes，方便原地对比。"],
+        {
+          title: "匹配不到电影时怎么办？",
+          body: "找不到可靠匹配就不显示外部评分，豆瓣页面本身照常使用。",
+        },
+        {
+          title: "它会替代豆瓣评分吗？",
+          body: "不会。豆瓣仍然是主页面，它只是在旁边补充 IMDb 或 Rotten Tomatoes，方便原地对比。",
+        },
       ],
     },
   },
