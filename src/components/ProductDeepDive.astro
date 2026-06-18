@@ -1,75 +1,60 @@
 ---
-import type { Locale, Product } from "../lib/site";
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "../content/productEvidenceFacts";
+import type { ProductEvidenceModel } from "../content/productPageModel";
 
 interface Props {
-  locale: Locale;
-  product: Product;
+  section: ProductEvidenceModel;
 }
 
-const { locale, product } = Astro.props;
-const isZh = locale === "zh";
+const { section } = Astro.props;
+const sectionClass =
+  section.variant === "runChain"
+    ? "shell product-deep-dive s3-deep-dive"
+    : "shell product-deep-dive storageops-deep-dive";
 ---
 
-{
-  product.role === "inventory" && (
-    <section id="evidence" class="shell product-deep-dive s3-deep-dive">
-      <div class="deep-dive-heading">
-        <p class="section-kicker">{isZh ? "证据链" : "Evidence chain"}</p>
-        <h2>{isZh ? "从发现到校验，一次运行闭环" : "One run from discovery to verification"}</h2>
-        <p>
-          {isZh
-            ? "s3-turbo-list 的重点不是多给参数，而是把大型对象存储 list / diff 里最容易出错的步骤收进默认路径。"
-            : "s3-turbo-list is not a pile of knobs. It pulls the error-prone parts of large object-storage list and diff runs into the default path."}
-        </p>
-      </div>
-      <div class="deep-dive-grid s3-run-grid">
-        {s3EvidenceFacts.deepDiveCards.map((card, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{card.label[locale]}</h3>
-            <p>{card.body[locale]}</p>
-          </article>
-        ))}
-      </div>
-      <div class="deep-dive-benchmark">
-        <div>
-          <span>{isZh ? "第三方 OSS 测试" : "Third-party OSS run"}</span>
-          <strong>{isZh ? "1M 对象" : "1M objects"}</strong>
+<section id={section.id} class={sectionClass}>
+  <div class="deep-dive-heading">
+    <p class="section-kicker">{section.kicker}</p>
+    <h2>{section.title}</h2>
+    <p>{section.body}</p>
+  </div>
+  {
+    section.variant === "runChain" && (
+      <>
+        <div class="deep-dive-grid s3-run-grid">
+          {section.cards.map((card) => (
+            <article>
+              <span>{card.value}</span>
+              <h3>{card.label}</h3>
+              <p>{card.body}</p>
+            </article>
+          ))}
         </div>
-        {s3EvidenceFacts.parallelRuns.map((run) => (
-          <div>
-            <span>{run.label}</span>
-            <strong>{run.seconds}s</strong>
-            <p>{run.throughput.toLocaleString()} objects/s</p>
+        {section.benchmark && (
+          <div class="deep-dive-benchmark">
+            {section.benchmark.map((item) => (
+              <div>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                {item.body && <p>{item.body}</p>}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-{
-  product.role === "diagnosis" && (
-    <section id="evidence" class="shell product-deep-dive storageops-deep-dive">
-      <div class="deep-dive-heading">
-        <p class="section-kicker">{isZh ? "Agent 拓扑" : "Agent topology"}</p>
-        <h2>{isZh ? "技能决定判断，工具负责取证" : "Skills decide; tools collect evidence"}</h2>
-        <p>
-          {isZh
-            ? "StorageOps 的核心不是提示词，而是把 Pi 的诊断过程拆成领域技能、取证工具、确定性脚本和回归评测。"
-            : "StorageOps is not a prompt pack. It breaks Pi diagnosis into domain skills, evidence tools, deterministic helpers, and evals."}
-        </p>
-      </div>
+        )}
+      </>
+    )
+  }
+  {
+    section.variant === "agentTopology" && (
       <div class="agent-topology">
-        {storageOpsEvidenceFacts.capabilityCards.map((card) => (
+        {section.cards.map((card) => (
           <article>
-            <span>{card.label[locale]}</span>
-            <strong>{card.value}</strong>
-            <p>{card.body[locale]}</p>
+            <span>{card.label}</span>
+            {card.value && <strong>{card.value}</strong>}
+            <p>{card.body}</p>
           </article>
         ))}
       </div>
-    </section>
-  )
-}
+    )
+  }
+</section>

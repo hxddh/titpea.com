@@ -6,12 +6,8 @@ const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声
 
 export const worldClockProduct: Product = {
   slug: "world-clock",
-  current: "world-clock",
   name: "World Clock",
-  category: "browser",
   archetype: "browserExtension",
-  role: "time",
-  visual: "clock",
   locales: {
     en: {
       title: "World Clock",

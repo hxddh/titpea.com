@@ -52,9 +52,43 @@ assertNoMatch(
 );
 
 assertNoMatch(
+  "product templates consume page models, not product identity",
+  [
+    "src/components/ProductPage.astro",
+    "src/components/ProductInside.astro",
+    "src/components/ProductDeepDive.astro",
+    "src/components/ProductVisual.astro",
+  ],
+  /product\.(role|category|archetype|current|visual)|ProductPageProfile|productPageProfile|productNavItems/,
+);
+
+assertNoMatch(
+  "site manifest is derived from page model",
+  ["src/content/siteManifest.ts"],
+  /product\.(role|category|archetype|current|visual)|productExpectedText|sectionIndex:\s*product\./,
+);
+
+assertNoMatch(
   "Home and About do not branch on product identity",
   ["src/components/HomePage.astro", "src/components/AboutPage.astro"],
   /item\.id\s*===|item\.kind|product\.role|product\.category|product\.archetype/,
+);
+
+assertNoMatch(
+  "home copy has no retired duplicate content models",
+  ["src/content/home.ts"],
+  /homeProductLines|homeStorageFlow|homeBrowserTools|aboutProductGroups/,
+);
+
+assertNoMatch(
+  "product source keeps rendering strategy out of raw product records",
+  [
+    "src/content/products/s3-turbo-list.ts",
+    "src/content/products/storageops.ts",
+    "src/content/products/world-clock.ts",
+    "src/content/products/douban-movie-rating.ts",
+  ],
+  /\b(current|category|role|visual):/,
 );
 
 const pagesCssLines = lineCount("src/styles/pages.css");

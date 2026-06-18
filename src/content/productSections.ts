@@ -1,4 +1,4 @@
-import type { Locale, Product, ProductContentCard, ProductCopy } from "../lib/site";
+import type { Locale, ProductArchetype, ProductContentCard, ProductCopy } from "../lib/site";
 import {
   productArchetypeLayouts,
   type ArchetypeSectionSpec,
@@ -104,8 +104,8 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
   });
 }
 
-export function productSections(locale: Locale, copy: ProductCopy, product: Product): ProductSection[] {
-  return productArchetypeLayouts[product.archetype]
+export function productSections(locale: Locale, copy: ProductCopy, archetype: ProductArchetype): ProductSection[] {
+  return productArchetypeLayouts[archetype]
     .map((spec) => sectionFromSpec(locale, copy, spec))
     .filter((item): item is ProductSection => item !== null);
 }

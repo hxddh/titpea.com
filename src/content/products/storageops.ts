@@ -17,12 +17,8 @@ const storageOpsProofZh = [
 
 export const storageOpsProduct: Product = {
   slug: "storageops",
-  current: "storageops",
   name: "StorageOps",
-  category: "storage",
   archetype: "agentPackage",
-  role: "diagnosis",
-  visual: "diagnostic",
   locales: {
     en: {
       title: "StorageOps",

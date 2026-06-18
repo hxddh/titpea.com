@@ -6,12 +6,8 @@ const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 
 
 export const doubanMovieRatingProduct: Product = {
   slug: "douban-movie-rating",
-  current: "douban",
   name: "Douban Movie Rating Assistant",
-  category: "browser",
   archetype: "browserExtension",
-  role: "ratings",
-  visual: "rating",
   locales: {
     en: {
       title: "Douban Movie Rating Assistant",

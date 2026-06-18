@@ -38,8 +38,10 @@ jobs:
       - name: Check architecture
         run: npm run architecture:check
 
+      - name: Check product page model
+        run: npm run model:check
+
       - name: Check external fact freshness
-        continue-on-error: true
         run: npm run facts:external
 
       - name: Check site manifest

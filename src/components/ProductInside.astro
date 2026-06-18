@@ -1,136 +1,63 @@
 ---
-import type { Locale, Product } from "../lib/site";
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "../content/productEvidenceFacts";
+import type { ProductInsideModel } from "../content/productPageModel";
 
 interface Props {
-  locale: Locale;
-  product: Product;
+  section: ProductInsideModel;
 }
 
-const { locale, product } = Astro.props;
-const isZh = locale === "zh";
-const s3MetricValue = (value: string) => {
-  if (!isZh) return value;
-  if (value === "zero hints") return "零 hints";
-  return value;
-};
-const storageOpsValue = (value: string) => {
-  if (!isZh) return value;
-  return value
-    .replace("15 diagnostic skills", `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`)
-    .replace("4 Pi tools", `${storageOpsEvidenceFacts.toolsCount} 个 Pi 工具`)
-    .replace("deterministic helpers", "确定性脚本")
-    .replace("eval cases", "回归用例");
-};
-const s3ArtifactLabel = (label: string) => {
-  if (!isZh) return label;
-  return (
-    {
-      artifacts: "产物",
-      "provider logs": "服务商日志",
-    }[label] ?? label
-  );
-};
+const { section } = Astro.props;
 ---
 
-{
-  product.role === "inventory" && (
-    <section id="inside" class="inside-section shell">
-      <div class="inside-copy">
-        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-        <h2>{isZh ? "默认路径自动完成繁琐部分" : "The default path handles the hard parts"}</h2>
-        <p>
-          {isZh
-            ? "s3-turbo-list 现在更像一个自动化对象清单 / diff 工具：启动发现、运行时拆分、dry-run plan、运行记录和产物校验都在默认路径里。"
-            : "s3-turbo-list now behaves more like an automated inventory and diff tool: startup discovery, runtime splitting, dry-run plans, run manifests, and artifact checks sit on the default path."}
-        </p>
-      </div>
-      <div class="inside-workbench inventory-workbench" aria-label="s3-turbo-list run workbench">
+<section id={section.id} class="inside-section shell">
+  <div class="inside-copy">
+    <p class="section-kicker">{section.kicker}</p>
+    <h2>{section.title}</h2>
+    <p>{section.body}</p>
+  </div>
+  {
+    section.panel?.kind === "metricWorkbench" && (
+      <div class="inside-workbench inventory-workbench" aria-label={section.panel.label}>
         <div class="workbench-top">
-          <span>s3-turbo-list {s3EvidenceFacts.version}</span>
-          <strong>{isZh ? "自动对象清单路径" : "automatic inventory path"}</strong>
+          <span>s3-turbo-list</span>
+          <strong>{section.panel.title}</strong>
         </div>
         <div class="inventory-grid benchmark-metrics">
-          {s3EvidenceFacts.insideMetrics.map((metric, index) => (
-            <div class={index === 0 ? "metric-tile strong" : "metric-tile"}>
-              <span>{metric.label[locale]}</span>
-              <strong>{s3MetricValue(metric.value)}</strong>
-              <p>{metric.body[locale]}</p>
+          {section.panel.metrics.map((metric) => (
+            <div class={metric.strong ? "metric-tile strong" : "metric-tile"}>
+              <span>{metric.label}</span>
+              <strong>{metric.value}</strong>
+              <p>{metric.body}</p>
             </div>
           ))}
         </div>
         <div class="output-table benchmark-table" aria-label="Automation surfaces">
-          {s3EvidenceFacts.artifactRows.map(([label, value]) => (
+          {section.panel.rows.map((row) => (
             <div>
-              <span>{s3ArtifactLabel(label)}</span>
-              <strong>{value}</strong>
+              <span>{row.label}</span>
+              <strong>{row.value}</strong>
             </div>
           ))}
         </div>
       </div>
-    </section>
-  )
-}
-
-{
-  product.role === "diagnosis" && (
-    <section id="inside" class="inside-section shell">
-      <div class="inside-copy">
-        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-        <h2>{isZh ? "让 Pi 会诊断对象存储问题" : "Turn Pi into a storage diagnosis agent"}</h2>
-        <p>
-          {isZh
-            ? "StorageOps 不是一组排查说明，而是一套给 Pi 安装的能力：对象存储诊断技能、扩展工具、确定性脚本和回归用例。"
-            : "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures."}
-        </p>
-      </div>
-      <div class="inside-workbench agent-evidence-panel" aria-label="StorageOps skills and tools summary">
+    )
+  }
+  {
+    section.panel?.kind === "agentEvidence" && (
+      <div class="inside-workbench agent-evidence-panel" aria-label={section.panel.label}>
         <div class="workbench-top">
           <span>pi extension: storageops</span>
-          <strong>{isZh ? "skills + tools loaded" : "skills + tools loaded"}</strong>
+          <strong>{section.panel.title}</strong>
         </div>
         <div class="agent-evidence-grid">
-          {storageOpsEvidenceFacts.insideMetrics.map((metric) => (
+          {section.panel.metrics.map((metric) => (
             <div>
-              <span>{metric.label[locale]}</span>
-              <strong>{storageOpsValue(metric.value)}</strong>
-              <p>{metric.body[locale]}</p>
+              <span>{metric.label}</span>
+              <strong>{metric.value}</strong>
+              <p>{metric.body}</p>
             </div>
           ))}
         </div>
       </div>
-    </section>
-  )
-}
-
-{
-  product.role === "time" && (
-    <section id="inside" class="inside-section shell">
-      <div class="inside-copy">
-        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-        <h2>{isZh ? "查时间应该很短" : "Time, checked quickly"}</h2>
-        <p>
-          {isZh
-            ? "世界时钟不是排期系统。它是一个快速上下文工具：打开弹窗，看一眼城市时间、工作时段和日期，然后回到当前任务。"
-            : "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task."}
-        </p>
-      </div>
-    </section>
-  )
-}
-
-{
-  product.role === "ratings" && (
-    <section id="inside" class="inside-section shell">
-      <div class="inside-copy">
-        <p class="section-kicker">{isZh ? "内部视角" : "A look inside"}</p>
-        <h2>{isZh ? "不离开豆瓣，对照评分" : "Ratings without leaving Douban"}</h2>
-        <p>
-          {isZh
-            ? "豆瓣电影评分助手只做补充上下文：匹配到影片时，把 IMDb、Rotten Tomatoes 和 Metacritic 放进豆瓣详情页，原来的阅读节奏不变。"
-            : "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading."}
-        </p>
-      </div>
-    </section>
-  )
-}
+    )
+  }
+</section>

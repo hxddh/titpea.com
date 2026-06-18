@@ -6,6 +6,11 @@ export const zhForbiddenTerms = [
   " provider",
   "warnings",
   "exit codes",
+  "解决方案",
+  "赋能",
+  "无缝",
+  "强大",
+  "上下文能力",
 ];
 
 export const zhAwkwardPatterns = [

@@ -8,8 +8,7 @@ import ProductInside from "./ProductInside.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
-import { productNavItems, productPageProfile } from "../content/productArchetypes";
-import { productSections } from "../content/productSections";
+import { productPageModel } from "../content/productPageModel";
 import { routeForProduct } from "../content/siteManifest";
 import type { Locale, Product } from "../lib/site";
 
@@ -19,39 +18,21 @@ interface Props {
 }
 
 const { locale, product } = Astro.props;
-const copy = product.locales[locale];
-const sections = productSections(locale, copy, product);
-const pageProfile = productPageProfile(product);
-const sectionIds = new Set([
-  "inside",
-  ...(pageProfile.hasSectionIndex ? ["evidence"] : []),
-  ...sections.map((section) => section.id),
-]);
-const navItems = productNavItems(product, locale, sectionIds);
-const route = routeForProduct(locale, product.slug);
-const socialImage = route?.ogImage ?? "/assets/og-home.png";
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: copy.title,
-  description: copy.description,
-  applicationCategory: pageProfile.applicationCategory,
-  operatingSystem: pageProfile.operatingSystem,
-  url: `https://titpea.com${locale === "zh" ? `/zh/${product.slug}/` : `/${product.slug}/`}`,
-  sameAs: copy.primaryCta.href,
-};
+const model = productPageModel(product, locale);
+const copy = model.copy;
+const route = routeForProduct(locale, model.slug);
 ---
 
 <SiteLayout
-  title={copy.title}
-  description={copy.description}
-  current={product.current}
+  title={model.title}
+  description={model.description}
+  current={model.current}
   locale={locale}
-  image={socialImage}
+  image={model.ogImage}
   route={route}
-  structuredData={structuredData}
+  structuredData={model.structuredData}
 >
-  <section class:list={["product-hero product-launch-hero shell", pageProfile.pageClass]}>
+  <section class:list={["product-hero product-launch-hero shell", model.pageClass]}>
     <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
@@ -63,7 +44,7 @@ const structuredData = {
       <p class="meta-line">{copy.meta}</p>
     </div>
     <div class="hero-visual-frame">
-      <ProductVisual product={product} locale={locale} />
+      <ProductVisual visual={model.visual} locale={locale} />
     </div>
   </section>
 
@@ -71,13 +52,18 @@ const structuredData = {
     {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
-  {pageProfile.hasSectionIndex && <ProductSectionIndex label={pageProfile.indexLabel[locale]} items={navItems} />}
-
-  <ProductInside locale={locale} product={product} />
-  {pageProfile.hasSectionIndex && <ProductDeepDive locale={locale} product={product} />}
+  {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
   {
-    sections.map((section) => {
+    model.sections.map((section) => {
+      if (section.kind === "inside") {
+        return <ProductInside section={section} />;
+      }
+
+      if (section.kind === "evidence") {
+        return <ProductDeepDive section={section} />;
+      }
+
       if (section.kind === "story") {
         return <ProductStorySection section={section} />;
       }

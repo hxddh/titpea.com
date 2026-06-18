@@ -36,7 +36,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
         {
           label: isZh ? "豆瓣评分" : "Douban",
           href: pathFor(locale, "douban-movie-rating"),
-          current: "douban",
+          current: "douban-movie-rating",
           showInPrimary: true,
         },
       ],

@@ -6,12 +6,8 @@ const s3License = s3TurboListFacts.licenseLabel ?? "current license";
 
 export const s3TurboListProduct: Product = {
   slug: "s3-turbo-list",
-  current: "s3-turbo-list",
   name: "s3-turbo-list",
-  category: "storage",
   archetype: "storageCli",
-  role: "inventory",
-  visual: "terminal",
   locales: {
     en: {
       title: "s3-turbo-list",

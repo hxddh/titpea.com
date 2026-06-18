@@ -1,6 +1,6 @@
 export type Locale = "en" | "zh";
 export type ProductSlug = "s3-turbo-list" | "storageops" | "world-clock" | "douban-movie-rating";
-export type CurrentPage = "home" | "about" | "s3-turbo-list" | "storageops" | "world-clock" | "douban";
+export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;
   href: string;
@@ -66,14 +66,12 @@ export type ProductCopy = {
 
 export type Product = {
   slug: ProductSlug;
-  current: CurrentPage;
   name: string;
-  category: "storage" | "browser";
-  archetype: "storageCli" | "agentPackage" | "browserExtension";
-  role: "inventory" | "diagnosis" | "traffic" | "time" | "ratings";
-  visual: "terminal" | "diagnostic" | "clock" | "rating";
+  archetype: ProductArchetype;
   locales: Localized<ProductCopy>;
 };
+
+export type ProductArchetype = "storageCli" | "agentPackage" | "browserExtension";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";
@@ -82,6 +80,5 @@ export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
 
 export function slugForCurrentPage(current: CurrentPage): ProductSlug | "about" | undefined {
   if (current === "home") return undefined;
-  if (current === "douban") return "douban-movie-rating";
   return current;
 }

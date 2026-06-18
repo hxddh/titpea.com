@@ -1,19 +1,19 @@
 ---
-import type { Product } from "../lib/site";
+import type { ProductVisualSpec } from "../content/productPageModel";
 import DoubanRatingVisual from "./visuals/DoubanRatingVisual.astro";
 import S3BenchmarkVisual from "./visuals/S3BenchmarkVisual.astro";
 import StorageOpsAgentVisual from "./visuals/StorageOpsAgentVisual.astro";
 import WorldClockVisual from "./visuals/WorldClockVisual.astro";
 
 interface Props {
-  product: Product;
+  visual: ProductVisualSpec;
   locale?: "en" | "zh";
 }
 
-const { product, locale = "en" } = Astro.props;
+const { visual, locale = "en" } = Astro.props;
 ---
 
-{product.visual === "terminal" && <S3BenchmarkVisual locale={locale} />}
-{product.visual === "diagnostic" && <StorageOpsAgentVisual locale={locale} />}
-{product.visual === "clock" && <WorldClockVisual />}
-{product.visual === "rating" && <DoubanRatingVisual />}
+{visual.kind === "s3Benchmark" && <S3BenchmarkVisual locale={locale} />}
+{visual.kind === "storageAgent" && <StorageOpsAgentVisual locale={locale} />}
+{visual.kind === "worldClockScreenshot" && <WorldClockVisual />}
+{visual.kind === "doubanScreenshot" && <DoubanRatingVisual />}

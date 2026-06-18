@@ -1,5 +1,6 @@
 import { ui } from "./home";
-import { products, productSlugs } from "./products";
+import { productSlugs, products } from "./products";
+import { productPageModel } from "./productPageModel";
 import { pathFor, type CurrentPage, type Locale, type ProductSlug } from "../lib/site";
 
 export type SiteRoute = {
@@ -18,14 +19,10 @@ export type SiteRoute = {
 };
 
 const locales: Locale[] = ["en", "zh"];
-const ogImages: Record<ProductSlug | "home" | "about", string> = {
+const ogImages = {
   home: "/assets/og-home.png",
   about: "/assets/og-about.png",
-  "s3-turbo-list": "/assets/og-s3-turbo-list.png",
-  storageops: "/assets/og-storageops.png",
-  "world-clock": "/assets/og-world-clock.png",
-  "douban-movie-rating": "/assets/og-douban-movie-rating.png",
-};
+} as const;
 
 const titleFor = (title: string) => (title === "Titpea" ? title : `${title} - Titpea`);
 const alternateLocale = (locale: Locale): Locale => (locale === "zh" ? "en" : "zh");
@@ -52,34 +49,22 @@ function pageRoute(locale: Locale, current: "home" | "about"): SiteRoute {
   };
 }
 
-function productExpectedText(locale: Locale, slug: ProductSlug) {
-  const product = products[slug];
-  const copy = product.locales[locale];
-
-  if (product.role === "inventory") return [copy.headline, locale === "zh" ? "自动化" : "Automation"];
-  if (product.role === "diagnosis") return [copy.headline, locale === "zh" ? "技能和工具" : "Skills and tools"];
-  return [copy.headline, "FAQ"];
-}
-
 function productRoute(locale: Locale, slug: ProductSlug): SiteRoute {
-  const product = products[slug];
-  const copy = product.locales[locale];
-  const path = pathFor(locale, slug);
-  const alternatePath = pathFor(alternateLocale(locale), slug);
+  const model = productPageModel(products[slug], locale);
 
   return {
-    path,
+    path: model.path,
     locale,
-    current: product.current,
+    current: model.current,
     kind: "product",
     slug,
-    title: titleFor(copy.title),
-    canonicalPath: path,
-    alternatePath,
-    ogImage: ogImages[slug],
-    expectedText: productExpectedText(locale, slug),
-    primaryCta: copy.primaryCta.href,
-    sectionIndex: product.category === "storage",
+    title: titleFor(model.title),
+    canonicalPath: model.path,
+    alternatePath: model.alternatePath,
+    ogImage: model.ogImage,
+    expectedText: model.expectedText,
+    primaryCta: model.primaryCta,
+    sectionIndex: model.sectionIndex,
   };
 }
 
