@@ -54,7 +54,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       variant: "agentTopology",
       kicker: "Agent topology",
       title: "Skills decide; tools collect evidence",
-      body: "StorageOps is not a prompt pack. It breaks Pi diagnosis into domain skills, evidence tools, deterministic helpers, and evals.",
+      body: "StorageOps gives Pi domain skills, registered tools, parsers, analyzers, reports, and secret-redaction rules.",
       cards: storageOpsEvidenceFacts.capabilityCards.map((card) => ({
         label: card.label.en,
         value: card.value,
@@ -67,7 +67,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       variant: "agentTopology",
       kicker: "Agent 拓扑",
       title: "技能决定判断，工具负责取证",
-      body: "StorageOps 的核心不是提示词，而是把 Pi 的诊断过程拆成领域技能、取证工具、确定性脚本和回归评测。",
+      body: "StorageOps 的核心不是提示词，而是给 Pi 提供领域技能、注册工具、解析器、分析器、报告和凭据脱敏规则。",
       cards: storageOpsEvidenceFacts.capabilityCards.map((card) => ({
         label: card.label.zh,
         value: card.value,

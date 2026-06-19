@@ -20,6 +20,7 @@ export type ProductInsidePanel =
   | {
       kind: "agentEvidence";
       label: string;
+      eyebrow: string;
       title: string;
       metrics: Array<{ label: string; value: string; body: string }>;
     };

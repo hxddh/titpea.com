@@ -104,9 +104,9 @@ export const s3EvidenceFacts = {
 export const storageOpsEvidenceFacts = {
   repository: storageOpsFacts.repository,
   skillsCount: 15,
-  toolsCount: 4,
+  toolsCount: 21,
   evalLabel: "golden",
-  tools: ["detect_domain", "scan_secrets", "search_memory", "capture_http_trace"],
+  tools: ["scan_secrets", "parse_httpmon_log", "analyze_policy", "detect_throttling", "search_memory"],
   capabilityCards: [
     {
       label: { en: "Skills", zh: "技能" },
@@ -118,10 +118,10 @@ export const storageOpsEvidenceFacts = {
     },
     {
       label: { en: "Tools", zh: "工具" },
-      value: "4",
+      value: "21",
       body: {
-        en: "detect_domain, scan_secrets, search_memory, and capture_http_trace.",
-        zh: "detect_domain、scan_secrets、search_memory、capture_http_trace。",
+        en: "Parsers, analyzers, generators, secret scanning, and memory search.",
+        zh: "解析器、分析器、修复生成、密钥扫描和历史搜索。",
       },
     },
     {
@@ -144,26 +144,26 @@ export const storageOpsEvidenceFacts = {
     },
     {
       label: { en: "02", zh: "02" },
-      value: "4 Pi tools",
+      value: "21 tools",
       body: {
-        en: "detect_domain, scan_secrets, search_memory, and capture_http_trace route and gather evidence.",
-        zh: "detect_domain、scan_secrets、search_memory、capture_http_trace 负责路由和取证。",
+        en: "Parse logs, analyze failures, redact secrets, generate fixes, and search memory.",
+        zh: "解析日志、分析故障、脱敏凭据、生成修复建议，并搜索历史记录。",
       },
     },
     {
       label: { en: "03", zh: "03" },
-      value: "deterministic helpers",
+      value: "Web API + MCP",
       body: {
-        en: "Inspect SigV4, ETags, payload hashes, throttling, access logs, and endpoint reachability.",
-        zh: "检查 SigV4、ETag、payload hash、限流、访问日志和端点可达性。",
+        en: "Serve a Web UI / HTTP API or expose StorageOps as an MCP stdio server.",
+        zh: "可以启动 Web UI / HTTP API，也可以作为 MCP stdio server 使用。",
       },
     },
     {
       label: { en: "04", zh: "04" },
-      value: "eval cases",
+      value: "safe reports",
       body: {
-        en: "Golden cases keep agent behavior stable as skills and tools change.",
-        zh: "用 golden cases 约束 agent 行为，避免每次修改后诊断口径漂移。",
+        en: "Reports separate category, root cause, confidence, evidence, and manual remediation.",
+        zh: "报告区分分类、根因、置信度、证据和手动修复步骤。",
       },
     },
   ] satisfies EvidenceCard[],

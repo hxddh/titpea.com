@@ -45,7 +45,7 @@ const { section } = Astro.props;
     section.panel?.kind === "agentEvidence" && (
       <div class="inside-workbench agent-evidence-panel" aria-label={section.panel.label}>
         <div class="workbench-top">
-          <span>pi extension: storageops</span>
+          <span>{section.panel.eyebrow}</span>
           <strong>{section.panel.title}</strong>
         </div>
         <div class="agent-evidence-grid">

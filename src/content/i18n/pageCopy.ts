@@ -13,7 +13,7 @@ export const homeModelCopy = {
     proofLabel: "Signals",
     evidenceKicker: "Evidence",
     evidenceTitle: "Evidence",
-    evidenceBody: "Benchmarks and installable Pi skills.",
+    evidenceBody: "Benchmarks and diagnosis tools.",
     browserBody: "Two small extensions.",
     screenshotLabel: "Browser extension screenshots",
     worldClockAlt: "World Clock dark interface screenshot",
@@ -25,7 +25,7 @@ export const homeModelCopy = {
     proofLabel: "关键词",
     evidenceKicker: "证据",
     evidenceTitle: "证据",
-    evidenceBody: "压测数据和可安装的 Pi skills。",
+    evidenceBody: "压测数据和诊断工具。",
     browserBody: "两个小型扩展。",
     screenshotLabel: "浏览器扩展截图",
     worldClockAlt: "世界时钟深色界面截图",
@@ -51,12 +51,12 @@ export const aboutModelCopy = {
 export const catalogCopy = {
   en: {
     httpmon: "Inspect HTTP/HTTPS traffic from terminal commands.",
-    s3Text: "Fast listing, diff, resume, and Parquet export for S3-compatible buckets.",
-    s3Tagline: "Fast S3 listing and diff",
-    s3Role: "Listing / Diff",
-    storageopsText: "Pi extension and skill pack for S3-compatible diagnosis.",
-    storageopsTagline: "Pi S3 diagnosis pack",
-    storageopsRole: "Pi diagnosis",
+    s3Text: "Fast list / diff with resume, trace, and Parquet output.",
+    s3Tagline: "Fast S3 list / diff",
+    s3Role: "List / Diff",
+    storageopsText: "S3 diagnostics agent with skills, parsers, analyzers, MCP, and Web API.",
+    storageopsTagline: "S3 diagnostics agent",
+    storageopsRole: "S3 diagnostics",
     httpmonTagline: "Terminal HTTPS inspector",
     httpmonRole: "HTTP inspection",
     worldClockText: "A fast city-time popup.",
@@ -67,13 +67,13 @@ export const catalogCopy = {
     s3EvidenceTitle: "1M objects, ~55s to ~19s",
     s3EvidenceBody:
       "The README cites a third-party Alibaba Cloud OSS benchmark: 1M objects in ~55s single-stream and ~19s with `-c 8`.",
-    storageopsEvidenceTitle: "16 packs, 4 Pi tools",
+    storageopsEvidenceTitle: "15 skills, 21 tools",
     storageopsEvidenceBody:
-      "The README defines StorageOps as a Pi extension and skill pack: diagnostic skills, extension tools, deterministic helpers, and compact golden cases.",
+      "The README defines StorageOps as a diagnostics system: CLI sessions, skills, registered tools, Web API, MCP, reports, memory, and secret redaction.",
     groups: [
       {
         title: "Object storage",
-        text: "Inventory, diff, diagnosis, and request inspection.",
+        text: "List, diff, diagnosis, and request inspection.",
       },
       {
         title: "Browser utilities",
@@ -87,12 +87,12 @@ export const catalogCopy = {
   },
   zh: {
     httpmon: "查看终端命令发出的 HTTP/HTTPS 流量。",
-    s3Text: "面向 S3 兼容桶的高速 listing、diff、resume 和 Parquet 输出。",
-    s3Tagline: "高速 S3 listing / diff",
-    s3Role: "Listing / Diff",
-    storageopsText: "面向 S3 兼容诊断的 Pi 扩展和技能包。",
-    storageopsTagline: "Pi S3 诊断包",
-    storageopsRole: "Pi 诊断",
+    s3Text: "高速 S3 list / diff，支持恢复、trace 和 Parquet 输出。",
+    s3Tagline: "高速 S3 list / diff",
+    s3Role: "List / Diff",
+    storageopsText: "S3 诊断 agent，包含 skills、解析器、分析器、MCP 和 Web API。",
+    storageopsTagline: "S3 诊断 agent",
+    storageopsRole: "S3 诊断",
     httpmonTagline: "终端 HTTPS 检查器",
     httpmonRole: "HTTP 检查",
     worldClockText: "快速查看城市时间。",
@@ -102,9 +102,9 @@ export const catalogCopy = {
     doubanRole: "评分辅助",
     s3EvidenceTitle: "1M 对象，~55s 到 ~19s",
     s3EvidenceBody: "README 引用的第三方 Alibaba Cloud OSS 测试：1M 对象单流约 55s，`-c 8` 约 19s。",
-    storageopsEvidenceTitle: "16 个包，4 个 Pi 工具",
+    storageopsEvidenceTitle: "15 个 skills，21 个 tools",
     storageopsEvidenceBody:
-      "README 对它的定义很具体：Pi extension、诊断 skills、extension tools、确定性 helpers，以及紧凑的 golden cases。",
+      "README 里的定位已经是诊断系统：CLI session、skills、注册工具、Web API、MCP、报告、历史记忆和凭据脱敏。",
     groups: [
       {
         title: "对象存储",

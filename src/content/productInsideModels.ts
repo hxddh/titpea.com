@@ -31,12 +31,12 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "A look inside",
-      title: "The default path handles the hard parts",
-      body: "s3-turbo-list now behaves more like an automated inventory and diff tool: startup discovery, runtime splitting, dry-run plans, run manifests, and artifact checks sit on the default path.",
+      title: "The default path keeps long runs inspectable",
+      body: "s3-turbo-list keeps list / diff focused: segmented list, checkpoint resume, trace JSONL, dry-run plans, run manifests, and Parquet output sit on the normal path.",
       panel: {
         kind: "metricWorkbench",
         label: "s3-turbo-list run workbench",
-        title: "automatic inventory path",
+        title: "list / diff path",
         metrics: s3EvidenceFacts.insideMetrics.map((metric, index) => ({
           label: metric.label.en,
           value: s3MetricValue("en", metric.value),
@@ -50,12 +50,12 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "内部视角",
-      title: "默认路径自动完成繁琐部分",
-      body: "s3-turbo-list 现在更像一个自动化对象清单 / diff 工具：启动发现、运行时拆分、dry-run plan、运行记录和产物校验都在默认路径里。",
+      title: "默认路径保留可检查产物",
+      body: "s3-turbo-list 聚焦 list / diff：分段 list、断点恢复、trace JSONL、dry-run plan、运行记录和 Parquet 输出都在正常路径里。",
       panel: {
         kind: "metricWorkbench",
         label: "s3-turbo-list run workbench",
-        title: "自动对象清单路径",
+        title: "list / diff 路径",
         metrics: s3EvidenceFacts.insideMetrics.map((metric, index) => ({
           label: metric.label.zh,
           value: s3MetricValue("zh", metric.value),
@@ -71,11 +71,12 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "A look inside",
-      title: "Turn Pi into a storage diagnosis agent",
-      body: "StorageOps is not just a guide. It installs object-storage skills, Pi extension tools, helper scripts, and eval cases so Pi can diagnose S3-compatible failures.",
+      title: "A diagnosis system around Pi",
+      body: "StorageOps combines skills, registered tools, parsers, analyzers, memory search, Web API, MCP, and secret redaction around Pi for S3-compatible troubleshooting.",
       panel: {
         kind: "agentEvidence",
         label: "StorageOps skills and tools summary",
+        eyebrow: "storageops agent",
         title: "skills + tools loaded",
         metrics: storageOpsEvidenceFacts.insideMetrics.map((metric) => ({
           label: metric.label.en,
@@ -88,11 +89,12 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "内部视角",
-      title: "让 Pi 会诊断对象存储问题",
-      body: "StorageOps 不是一组排查说明，而是一套给 Pi 安装的能力：对象存储诊断技能、扩展工具、确定性脚本和回归用例。",
+      title: "围绕 Pi 的诊断系统",
+      body: "StorageOps 把 skills、注册工具、解析器、分析器、历史搜索、Web API、MCP 和凭据脱敏组合到 Pi 周围，用来排查 S3 兼容故障。",
       panel: {
         kind: "agentEvidence",
         label: "StorageOps skills and tools summary",
+        eyebrow: "storageops 诊断系统",
         title: "skills + tools loaded",
         metrics: storageOpsEvidenceFacts.insideMetrics.map((metric) => ({
           label: metric.label.zh,

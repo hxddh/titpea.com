@@ -22,15 +22,15 @@ export const insideValueCopy = {
   storageOpsValues: {
     en: {
       "15 diagnostic skills": "15 diagnostic skills",
-      "4 Pi tools": "4 Pi tools",
-      "deterministic helpers": "deterministic helpers",
-      "eval cases": "eval cases",
+      "21 tools": "21 tools",
+      "Web API + MCP": "Web API + MCP",
+      "safe reports": "safe reports",
     },
     zh: {
       "15 diagnostic skills": `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`,
-      "4 Pi tools": `${storageOpsEvidenceFacts.toolsCount} 个 Pi 工具`,
-      "deterministic helpers": "确定性脚本",
-      "eval cases": "回归用例",
+      "21 tools": `${storageOpsEvidenceFacts.toolsCount} 个工具`,
+      "Web API + MCP": "Web API + MCP",
+      "safe reports": "安全报告",
     },
   },
 } as const;

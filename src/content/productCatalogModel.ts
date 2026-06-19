@@ -111,8 +111,8 @@ export function productCatalogModel(locale: Locale) {
       href: storageops.href,
       stats: [
         `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`,
-        `${storageOpsEvidenceFacts.toolsCount} Pi tools`,
-        "golden-case evals",
+        `${storageOpsEvidenceFacts.toolsCount} registered tools`,
+        "CLI / Web API / MCP",
       ],
     },
   ];
