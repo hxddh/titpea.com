@@ -23,7 +23,7 @@ export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> =
   httpmon: {
     ogImage: siteConfig.assets.og.httpmon,
     visual: "httpmonTerminal",
-    expectedText: (copy, locale) => [copy.headline, locale === "en" ? "Capture path" : "捕获路径"],
+    expectedText: (copy, locale) => [copy.headline, locale === "en" ? "Capture path" : "工作方式"],
   },
   "world-clock": {
     ogImage: siteConfig.assets.og["world-clock"],
