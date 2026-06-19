@@ -1,5 +1,5 @@
 export type Locale = "en" | "zh";
-export type ProductSlug = "s3-turbo-list" | "storageops" | "world-clock" | "douban-movie-rating";
+export type ProductSlug = "s3-turbo-list" | "storageops" | "httpmon" | "world-clock" | "douban-movie-rating";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;

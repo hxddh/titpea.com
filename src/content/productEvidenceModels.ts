@@ -75,6 +75,52 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       })),
     },
   },
+  httpmon: {
+    en: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "runChain",
+      kicker: "Capture path",
+      title: "Wrap, inspect, keep moving",
+      body: "httpmon puts inspection around an existing command. The command still receives its normal response stream; httpmon shows the traffic beside it.",
+      cards: [
+        {
+          label: "Wrap",
+          value: "01",
+          body: "Run `httpmon` before curl, aws, Python, Node, or another proxy-aware command.",
+        },
+        {
+          label: "Inject",
+          value: "02",
+          body: "It supplies the local proxy address and an ephemeral CA through the child process environment.",
+        },
+        {
+          label: "Inspect",
+          value: "03",
+          body: "Read request and response headers, decoded body previews, status, and timing in real time.",
+        },
+        {
+          label: "Keep",
+          value: "04",
+          body: "Write NDJSON, HAR, or a recording when the session needs to be replayed or shared.",
+        },
+      ],
+    },
+    zh: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "runChain",
+      kicker: "捕获路径",
+      title: "包一层，看清楚，继续跑",
+      body: "httpmon 把检查能力包在原命令外面。子进程仍按原样收到响应，httpmon 在旁边实时展示流量。",
+      cards: [
+        { label: "包装命令", value: "01", body: "在 curl、aws、Python、Node 或其他支持代理的命令前加上 `httpmon`。" },
+        { label: "注入配置", value: "02", body: "它通过子进程环境传入本地代理地址和临时 CA。" },
+        { label: "查看流量", value: "03", body: "实时查看请求和响应 header、解压后的 body 预览、状态码和耗时。" },
+        { label: "保留现场", value: "04", body: "需要复现或分享时，写出 NDJSON、HAR 或录制文件。" },
+      ],
+    },
+  },
 };
 
 export const productEvidenceModel = (slug: ProductSlug, locale: Locale) =>

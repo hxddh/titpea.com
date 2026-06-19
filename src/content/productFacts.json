@@ -15,7 +15,15 @@
   "https-traffic-inspector": {
     "source": "manual",
     "repository": "hxddh/https-traffic-inspector",
-    "stableFacts": ["HTTP/HTTPS inspection", "CLI traffic evidence", "request and response capture"]
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "stableFacts": [
+      "local MITM proxy",
+      "HTTP/HTTPS request and response capture",
+      "NDJSON and HAR export",
+      "record and replay",
+      "terminal UI"
+    ]
   },
   "world-clock": {
     "source": "chrome-web-store",

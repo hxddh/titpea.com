@@ -104,6 +104,13 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       },
     },
   },
+  httpmon: browserInside(
+    { en: "See traffic without changing the command", zh: "不改命令，也能看清流量" },
+    {
+      en: "httpmon starts a local proxy for one subprocess, injects the needed proxy and CA settings, then removes everything when that command exits.",
+      zh: "httpmon 只为当前子进程启动本地代理，注入所需的代理和 CA 设置；命令退出后，相关内容随即清理。",
+    },
+  ),
   "world-clock": browserInside(
     { en: "Time, checked quickly", zh: "查时间应该很短" },
     {

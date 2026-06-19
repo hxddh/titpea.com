@@ -9,11 +9,14 @@ const content = `${fs.readFileSync(productFile, "utf8")}\n${fs.readFileSync(cata
 const facts = JSON.parse(factsContent);
 
 const s3Facts = facts["s3-turbo-list"];
+const httpmonFacts = facts["https-traffic-inspector"];
 const chromeFacts = [facts["world-clock"], facts["douban-movie-rating"]];
 const requiredFacts = [
   s3Facts.licenseLabel,
   s3Facts.latestRelease,
   ...s3Facts.stableFacts.filter((fact) => fact === "Agent-safe JSON"),
+  httpmonFacts.licenseLabel,
+  ...httpmonFacts.stableFacts,
 ];
 const forbiddenFacts = [
   "MIT License",
@@ -58,4 +61,6 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Product facts verified: s3-turbo-list ${s3Facts.licenseLabel} / ${s3Facts.latestRelease}`);
+console.log(
+  `Product facts verified: s3-turbo-list ${s3Facts.licenseLabel} / ${s3Facts.latestRelease}; httpmon ${httpmonFacts.licenseLabel}`,
+);

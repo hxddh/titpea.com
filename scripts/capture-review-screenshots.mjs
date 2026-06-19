@@ -15,6 +15,8 @@ const targets = [
   { route: "/zh/s3-turbo-list/", name: "s3-turbo-list-zh" },
   { route: "/storageops/", name: "storageops" },
   { route: "/zh/storageops/", name: "storageops-zh" },
+  { route: "/httpmon/", name: "httpmon" },
+  { route: "/zh/httpmon/", name: "httpmon-zh" },
   { route: "/world-clock/", name: "world-clock" },
   { route: "/douban-movie-rating/", name: "douban-movie-rating" },
 ];
@@ -81,7 +83,11 @@ for (const viewport of viewports) {
       await capture(page, viewport, target, "-menu-open");
     }
 
-    if (target.route.includes("s3-turbo-list") || target.route.includes("storageops")) {
+    if (
+      target.route.includes("s3-turbo-list") ||
+      target.route.includes("storageops") ||
+      target.route.includes("httpmon")
+    ) {
       await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
       await page.waitForTimeout(120);
       await capture(page, viewport, target, "-sticky-scroll");

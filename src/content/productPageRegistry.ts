@@ -20,6 +20,11 @@ export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> =
     visual: "storageAgent",
     expectedText: (copy, locale) => [copy.headline, productRegistryCopy[locale].skillsAndTools],
   },
+  httpmon: {
+    ogImage: siteConfig.assets.og.httpmon,
+    visual: "httpmonTerminal",
+    expectedText: (copy, locale) => [copy.headline, locale === "en" ? "Capture path" : "捕获路径"],
+  },
   "world-clock": {
     ogImage: siteConfig.assets.og["world-clock"],
     visual: "worldClockScreenshot",

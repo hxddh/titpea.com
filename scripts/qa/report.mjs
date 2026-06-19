@@ -7,9 +7,12 @@ export function failureReasons(result) {
     !isAsset &&
     (result.path.includes("s3-turbo-list") ||
       result.path.includes("storageops") ||
+      result.path.includes("httpmon") ||
       result.path.includes("world-clock") ||
       result.path.includes("douban-movie-rating"));
-  const isMainProductPage = !isAsset && (result.path.includes("s3-turbo-list") || result.path.includes("storageops"));
+  const isMainProductPage =
+    !isAsset &&
+    (result.path.includes("s3-turbo-list") || result.path.includes("storageops") || result.path.includes("httpmon"));
   const isBrowserProductPage =
     !isAsset && (result.path.includes("world-clock") || result.path.includes("douban-movie-rating"));
   const navOk = isDesktop

@@ -1,0 +1,34 @@
+---
+import type { HttpmonTerminalVisualModel } from "../../content/visualModels";
+
+interface Props {
+  visual: HttpmonTerminalVisualModel;
+}
+
+const { visual } = Astro.props;
+---
+
+<div class="httpmon-terminal-visual" aria-label={visual.label}>
+  <div class="httpmon-terminal-bar">
+    <span>{visual.kicker}</span>
+    <span>{visual.status}</span>
+  </div>
+  <div class="httpmon-terminal-command">
+    <span>$</span>
+    <strong>{visual.command}</strong>
+  </div>
+  <div class="httpmon-terminal-request">
+    <span>{visual.requestLabel}</span>
+    <strong>{visual.method} {visual.url}</strong>
+    <p>{visual.requestMeta}</p>
+  </div>
+  <div class="httpmon-terminal-response">
+    <span>{visual.responseLabel}</span>
+    <strong>{visual.response}</strong>
+    <p>{visual.responseMeta}</p>
+    <code>{visual.body}</code>
+  </div>
+  <div class="httpmon-terminal-foot">
+    {visual.footnotes.map((item) => <span>{item}</span>)}
+  </div>
+</div>

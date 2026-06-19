@@ -15,7 +15,12 @@ export type ProductCopyCardSource = Extract<
   keyof ProductCopy,
   "positioning" | "features" | "workflow" | "automation" | "examples"
 >;
-export type VisualPolicy = "s3Benchmark" | "storageAgent" | "worldClockScreenshot" | "doubanScreenshot";
+export type VisualPolicy =
+  | "s3Benchmark"
+  | "storageAgent"
+  | "httpmonTerminal"
+  | "worldClockScreenshot"
+  | "doubanScreenshot";
 export type ProductGroup = "storage" | "browser";
 
 export type ArchetypeSectionSpec = {

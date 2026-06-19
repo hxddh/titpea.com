@@ -33,6 +33,7 @@ assertNoMatch(
   [
     "src/content/products/s3-turbo-list.ts",
     "src/content/products/storageops.ts",
+    "src/content/products/httpmon.ts",
     "src/content/products/world-clock.ts",
     "src/content/products/douban-movie-rating.ts",
   ],
@@ -114,6 +115,7 @@ assertNoMatch(
   [
     "src/content/products/s3-turbo-list.ts",
     "src/content/products/storageops.ts",
+    "src/content/products/httpmon.ts",
     "src/content/products/world-clock.ts",
     "src/content/products/douban-movie-rating.ts",
   ],

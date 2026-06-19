@@ -42,6 +42,15 @@ const images = [
     visual: "agent",
   },
   {
+    file: "og-httpmon.png",
+    eyebrow: "httpmon",
+    title: "See CLI HTTP traffic",
+    body: "A local terminal inspector for request and response evidence, HAR export, recording, and replay.",
+    accent: "#16854a",
+    mark: "HTTP",
+    visual: "terminal",
+  },
+  {
     file: "og-world-clock.png",
     eyebrow: "World Clock",
     title: "A timezone feed in one click",
@@ -93,6 +102,20 @@ function visualPanel(kind, accent, mark) {
       <text x="146" y="244" text-anchor="middle" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="15">tools</text>
       <text x="228" y="244" text-anchor="middle" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="15">evals</text>
       <text x="28" y="310" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="16">bounded evidence</text>
+    </g>`;
+  }
+
+  if (kind === "terminal") {
+    return `<g transform="translate(786 102)">
+      <rect width="324" height="368" rx="18" fill="#07110b" stroke="#193d27"/>
+      <text x="26" y="44" fill="#8ebca0" font-family="SFMono-Regular, Consolas, monospace" font-size="15">httpmon · capturing</text>
+      <path d="M0 66h324M0 126h324M0 204h324M0 300h324" stroke="#193d27"/>
+      <text x="26" y="104" fill="#72de91" font-family="SFMono-Regular, Consolas, monospace" font-size="14">$ httpmon curl ...</text>
+      <text x="26" y="156" fill="#72de91" font-family="SFMono-Regular, Consolas, monospace" font-size="13">REQUEST #1</text>
+      <text x="26" y="184" fill="#f0fff4" font-family="SFMono-Regular, Consolas, monospace" font-size="14">GET api.github.com</text>
+      <text x="26" y="236" fill="#72de91" font-family="SFMono-Regular, Consolas, monospace" font-size="13">RESPONSE</text>
+      <text x="26" y="264" fill="#f0fff4" font-family="SFMono-Regular, Consolas, monospace" font-size="14">200 OK · 245ms</text>
+      <text x="26" y="336" fill="#8ebca0" font-family="SFMono-Regular, Consolas, monospace" font-size="13">HTTP / HTTPS · HAR</text>
     </g>`;
   }
 

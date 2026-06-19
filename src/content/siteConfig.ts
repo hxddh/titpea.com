@@ -12,6 +12,7 @@ export const siteConfig = {
     storageops: "https://github.com/hxddh/storageops",
     storageopsQuickStart: "https://github.com/hxddh/storageops#quick-start",
     httpmon: "https://github.com/hxddh/https-traffic-inspector",
+    httpmonQuickStart: "https://github.com/hxddh/https-traffic-inspector#usage",
     worldClockChrome: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
     doubanChrome:
       "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
@@ -23,6 +24,7 @@ export const siteConfig = {
       about: "/assets/og-about.png",
       "s3-turbo-list": "/assets/og-s3-turbo-list.png",
       storageops: "/assets/og-storageops.png",
+      httpmon: "/assets/og-httpmon.png",
       "world-clock": "/assets/og-world-clock.png",
       "douban-movie-rating": "/assets/og-douban-movie-rating.png",
     } satisfies Record<ProductSlug | "home" | "about", string>,

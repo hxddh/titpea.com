@@ -1,4 +1,4 @@
-import { externalProjects, indexedProduct, localizedProductTitle } from "./productIndex";
+import { indexedProduct, localizedProductTitle } from "./productIndex";
 import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
 import { s3TurboListFacts } from "./productFacts";
 import { catalogCopy } from "./i18n/pageCopy";
@@ -15,7 +15,7 @@ export type ProductCatalogItem = {
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
-  group: "storage" | "browser" | "external";
+  group: "storage" | "browser";
 };
 
 export type EvidenceSummary = {
@@ -32,7 +32,7 @@ export function productCatalogModel(locale: Locale) {
   const storageops = indexedProduct("storageops", locale);
   const worldClock = indexedProduct("world-clock", locale);
   const douban = indexedProduct("douban-movie-rating", locale);
-  const httpmon = externalProjects["https-traffic-inspector"];
+  const httpmon = indexedProduct("httpmon", locale);
   const storage: ProductCatalogItem[] = [
     {
       id: "s3-turbo-list",
@@ -61,7 +61,7 @@ export function productCatalogModel(locale: Locale) {
       group: "storage",
     },
     {
-      id: "https-traffic-inspector",
+      id: "httpmon",
       number: "03",
       verb: "Inspect",
       name: httpmon.name,
@@ -69,7 +69,8 @@ export function productCatalogModel(locale: Locale) {
       text: copy.httpmon,
       tagline: copy.httpmonTagline,
       displayRole: copy.httpmonRole,
-      group: "external",
+      slug: "httpmon",
+      group: "storage",
     },
   ];
 

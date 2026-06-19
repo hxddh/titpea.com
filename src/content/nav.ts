@@ -32,7 +32,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
           showInPrimary: true,
         },
         { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops", showInPrimary: true },
-        { label: "httpmon", href: siteConfig.externalLinks.httpmon, external: true },
+        { label: "httpmon", href: pathFor(locale, "httpmon"), current: "httpmon", showInPrimary: true },
       ],
     },
     {

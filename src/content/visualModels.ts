@@ -32,13 +32,34 @@ export type StorageAgentVisualModel = {
   flow: readonly [string, string];
 };
 
+export type HttpmonTerminalVisualModel = {
+  kind: "httpmonTerminal";
+  label: string;
+  kicker: string;
+  status: string;
+  command: string;
+  requestLabel: string;
+  method: string;
+  url: string;
+  requestMeta: string;
+  responseLabel: string;
+  response: string;
+  responseMeta: string;
+  body: string;
+  footnotes: string[];
+};
+
 export type ScreenshotVisualModel = {
   kind: "worldClockScreenshot" | "doubanScreenshot";
   label: string;
   images: Array<{ src: string; alt: string; className?: string }>;
 };
 
-export type ProductVisualModel = S3BenchmarkVisualModel | StorageAgentVisualModel | ScreenshotVisualModel;
+export type ProductVisualModel =
+  | S3BenchmarkVisualModel
+  | StorageAgentVisualModel
+  | HttpmonTerminalVisualModel
+  | ScreenshotVisualModel;
 
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string): ProductVisualModel {
   if (kind === "s3Benchmark") {
@@ -97,6 +118,41 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
         },
       ],
       flow: copy.flow,
+    };
+  }
+
+  if (kind === "httpmonTerminal") {
+    const copy = {
+      en: {
+        kicker: "httpmon · local proxy",
+        status: "capturing",
+        requestLabel: "REQUEST #1",
+        requestMeta: "Host: api.github.com · Accept: */*",
+        responseLabel: "RESPONSE",
+        response: "HTTP/1.1 200 OK",
+        responseMeta: "Content-Type: application/json · 245ms",
+        body: '{"login":"octocat","id":583231,...}',
+        footnotes: ["HTTPS intercepted locally", "original stream forwarded unchanged"],
+      },
+      zh: {
+        kicker: "httpmon · 本地代理",
+        status: "正在捕获",
+        requestLabel: "请求 #1",
+        requestMeta: "Host: api.github.com · Accept: */*",
+        responseLabel: "响应",
+        response: "HTTP/1.1 200 OK",
+        responseMeta: "Content-Type: application/json · 245ms",
+        body: '{"login":"octocat","id":583231,...}',
+        footnotes: ["HTTPS 仅在本地解密查看", "原始流量继续转发给命令"],
+      },
+    }[locale];
+    return {
+      kind,
+      label,
+      ...copy,
+      command: "httpmon curl https://api.github.com/users/octocat",
+      method: "GET",
+      url: "https://api.github.com/users/octocat",
     };
   }
 

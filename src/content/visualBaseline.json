@@ -7,10 +7,13 @@
     { "path": "/s3-turbo-list/", "viewport": "mobile", "state": "faq" },
     { "path": "/storageops/", "viewport": "desktop", "state": "top" },
     { "path": "/storageops/", "viewport": "mobile", "state": "faq" },
+    { "path": "/httpmon/", "viewport": "desktop", "state": "top" },
+    { "path": "/httpmon/", "viewport": "mobile", "state": "faq" },
     { "path": "/world-clock/", "viewport": "mobile", "state": "top" },
     { "path": "/douban-movie-rating/", "viewport": "desktop", "state": "top" },
     { "path": "/zh/", "viewport": "mobile", "state": "menu" },
     { "path": "/zh/s3-turbo-list/", "viewport": "mobile", "state": "faq" },
-    { "path": "/zh/storageops/", "viewport": "mobile", "state": "faq" }
+    { "path": "/zh/storageops/", "viewport": "mobile", "state": "faq" },
+    { "path": "/zh/httpmon/", "viewport": "mobile", "state": "faq" }
   ]
 }

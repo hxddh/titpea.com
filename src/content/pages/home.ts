@@ -3,7 +3,7 @@ import { productCatalogModel } from "../productCatalogModel";
 import { siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
-import type { Locale } from "../../lib/site";
+import { pathFor, type Locale } from "../../lib/site";
 
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
@@ -36,7 +36,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       actions: [
         { label: "s3-turbo-list", href: catalog.featuredProductPath, style: "primary" },
         { label: "StorageOps", href: catalog.secondaryProductPath, style: "ghost" },
-        { label: "httpmon", href: siteConfig.externalLinks.httpmon, style: "ghost" },
+        { label: "httpmon", href: pathFor(locale, "httpmon"), style: "ghost" },
       ],
     },
     storage: {
