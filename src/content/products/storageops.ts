@@ -242,7 +242,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       workflow: [
         {
           title: "提交问题",
-          body: '运行 `storageops`，或使用 `storageops "getting 429 SlowDown"`、`storageops @error.log`，也可以从管道输入。',
+          body: "运行 `storageops` 开始诊断。也可传入问题描述、`@error.log`，或从管道输入。",
           intent: "workflow",
           surface: "agent",
         },
