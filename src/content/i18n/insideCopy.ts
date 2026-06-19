@@ -6,7 +6,7 @@ export const insideValueCopy = {
       "zero hints": "zero hints",
     },
     zh: {
-      "zero hints": "零 hints",
+      "zero hints": "无需 hints",
     },
   },
   s3ArtifactLabels: {

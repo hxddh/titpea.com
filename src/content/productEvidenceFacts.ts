@@ -28,17 +28,17 @@ export const s3EvidenceFacts = {
   ] satisfies S3BenchmarkRun[],
   headlineRuns: [
     {
-      label: { en: "benchmark", zh: "benchmark" },
+      label: { en: "benchmark", zh: "测试规模" },
       value: "1M objects",
       body: { en: "Alibaba Cloud OSS third-party run", zh: "Alibaba Cloud OSS 第三方测试" },
     },
     {
-      label: { en: "speedup", zh: "speedup" },
+      label: { en: "speedup", zh: "用时对比" },
       value: "~55s to ~19s",
-      body: { en: "single stream vs -c 8", zh: "single stream vs -c 8" },
+      body: { en: "single stream vs -c 8", zh: "单线程与 -c 8 对比" },
     },
     {
-      label: { en: "release", zh: "release" },
+      label: { en: "release", zh: "版本" },
       value: s3TurboListFacts.licenseLabel ?? "current license",
       body: {
         en: `${s3TurboListFacts.latestRelease ?? "current release"} and later`,
@@ -58,7 +58,7 @@ export const s3EvidenceFacts = {
       label: { en: "Startup discovery", zh: "启动发现" },
       body: {
         en: "Delimiter probes find real prefix boundaries before a first recursive list fans out.",
-        zh: "少量 delimiter probe 找真实前缀边界，第一次递归 list 也能并发。",
+        zh: "通过少量 delimiter probe 找到真实前缀边界，让第一次递归 list 就能并发。",
       },
     },
     {
@@ -72,7 +72,7 @@ export const s3EvidenceFacts = {
       label: { en: "Artifact checks", zh: "产物校验" },
       body: {
         en: "Parquet, manifests, hashes, row counts, and schema metadata keep CI and agents honest.",
-        zh: "Parquet、运行记录、hash、行数和 schema 元数据让结果能被 CI 和 agent 复查。",
+        zh: "Parquet、运行记录、哈希、行数和 schema 元数据，让 CI 和 Agent 可以复查结果。",
       },
     },
   ],
@@ -83,7 +83,7 @@ export const s3EvidenceFacts = {
       body: { en: "first recursive list can run in parallel", zh: "第一次递归 list 就能并发" },
     },
     {
-      label: { en: "OSS benchmark", zh: "OSS benchmark" },
+      label: { en: "OSS benchmark", zh: "OSS 测试" },
       value: "~19s",
       body: { en: "1M objects at -c 8", zh: "1M 对象，-c 8" },
     },
@@ -129,7 +129,7 @@ export const storageOpsEvidenceFacts = {
       value: "golden",
       body: {
         en: "Golden cases and size gates keep the agent package compact and repeatable.",
-        zh: "Golden cases 和 size gates 限制输出口径，避免 agent 漂移。",
+        zh: "Golden cases 和 size gates 约束输出，避免 Agent 的行为漂移。",
       },
     },
   ] satisfies EvidenceCard[],

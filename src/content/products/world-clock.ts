@@ -115,13 +115,13 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
         {
           title: "它不是什么",
-          body: "不是排会工具，也不是日历替代品。它只是一眼看时间的浏览器弹窗。",
+          body: "不是排会工具，也不替代日历。它只是一个用来快速看时间的浏览器弹窗。",
           intent: "boundary",
           surface: "browser",
         },
         {
-          title: "打开后看到什么",
-          body: "城市名、城市代码、UTC 偏移、状态标签、实时秒数、日期，以及浅色和深色两种显示风格。",
+          title: "打开后能看到什么",
+          body: "城市名、城市代码、UTC 偏移、状态、秒数和日期；还可切换浅色与深色主题。",
           intent: "fit",
           surface: "browser",
         },
@@ -129,14 +129,14 @@ export const worldClockProduct: BrowserExtensionProduct = {
       featuresLabel: "能力",
       features: [
         {
-          title: "城市时间行",
-          body: "每个城市一行，左侧是城市和时区，中间是状态，右侧是本地时间和日期。",
+          title: "一行一个城市",
+          body: "每个城市占一行：左侧是城市和时区，中间是状态，右侧是本地时间和日期。",
           intent: "capability",
           surface: "browser",
         },
         {
           title: "浅色 / 深色",
-          body: "真实界面有纸张质感的浅色主题，也有终端感更强的深色主题。",
+          body: "提供纸张质感的浅色主题，也有终端感更强的深色主题。",
           intent: "capability",
           surface: "browser",
         },
@@ -155,12 +155,12 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
       ],
       rationaleLabel: "详情",
-      rationaleTitle: "小、快，直接运行在浏览器里",
+      rationaleTitle: "小而快，打开就能看",
       rationaleBody: [
         "该扩展在 Chrome Web Store 中归类为 Tools，由 titpea.com 提供。",
         "适合远程协作、旅行安排，或快速确认某个城市是否处于工作时间。",
       ],
-      faqLabel: "问题与用法",
+      faqLabel: "常见问题",
       faq: [
         {
           title: "会收集我的位置吗？",

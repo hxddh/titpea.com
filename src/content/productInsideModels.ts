@@ -22,7 +22,7 @@ const storageOpsValue = (locale: Locale, value: string) => {
 
 const browserInside = (title: LocalizedText, body: LocalizedText): Record<Locale, ProductInsideModel> => ({
   en: { id: "inside", kind: "inside", kicker: "A look inside", title: title.en, body: body.en },
-  zh: { id: "inside", kind: "inside", kicker: "内部视角", title: title.zh, body: body.zh },
+  zh: { id: "inside", kind: "inside", kicker: "看一眼", title: title.zh, body: body.zh },
 });
 
 export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsideModel>> = {
@@ -49,9 +49,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "内部视角",
-      title: "默认路径保留可检查产物",
-      body: "s3-turbo-list 聚焦 list / diff：分段 list、断点恢复、trace JSONL、dry-run plan、运行记录和 Parquet 输出都在正常路径里。",
+      kicker: "看一眼",
+      title: "长任务也有迹可循",
+      body: "s3-turbo-list 只做 list / diff。分段 list、断点续跑、trace JSONL、dry-run plan、运行记录和 Parquet 输出，都是默认流程的一部分。",
       panel: {
         kind: "metricWorkbench",
         label: "s3-turbo-list run workbench",
@@ -88,9 +88,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "内部视角",
-      title: "围绕 Pi 的诊断系统",
-      body: "StorageOps 把 skills、注册工具、解析器、分析器、历史搜索、Web API、MCP 和凭据脱敏组合到 Pi 周围，用来排查 S3 兼容故障。",
+      kicker: "看一眼",
+      title: "Pi 外面的一层诊断能力",
+      body: "StorageOps 围绕 Pi 组织技能、注册工具、解析器、分析器、历史检索、Web API、MCP 和凭据脱敏，用来排查 S3 兼容故障。",
       panel: {
         kind: "agentEvidence",
         label: "StorageOps skills and tools summary",
@@ -105,24 +105,24 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     },
   },
   httpmon: browserInside(
-    { en: "See traffic without changing the command", zh: "不改命令，也能看清流量" },
+    { en: "See traffic without changing the command", zh: "不改命令，直接查看请求" },
     {
       en: "httpmon starts a local proxy for one subprocess, injects the needed proxy and CA settings, then removes everything when that command exits.",
-      zh: "httpmon 只为当前子进程启动本地代理，注入所需的代理和 CA 设置；命令退出后，相关内容随即清理。",
+      zh: "httpmon 只为当前子进程启动本地代理，并注入所需的代理和 CA 设置。命令退出后，临时内容会自动清理。",
     },
   ),
   "world-clock": browserInside(
-    { en: "Time, checked quickly", zh: "查时间应该很短" },
+    { en: "Time, checked quickly", zh: "看一眼，就知道几点" },
     {
       en: "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task.",
-      zh: "世界时钟不是排期系统。它是一个快速上下文工具：打开弹窗，看一眼城市时间、工作时段和日期，然后回到当前任务。",
+      zh: "世界时钟不是排期工具。打开弹窗，一眼看清城市时间、工作时段和日期，然后继续手头的事。",
     },
   ),
   "douban-movie-rating": browserInside(
-    { en: "Ratings without leaving Douban", zh: "不离开豆瓣，对照评分" },
+    { en: "Ratings without leaving Douban", zh: "不离开豆瓣，也能对照评分" },
     {
       en: "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading.",
-      zh: "豆瓣电影评分助手只补充参考信息：匹配到影片时，把 IMDb、Rotten Tomatoes 和 Metacritic 放进豆瓣详情页，原来的阅读节奏不变。",
+      zh: "豆瓣电影评分助手只补充参考信息。匹配到影片后，它会把 IMDb、Rotten Tomatoes 和 Metacritic 放到豆瓣详情页，不打断原本的阅读。",
     },
   ),
 };

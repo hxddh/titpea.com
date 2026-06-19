@@ -105,8 +105,8 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       title: "豆瓣电影评分助手",
       description: "在豆瓣电影页面补充 IMDb、Rotten Tomatoes 和 Metacritic 评分的 Chrome 扩展。",
       eyebrow: "Chrome 扩展",
-      headline: "把海外评分补到豆瓣电影页",
-      lead: "不替代豆瓣页面，只在电影详情里补上 IMDb、Rotten Tomatoes 和 Metacritic 信息，让你原地对照不同评分体系。",
+      headline: "在豆瓣页对照海外评分",
+      lead: "不改变豆瓣页面，只在电影详情里补充 IMDb、Rotten Tomatoes 和 Metacritic 信息，方便对照不同评分体系。",
       primaryCta: {
         label: "安装扩展",
         href: siteConfig.externalLinks.doubanChrome,
@@ -125,13 +125,13 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "它不是什么",
-          body: "不是评分权威，也不是推荐引擎。它只是把外部评分补到你正在看的豆瓣页面里。",
+          body: "不是评分权威，也不是推荐引擎。它只是把外部评分放到你正在看的豆瓣页面里。",
           intent: "boundary",
           surface: "browser",
         },
         {
-          title: "页面里会多什么",
-          body: "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型/片长信息、直接跳转链接，以及中英文片名匹配。",
+          title: "补充哪些信息",
+          body: "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型和片长、跳转链接，以及中英文片名匹配。",
           intent: "fit",
           surface: "browser",
         },
@@ -152,7 +152,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "Metacritic",
-          body: "有可用数据时，继续补充 Metacritic 分数。",
+          body: "有可用数据时，显示 Metacritic 分数。",
           intent: "capability",
           surface: "browser",
         },
@@ -170,12 +170,12 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
       ],
       rationaleLabel: "详情",
-      rationaleTitle: "一个页面里看完中外电影评分",
+      rationaleTitle: "在同一页对照不同评分",
       rationaleBody: [
-        "Chrome Web Store 信息显示，该扩展属于 Entertainment 分类，由 titpea.com 提供。",
-        "商店隐私说明显示开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
+        "Chrome Web Store 将该扩展归类为 Entertainment，由 titpea.com 提供。",
+        "商店隐私说明显示，开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
       ],
-      faqLabel: "问题与用法",
+      faqLabel: "常见问题",
       faq: [
         {
           title: "匹配不到电影时怎么办？",
@@ -183,7 +183,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "它会替代豆瓣评分吗？",
-          body: "不会。豆瓣仍然是主页面，它只是在旁边补充 IMDb 或 Rotten Tomatoes，方便原地对比。",
+          body: "不会。豆瓣仍然是主页面；扩展只是在旁边补充 IMDb 或 Rotten Tomatoes，方便对比。",
         },
       ],
     },
