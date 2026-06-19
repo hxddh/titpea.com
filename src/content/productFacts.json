@@ -15,7 +15,6 @@
   "https-traffic-inspector": {
     "source": "manual",
     "repository": "hxddh/https-traffic-inspector",
-    "licenseKey": "mit",
     "licenseLabel": "MIT",
     "stableFacts": [
       "local MITM proxy",
