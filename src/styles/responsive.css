@@ -34,6 +34,7 @@
 
   .home-evidence,
   .home-browser-band,
+  .about-focus-section,
   .split-content {
     grid-template-columns: 1fr;
     gap: 34px;
@@ -41,6 +42,7 @@
 
   .catalog-grid,
   .about-product-grid,
+  .browser-tool-list.compact,
   .positioning-grid,
   .features-grid,
   .workflow-grid,

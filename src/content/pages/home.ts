@@ -1,4 +1,5 @@
 import { ui } from "../i18n/siteCopy";
+import { productCatalogModel } from "../productCatalogModel";
 import { siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
@@ -6,6 +7,7 @@ import type { Locale } from "../../lib/site";
 
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
+  const catalog = productCatalogModel(locale);
   const path = pagePath(locale);
   const alternatePath = pagePath(alternateLocale(locale));
   const description = copy.homeDescription;
@@ -16,8 +18,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
     current: "home",
     path,
     alternatePath,
-    primaryCta: pagePath(locale, "s3-turbo-list"),
-    expectedText: [copy.homeTitle, copy.homeLead],
+    primaryCta: catalog.featuredProductPath,
+    expectedText: [copy.homeTitle, copy.storageTitle, copy.browserTitle],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
       description,
@@ -32,10 +34,20 @@ export function buildHomePage(locale: Locale): HomePageModel {
       title: copy.homeTitle,
       lead: copy.homeLead,
       actions: [
-        { label: "s3-turbo-list", href: pagePath(locale, "s3-turbo-list"), style: "primary" },
-        { label: "StorageOps", href: pagePath(locale, "storageops"), style: "ghost" },
+        { label: "s3-turbo-list", href: catalog.featuredProductPath, style: "primary" },
+        { label: "StorageOps", href: catalog.secondaryProductPath, style: "ghost" },
         { label: "httpmon", href: siteConfig.externalLinks.httpmon, style: "ghost" },
       ],
+    },
+    storage: {
+      label: copy.storageLine,
+      title: copy.storageTitle,
+      items: catalog.storage,
+    },
+    browser: {
+      label: copy.browserLine,
+      title: copy.browserTitle,
+      items: catalog.browser,
     },
   };
 }

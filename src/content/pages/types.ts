@@ -46,6 +46,16 @@ export type HomePageModel = BasePageModel & {
     lead: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
+  storage: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
+  browser: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
 };
 
 export type AboutPageModel = BasePageModel & {
@@ -57,6 +67,20 @@ export type AboutPageModel = BasePageModel & {
     lead: string;
     contactLabel: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
+  };
+  profile: {
+    label: string;
+    title: string;
+    body: string[];
+  };
+  focus: {
+    label: string;
+    items: string[];
+  };
+  products: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
   };
 };
 

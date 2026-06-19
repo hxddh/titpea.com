@@ -26,4 +26,40 @@ const { model } = Astro.props;
       </div>
     </div>
   </section>
+
+  <section class="home-catalog shell">
+    <div class="catalog-heading">
+      <p class="section-kicker">{model.storage.label}</p>
+      <h2>{model.storage.title}</h2>
+    </div>
+    <div class="catalog-grid storage-catalog-grid">
+      {
+        model.storage.items.map((item) => (
+          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
+            <span>{item.displayRole}</span>
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="home-browser-band shell">
+    <div class="browser-band-copy">
+      <p class="section-kicker">{model.browser.label}</p>
+      <h2>{model.browser.title}</h2>
+    </div>
+    <div class="browser-tool-list compact">
+      {
+        model.browser.items.map((item) => (
+          <a href={item.href}>
+            <span>{item.displayRole}</span>
+            <strong>{item.name}</strong>
+            <p>{item.text}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>
