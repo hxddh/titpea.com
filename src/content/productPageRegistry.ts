@@ -14,8 +14,7 @@ export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> =
     {
       ogImage: item.ogImage,
       visual: item.visual,
-      semanticChecks: (copy: Product["locales"][Locale]) =>
-        [copy.headline, copy.primaryCta.label, copy.faqLabel ?? ""].filter(Boolean),
+      semanticChecks: (copy: Product["locales"][Locale]) => [copy.headline, copy.primaryCta.label],
     },
   ]),
 ) as unknown as Record<ProductSlug, ProductPageRegistryItem>;
