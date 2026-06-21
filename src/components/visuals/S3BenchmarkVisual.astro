@@ -17,17 +17,6 @@ const { visual } = Astro.props;
       {visual.meta.map((item) => <span>{item}</span>)}
     </div>
   </div>
-  <div class="benchmark-kpis">
-    {
-      visual.kpis.map((run) => (
-        <div>
-          <span>{run.label}</span>
-          <strong>{run.value}</strong>
-          <p>{run.body}</p>
-        </div>
-      ))
-    }
-  </div>
   <div class="benchmark-layout">
     <div class="throughput-bars" aria-label={visual.barsLabel}>
       <div class="bars-head">
@@ -49,61 +38,18 @@ const { visual } = Astro.props;
     </div>
     <div class="automation-path">
       <span>{visual.pathLabel}</span>
-      <ol>
-        {visual.pathItems.map((item) => <li>{item}</li>)}
-      </ol>
       <p>{visual.pathBody}</p>
     </div>
   </div>
-  <div class="benchmark-secondary-grid">
-    <section class="benchmark-format-card" aria-label={visual.formatLabel}>
-      <div class="benchmark-card-head">
-        <span>{visual.formatLabel}</span>
-        <span>{visual.barsHead[1]}</span>
-      </div>
-      {
-        visual.formats.map((format) => (
-          <div class="benchmark-format-row">
-            <strong>{format.label}</strong>
-            <span>
-              {format.throughput.toLocaleString()}/s · {format.seconds}s
-            </span>
-            <span>{format.size}</span>
-            <small>{format.detail}</small>
-          </div>
-        ))
-      }
-    </section>
-    <section class="benchmark-comparison-card" aria-label={visual.versionLabel}>
-      <span>{visual.versionLabel}</span>
-      <div class="benchmark-version-bars">
-        {
-          visual.versionRuns.map((run) => (
-            <div>
-              <span>{run.label}</span>
-              <div>
-                <i style={`width: ${(run.throughput / visual.maxThroughput) * 100}%`} />
-              </div>
-              <strong>{run.seconds}s</strong>
-            </div>
-          ))
-        }
-      </div>
-      <p>+27.3% objects/s · -21.5% elapsed</p>
-    </section>
-    <section class="benchmark-check-card" aria-label={visual.checkLabel}>
-      <span>{visual.checkLabel}</span>
-      <div>
-        {
-          visual.checks.map((check) => (
-            <p>
-              <strong>{check.value}</strong>
-              {check.label}
-            </p>
-          ))
-        }
-      </div>
-    </section>
+  <div class="benchmark-facts">
+    {
+      visual.facts.map((fact) => (
+        <p>
+          <strong>{fact.value}</strong>
+          {fact.label}
+        </p>
+      ))
+    }
   </div>
   <div class="benchmark-footnotes">
     {visual.footnotes.map((item) => <span>{item}</span>)}

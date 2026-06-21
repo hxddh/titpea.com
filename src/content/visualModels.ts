@@ -11,20 +11,13 @@ export type S3BenchmarkVisualModel = {
   title: string;
   body: string;
   meta: string[];
-  kpis: Array<{ label: string; value: string; body: string }>;
   bars: Array<{ label: string; throughput: number; seconds: number; state?: "best" | "caution" }>;
   maxThroughput: number;
   barsLabel: string;
   barsHead: readonly [string, string];
   pathLabel: string;
-  pathItems: string[];
   pathBody: string;
-  formatLabel: string;
-  formats: Array<{ label: string; throughput: number; seconds: number; size: string; detail: string }>;
-  versionLabel: string;
-  versionRuns: Array<{ label: string; throughput: number; seconds: number }>;
-  checkLabel: string;
-  checks: Array<{ value: string; label: string }>;
+  facts: Array<{ value: string; label: string }>;
   footnotes: string[];
 };
 
@@ -77,32 +70,19 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       title: copy.title,
       body: copy.body,
       meta: [`${s3EvidenceFacts.objectCount} ${copy.objectUnit}`, s3EvidenceFacts.datasetSize, s3EvidenceFacts.version],
-      kpis: s3EvidenceFacts.headlineRuns.map((run) => ({
-        label: run.label[locale],
-        value: run.value,
-        body: run.body[locale],
-      })),
-      bars: s3EvidenceFacts.parallelRuns.map((run) => ({
-        ...run,
-        state: run.label === "c=8" ? "best" : run.label === "c=24" ? "caution" : undefined,
-      })),
+      bars: s3EvidenceFacts.parallelRuns
+        .filter((run) => ["c=1", "c=2", "c=4", "c=8", "c=24", "c=64"].includes(run.label))
+        .map((run) => ({
+          ...run,
+          state: run.label === "c=8" ? "best" : run.label === "c=24" ? "caution" : undefined,
+        })),
       maxThroughput: 54253,
       barsLabel: copy.barsLabel,
       barsHead: copy.barsHead,
       pathLabel: copy.pathLabel,
-      pathItems: s3EvidenceFacts.defaultPath.map((item) => item[locale]),
       pathBody: copy.pathBody,
-      formatLabel: copy.formatLabel,
-      formats: [...s3EvidenceFacts.formatRuns],
-      versionLabel: copy.versionLabel,
-      versionRuns: [...s3EvidenceFacts.versionRuns],
-      checkLabel: copy.checkLabel,
-      checks: [...copy.checks],
-      footnotes: [
-        `${copy.outputPrefix}: ${s3EvidenceFacts.outputLine}`,
-        `${s3EvidenceFacts.environment} · ${s3EvidenceFacts.benchmarkDate}`,
-        s3EvidenceFacts.runtimeLine,
-      ],
+      facts: [...copy.facts],
+      footnotes: [`${s3EvidenceFacts.environment} · ${s3EvidenceFacts.benchmarkDate}`],
     };
   }
 
