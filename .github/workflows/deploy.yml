@@ -53,10 +53,13 @@ jobs:
           npm run visual:check
           npm run review:screens
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: review-screens-${{ github.sha }}
-          path: /tmp/titpea-review-screens
-          if-no-files-found: error
+          path: |
+            /tmp/titpea-review-screens
+            /tmp/titpea-visual-baseline
+          if-no-files-found: warn
 
   deploy:
     needs: validate
