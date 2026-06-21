@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://127.0.0.1:4321";
 const outDir = process.env.REVIEW_SCREENSHOT_DIR ?? "/tmp/titpea-review-screens";
+const minimumScreenshotBytes = 10_000;
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
@@ -55,7 +56,8 @@ async function capture(page, viewport, target, suffix = "") {
   });
   await page.screenshot({ path, fullPage: false });
   const size = fs.statSync(path).size;
-  if (size < 20_000) {
+  // Sparse mobile states compress well; this only guards against blank or truncated captures.
+  if (size < minimumScreenshotBytes) {
     await browser.close();
     throw new Error(`${file} is too small to review (${size} bytes)`);
   }
