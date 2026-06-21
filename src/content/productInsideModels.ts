@@ -1,14 +1,7 @@
-import { storageOpsEvidenceFacts } from "./productEvidenceFacts";
-import { insideValueCopy } from "./i18n/insideCopy";
 import type { ProductInsideModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
 type LocalizedText = Record<Locale, string>;
-
-const storageOpsValue = (locale: Locale, value: string) => {
-  const localized = insideValueCopy.storageOpsValues[locale];
-  return value in localized ? localized[value as keyof typeof localized] : value;
-};
 
 const browserInside = (title: LocalizedText, body: LocalizedText): Record<Locale, ProductInsideModel> => ({
   en: { id: "inside", kind: "inside", kicker: "A look inside", title: title.en, body: body.en },
@@ -73,38 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "A look inside",
-      title: "A diagnosis system around Pi",
-      body: "StorageOps combines skills, registered tools, parsers, analyzers, memory search, Web API, MCP, and secret redaction around Pi for S3-compatible troubleshooting.",
-      panel: {
-        kind: "agentEvidence",
-        label: "StorageOps skills and tools summary",
-        eyebrow: "storageops agent",
-        title: "skills + tools loaded",
-        metrics: storageOpsEvidenceFacts.insideMetrics.map((metric) => ({
-          label: metric.label.en,
-          value: storageOpsValue("en", metric.value),
-          body: metric.body.en,
-        })),
-      },
+      kicker: "What it does",
+      title: "Turn storage evidence into a diagnosis",
+      body: "Give Pi an error, log, configuration, or trace. StorageOps supplies the storage-specific skills and tools needed to explain what happened and what to check next.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "看一眼",
-      title: "Pi 外面的一层诊断能力",
-      body: "StorageOps 围绕 Pi 组织技能、注册工具、解析器、分析器、历史检索、Web API、MCP 和凭据脱敏，用来排查 S3 兼容故障。",
-      panel: {
-        kind: "agentEvidence",
-        label: "StorageOps skills and tools summary",
-        eyebrow: "storageops 诊断系统",
-        title: "skills + tools loaded",
-        metrics: storageOpsEvidenceFacts.insideMetrics.map((metric) => ({
-          label: metric.label.zh,
-          value: storageOpsValue("zh", metric.value),
-          body: metric.body.zh,
-        })),
-      },
+      kicker: "它解决什么",
+      title: "把存储证据变成诊断结论",
+      body: "输入报错、日志、配置或 trace。StorageOps 给 Pi 补上对象存储领域的技能和工具，说明发生了什么，以及下一步该检查什么。",
     },
   },
   httpmon: browserInside(

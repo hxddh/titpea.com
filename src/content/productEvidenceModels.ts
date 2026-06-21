@@ -1,4 +1,3 @@
-import { storageOpsEvidenceFacts } from "./productEvidenceFacts";
 import type { ProductEvidenceModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
@@ -47,27 +46,39 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       id: "evidence",
       kind: "evidence",
       variant: "agentTopology",
-      kicker: "Agent topology",
-      title: "Skills decide; tools collect evidence",
-      body: "StorageOps gives Pi domain skills, registered tools, parsers, analyzers, reports, and secret-redaction rules.",
-      cards: storageOpsEvidenceFacts.capabilityCards.map((card) => ({
-        label: card.label.en,
-        value: card.value,
-        body: card.body.en,
-      })),
+      kicker: "How it reasons",
+      title: "The agent does not start with a guess",
+      body: "StorageOps narrows the failure domain first, then uses the right parser or helper before a report turns evidence into a manual next step.",
+      cards: [
+        {
+          label: "Classify the case",
+          body: "Distinguish access, signing, throttling, consistency, migration, networking, or another storage domain.",
+        },
+        {
+          label: "Read the evidence",
+          body: "Use focused tools for logs, policies, XML errors, HTTP traces, and prior sessions instead of treating every input as plain text.",
+        },
+        {
+          label: "Return a bounded report",
+          body: "Separate likely cause, confidence, supporting evidence, and the change a person should make.",
+        },
+      ],
     },
     zh: {
       id: "evidence",
       kind: "evidence",
       variant: "agentTopology",
-      kicker: "诊断结构",
-      title: "技能做判断，工具找证据",
-      body: "StorageOps 的核心不是提示词，而是给 Pi 一套对象存储诊断能力：领域技能、注册工具、解析器、分析器、报告和凭据脱敏。",
-      cards: storageOpsEvidenceFacts.capabilityCards.map((card) => ({
-        label: card.label.zh,
-        value: card.value,
-        body: card.body.zh,
-      })),
+      kicker: "如何判断",
+      title: "不是先猜原因，再找依据",
+      body: "StorageOps 先收窄问题领域，再调用合适的解析器或工具，最后把证据整理成需要人工执行的下一步。",
+      cards: [
+        { label: "先归类", body: "区分鉴权、签名、限流、一致性、迁移、网络等具体领域。" },
+        {
+          label: "再读证据",
+          body: "按需解析日志、策略、XML 错误、HTTP trace 和历史会话，而不是把所有输入当作一段文本。",
+        },
+        { label: "给出有边界的结论", body: "报告分别说明可能原因、置信度、关键依据，以及需要人来执行的修改。" },
+      ],
     },
   },
   httpmon: {

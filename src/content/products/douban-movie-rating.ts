@@ -14,8 +14,8 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       title: "Douban Movie Rating Assistant",
       description: "A Chrome extension that shows IMDb and Rotten Tomatoes ratings on Douban movie pages.",
       eyebrow: "Chrome Extension",
-      headline: "Global ratings inside Douban",
-      lead: "Douban Movie Rating Assistant adds IMDb, Rotten Tomatoes, and Metacritic context to Douban movie pages while keeping Douban as the page you are reading.",
+      headline: "More rating context inside Douban",
+      lead: "Keep reading the Douban movie page while IMDb, Rotten Tomatoes, and Metacritic appear beside the rating you already know.",
       primaryCta: {
         label: "Install",
         href: siteConfig.externalLinks.doubanChrome,
@@ -105,8 +105,8 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       title: "豆瓣电影评分助手",
       description: "在豆瓣电影页面补充 IMDb、Rotten Tomatoes 和 Metacritic 评分的 Chrome 扩展。",
       eyebrow: "Chrome 扩展",
-      headline: "在豆瓣页对照海外评分",
-      lead: "不改变豆瓣页面，只在电影详情里补充 IMDb、Rotten Tomatoes 和 Metacritic 信息，方便对照不同评分体系。",
+      headline: "在豆瓣页顺手对照其他评分",
+      lead: "不离开豆瓣电影页，IMDb、Rotten Tomatoes 和 Metacritic 会在旁边补充参考信息。",
       primaryCta: {
         label: "安装扩展",
         href: siteConfig.externalLinks.doubanChrome,
