@@ -34,7 +34,8 @@ export function failureReasons(result) {
       result.productIndex.currentCount === 1 &&
       (isDesktop || result.productIndex.linkRows === 1)
     : true;
-  const featuresGridOk = isProductPage && !isAuxCheck ? result.featuresGrid === "grid" : true;
+  const featuresGridOk =
+    isProductPage && !isAuxCheck && result.featuresGrid !== null ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
   const browserVisualOk = result.browserVisual
     ? result.browserVisual.hasChromeCta &&
