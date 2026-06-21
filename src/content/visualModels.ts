@@ -92,23 +92,12 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       pathLabel: copy.pathLabel,
       pathItems: s3EvidenceFacts.defaultPath.map((item) => item[locale]),
       pathBody: copy.pathBody,
-      formatLabel: locale === "zh" ? "输出格式，c=8" : "Output formats at c=8",
+      formatLabel: copy.formatLabel,
       formats: [...s3EvidenceFacts.formatRuns],
-      versionLabel: locale === "zh" ? "单段扫描，对比 v0.20.0" : "Single-segment change from v0.20.0",
+      versionLabel: copy.versionLabel,
       versionRuns: [...s3EvidenceFacts.versionRuns],
-      checkLabel: locale === "zh" ? "可靠性检查" : "Reliability checks",
-      checks:
-        locale === "zh"
-          ? [
-              { value: "6/6", label: "compat-probe 通过" },
-              { value: "0", label: "HTTP 错误" },
-              { value: "2.9%", label: "c=64 三轮标准差" },
-            ]
-          : [
-              { value: "6/6", label: "compat-probe passed" },
-              { value: "0", label: "HTTP errors" },
-              { value: "2.9%", label: "c=64, three-run deviation" },
-            ],
+      checkLabel: copy.checkLabel,
+      checks: [...copy.checks],
       footnotes: [
         `${copy.outputPrefix}: ${s3EvidenceFacts.outputLine}`,
         `${s3EvidenceFacts.environment} · ${s3EvidenceFacts.benchmarkDate}`,

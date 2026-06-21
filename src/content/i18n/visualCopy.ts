@@ -11,6 +11,14 @@ export const visualCopy = {
       pathBody:
         "The service-side limit appears near 55K objects/s in this run. More concurrency is not automatically better, while automatic discovery and runtime splitting keep the work moving.",
       outputPrefix: "Output",
+      formatLabel: "Output formats at c=8",
+      versionLabel: "Single-segment change from v0.20.0",
+      checkLabel: "Reliability checks",
+      checks: [
+        { value: "6/6", label: "compat-probe passed" },
+        { value: "0", label: "HTTP errors" },
+        { value: "2.9%", label: "c=64, three-run deviation" },
+      ],
     },
     zh: {
       kicker: "v0.21.0 实测",
@@ -23,6 +31,14 @@ export const visualCopy = {
       pathBody:
         "本次服务端限制大约出现在 55K 对象/s 附近。提高并发并不一定更快；自动发现和运行时拆分会让任务持续利用可用性能。",
       outputPrefix: "输出",
+      formatLabel: "输出格式，c=8",
+      versionLabel: "单段扫描，对比 v0.20.0",
+      checkLabel: "可靠性检查",
+      checks: [
+        { value: "6/6", label: "compat-probe 通过" },
+        { value: "0", label: "HTTP 错误" },
+        { value: "2.9%", label: "c=64 三轮标准差" },
+      ],
     },
   },
   storageAgent: {
