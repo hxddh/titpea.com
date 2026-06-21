@@ -185,110 +185,85 @@
   line-height: 1.5;
 }
 
-.throughput-bars {
-  display: grid;
-  gap: 10px;
+.benchmark-line-chart {
+  margin: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px;
   background: var(--panel);
 }
 
-.benchmark-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.58fr);
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.bars-head,
-.bar-row {
-  display: grid;
-  grid-template-columns: 100px minmax(0, 1fr) 78px 56px;
-  gap: 12px;
-  align-items: center;
-}
-
-.bars-head {
+.benchmark-line-chart figcaption,
+.benchmark-line-chart p {
   color: #667085;
   font-family: var(--mono);
   font-size: 12px;
 }
 
-.bars-head span:last-child {
-  grid-column: 3 / 5;
-  text-align: right;
-}
-
-.bar-label,
-.bar-row strong,
-.bar-row em {
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-.bar-row em {
-  color: #667085;
-  font-style: normal;
-  text-align: right;
-}
-
-.bar-track {
-  height: 10px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #eef2f7;
-}
-
-.bar-track span {
+.benchmark-line-chart svg {
   display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--ink);
+  width: 100%;
+  height: auto;
+  margin: 14px 0 8px;
 }
 
-.bar-row.is-best .bar-track span,
-.benchmark-version-bars i {
-  background: #16805c;
-}
-
-.bar-row.is-best .bar-label,
-.bar-row.is-best strong {
-  color: #126547;
-}
-
-.bar-row.is-caution .bar-track span {
-  background: #c27a17;
-}
-
-.bar-row.is-caution .bar-label,
-.bar-row.is-caution strong {
-  color: #985b0a;
-}
-
-.benchmark-facts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
-}
-
-.benchmark-facts p {
+.benchmark-line-chart p {
   margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-.benchmark-facts strong {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--ink);
+.chart-axis,
+.chart-guide {
+  stroke: #d8dee8;
+  stroke-width: 1;
+}
+
+.chart-guide {
+  stroke-dasharray: 3 5;
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.chart-point circle {
+  fill: var(--panel);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.chart-point.is-reference circle {
+  fill: #16805c;
+  stroke: #16805c;
+}
+
+.chart-point.is-caution circle {
+  fill: #c27a17;
+  stroke: #c27a17;
+}
+
+.chart-x-label,
+.chart-y-label,
+.chart-annotation {
+  fill: #667085;
   font-family: var(--mono);
-  font-size: 16px;
+  font-size: 12px;
+}
+
+.chart-annotation {
+  fill: var(--ink);
+}
+
+.chart-point.is-reference .chart-annotation {
+  fill: #126547;
+}
+
+.chart-point.is-caution .chart-annotation {
+  fill: #985b0a;
 }
 
 .automation-path {

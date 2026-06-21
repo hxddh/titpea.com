@@ -11,13 +11,9 @@ export type S3BenchmarkVisualModel = {
   title: string;
   body: string;
   meta: string[];
-  bars: Array<{ label: string; throughput: number; seconds: number; state?: "best" | "caution" }>;
-  maxThroughput: number;
-  barsLabel: string;
-  barsHead: readonly [string, string];
-  pathLabel: string;
-  pathBody: string;
-  facts: Array<{ value: string; label: string }>;
+  points: Array<{ label: string; seconds: number; state?: "reference" | "caution" }>;
+  chartLabel: string;
+  chartCaption: string;
   footnotes: string[];
 };
 
@@ -70,18 +66,13 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       title: copy.title,
       body: copy.body,
       meta: [`${s3EvidenceFacts.objectCount} ${copy.objectUnit}`, s3EvidenceFacts.datasetSize, s3EvidenceFacts.version],
-      bars: s3EvidenceFacts.parallelRuns
-        .filter((run) => ["c=1", "c=2", "c=4", "c=8", "c=24", "c=64"].includes(run.label))
-        .map((run) => ({
-          ...run,
-          state: run.label === "c=8" ? "best" : run.label === "c=24" ? "caution" : undefined,
-        })),
-      maxThroughput: 54253,
-      barsLabel: copy.barsLabel,
-      barsHead: copy.barsHead,
-      pathLabel: copy.pathLabel,
-      pathBody: copy.pathBody,
-      facts: [...copy.facts],
+      points: s3EvidenceFacts.parallelRuns.map((run) => ({
+        label: run.label,
+        seconds: run.seconds,
+        state: run.label === "c=8" ? "reference" : run.label === "c=24" ? "caution" : undefined,
+      })),
+      chartLabel: copy.chartLabel,
+      chartCaption: copy.chartCaption,
       footnotes: [`${s3EvidenceFacts.environment} · ${s3EvidenceFacts.benchmarkDate}`],
     };
   }

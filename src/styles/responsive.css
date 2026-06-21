@@ -126,9 +126,7 @@
 
   .benchmark-kpis,
   .agent-manifest-grid,
-  .agent-evidence-grid,
-  .benchmark-layout,
-  .benchmark-facts {
+  .agent-evidence-grid {
     grid-template-columns: 1fr;
   }
 
