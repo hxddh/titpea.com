@@ -1,92 +1,81 @@
-name: Deploy to Cloudflare Pages
+name: Validate and deploy Titpea
 
 on:
+  pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: cloudflare-pages-production
+  group: titpea-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6.0.3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6.4.0
+      - uses: actions/checkout@v6.0.3
+      - uses: actions/setup-node@v6.4.0
         with:
           node-version: 22
           cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Check formatting
-        run: npm run format:check
-
-      - name: Check types
-        run: npm run typecheck
-
-      - name: Check dependency boundaries
-        run: npm run boundaries:check
-
-      - name: Check product facts
-        run: npm run facts:check
-
-      - name: Check architecture
-        run: npm run architecture:check
-
-      - name: Check model contracts
-        run: npm run contracts:check
-
-      - name: Check product page model
-        run: npm run model:check
-
-      - name: Check external fact freshness
-        run: npm run facts:external
-
-      - name: Check site manifest
-        run: npm run manifest:check
-
-      - name: Check OG assets
-        run: npm run assets:check
-
-      - name: Build
-        run: npm run build
-
-      - name: Lint copy
-        run: npm run copy:lint
-
-      - name: Install Playwright browser
-        timeout-minutes: 5
-        run: npx playwright install chromium
-
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run typecheck
+      - run: npm run boundaries:check
+      - run: npm run architecture:check
+      - run: npm run manifest:products
+      - run: npm run facts:check
+      - run: npm run facts:external
+      - run: npm run contracts:check
+      - run: npm run content:check
+      - run: npm run model:check
+      - run: npm run manifest:check
+      - run: npm run security:check
+      - run: npm run assets:check
+      - run: npm run build
+      - run: npm run copy:lint
+      - run: npm run a11y:check
+      - run: npx playwright install chromium
       - name: Page QA
         timeout-minutes: 8
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
           echo $! > /tmp/titpea-preview.pid
           trap 'kill "$(cat /tmp/titpea-preview.pid)"' EXIT
+          ready=false
           for i in {1..30}; do
-            if curl -fsS http://127.0.0.1:4321/ > /dev/null; then
-              break
-            fi
+            if curl -fsS http://127.0.0.1:4321/ > /dev/null; then ready=true; break; fi
             sleep 1
           done
+          if [ "$ready" != true ]; then cat /tmp/titpea-preview.log; exit 1; fi
           npm run qa:pages
           npm run visual:check
           npm run review:screens
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-screens-${{ github.sha }}
+          path: /tmp/titpea-review-screens
+          if-no-files-found: error
 
+  deploy:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v6.0.3
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
       - name: Deploy
-        run: npx wrangler@latest pages deploy dist --project-name=titpea --branch=main
+        run: npx --yes wrangler@4.69.0 pages deploy dist --project-name=titpea --branch=main
         env:
           CLOUDFLARE_ACCOUNT_ID: 21324681fd1a0a66906e582c7894e9e5
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - run: npm run smoke:production

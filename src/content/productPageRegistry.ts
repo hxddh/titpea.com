@@ -1,38 +1,21 @@
-import { siteConfig } from "./siteConfig";
-import { productRegistryCopy } from "./i18n/productRegistryCopy";
-import type { VisualPolicy } from "./productArchetypes";
 import type { Locale, Product, ProductSlug } from "../lib/site";
+import { productManifestBySlug } from "./productManifest";
+import type { VisualPolicy } from "./productArchetypes";
 
 export type ProductPageRegistryItem = {
   ogImage: string;
   visual: VisualPolicy;
-  expectedText: (copy: Product["locales"][Locale], locale: Locale) => string[];
+  semanticChecks: (copy: Product["locales"][Locale], locale: Locale) => string[];
 };
 
-export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> = {
-  "s3-turbo-list": {
-    ogImage: siteConfig.assets.og["s3-turbo-list"],
-    visual: "s3Benchmark",
-    expectedText: (copy, locale) => [copy.headline, productRegistryCopy[locale].automation],
-  },
-  storageops: {
-    ogImage: siteConfig.assets.og.storageops,
-    visual: "storageAgent",
-    expectedText: (copy, locale) => [copy.headline, productRegistryCopy[locale].skillsAndTools],
-  },
-  httpmon: {
-    ogImage: siteConfig.assets.og.httpmon,
-    visual: "httpmonTerminal",
-    expectedText: (copy, locale) => [copy.headline, locale === "en" ? "Capture path" : "工作方式"],
-  },
-  "world-clock": {
-    ogImage: siteConfig.assets.og["world-clock"],
-    visual: "worldClockScreenshot",
-    expectedText: (copy) => [copy.headline, "FAQ"],
-  },
-  "douban-movie-rating": {
-    ogImage: siteConfig.assets.og["douban-movie-rating"],
-    visual: "doubanScreenshot",
-    expectedText: (copy) => [copy.headline, "FAQ"],
-  },
-};
+export const productPageRegistry: Record<ProductSlug, ProductPageRegistryItem> = Object.fromEntries(
+  Object.values(productManifestBySlug).map((item) => [
+    item.slug,
+    {
+      ogImage: item.ogImage,
+      visual: item.visual,
+      semanticChecks: (copy: Product["locales"][Locale]) =>
+        [copy.headline, copy.primaryCta.label, copy.faqLabel ?? ""].filter(Boolean),
+    },
+  ]),
+) as unknown as Record<ProductSlug, ProductPageRegistryItem>;

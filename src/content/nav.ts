@@ -1,6 +1,7 @@
 import { pathFor, type HeaderNavGroup, type HeaderNavItem, type Locale } from "../lib/site";
 import { headerCopy } from "./i18n/navCopy";
 import { siteConfig } from "./siteConfig";
+import { productManifest } from "./productManifest";
 
 export function headerUi(locale: Locale) {
   const copy = headerCopy[locale];
@@ -22,36 +23,17 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
         { label: copy.links.about, href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
-    {
-      label: copy.groups.storage,
-      items: [
-        {
-          label: "s3-turbo-list",
-          href: pathFor(locale, "s3-turbo-list"),
-          current: "s3-turbo-list",
-          showInPrimary: true,
-        },
-        { label: "StorageOps", href: pathFor(locale, "storageops"), current: "storageops", showInPrimary: true },
-        { label: "httpmon", href: pathFor(locale, "httpmon"), current: "httpmon", showInPrimary: true },
-      ],
-    },
-    {
-      label: copy.groups.browser,
-      items: [
-        {
-          label: copy.links.worldClock,
-          href: pathFor(locale, "world-clock"),
-          current: "world-clock",
-          showInPrimary: true,
-        },
-        {
-          label: copy.links.douban,
-          href: pathFor(locale, "douban-movie-rating"),
-          current: "douban-movie-rating",
-          showInPrimary: true,
-        },
-      ],
-    },
+    ...(["storage", "browser"] as const).map((group) => ({
+      label: copy.groups[group],
+      items: productManifest
+        .filter((item) => item.group === group)
+        .map((item) => ({
+          label: item.nav.label ? copy.links[item.nav.label] : item.name,
+          href: pathFor(locale, item.slug),
+          current: item.slug,
+          showInPrimary: item.nav.primary,
+        })),
+    })),
     {
       label: copy.groups.external,
       items: [{ label: "GitHub", href: siteConfig.externalLinks.github, external: true, showInPrimary: true }],

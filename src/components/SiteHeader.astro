@@ -70,44 +70,4 @@ const navGroups = headerNavGroups(locale);
   </div>
 </header>
 
-<script>
-  const mobileMenus = document.querySelectorAll<HTMLDetailsElement>(".mobile-menu");
-
-  mobileMenus.forEach((menu) => {
-    menu.addEventListener("toggle", () => {
-      if (!menu.open) return;
-      mobileMenus.forEach((otherMenu) => {
-        if (otherMenu !== menu) otherMenu.open = false;
-      });
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof Node)) return;
-
-    mobileMenus.forEach((menu) => {
-      if (menu.open && !menu.contains(target)) {
-        menu.open = false;
-      }
-    });
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    mobileMenus.forEach((menu) => {
-      if (menu.open) {
-        menu.open = false;
-        menu.querySelector("summary")?.focus();
-      }
-    });
-  });
-
-  mobileMenus.forEach((menu) => {
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        menu.open = false;
-      });
-    });
-  });
-</script>
+<script is:inline src="/scripts/mobile-menu.js" defer></script>

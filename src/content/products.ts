@@ -4,14 +4,9 @@ import { s3TurboListProduct } from "./products/s3-turbo-list";
 import { storageOpsProduct } from "./products/storageops";
 import { httpmonProduct } from "./products/httpmon";
 import { worldClockProduct } from "./products/world-clock";
+import { productManifest } from "./productManifest";
 
-export const productSlugs: ProductSlug[] = [
-  "s3-turbo-list",
-  "storageops",
-  "httpmon",
-  "world-clock",
-  "douban-movie-rating",
-];
+export const productSlugs = productManifest.map((item) => item.slug) as ProductSlug[];
 
 export const products: Record<ProductSlug, Product> = {
   "s3-turbo-list": s3TurboListProduct,
@@ -21,10 +16,4 @@ export const products: Record<ProductSlug, Product> = {
   "douban-movie-rating": doubanMovieRatingProduct,
 };
 
-export const aboutProducts = [
-  "world-clock",
-  "douban-movie-rating",
-  "s3-turbo-list",
-  "storageops",
-  "httpmon",
-] as ProductSlug[];
+export const aboutProducts = [...productSlugs];

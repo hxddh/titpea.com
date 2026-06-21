@@ -1,4 +1,5 @@
 import type { ProductSlug } from "../lib/site";
+import { productOgImages } from "./productManifest";
 
 export const siteConfig = {
   brand: "Titpea",
@@ -22,11 +23,7 @@ export const siteConfig = {
     og: {
       home: "/assets/og-home.png",
       about: "/assets/og-about.png",
-      "s3-turbo-list": "/assets/og-s3-turbo-list.png",
-      storageops: "/assets/og-storageops.png",
-      httpmon: "/assets/og-httpmon.png",
-      "world-clock": "/assets/og-world-clock.png",
-      "douban-movie-rating": "/assets/og-douban-movie-rating.png",
+      ...productOgImages,
     } satisfies Record<ProductSlug | "home" | "about", string>,
     screenshots: {
       worldClockLight: "/assets/world-clock-light.png",

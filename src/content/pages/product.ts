@@ -68,7 +68,7 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     alternatePath,
     pageClass: contract.pageClass,
     primaryCta: copy.primaryCta.href,
-    expectedText: registry.expectedText(copy, locale),
+    expectedText: registry.semanticChecks(copy, locale),
     seo,
     language: languageLink(locale, alternatePath),
     sectionIndex: contract.sectionIndex,

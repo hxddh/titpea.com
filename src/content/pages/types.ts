@@ -95,7 +95,7 @@ export type ProductCatalogItemModel = {
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
-  group: "storage" | "browser" | "external";
+  group: "storage" | "browser";
 };
 
 export type EvidenceSummaryModel = {
