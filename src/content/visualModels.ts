@@ -12,13 +12,19 @@ export type S3BenchmarkVisualModel = {
   body: string;
   meta: string[];
   kpis: Array<{ label: string; value: string; body: string }>;
-  bars: Array<{ label: string; throughput: number; seconds: number }>;
+  bars: Array<{ label: string; throughput: number; seconds: number; state?: "best" | "caution" }>;
   maxThroughput: number;
   barsLabel: string;
   barsHead: readonly [string, string];
   pathLabel: string;
   pathItems: string[];
   pathBody: string;
+  formatLabel: string;
+  formats: Array<{ label: string; throughput: number; seconds: number; size: string; detail: string }>;
+  versionLabel: string;
+  versionRuns: Array<{ label: string; throughput: number; seconds: number }>;
+  checkLabel: string;
+  checks: Array<{ value: string; label: string }>;
   footnotes: string[];
 };
 
@@ -76,14 +82,38 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
         value: run.value,
         body: run.body[locale],
       })),
-      bars: s3EvidenceFacts.parallelRuns,
-      maxThroughput: 55000,
+      bars: s3EvidenceFacts.parallelRuns.map((run) => ({
+        ...run,
+        state: run.label === "c=8" ? "best" : run.label === "c=24" ? "caution" : undefined,
+      })),
+      maxThroughput: 54253,
       barsLabel: copy.barsLabel,
       barsHead: copy.barsHead,
       pathLabel: copy.pathLabel,
       pathItems: s3EvidenceFacts.defaultPath.map((item) => item[locale]),
       pathBody: copy.pathBody,
-      footnotes: [`${copy.outputPrefix}: ${s3EvidenceFacts.outputLine}`, s3EvidenceFacts.runtimeLine],
+      formatLabel: locale === "zh" ? "输出格式，c=8" : "Output formats at c=8",
+      formats: [...s3EvidenceFacts.formatRuns],
+      versionLabel: locale === "zh" ? "单段扫描，对比 v0.20.0" : "Single-segment change from v0.20.0",
+      versionRuns: [...s3EvidenceFacts.versionRuns],
+      checkLabel: locale === "zh" ? "可靠性检查" : "Reliability checks",
+      checks:
+        locale === "zh"
+          ? [
+              { value: "6/6", label: "compat-probe 通过" },
+              { value: "0", label: "HTTP 错误" },
+              { value: "2.9%", label: "c=64 三轮标准差" },
+            ]
+          : [
+              { value: "6/6", label: "compat-probe passed" },
+              { value: "0", label: "HTTP errors" },
+              { value: "2.9%", label: "c=64, three-run deviation" },
+            ],
+      footnotes: [
+        `${copy.outputPrefix}: ${s3EvidenceFacts.outputLine}`,
+        `${s3EvidenceFacts.environment} · ${s3EvidenceFacts.benchmarkDate}`,
+        s3EvidenceFacts.runtimeLine,
+      ],
     };
   }
 

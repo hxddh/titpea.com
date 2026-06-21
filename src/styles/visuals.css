@@ -140,6 +140,10 @@
   background: var(--line);
 }
 
+.benchmark-visual .benchmark-kpis {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .agent-manifest-grid,
 .agent-evidence-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -246,6 +250,140 @@
   height: 100%;
   border-radius: inherit;
   background: var(--ink);
+}
+
+.bar-row.is-best .bar-track span,
+.benchmark-version-bars i {
+  background: #16805c;
+}
+
+.bar-row.is-best .bar-label,
+.bar-row.is-best strong {
+  color: #126547;
+}
+
+.bar-row.is-caution .bar-track span {
+  background: #c27a17;
+}
+
+.bar-row.is-caution .bar-label,
+.bar-row.is-caution strong {
+  color: #985b0a;
+}
+
+.benchmark-secondary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.benchmark-format-card,
+.benchmark-comparison-card,
+.benchmark-check-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--panel);
+}
+
+.benchmark-card-head,
+.benchmark-comparison-card > span,
+.benchmark-check-card > span,
+.benchmark-format-row span,
+.benchmark-format-row small,
+.benchmark-version-bars span {
+  color: #667085;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.benchmark-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.benchmark-format-row {
+  display: grid;
+  grid-template-columns: minmax(78px, 0.6fr) minmax(110px, 1fr) 58px;
+  gap: 8px;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding: 11px 0;
+}
+
+.benchmark-format-row strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.benchmark-format-row small {
+  grid-column: 1 / -1;
+}
+
+.benchmark-comparison-card,
+.benchmark-check-card {
+  display: grid;
+  gap: 14px;
+}
+
+.benchmark-version-bars,
+.benchmark-check-card > div {
+  display: grid;
+  gap: 11px;
+}
+
+.benchmark-version-bars > div {
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr) 42px;
+  gap: 9px;
+  align-items: center;
+}
+
+.benchmark-version-bars > div > div {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eef2f7;
+}
+
+.benchmark-version-bars i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ink);
+}
+
+.benchmark-version-bars strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-align: right;
+}
+
+.benchmark-comparison-card p {
+  margin: 0;
+  color: #126547;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.benchmark-check-card p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.benchmark-check-card strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
 }
 
 .automation-path {

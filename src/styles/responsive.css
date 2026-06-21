@@ -66,6 +66,10 @@
     padding: 20px;
   }
 
+  .benchmark-visual .benchmark-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .product-section-index {
     grid-template-columns: 1fr;
     gap: 0;
@@ -127,8 +131,22 @@
   .benchmark-kpis,
   .agent-manifest-grid,
   .agent-evidence-grid,
-  .benchmark-layout {
+  .benchmark-layout,
+  .benchmark-secondary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .benchmark-visual .benchmark-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .benchmark-format-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .benchmark-format-row span:first-of-type,
+  .benchmark-format-row small {
+    grid-column: 1 / -1;
   }
 
   .bars-head {
