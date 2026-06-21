@@ -1,4 +1,4 @@
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { storageOpsEvidenceFacts } from "./productEvidenceFacts";
 import type { ProductEvidenceModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
@@ -7,43 +7,38 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
     en: {
       id: "evidence",
       kind: "evidence",
-      variant: "runChain",
-      kicker: "Evidence chain",
-      title: "One run from discovery to verification",
-      body: "s3-turbo-list is not a pile of knobs. It pulls the error-prone parts of large object-storage list and diff runs into the default path.",
-      cards: s3EvidenceFacts.deepDiveCards.map((card, index) => ({
-        label: card.label.en,
-        value: String(index + 1).padStart(2, "0"),
-        body: card.body.en,
-      })),
-      benchmark: [
-        { label: "Third-party OSS run", value: "1M objects" },
-        ...s3EvidenceFacts.parallelRuns.map((run) => ({
-          label: run.label,
-          value: `${run.seconds}s`,
-          body: `${run.throughput.toLocaleString()} objects/s`,
-        })),
+      variant: "scanPlan",
+      kicker: "How list adapts",
+      title: "The scan plan follows the bucket",
+      body: "The first list reads the bucket's structure, opens parallel work where that structure exists, then only splits the segments that remain long.",
+      cards: [
+        { label: "Read the shape", body: "Probe real prefix boundaries before recursive work begins." },
+        {
+          label: "Run segments",
+          body: "Use those boundaries to open parallel list work without a prepared hints file.",
+        },
+        {
+          label: "Split the long tail",
+          body: "Only fan out segments that remain long while useful capacity is available.",
+        },
+        {
+          label: "Write the inventory",
+          body: "Finish with an analysis-ready object list instead of terminal-only output.",
+        },
       ],
     },
     zh: {
       id: "evidence",
       kind: "evidence",
-      variant: "runChain",
-      kicker: "证据链",
-      title: "从发现到校验，一次跑完",
-      body: "s3-turbo-list 不靠堆参数取胜，而是把大型对象存储 list / diff 最容易出错的环节放进默认流程。",
-      cards: s3EvidenceFacts.deepDiveCards.map((card, index) => ({
-        label: card.label.zh,
-        value: String(index + 1).padStart(2, "0"),
-        body: card.body.zh,
-      })),
-      benchmark: [
-        { label: "第三方 OSS 测试", value: "1M 对象" },
-        ...s3EvidenceFacts.parallelRuns.map((run) => ({
-          label: run.label,
-          value: `${run.seconds}s`,
-          body: `${run.throughput.toLocaleString()} objects/s`,
-        })),
+      variant: "scanPlan",
+      kicker: "list 如何自动展开",
+      title: "扫描会根据桶的结构调整",
+      body: "第一次 list 先识别桶里的前缀边界，有结构就并行展开；剩下的长尾片段再按需拆分。",
+      cards: [
+        { label: "识别结构", body: "先探测真实的前缀边界，再开始递归扫描。" },
+        { label: "并行列举", body: "利用这些边界展开并行任务，不必预先准备 hints 文件。" },
+        { label: "处理长尾", body: "只有仍然耗时的片段，才会在有可用性能时继续拆分。" },
+        { label: "写出清单", body: "最终留下可分析的对象清单，而不只是终端输出。" },
       ],
     },
   },

@@ -93,6 +93,13 @@ export type StorageCliProduct = {
   locales: Localized<StorageCliProductCopy>;
 };
 
+export type S3TurboListProduct = {
+  slug: "s3-turbo-list";
+  name: string;
+  archetype: "s3TurboList";
+  locales: Localized<StorageCliProductCopy>;
+};
+
 export type AgentPackageProduct = {
   slug: ProductSlug;
   name: string;
@@ -107,12 +114,12 @@ export type BrowserExtensionProduct = {
   locales: Localized<BrowserExtensionProductCopy>;
 };
 
-export type Product = StorageCliProduct | AgentPackageProduct | BrowserExtensionProduct;
+export type Product = S3TurboListProduct | StorageCliProduct | AgentPackageProduct | BrowserExtensionProduct;
 
 export type ProductForArchetype<T extends ProductArchetype> = Extract<Product, { archetype: T }>;
 export type ProductCopyForArchetype<T extends ProductArchetype> = ProductForArchetype<T>["locales"][Locale];
 
-export type ProductArchetype = "storageCli" | "agentPackage" | "browserExtension";
+export type ProductArchetype = "s3TurboList" | "storageCli" | "agentPackage" | "browserExtension";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";

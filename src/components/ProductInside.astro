@@ -15,6 +15,25 @@ const { section } = Astro.props;
     <p>{section.body}</p>
   </div>
   {
+    section.panel?.kind === "s3Purpose" && (
+      <div class="s3-purpose-panel" aria-label={section.panel.label}>
+        <div class="s3-purpose-grid">
+          {section.panel.items.map((item) => (
+            <article>
+              <span>{item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+        <p class="s3-purpose-boundary">
+          <strong>{section.panel.boundaryLabel}</strong>
+          <span>{section.panel.boundary}</span>
+        </p>
+      </div>
+    )
+  }
+  {
     section.panel?.kind === "metricWorkbench" && (
       <div class="inside-workbench inventory-workbench" aria-label={section.panel.label}>
         <div class="workbench-top">

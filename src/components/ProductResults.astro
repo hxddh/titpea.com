@@ -1,0 +1,33 @@
+---
+import type { ProductResultsModel } from "../content/productPageTypes";
+
+interface Props {
+  section: ProductResultsModel;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="shell s3-results-section">
+  <div class="s3-results-heading">
+    <p class="section-kicker">{section.kicker}</p>
+    <h2>{section.title}</h2>
+    <p>{section.body}</p>
+  </div>
+  <div class="s3-result-paths">
+    {
+      section.paths.map((path) => (
+        <article>
+          <p class="s3-path-label">{path.label}</p>
+          <h3>{path.title}</h3>
+          <div class="s3-path-flow" aria-label={`${path.input} to ${path.output}`}>
+            <span>{path.input}</span>
+            <i aria-hidden="true" />
+            <strong>{path.output}</strong>
+          </div>
+          <p>{path.detail}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

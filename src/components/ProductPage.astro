@@ -5,6 +5,7 @@ import ProductCasesSection from "./ProductCasesSection.astro";
 import ProductDeepDive from "./ProductDeepDive.astro";
 import ProductFaqSection from "./ProductFaqSection.astro";
 import ProductInside from "./ProductInside.astro";
+import ProductResults from "./ProductResults.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
@@ -49,6 +50,10 @@ const copy = model.copy;
 
       if (section.kind === "evidence") {
         return <ProductDeepDive section={section} />;
+      }
+
+      if (section.kind === "results") {
+        return <ProductResults section={section} />;
       }
 
       if (section.kind === "story") {

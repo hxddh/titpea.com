@@ -9,7 +9,7 @@ export type ContentSectionId =
   | "story"
   | "cases"
   | "faq";
-export type PageSectionId = ContentSectionId | "inside" | "evidence";
+export type PageSectionId = ContentSectionId | "inside" | "evidence" | "results";
 export type SectionLayout = "balanced" | "steps" | "dense" | "evidence";
 export type ProductCopyCardSource = Extract<
   keyof ProductCopy,
@@ -45,6 +45,29 @@ export type ProductArchetypeContract = {
 };
 
 export const productArchetypeContracts: Record<ProductArchetype, ProductArchetypeContract> = {
+  s3TurboList: {
+    group: "storage",
+    pageClass: "product-page product-page-s3TurboList",
+    sectionIndex: true,
+    indexLabel: { en: "On this page", zh: "页面内容" },
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Cross-platform",
+    defaultVisual: "s3Benchmark",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
+      { id: "evidence", label: { en: "Scan plan", zh: "扫描方式" }, required: true },
+      { id: "results", label: { en: "Results", zh: "结果" }, required: true },
+      {
+        id: "automation",
+        label: { en: "Automation", zh: "自动化" },
+        layout: "balanced",
+        source: "automation",
+        required: true,
+      },
+      { id: "cases", label: { en: "Endpoints", zh: "端点" }, required: true },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
   storageCli: {
     group: "storage",
     pageClass: "product-page product-page-storageCli",

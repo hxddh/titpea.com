@@ -1,19 +1,9 @@
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { storageOpsEvidenceFacts } from "./productEvidenceFacts";
 import { insideValueCopy } from "./i18n/insideCopy";
 import type { ProductInsideModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
 type LocalizedText = Record<Locale, string>;
-
-const s3MetricValue = (locale: Locale, value: string) => {
-  const localized = insideValueCopy.s3MetricValues[locale];
-  return value in localized ? localized[value as keyof typeof localized] : value;
-};
-
-const s3ArtifactLabel = (locale: Locale, label: string) => {
-  const localized = insideValueCopy.s3ArtifactLabels[locale];
-  return label in localized ? localized[label as keyof typeof localized] : label;
-};
 
 const storageOpsValue = (locale: Locale, value: string) => {
   const localized = insideValueCopy.storageOpsValues[locale];
@@ -30,39 +20,52 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "A look inside",
-      title: "The default path keeps long runs inspectable",
-      body: "s3-turbo-list keeps list / diff focused: segmented list, checkpoint resume, trace JSONL, dry-run plans, run manifests, and Parquet output sit on the normal path.",
+      kicker: "What it does",
+      title: "Answers for large buckets",
+      body: "One CLI for the two questions that matter before a migration, investigation, or inventory: what is here, and what changed?",
       panel: {
-        kind: "metricWorkbench",
-        label: "s3-turbo-list run workbench",
-        title: "list / diff path",
-        metrics: s3EvidenceFacts.insideMetrics.map((metric, index) => ({
-          label: metric.label.en,
-          value: s3MetricValue("en", metric.value),
-          body: metric.body.en,
-          strong: index === 0,
-        })),
-        rows: s3EvidenceFacts.artifactRows.map(([label, value]) => ({ label, value })),
+        kind: "s3Purpose",
+        label: "What s3-turbo-list is for",
+        items: [
+          {
+            label: "LIST",
+            title: "Know what is in a bucket",
+            body: "Turn a large S3-compatible bucket into an analysis-ready object list without hand-tuning a scanner first.",
+          },
+          {
+            label: "DIFF",
+            title: "Know what changed between two buckets",
+            body: "Compare source and target object metadata, then work from one ordered difference dataset.",
+          },
+        ],
+        boundaryLabel: "Not a sync engine",
+        boundary:
+          "s3-turbo-list does not copy objects or replace a storage browser. It produces a reliable basis for the next decision.",
       },
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "看一眼",
-      title: "长任务也有迹可循",
-      body: "s3-turbo-list 只做 list / diff。分段 list、断点续跑、trace JSONL、dry-run plan、运行记录和 Parquet 输出，都是默认流程的一部分。",
+      kicker: "它解决什么",
+      title: "先回答大桶里的两个问题",
+      body: "迁移、排查或盘点之前，先弄清两件事：桶里有什么，以及两端到底差了什么。",
       panel: {
-        kind: "metricWorkbench",
-        label: "s3-turbo-list run workbench",
-        title: "list / diff 路径",
-        metrics: s3EvidenceFacts.insideMetrics.map((metric, index) => ({
-          label: metric.label.zh,
-          value: s3MetricValue("zh", metric.value),
-          body: metric.body.zh,
-          strong: index === 0,
-        })),
-        rows: s3EvidenceFacts.artifactRows.map(([label, value]) => ({ label: s3ArtifactLabel("zh", label), value })),
+        kind: "s3Purpose",
+        label: "s3-turbo-list 的用途",
+        items: [
+          {
+            label: "LIST",
+            title: "弄清桶里有什么",
+            body: "把大规模 S3 兼容存储写成可分析的对象清单，不必先手动调一套扫描参数。",
+          },
+          {
+            label: "DIFF",
+            title: "弄清两端差了什么",
+            body: "对比源端和目标端的对象元数据，得到一份有序的差异结果。",
+          },
+        ],
+        boundaryLabel: "不负责同步对象",
+        boundary: "它不复制对象，也不替代存储浏览器；它负责给后续判断留下可靠的依据。",
       },
     },
   },
