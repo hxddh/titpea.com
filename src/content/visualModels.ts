@@ -85,30 +85,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       kicker: copy.kicker,
       title: copy.title,
       body: copy.body,
-      cards:
-        locale === "zh"
-          ? [
-              { number: "输入", title: "报错、日志或配置", body: "把实际现象交给 Pi，而不是从一串猜测开始。" },
-              { number: "判断", title: "收窄故障领域", body: "按鉴权、签名、限流、迁移、网络等方向读取证据。" },
-              { number: "报告", title: "留下可执行的结论", body: "说明可能原因、关键依据和需要人工完成的下一步。" },
-            ]
-          : [
-              {
-                number: "INPUT",
-                title: "Error, log, or configuration",
-                body: "Give Pi the real symptom instead of starting from a generic guess.",
-              },
-              {
-                number: "REASON",
-                title: "Narrow the failure domain",
-                body: "Read evidence through access, signing, throttling, migration, or network context.",
-              },
-              {
-                number: "REPORT",
-                title: "Leave an actionable conclusion",
-                body: "Separate likely cause, supporting evidence, and the next manual step.",
-              },
-            ],
+      cards: [...copy.cards],
       flow: copy.flow,
     };
   }

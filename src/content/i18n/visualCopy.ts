@@ -33,6 +33,23 @@ export const visualCopy = {
         "Parse logs and HTTP traces, analyze IAM, CORS, throttling, network, replication, cost, and policy fixes.",
       evalsTitle: "safe reports",
       evalsBody: "Secrets are redacted; reports separate root cause, evidence, confidence, and remediation.",
+      cards: [
+        {
+          number: "INPUT",
+          title: "Error, log, or configuration",
+          body: "Give Pi the real symptom instead of starting from a generic guess.",
+        },
+        {
+          number: "REASON",
+          title: "Narrow the failure domain",
+          body: "Read evidence through access, signing, throttling, migration, or network context.",
+        },
+        {
+          number: "REPORT",
+          title: "Leave an actionable conclusion",
+          body: "Separate likely cause, supporting evidence, and the next manual step.",
+        },
+      ],
       flow: ["input: error, command, config, redacted log", "output: cause, evidence, confidence, next checks"],
     },
     zh: {
@@ -46,6 +63,11 @@ export const visualCopy = {
       helpersBody: "解析日志和 HTTP trace，分析 IAM、CORS、限流、网络、复制、成本，并给出 policy 修改建议。",
       evalsTitle: "安全报告",
       evalsBody: "凭据会先脱敏；报告区分根因、证据、置信度和修复步骤。",
+      cards: [
+        { number: "输入", title: "报错、日志或配置", body: "把实际现象交给 Pi，而不是从一串猜测开始。" },
+        { number: "判断", title: "收窄故障领域", body: "按鉴权、签名、限流、迁移、网络等方向读取证据。" },
+        { number: "报告", title: "留下可执行的结论", body: "说明可能原因、关键依据和需要人工完成的下一步。" },
+      ],
       flow: ["输入：错误、命令、配置、脱敏日志", "输出：原因、证据、置信度、下一步建议"],
     },
   },
