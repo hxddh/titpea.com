@@ -1,4 +1,4 @@
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { s3EvidenceFacts } from "./productEvidenceFacts";
 import { visualCopy } from "./i18n/visualCopy";
 import { siteConfig } from "./siteConfig";
 import type { VisualPolicy } from "./productArchetypes";
@@ -85,28 +85,30 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       kicker: copy.kicker,
       title: copy.title,
       body: copy.body,
-      cards: [
-        {
-          number: "01",
-          title: `${storageOpsEvidenceFacts.skillsCount} ${copy.skillsSuffix}`,
-          body: copy.skillsBody,
-        },
-        {
-          number: "02",
-          title: `${storageOpsEvidenceFacts.toolsCount} ${copy.toolsSuffix}`,
-          body: storageOpsEvidenceFacts.tools.join(" · "),
-        },
-        {
-          number: "03",
-          title: copy.helpersTitle,
-          body: copy.helpersBody,
-        },
-        {
-          number: "04",
-          title: copy.evalsTitle,
-          body: copy.evalsBody,
-        },
-      ],
+      cards:
+        locale === "zh"
+          ? [
+              { number: "输入", title: "报错、日志或配置", body: "把实际现象交给 Pi，而不是从一串猜测开始。" },
+              { number: "判断", title: "收窄故障领域", body: "按鉴权、签名、限流、迁移、网络等方向读取证据。" },
+              { number: "报告", title: "留下可执行的结论", body: "说明可能原因、关键依据和需要人工完成的下一步。" },
+            ]
+          : [
+              {
+                number: "INPUT",
+                title: "Error, log, or configuration",
+                body: "Give Pi the real symptom instead of starting from a generic guess.",
+              },
+              {
+                number: "REASON",
+                title: "Narrow the failure domain",
+                body: "Read evidence through access, signing, throttling, migration, or network context.",
+              },
+              {
+                number: "REPORT",
+                title: "Leave an actionable conclusion",
+                body: "Separate likely cause, supporting evidence, and the next manual step.",
+              },
+            ],
       flow: copy.flow,
     };
   }

@@ -157,14 +157,14 @@ export const httpmonProduct: StorageCliProduct = {
     },
     zh: {
       title: "httpmon",
-      description: "httpmon 是一个零配置的终端 HTTP/HTTPS 请求查看工具，用于排查命令行程序发出的请求和收到的响应。",
+      description: "httpmon 在终端里查看命令发出的 HTTP/HTTPS 请求与响应，不改系统代理设置。",
       eyebrow: "Go CLI",
-      headline: "在终端查看命令的 HTTP 交互",
-      lead: "在原命令前加上 httpmon，直接查看 HTTP/HTTPS 流量，不改系统代理设置。",
+      headline: "在终端看命令的 HTTP 交互",
+      lead: "在原命令前加上 httpmon，就能看到请求、响应和耗时，不改系统代理设置。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },
       meta: httpmonMeta,
-      proof: ["单命令代理", "HTTP / HTTPS / wss", "终端或 TUI", "NDJSON / HAR"],
+      proof: ["只包一条命令", "HTTP / HTTPS / wss", "终端或 TUI", "可导出 NDJSON / HAR"],
       positioningLabel: "边界",
       positioning: [
         {

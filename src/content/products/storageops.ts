@@ -4,8 +4,6 @@ import { siteConfig } from "../siteConfig";
 
 const storageOpsMeta = "Python · Pi Coding Agent · S3-compatible · evidence-led diagnostics";
 const storageOpsProof = ["Domain skills", "Evidence tools", "CLI / Web API / MCP", "Secret redaction"];
-const storageOpsProofZh = ["领域技能", "取证工具", "CLI / Web API / MCP", "凭据脱敏"];
-
 export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",
   name: "StorageOps",
@@ -162,14 +160,14 @@ export const storageOpsProduct: AgentPackageProduct = {
     },
     zh: {
       title: "StorageOps",
-      description: "StorageOps 是一套 S3 诊断 Agent，可根据日志、错误、配置和 HTTP trace 给出原因、证据与修复建议。",
+      description: "StorageOps 帮 Pi 读懂 S3 错误、日志、配置和 HTTP trace，给出可复查的排查结论。",
       eyebrow: "Pi Agent",
-      headline: "S3 诊断 Agent",
-      lead: "输入日志、错误、配置或 trace。StorageOps 会调用对应的技能和工具，给出原因、证据与修复建议。",
+      headline: "帮 Pi 排查 S3 问题",
+      lead: "把报错、日志、配置或 trace 交给它。StorageOps 会先收窄问题，再给出依据和下一步。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta: storageOpsMeta,
-      proof: storageOpsProofZh,
+      proof: ["先看证据", "按领域排查", "结果可复查", "凭据先脱敏"],
       positioningLabel: "边界",
       positioning: [
         {
@@ -231,26 +229,26 @@ export const storageOpsProduct: AgentPackageProduct = {
       workflowLabel: "怎么用",
       workflow: [
         {
-          title: "提交问题",
-          body: "运行 `storageops` 开始诊断。也可传入问题描述、`@error.log`，或从管道输入。",
+          title: "把现场带进来",
+          body: "运行 `storageops`，传入问题描述、`@error.log`，或把命令输出通过管道交给它。",
           intent: "workflow",
           surface: "agent",
         },
         {
-          title: "判断方向",
-          body: "分诊层会把证据归入 IAM、签名、限流、CORS、生命周期、复制、迁移、网络等领域。",
+          title: "先收窄范围",
+          body: "先判断问题更像鉴权、签名、限流、迁移还是网络，再继续读取相关证据。",
           intent: "workflow",
           surface: "agent",
         },
         {
-          title: "解析线索",
-          body: "工具会解析 debug log、XML 错误、HTTP trace、policy、生命周期规则、网络输出和历史会话。",
+          title: "再读关键线索",
+          body: "按需解析 debug log、XML 错误、HTTP trace、策略、生命周期规则和历史会话。",
           intent: "workflow",
           surface: "agent",
         },
         {
-          title: "给出报告",
-          body: "报告包含分类、根因、置信度、关键证据和修复步骤；资源修改仍由你手动执行。",
+          title: "给出可检查的结论",
+          body: "报告会写明可能原因、置信度、关键依据和下一步；资源修改仍由你自己执行。",
           intent: "workflow",
           surface: "agent",
         },
