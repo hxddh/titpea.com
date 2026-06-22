@@ -45,10 +45,10 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
     en: {
       id: "evidence",
       kind: "evidence",
-      variant: "agentTopology",
-      kicker: "How it reasons",
-      title: "The agent does not start with a guess",
-      body: "StorageOps narrows the failure domain first, then uses the right parser or helper before a report turns evidence into a manual next step.",
+      variant: "diagnosisFlow",
+      kicker: "A diagnosis path",
+      title: "From the symptom to a bounded next step",
+      body: "StorageOps turns the evidence you bring into a diagnosis a person can inspect and act on. It does not modify the storage account for you.",
       cards: [
         {
           label: "Classify the case",
@@ -67,10 +67,10 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
     zh: {
       id: "evidence",
       kind: "evidence",
-      variant: "agentTopology",
-      kicker: "如何判断",
-      title: "不是先猜原因，再找依据",
-      body: "StorageOps 先收窄问题领域，再调用合适的解析器或工具，最后把证据整理成需要人工执行的下一步。",
+      variant: "diagnosisFlow",
+      kicker: "一次诊断如何展开",
+      title: "从症状到可执行的下一步",
+      body: "StorageOps 把你提供的证据整理成可以检查和执行的诊断结论，不会替你修改存储账号。",
       cards: [
         { label: "先归类", body: "区分鉴权、签名、限流、一致性、迁移、网络等具体领域。" },
         {
@@ -85,10 +85,10 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
     en: {
       id: "evidence",
       kind: "evidence",
-      variant: "runChain",
-      kicker: "Capture path",
-      title: "Wrap, inspect, keep moving",
-      body: "httpmon puts inspection around an existing command. The command still receives its normal response stream; httpmon shows the traffic beside it.",
+      variant: "trafficFlow",
+      kicker: "How capture works",
+      title: "The command keeps running normally",
+      body: "httpmon adds a local observation layer around one child process. The process still gets its response stream; the terminal gets the HTTP conversation beside it.",
       cards: [
         {
           label: "Wrap",
@@ -115,10 +115,10 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
     zh: {
       id: "evidence",
       kind: "evidence",
-      variant: "runChain",
-      kicker: "工作方式",
-      title: "不改原命令，直接看请求",
-      body: "httpmon 只是在原命令外包一层本地代理。子进程照常接收响应，终端同时显示请求和响应。",
+      variant: "trafficFlow",
+      kicker: "流量如何被看到",
+      title: "原命令照常运行，终端同时看到交互",
+      body: "httpmon 只在一个子进程周围加上本地观察层。子进程照常收到响应，终端同时显示 HTTP 交互。",
       cards: [
         { label: "运行命令", value: "01", body: "在 curl、aws、Python、Node 或其他支持代理的命令前加上 `httpmon`。" },
         { label: "临时接管", value: "02", body: "它只为这个子进程注入本地代理地址和临时 CA。" },

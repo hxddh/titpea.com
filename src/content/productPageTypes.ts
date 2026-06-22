@@ -35,7 +35,7 @@ export type ProductInsidePanel =
 export type ProductEvidenceModel = {
   id: "evidence";
   kind: "evidence";
-  variant: "runChain" | "agentTopology" | "scanPlan";
+  variant: "runChain" | "agentTopology" | "scanPlan" | "diagnosisFlow" | "trafficFlow";
   kicker: string;
   title: string;
   body: string;
