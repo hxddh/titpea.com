@@ -1,5 +1,5 @@
 import type { Locale } from "../lib/site";
-import { doubanMovieRatingFacts, s3TurboListFacts, storageOpsFacts, worldClockFacts } from "./productFacts";
+import { doubanMovieRatingFacts, s3TurboListFacts, worldClockFacts } from "./productFacts";
 
 export type LocalizedText = Record<Locale, string>;
 
@@ -119,74 +119,6 @@ export const s3EvidenceFacts = {
     ["verify", "manifest-summary --check · hashes · row counts · schema"],
     ["provider logs", "app/s3-turbo-list User-Agent · compat-probe"],
   ] as const,
-} as const;
-
-export const storageOpsEvidenceFacts = {
-  repository: storageOpsFacts.repository,
-  skillsCount: 15,
-  toolsCount: 21,
-  evalLabel: "golden",
-  tools: ["scan_secrets", "parse_httpmon_log", "analyze_policy", "detect_throttling", "search_memory"],
-  capabilityCards: [
-    {
-      label: { en: "Skills", zh: "技能" },
-      value: "15",
-      body: {
-        en: "Auth, signing, throttling, consistency, migration, logs, notifications, and more.",
-        zh: "鉴权、签名、限流、一致性、迁移、日志、通知等领域。",
-      },
-    },
-    {
-      label: { en: "Tools", zh: "工具" },
-      value: "21",
-      body: {
-        en: "Parsers, analyzers, generators, secret scanning, and memory search.",
-        zh: "解析器、分析器、修复生成、密钥扫描和历史搜索。",
-      },
-    },
-    {
-      label: { en: "Evals", zh: "约束" },
-      value: "golden",
-      body: {
-        en: "Golden cases and size gates keep the agent package compact and repeatable.",
-        zh: "Golden cases 和 size gates 约束输出，避免 Agent 的行为漂移。",
-      },
-    },
-  ] satisfies EvidenceCard[],
-  insideMetrics: [
-    {
-      label: { en: "01", zh: "01" },
-      value: "15 diagnostic skills",
-      body: {
-        en: "Organized around auth, signing, throttling, consistency, migration, logs, and other storage domains.",
-        zh: "按鉴权、签名、限流、一致性、迁移、日志等对象存储领域组织。",
-      },
-    },
-    {
-      label: { en: "02", zh: "02" },
-      value: "21 tools",
-      body: {
-        en: "Parse logs, analyze failures, redact secrets, generate fixes, and search memory.",
-        zh: "解析日志、分析故障、脱敏凭据、生成修复建议，并搜索历史记录。",
-      },
-    },
-    {
-      label: { en: "03", zh: "03" },
-      value: "Web API + MCP",
-      body: {
-        en: "Serve a Web UI / HTTP API or expose StorageOps as an MCP stdio server.",
-        zh: "可以启动 Web UI / HTTP API，也可以作为 MCP stdio server 使用。",
-      },
-    },
-    {
-      label: { en: "04", zh: "04" },
-      value: "safe reports",
-      body: {
-        en: "Reports separate category, root cause, confidence, evidence, and manual remediation.",
-        zh: "报告区分分类、根因、置信度、证据和手动修复步骤。",
-      },
-    },
-  ] satisfies EvidenceCard[],
 } as const;
 
 export const browserEvidenceFacts = {

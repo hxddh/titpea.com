@@ -41,13 +41,13 @@ export type ProductCopy = {
   secondaryCta: Link;
   meta: string;
   proof: string[];
-  positioningLabel: string;
-  positioning: ProductContentCard[];
-  featuresLabel: string;
-  features: ProductContentCard[];
-  rationaleLabel: string;
-  rationaleTitle: string;
-  rationaleBody: string[];
+  positioningLabel?: string;
+  positioning?: ProductContentCard[];
+  featuresLabel?: string;
+  features?: ProductContentCard[];
+  rationaleLabel?: string;
+  rationaleTitle?: string;
+  rationaleBody?: string[];
   workflowLabel?: string;
   workflow?: ProductContentCard[];
   automationLabel?: string;
@@ -67,15 +67,11 @@ export type ProductCopy = {
 export type StorageCliProductCopy = ProductCopy & {
   workflow: ProductContentCard[];
   automation: ProductContentCard[];
-  examples: ProductContentCard[];
-  casesTitle: string;
-  cases: string[];
   faq: ProductContentCard[];
 };
 
 export type AgentPackageProductCopy = ProductCopy & {
   workflow: ProductContentCard[];
-  features: ProductContentCard[];
   casesTitle: string;
   cases: string[];
   faq: ProductContentCard[];
@@ -97,7 +93,7 @@ export type S3TurboListProduct = {
   slug: "s3-turbo-list";
   name: string;
   archetype: "s3TurboList";
-  locales: Localized<StorageCliProductCopy>;
+  locales: Localized<StorageCliProductCopy & { casesTitle: string; cases: string[] }>;
 };
 
 export type AgentPackageProduct = {

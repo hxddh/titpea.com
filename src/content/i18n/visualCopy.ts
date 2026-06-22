@@ -22,8 +22,8 @@ export const visualCopy = {
   storageAgent: {
     en: {
       kicker: "Pi Agent",
-      title: "Skills and tools define the diagnosis",
-      body: "StorageOps wraps Pi with S3 skills, registered tools, parsers, analyzers, memory, reports, API surfaces, and secret redaction.",
+      title: "Pi loads the storage capability it needs",
+      body: "StorageOps is the layer Pi can load: skill packs define the method; extension tools handle specific evidence safely.",
       skillsSuffix: "diagnostic skills",
       skillsBody:
         "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage.",
@@ -35,27 +35,32 @@ export const visualCopy = {
       evalsBody: "Secrets are redacted; reports separate root cause, evidence, confidence, and remediation.",
       cards: [
         {
-          number: "INPUT",
-          title: "Error, log, or configuration",
-          body: "Give Pi the real symptom instead of starting from a generic guess.",
+          number: "SKILL",
+          title: "Choose a diagnosis method",
+          body: "Pi loads a skill for access, signing, throttling, migration, consistency, or another storage domain.",
         },
         {
-          number: "REASON",
-          title: "Narrow the failure domain",
-          body: "Read evidence through access, signing, throttling, migration, or network context.",
+          number: "ROUTE",
+          title: "detect_domain",
+          body: "Rank likely domains and suggest which skill Pi should read next.",
         },
         {
-          number: "REPORT",
-          title: "Leave an actionable conclusion",
-          body: "Separate likely cause, supporting evidence, and the next manual step.",
+          number: "SAFE",
+          title: "scan_secrets",
+          body: "Redact credential values before material is returned to the agent context.",
+        },
+        {
+          number: "TRACE",
+          title: "capture_http_trace",
+          body: "Observe one bounded read-only storage command through the managed httpmon helper.",
         },
       ],
-      flow: ["input: error, command, config, redacted log", "output: cause, evidence, confidence, next checks"],
+      flow: ["input: error, command, config, redacted log", "Pi: skills + tools + deterministic helpers"],
     },
     zh: {
       kicker: "Pi Agent",
-      title: "诊断能力来自技能和工具",
-      body: "StorageOps 围绕 Pi 组织 S3 诊断技能、注册工具、解析器、分析器、历史记录、报告、API 和凭据脱敏。",
+      title: "Pi 会按需加载对象存储能力",
+      body: "StorageOps 是 Pi 可加载的一层能力：skill 定义排查方法，扩展工具负责安全地处理具体证据。",
       skillsSuffix: "个诊断技能",
       skillsBody: "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步归类。",
       toolsSuffix: "个注册工具",
@@ -64,11 +69,20 @@ export const visualCopy = {
       evalsTitle: "安全报告",
       evalsBody: "凭据会先脱敏；报告区分根因、证据、置信度和修复步骤。",
       cards: [
-        { number: "输入", title: "报错、日志或配置", body: "把实际现象交给 Pi，而不是从一串猜测开始。" },
-        { number: "判断", title: "收窄故障领域", body: "按鉴权、签名、限流、迁移、网络等方向读取证据。" },
-        { number: "报告", title: "留下可执行的结论", body: "说明可能原因、关键依据和需要人工完成的下一步。" },
+        {
+          number: "SKILL",
+          title: "选择排查方法",
+          body: "Pi 会加载鉴权、签名、限流、迁移、一致性等对象存储领域的 skill。",
+        },
+        { number: "ROUTE", title: "detect_domain", body: "判断优先排查方向，并提示 Pi 接下来该读取哪份 skill。" },
+        { number: "SAFE", title: "scan_secrets", body: "在材料进入 Agent 上下文前，先脱敏凭据值。" },
+        {
+          number: "TRACE",
+          title: "capture_http_trace",
+          body: "通过受管的 httpmon helper 观察一条受限的只读存储命令。",
+        },
       ],
-      flow: ["输入：错误、命令、配置、脱敏日志", "输出：原因、证据、置信度、下一步建议"],
+      flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
     },
   },
   screenshots: {

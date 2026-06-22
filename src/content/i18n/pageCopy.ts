@@ -54,9 +54,9 @@ export const catalogCopy = {
     s3Text: "Fast list / diff with resume, trace, and Parquet output.",
     s3Tagline: "Fast S3 list / diff",
     s3Role: "List / Diff",
-    storageopsText: "S3 diagnostics agent with skills, parsers, analyzers, MCP, and Web API.",
-    storageopsTagline: "S3 diagnostics agent",
-    storageopsRole: "S3 diagnostics",
+    storageopsText: "A Pi Coding Agent extension and skill pack for S3-compatible storage diagnosis.",
+    storageopsTagline: "Storage diagnosis for Pi",
+    storageopsRole: "Pi extension",
     httpmonTagline: "Terminal HTTPS inspector",
     httpmonRole: "HTTP inspection",
     worldClockText: "A fast city-time popup.",
@@ -67,9 +67,9 @@ export const catalogCopy = {
     s3EvidenceTitle: "1M objects, ~55s to ~19s",
     s3EvidenceBody:
       "The README cites a third-party Alibaba Cloud OSS benchmark: 1M objects in ~55s single-stream and ~19s with `-c 8`.",
-    storageopsEvidenceTitle: "15 skills, 21 tools",
+    storageopsEvidenceTitle: "Pi extension, skills, and tools",
     storageopsEvidenceBody:
-      "The README defines StorageOps as a diagnostics system: CLI sessions, skills, registered tools, Web API, MCP, reports, memory, and secret redaction.",
+      "StorageOps gives Pi storage skills and extension tools for evidence-based investigation, without connecting to cloud accounts.",
     groups: [
       {
         title: "Object storage",
@@ -90,9 +90,9 @@ export const catalogCopy = {
     s3Text: "高性能 S3 list / diff，支持续跑、trace 和 Parquet 输出。",
     s3Tagline: "高性能 S3 list / diff",
     s3Role: "List / Diff",
-    storageopsText: "S3 诊断 Agent，内置技能、解析器、分析器、MCP 和 Web API。",
-    storageopsTagline: "S3 诊断 Agent",
-    storageopsRole: "S3 诊断",
+    storageopsText: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与 skill pack。",
+    storageopsTagline: "Pi 的对象存储诊断扩展",
+    storageopsRole: "Pi 扩展",
     httpmonTagline: "命令行网络请求查看器",
     httpmonRole: "请求排查",
     worldClockText: "快速查看城市时间。",
@@ -102,9 +102,8 @@ export const catalogCopy = {
     doubanRole: "评分辅助",
     s3EvidenceTitle: "1M 对象，~55s 到 ~19s",
     s3EvidenceBody: "README 引用第三方 Alibaba Cloud OSS 测试：1M 对象单流约 55 秒，`-c 8` 约 19 秒。",
-    storageopsEvidenceTitle: "15 个技能，21 个工具",
-    storageopsEvidenceBody:
-      "它不是一组提示词，而是一套诊断系统：命令行会话、技能、注册工具、Web API、MCP、报告、历史记录和凭据脱敏。",
+    storageopsEvidenceTitle: "Pi 扩展、skills 与工具",
+    storageopsEvidenceBody: "StorageOps 为 Pi 提供对象存储 skills 和扩展工具，根据现场材料排查问题，不会连接云账号。",
     groups: [
       {
         title: "对象存储",

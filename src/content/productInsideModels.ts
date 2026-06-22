@@ -66,23 +66,23 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "What it does",
-      title: "Turn storage evidence into a diagnosis",
-      body: "Give Pi an error, log, configuration, or trace. StorageOps supplies the storage-specific skills and tools needed to explain what happened and what to check next.",
+      kicker: "Pi extension + skill pack",
+      title: "Storage expertise for Pi",
+      body: "StorageOps gives Pi the skills, extension tools, and deterministic helpers needed to investigate S3-compatible storage from the evidence you provide.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "它解决什么",
-      title: "把存储证据变成诊断结论",
-      body: "输入报错、日志、配置或 trace。StorageOps 给 Pi 补上对象存储领域的技能和工具，说明发生了什么，以及下一步该检查什么。",
+      kicker: "Pi 扩展与 skill pack",
+      title: "让 Pi 具备对象存储诊断能力",
+      body: "把报错、日志、配置或 trace 交给 Pi。StorageOps 提供对象存储技能、扩展工具和确定性脚本，供 Pi 按需调用。",
     },
   },
   httpmon: browserInside(
-    { en: "See traffic without changing the command", zh: "不改命令，直接查看请求" },
+    { en: "The command runs as before", zh: "命令照常跑，流量同时可见" },
     {
-      en: "httpmon starts a local proxy for one subprocess, injects the needed proxy and CA settings, then removes everything when that command exits.",
-      zh: "httpmon 只为当前子进程启动本地代理，并注入所需的代理和 CA 设置。命令退出后，临时内容会自动清理。",
+      en: "httpmon starts a local proxy for one subprocess. It supplies the proxy and CA through that process only, then clears the temporary setup when it exits.",
+      zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",
     },
   ),
   "world-clock": browserInside(

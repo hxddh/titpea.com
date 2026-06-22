@@ -61,6 +61,7 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
   const label = spec.label[locale];
 
   if (id === "story") {
+    if (!copy.rationaleTitle || !copy.rationaleBody) return null;
     return section({
       id: "story",
       kind: "story",

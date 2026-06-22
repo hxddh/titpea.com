@@ -1,5 +1,5 @@
 import { indexedProduct, localizedProductTitle } from "./productIndex";
-import { s3EvidenceFacts, storageOpsEvidenceFacts } from "./productEvidenceFacts";
+import { s3EvidenceFacts } from "./productEvidenceFacts";
 import { s3TurboListFacts } from "./productFacts";
 import { catalogCopy } from "./i18n/pageCopy";
 import { type Locale, type ProductSlug } from "../lib/site";
@@ -71,11 +71,7 @@ export function productCatalogModel(locale: Locale) {
       title: copy.storageopsEvidenceTitle,
       body: copy.storageopsEvidenceBody,
       href: storageops.href,
-      stats: [
-        `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`,
-        `${storageOpsEvidenceFacts.toolsCount} registered tools`,
-        "CLI / Web API / MCP",
-      ],
+      stats: ["Pi extension + skill packs", "four Pi extension tools", "CLI / Web API / MCP"],
     },
   ];
 
