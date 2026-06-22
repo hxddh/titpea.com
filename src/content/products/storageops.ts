@@ -2,19 +2,9 @@ import type { AgentPackageProduct } from "../../lib/site";
 import { storageOpsEvidenceFacts } from "../productEvidenceFacts";
 import { siteConfig } from "../siteConfig";
 
-const storageOpsMeta = `Python · Pi Coding Agent · S3-compatible · ${storageOpsEvidenceFacts.skillsCount} skills · ${storageOpsEvidenceFacts.toolsCount} tools`;
-const storageOpsProof = [
-  `${storageOpsEvidenceFacts.skillsCount} diagnostic skills`,
-  `${storageOpsEvidenceFacts.toolsCount} registered tools`,
-  "CLI / Web API / MCP",
-  "Secret redaction",
-];
-const storageOpsProofZh = [
-  `${storageOpsEvidenceFacts.skillsCount} 个诊断技能`,
-  `${storageOpsEvidenceFacts.toolsCount} 个注册工具`,
-  "CLI / Web API / MCP",
-  "凭据脱敏",
-];
+const storageOpsMeta = "Python · Pi Coding Agent · S3-compatible · evidence-led diagnostics";
+const storageOpsProof = ["Domain skills", "Evidence tools", "CLI / Web API / MCP", "Secret redaction"];
+const storageOpsProofZh = ["领域技能", "取证工具", "CLI / Web API / MCP", "凭据脱敏"];
 
 export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",

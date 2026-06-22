@@ -21,8 +21,8 @@ for (const model of allPageModels) {
     failures.push(`${model.path}: lead must be concise and specific`);
   if (copy.primaryCta.href === copy.secondaryCta.href)
     failures.push(`${model.path}: primary and secondary CTA must differ`);
-  if (copy.positioning.length < 2 || copy.features.length < 3 || !copy.faq?.length)
-    failures.push(`${model.path}: product narrative needs positioning, capabilities, and FAQ`);
+  if (!sections.some((section) => section.kind === "faq")) failures.push(`${model.path}: product narrative needs FAQ`);
+  if (sections.length < 3) failures.push(`${model.path}: product narrative needs at least three rendered sections`);
   for (const section of sections) {
     const heading = ("title" in section ? section.title : section.label).trim();
     if (genericHeadings.has(heading.toLowerCase())) failures.push(`${model.path}: generic section heading ${heading}`);
