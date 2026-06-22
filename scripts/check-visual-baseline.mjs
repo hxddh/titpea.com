@@ -6,7 +6,8 @@ import baseline from "../src/content/visualBaseline.json" with { type: "json" };
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://127.0.0.1:4321";
 const outDir = process.env.VISUAL_BASELINE_OUT_DIR ?? "/tmp/titpea-visual-baseline";
-const baselineDir = "tests/visual-baselines";
+const baselinePlatform = process.env.VISUAL_BASELINE_PLATFORM ?? process.platform;
+const baselineDir = path.join("tests/visual-baselines", baselinePlatform);
 const approve = process.env.VISUAL_APPROVE === "1";
 const changedPixelLimit = 0.004;
 const viewports = {
