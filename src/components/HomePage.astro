@@ -36,7 +36,7 @@ const { model } = Astro.props;
       {
         model.storage.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.displayRole}</span>
+            <span>{item.number ? `${item.number} · ${item.displayRole}` : item.displayRole}</span>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>

@@ -55,6 +55,10 @@
     grid-template-columns: 1fr;
   }
 
+  .storage-catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
   .s3-purpose-grid,
   .s3-result-paths,
   .scan-plan,

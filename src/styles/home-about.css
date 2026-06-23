@@ -258,12 +258,25 @@
   gap: 1px;
 }
 
+.storage-catalog-grid {
+  grid-template-columns: minmax(0, 1.36fr) repeat(2, minmax(0, 0.82fr));
+}
+
 .catalog-card,
 .about-product-card {
   display: grid;
   gap: 12px;
   min-height: 190px;
   padding: 28px;
+}
+
+.storage-catalog-grid .catalog-card.primary {
+  min-height: 234px;
+  padding: 34px;
+}
+
+.storage-catalog-grid .catalog-card:not(.primary) {
+  padding-top: 34px;
 }
 
 .catalog-card h3 {
@@ -276,6 +289,7 @@
 
 .catalog-card.primary h3 {
   max-width: 20ch;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
 }
 
 .about-product-grid {
