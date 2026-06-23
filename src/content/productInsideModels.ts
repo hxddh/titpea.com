@@ -15,7 +15,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       kind: "inside",
       kicker: "What it does",
       title: "Answers for large buckets",
-      body: "One CLI for the two questions that matter before a migration, investigation, or inventory: what is here, and what changed?",
+      body: "One CLI for the two questions that matter before a migration or investigation: what is here, and what changed?",
       panel: {
         kind: "s3Purpose",
         label: "What s3-turbo-list is for",
@@ -49,7 +49,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
           {
             label: "LIST",
             title: "弄清桶里有什么",
-            body: "把大规模 S3 兼容存储写成可分析的对象清单，不必先手动调一套扫描参数。",
+            body: "把大规模 S3 兼容存储写成可分析的 Parquet list，不必先手动调一套扫描参数。",
           },
           {
             label: "DIFF",
@@ -79,7 +79,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     },
   },
   httpmon: browserInside(
-    { en: "The command runs as before", zh: "命令照常跑，流量同时可见" },
+    { en: "The command runs as before", zh: "命令照常运行，请求同时可见" },
     {
       en: "httpmon starts a local proxy for one subprocess. It supplies the proxy and CA through that process only, then clears the temporary setup when it exits.",
       zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",

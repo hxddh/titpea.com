@@ -52,23 +52,6 @@ function activeSection(index: HTMLElement, sections: SectionLink[]) {
   }, sections[0]);
 }
 
-function scrollToSection(index: HTMLElement, item: SectionLink) {
-  setActive(collectSections(index), item.id);
-  item.link.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
-
-  const root = document.documentElement;
-  const previousScrollBehavior = root.style.scrollBehavior;
-  const targetTop = item.section.getBoundingClientRect().top + window.scrollY;
-  const targetMargin = Number.parseFloat(getComputedStyle(item.section).scrollMarginTop) || 0;
-
-  root.style.scrollBehavior = "auto";
-  window.scrollTo({ top: Math.max(0, targetTop - targetMargin), left: 0, behavior: "auto" });
-  window.requestAnimationFrame(() => {
-    root.style.scrollBehavior = previousScrollBehavior;
-  });
-  history.pushState(null, "", `#${encodeURIComponent(item.id)}`);
-}
-
 function mountSectionIndex(index: HTMLElement) {
   const sections = collectSections(index);
   if (sections.length === 0) return;
@@ -87,7 +70,18 @@ function mountSectionIndex(index: HTMLElement) {
   sections.forEach((item) => {
     item.link.addEventListener("click", (event) => {
       event.preventDefault();
-      scrollToSection(index, item);
+      setActive(sections, item.id);
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      const sectionTop = item.section.getBoundingClientRect().top + window.scrollY;
+      const scrollMargin = Number.parseFloat(getComputedStyle(item.section).scrollMarginTop) || 0;
+
+      root.style.scrollBehavior = "auto";
+      window.scrollTo({ top: Math.max(0, sectionTop - scrollMargin), left: 0, behavior: "auto" });
+      window.requestAnimationFrame(() => {
+        root.style.scrollBehavior = previousScrollBehavior;
+      });
+      history.pushState(null, "", `#${encodeURIComponent(item.id)}`);
       window.setTimeout(scheduleUpdate, sectionIndexPolicy.clickStabilizeDelayMs);
     });
   });

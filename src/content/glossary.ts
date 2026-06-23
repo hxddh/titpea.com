@@ -1,6 +1,5 @@
 export const zhTechnicalGlossary = [
   ["bucket", "存储桶"],
-  ["inventory", "对象清单"],
   ["artifact", "产物"],
   ["manifest", "运行记录"],
   ["endpoint", "端点"],

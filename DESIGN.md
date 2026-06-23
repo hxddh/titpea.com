@@ -14,6 +14,13 @@ Titpea is a concise personal product site. Its design should make each tool easi
 - Use actual product screenshots and authentic command-shaped visuals where they explain the product better than prose.
 - Do not turn product pages into abstract workflows. Explain the real runtime, boundary, inputs, and outputs.
 
+## Page Composition
+
+- A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims.
+- For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is for adoption blockers, not a second feature list.
+- Keep the section directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
+- Use one source of truth for each product fact. Repeating a claim in the hero, proof strip, body, and FAQ weakens the page instead of strengthening it.
+
 ## Typography And Copy
 
 - Hero headings should normally fit in one or two lines. Shorten copy before shrinking the type.

@@ -21,7 +21,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
           body: "Only fan out segments that remain long while useful capacity is available.",
         },
         {
-          label: "Write the inventory",
+          label: "Write the list",
           body: "Finish with an analysis-ready object list instead of terminal-only output.",
         },
       ],
@@ -37,7 +37,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
         { label: "识别结构", body: "先探测真实的前缀边界，再开始递归扫描。" },
         { label: "并行列举", body: "利用这些边界展开并行任务，不必预先准备 hints 文件。" },
         { label: "处理长尾", body: "只有仍然耗时的片段，才会在有可用性能时继续拆分。" },
-        { label: "写出清单", body: "最终留下可分析的对象清单，而不只是终端输出。" },
+        { label: "写出 list", body: "最终留下可分析的 Parquet list，而不只是终端输出。" },
       ],
     },
   },

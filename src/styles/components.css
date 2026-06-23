@@ -219,6 +219,15 @@
   backdrop-filter: blur(14px);
 }
 
+@media (max-width: 900px) {
+  .product-section-index {
+    position: static;
+    margin-top: -8px;
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
+
 .product-section-index > span {
   color: #667085;
   font-family: var(--mono);

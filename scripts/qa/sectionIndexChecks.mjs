@@ -36,14 +36,13 @@ function checkClickedSection(viewport, path, anchors, anchor, state, screenshot,
     anchorCount: anchors.length,
     textOk:
       state.targetExists &&
-      state.indexPosition === "sticky" &&
+      state.indexPosition === (viewport.name === "desktop" ? "sticky" : "static") &&
       (viewport.name === "desktop" ? state.indexOverflow <= 1 : state.indexOverflow >= 0) &&
-      state.indexTop !== null &&
-      state.indexTop >= 0 &&
+      (viewport.name !== "desktop" || (state.indexTop !== null && state.indexTop >= 0)) &&
       state.currentCount === 1 &&
       state.currentHref === anchor.href &&
       state.targetTop !== null &&
-      state.targetTop >= (state.indexBottom ?? 0) &&
+      state.targetTop >= (viewport.name === "desktop" ? (state.indexBottom ?? 0) : 0) &&
       state.targetTop < viewport.height - 24,
     details: state,
     screenshot,
@@ -89,6 +88,8 @@ export async function checkSectionIndex(page, viewport, route) {
       results.push(checkClickedSection(viewport, path, anchors, anchor, pointerState, pointerScreenshot, true));
     }
   }
+
+  if (viewport.name !== "desktop") return results;
 
   await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
   await page.waitForTimeout(sectionIndexPolicy.qaStickyWaitMs);

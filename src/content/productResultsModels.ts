@@ -11,7 +11,7 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
     paths: [
       {
         label: "LIST",
-        title: "A usable inventory",
+        title: "A usable object list",
         input: "One bucket",
         output: "Parquet object list",
         detail:
@@ -36,9 +36,9 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
     paths: [
       {
         label: "LIST",
-        title: "一份可用的对象清单",
+        title: "一份可用的对象 list",
         input: "一个存储桶",
-        output: "Parquet 对象清单",
+        output: "Parquet list",
         detail: "长任务可以从 checkpoint 继续；需要复查时，再查看可选的 trace 和运行记录。",
       },
       {

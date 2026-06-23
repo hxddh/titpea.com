@@ -22,8 +22,8 @@ export const visualCopy = {
   storageAgent: {
     en: {
       kicker: "Pi Agent",
-      title: "Pi loads the storage capability it needs",
-      body: "StorageOps is the layer Pi can load: skill packs define the method; extension tools handle specific evidence safely.",
+      title: "A Pi diagnosis uses skills, then tools",
+      body: "StorageOps gives Pi a storage-specific route: a skill chooses the method, then an extension tool handles the evidence safely.",
       skillsSuffix: "diagnostic skills",
       skillsBody:
         "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage.",
@@ -36,8 +36,8 @@ export const visualCopy = {
       cards: [
         {
           number: "SKILL",
-          title: "Choose a diagnosis method",
-          body: "Pi loads a skill for access, signing, throttling, migration, consistency, or another storage domain.",
+          title: "16 skill packs",
+          body: "Pi can load a focused method for access, protocol compatibility, performance, lifecycle, migration, consistency, or another storage domain.",
         },
         {
           number: "ROUTE",
@@ -59,8 +59,8 @@ export const visualCopy = {
     },
     zh: {
       kicker: "Pi Agent",
-      title: "Pi 会按需加载对象存储能力",
-      body: "StorageOps 是 Pi 可加载的一层能力：skill 定义排查方法，扩展工具负责安全地处理具体证据。",
+      title: "Pi 先加载 skill，再调用工具",
+      body: "StorageOps 给 Pi 一条对象存储排查路径：skill 决定方法，扩展工具再安全地处理现场证据。",
       skillsSuffix: "个诊断技能",
       skillsBody: "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步归类。",
       toolsSuffix: "个注册工具",
@@ -71,8 +71,8 @@ export const visualCopy = {
       cards: [
         {
           number: "SKILL",
-          title: "选择排查方法",
-          body: "Pi 会加载鉴权、签名、限流、迁移、一致性等对象存储领域的 skill。",
+          title: "16 组诊断 skills",
+          body: "Pi 可按需加载鉴权、协议兼容、性能、生命周期、迁移、一致性等对象存储领域的排查方法。",
         },
         { number: "ROUTE", title: "detect_domain", body: "判断优先排查方向，并提示 Pi 接下来该读取哪份 skill。" },
         { number: "SAFE", title: "scan_secrets", body: "在材料进入 Agent 上下文前，先脱敏凭据值。" },

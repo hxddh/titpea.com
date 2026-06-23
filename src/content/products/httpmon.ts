@@ -13,8 +13,8 @@ export const httpmonProduct: StorageCliProduct = {
       title: "httpmon",
       description: "A zero-config terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
       eyebrow: "Go CLI",
-      headline: "HTTP traffic beside the command",
-      lead: "Put httpmon before curl, aws, Python, Node, or another proxy-aware command. The command keeps its response stream while the terminal shows the traffic.",
+      headline: "See HTTP beside the command",
+      lead: "Wrap curl, aws, Python, Node, or another proxy-aware command. Its response stream stays intact while httpmon shows the request and response.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "Usage", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
@@ -55,7 +55,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "See the next request without leaving the terminal",
+      finalCta: "Inspect the next request in place",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & use",
       faq: [
@@ -75,10 +75,10 @@ export const httpmonProduct: StorageCliProduct = {
     },
     zh: {
       title: "httpmon",
-      description: "零配置的终端流量查看器，用来观察一条命令发出的 HTTP 和 HTTPS 请求。",
+      description: "零配置的终端 HTTP 查看器，用来观察一条命令发出的 HTTP 和 HTTPS 请求。",
       eyebrow: "Go CLI",
-      headline: "给命令加一层 HTTP 观察",
-      lead: "在 curl、aws、Python、Node 或其他支持代理的命令前加上 httpmon。命令照常收到响应，你也能在终端看到请求、响应和耗时。",
+      headline: "运行命令时，顺手看 HTTP 请求",
+      lead: "用 httpmon 包住 curl、aws、Python、Node 或其他支持代理的命令。命令照常收到响应，终端同时显示请求、响应和耗时。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
@@ -98,7 +98,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "protocol",
         },
         {
-          title: "关心的流量",
+          title: "关心的请求",
           body: "命令请求很多时，用 `--filter` 按 URL 或域名筛选，只看需要排查的部分。",
           intent: "workflow",
           surface: "cli",
@@ -108,7 +108,7 @@ export const httpmonProduct: StorageCliProduct = {
       automation: [
         {
           title: "结构化记录",
-          body: "输出 NDJSON 交给其他命令处理，或导出 HAR 1.2 到支持 Web 流量的检查工具。",
+          body: "输出 NDJSON 交给其他命令处理，或导出 HAR 1.2 到支持检查 HTTP 请求的工具。",
           intent: "automation",
           surface: "artifact",
         },
@@ -119,7 +119,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "不离开终端，看清下一条请求",
+      finalCta: "在原地看清下一条请求",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与用法",
       faq: [

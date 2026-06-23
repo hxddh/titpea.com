@@ -14,8 +14,8 @@ export const s3TurboListProduct: S3TurboListProduct = {
       title: "s3-turbo-list",
       description: "Automatic, high-speed S3-compatible list / diff with analysis-ready output.",
       eyebrow: "Rust CLI",
-      headline: "Fast, automatic S3 list / diff",
-      lead: "Automatic segmentation for large S3-compatible bucket list / diff.",
+      headline: "Automatic, fast S3 list / diff",
+      lead: "A CLI that discovers parallel work for large S3-compatible list / diff runs.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
@@ -24,7 +24,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       positioning: [
         {
           title: "Use it when",
-          body: "You need an object inventory or a source-to-target comparison, without building and tuning a scanner first.",
+          body: "You need a large object list or a source-to-target comparison, without building and tuning a scanner first.",
           intent: "fit",
           surface: "cli",
           priority: "primary",
@@ -37,7 +37,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: "What stays inspectable",
-          body: "List writes an inventory; diff writes ordered DiffFlag rows. Plans, manifests, and traces are available when a run needs review.",
+          body: "List writes Parquet; diff writes ordered DiffFlag rows. Plans, manifests, and traces stay available when a run needs review.",
           intent: "fit",
           surface: "artifact",
         },
@@ -76,14 +76,14 @@ export const s3TurboListProduct: S3TurboListProduct = {
       rationaleLabel: "Why it exists",
       rationaleTitle: "The useful work starts after the scan",
       rationaleBody: [
-        "A large-bucket scan is rarely the end of the task. You need an inventory for analysis, or a difference set to decide whether a migration is complete.",
+        "A large-bucket scan is rarely the end of the task. You need an object list for analysis, or a difference set to decide whether a migration is complete.",
         "s3-turbo-list makes those answers its default output. It keeps the command surface small and exposes planning, recovery, and evidence only when the run needs them.",
       ],
       workflowLabel: "Workflow",
       workflow: [
         {
           title: "Decide the job",
-          body: "Use list for one bucket's inventory, or diff for the difference between source and target.",
+          body: "Use list for one bucket's object list, or diff for the difference between source and target.",
           intent: "workflow",
           surface: "cli",
         },
@@ -178,8 +178,8 @@ export const s3TurboListProduct: S3TurboListProduct = {
       title: "s3-turbo-list",
       description: "自动分段的高速 S3 兼容 list / diff，输出可直接分析的结果。",
       eyebrow: "Rust CLI",
-      headline: "自动分段 S3 list / diff",
-      lead: "面向大规模 S3 兼容存储的自动 list / diff。",
+      headline: "自动、快速的 S3 list / diff",
+      lead: "面向大规模 S3 兼容存储，自动发现可并行的 list / diff 工作。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
@@ -188,7 +188,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       positioning: [
         {
           title: "什么时候用",
-          body: "需要得到对象清单，或核对源端和目标端的差异，又不想先搭建并调试一套扫描器。",
+          body: "需要列出大量对象，或核对源端和目标端的差异，又不想先搭建并调试一套扫描器。",
           intent: "fit",
           surface: "cli",
           priority: "primary",
@@ -201,7 +201,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: "留下什么记录",
-          body: "list 留下对象清单，diff 留下带 DiffFlag 的差异结果；计划、运行记录和 trace 按需保留。",
+          body: "list 写出 Parquet，diff 写出带 DiffFlag 的差异结果；计划、运行记录和 trace 按需保留。",
           intent: "fit",
           surface: "artifact",
         },
@@ -240,7 +240,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       rationaleLabel: "为什么做",
       rationaleTitle: "扫描之后，才是真正要做的事",
       rationaleBody: [
-        "大规模扫描通常不是终点。你需要对象清单来继续分析，或需要差异结果来判断一次迁移是否完成。",
+        "大规模扫描通常不是终点。你需要一份 list 结果继续分析，或需要差异结果判断一次迁移是否完成。",
         "s3-turbo-list 默认留下这两种结果。计划、恢复和证据能力只在任务需要时出现，命令本身保持克制。",
       ],
       workflowLabel: "怎么用",

@@ -86,9 +86,10 @@ for (const viewport of viewports) {
     }
 
     if (
-      target.route.includes("s3-turbo-list") ||
-      target.route.includes("storageops") ||
-      target.route.includes("httpmon")
+      viewport.name === "desktop" &&
+      (target.route.includes("s3-turbo-list") ||
+        target.route.includes("storageops") ||
+        target.route.includes("httpmon"))
     ) {
       await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
       await page.waitForTimeout(120);

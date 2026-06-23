@@ -19,6 +19,7 @@ const surfaceCode = {
 
 <section id={section.id} class={`shell content-section ${section.id}-section`}>
   <p class="section-kicker">{section.label}</p>
+  <h2 class="section-heading sr-only">{section.label}</h2>
   <div class={gridClass}>
     {
       section.items.map((item, index) => (
@@ -29,7 +30,7 @@ const surfaceCode = {
         >
           {section.numbered && <span>{String(index + 1).padStart(2, "0")}</span>}
           {item.evidence && <small>{item.evidence}</small>}
-          <h2>{item.title}</h2>
+          <h3>{item.title}</h3>
           <p>{item.body}</p>
         </article>
       ))

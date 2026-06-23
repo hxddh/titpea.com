@@ -57,14 +57,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       { id: "evidence", label: { en: "Scan plan", zh: "扫描方式" }, required: true },
       { id: "results", label: { en: "Results", zh: "结果" }, required: true },
-      {
-        id: "automation",
-        label: { en: "Automation", zh: "自动化" },
-        layout: "balanced",
-        source: "automation",
-        required: true,
-      },
-      { id: "cases", label: { en: "Endpoints", zh: "端点" }, required: true },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
@@ -79,13 +71,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       { id: "evidence", label: { en: "Local layer", zh: "本地观察层" }, required: true },
-      {
-        id: "automation",
-        label: { en: "Keep a session", zh: "保留会话" },
-        layout: "evidence",
-        source: "automation",
-        required: true,
-      },
       {
         id: "workflow",
         label: { en: "In the terminal", zh: "终端里看什么" },
@@ -116,7 +101,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "workflow",
         required: true,
       },
-      { id: "cases", label: { en: "Common cases", zh: "常见问题" }, required: true },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
