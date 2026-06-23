@@ -32,11 +32,12 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.storage.label}</p>
       <h2>{model.storage.title}</h2>
     </div>
-    <div class="catalog-grid storage-catalog-grid">
+    <div class="product-ledger storage-ledger" aria-label={model.storage.title}>
       {
         model.storage.items.map((item) => (
-          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.displayRole}</span>
+          <a class:list={["product-ledger-row", item.isPrimary && "primary"]} href={item.href}>
+            <span class="ledger-number">{item.number ?? "--"}</span>
+            <span class="ledger-role">{item.displayRole}</span>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>
@@ -58,6 +59,16 @@ const { model } = Astro.props;
             <strong>{item.name}</strong>
             <p>{item.text}</p>
           </a>
+        ))
+      }
+    </div>
+    <div class="browser-preview-row" aria-label={model.browser.title}>
+      {
+        model.browser.previews.map((preview) => (
+          <figure>
+            <img src={preview.src} alt={preview.alt} loading="lazy" />
+            <figcaption>{preview.label}</figcaption>
+          </figure>
         ))
       }
     </div>

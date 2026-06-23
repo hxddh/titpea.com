@@ -48,11 +48,12 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.products.label}</p>
       <h2>{model.products.title}</h2>
     </div>
-    <div class="about-product-grid">
+    <div class="product-ledger about-product-ledger" aria-label={model.products.title}>
       {
         model.products.items.map((item) => (
-          <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.displayRole}</span>
+          <a class:list={["product-ledger-row", item.isPrimary && "primary"]} href={item.href}>
+            <span class="ledger-number">{item.number ?? "--"}</span>
+            <span class="ledger-role">{item.displayRole}</span>
             <strong>{item.name}</strong>
             <p>{item.text}</p>
           </a>
