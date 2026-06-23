@@ -55,7 +55,6 @@ export type HomePageModel = BasePageModel & {
     label: string;
     title: string;
     items: ProductCatalogItemModel[];
-    previews: Array<{ src: string; alt: string; label: string }>;
   };
 };
 

@@ -21,8 +21,6 @@ npm run qa:pages
 
 `qa:pages` checks desktop, tablet, and mobile layouts for page overflow, navigation breakpoints, product anchor links, key copy, and the mobile menu open state.
 
-See [DESIGN.md](DESIGN.md) for the product-page design, content, and visual QA rules.
-
 ## Cloudflare Pages
 
 The site is deployed to the existing Cloudflare Pages project `titpea`.

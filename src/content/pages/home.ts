@@ -48,18 +48,6 @@ export function buildHomePage(locale: Locale): HomePageModel {
       label: copy.browserLine,
       title: copy.browserTitle,
       items: catalog.browser,
-      previews: [
-        {
-          src: siteConfig.assets.screenshots.worldClockDark,
-          alt: "World Clock dark interface",
-          label: "World Clock",
-        },
-        {
-          src: siteConfig.assets.screenshots.doubanRatingAssistant,
-          alt: "Douban Movie Rating Assistant in a movie page",
-          label: "Douban Movie Rating Assistant",
-        },
-      ],
     },
   };
 }
