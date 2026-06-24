@@ -64,12 +64,6 @@ export const catalogCopy = {
     worldClockRole: "Timezone utility",
     doubanText: "Adds external rating context to Douban movie pages.",
     doubanRole: "Rating context",
-    s3EvidenceTitle: "1M objects, 41.7s → 18.8s",
-    s3EvidenceBody:
-      "A third-party Alibaba Cloud OSS benchmark on v0.21.0: 1,000,413 objects in 41.7s single-stream and 18.8s with `-c 8`.",
-    storageopsEvidenceTitle: "Pi extension, skills, and tools",
-    storageopsEvidenceBody:
-      "StorageOps gives Pi storage skills and extension tools for evidence-based investigation, without connecting to cloud accounts.",
     groups: [
       {
         title: "Object storage",
@@ -100,10 +94,6 @@ export const catalogCopy = {
     worldClockRole: "时区工具",
     doubanText: "给豆瓣电影页补充外部评分。",
     doubanRole: "评分辅助",
-    s3EvidenceTitle: "1M 对象，41.7s 到 18.8s",
-    s3EvidenceBody: "第三方 Alibaba Cloud OSS 测试（v0.21.0）：1,000,413 个对象，单流 41.7 秒，`-c 8` 约 18.8 秒。",
-    storageopsEvidenceTitle: "Pi 扩展、skills 与工具",
-    storageopsEvidenceBody: "StorageOps 为 Pi 提供对象存储 skills 和扩展工具，根据现场材料排查问题，不会连接云账号。",
     groups: [
       {
         title: "对象存储",
