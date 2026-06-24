@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "assets:og": "node scripts/generate-og-images.mjs",
-    "assets:check": "npm run assets:og && tsx scripts/check-og-assets.mjs",
+    "assets:check": "tsx scripts/check-og-assets.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "astro check",

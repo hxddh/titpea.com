@@ -33,8 +33,50 @@ Titpea is a concise personal product site. Its design should make each tool easi
 - Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
 - Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
 
+## Constraints (Measurable Floors)
+
+Principles above are prompts for judgment. The rules below are not — they are hard
+floors that a change either meets or fails, and several are enforced in CI. When a
+principle and a constraint seem to disagree, satisfy the constraint and rework the design.
+
+- Accessibility
+  - Text contrast: body and labels at least 4.5:1; text 18px+ or non-text at least 3:1.
+    `--faint` is a border/decoration token and must not be used for text.
+  - Interactive targets are at least 44x44px.
+  - Motion respects `prefers-reduced-motion`.
+  - Every image has an `alt`; decorative images use `alt=""`.
+- Performance
+  - No layout shift: every `<img>` declares intrinsic `width`/`height`.
+  - Keep CSS in external stylesheets so the strict CSP never blocks an inlined `<style>`.
+- Tokens are the single source of truth
+  - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
+  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings and prose.
+  - Hero headings stay within two lines.
+- Responsive
+  - Breakpoints are 900px (tablet to single column) and 640px (phone).
+  - For bilingual layouts, size shared cards for the longer language so the Chinese page
+    does not leave large gaps.
+
+## Color Semantics
+
+Color is used sparingly and always carries meaning. The palette lives in `tokens.css`.
+
+| Role             | Token / value            | Meaning                                        |
+| ---------------- | ------------------------ | ---------------------------------------------- |
+| Ink              | `--ink`                  | Primary text, primary buttons, active state    |
+| Muted            | `--muted`                | Secondary text and quiet labels (AA compliant) |
+| Faint            | `--faint`                | Hairlines and decoration only — never text     |
+| Line / soft line | `--line` / `--soft-line` | Card dividers and borders                      |
+| Reference green  | `#16a56c` family         | A baseline or recommended data point           |
+| Caution orange   | `#d97706` family         | An outlier or value that needs attention       |
+
+Do not introduce a third accent color or use green/orange decoratively.
+
 ## Review Before Release
 
-- Check desktop and mobile screenshots after visual changes.
-- Verify title line count, text density, image cropping, navigation behavior, and horizontal overflow.
+- The pipeline enforces most of this automatically: `visual:check` compares desktop and
+  mobile baselines, `qa:pages` checks overflow, navigation, anchors, and the mobile menu,
+  `a11y:check` runs structural checks, and `facts:external` keeps external claims fresh.
+  After an intentional visual change, refresh the baselines with `npm run visual:approve`.
+- Still review by eye: title line count, text density, image cropping, and horizontal overflow.
 - Every product claim must be traceable to project documentation, a screenshot, a test result, or source code.
