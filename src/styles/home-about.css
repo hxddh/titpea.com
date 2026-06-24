@@ -348,15 +348,7 @@
 }
 
 .about-product-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.about-product-grid .about-product-card {
-  grid-column: span 2;
-}
-
-.about-product-grid .about-product-card:nth-child(n + 4) {
-  grid-column: span 3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .about-product-card strong {
@@ -368,6 +360,13 @@
 
 .about-product-card.primary {
   min-height: 250px;
+}
+
+.home-browser-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.44fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
 }
 
 .browser-band-body {
