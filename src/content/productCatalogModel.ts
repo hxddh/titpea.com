@@ -1,6 +1,4 @@
 import { indexedProduct, localizedProductTitle } from "./productIndex";
-import { s3EvidenceFacts } from "./productEvidenceFacts";
-import { s3TurboListFacts } from "./productFacts";
 import { catalogCopy } from "./i18n/pageCopy";
 import { type Locale, type ProductSlug } from "../lib/site";
 import { productManifest } from "./productManifest";
@@ -17,14 +15,6 @@ export type ProductCatalogItem = {
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "browser";
-};
-
-export type EvidenceSummary = {
-  label: string;
-  title: string;
-  body: string;
-  href: string;
-  stats: string[];
 };
 
 export function productCatalogModel(locale: Locale) {
@@ -58,27 +48,9 @@ export function productCatalogModel(locale: Locale) {
   const s3 = indexedProduct("s3-turbo-list", locale);
   const storageops = indexedProduct("storageops", locale);
 
-  const evidence: EvidenceSummary[] = [
-    {
-      label: "s3-turbo-list benchmark",
-      title: copy.s3EvidenceTitle,
-      body: copy.s3EvidenceBody,
-      href: s3.href,
-      stats: [s3EvidenceFacts.version, s3TurboListFacts.licenseLabel ?? "current license", "agent-safe JSON"],
-    },
-    {
-      label: "StorageOps agent package",
-      title: copy.storageopsEvidenceTitle,
-      body: copy.storageopsEvidenceBody,
-      href: storageops.href,
-      stats: ["Pi extension + skill packs", "four Pi extension tools", "CLI / Web API / MCP"],
-    },
-  ];
-
   return {
     storage,
     browser,
-    evidence,
     all: [...storage, ...browser],
     groups: [...copy.groups],
     featuredProductPath: s3.href,
