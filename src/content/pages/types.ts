@@ -88,11 +88,9 @@ export type AboutPageModel = BasePageModel & {
 export type ProductCatalogItemModel = {
   id: string;
   number?: string;
-  verb?: string;
   name: string;
   href: string;
   text: string;
-  tagline: string;
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;

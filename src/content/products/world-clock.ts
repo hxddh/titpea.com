@@ -74,7 +74,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
       ],
       rationaleLabel: "Details",
-      rationaleTitle: "Small, fast, and browser-native",
+      rationaleTitle: "Open it, glance, get back to work",
       rationaleBody: [
         "The extension is listed under Tools in the Chrome Web Store and offered by titpea.com.",
         "Use it as a quick timezone glance for remote work, travel coordination, or checking whether a city is in business hours.",

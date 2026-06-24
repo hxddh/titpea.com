@@ -50,19 +50,15 @@ export const aboutModelCopy = {
 
 export const catalogCopy = {
   en: {
-    httpmon: "See one command's HTTP/HTTPS requests in the terminal.",
+    httpmon: "Watch one command's HTTP/HTTPS in the terminal — no system-proxy change.",
     s3Text: "Automatic, fast S3 list / diff with Parquet output.",
-    s3Tagline: "Automatic S3 list / diff",
     s3Role: "List / Diff",
     storageopsText: "Pi skills and tools for diagnosing S3-compatible storage.",
-    storageopsTagline: "Storage diagnosis for Pi",
     storageopsRole: "Pi extension",
-    httpmonTagline: "Terminal HTTP inspector",
     httpmonRole: "HTTP inspection",
-    worldClockText: "A fast city-time popup.",
-    browserTagline: "Lightweight Chrome extension",
+    worldClockText: "A fast multi-city time popup.",
     worldClockRole: "Timezone utility",
-    doubanText: "Adds external rating context to Douban movie pages.",
+    doubanText: "Shows IMDb, Rotten Tomatoes, and Metacritic inside Douban movie pages.",
     doubanRole: "Rating context",
     groups: [
       {
@@ -80,19 +76,15 @@ export const catalogCopy = {
     ],
   },
   zh: {
-    httpmon: "在终端查看一条命令发出的 HTTP/HTTPS 请求。",
+    httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
     s3Text: "自动展开的高速 S3 list / diff，输出 Parquet。",
-    s3Tagline: "自动 S3 list / diff",
     s3Role: "List / Diff",
     storageopsText: "给 Pi 用的 S3 兼容存储诊断 skills 和工具。",
-    storageopsTagline: "Pi 的对象存储诊断扩展",
     storageopsRole: "Pi 扩展",
-    httpmonTagline: "终端 HTTP 查看器",
     httpmonRole: "请求排查",
     worldClockText: "快速查看城市时间。",
-    browserTagline: "轻量 Chrome 扩展",
     worldClockRole: "时区工具",
-    doubanText: "给豆瓣电影页补充外部评分。",
+    doubanText: "在豆瓣电影页内对照 IMDb、Rotten Tomatoes 和 Metacritic。",
     doubanRole: "评分辅助",
     groups: [
       {

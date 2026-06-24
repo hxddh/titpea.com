@@ -6,11 +6,9 @@ import { productManifest } from "./productManifest";
 export type ProductCatalogItem = {
   id: string;
   number?: string;
-  verb?: string;
   name: string;
   href: string;
   text: string;
-  tagline: string;
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
@@ -19,24 +17,22 @@ export type ProductCatalogItem = {
 
 export function productCatalogModel(locale: Locale) {
   const copy = catalogCopy[locale];
-  const catalogText = (slug: ProductSlug) => {
-    if (slug === "s3-turbo-list") return [copy.s3Text, copy.s3Tagline, copy.s3Role];
-    if (slug === "storageops") return [copy.storageopsText, copy.storageopsTagline, copy.storageopsRole];
-    if (slug === "httpmon") return [copy.httpmon, copy.httpmonTagline, copy.httpmonRole];
-    if (slug === "world-clock") return [copy.worldClockText, copy.browserTagline, copy.worldClockRole];
-    return [copy.doubanText, copy.browserTagline, copy.doubanRole];
+  const catalogText = (slug: ProductSlug): [string, string] => {
+    if (slug === "s3-turbo-list") return [copy.s3Text, copy.s3Role];
+    if (slug === "storageops") return [copy.storageopsText, copy.storageopsRole];
+    if (slug === "httpmon") return [copy.httpmon, copy.httpmonRole];
+    if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
+    return [copy.doubanText, copy.doubanRole];
   };
   const catalogItems = productManifest.map((item) => {
     const product = indexedProduct(item.slug, locale);
-    const [text, tagline, displayRole] = catalogText(item.slug);
+    const [text, displayRole] = catalogText(item.slug);
     return {
       id: item.slug,
       number: item.group === "storage" ? String(item.catalog.order).padStart(2, "0") : undefined,
-      verb: item.catalog.verb,
       name: item.group === "browser" ? localizedProductTitle(item.slug, locale) : product.name,
       href: product.href,
       text,
-      tagline,
       displayRole,
       slug: item.slug,
       isPrimary: item.catalog.primary,

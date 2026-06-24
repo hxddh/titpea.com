@@ -6,7 +6,7 @@ export type ProductManifestItem = {
   name: string;
   group: ProductGroup;
   nav: { primary: boolean; label?: "worldClock" | "douban" };
-  catalog: { order: number; verb?: string; primary?: boolean };
+  catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
   factId: string;
@@ -18,7 +18,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "s3-turbo-list",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 1, verb: "List / Diff", primary: true },
+    catalog: { order: 1, primary: true },
     visual: "s3Benchmark",
     ogImage: "/assets/og-s3-turbo-list.png",
     factId: "s3-turbo-list",
@@ -28,7 +28,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "StorageOps",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 2, verb: "Diagnose", primary: true },
+    catalog: { order: 2, primary: true },
     visual: "storageAgent",
     ogImage: "/assets/og-storageops.png",
     factId: "storageops",
@@ -38,7 +38,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "httpmon",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 3, verb: "Inspect" },
+    catalog: { order: 3 },
     visual: "httpmonTerminal",
     ogImage: "/assets/og-httpmon.png",
     factId: "https-traffic-inspector",
