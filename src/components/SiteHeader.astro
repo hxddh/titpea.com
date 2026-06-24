@@ -42,6 +42,19 @@ const navGroups = headerNavGroups(locale);
       {alternateLabel}
     </a>
 
+    <button
+      class="theme-toggle"
+      type="button"
+      data-theme-toggle
+      data-label-dark={copy.themeToDark}
+      data-label-light={copy.themeToLight}
+      aria-label={copy.themeToDark}
+      hidden
+    >
+      <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
+      <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+    </button>
+
     <details class="mobile-menu">
       <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>
       <div class="mobile-menu-panel">
