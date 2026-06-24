@@ -1,7 +1,7 @@
 import { aboutModelCopy } from "../i18n/pageCopy";
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
-import { siteConfig } from "../siteConfig";
+import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { AboutPageModel } from "./types";
 import type { Locale } from "../../lib/site";
@@ -12,6 +12,20 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
   const catalog = productCatalogModel(locale);
   const path = pagePath(locale, "about");
   const alternatePath = pagePath(alternateLocale(locale), "about");
+  const inLanguage = { en: "en", zh: "zh-CN" }[locale];
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    inLanguage,
+    mainEntity: {
+      "@type": "Person",
+      name: copy.aboutHeadline,
+      description: copy.aboutLead,
+      url: absoluteUrl(path),
+      sameAs: [siteConfig.githubProfile],
+      email: `mailto:${siteConfig.email}`,
+    },
+  };
 
   return {
     kind: "about",
@@ -27,6 +41,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       alternatePath,
       locale,
       ogImage: siteConfig.assets.og.about,
+      structuredData,
     }),
     language: languageLink(locale, alternatePath),
     hero: {

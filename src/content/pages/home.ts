@@ -1,6 +1,6 @@
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
-import { siteConfig } from "../siteConfig";
+import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
 import { pathFor, type Locale } from "../../lib/site";
@@ -11,6 +11,20 @@ export function buildHomePage(locale: Locale): HomePageModel {
   const path = pagePath(locale);
   const alternatePath = pagePath(alternateLocale(locale));
   const description = copy.homeDescription;
+  const inLanguage = { en: "en", zh: "zh-CN" }[locale];
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.brand,
+    url: absoluteUrl(path),
+    inLanguage,
+    description,
+    publisher: {
+      "@type": "Person",
+      name: "hxddh",
+      url: siteConfig.githubProfile,
+    },
+  };
 
   return {
     kind: "home",
@@ -27,6 +41,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       alternatePath,
       locale,
       ogImage: siteConfig.assets.og.home,
+      structuredData,
     }),
     language: languageLink(locale, alternatePath),
     hero: {

@@ -366,6 +366,7 @@
 .clock-shot {
   position: absolute;
   width: min(82%, 360px);
+  height: auto;
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: var(--shadow-soft);
@@ -392,6 +393,7 @@
 
 .douban-shot-frame img {
   width: 100%;
+  height: auto;
   object-fit: cover;
   object-position: top center;
 }

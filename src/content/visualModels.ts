@@ -47,7 +47,7 @@ export type HttpmonTerminalVisualModel = {
 export type ScreenshotVisualModel = {
   kind: "worldClockScreenshot" | "doubanScreenshot";
   label: string;
-  images: Array<{ src: string; alt: string; className?: string }>;
+  images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
 };
 
 export type ProductVisualModel =
@@ -135,11 +135,15 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
           src: siteConfig.assets.screenshots.worldClockLight,
           className: "clock-shot light",
           alt: copy.worldClockLight,
+          width: 716,
+          height: 776,
         },
         {
           src: siteConfig.assets.screenshots.worldClockDark,
           className: "clock-shot dark",
           alt: copy.worldClockDark,
+          width: 702,
+          height: 778,
         },
       ],
     };
@@ -152,6 +156,8 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       {
         src: siteConfig.assets.screenshots.doubanRatingAssistant,
         alt: visualCopy.screenshots[locale].douban,
+        width: 1442,
+        height: 886,
       },
     ],
   };

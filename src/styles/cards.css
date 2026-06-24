@@ -46,7 +46,7 @@
 .workflow-step > span {
   display: block;
   margin-bottom: 8px;
-  color: var(--faint);
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
 }
