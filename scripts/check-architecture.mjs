@@ -122,22 +122,22 @@ assertNoMatch(
   /\b(current|category|role|visual):/,
 );
 
-const pagesCssLines = lineCount("src/styles/pages.css");
-if (pagesCssLines > 150) fail("pages.css stays thin", `src/styles/pages.css has ${pagesCssLines} lines`);
-else pass("pages.css stays thin");
+// File budgets. These line limits are tripwires, not style nits: each file
+// has a structural role, and crossing the budget is a signal it is drifting
+// back into doing too much. Raise a budget only alongside a deliberate call
+// about that file's responsibility, not to make a check pass.
+const fileBudgets = [
+  { path: "src/styles/pages.css", maxLines: 150, role: "pages.css stays thin" },
+  { path: "scripts/qa-pages.mjs", maxLines: 80, role: "qa-pages.mjs stays an orchestrator" },
+  { path: "src/content/pages/product.ts", maxLines: 140, role: "product page model stays an assembler" },
+  { path: "src/components/HomePage.astro", maxLines: 180, role: "HomePage stays a renderer" },
+];
 
-const qaPagesLines = lineCount("scripts/qa-pages.mjs");
-if (qaPagesLines > 80) fail("qa-pages.mjs stays an orchestrator", `scripts/qa-pages.mjs has ${qaPagesLines} lines`);
-else pass("qa-pages.mjs stays an orchestrator");
-
-const productPageModelLines = lineCount("src/content/pages/product.ts");
-if (productPageModelLines > 140)
-  fail("product page model stays an assembler", `src/content/pages/product.ts has ${productPageModelLines} lines`);
-else pass("productPageModel stays an assembler");
-
-const homePageLines = lineCount("src/components/HomePage.astro");
-if (homePageLines > 180) fail("HomePage stays a renderer", `src/components/HomePage.astro has ${homePageLines} lines`);
-else pass("HomePage stays a renderer");
+for (const budget of fileBudgets) {
+  const lines = lineCount(budget.path);
+  if (lines > budget.maxLines) fail(budget.role, `${budget.path} has ${lines} lines (budget ${budget.maxLines})`);
+  else pass(budget.role);
+}
 
 const failures = checks.filter((check) => !check.ok);
 if (failures.length > 0) {

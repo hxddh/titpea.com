@@ -61,6 +61,53 @@
   margin-inline: auto;
 }
 
+.home-signature {
+  display: grid;
+  gap: 7px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  border: 1px solid var(--soft-line);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow-soft);
+  font-family: var(--mono);
+  text-align: left;
+}
+
+.home-signature figcaption {
+  color: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-signature-cmd,
+.home-signature-result {
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.home-signature-cmd {
+  color: var(--ink);
+}
+
+.home-signature-cmd::before {
+  content: "$ ";
+  color: var(--data-ref);
+}
+
+.home-signature-result {
+  color: var(--muted);
+}
+
+.home-signature-result::before {
+  content: "→ ";
+  color: var(--data-ref);
+}
+
 .home-workbench-panel,
 .about-system-panel,
 .home-evidence-grid,
