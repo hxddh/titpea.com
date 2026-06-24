@@ -9,6 +9,8 @@ export function headerUi(locale: Locale) {
     primaryLabel: copy.primaryLabel,
     menuLabel: copy.menuLabel,
     menuText: copy.menuText,
+    themeToDark: copy.themeToDark,
+    themeToLight: copy.themeToLight,
   };
 }
 
