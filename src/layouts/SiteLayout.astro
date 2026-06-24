@@ -33,7 +33,8 @@ const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
-    <meta name="theme-color" content="#f9fafc" />
+    <meta name="theme-color" content="#f9fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={seo.canonicalUrl} />
     <link rel="alternate" hreflang="en" href={seo.alternates.en} />
     <link rel="alternate" hreflang="zh-CN" href={seo.alternates.zh} />

@@ -29,7 +29,7 @@
   place-items: center;
   border-radius: 8px;
   background: var(--ink);
-  color: #ffffff;
+  color: var(--on-ink);
   font-size: 14px;
 }
 
@@ -40,7 +40,7 @@
 
 .nav {
   gap: 18px;
-  color: #586174;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -98,7 +98,7 @@
 .button.primary {
   border-color: var(--ink);
   background: var(--ink);
-  color: #ffffff;
+  color: var(--on-ink);
 }
 
 .button:hover {
@@ -183,7 +183,7 @@
 }
 
 .mobile-menu-group a[aria-current="page"] {
-  background: #f3f4f6;
+  background: var(--active-bg);
   font-weight: 760;
 }
 
@@ -229,7 +229,7 @@
 }
 
 .product-section-index > span {
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -257,5 +257,5 @@
 
 .product-section-index a[aria-current] {
   background: var(--ink);
-  color: #ffffff;
+  color: var(--on-ink);
 }

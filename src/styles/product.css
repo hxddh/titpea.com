@@ -314,7 +314,7 @@
 .deep-dive-grid span,
 .agent-topology span,
 .deep-dive-benchmark span {
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;

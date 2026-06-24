@@ -123,7 +123,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -163,7 +163,7 @@
 .workbench-top span,
 .output-table span,
 .benchmark-footnotes span {
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -195,7 +195,7 @@
 
 .benchmark-line-chart figcaption,
 .benchmark-line-chart p {
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -214,7 +214,7 @@
 
 .chart-axis,
 .chart-guide {
-  stroke: #d8dee8;
+  stroke: var(--soft-line);
   stroke-width: 1;
 }
 
@@ -237,19 +237,19 @@
 }
 
 .chart-point.is-reference circle {
-  fill: #16805c;
-  stroke: #16805c;
+  fill: var(--data-ref);
+  stroke: var(--data-ref);
 }
 
 .chart-point.is-caution circle {
-  fill: #c27a17;
-  stroke: #c27a17;
+  fill: var(--data-caution);
+  stroke: var(--data-caution);
 }
 
 .chart-x-label,
 .chart-y-label,
 .chart-annotation {
-  fill: #667085;
+  fill: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -259,22 +259,22 @@
 }
 
 .chart-point.is-reference .chart-annotation {
-  fill: #126547;
+  fill: var(--data-ref-ink);
 }
 
 .chart-point.is-caution .chart-annotation {
-  fill: #985b0a;
+  fill: var(--data-caution-ink);
 }
 
 .automation-path {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 18px;
-  background: #fbfcfe;
+  background: var(--raised);
 }
 
 .automation-path > span {
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }

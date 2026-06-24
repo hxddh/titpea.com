@@ -74,7 +74,7 @@ p {
 .eyebrow,
 .section-kicker {
   margin: 0 0 14px;
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
@@ -135,4 +135,26 @@ p {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+}
+
+/* Dark mode overrides for values that cannot be a single token:
+   the grid backdrop inverts, and the translucent veils need a dark base. */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  }
+
+  .mobile-menu-panel {
+    background: rgba(22, 27, 34, 0.98);
+  }
+
+  .product-section-index {
+    background: rgba(13, 17, 23, 0.92);
+  }
+
+  .home-proof-rail span {
+    background: rgba(28, 34, 44, 0.6);
+  }
 }

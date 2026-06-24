@@ -8,7 +8,7 @@
 }
 
 .section-card-grid > article.primary {
-  background: #fbfcff;
+  background: var(--raised);
 }
 
 .section-card-grid > article.compact {
@@ -18,9 +18,9 @@
 .section-card-grid small {
   width: fit-content;
   border-radius: var(--radius-control);
-  background: #eef2ff;
+  background: var(--chip-bg);
   padding: 4px 8px;
-  color: #394150;
+  color: var(--chip-ink);
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 700;

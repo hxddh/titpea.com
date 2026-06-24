@@ -18,7 +18,11 @@ const { model } = Astro.props;
       <div class="actions">
         {
           model.hero.actions.map((action) => (
-            <a class:list={["button", action.style]} href={action.href}>
+            <a
+              class:list={["button", action.style]}
+              href={action.href}
+              rel={action.external ? "noreferrer" : undefined}
+            >
               {action.label}
             </a>
           ))

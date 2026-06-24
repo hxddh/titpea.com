@@ -28,7 +28,7 @@
 .meta-line {
   max-width: 64ch;
   margin: 18px auto 0;
-  color: #667085;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
   text-wrap: balance;
@@ -137,7 +137,7 @@
   place-items: center;
   border-radius: 7px;
   background: var(--ink);
-  color: #ffffff;
+  color: var(--on-ink);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;
@@ -225,7 +225,7 @@
 .home-evidence-card p {
   max-width: 64ch;
   margin: 0;
-  color: #4b5563;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.62;
 }
