@@ -10,6 +10,19 @@
   --faint: #8b95a5;
   --line: #e5e7eb;
   --soft-line: #d1d5db;
+  /* Semantic surface tokens. Light values match the literals they replaced,
+     so light mode is unchanged; the dark block below remaps them. */
+  --on-ink: #ffffff;
+  --label: #667085;
+  --raised: #fbfcff;
+  --chip-bg: #eef2ff;
+  --chip-ink: #394150;
+  --active-bg: #f3f4f6;
+  /* Semantic data colors: reference (baseline) and caution (outlier). */
+  --data-ref: #16805c;
+  --data-ref-ink: #126547;
+  --data-caution: #c27a17;
+  --data-caution-ink: #985b0a;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --shadow-soft: 0 24px 60px rgba(17, 24, 39, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
@@ -18,4 +31,28 @@
   --section-y: 94px;
   --card-pad: 28px;
   --card-pad-compact: 22px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #0d1117;
+    --panel: #161b22;
+    --ink: #e6edf3;
+    --muted: #9aa7b4;
+    --faint: #6b7685;
+    --line: #272e38;
+    --soft-line: #39424e;
+    --on-ink: #0d1117;
+    --label: #8d99a8;
+    --raised: #1c222c;
+    --chip-bg: #1d2531;
+    --chip-ink: #c6d2df;
+    --active-bg: #232b36;
+    --data-ref: #36b386;
+    --data-ref-ink: #5fd0a6;
+    --data-caution: #e3a44f;
+    --data-caution-ink: #edb472;
+    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
 }

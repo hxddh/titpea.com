@@ -1,10 +1,11 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import sharp from "sharp";
 
 const outDir = new URL("../public/assets/", import.meta.url);
 
-const images = [
+export const images = [
   {
     file: "og-home.png",
     eyebrow: "titpea.com",
@@ -164,11 +165,20 @@ function svg({ eyebrow, title, body, accent, mark, visual }) {
 </svg>`;
 }
 
-await fs.mkdir(outDir, { recursive: true });
-
-for (const image of images) {
-  await sharp(Buffer.from(svg(image)))
+export function renderOg(image) {
+  return sharp(Buffer.from(svg(image)))
     .png()
-    .toFile(path.join(outDir.pathname, image.file));
-  console.log(`generated ${image.file}`);
+    .toBuffer();
+}
+
+async function main() {
+  await fs.mkdir(outDir, { recursive: true });
+  for (const image of images) {
+    await fs.writeFile(path.join(outDir.pathname, image.file), await renderOg(image));
+    console.log(`generated ${image.file}`);
+  }
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await main();
 }

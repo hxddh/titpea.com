@@ -47,7 +47,7 @@ export type HttpmonTerminalVisualModel = {
 export type ScreenshotVisualModel = {
   kind: "worldClockScreenshot" | "doubanScreenshot";
   label: string;
-  images: Array<{ src: string; alt: string; className?: string }>;
+  images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
 };
 
 export type ProductVisualModel =
@@ -91,34 +91,12 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
   }
 
   if (kind === "httpmonTerminal") {
-    const copy = {
-      en: {
-        kicker: "httpmon · local proxy",
-        status: "capturing",
-        requestLabel: "REQUEST #1",
-        requestMeta: "Host: api.github.com · Accept: */*",
-        responseLabel: "RESPONSE",
-        response: "HTTP/1.1 200 OK",
-        responseMeta: "Content-Type: application/json · 245ms",
-        body: '{"login":"octocat","id":583231,...}',
-        footnotes: ["local HTTPS inspection", "original response stream stays with the command"],
-      },
-      zh: {
-        kicker: "httpmon · 本地代理",
-        status: "正在捕获",
-        requestLabel: "请求 #1",
-        requestMeta: "Host: api.github.com · Accept: */*",
-        responseLabel: "响应",
-        response: "HTTP/1.1 200 OK",
-        responseMeta: "Content-Type: application/json · 245ms",
-        body: '{"login":"octocat","id":583231,...}',
-        footnotes: ["HTTPS 只在本地解密查看", "原始响应流继续交给命令"],
-      },
-    }[locale];
+    const copy = visualCopy.httpmonTerminal[locale];
     return {
       kind,
       label,
       ...copy,
+      footnotes: [...copy.footnotes],
       command: "httpmon curl https://api.github.com/users/octocat",
       method: "GET",
       url: "https://api.github.com/users/octocat",
@@ -135,11 +113,15 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
           src: siteConfig.assets.screenshots.worldClockLight,
           className: "clock-shot light",
           alt: copy.worldClockLight,
+          width: 716,
+          height: 776,
         },
         {
           src: siteConfig.assets.screenshots.worldClockDark,
           className: "clock-shot dark",
           alt: copy.worldClockDark,
+          width: 702,
+          height: 778,
         },
       ],
     };
@@ -152,6 +134,8 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       {
         src: siteConfig.assets.screenshots.doubanRatingAssistant,
         alt: visualCopy.screenshots[locale].douban,
+        width: 1442,
+        height: 886,
       },
     ],
   };
