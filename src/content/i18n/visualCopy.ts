@@ -85,6 +85,30 @@ export const visualCopy = {
       flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
     },
   },
+  httpmonTerminal: {
+    en: {
+      kicker: "httpmon · local proxy",
+      status: "capturing",
+      requestLabel: "REQUEST #1",
+      requestMeta: "Host: api.github.com · Accept: */*",
+      responseLabel: "RESPONSE",
+      response: "HTTP/1.1 200 OK",
+      responseMeta: "Content-Type: application/json · 245ms",
+      body: '{"login":"octocat","id":583231,...}',
+      footnotes: ["local HTTPS inspection", "original response stream stays with the command"],
+    },
+    zh: {
+      kicker: "httpmon · 本地代理",
+      status: "正在捕获",
+      requestLabel: "请求 #1",
+      requestMeta: "Host: api.github.com · Accept: */*",
+      responseLabel: "响应",
+      response: "HTTP/1.1 200 OK",
+      responseMeta: "Content-Type: application/json · 245ms",
+      body: '{"login":"octocat","id":583231,...}',
+      footnotes: ["HTTPS 只在本地解密查看", "原始响应流继续交给命令"],
+    },
+  },
   screenshots: {
     en: {
       worldClockLight: "World Clock light theme timezone feed screenshot",

@@ -271,6 +271,13 @@
   padding: 28px;
 }
 
+.storage-catalog-grid .catalog-card.primary,
+.about-product-card.primary {
+  /* Top accent rail gives the lead product a stronger footprint without
+     adding color or shifting layout (inset shadow, not border). */
+  box-shadow: inset 0 3px 0 0 var(--ink);
+}
+
 .storage-catalog-grid .catalog-card.primary {
   min-height: 234px;
   padding: 34px;

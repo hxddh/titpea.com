@@ -199,12 +199,21 @@
     gap: 4px;
   }
 
+  /* The offset light/dark overlap reads as a glitch on a narrow screen;
+     show a single, centered screenshot instead. */
   .clock-shot-stack {
-    min-height: 330px;
+    display: grid;
+    place-items: center;
+    min-height: 0;
   }
 
   .clock-shot {
-    width: min(88%, 320px);
+    position: static;
+    width: min(100%, 340px);
+  }
+
+  .clock-shot.light {
+    display: none;
   }
 
   .site-footer {
