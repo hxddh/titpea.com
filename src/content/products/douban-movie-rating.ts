@@ -12,7 +12,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "Douban Movie Rating Assistant",
-      description: "A Chrome extension that shows IMDb and Rotten Tomatoes ratings on Douban movie pages.",
+      description: "A Chrome extension that shows IMDb, Rotten Tomatoes, and Metacritic ratings on Douban movie pages.",
       eyebrow: "Chrome Extension",
       headline: "More rating context inside Douban",
       lead: "Keep reading the Douban movie page while IMDb, Rotten Tomatoes, and Metacritic appear beside the rating you already know.",
@@ -78,7 +78,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "Title matching",
-          body: "Supports intelligent matching across Chinese and English movie titles.",
+          body: "Matches movies across their Chinese and English titles.",
           intent: "capability",
           surface: "browser",
         },
