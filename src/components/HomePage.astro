@@ -28,6 +28,11 @@ const { model } = Astro.props;
           ))
         }
       </div>
+      <figure class="home-signature" aria-label={model.hero.signature.label}>
+        <figcaption>{model.hero.signature.label}</figcaption>
+        <code class="home-signature-cmd">{model.hero.signature.command}</code>
+        <code class="home-signature-result">{model.hero.signature.result}</code>
+      </figure>
     </div>
   </section>
 
