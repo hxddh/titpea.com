@@ -61,7 +61,8 @@
   .s3-purpose-grid,
   .s3-result-paths,
   .scan-plan,
-  .product-flow {
+  .product-flow,
+  .traffic-flow .product-flow {
     grid-template-columns: 1fr;
   }
 
