@@ -25,7 +25,29 @@
   // Apply a saved choice as early as possible so it paints correctly.
   apply(stored());
 
+  // The two media-based <meta name="theme-color"> tags follow the OS when no
+  // manual choice is stored. When a choice IS stored, append an override tag
+  // (no media query, last in <head>) so the browser chrome matches the chosen
+  // theme instead of the OS preference.
+  function paintMeta() {
+    var ATTR = "data-theme-color-override";
+    var pref = stored();
+    var override = document.head.querySelector("meta[" + ATTR + "]");
+    if (pref === "dark" || pref === "light") {
+      if (!override) {
+        override = document.createElement("meta");
+        override.setAttribute("name", "theme-color");
+        override.setAttribute(ATTR, "");
+        document.head.appendChild(override);
+      }
+      override.setAttribute("content", pref === "dark" ? "#0d1117" : "#f9fafc");
+    } else if (override) {
+      override.parentNode.removeChild(override);
+    }
+  }
+
   function sync(button) {
+    paintMeta();
     var dark = resolved() === "dark";
     button.setAttribute("aria-pressed", dark ? "true" : "false");
     button.setAttribute("aria-label", dark ? button.dataset.labelLight : button.dataset.labelDark);

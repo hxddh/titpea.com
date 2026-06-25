@@ -15,6 +15,7 @@ interface Props {
 const { current = "home", locale = "en", seo, language } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -62,7 +63,7 @@ const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
       <slot />
     </main>
     <footer class="site-footer">
-      <span>© 2026 {siteConfig.brand}</span>
+      <span>© {year} {siteConfig.brand}</span>
       <span>{siteConfig.email}</span>
     </footer>
   </body>
