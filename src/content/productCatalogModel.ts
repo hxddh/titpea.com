@@ -42,14 +42,11 @@ export function productCatalogModel(locale: Locale) {
   const storage = catalogItems.filter((item) => item.group === "storage");
   const browser = catalogItems.filter((item) => item.group === "browser");
   const s3 = indexedProduct("s3-turbo-list", locale);
-  const storageops = indexedProduct("storageops", locale);
 
   return {
     storage,
     browser,
     all: [...storage, ...browser],
-    groups: [...copy.groups],
     featuredProductPath: s3.href,
-    secondaryProductPath: storageops.href,
   };
 }

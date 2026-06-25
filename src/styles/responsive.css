@@ -33,7 +33,6 @@
   }
 
   .home-evidence,
-  .home-browser-band,
   .about-focus-section,
   .split-content {
     grid-template-columns: 1fr;

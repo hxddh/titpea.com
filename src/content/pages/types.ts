@@ -81,6 +81,8 @@ export type AboutPageModel = BasePageModel & {
   products: {
     label: string;
     title: string;
+    storageLabel: string;
+    browserLabel: string;
     items: ProductCatalogItemModel[];
   };
 };
