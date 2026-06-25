@@ -39,11 +39,6 @@
     gap: 34px;
   }
 
-  .about-product-grid .about-product-card,
-  .about-product-grid .about-product-card:nth-child(n + 4) {
-    grid-column: span 1;
-  }
-
   .catalog-grid,
   .about-product-grid,
   .browser-tool-list.compact,

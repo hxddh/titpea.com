@@ -48,16 +48,28 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.products.label}</p>
       <h2>{model.products.title}</h2>
     </div>
-    <div class="about-product-grid">
-      {
-        model.products.items.map((item) => (
-          <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.displayRole}</span>
-            <strong>{item.name}</strong>
-            <p>{item.text}</p>
-          </a>
-        ))
-      }
-    </div>
+    {
+      (
+        [
+          { label: model.products.storageLabel, group: "storage", gridClass: "about-product-grid-storage" },
+          { label: model.products.browserLabel, group: "browser", gridClass: "about-product-grid-browser" },
+        ] as const
+      ).map((line) => (
+        <div class="about-product-line">
+          <p class="about-product-line-label">{line.label}</p>
+          <div class:list={["about-product-grid", line.gridClass]}>
+            {model.products.items
+              .filter((item) => item.group === line.group)
+              .map((item) => (
+                <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
+                  <span>{item.displayRole}</span>
+                  <strong>{item.name}</strong>
+                  <p>{item.text}</p>
+                </a>
+              ))}
+          </div>
+        </div>
+      ))
+    }
   </section>
 </SiteLayout>
