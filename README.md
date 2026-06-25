@@ -1,6 +1,6 @@
 # Titpea Personal Site
 
-Astro static site for `titpea.com`: a personal profile page, Chrome extension product pages, and highlighted GitHub projects.
+Astro static site for `titpea.com`: a personal profile page plus product pages for hxddh's storage CLIs (s3-turbo-list, StorageOps, httpmon) and Chrome extensions (World Clock, Douban Movie Rating Assistant).
 
 ## Commands
 
