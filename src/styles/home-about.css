@@ -347,16 +347,22 @@
   font-size: clamp(1.75rem, 3vw, 2.35rem);
 }
 
-.about-product-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+.about-product-line + .about-product-line {
+  margin-top: 16px;
 }
 
-.about-product-grid .about-product-card {
-  grid-column: span 2;
+.about-product-line-label {
+  margin: 0 0 12px;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.about-product-grid .about-product-card:nth-child(n + 4) {
-  grid-column: span 3;
+.about-product-grid-browser {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .about-product-card strong {

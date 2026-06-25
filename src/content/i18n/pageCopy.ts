@@ -60,20 +60,6 @@ export const catalogCopy = {
     worldClockRole: "Timezone utility",
     doubanText: "Shows IMDb, Rotten Tomatoes, and Metacritic inside Douban movie pages.",
     doubanRole: "Rating context",
-    groups: [
-      {
-        title: "Object storage",
-        text: "List, diff, diagnosis, and request inspection.",
-      },
-      {
-        title: "Browser utilities",
-        text: "Small extensions for one missing context.",
-      },
-      {
-        title: "Working style",
-        text: "Small surfaces. Inspectable output.",
-      },
-    ],
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
@@ -86,19 +72,5 @@ export const catalogCopy = {
     worldClockRole: "时区工具",
     doubanText: "在豆瓣电影页内对照 IMDb、Rotten Tomatoes 和 Metacritic。",
     doubanRole: "评分辅助",
-    groups: [
-      {
-        title: "对象存储",
-        text: "对象 list、diff、诊断和请求排查。",
-      },
-      {
-        title: "浏览器工具",
-        text: "只补浏览时真正缺的一点信息。",
-      },
-      {
-        title: "做事方式",
-        text: "命令面克制，结果可复查。",
-      },
-    ],
   },
 } as const;
