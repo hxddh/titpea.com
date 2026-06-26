@@ -20,6 +20,7 @@
     "contracts:check": "tsx scripts/check-page-model-contracts.mjs && tsx scripts/check-section-contracts.mjs",
     "boundaries:check": "node scripts/check-dependency-boundaries.mjs && node scripts/check-i18n-boundaries.mjs",
     "architecture:check": "node scripts/check-architecture.mjs",
+    "deadcode:check": "node scripts/check-dead-exports.mjs",
     "manifest:products": "tsx scripts/check-product-manifest.mjs",
     "security:check": "node scripts/check-security.mjs",
     "a11y:check": "node scripts/check-accessibility.mjs",
@@ -30,7 +31,7 @@
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "visual:approve": "VISUAL_APPROVE=1 tsx scripts/check-visual-baseline.mjs",
     "review:screens": "node scripts/capture-review-screenshots.mjs",
-    "smoke:production": "node scripts/smoke-production.mjs",
+    "smoke:production": "tsx scripts/smoke-production.mjs",
     "astro": "astro"
   },
   "dependencies": {

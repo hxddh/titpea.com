@@ -11,7 +11,7 @@ import type {
   SitePageModel,
   SiteRoute,
 } from "./pages/types";
-import type { CurrentPage, Locale, ProductSlug } from "../lib/site";
+import type { Locale, ProductSlug } from "../lib/site";
 
 const locales: Locale[] = ["en", "zh"];
 
@@ -51,18 +51,6 @@ export function aboutModel(locale: Locale): AboutPageModel {
 
 export function productModel(slug: ProductSlug, locale: Locale): ProductPageModel {
   return buildProductPage(slug, locale);
-}
-
-export function routeForPath(path: string) {
-  return siteRoutes.find((route) => route.path === path);
-}
-
-export function routeForPage(locale: Locale, current: CurrentPage) {
-  return siteRoutes.find((route) => route.locale === locale && route.current === current);
-}
-
-export function routeForProduct(locale: Locale, slug: ProductSlug) {
-  return siteRoutes.find((route) => route.locale === locale && route.slug === slug);
 }
 
 export type { AboutPageModel, HomePageModel, PageLanguageLink, PageSeo, ProductPageModel, SitePageModel, SiteRoute };

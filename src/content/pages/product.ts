@@ -83,7 +83,3 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     sections,
   };
 }
-
-export function productPageModels(locale: Locale) {
-  return Object.keys(products).map((slug) => buildProductPage(slug as ProductSlug, locale));
-}

@@ -149,11 +149,3 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
 
 export const productEvidenceModel = (slug: ProductSlug, locale: Locale) =>
   productEvidenceModels[slug]?.[locale] ?? null;
-
-export type ProductEvidenceSummary = {
-  label: string;
-  title: string;
-  body: string;
-  href: string;
-  stats: string[];
-};

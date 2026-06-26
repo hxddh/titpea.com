@@ -23,7 +23,6 @@ const requireFact = (id: string) => {
 };
 
 export const s3TurboListFacts = requireFact("s3-turbo-list");
-export const storageOpsFacts = requireFact("storageops");
 export const httpmonFacts = requireFact("https-traffic-inspector");
 export const worldClockFacts = requireFact("world-clock");
 export const doubanMovieRatingFacts = requireFact("douban-movie-rating");

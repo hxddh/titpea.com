@@ -99,14 +99,6 @@ export type ProductCatalogItemModel = {
   group: "storage" | "browser";
 };
 
-export type EvidenceSummaryModel = {
-  label: string;
-  title: string;
-  body: string;
-  href: string;
-  stats: string[];
-};
-
 export type ProductPageModel = BasePageModel & {
   kind: "product";
   slug: ProductSlug;
