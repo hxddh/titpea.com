@@ -11,26 +11,36 @@ const { visual } = Astro.props;
 <div class="workbench-visual" aria-label={visual.label}>
   <div class="workbench-titlebar">
     <span class="workbench-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="workbench-title">{visual.kicker}</span>
-    <span class="workbench-status">{visual.status}</span>
+    <span class="workbench-title">Storage Agent Workbench</span>
+    <span class="workbench-spacer"></span>
   </div>
   <div class="workbench-body">
     <aside class="workbench-sidebar">
-      <span class="workbench-sidebar-label">{visual.sidebarLabel}</span>
+      <span class="workbench-brand">{visual.brand}</span>
+      <span class="workbench-newchat">+ {visual.newChat}</span>
       <ul>
         {visual.sessions.map((session, index) => <li class:list={[index === 0 && "active"]}>{session}</li>)}
       </ul>
+      <span class="workbench-connected">{visual.connected}</span>
     </aside>
     <div class="workbench-thread">
-      <span class="workbench-thread-label">{visual.threadLabel}</span>
-      <p class="workbench-prompt">{visual.prompt}</p>
+      <div class="workbench-thread-head">
+        <p class="workbench-prompt">{visual.prompt}</p>
+        <span class="workbench-model">{visual.model}</span>
+      </div>
       <ol class="workbench-steps">
         {visual.steps.map((step) => <li>{step}</li>)}
       </ol>
-      <div class="workbench-finding">
-        <span>{visual.finding.label}</span>
-        <strong>{visual.finding.title}</strong>
-        <p>{visual.finding.body}</p>
+      <div class="workbench-diagnosis">
+        <span class="workbench-diagnosis-label">{visual.diagnosisLabel}</span>
+        {
+          visual.diagnosis.map((row) => (
+            <div class="workbench-diagnosis-row">
+              <span>{row.dim}</span>
+              <p>{row.verdict}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
