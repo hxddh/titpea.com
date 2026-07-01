@@ -36,8 +36,8 @@ export const images = [
   {
     file: "og-storage-agent-workbench.png",
     eyebrow: "Storage Agent Workbench",
-    title: "A desktop agent for storage",
-    body: "A local app whose agent reviews configuration, analyzes logs, and triages errors — read-only.",
+    title: "A chat agent for object storage",
+    body: "Ask about S3-compatible storage in plain language; a local agent investigates it read-only.",
     accent: "#2563eb",
     mark: "SAW",
     visual: "workbench",
@@ -180,6 +180,26 @@ function visualPanel(kind, accent, mark) {
   </g>`;
 }
 
+// resvg (used by sharp) does not render <foreignObject>, so the title is a
+// plain <text> that we wrap by hand into <tspan> lines. Keeping each line short
+// stops long titles from running under the right-hand visual panel.
+function titleTspans(title) {
+  const maxChars = 18;
+  const lines = [];
+  let current = "";
+  for (const word of title.split(" ")) {
+    if (current && (current + " " + word).length > maxChars) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = current ? current + " " + word : word;
+    }
+  }
+  if (current) lines.push(current);
+  const startY = 244 - (lines.length - 1) * 33;
+  return lines.map((line, index) => `<tspan x="90" y="${startY + index * 66}">${escape(line)}</tspan>`).join("");
+}
+
 function svg({ eyebrow, title, body, accent, mark, visual }) {
   return `<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#f8f9fb"/>
@@ -187,8 +207,8 @@ function svg({ eyebrow, title, body, accent, mark, visual }) {
   <path d="M90 98h1020v1H90zM90 532h1020v1H90z" fill="#d9dde7"/>
   <path d="M91 180h1018M91 250h1018M91 320h1018M91 390h1018M91 460h1018" stroke="#eceff5"/>
   ${visualPanel(visual, accent, mark)}
-  <text x="90" y="160" fill="${accent}" font-family="SFMono-Regular, Consolas, monospace" font-size="24" letter-spacing="4" font-weight="700">${escape(eyebrow)}</text>
-  <text x="90" y="268" fill="#111827" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="70" font-weight="760">${escape(title)}</text>
+  <text x="90" y="150" fill="${accent}" font-family="SFMono-Regular, Consolas, monospace" font-size="24" letter-spacing="4" font-weight="700">${escape(eyebrow)}</text>
+  <text fill="#111827" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="56" font-weight="760">${titleTspans(title)}</text>
   <foreignObject x="94" y="326" width="690" height="128">
     <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; color:#4b5563; font-size:30px; line-height:1.35; font-weight:500;">${escape(body)}</div>
   </foreignObject>

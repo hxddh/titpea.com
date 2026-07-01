@@ -129,6 +129,12 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "workflow",
         required: true,
       },
+      {
+        id: "positioning",
+        label: { en: "Local and read-only", zh: "本地 · 只读" },
+        source: "positioning",
+        required: true,
+      },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
