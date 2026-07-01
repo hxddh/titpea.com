@@ -9,8 +9,7 @@ export const ui = {
     productIndex: "hxddh / tools",
     homeTitle: "Storage & browser tools",
     homeDescription: "Focused storage and browser tools by hxddh.",
-    homeLead:
-      "A native storage agent, plus focused tools for S3 list / diff, Pi diagnosis, HTTP inspection, and the browser.",
+    homeLead: "A native storage agent and focused command-line tools — plus two browser extensions.",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "About",
@@ -44,7 +43,7 @@ export const ui = {
     productIndex: "hxddh / 工具",
     homeTitle: "存储与浏览器工具",
     homeDescription: "hxddh 做的存储工具和浏览器小工具。",
-    homeLead: "一个原生存储 Agent，外加围绕 S3 list / diff、Pi 诊断、HTTP 排查和浏览器的专注工具。",
+    homeLead: "一个原生存储 Agent 和几个专注的命令行工具，外加两个浏览器扩展。",
     homePrimary: "s3-turbo-list",
     homeSecondary: "StorageOps",
     homeAbout: "关于",
