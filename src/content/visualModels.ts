@@ -27,6 +27,20 @@ export type StorageAgentVisualModel = {
   flow: readonly [string, string];
 };
 
+export type StorageWorkbenchVisualModel = {
+  kind: "storageWorkbench";
+  label: string;
+  kicker: string;
+  status: string;
+  sidebarLabel: string;
+  sessions: string[];
+  threadLabel: string;
+  prompt: string;
+  steps: string[];
+  finding: { label: string; title: string; body: string };
+  footnotes: string[];
+};
+
 export type HttpmonTerminalVisualModel = {
   kind: "httpmonTerminal";
   label: string;
@@ -53,6 +67,7 @@ export type ScreenshotVisualModel = {
 export type ProductVisualModel =
   | S3BenchmarkVisualModel
   | StorageAgentVisualModel
+  | StorageWorkbenchVisualModel
   | HttpmonTerminalVisualModel
   | ScreenshotVisualModel;
 
@@ -87,6 +102,23 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       body: copy.body,
       cards: [...copy.cards],
       flow: copy.flow,
+    };
+  }
+
+  if (kind === "storageWorkbench") {
+    const copy = visualCopy.storageWorkbench[locale];
+    return {
+      kind,
+      label,
+      kicker: copy.kicker,
+      status: copy.status,
+      sidebarLabel: copy.sidebarLabel,
+      sessions: [...copy.sessions],
+      threadLabel: copy.threadLabel,
+      prompt: copy.prompt,
+      steps: [...copy.steps],
+      finding: { ...copy.finding },
+      footnotes: [...copy.footnotes],
     };
   }
 

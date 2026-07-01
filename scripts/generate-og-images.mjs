@@ -34,6 +34,15 @@ export const images = [
     visual: "benchmark",
   },
   {
+    file: "og-storage-agent-workbench.png",
+    eyebrow: "Storage Agent Workbench",
+    title: "A desktop agent for storage",
+    body: "A local app whose agent reviews configuration, analyzes logs, and triages errors — read-only.",
+    accent: "#2563eb",
+    mark: "SAW",
+    visual: "workbench",
+  },
+  {
     file: "og-storageops.png",
     eyebrow: "StorageOps",
     title: "S3 diagnosis agent for Pi",
@@ -103,6 +112,29 @@ function visualPanel(kind, accent, mark) {
       <text x="146" y="244" text-anchor="middle" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="15">tools</text>
       <text x="228" y="244" text-anchor="middle" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="15">evals</text>
       <text x="28" y="310" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="16">bounded evidence</text>
+    </g>`;
+  }
+
+  if (kind === "workbench") {
+    return `<g transform="translate(792 116)">
+      <rect width="316" height="332" rx="18" fill="#fff" stroke="#d9dde7"/>
+      <path d="M0 52h316" stroke="#e4e7ec"/>
+      <circle cx="26" cy="26" r="5" fill="#e4e7ec"/>
+      <circle cx="44" cy="26" r="5" fill="#e4e7ec"/>
+      <circle cx="62" cy="26" r="5" fill="#e4e7ec"/>
+      <text x="88" y="31" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">workbench · read-only</text>
+      <path d="M104 52v280" stroke="#e4e7ec"/>
+      <rect x="18" y="72" width="70" height="20" rx="6" fill="#eef2f7"/>
+      <rect x="18" y="100" width="70" height="20" rx="6" fill="#eef2f7"/>
+      <rect x="18" y="128" width="70" height="20" rx="6" fill="#eef2f7"/>
+      <rect x="122" y="74" width="150" height="30" rx="10" fill="${accent}"/>
+      <text x="134" y="94" fill="#fff" font-family="SFMono-Regular, Consolas, monospace" font-size="13">audit prod-assets</text>
+      <text x="122" y="140" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">1 read policy · 2 scan ACLs</text>
+      <rect x="122" y="160" width="172" height="132" rx="12" fill="#f7f9fc" stroke="#e4e7ec"/>
+      <text x="138" y="188" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12" font-weight="700">FINDING</text>
+      <text x="138" y="214" fill="#111827" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="700">Public list allowed</text>
+      <text x="138" y="244" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">policy.json:12</text>
+      <text x="138" y="272" fill="#2563eb" font-family="SFMono-Regular, Consolas, monospace" font-size="12">evidence attached</text>
     </g>`;
   }
 

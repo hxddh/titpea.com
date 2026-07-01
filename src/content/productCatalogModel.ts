@@ -19,6 +19,7 @@ export function productCatalogModel(locale: Locale) {
   const copy = catalogCopy[locale];
   const catalogText = (slug: ProductSlug): [string, string] => {
     if (slug === "s3-turbo-list") return [copy.s3Text, copy.s3Role];
+    if (slug === "storage-agent-workbench") return [copy.workbenchText, copy.workbenchRole];
     if (slug === "storageops") return [copy.storageopsText, copy.storageopsRole];
     if (slug === "httpmon") return [copy.httpmon, copy.httpmonRole];
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];

@@ -1,5 +1,11 @@
 export type Locale = "en" | "zh";
-export type ProductSlug = "s3-turbo-list" | "storageops" | "httpmon" | "world-clock" | "douban-movie-rating";
+export type ProductSlug =
+  | "s3-turbo-list"
+  | "storage-agent-workbench"
+  | "storageops"
+  | "httpmon"
+  | "world-clock"
+  | "douban-movie-rating";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;
@@ -82,6 +88,12 @@ export type BrowserExtensionProductCopy = ProductCopy & {
   faq: ProductContentCard[];
 };
 
+export type AgentWorkbenchProductCopy = ProductCopy & {
+  features: ProductContentCard[];
+  workflow: ProductContentCard[];
+  faq: ProductContentCard[];
+};
+
 export type StorageCliProduct = {
   slug: ProductSlug;
   name: string;
@@ -110,9 +122,21 @@ export type BrowserExtensionProduct = {
   locales: Localized<BrowserExtensionProductCopy>;
 };
 
-export type Product = S3TurboListProduct | StorageCliProduct | AgentPackageProduct | BrowserExtensionProduct;
+export type AgentWorkbenchProduct = {
+  slug: "storage-agent-workbench";
+  name: string;
+  archetype: "agentWorkbench";
+  locales: Localized<AgentWorkbenchProductCopy>;
+};
 
-export type ProductArchetype = "s3TurboList" | "storageCli" | "agentPackage" | "browserExtension";
+export type Product =
+  | S3TurboListProduct
+  | StorageCliProduct
+  | AgentPackageProduct
+  | BrowserExtensionProduct
+  | AgentWorkbenchProduct;
+
+export type ProductArchetype = "s3TurboList" | "storageCli" | "agentPackage" | "browserExtension" | "agentWorkbench";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";

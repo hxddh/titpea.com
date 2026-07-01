@@ -1,0 +1,40 @@
+---
+import type { StorageWorkbenchVisualModel } from "../../content/visualModels";
+
+interface Props {
+  visual: StorageWorkbenchVisualModel;
+}
+
+const { visual } = Astro.props;
+---
+
+<div class="workbench-visual" aria-label={visual.label}>
+  <div class="workbench-titlebar">
+    <span class="workbench-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="workbench-title">{visual.kicker}</span>
+    <span class="workbench-status">{visual.status}</span>
+  </div>
+  <div class="workbench-body">
+    <aside class="workbench-sidebar">
+      <span class="workbench-sidebar-label">{visual.sidebarLabel}</span>
+      <ul>
+        {visual.sessions.map((session, index) => <li class:list={[index === 0 && "active"]}>{session}</li>)}
+      </ul>
+    </aside>
+    <div class="workbench-thread">
+      <span class="workbench-thread-label">{visual.threadLabel}</span>
+      <p class="workbench-prompt">{visual.prompt}</p>
+      <ol class="workbench-steps">
+        {visual.steps.map((step) => <li>{step}</li>)}
+      </ol>
+      <div class="workbench-finding">
+        <span>{visual.finding.label}</span>
+        <strong>{visual.finding.title}</strong>
+        <p>{visual.finding.body}</p>
+      </div>
+    </div>
+  </div>
+  <div class="workbench-foot">
+    {visual.footnotes.map((item) => <span>{item}</span>)}
+  </div>
+</div>

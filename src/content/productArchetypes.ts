@@ -18,6 +18,7 @@ export type ProductCopyCardSource = Extract<
 export type VisualPolicy =
   | "s3Benchmark"
   | "storageAgent"
+  | "storageWorkbench"
   | "httpmonTerminal"
   | "worldClockScreenshot"
   | "doubanScreenshot";
@@ -96,6 +97,33 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       {
         id: "workflow",
         label: { en: "In a case", zh: "处理一次问题" },
+        layout: "steps",
+        numbered: true,
+        source: "workflow",
+        required: true,
+      },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
+  agentWorkbench: {
+    group: "storage",
+    pageClass: "product-page product-page-agentWorkbench",
+    sectionIndex: true,
+    indexLabel: { en: "On this page", zh: "页面内容" },
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Cross-platform",
+    defaultVisual: "storageWorkbench",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
+      {
+        id: "features",
+        label: { en: "What it investigates", zh: "它能查什么" },
+        source: "features",
+        required: true,
+      },
+      {
+        id: "workflow",
+        label: { en: "How a session runs", zh: "一次会话怎么跑" },
         layout: "steps",
         numbered: true,
         source: "workflow",

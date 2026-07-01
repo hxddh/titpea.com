@@ -85,6 +85,38 @@ export const visualCopy = {
       flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
     },
   },
+  storageWorkbench: {
+    en: {
+      kicker: "storage-agent-workbench",
+      status: "read-only session",
+      sidebarLabel: "Sessions",
+      sessions: ["Public-access audit", "Access-log review", "Cost profile"],
+      threadLabel: "Investigation",
+      prompt: "Check prod-assets for public exposure",
+      steps: ["Read bucket policy", "Scan ACLs and CORS", "Query access logs (DuckDB)"],
+      finding: {
+        label: "FINDING",
+        title: "1 bucket allows public list",
+        body: "policy statement AllowPublicList → s3:ListBucket for *. Evidence: policy.json line 12.",
+      },
+      footnotes: ["Read-only · evidence stays local", "macOS · Windows · Linux"],
+    },
+    zh: {
+      kicker: "storage-agent-workbench",
+      status: "只读会话",
+      sidebarLabel: "会话",
+      sessions: ["公开访问审查", "访问日志复查", "成本画像"],
+      threadLabel: "调查",
+      prompt: "检查 prod-assets 是否对外公开",
+      steps: ["读取存储桶策略", "扫描 ACL 与 CORS", "查询访问日志（DuckDB）"],
+      finding: {
+        label: "发现",
+        title: "1 个存储桶允许公开列举",
+        body: "策略语句 AllowPublicList → 对 * 开放对象列举权限。证据：policy.json 第 12 行。",
+      },
+      footnotes: ["只读 · 证据留在本地", "macOS · Windows · Linux"],
+    },
+  },
   httpmonTerminal: {
     en: {
       kicker: "httpmon · local proxy",

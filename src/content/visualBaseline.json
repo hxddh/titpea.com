@@ -5,6 +5,8 @@
     { "path": "/about/", "viewport": "desktop", "state": "top" },
     { "path": "/s3-turbo-list/", "viewport": "desktop", "state": "top" },
     { "path": "/s3-turbo-list/", "viewport": "mobile", "state": "faq" },
+    { "path": "/storage-agent-workbench/", "viewport": "desktop", "state": "top" },
+    { "path": "/storage-agent-workbench/", "viewport": "mobile", "state": "faq" },
     { "path": "/storageops/", "viewport": "desktop", "state": "top" },
     { "path": "/storageops/", "viewport": "mobile", "state": "faq" },
     { "path": "/httpmon/", "viewport": "desktop", "state": "top" },
