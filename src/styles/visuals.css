@@ -633,3 +633,96 @@
   object-fit: cover;
   object-position: top center;
 }
+
+/* Storage Agent welcome mock: keep desktop proportions, stack on narrow screens. */
+@media (max-width: 900px) {
+  .workbench-body {
+    grid-template-columns: 1fr;
+  }
+
+  .workbench-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    padding: 12px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .workbench-brand {
+    flex: 1 1 100%;
+    font-size: 12px;
+  }
+
+  .workbench-newchat {
+    flex: 0 1 auto;
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .workbench-connected {
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-left: auto;
+    font-size: 9px;
+  }
+
+  .workbench-search,
+  .workbench-group,
+  .workbench-session,
+  .workbench-sessions {
+    display: none;
+  }
+
+  .workbench-welcome {
+    padding: 22px 18px 26px;
+    gap: 12px;
+  }
+
+  .workbench-q {
+    max-width: 100%;
+    font-size: clamp(1.125rem, 4.8vw, 1.375rem);
+  }
+
+  .workbench-sub {
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  .workbench-input {
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .workbench-chips {
+    max-width: 100%;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .workbench-sidebar {
+    display: none;
+  }
+
+  .workbench-welcome {
+    padding: 20px 16px 24px;
+  }
+
+  .workbench-q {
+    font-size: 1.125rem;
+    line-height: 1.25;
+  }
+
+  .workbench-chips span {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .workbench-model {
+    max-width: min(100%, 180px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
