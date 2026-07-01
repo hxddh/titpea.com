@@ -30,16 +30,20 @@ export type StorageAgentVisualModel = {
 export type StorageWorkbenchVisualModel = {
   kind: "storageWorkbench";
   label: string;
+  windowTitle: string;
   brand: string;
   newChat: string;
-  sessions: string[];
+  search: string;
+  pinnedLabel: string;
+  pinned: { title: string; time: string };
+  recentLabel: string;
+  recent: Array<{ title: string; time: string }>;
   connected: string;
   model: string;
-  prompt: string;
-  steps: string[];
-  diagnosisLabel: string;
-  diagnosis: Array<{ dim: string; verdict: string }>;
-  footnotes: string[];
+  question: string;
+  subtitle: string;
+  inputPlaceholder: string;
+  chips: string[];
 };
 
 export type HttpmonTerminalVisualModel = {
@@ -111,16 +115,20 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
     return {
       kind,
       label,
+      windowTitle: copy.windowTitle,
       brand: copy.brand,
       newChat: copy.newChat,
-      sessions: [...copy.sessions],
+      search: copy.search,
+      pinnedLabel: copy.pinnedLabel,
+      pinned: { ...copy.pinned },
+      recentLabel: copy.recentLabel,
+      recent: copy.recent.map((item) => ({ ...item })),
       connected: copy.connected,
       model: copy.model,
-      prompt: copy.prompt,
-      steps: [...copy.steps],
-      diagnosisLabel: copy.diagnosisLabel,
-      diagnosis: copy.diagnosis.map((row) => ({ ...row })),
-      footnotes: [...copy.footnotes],
+      question: copy.question,
+      subtitle: copy.subtitle,
+      inputPlaceholder: copy.inputPlaceholder,
+      chips: [...copy.chips],
     };
   }
 

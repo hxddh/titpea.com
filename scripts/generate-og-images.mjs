@@ -35,8 +35,8 @@ export const images = [
   },
   {
     file: "og-storage-agent-workbench.png",
-    eyebrow: "Storage Agent Workbench",
-    title: "A chat agent for object storage",
+    eyebrow: "Storage Agent",
+    title: "A native agent for object storage",
     body: "Ask about S3-compatible storage in plain language; a local agent investigates it read-only.",
     accent: "#2563eb",
     mark: "SAW",
@@ -122,7 +122,7 @@ function visualPanel(kind, accent, mark) {
       <circle cx="26" cy="26" r="5" fill="#e4e7ec"/>
       <circle cx="44" cy="26" r="5" fill="#e4e7ec"/>
       <circle cx="62" cy="26" r="5" fill="#e4e7ec"/>
-      <text x="88" y="31" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">workbench · read-only</text>
+      <text x="88" y="31" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">storage agent · read-only</text>
       <path d="M104 52v280" stroke="#e4e7ec"/>
       <rect x="18" y="72" width="70" height="20" rx="6" fill="#eef2f7"/>
       <rect x="18" y="100" width="70" height="20" rx="6" fill="#eef2f7"/>

@@ -5,7 +5,7 @@ export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
-  nav: { primary: boolean; label?: "workbench" | "worldClock" | "douban" };
+  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
@@ -25,9 +25,9 @@ export const productManifest: readonly ProductManifestItem[] = [
   },
   {
     slug: "storage-agent-workbench",
-    name: "Storage Agent Workbench",
+    name: "Storage Agent",
     group: "storage",
-    nav: { primary: true, label: "workbench" },
+    nav: { primary: true, label: "storageAgent" },
     catalog: { order: 2, primary: true },
     visual: "storageWorkbench",
     ogImage: "/assets/og-storage-agent-workbench.png",
