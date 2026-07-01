@@ -17,6 +17,7 @@ export const headerCopy: Record<
     links: {
       home: string;
       about: string;
+      workbench: string;
       worldClock: string;
       douban: string;
     };
@@ -37,6 +38,7 @@ export const headerCopy: Record<
     links: {
       home: "Home",
       about: "About",
+      workbench: "Workbench",
       worldClock: "World Clock",
       douban: "Douban",
     },
@@ -56,6 +58,7 @@ export const headerCopy: Record<
     links: {
       home: "首页",
       about: "关于",
+      workbench: "工作台",
       worldClock: "世界时钟",
       douban: "豆瓣评分",
     },

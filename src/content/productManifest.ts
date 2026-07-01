@@ -5,7 +5,7 @@ export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
-  nav: { primary: boolean; label?: "worldClock" | "douban" };
+  nav: { primary: boolean; label?: "workbench" | "worldClock" | "douban" };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
@@ -24,11 +24,21 @@ export const productManifest: readonly ProductManifestItem[] = [
     factId: "s3-turbo-list",
   },
   {
+    slug: "storage-agent-workbench",
+    name: "Storage Agent Workbench",
+    group: "storage",
+    nav: { primary: true, label: "workbench" },
+    catalog: { order: 2, primary: true },
+    visual: "storageWorkbench",
+    ogImage: "/assets/og-storage-agent-workbench.png",
+    factId: "storage-agent-workbench",
+  },
+  {
     slug: "storageops",
     name: "StorageOps",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 2, primary: true },
+    catalog: { order: 3 },
     visual: "storageAgent",
     ogImage: "/assets/og-storageops.png",
     factId: "storageops",
@@ -38,7 +48,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "httpmon",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 3 },
+    catalog: { order: 4 },
     visual: "httpmonTerminal",
     ogImage: "/assets/og-httpmon.png",
     factId: "https-traffic-inspector",

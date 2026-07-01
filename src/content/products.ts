@@ -1,6 +1,7 @@
 import type { Product, ProductSlug } from "../lib/site";
 import { doubanMovieRatingProduct } from "./products/douban-movie-rating";
 import { s3TurboListProduct } from "./products/s3-turbo-list";
+import { storageAgentWorkbenchProduct } from "./products/storage-agent-workbench";
 import { storageOpsProduct } from "./products/storageops";
 import { httpmonProduct } from "./products/httpmon";
 import { worldClockProduct } from "./products/world-clock";
@@ -10,6 +11,7 @@ export const productSlugs = productManifest.map((item) => item.slug) as ProductS
 
 export const products: Record<ProductSlug, Product> = {
   "s3-turbo-list": s3TurboListProduct,
+  "storage-agent-workbench": storageAgentWorkbenchProduct,
   storageops: storageOpsProduct,
   httpmon: httpmonProduct,
   "world-clock": worldClockProduct,

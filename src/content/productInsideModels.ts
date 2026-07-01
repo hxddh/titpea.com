@@ -62,6 +62,22 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       },
     },
   },
+  "storage-agent-workbench": {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Desktop agent app",
+      title: "A workbench that investigates storage for you",
+      body: "Storage Agent Workbench is a local desktop app: point it at an S3-compatible account, and an agent runs read-only investigations — configuration review, log and inventory analysis, error triage, and cost profiling — with the evidence kept on your machine.",
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "桌面 agent 应用",
+      title: "一个替你调查存储的工作台",
+      body: "Storage Agent Workbench 是本地桌面应用：连上 S3 兼容账户，agent 会做只读调查——配置审查、日志与清单分析、报错定位、成本画像——证据全程留在你自己机器上。",
+    },
+  },
   storageops: {
     en: {
       id: "inside",

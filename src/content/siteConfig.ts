@@ -10,6 +10,8 @@ export const siteConfig = {
     github: "https://github.com/hxddh",
     s3TurboList: "https://github.com/hxddh/s3-turbo-list",
     s3TurboListQuickStart: "https://github.com/hxddh/s3-turbo-list#quick-start",
+    storageAgentWorkbench: "https://github.com/hxddh/storage-agent-workbench",
+    storageAgentWorkbenchReleases: "https://github.com/hxddh/storage-agent-workbench/releases",
     storageops: "https://github.com/hxddh/storageops",
     storageopsQuickStart: "https://github.com/hxddh/storageops#quick-start",
     httpmon: "https://github.com/hxddh/https-traffic-inspector",

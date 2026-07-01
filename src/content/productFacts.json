@@ -7,6 +7,19 @@
     "latestRelease": "v0.21.0",
     "stableFacts": ["S3-compatible", "Parquet output", "Agent-safe JSON", "run manifests"]
   },
+  "storage-agent-workbench": {
+    "source": "manual",
+    "repository": "hxddh/storage-agent-workbench",
+    "licenseLabel": "Apache-2.0",
+    "stableFacts": [
+      "S3-compatible",
+      "read-only investigation",
+      "local-first",
+      "evidence-driven",
+      "desktop app",
+      "credentials stay local"
+    ]
+  },
   "storageops": {
     "source": "manual",
     "repository": "hxddh/storageops",
