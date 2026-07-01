@@ -1,9 +1,11 @@
 import { siteRoutes } from "../src/content/siteModel.ts";
 
 const baseUrl = process.env.SMOKE_BASE_URL ?? "https://titpea.com";
-const attempts = 4;
+// A fresh deploy can take a little while to reach every CDN edge, so give the
+// checks a generous settle window and bypass any stale edge cache per attempt.
+const attempts = 6;
 const requestTimeoutMs = 8_000;
-const retryDelayMs = 3_000;
+const retryDelayMs = 5_000;
 
 // Verify every route the build produced: it must resolve, carry the page
 // landmarks, declare the right language, and render its own page-specific
@@ -22,8 +24,12 @@ function includesTitle(html, title) {
 
 async function checkRoute({ path, title, lang }) {
   try {
-    const response = await fetch(new URL(path, baseUrl), {
+    const url = new URL(path, baseUrl);
+    url.searchParams.set("_cacheBust", `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+    const response = await fetch(url, {
       redirect: "follow",
+      cache: "no-store",
+      headers: { "cache-control": "no-cache" },
       signal: AbortSignal.timeout(requestTimeoutMs),
     });
     const html = await response.text();
