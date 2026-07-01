@@ -30,14 +30,15 @@ export type StorageAgentVisualModel = {
 export type StorageWorkbenchVisualModel = {
   kind: "storageWorkbench";
   label: string;
-  kicker: string;
-  status: string;
-  sidebarLabel: string;
+  brand: string;
+  newChat: string;
   sessions: string[];
-  threadLabel: string;
+  connected: string;
+  model: string;
   prompt: string;
   steps: string[];
-  finding: { label: string; title: string; body: string };
+  diagnosisLabel: string;
+  diagnosis: Array<{ dim: string; verdict: string }>;
   footnotes: string[];
 };
 
@@ -110,14 +111,15 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
     return {
       kind,
       label,
-      kicker: copy.kicker,
-      status: copy.status,
-      sidebarLabel: copy.sidebarLabel,
+      brand: copy.brand,
+      newChat: copy.newChat,
       sessions: [...copy.sessions],
-      threadLabel: copy.threadLabel,
+      connected: copy.connected,
+      model: copy.model,
       prompt: copy.prompt,
       steps: [...copy.steps],
-      finding: { ...copy.finding },
+      diagnosisLabel: copy.diagnosisLabel,
+      diagnosis: copy.diagnosis.map((row) => ({ ...row })),
       footnotes: [...copy.footnotes],
     };
   }
