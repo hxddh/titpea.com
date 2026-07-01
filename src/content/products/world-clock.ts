@@ -40,7 +40,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
         {
           title: "What you get",
-          body: "City names, UTC offsets, live seconds, work-hour labels, date context, and no disclosed user-data collection.",
+          body: "City names, codes, UTC offsets, work-hour status, live seconds, and date context.",
           intent: "fit",
           surface: "browser",
         },
@@ -49,7 +49,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       features: [
         {
           title: "Live city rows",
-          body: "Each row keeps the city, code, UTC offset, status, local time, seconds, and date in one scan line.",
+          body: "Each row keeps the city, code, UTC offset, work-hour status, local time, seconds, and date in one scan line.",
           intent: "capability",
           surface: "browser",
         },
@@ -121,7 +121,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
         {
           title: "打开后能看到什么",
-          body: "城市名、城市代码、UTC 偏移、状态、秒数和日期；还可切换浅色与深色主题。",
+          body: "城市名、城市代码、UTC 偏移、工作时段状态、秒数和日期。",
           intent: "fit",
           surface: "browser",
         },
@@ -130,7 +130,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       features: [
         {
           title: "一行一个城市",
-          body: "每个城市占一行：左侧是城市和时区，中间是状态，右侧是本地时间和日期。",
+          body: "每行一个城市：城市、代码、UTC 偏移、状态、本地时间、秒数和日期，一行看完。",
           intent: "capability",
           surface: "browser",
         },

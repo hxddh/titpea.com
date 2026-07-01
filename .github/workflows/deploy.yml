@@ -30,6 +30,7 @@ jobs:
       - run: npm run facts:external
       - run: npm run contracts:check
       - run: npm run content:check
+      - run: npm run copy:check
       - run: npm run model:check
       - run: npm run manifest:check
       - run: npm run security:check
