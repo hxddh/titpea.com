@@ -1,7 +1,7 @@
 export const visualCopy = {
   s3Benchmark: {
     en: {
-      kicker: "v0.21.0 field benchmark",
+      kickerSuffix: "field benchmark",
       title: "1M objects in 18.8s",
       body: "2 vCPU host · default list QPS · OSS Beijing. Observed under constraint, not a throughput ceiling.",
       objectUnit: "objects",
@@ -10,7 +10,7 @@ export const visualCopy = {
       outputPrefix: "Output",
     },
     zh: {
-      kicker: "v0.21.0 实测",
+      kickerSuffix: "实测",
       title: "18.8 秒列举 100 万对象",
       body: "2 vCPU 云主机 · 默认 list QPS · 北京 OSS。受限环境实测，不是性能上限。",
       objectUnit: "对象",
@@ -32,7 +32,7 @@ export const visualCopy = {
       helpersBody:
         "Parse logs and HTTP traces, analyze IAM, CORS, throttling, network, replication, cost, and policy fixes.",
       evalsTitle: "safe reports",
-      evalsBody: "Secrets are redacted; reports separate root cause, evidence, confidence, and remediation.",
+      evalsBody: "Secrets are redacted; reports separate likely cause, evidence, and next steps.",
       cards: [
         {
           number: "SKILL",
@@ -67,7 +67,7 @@ export const visualCopy = {
       helpersTitle: "解析器和分析器",
       helpersBody: "解析日志和 HTTP trace，分析 IAM、CORS、限流、网络、复制、成本，并给出 policy 修改建议。",
       evalsTitle: "安全报告",
-      evalsBody: "凭据会先脱敏；报告区分根因、证据、置信度和修复步骤。",
+      evalsBody: "凭据会先脱敏；报告区分可能原因、证据和后续步骤。",
       cards: [
         {
           number: "SKILL",
@@ -101,8 +101,8 @@ export const visualCopy = {
         { title: "Versioning check", time: "2d ago" },
       ],
       connected: "Connected",
-      model: "deepseek-v4-pro",
-      question: "How can I help with your storage?",
+      model: "your model",
+      question: "Which bucket, log, or error should we check?",
       subtitle: "Read-only and never destructive — I'll ask before moving any data.",
       inputPlaceholder: "Ask Storage Agent…  ( / for commands )",
       chips: [
@@ -111,7 +111,7 @@ export const visualCopy = {
         "Inventory & capacity",
         "Review bucket config",
         "Map account & buckets",
-        "Optimize storage",
+        "Where cost concentrates",
       ],
     },
     zh: {
@@ -129,11 +129,11 @@ export const visualCopy = {
         { title: "版本控制检查", time: "2 天前" },
       ],
       connected: "已连接",
-      model: "deepseek-v4-pro",
-      question: "我能为你的存储做些什么？",
+      model: "自带模型",
+      question: "先查哪个桶、日志还是报错？",
       subtitle: "只读、不会改动你的数据；下载或导入前会先征得你同意。",
       inputPlaceholder: "向云存储 Agent 提问…（输入 / 查看命令）",
-      chips: ["诊断错误", "分析访问日志", "清单与容量", "审查桶配置", "梳理账号与桶", "优化存储"],
+      chips: ["诊断错误", "分析访问日志", "清单与容量", "审查桶配置", "梳理账号与桶", "成本集中在哪里"],
     },
   },
   httpmonTerminal: {

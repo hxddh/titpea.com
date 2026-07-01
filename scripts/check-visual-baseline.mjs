@@ -59,7 +59,8 @@ for (const target of baseline.targets) {
     else {
       await faqLink.evaluate((link) => link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }));
       await faqLink.click();
-      await page.waitForTimeout(250);
+      await page.evaluate(() => document.fonts.ready);
+      await page.waitForTimeout(500);
     }
   }
 

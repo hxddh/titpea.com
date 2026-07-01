@@ -66,8 +66,8 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "Private by design",
-          body: "The Chrome Web Store listing states that the extension does not collect or use user data.",
+          title: "Privacy disclosure",
+          body: "See the Chrome Web Store listing for the current no-collection statement.",
           intent: "evidence",
           evidence: "No data collection disclosed",
           surface: "browser",
@@ -147,8 +147,8 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "隐私说明清楚",
-          body: "Chrome Web Store 信息显示，这个扩展不会收集或使用用户数据。",
+          title: "隐私说明",
+          body: "具体以 Chrome Web Store 的隐私披露为准。",
           intent: "evidence",
           evidence: "声明不收集数据",
           surface: "browser",

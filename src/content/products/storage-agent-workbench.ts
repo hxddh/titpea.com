@@ -8,11 +8,10 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
   locales: {
     en: {
       title: "Storage Agent",
-      description:
-        "A native desktop agent for S3-compatible storage: ask in plain language and it investigates read-only — keys and evidence stay on your machine.",
+      description: "Native desktop agent for read-only investigations on S3-compatible storage.",
       eyebrow: "Native desktop agent",
       headline: "A native agent for object storage",
-      lead: "Point it at your S3-compatible storage and ask — review config, analyze access logs, or triage a failing request. It investigates read-only and shows the evidence.",
+      lead: "Point it at your S3-compatible storage and ask — review config, analyze access logs, or triage a failing request. Keys and evidence stay on your machine.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop app · macOS, Windows, Linux · Apache-2.0",
@@ -132,10 +131,10 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     },
     zh: {
       title: "Storage Agent",
-      description: "面向 S3 兼容存储的本地原生 agent：用大白话问，它就只读调查，密钥和证据都留在本机。",
+      description: "面向 S3 兼容存储的本地原生 agent，只读调查，密钥和证据留在本机。",
       eyebrow: "本地原生 agent",
       headline: "对象存储的原生 agent",
-      lead: "把它对准你的 S3 兼容存储直接问——审查配置、查访问日志、定位失败请求。它只读调查，并给出依据。",
+      lead: "把它对准你的 S3 兼容存储直接问——审查配置、查访问日志、定位失败请求。依据会跟着结论一起给出。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · Apache-2.0",
