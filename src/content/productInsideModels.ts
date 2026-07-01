@@ -66,16 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Desktop agent app",
+      kicker: "Native desktop agent",
       title: "Ask about your storage, get evidence back",
-      body: "Storage Agent Workbench is a local desktop chat app. Ask about an S3-compatible account in plain language and the agent runs a read-only investigation — configuration review, log and inventory analysis, error triage, cost — with keys and evidence kept on your machine.",
+      body: "Storage Agent is a native desktop app you talk to. Ask about an S3-compatible account in plain language and the agent runs a read-only investigation — configuration review, log and inventory analysis, error triage, cost — with keys and evidence kept on your machine.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "桌面 agent 应用",
+      kicker: "本地原生 agent",
       title: "问一句存储，拿回一份证据",
-      body: "Storage Agent Workbench 是本地桌面对话应用。用大白话问一个 S3 兼容账户，agent 就做只读调查——审查桶配置、分析日志与清单、诊断错误、看成本——密钥和证据都留在你自己机器上。",
+      body: "Storage Agent 是本地原生的桌面应用，你直接跟它对话。用大白话问一个 S3 兼容账户，agent 就做只读调查——审查桶配置、分析日志与清单、诊断错误、看成本——密钥和证据都留在你自己机器上。",
     },
   },
   storageops: {

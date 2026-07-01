@@ -11,40 +11,45 @@ const { visual } = Astro.props;
 <div class="workbench-visual" aria-label={visual.label}>
   <div class="workbench-titlebar">
     <span class="workbench-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="workbench-title">Storage Agent Workbench</span>
+    <span class="workbench-title">{visual.windowTitle}</span>
     <span class="workbench-spacer"></span>
   </div>
   <div class="workbench-body">
     <aside class="workbench-sidebar">
       <span class="workbench-brand">{visual.brand}</span>
       <span class="workbench-newchat">+ {visual.newChat}</span>
-      <ul>
-        {visual.sessions.map((session, index) => <li class:list={[index === 0 && "active"]}>{session}</li>)}
+      <span class="workbench-search">{visual.search}</span>
+      <span class="workbench-group">{visual.pinnedLabel}</span>
+      <div class="workbench-session active">
+        <strong>{visual.pinned.title}</strong>
+        <small>{visual.pinned.time}</small>
+      </div>
+      <span class="workbench-group">{visual.recentLabel}</span>
+      <ul class="workbench-sessions">
+        {
+          visual.recent.map((item) => (
+            <li>
+              <strong>{item.title}</strong>
+              <small>{item.time}</small>
+            </li>
+          ))
+        }
       </ul>
       <span class="workbench-connected">{visual.connected}</span>
     </aside>
-    <div class="workbench-thread">
-      <div class="workbench-thread-head">
-        <p class="workbench-prompt">{visual.prompt}</p>
-        <span class="workbench-model">{visual.model}</span>
+    <div class="workbench-welcome">
+      <p class="workbench-q">{visual.question}</p>
+      <p class="workbench-sub">{visual.subtitle}</p>
+      <div class="workbench-input">
+        <span class="workbench-input-ph">{visual.inputPlaceholder}</span>
+        <div class="workbench-input-foot">
+          <span class="workbench-attach" aria-hidden="true">◍</span>
+          <span class="workbench-model">{visual.model}</span>
+        </div>
       </div>
-      <ol class="workbench-steps">
-        {visual.steps.map((step) => <li>{step}</li>)}
-      </ol>
-      <div class="workbench-diagnosis">
-        <span class="workbench-diagnosis-label">{visual.diagnosisLabel}</span>
-        {
-          visual.diagnosis.map((row) => (
-            <div class="workbench-diagnosis-row">
-              <span>{row.dim}</span>
-              <p>{row.verdict}</p>
-            </div>
-          ))
-        }
+      <div class="workbench-chips">
+        {visual.chips.map((chip) => <span>{chip}</span>)}
       </div>
     </div>
-  </div>
-  <div class="workbench-foot">
-    {visual.footnotes.map((item) => <span>{item}</span>)}
   </div>
 </div>

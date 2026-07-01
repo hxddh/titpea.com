@@ -3,16 +3,16 @@ import { siteConfig } from "../siteConfig";
 
 export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
   slug: "storage-agent-workbench",
-  name: "Storage Agent Workbench",
+  name: "Storage Agent",
   archetype: "agentWorkbench",
   locales: {
     en: {
-      title: "Storage Agent Workbench",
+      title: "Storage Agent",
       description:
-        "A local desktop app: ask about your S3-compatible storage in plain language and an agent investigates it read-only — keys and evidence stay on your machine.",
-      eyebrow: "Tauri desktop app",
-      headline: "A chat agent for object storage",
-      lead: "A local desktop app: ask about your S3-compatible storage in plain language, and an agent investigates it read-only — keys and evidence stay on your machine.",
+        "A native desktop agent for S3-compatible storage: ask in plain language and it investigates read-only — keys and evidence stay on your machine.",
+      eyebrow: "Native desktop agent",
+      headline: "A native agent for object storage",
+      lead: "A desktop-native agent for your S3-compatible storage: ask in plain language and it investigates read-only — keys and evidence stay on your machine.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop app · macOS, Windows, Linux · Apache-2.0",
@@ -120,7 +120,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "How is this different from StorageOps?",
-          body: "StorageOps gives an existing agent (Pi) storage skills; the Workbench is a self-contained desktop app that runs the whole investigation itself.",
+          body: "StorageOps gives an existing agent (Pi) storage skills; Storage Agent is a self-contained desktop app that runs the whole investigation itself.",
         },
         {
           title: "What platforms does it run on?",
@@ -128,15 +128,14 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
       ],
       finalCta: "Investigate your storage locally",
-      finalCtaLabel: "Download the workbench",
+      finalCtaLabel: "Download Storage Agent",
     },
     zh: {
-      title: "Storage Agent Workbench",
-      description:
-        "Storage Agent Workbench 是本地桌面应用：用大白话问你的 S3 兼容存储，agent 就只读调查，密钥和证据都留在本机。",
-      eyebrow: "Tauri 桌面应用",
-      headline: "对象存储的对话式 agent",
-      lead: "本地桌面应用：用大白话问你的 S3 兼容存储，agent 就去只读调查——密钥和证据都留在本机。",
+      title: "Storage Agent",
+      description: "面向 S3 兼容存储的本地原生 agent：用大白话问，它就只读调查，密钥和证据都留在本机。",
+      eyebrow: "本地原生 agent",
+      headline: "对象存储的原生 agent",
+      lead: "面向 S3 兼容存储的本地原生 agent：用大白话问，它就去只读调查——密钥和证据都留在本机。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · Apache-2.0",
@@ -244,7 +243,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "和 StorageOps 有什么区别",
-          body: "StorageOps 让你已有的 agent（Pi）会查存储；工作台是自成一体的桌面应用，自己完成整个调查。",
+          body: "StorageOps 让你已有的 agent（Pi）会查存储；Storage Agent 是自成一体的桌面应用，自己完成整个调查。",
         },
         {
           title: "支持哪些平台",
@@ -252,7 +251,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
       ],
       finalCta: "在本地开始调查你的存储",
-      finalCtaLabel: "下载工作台",
+      finalCtaLabel: "下载 Storage Agent",
     },
   },
 };
