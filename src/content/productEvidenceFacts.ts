@@ -1,5 +1,5 @@
 import type { Locale } from "../lib/site";
-import { doubanMovieRatingFacts, s3TurboListFacts, worldClockFacts } from "./productFacts";
+import { s3TurboListFacts } from "./productFacts";
 
 export type LocalizedText = Record<Locale, string>;
 
@@ -119,26 +119,4 @@ export const s3EvidenceFacts = {
     ["verify", "manifest-summary --check · hashes · row counts · schema"],
     ["provider logs", "app/s3-turbo-list User-Agent · compat-probe"],
   ] as const,
-} as const;
-
-export const browserEvidenceFacts = {
-  "world-clock": {
-    category: worldClockFacts.category,
-    privacy: {
-      en: "No data collection disclosed",
-      zh: "声明不收集数据",
-    },
-    screenshots: [
-      { src: "/assets/world-clock-light.png", width: 716, height: 777 },
-      { src: "/assets/world-clock-dark.png", width: 702, height: 778 },
-    ],
-  },
-  "douban-movie-rating": {
-    category: doubanMovieRatingFacts.category,
-    privacy: {
-      en: "No data collection disclosed",
-      zh: "声明不收集数据",
-    },
-    screenshots: [{ src: "/assets/douban-rating-assistant.png", width: 1454, height: 886 }],
-  },
 } as const;

@@ -112,9 +112,6 @@ export type BrowserExtensionProduct = {
 
 export type Product = S3TurboListProduct | StorageCliProduct | AgentPackageProduct | BrowserExtensionProduct;
 
-export type ProductForArchetype<T extends ProductArchetype> = Extract<Product, { archetype: T }>;
-export type ProductCopyForArchetype<T extends ProductArchetype> = ProductForArchetype<T>["locales"][Locale];
-
 export type ProductArchetype = "s3TurboList" | "storageCli" | "agentPackage" | "browserExtension";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {

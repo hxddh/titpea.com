@@ -24,6 +24,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run boundaries:check
       - run: npm run architecture:check
+      - run: npm run deadcode:check
       - run: npm run manifest:products
       - run: npm run facts:check
       - run: npm run facts:external
@@ -36,8 +37,22 @@ jobs:
       - run: npm run build
       - run: npm run copy:lint
       - run: npm run a11y:check
-      - run: npx playwright install chromium
+      # Browser-based QA (Playwright download + preview server + visual/QA) is
+      # the expensive part of CI, so it runs only on pull requests — where
+      # layout regressions are introduced — and not again on the push to main.
+      # The browser binary is cached to avoid re-downloading it every run.
+      - name: Cache Playwright browser
+        if: github.event_name == 'pull_request'
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Playwright browser
+        if: github.event_name == 'pull_request' && steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium
       - name: Page QA
+        if: github.event_name == 'pull_request'
         timeout-minutes: 8
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
@@ -51,14 +66,13 @@ jobs:
           if [ "$ready" != true ]; then cat /tmp/titpea-preview.log; exit 1; fi
           npm run qa:pages
           npm run visual:check
-          npm run review:screens
+      # Only keep the rendered screenshots when QA fails, so a regression can be
+      # inspected without paying for artifact storage on every green run.
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: failure() && github.event_name == 'pull_request'
         with:
-          name: review-screens-${{ github.sha }}
-          path: |
-            /tmp/titpea-review-screens
-            /tmp/titpea-visual-baseline
+          name: visual-baseline-${{ github.sha }}
+          path: /tmp/titpea-visual-baseline
           if-no-files-found: warn
 
   deploy:

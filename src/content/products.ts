@@ -15,5 +15,3 @@ export const products: Record<ProductSlug, Product> = {
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,
 };
-
-export const aboutProducts = [...productSlugs];
