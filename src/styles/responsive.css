@@ -130,6 +130,7 @@
     scroll-padding-inline: 16px;
     scroll-snap-type: x proximity;
     scrollbar-width: none;
+    mask-image: linear-gradient(to right, #000 92%, transparent);
   }
 
   .product-section-index div::-webkit-scrollbar {
@@ -138,6 +139,8 @@
 
   .product-section-index a {
     flex: 0 0 auto;
+    min-height: 44px;
+    padding: 8px 12px;
     scroll-snap-align: start;
   }
 
