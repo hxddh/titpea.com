@@ -27,6 +27,7 @@
     "content:check": "tsx scripts/check-content-contracts.ts",
     "manifest:check": "tsx scripts/check-site-manifest.mjs",
     "copy:lint": "node scripts/lint-copy.mjs",
+    "copy:check": "tsx scripts/check-copy-consistency.mjs",
     "qa:pages": "tsx scripts/qa-pages.mjs",
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "visual:approve": "VISUAL_APPROVE=1 tsx scripts/check-visual-baseline.mjs",
