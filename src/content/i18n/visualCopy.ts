@@ -96,8 +96,8 @@ export const visualCopy = {
       steps: ["Read bucket policy", "Scan ACLs and CORS", "Query access logs · DuckDB"],
       diagnosisLabel: "Diagnosis",
       diagnosis: [
-        { dim: "Access", verdict: "1 bucket allows public list · policy.json:12" },
-        { dim: "Lifecycle", verdict: "No expiry rule; data never ages out" },
+        { dim: "Security", verdict: "1 bucket allows public list · policy.json:12" },
+        { dim: "Protocol", verdict: "Multipart objects may fail Range GET" },
         { dim: "Cost", verdict: "~86 MiB Standard · low, no action" },
       ],
       footnotes: ["Read-only · evidence stays local", "macOS · Windows · Linux"],
@@ -112,8 +112,8 @@ export const visualCopy = {
       steps: ["读取存储桶策略", "扫描 ACL 与 CORS", "查询访问日志 · DuckDB"],
       diagnosisLabel: "综合诊断",
       diagnosis: [
-        { dim: "访问", verdict: "1 个存储桶允许公开列举 · policy.json:12" },
-        { dim: "生命周期", verdict: "无过期规则，数据不会自动老化" },
+        { dim: "安全", verdict: "1 个存储桶允许公开列举 · policy.json:12" },
+        { dim: "协议兼容", verdict: "分片上传对象可能 Range GET 失败" },
         { dim: "成本", verdict: "~86 MiB 标准存储 · 极低，无需处理" },
       ],
       footnotes: ["只读 · 证据留在本地", "macOS · Windows · Linux"],
