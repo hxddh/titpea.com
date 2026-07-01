@@ -81,7 +81,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       title: "StorageOps",
       description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与 skill pack。",
       eyebrow: "Pi Coding Agent 扩展",
-      headline: "给 Pi 用的对象存储诊断能力",
+      headline: "Pi 的对象存储排查扩展",
       lead: "用你提供的日志、报错、配置和 trace，帮 Pi 排查 S3 兼容存储问题的 skills 和工具。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },

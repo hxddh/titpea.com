@@ -172,6 +172,10 @@ export const s3TurboListProduct: S3TurboListProduct = {
           title: `What changed in ${s3Release}?`,
           body: `${s3Release} makes Baidu BOS fully compatible with the S3 ListObjectsV2 path and removes the BOS-specific defensive path. The project is ${s3License}.`,
         },
+        {
+          title: "Which endpoints are verified?",
+          body: "AWS S3, MinIO, and BOS are verified in the project path. R2, OSS, and B2 ship presets — run `compat-probe` before a long job on any endpoint.",
+        },
       ],
     },
     zh: {
@@ -328,6 +332,10 @@ export const s3TurboListProduct: S3TurboListProduct = {
         {
           title: `${s3Release} 变了什么？`,
           body: `${s3Release} 完成了百度 BOS 对 S3 ListObjectsV2 路径的兼容，并移除了 BOS 专用的防御分支。项目采用 ${s3License}。`,
+        },
+        {
+          title: "哪些端点已经验证过？",
+          body: "AWS S3、MinIO 和 BOS 走过项目验证路径。R2、OSS、B2 提供 preset；无论哪种端点，长任务前都建议先运行 `compat-probe`。",
         },
       ],
     },

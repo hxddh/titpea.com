@@ -82,7 +82,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
     return {
       kind,
       label,
-      kicker: copy.kicker,
+      kicker: `${s3EvidenceFacts.version} ${copy.kickerSuffix}`,
       title: copy.title,
       body: copy.body,
       meta: [`${s3EvidenceFacts.objectCount} ${copy.objectUnit}`, s3EvidenceFacts.datasetSize, s3EvidenceFacts.version],
