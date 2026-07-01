@@ -16,7 +16,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop app · macOS, Windows, Linux · Apache-2.0",
-      proof: ["Read-only", "Local-first", "Your keys, your model", "Apache-2.0"],
+      proof: ["Read-only", "Local-first"],
       featuresLabel: "Capabilities",
       features: [
         {
@@ -139,7 +139,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · Apache-2.0",
-      proof: ["只读", "本地优先", "你的模型你的密钥", "Apache-2.0"],
+      proof: ["只读", "本地优先"],
       featuresLabel: "能做什么",
       features: [
         {
