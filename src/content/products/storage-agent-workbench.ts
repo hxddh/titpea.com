@@ -8,8 +8,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
   locales: {
     en: {
       title: "Storage Agent",
-      description:
-        "Native desktop agent for read-only investigations on S3-compatible storage.",
+      description: "Native desktop agent for read-only investigations on S3-compatible storage.",
       eyebrow: "Native desktop agent",
       headline: "A native agent for object storage",
       lead: "Point it at your S3-compatible storage and ask — review config, analyze access logs, or triage a failing request. Keys and evidence stay on your machine.",
