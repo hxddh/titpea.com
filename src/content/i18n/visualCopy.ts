@@ -116,7 +116,7 @@ export const visualCopy = {
     },
     zh: {
       windowTitle: "Storage Agent",
-      brand: "云存储 Agent",
+      brand: "Storage Agent",
       newChat: "新对话",
       search: "搜索对话…",
       pinnedLabel: "已置顶",
@@ -132,7 +132,7 @@ export const visualCopy = {
       model: "自带模型",
       question: "先查哪个桶、日志还是报错？",
       subtitle: "只读、不会改动你的数据；下载或导入前会先征得你同意。",
-      inputPlaceholder: "向云存储 Agent 提问…（输入 / 查看命令）",
+      inputPlaceholder: "向 Storage Agent 提问…（输入 / 查看命令）",
       chips: ["诊断错误", "分析访问日志", "清单与容量", "审查桶配置", "梳理账号与桶", "成本集中在哪里"],
     },
   },
