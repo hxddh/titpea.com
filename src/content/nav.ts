@@ -102,9 +102,3 @@ export function desktopNavEntries(locale: Locale, current: CurrentPage): Desktop
     },
   ];
 }
-
-export function primaryNavItems(locale: Locale, current: CurrentPage = "home"): HeaderNavItem[] {
-  return headerNavGroups(locale, current)
-    .flatMap((group) => group.items)
-    .filter((item) => item.showInPrimary);
-}
