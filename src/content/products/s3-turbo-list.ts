@@ -170,7 +170,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `What changed in ${s3Release}?`,
-          body: `${s3Release} makes Baidu BOS fully compatible with the S3 ListObjectsV2 path and removes the BOS-specific defensive path. The project is ${s3License}.`,
+          body: `${s3Release} speeds up diff startup with parallel prefix probing and concurrent left/right discovery, and pipelines diff merge with Parquet encoding. The project is ${s3License}.`,
         },
         {
           title: "Which endpoints are verified?",
@@ -331,7 +331,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `${s3Release} 变了什么？`,
-          body: `${s3Release} 完成了百度 BOS 对 S3 ListObjectsV2 路径的兼容，并移除了 BOS 专用的防御分支。项目采用 ${s3License}。`,
+          body: `${s3Release} 加快了 diff 启动阶段的并行前缀探测，左右两端可并发发现；diff 合并与 Parquet 编码也改为流水线执行。项目采用 ${s3License}。`,
         },
         {
           title: "哪些端点已经验证过？",
