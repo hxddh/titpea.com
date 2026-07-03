@@ -1,11 +1,11 @@
 export const ui = {
   en: {
     productIndex: "hxddh / tools",
-    homeTitle: "Object storage ecosystem, reading and film",
+    homeTitle: "Storage ecosystem · reading & film",
     homeDescription:
       "By hxddh — cloud storage PM and part-time developer. A toolchain for S3-compatible storage, plus tools for reading and film.",
     homeLead:
-      "I work in cloud storage by day and ship small tools by night. One line is the S3-compatible toolchain I kept wishing for — CLI, agents, and Pi skills. The other follows how I actually spend time off: reading, browsing the web, and film. AI made both feel worth building.",
+      "Cloud storage PM, part-time developer. One S3-compatible toolchain for work; reading and film tools for life. AI made both buildable.",
     storageLine: "Object storage",
     storageTitle: "A toolchain for S3-compatible storage",
     personalLine: "Reading & media",
@@ -32,7 +32,7 @@ export const ui = {
     homeTitle: "对象存储生态，与阅读影音工具",
     homeDescription: "hxddh 的作品集——云存储产品经理兼业余开发者，围绕对象存储生态与阅读影音生活。",
     homeLead:
-      "白天在云存储行业做产品，晚上写点小工具。一条线是工作中一直想补齐的 S3 兼容工具链：CLI、agent 和 Pi skills；另一条是我本来就在过的生活：读书、上网冲浪、看电影。感谢 AI，让这些想法有了做出来试试的机会。",
+      "白天做云存储产品，晚上写点小工具。一条线是 S3 兼容工具链，一条线是读书、冲浪和看电影——感谢 AI，让它们能自己做出来。",
     storageLine: "对象存储",
     storageTitle: "围绕 S3 兼容存储的工具生态",
     personalLine: "阅读与影音",
