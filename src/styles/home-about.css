@@ -392,22 +392,8 @@
   font-size: 12px;
 }
 
-.about-system-panel {
-  display: grid;
-  gap: 1px;
-}
-
-.about-system-panel div {
-  display: grid;
-  gap: 10px;
-  padding: 24px;
-}
-
-.about-focus-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.58fr) minmax(280px, 0.42fr);
-  gap: 48px;
-  align-items: start;
+.about-focus-section .about-section-heading {
+  margin-bottom: 0;
 }
 
 .about-section-heading p:not(.section-kicker) {
@@ -416,22 +402,6 @@
   color: var(--muted);
   font-size: 17px;
   line-height: 1.68;
-}
-
-.about-focus-list {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.about-focus-list li {
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1.35;
 }
 
 .about-principles {

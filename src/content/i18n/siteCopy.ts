@@ -15,14 +15,7 @@ export const ui = {
       "Cloud storage PM, code on the side. Tools around storage at work; tools around reading and the web off work.",
     productsLabel: "Product lines",
     profileLabel: "Background",
-    profileTitle: "Why these tools exist",
-    profileBody: [
-      "I work on cloud storage products and write code on the side. I read a lot, spend time on the web, and check a few rating sites before I pick a film.",
-      "The storage line grew out of that job — listing and diff at scale, agents and Pi skills, evidence you can trace.",
-      "The personal line is smaller: documents on disk, time zones across cities, ratings on a page I already have open. Each tool states its limits up front.",
-    ],
-    focusLabel: "How I build",
-    focusItems: ["Cloud storage by trade", "Reading & the open web", "Inspectable outputs", "Limits stated up front"],
+    profileBody: "Cloud storage PM, code on the side. Two lines: storage and reading/media.",
   },
   zh: {
     productIndex: "云存储产品经理 · 业余写代码",
@@ -39,13 +32,6 @@ export const ui = {
     aboutLead: "云存储产品经理，业余写代码。工作中围绕对象存储做工具，下班后围绕阅读和在网上的生活做工具。",
     productsLabel: "产品线",
     profileLabel: "背景",
-    profileTitle: "为什么做这些",
-    profileBody: [
-      "我在云存储行业做产品，业余时间写代码。平时书读得多，网上逛得多，看电影前习惯多看几家评分。",
-      "存储线来自工作里真会碰到的场景：大桶怎么列举和比对、怎么用 agent 和 skills 把存储问题拆开、怎么留下能复查的证据。",
-      "生活线更小：本地 PDF 怎么按页读、跨时区怎么一眼看清、在豆瓣页里怎么对照外部评分。每个工具都先写清边界，不做什么也说清楚。",
-    ],
-    focusLabel: "怎么做",
-    focusItems: ["云存储从业", "阅读与上网", "可复查的产物", "先写清不做什么"],
+    profileBody: "云存储产品经理，业余写代码。工具分存储与生活两条线。",
   },
 } as const;

@@ -70,12 +70,7 @@ export type AboutPageModel = BasePageModel & {
   };
   profile: {
     label: string;
-    title: string;
-    body: string[];
-  };
-  focus: {
-    label: string;
-    items: string[];
+    body: string;
   };
   products: {
     label: string;
