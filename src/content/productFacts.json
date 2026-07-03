@@ -4,7 +4,7 @@
     "repository": "hxddh/s3-turbo-list",
     "licenseKey": "apache-2.0",
     "licenseLabel": "Apache-2.0",
-    "latestRelease": "v0.22.0",
+    "latestRelease": "v0.23.0",
     "stableFacts": ["S3-compatible", "Parquet output", "Agent-safe JSON", "run manifests"]
   },
   "storage-agent-workbench": {
