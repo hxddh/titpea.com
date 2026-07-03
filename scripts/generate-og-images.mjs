@@ -85,7 +85,7 @@ export const images = [
     body: "Local PDF text, OCR, and page-wise agent chat — files stay on your machine.",
     accent: "#0d9488",
     mark: "PDF",
-    visual: "document",
+    visual: "workbench",
   },
 ];
 
@@ -179,27 +179,6 @@ function visualPanel(kind, accent, mark) {
       <text x="28" y="224" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">IMDb 7.7</text>
       <text x="28" y="264" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">RT 94%</text>
       <text x="28" y="304" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">MC 72/100</text>
-    </g>`;
-  }
-
-  if (kind === "document") {
-    return `<g transform="translate(792 116)">
-      <rect width="316" height="332" rx="18" fill="#fff" stroke="#d9dde7"/>
-      <path d="M0 52h316" stroke="#e4e7ec"/>
-      <circle cx="26" cy="26" r="5" fill="#e4e7ec"/>
-      <circle cx="44" cy="26" r="5" fill="#e4e7ec"/>
-      <circle cx="62" cy="26" r="5" fill="#e4e7ec"/>
-      <text x="88" y="31" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">pagewise · page 7 / 48</text>
-      <path d="M88 52v280" stroke="#e4e7ec"/>
-      <rect x="18" y="72" width="54" height="18" rx="6" fill="#eef2f7"/>
-      <rect x="18" y="96" width="54" height="18" rx="6" fill="#eef2f7"/>
-      <rect x="18" y="120" width="54" height="18" rx="6" fill="${accent}"/>
-      <rect x="104" y="74" width="188" height="188" rx="10" fill="#f7f9fc" stroke="#e4e7ec"/>
-      <text x="120" y="108" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">Q3-report.pdf</text>
-      <text x="120" y="142" fill="#111827" font-family="Inter, ui-sans-serif, system-ui" font-size="15" font-weight="700">Revenue grew 12%</text>
-      <text x="120" y="170" fill="#667085" font-family="Inter, ui-sans-serif, system-ui" font-size="14">quarter-over-quarter…</text>
-      <rect x="104" y="276" width="188" height="44" rx="10" fill="${accent}"/>
-      <text x="120" y="304" fill="#fff" font-family="SFMono-Regular, Consolas, monospace" font-size="13">cite page 7 in answer</text>
     </g>`;
   }
 
