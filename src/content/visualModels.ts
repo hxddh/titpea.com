@@ -23,7 +23,6 @@ export type StorageAgentVisualModel = {
   kicker: string;
   title: string;
   body: string;
-  cards: Array<{ number: string; title: string; body: string }>;
   flow: readonly [string, string];
 };
 
@@ -105,7 +104,6 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       kicker: copy.kicker,
       title: copy.title,
       body: copy.body,
-      cards: [...copy.cards],
       flow: copy.flow,
     };
   }

@@ -22,66 +22,14 @@ export const visualCopy = {
   storageAgent: {
     en: {
       kicker: "Pi Agent",
-      title: "A Pi diagnosis uses skills, then tools",
-      body: "StorageOps gives Pi a storage-specific route: a skill chooses the method, then an extension tool handles the evidence safely.",
-      skillsSuffix: "diagnostic skills",
-      skillsBody:
-        "Security, protocol compatibility, CLI/SDK behavior, performance, networking, lifecycle, migration, consistency, logs, notifications, and triage.",
-      toolsSuffix: "registered tools",
-      helpersTitle: "parsers and analyzers",
-      helpersBody:
-        "Parse logs and HTTP traces, analyze IAM, CORS, throttling, network, replication, cost, and policy fixes.",
-      evalsTitle: "safe reports",
-      evalsBody: "Secrets are redacted; reports separate likely cause, evidence, and next steps.",
-      cards: [
-        {
-          number: "SKILL",
-          title: "16 skill packs",
-          body: "Pi can load a focused method for access, protocol compatibility, performance, lifecycle, migration, consistency, or another storage domain.",
-        },
-        {
-          number: "ROUTE",
-          title: "detect_domain",
-          body: "Rank likely domains and suggest which skill Pi should read next.",
-        },
-        {
-          number: "SAFE",
-          title: "scan_secrets",
-          body: "Redact credential values before material is returned to the agent context.",
-        },
-        {
-          number: "TRACE",
-          title: "capture_http_trace",
-          body: "Observe one bounded read-only storage command through the managed httpmon helper.",
-        },
-      ],
+      title: "A storage diagnosis route for Pi",
+      body: "Bring an error, log, config, or trace. Pi loads a StorageOps skill, then calls the tools that fit — without connecting to your cloud account.",
       flow: ["input: error, command, config, redacted log", "Pi: skills + tools + deterministic helpers"],
     },
     zh: {
       kicker: "Pi Agent",
-      title: "Pi 先加载 skill，再调用工具",
-      body: "StorageOps 给 Pi 一条对象存储排查路径：skill 决定方法，扩展工具再安全地处理现场证据。",
-      skillsSuffix: "个诊断技能",
-      skillsBody: "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步归类。",
-      toolsSuffix: "个注册工具",
-      helpersTitle: "解析器和分析器",
-      helpersBody: "解析日志和 HTTP trace，分析 IAM、CORS、限流、网络、复制、成本，并给出 policy 修改建议。",
-      evalsTitle: "安全报告",
-      evalsBody: "凭据会先脱敏；报告区分可能原因、证据和后续步骤。",
-      cards: [
-        {
-          number: "SKILL",
-          title: "16 组诊断 skills",
-          body: "Pi 可按需加载鉴权、协议兼容、性能、生命周期、迁移、一致性等对象存储领域的排查方法。",
-        },
-        { number: "ROUTE", title: "detect_domain", body: "判断优先排查方向，并提示 Pi 接下来该读取哪份 skill。" },
-        { number: "SAFE", title: "scan_secrets", body: "在材料进入 Agent 上下文前，先脱敏凭据值。" },
-        {
-          number: "TRACE",
-          title: "capture_http_trace",
-          body: "通过受管的 httpmon helper 观察一条受限的只读存储命令。",
-        },
-      ],
+      title: "Pi 的对象存储排查路径",
+      body: "把报错、日志、配置或 trace 交给 Pi。它加载 StorageOps skill，再调用匹配的工具——不会连接你的云账号。",
       flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
     },
   },
@@ -116,7 +64,7 @@ export const visualCopy = {
     },
     zh: {
       windowTitle: "Storage Agent",
-      brand: "云存储 Agent",
+      brand: "Storage Agent",
       newChat: "新对话",
       search: "搜索对话…",
       pinnedLabel: "已置顶",
@@ -132,7 +80,7 @@ export const visualCopy = {
       model: "自带模型",
       question: "先查哪个桶、日志还是报错？",
       subtitle: "只读、不会改动你的数据；下载或导入前会先征得你同意。",
-      inputPlaceholder: "向云存储 Agent 提问…（输入 / 查看命令）",
+      inputPlaceholder: "向 Storage Agent 提问…（输入 / 查看命令）",
       chips: ["诊断错误", "分析访问日志", "清单与容量", "审查桶配置", "梳理账号与桶", "成本集中在哪里"],
     },
   },

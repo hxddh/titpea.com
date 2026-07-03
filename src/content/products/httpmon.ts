@@ -71,6 +71,10 @@ export const httpmonProduct: StorageCliProduct = {
           title: "What does it support beyond HTTP?",
           body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
         },
+        {
+          title: "Can it record and replay a session?",
+          body: "Yes. httpmon can record request–response pairs to disk, then replay an authorized session against its original target or a comparison environment.",
+        },
       ],
     },
     zh: {
@@ -131,6 +135,10 @@ export const httpmonProduct: StorageCliProduct = {
         {
           title: "除了 HTTP 还支持什么？",
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
+        },
+        {
+          title: "可以录制和回放吗？",
+          body: "可以。httpmon 能录制请求与响应对到本地，再把已获授权的会话回放到原端点或对比环境。",
         },
       ],
     },
