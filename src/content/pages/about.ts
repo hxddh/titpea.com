@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.profileTitle, pageCopy.productsTitle],
+    expectedText: [copy.aboutHeadline, copy.profileBody, pageCopy.productsTitle],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -56,12 +56,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     },
     profile: {
       label: copy.profileLabel,
-      title: copy.profileTitle,
-      body: [...copy.profileBody],
-    },
-    focus: {
-      label: copy.focusLabel,
-      items: [...copy.focusItems],
+      body: copy.profileBody,
     },
     products: {
       label: copy.productsLabel,
