@@ -50,5 +50,18 @@
     "category": "Entertainment",
     "stableFacts": ["IMDb context", "Rotten Tomatoes context", "Metacritic context", "no data collection disclosed"],
     "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
+  },
+  "pagewise": {
+    "source": "manual",
+    "repository": "hxddh/pagewise",
+    "licenseLabel": "MIT",
+    "stableFacts": [
+      "local PDF and image analysis",
+      "page-wise agent chat",
+      "local-first",
+      "BYOK",
+      "desktop app",
+      "credentials stay local"
+    ]
   }
 }

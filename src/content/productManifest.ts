@@ -5,7 +5,7 @@ export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
-  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" };
+  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" | "pagewise" };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
@@ -17,7 +17,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "s3-turbo-list",
     name: "s3-turbo-list",
     group: "storage",
-    nav: { primary: true },
+    nav: { primary: false },
     catalog: { order: 1, primary: true },
     visual: "s3Benchmark",
     ogImage: "/assets/og-s3-turbo-list.png",
@@ -27,7 +27,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "storage-agent-workbench",
     name: "Storage Agent",
     group: "storage",
-    nav: { primary: true, label: "storageAgent" },
+    nav: { primary: false, label: "storageAgent" },
     catalog: { order: 2, primary: true },
     visual: "storageWorkbench",
     ogImage: "/assets/og-storage-agent-workbench.png",
@@ -37,7 +37,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "storageops",
     name: "StorageOps",
     group: "storage",
-    nav: { primary: true },
+    nav: { primary: false },
     catalog: { order: 3 },
     visual: "storageAgent",
     ogImage: "/assets/og-storageops.png",
@@ -47,18 +47,28 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "httpmon",
     name: "httpmon",
     group: "storage",
-    nav: { primary: true },
+    nav: { primary: false },
     catalog: { order: 4 },
     visual: "httpmonTerminal",
     ogImage: "/assets/og-httpmon.png",
     factId: "https-traffic-inspector",
   },
   {
+    slug: "pagewise",
+    name: "PageWise",
+    group: "personal",
+    nav: { primary: false, label: "pagewise" },
+    catalog: { order: 1, primary: true },
+    visual: "pagewiseWorkbench",
+    ogImage: "/assets/og-pagewise.png",
+    factId: "pagewise",
+  },
+  {
     slug: "world-clock",
     name: "World Clock",
     group: "personal",
-    nav: { primary: true, label: "worldClock" },
-    catalog: { order: 1 },
+    nav: { primary: false, label: "worldClock" },
+    catalog: { order: 2 },
     visual: "worldClockScreenshot",
     ogImage: "/assets/og-world-clock.png",
     factId: "world-clock",
@@ -67,8 +77,8 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "douban-movie-rating",
     name: "Douban Movie Rating Assistant",
     group: "personal",
-    nav: { primary: true, label: "douban" },
-    catalog: { order: 2 },
+    nav: { primary: false, label: "douban" },
+    catalog: { order: 3 },
     visual: "doubanScreenshot",
     ogImage: "/assets/og-douban-movie-rating.png",
     factId: "douban-movie-rating",

@@ -20,6 +20,7 @@ export const headerCopy: Record<
       storageAgent: string;
       worldClock: string;
       douban: string;
+      pagewise: string;
     };
   }
 > = {
@@ -41,6 +42,7 @@ export const headerCopy: Record<
       storageAgent: "Storage Agent",
       worldClock: "World Clock",
       douban: "Douban",
+      pagewise: "PageWise",
     },
   },
   zh: {
@@ -61,6 +63,7 @@ export const headerCopy: Record<
       storageAgent: "Storage Agent",
       worldClock: "世界时钟",
       douban: "豆瓣评分",
+      pagewise: "PageWise",
     },
   },
 };

@@ -101,6 +101,22 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",
     },
   ),
+  pagewise: {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Local desktop agent",
+      title: "Read documents page by page",
+      body: "Open a PDF or image, extract text locally, and ask the agent about specific pages. The preview follows what it reads so you can verify every citation.",
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "本地桌面 agent",
+      title: "按页读懂你的文档",
+      body: "打开 PDF 或图片，在本地提取文本，向 agent 提问具体页面。预览会跟着它读的页走，方便核对每条引用。",
+    },
+  },
   "world-clock": browserInside(
     { en: "Time, checked quickly", zh: "看一眼，就知道几点" },
     {
