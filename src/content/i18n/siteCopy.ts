@@ -1,11 +1,9 @@
 export const ui = {
   en: {
-    productIndex: "hxddh",
-    homeTitle: "Storage at work, reading and film in life",
-    homeDescription:
-      "By hxddh — cloud storage PM, code on the side. Tools around S3-compatible storage, plus reading and film.",
-    homeLead:
-      "Cloud storage PM, code as a side project. I build around S3-compatible storage at work, and around reading, browsing, and film off work.",
+    productIndex: "Cloud storage PM · code on the side",
+    homeTitle: "Small tools I build, in two lines",
+    homeDescription: "By hxddh — small tools in two lines: S3-compatible storage, and reading, the web, and film.",
+    homeLead: "One line around S3-compatible storage; one around reading, the web, and film.",
     storageLine: "Object storage",
     storageTitle: "Tools around S3-compatible storage",
     personalLine: "Reading & media",
@@ -27,11 +25,10 @@ export const ui = {
     focusItems: ["Cloud storage by trade", "Reading & the open web", "Inspectable outputs", "Limits stated up front"],
   },
   zh: {
-    productIndex: "hxddh",
-    homeTitle: "工作上的存储，生活里的阅读与影音",
-    homeDescription: "hxddh 的作品集——云存储产品经理，业余写代码；工作上的存储，生活里的阅读与影音。",
-    homeLead:
-      "云存储产品经理，业余写代码。本职里缺什么工具，就试着做一套 S3 兼容存储上的组合；下班爱读书、上网、看电影，顺手把常用的事也做成小工具。",
+    productIndex: "云存储产品经理 · 业余写代码",
+    homeTitle: "我做的小工具，分两块",
+    homeDescription: "hxddh 的作品集——云存储产品经理，业余写代码；一块围绕 S3 兼容存储，一块围绕读书、上网和看电影。",
+    homeLead: "一块围绕 S3 兼容存储，一块围绕读书、上网和看电影。",
     storageLine: "对象存储",
     storageTitle: "围绕 S3 兼容存储的一组工具",
     personalLine: "阅读与影音",
