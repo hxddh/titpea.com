@@ -1,7 +1,7 @@
 export const ui = {
   en: {
-    productIndex: "hxddh / tools",
-    homeTitle: "Storage ecosystem · reading & film",
+    productIndex: "hxddh",
+    homeTitle: "Storage at work, reading and film in life",
     homeDescription:
       "By hxddh — cloud storage PM, code on the side. Tools around S3-compatible storage, plus reading and film.",
     homeLead:
@@ -27,9 +27,9 @@ export const ui = {
     focusItems: ["Cloud storage by trade", "Reading & the open web", "Inspectable outputs", "Limits stated up front"],
   },
   zh: {
-    productIndex: "hxddh / 工具",
-    homeTitle: "对象存储生态，与阅读影音工具",
-    homeDescription: "hxddh 的作品集——云存储产品经理，业余写代码；对象存储生态与阅读影音工具。",
+    productIndex: "hxddh",
+    homeTitle: "工作上的存储，生活里的阅读与影音",
+    homeDescription: "hxddh 的作品集——云存储产品经理，业余写代码；工作上的存储，生活里的阅读与影音。",
     homeLead:
       "云存储产品经理，业余写代码。本职里缺什么工具，就试着做一套 S3 兼容存储上的组合；下班爱读书、上网、看电影，顺手把常用的事也做成小工具。",
     storageLine: "对象存储",
