@@ -390,21 +390,50 @@
   font-size: 12px;
 }
 
-.about-home-link {
-  margin: 22px 0 0;
-  color: var(--muted);
+.about-tool-index,
+.about-contact {
+  border-top: 1px solid var(--line);
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.about-tool-line + .about-tool-line {
+  margin-top: 28px;
+}
+
+.about-tool-line-label {
+  margin: 0 0 10px;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
 
-.about-home-link a {
-  border-bottom: 1px solid transparent;
-  color: var(--label);
+.about-tool-links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 0;
 }
 
-.about-home-link a:hover {
-  border-color: var(--ink);
+.about-tool-links a {
   color: var(--ink);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.about-tool-links a:not(:first-child)::before {
+  margin: 0 10px;
+  color: var(--muted);
+  content: "·";
+}
+
+.about-contact .section-kicker {
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.about-contact .about-contact-row {
+  margin-top: 0;
 }
 
 .about-section-heading p:not(.section-kicker) {

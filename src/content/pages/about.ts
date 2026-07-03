@@ -1,17 +1,17 @@
 import { aboutModelCopy } from "../i18n/pageCopy";
 import { ui } from "../i18n/siteCopy";
+import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { AboutPageModel } from "./types";
 import type { Locale } from "../../lib/site";
-import { pathFor } from "../../lib/site";
 
 export function buildAboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
   const pageCopy = aboutModelCopy[locale];
+  const catalog = productCatalogModel(locale);
   const path = pagePath(locale, "about");
   const alternatePath = pagePath(alternateLocale(locale), "about");
-  const homeHref = pathFor(locale);
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
   const structuredData = {
     "@context": "https://schema.org",
@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.aboutLead, pageCopy.homeLink],
+    expectedText: [copy.aboutHeadline, copy.aboutLead, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -48,9 +48,22 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       eyebrow: copy.aboutTitle,
       title: copy.aboutHeadline,
       lead: copy.aboutLead,
-      contactLabel: pageCopy.contactLabel,
-      homeLink: pageCopy.homeLink,
-      homeHref,
+    },
+    tools: {
+      label: pageCopy.toolsLabel,
+      lines: [
+        {
+          label: copy.storageLine,
+          items: catalog.storage.map((item) => ({ name: item.name, href: item.href })),
+        },
+        {
+          label: copy.personalLine,
+          items: catalog.personal.map((item) => ({ name: item.name, href: item.href })),
+        },
+      ],
+    },
+    contact: {
+      label: pageCopy.contactLabel,
       actions: [
         { label: "GitHub", href: siteConfig.externalLinks.github, style: "primary" },
         { label: "Email", href: `mailto:${siteConfig.email}`, style: "ghost" },

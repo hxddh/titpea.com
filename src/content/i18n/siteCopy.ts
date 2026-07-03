@@ -11,7 +11,7 @@ export const ui = {
     aboutTitle: "About",
     aboutDescription: "hxddh — cloud storage product manager, code on the side — and the tools behind titpea.com.",
     aboutHeadline: "hxddh",
-    aboutLead: "Personal site. Questions, collaboration, or feedback — reach out below.",
+    aboutLead: "Cloud storage PM, code on the side.",
   },
   zh: {
     productIndex: "云存储产品经理 · 业余写代码",
@@ -25,6 +25,6 @@ export const ui = {
     aboutTitle: "关于",
     aboutDescription: "云存储产品经理 hxddh，业余写代码，以及 titpea.com 上的工具。",
     aboutHeadline: "hxddh",
-    aboutLead: "个人站点。工具有问题或合作意向，欢迎联系。",
+    aboutLead: "云存储产品经理，业余写代码。",
   },
 } as const;

@@ -1,11 +1,11 @@
 export const aboutModelCopy = {
   en: {
-    contactLabel: "Contact links",
-    homeLink: "Back to tools on home",
+    contactLabel: "Contact",
+    toolsLabel: "Tools",
   },
   zh: {
-    contactLabel: "联系方式",
-    homeLink: "返回首页看工具",
+    contactLabel: "联系",
+    toolsLabel: "工具",
   },
 } as const;
 

@@ -58,6 +58,11 @@ export type HomePageModel = BasePageModel & {
   };
 };
 
+export type AboutToolLinkModel = {
+  name: string;
+  href: string;
+};
+
 export type AboutPageModel = BasePageModel & {
   kind: "about";
   current: "about";
@@ -65,9 +70,16 @@ export type AboutPageModel = BasePageModel & {
     eyebrow: string;
     title: string;
     lead: string;
-    contactLabel: string;
-    homeLink: string;
-    homeHref: string;
+  };
+  tools: {
+    label: string;
+    lines: Array<{
+      label: string;
+      items: AboutToolLinkModel[];
+    }>;
+  };
+  contact: {
+    label: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
 };
