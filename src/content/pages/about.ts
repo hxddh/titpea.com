@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.profileBody, pageCopy.productsTitle],
+    expectedText: [copy.aboutHeadline, copy.aboutLead, pageCopy.productsTitle],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -53,10 +53,6 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
         { label: "GitHub", href: siteConfig.externalLinks.github, style: "primary" },
         { label: "Email", href: `mailto:${siteConfig.email}`, style: "ghost" },
       ],
-    },
-    profile: {
-      label: copy.profileLabel,
-      body: copy.profileBody,
     },
     products: {
       label: copy.productsLabel,

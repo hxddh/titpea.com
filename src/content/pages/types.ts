@@ -68,10 +68,6 @@ export type AboutPageModel = BasePageModel & {
     contactLabel: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
-  profile: {
-    label: string;
-    body: string;
-  };
   products: {
     label: string;
     title: string;

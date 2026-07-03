@@ -8,6 +8,8 @@ export const headerCopy: Record<
     menuText: string;
     themeToDark: string;
     themeToLight: string;
+    themeShortDark: string;
+    themeShortLight: string;
     groups: {
       main: string;
       storage: string;
@@ -30,6 +32,8 @@ export const headerCopy: Record<
     menuText: "Menu",
     themeToDark: "Switch to dark theme",
     themeToLight: "Switch to light theme",
+    themeShortDark: "Dark",
+    themeShortLight: "Light",
     groups: {
       main: "Main",
       storage: "Storage",
@@ -51,6 +55,8 @@ export const headerCopy: Record<
     menuText: "菜单",
     themeToDark: "切换到深色主题",
     themeToLight: "切换到浅色主题",
+    themeShortDark: "深色",
+    themeShortLight: "浅色",
     groups: {
       main: "主要页面",
       storage: "对象存储",

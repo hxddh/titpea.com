@@ -51,22 +51,24 @@ const navGroups = headerNavGroups(locale, current);
       }
     </nav>
 
-    <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
-      {alternateLabel}
-    </a>
+    <div class="header-utilities">
+      <a class="header-util language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
+        {alternateLabel}
+      </a>
 
-    <button
-      class="theme-toggle"
-      type="button"
-      data-theme-toggle
-      data-label-dark={copy.themeToDark}
-      data-label-light={copy.themeToLight}
-      aria-label={copy.themeToDark}
-      hidden
-    >
-      <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
-      <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
-    </button>
+      <button
+        class="header-util theme-toggle"
+        type="button"
+        data-theme-toggle
+        data-label-dark={copy.themeToDark}
+        data-label-light={copy.themeToLight}
+        aria-label={copy.themeToDark}
+        hidden
+      >
+        <span class="theme-label theme-label-dark" aria-hidden="true">{copy.themeShortDark}</span>
+        <span class="theme-label theme-label-light" aria-hidden="true">{copy.themeShortLight}</span>
+      </button>
+    </div>
 
     <details class="mobile-menu">
       <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>

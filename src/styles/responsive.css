@@ -13,8 +13,14 @@
     display: none;
   }
 
-  .language-switch,
-  .theme-toggle {
+  .header-utilities {
+    gap: 10px;
+    margin-left: 10px;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .header-util {
     min-height: 36px;
     border: 1px solid var(--soft-line);
     border-radius: 999px;
@@ -24,8 +30,8 @@
   }
 
   .theme-toggle {
-    min-width: 36px;
     justify-content: center;
+    min-width: 36px;
     padding: 6px 8px;
   }
 
@@ -49,7 +55,6 @@
   }
 
   .home-evidence,
-  .about-focus-section,
   .split-content {
     grid-template-columns: 1fr;
     gap: 34px;

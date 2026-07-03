@@ -173,8 +173,7 @@
 .home-catalog,
 .home-personal-catalog,
 .home-thesis-band,
-.about-products,
-.about-focus-section {
+.about-products {
   border-top: 1px solid var(--line);
   padding-top: 72px;
   padding-bottom: 72px;
@@ -390,10 +389,6 @@
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
-}
-
-.about-focus-section .about-section-heading {
-  margin-bottom: 0;
 }
 
 .about-section-heading p:not(.section-kicker) {
