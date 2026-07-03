@@ -54,7 +54,7 @@ export async function checkRoute(page, viewport, route) {
         h1: h1?.textContent?.trim() ?? "",
         h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
         leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
-        heroCtaCount: heroActions.length,
+        heroCtaCount: route.kind === "about" ? aboutContactActions.length : heroActions.length,
         heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
         cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
         anchorCount: document.querySelectorAll(".product-section-index a").length,
