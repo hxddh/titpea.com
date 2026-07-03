@@ -22,6 +22,7 @@ export async function checkRoute(page, viewport, route) {
       const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
       const heroActions = hero?.querySelectorAll(".actions a") ?? [];
+      const aboutContactActions = route.kind === "about" ? document.querySelectorAll(".about-contact .actions a") : [];
       const cards = Array.from(
         document.querySelectorAll(
           ".catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
