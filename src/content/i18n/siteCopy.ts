@@ -15,12 +15,13 @@ export const ui = {
     aboutLead: "I build small, inspectable tools for storage work.",
     productsLabel: "Product lines",
     profileLabel: "Profile",
-    profileTitle: "Small tools, distinct jobs",
+    profileTitle: "How these tools are built",
     profileBody: [
-      "The core line is tools for S3-compatible object storage: a native desktop agent, list / diff, Pi diagnosis, and HTTP inspection.",
+      "Each one keeps a narrow runtime boundary, leaves inspectable artifacts, and states what it will not do before you depend on it.",
+      "This site documents real inputs, outputs, and limits — not a generic feature list.",
     ],
     focusLabel: "Focus Areas",
-    focusItems: ["S3-compatible storage", "Native storage agent", "Pi diagnosis", "HTTP inspection"],
+    focusItems: ["Inspectable outputs", "Clear boundaries", "Read-only defaults", "Documented limits"],
   },
   zh: {
     productIndex: "hxddh / 工具",
@@ -37,9 +38,12 @@ export const ui = {
     aboutLead: "我做边界清楚、结果可复查的小工具。",
     productsLabel: "产品线",
     profileLabel: "简介",
-    profileTitle: "工具小，各自解决一件事",
-    profileBody: ["核心方向是 S3 兼容对象存储的工具：一个原生桌面 Agent、list / diff、Pi 诊断和 HTTP 请求排查。"],
+    profileTitle: "我怎么做这些工具",
+    profileBody: [
+      "每个工具都划清运行时边界，留下可复查的产物，并在你依赖之前说明它不会做什么。",
+      "这个站点写的是真实的输入、输出和限制——不是一套抽象功能清单。",
+    ],
     focusLabel: "关注方向",
-    focusItems: ["S3 兼容存储", "原生存储 Agent", "Pi 诊断", "HTTP 请求排查"],
+    focusItems: ["可复查的产物", "边界清楚", "默认只读", "限制写清楚"],
   },
 } as const;
