@@ -20,7 +20,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     mainEntity: {
       "@type": "Person",
       name: copy.aboutHeadline,
-      description: copy.aboutLead,
+      description: copy.aboutDescription,
       url: absoluteUrl(path),
       sameAs: [siteConfig.githubProfile],
       email: `mailto:${siteConfig.email}`,
