@@ -172,9 +172,7 @@
 .home-evidence,
 .home-catalog,
 .home-personal-catalog,
-.home-thesis-band,
-.about-products,
-.about-focus-section {
+.home-thesis-band {
   border-top: 1px solid var(--line);
   padding-top: 72px;
   padding-bottom: 72px;
@@ -392,8 +390,50 @@
   font-size: 12px;
 }
 
-.about-focus-section .about-section-heading {
-  margin-bottom: 0;
+.about-tool-index,
+.about-contact {
+  border-top: 1px solid var(--line);
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.about-tool-line + .about-tool-line {
+  margin-top: 28px;
+}
+
+.about-tool-line-label {
+  margin: 0 0 10px;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.about-tool-links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 0;
+}
+
+.about-tool-links a {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.about-tool-links a:not(:first-child)::before {
+  margin: 0 10px;
+  color: var(--muted);
+  content: "·";
+}
+
+.about-contact .section-kicker {
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.about-contact .about-contact-row {
+  margin-top: 0;
 }
 
 .about-section-heading p:not(.section-kicker) {

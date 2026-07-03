@@ -15,52 +15,37 @@ const { model } = Astro.props;
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
-      <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
-        {
-          model.hero.actions.map((action) => (
-            <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
-              {action.label}
-            </a>
-          ))
-        }
-      </div>
     </div>
   </section>
 
-  <section class="about-focus-section shell">
+  <section class="about-tool-index shell" aria-labelledby="about-tools-heading">
     <div class="about-section-heading">
-      <p class="section-kicker">{model.profile.label}</p>
-      <p>{model.profile.body}</p>
-    </div>
-  </section>
-
-  <section class="about-products shell">
-    <div class="about-section-heading">
-      <p class="section-kicker">{model.products.label}</p>
-      <h2>{model.products.title}</h2>
+      <p class="section-kicker" id="about-tools-heading">{model.tools.label}</p>
     </div>
     {
-      (
-        [
-          { label: model.products.storageLabel, group: "storage", gridClass: "about-product-grid-storage" },
-          { label: model.products.personalLabel, group: "personal", gridClass: "about-product-grid-personal" },
-        ] as const
-      ).map((line) => (
-        <div class="about-product-line">
-          <p class="about-product-line-label">{line.label}</p>
-          <div class:list={["about-product-grid", line.gridClass]}>
-            {model.products.items
-              .filter((item) => item.group === line.group)
-              .map((item) => (
-                <a class:list={["about-product-card", item.isPrimary && "primary"]} href={item.href}>
-                  <span>{item.displayRole}</span>
-                  <strong>{item.name}</strong>
-                  <p>{item.text}</p>
-                </a>
-              ))}
-          </div>
+      model.tools.lines.map((line) => (
+        <div class="about-tool-line">
+          <p class="about-tool-line-label">{line.label}</p>
+          <p class="about-tool-links">
+            {line.items.map((item) => (
+              <a href={item.href}>{item.name}</a>
+            ))}
+          </p>
         </div>
       ))
     }
+  </section>
+
+  <section class="about-contact shell" aria-label={model.contact.label}>
+    <p class="section-kicker">{model.contact.label}</p>
+    <div class="actions about-contact-row">
+      {
+        model.contact.actions.map((action) => (
+          <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
+            {action.label}
+          </a>
+        ))
+      }
+    </div>
   </section>
 </SiteLayout>
