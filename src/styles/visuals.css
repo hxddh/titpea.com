@@ -325,6 +325,120 @@
   font-size: 12px;
 }
 
+.pagewise-visual {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: var(--shadow-soft);
+  font-size: 12px;
+}
+
+.pagewise-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.24fr) minmax(0, 0.42fr) minmax(0, 0.34fr);
+}
+
+.pagewise-sidebar {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-right: 1px solid var(--line);
+  background: var(--raised);
+}
+
+.pagewise-files {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagewise-files li {
+  padding: 7px 9px;
+  border-radius: 7px;
+}
+
+.pagewise-files li.active {
+  background: var(--panel);
+}
+
+.pagewise-files strong {
+  display: block;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pagewise-files small {
+  color: var(--label);
+  font-size: 10px;
+}
+
+.pagewise-preview {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  border-right: 1px solid var(--line);
+}
+
+.pagewise-preview-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.pagewise-preview-head strong {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 11px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pagewise-page {
+  min-height: 180px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--raised);
+}
+
+.pagewise-page p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.pagewise-chat {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.pagewise-chat .workbench-q {
+  max-width: 22ch;
+  font-size: 18px;
+}
+
+.pagewise-chat .workbench-chips {
+  max-width: 100%;
+}
+
 .benchmark-visual,
 .agent-manifest-visual {
   padding: 30px;
@@ -636,6 +750,34 @@
 
 /* Storage Agent welcome mock: keep desktop proportions, stack on narrow screens. */
 @media (max-width: 900px) {
+  .pagewise-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pagewise-sidebar {
+    display: none;
+  }
+
+  .pagewise-preview {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 14px;
+  }
+
+  .pagewise-page {
+    min-height: 120px;
+    padding: 14px;
+  }
+
+  .pagewise-chat {
+    padding: 20px 16px 24px;
+  }
+
+  .pagewise-chat .workbench-q {
+    max-width: 100%;
+    font-size: 1.125rem;
+  }
+
   .workbench-body {
     grid-template-columns: 1fr;
   }

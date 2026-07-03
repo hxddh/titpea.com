@@ -170,7 +170,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `What changed in ${s3Release}?`,
-          body: `${s3Release} speeds up diff startup with parallel prefix probing and concurrent left/right discovery, and pipelines diff merge with Parquet encoding. The project is ${s3License}.`,
+          body: `${s3Release} pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can start at full concurrency instead of ramping through runtime splits. The project is ${s3License}.`,
         },
         {
           title: "Which endpoints are verified?",
@@ -331,7 +331,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `${s3Release} 变了什么？`,
-          body: `${s3Release} 加快了 diff 启动阶段的并行前缀探测，左右两端可并发发现；diff 合并与 Parquet 编码也改为流水线执行。项目采用 ${s3License}。`,
+          body: `${s3Release} 在 list 启动阶段用并行单 key 探测为扁平命名空间预分区，首次运行即可满并发展开，而不必先靠运行时拆分爬坡。项目采用 ${s3License}。`,
         },
         {
           title: "哪些端点已经验证过？",

@@ -78,6 +78,15 @@ export const images = [
     mark: "RT",
     visual: "rating",
   },
+  {
+    file: "og-pagewise.png",
+    eyebrow: "PageWise",
+    title: "Ask questions about your documents",
+    body: "Local PDF text, OCR, and page-wise agent chat — files stay on your machine.",
+    accent: "#0d9488",
+    mark: "PDF",
+    visual: "workbench",
+  },
 ];
 
 const escape = (value) =>

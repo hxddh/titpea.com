@@ -4,6 +4,7 @@ export type ProductSlug =
   | "storage-agent-workbench"
   | "storageops"
   | "httpmon"
+  | "pagewise"
   | "world-clock"
   | "douban-movie-rating";
 export type CurrentPage = "home" | "about" | ProductSlug;
@@ -19,6 +20,23 @@ export type HeaderNavGroup = {
   label: string;
   items: HeaderNavItem[];
 };
+
+export type HeaderNavLink = {
+  kind: "link";
+  label: string;
+  href: string;
+  current?: CurrentPage;
+  external?: boolean;
+};
+
+export type HeaderNavDropdown = {
+  kind: "dropdown";
+  label: string;
+  items: HeaderNavItem[];
+  open?: boolean;
+};
+
+export type DesktopNavEntry = HeaderNavLink | HeaderNavDropdown;
 
 type Link = {
   label: string;
@@ -124,7 +142,7 @@ export type BrowserExtensionProduct = {
 };
 
 export type AgentWorkbenchProduct = {
-  slug: "storage-agent-workbench";
+  slug: Extract<ProductSlug, "storage-agent-workbench" | "pagewise">;
   name: string;
   archetype: "agentWorkbench";
   locales: Localized<AgentWorkbenchProductCopy>;

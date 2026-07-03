@@ -21,8 +21,9 @@ export type VisualPolicy =
   | "storageWorkbench"
   | "httpmonTerminal"
   | "worldClockScreenshot"
-  | "doubanScreenshot";
-export type ProductGroup = "storage" | "browser";
+  | "doubanScreenshot"
+  | "pagewiseWorkbench";
+export type ProductGroup = "storage" | "personal";
 
 export type ArchetypeSectionSpec = {
   id: PageSectionId;
@@ -139,7 +140,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     ],
   },
   browserExtension: {
-    group: "browser",
+    group: "personal",
     pageClass: "product-page product-page-browserExtension",
     sectionIndex: false,
     indexLabel: { en: "Read this page", zh: "阅读路径" },

@@ -68,10 +68,29 @@ export type ScreenshotVisualModel = {
   images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
 };
 
+export type PagewiseWorkbenchVisualModel = {
+  kind: "pagewiseWorkbench";
+  label: string;
+  windowTitle: string;
+  recentLabel: string;
+  recent: Array<{ title: string; pages: string }>;
+  activeDoc: string;
+  pageLabel: string;
+  currentPage: string;
+  totalPages: string;
+  pageExcerpt: string;
+  question: string;
+  subtitle: string;
+  inputPlaceholder: string;
+  model: string;
+  chips: string[];
+};
+
 export type ProductVisualModel =
   | S3BenchmarkVisualModel
   | StorageAgentVisualModel
   | StorageWorkbenchVisualModel
+  | PagewiseWorkbenchVisualModel
   | HttpmonTerminalVisualModel
   | ScreenshotVisualModel;
 
@@ -126,6 +145,27 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       question: copy.question,
       subtitle: copy.subtitle,
       inputPlaceholder: copy.inputPlaceholder,
+      chips: [...copy.chips],
+    };
+  }
+
+  if (kind === "pagewiseWorkbench") {
+    const copy = visualCopy.pagewiseWorkbench[locale];
+    return {
+      kind,
+      label,
+      windowTitle: copy.windowTitle,
+      recentLabel: copy.recentLabel,
+      recent: copy.recent.map((item) => ({ ...item })),
+      activeDoc: copy.activeDoc,
+      pageLabel: copy.pageLabel,
+      currentPage: copy.currentPage,
+      totalPages: copy.totalPages,
+      pageExcerpt: copy.pageExcerpt,
+      question: copy.question,
+      subtitle: copy.subtitle,
+      inputPlaceholder: copy.inputPlaceholder,
+      model: copy.model,
       chips: [...copy.chips],
     };
   }

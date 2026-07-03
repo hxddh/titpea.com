@@ -13,6 +13,8 @@
     { "path": "/httpmon/", "viewport": "mobile", "state": "faq" },
     { "path": "/world-clock/", "viewport": "mobile", "state": "top" },
     { "path": "/douban-movie-rating/", "viewport": "desktop", "state": "top" },
+    { "path": "/pagewise/", "viewport": "desktop", "state": "top" },
+    { "path": "/pagewise/", "viewport": "mobile", "state": "faq" },
     { "path": "/zh/", "viewport": "mobile", "state": "menu" },
     { "path": "/zh/s3-turbo-list/", "viewport": "mobile", "state": "faq" },
     { "path": "/zh/storageops/", "viewport": "mobile", "state": "faq" },

@@ -52,7 +52,7 @@ const { model } = Astro.props;
       (
         [
           { label: model.products.storageLabel, group: "storage", gridClass: "about-product-grid-storage" },
-          { label: model.products.browserLabel, group: "browser", gridClass: "about-product-grid-browser" },
+          { label: model.products.personalLabel, group: "personal", gridClass: "about-product-grid-personal" },
         ] as const
       ).map((line) => (
         <div class="about-product-line">

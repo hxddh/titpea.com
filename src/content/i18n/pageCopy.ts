@@ -23,6 +23,8 @@ export const catalogCopy = {
     worldClockRole: "Timezone utility",
     doubanText: "Shows IMDb, Rotten Tomatoes, and Metacritic inside Douban movie pages.",
     doubanRole: "Rating context",
+    pagewiseText: "Local desktop agent for PDF text, OCR, and page-wise Q&A.",
+    pagewiseRole: "Document agent",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
@@ -37,5 +39,7 @@ export const catalogCopy = {
     worldClockRole: "时区工具",
     doubanText: "在豆瓣电影页内对照 IMDb、Rotten Tomatoes 和 Metacritic。",
     doubanRole: "评分辅助",
+    pagewiseText: "本地桌面 agent：PDF 文本、OCR 与按页问答。",
+    pagewiseRole: "文档 agent",
   },
 } as const;
