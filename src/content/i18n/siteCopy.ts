@@ -2,10 +2,8 @@ export const ui = {
   en: {
     productIndex: "Cloud storage PM · code on the side",
     homeTitle: "Small tools I build, in two lines",
-    homeDescription:
-      "By hxddh — small tools in two lines: S3-compatible storage, and reading, the web, and film.",
-    homeLead:
-      "One line around S3-compatible storage; one around reading, the web, and film.",
+    homeDescription: "By hxddh — small tools in two lines: S3-compatible storage, and reading, the web, and film.",
+    homeLead: "One line around S3-compatible storage; one around reading, the web, and film.",
     storageLine: "Object storage",
     storageTitle: "Tools around S3-compatible storage",
     personalLine: "Reading & media",
