@@ -171,7 +171,7 @@
 
 .home-evidence,
 .home-catalog,
-.home-browser-band,
+.home-personal-catalog,
 .home-thesis-band,
 .about-products,
 .about-focus-section {
@@ -263,6 +263,10 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.personal-catalog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .catalog-card,
 .about-product-card {
   display: grid;
@@ -308,7 +312,7 @@
 }
 
 .about-product-grid-storage,
-.about-product-grid-browser {
+.about-product-grid-personal {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 

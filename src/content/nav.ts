@@ -25,7 +25,7 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
         { label: copy.links.about, href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
-    ...(["storage", "browser"] as const).map((group) => ({
+    ...(["storage", "personal"] as const).map((group) => ({
       label: copy.groups[group],
       items: productManifest
         .filter((item) => item.group === group)

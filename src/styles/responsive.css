@@ -54,7 +54,8 @@
     grid-template-columns: 1fr;
   }
 
-  .storage-catalog-grid {
+  .storage-catalog-grid,
+  .personal-catalog-grid {
     grid-template-columns: 1fr;
   }
 

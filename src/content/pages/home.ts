@@ -34,7 +34,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     path,
     alternatePath,
     primaryCta: flagship?.href ?? catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, copy.storageTitle, copy.browserTitle],
+    expectedText: [copy.homeTitle, copy.storageTitle, copy.personalTitle],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
       description,
@@ -63,10 +63,10 @@ export function buildHomePage(locale: Locale): HomePageModel {
       title: copy.storageTitle,
       items: catalog.storage,
     },
-    browser: {
-      label: copy.browserLine,
-      title: copy.browserTitle,
-      items: catalog.browser,
+    personal: {
+      label: copy.personalLine,
+      title: copy.personalTitle,
+      items: catalog.personal,
     },
   };
 }

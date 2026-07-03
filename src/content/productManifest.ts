@@ -56,7 +56,7 @@ export const productManifest: readonly ProductManifestItem[] = [
   {
     slug: "world-clock",
     name: "World Clock",
-    group: "browser",
+    group: "personal",
     nav: { primary: true, label: "worldClock" },
     catalog: { order: 1 },
     visual: "worldClockScreenshot",
@@ -66,7 +66,7 @@ export const productManifest: readonly ProductManifestItem[] = [
   {
     slug: "douban-movie-rating",
     name: "Douban Movie Rating Assistant",
-    group: "browser",
+    group: "personal",
     nav: { primary: true, label: "douban" },
     catalog: { order: 2 },
     visual: "doubanScreenshot",

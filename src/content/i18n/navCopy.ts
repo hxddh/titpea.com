@@ -11,7 +11,7 @@ export const headerCopy: Record<
     groups: {
       main: string;
       storage: string;
-      browser: string;
+      personal: string;
       external: string;
     };
     links: {
@@ -32,7 +32,7 @@ export const headerCopy: Record<
     groups: {
       main: "Main",
       storage: "Storage",
-      browser: "Browser",
+      personal: "Personal",
       external: "External",
     },
     links: {
@@ -52,7 +52,7 @@ export const headerCopy: Record<
     groups: {
       main: "主要页面",
       storage: "对象存储",
-      browser: "浏览器工具",
+      personal: "效率与生活",
       external: "外部链接",
     },
     links: {
