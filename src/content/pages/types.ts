@@ -66,14 +66,9 @@ export type AboutPageModel = BasePageModel & {
     title: string;
     lead: string;
     contactLabel: string;
+    homeLink: string;
+    homeHref: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
-  };
-  products: {
-    label: string;
-    title: string;
-    storageLabel: string;
-    personalLabel: string;
-    items: ProductCatalogItemModel[];
   };
 };
 

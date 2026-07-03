@@ -172,8 +172,7 @@
 .home-evidence,
 .home-catalog,
 .home-personal-catalog,
-.home-thesis-band,
-.about-products {
+.home-thesis-band {
   border-top: 1px solid var(--line);
   padding-top: 72px;
   padding-bottom: 72px;
@@ -389,6 +388,23 @@
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
+}
+
+.about-home-link {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.about-home-link a {
+  border-bottom: 1px solid transparent;
+  color: var(--label);
+}
+
+.about-home-link a:hover {
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .about-section-heading p:not(.section-kicker) {
