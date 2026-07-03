@@ -13,6 +13,22 @@
     display: none;
   }
 
+  .language-switch,
+  .theme-toggle {
+    min-height: 36px;
+    border: 1px solid var(--soft-line);
+    border-radius: 999px;
+    background: var(--panel);
+    padding: 6px 10px;
+    color: var(--ink);
+  }
+
+  .theme-toggle {
+    min-width: 36px;
+    justify-content: center;
+    padding: 6px 8px;
+  }
+
   .mobile-menu {
     display: block;
   }
