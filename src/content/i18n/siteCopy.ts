@@ -11,8 +11,7 @@ export const ui = {
     personalLine: "Reading & media",
     personalTitle: "Documents, time zones, film",
     aboutTitle: "About",
-    aboutDescription:
-      "hxddh — cloud storage product manager, code on the side — and the tools behind titpea.com.",
+    aboutDescription: "hxddh — cloud storage product manager, code on the side — and the tools behind titpea.com.",
     aboutHeadline: "hxddh",
     aboutLead:
       "Cloud storage PM, code on the side. Tools around storage at work; tools around reading and the web off work.",
