@@ -19,7 +19,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     inLanguage,
     mainEntity: {
       "@type": "Person",
-      name: copy.aboutHeadline,
+      name: "hxddh",
       description: copy.aboutDescription,
       url: absoluteUrl(path),
       sameAs: [siteConfig.githubProfile],
@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.aboutLead, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
+    expectedText: [copy.aboutLead, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -46,7 +46,6 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     language: languageLink(locale, alternatePath),
     hero: {
       eyebrow: copy.aboutTitle,
-      title: copy.aboutHeadline,
       lead: copy.aboutLead,
     },
     tools: {
