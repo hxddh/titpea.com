@@ -37,9 +37,9 @@ for (const locale of ["en", "zh"]) {
       if (!actual.includes(id)) failures.push(`${model.path}: missing required section ${id}`);
     }
     if (model.sectionIndex) {
-      const chapterIds = model.chapters.map((chapter) => chapter.id);
-      if (model.navItems.map((item) => item.id).join("|") !== chapterIds.join("|")) {
-        failures.push(`${model.path}: navItems must mirror rendered chapter order`);
+      const sectionIds = model.sections.map((section) => section.id);
+      if (model.navItems.map((item) => item.id).join("|") !== sectionIds.join("|")) {
+        failures.push(`${model.path}: navItems must mirror rendered section order`);
       }
     } else if (model.navItems.length > 0) {
       failures.push(`${model.path}: navItems must be empty when section index is disabled`);

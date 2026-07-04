@@ -53,10 +53,10 @@ for (const target of baseline.targets) {
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
   if (target.state === "adoption") {
-    const adoptionLink = page.locator('.product-section-index a[href="#adoption"]');
+    const adoptionLink = page.locator('.product-section-index a[href="#faq"]');
     const count = await adoptionLink.count();
     if (count !== 1)
-      failures.push(`${target.path} ${target.viewport}: expected one adoption chapter link, found ${count}`);
+      failures.push(`${target.path} ${target.viewport}: expected one FAQ section link, found ${count}`);
     else {
       await adoptionLink.evaluate((link) =>
         link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }),
@@ -73,7 +73,7 @@ for (const target of baseline.targets) {
     const h1LineHeight = h1 ? Number.parseFloat(getComputedStyle(h1).lineHeight) : 0;
     const index = document.querySelector(".product-section-index");
     const active = index?.querySelector("a[aria-current]");
-    const adoption = document.getElementById("adoption");
+    const adoption = document.getElementById("faq");
     const menu = document.querySelector(".mobile-menu");
     return {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -101,7 +101,7 @@ for (const target of baseline.targets) {
   if (target.viewport === "mobile" && metrics.mobileDisplay !== "block")
     failures.push(`${target.path} mobile: mobile menu hidden`);
   if (target.state === "menu" && !metrics.menuOpen) failures.push(`${target.path} mobile: menu baseline did not open`);
-  if (target.state === "adoption" && metrics.activeHref !== "#adoption")
+  if (target.state === "adoption" && metrics.activeHref !== "#faq")
     failures.push(`${target.path} ${target.viewport}: adoption baseline active href is ${metrics.activeHref}`);
   if (
     target.state === "adoption" &&

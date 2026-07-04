@@ -1,4 +1,3 @@
-import type { ProductChapterModel } from "../productChapters";
 import type { ProductPageSection } from "../productPageTypes";
 import type { ProductVisualModel } from "../visualModels";
 import type { CurrentPage, Locale, Product, ProductSlug } from "../../lib/site";
@@ -106,7 +105,6 @@ export type ProductPageModel = BasePageModel & {
   sectionIndex: boolean;
   indexLabel: string;
   navItems: Array<{ id: string; label: string }>;
-  chapters: ProductChapterModel[];
   related: ProductCatalogItemModel[];
   relatedLabel: string;
   visual: ProductVisualModel;

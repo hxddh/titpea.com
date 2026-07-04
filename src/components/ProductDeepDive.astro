@@ -18,10 +18,10 @@ const sectionClass =
           : "product-deep-dive storageops-deep-dive";
 ---
 
-<section id={section.id} class={sectionClass}>
+<section id={section.id} class:list={[sectionClass, "shell"]}>
   <div class="deep-dive-heading">
     <p class="section-kicker">{section.kicker}</p>
-    <h3>{section.title}</h3>
+    <h2>{section.title}</h2>
     <p>{section.body}</p>
   </div>
   {
