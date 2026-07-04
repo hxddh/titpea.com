@@ -10,9 +10,10 @@ interface Props {
   locale?: Locale;
   seo: PageSeo;
   language: PageLanguageLink;
+  mainClass?: string;
 }
 
-const { current = "home", locale = "en", seo, language } = Astro.props;
+const { current = "home", locale = "en", seo, language, mainClass } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
 const year = new Date().getFullYear();
@@ -59,7 +60,7 @@ const year = new Date().getFullYear();
       alternateLabel={language.label}
       alternateLocale={language.locale}
     />
-    <main id="main-content" tabindex="-1">
+    <main id="main-content" class={mainClass} tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">

@@ -240,6 +240,7 @@
 
   .clock-shot-stack {
     display: grid;
+    gap: 16px;
     place-items: center;
     min-height: 0;
   }
@@ -247,10 +248,6 @@
   .clock-shot {
     position: static;
     width: min(100%, 340px);
-  }
-
-  .clock-shot.light {
-    display: none;
   }
 
   .site-footer {

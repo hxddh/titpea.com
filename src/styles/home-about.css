@@ -21,6 +21,10 @@
   text-align: center;
 }
 
+.product-copy .lead {
+  margin-inline: auto;
+}
+
 .product-hero h1 {
   max-width: 22ch;
   margin: 0 auto 22px;
@@ -35,6 +39,16 @@
   background: var(--panel);
   box-shadow: var(--shadow-demo);
   overflow: hidden;
+}
+
+.hero-visual-frame > * {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.product-page-agentWorkbench .hero-visual-frame {
+  width: min(1040px, 100%);
 }
 
 .home-hero h1,

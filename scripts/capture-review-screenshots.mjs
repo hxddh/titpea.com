@@ -18,6 +18,10 @@ const targets = [
   { route: "/zh/storageops/", name: "storageops-zh" },
   { route: "/httpmon/", name: "httpmon" },
   { route: "/zh/httpmon/", name: "httpmon-zh" },
+  { route: "/storage-agent-workbench/", name: "storage-agent-workbench" },
+  { route: "/zh/storage-agent-workbench/", name: "storage-agent-workbench-zh" },
+  { route: "/pagewise/", name: "pagewise" },
+  { route: "/zh/pagewise/", name: "pagewise-zh" },
   { route: "/world-clock/", name: "world-clock" },
   { route: "/douban-movie-rating/", name: "douban-movie-rating" },
 ];

@@ -1,6 +1,6 @@
 :root {
-  --section-index-sticky-top: 0px;
-  --section-index-desktop-scroll-margin: 112px;
+  --section-index-sticky-top: 60px;
+  --section-index-desktop-scroll-margin: 128px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
   --paper: #f7f7f4;
