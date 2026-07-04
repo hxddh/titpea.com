@@ -55,8 +55,7 @@ for (const target of baseline.targets) {
   if (target.state === "adoption") {
     const adoptionLink = page.locator('.product-section-index a[href="#faq"]');
     const count = await adoptionLink.count();
-    if (count !== 1)
-      failures.push(`${target.path} ${target.viewport}: expected one FAQ section link, found ${count}`);
+    if (count !== 1) failures.push(`${target.path} ${target.viewport}: expected one FAQ section link, found ${count}`);
     else {
       await adoptionLink.evaluate((link) =>
         link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }),
