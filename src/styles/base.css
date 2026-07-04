@@ -99,6 +99,14 @@ p {
   line-height: 1.08;
 }
 
+.split-content {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: 56px;
+  border-top: 1px solid var(--line);
+  padding: var(--space-page-y) 0;
+}
+
 .chapter-thesis {
   max-width: 58ch;
   margin: 0;

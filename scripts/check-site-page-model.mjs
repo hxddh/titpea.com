@@ -38,12 +38,11 @@ for (const model of allPageModels) {
       if (!sectionIds.includes(id)) failures.push(`${model.path}: missing required section ${id}`);
     }
     if (model.sectionIndex) {
-      const chapterIds = model.chapters.map((chapter) => chapter.id);
-      if (model.navItems.some((item, index) => item.id !== chapterIds[index])) {
-        failures.push(`${model.path}: nav order does not match rendered chapters`);
+      if (model.navItems.some((item, index) => item.id !== sectionIds[index])) {
+        failures.push(`${model.path}: nav order does not match rendered sections`);
       }
-    } else if (model.navItems.some((item, index) => item.id !== contractVisibleIds[index])) {
-      failures.push(`${model.path}: nav order does not match rendered sections`);
+    } else if (model.navItems.length > 0) {
+      failures.push(`${model.path}: navItems must be empty when section index is disabled`);
     }
     if (!model.visual.kind || !model.visual.label) failures.push(`${model.path}: incomplete visual model`);
     if (!model.structuredData?.applicationCategory) failures.push(`${model.path}: missing structured data category`);

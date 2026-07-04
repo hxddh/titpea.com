@@ -20,8 +20,8 @@ Visual direction uses a warm editorial surface: cream paper, orange accent, flat
 
 - Home uses three layers: centered hero, storage catalog grid, personal catalog grid.
 - About uses hero, compact tool index, and contact actions.
-- Product pages group content into chapters. The hero holds the only full-size demo.
-- Section titles inside chapters are h3. Chapter titles are h2. Page titles are h1.
+- Product pages use a centered hero, proof strip, section index, and flat sections with one h2 per block.
+- Section titles are h2. Page title is h1. Card and panel titles inside demos may use h3.
 - A product page should earn every section. FAQ is for adoption blockers, not a second feature list.
 - Keep the chapter directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory.
 - Use one source of truth for each product fact.
@@ -36,7 +36,7 @@ Visual direction uses a warm editorial surface: cream paper, orange accent, flat
 
 - Use the warm editorial surface: cream paper, dark ink, restrained borders, and demo frames with soft shadow.
 - Orange accent (`--accent`) marks primary actions, active nav, and hover emphasis.
-- Home and About heroes are centered. Product heroes are two-column with the demo on the right.
+- Home and About heroes are centered. Product heroes stack copy above the demo.
 
 ## Constraints (Measurable Floors)
 

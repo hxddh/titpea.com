@@ -12,21 +12,17 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
-const sectionById = new Map(model.sections.map((section) => [section.id, section]));
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class:list={["product-hero shell editorial-hero", model.pageClass]}>
-    <div class="product-copy editorial-copy">
+  <section class:list={["product-hero shell", model.pageClass]}>
+    <div class="product-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
-      <div class="actions editorial-actions">
+      <div class="actions">
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
-      </div>
-      <div class="proof-rail" aria-label="Product evidence">
-        {copy.proof.map((item) => <span>{item}</span>)}
       </div>
     </div>
     <div class="hero-visual-frame demo-frame">
@@ -34,32 +30,18 @@ const sectionById = new Map(model.sections.map((section) => [section.id, section
     </div>
   </section>
 
+  <section class="proof-strip shell" aria-label="Product evidence">
+    {copy.proof.map((item) => <span>{item}</span>)}
+  </section>
+
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
-  {
-    model.chapters.map((chapter) => (
-      <section class="product-chapter shell" id={chapter.id}>
-        <header class="chapter-heading">
-          <h2>{chapter.title}</h2>
-          {chapter.thesis && <p class="chapter-thesis">{chapter.thesis}</p>}
-        </header>
-        <div class="product-chapter-body">
-          {chapter.sectionIds.map((sectionId) => {
-            const section = sectionById.get(sectionId);
-            if (!section) return null;
-            return <ProductSectionRenderer section={section} />;
-          })}
-        </div>
-      </section>
-    ))
-  }
+  {model.sections.map((section) => <ProductSectionRenderer section={section} />)}
 
   {
     model.related.length > 0 && (
       <section class="product-related shell">
-        <header class="chapter-heading">
-          <p class="section-kicker">{model.relatedLabel}</p>
-        </header>
+        <p class="section-kicker">{model.relatedLabel}</p>
         <div class="feed-list">
           {model.related.map((item) => (
             <FeedRow href={item.href} meta={[item.displayRole]} title={item.name} excerpt={item.text} />

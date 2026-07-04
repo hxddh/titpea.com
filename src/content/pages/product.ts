@@ -1,5 +1,5 @@
 import { productArchetypeContracts, type PageSectionId } from "../productArchetypes";
-import { chapterNavItems, productChapters, relatedProducts } from "../productChapters";
+import { relatedProducts } from "../productChapters";
 import { productEvidenceModel } from "../productEvidenceModels";
 import { productInsideModel } from "../productInsideModels";
 import { s3ResultsModels } from "../productResultsModels";
@@ -60,8 +60,11 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     ogImage: registry.ogImage,
     structuredData,
   });
-  const chapters = productChapters(product.archetype, locale);
-  const navItems = contract.sectionIndex ? chapterNavItems(product.archetype, locale) : [];
+  const navItems = contract.sectionIndex
+    ? contract.sections
+        .filter((spec) => sections.some((section) => section.id === spec.id))
+        .map((spec) => ({ id: spec.id, label: spec.label[locale] }))
+    : [];
 
   return {
     kind: "product",
@@ -78,7 +81,6 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     sectionIndex: contract.sectionIndex,
     indexLabel: contract.indexLabel[locale],
     navItems,
-    chapters,
     related: relatedProducts(slug, locale, contract.group),
     relatedLabel: productPageCopy[locale].relatedLabel,
     visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title),

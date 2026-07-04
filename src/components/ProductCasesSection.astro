@@ -8,11 +8,11 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="product-cases">
+<section id={section.id} class="product-cases shell">
   <div class="split-content">
     <div>
       <p class="section-kicker">{section.label}</p>
-      <h3>{section.title}</h3>
+      <h2>{section.title}</h2>
     </div>
     <div>
       <div class="provider-list" aria-label={section.label}>
