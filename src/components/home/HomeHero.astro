@@ -10,11 +10,11 @@ const { eyebrow, title, lead, actions } = Astro.props;
 ---
 
 <section class="home-hero shell">
-  <div class="home-copy editorial-copy">
+  <div class="home-copy">
     <p class="eyebrow">{eyebrow}</p>
     <h1>{title}</h1>
     <p class="lead">{lead}</p>
-    <div class="actions editorial-actions">
+    <div class="actions">
       {
         actions.map((action) => (
           <a class:list={["button", action.style]} href={action.href} rel={action.external ? "noreferrer" : undefined}>
