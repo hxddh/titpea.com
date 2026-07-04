@@ -85,7 +85,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       structuredData,
     }),
     language: languageLink(locale, alternatePath),
-    chrome: buildSiteChrome(locale, "home"),
+    chrome: buildSiteChrome(locale),
     hero: {
       eyebrow: copy.productIndex,
       title: copy.homeTitle,
