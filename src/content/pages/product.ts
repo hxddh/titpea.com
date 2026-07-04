@@ -1,5 +1,4 @@
 import { productArchetypeContracts, type PageSectionId } from "../productArchetypes";
-import { relatedProducts } from "../productChapters";
 import { productEvidenceModel } from "../productEvidenceModels";
 import { productInsideModel } from "../productInsideModels";
 import { s3ResultsModels } from "../productResultsModels";
@@ -7,7 +6,6 @@ import { productPageRegistry } from "../productPageRegistry";
 import { productStructuredData } from "../productSeo";
 import { productSections } from "../productSections";
 import { visualModel } from "../visualModels";
-import { productPageCopy } from "../i18n/pageCopy";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { ProductPageModel } from "./types";
 import type { ProductPageSection } from "../productPageTypes";
@@ -60,11 +58,9 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     ogImage: registry.ogImage,
     structuredData,
   });
-  const navItems = contract.sectionIndex
-    ? contract.sections
-        .filter((spec) => sections.some((section) => section.id === spec.id))
-        .map((spec) => ({ id: spec.id, label: spec.label[locale] }))
-    : [];
+  const navItems = contract.sections
+    .filter((spec) => sections.some((section) => section.id === spec.id))
+    .map((spec) => ({ id: spec.id, label: spec.label[locale] }));
 
   return {
     kind: "product",
@@ -81,8 +77,6 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     sectionIndex: contract.sectionIndex,
     indexLabel: contract.indexLabel[locale],
     navItems,
-    related: relatedProducts(slug, locale, contract.group),
-    relatedLabel: productPageCopy[locale].relatedLabel,
     visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title),
     structuredData,
     copy,

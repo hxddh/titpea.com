@@ -1,15 +1,10 @@
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 60;
   display: flex;
-  min-height: var(--site-header-height);
+  min-height: 60px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   border-bottom: 1px solid var(--line);
-  background: var(--menu-veil);
-  backdrop-filter: blur(14px);
 }
 
 .brand,
@@ -33,8 +28,8 @@
   height: 30px;
   place-items: center;
   border-radius: 8px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--ink);
+  color: var(--on-ink);
   font-size: 14px;
 }
 
@@ -68,8 +63,8 @@
 }
 
 .header-util:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .theme-label-light {
@@ -100,8 +95,8 @@
 .nav a[aria-current="page"],
 .nav-dropdown summary:hover,
 .nav-dropdown[open] > summary {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .nav-dropdown {
@@ -135,7 +130,7 @@
   min-width: 180px;
   padding: 8px;
   border: 1px solid var(--line);
-  border-radius: var(--radius-card);
+  border-radius: 10px;
   background: var(--panel);
   box-shadow: var(--shadow-soft);
 }
@@ -154,16 +149,16 @@
 
 .nav-dropdown-panel a:hover,
 .nav-dropdown-panel a[aria-current="page"] {
-  background: var(--active-bg);
-  color: var(--accent);
+  background: var(--raised);
+  color: var(--ink);
 }
 
 .button,
 .mobile-menu summary,
 .product-section-index a,
 .proof-strip span,
-.proof-rail span,
 .provider-list span,
+.home-evidence-card strong,
 .about-contact-row a {
   border: 1px solid var(--soft-line);
   background: var(--panel);
@@ -182,30 +177,21 @@
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-button);
+  border-radius: 7px;
   padding: 12px 18px;
   color: var(--ink);
   font-size: 13px;
   font-weight: 700;
-  transition:
-    border-color 140ms ease,
-    background 140ms ease,
-    color 140ms ease;
 }
 
 .button.primary {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--accent-ink);
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--on-ink);
 }
 
-.button.ghost:hover,
 .button:hover {
-  border-color: var(--accent);
-}
-
-.button.primary:hover {
-  filter: brightness(1.05);
+  border-color: var(--ink);
 }
 
 .mobile-menu {
@@ -231,7 +217,7 @@
 }
 
 .mobile-menu[open] summary {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .mobile-menu-panel {
@@ -243,7 +229,7 @@
   max-height: min(72vh, 620px);
   overflow-y: auto;
   border: 1px solid var(--soft-line);
-  border-radius: var(--radius-card);
+  border-radius: 12px;
   background: var(--menu-veil);
   box-shadow: var(--shadow-soft);
 }
@@ -274,7 +260,7 @@
 }
 
 .mobile-menu-group[data-current="true"] p {
-  color: var(--accent);
+  color: var(--ink);
   font-weight: 700;
 }
 
@@ -286,24 +272,21 @@
 }
 
 .mobile-menu-group a[aria-current="page"] {
-  background: var(--accent-muted);
+  background: var(--active-bg);
   font-weight: 760;
 }
 
-.proof-strip,
-.proof-rail {
+.proof-strip {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  padding: 0 0 var(--space-page-y);
+  padding: 0 0 52px;
 }
 
-.proof-strip span,
-.proof-rail span {
+.proof-strip span {
   border-radius: 999px;
   padding: 6px 13px;
-  background: var(--proof-veil);
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
@@ -358,10 +341,10 @@
 .product-section-index a:hover,
 .product-section-index a:focus-visible,
 .product-section-index a[aria-current] {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .product-section-index a[aria-current] {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--ink);
+  color: var(--on-ink);
 }

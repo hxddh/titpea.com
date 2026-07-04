@@ -1,14 +1,15 @@
 .inside-section,
 .positioning-section,
 .content-section {
-  padding: var(--space-page-y) 0;
+  padding: 94px 0;
 }
 
 .product-deep-dive {
   display: grid;
   gap: 26px;
   border-top: 1px solid var(--line);
-  padding: var(--space-page-y) 0;
+  padding-top: 86px;
+  padding-bottom: 86px;
 }
 
 .product-page-agentPackage .agent-manifest-visual,
@@ -212,7 +213,8 @@
   display: grid;
   gap: 28px;
   border-top: 1px solid var(--line);
-  padding: var(--space-page-y) 0;
+  padding-top: 86px;
+  padding-bottom: 94px;
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
@@ -345,14 +347,8 @@
 .content-section,
 .product-deep-dive,
 .product-story,
-.product-cases,
 #cases {
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
-}
-
-.product-related {
-  padding: var(--space-page-y) 0;
-  border-top: 1px solid var(--line);
 }
 
 .inside-section {
@@ -362,23 +358,19 @@
 }
 
 .inside-copy h2,
-.deep-dive-heading h2,
-.s3-results-heading h2,
 .product-story h2,
 #cases h2 {
-  max-width: 28ch;
-  margin: 0 0 12px;
-  font-size: clamp(1.75rem, 3.4vw, 2.35rem);
+  max-width: 22ch;
+  margin: 0 0 18px;
+  font-size: clamp(2.1rem, 4vw, 2.7rem);
   line-height: 1.08;
 }
 
-.inside-copy p:not(.section-kicker),
-.deep-dive-heading p:not(.section-kicker),
-.s3-results-heading p:not(.section-kicker) {
+.inside-copy p:not(.section-kicker) {
   max-width: 54ch;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.62;
+  font-size: 17px;
+  line-height: 1.64;
 }
 
 .positioning-section .section-kicker,
@@ -389,14 +381,6 @@
   width: 100%;
   border-top: 1px solid var(--line);
   padding-top: 32px;
-}
-
-.faq-section > .section-kicker {
-  margin-bottom: 0;
-}
-
-.faq-section {
-  padding: var(--space-page-y) 0;
 }
 
 .provider-list {
@@ -412,6 +396,10 @@
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
+}
+
+.faq-section {
+  padding-top: 86px;
 }
 
 .faq-list details {
@@ -461,11 +449,11 @@
   display: grid;
   justify-items: center;
   border-top: 1px solid var(--line);
-  padding: var(--space-page-y) 0;
+  padding: 82px 0 100px;
   text-align: center;
 }
 
 .final-cta h2 {
-  margin: 0 0 24px;
-  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  margin: 0 0 26px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
 }

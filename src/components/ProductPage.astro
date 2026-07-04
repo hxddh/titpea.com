@@ -1,8 +1,13 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import FeedRow from "./FeedRow.astro";
+import ProductCardsSection from "./ProductCardsSection.astro";
+import ProductCasesSection from "./ProductCasesSection.astro";
+import ProductDeepDive from "./ProductDeepDive.astro";
+import ProductFaqSection from "./ProductFaqSection.astro";
+import ProductInside from "./ProductInside.astro";
+import ProductResults from "./ProductResults.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
-import ProductSectionRenderer from "./ProductSectionRenderer.astro";
+import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
 import type { ProductPageModel } from "../content/siteModel";
 
@@ -24,8 +29,9 @@ const copy = model.copy;
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
+      <p class="meta-line">{copy.meta}</p>
     </div>
-    <div class="hero-visual-frame demo-frame">
+    <div class="hero-visual-frame">
       <ProductVisual visual={model.visual} />
     </div>
   </section>
@@ -36,19 +42,34 @@ const copy = model.copy;
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
-  {model.sections.map((section) => <ProductSectionRenderer section={section} />)}
-
   {
-    model.related.length > 0 && (
-      <section class="product-related shell">
-        <p class="section-kicker">{model.relatedLabel}</p>
-        <div class="feed-list">
-          {model.related.map((item) => (
-            <FeedRow href={item.href} meta={[item.displayRole]} title={item.name} excerpt={item.text} />
-          ))}
-        </div>
-      </section>
-    )
+    model.sections.map((section) => {
+      if (section.kind === "inside") {
+        return <ProductInside section={section} />;
+      }
+
+      if (section.kind === "evidence") {
+        return <ProductDeepDive section={section} />;
+      }
+
+      if (section.kind === "results") {
+        return <ProductResults section={section} />;
+      }
+
+      if (section.kind === "story") {
+        return <ProductStorySection section={section} />;
+      }
+
+      if (section.kind === "cases") {
+        return <ProductCasesSection section={section} />;
+      }
+
+      if (section.kind === "faq") {
+        return <ProductFaqSection section={section} />;
+      }
+
+      return <ProductCardsSection section={section} />;
+    })
   }
 
   {
