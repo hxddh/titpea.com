@@ -1,14 +1,20 @@
-.inside-section,
-.positioning-section,
-.content-section {
+.inside-section {
+  padding: var(--space-page-y) 0;
+}
+
+.product-deep-dive,
+.s3-results-section,
+.content-section,
+.product-story,
+.product-cases,
+.faq-section {
+  border-top: 1px solid var(--line);
   padding: var(--space-page-y) 0;
 }
 
 .product-deep-dive {
   display: grid;
   gap: 26px;
-  border-top: 1px solid var(--line);
-  padding: var(--space-page-y) 0;
 }
 
 .product-page-agentPackage .agent-manifest-visual,
@@ -211,8 +217,6 @@
 .s3-results-section {
   display: grid;
   gap: 28px;
-  border-top: 1px solid var(--line);
-  padding: var(--space-page-y) 0;
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
@@ -365,11 +369,17 @@
 .deep-dive-heading h2,
 .s3-results-heading h2,
 .product-story h2,
-#cases h2 {
+#cases h2,
+.content-section > h2,
+.section-heading {
   max-width: 28ch;
-  margin: 0 0 12px;
+  margin: 0 0 24px;
   font-size: clamp(1.75rem, 3.4vw, 2.35rem);
   line-height: 1.08;
+}
+
+.content-section > h2 + .section-card-grid {
+  margin-top: 0;
 }
 
 .inside-copy p:not(.section-kicker),
@@ -382,21 +392,15 @@
 }
 
 .positioning-section .section-kicker,
-.content-section > .section-kicker,
 .product-story .section-kicker,
-#cases .section-kicker,
-.faq-section > .section-kicker {
+#cases .section-kicker {
   width: 100%;
-  border-top: 1px solid var(--line);
-  padding-top: 32px;
+  border-top: 0;
+  padding-top: 0;
 }
 
-.faq-section > .section-kicker {
+.faq-section > h2 {
   margin-bottom: 0;
-}
-
-.faq-section {
-  padding: var(--space-page-y) 0;
 }
 
 .provider-list {

@@ -290,13 +290,18 @@
   font-weight: 760;
 }
 
+.product-copy .proof-strip {
+  justify-content: center;
+  margin-top: 28px;
+  padding: 0;
+}
+
 .proof-strip,
 .proof-rail {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  padding: 0 0 var(--space-page-y);
 }
 
 .proof-strip span,

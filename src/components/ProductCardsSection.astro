@@ -18,8 +18,7 @@ const surfaceCode = {
 ---
 
 <section id={section.id} class:list={["content-section shell", `${section.id}-section`]}>
-  <p class="section-kicker">{section.label}</p>
-  <h2 class="section-heading sr-only">{section.label}</h2>
+  <h2>{section.label}</h2>
   <div class={gridClass}>
     {
       section.items.map((item, index) => (

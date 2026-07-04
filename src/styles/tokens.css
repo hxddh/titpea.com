@@ -42,6 +42,8 @@
   --space-section-y: 32px;
   --space-element-y: 16px;
   --feed-row-pad-y: 18px;
+  --card-pad: 28px;
+  --card-pad-compact: 22px;
 }
 
 :root[data-theme="dark"] {

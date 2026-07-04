@@ -9,7 +9,7 @@ const { section } = Astro.props;
 ---
 
 <section id={section.id} class="content-section faq-section shell">
-  <p class="section-kicker">{section.label}</p>
+  <h2>{section.label}</h2>
   <div class="faq-list">
     {
       section.items.map((item) => (

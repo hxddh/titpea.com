@@ -24,14 +24,13 @@ const copy = model.copy;
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
+      <div class="proof-strip" aria-label="Product evidence">
+        {copy.proof.map((item) => <span>{item}</span>)}
+      </div>
     </div>
     <div class="hero-visual-frame demo-frame">
       <ProductVisual visual={model.visual} />
     </div>
-  </section>
-
-  <section class="proof-strip shell" aria-label="Product evidence">
-    {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
@@ -41,7 +40,7 @@ const copy = model.copy;
   {
     model.related.length > 0 && (
       <section class="product-related shell">
-        <p class="section-kicker">{model.relatedLabel}</p>
+        <h2 class="section-heading">{model.relatedLabel}</h2>
         <div class="feed-list">
           {model.related.map((item) => (
             <FeedRow href={item.href} meta={[item.displayRole]} title={item.name} excerpt={item.text} />
