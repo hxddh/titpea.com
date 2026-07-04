@@ -56,6 +56,8 @@ const chromeCopy = {
     bottomTitle: "Explore the tools.",
     explore: "GitHub",
     email: "Email",
+    storageGroup: "Storage",
+    personalGroup: "Reading & media",
   },
   zh: {
     recentLabel: "近期亮点",
@@ -66,6 +68,8 @@ const chromeCopy = {
     bottomTitle: "看看这些工具。",
     explore: "GitHub",
     email: "邮件",
+    storageGroup: "存储",
+    personalGroup: "阅读与影音",
   },
 } as const;
 
@@ -103,7 +107,7 @@ export function buildSiteChrome(locale: Locale): SiteChromeModel {
       items: primary.map((item) => ({
         name: item.name,
         href: item.href,
-        meta: `${item.displayRole} · ${item.group === "storage" ? (locale === "zh" ? "存储" : "Storage") : locale === "zh" ? "阅读与影音" : "Reading & media"}`,
+        meta: `${item.displayRole} · ${item.group === "storage" ? copy.storageGroup : copy.personalGroup}`,
         text: item.text,
       })),
     },
