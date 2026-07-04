@@ -52,15 +52,13 @@ for (const target of baseline.targets) {
   await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
-  if (target.state === "adoption") {
-    const adoptionLink = page.locator('.product-section-index a[href="#faq"]');
-    const count = await adoptionLink.count();
+  if (target.state === "faq") {
+    const faqLink = page.locator('.product-section-index a[href="#faq"]');
+    const count = await faqLink.count();
     if (count !== 1) failures.push(`${target.path} ${target.viewport}: expected one FAQ section link, found ${count}`);
     else {
-      await adoptionLink.evaluate((link) =>
-        link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }),
-      );
-      await adoptionLink.click();
+      await faqLink.evaluate((link) => link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }));
+      await faqLink.click();
       await page.evaluate(() => document.fonts.ready);
       await page.waitForTimeout(500);
     }
@@ -72,7 +70,7 @@ for (const target of baseline.targets) {
     const h1LineHeight = h1 ? Number.parseFloat(getComputedStyle(h1).lineHeight) : 0;
     const index = document.querySelector(".product-section-index");
     const active = index?.querySelector("a[aria-current]");
-    const adoption = document.getElementById("faq");
+    const faq = document.getElementById("faq");
     const menu = document.querySelector(".mobile-menu");
     return {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -81,7 +79,7 @@ for (const target of baseline.targets) {
       mobileDisplay: getComputedStyle(menu).display,
       menuOpen: menu?.hasAttribute("open") ?? false,
       activeHref: active?.getAttribute("href") ?? null,
-      adoptionTop: adoption ? Math.round(adoption.getBoundingClientRect().top) : null,
+      faqTop: faq ? Math.round(faq.getBoundingClientRect().top) : null,
       state: currentTarget.state,
     };
   }, target);
@@ -100,13 +98,10 @@ for (const target of baseline.targets) {
   if (target.viewport === "mobile" && metrics.mobileDisplay !== "block")
     failures.push(`${target.path} mobile: mobile menu hidden`);
   if (target.state === "menu" && !metrics.menuOpen) failures.push(`${target.path} mobile: menu baseline did not open`);
-  if (target.state === "adoption" && metrics.activeHref !== "#faq")
-    failures.push(`${target.path} ${target.viewport}: adoption baseline active href is ${metrics.activeHref}`);
-  if (
-    target.state === "adoption" &&
-    (metrics.adoptionTop === null || metrics.adoptionTop < 0 || metrics.adoptionTop > 220)
-  )
-    failures.push(`${target.path} ${target.viewport}: adoption top is ${metrics.adoptionTop}`);
+  if (target.state === "faq" && metrics.activeHref !== "#faq")
+    failures.push(`${target.path} ${target.viewport}: FAQ baseline active href is ${metrics.activeHref}`);
+  if (target.state === "faq" && (metrics.faqTop === null || metrics.faqTop < 0 || metrics.faqTop > 220))
+    failures.push(`${target.path} ${target.viewport}: FAQ top is ${metrics.faqTop}`);
   if (screenshotSize < 10_000) failures.push(`${target.path} ${target.viewport}: screenshot too small`);
 
   if (approve) fs.copyFileSync(actualPath, expectedPath);

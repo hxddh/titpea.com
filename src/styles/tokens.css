@@ -3,105 +3,95 @@
   --section-index-desktop-scroll-margin: 112px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
-  --paper: #f7f7f4;
+  --paper: #f9fafc;
   --panel: #ffffff;
-  --raised: #f0efeb;
-  --card: #ebeae5;
-  --ink: #14120b;
-  --muted: #5f5c55;
-  --faint: #8b877d;
-  --line: rgba(20, 18, 11, 0.1);
-  --soft-line: rgba(20, 18, 11, 0.16);
-  --accent: #f54e00;
-  --accent-ink: #ffffff;
-  --accent-muted: rgba(245, 78, 0, 0.12);
+  --ink: #111827;
+  --muted: #5f6877;
+  --faint: #8b95a5;
+  --line: #e5e7eb;
+  --soft-line: #d1d5db;
+  /* Semantic surface tokens. Light values match the literals they replaced,
+     so light mode is unchanged; the dark blocks below remap them. */
   --on-ink: #ffffff;
-  --label: #6b675f;
-  --chip-bg: rgba(20, 18, 11, 0.06);
-  --chip-ink: #3d3a34;
-  --active-bg: rgba(20, 18, 11, 0.05);
-  --grid-line: transparent;
-  --menu-veil: rgba(247, 247, 244, 0.96);
-  --index-veil: rgba(247, 247, 244, 0.94);
-  --proof-veil: rgba(255, 255, 255, 0.82);
+  --label: #667085;
+  --raised: #fbfcff;
+  --chip-bg: #eef2ff;
+  --chip-ink: #394150;
+  --active-bg: #f3f4f6;
+  /* Translucent veils and the grid backdrop are tokens too, so dark mode is a
+     pure token remap with no per-selector overrides. */
+  --grid-line: rgba(17, 24, 39, 0.025);
+  --menu-veil: rgba(255, 255, 255, 0.98);
+  --index-veil: rgba(249, 250, 252, 0.94);
+  --proof-veil: rgba(255, 255, 255, 0.72);
+  /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
   --data-ref-ink: #126547;
   --data-caution: #c27a17;
   --data-caution-ink: #985b0a;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --shadow-soft: 0 24px 60px rgba(20, 18, 11, 0.1), 0 2px 8px rgba(20, 18, 11, 0.04);
-  --shadow-demo: 0 24px 80px rgba(20, 18, 11, 0.1);
-  --radius-card: 12px;
+  --shadow-soft: 0 24px 60px rgba(17, 24, 39, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
+  --radius-card: 8px;
   --radius-control: 999px;
-  --radius-button: 8px;
-  --shell-max: 1120px;
-  --site-header-height: 60px;
-  --space-page-y: 64px;
-  --space-chapter-y: 48px;
-  --space-section-y: 32px;
-  --space-element-y: 16px;
-  --feed-row-pad-y: 18px;
+  --section-y: 94px;
+  --card-pad: 28px;
+  --card-pad-compact: 22px;
 }
 
+/* Dark theme. Applied when the OS prefers dark (unless the visitor forced
+   light) or when data-theme="dark" is set by the header toggle. The two
+   selectors share the same declarations; keep them in sync. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #14120b;
-  --panel: #1d1b15;
-  --raised: #232019;
-  --card: #2b2923;
-  --ink: #edecea;
-  --muted: #a8a49c;
-  --faint: #6f6b63;
-  --line: rgba(237, 236, 234, 0.1);
-  --soft-line: rgba(237, 236, 234, 0.16);
-  --accent: #ff6b1a;
-  --accent-ink: #14120b;
-  --accent-muted: rgba(255, 107, 26, 0.16);
-  --on-ink: #14120b;
-  --label: #9a968e;
-  --chip-bg: rgba(237, 236, 234, 0.08);
-  --chip-ink: #d4d2cc;
-  --active-bg: rgba(237, 236, 234, 0.06);
-  --menu-veil: rgba(20, 18, 11, 0.96);
-  --index-veil: rgba(20, 18, 11, 0.92);
-  --proof-veil: rgba(29, 27, 21, 0.72);
+  --paper: #0d1117;
+  --panel: #161b22;
+  --ink: #e6edf3;
+  --muted: #9aa7b4;
+  --faint: #6b7685;
+  --line: #272e38;
+  --soft-line: #39424e;
+  --on-ink: #0d1117;
+  --label: #8d99a8;
+  --raised: #1c222c;
+  --chip-bg: #1d2531;
+  --chip-ink: #c6d2df;
+  --active-bg: #232b36;
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --menu-veil: rgba(22, 27, 34, 0.98);
+  --index-veil: rgba(13, 17, 23, 0.92);
+  --proof-veil: rgba(28, 34, 44, 0.6);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
   --data-caution-ink: #edb472;
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-demo: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #14120b;
-    --panel: #1d1b15;
-    --raised: #232019;
-    --card: #2b2923;
-    --ink: #edecea;
-    --muted: #a8a49c;
-    --faint: #6f6b63;
-    --line: rgba(237, 236, 234, 0.1);
-    --soft-line: rgba(237, 236, 234, 0.16);
-    --accent: #ff6b1a;
-    --accent-ink: #14120b;
-    --accent-muted: rgba(255, 107, 26, 0.16);
-    --on-ink: #14120b;
-    --label: #9a968e;
-    --chip-bg: rgba(237, 236, 234, 0.08);
-    --chip-ink: #d4d2cc;
-    --active-bg: rgba(237, 236, 234, 0.06);
-    --menu-veil: rgba(20, 18, 11, 0.96);
-    --index-veil: rgba(20, 18, 11, 0.92);
-    --proof-veil: rgba(29, 27, 21, 0.72);
+    --paper: #0d1117;
+    --panel: #161b22;
+    --ink: #e6edf3;
+    --muted: #9aa7b4;
+    --faint: #6b7685;
+    --line: #272e38;
+    --soft-line: #39424e;
+    --on-ink: #0d1117;
+    --label: #8d99a8;
+    --raised: #1c222c;
+    --chip-bg: #1d2531;
+    --chip-ink: #c6d2df;
+    --active-bg: #232b36;
+    --grid-line: rgba(255, 255, 255, 0.035);
+    --menu-veil: rgba(22, 27, 34, 0.98);
+    --index-veil: rgba(13, 17, 23, 0.92);
+    --proof-veil: rgba(28, 34, 44, 0.6);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
-    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.35);
-    --shadow-demo: 0 24px 80px rgba(0, 0, 0, 0.45);
+    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 }

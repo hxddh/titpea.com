@@ -27,7 +27,7 @@ export function failureReasons(result) {
     result.path.includes("pointer:") ||
     result.path.includes("sticky-scroll");
   const anchorOk =
-    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 3 : result.anchorCount === 0) : true;
+    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 4 : result.anchorCount === 0) : true;
   const productIndexOk = result.productIndex
     ? result.productIndex.position === (isDesktop ? "sticky" : "static") &&
       (isDesktop ? result.productIndex.overflow <= 1 : result.productIndex.overflow >= 0) &&
@@ -53,14 +53,8 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
-  if (!isAsset && !isAuxCheck) {
-    const ctaOk =
-      route?.kind === "home"
-        ? result.heroCtaCount >= 1 && result.heroCtaCount <= 2
-        : route?.kind === "about"
-          ? result.heroCtaCount >= 2
-          : result.heroCtaCount >= 2 && result.heroCtaCount <= 3;
-    if (!ctaOk) reasons.push(`hero CTA count mismatch: ${result.heroCtaCount}`);
+  if (!isAsset && !isAuxCheck && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
+    reasons.push(`hero CTA count should be 2-3, got ${result.heroCtaCount}`);
   }
   if (!isAsset && !isAuxCheck && result.cardHeightSpread > 220) {
     reasons.push(`card height spread too large: ${result.cardHeightSpread}px`);

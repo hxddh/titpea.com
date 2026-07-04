@@ -1,3 +1,10 @@
+.content-section,
+.inside-section,
+.product-deep-dive {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
 .section-card-grid {
   display: grid;
   gap: 1px;

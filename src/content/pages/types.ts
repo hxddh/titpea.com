@@ -1,3 +1,4 @@
+import type { PageSectionId } from "../productArchetypes";
 import type { ProductPageSection } from "../productPageTypes";
 import type { ProductVisualModel } from "../visualModels";
 import type { CurrentPage, Locale, Product, ProductSlug } from "../../lib/site";
@@ -35,11 +36,51 @@ export type BasePageModel = {
   language: PageLanguageLink;
 };
 
-export type PageAction = {
-  label: string;
+export type HomePageModel = BasePageModel & {
+  kind: "home";
+  current: "home";
+  primaryCta: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
+  };
+  storage: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
+  personal: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
+};
+
+export type AboutToolLinkModel = {
+  name: string;
   href: string;
-  style: "primary" | "ghost";
-  external?: boolean;
+};
+
+export type AboutPageModel = BasePageModel & {
+  kind: "about";
+  current: "about";
+  hero: {
+    eyebrow: string;
+    lead: string;
+  };
+  tools: {
+    label: string;
+    lines: Array<{
+      label: string;
+      items: AboutToolLinkModel[];
+    }>;
+  };
+  contact: {
+    label: string;
+    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
+  };
 };
 
 export type ProductCatalogItemModel = {
@@ -54,48 +95,6 @@ export type ProductCatalogItemModel = {
   group: "storage" | "personal";
 };
 
-export type HomePageModel = BasePageModel & {
-  kind: "home";
-  current: "home";
-  primaryCta: string;
-  hero: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    actions: PageAction[];
-  };
-  storage: {
-    label: string;
-    title: string;
-    items: ProductCatalogItemModel[];
-  };
-  personal: {
-    label: string;
-    title: string;
-    items: ProductCatalogItemModel[];
-  };
-};
-
-export type AboutPageModel = BasePageModel & {
-  kind: "about";
-  current: "about";
-  hero: {
-    eyebrow: string;
-    lead: string;
-  };
-  tools: {
-    label: string;
-    lines: Array<{
-      label: string;
-      items: Array<{ name: string; href: string }>;
-    }>;
-  };
-  contact: {
-    label: string;
-    actions: PageAction[];
-  };
-};
-
 export type ProductPageModel = BasePageModel & {
   kind: "product";
   slug: ProductSlug;
@@ -104,9 +103,7 @@ export type ProductPageModel = BasePageModel & {
   primaryCta: string;
   sectionIndex: boolean;
   indexLabel: string;
-  navItems: Array<{ id: string; label: string }>;
-  related: ProductCatalogItemModel[];
-  relatedLabel: string;
+  navItems: Array<{ id: PageSectionId; label: string }>;
   visual: ProductVisualModel;
   structuredData: Record<string, unknown>;
   copy: Product["locales"][Locale];

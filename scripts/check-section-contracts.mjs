@@ -36,13 +36,8 @@ for (const locale of ["en", "zh"]) {
     for (const id of required) {
       if (!actual.includes(id)) failures.push(`${model.path}: missing required section ${id}`);
     }
-    if (model.sectionIndex) {
-      const sectionIds = model.sections.map((section) => section.id);
-      if (model.navItems.map((item) => item.id).join("|") !== sectionIds.join("|")) {
-        failures.push(`${model.path}: navItems must mirror rendered section order`);
-      }
-    } else if (model.navItems.length > 0) {
-      failures.push(`${model.path}: navItems must be empty when section index is disabled`);
+    if (model.navItems.map((item) => item.id).join("|") !== expected.join("|")) {
+      failures.push(`${model.path}: navItems must mirror rendered section order`);
     }
     for (const section of model.sections) {
       if (!section.id || !section.kind) failures.push(`${model.path}: section missing id/kind`);

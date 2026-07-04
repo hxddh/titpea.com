@@ -2,7 +2,11 @@
   .shell,
   .site-header,
   .site-footer {
-    width: min(var(--shell-max), calc(100% - 32px));
+    width: min(1080px, calc(100% - 32px));
+  }
+
+  .site-header {
+    flex-direction: row;
   }
 
   .nav {
@@ -35,34 +39,23 @@
     display: block;
   }
 
-  .editorial-hero,
   .home-hero,
   .about-hero,
   .product-hero {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding-top: 48px;
-    padding-bottom: 40px;
+    gap: 42px;
+    padding-top: 54px;
+    padding-bottom: 54px;
   }
 
   .home-hero h1,
   .about-hero h1,
   .product-hero h1 {
     max-width: 18ch;
-    font-size: clamp(2.1rem, 10vw, 2.85rem);
+    font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
-  .editorial-actions,
-  .actions {
-    justify-content: flex-start;
-  }
-
-  .surface-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .split-content,
-  .home-evidence {
+  .home-evidence,
+  .split-content {
     grid-template-columns: 1fr;
     gap: 34px;
   }
@@ -183,11 +176,6 @@
   .s3-results-section {
     scroll-margin-top: var(--section-index-mobile-scroll-margin);
   }
-
-  .changelog-row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -204,12 +192,9 @@
     font-size: 17px;
   }
 
-  .feed-row {
-    grid-template-columns: 1fr;
-  }
-
-  .feed-row-link {
-    display: none;
+  .proof-strip {
+    justify-content: flex-start;
+    padding-bottom: 44px;
   }
 
   .benchmark-kpis,
@@ -238,6 +223,8 @@
     gap: 4px;
   }
 
+  /* The offset light/dark overlap reads as a glitch on a narrow screen;
+     show a single, centered screenshot instead. */
   .clock-shot-stack {
     display: grid;
     place-items: center;

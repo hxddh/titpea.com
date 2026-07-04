@@ -1,6 +1,5 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import HomeHero from "./home/HomeHero.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -11,7 +10,26 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <HomeHero {...model.hero} />
+  <section class="home-hero shell">
+    <div class="home-copy home-workbench-copy">
+      <p class="eyebrow">{model.hero.eyebrow}</p>
+      <h1>{model.hero.title}</h1>
+      <p class="lead">{model.hero.lead}</p>
+      <div class="actions">
+        {
+          model.hero.actions.map((action) => (
+            <a
+              class:list={["button", action.style]}
+              href={action.href}
+              rel={action.external ? "noreferrer" : undefined}
+            >
+              {action.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
   <section class="home-catalog shell">
     <div class="catalog-heading">

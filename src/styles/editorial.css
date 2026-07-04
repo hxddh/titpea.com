@@ -1,7 +1,0 @@
-.visual-title {
-  margin: 0 0 10px;
-  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-  line-height: 1.12;
-  font-weight: 650;
-  color: var(--ink);
-}

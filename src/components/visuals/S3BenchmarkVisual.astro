@@ -22,7 +22,7 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
 <div class="terminal-visual benchmark-visual benchmark-report" aria-label={visual.label}>
   <div class="benchmark-head">
     <p class="section-kicker">{visual.kicker}</p>
-    <p class="visual-title">{visual.title}</p>
+    <h2>{visual.title}</h2>
     <p>{visual.body}</p>
     <div class="benchmark-meta">
       {visual.meta.map((item) => <span>{item}</span>)}
