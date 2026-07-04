@@ -1,10 +1,9 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import FeedRow from "./FeedRow.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductSectionRenderer from "./ProductSectionRenderer.astro";
 import ProductVisual from "./ProductVisual.astro";
-import SiteBottomCta from "./site/SiteBottomCta.astro";
-import SiteSatellites from "./site/SiteSatellites.astro";
 import type { ProductPageModel } from "../content/siteModel";
 
 interface Props {
@@ -26,7 +25,7 @@ const sectionById = new Map(model.sections.map((section) => [section.id, section
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
-      <div class="home-proof-rail product-proof-rail" aria-label="Product evidence">
+      <div class="proof-rail" aria-label="Product evidence">
         {copy.proof.map((item) => <span>{item}</span>)}
       </div>
     </div>
@@ -39,45 +38,31 @@ const sectionById = new Map(model.sections.map((section) => [section.id, section
 
   {
     model.chapters.map((chapter) => (
-      <>
-        <section class="product-chapter shell" id={chapter.id}>
-          <div class="chapter-heading">
-            <h2>{chapter.title}</h2>
-            {chapter.thesis && <p class="chapter-thesis">{chapter.thesis}</p>}
-          </div>
-        </section>
+      <section class="product-chapter shell" id={chapter.id}>
+        <header class="chapter-heading">
+          <h2>{chapter.title}</h2>
+          {chapter.thesis && <p class="chapter-thesis">{chapter.thesis}</p>}
+        </header>
         <div class="product-chapter-body">
-          {chapter.sectionIds.map((sectionId, index) => {
+          {chapter.sectionIds.map((sectionId) => {
             const section = sectionById.get(sectionId);
             if (!section) return null;
-            return (
-              <ProductSectionRenderer
-                section={section}
-                visual={model.visual}
-                showInlineVisual={index === 0 && sectionId === "inside"}
-              />
-            );
+            return <ProductSectionRenderer section={section} />;
           })}
         </div>
-      </>
+      </section>
     ))
   }
 
   {
     model.related.length > 0 && (
       <section class="product-related shell">
-        <div class="satellite-heading">
+        <header class="chapter-heading">
           <p class="section-kicker">{model.relatedLabel}</p>
-        </div>
-        <div class="satellite-list">
+        </header>
+        <div class="feed-list">
           {model.related.map((item) => (
-            <a class="satellite-row" href={item.href}>
-              <div>
-                <p class="satellite-meta">{item.displayRole}</p>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
-              </div>
-            </a>
+            <FeedRow href={item.href} meta={[item.displayRole]} title={item.name} excerpt={item.text} />
           ))}
         </div>
       </section>
@@ -94,7 +79,4 @@ const sectionById = new Map(model.sections.map((section) => [section.id, section
       </section>
     )
   }
-
-  <SiteSatellites chrome={model.chrome} />
-  <SiteBottomCta chrome={model.chrome} />
 </SiteLayout>

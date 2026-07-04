@@ -8,20 +8,20 @@ interface Props {
 const { section } = Astro.props;
 const sectionClass =
   section.variant === "scanPlan"
-    ? "shell product-deep-dive s3-scan-plan"
+    ? "product-deep-dive s3-scan-plan"
     : section.variant === "diagnosisFlow"
-      ? "shell product-deep-dive diagnosis-flow"
+      ? "product-deep-dive diagnosis-flow"
       : section.variant === "trafficFlow"
-        ? "shell product-deep-dive traffic-flow"
+        ? "product-deep-dive traffic-flow"
         : section.variant === "runChain"
-          ? "shell product-deep-dive s3-deep-dive"
-          : "shell product-deep-dive storageops-deep-dive";
+          ? "product-deep-dive s3-deep-dive"
+          : "product-deep-dive storageops-deep-dive";
 ---
 
 <section id={section.id} class={sectionClass}>
   <div class="deep-dive-heading">
     <p class="section-kicker">{section.kicker}</p>
-    <h2>{section.title}</h2>
+    <h3>{section.title}</h3>
     <p>{section.body}</p>
   </div>
   {

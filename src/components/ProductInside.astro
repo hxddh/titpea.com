@@ -8,10 +8,10 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="inside-section shell">
+<section id={section.id} class="inside-section">
   <div class="inside-copy">
     <p class="section-kicker">{section.kicker}</p>
-    <h2>{section.title}</h2>
+    <h3>{section.title}</h3>
     <p>{section.body}</p>
   </div>
   {

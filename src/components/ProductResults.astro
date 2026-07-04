@@ -8,10 +8,10 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="shell s3-results-section">
+<section id={section.id} class="s3-results-section">
   <div class="s3-results-heading">
     <p class="section-kicker">{section.kicker}</p>
-    <h2>{section.title}</h2>
+    <h3>{section.title}</h3>
     <p>{section.body}</p>
   </div>
   <div class="s3-result-paths">

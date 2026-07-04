@@ -8,11 +8,11 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="band product-story">
-  <div class="shell split-content">
+<section id={section.id} class="product-story">
+  <div class="split-content">
     <div>
       <p class="section-kicker">{section.label}</p>
-      <h2>{section.title}</h2>
+      <h3>{section.title}</h3>
     </div>
     <div class="prose">
       {section.body.map((paragraph) => <p>{paragraph}</p>)}

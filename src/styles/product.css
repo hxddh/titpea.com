@@ -1,15 +1,14 @@
 .inside-section,
 .positioning-section,
 .content-section {
-  padding: 94px 0;
+  padding: 0;
 }
 
 .product-deep-dive {
   display: grid;
-  gap: 26px;
-  border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 86px;
+  gap: var(--space-element-y);
+  padding: 0;
+  border-top: 0;
 }
 
 .product-page-agentPackage .agent-manifest-visual,
@@ -343,101 +342,74 @@
   line-height: 1.55;
 }
 
-.inside-section,
-.content-section,
-.product-deep-dive,
-.product-story,
 .product-chapter,
+.product-related,
 #cases {
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
-.product-chapter-body .inside-section,
-.product-chapter-body .content-section,
-.product-chapter-body .product-deep-dive,
-.product-chapter-body .faq-section {
-  border-top: 0;
-}
-
 .product-chapter {
-  padding-top: var(--chapter-y);
-  padding-bottom: 24px;
+  padding: var(--space-chapter-y) 0;
+  border-top: 1px solid var(--line);
 }
 
 .product-chapter-body {
   display: grid;
+  gap: var(--space-section-y);
 }
 
-.feature-block {
-  display: grid;
-  grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
-  gap: var(--feature-gap);
-  align-items: center;
-  padding: var(--feature-y) 0;
-  border-top: 1px solid var(--line);
+.product-chapter-body .inside-section,
+.product-chapter-body .product-deep-dive,
+.product-chapter-body .content-section,
+.product-chapter-body .faq-section,
+.product-chapter-body .s3-results-section,
+.product-chapter-body .product-story,
+.product-chapter-body .product-cases {
+  padding: 0;
+  border-top: 0;
 }
 
-.feature-block:nth-child(even) {
-  grid-template-columns: minmax(0, 0.54fr) minmax(0, 0.46fr);
+.product-chapter-body .split-content {
+  gap: var(--space-section-y);
+  border-top: 0;
+  padding: 0;
 }
 
-.feature-block:nth-child(even) .feature-block-copy {
-  order: 2;
-}
-
-.feature-block:nth-child(even) .feature-block-demo {
-  order: 1;
-}
-
-.feature-block-copy .inside-section,
-.feature-block-copy .product-deep-dive {
+.product-chapter-body .section-kicker {
+  border-top: 0;
   padding-top: 0;
-  padding-bottom: 0;
-}
-
-.feature-block-demo {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--panel);
-  box-shadow: var(--shadow-demo);
-  overflow: hidden;
-}
-
-.visual-compact .benchmark-visual,
-.visual-compact .agent-manifest-visual,
-.visual-compact .httpmon-terminal-visual,
-.visual-compact .inside-workbench,
-.visual-compact .storage-workbench-visual,
-.visual-compact .pagewise-workbench-visual {
-  transform: scale(0.96);
-  transform-origin: top center;
+  margin-bottom: 10px;
 }
 
 .product-related {
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding: var(--space-page-y) 0;
+  border-top: 1px solid var(--line);
 }
 
 .inside-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 34px;
+  gap: var(--space-section-y);
 }
 
-.inside-copy h2,
-.product-story h2,
-#cases h2 {
-  max-width: 22ch;
-  margin: 0 0 18px;
-  font-size: clamp(2.1rem, 4vw, 2.7rem);
-  line-height: 1.08;
+.inside-copy h3,
+.deep-dive-heading h3,
+.s3-results-heading h3,
+.product-story h3,
+#cases h3 {
+  max-width: 28ch;
+  margin: 0 0 12px;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  line-height: 1.15;
 }
 
-.inside-copy p:not(.section-kicker) {
+.inside-copy p:not(.section-kicker),
+.deep-dive-heading p:not(.section-kicker),
+.s3-results-heading p:not(.section-kicker) {
   max-width: 54ch;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.64;
+  font-size: 16px;
+  line-height: 1.62;
 }
 
 .positioning-section .section-kicker,
@@ -446,8 +418,8 @@
 #cases .section-kicker,
 .faq-section > .section-kicker {
   width: 100%;
-  border-top: 1px solid var(--line);
-  padding-top: 32px;
+  border-top: 0;
+  padding-top: 0;
 }
 
 .provider-list {
@@ -466,7 +438,7 @@
 }
 
 .faq-section {
-  padding-top: 86px;
+  padding: 0;
 }
 
 .faq-list details {
@@ -516,11 +488,11 @@
   display: grid;
   justify-items: center;
   border-top: 1px solid var(--line);
-  padding: 82px 0 100px;
+  padding: var(--space-page-y) 0;
   text-align: center;
 }
 
 .final-cta h2 {
-  margin: 0 0 26px;
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 0 0 24px;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
 }

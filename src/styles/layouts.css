@@ -1,8 +1,8 @@
 .content-section,
 .inside-section,
 .product-deep-dive {
-  padding-top: var(--section-y);
-  padding-bottom: var(--section-y);
+  padding-top: var(--space-section-y);
+  padding-bottom: var(--space-section-y);
 }
 
 .section-card-grid {
