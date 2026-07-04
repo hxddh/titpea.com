@@ -1,7 +1,6 @@
 import type { ProductChapterModel } from "../productChapters";
 import type { ProductPageSection } from "../productPageTypes";
 import type { ProductVisualModel } from "../visualModels";
-import type { SiteChromeModel } from "../siteChromeModel";
 import type { CurrentPage, Locale, Product, ProductSlug } from "../../lib/site";
 
 export type PageSeo = {
@@ -44,49 +43,6 @@ export type PageAction = {
   external?: boolean;
 };
 
-export type HomeSurfaceModel = {
-  label: string;
-  title: string;
-  count: string;
-  href: string;
-  ctaLabel: string;
-};
-
-export type FeedFilterModel = {
-  filterLabel: string;
-  filters: Array<{ id: "all" | "storage" | "personal"; label: string }>;
-  items: ProductCatalogItemModel[];
-};
-
-export type HomePageModel = BasePageModel & {
-  kind: "home";
-  current: "home";
-  primaryCta: string;
-  chrome: SiteChromeModel;
-  hero: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    actions: PageAction[];
-  };
-  surfaces: {
-    chapterTitle: string;
-    items: HomeSurfaceModel[];
-  };
-  feed: FeedFilterModel;
-};
-
-export type AboutPageModel = BasePageModel & {
-  kind: "about";
-  current: "about";
-  chrome: SiteChromeModel;
-  hero: {
-    eyebrow: string;
-    lead: string;
-  };
-  feed: FeedFilterModel;
-};
-
 export type ProductCatalogItemModel = {
   id: string;
   number?: string;
@@ -97,6 +53,48 @@ export type ProductCatalogItemModel = {
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "personal";
+};
+
+export type HomePageModel = BasePageModel & {
+  kind: "home";
+  current: "home";
+  primaryCta: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    actions: PageAction[];
+  };
+  storage: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
+  personal: {
+    label: string;
+    title: string;
+    items: ProductCatalogItemModel[];
+  };
+};
+
+export type AboutPageModel = BasePageModel & {
+  kind: "about";
+  current: "about";
+  hero: {
+    eyebrow: string;
+    lead: string;
+  };
+  tools: {
+    label: string;
+    lines: Array<{
+      label: string;
+      items: Array<{ name: string; href: string }>;
+    }>;
+  };
+  contact: {
+    label: string;
+    actions: PageAction[];
+  };
 };
 
 export type ProductPageModel = BasePageModel & {

@@ -1,9 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import HomeFeed from "./home/HomeFeed.astro";
 import HomeHero from "./home/HomeHero.astro";
-import HomeSurfaces from "./home/HomeSurfaces.astro";
-import SiteBottomCta from "./site/SiteBottomCta.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -15,7 +12,40 @@ const { model } = Astro.props;
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <HomeHero {...model.hero} />
-  <HomeSurfaces {...model.surfaces} />
-  <HomeFeed {...model.feed} />
-  {model.chrome.showBottomCta && <SiteBottomCta chrome={model.chrome} />}
+
+  <section class="home-catalog shell">
+    <div class="catalog-heading">
+      <p class="section-kicker">{model.storage.label}</p>
+      <h2>{model.storage.title}</h2>
+    </div>
+    <div class="catalog-grid storage-catalog-grid">
+      {
+        model.storage.items.map((item) => (
+          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
+            <span>{item.number ? `${item.number} · ${item.displayRole}` : item.displayRole}</span>
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="home-catalog shell home-personal-catalog">
+    <div class="catalog-heading">
+      <p class="section-kicker">{model.personal.label}</p>
+      <h2>{model.personal.title}</h2>
+    </div>
+    <div class="catalog-grid personal-catalog-grid">
+      {
+        model.personal.items.map((item) => (
+          <a class="catalog-card" href={item.href}>
+            <span>{item.displayRole}</span>
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>

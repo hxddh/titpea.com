@@ -1,7 +1,5 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import HomeFeed from "./home/HomeFeed.astro";
-import SiteBottomCta from "./site/SiteBottomCta.astro";
 import type { AboutPageModel } from "../content/siteModel";
 
 interface Props {
@@ -13,12 +11,40 @@ const { model } = Astro.props;
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <section class="about-hero shell">
-    <div class="editorial-copy">
+    <div class="about-redesign-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.lead}</h1>
     </div>
   </section>
 
-  <HomeFeed {...model.feed} sectionClass="about-feed" />
-  {model.chrome.showBottomCta && <SiteBottomCta chrome={model.chrome} />}
+  <section class="about-tool-index shell" aria-labelledby="about-tools-heading">
+    <div class="about-section-heading">
+      <p class="section-kicker" id="about-tools-heading">{model.tools.label}</p>
+    </div>
+    {
+      model.tools.lines.map((line) => (
+        <div class="about-tool-line">
+          <p class="about-tool-line-label">{line.label}</p>
+          <p class="about-tool-links">
+            {line.items.map((item) => (
+              <a href={item.href}>{item.name}</a>
+            ))}
+          </p>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="about-contact shell" aria-label={model.contact.label}>
+    <p class="section-kicker">{model.contact.label}</p>
+    <div class="actions about-contact-row">
+      {
+        model.contact.actions.map((action) => (
+          <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
+            {action.label}
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>

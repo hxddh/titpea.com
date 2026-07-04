@@ -1,3 +1,14 @@
+export const aboutModelCopy = {
+  en: {
+    contactLabel: "Contact",
+    toolsLabel: "Tools",
+  },
+  zh: {
+    contactLabel: "联系",
+    toolsLabel: "工具",
+  },
+} as const;
+
 export const productPageCopy = {
   en: {
     relatedLabel: "Related tools",

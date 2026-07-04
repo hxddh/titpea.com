@@ -2,7 +2,7 @@
 
 Titpea is a concise personal product site. Its design should make each tool easier to understand, not make the site feel like a generic developer dashboard or a marketing campaign.
 
-Visual direction follows a warm editorial surface inspired by [cursor.com](https://cursor.com): cream paper, orange accent, flat backgrounds, and one demo per product page.
+Visual direction uses a warm editorial surface: cream paper, orange accent, flat backgrounds, and one demo per product page.
 
 ## Use Principles, Not Templates
 
@@ -18,8 +18,8 @@ Visual direction follows a warm editorial surface inspired by [cursor.com](https
 
 ## Page Composition
 
-- Home uses four layers: hero, two surface cards, one filterable feed, and a bottom CTA.
-- About reuses the same feed row pattern as Home.
+- Home uses three layers: centered hero, storage catalog grid, personal catalog grid.
+- About uses hero, compact tool index, and contact actions.
 - Product pages group content into chapters. The hero holds the only full-size demo.
 - Section titles inside chapters are h3. Chapter titles are h2. Page titles are h1.
 - A product page should earn every section. FAQ is for adoption blockers, not a second feature list.
@@ -36,7 +36,7 @@ Visual direction follows a warm editorial surface inspired by [cursor.com](https
 
 - Use the warm editorial surface: cream paper, dark ink, restrained borders, and demo frames with soft shadow.
 - Orange accent (`--accent`) marks primary actions, active nav, and hover emphasis.
-- Use one list pattern (`feed-row`) across Home, About, and related tools on product pages.
+- Home and About heroes are centered. Product heroes are two-column with the demo on the right.
 
 ## Constraints (Measurable Floors)
 
