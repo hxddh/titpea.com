@@ -44,7 +44,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       structuredData,
     }),
     language: languageLink(locale, alternatePath),
-    chrome: buildSiteChrome(locale, "about"),
+    chrome: buildSiteChrome(locale),
     hero: {
       eyebrow: copy.aboutTitle,
       lead: copy.aboutLead,

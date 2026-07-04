@@ -47,16 +47,16 @@ Visual direction follows a warm editorial surface inspired by [cursor.com](https
 
 ## Color Semantics
 
-| Role   | Token      | Meaning                               |
-| ------ | ---------- | ------------------------------------- |
-| Paper  | `--paper`  | Page background                       |
-| Panel  | `--panel`  | Cards, demo frames                    |
-| Ink    | `--ink`    | Primary text                          |
-| Muted  | `--muted`  | Secondary text                        |
-| Label  | `--label`  | Meta, eyebrows                        |
-| Accent | `--accent` | Primary buttons, active nav, emphasis |
-| Green  | data-ref   | Baseline or recommended data point    |
-| Orange | data-caution | Outlier or attention data point   |
+| Role   | Token        | Meaning                               |
+| ------ | ------------ | ------------------------------------- |
+| Paper  | `--paper`    | Page background                       |
+| Panel  | `--panel`    | Cards, demo frames                    |
+| Ink    | `--ink`      | Primary text                          |
+| Muted  | `--muted`    | Secondary text                        |
+| Label  | `--label`    | Meta, eyebrows                        |
+| Accent | `--accent`   | Primary buttons, active nav, emphasis |
+| Green  | data-ref     | Baseline or recommended data point    |
+| Orange | data-caution | Outlier or attention data point       |
 
 ## Review Before Release
 

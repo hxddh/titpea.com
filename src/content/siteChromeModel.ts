@@ -29,7 +29,7 @@ const chromeCopy = {
   },
 } as const;
 
-export function buildSiteChrome(locale: Locale, pageKind: "home" | "about"): SiteChromeModel {
+export function buildSiteChrome(locale: Locale): SiteChromeModel {
   const copy = chromeCopy[locale];
 
   return {
