@@ -9,8 +9,7 @@ export const ui = {
     personalLine: "Reading & media",
     personalTitle: "Documents, time zones, film",
     aboutTitle: "About",
-    aboutDescription: "hxddh — cloud storage product manager, code on the side — and the tools behind titpea.com.",
-    aboutHeadline: "hxddh",
+    aboutDescription: "Cloud storage product manager, code on the side — and the tools behind titpea.com.",
     aboutLead: "Cloud storage PM, code on the side.",
   },
   zh: {
@@ -23,8 +22,7 @@ export const ui = {
     personalLine: "阅读与影音",
     personalTitle: "文档、时区、观影",
     aboutTitle: "关于",
-    aboutDescription: "云存储产品经理 hxddh，业余写代码，以及 titpea.com 上的工具。",
-    aboutHeadline: "hxddh",
+    aboutDescription: "云存储产品经理，业余写代码，以及 titpea.com 上的工具。",
     aboutLead: "云存储产品经理，业余写代码。",
   },
 } as const;

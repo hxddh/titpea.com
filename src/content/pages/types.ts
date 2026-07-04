@@ -68,7 +68,6 @@ export type AboutPageModel = BasePageModel & {
   current: "about";
   hero: {
     eyebrow: string;
-    title: string;
     lead: string;
   };
   tools: {

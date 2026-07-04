@@ -17,12 +17,18 @@
 }
 
 .home-hero h1,
-.about-hero h1,
 .product-hero h1 {
   max-width: 22ch;
   margin: 0 auto 22px;
   font-size: clamp(2.25rem, 5.1vw, 3.5rem);
   line-height: 1.04;
+}
+
+.about-hero h1 {
+  max-width: 32ch;
+  margin: 0 auto;
+  font-size: clamp(1.75rem, 3.8vw, 2.35rem);
+  line-height: 1.2;
 }
 
 .meta-line {
