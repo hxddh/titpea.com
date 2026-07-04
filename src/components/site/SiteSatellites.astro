@@ -1,0 +1,49 @@
+---
+import type { SiteChromeModel } from "../../content/siteChromeModel";
+
+interface Props {
+  chrome: SiteChromeModel;
+}
+
+const { chrome } = Astro.props;
+const { recent, changelog } = chrome;
+---
+
+<section class="site-recent shell">
+  <div class="satellite-heading">
+    <p class="section-kicker">{recent.label}</p>
+    <h2>{recent.title}</h2>
+    <a class="feature-link" href={recent.viewAllHref}>{recent.viewAllLabel} →</a>
+  </div>
+  <div class="satellite-list">
+    {
+      recent.items.map((item) => (
+        <a class="satellite-row" href={item.href}>
+          <div>
+            <p class="satellite-meta">{item.meta}</p>
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<section class="site-changelog shell">
+  <div class="satellite-heading">
+    <p class="section-kicker">{changelog.label}</p>
+    <a class="feature-link" href={changelog.viewAllHref}>{changelog.viewAllLabel} →</a>
+  </div>
+  <div class="changelog-list">
+    {
+      changelog.items.map((item) => (
+        <a class="changelog-row" href={item.href} rel="noreferrer">
+          <span class="changelog-date">{item.date}</span>
+          {item.version && <span class="changelog-version">{item.version}</span>}
+          <span class="changelog-title">{item.title}</span>
+        </a>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import type { ProductCatalogItemModel } from "../../content/pages/types";
+
+interface Props {
+  filterLabel: string;
+  filters: Array<{ id: "all" | "storage" | "personal"; label: string }>;
+  items: ProductCatalogItemModel[];
+}
+
+const { filterLabel, filters, items } = Astro.props;
+const groupLabel = (group: ProductCatalogItemModel["group"]) =>
+  group === "storage"
+    ? filters.find((item) => item.id === "storage")?.label
+    : filters.find((item) => item.id === "personal")?.label;
+---
+
+<section class="home-feed shell">
+  <div class="feed-filter" role="tablist" aria-label={filterLabel} data-feed-filter>
+    {
+      filters.map((filter, index) => (
+        <button type="button" role="tab" aria-selected={index === 0 ? "true" : "false"} data-filter={filter.id}>
+          {filter.label}
+        </button>
+      ))
+    }
+  </div>
+  <div class="feed-list">
+    {
+      items.map((item) => (
+        <a class="feed-row" href={item.href} data-group={item.group}>
+          <div class="feed-row-main">
+            <p class="feed-row-meta">
+              {item.number && <span>{item.number}</span>}
+              <span>{item.displayRole}</span>
+              <span>{groupLabel(item.group)}</span>
+            </p>
+            <h3 class="feed-row-title">{item.name}</h3>
+            <p class="feed-row-excerpt">{item.text}</p>
+          </div>
+          <span class="feed-row-link" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline src="/scripts/feed-filter.js" defer></script>

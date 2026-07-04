@@ -1,6 +1,7 @@
-import type { PageSectionId } from "../productArchetypes";
+import type { ProductChapterModel } from "../productChapters";
 import type { ProductPageSection } from "../productPageTypes";
 import type { ProductVisualModel } from "../visualModels";
+import type { SiteChromeModel } from "../siteChromeModel";
 import type { CurrentPage, Locale, Product, ProductSlug } from "../../lib/site";
 
 export type PageSeo = {
@@ -36,25 +37,46 @@ export type BasePageModel = {
   language: PageLanguageLink;
 };
 
+export type PageAction = {
+  label: string;
+  href: string;
+  style: "primary" | "ghost";
+  external?: boolean;
+};
+
+export type HomeSurfaceModel = {
+  label: string;
+  title: string;
+  count: string;
+  href: string;
+  ctaLabel: string;
+};
+
 export type HomePageModel = BasePageModel & {
   kind: "home";
   current: "home";
   primaryCta: string;
+  chrome: SiteChromeModel;
   hero: {
     eyebrow: string;
     title: string;
     lead: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
+    actions: PageAction[];
   };
-  storage: {
-    label: string;
-    title: string;
+  surfaces: {
+    chapterTitle: string;
+    chapterThesis: string;
+    items: HomeSurfaceModel[];
+  };
+  featured: ProductCatalogItemModel[];
+  feed: {
+    filterLabel: string;
+    filters: Array<{ id: "all" | "storage" | "personal"; label: string }>;
     items: ProductCatalogItemModel[];
   };
-  personal: {
-    label: string;
-    title: string;
-    items: ProductCatalogItemModel[];
+  thesis: {
+    quote: string;
+    source: string;
   };
 };
 
@@ -103,7 +125,11 @@ export type ProductPageModel = BasePageModel & {
   primaryCta: string;
   sectionIndex: boolean;
   indexLabel: string;
-  navItems: Array<{ id: PageSectionId; label: string }>;
+  navItems: Array<{ id: string; label: string }>;
+  chapters: ProductChapterModel[];
+  related: ProductCatalogItemModel[];
+  relatedLabel: string;
+  chrome: SiteChromeModel;
   visual: ProductVisualModel;
   structuredData: Record<string, unknown>;
   copy: Product["locales"][Locale];

@@ -25,7 +25,7 @@ export async function checkRoute(page, viewport, route) {
       const aboutContactActions = route.kind === "about" ? document.querySelectorAll(".about-contact .actions a") : [];
       const cards = Array.from(
         document.querySelectorAll(
-          ".catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
+          ".surface-card, .featured-card, .feed-row, .catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
         ),
       );
       const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
