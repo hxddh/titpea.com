@@ -36,7 +36,7 @@ const navGroups = headerNavGroups(locale, current);
               {entry.label}
             </a>
           ) : (
-            <details class="nav-dropdown" open={entry.open || undefined}>
+            <details class="nav-dropdown">
               <summary aria-current={entry.open ? "page" : undefined}>{entry.label}</summary>
               <div class="nav-dropdown-panel" role="menu">
                 {entry.items.map((item) => (
@@ -98,4 +98,5 @@ const navGroups = headerNavGroups(locale, current);
   </div>
 </header>
 
+<script is:inline src="/scripts/nav-dropdown.js" defer></script>
 <script is:inline src="/scripts/mobile-menu.js" defer></script>
