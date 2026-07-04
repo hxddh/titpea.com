@@ -1,3 +1,4 @@
+import { productCatalogModel } from "./productCatalogModel";
 import type { ProductArchetype, ProductSlug } from "../lib/site";
 import type { Locale } from "../lib/site";
 import type { PageSectionId } from "./productArchetypes";
@@ -129,10 +130,8 @@ export function chapterNavItems(archetype: ProductArchetype, locale: Locale) {
   }));
 }
 
-import { productCatalogModel } from "./productCatalogModel";
-
 export function relatedProducts(slug: ProductSlug, locale: Locale, group: "storage" | "personal") {
   const catalog = productCatalogModel(locale);
   const items = group === "storage" ? catalog.storage : catalog.personal;
-  return items.filter((item) => item.slug !== slug).slice(0, 3);
+  return items.filter((item) => item.slug !== slug).slice(0, 2);
 }

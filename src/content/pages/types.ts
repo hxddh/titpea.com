@@ -52,6 +52,12 @@ export type HomeSurfaceModel = {
   ctaLabel: string;
 };
 
+export type FeedFilterModel = {
+  filterLabel: string;
+  filters: Array<{ id: "all" | "storage" | "personal"; label: string }>;
+  items: ProductCatalogItemModel[];
+};
+
 export type HomePageModel = BasePageModel & {
   kind: "home";
   current: "home";
@@ -65,44 +71,20 @@ export type HomePageModel = BasePageModel & {
   };
   surfaces: {
     chapterTitle: string;
-    chapterThesis: string;
     items: HomeSurfaceModel[];
   };
-  featured: ProductCatalogItemModel[];
-  feed: {
-    filterLabel: string;
-    filters: Array<{ id: "all" | "storage" | "personal"; label: string }>;
-    items: ProductCatalogItemModel[];
-  };
-  thesis: {
-    quote: string;
-    source: string;
-  };
-};
-
-export type AboutToolLinkModel = {
-  name: string;
-  href: string;
+  feed: FeedFilterModel;
 };
 
 export type AboutPageModel = BasePageModel & {
   kind: "about";
   current: "about";
+  chrome: SiteChromeModel;
   hero: {
     eyebrow: string;
     lead: string;
   };
-  tools: {
-    label: string;
-    lines: Array<{
-      label: string;
-      items: AboutToolLinkModel[];
-    }>;
-  };
-  contact: {
-    label: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
-  };
+  feed: FeedFilterModel;
 };
 
 export type ProductCatalogItemModel = {
@@ -129,7 +111,6 @@ export type ProductPageModel = BasePageModel & {
   chapters: ProductChapterModel[];
   related: ProductCatalogItemModel[];
   relatedLabel: string;
-  chrome: SiteChromeModel;
   visual: ProductVisualModel;
   structuredData: Record<string, unknown>;
   copy: Product["locales"][Locale];

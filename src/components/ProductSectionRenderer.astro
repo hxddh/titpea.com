@@ -6,44 +6,19 @@ import ProductFaqSection from "./ProductFaqSection.astro";
 import ProductInside from "./ProductInside.astro";
 import ProductResults from "./ProductResults.astro";
 import ProductStorySection from "./ProductStorySection.astro";
-import ProductVisual from "./ProductVisual.astro";
 import type { ProductPageSection } from "../content/productPageTypes";
-import type { ProductVisualModel } from "../content/visualModels";
 
 interface Props {
   section: ProductPageSection;
-  visual?: ProductVisualModel;
-  showInlineVisual?: boolean;
 }
 
-const { section, visual, showInlineVisual = false } = Astro.props;
+const { section } = Astro.props;
 ---
 
-{
-  showInlineVisual && visual ? (
-    <div class="feature-block shell">
-      <div class="feature-block-copy">
-        {section.kind === "inside" && <ProductInside section={section} />}
-        {section.kind === "evidence" && <ProductDeepDive section={section} />}
-        {section.kind === "results" && <ProductResults section={section} />}
-        {section.kind === "story" && <ProductStorySection section={section} />}
-        {section.kind === "cases" && <ProductCasesSection section={section} />}
-        {section.kind === "faq" && <ProductFaqSection section={section} />}
-        {section.kind === "cards" && <ProductCardsSection section={section} />}
-      </div>
-      <div class="feature-block-demo visual-compact">
-        <ProductVisual visual={visual} />
-      </div>
-    </div>
-  ) : (
-    <>
-      {section.kind === "inside" && <ProductInside section={section} />}
-      {section.kind === "evidence" && <ProductDeepDive section={section} />}
-      {section.kind === "results" && <ProductResults section={section} />}
-      {section.kind === "story" && <ProductStorySection section={section} />}
-      {section.kind === "cases" && <ProductCasesSection section={section} />}
-      {section.kind === "faq" && <ProductFaqSection section={section} />}
-      {section.kind === "cards" && <ProductCardsSection section={section} />}
-    </>
-  )
-}
+{section.kind === "inside" && <ProductInside section={section} />}
+{section.kind === "evidence" && <ProductDeepDive section={section} />}
+{section.kind === "results" && <ProductResults section={section} />}
+{section.kind === "story" && <ProductStorySection section={section} />}
+{section.kind === "cases" && <ProductCasesSection section={section} />}
+{section.kind === "faq" && <ProductFaqSection section={section} />}
+{section.kind === "cards" && <ProductCardsSection section={section} />}

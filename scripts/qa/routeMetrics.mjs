@@ -22,10 +22,10 @@ export async function checkRoute(page, viewport, route) {
       const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
       const heroActions = hero?.querySelectorAll(".actions a") ?? [];
-      const aboutContactActions = route.kind === "about" ? document.querySelectorAll(".about-contact .actions a") : [];
+      const bottomCtaActions = document.querySelectorAll(".site-bottom-cta .actions a");
       const cards = Array.from(
         document.querySelectorAll(
-          ".surface-card, .featured-card, .feed-row, .catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
+          ".surface-card, .feed-row, .catalog-card, .about-product-card, .positioning-card, .features-card, .workflow-step, .automation-card, .examples-card",
         ),
       );
       const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
@@ -54,7 +54,12 @@ export async function checkRoute(page, viewport, route) {
         h1: h1?.textContent?.trim() ?? "",
         h1Lines: rect && lineHeight ? Math.round(rect.height / lineHeight) : 0,
         leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
-        heroCtaCount: route.kind === "about" ? aboutContactActions.length : heroActions.length,
+        heroCtaCount:
+          route.kind === "about"
+            ? bottomCtaActions.length
+            : route.kind === "home"
+              ? heroActions.length
+              : heroActions.length,
         heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
         cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
         anchorCount: document.querySelectorAll(".product-section-index a").length,

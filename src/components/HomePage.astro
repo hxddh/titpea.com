@@ -1,12 +1,9 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import HomeFeatured from "./home/HomeFeatured.astro";
 import HomeFeed from "./home/HomeFeed.astro";
 import HomeHero from "./home/HomeHero.astro";
 import HomeSurfaces from "./home/HomeSurfaces.astro";
-import HomeThesis from "./home/HomeThesis.astro";
 import SiteBottomCta from "./site/SiteBottomCta.astro";
-import SiteSatellites from "./site/SiteSatellites.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -19,9 +16,6 @@ const { model } = Astro.props;
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <HomeHero {...model.hero} />
   <HomeSurfaces {...model.surfaces} />
-  <HomeFeatured items={model.featured} />
   <HomeFeed {...model.feed} />
-  <HomeThesis {...model.thesis} />
-  <SiteSatellites chrome={model.chrome} />
-  <SiteBottomCta chrome={model.chrome} />
+  {model.chrome.showBottomCta && <SiteBottomCta chrome={model.chrome} />}
 </SiteLayout>

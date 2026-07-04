@@ -162,6 +162,7 @@
 .mobile-menu summary,
 .product-section-index a,
 .proof-strip span,
+.proof-rail span,
 .provider-list span,
 .about-contact-row a {
   border: 1px solid var(--soft-line);
@@ -290,7 +291,7 @@
 }
 
 .proof-strip,
-.product-proof-rail {
+.proof-rail {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -299,7 +300,7 @@
 }
 
 .proof-strip span,
-.product-proof-rail span {
+.proof-rail span {
   border-radius: 999px;
   padding: 6px 13px;
   background: var(--proof-veil);

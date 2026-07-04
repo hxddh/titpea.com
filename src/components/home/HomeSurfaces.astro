@@ -3,18 +3,16 @@ import type { HomeSurfaceModel } from "../../content/pages/types";
 
 interface Props {
   chapterTitle: string;
-  chapterThesis: string;
   items: HomeSurfaceModel[];
 }
 
-const { chapterTitle, chapterThesis, items } = Astro.props;
+const { chapterTitle, items } = Astro.props;
 ---
 
 <section class="home-surfaces shell">
-  <div class="chapter-heading">
+  <header class="chapter-heading">
     <h2>{chapterTitle}</h2>
-    <p class="chapter-thesis">{chapterThesis}</p>
-  </div>
+  </header>
   <div class="surface-grid">
     {
       items.map((item) => (

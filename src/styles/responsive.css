@@ -57,19 +57,8 @@
     justify-content: flex-start;
   }
 
-  .surface-grid,
-  .featured-grid {
+  .surface-grid {
     grid-template-columns: 1fr;
-  }
-
-  .feature-block,
-  .feature-block:nth-child(even) {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-block:nth-child(even) .feature-block-copy,
-  .feature-block:nth-child(even) .feature-block-demo {
-    order: initial;
   }
 
   .split-content,

@@ -6,7 +6,6 @@ import { s3ResultsModels } from "../productResultsModels";
 import { productPageRegistry } from "../productPageRegistry";
 import { productStructuredData } from "../productSeo";
 import { productSections } from "../productSections";
-import { buildSiteChrome } from "../siteChromeModel";
 import { visualModel } from "../visualModels";
 import { productPageCopy } from "../i18n/pageCopy";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
@@ -82,7 +81,6 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     chapters,
     related: relatedProducts(slug, locale, contract.group),
     relatedLabel: productPageCopy[locale].relatedLabel,
-    chrome: buildSiteChrome(locale),
     visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title),
     structuredData,
     copy,

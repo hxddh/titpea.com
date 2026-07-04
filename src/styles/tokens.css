@@ -3,7 +3,6 @@
   --section-index-desktop-scroll-margin: 112px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
-  /* Cursor-inspired warm surface palette */
   --paper: #f7f7f4;
   --panel: #ffffff;
   --raised: #f0efeb;
@@ -36,15 +35,13 @@
   --radius-card: 12px;
   --radius-control: 999px;
   --radius-button: 8px;
-  --section-y: 80px;
-  --chapter-y: 72px;
-  --feature-y: 56px;
-  --feature-gap: 48px;
-  --card-pad: 28px;
-  --card-pad-compact: 22px;
   --shell-max: 1120px;
   --site-header-height: 60px;
-  --feed-row-pad-y: 20px;
+  --space-page-y: 64px;
+  --space-chapter-y: 48px;
+  --space-section-y: 32px;
+  --space-element-y: 16px;
+  --feed-row-pad-y: 18px;
 }
 
 :root[data-theme="dark"] {
