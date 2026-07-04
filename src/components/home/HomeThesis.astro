@@ -1,0 +1,17 @@
+---
+interface Props {
+  quote: string;
+  source: string;
+}
+
+const { quote, source } = Astro.props;
+---
+
+<section class="home-thesis shell">
+  <blockquote>
+    <p>“{quote}”</p>
+    <footer>
+      <span>{source}</span>
+    </footer>
+  </blockquote>
+</section>

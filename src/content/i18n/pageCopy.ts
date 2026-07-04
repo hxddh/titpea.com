@@ -9,6 +9,15 @@ export const aboutModelCopy = {
   },
 } as const;
 
+export const productPageCopy = {
+  en: {
+    relatedLabel: "Related tools",
+  },
+  zh: {
+    relatedLabel: "相关工具",
+  },
+} as const;
+
 export const catalogCopy = {
   en: {
     httpmon: "Watch one command's HTTP/HTTPS in the terminal — no system-proxy change.",

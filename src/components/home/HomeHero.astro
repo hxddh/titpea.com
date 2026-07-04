@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
+}
+
+const { eyebrow, title, lead, actions } = Astro.props;
+---
+
+<section class="home-hero shell">
+  <div class="home-copy editorial-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <div class="actions editorial-actions">
+      {
+        actions.map((action) => (
+          <a class:list={["button", action.style]} href={action.href} rel={action.external ? "noreferrer" : undefined}>
+            {action.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

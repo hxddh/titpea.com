@@ -1,0 +1,22 @@
+---
+import type { SiteChromeModel } from "../../content/siteChromeModel";
+
+interface Props {
+  chrome: SiteChromeModel;
+}
+
+const { chrome } = Astro.props;
+---
+
+<section class="site-bottom-cta shell">
+  <h2>{chrome.bottomCta.title}</h2>
+  <div class="actions">
+    {
+      chrome.bottomCta.actions.map((action) => (
+        <a class:list={["button", action.style]} href={action.href} rel={action.external ? "noreferrer" : undefined}>
+          {action.label}
+        </a>
+      ))
+    }
+  </div>
+</section>

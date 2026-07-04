@@ -1,0 +1,16 @@
+.visual-compact {
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.visual-compact .benchmark-visual,
+.visual-compact .httpmon-terminal-visual,
+.visual-compact .inside-workbench,
+.visual-compact .storage-workbench-visual,
+.visual-compact .pagewise-workbench-visual,
+.visual-compact .clock-visual,
+.visual-compact .rating-visual {
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+}

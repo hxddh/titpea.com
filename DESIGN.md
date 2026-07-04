@@ -2,6 +2,8 @@
 
 Titpea is a concise personal product site. Its design should make each tool easier to understand, not make the site feel like a generic developer dashboard or a marketing campaign.
 
+Visual direction follows the warm editorial surface used on [cursor.com](https://cursor.com): cream paper, orange accent, flat backgrounds, and demo-forward product sections.
+
 ## Use Principles, Not Templates
 
 - Cards are valid when they give products or concepts a distinct identity. Avoid only card grids in which every item has the same visual weight and no meaningful difference.
@@ -16,9 +18,11 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 ## Page Composition
 
+- Home uses an editorial index: surface cards, featured tools, and a filterable feed.
+- Product pages group content into chapters. The first section in a chapter may pair copy with an inline demo.
 - A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims.
 - For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is for adoption blockers, not a second feature list.
-- Keep the section directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
+- Keep the chapter directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
 - Use one source of truth for each product fact. Repeating a claim in the hero, proof strip, body, and FAQ weakens the page instead of strengthening it.
 
 ## Typography And Copy
@@ -29,8 +33,8 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 ## Visual Language
 
-- Preserve the existing light technical surface, fine grid, dark ink, and restrained controls.
-- Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
+- Use the warm Cursor-inspired surface: cream paper, dark ink, restrained borders, and demo frames with soft shadow.
+- Orange accent (`--accent`) marks primary actions, active nav, and hover emphasis.
 - Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
 
 ## Constraints (Measurable Floors)
@@ -59,18 +63,22 @@ principle and a constraint seem to disagree, satisfy the constraint and rework t
 
 ## Color Semantics
 
-Color is used sparingly and always carries meaning. The palette lives in `tokens.css`.
+Color carries meaning. The palette lives in `tokens.css`.
 
 | Role             | Token / value            | Meaning                                        |
 | ---------------- | ------------------------ | ---------------------------------------------- |
-| Ink              | `--ink`                  | Primary text, primary buttons, active state    |
+| Paper            | `--paper`                | Page background                                |
+| Panel            | `--panel`                | Cards, demo frames, raised surfaces            |
+| Ink              | `--ink`                  | Primary text                                   |
 | Muted            | `--muted`                | Secondary text and quiet labels (AA compliant) |
+| Label            | `--label`                | Meta, eyebrows, tertiary labels                |
 | Faint            | `--faint`                | Hairlines and decoration only — never text     |
 | Line / soft line | `--line` / `--soft-line` | Card dividers and borders                      |
-| Reference green  | `#16a56c` family         | A baseline or recommended data point           |
-| Caution orange   | `#d97706` family         | An outlier or value that needs attention       |
+| Accent           | `--accent`               | Primary buttons, active nav, hover emphasis    |
+| Reference green  | `#16805c` family         | A baseline or recommended data point           |
+| Caution orange   | `#c27a17` family         | An outlier or value that needs attention       |
 
-Do not introduce a third accent color or use green/orange decoratively.
+Do not use green/orange data colors decoratively.
 
 ## Review Before Release
 

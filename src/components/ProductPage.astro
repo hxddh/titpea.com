@@ -1,14 +1,10 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import ProductCardsSection from "./ProductCardsSection.astro";
-import ProductCasesSection from "./ProductCasesSection.astro";
-import ProductDeepDive from "./ProductDeepDive.astro";
-import ProductFaqSection from "./ProductFaqSection.astro";
-import ProductInside from "./ProductInside.astro";
-import ProductResults from "./ProductResults.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
-import ProductStorySection from "./ProductStorySection.astro";
+import ProductSectionRenderer from "./ProductSectionRenderer.astro";
 import ProductVisual from "./ProductVisual.astro";
+import SiteBottomCta from "./site/SiteBottomCta.astro";
+import SiteSatellites from "./site/SiteSatellites.astro";
 import type { ProductPageModel } from "../content/siteModel";
 
 interface Props {
@@ -17,59 +13,75 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
+const sectionById = new Map(model.sections.map((section) => [section.id, section]));
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class:list={["product-hero shell", model.pageClass]}>
-    <div class="product-copy">
+  <section class:list={["product-hero shell editorial-hero", model.pageClass]}>
+    <div class="product-copy editorial-copy">
       <p class="eyebrow">{copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
-      <div class="actions">
+      <div class="actions editorial-actions">
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
-      <p class="meta-line">{copy.meta}</p>
+      <div class="home-proof-rail product-proof-rail" aria-label="Product evidence">
+        {copy.proof.map((item) => <span>{item}</span>)}
+      </div>
     </div>
-    <div class="hero-visual-frame">
+    <div class="hero-visual-frame demo-frame">
       <ProductVisual visual={model.visual} />
     </div>
-  </section>
-
-  <section class="proof-strip shell" aria-label="Product evidence">
-    {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
   {
-    model.sections.map((section) => {
-      if (section.kind === "inside") {
-        return <ProductInside section={section} />;
-      }
+    model.chapters.map((chapter) => (
+      <>
+        <section class="product-chapter shell" id={chapter.id}>
+          <div class="chapter-heading">
+            <h2>{chapter.title}</h2>
+            {chapter.thesis && <p class="chapter-thesis">{chapter.thesis}</p>}
+          </div>
+        </section>
+        <div class="product-chapter-body">
+          {chapter.sectionIds.map((sectionId, index) => {
+            const section = sectionById.get(sectionId);
+            if (!section) return null;
+            return (
+              <ProductSectionRenderer
+                section={section}
+                visual={model.visual}
+                showInlineVisual={index === 0 && sectionId === "inside"}
+              />
+            );
+          })}
+        </div>
+      </>
+    ))
+  }
 
-      if (section.kind === "evidence") {
-        return <ProductDeepDive section={section} />;
-      }
-
-      if (section.kind === "results") {
-        return <ProductResults section={section} />;
-      }
-
-      if (section.kind === "story") {
-        return <ProductStorySection section={section} />;
-      }
-
-      if (section.kind === "cases") {
-        return <ProductCasesSection section={section} />;
-      }
-
-      if (section.kind === "faq") {
-        return <ProductFaqSection section={section} />;
-      }
-
-      return <ProductCardsSection section={section} />;
-    })
+  {
+    model.related.length > 0 && (
+      <section class="product-related shell">
+        <div class="satellite-heading">
+          <p class="section-kicker">{model.relatedLabel}</p>
+        </div>
+        <div class="satellite-list">
+          {model.related.map((item) => (
+            <a class="satellite-row" href={item.href}>
+              <div>
+                <p class="satellite-meta">{item.displayRole}</p>
+                <h3>{item.name}</h3>
+                <p>{item.text}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )
   }
 
   {
@@ -82,4 +94,7 @@ const copy = model.copy;
       </section>
     )
   }
+
+  <SiteSatellites chrome={model.chrome} />
+  <SiteBottomCta chrome={model.chrome} />
 </SiteLayout>

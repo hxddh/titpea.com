@@ -37,7 +37,12 @@ for (const model of allPageModels) {
     for (const id of requiredIds) {
       if (!sectionIds.includes(id)) failures.push(`${model.path}: missing required section ${id}`);
     }
-    if (model.navItems.some((item, index) => item.id !== contractVisibleIds[index])) {
+    if (model.sectionIndex) {
+      const chapterIds = model.chapters.map((chapter) => chapter.id);
+      if (model.navItems.some((item, index) => item.id !== chapterIds[index])) {
+        failures.push(`${model.path}: nav order does not match rendered chapters`);
+      }
+    } else if (model.navItems.some((item, index) => item.id !== contractVisibleIds[index])) {
       failures.push(`${model.path}: nav order does not match rendered sections`);
     }
     if (!model.visual.kind || !model.visual.label) failures.push(`${model.path}: incomplete visual model`);

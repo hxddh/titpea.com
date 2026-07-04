@@ -15,11 +15,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background: var(--paper);
   font-family: var(--sans);
   line-height: 1.6;
 }
@@ -45,7 +41,7 @@ h1,
 h2,
 h3 {
   color: var(--ink);
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -56,7 +52,7 @@ p {
 .shell,
 .site-header,
 .site-footer {
-  width: min(1080px, calc(100% - 48px));
+  width: min(var(--shell-max), calc(100% - 48px));
   margin-inline: auto;
 }
 
@@ -78,12 +74,10 @@ p {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0;
 }
 
 .lead {
   max-width: 62ch;
-  margin-inline: auto;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.62;
@@ -99,17 +93,41 @@ p {
   margin-bottom: 18px;
 }
 
-.band {
-  background: transparent;
+.chapter-heading h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  line-height: 1.08;
 }
 
-.split-content {
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
-  gap: 84px;
-  border-top: 1px solid var(--line);
-  padding: 92px 0;
+.chapter-thesis {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.62;
 }
+
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.feature-link:hover {
+  color: var(--accent);
+}
+
+.editorial-copy {
+  max-width: 760px;
+}
+
+.editorial-actions {
+  justify-content: flex-start;
+}
+
 .skip-link {
   position: fixed;
   top: 0.75rem;

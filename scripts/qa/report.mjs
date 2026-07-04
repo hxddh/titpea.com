@@ -27,7 +27,7 @@ export function failureReasons(result) {
     result.path.includes("pointer:") ||
     result.path.includes("sticky-scroll");
   const anchorOk =
-    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 4 : result.anchorCount === 0) : true;
+    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 3 : result.anchorCount === 0) : true;
   const productIndexOk = result.productIndex
     ? result.productIndex.position === (isDesktop ? "sticky" : "static") &&
       (isDesktop ? result.productIndex.overflow <= 1 : result.productIndex.overflow >= 0) &&
