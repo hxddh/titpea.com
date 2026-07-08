@@ -54,16 +54,6 @@ export const productManifest: readonly ProductManifestItem[] = [
     factId: "https-traffic-inspector",
   },
   {
-    slug: "agent-radar",
-    name: "Agent Radar",
-    group: "personal",
-    nav: { primary: false, label: "agentRadar" },
-    catalog: { order: 4 },
-    visual: "agentRadarTerminal",
-    ogImage: "/assets/og-agent-radar.png",
-    factId: "agent-radar",
-  },
-  {
     slug: "pagewise",
     name: "PageWise",
     group: "personal",
@@ -92,6 +82,16 @@ export const productManifest: readonly ProductManifestItem[] = [
     visual: "doubanScreenshot",
     ogImage: "/assets/og-douban-movie-rating.png",
     factId: "douban-movie-rating",
+  },
+  {
+    slug: "agent-radar",
+    name: "Agent Radar",
+    group: "personal",
+    nav: { primary: false, label: "agentRadar" },
+    catalog: { order: 4 },
+    visual: "agentRadarTerminal",
+    ogImage: "/assets/og-agent-radar.png",
+    factId: "agent-radar",
   },
 ] as const;
 
