@@ -25,6 +25,8 @@ export const catalogCopy = {
     doubanRole: "Rating context",
     pagewiseText: "Local desktop agent for PDF text, OCR, and page-wise Q&A.",
     pagewiseRole: "Document agent",
+    agentRadarText: "Markdown-first AI Agent trend radar with watchlist, field notes, and playbooks.",
+    agentRadarRole: "Trend radar",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
@@ -41,5 +43,7 @@ export const catalogCopy = {
     doubanRole: "评分辅助",
     pagewiseText: "本地桌面 agent：PDF 文本、OCR 与按页问答。",
     pagewiseRole: "文档 agent",
+    agentRadarText: "Markdown 优先的 AI Agent 趋势雷达：观察名单、现场笔记与 playbook。",
+    agentRadarRole: "趋势雷达",
   },
 } as const;

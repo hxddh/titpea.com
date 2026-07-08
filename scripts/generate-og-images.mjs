@@ -79,6 +79,15 @@ export const images = [
     visual: "rating",
   },
   {
+    file: "og-agent-radar.png",
+    eyebrow: "Agent Radar",
+    title: "Track AI agent signals in Markdown",
+    body: "Watchlist, field notes, playbooks, storage implications, and a stdlib Python CLI.",
+    accent: "#7c3aed",
+    mark: "RADAR",
+    visual: "radar",
+  },
+  {
     file: "og-pagewise.png",
     eyebrow: "PageWise",
     title: "Ask questions about your documents",
@@ -158,6 +167,22 @@ function visualPanel(kind, accent, mark) {
       <text x="26" y="236" fill="#72de91" font-family="SFMono-Regular, Consolas, monospace" font-size="13">RESPONSE</text>
       <text x="26" y="264" fill="#f0fff4" font-family="SFMono-Regular, Consolas, monospace" font-size="14">200 OK · 245ms</text>
       <text x="26" y="336" fill="#8ebca0" font-family="SFMono-Regular, Consolas, monospace" font-size="13">HTTP / HTTPS · HAR</text>
+    </g>`;
+  }
+
+  if (kind === "radar") {
+    return `<g transform="translate(786 102)">
+      <rect width="324" height="368" rx="18" fill="#120a24" stroke="#3b2a66"/>
+      <text x="26" y="44" fill="#c4b5fd" font-family="SFMono-Regular, Consolas, monospace" font-size="15">agent-radar · validate</text>
+      <path d="M0 66h324M0 126h324M0 204h324M0 300h324" stroke="#3b2a66"/>
+      <text x="26" y="104" fill="#a78bfa" font-family="SFMono-Regular, Consolas, monospace" font-size="14">$ agent_radar.py brief</text>
+      <text x="26" y="156" fill="#a78bfa" font-family="SFMono-Regular, Consolas, monospace" font-size="13">CORE FILES</text>
+      <text x="26" y="184" fill="#f5f3ff" font-family="SFMono-Regular, Consolas, monospace" font-size="13">radar.md</text>
+      <text x="26" y="212" fill="#f5f3ff" font-family="SFMono-Regular, Consolas, monospace" font-size="13">agent-watchlist.md</text>
+      <text x="26" y="240" fill="#f5f3ff" font-family="SFMono-Regular, Consolas, monospace" font-size="13">storage-angle.md</text>
+      <text x="26" y="292" fill="#a78bfa" font-family="SFMono-Regular, Consolas, monospace" font-size="13">BRIEF</text>
+      <text x="26" y="320" fill="#f5f3ff" font-family="SFMono-Regular, Consolas, monospace" font-size="14">3 watchlist · 2 notes</text>
+      <text x="26" y="348" fill="#8b7cb8" font-family="SFMono-Regular, Consolas, monospace" font-size="13">Markdown · stdlib CLI</text>
     </g>`;
   }
 

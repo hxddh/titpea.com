@@ -23,6 +23,7 @@ export const headerCopy: Record<
       worldClock: string;
       douban: string;
       pagewise: string;
+      agentRadar: string;
     };
   }
 > = {
@@ -47,6 +48,7 @@ export const headerCopy: Record<
       worldClock: "World Clock",
       douban: "Douban",
       pagewise: "PageWise",
+      agentRadar: "Agent Radar",
     },
   },
   zh: {
@@ -70,6 +72,7 @@ export const headerCopy: Record<
       worldClock: "世界时钟",
       douban: "豆瓣评分",
       pagewise: "PageWise",
+      agentRadar: "Agent Radar",
     },
   },
 };

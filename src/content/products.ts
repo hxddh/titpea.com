@@ -1,4 +1,5 @@
 import type { Product, ProductSlug } from "../lib/site";
+import { agentRadarProduct } from "./products/agent-radar";
 import { doubanMovieRatingProduct } from "./products/douban-movie-rating";
 import { pagewiseProduct } from "./products/pagewise";
 import { s3TurboListProduct } from "./products/s3-turbo-list";
@@ -15,6 +16,7 @@ export const products: Record<ProductSlug, Product> = {
   "storage-agent-workbench": storageAgentWorkbenchProduct,
   storageops: storageOpsProduct,
   httpmon: httpmonProduct,
+  "agent-radar": agentRadarProduct,
   pagewise: pagewiseProduct,
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,

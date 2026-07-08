@@ -1,0 +1,39 @@
+---
+import type { AgentRadarTerminalVisualModel } from "../../content/visualModels";
+
+interface Props {
+  visual: AgentRadarTerminalVisualModel;
+}
+
+const { visual } = Astro.props;
+---
+
+<div class="agent-radar-terminal-visual" aria-label={visual.label}>
+  <div class="agent-radar-terminal-bar">
+    <span>{visual.kicker}</span>
+    <span>{visual.status}</span>
+  </div>
+  <div class="agent-radar-terminal-command">
+    <span>$</span>
+    <strong>{visual.command}</strong>
+  </div>
+  <div class="agent-radar-terminal-files">
+    <span>{visual.filesLabel}</span>
+    <ul>
+      {
+        visual.files.map((file) => (
+          <li>
+            <code>{file}</code>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="agent-radar-terminal-brief">
+    <span>{visual.briefLabel}</span>
+    <strong>{visual.brief}</strong>
+  </div>
+  <div class="agent-radar-terminal-foot">
+    {visual.footnotes.map((item) => <span>{item}</span>)}
+  </div>
+</div>

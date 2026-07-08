@@ -5,7 +5,7 @@ export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
-  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" | "pagewise" };
+  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" | "pagewise" | "agentRadar" };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
@@ -52,6 +52,16 @@ export const productManifest: readonly ProductManifestItem[] = [
     visual: "httpmonTerminal",
     ogImage: "/assets/og-httpmon.png",
     factId: "https-traffic-inspector",
+  },
+  {
+    slug: "agent-radar",
+    name: "Agent Radar",
+    group: "personal",
+    nav: { primary: false, label: "agentRadar" },
+    catalog: { order: 4 },
+    visual: "agentRadarTerminal",
+    ogImage: "/assets/og-agent-radar.png",
+    factId: "agent-radar",
   },
   {
     slug: "pagewise",

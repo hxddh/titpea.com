@@ -4,6 +4,7 @@ export type ProductSlug =
   | "storage-agent-workbench"
   | "storageops"
   | "httpmon"
+  | "agent-radar"
   | "pagewise"
   | "world-clock"
   | "douban-movie-rating";
