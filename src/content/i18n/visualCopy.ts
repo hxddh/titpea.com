@@ -148,6 +148,28 @@ export const visualCopy = {
       footnotes: ["HTTPS 只在本地解密查看", "原始响应流继续交给命令"],
     },
   },
+  agentRadarTerminal: {
+    en: {
+      kicker: "agent-radar · validate",
+      status: "ok",
+      command: "python scripts/agent_radar.py brief",
+      filesLabel: "CORE FILES",
+      files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
+      briefLabel: "BRIEF",
+      brief: "3 watchlist updates · 2 field notes · 1 storage signal",
+      footnotes: ["Markdown-first · stdlib CLI", "daily append · weekly synthesis"],
+    },
+    zh: {
+      kicker: "agent-radar · 校验",
+      status: "通过",
+      command: "python scripts/agent_radar.py brief",
+      filesLabel: "核心文件",
+      files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
+      briefLabel: "简报",
+      brief: "观察名单 3 条更新 · 现场笔记 2 条 · 存储信号 1 条",
+      footnotes: ["Markdown 优先 · 标准库 CLI", "日更追加 · 周度综合"],
+    },
+  },
   screenshots: {
     en: {
       worldClockLight: "World Clock light theme timezone feed screenshot",

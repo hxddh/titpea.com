@@ -1,5 +1,6 @@
 ---
 import type { ProductVisualModel } from "../content/visualModels";
+import AgentRadarTerminalVisual from "./visuals/AgentRadarTerminalVisual.astro";
 import DoubanRatingVisual from "./visuals/DoubanRatingVisual.astro";
 import S3BenchmarkVisual from "./visuals/S3BenchmarkVisual.astro";
 import StorageOpsAgentVisual from "./visuals/StorageOpsAgentVisual.astro";
@@ -20,5 +21,6 @@ const { visual } = Astro.props;
 {visual.kind === "storageWorkbench" && <StorageWorkbenchVisual visual={visual} />}
 {visual.kind === "pagewiseWorkbench" && <PagewiseWorkbenchVisual visual={visual} />}
 {visual.kind === "httpmonTerminal" && <HttpmonTerminalVisual visual={visual} />}
+{visual.kind === "agentRadarTerminal" && <AgentRadarTerminalVisual visual={visual} />}
 {visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}
 {visual.kind === "doubanScreenshot" && <DoubanRatingVisual visual={visual} />}

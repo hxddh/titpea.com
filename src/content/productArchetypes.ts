@@ -22,7 +22,8 @@ export type VisualPolicy =
   | "httpmonTerminal"
   | "worldClockScreenshot"
   | "doubanScreenshot"
-  | "pagewiseWorkbench";
+  | "pagewiseWorkbench"
+  | "agentRadarTerminal";
 export type ProductGroup = "storage" | "personal";
 
 export type ArchetypeSectionSpec = {

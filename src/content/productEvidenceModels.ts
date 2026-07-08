@@ -145,6 +145,60 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       ],
     },
   },
+  "agent-radar": {
+    en: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "trafficFlow",
+      kicker: "Core Markdown files",
+      title: "A simple structure for high-signal tracking",
+      body: "Each file has a clear job. Daily and weekly folders append signals; automation and cloud-agent workflows keep the cadence without turning the repo into a platform.",
+      cards: [
+        {
+          label: "Thesis",
+          value: "01",
+          body: "`radar.md` holds current thesis, changed thesis, and open questions.",
+        },
+        {
+          label: "Watchlist",
+          value: "02",
+          body: "`agent-watchlist.md` tracks mainstream and emerging agents with evidence labels.",
+        },
+        {
+          label: "Field notes",
+          value: "03",
+          body: "`user-field-notes.md` and `playbook.md` capture real workflows and reusable patterns.",
+        },
+        {
+          label: "Storage angle",
+          value: "04",
+          body: "`storage-angle.md` records workspace, sandbox, artifact, log, and replay implications.",
+        },
+      ],
+    },
+    zh: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "trafficFlow",
+      kicker: "核心 Markdown 文件",
+      title: "用简单结构跟踪高信号变化",
+      body: "每个文件职责清晰。`daily/` 与 `weekly/` 追加信号；自动化与 cloud-agent 工作流维持节奏，不把仓库做成平台。",
+      cards: [
+        { label: "判断", value: "01", body: "`radar.md` 维护当前判断、已变化判断和开放问题。" },
+        { label: "观察名单", value: "02", body: "`agent-watchlist.md` 跟踪主流与新兴 agent，并标注证据强度。" },
+        {
+          label: "现场与 playbook",
+          value: "03",
+          body: "`user-field-notes.md` 与 `playbook.md` 记录真实工作流和可复用模式。",
+        },
+        {
+          label: "存储视角",
+          value: "04",
+          body: "`storage-angle.md` 记录 workspace、sandbox、artifact、日志与回放相关影响。",
+        },
+      ],
+    },
+  },
 };
 
 export const productEvidenceModel = (slug: ProductSlug, locale: Locale) =>

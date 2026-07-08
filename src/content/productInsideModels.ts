@@ -101,6 +101,22 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",
     },
   ),
+  "agent-radar": {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Markdown-first radar",
+      title: "Signals you can edit and version",
+      body: "Agent Radar keeps thesis, watchlist, field notes, playbooks, and storage implications in plain Markdown files — plus a stdlib Python CLI to scaffold, validate, and brief the repo.",
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Markdown 优先雷达",
+      title: "可编辑、可版本管理的信号",
+      body: "Agent Radar 把判断、观察名单、现场笔记、playbook 和存储视角放在纯 Markdown 文件里，并用标准库 Python CLI 脚手架化、校验和生成简报。",
+    },
+  },
   pagewise: {
     en: {
       id: "inside",

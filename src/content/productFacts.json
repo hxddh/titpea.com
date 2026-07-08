@@ -51,6 +51,22 @@
     "stableFacts": ["IMDb context", "Rotten Tomatoes context", "Metacritic context", "no data collection disclosed"],
     "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
   },
+  "agent-radar": {
+    "source": "github-api",
+    "repository": "hxddh/agent-radar",
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "latestRelease": "v0.7.2",
+    "stableFacts": [
+      "Markdown-first",
+      "agent watchlist",
+      "field notes",
+      "playbooks",
+      "storage implications",
+      "Python stdlib CLI",
+      "cloud agent automation"
+    ]
+  },
   "pagewise": {
     "source": "manual",
     "repository": "hxddh/pagewise",

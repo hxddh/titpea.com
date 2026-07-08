@@ -86,12 +86,26 @@ export type PagewiseWorkbenchVisualModel = {
   chips: string[];
 };
 
+export type AgentRadarTerminalVisualModel = {
+  kind: "agentRadarTerminal";
+  label: string;
+  kicker: string;
+  status: string;
+  command: string;
+  filesLabel: string;
+  files: string[];
+  briefLabel: string;
+  brief: string;
+  footnotes: string[];
+};
+
 export type ProductVisualModel =
   | S3BenchmarkVisualModel
   | StorageAgentVisualModel
   | StorageWorkbenchVisualModel
   | PagewiseWorkbenchVisualModel
   | HttpmonTerminalVisualModel
+  | AgentRadarTerminalVisualModel
   | ScreenshotVisualModel;
 
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string): ProductVisualModel {
@@ -180,6 +194,17 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       command: "httpmon curl https://api.github.com/users/octocat",
       method: "GET",
       url: "https://api.github.com/users/octocat",
+    };
+  }
+
+  if (kind === "agentRadarTerminal") {
+    const copy = visualCopy.agentRadarTerminal[locale];
+    return {
+      kind,
+      label,
+      ...copy,
+      files: [...copy.files],
+      footnotes: [...copy.footnotes],
     };
   }
 

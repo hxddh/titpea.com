@@ -2,7 +2,8 @@
 .diagnostic-visual,
 .clock-visual,
 .rating-visual,
-.httpmon-terminal-visual {
+.httpmon-terminal-visual,
+.agent-radar-terminal-visual {
   position: relative;
   min-height: auto;
   overflow: hidden;
@@ -12,7 +13,8 @@
   box-shadow: var(--shadow-soft);
 }
 
-.httpmon-terminal-visual {
+.httpmon-terminal-visual,
+.agent-radar-terminal-visual {
   display: grid;
   gap: 0;
   padding: 0;
@@ -23,7 +25,9 @@
 }
 
 .httpmon-terminal-bar,
-.httpmon-terminal-foot {
+.httpmon-terminal-foot,
+.agent-radar-terminal-bar,
+.agent-radar-terminal-foot {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -37,9 +41,16 @@
   border-bottom: 1px solid #193d27;
 }
 
+.agent-radar-terminal-bar {
+  border-bottom: 1px solid #193d27;
+}
+
 .httpmon-terminal-command,
 .httpmon-terminal-request,
-.httpmon-terminal-response {
+.httpmon-terminal-response,
+.agent-radar-terminal-command,
+.agent-radar-terminal-files,
+.agent-radar-terminal-brief {
   display: grid;
   gap: 7px;
   padding: 17px 18px;
@@ -52,16 +63,28 @@
   font-size: 12px;
 }
 
+.agent-radar-terminal-command {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 7px;
+  color: #72de91;
+  font-size: 12px;
+}
+
 .httpmon-terminal-command strong,
 .httpmon-terminal-request strong,
-.httpmon-terminal-response strong {
+.httpmon-terminal-response strong,
+.agent-radar-terminal-command strong,
+.agent-radar-terminal-brief strong {
   color: #f0fff4;
   font-size: 12px;
   line-height: 1.45;
 }
 
 .httpmon-terminal-request span,
-.httpmon-terminal-response span {
+.httpmon-terminal-response span,
+.agent-radar-terminal-files span,
+.agent-radar-terminal-brief span {
   color: #72de91;
   font-size: 11px;
   font-weight: 700;
@@ -85,6 +108,33 @@
 }
 
 .httpmon-terminal-foot {
+  color: #719d7f;
+  font-size: 10px;
+}
+
+.agent-radar-terminal-files ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.agent-radar-terminal-files code {
+  color: #c3f4d0;
+  font-size: 11px;
+}
+
+.agent-radar-terminal-brief {
+  display: grid;
+  gap: 7px;
+}
+
+.agent-radar-terminal-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
   color: #719d7f;
   font-size: 10px;
 }
