@@ -268,7 +268,16 @@
 }
 
 .personal-catalog-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.personal-catalog-grid .catalog-card.primary {
+  min-height: 234px;
+  padding: 34px;
+}
+
+.personal-catalog-grid .catalog-card:not(.primary) {
+  padding-top: 34px;
 }
 
 .catalog-card,

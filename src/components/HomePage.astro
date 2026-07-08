@@ -57,7 +57,7 @@ const { model } = Astro.props;
     <div class="catalog-grid personal-catalog-grid">
       {
         model.personal.items.map((item) => (
-          <a class="catalog-card" href={item.href}>
+          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
             <span>{item.displayRole}</span>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
