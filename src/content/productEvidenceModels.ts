@@ -194,7 +194,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
         {
           label: "存储视角",
           value: "04",
-          body: "`storage-angle.md` 记录 workspace、sandbox、artifact、日志与回放相关影响。",
+          body: "`storage-angle.md` 记录 workspace、sandbox、产物、日志与回放相关影响。",
         },
       ],
     },
