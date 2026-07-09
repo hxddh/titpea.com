@@ -10,10 +10,20 @@ export type ProductCatalogItem = {
   href: string;
   text: string;
   displayRole: string;
+  badge?: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "personal";
 };
+
+function catalogBadge(slug: ProductSlug, locale: Locale): string | undefined {
+  const copy = catalogCopy[locale];
+  if (slug === "storage-agent-workbench" || slug === "pagewise") return copy.badgeDesktop;
+  if (slug === "world-clock" || slug === "douban-movie-rating") return copy.badgeExtension;
+  if (slug === "s3-turbo-list" || slug === "httpmon" || slug === "agent-radar") return copy.badgeCli;
+  if (slug === "storageops") return copy.badgePackage;
+  return undefined;
+}
 
 export function productCatalogModel(locale: Locale) {
   const copy = catalogCopy[locale];
@@ -38,6 +48,7 @@ export function productCatalogModel(locale: Locale) {
         href: product.href,
         text,
         displayRole,
+        badge: catalogBadge(item.slug, locale),
         slug: item.slug,
         isPrimary: item.catalog.primary,
         group: item.group,
@@ -48,12 +59,12 @@ export function productCatalogModel(locale: Locale) {
     .map(({ order: _order, ...item }) => item satisfies ProductCatalogItem);
   const storage = catalogItems.filter((item) => item.group === "storage");
   const personal = catalogItems.filter((item) => item.group === "personal");
-  const s3 = indexedProduct("s3-turbo-list", locale);
+  const flagship = storage.find((item) => item.slug === "storage-agent-workbench") ?? storage[0];
 
   return {
     storage,
     personal,
     all: [...storage, ...personal],
-    featuredProductPath: s3.href,
+    featuredProductPath: flagship?.href ?? storage[0]?.href ?? "/",
   };
 }

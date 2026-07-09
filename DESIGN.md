@@ -1,6 +1,8 @@
 # Titpea Design Principles
 
-Titpea is a concise personal product site. Its design should make each tool easier to understand, not make the site feel like a generic developer dashboard or a marketing campaign.
+Titpea is a concise personal product site for independent products (and a few utilities).
+Its design should make each product easier to understand, not make the site feel like a generic
+developer dashboard or a marketing campaign.
 
 ## Use Principles, Not Templates
 

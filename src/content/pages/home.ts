@@ -1,6 +1,8 @@
+import { catalogCopy } from "../i18n/pageCopy";
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
+import { visualModel } from "../visualModels";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
 import type { Locale } from "../../lib/site";
@@ -8,6 +10,7 @@ import { pathFor } from "../../lib/site";
 
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
+  const pageCopy = catalogCopy[locale];
   const catalog = productCatalogModel(locale);
   const path = pagePath(locale);
   const alternatePath = pagePath(alternateLocale(locale));
@@ -63,6 +66,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
           style: "ghost",
         },
       ],
+      visual: visualModel("storageWorkbench", locale, pageCopy.homeFlagshipVisual),
     },
     storage: {
       label: copy.storageLine,

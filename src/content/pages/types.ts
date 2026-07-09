@@ -45,6 +45,7 @@ export type HomePageModel = BasePageModel & {
     title: string;
     lead: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
+    visual: ProductVisualModel;
   };
   storage: {
     label: string;
@@ -63,6 +64,7 @@ export type AboutToolLinkModel = {
   href: string;
   role?: string;
   text?: string;
+  badge?: string;
 };
 
 export type AboutPageModel = BasePageModel & {
@@ -100,6 +102,7 @@ export type ProductCatalogItemModel = {
   href: string;
   text: string;
   displayRole: string;
+  badge?: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "personal";

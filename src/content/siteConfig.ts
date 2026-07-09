@@ -20,6 +20,7 @@ export const siteConfig = {
     doubanChrome:
       "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
     pagewise: "https://github.com/hxddh/pagewise",
+    pagewiseReleases: "https://github.com/hxddh/pagewise/releases",
     agentRadar: "https://github.com/hxddh/agent-radar",
     agentRadarQuickStart: "https://github.com/hxddh/agent-radar#cli-usage",
   },
