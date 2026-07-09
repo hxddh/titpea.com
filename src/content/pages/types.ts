@@ -47,6 +47,7 @@ export type HomePageModel = BasePageModel & {
     actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
     visual: ProductVisualModel;
     visualHref: string;
+    proofCaption: string;
   };
   storage: {
     id: string;

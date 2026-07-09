@@ -24,15 +24,12 @@ const { model } = Astro.props;
       <h2 id="about-why-heading">{model.why.title}</h2>
       <p>{model.why.body}</p>
     </div>
-    <ul class="about-why-lines">
+    <ul class="about-principle-list">
       {
         model.why.lines.map((line) => (
           <li>
             <strong>{line.label}</strong>
             <span>{line.body}</span>
-            <a class="about-why-browse" href={line.href}>
-              {line.browseLabel}
-            </a>
           </li>
         ))
       }
@@ -42,21 +39,24 @@ const { model } = Astro.props;
 
   <section class="about-featured shell" aria-labelledby="about-featured-heading">
     <div class="about-section-heading">
-      <p class="section-kicker" id="about-featured-heading">{model.featured.label}</p>
+      <h2 id="about-featured-heading">{model.featured.label}</h2>
     </div>
-    <div class="about-featured-list">
+    <div class="work-list about-work-list" role="list">
       {
         model.featured.items.map((item) => (
-          <a class="about-featured-item" href={item.href}>
-            <strong>{item.name}</strong>
-            {item.text && <p>{item.text}</p>}
+          <a class="work-row is-flagship" href={item.href} role="listitem">
+            <span class="work-row-name">{item.name}</span>
+            <span class="work-row-text">{item.text}</span>
+            <span class="work-row-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         ))
       }
     </div>
-    <div class="about-all-products">
+    <p class="about-all-products">
       <a class="text-link" href={model.featured.allProducts.href}>{model.featured.allProducts.label}</a>
-    </div>
+    </p>
   </section>
 
   <section class="about-contact shell" aria-label={model.contact.label}>
@@ -64,7 +64,7 @@ const { model } = Astro.props;
     <div class="actions about-contact-row">
       {
         model.contact.actions.map((action) => (
-          <a class:list={["button", action.style]} href={action.href} rel={action.external ? "noreferrer" : undefined}>
+          <a class="text-link" href={action.href} rel={action.external ? "noreferrer" : undefined}>
             {action.label}
           </a>
         ))

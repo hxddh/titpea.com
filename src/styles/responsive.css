@@ -56,12 +56,6 @@
     font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
-  .storage-catalog-grid .catalog-card.primary,
-  .personal-catalog-grid .catalog-card.primary {
-    min-height: 190px;
-    padding: 28px;
-  }
-
   .home-evidence,
   .split-content {
     grid-template-columns: 1fr;

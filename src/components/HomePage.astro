@@ -8,11 +8,6 @@ interface Props {
 }
 
 const { model } = Astro.props;
-
-/** Quiet single meta line: form only (Desktop / CLI / Extension). */
-function metaLabel(item: HomePageModel["storage"]["items"][number]) {
-  return item.badge ?? item.displayRole;
-}
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -21,55 +16,71 @@ function metaLabel(item: HomePageModel["storage"]["items"][number]) {
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
-      <div class="actions">
+      <div class="actions home-hero-actions">
         {
-          model.hero.actions.map((action) => (
-            <a
-              class:list={["button", action.style]}
-              href={action.href}
-              rel={action.external ? "noreferrer" : undefined}
-            >
-              {action.label}
-            </a>
-          ))
+          model.hero.actions.map((action) =>
+            action.style === "primary" ? (
+              <a class="button primary" href={action.href} rel={action.external ? "noreferrer" : undefined}>
+                {action.label}
+              </a>
+            ) : (
+              <a
+                class="text-link home-secondary-link"
+                href={action.href}
+                rel={action.external ? "noreferrer" : undefined}
+              >
+                {action.label}
+              </a>
+            ),
+          )
         }
       </div>
     </div>
-    <a class="hero-visual-frame home-flagship-visual" href={model.hero.visualHref} aria-label={model.hero.visual.label}>
-      <ProductVisual visual={model.hero.visual} />
-    </a>
+
+    {
+      model.hero.visual && (
+        <figure class="home-proof">
+          <a class="home-proof-frame" href={model.hero.visualHref} aria-label={model.hero.visual.label}>
+            <ProductVisual visual={model.hero.visual} />
+          </a>
+          {model.hero.proofCaption && <figcaption class="home-proof-caption">{model.hero.proofCaption}</figcaption>}
+        </figure>
+      )
+    }
   </section>
 
-  <section id={model.storage.id} class="home-catalog shell">
-    <div class="catalog-heading">
-      <p class="section-kicker">{model.storage.label}</p>
+  <section id={model.storage.id} class="home-index shell">
+    <div class="home-index-heading">
       <h2>{model.storage.title}</h2>
     </div>
-    <div class="catalog-grid storage-catalog-grid">
+    <div class="work-list" role="list">
       {
         model.storage.items.map((item) => (
-          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <p class="catalog-card-meta">{metaLabel(item)}</p>
-            <h3>{item.name}</h3>
-            <p>{item.text}</p>
+          <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
+            <span class="work-row-name">{item.name}</span>
+            <span class="work-row-text">{item.text}</span>
+            <span class="work-row-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         ))
       }
     </div>
   </section>
 
-  <section id={model.personal.id} class="home-catalog shell home-personal-catalog">
-    <div class="catalog-heading">
-      <p class="section-kicker">{model.personal.label}</p>
+  <section id={model.personal.id} class="home-index shell">
+    <div class="home-index-heading">
       <h2>{model.personal.title}</h2>
     </div>
-    <div class="catalog-grid personal-catalog-grid">
+    <div class="work-list" role="list">
       {
         model.personal.items.map((item) => (
-          <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <p class="catalog-card-meta">{metaLabel(item)}</p>
-            <h3>{item.name}</h3>
-            <p>{item.text}</p>
+          <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
+            <span class="work-row-name">{item.name}</span>
+            <span class="work-row-text">{item.text}</span>
+            <span class="work-row-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         ))
       }
