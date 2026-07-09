@@ -43,14 +43,17 @@ const isExternalHref = (href: string) => /^https?:\/\//.test(href);
         </a>
       </div>
       <p class="meta-line">{copy.meta}</p>
+      {
+        copy.proof.length > 0 && (
+          <p class="proof-line" aria-label="Product evidence">
+            {copy.proof.join(" · ")}
+          </p>
+        )
+      }
     </div>
     <div class="hero-visual-frame">
       <ProductVisual visual={model.visual} />
     </div>
-  </section>
-
-  <section class="proof-strip shell" aria-label="Product evidence">
-    {copy.proof.map((item) => <span>{item}</span>)}
   </section>
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}

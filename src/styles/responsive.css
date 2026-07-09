@@ -195,9 +195,8 @@
     font-size: 17px;
   }
 
-  .proof-strip {
-    justify-content: flex-start;
-    padding-bottom: 44px;
+  .proof-line {
+    text-align: center;
   }
 
   .benchmark-kpis,

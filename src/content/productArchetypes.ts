@@ -123,16 +123,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "features",
         required: true,
       },
-      {
-        id: "workflow",
-        label: { en: "How a session runs", zh: "一次会话怎么跑" },
-        layout: "steps",
-        numbered: true,
-        source: "workflow",
-        required: true,
-      },
-      // Trust/boundary points live in FAQ — avoids a long mid-page card stack that
-      // mostly restates the same local/read-only answers.
+      // Session steps used to restate inside + features; trust/boundary live in FAQ.
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },

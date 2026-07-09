@@ -34,9 +34,9 @@
   --shadow-soft: 0 24px 60px rgba(17, 24, 39, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
   --radius-card: 8px;
   --radius-control: 999px;
-  --section-y: 94px;
-  --card-pad: 28px;
-  --card-pad-compact: 22px;
+  --section-y: 72px;
+  --card-pad: 24px;
+  --card-pad-compact: 18px;
 }
 
 /* Dark theme. Applied when the OS prefers dark (unless the visitor forced

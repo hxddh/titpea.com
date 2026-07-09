@@ -15,7 +15,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop app · macOS, Windows, Linux · Apache-2.0",
-      proof: ["Read-only", "Local-first"],
+      proof: [],
       featuresLabel: "Capabilities",
       features: [
         {
@@ -55,33 +55,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      workflowLabel: "How a session runs",
-      workflow: [
-        {
-          title: "Ask in plain language",
-          body: "Start a chat, or pick a task like review bucket config or analyze access logs.",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "The agent plans",
-          body: "It picks read-only tools, reads policy, metadata, and logs, and works in DuckDB.",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "Evidence, not guesses",
-          body: "Findings come with the log rows, object metadata, or config lines they rest on.",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "You decide",
-          body: "Read the diagnosis, approve anything that moves data, and act with the evidence in hand.",
-          intent: "workflow",
-          surface: "artifact",
-        },
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -100,10 +73,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           title: "How is this different from StorageOps?",
           body: "StorageOps gives an existing agent (Pi) storage skills; Storage Agent is a self-contained desktop app that runs the whole investigation itself.",
         },
-        {
-          title: "What platforms does it run on?",
-          body: "A Tauri desktop app for macOS, Windows, and Linux. The project is Apache-2.0.",
-        },
       ],
       finalCta: "Investigate your storage locally",
       finalCtaLabel: "Download Storage Agent",
@@ -117,7 +86,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · Apache-2.0",
-      proof: ["只读", "本地优先"],
+      proof: [],
       featuresLabel: "能做什么",
       features: [
         {
@@ -157,33 +126,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      workflowLabel: "一次会话怎么跑",
-      workflow: [
-        {
-          title: "用大白话问",
-          body: "开一段对话，或直接选「审查桶配置」「分析访问日志」这类任务。",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "agent 来规划",
-          body: "它挑只读工具，读策略、元数据和日志，在 DuckDB 里分析。",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "只给证据不猜",
-          body: "每条发现都带着它依据的日志行、对象元数据或配置行。",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "你来拍板",
-          body: "看完综合诊断，涉及搬数据的再点确认，带着证据动手。",
-          intent: "workflow",
-          surface: "artifact",
-        },
-      ],
       faqLabel: "问题与用法",
       faq: [
         {
@@ -201,10 +143,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         {
           title: "和 StorageOps 有什么区别",
           body: "StorageOps 让你已有的 agent（Pi）会查存储；Storage Agent 是自成一体的桌面应用，自己完成整个调查。",
-        },
-        {
-          title: "支持哪些平台",
-          body: "面向 macOS、Windows 和 Linux 的 Tauri 桌面应用。项目采用 Apache-2.0。",
         },
       ],
       finalCta: "在本地开始调查你的存储",

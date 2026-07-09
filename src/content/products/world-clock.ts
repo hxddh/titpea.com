@@ -22,7 +22,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "Privacy FAQ", href: "/world-clock/#faq" },
       meta: worldClockMeta,
-      proof: ["Chrome Web Store: Tools", "Live city rows", "Light and dark themes", "No data collection disclosed"],
+      proof: ["Live city rows", "Light and dark themes"],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -103,7 +103,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "隐私 FAQ", href: "/zh/world-clock/#faq" },
       meta: worldClockMetaZh,
-      proof: ["Chrome Web Store: Tools", "城市时间行", "浅色和深色主题", "声明不收集数据"],
+      proof: ["城市时间行", "浅色和深色主题"],
       positioningLabel: "边界",
       positioning: [
         {

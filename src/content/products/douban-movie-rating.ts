@@ -22,13 +22,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "Matching FAQ", href: "/douban-movie-rating/#faq" },
       meta: doubanMeta,
-      proof: [
-        "Chrome Web Store: Entertainment",
-        "IMDb context",
-        "Rotten Tomatoes context",
-        "Metacritic context",
-        "No data collection disclosed",
-      ],
+      proof: ["IMDb · Rotten Tomatoes · Metacritic"],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -114,13 +108,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "匹配 FAQ", href: "/zh/douban-movie-rating/#faq" },
       meta: doubanMetaZh,
-      proof: [
-        "Chrome Web Store: Entertainment",
-        "IMDb 参考评分",
-        "烂番茄参考评分",
-        "Metacritic 参考评分",
-        "声明不收集数据",
-      ],
+      proof: ["IMDb · 烂番茄 · Metacritic"],
       positioningLabel: "边界",
       positioning: [
         {
