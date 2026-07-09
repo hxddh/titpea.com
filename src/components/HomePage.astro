@@ -9,18 +9,15 @@ interface Props {
 
 const { model } = Astro.props;
 
+/** Quiet single meta line: form only (Desktop / CLI / Extension). */
 function metaLabel(item: HomePageModel["storage"]["items"][number]) {
-  // Single label layer: number + form badge (or role if no badge).
-  if (item.number && item.badge) return `${item.number} · ${item.badge}`;
-  if (item.badge) return item.badge;
-  if (item.number) return `${item.number} · ${item.displayRole}`;
-  return item.displayRole;
+  return item.badge ?? item.displayRole;
 }
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="home-hero shell home-hero-with-visual">
-    <div class="home-copy home-workbench-copy">
+  <section class="home-hero shell">
+    <div class="home-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
@@ -52,9 +49,7 @@ function metaLabel(item: HomePageModel["storage"]["items"][number]) {
       {
         model.storage.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <div class="catalog-card-meta">
-              <span>{metaLabel(item)}</span>
-            </div>
+            <p class="catalog-card-meta">{metaLabel(item)}</p>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>
@@ -72,9 +67,7 @@ function metaLabel(item: HomePageModel["storage"]["items"][number]) {
       {
         model.personal.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <div class="catalog-card-meta">
-              <span>{metaLabel(item)}</span>
-            </div>
+            <p class="catalog-card-meta">{metaLabel(item)}</p>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>

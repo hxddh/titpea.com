@@ -8,9 +8,10 @@
   padding: 78px 0 62px;
 }
 
-.home-hero-with-visual {
+/* Centered hero + full mock frame (product-page rhythm, no crop/scale). */
+.home-hero {
   gap: 40px;
-  padding-bottom: 48px;
+  padding-bottom: 56px;
 }
 
 .home-flagship-visual {
@@ -20,14 +21,6 @@
   color: inherit;
   text-decoration: none;
   border-radius: 12px;
-  transition:
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
-}
-
-.home-flagship-visual:hover {
-  box-shadow: 0 12px 40px rgba(17, 24, 39, 0.1);
-  transform: translateY(-1px);
 }
 
 .home-flagship-visual:focus-visible {
@@ -51,48 +44,6 @@
   line-height: 1.04;
 }
 
-@media (min-width: 901px) {
-  .home-hero-with-visual {
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: 36px 48px;
-    align-items: center;
-    padding-top: 56px;
-    padding-bottom: 40px;
-  }
-
-  .home-hero-with-visual .home-copy {
-    max-width: none;
-    margin-inline: 0;
-    text-align: left;
-  }
-
-  .home-hero-with-visual .home-copy h1 {
-    max-width: 14ch;
-    margin-inline: 0;
-    font-size: clamp(2.1rem, 3.4vw, 3rem);
-  }
-
-  .home-hero-with-visual .lead {
-    max-width: 38ch;
-  }
-
-  .home-hero-with-visual .actions {
-    justify-content: flex-start;
-  }
-
-  .home-flagship-visual {
-    width: 100%;
-    margin-inline: 0;
-    max-height: min(520px, 58vh);
-    overflow: hidden;
-  }
-
-  .home-flagship-visual .workbench-visual {
-    transform: scale(0.92);
-    transform-origin: top center;
-  }
-}
-
 .about-hero h1 {
   max-width: 32ch;
   margin: 0 auto;
@@ -101,7 +52,7 @@
 }
 
 .about-hero-body {
-  max-width: 58ch;
+  max-width: 52ch;
   margin: 18px auto 0;
   color: var(--muted);
   font-size: 17px;
@@ -111,13 +62,13 @@
 
 .about-why {
   border-top: 1px solid var(--line);
-  padding-top: 56px;
-  padding-bottom: 24px;
+  padding-top: 64px;
+  padding-bottom: 32px;
 }
 
 .about-why .about-section-heading {
-  max-width: 64ch;
-  margin: 0 auto 28px;
+  max-width: 58ch;
+  margin: 0 auto 32px;
   text-align: center;
 }
 
@@ -129,8 +80,8 @@
 
 .about-why-lines {
   display: grid;
-  gap: 12px;
-  max-width: 720px;
+  gap: 28px;
+  max-width: 560px;
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -138,30 +89,10 @@
 
 .about-why-lines li {
   display: grid;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  overflow: hidden;
-}
-
-.about-why-line-link {
-  display: grid;
-  gap: 6px;
-  padding: 16px 18px;
-  color: inherit;
-  text-decoration: none;
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.about-why-line-link:hover {
-  background: var(--raised);
-}
-
-.about-why-line-link:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: -2px;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .about-why-lines strong {
@@ -169,18 +100,34 @@
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
 .about-why-lines span {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.about-why-browse {
+  width: fit-content;
+  margin-top: 2px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.about-why-browse:hover {
+  border-color: var(--ink);
 }
 
 .about-why-closing {
-  max-width: 58ch;
-  margin: 22px auto 0;
+  max-width: 52ch;
+  margin: 32px auto 0;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
@@ -440,13 +387,11 @@
   padding: 28px;
 }
 
-/* Primary is first in DOM (not full-row) so the 2-column grid stays even. */
+/* Primary: quiet weight via type and space, not inset chrome. */
 .storage-catalog-grid .catalog-card.primary,
 .personal-catalog-grid .catalog-card.primary {
   min-height: 210px;
-  padding: 32px;
-  background: var(--raised);
-  box-shadow: inset 0 0 0 1px var(--ink);
+  padding: 32px 28px;
 }
 
 .storage-catalog-grid .catalog-card:not(.primary),
@@ -454,21 +399,13 @@
   padding-top: 28px;
 }
 
-.catalog-card-meta,
-.about-tool-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 10px;
-}
-
-.catalog-card-meta span,
-.about-tool-card-meta span {
+.catalog-card-meta {
+  margin: 0;
   color: var(--label);
   font-family: var(--mono);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 .catalog-card h3 {
@@ -480,8 +417,8 @@
 }
 
 .catalog-card.primary h3 {
-  max-width: 16ch;
-  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  max-width: 14ch;
+  font-size: clamp(1.55rem, 2.5vw, 1.95rem);
 }
 
 .home-catalog {
@@ -490,24 +427,65 @@
 
 .about-featured {
   border-top: 1px solid var(--line);
-  padding-top: 56px;
-  padding-bottom: 24px;
+  padding-top: 64px;
+  padding-bottom: 32px;
 }
 
-.about-featured-grid {
-  max-width: 720px;
+.about-featured-list {
+  display: grid;
+  gap: 0;
+  max-width: 560px;
   margin: 0 auto;
+  border-top: 1px solid var(--line);
 }
 
-.about-tool-card.primary {
-  box-shadow: inset 0 0 0 1px var(--ink);
-  background: var(--raised);
+.about-featured-item {
+  display: grid;
+  gap: 8px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+}
+
+.about-featured-item:hover strong {
+  border-bottom-color: var(--ink);
+}
+
+.about-featured-item strong {
+  width: fit-content;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  border-bottom: 1px solid transparent;
+}
+
+.about-featured-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .about-all-products {
   display: flex;
   justify-content: center;
-  margin-top: 22px;
+  margin-top: 28px;
+}
+
+.text-link {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.text-link:hover {
+  border-color: var(--ink);
 }
 
 .about-product-line + .about-product-line {

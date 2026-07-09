@@ -82,7 +82,7 @@ export type AboutPageModel = BasePageModel & {
     label: string;
     title: string;
     body: string;
-    lines: Array<{ label: string; body: string; href: string }>;
+    lines: Array<{ label: string; body: string; href: string; browseLabel: string }>;
     closing: string;
   };
   featured: {
