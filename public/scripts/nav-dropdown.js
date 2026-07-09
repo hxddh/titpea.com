@@ -7,6 +7,20 @@ dropdowns.forEach((dropdown) => {
       if (other !== dropdown) other.open = false;
     });
   });
+
+  // Close when keyboard focus leaves the open dropdown (tabbing away).
+  dropdown.addEventListener("focusout", (event) => {
+    if (!dropdown.open) return;
+    const next = event.relatedTarget;
+    if (next instanceof Node && dropdown.contains(next)) return;
+    // Defer so a click on a panel link can still register first.
+    window.requestAnimationFrame(() => {
+      if (!dropdown.open) return;
+      const active = document.activeElement;
+      if (active instanceof Node && dropdown.contains(active)) return;
+      dropdown.open = false;
+    });
+  });
 });
 
 document.addEventListener("click", (event) => {

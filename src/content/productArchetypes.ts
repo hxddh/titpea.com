@@ -119,7 +119,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "What it investigates", zh: "它能查什么" },
+        label: { en: "Capabilities", zh: "能做什么" },
         source: "features",
         required: true,
       },
@@ -131,12 +131,8 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "workflow",
         required: true,
       },
-      {
-        id: "positioning",
-        label: { en: "Local and read-only", zh: "本地 · 只读" },
-        source: "positioning",
-        required: true,
-      },
+      // Trust/boundary points live in FAQ — avoids a long mid-page card stack that
+      // mostly restates the same local/read-only answers.
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
@@ -150,7 +146,8 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     defaultVisual: "worldClockScreenshot",
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
-      { id: "features", label: { en: "In the page", zh: "页面里的信息" }, source: "features", required: true },
+      // Covers both in-page injectors (Douban) and popup tools (World Clock).
+      { id: "features", label: { en: "What you get", zh: "打开后能看到什么" }, source: "features", required: true },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },

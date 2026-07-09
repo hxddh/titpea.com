@@ -61,6 +61,8 @@ export type HomePageModel = BasePageModel & {
 export type AboutToolLinkModel = {
   name: string;
   href: string;
+  role?: string;
+  text?: string;
 };
 
 export type AboutPageModel = BasePageModel & {

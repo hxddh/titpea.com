@@ -21,18 +21,20 @@
   }
 
   .header-util {
-    min-height: 36px;
+    min-width: 44px;
+    min-height: 44px;
     border: 1px solid var(--soft-line);
     border-radius: 999px;
     background: var(--panel);
-    padding: 6px 10px;
+    padding: 10px 12px;
     color: var(--ink);
   }
 
   .theme-toggle {
     justify-content: center;
-    min-width: 36px;
-    padding: 6px 8px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 12px;
   }
 
   .mobile-menu {
