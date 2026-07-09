@@ -59,7 +59,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         "migration",
         "stale reads",
       ],
-      finalCta: "Give Pi a storage-aware diagnosis path",
+      finalCta: "Install StorageOps for Pi",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & setup",
       faq: [
@@ -127,7 +127,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         "迁移",
         "读取结果过期",
       ],
-      finalCta: "让 Pi 按对象存储的方法排查",
+      finalCta: "为 Pi 安装 StorageOps",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与安装",
       faq: [

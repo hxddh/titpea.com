@@ -68,7 +68,7 @@ export const agentRadarProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "Start tracking agent signals locally",
+      finalCta: "Clone the radar repo",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & use",
       faq: [
@@ -148,7 +148,7 @@ export const agentRadarProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "在本地开始跟踪 agent 信号",
+      finalCta: "克隆雷达仓库开始记",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与用法",
       faq: [

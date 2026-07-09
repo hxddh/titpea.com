@@ -2,10 +2,33 @@ export const aboutModelCopy = {
   en: {
     contactLabel: "Contact",
     toolsLabel: "Tools",
+    heroBody:
+      "I work on cloud object storage by day. On the side I ship small tools for jobs that keep showing up: list and diff large buckets, inspect HTTP beside a command, and run local agents without sending credentials or evidence to a hosted service.",
+    whyLabel: "How the catalog is organized",
+    whyTitle: "Two lines, one habit",
+    whyBody:
+      "Most of the storage tools start from the same habit: leave an inspectable result, keep side effects local, and say clearly what the tool will not do.",
+    whyStorageLabel: "Object storage",
+    whyStorageBody: "Inventory, diagnosis, and read-only investigation around S3-compatible systems.",
+    whyPersonalLabel: "Reading & media",
+    whyPersonalBody: "Documents, time zones, film ratings, and a Markdown radar for agent signals.",
+    whyClosing:
+      "They are not a product suite. They are independent tools that share a bias: local-first where it matters, facts over dashboards, and a short path from problem to evidence.",
   },
   zh: {
     contactLabel: "联系",
     toolsLabel: "工具",
+    heroBody:
+      "白天做云对象存储相关的产品；业余时间把反复遇到的问题收成小工具：大桶 list / diff、终端旁看 HTTP，以及尽量不把密钥和证据送上托管服务的本地 agent。",
+    whyLabel: "工具怎么分",
+    whyTitle: "两块内容，同一习惯",
+    whyBody: "存储相关工具共享同一个习惯：留下可检查的结果，副作用尽量留在本机，并写清楚工具不会做什么。",
+    whyStorageLabel: "对象存储",
+    whyStorageBody: "围绕 S3 兼容系统的盘点、排查与只读调查。",
+    whyPersonalLabel: "阅读与影音",
+    whyPersonalBody: "文档、时区、观影评分，以及用 Markdown 跟踪 agent 信号。",
+    whyClosing:
+      "它们不是套件，是彼此独立的工具；共同偏好是：该本地就本地、用事实而不是仪表盘、从问题到证据的路径要短。",
   },
 } as const;
 

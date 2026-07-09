@@ -69,6 +69,14 @@ export type AboutPageModel = BasePageModel & {
   hero: {
     eyebrow: string;
     lead: string;
+    body: string;
+  };
+  why: {
+    label: string;
+    title: string;
+    body: string;
+    lines: Array<{ label: string; body: string }>;
+    closing: string;
   };
   tools: {
     label: string;
@@ -79,7 +87,7 @@ export type AboutPageModel = BasePageModel & {
   };
   contact: {
     label: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
+    actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
   };
 };
 

@@ -20,7 +20,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         label: "Install",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "Back to profile", href: "/about/" },
+      secondaryCta: { label: "Matching FAQ", href: "/douban-movie-rating/#faq" },
       meta: doubanMeta,
       proof: [
         "Chrome Web Store: Entertainment",
@@ -112,7 +112,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         label: "安装扩展",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "返回简介", href: "/zh/about/" },
+      secondaryCta: { label: "匹配 FAQ", href: "/zh/douban-movie-rating/#faq" },
       meta: doubanMetaZh,
       proof: [
         "Chrome Web Store: Entertainment",
