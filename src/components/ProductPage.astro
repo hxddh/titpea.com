@@ -45,13 +45,13 @@ const isExternalHref = (href: string) => /^https?:\/\//.test(href);
       <p class="meta-line">{copy.meta}</p>
       {
         copy.proof.length > 0 && (
-          <p class="proof-line" aria-label="Product evidence">
+          <p class="meta-line proof-line" aria-label="Product evidence">
             {copy.proof.join(" · ")}
           </p>
         )
       }
     </div>
-    <div class="hero-visual-frame">
+    <div class="hero-visual-frame product-stage">
       <ProductVisual visual={model.visual} />
     </div>
   </section>

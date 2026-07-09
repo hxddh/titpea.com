@@ -49,41 +49,45 @@ const { model } = Astro.props;
     }
   </section>
 
-  <section id={model.storage.id} class="home-index shell">
-    <div class="home-index-heading">
-      <h2>{model.storage.title}</h2>
+  <section class="home-catalog shell" aria-label={model.hero.eyebrow}>
+    <div id={model.storage.id} class="home-catalog-col">
+      <div class="home-index-heading">
+        <h2>{model.storage.title}</h2>
+      </div>
+      <div class="work-list" role="list">
+        {
+          model.storage.items.map((item) => (
+            <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
+              <span class="work-row-name">{item.name}</span>
+              <span class="work-row-text">{item.text}</span>
+              {item.badge && <span class="work-row-meta">{item.badge}</span>}
+              <span class="work-row-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
+      </div>
     </div>
-    <div class="work-list" role="list">
-      {
-        model.storage.items.map((item) => (
-          <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
-            <span class="work-row-name">{item.name}</span>
-            <span class="work-row-text">{item.text}</span>
-            <span class="work-row-arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
-        ))
-      }
-    </div>
-  </section>
 
-  <section id={model.personal.id} class="home-index shell">
-    <div class="home-index-heading">
-      <h2>{model.personal.title}</h2>
-    </div>
-    <div class="work-list" role="list">
-      {
-        model.personal.items.map((item) => (
-          <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
-            <span class="work-row-name">{item.name}</span>
-            <span class="work-row-text">{item.text}</span>
-            <span class="work-row-arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
-        ))
-      }
+    <div id={model.personal.id} class="home-catalog-col">
+      <div class="home-index-heading">
+        <h2>{model.personal.title}</h2>
+      </div>
+      <div class="work-list" role="list">
+        {
+          model.personal.items.map((item) => (
+            <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
+              <span class="work-row-name">{item.name}</span>
+              <span class="work-row-text">{item.text}</span>
+              {item.badge && <span class="work-row-meta">{item.badge}</span>}
+              <span class="work-row-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </SiteLayout>
