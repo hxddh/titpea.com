@@ -9,7 +9,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     en: {
       title: "Storage Agent",
       description: "Native desktop agent for read-only investigations on S3-compatible storage.",
-      eyebrow: "Native desktop agent",
+      eyebrow: "Desktop · read-only",
       headline: "A native agent for object storage",
       lead: "Investigate S3-compatible storage in plain language—config, logs, inventory, errors—with findings cited to local evidence.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
@@ -68,7 +68,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     zh: {
       title: "Storage Agent",
       description: "面向 S3 兼容存储的本地原生 agent，只读调查，密钥和证据留在本机。",
-      eyebrow: "本地原生 agent",
+      eyebrow: "桌面 · 只读",
       headline: "对象存储的原生 agent",
       lead: "用大白话调查 S3 兼容存储：配置、日志、清单与报错；结论带本地证据引用。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },

@@ -9,7 +9,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
     en: {
       title: "PageWise",
       description: "Local desktop document agent for PDF text, OCR, and page-wise analysis.",
-      eyebrow: "Local desktop agent",
+      eyebrow: "Desktop · local files",
       headline: "Ask documents page by page",
       lead: "Get page-cited answers from local PDFs and images—extraction stays on disk; only text goes to your model.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.pagewiseReleases },
@@ -68,7 +68,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
     zh: {
       title: "PageWise",
       description: "本地桌面文档 agent：PDF 文本、OCR 与按页分析。",
-      eyebrow: "本地桌面 agent",
+      eyebrow: "桌面 · 本地文件",
       headline: "按页向文档提问",
       lead: "从本机 PDF 与图片得到带页码引用的回答——提取留在磁盘，只有文字发给你的模型。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.pagewiseReleases },

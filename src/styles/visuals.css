@@ -762,18 +762,19 @@
 .rating-scene {
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 16px;
 }
 
+/* Single primary shot — second image optional accent, not a second full stack */
 .clock-shot-stack {
   position: relative;
-  width: min(100%, 560px);
-  min-height: 430px;
+  width: min(100%, 380px);
+  min-height: 0;
 }
 
 .clock-shot {
-  position: absolute;
-  width: min(82%, 360px);
+  display: block;
+  width: 100%;
   height: auto;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -781,13 +782,16 @@
 }
 
 .clock-shot.light {
-  top: 0;
-  left: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .clock-shot.dark {
-  right: 0;
-  bottom: 0;
+  display: none;
+}
+
+.product-visual--inline .clock-shot.dark {
+  display: none;
 }
 
 .douban-shot-frame {

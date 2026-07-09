@@ -81,6 +81,12 @@
 
   .product-visual--stage {
     max-height: min(var(--visual-stage), 42vh);
+    overflow: hidden;
+  }
+
+  .product-visual--inline {
+    max-height: min(var(--visual-inline), 40vh);
+    overflow: hidden;
   }
 
   .home-evidence,

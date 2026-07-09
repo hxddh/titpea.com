@@ -1,6 +1,6 @@
 .site-header {
   display: flex;
-  min-height: 60px;
+  min-height: 56px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -18,19 +18,22 @@
 
 .brand {
   gap: 10px;
+  min-height: 44px;
   color: var(--ink);
-  font-weight: 760;
+  font-size: 15px;
+  font-weight: 680;
 }
 
 .brand-mark {
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   place-items: center;
-  border-radius: 8px;
+  border-radius: 7px;
   background: var(--ink);
   color: var(--on-ink);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .header-actions {
@@ -41,9 +44,9 @@
 .header-utilities {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-left: 18px;
-  padding-left: 18px;
+  gap: 8px;
+  margin-left: 16px;
+  padding-left: 16px;
   border-left: 1px solid var(--line);
 }
 
@@ -58,10 +61,10 @@
   border-bottom: 1px solid transparent;
   border-radius: 0;
   background: transparent;
-  padding: 12px 6px;
+  padding: 12px 8px;
   color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--sans);
+  font-size: 13px;
   line-height: 1;
   cursor: pointer;
 }
@@ -75,6 +78,8 @@
   min-width: 44px;
   min-height: 44px;
   padding: 12px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
 }
 
 .theme-label-light {
@@ -90,15 +95,20 @@
 }
 
 .nav {
-  gap: 18px;
+  gap: 6px;
   color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   border-bottom: 1px solid transparent;
-  padding: 4px 0;
+  padding: 10px 10px;
+  color: var(--label);
 }
 
 .nav a:hover,
@@ -109,15 +119,26 @@
   color: var(--ink);
 }
 
+.nav a[aria-current="page"] {
+  font-weight: 650;
+}
+
 .nav-dropdown {
   position: relative;
 }
 
 .nav-dropdown summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   list-style: none;
   border-bottom: 1px solid transparent;
-  padding: 4px 0;
+  padding: 10px 10px;
   cursor: pointer;
+  color: var(--label);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .nav-dropdown summary::-webkit-details-marker {
@@ -150,11 +171,14 @@
 }
 
 .nav-dropdown-panel a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
   border-bottom: 0;
   border-radius: 6px;
-  padding: 8px 10px;
+  padding: 8px 12px;
   color: var(--label);
+  font-size: 14px;
 }
 
 .nav-dropdown-panel a:hover,
@@ -200,25 +224,20 @@
 }
 
 .button.ghost {
-  border-color: transparent;
+  border-color: var(--soft-line);
   background: transparent;
-  padding-inline: 4px;
-  text-decoration: underline;
-  text-decoration-color: var(--soft-line);
-  text-underline-offset: 4px;
+  padding-inline: 16px;
+  text-decoration: none;
+  font-weight: 650;
 }
 
 .button.ghost:hover {
-  border-color: transparent;
-  text-decoration-color: var(--ink);
+  border-color: var(--ink);
+  background: transparent;
 }
 
 .button:hover {
   border-color: var(--ink);
-}
-
-.button.ghost:hover {
-  border-color: transparent;
 }
 
 .mobile-menu {
@@ -342,11 +361,14 @@
 }
 
 .product-section-index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   background: transparent;
-  padding: 8px 2px;
+  padding: 10px 2px;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;

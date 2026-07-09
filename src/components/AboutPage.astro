@@ -54,18 +54,19 @@ const { model } = Astro.props;
     <p class="about-all-products">
       <a class="text-link" href={model.featured.allProducts.href}>{model.featured.allProducts.label}</a>
     </p>
-  </section>
 
-  <section class="about-contact shell" aria-label={model.contact.label}>
-    <p class="section-kicker">{model.contact.label}</p>
-    <div class="actions about-contact-row">
-      {
-        model.contact.actions.map((action) => (
-          <a class="text-link" href={action.href} rel={action.external ? "noreferrer" : undefined}>
-            {action.label}
-          </a>
-        ))
-      }
+    {/* Keep .about-contact .actions for QA CTA floor; compact inline row. */}
+    <div class="about-contact about-contact-inline" aria-label={model.contact.label}>
+      <p class="section-kicker">{model.contact.label}</p>
+      <div class="actions about-contact-row">
+        {
+          model.contact.actions.map((action) => (
+            <a class="text-link" href={action.href} rel={action.external ? "noreferrer" : undefined}>
+              {action.label}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </SiteLayout>
