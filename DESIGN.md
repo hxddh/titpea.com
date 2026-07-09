@@ -12,11 +12,11 @@ and breathing room. Deleting chrome without restoring hierarchy is still a failu
 
 ## Page Roles (Do Not Collapse)
 
-| Page    | Job                                                       | Density | First-screen duty                                      |
-| ------- | --------------------------------------------------------- | ------- | ------------------------------------------------------ |
-| Home    | Positioning + product index                               | Sparse  | H1 + at least one product column visible               |
-| About   | Who / how they think + two representative works           | Sparse  | Person + principles (or person + works)                |
-| Product | Problem → evidence → usage → boundary → action            | Dense   | Problem + CTA + evidence hook (mock or metric)         |
+| Page    | Job                                             | Density | First-screen duty                              |
+| ------- | ----------------------------------------------- | ------- | ---------------------------------------------- |
+| Home    | Positioning + product index                     | Sparse  | H1 + at least one product column visible       |
+| About   | Who / how they think + two representative works | Sparse  | Person + principles (or person + works)        |
+| Product | Problem → evidence → usage → boundary → action  | Dense   | Problem + CTA + evidence hook (mock or metric) |
 
 Home must feel **sparser** than product pages. Never copy product-page structure onto Home.
 
