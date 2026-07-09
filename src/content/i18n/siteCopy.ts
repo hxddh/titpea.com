@@ -1,11 +1,10 @@
 export const ui = {
   en: {
     productIndex: "Cloud storage PM · builder",
-    homeTitle: "Products I build, in two lines",
+    homeTitle: "Products I build",
     homeDescription:
       "By hxddh — independent products for S3-compatible storage and local agents, plus utilities for reading, time zones, and film.",
-    homeLead:
-      "Independent products for S3-compatible storage investigation—and local agents plus everyday reading tools.",
+    homeLead: "Two lines: S3-compatible storage products, and local agents plus everyday reading tools.",
     storageLine: "Object storage",
     storageTitle: "Products for S3-compatible storage",
     personalLine: "Reading & media",

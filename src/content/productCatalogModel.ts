@@ -25,11 +25,10 @@ function catalogBadge(slug: ProductSlug, locale: Locale): string | undefined {
   return undefined;
 }
 
-function sortForDisplay(items: ProductCatalogItem[]) {
-  // Primary first so a 2-column grid never leaves a half-row hole before the flagship.
+function sortForDisplay(items: Array<ProductCatalogItem & { order: number }>) {
   return [...items].sort((left, right) => {
     if (Boolean(left.isPrimary) !== Boolean(right.isPrimary)) return left.isPrimary ? -1 : 1;
-    return 0;
+    return left.order - right.order;
   });
 }
 
@@ -45,29 +44,53 @@ export function productCatalogModel(locale: Locale) {
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
     return [copy.doubanText, copy.doubanRole];
   };
-  const catalogItems = productManifest
-    .map((item) => {
-      const product = indexedProduct(item.slug, locale);
-      const [text, displayRole] = catalogText(item.slug);
-      return {
-        id: item.slug,
-        number: item.group === "storage" ? String(item.catalog.order).padStart(2, "0") : undefined,
-        name: item.group === "personal" ? localizedProductTitle(item.slug, locale) : product.name,
-        href: product.href,
-        text,
-        displayRole,
-        badge: catalogBadge(item.slug, locale),
-        slug: item.slug,
-        isPrimary: item.catalog.primary,
-        group: item.group,
-        order: item.catalog.order,
-      };
-    })
-    .sort((left, right) => left.order - right.order)
-    .map(({ order: _order, ...item }) => item satisfies ProductCatalogItem);
 
-  const storage = sortForDisplay(catalogItems.filter((item) => item.group === "storage"));
-  const personal = sortForDisplay(catalogItems.filter((item) => item.group === "personal"));
+  const raw = productManifest.map((item) => {
+    const product = indexedProduct(item.slug, locale);
+    const [text, displayRole] = catalogText(item.slug);
+    return {
+      id: item.slug,
+      name: item.group === "personal" ? localizedProductTitle(item.slug, locale) : product.name,
+      href: product.href,
+      text,
+      displayRole,
+      badge: catalogBadge(item.slug, locale),
+      slug: item.slug,
+      isPrimary: item.catalog.primary,
+      group: item.group,
+      order: item.catalog.order,
+    };
+  });
+
+  // Primary first, then catalog order. Renumber storage for display so labels match layout.
+  const storageSorted = sortForDisplay(raw.filter((item) => item.group === "storage"));
+  const personalSorted = sortForDisplay(raw.filter((item) => item.group === "personal"));
+
+  const storage: ProductCatalogItem[] = storageSorted.map((item, index) => ({
+    id: item.id,
+    number: String(index + 1).padStart(2, "0"),
+    name: item.name,
+    href: item.href,
+    text: item.text,
+    displayRole: item.displayRole,
+    badge: item.badge,
+    isPrimary: item.isPrimary,
+    slug: item.slug,
+    group: item.group,
+  }));
+
+  const personal: ProductCatalogItem[] = personalSorted.map((item) => ({
+    id: item.id,
+    name: item.name,
+    href: item.href,
+    text: item.text,
+    displayRole: item.displayRole,
+    badge: item.badge,
+    isPrimary: item.isPrimary,
+    slug: item.slug,
+    group: item.group,
+  }));
+
   const flagship = storage.find((item) => item.slug === "storage-agent-workbench") ?? storage[0];
   const personalFlagship = personal.find((item) => item.slug === "pagewise") ?? personal[0];
 

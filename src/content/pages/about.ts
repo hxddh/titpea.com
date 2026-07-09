@@ -36,9 +36,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     .map((item) => ({
       name: item.name,
       href: item.href,
-      role: item.displayRole,
       text: item.text,
-      badge: item.badge,
     }));
 
   return {
@@ -72,11 +70,13 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
           label: pageCopy.whyStorageLabel,
           body: pageCopy.whyStorageBody,
           href: `${homePath}#storage`,
+          browseLabel: `${pageCopy.browseLine} →`,
         },
         {
           label: pageCopy.whyPersonalLabel,
           body: pageCopy.whyPersonalBody,
           href: `${homePath}#personal`,
+          browseLabel: `${pageCopy.browseLine} →`,
         },
       ],
       closing: pageCopy.whyClosing,
