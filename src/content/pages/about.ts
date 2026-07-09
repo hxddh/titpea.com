@@ -5,6 +5,7 @@ import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { AboutPageModel } from "./types";
 import type { Locale } from "../../lib/site";
+import { pathFor } from "../../lib/site";
 
 export function buildAboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
@@ -12,7 +13,10 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
   const catalog = productCatalogModel(locale);
   const path = pagePath(locale, "about");
   const alternatePath = pagePath(alternateLocale(locale), "about");
+  const homePath = pathFor(locale);
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
+  const flagship = catalog.flagship;
+  const personalFlagship = catalog.personalFlagship;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
@@ -27,13 +31,23 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     },
   };
 
+  const featuredItems = [flagship, personalFlagship]
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .map((item) => ({
+      name: item.name,
+      href: item.href,
+      role: item.displayRole,
+      text: item.text,
+      badge: item.badge,
+    }));
+
   return {
     kind: "about",
     locale,
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutLead, pageCopy.whyTitle, pageCopy.productsLabel, catalog.storage[0]?.name ?? ""],
+    expectedText: [copy.aboutLead, pageCopy.whyTitle, pageCopy.productsLabel, flagship?.name ?? ""],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -54,35 +68,26 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       title: pageCopy.whyTitle,
       body: pageCopy.whyBody,
       lines: [
-        { label: pageCopy.whyStorageLabel, body: pageCopy.whyStorageBody },
-        { label: pageCopy.whyPersonalLabel, body: pageCopy.whyPersonalBody },
+        {
+          label: pageCopy.whyStorageLabel,
+          body: pageCopy.whyStorageBody,
+          href: `${homePath}#storage`,
+        },
+        {
+          label: pageCopy.whyPersonalLabel,
+          body: pageCopy.whyPersonalBody,
+          href: `${homePath}#personal`,
+        },
       ],
       closing: pageCopy.whyClosing,
     },
-    tools: {
+    featured: {
       label: pageCopy.productsLabel,
-      lines: [
-        {
-          label: copy.storageLine,
-          items: catalog.storage.map((item) => ({
-            name: item.name,
-            href: item.href,
-            role: item.displayRole,
-            text: item.text,
-            badge: item.badge,
-          })),
-        },
-        {
-          label: copy.personalLine,
-          items: catalog.personal.map((item) => ({
-            name: item.name,
-            href: item.href,
-            role: item.displayRole,
-            text: item.text,
-            badge: item.badge,
-          })),
-        },
-      ],
+      items: featuredItems,
+      allProducts: {
+        label: pageCopy.allProductsLabel,
+        href: homePath,
+      },
     },
     contact: {
       label: pageCopy.contactLabel,
