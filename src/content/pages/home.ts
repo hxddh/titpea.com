@@ -69,6 +69,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       ],
       visual: visualModel("storageWorkbench", locale, pageCopy.homeFlagshipVisual),
       visualHref: flagshipHref,
+      proofCaption: pageCopy.proofCaption,
     },
     storage: {
       id: "storage",
