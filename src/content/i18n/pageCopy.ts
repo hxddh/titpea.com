@@ -3,7 +3,7 @@ export const aboutModelCopy = {
     contactLabel: "Contact",
     toolsLabel: "Tools",
     heroBody:
-      "I work on cloud object storage by day. On the side I ship small tools for jobs that keep showing up: list and diff large buckets, inspect HTTP beside a command, and run local agents without sending credentials or evidence to a hosted service.",
+      "Cloud object storage by day. On the side I ship small tools for large-bucket work, HTTP inspection, and local agents.",
     whyLabel: "How the catalog is organized",
     whyTitle: "Two lines, one habit",
     whyBody:
@@ -18,8 +18,7 @@ export const aboutModelCopy = {
   zh: {
     contactLabel: "联系",
     toolsLabel: "工具",
-    heroBody:
-      "白天做云对象存储相关的产品；业余时间把反复遇到的问题收成小工具：大桶 list / diff、终端旁看 HTTP，以及尽量不把密钥和证据送上托管服务的本地 agent。",
+    heroBody: "白天做云对象存储；业余把常遇问题收成小工具：大桶盘点、HTTP 查看与本地 agent。",
     whyLabel: "工具怎么分",
     whyTitle: "两块内容，同一习惯",
     whyBody: "存储相关工具共享同一个习惯：留下可检查的结果，副作用尽量留在本机，并写清楚工具不会做什么。",
