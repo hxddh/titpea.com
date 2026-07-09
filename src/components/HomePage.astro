@@ -45,7 +45,6 @@ const { model } = Astro.props;
             <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
               <span class="work-row-name">{item.name}</span>
               <span class="work-row-text">{item.text}</span>
-              {item.badge && <span class="work-row-meta">{item.badge}</span>}
               <span class="work-row-arrow" aria-hidden="true">
                 →
               </span>
@@ -63,7 +62,6 @@ const { model } = Astro.props;
             <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
               <span class="work-row-name">{item.name}</span>
               <span class="work-row-text">{item.text}</span>
-              {item.badge && <span class="work-row-meta">{item.badge}</span>}
               <span class="work-row-arrow" aria-hidden="true">
                 →
               </span>
