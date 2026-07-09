@@ -540,9 +540,13 @@
   background: var(--line);
 }
 
-.agent-manifest-grid,
-.agent-evidence-grid {
+.agent-manifest-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Three evidence metrics as one desktop row; mobile collapses in responsive.css. */
+.agent-evidence-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .benchmark-kpis div,

@@ -492,23 +492,56 @@
   font-size: 12px;
 }
 
-.about-tool-links {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  gap: 0;
+.about-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.about-tool-links a {
+.about-tool-card {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: var(--panel);
   color: var(--ink);
-  font-size: 17px;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.about-tool-card:hover {
+  border-color: var(--ink);
+  background: var(--raised);
+}
+
+.about-tool-card span {
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.about-tool-card strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.about-tool-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
   line-height: 1.5;
 }
 
-.about-tool-links a:not(:first-child)::before {
-  margin: 0 10px;
-  color: var(--muted);
-  content: "·";
+@media (max-width: 640px) {
+  .about-tool-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about-contact .section-kicker {

@@ -82,27 +82,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "Local and read-only",
-      positioning: [
-        {
-          title: "Keys in a local vault",
-          body: "Credentials live in an encrypted vault on your machine and are never written to logs, reports, or model prompts.",
-          intent: "boundary",
-          surface: "agent",
-        },
-        {
-          title: "Read-only cloud access",
-          body: "The agent can inspect but not write: no deletes, no overwrites, no configuration changes.",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "You approve data movement",
-          body: "Downloads, large scans, and dataset analysis always ask first — nothing leaves without your go-ahead.",
-          intent: "boundary",
-          surface: "artifact",
-        },
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -202,27 +181,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           title: "你来拍板",
           body: "看完综合诊断，涉及搬数据的再点确认，带着证据动手。",
           intent: "workflow",
-          surface: "artifact",
-        },
-      ],
-      positioningLabel: "本地 · 只读",
-      positioning: [
-        {
-          title: "密钥进本机保险库",
-          body: "凭证存在本机加密保险库里，绝不写进日志、报告或模型提示词。",
-          intent: "boundary",
-          surface: "agent",
-        },
-        {
-          title: "云访问只读",
-          body: "agent 只能看、不能写：不删除、不覆盖、不改配置。",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "搬数据你说了算",
-          body: "下载、大规模扫描、数据集分析都会先问你——没有你的同意什么都不会外流。",
-          intent: "boundary",
           surface: "artifact",
         },
       ],

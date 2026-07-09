@@ -10,7 +10,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
       title: "PageWise",
       description: "Local desktop document agent for PDF text, OCR, and page-wise analysis.",
       eyebrow: "Local desktop agent",
-      headline: "Ask questions about your documents",
+      headline: "Ask documents page by page",
       lead: "Open a PDF or image, chat page by page, and get answers that cite the pages used. Extraction and OCR stay local; only text goes to your model.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       secondaryCta: { label: "How a session runs", href: "/pagewise/#workflow" },
@@ -82,27 +82,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "Local and private",
-      positioning: [
-        {
-          title: "Documents stay on disk",
-          body: "Files are read from your machine. PageWise does not upload your PDFs or images to a server.",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
-          title: "Only text goes to your model",
-          body: "Extracted text is sent to the LLM provider you configure — nothing else leaves without your setup.",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "You own the keys",
-          body: "Provider credentials live in a local store. There is no hosted account or shared API key.",
-          intent: "boundary",
-          surface: "agent",
-        },
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -133,7 +112,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
       title: "PageWise",
       description: "本地桌面文档 agent：PDF 文本、OCR 与按页分析。",
       eyebrow: "本地桌面 agent",
-      headline: "对着文档直接问",
+      headline: "按页向文档提问",
       lead: "打开 PDF 或图片，按页阅读，和 agent 对话——它会标明引用了哪几页。文本提取和 OCR 在本机完成，只有提取出的文字会发给你配置的模型。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       secondaryCta: { label: "一次会话怎么跑", href: "/zh/pagewise/#workflow" },
@@ -203,27 +182,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           body: "回答会标明具体页码。是否采信由你决定。",
           intent: "workflow",
           surface: "artifact",
-        },
-      ],
-      positioningLabel: "本地 · 私密",
-      positioning: [
-        {
-          title: "文档留在磁盘",
-          body: "文件从本机读取。PageWise 不会把你的 PDF 或图片上传到服务器。",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
-          title: "只有文字发给模型",
-          body: "提取出的文本会发给你配置的 LLM 提供商——除此之外不会擅自外传。",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "密钥在你手里",
-          body: "提供商凭证存在本地。没有托管账号，也没有共用 API key。",
-          intent: "boundary",
-          surface: "agent",
         },
       ],
       faqLabel: "问题与用法",

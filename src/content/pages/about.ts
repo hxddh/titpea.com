@@ -64,11 +64,21 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       lines: [
         {
           label: copy.storageLine,
-          items: catalog.storage.map((item) => ({ name: item.name, href: item.href })),
+          items: catalog.storage.map((item) => ({
+            name: item.name,
+            href: item.href,
+            role: item.displayRole,
+            text: item.text,
+          })),
         },
         {
           label: copy.personalLine,
-          items: catalog.personal.map((item) => ({ name: item.name, href: item.href })),
+          items: catalog.personal.map((item) => ({
+            name: item.name,
+            href: item.href,
+            role: item.displayRole,
+            text: item.text,
+          })),
         },
       ],
     },

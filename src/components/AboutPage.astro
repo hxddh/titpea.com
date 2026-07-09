@@ -45,11 +45,15 @@ const { model } = Astro.props;
       model.tools.lines.map((line) => (
         <div class="about-tool-line">
           <p class="about-tool-line-label">{line.label}</p>
-          <p class="about-tool-links">
+          <div class="about-tool-grid">
             {line.items.map((item) => (
-              <a href={item.href}>{item.name}</a>
+              <a class="about-tool-card" href={item.href}>
+                {item.role && <span>{item.role}</span>}
+                <strong>{item.name}</strong>
+                {item.text && <p>{item.text}</p>}
+              </a>
             ))}
-          </p>
+          </div>
         </div>
       ))
     }

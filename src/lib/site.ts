@@ -110,7 +110,6 @@ export type BrowserExtensionProductCopy = ProductCopy & {
 export type AgentWorkbenchProductCopy = ProductCopy & {
   features: ProductContentCard[];
   workflow: ProductContentCard[];
-  positioning: ProductContentCard[];
   faq: ProductContentCard[];
 };
 
