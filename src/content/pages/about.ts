@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutLead, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
+    expectedText: [copy.aboutLead, pageCopy.whyTitle, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -47,6 +47,17 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     hero: {
       eyebrow: copy.aboutTitle,
       lead: copy.aboutLead,
+      body: pageCopy.heroBody,
+    },
+    why: {
+      label: pageCopy.whyLabel,
+      title: pageCopy.whyTitle,
+      body: pageCopy.whyBody,
+      lines: [
+        { label: pageCopy.whyStorageLabel, body: pageCopy.whyStorageBody },
+        { label: pageCopy.whyPersonalLabel, body: pageCopy.whyPersonalBody },
+      ],
+      closing: pageCopy.whyClosing,
     },
     tools: {
       label: pageCopy.toolsLabel,
@@ -64,7 +75,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     contact: {
       label: pageCopy.contactLabel,
       actions: [
-        { label: "GitHub", href: siteConfig.externalLinks.github, style: "primary" },
+        { label: "GitHub", href: siteConfig.externalLinks.github, style: "primary", external: true },
         { label: "Email", href: `mailto:${siteConfig.email}`, style: "ghost" },
       ],
     },

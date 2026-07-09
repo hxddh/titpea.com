@@ -17,6 +17,7 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
+const isExternalHref = (href: string) => /^https?:\/\//.test(href);
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -26,8 +27,20 @@ const copy = model.copy;
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
       <div class="actions">
-        <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
-        <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
+        <a
+          class="button primary"
+          href={copy.primaryCta.href}
+          rel={isExternalHref(copy.primaryCta.href) ? "noreferrer" : undefined}
+        >
+          {copy.primaryCta.label}
+        </a>
+        <a
+          class="button ghost"
+          href={copy.secondaryCta.href}
+          rel={isExternalHref(copy.secondaryCta.href) ? "noreferrer" : undefined}
+        >
+          {copy.secondaryCta.label}
+        </a>
       </div>
       <p class="meta-line">{copy.meta}</p>
     </div>
@@ -76,7 +89,11 @@ const copy = model.copy;
     copy.finalCta && (
       <section class="shell final-cta">
         <h2>{copy.finalCta}</h2>
-        <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">
+        <a
+          class="button primary"
+          href={copy.primaryCta.href}
+          rel={isExternalHref(copy.primaryCta.href) ? "noreferrer" : undefined}
+        >
           {copy.finalCtaLabel ?? copy.primaryCta.label}
         </a>
       </section>

@@ -14,7 +14,27 @@ const { model } = Astro.props;
     <div class="about-redesign-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.lead}</h1>
+      <p class="lead about-hero-body">{model.hero.body}</p>
     </div>
+  </section>
+
+  <section class="about-why shell" aria-labelledby="about-why-heading">
+    <div class="about-section-heading">
+      <p class="section-kicker">{model.why.label}</p>
+      <h2 id="about-why-heading">{model.why.title}</h2>
+      <p>{model.why.body}</p>
+    </div>
+    <ul class="about-why-lines">
+      {
+        model.why.lines.map((line) => (
+          <li>
+            <strong>{line.label}</strong>
+            <span>{line.body}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="about-why-closing">{model.why.closing}</p>
   </section>
 
   <section class="about-tool-index shell" aria-labelledby="about-tools-heading">
@@ -40,7 +60,7 @@ const { model } = Astro.props;
     <div class="actions about-contact-row">
       {
         model.contact.actions.map((action) => (
-          <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
+          <a class:list={["button", action.style]} href={action.href} rel={action.external ? "noreferrer" : undefined}>
             {action.label}
           </a>
         ))

@@ -31,6 +31,75 @@
   line-height: 1.2;
 }
 
+.about-hero-body {
+  max-width: 58ch;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.about-why {
+  border-top: 1px solid var(--line);
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+
+.about-why .about-section-heading {
+  max-width: 64ch;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.about-why .about-section-heading h2 {
+  margin: 8px 0 14px;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.about-why-lines {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.about-why-lines li {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: var(--panel);
+}
+
+.about-why-lines strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.about-why-lines span {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-why-closing {
+  max-width: 58ch;
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+  text-wrap: pretty;
+}
+
 .meta-line {
   max-width: 64ch;
   margin: 18px auto 0;

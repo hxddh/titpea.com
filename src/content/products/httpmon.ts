@@ -55,7 +55,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "Inspect the next request in place",
+      finalCta: "Wrap the next command",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & use",
       faq: [
@@ -123,7 +123,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "在原地看清下一条请求",
+      finalCta: "包住下一条命令再看",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与用法",
       faq: [
