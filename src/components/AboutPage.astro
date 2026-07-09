@@ -28,8 +28,10 @@ const { model } = Astro.props;
       {
         model.why.lines.map((line) => (
           <li>
-            <strong>{line.label}</strong>
-            <span>{line.body}</span>
+            <a class="about-why-line-link" href={line.href}>
+              <strong>{line.label}</strong>
+              <span>{line.body}</span>
+            </a>
           </li>
         ))
       }
@@ -37,29 +39,26 @@ const { model } = Astro.props;
     <p class="about-why-closing">{model.why.closing}</p>
   </section>
 
-  <section class="about-tool-index shell" aria-labelledby="about-tools-heading">
+  <section class="about-featured shell" aria-labelledby="about-featured-heading">
     <div class="about-section-heading">
-      <p class="section-kicker" id="about-tools-heading">{model.tools.label}</p>
+      <p class="section-kicker" id="about-featured-heading">{model.featured.label}</p>
     </div>
-    {
-      model.tools.lines.map((line) => (
-        <div class="about-tool-line">
-          <p class="about-tool-line-label">{line.label}</p>
-          <div class="about-tool-grid">
-            {line.items.map((item) => (
-              <a class="about-tool-card" href={item.href}>
-                <div class="about-tool-card-meta">
-                  {item.role && <span>{item.role}</span>}
-                  {item.badge && <em class="catalog-badge">{item.badge}</em>}
-                </div>
-                <strong>{item.name}</strong>
-                {item.text && <p>{item.text}</p>}
-              </a>
-            ))}
-          </div>
-        </div>
-      ))
-    }
+    <div class="about-tool-grid about-featured-grid">
+      {
+        model.featured.items.map((item) => (
+          <a class="about-tool-card primary" href={item.href}>
+            <div class="about-tool-card-meta">
+              {item.badge ? <span>{item.badge}</span> : item.role ? <span>{item.role}</span> : null}
+            </div>
+            <strong>{item.name}</strong>
+            {item.text && <p>{item.text}</p>}
+          </a>
+        ))
+      }
+    </div>
+    <div class="about-all-products">
+      <a class="button ghost" href={model.featured.allProducts.href}>{model.featured.allProducts.label}</a>
+    </div>
   </section>
 
   <section class="about-contact shell" aria-label={model.contact.label}>

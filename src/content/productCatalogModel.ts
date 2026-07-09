@@ -25,6 +25,14 @@ function catalogBadge(slug: ProductSlug, locale: Locale): string | undefined {
   return undefined;
 }
 
+function sortForDisplay(items: ProductCatalogItem[]) {
+  // Primary first so a 2-column grid never leaves a half-row hole before the flagship.
+  return [...items].sort((left, right) => {
+    if (Boolean(left.isPrimary) !== Boolean(right.isPrimary)) return left.isPrimary ? -1 : 1;
+    return 0;
+  });
+}
+
 export function productCatalogModel(locale: Locale) {
   const copy = catalogCopy[locale];
   const catalogText = (slug: ProductSlug): [string, string] => {
@@ -57,14 +65,18 @@ export function productCatalogModel(locale: Locale) {
     })
     .sort((left, right) => left.order - right.order)
     .map(({ order: _order, ...item }) => item satisfies ProductCatalogItem);
-  const storage = catalogItems.filter((item) => item.group === "storage");
-  const personal = catalogItems.filter((item) => item.group === "personal");
+
+  const storage = sortForDisplay(catalogItems.filter((item) => item.group === "storage"));
+  const personal = sortForDisplay(catalogItems.filter((item) => item.group === "personal"));
   const flagship = storage.find((item) => item.slug === "storage-agent-workbench") ?? storage[0];
+  const personalFlagship = personal.find((item) => item.slug === "pagewise") ?? personal[0];
 
   return {
     storage,
     personal,
     all: [...storage, ...personal],
     featuredProductPath: flagship?.href ?? storage[0]?.href ?? "/",
+    flagship,
+    personalFlagship,
   };
 }

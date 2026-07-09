@@ -16,8 +16,9 @@ export function buildHomePage(locale: Locale): HomePageModel {
   const alternatePath = pagePath(alternateLocale(locale));
   const description = copy.homeDescription;
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
-  const flagship = catalog.storage.find((item) => item.slug === "storage-agent-workbench");
-  const personalFlagship = catalog.personal.find((item) => item.slug === "pagewise");
+  const flagship = catalog.flagship;
+  const personalFlagship = catalog.personalFlagship;
+  const flagshipHref = flagship?.href ?? catalog.featuredProductPath;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -38,7 +39,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     current: "home",
     path,
     alternatePath,
-    primaryCta: flagship?.href ?? catalog.featuredProductPath,
+    primaryCta: flagshipHref,
     expectedText: [copy.homeTitle, copy.storageTitle, copy.personalTitle],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
@@ -57,7 +58,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       actions: [
         {
           label: flagship?.name ?? "Storage Agent",
-          href: flagship?.href ?? catalog.featuredProductPath,
+          href: flagshipHref,
           style: "primary",
         },
         {
@@ -67,13 +68,16 @@ export function buildHomePage(locale: Locale): HomePageModel {
         },
       ],
       visual: visualModel("storageWorkbench", locale, pageCopy.homeFlagshipVisual),
+      visualHref: flagshipHref,
     },
     storage: {
+      id: "storage",
       label: copy.storageLine,
       title: copy.storageTitle,
       items: catalog.storage,
     },
     personal: {
+      id: "personal",
       label: copy.personalLine,
       title: copy.personalTitle,
       items: catalog.personal,

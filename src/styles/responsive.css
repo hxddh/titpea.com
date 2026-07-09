@@ -49,11 +49,42 @@
     padding-bottom: 54px;
   }
 
+  .home-hero-with-visual {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .home-hero-with-visual .home-copy {
+    text-align: center;
+  }
+
+  .home-hero-with-visual .home-copy h1 {
+    margin-inline: auto;
+  }
+
+  .home-hero-with-visual .actions {
+    justify-content: center;
+  }
+
+  .home-flagship-visual {
+    max-height: none;
+  }
+
+  .home-flagship-visual .workbench-visual {
+    transform: none;
+  }
+
   .home-hero h1,
   .about-hero h1,
   .product-hero h1 {
     max-width: 18ch;
     font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+
+  .storage-catalog-grid .catalog-card.primary,
+  .personal-catalog-grid .catalog-card.primary {
+    min-height: 190px;
+    padding: 28px;
   }
 
   .home-evidence,

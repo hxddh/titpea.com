@@ -8,6 +8,14 @@ interface Props {
 }
 
 const { model } = Astro.props;
+
+function metaLabel(item: HomePageModel["storage"]["items"][number]) {
+  // Single label layer: number + form badge (or role if no badge).
+  if (item.number && item.badge) return `${item.number} · ${item.badge}`;
+  if (item.badge) return item.badge;
+  if (item.number) return `${item.number} · ${item.displayRole}`;
+  return item.displayRole;
+}
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -30,12 +38,12 @@ const { model } = Astro.props;
         }
       </div>
     </div>
-    <div class="hero-visual-frame home-flagship-visual" aria-label={model.hero.visual.label}>
+    <a class="hero-visual-frame home-flagship-visual" href={model.hero.visualHref} aria-label={model.hero.visual.label}>
       <ProductVisual visual={model.hero.visual} />
-    </div>
+    </a>
   </section>
 
-  <section class="home-catalog shell">
+  <section id={model.storage.id} class="home-catalog shell">
     <div class="catalog-heading">
       <p class="section-kicker">{model.storage.label}</p>
       <h2>{model.storage.title}</h2>
@@ -45,8 +53,7 @@ const { model } = Astro.props;
         model.storage.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
             <div class="catalog-card-meta">
-              <span>{item.number ? `${item.number} · ${item.displayRole}` : item.displayRole}</span>
-              {item.badge && <em class="catalog-badge">{item.badge}</em>}
+              <span>{metaLabel(item)}</span>
             </div>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
@@ -56,7 +63,7 @@ const { model } = Astro.props;
     </div>
   </section>
 
-  <section class="home-catalog shell home-personal-catalog">
+  <section id={model.personal.id} class="home-catalog shell home-personal-catalog">
     <div class="catalog-heading">
       <p class="section-kicker">{model.personal.label}</p>
       <h2>{model.personal.title}</h2>
@@ -66,8 +73,7 @@ const { model } = Astro.props;
         model.personal.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
             <div class="catalog-card-meta">
-              <span>{item.displayRole}</span>
-              {item.badge && <em class="catalog-badge">{item.badge}</em>}
+              <span>{metaLabel(item)}</span>
             </div>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
