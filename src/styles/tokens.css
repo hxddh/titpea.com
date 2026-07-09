@@ -3,107 +3,111 @@
   --section-index-desktop-scroll-margin: 112px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
-  --paper: #f7f6f3;
+
+  /* Warm editorial paper — no clinical blue-gray */
+  --paper: #f5f3ee;
   --panel: #ffffff;
-  --ink: #111827;
-  --muted: #5c6573;
-  --faint: #8b95a5;
-  --line: #e4e2dc;
-  --soft-line: #d0cdc4;
-  /* Semantic surface tokens. Light values match the literals they replaced,
-     so light mode is unchanged; the dark blocks below remap them. */
+  --ink: #14120f;
+  --muted: #5c574f;
+  --faint: #8a847a;
+  --line: #e3dfd6;
+  --soft-line: #cfc9bd;
   --on-ink: #ffffff;
-  --label: #667085;
-  --raised: #fbfcff;
-  --chip-bg: #eef2ff;
-  --chip-ink: #394150;
-  --active-bg: #f3f4f6;
-  /* Translucent veils and the grid backdrop are tokens too, so dark mode is a
-     pure token remap with no per-selector overrides. */
-  --grid-line: rgba(17, 24, 39, 0.025);
+  --label: #6b665c;
+  --raised: #faf8f4;
+  --chip-bg: #eeeae2;
+  --chip-ink: #3d3a34;
+  --active-bg: #ebe7de;
+  --grid-line: transparent;
   --menu-veil: rgba(255, 255, 255, 0.98);
-  --index-veil: rgba(249, 250, 252, 0.94);
-  --proof-veil: rgba(255, 255, 255, 0.72);
-  /* Semantic data colors: reference (baseline) and caution (outlier). */
+  --index-veil: rgba(245, 243, 238, 0.94);
+  --proof-veil: rgba(255, 255, 255, 0.8);
   --data-ref: #16805c;
   --data-ref-ink: #126547;
   --data-caution: #c27a17;
   --data-caution-ink: #985b0a;
+
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --shadow-soft: 0 24px 60px rgba(17, 24, 39, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
-  --shadow-stage: 0 20px 60px rgba(17, 24, 39, 0.07), 0 2px 8px rgba(17, 24, 39, 0.04);
-  --radius-card: 10px;
+
+  --shadow-soft: 0 16px 40px rgba(20, 18, 15, 0.08), 0 2px 6px rgba(20, 18, 15, 0.04);
+  --shadow-stage: 0 16px 48px rgba(20, 18, 15, 0.08), 0 2px 6px rgba(20, 18, 15, 0.04);
+
+  --radius-card: 8px;
   --radius-control: 999px;
-  --section-y: 64px;
-  --section-y-lg: 96px;
-  --card-pad: 24px;
-  --card-pad-compact: 18px;
+
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
   --space-5: 48px;
   --space-6: 64px;
-  --measure: 58ch;
+  --section-y: 56px;
+  --section-y-lg: 80px;
+  --card-pad: 20px;
+  --card-pad-compact: 16px;
+
+  --measure: 56ch;
   --measure-narrow: 42ch;
+
+  /* Product visual size contract */
+  --visual-thumb: 120px;
+  --visual-inline: 360px;
+  --visual-stage: 480px;
 }
 
-/* Dark theme. Applied when the OS prefers dark (unless the visitor forced
-   light) or when data-theme="dark" is set by the header toggle. The two
-   selectors share the same declarations; keep them in sync. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #0d1117;
-  --panel: #161b22;
-  --ink: #e6edf3;
-  --muted: #9aa7b4;
-  --faint: #6b7685;
-  --line: #272e38;
-  --soft-line: #39424e;
-  --on-ink: #0d1117;
-  --label: #8d99a8;
-  --raised: #1c222c;
-  --chip-bg: #1d2531;
-  --chip-ink: #c6d2df;
-  --active-bg: #232b36;
-  --grid-line: rgba(255, 255, 255, 0.035);
-  --menu-veil: rgba(22, 27, 34, 0.98);
-  --index-veil: rgba(13, 17, 23, 0.92);
-  --proof-veil: rgba(28, 34, 44, 0.6);
+  --paper: #11100e;
+  --panel: #1a1916;
+  --ink: #f0ebe3;
+  --muted: #a39e94;
+  --faint: #7a756b;
+  --line: #2c2a25;
+  --soft-line: #3d3a33;
+  --on-ink: #11100e;
+  --label: #9a958a;
+  --raised: #22201c;
+  --chip-bg: #2a2722;
+  --chip-ink: #d4cfc4;
+  --active-bg: #2a2722;
+  --grid-line: transparent;
+  --menu-veil: rgba(26, 25, 22, 0.98);
+  --index-veil: rgba(17, 16, 14, 0.94);
+  --proof-veil: rgba(26, 25, 22, 0.7);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
   --data-caution-ink: #edb472;
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-stage: 0 20px 60px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-stage: 0 16px 48px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #0d1117;
-    --panel: #161b22;
-    --ink: #e6edf3;
-    --muted: #9aa7b4;
-    --faint: #6b7685;
-    --line: #272e38;
-    --soft-line: #39424e;
-    --on-ink: #0d1117;
-    --label: #8d99a8;
-    --raised: #1c222c;
-    --chip-bg: #1d2531;
-    --chip-ink: #c6d2df;
-    --active-bg: #232b36;
-    --grid-line: rgba(255, 255, 255, 0.035);
-    --menu-veil: rgba(22, 27, 34, 0.98);
-    --index-veil: rgba(13, 17, 23, 0.92);
-    --proof-veil: rgba(28, 34, 44, 0.6);
+    --paper: #11100e;
+    --panel: #1a1916;
+    --ink: #f0ebe3;
+    --muted: #a39e94;
+    --faint: #7a756b;
+    --line: #2c2a25;
+    --soft-line: #3d3a33;
+    --on-ink: #11100e;
+    --label: #9a958a;
+    --raised: #22201c;
+    --chip-bg: #2a2722;
+    --chip-ink: #d4cfc4;
+    --active-bg: #2a2722;
+    --grid-line: transparent;
+    --menu-veil: rgba(26, 25, 22, 0.98);
+    --index-veil: rgba(17, 16, 14, 0.94);
+    --proof-veil: rgba(26, 25, 22, 0.7);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
-    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
-    --shadow-stage: 0 20px 60px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+    --shadow-stage: 0 16px 48px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 }

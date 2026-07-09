@@ -20,6 +20,15 @@ and breathing room. Deleting chrome without restoring hierarchy is still a failu
 
 Home must feel **sparser** than product pages. Never copy product-page structure onto Home.
 
+### Hard gates (index-first)
+
+These are merge blockers, not aesthetics:
+
+- Home @ 1440×900: at least **6** `.work-row` elements intersect the first viewport.
+- Home intro block height (`.home-intro` / `.home-hero.home-intro`) **≤ 320px**.
+- Home must **not** render a large product mock as the primary first-screen object.
+- Product stage (`.product-visual--stage`) max-height **≤ min(52vh, 480px)**.
+
 ## Aesthetic Non-Negotiables
 
 These override convenience. If a change is “more correct” but makes the surface louder, rework it.

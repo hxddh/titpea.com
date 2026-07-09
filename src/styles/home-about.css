@@ -1,5 +1,33 @@
-/* —— Composition v2: left-aligned editorial grid —— */
-.home-hero,
+/* —— Index-first rebuild: intro short, catalog is the job —— */
+.home-intro,
+.home-hero.home-intro {
+  display: block;
+  max-width: 40rem;
+  padding: var(--space-4) 0 var(--space-3);
+}
+
+.home-intro h1,
+.home-hero.home-intro h1 {
+  max-width: 20ch;
+  margin: 0 0 12px;
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 680;
+}
+
+.home-intro .lead {
+  max-width: var(--measure-narrow);
+  margin: 0;
+  font-size: 16px;
+}
+
+.home-intro-actions {
+  margin-top: 20px;
+  justify-content: flex-start;
+  gap: 18px;
+}
+
 .about-hero,
 .product-hero {
   display: grid;
@@ -9,24 +37,11 @@
   padding: var(--space-5) 0 var(--space-4);
 }
 
-.home-hero {
-  gap: var(--space-4);
-  padding: var(--space-5) 0 var(--space-3);
-}
-
 .home-copy,
 .product-copy {
   max-width: 40rem;
   margin: 0;
   text-align: left;
-}
-
-.home-hero h1 {
-  max-width: 18ch;
-  margin: 0 0 14px;
-  font-size: clamp(1.85rem, 3.6vw, 2.5rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
 }
 
 .product-hero h1 {
@@ -37,15 +52,9 @@
   letter-spacing: -0.025em;
 }
 
-.home-copy .lead,
 .product-copy .lead {
   max-width: var(--measure-narrow);
   margin: 0;
-}
-
-.home-hero-actions {
-  justify-content: flex-start;
-  gap: 18px;
 }
 
 .about-hero {
@@ -141,15 +150,33 @@
 .hero-visual-frame,
 .home-workbench-panel,
 .about-system-panel {
-  width: min(100%, 720px);
+  width: min(100%, 100%);
   margin: 0;
 }
 
 .product-stage {
-  width: min(100%, 560px);
+  width: 100%;
+  max-width: 520px;
   justify-self: end;
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-stage);
+  overflow: hidden;
+}
+
+/* ProductVisual size contract */
+.product-visual--thumb {
+  max-height: var(--visual-thumb);
+  overflow: auto;
+}
+
+.product-visual--inline {
+  max-height: min(var(--visual-inline), 50vh);
+  overflow: auto;
+}
+
+.product-visual--stage {
+  max-height: min(var(--visual-stage), 52vh);
+  overflow: auto;
 }
 
 .home-workbench-panel,
@@ -261,7 +288,6 @@
 }
 
 .home-evidence,
-.home-catalog,
 .home-personal-catalog,
 .home-index,
 .home-thesis-band {
@@ -312,6 +338,9 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 56px);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-6);
   scroll-margin-top: 72px;
 }
 
@@ -320,18 +349,19 @@
   min-width: 0;
 }
 
-.home-index-heading {
-  margin-bottom: 4px;
-}
-
+.home-catalog-label,
 .home-index-heading h2 {
-  margin: 0;
-  font-size: 13px;
+  margin: 0 0 8px;
+  font-size: 12px;
   font-weight: 650;
   font-family: var(--mono);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: var(--label);
   line-height: 1.3;
+}
+
+.home-index-heading {
+  margin-bottom: 4px;
 }
 
 .work-list {
@@ -346,16 +376,14 @@
     "name arrow"
     "text arrow"
     "meta arrow";
-  gap: 4px 16px;
+  gap: 2px 12px;
   align-items: center;
-  min-height: 56px;
-  padding: 16px 2px;
+  min-height: 48px;
+  padding: 12px 2px;
   border-bottom: 1px solid var(--line);
   color: inherit;
   text-decoration: none;
-  transition:
-    color 0.12s ease,
-    background-color 0.12s ease;
+  transition: color 0.12s ease;
 }
 
 .work-row-name {
