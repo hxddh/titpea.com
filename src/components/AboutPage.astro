@@ -11,30 +11,30 @@ const { model } = Astro.props;
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <section class="about-hero shell">
-    <div class="about-redesign-copy">
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.lead}</h1>
-      <p class="lead about-hero-body">{model.hero.body}</p>
-    </div>
-  </section>
+    <div class="about-hero-grid">
+      <div class="about-person">
+        <p class="eyebrow">{model.hero.eyebrow}</p>
+        <h1>{model.hero.lead}</h1>
+        <p class="lead about-hero-body">{model.hero.body}</p>
+      </div>
 
-  <section class="about-why shell" aria-labelledby="about-why-heading">
-    <div class="about-section-heading">
-      <p class="section-kicker">{model.why.label}</p>
-      <h2 id="about-why-heading">{model.why.title}</h2>
-      <p>{model.why.body}</p>
+      <div class="about-principles" aria-labelledby="about-why-heading">
+        <p class="section-kicker">{model.why.label}</p>
+        <h2 id="about-why-heading">{model.why.title}</h2>
+        <p class="about-principles-body">{model.why.body}</p>
+        <ul class="about-principle-list">
+          {
+            model.why.lines.map((line) => (
+              <li>
+                <strong>{line.label}</strong>
+                <span>{line.body}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="about-why-closing">{model.why.closing}</p>
+      </div>
     </div>
-    <ul class="about-principle-list">
-      {
-        model.why.lines.map((line) => (
-          <li>
-            <strong>{line.label}</strong>
-            <span>{line.body}</span>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="about-why-closing">{model.why.closing}</p>
   </section>
 
   <section class="about-featured shell" aria-labelledby="about-featured-heading">

@@ -4,16 +4,19 @@ Titpea is a concise personal product site for independent products (and a few ut
 Its design should make each product easier to understand, not make the site feel like a generic
 developer dashboard or a marketing campaign.
 
-**North star:** a clean technical _editorial_ page that links out to independent products —
-not a SaaS marketing template, not a component demo, not a dashboard.
+**North star:** a technical _editorial index_ for independent products — like a quiet quarterly
+catalog, not a SaaS marketing template, component demo, or dashboard.
+
+Composition beats de-noising. Every viewport must show a clear primary object, secondary support,
+and breathing room. Deleting chrome without restoring hierarchy is still a failure.
 
 ## Page Roles (Do Not Collapse)
 
-| Page    | Job                                             | Density |
-| ------- | ----------------------------------------------- | ------- |
-| Home    | One line of positioning + quiet product index   | Sparse  |
-| About   | Who / how they think + two representative works | Sparse  |
-| Product | Problem → evidence → usage → boundary → action  | Dense   |
+| Page    | Job                                                       | Density | First-screen duty                                      |
+| ------- | --------------------------------------------------------- | ------- | ------------------------------------------------------ |
+| Home    | Positioning + product index                               | Sparse  | H1 + at least one product column visible               |
+| About   | Who / how they think + two representative works           | Sparse  | Person + principles (or person + works)                |
+| Product | Problem → evidence → usage → boundary → action            | Dense   | Problem + CTA + evidence hook (mock or metric)         |
 
 Home must feel **sparser** than product pages. Never copy product-page structure onto Home.
 
@@ -21,15 +24,17 @@ Home must feel **sparser** than product pages. Never copy product-page structure
 
 These override convenience. If a change is “more correct” but makes the surface louder, rework it.
 
-- **One primary solid control per view** (filled ink button). Secondary actions are ghost or text links.
-- **No form-badge walls** on Home/About (`Desktop` / `CLI` / `Extension` as chrome). Put form in prose if needed.
+- **Left-aligned editorial grid by default.** Center only a deliberate final CTA if needed.
+- **One primary solid control per view** (filled ink button). Secondary actions are text links or ghost underlines.
+- **No form-badge walls** on Home/About. A single trailing form meta per row is allowed.
 - **No inset ink frames** to fake hierarchy. Hierarchy comes from type size, weight, and spacing.
-- **No SaaS split hero** (copy left / giant UI right) on Home. Centered editorial hero only.
-- **No hover lift / decorative shadow** on product previews. Focus ring is enough.
+- **Home is not a product landing.** Compact intro; flagship mock limited (~640–720px); index starts mid-viewport.
+- **Product pages may use split hero** (copy left / stage right). Home must not.
+- **No hover lift.** Stage may use one ambient shadow token; focus ring is required.
 - **No cropping product UI** with `scale` + `overflow: hidden` to force a layout.
-- **At most one product visual** on Home, limited width (~720–800px), full uncropped frame, with a one-line caption.
 - **Product indexes are lists (rows), not card grids**, unless a card carries unique media.
-- Interaction is nearly static: prefer color/opacity changes under 150ms; respect `prefers-reduced-motion`.
+- **Flagship is heavier than utilities** (type weight / position), not more badges.
+- Interaction is nearly static: color/opacity under 150ms; respect `prefers-reduced-motion`.
 
 ## Use Principles, Not Templates
 

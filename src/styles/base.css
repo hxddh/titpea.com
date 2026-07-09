@@ -82,11 +82,11 @@ p {
 }
 
 .lead {
-  max-width: 62ch;
-  margin-inline: auto;
+  max-width: var(--measure);
+  margin: 0;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.62;
+  font-size: 17px;
+  line-height: 1.65;
 }
 
 .prose {

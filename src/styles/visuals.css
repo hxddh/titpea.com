@@ -555,9 +555,13 @@
 .agent-evidence-grid div {
   display: grid;
   gap: 8px;
-  min-height: 136px;
-  padding: 20px;
+  min-height: 0;
+  padding: 18px;
   background: var(--panel);
+}
+
+.agent-evidence-grid div {
+  align-content: start;
 }
 
 .benchmark-kpis span,

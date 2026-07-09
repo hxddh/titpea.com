@@ -165,20 +165,20 @@
 
 .button,
 .mobile-menu summary,
-.product-section-index a,
 .provider-list span,
-.home-evidence-card strong,
-.about-contact-row a {
+.home-evidence-card strong {
   border: 1px solid var(--soft-line);
   background: var(--panel);
   font-family: var(--mono);
 }
 
 .actions {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 32px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 28px;
 }
 
 .button {
@@ -199,8 +199,26 @@
   color: var(--on-ink);
 }
 
+.button.ghost {
+  border-color: transparent;
+  background: transparent;
+  padding-inline: 4px;
+  text-decoration: underline;
+  text-decoration-color: var(--soft-line);
+  text-underline-offset: 4px;
+}
+
+.button.ghost:hover {
+  border-color: transparent;
+  text-decoration-color: var(--ink);
+}
+
 .button:hover {
   border-color: var(--ink);
+}
+
+.button.ghost:hover {
+  border-color: transparent;
 }
 
 .mobile-menu {
@@ -285,18 +303,6 @@
   font-weight: 760;
 }
 
-/* Quiet evidence line under meta — not a second badge wall after the hero. */
-.proof-line {
-  max-width: 56ch;
-  margin: 12px auto 0;
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.55;
-  text-wrap: balance;
-}
-
 .product-section-index {
   position: sticky;
   top: var(--section-index-sticky-top);
@@ -307,7 +313,7 @@
   gap: 18px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding-block: 14px;
+  padding-block: 10px;
   background: var(--index-veil);
   backdrop-filter: blur(14px);
 }
@@ -331,24 +337,32 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 4px 14px;
+  overflow-x: auto;
 }
 
 .product-section-index a {
-  border-radius: 999px;
-  padding: 6px 11px;
-  color: var(--ink);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  padding: 8px 2px;
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .product-section-index a:hover,
-.product-section-index a:focus-visible,
-.product-section-index a[aria-current] {
-  border-color: var(--ink);
+.product-section-index a:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--soft-line);
 }
 
 .product-section-index a[aria-current] {
-  background: var(--ink);
-  color: var(--on-ink);
+  background: transparent;
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 650;
 }

@@ -1,10 +1,10 @@
 export const ui = {
   en: {
     productIndex: "hxddh",
-    homeTitle: "Products I build",
+    homeTitle: "Object storage tools. Local agents.",
     homeDescription:
       "By hxddh — independent products for S3-compatible storage and local agents, plus utilities for reading, time zones, and film.",
-    homeLead: "S3-compatible storage on one side; local agents and everyday reading tools on the other.",
+    homeLead: "Installable products for inventory and diagnosis, plus a few tools for reading, time, and film.",
     storageLine: "Object storage",
     storageTitle: "Object storage",
     personalLine: "Reading & media",
@@ -16,9 +16,9 @@ export const ui = {
   },
   zh: {
     productIndex: "hxddh",
-    homeTitle: "我做的产品",
+    homeTitle: "对象存储工具与本地 agent",
     homeDescription: "hxddh 的作品——面向 S3 兼容存储与本地 agent 的独立产品，以及阅读、时区与观影相关的轻量工具。",
-    homeLead: "一块是 S3 兼容存储；一块是本地 agent 与日常阅读相关的工具。",
+    homeLead: "可安装的盘点与排查产品，以及阅读、时区与观影相关的少量工具。",
     storageLine: "对象存储",
     storageTitle: "对象存储",
     personalLine: "阅读与影音",
