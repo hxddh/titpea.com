@@ -1,6 +1,5 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import ProductVisual from "./ProductVisual.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -11,49 +10,35 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="home-hero shell">
-    <div class="home-copy">
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.title}</h1>
-      <p class="lead">{model.hero.lead}</p>
-      <div class="actions home-hero-actions">
-        {
-          model.hero.actions.map((action) =>
-            action.style === "primary" ? (
-              <a class="button primary" href={action.href} rel={action.external ? "noreferrer" : undefined}>
-                {action.label}
-              </a>
-            ) : (
-              <a
-                class="text-link home-secondary-link"
-                href={action.href}
-                rel={action.external ? "noreferrer" : undefined}
-              >
-                {action.label}
-              </a>
-            ),
-          )
-        }
-      </div>
+  {/* Index-first home: intro stays short; catalog is the first-screen job. No large mock. */}
+  <section class="home-intro home-hero shell">
+    <p class="eyebrow">{model.hero.eyebrow}</p>
+    <h1>{model.hero.title}</h1>
+    <p class="lead">{model.hero.lead}</p>
+    <div class="actions home-intro-actions">
+      {
+        model.hero.actions.map((action) =>
+          action.style === "primary" ? (
+            <a class="button primary" href={action.href} rel={action.external ? "noreferrer" : undefined}>
+              {action.label}
+            </a>
+          ) : (
+            <a
+              class="text-link home-secondary-link"
+              href={action.href}
+              rel={action.external ? "noreferrer" : undefined}
+            >
+              {action.label}
+            </a>
+          ),
+        )
+      }
     </div>
-
-    {
-      model.hero.visual && (
-        <figure class="home-proof">
-          <a class="home-proof-frame" href={model.hero.visualHref} aria-label={model.hero.visual.label}>
-            <ProductVisual visual={model.hero.visual} />
-          </a>
-          {model.hero.proofCaption && <figcaption class="home-proof-caption">{model.hero.proofCaption}</figcaption>}
-        </figure>
-      )
-    }
   </section>
 
   <section class="home-catalog shell" aria-label={model.hero.eyebrow}>
     <div id={model.storage.id} class="home-catalog-col">
-      <div class="home-index-heading">
-        <h2>{model.storage.title}</h2>
-      </div>
+      <h2 class="home-catalog-label">{model.storage.title}</h2>
       <div class="work-list" role="list">
         {
           model.storage.items.map((item) => (
@@ -71,9 +56,7 @@ const { model } = Astro.props;
     </div>
 
     <div id={model.personal.id} class="home-catalog-col">
-      <div class="home-index-heading">
-        <h2>{model.personal.title}</h2>
-      </div>
+      <h2 class="home-catalog-label">{model.personal.title}</h2>
       <div class="work-list" role="list">
         {
           model.personal.items.map((item) => (

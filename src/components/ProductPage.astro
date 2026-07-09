@@ -18,6 +18,9 @@ interface Props {
 const { model } = Astro.props;
 const copy = model.copy;
 const isExternalHref = (href: string) => /^https?:\/\//.test(href);
+
+// Visual size by page archetype: extensions stay compact; agents/CLIs use stage.
+const visualSize = model.pageClass.includes("browserExtension") ? ("inline" as const) : ("stage" as const);
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -52,7 +55,7 @@ const isExternalHref = (href: string) => /^https?:\/\//.test(href);
       }
     </div>
     <div class="hero-visual-frame product-stage">
-      <ProductVisual visual={model.visual} />
+      <ProductVisual visual={model.visual} size={visualSize} />
     </div>
   </section>
 

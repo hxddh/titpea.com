@@ -42,18 +42,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           intent: "capability",
           surface: "agent",
         },
-        {
-          title: "Bring your own model",
-          body: "OpenAI-compatible providers — OpenAI, DeepSeek, OpenRouter, Ollama, or a custom endpoint.",
-          intent: "capability",
-          surface: "protocol",
-        },
-        {
-          title: "Keys stay local",
-          body: "API keys are stored with tauri-plugin-store on your machine, not in the cloud.",
-          intent: "capability",
-          surface: "agent",
-        },
       ],
       faqLabel: "Questions & how-to",
       faq: [
@@ -110,18 +98,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
         {
           title: "按页 agent 对话",
           body: "流式聊天，工具调用可见。预览会跟着 agent 正在读的页走。",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
-          title: "自带模型",
-          body: "兼容 OpenAI 接口的提供商——OpenAI、DeepSeek、OpenRouter、Ollama 或自定义端点。",
-          intent: "capability",
-          surface: "protocol",
-        },
-        {
-          title: "密钥留在本机",
-          body: "API key 存在 tauri-plugin-store，不上云。",
           intent: "capability",
           surface: "agent",
         },

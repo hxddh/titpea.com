@@ -21,7 +21,6 @@ const { model } = Astro.props;
       <div class="about-principles" aria-labelledby="about-why-heading">
         <p class="section-kicker">{model.why.label}</p>
         <h2 id="about-why-heading">{model.why.title}</h2>
-        <p class="about-principles-body">{model.why.body}</p>
         <ul class="about-principle-list">
           {
             model.why.lines.map((line) => (
@@ -38,9 +37,7 @@ const { model } = Astro.props;
   </section>
 
   <section class="about-featured shell" aria-labelledby="about-featured-heading">
-    <div class="about-section-heading">
-      <h2 id="about-featured-heading">{model.featured.label}</h2>
-    </div>
+    <h2 id="about-featured-heading" class="home-catalog-label">{model.featured.label}</h2>
     <div class="work-list about-work-list" role="list">
       {
         model.featured.items.map((item) => (

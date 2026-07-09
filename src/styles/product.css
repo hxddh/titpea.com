@@ -6,18 +6,27 @@
 
 @media (min-width: 901px) {
   .product-hero {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    align-items: center;
-    gap: clamp(32px, 5vw, 64px);
-    padding: var(--space-5) 0 var(--space-5);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: clamp(28px, 4vw, 56px);
+    padding: var(--space-4) 0 var(--space-4);
   }
 
   .product-copy {
     max-width: none;
+    position: sticky;
+    top: 24px;
   }
 
   .product-stage {
-    width: min(100%, 520px);
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* Extensions: shorter hero, mock not dominant */
+  .product-page-browserExtension.product-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    align-items: center;
   }
 }
 
