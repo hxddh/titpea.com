@@ -19,7 +19,7 @@ export const agentRadarProduct: StorageCliProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["Agent watchlist", "Field notes", "Playbooks", "Storage angle", "Cloud agent automation"],
+      proof: ["Watchlist · field notes · playbooks", "Storage angle"],
       workflowLabel: "What you maintain",
       workflow: [
         {
@@ -99,7 +99,7 @@ export const agentRadarProduct: StorageCliProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["Agent 观察名单", "现场笔记", "Playbook", "存储视角", "云 agent 自动化"],
+      proof: ["观察名单 · 现场笔记 · playbook", "存储视角"],
       workflowLabel: "维护什么",
       workflow: [
         {

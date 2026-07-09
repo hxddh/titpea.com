@@ -59,7 +59,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Native desktop agent",
+      kicker: "Evidence first",
       title: "Ask about your storage, get evidence back",
       body: "Start a chat or pick a task — bucket config, access logs, inventory, errors, or cost. The agent plans read-only checks, works in DuckDB on imported evidence, and cites the log rows or config lines behind each finding.",
       panel: {
@@ -89,7 +89,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "本地原生 agent",
+      kicker: "先看证据",
       title: "问一句存储，拿回一份证据",
       body: "开对话或选任务——桶配置、访问日志、清单、错误或成本。agent 规划只读检查，在 DuckDB 里分析导入材料，每条结论都带上对应的日志行或配置行。",
       panel: {
@@ -307,7 +307,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Local desktop agent",
+      kicker: "Citations first",
       title: "Read documents page by page",
       body: "Open a PDF or image, extract text locally, and ask the agent about specific pages. The preview follows what it reads so you can verify every citation.",
       panel: {
@@ -337,7 +337,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "本地桌面 agent",
+      kicker: "先看引用",
       title: "按页读懂你的文档",
       body: "打开 PDF 或图片，在本地提取文本，向 agent 提问具体页面。预览会跟着它读的页走，方便核对每条引用。",
       panel: {

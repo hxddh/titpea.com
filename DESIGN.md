@@ -50,6 +50,8 @@ These override convenience. If a change is “more correct” but makes the surf
 - For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is for adoption blockers, not a second feature list.
 - Keep the section directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
 - Use one source of truth for each product fact. Repeating a claim in the hero, proof strip, body, and FAQ weakens the page instead of strengthening it.
+- Product **proof** is a quiet mono line under meta (or omitted when the hero mock already carries the claim). Never a second badge wall of form chips.
+- Product **capabilities** render as list rows, not equal-height card grids. Session-step sections that restate the overview do not earn a slot.
 - About does not host a full product catalog; it links to Home.
 
 ## Typography And Copy

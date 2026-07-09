@@ -166,7 +166,6 @@
 .button,
 .mobile-menu summary,
 .product-section-index a,
-.proof-strip span,
 .provider-list span,
 .home-evidence-card strong,
 .about-contact-row a {
@@ -286,21 +285,16 @@
   font-weight: 760;
 }
 
-.proof-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 0 52px;
-}
-
-.proof-strip span {
-  border-radius: 999px;
-  padding: 6px 13px;
-  color: var(--ink);
+/* Quiet evidence line under meta — not a second badge wall after the hero. */
+.proof-line {
+  max-width: 56ch;
+  margin: 12px auto 0;
+  color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.55;
+  text-wrap: balance;
 }
 
 .product-section-index {

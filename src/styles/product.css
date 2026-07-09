@@ -1,15 +1,15 @@
 .inside-section,
 .positioning-section,
 .content-section {
-  padding: 94px 0;
+  padding: 72px 0;
 }
 
 .product-deep-dive {
   display: grid;
-  gap: 26px;
+  gap: 22px;
   border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 86px;
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
 .product-page-agentPackage .agent-manifest-visual,
@@ -119,8 +119,8 @@
 
 .scan-plan li {
   position: relative;
-  min-height: 210px;
-  padding: 28px;
+  min-height: 0;
+  padding: 24px;
 }
 
 .scan-plan li + li {
@@ -143,7 +143,7 @@
 
 .scan-plan li > span {
   display: block;
-  margin-bottom: 46px;
+  margin-bottom: 18px;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
@@ -182,9 +182,9 @@
 
 .product-flow li {
   display: grid;
-  gap: 46px;
-  min-height: 226px;
-  padding: 28px;
+  gap: 16px;
+  min-height: 0;
+  padding: 24px;
   background: var(--panel);
 }
 
@@ -211,10 +211,10 @@
 
 .s3-results-section {
   display: grid;
-  gap: 28px;
+  gap: 24px;
   border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 94px;
+  padding-top: 72px;
+  padding-bottom: 72px;
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
@@ -305,9 +305,9 @@
 .agent-topology article,
 .deep-dive-benchmark div {
   display: grid;
-  gap: 12px;
-  min-height: 170px;
-  padding: 26px;
+  gap: 10px;
+  min-height: 0;
+  padding: 22px;
   background: var(--panel);
 }
 
@@ -399,7 +399,48 @@
 }
 
 .faq-section {
-  padding-top: 86px;
+  padding-top: 72px;
+}
+
+/* Features as editorial list rows — not a second equal-card wall after the hero. */
+.features-section .section-card-grid {
+  gap: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  grid-template-columns: 1fr;
+}
+
+.features-section .section-card-grid > article,
+.features-section .section-card-grid > :last-child:nth-child(odd),
+.features-section .section-card-grid > :last-child:nth-child(3n + 1),
+.features-section .section-card-grid > :last-child:nth-child(3n + 2) {
+  grid-column: auto;
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+  background: transparent;
+}
+
+.features-section .section-card-grid > article:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.features-section .section-card-grid h3 {
+  font-size: 18px;
+}
+
+@media (min-width: 901px) {
+  .features-section .section-card-grid > article {
+    display: grid;
+    grid-template-columns: minmax(14ch, 22ch) minmax(0, 1fr);
+    gap: 16px 28px;
+    align-items: baseline;
+  }
+
+  .features-section .section-card-grid > article small {
+    grid-column: 1 / -1;
+  }
 }
 
 .faq-list details {
@@ -449,7 +490,7 @@
   display: grid;
   justify-items: center;
   border-top: 1px solid var(--line);
-  padding: 82px 0 100px;
+  padding: 64px 0 88px;
   text-align: center;
 }
 

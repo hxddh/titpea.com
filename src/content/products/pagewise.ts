@@ -15,7 +15,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "Download", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri desktop app · macOS, Windows, Linux · MIT",
-      proof: ["Local-first", "BYOK"],
+      proof: [],
       featuresLabel: "Capabilities",
       features: [
         {
@@ -55,33 +55,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
       ],
-      workflowLabel: "How a session runs",
-      workflow: [
-        {
-          title: "Open a document",
-          body: "Pick a PDF or image from disk. PageWise loads a preview and extracts text locally.",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "Ask about a page or section",
-          body: "Type a question in chat. The agent plans tool calls to read the pages it needs.",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "Follow along in the preview",
-          body: "The document view jumps to the page under analysis so you can verify what the agent read.",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "Review with citations",
-          body: "Answers reference specific pages. You decide what to trust before acting on the output.",
-          intent: "workflow",
-          surface: "artifact",
-        },
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -100,10 +73,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           title: "How is this different from Storage Agent?",
           body: "Storage Agent investigates S3-compatible storage read-only. PageWise is for local documents — PDFs, OCR, and page-wise Q&A.",
         },
-        {
-          title: "What platforms does it run on?",
-          body: "A Tauri 2 desktop app built with React. Development targets macOS, Windows, and Linux. The project is MIT-licensed.",
-        },
       ],
       finalCta: "Try PageWise on your documents",
       finalCtaLabel: "Download PageWise",
@@ -117,7 +86,7 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "下载", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · MIT",
-      proof: ["本地优先", "自带模型"],
+      proof: [],
       featuresLabel: "能做什么",
       features: [
         {
@@ -157,33 +126,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
       ],
-      workflowLabel: "一次会话怎么跑",
-      workflow: [
-        {
-          title: "打开文档",
-          body: "从磁盘选 PDF 或图片。PageWise 加载预览并在本地提取文本。",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "问某一页或某一段",
-          body: "在聊天里提问。agent 规划工具调用，读取需要的页。",
-          intent: "workflow",
-          surface: "agent",
-        },
-        {
-          title: "预览跟着走",
-          body: "文档视图会跳到正在分析的页，方便你对照原文。",
-          intent: "workflow",
-          surface: "artifact",
-        },
-        {
-          title: "带页码引用复核",
-          body: "回答会标明具体页码。是否采信由你决定。",
-          intent: "workflow",
-          surface: "artifact",
-        },
-      ],
       faqLabel: "问题与用法",
       faq: [
         {
@@ -201,10 +143,6 @@ export const pagewiseProduct: AgentWorkbenchProduct = {
         {
           title: "和 Storage Agent 有什么区别",
           body: "Storage Agent 只读调查 S3 兼容存储。PageWise 面向本地文档——PDF、OCR 和按页问答。",
-        },
-        {
-          title: "支持哪些平台",
-          body: "基于 Tauri 2 和 React 的桌面应用，开发目标包括 macOS、Windows 和 Linux。项目采用 MIT 许可。",
         },
       ],
       finalCta: "在你的文档上试试 PageWise",

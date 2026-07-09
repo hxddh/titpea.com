@@ -17,7 +17,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No cloud access"],
+      proof: ["16 skill packs", "Four Pi tools", "No cloud access"],
       workflowLabel: "A case in practice",
       workflow: [
         {
@@ -86,7 +86,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi 扩展", "16 组 skills", "4 个 Pi 工具", "不连接云账号"],
+      proof: ["16 组 skills", "4 个 Pi 工具", "不连接云账号"],
       workflowLabel: "一次问题怎么处理",
       workflow: [
         {
