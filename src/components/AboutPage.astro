@@ -48,7 +48,10 @@ const { model } = Astro.props;
           <div class="about-tool-grid">
             {line.items.map((item) => (
               <a class="about-tool-card" href={item.href}>
-                {item.role && <span>{item.role}</span>}
+                <div class="about-tool-card-meta">
+                  {item.role && <span>{item.role}</span>}
+                  {item.badge && <em class="catalog-badge">{item.badge}</em>}
+                </div>
                 <strong>{item.name}</strong>
                 {item.text && <p>{item.text}</p>}
               </a>

@@ -18,7 +18,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "s3-turbo-list",
     group: "storage",
     nav: { primary: false },
-    catalog: { order: 1, primary: true },
+    catalog: { order: 1 },
     visual: "s3Benchmark",
     ogImage: "/assets/og-s3-turbo-list.png",
     factId: "s3-turbo-list",
@@ -28,6 +28,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Storage Agent",
     group: "storage",
     nav: { primary: false, label: "storageAgent" },
+    // Single storage flagship so catalog weight matches home CTAs.
     catalog: { order: 2, primary: true },
     visual: "storageWorkbench",
     ogImage: "/assets/og-storage-agent-workbench.png",

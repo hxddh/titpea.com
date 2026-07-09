@@ -33,7 +33,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutLead, pageCopy.whyTitle, pageCopy.toolsLabel, catalog.storage[0]?.name ?? ""],
+    expectedText: [copy.aboutLead, pageCopy.whyTitle, pageCopy.productsLabel, catalog.storage[0]?.name ?? ""],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -60,7 +60,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       closing: pageCopy.whyClosing,
     },
     tools: {
-      label: pageCopy.toolsLabel,
+      label: pageCopy.productsLabel,
       lines: [
         {
           label: copy.storageLine,
@@ -69,6 +69,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
             href: item.href,
             role: item.displayRole,
             text: item.text,
+            badge: item.badge,
           })),
         },
         {
@@ -78,6 +79,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
             href: item.href,
             role: item.displayRole,
             text: item.text,
+            badge: item.badge,
           })),
         },
       ],

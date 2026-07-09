@@ -1,6 +1,6 @@
 # Titpea Personal Site
 
-Astro static site for `titpea.com`: a personal profile page plus product pages for hxddh's tools.
+Astro static site for `titpea.com`: a personal profile page plus product pages for hxddh's independent products and utilities.
 
 ## Products
 

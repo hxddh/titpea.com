@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ProductVisual from "./ProductVisual.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -10,7 +11,7 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="home-hero shell">
+  <section class="home-hero shell home-hero-with-visual">
     <div class="home-copy home-workbench-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
@@ -29,6 +30,9 @@ const { model } = Astro.props;
         }
       </div>
     </div>
+    <div class="hero-visual-frame home-flagship-visual" aria-label={model.hero.visual.label}>
+      <ProductVisual visual={model.hero.visual} />
+    </div>
   </section>
 
   <section class="home-catalog shell">
@@ -40,7 +44,10 @@ const { model } = Astro.props;
       {
         model.storage.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.number ? `${item.number} · ${item.displayRole}` : item.displayRole}</span>
+            <div class="catalog-card-meta">
+              <span>{item.number ? `${item.number} · ${item.displayRole}` : item.displayRole}</span>
+              {item.badge && <em class="catalog-badge">{item.badge}</em>}
+            </div>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>
@@ -58,7 +65,10 @@ const { model } = Astro.props;
       {
         model.personal.items.map((item) => (
           <a class:list={["catalog-card", item.isPrimary && "primary"]} href={item.href}>
-            <span>{item.displayRole}</span>
+            <div class="catalog-card-meta">
+              <span>{item.displayRole}</span>
+              {item.badge && <em class="catalog-badge">{item.badge}</em>}
+            </div>
             <h3>{item.name}</h3>
             <p>{item.text}</p>
           </a>
