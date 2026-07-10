@@ -18,6 +18,8 @@ export const headerCopy: Record<
     };
     links: {
       home: string;
+      work: string;
+      notes: string;
       about: string;
       storageAgent: string;
       worldClock: string;
@@ -43,6 +45,8 @@ export const headerCopy: Record<
     },
     links: {
       home: "Home",
+      work: "Work",
+      notes: "Notes",
       about: "About",
       storageAgent: "Storage Agent",
       worldClock: "World Clock",
@@ -67,6 +71,8 @@ export const headerCopy: Record<
     },
     links: {
       home: "首页",
+      work: "作品",
+      notes: "笔记",
       about: "关于",
       storageAgent: "Storage Agent",
       worldClock: "世界时钟",

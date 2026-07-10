@@ -44,10 +44,55 @@ export type HomePageModel = BasePageModel & {
     eyebrow: string;
     title: string;
     lead: string;
+    principlesLabel: string;
+    principles: string[];
     actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
     visual: ProductVisualModel;
     visualHref: string;
     proofCaption: string;
+  };
+  finding: {
+    trailLabel: string;
+    trails: string[];
+    eyebrow: string;
+    title: string;
+    objectLabel: string;
+    objectValue: string;
+    checkLabel: string;
+    checkValue: string;
+    conclusionLabel: string;
+    conclusionValue: string;
+    evidenceLabel: string;
+    command: string;
+    evidenceBody: string;
+    noteLabel: string;
+    noteLines: string[];
+    sourceLabel: string;
+    sourcePath: string;
+    checksum: string;
+    alternate: Array<{
+      eyebrow: string;
+      title: string;
+      objectLabel: string;
+      objectValue: string;
+      checkLabel: string;
+      checkValue: string;
+      conclusionLabel: string;
+      conclusionValue: string;
+    }>;
+  };
+  notes: {
+    label: string;
+    indexTitle: string;
+    indexBody: string;
+    indexCta: string;
+    rows: Array<{
+      category: string;
+      title: string;
+      summary: string;
+      date: string;
+      href: string;
+    }>;
   };
   storage: {
     id: string;

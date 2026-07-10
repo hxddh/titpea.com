@@ -1,0 +1,147 @@
+---
+import type { HomePageModel } from "../content/siteModel";
+
+interface Props {
+  finding: HomePageModel["finding"];
+}
+
+const { finding } = Astro.props;
+---
+
+<section id="work" class="finding-stage shell" aria-label={finding.title}>
+  <div class="finding-shell" data-finding-shell>
+    <aside class="finding-trails" aria-label={finding.trailLabel}>
+      <p>{finding.trailLabel}</p>
+      <div role="tablist" aria-label={finding.trailLabel}>
+        {
+          finding.trails.map((trail, index) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+              tabindex={index === 0 ? "0" : "-1"}
+              data-finding-tab={index}
+            >
+              {trail}
+            </button>
+          ))
+        }
+      </div>
+    </aside>
+
+    <div class="finding-main">
+      <article class="finding-panel is-active" role="tabpanel" data-finding-panel="0">
+        <p class="finding-eyebrow">{finding.eyebrow}</p>
+        <h2>{finding.title}</h2>
+        <dl class="finding-facts">
+          <div><dt>{finding.objectLabel}</dt><dd><code>{finding.objectValue}</code></dd></div>
+          <div><dt>{finding.checkLabel}</dt><dd>{finding.checkValue}</dd></div>
+          <div class="finding-conclusion">
+            <dt>{finding.conclusionLabel}</dt><dd>{finding.conclusionValue}</dd>
+          </div>
+        </dl>
+        <div class="finding-evidence">
+          <p>{finding.evidenceLabel}</p>
+          <div class="finding-code">
+            <input type="text" value={`$ ${finding.command}`} readonly aria-label={finding.command} tabindex="-1" />
+            <pre><code data-evidence-json={finding.evidenceBody} aria-label={finding.evidenceLabel} /></pre>
+          </div>
+        </div>
+      </article>
+
+      {
+        finding.alternate.map((alternate, index) => (
+          <article class="finding-panel" role="tabpanel" hidden data-finding-panel={index + 1}>
+            <p class="finding-eyebrow">{alternate.eyebrow}</p>
+            <h2>{alternate.title}</h2>
+            <dl class="finding-facts">
+              <div>
+                <>
+                  <dt>{alternate.objectLabel}</dt>
+                  <dd>
+                    <code>{alternate.objectValue}</code>
+                  </dd>
+                </>
+              </div>
+              <div>
+                <>
+                  <dt>{alternate.checkLabel}</dt>
+                  <dd>{alternate.checkValue}</dd>
+                </>
+              </div>
+              <div class="finding-conclusion">
+                <>
+                  <dt>{alternate.conclusionLabel}</dt>
+                  <dd>{alternate.conclusionValue}</dd>
+                </>
+              </div>
+            </dl>
+            <div class="finding-empty-evidence">
+              <i class="ph ph-file-text" aria-hidden="true" />
+              <p>{finding.sourcePath}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <aside class="finding-notebook" aria-label={finding.noteLabel}>
+      <p>{finding.noteLabel}</p>
+      <ul>
+        {finding.noteLines.map((line) => <li>{line}</li>)}
+      </ul>
+      <div class="finding-source">
+        <p>{finding.sourceLabel}</p>
+        <code>{finding.sourcePath}</code>
+        <span>{finding.checksum}</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-evidence-json]").forEach((block) => {
+    const parts = (block.dataset.evidenceJson ?? "").split("false");
+    block.replaceChildren();
+    parts.forEach((part, index) => {
+      block.append(document.createTextNode(part));
+      if (index < parts.length - 1) {
+        const value = document.createElement("span");
+        value.className = "finding-value-false";
+        value.textContent = "false";
+        block.append(value);
+      }
+    });
+  });
+
+  const findingShell = document.querySelector<HTMLElement>("[data-finding-shell]");
+
+  if (findingShell) {
+    const tabs = [...findingShell.querySelectorAll<HTMLButtonElement>("[data-finding-tab]")];
+    const panels = [...findingShell.querySelectorAll<HTMLElement>("[data-finding-panel]")];
+
+    const selectFinding = (index: number) => {
+      tabs.forEach((tab, tabIndex) => {
+        const selected = tabIndex === index;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach((panel, panelIndex) => {
+        panel.hidden = panelIndex !== index;
+        panel.classList.toggle("is-active", panelIndex === index);
+      });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectFinding(index));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+        event.preventDefault();
+        const direction = event.key === "ArrowDown" ? 1 : -1;
+        const nextIndex = (index + direction + tabs.length) % tabs.length;
+        selectFinding(nextIndex);
+        tabs[nextIndex]?.focus();
+      });
+    });
+  }
+</script>

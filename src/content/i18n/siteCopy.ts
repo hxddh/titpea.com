@@ -1,10 +1,10 @@
 export const ui = {
   en: {
     productIndex: "hxddh",
-    homeTitle: "Object storage tools. Local agents.",
+    homeTitle: "Make storage problems verifiable",
     homeDescription:
       "By hxddh — independent products for S3-compatible storage and local agents, plus utilities for reading, time zones, and film.",
-    homeLead: "Installable products for inventory and diagnosis, plus a few tools for reading, time, and film.",
+    homeLead: "Local, read-only, evidence first. Auditable tools and agents for object storage.",
     storageLine: "Object storage",
     storageTitle: "Object storage",
     personalLine: "Reading & media",
@@ -16,9 +16,9 @@ export const ui = {
   },
   zh: {
     productIndex: "hxddh",
-    homeTitle: "对象存储工具与本地 agent",
+    homeTitle: "把对象存储里看不见的问题，变成可验证的证据",
     homeDescription: "hxddh 的作品——面向 S3 兼容存储与本地 agent 的独立产品，以及阅读、时区与观影相关的轻量工具。",
-    homeLead: "可安装的盘点与排查产品，以及阅读、时区与观影相关的少量工具。",
+    homeLead: "本地、只读、证据优先。为对象存储做可以审计的工具与 agent。",
     storageLine: "对象存储",
     storageTitle: "对象存储",
     personalLine: "阅读与影音",
