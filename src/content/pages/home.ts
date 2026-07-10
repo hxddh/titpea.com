@@ -1,4 +1,4 @@
-import { catalogCopy } from "../i18n/pageCopy";
+import { catalogCopy, homeStudioCopy } from "../i18n/pageCopy";
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
@@ -11,13 +11,13 @@ import { pathFor } from "../../lib/site";
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
   const pageCopy = catalogCopy[locale];
+  const studioCopy = homeStudioCopy[locale];
   const catalog = productCatalogModel(locale);
   const path = pagePath(locale);
   const alternatePath = pagePath(alternateLocale(locale));
   const description = copy.homeDescription;
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
   const flagship = catalog.flagship;
-  const personalFlagship = catalog.personalFlagship;
   const flagshipHref = flagship?.href ?? catalog.featuredProductPath;
   const structuredData = {
     "@context": "https://schema.org",
@@ -52,24 +52,56 @@ export function buildHomePage(locale: Locale): HomePageModel {
     }),
     language: languageLink(locale, alternatePath),
     hero: {
-      eyebrow: copy.productIndex,
+      eyebrow: studioCopy.eyebrow,
       title: copy.homeTitle,
       lead: copy.homeLead,
+      principlesLabel: studioCopy.principlesLabel,
+      principles: [...studioCopy.principles],
       actions: [
         {
-          label: flagship?.name ?? "Storage Agent",
+          label: studioCopy.primaryCta,
           href: flagshipHref,
           style: "primary",
         },
         {
-          label: personalFlagship?.name ?? "PageWise",
-          href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
+          label: studioCopy.secondaryCta,
+          href: "#work-index",
           style: "ghost",
         },
       ],
       visual: visualModel("storageWorkbench", locale, pageCopy.homeFlagshipVisual),
       visualHref: flagshipHref,
       proofCaption: pageCopy.proofCaption,
+    },
+    finding: {
+      trailLabel: studioCopy.trailLabel,
+      trails: [...studioCopy.trails],
+      eyebrow: studioCopy.findingEyebrow,
+      title: studioCopy.findingTitle,
+      objectLabel: studioCopy.objectLabel,
+      objectValue: studioCopy.objectValue,
+      checkLabel: studioCopy.checkLabel,
+      checkValue: studioCopy.checkValue,
+      conclusionLabel: studioCopy.conclusionLabel,
+      conclusionValue: studioCopy.conclusionValue,
+      evidenceLabel: studioCopy.evidenceLabel,
+      command: studioCopy.command,
+      noteLabel: studioCopy.noteLabel,
+      noteLines: [...studioCopy.noteLines],
+      sourceLabel: studioCopy.sourceLabel,
+      sourcePath: studioCopy.sourcePath,
+      checksum: studioCopy.checksum,
+      alternate: studioCopy.alternateFindings.map((finding) => ({ ...finding })),
+    },
+    notes: {
+      label: studioCopy.notesLabel,
+      indexTitle: studioCopy.indexTitle,
+      indexBody: studioCopy.indexBody,
+      indexCta: studioCopy.indexCta,
+      rows: studioCopy.noteRows.map((row, index) => ({
+        ...row,
+        href: index === 0 ? flagshipHref : pathFor(locale, "agent-radar"),
+      })),
     },
     storage: {
       id: "storage",

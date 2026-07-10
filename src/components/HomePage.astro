@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import HomeFindingStage from "./HomeFindingStage.astro";
 import type { HomePageModel } from "../content/siteModel";
 
 interface Props {
@@ -10,33 +11,60 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  {/* Index-first home: intro stays short; catalog is the first-screen job. No large mock. */}
-  <section class="home-intro home-hero shell">
-    <p class="eyebrow">{model.hero.eyebrow}</p>
-    <h1>{model.hero.title}</h1>
-    <p class="lead">{model.hero.lead}</p>
-    <div class="actions home-intro-actions">
-      {
-        model.hero.actions.map((action) =>
-          action.style === "primary" ? (
-            <a class="button primary" href={action.href} rel={action.external ? "noreferrer" : undefined}>
-              {action.label}
-            </a>
-          ) : (
-            <a
-              class="text-link home-secondary-link"
-              href={action.href}
-              rel={action.external ? "noreferrer" : undefined}
-            >
-              {action.label}
-            </a>
-          ),
-        )
-      }
+  <section class="studio-hero shell" aria-labelledby="home-title">
+    <p class="studio-eyebrow">{model.hero.eyebrow}</p>
+    <div class="studio-hero-grid">
+      <div class="studio-hero-copy">
+        <h1 id="home-title">{model.hero.title}</h1>
+        <p class="lead">{model.hero.lead}</p>
+        <div class="actions studio-actions">
+          {
+            model.hero.actions.map((action) => (
+              <a class:list={["button", action.style]} href={action.href}>
+                <span>{action.label}</span>
+                {action.style === "primary" && <i class="ph ph-arrow-right" aria-hidden="true" />}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="studio-principles" aria-label={model.hero.principlesLabel}>
+        <p>{model.hero.principlesLabel}</p>
+        <ul>
+          {model.hero.principles.map((principle) => <li>{principle}</li>)}
+        </ul>
+      </aside>
     </div>
   </section>
 
-  <section class="home-catalog shell" aria-label={model.hero.eyebrow}>
+  <HomeFindingStage finding={model.finding} />
+
+  <section id="notes" class="field-notes shell" aria-labelledby="field-notes-title">
+    <div class="field-notes-main">
+      <h2 id="field-notes-title">{model.notes.label}</h2>
+      <div class="field-note-list">
+        {
+          model.notes.rows.map((row) => (
+            <a class="field-note-row" href={row.href}>
+              <span class="field-note-category">{row.category}</span>
+              <strong>{row.title}</strong>
+              <span class="field-note-summary">{row.summary}</span>
+              <time datetime={row.date}>{row.date}</time>
+              <i class="ph ph-arrow-right" aria-hidden="true" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <aside class="work-index-callout">
+      <h2>{model.notes.indexTitle}</h2>
+      <p>{model.notes.indexBody}</p>
+      <a href="#work-index">{model.notes.indexCta}<i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+    </aside>
+  </section>
+
+  <section id="work-index" class="home-catalog shell" aria-label={model.hero.eyebrow}>
     <div id={model.storage.id} class="home-catalog-col">
       <h2 class="home-catalog-label">{model.storage.title}</h2>
       <div class="work-list" role="list">
@@ -45,9 +73,7 @@ const { model } = Astro.props;
             <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
               <span class="work-row-name">{item.name}</span>
               <span class="work-row-text">{item.text}</span>
-              <span class="work-row-arrow" aria-hidden="true">
-                →
-              </span>
+              <i class="ph ph-arrow-right work-row-arrow" aria-hidden="true" />
             </a>
           ))
         }
@@ -62,9 +88,7 @@ const { model } = Astro.props;
             <a class:list={["work-row", item.isPrimary && "is-flagship"]} href={item.href} role="listitem">
               <span class="work-row-name">{item.name}</span>
               <span class="work-row-text">{item.text}</span>
-              <span class="work-row-arrow" aria-hidden="true">
-                →
-              </span>
+              <i class="ph ph-arrow-right work-row-arrow" aria-hidden="true" />
             </a>
           ))
         }

@@ -7,6 +7,17 @@
   border-bottom: 1px solid var(--line);
 }
 
+.site-header[data-current="home"] .theme-toggle {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  .site-header {
+    width: min(1248px, calc(100% - 48px));
+    min-height: 66px;
+  }
+}
+
 .brand,
 .nav,
 .header-actions,
@@ -20,14 +31,14 @@
   gap: 10px;
   min-height: 44px;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 680;
 }
 
 .brand-mark {
   display: grid;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   border-radius: 7px;
   background: var(--ink);
@@ -98,7 +109,7 @@
   gap: 6px;
   color: var(--label);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -107,7 +118,7 @@
   align-items: center;
   min-height: 44px;
   border-bottom: 1px solid transparent;
-  padding: 10px 10px;
+  padding: 10px 16px;
   color: var(--label);
 }
 

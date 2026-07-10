@@ -1,4 +1,477 @@
-/* —— Index-first rebuild: intro short, catalog is the job —— */
+/* —— Field Notes Studio homepage —— */
+.studio-hero.shell,
+.finding-stage.shell,
+.field-notes.shell,
+.home-catalog.shell {
+  width: min(1248px, calc(100% - 48px));
+}
+
+.studio-hero {
+  padding: 44px 0 30px;
+}
+
+.studio-eyebrow {
+  margin: 0 0 18px;
+  color: var(--label);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.studio-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(280px, 0.95fr);
+  gap: clamp(52px, 7vw, 110px);
+  align-items: center;
+}
+
+.studio-hero-copy h1 {
+  max-width: 20ch;
+  margin: 0 0 12px;
+  padding-bottom: 14px;
+  font-size: clamp(3rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 760;
+  text-wrap: wrap;
+}
+
+.studio-hero-copy .lead {
+  max-width: 44rem;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.studio-actions {
+  margin-top: 24px;
+}
+
+.studio-actions .button {
+  gap: 10px;
+  min-height: 52px;
+  padding-inline: 22px;
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.studio-actions .button.ghost {
+  border-color: var(--soft-line);
+  background: transparent;
+}
+
+.studio-actions .button i {
+  font-size: 18px;
+  transition: transform 160ms ease;
+}
+
+.studio-actions .button:hover i {
+  transform: translateX(3px);
+}
+
+.studio-principles {
+  padding-top: 10px;
+}
+
+.studio-principles > p {
+  margin: 0 0 12px;
+  color: var(--label);
+  font-size: 14px;
+}
+
+.studio-principles ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.studio-principles li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.studio-principles li::before {
+  content: "/";
+  position: absolute;
+  left: 0;
+  color: var(--data-ref);
+  font-family: var(--mono);
+}
+
+.finding-stage {
+  padding: 0 0 42px;
+  scroll-margin-top: 24px;
+}
+
+.finding-shell {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 340px;
+  min-height: 370px;
+  overflow: hidden;
+  border: 1px solid var(--soft-line);
+  border-radius: 16px 16px 3px 3px;
+  background: var(--panel);
+  box-shadow:
+    0 18px 46px rgba(20, 18, 15, 0.07),
+    0 2px 3px rgba(20, 18, 15, 0.06);
+}
+
+.finding-trails,
+.finding-notebook {
+  background: color-mix(in srgb, var(--paper) 78%, var(--panel));
+}
+
+.finding-trails {
+  border-right: 1px solid var(--line);
+}
+
+.finding-trails > p,
+.finding-notebook > p,
+.finding-source > p {
+  margin: 0;
+  color: var(--label);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.finding-trails > p {
+  padding: 23px 26px 17px;
+}
+
+.finding-trails div {
+  display: grid;
+}
+
+.finding-trails button {
+  position: relative;
+  min-height: 52px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  padding: 14px 26px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.finding-trails button:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.finding-trails button[aria-selected="true"] {
+  color: var(--data-ref-ink);
+  font-weight: 650;
+}
+
+.finding-trails button[aria-selected="true"]::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 12px;
+  width: 3px;
+  border-radius: 4px;
+  background: var(--data-ref);
+}
+
+.finding-trails button:focus-visible {
+  outline: 2px solid var(--data-ref);
+  outline-offset: -3px;
+}
+
+.finding-main {
+  min-width: 0;
+  padding: 24px 38px 18px;
+}
+
+.finding-panel[hidden] {
+  display: none;
+}
+
+.finding-panel.is-active {
+  animation: finding-in 180ms ease-out;
+}
+
+.finding-eyebrow {
+  margin: 0 0 4px;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.finding-panel h2 {
+  margin: 0 0 4px;
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.finding-facts {
+  margin: 0;
+}
+
+.finding-facts > div {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding: 5px 0;
+}
+
+.finding-facts dt,
+.finding-facts dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.finding-facts dt {
+  color: var(--label);
+  font-weight: 650;
+}
+
+.finding-facts dd {
+  min-width: 0;
+  color: var(--ink);
+}
+
+.finding-facts code,
+.finding-evidence code,
+.finding-source code,
+.finding-source span {
+  font-family: var(--mono);
+}
+
+.finding-source code {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--raised);
+  padding: 7px 9px;
+}
+
+.finding-value-false {
+  color: var(--data-caution-ink);
+  font-weight: 700;
+}
+
+.finding-conclusion dd {
+  color: var(--data-caution-ink);
+  font-weight: 650;
+}
+
+.finding-evidence > p {
+  margin: 0 0 8px;
+  color: var(--label);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.finding-code {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--raised);
+}
+
+.finding-code input {
+  display: block;
+  width: 100%;
+  height: 29px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  outline: 0;
+  background: transparent;
+  padding: 7px 13px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.finding-evidence pre {
+  max-height: 138px;
+  overflow: auto;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  padding: 7px 13px;
+  color: var(--ink);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.finding-empty-evidence {
+  display: flex;
+  min-height: 170px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--raised);
+  padding: 24px;
+  color: var(--muted);
+}
+
+.finding-empty-evidence i {
+  font-size: 22px;
+}
+
+.finding-empty-evidence p {
+  max-width: 36ch;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.finding-notebook {
+  border-left: 1px solid var(--line);
+  padding: 26px 28px;
+}
+
+.finding-notebook ul {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 24px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+
+.finding-notebook li {
+  color: var(--ink);
+  font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.finding-source code,
+.finding-source span {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.field-notes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 276px;
+  gap: 28px;
+  padding: 0 0 42px;
+  scroll-margin-top: 24px;
+}
+
+.field-notes-main,
+.work-index-callout {
+  border-top: 1px solid var(--soft-line);
+  padding-top: 20px;
+}
+
+.field-notes-main > h2,
+.work-index-callout h2 {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.field-note-list {
+  display: grid;
+}
+
+.field-note-row {
+  display: grid;
+  grid-template-columns: 120px minmax(230px, 1.5fr) minmax(180px, 1fr) 92px 20px;
+  gap: 18px;
+  align-items: center;
+  min-height: 62px;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+}
+
+.field-note-row:first-child {
+  border-top: 0;
+}
+
+.field-note-category {
+  color: var(--data-ref-ink);
+  font-size: 13px;
+}
+
+.field-note-row strong {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.field-note-summary,
+.field-note-row time {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.field-note-row i {
+  font-size: 16px;
+  transition: transform 160ms ease;
+}
+
+.field-note-row:hover i {
+  transform: translateX(4px);
+}
+
+.work-index-callout {
+  padding-left: 30px;
+  border-left: 1px solid var(--line);
+}
+
+.work-index-callout p {
+  max-width: 22ch;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.work-index-callout a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--data-ref-ink);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.work-index-callout a:hover i {
+  transform: translateX(3px);
+}
+
+#work-index.home-catalog {
+  padding-top: 34px;
+  scroll-margin-top: 32px;
+}
+
+@keyframes finding-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* —— Legacy home / shared about styles —— */
 .home-intro,
 .home-hero.home-intro {
   display: block;

@@ -17,7 +17,7 @@ const desktopNav = desktopNavEntries(locale, current);
 const navGroups = headerNavGroups(locale, current);
 ---
 
-<header class="site-header">
+<header class="site-header" data-current={current}>
   <a class="brand" href={homeHref} aria-label="Titpea home">
     <span class="brand-mark" aria-hidden="true">T</span>
     <span>Titpea</span>

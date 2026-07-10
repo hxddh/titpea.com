@@ -69,37 +69,21 @@ export function headerNavGroups(locale: Locale, current: CurrentPage = "home"): 
 
 export function desktopNavEntries(locale: Locale, current: CurrentPage): DesktopNavEntry[] {
   const copy = headerCopy[locale];
-  const groups = headerNavGroups(locale, current);
-  const main = groups[0];
-  const storage = groups[1];
-  const personal = groups[2];
-  const external = groups[3];
-  const about = main.items.find((item) => item.href.includes("about"))!;
-  const github = external.items[0];
+  const homeHref = pathFor(locale);
+  const aboutHref = pathFor(locale, "about");
 
   return [
     {
       kind: "link",
-      label: about.label,
-      href: about.href,
-      current: about.current,
+      label: copy.links.work,
+      href: `${homeHref}#work`,
     },
-    {
-      kind: "dropdown",
-      label: copy.groups.storage,
-      items: storage.items,
-      open: storage.items.some((item) => item.current === current),
-    },
-    {
-      kind: "dropdown",
-      label: copy.groups.personal,
-      items: personal.items,
-      open: personal.items.some((item) => item.current === current),
-    },
+    { kind: "link", label: copy.links.notes, href: `${homeHref}#notes` },
+    { kind: "link", label: copy.links.about, href: aboutHref, current: current === "about" ? "about" : undefined },
     {
       kind: "link",
-      label: github.label,
-      href: github.href,
+      label: "GitHub",
+      href: siteConfig.externalLinks.github,
       external: true,
     },
   ];
