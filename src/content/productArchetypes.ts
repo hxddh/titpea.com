@@ -21,10 +21,8 @@ export type VisualPolicy =
   | "storageWorkbench"
   | "httpmonTerminal"
   | "worldClockScreenshot"
-  | "doubanScreenshot"
-  | "pagewiseWorkbench"
-  | "agentRadarTerminal";
-export type ProductGroup = "storage" | "personal";
+  | "doubanScreenshot";
+export type ProductGroup = "storage" | "browser";
 
 export type ArchetypeSectionSpec = {
   id: PageSectionId;
@@ -119,16 +117,29 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "Capabilities", zh: "能做什么" },
+        label: { en: "What it investigates", zh: "它能查什么" },
         source: "features",
         required: true,
       },
-      // Session steps used to restate inside + features; trust/boundary live in FAQ.
+      {
+        id: "workflow",
+        label: { en: "How a session runs", zh: "一次会话怎么跑" },
+        layout: "steps",
+        numbered: true,
+        source: "workflow",
+        required: true,
+      },
+      {
+        id: "positioning",
+        label: { en: "Local and read-only", zh: "本地 · 只读" },
+        source: "positioning",
+        required: true,
+      },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
   browserExtension: {
-    group: "personal",
+    group: "browser",
     pageClass: "product-page product-page-browserExtension",
     sectionIndex: false,
     indexLabel: { en: "Read this page", zh: "阅读路径" },
@@ -137,8 +148,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     defaultVisual: "worldClockScreenshot",
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
-      // Covers both in-page injectors (Douban) and popup tools (World Clock).
-      { id: "features", label: { en: "What you get", zh: "打开后能看到什么" }, source: "features", required: true },
+      { id: "features", label: { en: "In the page", zh: "页面里的信息" }, source: "features", required: true },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },

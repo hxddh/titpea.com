@@ -15,7 +15,7 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
         input: "One bucket",
         output: "Parquet object list",
         detail:
-          "Checkpoint and resume keep a long list recoverable; optional trace and manifest files preserve how it ran. Downstream tools can read the Parquet in DuckDB, pandas, or pyarrow.",
+          "Checkpoint and resume keep a long list recoverable; optional trace and manifest files preserve how it ran.",
       },
       {
         label: "DIFF",
@@ -23,7 +23,7 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
         input: "Source bucket + target bucket",
         output: "Parquet with DiffFlag",
         detail:
-          "Both sides are listed in parallel and merged in key order, so downstream tools can filter equal, missing, or changed objects via DiffFlag.",
+          "Both sides are listed in parallel and merged in key order, so downstream tools can filter what is equal, missing, or changed.",
       },
     ],
   },
@@ -39,15 +39,14 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
         title: "一份可用的对象 list",
         input: "一个存储桶",
         output: "Parquet list",
-        detail:
-          "长任务可以从 checkpoint 继续；需要复查时，再查看可选的 trace 和运行记录。结果可直接用 DuckDB 读 Parquet 做分组统计。",
+        detail: "长任务可以从 checkpoint 继续；需要复查时，再查看可选的 trace 和运行记录。",
       },
       {
         label: "DIFF",
         title: "一份有序的差异结果",
         input: "源端桶 + 目标端桶",
         output: "带 DiffFlag 的 Parquet",
-        detail: "两端会并行列举，再按 key 合并；下游可按 DiffFlag 筛出相同、缺失和变化的对象。",
+        detail: "两端会并行列举，再按 key 合并；下游可以直接筛出相同、缺失和变化的对象。",
       },
     ],
   },

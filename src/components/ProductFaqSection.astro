@@ -12,8 +12,8 @@ const { section } = Astro.props;
   <p class="section-kicker">{section.label}</p>
   <div class="faq-list">
     {
-      section.items.map((item, index) => (
-        <details open={index === 0}>
+      section.items.map((item) => (
+        <details>
           <summary>{item.title}</summary>
           <p>{item.body}</p>
         </details>

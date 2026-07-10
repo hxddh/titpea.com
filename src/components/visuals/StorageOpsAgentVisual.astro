@@ -14,6 +14,17 @@ const { visual } = Astro.props;
     <h2>{visual.title}</h2>
     <p>{visual.body}</p>
   </div>
+  <div class="agent-manifest-grid">
+    {
+      visual.cards.map((card) => (
+        <div>
+          <span>{card.number}</span>
+          <strong>{card.title}</strong>
+          <p>{card.body}</p>
+        </div>
+      ))
+    }
+  </div>
   <div class="agent-flow-line">
     <span>{visual.flow[0]}</span>
     <span>{visual.flow[1]}</span>

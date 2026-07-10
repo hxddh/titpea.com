@@ -43,10 +43,10 @@ for (const model of allPageModels) {
     if (!model.visual.kind || !model.visual.label) failures.push(`${model.path}: incomplete visual model`);
     if (!model.structuredData?.applicationCategory) failures.push(`${model.path}: missing structured data category`);
     if (
-      product.archetype === "browserExtension" &&
+      contract.group === "browser" &&
       !visible.includes(model.locale === "zh" ? "声明不收集数据" : "No data collection disclosed")
     ) {
-      failures.push(`${model.path}: browser extension missing privacy posture`);
+      failures.push(`${model.path}: browser product missing privacy posture`);
     }
   }
 }

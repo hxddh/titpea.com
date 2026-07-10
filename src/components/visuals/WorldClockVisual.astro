@@ -6,23 +6,21 @@ interface Props {
 }
 
 const { visual } = Astro.props;
-// Prefer a single primary shot for a clean product stage (light theme first).
-const primary = visual.images[0] ?? null;
 ---
 
 <div class="clock-visual product-scene clock-scene" aria-label={visual.label}>
   <div class="clock-shot-stack">
     {
-      primary && (
+      visual.images.map((image) => (
         <img
-          class={primary.className}
-          src={primary.src}
-          alt={primary.alt}
-          width={primary.width}
-          height={primary.height}
+          class={image.className}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
           loading="eager"
         />
-      )
+      ))
     }
   </div>
 </div>

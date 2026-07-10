@@ -1,32 +1,22 @@
 ---
 import type { ProductVisualModel } from "../content/visualModels";
-import AgentRadarTerminalVisual from "./visuals/AgentRadarTerminalVisual.astro";
 import DoubanRatingVisual from "./visuals/DoubanRatingVisual.astro";
 import S3BenchmarkVisual from "./visuals/S3BenchmarkVisual.astro";
 import StorageOpsAgentVisual from "./visuals/StorageOpsAgentVisual.astro";
-import PagewiseWorkbenchVisual from "./visuals/PagewiseWorkbenchVisual.astro";
 import StorageWorkbenchVisual from "./visuals/StorageWorkbenchVisual.astro";
 import HttpmonTerminalVisual from "./visuals/HttpmonTerminalVisual.astro";
 import WorldClockVisual from "./visuals/WorldClockVisual.astro";
 
-export type ProductVisualSize = "thumb" | "inline" | "stage";
-
 interface Props {
   visual: ProductVisualModel;
-  /** Height contract: thumb ≤120, inline ≤360, stage ≤480 (also capped by 52vh). */
-  size?: ProductVisualSize;
 }
 
-const { visual, size = "stage" } = Astro.props;
+const { visual } = Astro.props;
 ---
 
-<div class:list={["product-visual", `product-visual--${size}`]}>
-  {visual.kind === "s3Benchmark" && <S3BenchmarkVisual visual={visual} />}
-  {visual.kind === "storageAgent" && <StorageOpsAgentVisual visual={visual} />}
-  {visual.kind === "storageWorkbench" && <StorageWorkbenchVisual visual={visual} />}
-  {visual.kind === "pagewiseWorkbench" && <PagewiseWorkbenchVisual visual={visual} />}
-  {visual.kind === "httpmonTerminal" && <HttpmonTerminalVisual visual={visual} />}
-  {visual.kind === "agentRadarTerminal" && <AgentRadarTerminalVisual visual={visual} />}
-  {visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}
-  {visual.kind === "doubanScreenshot" && <DoubanRatingVisual visual={visual} />}
-</div>
+{visual.kind === "s3Benchmark" && <S3BenchmarkVisual visual={visual} />}
+{visual.kind === "storageAgent" && <StorageOpsAgentVisual visual={visual} />}
+{visual.kind === "storageWorkbench" && <StorageWorkbenchVisual visual={visual} />}
+{visual.kind === "httpmonTerminal" && <HttpmonTerminalVisual visual={visual} />}
+{visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}
+{visual.kind === "doubanScreenshot" && <DoubanRatingVisual visual={visual} />}

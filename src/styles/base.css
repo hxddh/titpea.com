@@ -16,12 +16,12 @@ body {
   margin: 0;
   color: var(--ink);
   background-color: var(--paper);
-  /* Flat paper — grid backdrop removed (wireframe signal). */
-  background-image: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
   font-family: var(--sans);
   line-height: 1.6;
-  font-size: 16px;
-  text-align: left;
 }
 
 a {
@@ -63,23 +63,12 @@ p {
 .site-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 20px;
   border-top: 1px solid var(--line);
-  padding: 18px 0 28px;
+  padding: 22px 0 34px;
   color: var(--muted);
-  font-family: var(--sans);
-  font-size: 13px;
-}
-
-.site-footer a {
-  color: var(--muted);
-  border-bottom: 1px solid transparent;
-}
-
-.site-footer a:hover {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
 }
 
 .eyebrow,
@@ -93,11 +82,11 @@ p {
 }
 
 .lead {
-  max-width: var(--measure);
-  margin: 0;
+  max-width: 62ch;
+  margin-inline: auto;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.62;
 }
 
 .prose {

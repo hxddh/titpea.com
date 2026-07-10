@@ -26,7 +26,6 @@ export const s3TurboListFacts = requireFact("s3-turbo-list");
 export const httpmonFacts = requireFact("https-traffic-inspector");
 export const worldClockFacts = requireFact("world-clock");
 export const doubanMovieRatingFacts = requireFact("douban-movie-rating");
-export const agentRadarFacts = requireFact("agent-radar");
 
 export function s3MetaLine() {
   return `Rust · ${s3TurboListFacts.licenseLabel} · ${s3TurboListFacts.latestRelease} · S3-compatible · Parquet · Agent-safe JSON`;

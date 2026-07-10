@@ -1,22 +1,6 @@
 # Titpea Personal Site
 
-Astro static site for `titpea.com`: a personal profile page plus product pages for hxddh's independent products and utilities.
-
-## Products
-
-**Object storage**
-
-- [s3-turbo-list](https://github.com/hxddh/s3-turbo-list) — automatic, high-speed S3-compatible list / diff
-- [Storage Agent](https://github.com/hxddh/storage-agent-workbench) — local desktop agent for read-only storage investigation
-- [StorageOps](https://github.com/hxddh/storageops) — Pi Coding Agent skills for S3-compatible diagnosis
-- [httpmon](https://github.com/hxddh/https-traffic-inspector) — terminal HTTP/HTTPS inspection for one command
-
-**Reading & media**
-
-- [PageWise](https://github.com/hxddh/pagewise) — local desktop document agent (PDF, OCR, page-wise Q&A)
-- [World Clock](https://chromewebstore.google.com/detail/mghphbjnicggehnhbjbpjddfidkepnfp) — multi-city timezone Chrome extension
-- [Douban Movie Rating Assistant](https://chromewebstore.google.com/detail/alhcfchcficmeggkhcpkojoipdkkgoif) — IMDb / RT / Metacritic context on Douban
-- [Agent Radar](https://github.com/hxddh/agent-radar) — Markdown-first AI agent trend radar
+Astro static site for `titpea.com`: a personal profile page plus product pages for hxddh's storage CLIs (s3-turbo-list, StorageOps, httpmon) and Chrome extensions (World Clock, Douban Movie Rating Assistant).
 
 ## Commands
 

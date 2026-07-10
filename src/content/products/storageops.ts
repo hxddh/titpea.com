@@ -13,11 +13,11 @@ export const storageOpsProduct: AgentPackageProduct = {
       description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
       eyebrow: "Pi Coding Agent extension",
       headline: "Storage diagnosis for Pi",
-      lead: "Give Pi a storage-aware path for AccessDenied, signing, and migration cases from the materials you already have.",
+      lead: "Skills and tools that help Pi investigate S3-compatible failures from the material you provide.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["16 skill packs", "Four Pi tools", "No cloud access"],
+      proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No cloud access"],
       workflowLabel: "A case in practice",
       workflow: [
         {
@@ -59,7 +59,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         "migration",
         "stale reads",
       ],
-      finalCta: "Install StorageOps for Pi",
+      finalCta: "Give Pi a storage-aware diagnosis path",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & setup",
       faq: [
@@ -82,11 +82,11 @@ export const storageOpsProduct: AgentPackageProduct = {
       description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与 skill pack。",
       eyebrow: "Pi Coding Agent 扩展",
       headline: "Pi 的对象存储排查扩展",
-      lead: "把已有的报错、日志和配置交给 Pi，按对象存储方法排查 AccessDenied、签名与迁移等问题。",
+      lead: "用你提供的日志、报错、配置和 trace，帮 Pi 排查 S3 兼容存储问题的 skills 和工具。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["16 组 skills", "4 个 Pi 工具", "不连接云账号"],
+      proof: ["Pi 扩展", "16 组 skills", "4 个 Pi 工具", "不连接云账号"],
       workflowLabel: "一次问题怎么处理",
       workflow: [
         {
@@ -127,7 +127,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         "迁移",
         "读取结果过期",
       ],
-      finalCta: "为 Pi 安装 StorageOps",
+      finalCta: "让 Pi 按对象存储的方法排查",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与安装",
       faq: [

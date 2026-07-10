@@ -44,76 +44,18 @@ export type HomePageModel = BasePageModel & {
     eyebrow: string;
     title: string;
     lead: string;
-    principlesLabel: string;
-    principles: string[];
     actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
-    visual: ProductVisualModel;
-    visualHref: string;
-    proofCaption: string;
-  };
-  finding: {
-    trailLabel: string;
-    trails: string[];
-    eyebrow: string;
-    title: string;
-    objectLabel: string;
-    objectValue: string;
-    checkLabel: string;
-    checkValue: string;
-    conclusionLabel: string;
-    conclusionValue: string;
-    evidenceLabel: string;
-    command: string;
-    evidenceBody: string;
-    noteLabel: string;
-    noteLines: string[];
-    sourceLabel: string;
-    sourcePath: string;
-    checksum: string;
-    alternate: Array<{
-      eyebrow: string;
-      title: string;
-      objectLabel: string;
-      objectValue: string;
-      checkLabel: string;
-      checkValue: string;
-      conclusionLabel: string;
-      conclusionValue: string;
-    }>;
-  };
-  notes: {
-    label: string;
-    indexTitle: string;
-    indexBody: string;
-    indexCta: string;
-    rows: Array<{
-      category: string;
-      title: string;
-      summary: string;
-      date: string;
-      href: string;
-    }>;
   };
   storage: {
-    id: string;
     label: string;
     title: string;
     items: ProductCatalogItemModel[];
   };
-  personal: {
-    id: string;
+  browser: {
     label: string;
     title: string;
     items: ProductCatalogItemModel[];
   };
-};
-
-export type AboutToolLinkModel = {
-  name: string;
-  href: string;
-  role?: string;
-  text?: string;
-  badge?: string;
 };
 
 export type AboutPageModel = BasePageModel & {
@@ -121,24 +63,26 @@ export type AboutPageModel = BasePageModel & {
   current: "about";
   hero: {
     eyebrow: string;
+    title: string;
     lead: string;
-    body: string;
+    contactLabel: string;
+    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
-  why: {
+  profile: {
     label: string;
     title: string;
-    body: string;
-    lines: Array<{ label: string; body: string; href: string; browseLabel: string }>;
-    closing: string;
+    body: string[];
   };
-  featured: {
+  focus: {
     label: string;
-    items: AboutToolLinkModel[];
-    allProducts: { label: string; href: string };
+    items: string[];
   };
-  contact: {
+  products: {
     label: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
+    title: string;
+    storageLabel: string;
+    browserLabel: string;
+    items: ProductCatalogItemModel[];
   };
 };
 
@@ -149,10 +93,9 @@ export type ProductCatalogItemModel = {
   href: string;
   text: string;
   displayRole: string;
-  badge?: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
-  group: "storage" | "personal";
+  group: "storage" | "browser";
 };
 
 export type ProductPageModel = BasePageModel & {

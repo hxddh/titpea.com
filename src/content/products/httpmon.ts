@@ -14,11 +14,11 @@ export const httpmonProduct: StorageCliProduct = {
       description: "A zero-config terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
       eyebrow: "Go CLI",
       headline: "See HTTP beside the command",
-      lead: "See status, headers, and timing beside one command—without changing the system proxy or the response stream.",
+      lead: "Wrap curl, aws, Python, or any proxy-aware command and read its requests and responses live — system proxy untouched, the command's own response unchanged.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "Usage", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
-      proof: ["One child process", "No system proxy change"],
+      proof: ["One child process", "No system proxy change", "HTTP / HTTPS / wss", "NDJSON / HAR"],
       workflowLabel: "What you see",
       workflow: [
         {
@@ -55,7 +55,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "Wrap the next command",
+      finalCta: "Inspect the next request in place",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & use",
       faq: [
@@ -71,10 +71,6 @@ export const httpmonProduct: StorageCliProduct = {
           title: "What does it support beyond HTTP?",
           body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
         },
-        {
-          title: "Can it record and replay a session?",
-          body: "Yes. httpmon can record request–response pairs to disk, then replay an authorized session against its original target or a comparison environment.",
-        },
       ],
     },
     zh: {
@@ -82,11 +78,11 @@ export const httpmonProduct: StorageCliProduct = {
       description: "零配置的终端 HTTP 查看器，用来观察一条命令发出的 HTTP 和 HTTPS 请求。",
       eyebrow: "Go CLI",
       headline: "运行命令时，顺手看 HTTP 请求",
-      lead: "在一条命令旁直接看到状态码、请求头和耗时——不改系统代理，也不改命令收到的响应流。",
+      lead: "用 httpmon 包住 curl、aws、Python 或任何支持代理的命令，实时看请求和响应——不改系统代理，命令收到的响应也原样不动。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
-      proof: ["只作用于一个子进程", "不改系统代理"],
+      proof: ["只作用于一个子进程", "不改系统代理", "HTTP / HTTPS / wss", "NDJSON / HAR"],
       workflowLabel: "终端里能看到什么",
       workflow: [
         {
@@ -123,7 +119,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "包住下一条命令再看",
+      finalCta: "在原地看清下一条请求",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与用法",
       faq: [
@@ -135,10 +131,6 @@ export const httpmonProduct: StorageCliProduct = {
         {
           title: "除了 HTTP 还支持什么？",
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
-        },
-        {
-          title: "可以录制和回放吗？",
-          body: "可以。httpmon 能录制请求与响应对到本地，再把已获授权的会话回放到原端点或对比环境。",
         },
       ],
     },

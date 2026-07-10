@@ -1,11 +1,4 @@
-import {
-  pathFor,
-  type CurrentPage,
-  type DesktopNavEntry,
-  type HeaderNavGroup,
-  type HeaderNavItem,
-  type Locale,
-} from "../lib/site";
+import { pathFor, type HeaderNavGroup, type HeaderNavItem, type Locale } from "../lib/site";
 import { headerCopy } from "./i18n/navCopy";
 import { siteConfig } from "./siteConfig";
 import { productManifest } from "./productManifest";
@@ -18,47 +11,30 @@ export function headerUi(locale: Locale) {
     menuText: copy.menuText,
     themeToDark: copy.themeToDark,
     themeToLight: copy.themeToLight,
-    themeShortDark: copy.themeShortDark,
-    themeShortLight: copy.themeShortLight,
   };
 }
 
-function productNavItems(locale: Locale, group: "storage" | "personal", current: CurrentPage): HeaderNavItem[] {
-  const copy = headerCopy[locale];
-
-  return productManifest
-    .filter((item) => item.group === group)
-    .map((item) => ({
-      label: item.nav.label ? copy.links[item.nav.label] : item.name,
-      href: pathFor(locale, item.slug),
-      current: item.slug,
-      showInPrimary: item.nav.primary,
-    }))
-    .map((item) => ({
-      ...item,
-      current: item.current === current ? item.current : undefined,
-    }));
-}
-
-export function headerNavGroups(locale: Locale, current: CurrentPage = "home"): HeaderNavGroup[] {
+export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
   const copy = headerCopy[locale];
 
   return [
     {
       label: copy.groups.main,
       items: [
-        { label: copy.links.home, href: pathFor(locale), current: current === "home" ? "home" : undefined },
-        {
-          label: copy.links.about,
-          href: pathFor(locale, "about"),
-          current: current === "about" ? "about" : undefined,
-          showInPrimary: true,
-        },
+        { label: copy.links.home, href: pathFor(locale), current: "home" },
+        { label: copy.links.about, href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
-    ...(["storage", "personal"] as const).map((group) => ({
+    ...(["storage", "browser"] as const).map((group) => ({
       label: copy.groups[group],
-      items: productNavItems(locale, group, current),
+      items: productManifest
+        .filter((item) => item.group === group)
+        .map((item) => ({
+          label: item.nav.label ? copy.links[item.nav.label] : item.name,
+          href: pathFor(locale, item.slug),
+          current: item.slug,
+          showInPrimary: item.nav.primary,
+        })),
     })),
     {
       label: copy.groups.external,
@@ -67,24 +43,8 @@ export function headerNavGroups(locale: Locale, current: CurrentPage = "home"): 
   ];
 }
 
-export function desktopNavEntries(locale: Locale, current: CurrentPage): DesktopNavEntry[] {
-  const copy = headerCopy[locale];
-  const homeHref = pathFor(locale);
-  const aboutHref = pathFor(locale, "about");
-
-  return [
-    {
-      kind: "link",
-      label: copy.links.work,
-      href: `${homeHref}#work`,
-    },
-    { kind: "link", label: copy.links.notes, href: `${homeHref}#notes` },
-    { kind: "link", label: copy.links.about, href: aboutHref, current: current === "about" ? "about" : undefined },
-    {
-      kind: "link",
-      label: "GitHub",
-      href: siteConfig.externalLinks.github,
-      external: true,
-    },
-  ];
+export function primaryNavItems(locale: Locale): HeaderNavItem[] {
+  return headerNavGroups(locale)
+    .flatMap((group) => group.items)
+    .filter((item) => item.showInPrimary);
 }

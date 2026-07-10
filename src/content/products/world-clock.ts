@@ -15,14 +15,14 @@ export const worldClockProduct: BrowserExtensionProduct = {
       description: "A minimalist Chrome extension showing live time across major cities.",
       eyebrow: "Chrome Extension",
       headline: "Time across cities at a glance",
-      lead: "Check city time, UTC offset, and work-hours in one popup—then return to what you were doing.",
+      lead: "Open one small popup to see the local time, UTC offset, date, and work-hours context for the cities you care about.",
       primaryCta: {
         label: "Install",
         href: siteConfig.externalLinks.worldClockChrome,
       },
-      secondaryCta: { label: "Privacy FAQ", href: "/world-clock/#faq" },
+      secondaryCta: { label: "Back to profile", href: "/about/" },
       meta: worldClockMeta,
-      proof: ["Live city rows", "Light and dark themes"],
+      proof: ["Chrome Web Store: Tools", "Live city rows", "Light and dark themes", "No data collection disclosed"],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -96,14 +96,14 @@ export const worldClockProduct: BrowserExtensionProduct = {
       description: "一个很轻的 Chrome 扩展，用来快速查看几个主要城市的当前时间。",
       eyebrow: "Chrome 扩展",
       headline: "一眼看清几个城市的时间",
-      lead: "打开弹窗即可看到城市时间、UTC 偏移与工作时段，看完继续手头的事。",
+      lead: "打开一个小弹窗，直接看城市时间、UTC 偏移、日期和工作时段，看完继续手头的事。",
       primaryCta: {
         label: "安装扩展",
         href: siteConfig.externalLinks.worldClockChrome,
       },
-      secondaryCta: { label: "隐私 FAQ", href: "/zh/world-clock/#faq" },
+      secondaryCta: { label: "返回简介", href: "/zh/about/" },
       meta: worldClockMetaZh,
-      proof: ["城市时间行", "浅色和深色主题"],
+      proof: ["Chrome Web Store: Tools", "城市时间行", "浅色和深色主题", "声明不收集数据"],
       positioningLabel: "边界",
       positioning: [
         {

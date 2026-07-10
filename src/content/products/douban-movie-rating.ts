@@ -15,14 +15,19 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       description: "A Chrome extension that shows IMDb, Rotten Tomatoes, and Metacritic ratings on Douban movie pages.",
       eyebrow: "Chrome Extension",
       headline: "More rating context inside Douban",
-      lead: "Compare IMDb, Rotten Tomatoes, and Metacritic next to the Douban score without leaving the movie page.",
+      lead: "Keep reading the Douban movie page while IMDb, Rotten Tomatoes, and Metacritic appear beside the rating you already know.",
       primaryCta: {
         label: "Install",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "Matching FAQ", href: "/douban-movie-rating/#faq" },
+      secondaryCta: { label: "Back to profile", href: "/about/" },
       meta: doubanMeta,
-      proof: ["IMDb · Rotten Tomatoes · Metacritic"],
+      proof: [
+        "Chrome Web Store: Entertainment",
+        "IMDb context",
+        "Rotten Tomatoes context",
+        "No data collection disclosed",
+      ],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -101,14 +106,14 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       description: "在豆瓣电影页面补充 IMDb、Rotten Tomatoes 和 Metacritic 评分的 Chrome 扩展。",
       eyebrow: "Chrome 扩展",
       headline: "在豆瓣页顺手对照其他评分",
-      lead: "不离开豆瓣电影页，就能对照 IMDb、Rotten Tomatoes 和 Metacritic 的参考评分。",
+      lead: "不离开豆瓣电影页，IMDb、Rotten Tomatoes 和 Metacritic 会在旁边补充参考信息。",
       primaryCta: {
         label: "安装扩展",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "匹配 FAQ", href: "/zh/douban-movie-rating/#faq" },
+      secondaryCta: { label: "返回简介", href: "/zh/about/" },
       meta: doubanMetaZh,
-      proof: ["IMDb · 烂番茄 · Metacritic"],
+      proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
       positioningLabel: "边界",
       positioning: [
         {

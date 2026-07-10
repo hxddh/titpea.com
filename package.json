@@ -36,7 +36,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@phosphor-icons/web": "^2.1.2",
     "astro": "^6.4.6"
   },
   "devDependencies": {
