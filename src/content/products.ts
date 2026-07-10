@@ -4,6 +4,8 @@ import { s3TurboListProduct } from "./products/s3-turbo-list";
 import { storageAgentWorkbenchProduct } from "./products/storage-agent-workbench";
 import { storageOpsProduct } from "./products/storageops";
 import { httpmonProduct } from "./products/httpmon";
+import { agentRadarProduct } from "./products/agent-radar";
+import { pagewiseProduct } from "./products/pagewise";
 import { worldClockProduct } from "./products/world-clock";
 import { productManifest } from "./productManifest";
 
@@ -14,6 +16,8 @@ export const products: Record<ProductSlug, Product> = {
   "storage-agent-workbench": storageAgentWorkbenchProduct,
   storageops: storageOpsProduct,
   httpmon: httpmonProduct,
+  "agent-radar": agentRadarProduct,
+  pagewise: pagewiseProduct,
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,
 };

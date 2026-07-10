@@ -1,11 +1,12 @@
 import { products } from "./products";
+import { productManifestBySlug } from "./productManifest";
 import { pathFor, type Locale, type ProductSlug } from "../lib/site";
 
 export type IndexedProduct = {
   slug: ProductSlug;
   name: string;
   href: string;
-  group: "storage" | "browser";
+  group: "storage" | "personal";
 };
 
 export function indexedProduct(slug: ProductSlug, locale: Locale): IndexedProduct {
@@ -13,7 +14,7 @@ export function indexedProduct(slug: ProductSlug, locale: Locale): IndexedProduc
     slug,
     name: products[slug].name,
     href: pathFor(locale, slug),
-    group: products[slug].archetype === "browserExtension" ? "browser" : "storage",
+    group: productManifestBySlug[slug].group,
   };
 }
 

@@ -11,7 +11,7 @@ export const headerCopy: Record<
     groups: {
       main: string;
       storage: string;
-      browser: string;
+      personal: string;
       external: string;
     };
     links: {
@@ -20,6 +20,8 @@ export const headerCopy: Record<
       storageAgent: string;
       worldClock: string;
       douban: string;
+      pagewise: string;
+      agentRadar: string;
     };
   }
 > = {
@@ -32,7 +34,7 @@ export const headerCopy: Record<
     groups: {
       main: "Main",
       storage: "Storage",
-      browser: "Browser",
+      personal: "Reading & media",
       external: "External",
     },
     links: {
@@ -41,6 +43,8 @@ export const headerCopy: Record<
       storageAgent: "Storage Agent",
       worldClock: "World Clock",
       douban: "Douban",
+      pagewise: "PageWise",
+      agentRadar: "Agent Radar",
     },
   },
   zh: {
@@ -52,7 +56,7 @@ export const headerCopy: Record<
     groups: {
       main: "主要页面",
       storage: "对象存储",
-      browser: "浏览器工具",
+      personal: "阅读与影音",
       external: "外部链接",
     },
     links: {
@@ -61,6 +65,8 @@ export const headerCopy: Record<
       storageAgent: "Storage Agent",
       worldClock: "世界时钟",
       douban: "豆瓣评分",
+      pagewise: "PageWise",
+      agentRadar: "Agent Radar",
     },
   },
 };

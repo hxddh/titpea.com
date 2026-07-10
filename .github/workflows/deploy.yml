@@ -52,6 +52,12 @@ jobs:
       - name: Install Playwright browser
         if: github.event_name == 'pull_request' && steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
+      # zh pages need real CJK glyphs, or the visual baselines compare tofu
+      # boxes and the Chinese visual regression check is meaningless. Keep this
+      # font in sync with local baseline refreshes: Noto Sans CJK.
+      - name: Install CJK fonts
+        if: github.event_name == 'pull_request'
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
       - name: Page QA
         if: github.event_name == 'pull_request'
         timeout-minutes: 8

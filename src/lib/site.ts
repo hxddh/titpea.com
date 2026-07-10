@@ -4,6 +4,8 @@ export type ProductSlug =
   | "storage-agent-workbench"
   | "storageops"
   | "httpmon"
+  | "agent-radar"
+  | "pagewise"
   | "world-clock"
   | "douban-movie-rating";
 export type CurrentPage = "home" | "about" | ProductSlug;
@@ -124,7 +126,7 @@ export type BrowserExtensionProduct = {
 };
 
 export type AgentWorkbenchProduct = {
-  slug: "storage-agent-workbench";
+  slug: Extract<ProductSlug, "storage-agent-workbench" | "pagewise">;
   name: string;
   archetype: "agentWorkbench";
   locales: Localized<AgentWorkbenchProductCopy>;

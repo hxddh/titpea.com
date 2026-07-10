@@ -67,7 +67,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       label: copy.productsLabel,
       title: pageCopy.productsTitle,
       storageLabel: copy.storageLine,
-      browserLabel: copy.browserLine,
+      personalLabel: copy.personalLine,
       items: catalog.all,
     },
   };

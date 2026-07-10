@@ -51,7 +51,7 @@ export type HomePageModel = BasePageModel & {
     title: string;
     items: ProductCatalogItemModel[];
   };
-  browser: {
+  personal: {
     label: string;
     title: string;
     items: ProductCatalogItemModel[];
@@ -81,7 +81,7 @@ export type AboutPageModel = BasePageModel & {
     label: string;
     title: string;
     storageLabel: string;
-    browserLabel: string;
+    personalLabel: string;
     items: ProductCatalogItemModel[];
   };
 };
@@ -95,7 +95,7 @@ export type ProductCatalogItemModel = {
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
-  group: "storage" | "browser";
+  group: "storage" | "personal";
 };
 
 export type ProductPageModel = BasePageModel & {

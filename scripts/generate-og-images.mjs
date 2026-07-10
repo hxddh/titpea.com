@@ -61,6 +61,15 @@ export const images = [
     visual: "terminal",
   },
   {
+    file: "og-pagewise.png",
+    eyebrow: "PageWise",
+    title: "Ask questions about your documents",
+    body: "Local PDF text, OCR, and page-wise agent chat — files stay on your machine.",
+    accent: "#0d9488",
+    mark: "PDF",
+    visual: "workbench",
+  },
+  {
     file: "og-world-clock.png",
     eyebrow: "World Clock",
     title: "A timezone feed in one click",
@@ -77,6 +86,15 @@ export const images = [
     accent: "#d97706",
     mark: "RT",
     visual: "rating",
+  },
+  {
+    file: "og-agent-radar.png",
+    eyebrow: "Agent Radar",
+    title: "Track AI agent signals in Markdown",
+    body: "Watchlist, field notes, playbooks, storage implications, and a stdlib Python CLI.",
+    accent: "#7c3aed",
+    mark: "RADAR",
+    visual: "radar",
   },
 ];
 

@@ -51,12 +51,12 @@ const { model } = Astro.props;
 
   <section class="home-browser-band shell">
     <div class="browser-band-copy">
-      <p class="section-kicker">{model.browser.label}</p>
-      <h2>{model.browser.title}</h2>
+      <p class="section-kicker">{model.personal.label}</p>
+      <h2>{model.personal.title}</h2>
     </div>
     <div class="browser-tool-list compact">
       {
-        model.browser.items.map((item) => (
+        model.personal.items.map((item) => (
           <a href={item.href}>
             <span>{item.displayRole}</span>
             <strong>{item.name}</strong>

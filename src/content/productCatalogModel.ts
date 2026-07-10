@@ -12,7 +12,7 @@ export type ProductCatalogItem = {
   displayRole: string;
   isPrimary?: boolean;
   slug?: ProductSlug;
-  group: "storage" | "browser";
+  group: "storage" | "personal";
 };
 
 export function productCatalogModel(locale: Locale) {
@@ -22,6 +22,8 @@ export function productCatalogModel(locale: Locale) {
     if (slug === "storage-agent-workbench") return [copy.workbenchText, copy.workbenchRole];
     if (slug === "storageops") return [copy.storageopsText, copy.storageopsRole];
     if (slug === "httpmon") return [copy.httpmon, copy.httpmonRole];
+    if (slug === "pagewise") return [copy.pagewiseText, copy.pagewiseRole];
+    if (slug === "agent-radar") return [copy.agentRadarText, copy.agentRadarRole];
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
     return [copy.doubanText, copy.doubanRole];
   };
@@ -31,7 +33,7 @@ export function productCatalogModel(locale: Locale) {
     return {
       id: item.slug,
       number: item.group === "storage" ? String(item.catalog.order).padStart(2, "0") : undefined,
-      name: item.group === "browser" ? localizedProductTitle(item.slug, locale) : product.name,
+      name: item.group === "personal" ? localizedProductTitle(item.slug, locale) : product.name,
       href: product.href,
       text,
       displayRole,
@@ -41,13 +43,13 @@ export function productCatalogModel(locale: Locale) {
     } satisfies ProductCatalogItem;
   });
   const storage = catalogItems.filter((item) => item.group === "storage");
-  const browser = catalogItems.filter((item) => item.group === "browser");
+  const personal = catalogItems.filter((item) => item.group === "personal");
   const s3 = indexedProduct("s3-turbo-list", locale);
 
   return {
     storage,
-    browser,
-    all: [...storage, ...browser],
+    personal,
+    all: [...storage, ...personal],
     featuredProductPath: s3.href,
   };
 }

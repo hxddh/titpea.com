@@ -107,6 +107,7 @@
   .benchmark-visual,
   .agent-manifest-visual,
   .httpmon-terminal-visual,
+  .agent-radar-terminal-visual,
   .inside-workbench {
     padding: 20px;
   }

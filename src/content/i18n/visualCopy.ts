@@ -136,6 +136,48 @@ export const visualCopy = {
       chips: ["诊断错误", "分析访问日志", "清单与容量", "审查桶配置", "梳理账号与桶", "成本集中在哪里"],
     },
   },
+  pagewiseWorkbench: {
+    en: {
+      windowTitle: "PageWise",
+      recentLabel: "Recent",
+      recent: [
+        { title: "lease-scan.pdf", pages: "12 pages" },
+        { title: "Q3-report.pdf", pages: "48 pages" },
+        { title: "invoice.png", pages: "OCR" },
+      ],
+      // Hero is open/browse state; citation sample stays in Overview evidence.
+      activeDoc: "lease-scan.pdf",
+      pageLabel: "Page",
+      currentPage: "1",
+      totalPages: "12",
+      pageExcerpt: "Section 4.2 — Early termination requires thirty days’ written notice…",
+      question: "Find the early-termination clause",
+      subtitle: "Open a document, then ask about the pages that matter.",
+      inputPlaceholder: "Ask about this document…",
+      model: "your model",
+      chips: ["Find a clause", "Summarize a section", "Compare two pages", "Extract a table"],
+    },
+    zh: {
+      windowTitle: "PageWise",
+      recentLabel: "最近",
+      recent: [
+        { title: "lease-scan.pdf", pages: "12 页" },
+        { title: "Q3-report.pdf", pages: "48 页" },
+        { title: "invoice.png", pages: "OCR" },
+      ],
+      activeDoc: "lease-scan.pdf",
+      pageLabel: "第",
+      currentPage: "1",
+      totalPages: "12",
+      pageExcerpt: "第 4.2 条——提前终止须提前三十日书面通知……",
+      question: "找出提前终止条款",
+      subtitle: "先打开文档，再问关键页面。",
+      inputPlaceholder: "向文档提问…",
+      model: "自带模型",
+      chips: ["找条款", "总结一段", "对比两页", "提取表格"],
+    },
+  },
+
   httpmonTerminal: {
     en: {
       kicker: "httpmon · local proxy",
@@ -160,6 +202,29 @@ export const visualCopy = {
       footnotes: ["HTTPS 只在本地解密查看", "原始响应流继续交给命令"],
     },
   },
+  agentRadarTerminal: {
+    en: {
+      kicker: "agent-radar · brief",
+      status: "ok",
+      command: "python scripts/agent_radar.py brief",
+      filesLabel: "CORE FILES",
+      files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
+      briefLabel: "radar.md",
+      brief: "Thesis: local agents win on evidence · Changed: sandbox snapshot noise · Open: who owns artifact storage",
+      footnotes: ["Markdown-first · stdlib CLI", "daily append · weekly synthesis"],
+    },
+    zh: {
+      kicker: "agent-radar · 简报",
+      status: "通过",
+      command: "python scripts/agent_radar.py brief",
+      filesLabel: "核心文件",
+      files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
+      briefLabel: "radar.md",
+      brief: "判断：本地 agent 更易审计 · 已变：沙箱快照噪声 · 待答：产物存在谁的存储",
+      footnotes: ["Markdown 优先 · 标准库 CLI", "日更追加 · 周度综合"],
+    },
+  },
+
   screenshots: {
     en: {
       worldClockLight: "World Clock light theme timezone feed screenshot",

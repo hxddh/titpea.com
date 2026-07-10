@@ -15,6 +15,10 @@ export const siteConfig = {
     storageops: "https://github.com/hxddh/storageops",
     storageopsQuickStart: "https://github.com/hxddh/storageops#quick-start",
     httpmon: "https://github.com/hxddh/https-traffic-inspector",
+    pagewise: "https://github.com/hxddh/pagewise",
+    pagewiseReleases: "https://github.com/hxddh/pagewise/releases",
+    agentRadar: "https://github.com/hxddh/agent-radar",
+    agentRadarQuickStart: "https://github.com/hxddh/agent-radar#cli-usage",
     httpmonQuickStart: "https://github.com/hxddh/https-traffic-inspector#usage",
     worldClockChrome: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
     doubanChrome:

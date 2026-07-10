@@ -101,6 +101,130 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",
     },
   ),
+  "agent-radar": {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Markdown-first radar",
+      title: "Signals you can edit and version",
+      body: "Agent Radar keeps thesis, watchlist, field notes, playbooks, and storage implications in plain Markdown files — plus a stdlib Python CLI to scaffold, validate, and brief the repo.",
+      panel: {
+        kind: "agentEvidence",
+        label: "radar.md excerpt",
+        eyebrow: "Editable thesis",
+        title: "radar.md · current week",
+        metrics: [
+          {
+            label: "Current thesis",
+            value: "Local agents win on evidence",
+            body: "Coding agents that keep workspace artifacts local are easier to audit than chat-only hosted flows.",
+          },
+          {
+            label: "Changed",
+            value: "Sandbox + snapshot noise",
+            body: "More products advertise sandboxes; few document snapshot retention or replay cost.",
+          },
+          {
+            label: "Open questions",
+            value: "Who owns the artifact store?",
+            body: "When agents write logs, checkpoints, and playbooks, which storage path is intentional vs incidental?",
+          },
+        ],
+      },
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Markdown 优先雷达",
+      title: "可编辑、可版本管理的信号",
+      body: "Agent Radar 把判断、观察名单、现场笔记、playbook 和存储视角放在纯 Markdown 文件里，并用标准库 Python CLI 脚手架化、校验和生成简报。",
+      panel: {
+        kind: "agentEvidence",
+        label: "radar.md 摘录",
+        eyebrow: "可编辑判断",
+        title: "radar.md · 本周",
+        metrics: [
+          {
+            label: "当前判断",
+            value: "本地 agent 更易审计",
+            body: "把工作区产物留在本地的 coding agent，比纯托管聊天流更容易核对证据。",
+          },
+          {
+            label: "已变化",
+            value: "沙箱与快照噪声",
+            body: "更多产品宣传 sandbox；很少写清快照保留期或回放成本。",
+          },
+          {
+            label: "开放问题",
+            value: "产物存在谁的存储里",
+            body: "当 agent 写日志、checkpoint 和 playbook 时，哪条存储路径是有意设计、哪条只是附带？",
+          },
+        ],
+      },
+    },
+  },
+  pagewise: {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Local desktop agent",
+      title: "Read documents page by page",
+      body: "Open a PDF or image, extract text locally, and ask the agent about specific pages. The preview follows what it reads so you can verify every citation.",
+      panel: {
+        kind: "agentEvidence",
+        label: "Sample answer with page citations",
+        eyebrow: "Citation sample",
+        title: "Q3-report.pdf",
+        metrics: [
+          {
+            label: "Question",
+            value: "Revenue vs last quarter",
+            body: "What changed in revenue quarter-over-quarter, and what drove it?",
+          },
+          {
+            label: "Answer",
+            value: "+12% QoQ",
+            body: "Revenue grew 12% quarter-over-quarter, mainly from enterprise renewals in APAC.",
+          },
+          {
+            label: "Cited pages",
+            value: "p.7 · p.12",
+            body: "Summary on page 7; regional breakdown table on page 12.",
+          },
+        ],
+      },
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "本地桌面 agent",
+      title: "按页读懂你的文档",
+      body: "打开 PDF 或图片，在本地提取文本，向 agent 提问具体页面。预览会跟着它读的页走，方便核对每条引用。",
+      panel: {
+        kind: "agentEvidence",
+        label: "带页码引用的回答样例",
+        eyebrow: "引用样例",
+        title: "Q3-report.pdf",
+        metrics: [
+          {
+            label: "问题",
+            value: "收入 vs 上季度",
+            body: "收入环比有什么变化，主要驱动是什么？",
+          },
+          {
+            label: "回答",
+            value: "环比 +12%",
+            body: "收入环比增长 12%，主要来自亚太区企业客户续约。",
+          },
+          {
+            label: "引用页",
+            value: "p.7 · p.12",
+            body: "第 7 页摘要；第 12 页分区明细表。",
+          },
+        ],
+      },
+    },
+  },
   "world-clock": browserInside(
     { en: "Time, checked quickly", zh: "看一眼，就知道几点" },
     {
