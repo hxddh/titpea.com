@@ -1,6 +1,6 @@
 ---
 import { pathFor, type CurrentPage, type Locale } from "../lib/site";
-import { headerNavGroups, headerUi, primaryNavItems } from "../content/nav";
+import { desktopNavEntries, headerNavGroups, headerUi } from "../content/nav";
 
 interface Props {
   current: CurrentPage;
@@ -13,7 +13,7 @@ interface Props {
 const { current, locale, alternateHref, alternateLabel, alternateLocale } = Astro.props;
 const copy = headerUi(locale);
 const homeHref = pathFor(locale);
-const primaryItems = primaryNavItems(locale);
+const desktopNav = desktopNavEntries(locale, current);
 const navGroups = headerNavGroups(locale);
 ---
 
@@ -26,15 +26,28 @@ const navGroups = headerNavGroups(locale);
   <div class="header-actions">
     <nav class="nav" aria-label={copy.primaryLabel}>
       {
-        primaryItems.map((item) => (
-          <a
-            href={item.href}
-            aria-current={item.current === current ? "page" : undefined}
-            rel={item.external ? "noreferrer" : undefined}
-          >
-            {item.label}
-          </a>
-        ))
+        desktopNav.map((entry) =>
+          entry.kind === "link" ? (
+            <a
+              href={entry.href}
+              aria-current={entry.current === current ? "page" : undefined}
+              rel={entry.external ? "noreferrer" : undefined}
+            >
+              {entry.label}
+            </a>
+          ) : (
+            <details class="nav-dropdown">
+              <summary aria-current={entry.open ? "page" : undefined}>{entry.label}</summary>
+              <div class="nav-dropdown-panel" role="menu">
+                {entry.items.map((item) => (
+                  <a href={item.href} role="menuitem" aria-current={item.current === current ? "page" : undefined}>
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </details>
+          ),
+        )
       }
     </nav>
 
@@ -83,4 +96,5 @@ const navGroups = headerNavGroups(locale);
   </div>
 </header>
 
+<script is:inline src="/scripts/nav-dropdown.js" defer></script>
 <script is:inline src="/scripts/mobile-menu.js" defer></script>

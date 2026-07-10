@@ -22,6 +22,23 @@ export type HeaderNavGroup = {
   items: HeaderNavItem[];
 };
 
+export type HeaderNavLink = {
+  kind: "link";
+  label: string;
+  href: string;
+  current?: CurrentPage;
+  external?: boolean;
+};
+
+export type HeaderNavDropdown = {
+  kind: "dropdown";
+  label: string;
+  items: HeaderNavItem[];
+  open?: boolean;
+};
+
+export type DesktopNavEntry = HeaderNavLink | HeaderNavDropdown;
+
 type Link = {
   label: string;
   href: string;
