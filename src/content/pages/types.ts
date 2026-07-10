@@ -64,6 +64,7 @@ export type HomePageModel = BasePageModel & {
     conclusionValue: string;
     evidenceLabel: string;
     command: string;
+    evidenceBody: string;
     noteLabel: string;
     noteLines: string[];
     sourceLabel: string;

@@ -109,6 +109,14 @@ export const homeStudioCopy = {
     conclusionValue: "Partially blocked · public-read risk remains",
     evidenceLabel: "Evidence",
     command: "aws s3api get-public-access-block --bucket acme-prod-logs",
+    evidenceBody: `{
+  "PublicAccessBlockConfiguration": {
+    "BlockPublicAcls": true,
+    "IgnorePublicAcls": true,
+    "BlockPublicPolicy": false,
+    "RestrictPublicBuckets": false
+  }
+}`,
     noteLabel: "Notebook",
     noteLines: [
       "Observed 2025-05-18 10:42",
@@ -182,6 +190,14 @@ export const homeStudioCopy = {
     conclusionValue: "部分阻断（存在公共读取风险）",
     evidenceLabel: "证据",
     command: "aws s3api get-public-access-block --bucket acme-prod-logs",
+    evidenceBody: `{
+  "PublicAccessBlockConfiguration": {
+    "BlockPublicAcls": true,
+    "IgnorePublicAcls": true,
+    "BlockPublicPolicy": false,
+    "RestrictPublicAccess": false
+  }
+}`,
     noteLabel: "笔记",
     noteLines: [
       "发现于 2025-05-18 10:42",

@@ -6,14 +6,6 @@ interface Props {
 }
 
 const { finding } = Astro.props;
-const evidenceJson = `{
-  "PublicAccessBlockConfiguration": {
-    "BlockPublicAcls": true,
-    "IgnorePublicAcls": true,
-    "BlockPublicPolicy": false,
-    "RestrictPublicBuckets": false
-  }
-}`;
 ---
 
 <section id="work" class="finding-stage shell" aria-label={finding.title}>
@@ -52,7 +44,7 @@ const evidenceJson = `{
           <p>{finding.evidenceLabel}</p>
           <div class="finding-code">
             <input type="text" value={`$ ${finding.command}`} readonly aria-label={finding.command} tabindex="-1" />
-            <pre><code data-evidence-json={evidenceJson} aria-label={finding.evidenceLabel} /></pre>
+            <pre><code data-evidence-json={finding.evidenceBody} aria-label={finding.evidenceLabel} /></pre>
           </div>
         </div>
       </article>

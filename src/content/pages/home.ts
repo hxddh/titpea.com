@@ -86,6 +86,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       conclusionValue: studioCopy.conclusionValue,
       evidenceLabel: studioCopy.evidenceLabel,
       command: studioCopy.command,
+      evidenceBody: studioCopy.evidenceBody,
       noteLabel: studioCopy.noteLabel,
       noteLines: [...studioCopy.noteLines],
       sourceLabel: studioCopy.sourceLabel,
