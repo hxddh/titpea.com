@@ -147,8 +147,7 @@
 .catalog-card span,
 .browser-tool-list span,
 .about-system-panel span,
-.about-product-card span,
-.home-evidence-card > span {
+.about-product-card span {
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
@@ -221,20 +220,6 @@
   padding: 28px;
 }
 
-.home-evidence-card h3 {
-  margin: 0;
-  font-size: 24px;
-  line-height: 1.12;
-}
-
-.home-evidence-card p {
-  max-width: 64ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.62;
-}
-
 .home-featured-grid {
   gap: 14px;
   border: 0;
@@ -252,7 +237,6 @@
 .home-featured-card figure {
   margin: 0;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
   background: var(--raised);
 }
 
@@ -268,18 +252,6 @@
 
 .home-featured-card:hover img {
   transform: scale(1.012);
-}
-
-.home-featured-body {
-  display: grid;
-  gap: 10px;
-  padding: 24px 28px 28px;
-}
-
-.home-featured-card h3 {
-  margin: 0;
-  font-size: 22px;
-  line-height: 1.15;
 }
 
 .home-line-group + .home-line-group {
