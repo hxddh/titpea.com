@@ -68,6 +68,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       title: copy.featuredTitle,
       items: [
         {
+          name: flagship?.name ?? "Storage Agent",
           href: flagship?.href ?? catalog.featuredProductPath,
           image: {
             src: siteConfig.assets.screenshots.storageAgentWelcome,
@@ -80,6 +81,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
           },
         },
         {
+          name: personalFlagship?.name ?? "PageWise",
           href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
           image: {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,
