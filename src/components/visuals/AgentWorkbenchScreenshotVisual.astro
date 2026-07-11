@@ -1,0 +1,20 @@
+---
+import type { AgentWorkbenchScreenshotVisualModel } from "../../content/visualModels";
+
+interface Props {
+  visual: AgentWorkbenchScreenshotVisualModel;
+}
+
+const { visual } = Astro.props;
+---
+
+<figure class="product-screenshot-visual">
+  <img
+    src={visual.hero.src}
+    alt={visual.hero.alt}
+    width={visual.hero.width}
+    height={visual.hero.height}
+    fetchpriority="high"
+  />
+  <figcaption>{visual.hero.caption}</figcaption>
+</figure>

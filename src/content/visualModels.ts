@@ -87,6 +87,22 @@ export type PagewiseWorkbenchVisualModel = {
   chips: string[];
 };
 
+export type AgentWorkbenchScreenshotVisualModel = {
+  kind: "agentWorkbenchScreenshot";
+  label: string;
+  hero: { src: string; alt: string; width: number; height: number; caption: string };
+  supporting: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    kicker: string;
+    title: string;
+    body: string;
+    caption: string;
+  };
+};
+
 export type AgentRadarTerminalVisualModel = {
   kind: "agentRadarTerminal";
   label: string;
@@ -105,11 +121,12 @@ export type ProductVisualModel =
   | StorageAgentVisualModel
   | StorageWorkbenchVisualModel
   | PagewiseWorkbenchVisualModel
+  | AgentWorkbenchScreenshotVisualModel
   | HttpmonTerminalVisualModel
   | AgentRadarTerminalVisualModel
   | ScreenshotVisualModel;
 
-export function visualModel(kind: VisualPolicy, locale: Locale, label: string): ProductVisualModel {
+export function visualModel(kind: VisualPolicy, locale: Locale, label: string, slug?: string): ProductVisualModel {
   if (kind === "s3Benchmark") {
     const copy = visualCopy.s3Benchmark[locale];
     return {
@@ -183,6 +200,53 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string): 
       inputPlaceholder: copy.inputPlaceholder,
       model: copy.model,
       chips: [...copy.chips],
+    };
+  }
+
+  if (kind === "agentWorkbenchScreenshot") {
+    const isPagewise = slug === "pagewise";
+    const copy = isPagewise
+      ? visualCopy.productScreenshots.pagewise[locale]
+      : visualCopy.productScreenshots.storageAgent[locale];
+    return {
+      kind,
+      label,
+      hero: isPagewise
+        ? {
+            src: siteConfig.assets.screenshots.pagewiseAnalysis,
+            width: 1800,
+            height: 1197,
+            alt: copy.heroAlt,
+            caption: copy.heroCaption,
+          }
+        : {
+            src: siteConfig.assets.screenshots.storageAgentWelcome,
+            width: 1800,
+            height: 1260,
+            alt: copy.heroAlt,
+            caption: copy.heroCaption,
+          },
+      supporting: isPagewise
+        ? {
+            src: siteConfig.assets.screenshots.pagewiseWelcome,
+            width: 1800,
+            height: 1202,
+            alt: copy.supportingAlt,
+            kicker: copy.supportingKicker,
+            title: copy.supportingTitle,
+            body: copy.supportingBody,
+            caption: copy.supportingCaption,
+          }
+        : {
+            src: siteConfig.assets.screenshots.storageAgentInvestigation,
+            width: 1800,
+            height: 1301,
+            alt: copy.supportingAlt,
+            kicker: copy.supportingKicker,
+            title: copy.supportingTitle,
+            body: copy.supportingBody,
+            caption: copy.supportingCaption,
+          },
     };
   }
 

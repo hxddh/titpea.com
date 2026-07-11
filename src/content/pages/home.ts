@@ -63,6 +63,52 @@ export function buildHomePage(locale: Locale): HomePageModel {
         },
       ],
     },
+    featured: {
+      label: copy.featuredLabel,
+      title: copy.featuredTitle,
+      items: [
+        {
+          name: flagship?.name ?? "Storage Agent",
+          href: flagship?.href ?? catalog.featuredProductPath,
+          text: copy.featuredStorageText,
+          image: {
+            src: siteConfig.assets.screenshots.storageAgentWelcome,
+            alt:
+              locale === "en"
+                ? "Storage Agent welcome screen with read-only investigation tasks"
+                : "Storage Agent 欢迎页与只读调查任务",
+            width: 1800,
+            height: 1260,
+          },
+          proof:
+            locale === "en" ? ["Read-only", "Evidence visible", "Bring your model"] : ["只读", "依据可见", "自带模型"],
+        },
+        {
+          name: personalFlagship?.name ?? "PageWise",
+          href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
+          text: copy.featuredPagewiseText,
+          image: {
+            src: siteConfig.assets.screenshots.pagewiseAnalysis,
+            alt:
+              locale === "en"
+                ? "PageWise analyzing a financial table beside its source PDF page"
+                : "PageWise 在 PDF 原页旁分析财务表格",
+            width: 1800,
+            height: 1197,
+          },
+          proof:
+            locale === "en"
+              ? ["Local extraction", "Page-aware", "Bring your model"]
+              : ["本地提取", "页面可见", "自带模型"],
+        },
+      ],
+    },
+    principles: {
+      label: copy.principlesLabel,
+      title: copy.principlesTitle,
+      lead: copy.principlesLead,
+      items: copy.principles.map((item) => ({ ...item })),
+    },
     storage: {
       label: copy.storageLine,
       title: copy.storageTitle,

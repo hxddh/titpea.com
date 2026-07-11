@@ -23,6 +23,7 @@ export type VisualPolicy =
   | "worldClockScreenshot"
   | "doubanScreenshot"
   | "pagewiseWorkbench"
+  | "agentWorkbenchScreenshot"
   | "agentRadarTerminal";
 export type ProductGroup = "storage" | "personal";
 

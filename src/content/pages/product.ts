@@ -77,7 +77,7 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     sectionIndex: contract.sectionIndex,
     indexLabel: contract.indexLabel[locale],
     navItems,
-    visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title),
+    visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title, slug),
     structuredData,
     copy,
     sections,

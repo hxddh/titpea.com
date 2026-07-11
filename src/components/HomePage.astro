@@ -31,6 +31,59 @@ const { model } = Astro.props;
     </div>
   </section>
 
+  <section class="home-evidence shell">
+    <div class="home-evidence-heading">
+      <p class="section-kicker">{model.featured.label}</p>
+      <h2>{model.featured.title}</h2>
+    </div>
+    <div class="home-evidence-grid home-featured-grid">
+      {
+        model.featured.items.map((item) => (
+          <a class="home-evidence-card home-featured-card" href={item.href}>
+            <figure>
+              <img
+                src={item.image.src}
+                alt={item.image.alt}
+                width={item.image.width}
+                height={item.image.height}
+                loading="lazy"
+              />
+            </figure>
+            <span>{item.name}</span>
+            <p>{item.text}</p>
+            <div>
+              {item.proof.map((proof) => (
+                <strong>{proof}</strong>
+              ))}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="home-thesis-band shell">
+    <div class="home-thesis-layout">
+      <div>
+        <p class="section-kicker">{model.principles.label}</p>
+        <h2>{model.principles.title}</h2>
+        <p class="prose">{model.principles.lead}</p>
+      </div>
+      <div class="home-principles-list">
+        {
+          model.principles.items.map((item) => (
+            <article>
+              <>
+                <strong>{item.title}</strong>
+                <p>{item.body}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="home-catalog shell">
     <div class="catalog-heading">
       <p class="section-kicker">{model.storage.label}</p>

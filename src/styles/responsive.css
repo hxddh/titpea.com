@@ -34,6 +34,8 @@
 
   .home-evidence,
   .about-focus-section,
+  .home-thesis-layout,
+  .product-screenshot-showcase,
   .split-content {
     grid-template-columns: 1fr;
     gap: 34px;
@@ -41,6 +43,7 @@
 
   .catalog-grid,
   .about-product-grid,
+  .about-current-grid,
   .browser-tool-list.compact,
   .positioning-grid,
   .features-grid,
@@ -52,6 +55,11 @@
   .deep-dive-benchmark,
   .agent-topology {
     grid-template-columns: 1fr;
+  }
+
+  .home-principles-list article {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .storage-catalog-grid {
@@ -222,5 +230,20 @@
 
   .site-footer {
     flex-direction: column;
+  }
+
+  .home-featured-card figure {
+    margin-inline: -22px;
+  }
+
+  .about-current-card > div {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-featured-card img,
+  .about-current-card img {
+    transition: none;
   }
 }
