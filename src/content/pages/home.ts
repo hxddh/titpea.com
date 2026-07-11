@@ -3,7 +3,7 @@ import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { HomePageModel } from "./types";
-import type { Locale } from "../../lib/site";
+import { pathFor, type Locale } from "../../lib/site";
 
 export function buildHomePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
@@ -13,6 +13,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
   const description = copy.homeDescription;
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
   const flagship = catalog.storage.find((item) => item.slug === "storage-agent-workbench");
+  const personalFlagship = catalog.personal.find((item) => item.slug === "pagewise");
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -55,7 +56,11 @@ export function buildHomePage(locale: Locale): HomePageModel {
           href: flagship?.href ?? catalog.featuredProductPath,
           style: "primary",
         },
-        { label: "GitHub", href: siteConfig.externalLinks.github, style: "ghost", external: true },
+        {
+          label: personalFlagship?.name ?? "PageWise",
+          href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
+          style: "ghost",
+        },
       ],
     },
     storage: {
