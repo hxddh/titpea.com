@@ -35,7 +35,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     path,
     alternatePath,
     primaryCta: flagship?.href ?? catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, copy.storageTitle, copy.personalTitle],
+    expectedText: [copy.homeTitle, copy.featuredTitle, copy.moreToolsTitle],
     seo: buildPageSeo({
       title: pageTitle(siteConfig.brand),
       description,
@@ -78,10 +78,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
                 ? "Storage Agent welcome screen with read-only investigation tasks"
                 : "Storage Agent 欢迎页与只读调查任务",
             width: 1800,
-            height: 1260,
+            height: 1290,
           },
-          proof:
-            locale === "en" ? ["Read-only", "Evidence visible", "Bring your model"] : ["只读", "依据可见", "自带模型"],
         },
         {
           name: personalFlagship?.name ?? "PageWise",
@@ -94,30 +92,15 @@ export function buildHomePage(locale: Locale): HomePageModel {
                 ? "PageWise analyzing a financial table beside its source PDF page"
                 : "PageWise 在 PDF 原页旁分析财务表格",
             width: 1800,
-            height: 1197,
+            height: 1200,
           },
-          proof:
-            locale === "en"
-              ? ["Local extraction", "Page-aware", "Bring your model"]
-              : ["本地提取", "页面可见", "自带模型"],
         },
       ],
     },
-    principles: {
-      label: copy.principlesLabel,
-      title: copy.principlesTitle,
-      lead: copy.principlesLead,
-      items: copy.principles.map((item) => ({ ...item })),
-    },
-    storage: {
-      label: copy.storageLine,
-      title: copy.storageTitle,
-      items: catalog.storage,
-    },
-    personal: {
-      label: copy.personalLine,
-      title: copy.personalTitle,
-      items: catalog.personal,
+    more: {
+      label: copy.moreToolsLabel,
+      title: copy.moreToolsTitle,
+      items: catalog.all.filter((item) => item.slug !== "storage-agent-workbench" && item.slug !== "pagewise"),
     },
   };
 }

@@ -172,6 +172,7 @@
 .home-evidence,
 .home-catalog,
 .home-browser-band,
+.home-more-tools,
 .home-thesis-band,
 .about-products,
 .about-focus-section {
@@ -200,14 +201,17 @@
 }
 
 .home-evidence {
-  display: grid;
-  grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
-  gap: 70px;
+  display: block;
 }
 
 .home-evidence-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
+}
+
+.home-evidence-heading {
+  margin-bottom: 26px;
 }
 
 .home-evidence-card {
@@ -482,6 +486,10 @@
 
 .browser-tool-list.compact {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-more-tools .browser-tool-list.compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .browser-tool-list strong {
