@@ -1,16 +1,3 @@
-export const aboutModelCopy = {
-  en: {
-    contactLabel: "Contact links",
-    productsTitle: "Current work",
-    moreLabel: "More tools",
-  },
-  zh: {
-    contactLabel: "联系方式",
-    productsTitle: "近期作品",
-    moreLabel: "其他工具",
-  },
-} as const;
-
 export const catalogCopy = {
   en: {
     httpmon: "Watch one command's HTTP/HTTPS in the terminal — no system-proxy change.",

@@ -42,8 +42,10 @@
   }
 
   .catalog-grid,
+  .home-evidence-grid,
   .about-product-grid,
   .about-current-grid,
+  .home-more-tools .browser-tool-list.compact,
   .browser-tool-list.compact,
   .positioning-grid,
   .features-grid,

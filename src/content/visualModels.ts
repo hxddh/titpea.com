@@ -215,14 +215,14 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
         ? {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,
             width: 1800,
-            height: 1197,
+            height: 1200,
             alt: copy.heroAlt,
             caption: copy.heroCaption,
           }
         : {
             src: siteConfig.assets.screenshots.storageAgentWelcome,
             width: 1800,
-            height: 1260,
+            height: 1290,
             alt: copy.heroAlt,
             caption: copy.heroCaption,
           },
@@ -230,7 +230,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
         ? {
             src: siteConfig.assets.screenshots.pagewiseWelcome,
             width: 1800,
-            height: 1202,
+            height: 1200,
             alt: copy.supportingAlt,
             kicker: copy.supportingKicker,
             title: copy.supportingTitle,
@@ -240,7 +240,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
         : {
             src: siteConfig.assets.screenshots.storageAgentInvestigation,
             width: 1800,
-            height: 1301,
+            height: 1290,
             alt: copy.supportingAlt,
             kicker: copy.supportingKicker,
             title: copy.supportingTitle,
