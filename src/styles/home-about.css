@@ -246,6 +246,85 @@
   font-weight: 500;
 }
 
+.home-featured-grid {
+  gap: 14px;
+  border: 0;
+  background: transparent;
+}
+
+.home-featured-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+.home-featured-card figure {
+  margin: -28px -28px 8px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--raised);
+}
+
+.home-featured-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 180ms ease;
+}
+
+.home-featured-card:hover img {
+  transform: scale(1.012);
+}
+
+.home-featured-card > span {
+  font-size: 18px;
+  text-transform: none;
+}
+
+.home-thesis-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.home-thesis-layout .prose {
+  margin-top: 22px;
+}
+
+.home-principles-list {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--line);
+  gap: 1px;
+}
+
+.home-principles-list article {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.42fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 22px 24px;
+  background: var(--panel);
+}
+
+.home-principles-list strong {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.home-principles-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .catalog-heading,
 .about-section-heading,
 .browser-band-copy {
@@ -310,6 +389,64 @@
 .about-product-grid-storage,
 .about-product-grid-browser {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-current-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.about-current-card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--panel);
+}
+
+.about-current-card figure {
+  margin: 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--raised);
+}
+
+.about-current-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 180ms ease;
+}
+
+.about-current-card:hover img {
+  transform: scale(1.012);
+}
+
+.about-current-card > div {
+  display: grid;
+  gap: 10px;
+  padding: 26px;
+}
+
+.about-current-card strong {
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.14;
+}
+
+.about-current-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.about-more-tools {
+  margin-top: 34px;
 }
 
 .about-product-card strong {

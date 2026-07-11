@@ -34,7 +34,7 @@ export const headerCopy: Record<
     groups: {
       main: "Main",
       storage: "Storage",
-      personal: "Reading & media",
+      personal: "Knowledge & personal",
       external: "External",
     },
     links: {
@@ -56,7 +56,7 @@ export const headerCopy: Record<
     groups: {
       main: "主要页面",
       storage: "对象存储",
-      personal: "阅读与影音",
+      personal: "知识与个人工具",
       external: "外部链接",
     },
     links: {

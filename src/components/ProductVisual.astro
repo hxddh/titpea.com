@@ -8,6 +8,7 @@ import PagewiseWorkbenchVisual from "./visuals/PagewiseWorkbenchVisual.astro";
 import AgentRadarTerminalVisual from "./visuals/AgentRadarTerminalVisual.astro";
 import HttpmonTerminalVisual from "./visuals/HttpmonTerminalVisual.astro";
 import WorldClockVisual from "./visuals/WorldClockVisual.astro";
+import AgentWorkbenchScreenshotVisual from "./visuals/AgentWorkbenchScreenshotVisual.astro";
 
 interface Props {
   visual: ProductVisualModel;
@@ -20,6 +21,7 @@ const { visual } = Astro.props;
 {visual.kind === "storageAgent" && <StorageOpsAgentVisual visual={visual} />}
 {visual.kind === "storageWorkbench" && <StorageWorkbenchVisual visual={visual} />}
 {visual.kind === "pagewiseWorkbench" && <PagewiseWorkbenchVisual visual={visual} />}
+{visual.kind === "agentWorkbenchScreenshot" && <AgentWorkbenchScreenshotVisual visual={visual} />}
 {visual.kind === "httpmonTerminal" && <HttpmonTerminalVisual visual={visual} />}
 {visual.kind === "agentRadarTerminal" && <AgentRadarTerminalVisual visual={visual} />}
 {visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}

@@ -66,9 +66,46 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     products: {
       label: copy.productsLabel,
       title: pageCopy.productsTitle,
-      storageLabel: copy.storageLine,
-      personalLabel: copy.personalLine,
-      items: catalog.all,
+      moreLabel: pageCopy.moreLabel,
+      current: [
+        {
+          name: "Storage Agent",
+          href:
+            catalog.storage.find((item) => item.slug === "storage-agent-workbench")?.href ??
+            "/storage-agent-workbench/",
+          text:
+            locale === "en"
+              ? "Read-only investigations for S3-compatible storage, with the inspected evidence beside each conclusion."
+              : "只读调查 S3 兼容存储，并把检查过的现场依据放在结论旁边。",
+          image: {
+            src: siteConfig.assets.screenshots.storageAgentInvestigation,
+            alt:
+              locale === "en"
+                ? "Storage Agent explaining a storage-class mismatch from inspected object evidence"
+                : "Storage Agent 根据对象证据解释存储类型差异",
+            width: 1800,
+            height: 1301,
+          },
+        },
+        {
+          name: "PageWise",
+          href: catalog.personal.find((item) => item.slug === "pagewise")?.href ?? "/pagewise/",
+          text:
+            locale === "en"
+              ? "Analyze documents with the source page, read activity, and answer visible in one desktop workspace."
+              : "在同一个桌面工作区里查看原文页面、读取过程与分析回答。",
+          image: {
+            src: siteConfig.assets.screenshots.pagewiseAnalysis,
+            alt:
+              locale === "en"
+                ? "PageWise analyzing a financial table beside its source PDF page"
+                : "PageWise 在 PDF 原页旁分析财务表格",
+            width: 1800,
+            height: 1197,
+          },
+        },
+      ],
+      others: catalog.all.filter((item) => item.slug !== "storage-agent-workbench" && item.slug !== "pagewise"),
     },
   };
 }

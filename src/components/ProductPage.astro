@@ -9,6 +9,7 @@ import ProductResults from "./ProductResults.astro";
 import ProductSectionIndex from "./ProductSectionIndex.astro";
 import ProductStorySection from "./ProductStorySection.astro";
 import ProductVisual from "./ProductVisual.astro";
+import ProductScreenshotShowcase from "./ProductScreenshotShowcase.astro";
 import type { ProductPageModel } from "../content/siteModel";
 
 interface Props {
@@ -45,7 +46,12 @@ const copy = model.copy;
   {
     model.sections.map((section) => {
       if (section.kind === "inside") {
-        return <ProductInside section={section} />;
+        return (
+          <>
+            <ProductInside section={section} />
+            {model.visual.kind === "agentWorkbenchScreenshot" && <ProductScreenshotShowcase visual={model.visual} />}
+          </>
+        );
       }
 
       if (section.kind === "evidence") {

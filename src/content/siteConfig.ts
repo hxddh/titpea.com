@@ -35,6 +35,10 @@ export const siteConfig = {
       worldClockLight: "/assets/world-clock-light.png",
       worldClockDark: "/assets/world-clock-dark.png",
       doubanRatingAssistant: "/assets/douban-rating-assistant.png",
+      pagewiseWelcome: "/assets/pagewise-welcome.webp",
+      pagewiseAnalysis: "/assets/pagewise-analysis.webp",
+      storageAgentWelcome: "/assets/storage-agent-welcome.webp",
+      storageAgentInvestigation: "/assets/storage-agent-investigation.webp",
     },
   },
 } as const;
