@@ -235,6 +235,7 @@
 }
 
 .home-featured-card figure {
+  position: relative;
   margin: 0;
   overflow: hidden;
   background: var(--raised);
@@ -252,6 +253,21 @@
 
 .home-featured-card:hover img {
   transform: scale(1.012);
+}
+
+.home-featured-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 13px;
+  background: var(--panel);
+  box-shadow: var(--shadow-soft);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .home-line-group + .home-line-group {

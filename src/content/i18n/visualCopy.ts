@@ -3,42 +3,34 @@ export const visualCopy = {
     pagewise: {
       en: {
         heroAlt: "PageWise analyzing a financial table beside page 14 of its source PDF",
-        heroCaption: "The source page, read activity, and answer stay visible in one workspace.",
         supportingAlt: "PageWise welcome screen with open-document action and recent files",
         supportingKicker: "Open or continue",
         supportingTitle: "Start with a document on disk",
         supportingBody: "Open a PDF or drag it into PageWise, then continue from a recent document when you come back.",
-        supportingCaption: "The welcome screen keeps opening and recent-document access in one place.",
       },
       zh: {
         heroAlt: "PageWise 在 PDF 第 14 页旁分析财务表格",
-        heroCaption: "原文页面、读取过程和回答都留在同一个工作区里。",
         supportingAlt: "PageWise 欢迎页，包含打开文档与最近文件",
         supportingKicker: "打开或继续",
         supportingTitle: "从磁盘上的文档开始",
         supportingBody: "打开 PDF 或把文件拖进 PageWise；下次回来时，可以从最近文档继续。",
-        supportingCaption: "欢迎页把打开文档和继续最近任务放在同一个入口。",
       },
     },
     storageAgent: {
       en: {
         heroAlt: "Storage Agent welcome screen with six read-only investigation tasks",
-        heroCaption: "Start from an error, log, inventory, bucket configuration, account map, or cost question.",
         supportingAlt: "Storage Agent explaining a storage-class mismatch from inspected object evidence",
         supportingKicker: "Example investigation",
         supportingTitle: "The inspected values stay beside the conclusion",
         supportingBody:
           "The agent compares object metadata and content, explains the cross-provider storage-class mismatch, and leaves a reviewable basis for the next action.",
-        supportingCaption: "Object metadata and content lead to a concrete explanation and follow-up recommendation.",
       },
       zh: {
         heroAlt: "Storage Agent 欢迎页，包含六类只读调查任务",
-        heroCaption: "从报错、日志、清单、桶配置、账号梳理或成本问题开始。",
         supportingAlt: "Storage Agent 根据对象证据解释存储类型差异",
         supportingKicker: "一次真实调查",
         supportingTitle: "检查过的值与结论放在一起",
         supportingBody: "agent 对比对象元数据与内容，解释跨厂商复制后的存储类型差异，并留下可复核的下一步依据。",
-        supportingCaption: "对象元数据和内容共同指向一个具体解释与后续建议。",
       },
     },
   },

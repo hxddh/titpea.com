@@ -19,7 +19,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
-      proof: ["Automatic list segmentation", "DiffFlag Parquet", "Resume for list", `${s3License} · ${s3Release}`],
+      proof: ["Automatic list segmentation", "DiffFlag Parquet", "Resume for list"],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -187,7 +187,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
-      proof: ["自动分段 list", "DiffFlag Parquet", "list 可续跑", `${s3License} · ${s3Release}`],
+      proof: ["自动分段 list", "DiffFlag Parquet", "list 可续跑"],
       positioningLabel: "边界",
       positioning: [
         {

@@ -90,7 +90,7 @@ export type PagewiseWorkbenchVisualModel = {
 export type AgentWorkbenchScreenshotVisualModel = {
   kind: "agentWorkbenchScreenshot";
   label: string;
-  hero: { src: string; alt: string; width: number; height: number; caption: string };
+  hero: { src: string; alt: string; width: number; height: number };
   supporting: {
     src: string;
     alt: string;
@@ -99,7 +99,6 @@ export type AgentWorkbenchScreenshotVisualModel = {
     kicker: string;
     title: string;
     body: string;
-    caption: string;
   };
 };
 
@@ -217,14 +216,12 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             width: 1800,
             height: 1200,
             alt: copy.heroAlt,
-            caption: copy.heroCaption,
           }
         : {
             src: siteConfig.assets.screenshots.storageAgentWelcome,
             width: 1800,
             height: 1290,
             alt: copy.heroAlt,
-            caption: copy.heroCaption,
           },
       supporting: isPagewise
         ? {
@@ -235,7 +232,6 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             kicker: copy.supportingKicker,
             title: copy.supportingTitle,
             body: copy.supportingBody,
-            caption: copy.supportingCaption,
           }
         : {
             src: siteConfig.assets.screenshots.storageAgentInvestigation,
@@ -245,7 +241,6 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             kicker: copy.supportingKicker,
             title: copy.supportingTitle,
             body: copy.supportingBody,
-            caption: copy.supportingCaption,
           },
     };
   }

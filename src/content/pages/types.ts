@@ -50,6 +50,7 @@ export type HomePageModel = BasePageModel & {
     label: string;
     title: string;
     items: Array<{
+      name: string;
       href: string;
       image: { src: string; alt: string; width: number; height: number };
     }>;
