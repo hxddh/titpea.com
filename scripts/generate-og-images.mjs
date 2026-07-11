@@ -9,8 +9,8 @@ export const images = [
   {
     file: "og-home.png",
     eyebrow: "titpea.com",
-    title: "S3 automation toolkit",
-    body: "Focused tools for object storage list / diff, Pi diagnosis, and request-level evidence.",
+    title: "S3 ecosystem and personal tools",
+    body: "Two product lines: engineering tools for S3-compatible storage, and small products for everyday work and life.",
     accent: "#2457ff",
     mark: "S3",
     visual: "stack",
@@ -18,8 +18,8 @@ export const images = [
   {
     file: "og-about.png",
     eyebrow: "hxddh",
-    title: "Object storage tools",
-    body: "Clear commands, inspectable output, and evidence that can move into the next diagnostic step.",
+    title: "Two product lines, one maker",
+    body: "Cloud object storage by background — S3 ecosystem tools plus small products for everyday work and life.",
     accent: "#121826",
     mark: "HX",
     visual: "stack",

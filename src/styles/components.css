@@ -62,7 +62,6 @@
 .product-section-index a,
 .proof-strip span,
 .provider-list span,
-.home-evidence-card strong,
 .about-contact-row a {
   border: 1px solid var(--soft-line);
   background: var(--panel);

@@ -45,6 +45,7 @@
   .home-evidence-grid,
   .about-product-grid,
   .about-current-grid,
+  .about-defaults-grid,
   .home-more-tools .browser-tool-list.compact,
   .browser-tool-list.compact,
   .positioning-grid,
@@ -234,8 +235,8 @@
     flex-direction: column;
   }
 
-  .home-featured-card figure {
-    margin-inline: -22px;
+  .home-featured-body {
+    padding: 20px 22px 22px;
   }
 
   .about-current-card > div {

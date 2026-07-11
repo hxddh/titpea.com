@@ -100,7 +100,16 @@ export function buildHomePage(locale: Locale): HomePageModel {
     more: {
       label: copy.moreToolsLabel,
       title: copy.moreToolsTitle,
-      items: catalog.all.filter((item) => item.slug !== "storage-agent-workbench" && item.slug !== "pagewise"),
+      groups: [
+        {
+          label: copy.lineStorageLabel,
+          items: catalog.storage.filter((item) => item.slug !== "storage-agent-workbench"),
+        },
+        {
+          label: copy.linePersonalLabel,
+          items: catalog.personal.filter((item) => item.slug !== "pagewise"),
+        },
+      ],
     },
   };
 }
