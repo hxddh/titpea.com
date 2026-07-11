@@ -34,12 +34,37 @@ const { model } = Astro.props;
       {model.profile.body.map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <div class="about-system-panel">
-      <div>
-        <span>{model.focus.label}</span>
-        <ul class="about-focus-list">
-          {model.focus.items.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
+      {
+        model.lines.map((line) => (
+          <div>
+            <span>{line.label}</span>
+            <ul class="about-line-products">
+              {line.products.map((product) => (
+                <li>
+                  <a href={product.href}>{product.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="about-defaults shell">
+    <div class="about-section-heading">
+      <p class="section-kicker">{model.focus.label}</p>
+      <h2>{model.focus.title}</h2>
+    </div>
+    <div class="about-defaults-grid">
+      {
+        model.focus.items.map((item) => (
+          <article>
+            <strong>{item.term}</strong>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
     </div>
   </section>
 </SiteLayout>

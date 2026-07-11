@@ -49,8 +49,10 @@ const { model } = Astro.props;
                 loading="eager"
               />
             </figure>
-            <span>{item.name}</span>
-            <p>{item.text}</p>
+            <div class="home-featured-body">
+              <h3>{item.name}</h3>
+              <p>{item.text}</p>
+            </div>
           </a>
         ))
       }
@@ -62,16 +64,21 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.more.label}</p>
       <h2>{model.more.title}</h2>
     </div>
-    <div class="browser-tool-list compact">
-      {
-        model.more.items.map((item) => (
-          <a href={item.href}>
-            <span>{item.displayRole}</span>
-            <strong>{item.name}</strong>
-            <p>{item.text}</p>
-          </a>
-        ))
-      }
-    </div>
+    {
+      model.more.groups.map((group) => (
+        <div class="home-line-group">
+          <p class="about-product-line-label">{group.label}</p>
+          <div class="browser-tool-list compact">
+            {group.items.map((item) => (
+              <a href={item.href}>
+                <span>{item.displayRole}</span>
+                <strong>{item.name}</strong>
+                <p>{item.text}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
   </section>
 </SiteLayout>

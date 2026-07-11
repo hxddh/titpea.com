@@ -175,7 +175,8 @@
 .home-more-tools,
 .home-thesis-band,
 .about-products,
-.about-focus-section {
+.about-focus-section,
+.about-defaults {
   border-top: 1px solid var(--line);
   padding-top: 72px;
   padding-bottom: 72px;
@@ -234,22 +235,6 @@
   line-height: 1.62;
 }
 
-.home-evidence-card div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.home-evidence-card strong {
-  border-radius: 999px;
-  padding: 5px 10px;
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-}
-
 .home-featured-grid {
   gap: 14px;
   border: 0;
@@ -260,10 +245,12 @@
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
+  gap: 0;
+  padding: 0;
 }
 
 .home-featured-card figure {
-  margin: -28px -28px 8px;
+  margin: 0;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
   background: var(--raised);
@@ -283,9 +270,20 @@
   transform: scale(1.012);
 }
 
-.home-featured-card > span {
-  font-size: 18px;
-  text-transform: none;
+.home-featured-body {
+  display: grid;
+  gap: 10px;
+  padding: 24px 28px 28px;
+}
+
+.home-featured-card h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.home-line-group + .home-line-group {
+  margin-top: 26px;
 }
 
 .home-thesis-layout {
@@ -559,20 +557,61 @@
   line-height: 1.68;
 }
 
-.about-focus-list {
+.about-line-products {
   display: grid;
   gap: 12px;
-  margin: 0;
+  margin: 4px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.about-focus-list li {
+.about-line-products li {
   border-top: 1px solid var(--line);
   padding-top: 12px;
+}
+
+.about-line-products a {
   color: var(--ink);
   font-size: 16px;
   line-height: 1.35;
+  text-decoration: underline;
+  text-decoration-color: var(--soft-line);
+  text-underline-offset: 3px;
+}
+
+.about-line-products a:hover {
+  text-decoration-color: var(--ink);
+}
+
+.about-defaults-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--line);
+}
+
+.about-defaults-grid article {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 24px 26px;
+  background: var(--panel);
+}
+
+.about-defaults-grid strong {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.about-defaults-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.62;
 }
 
 .about-principles {

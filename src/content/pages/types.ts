@@ -59,7 +59,10 @@ export type HomePageModel = BasePageModel & {
   more: {
     label: string;
     title: string;
-    items: ProductCatalogItemModel[];
+    groups: Array<{
+      label: string;
+      items: ProductCatalogItemModel[];
+    }>;
   };
 };
 
@@ -78,9 +81,14 @@ export type AboutPageModel = BasePageModel & {
     title: string;
     body: string[];
   };
+  lines: Array<{
+    label: string;
+    products: Array<{ name: string; href: string }>;
+  }>;
   focus: {
     label: string;
-    items: string[];
+    title: string;
+    items: Array<{ term: string; text: string }>;
   };
 };
 
