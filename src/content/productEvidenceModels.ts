@@ -150,9 +150,9 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       id: "evidence",
       kind: "evidence",
       variant: "trafficFlow",
-      kicker: "Core Markdown files",
-      title: "A simple structure for high-signal tracking",
-      body: "Each file has a clear job. Daily and weekly folders append signals; automation and cloud-agent workflows keep the cadence without turning the repo into a platform.",
+      kicker: "Auditable state",
+      title: "What the pipeline leaves in Git",
+      body: "Markdown files are the durable state the runner updates under gate constraints — thesis, watchlist, field notes, playbooks, and storage implications — so every promote is reviewable in the repo history.",
       cards: [
         {
           label: "Thesis",
@@ -180,9 +180,9 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       id: "evidence",
       kind: "evidence",
       variant: "trafficFlow",
-      kicker: "核心 Markdown 文件",
-      title: "用简单结构跟踪高信号变化",
-      body: "每个文件职责清晰。`daily/` 与 `weekly/` 追加信号；自动化与 cloud-agent 工作流维持节奏，不把仓库做成平台。",
+      kicker: "可审计状态",
+      title: "流水线留在 Git 里的结果",
+      body: "Markdown 文件是 runner 在闸门约束下更新的持久状态——判断、观察名单、现场笔记、playbook 与存储视角——每次升格都能在仓库历史里核对。",
       cards: [
         { label: "判断", value: "01", body: "`radar.md` 维护当前判断、已变化判断和开放问题。" },
         { label: "观察名单", value: "02", body: "`agent-watchlist.md` 跟踪主流与新兴 agent，并标注证据强度。" },

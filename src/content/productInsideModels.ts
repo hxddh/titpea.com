@@ -105,9 +105,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Markdown-first radar",
-      title: "Signals you can edit and version",
-      body: "Agent Radar keeps thesis, watchlist, field notes, playbooks, and storage implications in plain Markdown files — plus a stdlib Python CLI to scaffold, validate, and brief the repo.",
+      kicker: "Industry intel OS",
+      title: "Content repo, deterministic runner, two-tier models",
+      body: "Agent Radar is a Markdown-shaped research operating system hosted on GitHub Actions: a content repository, a deterministic orchestrator, cheap-then-strong model routing, and a free-source collection grid — with attention budget, evidence discipline, and promote boundaries built in.",
       panel: {
         kind: "agentEvidence",
         label: "radar.md excerpt",
@@ -135,9 +135,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "Markdown 优先雷达",
-      title: "可编辑、可版本管理的信号",
-      body: "Agent Radar 把判断、观察名单、现场笔记、playbook 和存储视角放在纯 Markdown 文件里，并用标准库 Python CLI 脚手架化、校验和生成简报。",
+      kicker: "产业情报操作系统",
+      title: "内容仓库、确定性编排、两级模型",
+      body: "Agent Radar 是跑在 GitHub Actions 上、以 Markdown 为形态的研究操作系统。内容仓库、确定性编排、两级模型路由与免费源采集网格，把注意力预算、证据纪律和升格边界写进产品本身。",
       panel: {
         kind: "agentEvidence",
         label: "radar.md 摘录",

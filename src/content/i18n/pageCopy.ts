@@ -15,8 +15,8 @@ export const catalogCopy = {
     doubanRole: "Rating context",
     pagewiseText: "Analyze PDFs with the source page, read activity, and answer visible in one desktop workspace.",
     pagewiseRole: "Document agent",
-    agentRadarText: "Track AI-agent projects in Markdown — watchlist, notes, and playbooks.",
-    agentRadarRole: "Trend radar",
+    agentRadarText: "Unattended research pipeline for the Agent industry — Markdown state, GitHub Actions.",
+    agentRadarRole: "Research pipeline",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
@@ -33,7 +33,7 @@ export const catalogCopy = {
     doubanRole: "评分辅助",
     pagewiseText: "在同一个桌面工作区里查看 PDF 原页、读取过程与分析回答。",
     pagewiseRole: "文档 agent",
-    agentRadarText: "用 Markdown 跟踪 AI Agent 项目：观察名单、笔记与 playbook。",
-    agentRadarRole: "趋势雷达",
+    agentRadarText: "跑在 GitHub Actions 上的 Markdown Agent 产业研究流水线。",
+    agentRadarRole: "研究流水线",
   },
 } as const;
