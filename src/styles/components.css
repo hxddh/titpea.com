@@ -56,7 +56,6 @@
   color: var(--ink);
 }
 
-.language-switch,
 .button,
 .mobile-menu summary,
 .product-section-index a,
@@ -68,36 +67,35 @@
   font-family: var(--mono);
 }
 
-.language-switch {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  border-radius: 999px;
-  padding: 10px 14px;
-  color: var(--ink);
-  font-size: 12px;
-}
-
+.language-switch,
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   min-width: 44px;
   min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid var(--soft-line);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--ink);
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--label);
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1;
   cursor: pointer;
 }
 
-.theme-toggle:hover {
-  border-color: var(--ink);
+.language-switch:hover,
+.language-switch:focus-visible,
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--soft-line);
+  color: var(--ink);
+}
+
+.theme-toggle {
+  padding: 10px 12px;
 }
 
 .theme-icon-light {
