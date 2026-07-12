@@ -26,6 +26,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         "Chrome Web Store: Entertainment",
         "IMDb context",
         "Rotten Tomatoes context",
+        "Metacritic context",
         "No data collection disclosed",
       ],
       positioningLabel: "Positioning",
@@ -113,7 +114,13 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "返回简介", href: "/zh/about/" },
       meta: doubanMetaZh,
-      proof: ["Chrome Web Store: Entertainment", "IMDb 参考评分", "烂番茄参考评分", "声明不收集数据"],
+      proof: [
+        "Chrome Web Store: Entertainment",
+        "IMDb 参考评分",
+        "烂番茄参考评分",
+        "Metacritic 参考评分",
+        "声明不收集数据",
+      ],
       positioningLabel: "边界",
       positioning: [
         {

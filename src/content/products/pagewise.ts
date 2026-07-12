@@ -1,10 +1,10 @@
-import type { AgentWorkbenchProduct } from "../../lib/site";
+import type { DocumentAgentProduct } from "../../lib/site";
 import { siteConfig } from "../siteConfig";
 
-export const pagewiseProduct: AgentWorkbenchProduct = {
+export const pagewiseProduct: DocumentAgentProduct = {
   slug: "pagewise",
   name: "PageWise",
-  archetype: "agentWorkbench",
+  archetype: "documentAgent",
   locales: {
     en: {
       title: "PageWise",

@@ -67,15 +67,15 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "Native desktop agent",
-      title: "Ask about your storage, get the inspected basis back",
-      body: "Start a chat or pick a task — bucket config, access logs, inventory, errors, or cost. The agent plans read-only checks and keeps inspected metadata, content, logs, configuration, and tool activity beside the conclusion.",
+      title: "A session that stays on your machine",
+      body: "Start a chat or pick a task — bucket config, access logs, inventory, errors, or cost. The agent plans read-only checks and keeps inspected metadata, content, logs, configuration, and tool activity open while you decide what to do next.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "本地原生 agent",
-      title: "问一句存储，拿回检查过的依据",
-      body: "开对话或选任务——桶配置、访问日志、清单、错误或成本。agent 规划只读检查，并把元数据、内容、日志、配置与工具活动放在结论旁边。",
+      title: "一次留在本机的调查会话",
+      body: "开对话或选任务——桶配置、访问日志、清单、错误或成本。agent 规划只读检查，并把元数据、内容、日志、配置与工具活动留在眼前，方便你决定下一步。",
     },
   },
   storageops: {
@@ -83,15 +83,15 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "Pi extension + skill pack",
-      title: "Storage expertise for Pi",
-      body: "StorageOps gives Pi the skills, extension tools, and deterministic helpers needed to investigate S3-compatible storage from the evidence you provide.",
+      title: "Domain skills Pi can load on demand",
+      body: "Bring an error, log, config snippet, or trace. StorageOps supplies storage-specific skills, extension tools, and helpers so Pi can investigate from that material — without connecting to your cloud account.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "Pi 扩展与 skill pack",
-      title: "Pi 可用的对象存储 skills 与工具",
-      body: "把报错、日志、配置或 trace 交给 Pi。StorageOps 提供对象存储技能、扩展工具和确定性脚本，供 Pi 按需调用。",
+      title: "按需加载的对象存储技能",
+      body: "带上报错、日志、配置片段或 trace。StorageOps 提供存储领域的 skills、扩展工具和辅助脚本，让 Pi 根据材料排查——不连接你的云账号。",
     },
   },
   httpmon: browserInside(
@@ -111,8 +111,8 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       panel: {
         kind: "agentEvidence",
         label: "radar.md excerpt",
-        eyebrow: "Editable thesis",
-        title: "radar.md · current week",
+        eyebrow: "Illustrative sample",
+        title: "radar.md · sample week",
         metrics: [
           {
             label: "Current thesis",
@@ -141,8 +141,8 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       panel: {
         kind: "agentEvidence",
         label: "radar.md 摘录",
-        eyebrow: "可编辑判断",
-        title: "radar.md · 本周",
+        eyebrow: "示例摘录",
+        title: "radar.md · 示例周",
         metrics: [
           {
             label: "当前判断",
@@ -168,15 +168,15 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "Local desktop agent",
-      title: "Read with the source page still in view",
-      body: "Open a PDF or image, extract text locally, and ask about a section, table, or trend. The preview follows the pages the agent reads so the source stays beside the answer.",
+      title: "Extraction stays local; answers stay checkable",
+      body: "Open a PDF or image, extract text with Rust pdf-extract or system Tesseract, and ask about a section, table, or trend. Only text goes to your model; the preview follows the pages under analysis.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "本地桌面 agent",
-      title: "原文页面始终留在视线里",
-      body: "打开 PDF 或图片，在本地提取文本，并询问段落、表格或趋势。预览会跟着 agent 读取的页面走，让原文始终留在回答旁边。",
+      title: "提取在本地，回答可核对",
+      body: "打开 PDF 或图片，用 Rust pdf-extract 或系统 Tesseract 提取文本，并询问段落、表格或趋势。只有文字会发给你配置的模型；预览跟着正在分析的页面走。",
     },
   },
   "world-clock": browserInside(

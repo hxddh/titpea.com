@@ -16,7 +16,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop app · macOS, Windows, Linux · Apache-2.0",
-      proof: ["Read-only", "Local-first"],
+      proof: ["Read-only cloud access", "Encrypted local vault"],
       featuresLabel: "Capabilities",
       features: [
         {
@@ -71,8 +71,8 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
         {
-          title: "Keep the basis visible",
-          body: "Findings keep the inspected metadata, content, log rows, config lines, and tool activity close to the conclusion.",
+          title: "Review the inspected material",
+          body: "Open the metadata, content snippets, log rows, config lines, and tool activity the agent already collected.",
           intent: "workflow",
           surface: "artifact",
         },
@@ -127,7 +127,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           body: "A Tauri desktop app for macOS, Windows, and Linux. The project is Apache-2.0.",
         },
       ],
-      finalCta: "Investigate with the evidence still visible",
+      finalCta: "Start a read-only storage investigation",
       finalCtaLabel: "Download Storage Agent",
     },
     zh: {
@@ -139,7 +139,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面应用 · macOS、Windows、Linux · Apache-2.0",
-      proof: ["只读", "本地优先"],
+      proof: ["只读云访问", "本地加密保险库"],
       featuresLabel: "能做什么",
       features: [
         {
@@ -194,8 +194,8 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
         {
-          title: "让依据留在结论旁边",
-          body: "每条发现都保留检查过的元数据、内容、日志行、配置行与工具活动。",
+          title: "核对已检查的材料",
+          body: "打开 agent 已经收集到的元数据、内容片段、日志行、配置行和工具活动。",
           intent: "workflow",
           surface: "artifact",
         },
@@ -250,7 +250,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           body: "面向 macOS、Windows 和 Linux 的 Tauri 桌面应用。项目采用 Apache-2.0。",
         },
       ],
-      finalCta: "带着可见依据调查存储",
+      finalCta: "开始一次只读的存储调查",
       finalCtaLabel: "下载 Storage Agent",
     },
   },
