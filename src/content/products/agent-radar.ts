@@ -143,7 +143,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "存储影响",
-          body: "`storage-angle.md` 跟踪 workspace、sandbox、快照、checkpoint、artifact、日志、回放与知识库相关信号。",
+          body: "`storage-angle.md` 跟踪 workspace、sandbox、快照、checkpoint、产物、日志、回放与知识库相关信号。",
           intent: "automation",
           surface: "artifact",
         },
