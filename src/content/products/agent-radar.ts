@@ -1,13 +1,13 @@
-import type { StorageCliProduct } from "../../lib/site";
+import type { MarkdownRadarProduct } from "../../lib/site";
 import { agentRadarFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const meta = `Python 3.10+ · stdlib only · Markdown-first · ${agentRadarFacts.licenseLabel ?? "MIT"} · ${agentRadarFacts.latestRelease ?? "current release"}`;
 
-export const agentRadarProduct: StorageCliProduct = {
+export const agentRadarProduct: MarkdownRadarProduct = {
   slug: "agent-radar",
   name: "Agent Radar",
-  archetype: "storageCli",
+  archetype: "markdownRadar",
   locales: {
     en: {
       title: "Agent Radar",

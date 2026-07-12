@@ -104,6 +104,7 @@ export type AgentPackageProductCopy = ProductCopy & {
 
 export type BrowserExtensionProductCopy = ProductCopy & {
   features: ProductContentCard[];
+  positioning: ProductContentCard[];
   faq: ProductContentCard[];
 };
 
@@ -121,11 +122,25 @@ export type StorageCliProduct = {
   locales: Localized<StorageCliProductCopy>;
 };
 
+export type MarkdownRadarProduct = {
+  slug: "agent-radar";
+  name: string;
+  archetype: "markdownRadar";
+  locales: Localized<StorageCliProductCopy>;
+};
+
 export type S3TurboListProduct = {
   slug: "s3-turbo-list";
   name: string;
   archetype: "s3TurboList";
-  locales: Localized<StorageCliProductCopy & { casesTitle: string; cases: string[] }>;
+  locales: Localized<
+    StorageCliProductCopy & {
+      casesTitle: string;
+      cases: string[];
+      rationaleTitle: string;
+      rationaleBody: string[];
+    }
+  >;
 };
 
 export type AgentPackageProduct = {
@@ -143,20 +158,36 @@ export type BrowserExtensionProduct = {
 };
 
 export type AgentWorkbenchProduct = {
-  slug: Extract<ProductSlug, "storage-agent-workbench" | "pagewise">;
+  slug: "storage-agent-workbench";
   name: string;
   archetype: "agentWorkbench";
+  locales: Localized<AgentWorkbenchProductCopy>;
+};
+
+export type DocumentAgentProduct = {
+  slug: "pagewise";
+  name: string;
+  archetype: "documentAgent";
   locales: Localized<AgentWorkbenchProductCopy>;
 };
 
 export type Product =
   | S3TurboListProduct
   | StorageCliProduct
+  | MarkdownRadarProduct
   | AgentPackageProduct
   | BrowserExtensionProduct
-  | AgentWorkbenchProduct;
+  | AgentWorkbenchProduct
+  | DocumentAgentProduct;
 
-export type ProductArchetype = "s3TurboList" | "storageCli" | "agentPackage" | "browserExtension" | "agentWorkbench";
+export type ProductArchetype =
+  | "s3TurboList"
+  | "storageCli"
+  | "markdownRadar"
+  | "agentPackage"
+  | "browserExtension"
+  | "agentWorkbench"
+  | "documentAgent";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";
