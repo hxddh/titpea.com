@@ -14,7 +14,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       description:
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
-      headline: "Unattended research pipeline in Markdown",
+      headline: "Research pipeline in Markdown",
       lead: "Not a news site, crawler framework, or vector store. Agent Radar runs collect → screen → synthesize → validate → commit as a Git-backed research loop for the AI-agent industry.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
