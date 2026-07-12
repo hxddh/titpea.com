@@ -44,12 +44,12 @@ export function productCatalogModel(locale: Locale) {
   });
   const storage = catalogItems.filter((item) => item.group === "storage");
   const personal = catalogItems.filter((item) => item.group === "personal");
-  const s3 = indexedProduct("s3-turbo-list", locale);
+  const storageFlagship = storage.find((item) => item.isPrimary);
 
   return {
     storage,
     personal,
     all: [...storage, ...personal],
-    featuredProductPath: s3.href,
+    featuredProductPath: storageFlagship?.href ?? storage[0]?.href ?? "/",
   };
 }

@@ -33,7 +33,7 @@ export const headerCopy: Record<
     themeToLight: "Switch to light theme",
     groups: {
       main: "Main",
-      storage: "Storage",
+      storage: "Storage ecosystem",
       personal: "Personal & everyday",
       external: "External",
     },
@@ -55,7 +55,7 @@ export const headerCopy: Record<
     themeToLight: "切换到浅色主题",
     groups: {
       main: "主要页面",
-      storage: "对象存储",
+      storage: "对象存储生态",
       personal: "个人效率与生活",
       external: "外部链接",
     },

@@ -10,7 +10,7 @@ export const ui = {
     featuredTitle: "The flagship of each line",
     moreToolsLabel: "More",
     moreToolsTitle: "More from both lines",
-    lineStorageLabel: "S3 storage ecosystem",
+    lineStorageLabel: "Storage ecosystem",
     linePersonalLabel: "Personal & everyday",
     aboutTitle: "About",
     aboutDescription:

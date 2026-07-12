@@ -18,7 +18,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "s3-turbo-list",
     group: "storage",
     nav: { primary: true },
-    catalog: { order: 1, primary: true },
+    catalog: { order: 1 },
     visual: "s3Benchmark",
     ogImage: "/assets/og-s3-turbo-list.png",
     factId: "s3-turbo-list",
