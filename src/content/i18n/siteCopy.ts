@@ -1,7 +1,7 @@
 export const ui = {
   en: {
     productIndex: "hxddh / products",
-    homeTitle: "Tools for S3 storage — and a few for everyday use",
+    homeTitle: "S3 storage tools and everyday apps",
     homeDescription: "By hxddh — tools for S3-compatible storage, and small apps for everyday work and life.",
     homeLead: "From desktop agents to single-purpose utilities.",
     featuredLabel: "Featured",
