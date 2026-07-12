@@ -108,7 +108,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "evidence", label: { en: "Repo shape", zh: "仓库结构" }, required: true },
       {
         id: "workflow",
-        label: { en: "What you maintain", zh: "你维护什么" },
+        label: { en: "How the pipeline runs", zh: "流水线怎么跑" },
         layout: "steps",
         numbered: true,
         source: "workflow",
@@ -116,7 +116,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       },
       {
         id: "automation",
-        label: { en: "Daily and weekly rhythm", zh: "日常节奏" },
+        label: { en: "Ops and cadence", zh: "运行与节奏" },
         layout: "dense",
         source: "automation",
         required: true,
