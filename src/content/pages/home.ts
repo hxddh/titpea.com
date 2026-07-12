@@ -12,8 +12,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
   const alternatePath = pagePath(alternateLocale(locale));
   const description = copy.homeDescription;
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
-  const flagship = catalog.storage.find((item) => item.slug === "storage-agent-workbench");
-  const personalFlagship = catalog.personal.find((item) => item.slug === "pagewise");
+  const flagship = catalog.storage.find((item) => item.isPrimary);
+  const personalFlagship = catalog.personal.find((item) => item.isPrimary);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -101,11 +101,11 @@ export function buildHomePage(locale: Locale): HomePageModel {
       groups: [
         {
           label: copy.lineStorageLabel,
-          items: catalog.storage.filter((item) => item.slug !== "storage-agent-workbench"),
+          items: catalog.storage.filter((item) => !item.isPrimary),
         },
         {
           label: copy.linePersonalLabel,
-          items: catalog.personal.filter((item) => item.slug !== "pagewise"),
+          items: catalog.personal.filter((item) => !item.isPrimary),
         },
       ],
     },
