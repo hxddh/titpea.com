@@ -59,7 +59,16 @@ for (const target of baseline.targets) {
     else {
       await faqLink.evaluate((link) => link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }));
       await faqLink.click();
-      await page.waitForTimeout(250);
+      // Wait until the FAQ section and active nav settle — a fixed 250ms sleep
+      // was flaky across CI runs (same page, ~4% pixel churn on re-runs).
+      await page.waitForFunction(() => {
+        const faq = document.getElementById("faq");
+        const active = document.querySelector(".product-section-index a[aria-current]");
+        if (!faq || active?.getAttribute("href") !== "#faq") return false;
+        const top = faq.getBoundingClientRect().top;
+        return top >= 0 && top <= 220;
+      });
+      await page.waitForTimeout(150);
     }
   }
 
