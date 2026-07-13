@@ -66,16 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Native desktop agent",
-      title: "A session that stays on your machine",
-      body: "Start a chat or pick a task — bucket config, access logs, inventory, errors, or cost. The agent plans read-only checks and keeps inspected metadata, content, logs, configuration, and tool activity open while you decide what to do next.",
+      kicker: "Agent-native",
+      title: "The agent owns the investigation thread",
+      body: "Storage Agent is agent-native by construction: one tool-calling thread plans skills and whitelisted reads, narrates triage, and shows grounding — DuckDB / rule runs stay the deterministic floor under it.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "本地原生 agent",
-      title: "一次留在本机的调查会话",
-      body: "开对话或选任务——桶配置、访问日志、清单、错误或成本。agent 规划只读检查，并把元数据、内容、日志、配置与工具活动留在眼前，方便你决定下一步。",
+      kicker: "Agent-native",
+      title: "调查线程由 Agent 主导",
+      body: "Storage Agent 从架构上就是 agent-native。一条工具调用线程规划 skills 与白名单只读、叙述 triage，并展示 grounding——其下是确定性的 DuckDB / 规则 run。",
     },
   },
   storageops: {
