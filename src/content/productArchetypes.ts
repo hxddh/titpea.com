@@ -192,7 +192,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "What it does", zh: "它能做什么" },
+        label: { en: "What makes it different", zh: "差在哪里" },
         source: "features",
         required: true,
       },
