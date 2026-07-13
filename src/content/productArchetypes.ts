@@ -159,13 +159,13 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "What it investigates", zh: "它能查什么" },
+        label: { en: "Agent-native by design", zh: "Agent-native 差在哪" },
         source: "features",
         required: true,
       },
       {
         id: "workflow",
-        label: { en: "How a session runs", zh: "一次会话怎么跑" },
+        label: { en: "How an agent session runs", zh: "Agent 会话怎么跑" },
         layout: "steps",
         numbered: true,
         source: "workflow",
@@ -173,7 +173,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       },
       {
         id: "positioning",
-        label: { en: "Local and read-only", zh: "本地 · 只读" },
+        label: { en: "Safe agent boundaries", zh: "Agent 安全边界" },
         source: "positioning",
         required: true,
       },

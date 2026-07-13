@@ -66,16 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Native desktop agent",
-      title: "A session that stays on your machine",
-      body: "Start a chat or pick a task — bucket config, access logs, inventory, errors, or cost. The agent plans read-only checks and keeps inspected metadata, content, logs, configuration, and tool activity open while you decide what to do next.",
+      kicker: "Agent-native workbench",
+      title: "Thread, tools, skills — then deterministic runs",
+      body: "Storage Agent is a Codex-style investigation agent for object storage. It plans whitelisted read tools and method skills in one thread; DuckDB / rule runs stay the deterministic floor; grounding cards show what the agent used and what is still missing.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "本地原生 agent",
-      title: "一次留在本机的调查会话",
-      body: "开对话或选任务——桶配置、访问日志、清单、错误或成本。agent 规划只读检查，并把元数据、内容、日志、配置与工具活动留在眼前，方便你决定下一步。",
+      kicker: "Agent-native 工作台",
+      title: "线程、工具、skills——再落到确定性 run",
+      body: "Storage Agent 是面向对象存储的 Codex 式调查 Agent。它在一条线程里规划白名单只读工具与方法 skills；DuckDB / 规则 run 做确定性地板；grounding 卡片展示用过什么、还缺什么。",
     },
   },
   storageops: {
