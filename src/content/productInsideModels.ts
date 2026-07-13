@@ -167,16 +167,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Local desktop agent",
-      title: "Extraction stays local; answers stay checkable",
-      body: "Open a PDF or image, extract text with Rust pdf-extract or system Tesseract, and ask about a section, table, or trend. Only text goes to your model; the preview follows the pages under analysis.",
+      kicker: "Page as first-class",
+      title: "Local workbench, tool-loop agent, visible trail",
+      body: "PageWise combines a PDF preview, a streaming tool-calling agent, and page-level grounding. The model reads under budgets; you navigate what it read — not a black-box chat over a dumped file.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "本地桌面 agent",
-      title: "提取在本地，回答可核对",
-      body: "打开 PDF 或图片，用 Rust pdf-extract 或系统 Tesseract 提取文本，并询问段落、表格或趋势。只有文字会发给你配置的模型；预览跟着正在分析的页面走。",
+      kicker: "页是一等公民",
+      title: "本地工作台、工具循环、可见读迹",
+      body: "PageWise 把 PDF 预览、流式 tool-calling Agent 与页级 grounding 放在一起。模型在预算内按页读；你导航它读过的页——不是对整份 dump 的黑箱聊天。",
     },
   },
   "world-clock": browserInside(
