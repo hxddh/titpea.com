@@ -246,7 +246,7 @@ export const visualCopy = {
       files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
       briefLabel: "radar.md",
       brief: "Thesis: local agents win on evidence · Changed: sandbox snapshot noise · Open: who owns artifact storage",
-      footnotes: ["Markdown-first · GitHub Actions", "collect → screen → synthesize → commit"],
+      footnotes: ["Markdown-first · GitHub Actions", "promote under gates · Git as audit"],
     },
     zh: {
       kicker: "agent-radar · 简报",
@@ -256,7 +256,7 @@ export const visualCopy = {
       files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
       briefLabel: "radar.md",
       brief: "判断：本地 agent 更易审计 · 已变：沙箱快照噪声 · 待答：产物存在谁的存储",
-      footnotes: ["Markdown 优先 · GitHub Actions", "采集 → 筛选 → 合成 → 提交"],
+      footnotes: ["Markdown 优先 · GitHub Actions", "闸门内升格 · Git 即审计"],
     },
   },
 

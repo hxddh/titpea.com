@@ -105,9 +105,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Industry intel OS",
-      title: "Content repo, deterministic runner, two-tier models",
-      body: "Agent Radar is a Markdown-shaped research operating system hosted on GitHub Actions: a content repository, a deterministic orchestrator, cheap-then-strong model routing, and a free-source collection grid — with attention budget, evidence discipline, and promote boundaries built in.",
+      kicker: "Four parts, one loop",
+      title: "Repo, runner, two models, free-source grid",
+      body: "Agent Radar is a GitHub Actions research loop: Markdown as durable state, a deterministic runner, cheap-then-strong model routing, and free-source collection — with attention budget, evidence rules, and promote boundaries built in.",
       panel: {
         kind: "agentEvidence",
         label: "radar.md excerpt",
@@ -135,9 +135,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "产业情报操作系统",
-      title: "内容仓库、确定性编排、两级模型",
-      body: "Agent Radar 是跑在 GitHub Actions 上、以 Markdown 为形态的研究操作系统。内容仓库、确定性编排、两级模型路由与免费源采集网格，把注意力预算、证据纪律和升格边界写进产品本身。",
+      kicker: "四件套，一条循环",
+      title: "内容仓、编排器、两级模型、免费源网",
+      body: "Agent Radar 是跑在 GitHub Actions 上的研究循环。Markdown 作持久状态，确定性 runner 与两级模型路由，再加免费源采集——注意力预算、证据纪律与升格边界写进产品本身。",
       panel: {
         kind: "agentEvidence",
         label: "radar.md 摘录",
@@ -168,15 +168,15 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       id: "inside",
       kind: "inside",
       kicker: "Page as first-class",
-      title: "Local workbench, tool-loop agent, visible trail",
-      body: "PageWise combines a PDF preview, a streaming tool-calling agent, and page-level grounding. The model reads under budgets; you navigate what it read — not a black-box chat over a dumped file.",
+      title: "Read under budgets; show the trail",
+      body: "PageWise is a local PDF workbench with a tool-loop agent. The page is the unit of reading — what was read stays visible and clickable beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "页是一等公民",
-      title: "本地工作台、工具循环、可见读迹",
-      body: "PageWise 把 PDF 预览、流式 tool-calling Agent 与页级 grounding 放在一起。模型在预算内按页读；你导航它读过的页——不是对整份 dump 的黑箱聊天。",
+      title: "预算内阅读，读迹可见",
+      body: "PageWise 是带工具循环的本地 PDF 工作台。页是阅读单位——读过什么留在回答旁边，可点、可跟随。",
     },
   },
   "world-clock": browserInside(

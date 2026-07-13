@@ -105,7 +105,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     defaultVisual: "agentRadarTerminal",
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
-      { id: "evidence", label: { en: "Repo shape", zh: "仓库结构" }, required: true },
+      { id: "evidence", label: { en: "Git state", zh: "Git 状态" }, required: true },
       {
         id: "workflow",
         label: { en: "How the pipeline runs", zh: "流水线怎么跑" },

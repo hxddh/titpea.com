@@ -2,7 +2,7 @@ import type { MarkdownRadarProduct } from "../../lib/site";
 import { agentRadarFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
-const meta = `Python 3.10+ · stdlib only · Markdown-first · ${agentRadarFacts.licenseLabel ?? "MIT"} · ${agentRadarFacts.latestRelease ?? "current release"}`;
+const meta = `Python · Markdown-first · GitHub Actions · ${agentRadarFacts.licenseLabel ?? "MIT"} · ${agentRadarFacts.latestRelease ?? "current release"}`;
 
 export const agentRadarProduct: MarkdownRadarProduct = {
   slug: "agent-radar",
@@ -14,7 +14,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       description:
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
-      headline: "Research pipeline in Markdown",
+      headline: "Unattended research in Markdown",
       lead: "Not a news site, crawler framework, or vector store. Agent Radar runs collect → screen → synthesize → validate → commit as a Git-backed research loop for the AI-agent industry.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
@@ -68,6 +68,12 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "agent",
         },
         {
+          title: "Model proposes, runner disposes",
+          body: "Broad discovery, narrow promotion: the model may suggest JSON updates; the runner scores, bounds writes, runs gates, and commits. Labels failures without blocking the whole loop.",
+          intent: "automation",
+          surface: "agent",
+        },
+        {
           title: "Ops that stay visible",
           body: "Collector state, lane health, telemetry, union merge, and partial commit keep long runs recoverable when a source or model call fails.",
           intent: "automation",
@@ -79,20 +85,20 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faqLabel: "Questions & use",
       faq: [
         {
-          title: "Does it use paid search?",
-          body: "No. Collection uses free public source lanes. Models only judge and write after scoring trims the prompt.",
+          title: "Who is this for?",
+          body: "People who want an auditable, scheduled research loop on the AI-agent industry — not a news feed and not a private note vault with no promotion rules.",
         },
         {
-          title: "What does the model decide vs the runner?",
-          body: "The model proposes JSON updates for allowed files. The runner scores, bounds writes, validates gates, and commits — model proposes, runner disposes.",
+          title: "Do I run it only on GitHub Actions?",
+          body: "Actions is the intended unattended host. The same runner scripts can be invoked locally for debugging; the durable state remains the Markdown repo.",
         },
         {
-          title: "How does promotion stay narrow?",
-          body: "`source-sweep` captures candidates; `promote-candidates` promotes only within explicit boundaries into watchlist, radar, storage angle, or research log.",
+          title: "Do I need paid models or paid search?",
+          body: "Collection uses free public source lanes — no paid search. Models are BYOK: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
         },
         {
-          title: "What happens when something fails?",
-          body: "Collector auto-disable, telemetry, source health, and failure issues keep the loop operable. Partial commits preserve progress instead of discarding a whole run.",
+          title: "How is this different from a Markdown notebook?",
+          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and gates, so Git history is the audit API.",
         },
       ],
     },
@@ -111,7 +117,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       workflow: [
         {
           title: "宽源发现",
-          body: "Source lanes 拉取公开信号——官网、GitHub、Release、HN、订阅源、包市场、论文——不调用付费搜索。",
+          body: "源通道拉取公开信号——官网、GitHub、Release、HN、订阅源、包市场、论文——不调用付费搜索。",
           intent: "workflow",
           surface: "cli",
         },
@@ -129,7 +135,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "闸门后提交",
-          body: "引用、配额、双语与新鲜度检查通过后才提交。失败留在遥测、collector state 与 issue 里——Git 始终是审计轨迹。",
+          body: "引用、配额、双语与新鲜度检查通过后才提交。失败留在遥测、采集状态与 issue 里——Git 始终是审计轨迹。",
           intent: "workflow",
           surface: "artifact",
         },
@@ -149,8 +155,14 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "agent",
         },
         {
+          title: "模型提议，runner 裁定",
+          body: "宽发现、窄升格：模型可提议 JSON 更新；runner 负责记分、限制写入、跑闸门并提交。失败可贴标签，不必整次卡住。",
+          intent: "automation",
+          surface: "agent",
+        },
+        {
           title: "失败仍可见、可恢复",
-          body: "Collector state、通道健康、遥测、union merge 与 partial commit，让长任务在源或模型失败时仍能留下进度。",
+          body: "采集状态、通道健康、遥测、合并保留与部分提交，让长任务在源或模型失败时仍能留下进度。",
           intent: "automation",
           surface: "artifact",
         },
@@ -160,20 +172,20 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faqLabel: "常见问题与用法",
       faq: [
         {
-          title: "要用付费搜索吗",
-          body: "不用。采集走免费公开源。模型只在记分裁剪之后做判断与写作。",
+          title: "适合谁用",
+          body: "想要可审计、可定时的 Agent 产业研究循环的人——不是新闻流，也不是没有升格规则的私人笔记库。",
         },
         {
-          title: "模型和 runner 各自做什么",
-          body: "模型提议对允许文件的 JSON 更新；runner 负责记分、限制写入、跑闸门并提交——模型提议，runner 裁定。",
+          title: "只能跑在 GitHub Actions 吗",
+          body: "Actions 是无人值守的主场景。同一套 runner 脚本也可本地调试；持久状态仍是这个 Markdown 仓库。",
         },
         {
-          title: "升格如何保持严格",
-          body: "`source-sweep` 只收候选；`promote-candidates` 才按明确边界升格进观察名单、雷达、存储视角或研究日志。",
+          title: "一定要付费模型或付费搜索吗",
+          body: "采集走免费公开源，不用付费搜索。模型自带密钥：轻量模型可初筛，强模型写终稿，花费可主动控制。",
         },
         {
-          title: "失败了怎么办",
-          body: "Collector 自动停用、遥测、源健康与 failure issue 让循环可运维；partial commit 保留进度，而不是整次作废。",
+          title: "和 Markdown 笔记本有何不同",
+          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与闸门，Git 历史就是审计接口。",
         },
       ],
     },

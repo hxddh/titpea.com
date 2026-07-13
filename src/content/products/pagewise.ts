@@ -9,14 +9,14 @@ export const pagewiseProduct: DocumentAgentProduct = {
     en: {
       title: "PageWise",
       description:
-        "Local PDF workbench with a tool-loop document agent: it reads page by page, and you see what it read.",
+        "Local PDF workbench with a page-wise document agent: the model reads under budgets, and you see the trail.",
       eyebrow: "Local document agent · macOS first",
       headline: "See what the agent read, page by page",
-      lead: "Not dump-the-whole-PDF chat. A local workbench: the model reads with page tools and budgets, while Pages read, Follow Agent, and clickable citations make the trail navigable.",
-      primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
-      secondaryCta: { label: "Download DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      lead: "Not another whole-PDF dump into chat. A local workbench: the model reads with page tools and budgets — Pages read, Follow Agent, and clickable citations keep the trail navigable.",
+      primaryCta: { label: "Download DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri desktop · PDF + images · MIT · macOS DMG",
-      proof: ["Page-wise tools", "Pages read", "Follow Agent", "Local + Keychain", "BYOK"],
+      proof: ["Page-wise reading", "Visible trail", "Files stay local", "OS keychain", "BYOK"],
       featuresLabel: "What makes it different",
       features: [
         {
@@ -27,13 +27,13 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "Two readable channels, one tool surface",
-          body: "Native PDF text when a layer exists; vision scan when the page is image-heavy. The agent uses the same tools either way — cache, pdf-text, or vision.",
+          body: "Use the PDF text layer when it exists; use vision when the page is image-heavy. The agent calls the same tools either way.",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "Grounding is navigation",
-          body: "Clickable page citations, Pages read chips, Follow Agent, and Ask about this on a selection turn the agent’s trail into controls — not just chat history.",
+          title: "The read trail is navigation",
+          body: "Clickable page citations, Pages read chips, Follow Agent, and Ask about this on a selection turn agent work into controls — not only chat history.",
           intent: "capability",
           surface: "artifact",
         },
@@ -42,18 +42,6 @@ export const pagewiseProduct: DocumentAgentProduct = {
           body: "Preview with thumbnails, zoom, in-doc search, and outline or bookmark tree. One chat thread per document, saved locally, with Markdown export.",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "Assistant and Scan can split",
-          body: "Bring your own OpenAI-compatible stack — OpenAI, DeepSeek, OpenRouter, Ollama, or a custom endpoint. Assistant and Scan (vision) roles can use different models.",
-          intent: "capability",
-          surface: "protocol",
-        },
-        {
-          title: "Local-first credentials",
-          body: "Files stay on disk. API keys live in the OS keychain. Optional OpenRouter web search is opt-in per call so document Q&A is not polluted by default.",
-          intent: "capability",
-          surface: "agent",
         },
       ],
       workflowLabel: "How a session runs",
@@ -72,7 +60,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "Watch the tool loop",
-          body: "The agent plans outline, search, and page reads inside step and read budgets, then synthesizes on the last step — a search miss is not treated as “does not exist.”",
+          body: "The agent plans outline, search, and page reads inside step and read budgets, then synthesizes on the last step — a search miss is not “does not exist.”",
           intent: "workflow",
           surface: "agent",
         },
@@ -99,7 +87,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "Keys in the OS keychain",
-          body: "Credentials use macOS Keychain, Windows Credential Manager, or Linux Secret Service. No hosted account or shared API key.",
+          body: "Credentials use macOS Keychain, Windows Credential Manager, or Linux Secret Service. Assistant and Scan (vision) can use different models, including Ollama.",
           intent: "boundary",
           surface: "agent",
         },
@@ -107,12 +95,12 @@ export const pagewiseProduct: DocumentAgentProduct = {
       faqLabel: "Questions & how-to",
       faq: [
         {
-          title: "How is this different from ChatPDF-style apps?",
-          body: "Those often dump or chunk the whole file into chat. PageWise treats the page as first-class: tools read under budgets, and Pages read / Follow Agent make the trail visible and navigable.",
+          title: "Can it run fully local with Ollama?",
+          body: "Yes. Point Assistant (and Scan if needed) at an OpenAI-compatible Ollama endpoint. Files stay on disk; only the payloads you enable go to that local model.",
         },
         {
-          title: "Which AI model does it use?",
-          body: "You bring your own OpenAI-compatible provider and model. Assistant and Scan (vision) can point at different models. Keys stay in the OS keychain.",
+          title: "When should I enable OpenRouter web search?",
+          body: "Only when a question needs outside verification. It is opt-in per call and off by default, so ordinary document Q&A is not polluted by web results.",
         },
         {
           title: "Do my files leave my computer?",
@@ -120,7 +108,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "How do scanned pages work?",
-          body: "When a text layer is thin or missing, indexing can use a vision / multimodal model. Prefer a vision-capable Scan model for image-heavy PDFs.",
+          body: "When a text layer is thin or missing, indexing can use a vision / multimodal Scan model. Prefer a vision-capable model for image-heavy PDFs.",
         },
         {
           title: "What platforms does it run on?",
@@ -128,55 +116,43 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
       ],
       finalCta: "Read page by page — with the trail still visible",
-      finalCtaLabel: "View on GitHub",
+      finalCtaLabel: "Download DMG",
     },
     zh: {
       title: "PageWise",
-      description: "本地 PDF 工作台 × 工具循环 Document Agent：按页读，并让你看见它读了什么。",
+      description: "本地 PDF 工作台与按页 Document Agent：模型在预算内读，读迹对你可见。",
       eyebrow: "本地文档 agent · macOS 优先",
       headline: "按页读 PDF，并看见它读了什么",
       lead: "不是把整份 PDF 塞进聊天。PageWise 是本地工作台：模型用带预算的页级工具阅读；Pages read、Follow Agent 与可点页引用，把读迹做成可导航的痕迹。",
-      primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
-      secondaryCta: { label: "下载 DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      primaryCta: { label: "下载 DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri 桌面 · PDF 与图片 · MIT · macOS DMG",
-      proof: ["按页工具", "Pages read", "Follow Agent", "本地 + Keychain", "自带密钥"],
+      proof: ["按页阅读", "读迹可见", "文件留本地", "系统钥匙串", "自带模型"],
       featuresLabel: "和朴素 PDF+Chat 差在哪",
       features: [
         {
-          title: "按页读，不 dump 全文",
+          title: "按页读，不塞整份文件",
           body: "工具强制按页读取，并受字符预算约束。大文档不会第一轮就塞爆上下文，也不会假装已经全覆盖总结。",
           intent: "capability",
           surface: "agent",
         },
         {
           title: "双通道可读，同一套工具",
-          body: "有文本层走 native；扫描或图片页走 vision。Agent 不感知底层来自 cache、pdf-text 还是 vision。",
+          body: "有文本层就走文本层；扫描或图片页走视觉模型。对 Agent 来说，调用的是同一套页级工具。",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "Grounding 就是导航",
-          body: "页码引用可点、Pages read 芯片、Follow Agent，以及选中后的「Ask about this」——把 Agent 的工作痕迹做成控件，而不只是聊天记录。",
+          title: "读迹就是导航",
+          body: "页码引用可点、Pages read、Follow Agent，以及选中后的「就此提问」——把 Agent 的工作痕迹做成控件，而不只是聊天记录。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "围着「页」的工作台",
-          body: "预览含缩略图、缩放、站内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
+          body: "预览含缩略图、缩放、文内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "Assistant 与 Scan 可分离",
-          body: "自带兼容 OpenAI 接口的模型栈——OpenAI、DeepSeek、OpenRouter、Ollama 或自定义端点。对话与 Scan（vision）可用不同模型。",
-          intent: "capability",
-          surface: "protocol",
-        },
-        {
-          title: "本地优先的凭证",
-          body: "文件留在磁盘。API key 进系统钥匙串。OpenRouter 网页搜索按次 opt-in，默认关闭，避免污染文档问答。",
-          intent: "capability",
-          surface: "agent",
         },
       ],
       workflowLabel: "一次会话怎么跑",
@@ -189,7 +165,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "提问，或选中再问",
-          body: "在聊天里提问，或选中文字后用 Ask about this。该文档只保留一条本地线程。",
+          body: "在聊天里提问，或选中文字后「就此提问」。该文档只保留一条本地线程。",
           intent: "workflow",
           surface: "agent",
         },
@@ -216,13 +192,13 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "只送出模型需要的内容",
-          body: "提取出的文本，以及你启用的可选 vision 载荷，会发到你配置的模型。除此之外不会擅自外传。",
+          body: "提取出的文本，以及你启用的可选视觉载荷，会发到你配置的模型。除此之外不会擅自外传。",
           intent: "boundary",
           surface: "protocol",
         },
         {
           title: "密钥进系统钥匙串",
-          body: "凭证使用 macOS Keychain、Windows Credential Manager 或 Linux Secret Service。没有托管账号，也没有共用 API key。",
+          body: "凭证使用 macOS Keychain、Windows Credential Manager 或 Linux Secret Service。对话与 Scan（视觉）可用不同模型，也可接 Ollama。",
           intent: "boundary",
           surface: "agent",
         },
@@ -230,20 +206,20 @@ export const pagewiseProduct: DocumentAgentProduct = {
       faqLabel: "问题与用法",
       faq: [
         {
-          title: "和 ChatPDF 一类产品差在哪",
-          body: "那些常把整份文件 dump 或切块塞进聊天。PageWise 把「页」当一等公民：工具在预算内读，Pages read 与 Follow Agent 让读迹可见、可跳转。",
+          title: "能否用 Ollama 全本地",
+          body: "可以。把对话（以及需要时的 Scan）指到兼容 OpenAI 接口的 Ollama。文件留在磁盘；只有你启用的内容会发给该本地模型。",
         },
         {
-          title: "它用哪个 AI 模型",
-          body: "你自带兼容 OpenAI 接口的服务与模型。Assistant 与 Scan（vision）可指向不同模型。密钥存在系统钥匙串。",
+          title: "OpenRouter 网页搜索何时开",
+          body: "只在需要外网核实时按次打开。默认关闭，避免普通文档问答被网页结果干扰。",
         },
         {
           title: "我的文件会离开电脑吗",
-          body: "不会上传到 PageWise 服务器。只有提取文本，以及可选的 vision 载荷，会发到你配置的模型端点。",
+          body: "不会上传到 PageWise 服务器。只有提取文本，以及可选的视觉载荷，会发到你配置的模型。",
         },
         {
           title: "扫描页怎么处理",
-          body: "文本层稀薄或缺失时，索引可用 vision / 多模态模型。图片多的 PDF 请为 Scan 选支持视觉的模型。",
+          body: "文本层稀薄或缺失时，索引可用视觉 / 多模态 Scan 模型。图片多的 PDF 请为 Scan 选支持视觉的模型。",
         },
         {
           title: "支持哪些平台",
@@ -251,7 +227,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
       ],
       finalCta: "按页读，读迹还留在眼前",
-      finalCtaLabel: "查看 GitHub",
+      finalCtaLabel: "下载 DMG",
     },
   },
 };
