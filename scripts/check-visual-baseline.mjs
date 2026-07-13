@@ -59,16 +59,22 @@ for (const target of baseline.targets) {
     else {
       await faqLink.evaluate((link) => link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }));
       await faqLink.click();
-      // Wait until the FAQ section and active nav settle — a fixed 250ms sleep
-      // was flaky across CI runs (same page, ~4% pixel churn on re-runs).
+      // Hash navigation alone leaves faqTop anywhere in 0–220 across CI runs,
+      // which shifts the whole screenshot (~4% churn). Snap to scroll-margin.
+      await page.evaluate(() => {
+        const faq = document.getElementById("faq");
+        if (!faq) return;
+        const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
+        const y = Math.round(faq.getBoundingClientRect().top + window.scrollY - margin);
+        window.scrollTo({ top: Math.max(0, y), left: 0, behavior: "instant" });
+      });
       await page.waitForFunction(() => {
         const faq = document.getElementById("faq");
         const active = document.querySelector(".product-section-index a[aria-current]");
         if (!faq || active?.getAttribute("href") !== "#faq") return false;
-        const top = faq.getBoundingClientRect().top;
-        return top >= 0 && top <= 220;
+        const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
+        return Math.abs(Math.round(faq.getBoundingClientRect().top) - Math.round(margin)) <= 2;
       });
-      await page.waitForTimeout(150);
     }
   }
 
