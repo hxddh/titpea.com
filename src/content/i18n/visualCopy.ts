@@ -30,7 +30,8 @@ export const visualCopy = {
         supportingAlt: "Storage Agent 根据对象证据解释存储类型差异",
         supportingKicker: "Agent-native 调查",
         supportingTitle: "工具与证据留在线程里",
-        supportingBody: "Agent 对比对象元数据与内容，解释跨厂商复制后的存储类型差异，并留下可打开的 grounding，再决定下一步。",
+        supportingBody:
+          "Agent 对比对象元数据与内容，解释跨厂商复制后的存储类型差异，并留下可打开的 grounding，再决定下一步。",
       },
     },
   },
