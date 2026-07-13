@@ -126,9 +126,10 @@ for (const target of baseline.targets) {
   else if (!fs.existsSync(expectedPath)) failures.push(`${name}: missing committed visual baseline`);
   else {
     const ratio = await changedPixelRatio(actualPath, expectedPath);
-    if (ratio > changedPixelLimit)
+    const limit = target.state === "faq" ? faqChangedPixelLimit : changedPixelLimit;
+    if (ratio > limit)
       failures.push(
-        `${name}: ${(ratio * 100).toFixed(2)}% pixels changed (limit ${(changedPixelLimit * 100).toFixed(2)}%)`,
+        `${name}: ${(ratio * 100).toFixed(2)}% pixels changed (limit ${(limit * 100).toFixed(2)}%)`,
       );
   }
   await page.close();
