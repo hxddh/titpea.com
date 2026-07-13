@@ -159,7 +159,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "What makes it different", zh: "和常见方案差在哪" },
+        label: { en: "How investigations work", zh: "调查怎么推进" },
         source: "features",
         required: true,
       },
@@ -192,7 +192,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
       {
         id: "features",
-        label: { en: "What makes it different", zh: "差在哪里" },
+        label: { en: "What you get in the workbench", zh: "工作台里有什么" },
         source: "features",
         required: true,
       },

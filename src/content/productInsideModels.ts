@@ -68,14 +68,14 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       kind: "inside",
       kicker: "Desktop investigation agent",
       title: "Chat plans the checks; evidence stays open",
-      body: "Start a conversation about a bucket, error, or log. The agent calls read-only tools and method skills; heavy analysis runs locally in DuckDB; what it used stays visible beside the answer.",
+      body: "Describe a bucket, error, or log. The agent calls read-only tools from storage playbooks, runs heavy analysis locally, and leaves what it used beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
       title: "对话规划检查，证据留在旁边",
-      body: "就桶、报错或日志开一段对话。Agent 调用只读工具与方法技能；重分析在本地 DuckDB 完成；用过的材料留在回答旁边可见。",
+      body: "就桶、报错或日志开一段对话。Agent 按排查手册调用只读工具，重分析在本地完成，用过的材料留在回答旁边。",
     },
   },
   storageops: {
@@ -105,9 +105,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Four parts, one loop",
-      title: "Repo, runner, two models, free-source grid",
-      body: "Agent Radar is a GitHub Actions research loop: Markdown as durable state, a deterministic runner, cheap-then-strong model routing, and free-source collection — with attention budget, evidence rules, and promote boundaries built in.",
+      kicker: "One research loop",
+      title: "Markdown state, scheduled runner, two models",
+      body: "Agent Radar runs on GitHub Actions: Markdown holds durable research state, a deterministic runner scores and gates writes, and a cheaper model screens before a stronger model drafts.",
       panel: {
         kind: "agentEvidence",
         label: "radar.md excerpt",
@@ -135,9 +135,9 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "四件套，一条循环",
-      title: "内容仓、编排器、两级模型、免费源网",
-      body: "Agent Radar 是跑在 GitHub Actions 上的研究循环。Markdown 作持久状态，确定性 runner 与两级模型路由，再加免费源采集——注意力预算、证据纪律与升格边界写进产品本身。",
+      kicker: "一条研究循环",
+      title: "Markdown 状态、定时 runner、两级模型",
+      body: "Agent Radar 跑在 GitHub Actions 上：Markdown 保存研究状态，确定性 runner 记分并约束写入，轻量模型初筛后再由强模型写终稿。",
       panel: {
         kind: "agentEvidence",
         label: "radar.md 摘录",
@@ -167,16 +167,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Page as first-class",
-      title: "Read under budgets; show the trail",
-      body: "PageWise is a local PDF workbench with a tool-loop agent. The page is the unit of reading — what was read stays visible and clickable beside the answer.",
+      kicker: "Local PDF workbench",
+      title: "Ask about a page — see what was read",
+      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Citations and follow-preview keep the source beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "页是一等公民",
-      title: "预算内阅读，读迹可见",
-      body: "PageWise 是带工具循环的本地 PDF 工作台。页是阅读单位——读过什么留在回答旁边，可点、可跟随。",
+      kicker: "本地 PDF 工作台",
+      title: "就某一页提问，看见它读了什么",
+      body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。页引用与跟随预览让原文留在回答旁边。",
     },
   },
   "world-clock": browserInside(

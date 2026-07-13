@@ -12,9 +12,9 @@ export const catalogCopy = {
     worldClockRole: "Timezone utility",
     doubanText: "Shows IMDb, Rotten Tomatoes, and Metacritic inside Douban movie pages.",
     doubanRole: "Rating context",
-    pagewiseText: "Local page-wise document agent: the model reads under budgets, and you see the trail.",
+    pagewiseText: "Local PDF workbench: the model reads page by page under budgets, and you see the trail.",
     pagewiseRole: "Document agent",
-    agentRadarText: "Unattended research pipeline for the Agent industry — Markdown state, GitHub Actions.",
+    agentRadarText: "Unattended Agent-industry research loop — Markdown state on GitHub Actions.",
     agentRadarRole: "Research pipeline",
   },
   zh: {
@@ -30,9 +30,9 @@ export const catalogCopy = {
     worldClockRole: "时区工具",
     doubanText: "在豆瓣电影页内对照 IMDb、Rotten Tomatoes 和 Metacritic。",
     doubanRole: "评分辅助",
-    pagewiseText: "本地按页 Document Agent：模型在预算内读，读迹对你可见。",
+    pagewiseText: "本地 PDF 工作台：模型按页读，读迹对你可见。",
     pagewiseRole: "文档 agent",
-    agentRadarText: "跑在 GitHub Actions 上的 Markdown Agent 产业研究流水线。",
+    agentRadarText: "跑在 GitHub Actions 上的 Agent 产业研究循环，状态在 Markdown。",
     agentRadarRole: "研究流水线",
   },
 } as const;
