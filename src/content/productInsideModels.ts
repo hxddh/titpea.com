@@ -66,16 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Agent-native workbench",
-      title: "Thread, tools, skills — then deterministic runs",
-      body: "Storage Agent is a Codex-style investigation agent for object storage. It plans whitelisted read tools and method skills in one thread; DuckDB / rule runs stay the deterministic floor; grounding cards show what the agent used and what is still missing.",
+      kicker: "Agent-native",
+      title: "The agent owns the investigation thread",
+      body: "Storage Agent is agent-native by construction: one tool-calling thread plans skills and whitelisted reads, narrates triage, and shows grounding — DuckDB / rule runs stay the deterministic floor under it.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "Agent-native 工作台",
-      title: "线程、工具、skills——再落到确定性 run",
-      body: "Storage Agent 是面向对象存储的 Codex 式调查 Agent。它在一条线程里规划白名单只读工具与方法 skills；DuckDB / 规则 run 做确定性地板；grounding 卡片展示用过什么、还缺什么。",
+      kicker: "Agent-native",
+      title: "调查线程由 Agent 主导",
+      body: "Storage Agent 从架构上就是 agent-native。一条工具调用线程规划 skills 与白名单只读、叙述 triage，并展示 grounding——其下是确定性的 DuckDB / 规则 run。",
     },
   },
   storageops: {

@@ -139,7 +139,7 @@ export const visualCopy = {
       connected: "Connected",
       model: "your model",
       question: "Which bucket, log, or error should we investigate?",
-      subtitle: "Agent-native thread — I'll plan tools and skills, and ask before moving any data.",
+      subtitle: "Agent-native — I plan tools and skills, then ask before moving data.",
       inputPlaceholder: "Ask Storage Agent…  ( / for commands )",
       chips: [
         "Diagnose an error",
@@ -167,7 +167,7 @@ export const visualCopy = {
       connected: "已连接",
       model: "自带模型",
       question: "先查哪个桶、日志还是报错？",
-      subtitle: "Agent-native 线程——我会规划工具与 skills；搬数前先征得你同意。",
+      subtitle: "Agent-native——我规划工具与 skills；搬数前先征得你同意。",
       inputPlaceholder: "向云存储 Agent 提问…（输入 / 查看命令）",
       chips: ["诊断错误", "审查桶配置", "分析访问日志", "清单与容量", "梳理账号与桶", "成本集中在哪里"],
     },

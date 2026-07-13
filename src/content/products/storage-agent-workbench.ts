@@ -10,13 +10,13 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       title: "Storage Agent",
       description:
         "Agent-native desktop workbench for read-only S3-compatible storage investigations — thread-first tools, skills, grounding, and deterministic DuckDB runs.",
-      eyebrow: "Agent-native · read-only · local-first",
-      headline: "Agent-native, read-only storage triage",
-      lead: "Not an S3 console with chat bolted on. An agent-native thread: plan tools and skills, narrate triage, ground conclusions — DuckDB runs stay deterministic; storage stays read-only.",
+      eyebrow: "Agent-native workbench · S3-compatible",
+      headline: "Agent-native storage triage",
+      lead: "Not an S3 console with chat bolted on. An agent-native thread: plan tools, load skills, narrate triage, ground conclusions — DuckDB stays deterministic; storage stays read-only.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
-      meta: "Tauri desktop · S3-compatible · Apache-2.0 · macOS, Windows, Linux",
-      proof: ["Agent thread", "Tool loop", "Skills", "Grounding cards", "Never mutates"],
+      meta: "Agent-native · Tauri desktop · Apache-2.0 · macOS, Windows, Linux",
+      proof: ["Agent-native", "Tool-calling thread", "Skills", "Grounding", "Never mutates"],
       featuresLabel: "Agent-native by design",
       features: [
         {
@@ -134,13 +134,13 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       title: "Storage Agent",
       description:
         "Agent-native 的 S3 兼容存储只读调查工作台：thread-first 工具循环、skills、grounding，外加确定性 DuckDB run。",
-      eyebrow: "Agent-native · 只读 · 本地优先",
-      headline: "Agent-native 的只读存储 triage",
-      lead: "不是贴了聊天框的 S3 控制台。这是 Codex 式 Agent 线程：规划白名单工具与 skills、叙述调查过程，并把结论落到可打开的证据上——DuckDB run 保持确定性，存储保持只读。",
+      eyebrow: "Agent-native 工作台 · S3 兼容",
+      headline: "Agent-native 存储 triage",
+      lead: "不是贴了聊天框的 S3 控制台。这是 agent-native 线程：规划工具、加载 skills、叙述 triage，并把结论落到可打开的证据上——DuckDB run 保持确定性，存储保持只读。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
-      meta: "Tauri 桌面 · S3 兼容 · Apache-2.0 · macOS、Windows、Linux",
-      proof: ["Agent 线程", "工具循环", "Skills", "Grounding", "绝不改存储"],
+      meta: "Agent-native · Tauri 桌面 · Apache-2.0 · macOS、Windows、Linux",
+      proof: ["Agent-native", "工具调用线程", "Skills", "Grounding", "绝不改存储"],
       featuresLabel: "Agent-native 差在哪",
       features: [
         {
