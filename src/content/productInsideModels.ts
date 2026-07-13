@@ -66,16 +66,16 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "Agent-native",
-      title: "The agent owns the investigation thread",
-      body: "Storage Agent is agent-native by construction: one tool-calling thread plans skills and whitelisted reads, narrates triage, and shows grounding — DuckDB / rule runs stay the deterministic floor under it.",
+      kicker: "Desktop investigation agent",
+      title: "Chat plans the checks; evidence stays open",
+      body: "Start a conversation about a bucket, error, or log. The agent calls read-only tools and method skills; heavy analysis runs locally in DuckDB; what it used stays visible beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "Agent-native",
-      title: "调查线程由 Agent 主导",
-      body: "Storage Agent 从架构上就是 agent-native。一条工具调用线程规划 skills 与白名单只读、叙述 triage，并展示 grounding——其下是确定性的 DuckDB / 规则 run。",
+      kicker: "桌面调查 Agent",
+      title: "对话规划检查，证据留在旁边",
+      body: "就桶、报错或日志开一段对话。Agent 调用只读工具与方法技能；重分析在本地 DuckDB 完成；用过的材料留在回答旁边可见。",
     },
   },
   storageops: {
