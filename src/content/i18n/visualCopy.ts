@@ -20,17 +20,17 @@ export const visualCopy = {
       en: {
         heroAlt: "Storage Agent welcome screen with six read-only investigation tasks",
         supportingAlt: "Storage Agent explaining a storage-class mismatch from inspected object evidence",
-        supportingKicker: "Example investigation",
-        supportingTitle: "The inspected values stay beside the conclusion",
+        supportingKicker: "Agent-native investigation",
+        supportingTitle: "Tools and evidence stay in the thread",
         supportingBody:
-          "The agent compares object metadata and content, explains the cross-provider storage-class mismatch, and leaves a reviewable basis for the next action.",
+          "The agent compares object metadata and content, explains a cross-provider storage-class mismatch, and leaves grounding you can open before the next step.",
       },
       zh: {
         heroAlt: "Storage Agent 欢迎页，包含六类只读调查任务",
         supportingAlt: "Storage Agent 根据对象证据解释存储类型差异",
-        supportingKicker: "一次真实调查",
-        supportingTitle: "检查过的值与结论放在一起",
-        supportingBody: "agent 对比对象元数据与内容，解释跨厂商复制后的存储类型差异，并留下可复核的下一步依据。",
+        supportingKicker: "Agent-native 调查",
+        supportingTitle: "工具与证据留在线程里",
+        supportingBody: "Agent 对比对象元数据与内容，解释跨厂商复制后的存储类型差异，并留下可打开的 grounding，再决定下一步。",
       },
     },
   },
