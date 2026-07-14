@@ -20,26 +20,20 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       featuresLabel: "How investigations work",
       features: [
         {
-          title: "Investigations run in chat",
-          body: "Describe the problem in a conversation. The agent plans the next checks; the UI follows that thread instead of walking you through storage menus.",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
           title: "The agent calls read-only tools",
-          body: "It can review config, read metadata, sample objects, import logs or inventory, and query results in DuckDB — without write, delete, or policy-change tools.",
+          body: "It can review configuration, read metadata, sample objects, and import logs or inventory for DuckDB queries.",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "Domain how-to loads into the thread",
-          body: "Storage playbooks enter the conversation so the agent follows a known triage path. This is not an extension store and does not run arbitrary code.",
+          title: "Follow a storage investigation playbook",
+          body: "The agent loads a storage playbook that matches the problem and follows a known investigation path. It does not download capabilities from an extension store or run arbitrary code.",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "Heavy analysis stays local",
-          body: "DuckDB and rule jobs do the heavy lifting on your machine. The agent explains the result with supporting rows and tool activity open beside it.",
+          title: "Large analyses stay local",
+          body: "DuckDB and rule jobs process large datasets on your machine. The agent explains the result with supporting rows and tool records open beside it.",
           intent: "capability",
           surface: "artifact",
         },
@@ -139,26 +133,20 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       featuresLabel: "调查怎么推进",
       features: [
         {
-          title: "调查发生在对话里",
-          body: "用对话描述问题。Agent 规划下一步检查；界面跟着这条对话走，而不是让你点存储菜单。",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
           title: "Agent 自己调用只读工具",
-          body: "它可以审查配置、读元数据、抽样对象、导入日志或清单，并在 DuckDB 里查询——没有写、删或改策略的工具。",
+          body: "它可以审查配置、读取元数据、抽样对象，并导入日志或清单供 DuckDB 查询。",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "领域排查说明进入对话",
-          body: "存储排查手册会进入对话，让 Agent 按已知套路推进。这不是扩展商店，也不会执行任意代码。",
+          title: "按存储排查手册推进",
+          body: "Agent 会加载与问题对应的存储排查手册，按已知检查路径推进；它不会从扩展商店下载能力，也不会执行任意代码。",
           intent: "capability",
           surface: "agent",
         },
         {
-          title: "重分析在本地完成",
-          body: "DuckDB 与规则任务在本机完成重活。Agent 负责解释，并把支撑用的行和工具活动留在回答旁边。",
+          title: "大规模分析在本地完成",
+          body: "DuckDB 与规则任务在本机处理大量数据。Agent 负责解释，并把支撑结论的数据行和工具记录留在回答旁边。",
           intent: "capability",
           surface: "artifact",
         },

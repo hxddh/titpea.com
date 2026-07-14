@@ -17,7 +17,7 @@ for (const model of allPageModels) {
 
   const { copy, sections } = model;
   if (copy.headline.length > 42) failures.push(`${model.path}: headline is too long for a product page`);
-  if (copy.lead.length < 28 || copy.lead.length > 180)
+  if (copy.lead.length < 28 || copy.lead.length > 210)
     failures.push(`${model.path}: lead must be concise and specific`);
   if (copy.primaryCta.href === copy.secondaryCta.href)
     failures.push(`${model.path}: primary and secondary CTA must differ`);

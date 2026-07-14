@@ -1,7 +1,7 @@
 export const catalogCopy = {
   en: {
     httpmon: "Watch one command's HTTP/HTTPS in the terminal — no system-proxy change.",
-    s3Text: "Automatic, fast S3 list / diff with Parquet output.",
+    s3Text: "Automatically segmented, parallel S3 list / diff with Parquet output.",
     s3Role: "List / Diff",
     workbenchText: "Chat-driven, read-only investigations for S3-compatible storage — with evidence beside the answer.",
     workbenchRole: "Desktop agent",
@@ -14,12 +14,13 @@ export const catalogCopy = {
     doubanRole: "Rating context",
     pagewiseText: "Local PDF workbench: the model reads page by page under budgets, and you see the trail.",
     pagewiseRole: "Document agent",
-    agentRadarText: "Unattended Agent-industry research loop — Markdown state on GitHub Actions.",
+    agentRadarText:
+      "Unattended Agent-industry research loop — theses and watchlists kept in Markdown on GitHub Actions.",
     agentRadarRole: "Research pipeline",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
-    s3Text: "自动展开的高速 S3 list / diff，输出 Parquet。",
+    s3Text: "自动分段并行的高速 S3 list / diff，输出 Parquet。",
     s3Role: "List / Diff",
     storageopsText: "帮 Pi 诊断 S3 兼容存储的 skills 与工具。",
     storageopsRole: "Pi 扩展",
@@ -32,7 +33,7 @@ export const catalogCopy = {
     doubanRole: "评分辅助",
     pagewiseText: "本地 PDF 工作台：模型按页读，读迹对你可见。",
     pagewiseRole: "文档 agent",
-    agentRadarText: "跑在 GitHub Actions 上的 Agent 产业研究循环，状态在 Markdown。",
+    agentRadarText: "跑在 GitHub Actions 上的 Agent 产业研究循环，周判断与观察名单留在 Markdown。",
     agentRadarRole: "研究流水线",
   },
 } as const;

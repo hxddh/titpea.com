@@ -152,7 +152,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       variant: "trafficFlow",
       kicker: "Auditable state",
       title: "What the pipeline leaves in Git",
-      body: "The runner updates a small set of Markdown files under write bounds — weekly thesis, agent watchlist, field notes, and storage implications — so every promotion is reviewable in repo history.",
+      body: "The runner updates weekly theses, the agent watchlist, field notes, and storage implications within fixed write bounds. When a candidate enters the watchlist or brief, the change remains reviewable in repository history.",
       cards: [
         {
           label: "Weekly thesis",
@@ -182,7 +182,7 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       variant: "trafficFlow",
       kicker: "可审计状态",
       title: "流水线留在 Git 里的结果",
-      body: "Runner 在写入边界内更新一组 Markdown——周判断、观察名单、现场笔记与存储影响——每次升格都能在仓库历史里核对。",
+      body: "Runner 在写入边界内更新周判断、观察名单、现场笔记与存储影响。候选被纳入观察名单或周报后，每次变化都能在仓库历史里核对。",
       cards: [
         { label: "周判断", value: "01", body: "当前判断、已变化点，以及对 Agent 产业的开放问题。" },
         { label: "观察名单", value: "02", body: "主流与新兴 agent，并标注证据强度——不是原始链接堆。" },

@@ -15,7 +15,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
       headline: "Unattended research in Markdown",
-      lead: "A Git-backed research loop for the AI-agent industry: collect public signals, screen candidates, write narrowly, validate, then commit — scheduled on GitHub Actions.",
+      lead: "A Git-backed research loop for the AI-agent industry: collect public signals, screen candidates, write within bounds, and update weekly theses, watchlists, field notes, and storage implications.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -96,7 +96,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
       eyebrow: "Markdown 优先 · GitHub Actions",
       headline: "跑在 Markdown 里的无人值守研究",
-      lead: "面向 Agent 产业的 Git 研究循环：采集公开信号、筛选候选、窄范围写入、校验后提交——定时跑在 GitHub Actions 上。",
+      lead: "面向 Agent 产业的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新周判断、观察名单、现场笔记和存储影响。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -104,7 +104,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       workflowLabel: "流水线怎么跑",
       workflow: [
         {
-          title: "宽源发现",
+          title: "多源发现",
           body: "源通道拉取公开信号——官网、GitHub、Release、HN、订阅源、包市场、论文——不调用付费搜索。",
           intent: "workflow",
           surface: "cli",
@@ -137,8 +137,8 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "cli",
         },
         {
-          title: "模型提议，runner 裁定",
-          body: "轻量模型初筛，强模型写终稿。模型可提议更新；runner 负责记分、限制写入、跑校验并提交——失败可贴标签，不必整次卡住。",
+          title: "模型提议，Runner 裁定",
+          body: "轻量模型初筛，强模型写终稿。模型可提议更新；Runner 负责记分、限制写入、跑校验并提交——失败可贴标签，不必整次卡住。",
           intent: "automation",
           surface: "agent",
         },

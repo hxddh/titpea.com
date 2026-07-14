@@ -15,7 +15,15 @@ const { section } = Astro.props;
       section.items.map((item) => (
         <details>
           <summary>{item.title}</summary>
-          <p>{item.body}</p>
+          <p>
+            {item.body}
+            {item.link && (
+              <>
+                {" "}
+                <a href={item.link.href}>{item.link.label}</a>
+              </>
+            )}
+          </p>
         </details>
       ))
     }

@@ -48,7 +48,10 @@ const { model } = Astro.props;
                 height={item.image.height}
                 loading="eager"
               />
-              <figcaption class="home-featured-tag">{item.name}</figcaption>
+              <figcaption class="home-featured-caption">
+                <strong>{item.name}</strong>
+                <p>{item.description}</p>
+              </figcaption>
             </figure>
           </a>
         ))

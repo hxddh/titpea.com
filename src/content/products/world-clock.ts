@@ -20,9 +20,9 @@ export const worldClockProduct: BrowserExtensionProduct = {
         label: "Install",
         href: siteConfig.externalLinks.worldClockChrome,
       },
-      secondaryCta: { label: "Back to profile", href: "/about/" },
+      secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMeta,
-      proof: ["Chrome Web Store: Tools", "Live city rows", "Light and dark themes", "No data collection disclosed"],
+      proof: ["Work-hours status", "Live city rows", "Light and dark themes", "No data collection disclosed"],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -31,12 +31,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           intent: "fit",
           surface: "browser",
           priority: "primary",
-        },
-        {
-          title: "It is not",
-          body: "A scheduler, calendar, or timezone planning suite. It is a compact feed for checking the current time.",
-          intent: "boundary",
-          surface: "browser",
         },
         {
           title: "What you get",
@@ -85,10 +79,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           title: "Does it collect my location?",
           body: "The Chrome Web Store listing discloses no user-data collection. The extension is meant for manual city-time lookup, not location tracking.",
         },
-        {
-          title: "Is it for scheduling meetings?",
-          body: "No. It is intentionally simpler than a scheduler: open the popup, check the time, and return to what you were doing.",
-        },
       ],
     },
     zh: {
@@ -101,9 +91,9 @@ export const worldClockProduct: BrowserExtensionProduct = {
         label: "安装扩展",
         href: siteConfig.externalLinks.worldClockChrome,
       },
-      secondaryCta: { label: "返回简介", href: "/zh/about/" },
+      secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMetaZh,
-      proof: ["Chrome Web Store: Tools", "城市时间行", "浅色和深色主题", "声明不收集数据"],
+      proof: ["工作时段状态", "城市时间行", "浅色和深色主题", "声明不收集数据"],
       positioningLabel: "边界",
       positioning: [
         {
@@ -112,12 +102,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           intent: "fit",
           surface: "browser",
           priority: "primary",
-        },
-        {
-          title: "它不是什么",
-          body: "不是排会工具，也不替代日历。它只是一个用来快速看时间的浏览器弹窗。",
-          intent: "boundary",
-          surface: "browser",
         },
         {
           title: "打开后能看到什么",
@@ -165,10 +149,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
         {
           title: "会收集我的位置吗？",
           body: "商店信息显示不收集用户数据。它只做手动城市时间查询，不做位置追踪。",
-        },
-        {
-          title: "适合拿来排会议吗？",
-          body: "不适合。它比排期工具简单得多：打开弹窗，看一眼时间，然后继续工作。",
         },
       ],
     },

@@ -490,6 +490,12 @@
   font-size: 17px;
 }
 
+.faq-list a {
+  color: var(--ink);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
 .final-cta {
   display: grid;
   justify-items: center;

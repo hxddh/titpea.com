@@ -187,7 +187,7 @@ export const visualCopy = {
       totalPages: "12",
       pageExcerpt: "Section 4.2 — Early termination requires thirty days’ written notice…",
       question: "Find the early-termination clause",
-      subtitle: "Ask page by page — follow-preview keeps the source in view.",
+      subtitle: "Ask page by page — follow-along preview keeps the source in view.",
       inputPlaceholder: "Ask about this document…",
       model: "your model",
       chips: ["Pages read", "Ask about this", "Follow preview", "Find a clause"],
