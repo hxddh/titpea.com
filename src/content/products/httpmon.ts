@@ -18,7 +18,7 @@ export const httpmonProduct: StorageCliProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "Usage", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
-      proof: ["One child process", "No system proxy change", "HTTP / HTTPS / wss", "NDJSON / HAR"],
+      proof: ["Scoped to one child process", "No system proxy change", "HTTP / HTTPS / wss", "NDJSON / HAR"],
       workflowLabel: "What you see",
       workflow: [
         {
@@ -57,7 +57,7 @@ export const httpmonProduct: StorageCliProduct = {
       ],
       finalCta: "Inspect the next command with httpmon",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & use",
+      faqLabel: "Questions & how-to",
       faq: [
         {
           title: "Does it change my system proxy?",

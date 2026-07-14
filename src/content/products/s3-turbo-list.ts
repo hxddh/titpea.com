@@ -3,7 +3,6 @@ import { s3MetaLine, s3TurboListFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const s3Release = s3TurboListFacts.latestRelease ?? "current release";
-const s3License = s3TurboListFacts.licenseLabel ?? "current license";
 
 export const s3TurboListProduct: S3TurboListProduct = {
   slug: "s3-turbo-list",
@@ -14,7 +13,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       title: "s3-turbo-list",
       description: "Automatic, high-speed S3-compatible list / diff with analysis-ready output.",
       eyebrow: "Rust CLI",
-      headline: "Automatic, fast S3 list / diff",
+      headline: "List / diff at scale, no scanner to build",
       lead: "A CLI that discovers parallel work for large S3-compatible list / diff runs.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
@@ -147,11 +146,11 @@ export const s3TurboListProduct: S3TurboListProduct = {
       casesLabel: "Compatibility",
       casesTitle: "Check the endpoint before scaling up",
       casesBody:
-        "AWS S3, MinIO, and BOS are covered by the project’s verified compatibility path. R2, OSS, and B2 have presets; run `compat-probe` before trusting a long job on any endpoint.",
+        "AWS S3, MinIO, and Baidu BOS are covered by the project’s verified compatibility path. R2, OSS, and B2 have presets; run `compat-probe` before trusting a long job on any endpoint.",
       cases: [
         "Verified: AWS S3",
         "Verified: MinIO",
-        "Verified: BOS",
+        "Verified: Baidu BOS",
         "Preset: Cloudflare R2",
         "Preset: OSS",
         "Preset: B2",
@@ -170,7 +169,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `What changed in ${s3Release}?`,
-          body: `${s3Release} pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can start at full concurrency instead of ramping through runtime splits. The project is ${s3License}.`,
+          body: `${s3Release} pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can start at full concurrency instead of ramping through runtime splits.`,
         },
       ],
     },
@@ -178,7 +177,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       title: "s3-turbo-list",
       description: "自动分段的高速 S3 兼容 list / diff，输出可直接分析的结果。",
       eyebrow: "Rust CLI",
-      headline: "自动、快速的 S3 list / diff",
+      headline: "大桶 list / diff，不用自己搭扫描器",
       lead: "面向大规模 S3 兼容存储，自动发现可并行的 list / diff 工作。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
@@ -311,11 +310,18 @@ export const s3TurboListProduct: S3TurboListProduct = {
       casesLabel: "兼容性",
       casesTitle: "扩大扫描前，先确认端点行为",
       casesBody:
-        "AWS S3、MinIO 和 BOS 走过项目的兼容性验证。R2、OSS、B2 提供 preset；无论哪种端点，都建议先运行 `compat-probe`。",
-      cases: ["已验证：AWS S3", "已验证：MinIO", "已验证：BOS", "Preset：Cloudflare R2", "Preset：OSS", "Preset：B2"],
+        "AWS S3、MinIO 和百度 BOS 走过项目的兼容性验证。R2、OSS、B2 提供 preset；无论哪种端点，都建议先运行 `compat-probe`。",
+      cases: [
+        "已验证：AWS S3",
+        "已验证：MinIO",
+        "已验证：百度 BOS",
+        "Preset：Cloudflare R2",
+        "Preset：OSS",
+        "Preset：B2",
+      ],
       finalCta: "先跑一次 dry-run",
       finalCtaLabel: "打开仓库",
-      faqLabel: "问题与用法",
+      faqLabel: "常见问题与用法",
       faq: [
         {
           title: "为什么不用 aws s3 ls？",
@@ -327,7 +333,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: `${s3Release} 变了什么？`,
-          body: `${s3Release} 在 list 启动阶段用并行单 key 探测为扁平命名空间预分区，首次运行即可满并发展开，而不必先靠运行时拆分爬坡。项目采用 ${s3License}。`,
+          body: `${s3Release} 在 list 启动阶段用并行单 key 探测为扁平命名空间预分区，首次运行即可满并发展开，而不必先靠运行时拆分爬坡。`,
         },
       ],
     },

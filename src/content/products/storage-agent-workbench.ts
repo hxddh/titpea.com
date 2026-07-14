@@ -9,14 +9,14 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     en: {
       title: "Storage Agent",
       description:
-        "A desktop agent for read-only S3-compatible storage investigations: it calls tools in a chat thread, keeps evidence visible, and never changes your buckets.",
+        "A desktop agent for read-only S3-compatible storage investigations: it calls tools in a chat thread and keeps evidence visible.",
       eyebrow: "For SRE & storage ops · Desktop · Read-only · S3-compatible",
       headline: "Ask an agent about your storage",
-      lead: "Open a chat about a bucket problem, error, or log. The agent plans read-only tools, shows what it checked beside the answer, and asks before anything is downloaded.",
+      lead: "Open a chat about a bucket problem, error, or log. The agent plans read-only tools, shows what it checked beside the answer, and asks before anything is downloaded or bulk-imported.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop · S3-compatible · Apache-2.0 · macOS, Windows, Linux",
-      proof: ["Storage investigation", "Read-only tools", "Evidence visible", "Runs locally", "Never changes storage"],
+      proof: ["Storage investigation", "Read-only by design", "Evidence visible", "Runs locally"],
       featuresLabel: "How investigations work",
       features: [
         {
@@ -122,14 +122,14 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     },
     zh: {
       title: "Storage Agent",
-      description: "面向 S3 兼容存储的桌面调查 Agent：在对话里调用只读工具，证据可见，绝不改你的桶。",
+      description: "面向 S3 兼容存储的桌面调查 Agent：在对话里调用只读工具，证据可见。",
       eyebrow: "面向运维与存储排查 · 桌面 · 只读 · S3 兼容",
       headline: "用 Agent 查清你的对象存储问题",
       lead: "打开对话，描述桶问题、报错或日志。Agent 规划只读工具，把查过的内容放在回答旁边；从云上下载或大规模导入前会先问你。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面 · S3 兼容 · Apache-2.0 · macOS、Windows、Linux",
-      proof: ["存储排查", "只读工具", "证据可见", "本机运行", "绝不改存储"],
+      proof: ["存储排查", "只读设计", "证据可见", "本机运行"],
       featuresLabel: "调查怎么推进",
       features: [
         {
@@ -211,22 +211,22 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
       ],
-      faqLabel: "问题与用法",
+      faqLabel: "常见问题与用法",
       faq: [
         {
-          title: "和控制台里加聊天框有何不同",
+          title: "和控制台里加聊天框有何不同？",
           body: "控制台管对象；聊天面板多半包一层接口。Storage Agent 负责整段调查：规划检查、调用工具、本地分析、展示证据——且不改生产存储。",
         },
         {
-          title: "它会改我的桶或对象吗",
+          title: "它会改我的桶或对象吗？",
           body: "不会。云访问只读。没有写、删或改配置的工具。",
         },
         {
-          title: "没有模型密钥也能用吗",
+          title: "没有模型密钥也能用吗？",
           body: "可以。本地证据和规则分析仍能跑。需要 Agent 在对话里规划与解释时，再接入模型。",
         },
         {
-          title: "和 StorageOps 有什么区别",
+          title: "和 StorageOps 有什么区别？",
           body: "StorageOps 给 Pi 加存储技能。Storage Agent 是完整桌面应用：对话、工具、本地分析、证据与确认都在一处。",
         },
       ],

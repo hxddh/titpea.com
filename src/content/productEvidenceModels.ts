@@ -182,9 +182,9 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       variant: "trafficFlow",
       kicker: "可审计状态",
       title: "流水线留在 Git 里的结果",
-      body: "Runner 在写入边界内更新周判断、观察名单、现场笔记与存储影响。候选被纳入观察名单或周报后，每次变化都能在仓库历史里核对。",
+      body: "Runner 在写入边界内更新每周论点、观察名单、现场笔记与存储影响。候选被纳入观察名单或周报后，每次变化都能在仓库历史里核对。",
       cards: [
-        { label: "周判断", value: "01", body: "当前判断、已变化点，以及对 Agent 产业的开放问题。" },
+        { label: "每周论点", value: "01", body: "当前判断、已变化点，以及对 Agent 产业的开放问题。" },
         { label: "观察名单", value: "02", body: "主流与新兴 agent，并标注证据强度——不是原始链接堆。" },
         {
           label: "现场笔记",

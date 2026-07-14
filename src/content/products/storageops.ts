@@ -18,7 +18,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
       proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No cloud access"],
-      workflowLabel: "A case in practice",
+      workflowLabel: "How a case runs",
       workflow: [
         {
           title: "Bring the material",
@@ -61,7 +61,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       ],
       finalCta: "Give Pi a storage-aware diagnosis path",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & setup",
+      faqLabel: "Questions & how-to",
       faq: [
         {
           title: "What does StorageOps add to Pi?",
@@ -134,7 +134,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       ],
       finalCta: "让 Pi 按对象存储的方法排查",
       finalCtaLabel: "打开仓库",
-      faqLabel: "常见问题与安装",
+      faqLabel: "常见问题与用法",
       faq: [
         {
           title: "StorageOps 给 Pi 增加了什么？",
@@ -142,7 +142,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         },
         {
           title: "4 个扩展工具分别做什么？",
-          body: "分别用于凭据脱敏、问题归类、已脱敏历史会话检索，以及通过 httpmon 观察一条受限命令的 HTTP trace。",
+          body: "`scan_secrets` 脱敏凭据、`detect_domain` 归类问题、`search_memory` 检索已脱敏历史会话；`capture_http_trace` 通过 httpmon 观察一条受限命令的 HTTP trace。",
         },
         {
           title: "它会访问或修改我的桶吗？",
