@@ -1,11 +1,12 @@
 export const ui = {
   en: {
     productIndex: "hxddh / products",
+    homeMetaTitle: "Titpea — S3 storage tools and personal products",
     homeTitle: "S3 ecosystem products and personal tools",
-    homeDescription: "By hxddh — S3 storage ecosystem products, personal tools, and research projects.",
-    homeLead: "From desktop agents to single-purpose utilities.",
+    homeDescription: "S3 storage ecosystem products, personal tools, and research projects by hxddh.",
+    homeLead: "Tools I build and use myself — from desktop agents to single-purpose utilities.",
     featuredLabel: "Featured",
-    featuredTitle: "Storage Agent and PageWise",
+    featuredTitle: "Two local agents that show their work",
     moreToolsLabel: "More",
     moreToolsTitle: "The rest of the catalog",
     lineStorageLabel: "Storage ecosystem",
@@ -30,7 +31,7 @@ export const ui = {
       },
       {
         term: "Visible evidence",
-        text: "Conclusions stay close to the checks, source material, or run records that produced them.",
+        text: "Conclusions stay close to the checks, source material, or run records that produced them — so you can verify them, not just trust them.",
       },
       {
         term: "Read-only investigation",
@@ -44,11 +45,12 @@ export const ui = {
   },
   zh: {
     productIndex: "hxddh / 产品",
-    homeTitle: "对象存储生态与个人效率产品",
-    homeDescription: "hxddh 的作品——S3 存储生态产品，以及自己使用的工具与研究项目。",
-    homeLead: "从桌面 Agent 到单一用途的小工具。",
+    homeMetaTitle: "Titpea — 对象存储工具与个人产品",
+    homeTitle: "对象存储生态与个人工具",
+    homeDescription: "对象存储生态产品，以及 hxddh 自己在用的工具与研究项目。",
+    homeLead: "我自己开发、自己在用的工具——从桌面 Agent 到单一用途的小工具。",
     featuredLabel: "重点",
-    featuredTitle: "Storage Agent 与 PageWise",
+    featuredTitle: "两个会亮出过程的本地 agent",
     moreToolsLabel: "其他",
     moreToolsTitle: "其余产品",
     lineStorageLabel: "对象存储生态",

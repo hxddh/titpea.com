@@ -20,20 +20,18 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         label: "Install",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "Back to profile", href: "/about/" },
+      secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMeta,
       proof: [
         "No result without a reliable match",
-        "IMDb context",
-        "Rotten Tomatoes context",
-        "Metacritic context",
+        "IMDb · Rotten Tomatoes · Metacritic",
         "No data collection disclosed",
       ],
       positioningLabel: "Positioning",
       positioning: [
         {
           title: "Use it when",
-          body: "You browse Douban movie pages but want quick context from IMDb and Rotten Tomatoes before deciding what to watch.",
+          body: "You browse Douban movie pages but want quick context from IMDb, Rotten Tomatoes, and Metacritic before deciding what to watch.",
           intent: "fit",
           surface: "browser",
           priority: "primary",
@@ -87,7 +85,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       rationaleLabel: "Details",
       rationaleTitle: "Ratings in one view",
       rationaleBody: [
-        "The Chrome Web Store listing places the extension under Entertainment and identifies titpea.com as the publisher.",
+        "Douban stays the page you read; outside scores sit inline, so you weigh several rating systems in one view.",
         "The store privacy disclosure states that the developer does not collect or use user data and links to the privacy policy on GitHub.",
       ],
       faqLabel: "Questions & how-to",
@@ -116,9 +114,9 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         label: "安装扩展",
         href: siteConfig.externalLinks.doubanChrome,
       },
-      secondaryCta: { label: "返回简介", href: "/zh/about/" },
+      secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
-      proof: ["匹配不到不显示", "IMDb 参考评分", "烂番茄参考评分", "Metacritic 参考评分", "声明不收集数据"],
+      proof: ["匹配不到不显示", "IMDb · 烂番茄 · Metacritic", "声明不收集数据"],
       positioningLabel: "边界",
       positioning: [
         {
@@ -177,10 +175,10 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       rationaleLabel: "详情",
       rationaleTitle: "在同一页对照不同评分",
       rationaleBody: [
-        "Chrome Web Store 将该扩展归类为 Entertainment，由 titpea.com 提供。",
+        "豆瓣仍是你在读的页面；外部评分就近显示，一眼之内对照多个评分体系。",
         "商店隐私说明显示，开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
       ],
-      faqLabel: "常见问题",
+      faqLabel: "常见问题与用法",
       faq: [
         {
           title: "匹配不到电影时怎么办？",

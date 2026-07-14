@@ -123,7 +123,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
       description: "本地 PDF 工作台与按页 Document Agent：模型在预算内读，读迹对你可见。",
       eyebrow: "本地文档 agent · macOS 优先",
       headline: "按页读 PDF，并看见它读了什么",
-      lead: "本地 PDF 工作台：模型用带预算的页级工具阅读；页引用、已读标记和跟随预览，共同留下可以回看的读迹。",
+      lead: "本地 PDF 工作台：模型用带预算的页级工具阅读；页引用、已读标记和跟随预览，共同留下可以回看的阅读轨迹（读迹）。",
       primaryCta: { label: "下载 DMG", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri 桌面 · PDF 与图片 · MIT · macOS DMG",
@@ -182,7 +182,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "本地设计",
+      positioningLabel: "本地优先",
       positioning: [
         {
           title: "文档留在磁盘",
@@ -203,26 +203,26 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
       ],
-      faqLabel: "问题与用法",
+      faqLabel: "常见问题与用法",
       faq: [
         {
-          title: "能否用 Ollama 全本地",
+          title: "能否用 Ollama 全本地？",
           body: "可以。把对话（以及需要时的 Scan）指到兼容 OpenAI 接口的 Ollama。文件留在磁盘；只有你启用的内容会发给该本地模型。",
         },
         {
-          title: "OpenRouter 网页搜索何时开",
+          title: "OpenRouter 网页搜索何时开？",
           body: "只在需要外网核实时按次打开。默认关闭，避免普通文档问答被网页结果干扰。",
         },
         {
-          title: "我的文件会离开电脑吗",
+          title: "我的文件会离开电脑吗？",
           body: "不会上传到 PageWise 服务器。只有提取文本，以及可选的视觉载荷，会发到你配置的模型。",
         },
         {
-          title: "扫描页怎么处理",
+          title: "扫描页怎么处理？",
           body: "文本层稀薄或缺失时，索引可用视觉 / 多模态 Scan 模型。图片多的 PDF 请为 Scan 选支持视觉的模型。",
         },
         {
-          title: "支持哪些平台",
+          title: "支持哪些平台？",
           body: "发布重点是 macOS，可从 GitHub Releases 下载 DMG。Tauri 2 应用也可构建 Windows 与 Linux；项目采用 MIT 许可。",
         },
       ],

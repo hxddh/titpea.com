@@ -206,7 +206,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       },
       {
         id: "positioning",
-        label: { en: "Local by design", zh: "本地设计" },
+        label: { en: "Local by design", zh: "本地优先" },
         source: "positioning",
         required: true,
       },

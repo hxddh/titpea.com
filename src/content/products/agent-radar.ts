@@ -23,7 +23,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "Free public sources",
         "Wide find, narrow write",
         "Checks before commit",
-        "Cheap then strong models",
+        "Cheap screen, strong draft",
         "Git as audit log",
       ],
       workflowLabel: "How the pipeline runs",
@@ -48,7 +48,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "Check, then commit",
-          body: "Citation, quota, bilingual, and freshness checks run before commit. Failures stay visible in telemetry and issues — Git remains the audit trail.",
+          body: "Citation, quota, bilingual, and freshness checks run before commit. Failures stay visible in telemetry and issues — Git remains the audit log.",
           intent: "workflow",
           surface: "artifact",
         },
@@ -70,7 +70,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       ],
       finalCta: "Open the research loop on GitHub",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & use",
+      faqLabel: "Questions & how-to",
       faq: [
         {
           title: "Who is this for?",
@@ -86,7 +86,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "How is this different from a Markdown notebook?",
-          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and checks, so Git history is the audit API.",
+          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and checks, so Git history is the audit log.",
         },
       ],
     },
@@ -96,7 +96,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
       eyebrow: "Markdown 优先 · GitHub Actions",
       headline: "跑在 Markdown 里的无人值守研究",
-      lead: "面向 Agent 产业的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新周判断、观察名单、现场笔记和存储影响。",
+      lead: "面向 Agent 产业的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新每周论点、观察名单、现场笔记和存储影响。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -123,7 +123,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "校验后提交",
-          body: "引用、配额、双语与新鲜度检查通过后才提交。失败留在遥测与 issue 里——Git 始终是审计轨迹。",
+          body: "引用、配额、双语与新鲜度检查通过后才提交。失败留在遥测与 issue 里——Git 始终是审计日志。",
           intent: "workflow",
           surface: "artifact",
         },
@@ -148,20 +148,20 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faqLabel: "常见问题与用法",
       faq: [
         {
-          title: "适合谁用",
+          title: "适合谁用？",
           body: "想要可审计、可定时的 Agent 产业研究循环的人——不是新闻流，也不是没有升格规则的私人笔记库。",
         },
         {
-          title: "只能跑在 GitHub Actions 吗",
+          title: "只能跑在 GitHub Actions 吗？",
           body: "Actions 是无人值守的主场景。同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。",
         },
         {
-          title: "一定要付费模型或付费搜索吗",
+          title: "一定要付费模型或付费搜索吗？",
           body: "采集走免费公开源，不用付费搜索。你自备模型密钥：轻量模型可初筛，强模型写终稿，花费可主动控制。",
         },
         {
-          title: "和 Markdown 笔记本有何不同",
-          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与校验，Git 历史就是审计接口。",
+          title: "和 Markdown 笔记本有何不同？",
+          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与校验，Git 历史就是审计日志。",
         },
       ],
     },

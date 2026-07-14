@@ -1,7 +1,7 @@
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
-import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
+import { alternateLocale, buildPageSeo, languageLink, pagePath } from "./seo";
 import type { HomePageModel } from "./types";
 import { pathFor, type Locale } from "../../lib/site";
 
@@ -37,7 +37,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     primaryCta: flagship?.href ?? catalog.featuredProductPath,
     expectedText: [copy.homeTitle, copy.featuredTitle, copy.moreToolsTitle],
     seo: buildPageSeo({
-      title: pageTitle(siteConfig.brand),
+      title: copy.homeMetaTitle,
       description,
       path,
       alternatePath,
@@ -89,7 +89,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
           description:
             locale === "en"
               ? "Read PDFs page by page, with a trail you can revisit."
-              : "按页阅读 PDF，并保留可以回看的读迹。",
+              : "按页阅读 PDF，保留可回看的阅读轨迹。",
           href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
           image: {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,
