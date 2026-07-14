@@ -2,7 +2,7 @@ export const ui = {
   en: {
     productIndex: "hxddh / products",
     homeMetaTitle: "Titpea — Professional agents and productivity products",
-    homeTitle: "Professional agents & productivity tools",
+    homeTitle: "Agents & productivity products",
     homeDescription:
       "Professional agents and productivity products for S3 storage, reading, and information discovery by hxddh.",
     homeLead: "S3 ecosystem products, plus tools for reading and information discovery.",
