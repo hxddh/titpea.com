@@ -30,7 +30,7 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
   const results = slug === "s3-turbo-list" ? s3ResultsModels[locale] : null;
 
   const sectionById = new Map<ProductPageSection["id"], ProductPageSection>([
-    [inside.id, inside],
+    ...(inside ? [[inside.id, inside] as const] : []),
     ...(evidence ? [[evidence.id, evidence] as const] : []),
     ...(results ? [[results.id, results] as const] : []),
     ...contentSections.map((section) => [section.id, section] as const),

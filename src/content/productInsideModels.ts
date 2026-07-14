@@ -8,7 +8,7 @@ const browserInside = (title: LocalizedText, body: LocalizedText): Record<Locale
   zh: { id: "inside", kind: "inside", kicker: "看一眼", title: title.zh, body: body.zh },
 });
 
-export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsideModel>> = {
+export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, ProductInsideModel>>> = {
   "s3-turbo-list": {
     en: {
       id: "inside",
@@ -68,14 +68,14 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       kind: "inside",
       kicker: "Desktop investigation agent",
       title: "Chat plans the checks; evidence stays open",
-      body: "Describe a bucket, error, or log. The agent calls read-only tools from storage playbooks, runs heavy analysis locally, and leaves what it used beside the answer.",
+      body: "Describe a bucket, error, or log. The agent follows storage playbooks, runs large analyses locally, and leaves the material it used beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
       title: "对话规划检查，证据留在旁边",
-      body: "就桶、报错或日志开一段对话。Agent 按排查手册调用只读工具，重分析在本地完成，用过的材料留在回答旁边。",
+      body: "就桶、报错或日志开一段对话。Agent 按排查手册调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
     },
   },
   storageops: {
@@ -84,14 +84,14 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       kind: "inside",
       kicker: "Pi extension + skill pack",
       title: "Domain skills Pi can load on demand",
-      body: "Bring an error, log, config snippet, or trace. StorageOps supplies storage-specific skills, extension tools, and helpers so Pi can investigate from that material — without connecting to your cloud account.",
+      body: "Pi is the runtime; StorageOps supplies storage-specific skills, four investigation tools, and helpers. Bring an error, log, configuration snippet, or trace, and Pi can investigate from that material without connecting to your cloud account.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "Pi 扩展与 skill pack",
       title: "按需加载的对象存储技能",
-      body: "带上报错、日志、配置片段或 trace。StorageOps 提供存储领域的 skills、扩展工具和辅助脚本，让 Pi 根据材料排查——不连接你的云账号。",
+      body: "Pi 是运行时；StorageOps 提供对象存储 skills、四个调查工具和辅助脚本。带上报错、日志、配置片段或 trace，Pi 就能根据这些材料排查，而不连接你的云账号。",
     },
   },
   httpmon: browserInside(
@@ -169,7 +169,7 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       kind: "inside",
       kicker: "Local PDF workbench",
       title: "Ask about a page — see what was read",
-      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Citations and follow-preview keep the source beside the answer.",
+      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Citations and follow-along preview keep the source beside the answer.",
     },
     zh: {
       id: "inside",
@@ -179,13 +179,6 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
       body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。页引用与跟随预览让原文留在回答旁边。",
     },
   },
-  "world-clock": browserInside(
-    { en: "Time, checked quickly", zh: "看一眼，就知道几点" },
-    {
-      en: "World Clock is not a scheduling system. It is a compact context tool: open it, glance at city time, and return to the task.",
-      zh: "世界时钟不是排期工具。打开弹窗，一眼看清城市时间、工作时段和日期，然后继续手头的事。",
-    },
-  ),
   "douban-movie-rating": browserInside(
     { en: "Ratings without leaving Douban", zh: "不离开豆瓣，也能对照评分" },
     {
@@ -195,4 +188,4 @@ export const productInsideModels: Record<ProductSlug, Record<Locale, ProductInsi
   ),
 };
 
-export const productInsideModel = (slug: ProductSlug, locale: Locale) => productInsideModels[slug][locale];
+export const productInsideModel = (slug: ProductSlug, locale: Locale) => productInsideModels[slug]?.[locale] ?? null;

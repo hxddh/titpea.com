@@ -49,6 +49,7 @@ type Localized<T> = Record<Locale, T>;
 export type ProductContentCard = {
   title: string;
   body: string;
+  link?: Link;
   intent?: "fit" | "boundary" | "capability" | "workflow" | "automation" | "evidence" | "example";
   evidence?: string;
   surface?: "cli" | "agent" | "browser" | "artifact" | "protocol";

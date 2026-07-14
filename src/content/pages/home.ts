@@ -69,6 +69,10 @@ export function buildHomePage(locale: Locale): HomePageModel {
       items: [
         {
           name: flagship?.name ?? "Storage Agent",
+          description:
+            locale === "en"
+              ? "Investigate S3-compatible storage with read-only tools in chat."
+              : "在对话中调用只读工具调查 S3 兼容存储。",
           href: flagship?.href ?? catalog.featuredProductPath,
           image: {
             src: siteConfig.assets.screenshots.storageAgentWelcome,
@@ -82,6 +86,10 @@ export function buildHomePage(locale: Locale): HomePageModel {
         },
         {
           name: personalFlagship?.name ?? "PageWise",
+          description:
+            locale === "en"
+              ? "Read PDFs page by page, with a trail you can revisit."
+              : "按页阅读 PDF，并保留可以回看的读迹。",
           href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
           image: {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,

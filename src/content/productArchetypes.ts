@@ -222,7 +222,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Chrome",
     defaultVisual: "worldClockScreenshot",
     sections: [
-      { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
+      { id: "inside", label: { en: "Overview", zh: "概览" } },
       {
         id: "positioning",
         label: { en: "Fit and limits", zh: "适用与边界" },

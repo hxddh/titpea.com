@@ -75,6 +75,11 @@ export const storageOpsProduct: AgentPackageProduct = {
           title: "Does it access or change my bucket?",
           body: "No. StorageOps diagnoses from material you provide. It does not connect to cloud accounts or modify storage resources.",
         },
+        {
+          title: "When should I use Storage Agent instead?",
+          body: "Choose StorageOps when you already use Pi and want storage-specific diagnosis. Choose Storage Agent when you want a complete desktop app with built-in tools, local analysis, and approval flows.",
+          link: { label: "Open Storage Agent", href: "/storage-agent-workbench/" },
+        },
       ],
     },
     zh: {
@@ -142,6 +147,11 @@ export const storageOpsProduct: AgentPackageProduct = {
         {
           title: "它会访问或修改我的桶吗？",
           body: "不会。StorageOps 只分析你提供的材料，不会连接云账号，也不会修改存储资源。",
+        },
+        {
+          title: "什么时候选 Storage Agent？",
+          body: "已经使用 Pi、只想增加对象存储排查能力时，选择 StorageOps；需要完整桌面应用、内置工具、本地分析和确认流程时，选择 Storage Agent。",
+          link: { label: "打开 Storage Agent", href: "/zh/storage-agent-workbench/" },
         },
       ],
     },

@@ -55,7 +55,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "Inspect the next request in place",
+      finalCta: "Inspect the next command with httpmon",
       finalCtaLabel: "Open repository",
       faqLabel: "Questions & use",
       faq: [
@@ -70,6 +70,10 @@ export const httpmonProduct: StorageCliProduct = {
         {
           title: "What does it support beyond HTTP?",
           body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
+        },
+        {
+          title: "Can recordings contain sensitive data?",
+          body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
         },
       ],
     },
@@ -119,7 +123,7 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "在原地看清下一条请求",
+      finalCta: "用 httpmon 检查下一条命令",
       finalCtaLabel: "打开仓库",
       faqLabel: "常见问题与用法",
       faq: [
@@ -131,6 +135,10 @@ export const httpmonProduct: StorageCliProduct = {
         {
           title: "除了 HTTP 还支持什么？",
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
+        },
+        {
+          title: "记录文件里可能有敏感信息吗？",
+          body: "可能。请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
         },
       ],
     },
