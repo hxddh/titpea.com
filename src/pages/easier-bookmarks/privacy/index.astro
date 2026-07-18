@@ -1,0 +1,107 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const path = "/easier-bookmarks/privacy/";
+const zhPath = "/zh/easier-bookmarks/privacy/";
+const description = "Privacy policy for Easier Bookmarks, a local-first Chrome bookmark manager.";
+
+const seo = {
+  title: "Easier Bookmarks Privacy Policy - Titpea",
+  description,
+  canonicalPath: path,
+  canonicalUrl: `https://titpea.com${path}`,
+  alternates: {
+    en: `https://titpea.com${path}`,
+    zh: `https://titpea.com${zhPath}`,
+    xDefault: `https://titpea.com${path}`,
+  },
+  ogImage: "/assets/og-home.png",
+  ogImageUrl: "https://titpea.com/assets/og-home.png",
+};
+
+const language = {
+  href: zhPath,
+  label: "中文",
+  locale: "zh" as const,
+  hreflang: "zh-CN" as const,
+};
+---
+
+<SiteLayout seo={seo} locale="en" language={language}>
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow">Easier Bookmarks</p>
+      <h1>Privacy Policy</h1>
+      <p class="privacy-updated">Last updated: July 18, 2026</p>
+      <p class="lead">
+        Easier Bookmarks is a Chrome extension that provides a local side-panel interface for viewing, searching,
+        creating, editing, moving, reordering, and deleting Chrome bookmarks and bookmark folders.
+      </p>
+    </header>
+
+    <div class="privacy-content prose">
+      <section>
+        <h2>Information the extension handles</h2>
+        <p>
+          To provide these features, Easier Bookmarks reads and handles bookmark titles, saved URLs, and folder
+          structure through the Chrome Bookmarks API. It also stores the selected interface language and expanded-folder
+          identifiers in <code>chrome.storage.local</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>How information is used</h2>
+        <p>
+          This information is used only inside the extension to display, search, and manage bookmarks and to remember
+          interface preferences. Easier Bookmarks does not use analytics, advertising, user accounts, or external
+          servers. It does not transmit bookmark data or interface preferences to the developer or any third party.
+        </p>
+        <p>
+          Chrome itself may sync bookmarks according to the user's Chrome settings. That browser feature is controlled
+          by Chrome and is not operated by Easier Bookmarks.
+        </p>
+      </section>
+
+      <section>
+        <h2>Sharing and sale</h2>
+        <p>Easier Bookmarks does not sell, rent, share, or transfer user data to third parties.</p>
+      </section>
+
+      <section>
+        <h2>Retention and deletion</h2>
+        <p>
+          Bookmarks remain in Chrome's bookmark storage until the user changes or deletes them. Interface preferences
+          remain in Chrome's local extension storage until they are changed, cleared, or the extension is removed.
+        </p>
+      </section>
+
+      <section>
+        <h2>Security</h2>
+        <p>
+          All executable code is included in the installed extension. Easier Bookmarks does not download or execute
+          remote code and does not send user data over the network.
+        </p>
+      </section>
+
+      <section>
+        <h2>Limited Use</h2>
+        <p>
+          Easier Bookmarks' use of information received from Chrome APIs adheres to the Chrome Web Store User Data
+          Policy, including the Limited Use requirements.
+        </p>
+      </section>
+
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>If this policy changes, the updated version and revision date will be published on this page.</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, email <a href="mailto:info@titpea.com">info@titpea.com</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</SiteLayout>
