@@ -16,7 +16,12 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       primaryCta: { label: "Install", href: siteConfig.externalLinks.easierBookmarksChrome },
       secondaryCta: { label: "Privacy policy", href: siteConfig.externalLinks.easierBookmarksPrivacy },
       meta: "Chrome Web Store · Workflow & Planning · No external servers",
-      proof: ["Instant local search", "Create, edit, move, reorder, delete", "Keyboard accessible", "No analytics or servers"],
+      proof: [
+        "Instant local search",
+        "Create, edit, move, reorder, delete",
+        "Keyboard accessible",
+        "No analytics or servers",
+      ],
       positioningLabel: "Positioning",
       positioning: [
         {
