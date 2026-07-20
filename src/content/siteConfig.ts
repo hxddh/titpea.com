@@ -26,6 +26,10 @@ export const siteConfig = {
       "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
     doubanPrivacy:
       "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
+    goban: "https://github.com/hxddh/goban",
+    gobanReleases: "https://github.com/hxddh/goban/releases/latest",
+    easierBookmarksChrome: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
+    easierBookmarksPrivacy: "/easier-bookmarks/privacy/",
   },
   assets: {
     favicon: "/favicon.svg",
@@ -42,6 +46,7 @@ export const siteConfig = {
       pagewiseAnalysis: "/assets/pagewise-analysis.webp",
       storageAgentWelcome: "/assets/storage-agent-welcome.webp",
       storageAgentInvestigation: "/assets/storage-agent-investigation.webp",
+      easierBookmarks: "/assets/easier-bookmarks.png",
     },
   },
 } as const;

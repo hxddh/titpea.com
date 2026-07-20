@@ -135,4 +135,5 @@ export type SiteRoute = {
   expectedText: string[];
   primaryCta?: string;
   sectionIndex?: boolean;
+  browserVisual?: boolean;
 };

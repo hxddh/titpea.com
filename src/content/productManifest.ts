@@ -5,7 +5,10 @@ export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
-  nav: { primary: boolean; label?: "storageAgent" | "worldClock" | "douban" | "pagewise" | "agentRadar" };
+  nav: {
+    primary: boolean;
+    label?: "storageAgent" | "worldClock" | "douban" | "pagewise" | "agentRadar" | "goban" | "easierBookmarks";
+  };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
   ogImage: string;
@@ -92,6 +95,26 @@ export const productManifest: readonly ProductManifestItem[] = [
     visual: "agentRadarTerminal",
     ogImage: "/assets/og-agent-radar.png",
     factId: "agent-radar",
+  },
+  {
+    slug: "goban",
+    name: "Goban",
+    group: "personal",
+    nav: { primary: true, label: "goban" },
+    catalog: { order: 5 },
+    visual: "gobanBoard",
+    ogImage: "/assets/og-goban.png",
+    factId: "goban",
+  },
+  {
+    slug: "easier-bookmarks",
+    name: "Easier Bookmarks",
+    group: "personal",
+    nav: { primary: true, label: "easierBookmarks" },
+    catalog: { order: 6 },
+    visual: "easierBookmarksScreenshot",
+    ogImage: "/assets/og-easier-bookmarks.png",
+    factId: "easier-bookmarks",
   },
 ] as const;
 

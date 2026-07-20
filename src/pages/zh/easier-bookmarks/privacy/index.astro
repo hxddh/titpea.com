@@ -1,0 +1,74 @@
+---
+import SiteLayout from "../../../../layouts/SiteLayout.astro";
+import { buildPageSeo, languageLink } from "../../../../content/pages/seo";
+
+const path = "/zh/easier-bookmarks/privacy/";
+const alternatePath = "/easier-bookmarks/privacy/";
+const seo = buildPageSeo({
+  title: "Easier Bookmarks 隐私政策 - Titpea",
+  description: "Easier Bookmarks 隐私政策。本扩展只在浏览器本地处理书签数据。",
+  path,
+  alternatePath,
+  locale: "zh",
+  ogImage: "/assets/og-easier-bookmarks.png",
+});
+---
+
+<SiteLayout seo={seo} current="easier-bookmarks" locale="zh" language={languageLink("zh", alternatePath)}>
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow"><a href="/zh/easier-bookmarks/">Easier Bookmarks</a></p>
+      <h1>隐私政策</h1>
+      <p class="privacy-updated">更新日期：2026 年 7 月 18 日</p>
+      <p class="lead">
+        Easier Bookmarks 是一款 Chrome 扩展程序，在本地侧边栏中浏览、搜索、新建、编辑、移动、排序和删除 Chrome
+        书签及书签文件夹。
+      </p>
+    </header>
+
+    <div class="privacy-content prose">
+      <section>
+        <h2>扩展程序处理的信息</h2>
+        <p>
+          Easier Bookmarks 会使用 Chrome 书签 API 读取和处理书签标题、已保存的网址及文件夹结构。扩展还会在
+          <code>chrome.storage.local</code> 中保存界面语言和已展开文件夹的标识。
+        </p>
+      </section>
+      <section>
+        <h2>信息的用途</h2>
+        <p>
+          这些信息只用于在扩展内显示、搜索和管理书签，以及记住界面偏好。Easier Bookmarks
+          不使用分析服务、广告、用户账号或外部服务器，也不会向开发者或任何第三方传输书签数据或界面偏好。
+        </p>
+        <p>Chrome 可能会按照用户自己的浏览器设置同步书签。该功能由 Chrome 控制，并非 Easier Bookmarks 提供。</p>
+      </section>
+      <section>
+        <h2>分享和出售</h2>
+        <p>Easier Bookmarks 不会向第三方出售、出租、分享或转移用户数据。</p>
+      </section>
+      <section>
+        <h2>保留和删除</h2>
+        <p>
+          书签会保留在 Chrome 的书签存储中，直到用户修改或删除。界面偏好会保留在 Chrome
+          的本地扩展存储中，直到用户更改、清除这些数据或卸载扩展。
+        </p>
+      </section>
+      <section>
+        <h2>安全</h2>
+        <p>所有可执行代码都包含在安装的扩展中。Easier Bookmarks 不会下载或执行远程代码，也不会通过网络发送用户数据。</p>
+      </section>
+      <section>
+        <h2>Chrome API 有限使用</h2>
+        <p>Easier Bookmarks 对从 Chrome API 获得的信息的使用遵守 Chrome 网上应用店用户数据政策，包括有限使用要求。</p>
+      </section>
+      <section>
+        <h2>政策变更</h2>
+        <p>如果本政策发生变化，更新后的版本和修订日期会发布在本页面。</p>
+      </section>
+      <section>
+        <h2>联系方式</h2>
+        <p>如有隐私问题，请发送邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。</p>
+      </section>
+    </div>
+  </article>
+</SiteLayout>

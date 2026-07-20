@@ -24,7 +24,9 @@ export type VisualPolicy =
   | "doubanScreenshot"
   | "pagewiseWorkbench"
   | "agentWorkbenchScreenshot"
-  | "agentRadarTerminal";
+  | "agentRadarTerminal"
+  | "gobanBoard"
+  | "easierBookmarksScreenshot";
 export type ProductGroup = "storage" | "personal";
 
 export type ArchetypeSectionSpec = {
@@ -42,8 +44,8 @@ export type ProductArchetypeContract = {
   pageClass: string;
   sectionIndex: boolean;
   indexLabel: Record<Locale, string>;
-  applicationCategory: "DeveloperApplication" | "BrowserApplication";
-  operatingSystem: "Cross-platform" | "Chrome";
+  applicationCategory: "DeveloperApplication" | "BrowserApplication" | "GameApplication";
+  operatingSystem: "Cross-platform" | "Chrome" | "macOS";
   defaultVisual: VisualPolicy;
   sections: ArchetypeSectionSpec[];
 };
@@ -230,6 +232,26 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         required: true,
       },
       { id: "features", label: { en: "In the page", zh: "页面里的信息" }, source: "features", required: true },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
+  nativeApp: {
+    group: "personal",
+    pageClass: "product-page product-page-nativeApp",
+    sectionIndex: false,
+    indexLabel: { en: "Read this page", zh: "阅读路径" },
+    applicationCategory: "GameApplication",
+    operatingSystem: "macOS",
+    defaultVisual: "gobanBoard",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" } },
+      {
+        id: "positioning",
+        label: { en: "Fit and limits", zh: "适用与边界" },
+        source: "positioning",
+        required: true,
+      },
+      { id: "features", label: { en: "At the board", zh: "棋盘上的能力" }, source: "features", required: true },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },

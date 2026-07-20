@@ -64,9 +64,18 @@ export type HttpmonTerminalVisualModel = {
 };
 
 export type ScreenshotVisualModel = {
-  kind: "worldClockScreenshot" | "doubanScreenshot";
+  kind: "worldClockScreenshot" | "doubanScreenshot" | "easierBookmarksScreenshot";
   label: string;
   images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
+};
+
+export type GobanBoardVisualModel = {
+  kind: "gobanBoard";
+  label: string;
+  status: string;
+  turn: string;
+  hint: string;
+  moves: string;
 };
 
 export type PagewiseWorkbenchVisualModel = {
@@ -123,6 +132,7 @@ export type ProductVisualModel =
   | AgentWorkbenchScreenshotVisualModel
   | HttpmonTerminalVisualModel
   | AgentRadarTerminalVisualModel
+  | GobanBoardVisualModel
   | ScreenshotVisualModel;
 
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string, slug?: string): ProductVisualModel {
@@ -288,6 +298,30 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
           alt: copy.worldClockDark,
           width: 702,
           height: 778,
+        },
+      ],
+    };
+  }
+
+  if (kind === "gobanBoard") {
+    const copy = visualCopy.gobanBoard[locale];
+    return {
+      kind,
+      label,
+      ...copy,
+    };
+  }
+
+  if (kind === "easierBookmarksScreenshot") {
+    return {
+      kind,
+      label,
+      images: [
+        {
+          src: siteConfig.assets.screenshots.easierBookmarks,
+          alt: visualCopy.screenshots[locale].easierBookmarks,
+          width: 1280,
+          height: 800,
         },
       ],
     };

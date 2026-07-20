@@ -22,6 +22,8 @@ export const headerCopy: Record<
       douban: string;
       pagewise: string;
       agentRadar: string;
+      goban: string;
+      easierBookmarks: string;
     };
   }
 > = {
@@ -45,6 +47,8 @@ export const headerCopy: Record<
       douban: "Douban",
       pagewise: "PageWise",
       agentRadar: "Agent Radar",
+      goban: "Goban",
+      easierBookmarks: "Easier Bookmarks",
     },
   },
   zh: {
@@ -67,6 +71,8 @@ export const headerCopy: Record<
       douban: "豆瓣评分",
       pagewise: "PageWise",
       agentRadar: "Agent Radar",
+      goban: "五子棋",
+      easierBookmarks: "Easier Bookmarks",
     },
   },
 };

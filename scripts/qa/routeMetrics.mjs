@@ -78,27 +78,29 @@ export async function checkRoute(page, viewport, route) {
         brokenImages: Array.from(document.querySelectorAll("img")).filter(
           (image) => !image.complete || image.naturalWidth === 0 || image.naturalHeight === 0,
         ).length,
-        browserVisual:
-          route.kind === "product" && !route.sectionIndex
-            ? (() => {
-                const images = Array.from(document.querySelectorAll(".product-scene img"));
-                return {
-                  imageCount: images.length,
-                  hasChromeCta: Boolean(
-                    document.querySelector(`a.button.primary[href^="https://chromewebstore.google.com/detail"]`),
-                  ),
-                  hasPrivacyText: (document.body.innerText ?? "").includes(
-                    route.locale === "zh" ? "声明不收集数据" : "No data collection disclosed",
-                  ),
-                  images: images.map((image) => ({
-                    src: image.getAttribute("src"),
-                    alt: image.getAttribute("alt") ?? "",
-                    naturalWidth: image.naturalWidth,
-                    naturalHeight: image.naturalHeight,
-                  })),
-                };
-              })()
-            : null,
+        browserVisual: route.browserVisual
+          ? (() => {
+              const images = Array.from(document.querySelectorAll(".product-scene img"));
+              return {
+                imageCount: images.length,
+                hasChromeCta: Boolean(
+                  document.querySelector(`a.button.primary[href^="https://chromewebstore.google.com/detail"]`),
+                ),
+                hasPrivacyText:
+                  route.locale === "zh"
+                    ? /声明不收集数据|不使用分析服务|没有分析服务|无分析服务/.test(document.body.innerText ?? "")
+                    : /No data collection disclosed|does not use analytics|no analytics/i.test(
+                        document.body.innerText ?? "",
+                      ),
+                images: images.map((image) => ({
+                  src: image.getAttribute("src"),
+                  alt: image.getAttribute("alt") ?? "",
+                  naturalWidth: image.naturalWidth,
+                  naturalHeight: image.naturalHeight,
+                })),
+              };
+            })()
+          : null,
         oldS3Facts: document.body.innerText.includes("MIT License") || document.body.innerText.includes("v0.5.0"),
         text: document.body.innerText,
       };

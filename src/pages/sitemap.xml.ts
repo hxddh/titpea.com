@@ -4,14 +4,32 @@ const escapeXml = (value: string) =>
   value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
 export function GET() {
-  const urls = allPageModels
-    .map((model) => {
+  const privacyRoutes = [
+    {
+      canonicalUrl: "https://titpea.com/easier-bookmarks/privacy/",
+      alternates: {
+        en: "https://titpea.com/easier-bookmarks/privacy/",
+        zh: "https://titpea.com/zh/easier-bookmarks/privacy/",
+        xDefault: "https://titpea.com/easier-bookmarks/privacy/",
+      },
+    },
+    {
+      canonicalUrl: "https://titpea.com/zh/easier-bookmarks/privacy/",
+      alternates: {
+        en: "https://titpea.com/easier-bookmarks/privacy/",
+        zh: "https://titpea.com/zh/easier-bookmarks/privacy/",
+        xDefault: "https://titpea.com/easier-bookmarks/privacy/",
+      },
+    },
+  ];
+  const urls = [...allPageModels.map((model) => model.seo), ...privacyRoutes]
+    .map((seo) => {
       const alternates = [
-        `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(model.seo.alternates.en)}"/>`,
-        `<xhtml:link rel="alternate" hreflang="zh-CN" href="${escapeXml(model.seo.alternates.zh)}"/>`,
-        `<xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(model.seo.alternates.xDefault)}"/>`,
+        `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(seo.alternates.en)}"/>`,
+        `<xhtml:link rel="alternate" hreflang="zh-CN" href="${escapeXml(seo.alternates.zh)}"/>`,
+        `<xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(seo.alternates.xDefault)}"/>`,
       ].join("");
-      return `<url><loc>${escapeXml(model.seo.canonicalUrl)}</loc>${alternates}</url>`;
+      return `<url><loc>${escapeXml(seo.canonicalUrl)}</loc>${alternates}</url>`;
     })
     .join("");
 

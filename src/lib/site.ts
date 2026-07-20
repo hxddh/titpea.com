@@ -7,7 +7,9 @@ export type ProductSlug =
   | "agent-radar"
   | "pagewise"
   | "world-clock"
-  | "douban-movie-rating";
+  | "douban-movie-rating"
+  | "goban"
+  | "easier-bookmarks";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;
@@ -158,6 +160,13 @@ export type BrowserExtensionProduct = {
   locales: Localized<BrowserExtensionProductCopy>;
 };
 
+export type NativeAppProduct = {
+  slug: "goban";
+  name: string;
+  archetype: "nativeApp";
+  locales: Localized<BrowserExtensionProductCopy>;
+};
+
 export type AgentWorkbenchProduct = {
   slug: "storage-agent-workbench";
   name: string;
@@ -178,6 +187,7 @@ export type Product =
   | MarkdownRadarProduct
   | AgentPackageProduct
   | BrowserExtensionProduct
+  | NativeAppProduct
   | AgentWorkbenchProduct
   | DocumentAgentProduct;
 
@@ -187,6 +197,7 @@ export type ProductArchetype =
   | "markdownRadar"
   | "agentPackage"
   | "browserExtension"
+  | "nativeApp"
   | "agentWorkbench"
   | "documentAgent";
 
