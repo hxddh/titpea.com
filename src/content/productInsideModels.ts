@@ -137,7 +137,7 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       kind: "inside",
       kicker: "一条研究循环",
       title: "Markdown 状态、定时 runner、两级模型",
-      body: "Agent Radar 跑在 GitHub Actions 上：Markdown 保存研究状态，确定性 runner 记分并约束写入，轻量模型初筛后再由强模型写终稿。",
+      body: "Agent Radar 跑在 GitHub Actions 上：Markdown 保存研究状态，确定性 runner 记分并约束写入，轻量模型初筛后再由强模型起草。",
       panel: {
         kind: "agentEvidence",
         label: "radar.md 摘录",

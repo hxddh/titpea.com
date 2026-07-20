@@ -66,7 +66,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "You approve downloads and large imports",
-          body: "Anything that moves data out of the cloud asks first. Then you decide the next step with the evidence in view.",
+          body: "Downloads, large scans, and bulk imports ask first; bounded metadata and preview reads proceed under budgets. Then you decide the next step with the evidence in view.",
           intent: "workflow",
           surface: "artifact",
         },
@@ -86,7 +86,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
         {
-          title: "Confirm only when data would leave the cloud",
+          title: "Confirm downloads and large imports",
           body: "Ordinary reads stay fast. Downloads, large scans, and evidence import always ask for approval.",
           intent: "boundary",
           surface: "artifact",
@@ -179,7 +179,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "下载和大导入由你确认",
-          body: "凡是数据会离开云的操作都会先问。再对着证据决定下一步。",
+          body: "下载、大扫描和批量导入会先征求同意；受预算限制的元数据读取和预览可顺畅推进。再对着证据决定下一步。",
           intent: "workflow",
           surface: "artifact",
         },
@@ -199,7 +199,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
         {
-          title: "只有数据要离开云时才确认",
+          title: "下载、大扫描和批量导入需确认",
           body: "普通读取保持顺畅。下载、大扫描和证据导入一定会征求同意。",
           intent: "boundary",
           surface: "artifact",

@@ -32,7 +32,8 @@ const seo = buildPageSeo({
         <p>
           Easier Bookmarks reads and handles bookmark titles, saved URLs, and folder structure through the Chrome
           Bookmarks API. It also stores the selected interface language and expanded-folder identifiers in
-          <code>chrome.storage.local</code>.
+          <code>chrome.storage.local</code>. Chrome Web Store may classify saved bookmark URLs as Web history;
+          Easier Bookmarks reads bookmark URLs through the Bookmarks API and does not read general browsing history.
         </p>
       </section>
       <section>

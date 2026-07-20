@@ -100,7 +100,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["免费公开源", "宽发现、窄写入", "提交前校验", "轻量初筛、强模型终稿", "Git 即审计"],
+      proof: ["免费公开源", "宽发现、窄写入", "提交前校验", "轻量初筛、强模型起草", "Git 即审计"],
       workflowLabel: "流水线怎么跑",
       workflow: [
         {
@@ -138,7 +138,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "模型提议，Runner 裁定",
-          body: "轻量模型初筛，强模型写终稿。模型可提议更新；Runner 负责记分、限制写入、跑校验并提交——失败可贴标签，不必整次卡住。",
+          body: "轻量模型初筛，强模型起草。模型可提议更新；Runner 负责记分、限制写入、跑校验并提交——失败可贴标签，不必整次卡住。",
           intent: "automation",
           surface: "agent",
         },
@@ -157,7 +157,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
         {
           title: "一定要付费模型或付费搜索吗？",
-          body: "采集走免费公开源，不用付费搜索。你自备模型密钥：轻量模型可初筛，强模型写终稿，花费可主动控制。",
+          body: "采集走免费公开源，不用付费搜索。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
         },
         {
           title: "和 Markdown 笔记本有何不同？",

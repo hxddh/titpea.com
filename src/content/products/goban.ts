@@ -31,13 +31,13 @@ export const gobanProduct: NativeAppProduct = {
         },
         {
           title: "Current platforms",
-          body: "The release includes Apple Silicon macOS and Windows x64 builds. An Intel Mac build is not currently published, and there is no online matchmaking.",
+          body: "Desktop releases for macOS and Windows; no online matchmaking.",
           intent: "boundary",
           surface: "artifact",
         },
         {
           title: "Local by design",
-          body: "Play, saves, analysis, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
+          body: "Gameplay, saves, analysis, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -99,26 +99,26 @@ export const gobanProduct: NativeAppProduct = {
     },
     zh: {
       title: "五子棋 Goban",
-      description: "面向 macOS 与 Windows 的桌面五子棋，提供四档 AI、全局复盘、多存档与 SGF 棋谱工具。",
+      description: "面向 macOS 与 Windows 的桌面五子棋，提供四档 AI、整局复盘、命名存档与 SGF 棋谱工具。",
       eyebrow: "桌面五子棋",
       headline: "一张专注对弈的桌面五子棋盘",
       lead: "在干净的 15×15 棋盘上挑战四档 AI；对局结束后，通过胜负走势曲线和失着列表回看局势从哪里发生变化。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["四档 AI", "全局复盘", "多存档", "SGF 导入与导出"],
+      proof: ["四档 AI", "整局复盘", "命名存档", "SGF 导入与导出"],
       positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
-          body: "想安静下一局棋、挑战更高难度 AI，或在局后直观看清局势从哪一手开始转折。",
+          body: "想安静地下一局棋、挑战更高难度 AI，或在局后直观看清局势从哪一手开始转折。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
         },
         {
           title: "当前支持范围",
-          body: "当前 release 提供 Apple Silicon macOS 与 Windows x64 构建，暂未发布 Intel Mac 版本，也不提供在线匹配。",
+          body: "提供 macOS 与 Windows 桌面版本，不提供在线匹配。",
           intent: "boundary",
           surface: "artifact",
         },
@@ -150,7 +150,7 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "命名多存档",
+          title: "命名存档",
           body: "最多保留 30 个带名称的本地存档，按局面选择继续，不必让一个全局存档反复覆盖。",
           intent: "capability",
           surface: "artifact",
@@ -172,7 +172,7 @@ export const gobanProduct: NativeAppProduct = {
       faq: [
         {
           title: "支持哪些系统？",
-          body: "当前 release 提供 macOS Apple Silicon arm64 与 Windows x64 构建，暂未发布 Intel Mac 版本。",
+          body: "当前版本提供 macOS Apple Silicon arm64 与 Windows x64 构建，暂未发布 Intel Mac 版本。",
         },
         {
           title: "需要账号或联网吗？",

@@ -81,7 +81,7 @@ export const httpmonProduct: StorageCliProduct = {
       title: "httpmon",
       description: "零配置的终端 HTTP 查看器，用来观察一条命令发出的 HTTP 和 HTTPS 请求。",
       eyebrow: "Go CLI",
-      headline: "运行命令时，顺手看 HTTP 请求",
+      headline: "运行命令时，顺手看 HTTP 请求与响应",
       lead: "用 httpmon 包住 curl、aws、Python 或任何支持代理的命令，实时看请求和响应——不改系统代理，命令收到的响应也原样不动。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },

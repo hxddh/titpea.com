@@ -17,7 +17,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No cloud access"],
+      proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No direct cloud account access"],
       workflowLabel: "How a case runs",
       workflow: [
         {
