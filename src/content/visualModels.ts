@@ -67,6 +67,15 @@ export type ScreenshotVisualModel = {
   kind: "worldClockScreenshot" | "doubanScreenshot" | "gobanScreenshot" | "easierBookmarksScreenshot";
   label: string;
   images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
+  showcases?: Array<{
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    kicker: string;
+    title: string;
+    body: string;
+  }>;
 };
 
 export type PagewiseWorkbenchVisualModel = {
@@ -294,15 +303,36 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
   }
 
   if (kind === "gobanScreenshot") {
+    const copy = visualCopy.productScreenshots.goban[locale];
     return {
       kind,
       label,
       images: [
         {
-          src: siteConfig.assets.screenshots.gobanReview,
-          alt: visualCopy.screenshots[locale].goban,
-          width: 1224,
+          src: siteConfig.assets.screenshots.gobanBoard,
+          alt: copy.heroAlt,
+          width: 1223,
           height: 768,
+        },
+      ],
+      showcases: [
+        {
+          src: siteConfig.assets.screenshots.gobanReview,
+          alt: copy.supportingAlt,
+          width: 1223,
+          height: 768,
+          kicker: copy.supportingKicker,
+          title: copy.supportingTitle,
+          body: copy.supportingBody,
+        },
+        {
+          src: siteConfig.assets.screenshots.gobanNotebook,
+          alt: copy.notebookAlt,
+          width: 1223,
+          height: 768,
+          kicker: copy.notebookKicker,
+          title: copy.notebookTitle,
+          body: copy.notebookBody,
         },
       ],
     };
