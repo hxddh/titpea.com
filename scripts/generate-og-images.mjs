@@ -96,6 +96,24 @@ export const images = [
     mark: "RADAR",
     visual: "radar",
   },
+  {
+    file: "og-goban.png",
+    eyebrow: "Goban",
+    title: "A focused Gomoku board for Mac",
+    body: "Four AI levels, controlled hints, review coaching, and SGF tools in a native macOS app.",
+    accent: "#9b5f20",
+    mark: "15×15",
+    visual: "stack",
+  },
+  {
+    file: "og-easier-bookmarks.png",
+    eyebrow: "Easier Bookmarks",
+    title: "Bookmarks in the side panel",
+    body: "Fast local search, full organization, keyboard access, and no analytics or external servers.",
+    accent: "#2563eb",
+    mark: "BM",
+    visual: "stack",
+  },
 ];
 
 const escape = (value) =>
@@ -242,8 +260,15 @@ export function renderOg(image) {
 }
 
 async function main() {
+  const requested = new Set(process.argv.slice(2));
+  const selected = requested.size > 0 ? images.filter((image) => requested.has(image.file)) : images;
+  if (requested.size > 0 && selected.length !== requested.size) {
+    const known = new Set(images.map((image) => image.file));
+    const unknown = [...requested].filter((file) => !known.has(file));
+    throw new Error(`Unknown OG asset: ${unknown.join(", ")}`);
+  }
   await fs.mkdir(outDir, { recursive: true });
-  for (const image of images) {
+  for (const image of selected) {
     await fs.writeFile(path.join(outDir.pathname, image.file), await renderOg(image));
     console.log(`generated ${image.file}`);
   }

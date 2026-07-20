@@ -79,5 +79,37 @@
       "Python stdlib CLI",
       "cloud agent automation"
     ]
+  },
+  "goban": {
+    "source": "github-api",
+    "repository": "hxddh/goban",
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "latestRelease": "v1.21.0",
+    "stableFacts": [
+      "native macOS app",
+      "Apple Silicon release",
+      "15x15 Gomoku",
+      "four AI levels",
+      "hints",
+      "review coaching",
+      "SGF import and export",
+      "no network permission"
+    ]
+  },
+  "easier-bookmarks": {
+    "source": "chrome-web-store",
+    "listingUrl": "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
+    "category": "Tools",
+    "stableFacts": [
+      "Chrome side panel",
+      "local bookmark search",
+      "bookmark and folder organization",
+      "keyboard navigation",
+      "English and Simplified Chinese",
+      "no analytics",
+      "no external servers"
+    ],
+    "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
   }
 }

@@ -17,6 +17,10 @@ export const catalogCopy = {
     agentRadarText:
       "Unattended Agent-industry research loop on GitHub Actions — theses and watchlists kept in Markdown.",
     agentRadarRole: "Research pipeline",
+    gobanText: "A native macOS Gomoku board for focused play, analysis, and SGF review.",
+    gobanRole: "macOS game",
+    easierBookmarksText: "Search and organize Chrome bookmarks without leaving the side panel.",
+    easierBookmarksRole: "Bookmark manager",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
@@ -35,5 +39,9 @@ export const catalogCopy = {
     pagewiseRole: "文档 agent",
     agentRadarText: "跑在 GitHub Actions 上的 Agent 产业研究循环，每周论点与观察名单留在 Markdown。",
     agentRadarRole: "研究流水线",
+    gobanText: "原生 macOS 五子棋：专注对弈、提示、复盘与 SGF 棋谱。",
+    gobanRole: "macOS 游戏",
+    easierBookmarksText: "在 Chrome 侧边栏里快速搜索、浏览和整理书签。",
+    easierBookmarksRole: "书签管理器",
   },
 } as const;

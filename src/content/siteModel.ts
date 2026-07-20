@@ -36,6 +36,10 @@ export function routeFromModel(model: SitePageModel): SiteRoute {
     expectedText: model.expectedText,
     primaryCta: "primaryCta" in model ? model.primaryCta : undefined,
     sectionIndex: model.kind === "product" ? model.sectionIndex : undefined,
+    browserVisual:
+      model.kind === "product"
+        ? ["worldClockScreenshot", "doubanScreenshot", "easierBookmarksScreenshot"].includes(model.visual.kind)
+        : undefined,
   };
 }
 

@@ -33,7 +33,23 @@ for (const imagePath of uniqueImages) {
   const expected = await renderOg(definition);
   const actual = fs.readFileSync(filePath);
   if (!expected.equals(actual)) {
-    failures.push(`${imagePath}: out of date — run npm run assets:og and commit the result`);
+    // Text rasterization differs slightly between the Linux CI image and macOS.
+    // Compare decoded pixels with a narrow tolerance so definition drift still
+    // fails while equivalent cross-platform renders pass.
+    const expectedPixels = await sharp(expected).raw().toBuffer();
+    const actualPixels = await sharp(actual).raw().toBuffer();
+    let absoluteDifference = 0;
+    let changedChannels = 0;
+    for (let index = 0; index < expectedPixels.length; index += 1) {
+      const difference = Math.abs(expectedPixels[index] - actualPixels[index]);
+      absoluteDifference += difference;
+      if (difference > 0) changedChannels += 1;
+    }
+    const meanAbsoluteError = absoluteDifference / expectedPixels.length;
+    const changedRatio = changedChannels / expectedPixels.length;
+    if (meanAbsoluteError > 6 || changedRatio > 0.04) {
+      failures.push(`${imagePath}: out of date — run npm run assets:og and commit the result`);
+    }
   }
 }
 

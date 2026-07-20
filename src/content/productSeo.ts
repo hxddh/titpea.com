@@ -14,6 +14,6 @@ export function productStructuredData(product: Product, locale: Locale, contract
     applicationCategory: contract.applicationCategory,
     operatingSystem: contract.operatingSystem,
     url: absoluteUrl(path),
-    sameAs: copy.primaryCta.href,
+    ...(copy.primaryCta.href.startsWith("http") ? { sameAs: copy.primaryCta.href } : {}),
   };
 }

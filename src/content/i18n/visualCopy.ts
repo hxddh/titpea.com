@@ -260,16 +260,33 @@ export const visualCopy = {
     },
   },
 
+  gobanBoard: {
+    en: {
+      status: "VS AI · EXTREME · STANDARD",
+      turn: "BLACK TO MOVE",
+      hint: "H · HINT",
+      moves: "MOVE 18",
+    },
+    zh: {
+      status: "人机 · 极难 · 标准",
+      turn: "黑方行棋",
+      hint: "H · 提示",
+      moves: "第 18 手",
+    },
+  },
+
   screenshots: {
     en: {
       worldClockLight: "World Clock light theme timezone feed screenshot",
       worldClockDark: "World Clock dark theme timezone feed screenshot",
       douban: "Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page",
+      easierBookmarks: "Easier Bookmarks Chrome side panel showing a searchable bookmark tree",
     },
     zh: {
       worldClockLight: "世界时钟浅色主题时区列表截图",
       worldClockDark: "世界时钟深色主题时区列表截图",
       douban: "豆瓣电影评分助手在豆瓣电影页中显示 IMDb、Rotten Tomatoes 和 Metacritic 评分的截图",
+      easierBookmarks: "Easier Bookmarks Chrome 侧边栏，显示可搜索的书签树",
     },
   },
 } as const;

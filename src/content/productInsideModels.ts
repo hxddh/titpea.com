@@ -186,6 +186,20 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       zh: "豆瓣电影评分助手只补充参考信息。匹配到影片后，它会把 IMDb、Rotten Tomatoes 和 Metacritic 放到豆瓣详情页，不打断原本的阅读。",
     },
   ),
+  goban: browserInside(
+    { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
+    {
+      en: "The board keeps the current game, AI controls, move list, appearance, and SGF tools in one native macOS window.",
+      zh: "当前棋局、AI 设置、手数列表、外观与 SGF 工具都在同一个原生 macOS 窗口里。",
+    },
+  ),
+  "easier-bookmarks": browserInside(
+    { en: "Your bookmark tree, without the menu maze", zh: "不用层层点菜单，也能看清书签树" },
+    {
+      en: "The side panel keeps folders, instant search, item actions, and drag or keyboard reordering available beside the page you are browsing.",
+      zh: "文件夹、即时搜索、项目操作，以及拖放或键盘排序都留在侧边栏里，不挡住正在浏览的页面。",
+    },
+  ),
 };
 
 export const productInsideModel = (slug: ProductSlug, locale: Locale) => productInsideModels[slug]?.[locale] ?? null;
