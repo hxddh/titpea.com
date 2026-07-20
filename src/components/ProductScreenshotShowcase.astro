@@ -2,10 +2,10 @@
 import type { AgentWorkbenchScreenshotVisualModel } from "../content/visualModels";
 
 interface Props {
-  visual: AgentWorkbenchScreenshotVisualModel;
+  supporting: AgentWorkbenchScreenshotVisualModel["supporting"];
 }
 
-const { supporting } = Astro.props.visual;
+const { supporting } = Astro.props;
 ---
 
 <section class="product-screenshot-showcase shell">
