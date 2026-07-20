@@ -189,8 +189,8 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   goban: browserInside(
     { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
     {
-      en: "The board keeps the current game, AI controls, move list, appearance, and SGF tools in one native macOS window.",
-      zh: "当前棋局、AI 设置、手数列表、外观与 SGF 工具都在同一个原生 macOS 窗口里。",
+      en: "The board keeps the current game, AI controls, move list, appearance, and SGF tools together in one desktop app.",
+      zh: "当前棋局、AI 设置、手数列表、外观与 SGF 工具都集中在同一个桌面应用里。",
     },
   ),
   "easier-bookmarks": browserInside(
