@@ -39,7 +39,7 @@ export const catalogCopy = {
     pagewiseRole: "文档 agent",
     agentRadarText: "跑在 GitHub Actions 上的 Agent 产业研究循环，每周论点与观察名单留在 Markdown。",
     agentRadarRole: "研究流水线",
-    gobanText: "桌面五子棋：四档 AI、全局复盘分析与 SGF 棋谱工具。",
+    gobanText: "桌面五子棋：四档 AI、整局复盘分析与 SGF 棋谱工具。",
     gobanRole: "桌面游戏",
     easierBookmarksText: "在 Chrome 侧边栏里快速搜索、浏览和整理书签。",
     easierBookmarksRole: "书签管理器",

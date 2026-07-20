@@ -71,7 +71,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "Direct jumps",
-          body: "Click a rating to open the matching IMDb or Rotten Tomatoes page.",
+          body: "Click a rating to open the matching IMDb, Rotten Tomatoes, or Metacritic page.",
           intent: "capability",
           surface: "browser",
         },
@@ -96,7 +96,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "Does it replace Douban ratings?",
-          body: "No. It keeps Douban as the main page and adds IMDb or Rotten Tomatoes context so you can compare rating systems in place.",
+          body: "No. It keeps Douban as the main page and adds IMDb, Rotten Tomatoes, or Metacritic context so you can compare rating systems in place.",
         },
         {
           title: "When are ratings updated?",
@@ -161,7 +161,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "直接跳转",
-          body: "点击评分，打开对应 IMDb 或 Rotten Tomatoes 页面。",
+          body: "点击评分，打开对应 IMDb、Rotten Tomatoes 或 Metacritic 页面。",
           intent: "capability",
           surface: "browser",
         },
@@ -186,7 +186,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "它会替代豆瓣评分吗？",
-          body: "不会。豆瓣仍然是主页面；扩展只是在旁边补充 IMDb 或 Rotten Tomatoes，方便对比。",
+          body: "不会。豆瓣仍然是主页面；扩展只是在旁边补充 IMDb、Rotten Tomatoes 或 Metacritic，方便对比。",
         },
         {
           title: "评分什么时候更新？",

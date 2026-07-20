@@ -71,7 +71,7 @@ export const headerCopy: Record<
       douban: "豆瓣评分",
       pagewise: "PageWise",
       agentRadar: "Agent Radar",
-      goban: "五子棋",
+      goban: "五子棋 Goban",
       easierBookmarks: "Easier Bookmarks",
     },
   },

@@ -15,8 +15,13 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       lead: "Search by title, URL, or folder path, then create, edit, move, reorder, or delete bookmarks without leaving Chrome's side panel.",
       primaryCta: { label: "Install", href: siteConfig.externalLinks.easierBookmarksChrome },
       secondaryCta: { label: "Privacy policy", href: siteConfig.externalLinks.easierBookmarksPrivacy },
-      meta: "Chrome Web Store · Tools · Local-only",
-      proof: ["Instant local search", "Full bookmark organization", "Keyboard accessible", "No analytics or servers"],
+      meta: "Chrome Web Store · Workflow & Planning · No external servers",
+      proof: [
+        "Instant local search",
+        "Create, edit, move, reorder, delete",
+        "Keyboard accessible",
+        "No analytics or servers",
+      ],
       positioningLabel: "Positioning",
       positioning: [
         {
@@ -28,7 +33,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
         },
         {
           title: "Use Chrome's own bookmark tree",
-          body: "It works with the bookmarks and folders already in Chrome. There is no separate library to import, account to create, or service to sync.",
+          body: "It works with the bookmarks and folders already in Chrome. There is no separate library to import, account to create, or sync service of its own; Chrome sync remains whatever you already configured in Chrome.",
           intent: "boundary",
           surface: "browser",
         },
@@ -90,8 +95,8 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       lead: "按标题、网址或文件夹路径搜索书签；不离开 Chrome 侧边栏，就能新建、编辑、移动、排序或删除。",
       primaryCta: { label: "安装扩展", href: siteConfig.externalLinks.easierBookmarksChrome },
       secondaryCta: { label: "隐私政策", href: "/zh/easier-bookmarks/privacy/" },
-      meta: "Chrome 网上应用店 · 工具 · 仅本地运行",
-      proof: ["本地即时搜索", "完整整理书签", "键盘可操作", "无分析服务或外部服务器"],
+      meta: "Chrome 网上应用店 · 工作流与规划 · 无外部服务器",
+      proof: ["本地即时搜索", "新建、编辑、移动、排序、删除", "键盘可操作", "无分析服务或外部服务器"],
       positioningLabel: "适用与边界",
       positioning: [
         {
@@ -103,7 +108,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
         },
         {
           title: "直接使用 Chrome 书签树",
-          body: "它管理 Chrome 里已有的书签和文件夹，不需要导入另一套资料库，也不用注册账号或连接同步服务。",
+          body: "它管理 Chrome 里已有的书签和文件夹，不需要导入另一套资料库，也不用注册账号或另接同步服务；Chrome 自身同步仍按你的浏览器设置执行。",
           intent: "boundary",
           surface: "browser",
         },
