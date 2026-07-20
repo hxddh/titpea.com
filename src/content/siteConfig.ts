@@ -46,7 +46,7 @@ export const siteConfig = {
       pagewiseAnalysis: "/assets/pagewise-analysis.webp",
       storageAgentWelcome: "/assets/storage-agent-welcome.webp",
       storageAgentInvestigation: "/assets/storage-agent-investigation.webp",
-      gobanBoard: "/assets/goban-board.jpg",
+      gobanBoard: "/assets/goban-game-board.jpg",
       gobanReview: "/assets/goban-review.jpg",
       gobanNotebook: "/assets/goban-notebook.jpg",
       easierBookmarks: "/assets/easier-bookmarks.png",
