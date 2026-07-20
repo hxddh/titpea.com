@@ -102,7 +102,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     group: "personal",
     nav: { primary: true, label: "goban" },
     catalog: { order: 5 },
-    visual: "gobanBoard",
+    visual: "gobanScreenshot",
     ogImage: "/assets/og-goban.png",
     factId: "goban",
   },

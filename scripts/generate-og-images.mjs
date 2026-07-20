@@ -99,8 +99,8 @@ export const images = [
   {
     file: "og-goban.png",
     eyebrow: "Goban",
-    title: "A focused Gomoku board for Mac",
-    body: "Four AI levels, controlled hints, review coaching, and SGF tools in a native macOS app.",
+    title: "A focused Gomoku board for desktop",
+    body: "Four AI levels, full-game replay analysis, named saves, and SGF tools for macOS and Windows.",
     accent: "#9b5f20",
     mark: "15×15",
     visual: "stack",

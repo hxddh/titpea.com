@@ -25,7 +25,7 @@ export type VisualPolicy =
   | "pagewiseWorkbench"
   | "agentWorkbenchScreenshot"
   | "agentRadarTerminal"
-  | "gobanBoard"
+  | "gobanScreenshot"
   | "easierBookmarksScreenshot";
 export type ProductGroup = "storage" | "personal";
 
@@ -45,7 +45,7 @@ export type ProductArchetypeContract = {
   sectionIndex: boolean;
   indexLabel: Record<Locale, string>;
   applicationCategory: "DeveloperApplication" | "BrowserApplication" | "GameApplication";
-  operatingSystem: "Cross-platform" | "Chrome" | "macOS";
+  operatingSystem: "Cross-platform" | "Chrome" | "macOS and Windows";
   defaultVisual: VisualPolicy;
   sections: ArchetypeSectionSpec[];
 };
@@ -241,8 +241,8 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     sectionIndex: false,
     indexLabel: { en: "Read this page", zh: "阅读路径" },
     applicationCategory: "GameApplication",
-    operatingSystem: "macOS",
-    defaultVisual: "gobanBoard",
+    operatingSystem: "macOS and Windows",
+    defaultVisual: "gobanScreenshot",
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" } },
       {

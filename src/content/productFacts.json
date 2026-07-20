@@ -85,16 +85,18 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.21.0",
+    "latestRelease": "v1.22.0",
     "stableFacts": [
-      "native macOS app",
-      "Apple Silicon release",
+      "desktop app",
+      "Apple Silicon macOS and Windows x64 releases",
       "15x15 Gomoku",
       "four AI levels",
       "hints",
       "review coaching",
+      "full-game evaluation curve and blunder list",
+      "up to 30 named save slots",
       "SGF import and export",
-      "no network permission"
+      "local gameplay"
     ]
   },
   "easier-bookmarks": {

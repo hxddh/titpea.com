@@ -9,7 +9,6 @@ import AgentRadarTerminalVisual from "./visuals/AgentRadarTerminalVisual.astro";
 import HttpmonTerminalVisual from "./visuals/HttpmonTerminalVisual.astro";
 import WorldClockVisual from "./visuals/WorldClockVisual.astro";
 import AgentWorkbenchScreenshotVisual from "./visuals/AgentWorkbenchScreenshotVisual.astro";
-import GobanBoardVisual from "./visuals/GobanBoardVisual.astro";
 import ProductScreenshotVisual from "./visuals/ProductScreenshotVisual.astro";
 
 interface Props {
@@ -28,5 +27,5 @@ const { visual } = Astro.props;
 {visual.kind === "agentRadarTerminal" && <AgentRadarTerminalVisual visual={visual} />}
 {visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}
 {visual.kind === "doubanScreenshot" && <DoubanRatingVisual visual={visual} />}
-{visual.kind === "gobanBoard" && <GobanBoardVisual visual={visual} />}
+{visual.kind === "gobanScreenshot" && <ProductScreenshotVisual visual={visual} />}
 {visual.kind === "easierBookmarksScreenshot" && <ProductScreenshotVisual visual={visual} />}
