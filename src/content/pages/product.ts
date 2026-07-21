@@ -60,7 +60,12 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
   });
   const navItems = contract.sections
     .filter((spec) => sections.some((section) => section.id === spec.id))
-    .map((spec) => ({ id: spec.id, label: spec.label[locale] }));
+    .map((spec) => {
+      const section = sections.find((item) => item.id === spec.id)!;
+      const label =
+        "label" in section && typeof section.label === "string" && section.label ? section.label : spec.label[locale];
+      return { id: spec.id, label };
+    });
 
   return {
     kind: "product",

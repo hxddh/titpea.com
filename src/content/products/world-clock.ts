@@ -60,12 +60,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      rationaleLabel: "Details",
-      rationaleTitle: "Open it, glance, get back to work",
-      rationaleBody: [
-        "One small popup opens over whatever you are doing, shows the cities you care about, and closes just as fast.",
-        "Use it as a quick timezone glance for remote work, travel coordination, or checking whether a city is in business hours.",
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -123,12 +117,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           intent: "capability",
           surface: "browser",
         },
-      ],
-      rationaleLabel: "详情",
-      rationaleTitle: "小而快，打开就能看",
-      rationaleBody: [
-        "一个小弹窗覆盖在当前页面上，显示你关心的城市，看完随手关掉。",
-        "适合远程协作、旅行安排，或快速确认某个城市是否处于工作时间。",
       ],
       faqLabel: "常见问题与用法",
       faq: [

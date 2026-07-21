@@ -88,7 +88,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
     },
     zh: {
       title: "Easier Bookmarks",
-      description: "简洁、快速且注重隐私的 Chrome 侧边栏书签管理器，在本地搜索、浏览和整理书签。",
+      description: "Chrome 侧边栏书签管理器，可在本地搜索、浏览和整理书签。",
       eyebrow: "Chrome 扩展",
       headline: "在侧边栏里把书签理顺",
       lead: "按标题、网址或文件夹路径搜索书签；不离开 Chrome 侧边栏，就能新建、编辑、移动、排序或删除。",
