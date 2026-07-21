@@ -137,11 +137,12 @@ export type S3TurboListProduct = {
   name: string;
   archetype: "s3TurboList";
   locales: Localized<
-    StorageCliProductCopy & {
+    ProductCopy & {
       casesTitle: string;
       cases: string[];
       rationaleTitle: string;
       rationaleBody: string[];
+      faq: ProductContentCard[];
     }
   >;
 };

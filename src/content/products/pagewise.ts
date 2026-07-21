@@ -192,7 +192,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "只送出模型需要的内容",
-          body: "提取出的文本，以及你启用的可选视觉载荷，会发到你配置的模型。除此之外不会擅自外传。",
+          body: "提取出的文本，以及你启用的图像内容，会发到你配置的模型。除此之外不会擅自外传。",
           intent: "boundary",
           surface: "protocol",
         },
@@ -215,7 +215,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "我的文件会离开电脑吗？",
-          body: "不会上传到 PageWise 服务器。只有提取文本，以及可选的视觉载荷，会发到你配置的模型。",
+          body: "不会上传到 PageWise 服务器。只有提取文本，以及你启用的图像内容，会发到你配置的模型。",
         },
         {
           title: "扫描页怎么处理？",

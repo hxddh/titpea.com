@@ -82,12 +82,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      rationaleLabel: "Details",
-      rationaleTitle: "Ratings in one view",
-      rationaleBody: [
-        "Douban stays the page you read; outside scores sit inline, so you weigh several rating systems in one view.",
-        "The store privacy disclosure states that the developer does not collect or use user data and links to the privacy policy on GitHub.",
-      ],
       faqLabel: "Questions & how-to",
       faq: [
         {
@@ -171,12 +165,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           intent: "capability",
           surface: "browser",
         },
-      ],
-      rationaleLabel: "详情",
-      rationaleTitle: "在同一页对照不同评分",
-      rationaleBody: [
-        "豆瓣仍是你在读的页面；外部评分就近显示，一眼之内对照多个评分体系。",
-        "商店隐私说明显示，开发者声明不会收集或使用用户数据，并提供了 GitHub 上的隐私政策链接。",
       ],
       faqLabel: "常见问题与用法",
       faq: [
