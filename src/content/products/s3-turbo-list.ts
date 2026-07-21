@@ -17,29 +17,6 @@ export const s3TurboListProduct: S3TurboListProduct = {
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
       proof: ["Automatic list segmentation", "DiffFlag Parquet", "Resume for list"],
-      positioningLabel: "Positioning",
-      // Not rendered by the s3TurboList archetype (kept as source notes for evidence/FAQ).
-      positioning: [
-        {
-          title: "Use it when",
-          body: "You need a large object list or a source-to-target comparison, without building and tuning a scanner first.",
-          intent: "fit",
-          surface: "cli",
-          priority: "primary",
-        },
-        {
-          title: "It is not",
-          body: "A backup tool, sync engine, or storage browser. It reads object metadata and leaves a result you can inspect.",
-          intent: "boundary",
-          surface: "cli",
-        },
-        {
-          title: "What stays inspectable",
-          body: "List writes Parquet; diff writes ordered DiffFlag rows. Plans, manifests, and traces stay available when a run needs review.",
-          intent: "fit",
-          surface: "artifact",
-        },
-      ],
       featuresLabel: "Capabilities",
       features: [
         {
@@ -182,29 +159,6 @@ export const s3TurboListProduct: S3TurboListProduct = {
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
       proof: ["自动分段 list", "DiffFlag Parquet", "list 可续跑"],
-      positioningLabel: "边界",
-      // Not rendered by the s3TurboList archetype (kept as source notes for evidence/FAQ).
-      positioning: [
-        {
-          title: "什么时候用",
-          body: "需要列出大量对象，或核对源端和目标端的差异，又不想先搭建并调试一套扫描器。",
-          intent: "fit",
-          surface: "cli",
-          priority: "primary",
-        },
-        {
-          title: "它不是什么",
-          body: "不是备份工具、同步引擎或图形化浏览器。它读取对象元数据，并留下可复查的结果。",
-          intent: "boundary",
-          surface: "cli",
-        },
-        {
-          title: "留下什么记录",
-          body: "list 写出 Parquet，diff 写出带 DiffFlag 的差异结果；计划、运行记录和 trace 按需保留。",
-          intent: "fit",
-          surface: "artifact",
-        },
-      ],
       featuresLabel: "能力",
       features: [
         {

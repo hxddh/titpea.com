@@ -76,7 +76,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
     },
     zh: {
       title: "世界时钟",
-      description: "一个很轻的 Chrome 扩展，用来快速查看几个主要城市的当前时间。",
+      description: "一个很轻的 Chrome 扩展，用来快速查看你选择的城市当前时间。",
       eyebrow: "Chrome 扩展",
       headline: "一眼看清几个城市的时间",
       lead: "打开一个小弹窗，直接看城市时间、UTC 偏移、日期和工作时段，看完继续手头的事。",
