@@ -27,7 +27,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Follow a storage investigation playbook",
-          body: "The agent loads a storage playbook that matches the problem and follows a known investigation path. It does not download capabilities from an extension store or run arbitrary code.",
+          body: "The agent loads a storage playbook that matches the problem and follows a known investigation path. Playbooks ship with the app; the agent does not fetch executable modules at runtime or run arbitrary shell commands.",
           intent: "capability",
           surface: "agent",
         },
@@ -66,7 +66,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "You approve larger actions",
-          body: "Large actions pause for approval; routine metadata and preview reads stay within budgets. Then you decide the next step with the evidence in view.",
+          body: "Downloads, large scans, and evidence imports pause for approval; ordinary metadata and preview reads stay within budgets. Then you decide the next step with the evidence in view.",
           intent: "workflow",
           surface: "artifact",
         },
@@ -75,7 +75,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       positioning: [
         {
           title: "Keys and evidence stay on your machine",
-          body: "Credentials, imported evidence, DuckDB state, and chat history live in local app data. Requests go only to the model and cloud endpoints you configure.",
+          body: "Credentials, imported evidence, DuckDB state, and chat history live in local app data. Requests go only to the model and S3-compatible storage endpoints you configure.",
           intent: "boundary",
           surface: "agent",
         },
@@ -86,8 +86,8 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
         {
-          title: "Confirm downloads and large imports",
-          body: "Ordinary reads stay fast. Downloads, large scans, and evidence import always ask for approval.",
+          title: "Confirm downloads, large scans, and evidence imports",
+          body: "Ordinary reads stay fast. Downloads, large scans, and evidence imports always ask for approval.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -106,7 +106,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Can it change my buckets or objects?",
-          body: "No. Cloud access is read-only. There are no write, delete, or config-change tools.",
+          body: "No. Access to configured storage is read-only. There are no write, delete, or config-change tools.",
         },
         {
           title: "What if I have no model API key?",
@@ -140,7 +140,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "按存储排查手册推进",
-          body: "Agent 会加载与问题对应的存储排查手册，按已知检查路径推进；它不会从扩展商店下载能力，也不会执行任意代码。",
+          body: "Agent 会加载与问题对应的存储排查手册，按已知检查路径推进。排查手册随应用提供；Agent 不会在运行时拉取可执行模块，也不会执行任意 shell。",
           intent: "capability",
           surface: "agent",
         },
@@ -179,7 +179,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "较大操作由你确认",
-          body: "较大操作会先暂停征求同意；日常元数据读取和预览仍在预算内推进。再对着证据决定下一步。",
+          body: "下载、大扫描和证据导入会先征求同意；日常元数据读取和预览仍在预算内。再对着证据决定下一步。",
           intent: "workflow",
           surface: "artifact",
         },
@@ -188,7 +188,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       positioning: [
         {
           title: "密钥和证据留在本机",
-          body: "凭证、导入证据、DuckDB 状态和对话历史都在本机应用数据里。请求只发往你配置的模型与云端点。",
+          body: "凭证、导入证据、DuckDB 状态和对话历史都在本机应用数据里。请求只发往你配置的模型与 S3 兼容存储端点。",
           intent: "boundary",
           surface: "agent",
         },
@@ -199,7 +199,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
         {
-          title: "下载、大扫描和批量导入需确认",
+          title: "下载、大扫描和证据导入需确认",
           body: "普通读取保持顺畅。下载、大扫描和证据导入一定会征求同意。",
           intent: "boundary",
           surface: "artifact",
@@ -219,7 +219,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "它会改我的桶或对象吗？",
-          body: "不会。云访问只读。没有写、删或改配置的工具。",
+          body: "不会。对已配置存储的访问只读。没有写、删或改配置的工具。",
         },
         {
           title: "没有模型密钥也能用吗？",

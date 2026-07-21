@@ -166,7 +166,7 @@ export const visualCopy = {
       connected: "Connected",
       model: "your model",
       question: "Which bucket, log, or error should we check?",
-      subtitle: "I'll use read-only tools and ask before downloads or large scans.",
+      subtitle: "I'll use read-only tools and ask before downloads, large scans, or evidence imports.",
       inputPlaceholder: "Ask Storage Agent…  ( / for commands )",
       chips: [
         "Diagnose an error",
@@ -194,7 +194,7 @@ export const visualCopy = {
       connected: "已连接",
       model: "自备模型",
       question: "先查哪个桶、日志还是报错？",
-      subtitle: "我会用只读工具排查；下载或大扫描前先征得你同意。",
+      subtitle: "我会用只读工具排查；下载、大扫描或证据导入前先征得你同意。",
       inputPlaceholder: "向 Storage Agent 提问…（输入 / 查看命令）",
       chips: ["诊断错误", "审查桶配置", "分析访问日志", "清单与容量", "梳理账号与桶", "成本集中在哪里"],
     },

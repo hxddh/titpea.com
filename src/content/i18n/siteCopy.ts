@@ -36,7 +36,7 @@ export const ui = {
       },
       {
         term: "Read-only investigation",
-        text: "Investigation products do not expose storage-mutation tools; downloads and large reads require approval.",
+        text: "Investigation products do not expose storage-mutation tools; downloads, large scans, and evidence imports require approval.",
       },
       {
         term: "Inspectability",
@@ -72,7 +72,7 @@ export const ui = {
     focusItems: [
       { term: "状态由你掌握", text: "应用状态尽量留在你的设备或你控制的 Git 仓库中，不锁进我维护的服务。" },
       { term: "依据可见", text: "结论旁边保留得出它的检查、原文或运行记录，可以核对，而不是只能相信。" },
-      { term: "调查默认只读", text: "排查产品不提供修改存储的工具；下载和大规模读取由你确认。" },
+      { term: "调查默认只读", text: "排查产品不提供修改存储的工具；下载、大扫描和证据导入由你确认。" },
       { term: "实现可检查", text: "提供源码的产品可以直接审阅；其他产品明确说明数据去向与隐私边界。" },
     ],
   },
