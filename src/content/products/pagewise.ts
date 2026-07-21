@@ -9,10 +9,10 @@ export const pagewiseProduct: DocumentAgentProduct = {
     en: {
       title: "PageWise",
       description:
-        "Local PDF workbench with a page-wise document agent: the model reads under budgets, and you see the trail.",
+        "Local PDF workbench with a page-wise document agent: the model reads page by page under budgets, and you see the trail.",
       eyebrow: "Local document agent · macOS first",
       headline: "See what the agent read, page by page",
-      lead: "A local PDF workbench: the model reads with page-level tools and budgets, while read-page markers, follow-along preview, and clickable citations leave a trail you can revisit.",
+      lead: "A local PDF workbench where the model reads page by page under budgets, with citations and preview controls to verify the source.",
       primaryCta: { label: "Download DMG", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri desktop · PDF + images · MIT · macOS DMG",
@@ -120,14 +120,14 @@ export const pagewiseProduct: DocumentAgentProduct = {
     },
     zh: {
       title: "PageWise",
-      description: "本地 PDF 工作台与按页 Document Agent：模型在预算内读，读迹对你可见。",
+      description: "本地 PDF 工作台与按页 Document Agent：模型在预算内读，阅读轨迹对你可见。",
       eyebrow: "本地文档 agent · macOS 优先",
       headline: "按页读 PDF，并看见它读了什么",
-      lead: "本地 PDF 工作台：模型用带预算的页级工具阅读；页引用、已读标记和跟随预览，共同留下可以回看的阅读轨迹（读迹）。",
+      lead: "本地 PDF 工作台：模型按页、按预算阅读；页引用和跟随预览让你回到原文核对。",
       primaryCta: { label: "下载 DMG", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: "Tauri 桌面 · PDF 与图片 · MIT · macOS DMG",
-      proof: ["按页阅读", "读迹可见", "文件留本地", "系统钥匙串", "自备模型"],
+      proof: ["按页阅读", "阅读轨迹可见", "文件留本地", "系统钥匙串", "自备模型"],
       featuresLabel: "工作台里有什么",
       features: [
         {
@@ -143,7 +143,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
         {
-          title: "沿着读迹回到原文",
+          title: "沿着阅读轨迹回到原文",
           body: "点击页码引用、已读页标记或开启跟随预览，都可以回到 Agent 刚读过的页面；选中文字后也能直接「就此提问」。",
           intent: "capability",
           surface: "artifact",
@@ -226,7 +226,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           body: "发布重点是 macOS，可从 GitHub Releases 下载 DMG。Tauri 2 应用也可构建 Windows 与 Linux；项目采用 MIT 许可。",
         },
       ],
-      finalCta: "按页阅读，沿着读迹回到原文",
+      finalCta: "按页阅读，沿着阅读轨迹回到原文",
       finalCtaLabel: "下载 DMG",
     },
   },

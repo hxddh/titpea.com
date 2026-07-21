@@ -30,6 +30,7 @@ export const siteConfig = {
     gobanReleases: "https://github.com/hxddh/goban/releases/latest",
     easierBookmarksChrome: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
     easierBookmarksPrivacy: "/easier-bookmarks/privacy/",
+    easierBookmarksPrivacyZh: "/zh/easier-bookmarks/privacy/",
   },
   assets: {
     favicon: "/favicon.svg",

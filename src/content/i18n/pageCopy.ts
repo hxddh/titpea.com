@@ -1,6 +1,6 @@
 export const catalogCopy = {
   en: {
-    httpmon: "Watch one command's HTTP/HTTPS in the terminal — no system-proxy change.",
+    httpmon: "Watch one command's HTTP/HTTPS and wss handshake in the terminal — no system-proxy change.",
     s3Text: "Automatically segmented, parallel S3 list / diff with Parquet output.",
     s3Role: "List / Diff",
     workbenchText: "Chat-driven, read-only investigations for S3-compatible storage — with evidence beside the answer.",
@@ -8,7 +8,7 @@ export const catalogCopy = {
     storageopsText: "Skills and tools that help the Pi Coding Agent diagnose S3-compatible storage.",
     storageopsRole: "Pi extension",
     httpmonRole: "HTTP inspection",
-    worldClockText: "A fast multi-city time popup.",
+    worldClockText: "A Chrome popup for checking multiple city times.",
     worldClockRole: "Timezone utility",
     doubanText: "Shows IMDb, Rotten Tomatoes, and Metacritic inside Douban movie pages.",
     doubanRole: "Rating context",
@@ -23,7 +23,7 @@ export const catalogCopy = {
     easierBookmarksRole: "Bookmark manager",
   },
   zh: {
-    httpmon: "在终端实时查看一条命令的 HTTP/HTTPS，不改系统代理。",
+    httpmon: "在终端实时查看一条命令的 HTTP/HTTPS 与 wss 握手，不改系统代理。",
     s3Text: "自动分段并行的高速 S3 list / diff，输出 Parquet。",
     s3Role: "List / Diff",
     storageopsText: "帮 Pi Coding Agent 诊断 S3 兼容存储的 skills 与工具。",

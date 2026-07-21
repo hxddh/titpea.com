@@ -8,8 +8,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "Easier Bookmarks",
-      description:
-        "A fast, private Chrome side-panel manager for searching, browsing, and organizing bookmarks locally.",
+      description: "A Chrome side-panel bookmark manager for local search, browsing, and organization.",
       eyebrow: "Chrome extension",
       headline: "Bookmarks, organized in the side panel",
       lead: "Search by title, URL, or folder path, then create, edit, move, reorder, or delete bookmarks without leaving Chrome's side panel.",
@@ -32,7 +31,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "Use Chrome's own bookmark tree",
+          title: "Works with Chrome's bookmark tree",
           body: "It works with the bookmarks and folders already in Chrome. There is no separate library to import, account to create, or sync service of its own; Chrome sync remains whatever you already configured in Chrome.",
           intent: "boundary",
           surface: "browser",
@@ -94,7 +93,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       headline: "在侧边栏里把书签理顺",
       lead: "按标题、网址或文件夹路径搜索书签；不离开 Chrome 侧边栏，就能新建、编辑、移动、排序或删除。",
       primaryCta: { label: "安装扩展", href: siteConfig.externalLinks.easierBookmarksChrome },
-      secondaryCta: { label: "隐私政策", href: "/zh/easier-bookmarks/privacy/" },
+      secondaryCta: { label: "隐私政策", href: siteConfig.externalLinks.easierBookmarksPrivacyZh },
       meta: "Chrome 网上应用店 · 工作流与规划 · 无外部服务器",
       proof: ["本地即时搜索", "新建、编辑、移动、排序、删除", "键盘可操作", "无分析服务或外部服务器"],
       positioningLabel: "适用与边界",
@@ -107,7 +106,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "直接使用 Chrome 书签树",
+          title: "沿用 Chrome 书签树",
           body: "它管理 Chrome 里已有的书签和文件夹，不需要导入另一套资料库，也不用注册账号或另接同步服务；Chrome 自身同步仍按你的浏览器设置执行。",
           intent: "boundary",
           surface: "browser",

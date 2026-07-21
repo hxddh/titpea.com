@@ -23,7 +23,16 @@
   "storageops": {
     "source": "manual",
     "repository": "hxddh/storageops",
-    "stableFacts": ["Pi Agent", "object-storage diagnosis", "skills", "tools", "eval-backed routing"]
+    "licenseLabel": "MIT",
+    "stableFacts": [
+      "Pi Agent",
+      "object-storage diagnosis",
+      "skills",
+      "tools",
+      "eval-backed routing",
+      "16 skill packs",
+      "4 Pi tools"
+    ]
   },
   "https-traffic-inspector": {
     "source": "manual",
@@ -77,7 +86,9 @@
       "playbooks",
       "storage implications",
       "Python stdlib CLI",
-      "cloud agent automation"
+      "cloud agent automation",
+      "free public source lanes",
+      "no paid search"
     ]
   },
   "goban": {
