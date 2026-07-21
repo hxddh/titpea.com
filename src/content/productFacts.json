@@ -41,6 +41,7 @@
     "stableFacts": [
       "local MITM proxy",
       "HTTP/HTTPS request and response capture",
+      "wss upgrade handshake capture",
       "NDJSON and HAR export",
       "record and replay",
       "terminal UI"
