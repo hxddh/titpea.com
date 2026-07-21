@@ -87,7 +87,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMetaZh,
       proof: ["工作时段状态", "城市时间行", "浅色和深色主题", "声明不收集数据"],
-      positioningLabel: "边界",
+      positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",

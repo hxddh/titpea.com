@@ -117,7 +117,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
       proof: ["匹配不到不显示", "IMDb · 烂番茄 · Metacritic", "声明不收集数据"],
-      positioningLabel: "边界",
+      positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
