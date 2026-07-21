@@ -44,12 +44,12 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "What you get",
-          body: "IMDb score, Rotten Tomatoes freshness, Metacritic score when available, direct links, runtime and genre context, and title matching across Chinese and English names.",
+          body: "IMDb score, Rotten Tomatoes freshness, Metacritic score when available, direct links, and title matching across Chinese and English names.",
           intent: "fit",
           surface: "browser",
         },
       ],
-      featuresLabel: "Capabilities",
+      featuresLabel: "In the page",
       features: [
         {
           title: "IMDb rating",
@@ -100,7 +100,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "When are ratings updated?",
-          body: "Found ratings are cached in your browser for 7 days; unmatched results are retried after 1 day. After the cache expires, the next visit fetches fresh source data.",
+          body: "Found ratings are cached locally in your browser and unmatched results are retried on a shorter interval. After the cache expires, the next visit fetches fresh source data.",
         },
       ],
     },
@@ -117,7 +117,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
       proof: ["匹配不到不显示", "IMDb · 烂番茄 · Metacritic", "声明不收集数据"],
-      positioningLabel: "边界",
+      positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
@@ -134,12 +134,12 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "补充哪些信息",
-          body: "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、类型和片长、跳转链接，以及中英文片名匹配。",
+          body: "匹配到的 IMDb 分数、烂番茄新鲜度、Metacritic 分数、跳转链接，以及中英文片名匹配。",
           intent: "fit",
           surface: "browser",
         },
       ],
-      featuresLabel: "能力",
+      featuresLabel: "页面里的信息",
       features: [
         {
           title: "IMDb 评分",
@@ -190,7 +190,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         },
         {
           title: "评分什么时候更新？",
-          body: "已匹配的评分会在浏览器本地缓存 7 天，未匹配结果会在 1 天后重试。缓存过期后，下次打开对应页面时会重新获取来源数据。",
+          body: "已匹配的评分会在浏览器本地缓存，未匹配结果会在更短间隔后重试。缓存过期后，下次打开对应页面时会重新获取来源数据。",
         },
       ],
     },

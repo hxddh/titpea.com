@@ -1,7 +1,11 @@
 import type { AgentPackageProduct } from "../../lib/site";
+import { productFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
-const meta = "Python · Pi Coding Agent · S3-compatible · MIT";
+const facts = productFacts.storageops;
+const meta = `Python · Pi Coding Agent · S3-compatible · ${facts.licenseLabel ?? "MIT"}`;
+const skillPackCount = 16;
+const toolCount = 4;
 
 export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",
@@ -17,7 +21,12 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi extension", "16 skill packs", "Four Pi tools", "No direct cloud account access"],
+      proof: [
+        "Pi extension",
+        `${skillPackCount} skill packs`,
+        `${toolCount} Pi tools`,
+        "No direct cloud account access",
+      ],
       workflowLabel: "How a case runs",
       workflow: [
         {
@@ -73,7 +82,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         },
         {
           title: "Does it access or change my bucket?",
-          body: "No. StorageOps diagnoses from material you provide. It does not connect to cloud accounts or modify storage resources.",
+          body: "StorageOps does not take cloud credentials or open its own cloud session. When you choose trace capture, it observes the bounded command you provide through httpmon.",
         },
         {
           title: "When should I use Storage Agent instead?",
@@ -91,7 +100,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi 扩展", "16 组 skills", "4 个 Pi 工具", "不连接云账号"],
+      proof: ["Pi 扩展", `${skillPackCount} 组 skills`, `${toolCount} 个 Pi 工具`, "不连接云账号"],
       workflowLabel: "一次问题怎么处理",
       workflow: [
         {
@@ -146,7 +155,7 @@ export const storageOpsProduct: AgentPackageProduct = {
         },
         {
           title: "它会访问或修改我的桶吗？",
-          body: "不会。StorageOps 只分析你提供的材料，不会连接云账号，也不会修改存储资源。",
+          body: "不会。StorageOps 不自建云账号会话，也不修改存储资源；若启用 trace，只观察你提供的那条受限命令。",
         },
         {
           title: "什么时候选 Storage Agent？",

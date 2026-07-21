@@ -54,11 +54,34 @@ function cardItems(copy: ProductCopy, spec: ArchetypeSectionSpec) {
   return sources.flatMap((source) => copy[source] ?? []);
 }
 
+function sectionLabel(locale: Locale, copy: ProductCopy, spec: ArchetypeSectionSpec): string {
+  const id = spec.id as ContentSectionId;
+  const fromCopy =
+    id === "features"
+      ? copy.featuresLabel
+      : id === "faq"
+        ? copy.faqLabel
+        : id === "workflow"
+          ? copy.workflowLabel
+          : id === "automation"
+            ? copy.automationLabel
+            : id === "positioning"
+              ? copy.positioningLabel
+              : id === "cases"
+                ? copy.casesLabel
+                : id === "story"
+                  ? copy.rationaleLabel
+                  : id === "examples"
+                    ? copy.examplesLabel
+                    : undefined;
+  return fromCopy ?? spec.label[locale];
+}
+
 function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSectionSpec): ProductSection | null {
   if (!contentIds.has(spec.id as ContentSectionId)) return null;
   const id = spec.id as ContentSectionId;
 
-  const label = spec.label[locale];
+  const label = sectionLabel(locale, copy, spec);
 
   if (id === "story") {
     if (!copy.rationaleTitle || !copy.rationaleBody) return null;

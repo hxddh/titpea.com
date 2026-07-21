@@ -12,7 +12,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "World Clock",
-      description: "A minimalist Chrome extension showing live time across major cities.",
+      description: "A minimalist Chrome extension showing live time across the cities you choose.",
       eyebrow: "Chrome Extension",
       headline: "Time across cities at a glance",
       lead: "Open one small popup to see the local time, UTC offset, date, and work-hours context for the cities you care about.",
@@ -39,7 +39,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      featuresLabel: "Capabilities",
+      featuresLabel: "In the popup",
       features: [
         {
           title: "Live city rows",
@@ -55,7 +55,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
         {
           title: "Multilingual",
-          body: "Available in 9 languages, including English, Chinese, Japanese, and Korean.",
+          body: "Includes localized interface text for common languages, including English, Chinese, Japanese, and Korean.",
           intent: "capability",
           surface: "browser",
         },
@@ -87,7 +87,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMetaZh,
       proof: ["工作时段状态", "城市时间行", "浅色和深色主题", "声明不收集数据"],
-      positioningLabel: "边界",
+      positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
@@ -103,7 +103,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      featuresLabel: "能力",
+      featuresLabel: "弹窗里的信息",
       features: [
         {
           title: "一行一个城市",
@@ -119,7 +119,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
         },
         {
           title: "多语言",
-          body: "支持 9 种语言，包括英文、中文、日文、韩文等。",
+          body: "提供多语言界面，包括英文、中文、日文、韩文等。",
           intent: "capability",
           surface: "browser",
         },

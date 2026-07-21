@@ -57,7 +57,7 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "Replay 2.0",
+          title: "Full-game review",
           body: "Open a full-game evaluation curve and a blunder list after a match. Select a point or mistake to jump directly to that move on the board.",
           intent: "capability",
           surface: "artifact",
@@ -144,7 +144,7 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "复盘 2.0",
+          title: "整局复盘",
           body: "局后打开全局胜负走势曲线和失着列表；点击曲线节点或失着条目，即可直接跳到棋盘上的对应手数。",
           intent: "capability",
           surface: "artifact",

@@ -19,7 +19,8 @@ export const s3EvidenceFacts = {
   objectCount: "1,000,413",
   datasetSize: "Alibaba Cloud OSS · Beijing",
   environment: "2 vCPU · 3.4 GiB · same-region ECS → OSS · default list QPS",
-  version: s3TurboListFacts.latestRelease ?? "current release",
+  // Keep the measured release fixed; do not track latestRelease as it drifts.
+  version: "v0.21.0",
   license: s3TurboListFacts.licenseLabel ?? "current license",
   benchmarkDate: "2026-06-18",
   parallelRuns: [

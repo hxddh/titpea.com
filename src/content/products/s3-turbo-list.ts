@@ -1,8 +1,6 @@
 import type { S3TurboListProduct } from "../../lib/site";
-import { s3MetaLine, s3TurboListFacts } from "../productFacts";
+import { s3MetaLine } from "../productFacts";
 import { siteConfig } from "../siteConfig";
-
-const s3Release = s3TurboListFacts.latestRelease ?? "current release";
 
 export const s3TurboListProduct: S3TurboListProduct = {
   slug: "s3-turbo-list",
@@ -20,6 +18,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       meta: s3MetaLine(),
       proof: ["Automatic list segmentation", "DiffFlag Parquet", "Resume for list"],
       positioningLabel: "Positioning",
+      // Not rendered by the s3TurboList archetype (kept as source notes for evidence/FAQ).
       positioning: [
         {
           title: "Use it when",
@@ -168,8 +167,8 @@ export const s3TurboListProduct: S3TurboListProduct = {
           body: "No. List mode probes real `CommonPrefixes` boundaries on the first run. Hints files remain an optional control for repeated inventories.",
         },
         {
-          title: `What changed in ${s3Release}?`,
-          body: `${s3Release} pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can start at full concurrency instead of ramping through runtime splits.`,
+          title: "How does startup discovery work?",
+          body: "Startup discovery pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can open parallel work earlier instead of relying only on runtime splits.",
         },
       ],
     },
@@ -184,6 +183,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       meta: s3MetaLine(),
       proof: ["自动分段 list", "DiffFlag Parquet", "list 可续跑"],
       positioningLabel: "边界",
+      // Not rendered by the s3TurboList archetype (kept as source notes for evidence/FAQ).
       positioning: [
         {
           title: "什么时候用",
@@ -332,8 +332,8 @@ export const s3TurboListProduct: S3TurboListProduct = {
           body: "不需要。list 首次运行会探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的额外控制。",
         },
         {
-          title: `${s3Release} 变了什么？`,
-          body: `${s3Release} 在 list 启动阶段用并行单 key 探测为扁平命名空间预分区，首次运行即可满并发展开，而不必先靠运行时拆分爬坡。`,
+          title: "启动发现如何工作？",
+          body: "启动发现会在 list 启动阶段用并行 single-key 探测为扁平命名空间预分区，让首次运行更早展开并发，而不必只靠运行时拆分逐步提升。",
         },
       ],
     },
