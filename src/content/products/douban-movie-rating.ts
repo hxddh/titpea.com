@@ -27,7 +27,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
         "IMDb · Rotten Tomatoes · Metacritic",
         "No data collection disclosed",
       ],
-      positioningLabel: "Positioning",
+      positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",

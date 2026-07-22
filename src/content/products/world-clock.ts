@@ -23,7 +23,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMeta,
       proof: ["Work-hours status", "Live city rows", "Light and dark themes", "No data collection disclosed"],
-      positioningLabel: "Positioning",
+      positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",

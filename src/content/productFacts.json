@@ -97,7 +97,7 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.22.0",
+    "latestRelease": "v1.23.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
