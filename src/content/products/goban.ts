@@ -20,7 +20,7 @@ export const gobanProduct: NativeAppProduct = {
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
       proof: ["Four AI levels", "Full-game replay", "Named save slots", "SGF import and export"],
-      positioningLabel: "Positioning",
+      positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",

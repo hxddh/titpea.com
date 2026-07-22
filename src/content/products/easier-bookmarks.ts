@@ -21,7 +21,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
         "Keyboard accessible",
         "No analytics or servers",
       ],
-      positioningLabel: "Positioning",
+      positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",
