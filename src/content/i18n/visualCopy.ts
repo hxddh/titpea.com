@@ -37,7 +37,8 @@ export const visualCopy = {
       en: {
         heroAlt:
           "Goban wood board showing a completed game, black and white stones, the winning line, and game controls",
-        supportingAlt: "Goban reviewing a mid-game position on a wood board with the move list and replay controls visible",
+        supportingAlt:
+          "Goban reviewing a mid-game position on a wood board with the move list and replay controls visible",
         supportingKicker: "Move-by-move review",
         supportingTitle: "Return to the move that changed the game",
         supportingBody:
@@ -63,8 +64,7 @@ export const visualCopy = {
     },
     chessboard: {
       en: {
-        heroAlt:
-          "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
+        heroAlt: "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
         supportingAlt: "Chessboard reviewing a finished game with a centipawn evaluation curve and annotated mistakes",
         supportingKicker: "Engine review",
         supportingTitle: "See where the evaluation turned",
