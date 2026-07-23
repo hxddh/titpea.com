@@ -107,7 +107,7 @@ export const chessboardProduct: NativeAppProduct = {
         "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18、22 课零基础教学与杀型做题，支持本地对弈、棋钟、PGN/FEN 棋谱工具与整局复盘分析。",
       eyebrow: "桌面国际象棋",
       headline: "一张专注对弈的桌面国际象棋盘",
-      lead: "用 22 课离线课程从零上手，练习经典杀型，再与 Stockfish 18 或同屏好友对弈；局后通过兵分走势曲线回看转折。",
+      lead: "用 22 课离线课程从零上手，练习经典杀型，再与 Stockfish 18 或同屏好友对弈；局后通过引擎评估曲线回看转折。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
@@ -162,7 +162,7 @@ export const chessboardProduct: NativeAppProduct = {
         },
         {
           title: "整局复盘",
-          body: "一键引擎评估生成兵分走势曲线，并在着法列表标注失着；跳到任意局面后，可从该着继续下。",
+          body: "一键引擎评估生成引擎评估曲线，并在着法列表标注失着；跳到任意局面后，可从该着继续下。",
           intent: "capability",
           surface: "artifact",
         },

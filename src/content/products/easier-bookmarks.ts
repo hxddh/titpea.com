@@ -18,6 +18,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       proof: [
         "Instant local search",
         "Create, edit, move, reorder, delete",
+        "English and Simplified Chinese",
         "Keyboard accessible",
         "No analytics or servers",
       ],
@@ -95,7 +96,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       primaryCta: { label: "安装扩展", href: siteConfig.externalLinks.easierBookmarksChrome },
       secondaryCta: { label: "隐私政策", href: siteConfig.externalLinks.easierBookmarksPrivacyZh },
       meta: "Chrome 网上应用店 · 工作流与规划 · 无外部服务器",
-      proof: ["本地即时搜索", "新建、编辑、移动、排序、删除", "键盘可操作", "无分析服务或外部服务器"],
+      proof: ["本地即时搜索", "新建、编辑、移动、排序、删除", "英文与简体中文", "键盘可操作", "无分析服务或外部服务器"],
       positioningLabel: "适用与边界",
       positioning: [
         {

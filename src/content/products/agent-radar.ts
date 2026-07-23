@@ -15,7 +15,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
       headline: "Unattended research in Markdown",
-      lead: "A Git-backed research loop for the AI-agent industry: collect public signals, screen candidates, and commit bounded Markdown updates with checks.",
+      lead: "A Git-backed research loop for the AI-agent field: collect, screen, and commit the weekly brief, watchlist, field notes, and storage notes.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -74,7 +74,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faq: [
         {
           title: "Who is this for?",
-          body: "People who want an auditable, scheduled research loop on the AI-agent industry — not a news feed and not a private note vault with no promotion rules.",
+          body: "People who want an auditable, scheduled research loop on the AI-agent field — not a news feed and not a private note vault with no promotion rules.",
         },
         {
           title: "Do I run it only on GitHub Actions?",
@@ -96,7 +96,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
       eyebrow: "Markdown 优先 · GitHub Actions",
       headline: "跑在 Markdown 里的无人值守研究",
-      lead: "面向 Agent 产业的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新每周论点、观察名单、现场笔记和存储影响。",
+      lead: "面向 Agent 领域的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新每周论点、观察名单、现场笔记和存储影响。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -149,7 +149,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faq: [
         {
           title: "适合谁用？",
-          body: "想要可审计、可定时的 Agent 产业研究循环的人——不是新闻流，也不是没有升格规则的私人笔记库。",
+          body: "想要可审计、可定时的 Agent 领域研究循环的人——不是新闻流，也不是没有升格规则的私人笔记库。",
         },
         {
           title: "只能跑在 GitHub Actions 吗？",
