@@ -103,3 +103,5 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: 21324681fd1a0a66906e582c7894e9e5
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       - run: npm run smoke:production
+
+# Deploy trigger note: keep workflow active for main pushes.
