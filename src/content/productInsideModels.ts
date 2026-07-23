@@ -194,10 +194,10 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
     },
   ),
   chessboard: browserInside(
-    { en: "Learn the rules, then play and review", zh: "先学规则，再对弈与复盘" },
+    { en: "Learn, drill, then play and review", zh: "先学、做题，再对弈与复盘" },
     {
-      en: "The board keeps beginner lessons, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
-      zh: "零基础课程、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
+      en: "The board keeps beginner lessons, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
+      zh: "零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
   "easier-bookmarks": browserInside(
