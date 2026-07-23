@@ -64,7 +64,12 @@ export type HttpmonTerminalVisualModel = {
 };
 
 export type ScreenshotVisualModel = {
-  kind: "worldClockScreenshot" | "doubanScreenshot" | "gobanScreenshot" | "easierBookmarksScreenshot";
+  kind:
+    | "worldClockScreenshot"
+    | "doubanScreenshot"
+    | "gobanScreenshot"
+    | "chessboardScreenshot"
+    | "easierBookmarksScreenshot";
   label: string;
   images: Array<{ src: string; alt: string; className?: string; width: number; height: number }>;
   showcases?: Array<{
@@ -333,6 +338,42 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
           kicker: copy.notebookKicker,
           title: copy.notebookTitle,
           body: copy.notebookBody,
+        },
+      ],
+    };
+  }
+
+  if (kind === "chessboardScreenshot") {
+    const copy = visualCopy.productScreenshots.chessboard[locale];
+    return {
+      kind,
+      label,
+      images: [
+        {
+          src: siteConfig.assets.screenshots.chessboardBoard,
+          alt: copy.heroAlt,
+          width: 1223,
+          height: 768,
+        },
+      ],
+      showcases: [
+        {
+          src: siteConfig.assets.screenshots.chessboardReview,
+          alt: copy.supportingAlt,
+          width: 1223,
+          height: 768,
+          kicker: copy.supportingKicker,
+          title: copy.supportingTitle,
+          body: copy.supportingBody,
+        },
+        {
+          src: siteConfig.assets.screenshots.chessboardTheme,
+          alt: copy.themeAlt,
+          width: 1223,
+          height: 768,
+          kicker: copy.themeKicker,
+          title: copy.themeTitle,
+          body: copy.themeBody,
         },
       ],
     };

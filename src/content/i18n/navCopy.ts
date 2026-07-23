@@ -23,6 +23,7 @@ export const headerCopy: Record<
       pagewise: string;
       agentRadar: string;
       goban: string;
+      chessboard: string;
       easierBookmarks: string;
     };
   }
@@ -48,6 +49,7 @@ export const headerCopy: Record<
       pagewise: "PageWise",
       agentRadar: "Agent Radar",
       goban: "Goban",
+      chessboard: "Chessboard",
       easierBookmarks: "Easier Bookmarks",
     },
   },
@@ -72,6 +74,7 @@ export const headerCopy: Record<
       pagewise: "PageWise",
       agentRadar: "Agent Radar",
       goban: "五子棋 Goban",
+      chessboard: "国际象棋 Chessboard",
       easierBookmarks: "Easier Bookmarks",
     },
   },

@@ -7,7 +7,15 @@ export type ProductManifestItem = {
   group: ProductGroup;
   nav: {
     primary: boolean;
-    label?: "storageAgent" | "worldClock" | "douban" | "pagewise" | "agentRadar" | "goban" | "easierBookmarks";
+    label?:
+      | "storageAgent"
+      | "worldClock"
+      | "douban"
+      | "pagewise"
+      | "agentRadar"
+      | "goban"
+      | "chessboard"
+      | "easierBookmarks";
   };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
@@ -107,11 +115,21 @@ export const productManifest: readonly ProductManifestItem[] = [
     factId: "goban",
   },
   {
+    slug: "chessboard",
+    name: "Chessboard",
+    group: "personal",
+    nav: { primary: true, label: "chessboard" },
+    catalog: { order: 6 },
+    visual: "chessboardScreenshot",
+    ogImage: "/assets/og-chessboard.png",
+    factId: "chessboard",
+  },
+  {
     slug: "easier-bookmarks",
     name: "Easier Bookmarks",
     group: "personal",
     nav: { primary: true, label: "easierBookmarks" },
-    catalog: { order: 6 },
+    catalog: { order: 7 },
     visual: "easierBookmarksScreenshot",
     ogImage: "/assets/og-easier-bookmarks.png",
     factId: "easier-bookmarks",

@@ -97,7 +97,7 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.23.0",
+    "latestRelease": "v1.24.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
@@ -106,8 +106,32 @@
       "hints",
       "review coaching",
       "full-game evaluation curve and blunder list",
+      "tactical practice drills",
+      "match statistics by difficulty",
+      "swap2 opening option",
       "up to 30 named save slots",
       "SGF import and export",
+      "local gameplay"
+    ]
+  },
+  "chessboard": {
+    "source": "github-api",
+    "repository": "hxddh/chessboard",
+    "licenseKey": "gpl-3.0",
+    "licenseLabel": "GPLv3",
+    "latestRelease": "v0.4.0",
+    "stableFacts": [
+      "desktop app",
+      "Apple Silicon macOS and Windows x64 releases",
+      "Stockfish 18",
+      "four strength levels",
+      "local two-player mode",
+      "full chess rules via chess.js",
+      "centipawn review curve and mistake annotations",
+      "continue from any move",
+      "PGN import and export",
+      "FEN copy",
+      "match statistics by difficulty",
       "local gameplay"
     ]
   },

@@ -9,6 +9,7 @@ export type ProductSlug =
   | "world-clock"
   | "douban-movie-rating"
   | "goban"
+  | "chessboard"
   | "easier-bookmarks";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
@@ -162,7 +163,7 @@ export type BrowserExtensionProduct = {
 };
 
 export type NativeAppProduct = {
-  slug: "goban";
+  slug: "goban" | "chessboard";
   name: string;
   archetype: "nativeApp";
   locales: Localized<BrowserExtensionProductCopy>;
