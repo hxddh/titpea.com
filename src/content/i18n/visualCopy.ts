@@ -61,6 +61,33 @@ export const visualCopy = {
         notebookBody: "把传统黑白棋子切换为横线纸上的三角与圆圈，棋局状态、五连胜线和操作面板保持一致。",
       },
     },
+    chessboard: {
+      en: {
+        heroAlt:
+          "Chessboard wood theme showing a mid-game position, piece highlights, move list, and Stockfish controls",
+        supportingAlt: "Chessboard reviewing a finished game with a centipawn evaluation curve and annotated mistakes",
+        supportingKicker: "Engine review",
+        supportingTitle: "See where the evaluation turned",
+        supportingBody:
+          "Run a full-game Stockfish pass to build a centipawn curve and mark mistakes on the move list. Jump to any position, then continue from there.",
+        themeAlt: "Chessboard night theme showing a chess position with the sidebar and theme controls visible",
+        themeKicker: "Board themes",
+        themeTitle: "Wood, night, day, or paper",
+        themeBody:
+          "Keep the same game state while switching appearance. Flip the board, mute sound, and keep local stats by difficulty.",
+      },
+      zh: {
+        heroAlt: "Chessboard 木色主题中局局面，显示棋子高亮、着法列表与 Stockfish 控制",
+        supportingAlt: "Chessboard 复盘已结束对局，显示兵分走势曲线与失着标注",
+        supportingKicker: "引擎复盘",
+        supportingTitle: "看清局势从哪里转折",
+        supportingBody: "一键跑完 Stockfish 评估，生成兵分走势曲线并在着法列表标注失着；跳到任意局面后可继续下。",
+        themeAlt: "Chessboard 夜色主题棋盘，侧栏与主题控制可见",
+        themeKicker: "棋盘主题",
+        themeTitle: "木色、夜色、日间或纸本",
+        themeBody: "切换外观时局面不变。可翻转棋盘、开关音效，并按难度保留本地胜负统计。",
+      },
+    },
   },
   s3Benchmark: {
     en: {

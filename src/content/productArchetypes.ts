@@ -26,6 +26,7 @@ export type VisualPolicy =
   | "agentWorkbenchScreenshot"
   | "agentRadarTerminal"
   | "gobanScreenshot"
+  | "chessboardScreenshot"
   | "easierBookmarksScreenshot";
 export type ProductGroup = "storage" | "personal";
 

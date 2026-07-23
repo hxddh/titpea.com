@@ -54,6 +54,8 @@ const copy = model.copy;
             )}
             {model.visual.kind === "gobanScreenshot" &&
               model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
+            {model.visual.kind === "chessboardScreenshot" &&
+              model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
           </>
         );
       }

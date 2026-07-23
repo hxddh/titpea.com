@@ -27,6 +27,7 @@ export function productCatalogModel(locale: Locale) {
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
     if (slug === "douban-movie-rating") return [copy.doubanText, copy.doubanRole];
     if (slug === "goban") return [copy.gobanText, copy.gobanRole];
+    if (slug === "chessboard") return [copy.chessboardText, copy.chessboardRole];
     return [copy.easierBookmarksText, copy.easierBookmarksRole];
   };
   const catalogItems = productManifest.map((item) => {

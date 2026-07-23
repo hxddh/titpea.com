@@ -8,6 +8,7 @@ import { agentRadarProduct } from "./products/agent-radar";
 import { pagewiseProduct } from "./products/pagewise";
 import { worldClockProduct } from "./products/world-clock";
 import { gobanProduct } from "./products/goban";
+import { chessboardProduct } from "./products/chessboard";
 import { easierBookmarksProduct } from "./products/easier-bookmarks";
 import { productManifest } from "./productManifest";
 
@@ -23,5 +24,6 @@ export const products: Record<ProductSlug, Product> = {
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,
   goban: gobanProduct,
+  chessboard: chessboardProduct,
   "easier-bookmarks": easierBookmarksProduct,
 };

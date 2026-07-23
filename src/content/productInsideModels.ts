@@ -189,8 +189,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   goban: browserInside(
     { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
     {
-      en: "The board keeps the current game, AI controls, move list, appearance, and SGF tools together in one desktop app.",
-      zh: "当前棋局、AI 设置、手数列表、外观与 SGF 工具都集中在同一个桌面应用里。",
+      en: "The board keeps the current game, AI controls, move list, practice drills, statistics, appearance, and SGF tools together in one desktop app.",
+      zh: "当前棋局、AI 设置、手数列表、战术练习、对局统计、外观与 SGF 工具都集中在同一个桌面应用里。",
+    },
+  ),
+  chessboard: browserInside(
+    { en: "Play Stockfish, then inspect every move", zh: "与 Stockfish 对弈，再逐着复盘" },
+    {
+      en: "The board keeps the current game, Stockfish controls, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
+      zh: "当前棋局、Stockfish 设置、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
   "easier-bookmarks": browserInside(
