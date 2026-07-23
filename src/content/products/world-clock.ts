@@ -3,7 +3,7 @@ import { worldClockFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const worldClockMeta = `Chrome Web Store · ${worldClockFacts.category} · No data collection disclosed`;
-const worldClockMetaZh = `Chrome Web Store · ${worldClockFacts.category} · 声明不收集数据`;
+const worldClockMetaZh = "Chrome 网上应用店 · 工具 · 声明不收集数据";
 
 export const worldClockProduct: BrowserExtensionProduct = {
   slug: "world-clock",
@@ -12,7 +12,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "World Clock",
-      description: "A minimalist Chrome extension showing live time across the cities you choose.",
+      description: "A lightweight Chrome extension showing live time across the cities you choose.",
       eyebrow: "Chrome Extension",
       headline: "Time across cities at a glance",
       lead: "Open one small popup to see the local time, UTC offset, date, and work-hours context for the cities you care about.",

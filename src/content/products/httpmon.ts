@@ -2,7 +2,7 @@ import type { StorageCliProduct } from "../../lib/site";
 import { httpmonFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
-const meta = `Go · ${httpmonFacts.licenseLabel ?? "MIT"} · local proxy · HTTP / HTTPS / wss · NDJSON / HAR`;
+const meta = `Go · ${httpmonFacts.licenseLabel ?? "MIT"} · local proxy · HTTP / HTTPS / wss handshake · NDJSON / HAR`;
 
 export const httpmonProduct: StorageCliProduct = {
   slug: "httpmon",
@@ -18,7 +18,7 @@ export const httpmonProduct: StorageCliProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "Usage", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
-      proof: ["Scoped to one child process", "No system proxy change", "HTTP / HTTPS / wss", "NDJSON / HAR"],
+      proof: ["Scoped to one child process", "No system proxy change", "HTTP / HTTPS / wss handshake", "NDJSON / HAR"],
       workflowLabel: "What you see",
       workflow: [
         {
@@ -86,7 +86,7 @@ export const httpmonProduct: StorageCliProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.httpmon },
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
-      proof: ["只作用于一个子进程", "不改系统代理", "HTTP / HTTPS / wss", "NDJSON / HAR"],
+      proof: ["只作用于一个子进程", "不改系统代理", "HTTP / HTTPS / wss 握手", "NDJSON / HAR"],
       workflowLabel: "终端里能看到什么",
       workflow: [
         {

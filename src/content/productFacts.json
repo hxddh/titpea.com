@@ -5,7 +5,18 @@
     "licenseKey": "apache-2.0",
     "licenseLabel": "Apache-2.0",
     "latestRelease": "v0.23.0",
-    "stableFacts": ["S3-compatible", "Parquet output", "Agent-safe JSON", "run manifests"]
+    "stableFacts": [
+      "S3-compatible",
+      "Parquet output",
+      "DiffFlag Parquet",
+      "automatic list segmentation",
+      "list resume",
+      "Agent-safe JSON",
+      "run manifests",
+      "compat-probe",
+      "verified AWS S3 MinIO Baidu BOS",
+      "presets for R2 OSS B2"
+    ]
   },
   "storage-agent-workbench": {
     "source": "manual",
@@ -51,14 +62,28 @@
     "source": "chrome-web-store",
     "listingUrl": "https://chromewebstore.google.com/detail/mghphbjnicggehnhbjbpjddfidkepnfp",
     "category": "Tools",
-    "stableFacts": ["timezone popup", "light and dark themes", "no data collection disclosed"],
+    "stableFacts": [
+      "timezone popup",
+      "work-hours status",
+      "live city rows",
+      "light and dark themes",
+      "multilingual interface",
+      "no data collection disclosed"
+    ],
     "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
   },
   "douban-movie-rating": {
     "source": "chrome-web-store",
     "listingUrl": "https://chromewebstore.google.com/detail/alhcfchcficmeggkhcpkojoipdkkgoif",
     "category": "Entertainment",
-    "stableFacts": ["IMDb context", "Rotten Tomatoes context", "Metacritic context", "no data collection disclosed"],
+    "stableFacts": [
+      "IMDb context",
+      "Rotten Tomatoes context",
+      "Metacritic context",
+      "Chinese and English title matching",
+      "no result without reliable match",
+      "no data collection disclosed"
+    ],
     "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
   },
   "pagewise": {
@@ -68,10 +93,14 @@
     "stableFacts": [
       "local PDF and image analysis",
       "page-wise agent chat",
+      "visible read trail",
+      "character budget page reads",
       "local-first",
       "BYOK",
+      "OS keychain",
       "desktop app",
-      "credentials stay local"
+      "credentials stay local",
+      "Markdown export"
     ]
   },
   "agent-radar": {

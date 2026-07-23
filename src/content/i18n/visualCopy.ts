@@ -78,10 +78,10 @@ export const visualCopy = {
       },
       zh: {
         heroAlt: "Chessboard 木色主题终局局面，显示棋子高亮、着法列表与侧栏控制",
-        supportingAlt: "Chessboard 复盘已结束对局，显示兵分走势曲线与失着标注",
+        supportingAlt: "Chessboard 复盘已结束对局，显示引擎评估曲线与失着标注",
         supportingKicker: "引擎复盘",
         supportingTitle: "看清局势从哪里转折",
-        supportingBody: "一键跑完 Stockfish 评估，生成兵分走势曲线并在着法列表标注失着；跳到任意局面后可继续下。",
+        supportingBody: "一键跑完 Stockfish 评估，生成引擎评估曲线并在着法列表标注失着；跳到任意局面后可继续下。",
         themeAlt: "Chessboard 夜色主题棋盘，侧栏与主题控制可见",
         themeKicker: "棋盘主题",
         themeTitle: "木色、夜色、日间或纸本",
@@ -120,7 +120,7 @@ export const visualCopy = {
       toolsSuffix: "registered tools",
       helpersTitle: "parsers and analyzers",
       helpersBody:
-        "Parse logs and HTTP traces, analyze IAM, CORS, throttling, network, replication, cost, and policy fixes.",
+        "Parse logs and HTTP traces, analyze IAM, CORS, throttling, network, replication, cost, and policy-change recommendations.",
       evalsTitle: "safe reports",
       evalsBody: "Secrets are redacted; reports separate likely cause, evidence, and next steps.",
       cards: [
@@ -155,7 +155,8 @@ export const visualCopy = {
       skillsBody: "覆盖安全、协议兼容、CLI/SDK、性能、网络、生命周期、迁移、一致性、日志、通知和初步归类。",
       toolsSuffix: "个注册工具",
       helpersTitle: "解析器和分析器",
-      helpersBody: "解析日志和 HTTP trace，分析 IAM、CORS、限流、网络、复制、成本，并给出 policy 修改建议。",
+      helpersBody:
+        "解析日志和 HTTP trace，分析 IAM、CORS、限流、网络、复制、成本，并给出 policy 修改建议（需自行落地）。",
       evalsTitle: "安全报告",
       evalsBody: "凭据会先脱敏；报告区分可能原因、证据和后续步骤。",
       cards: [

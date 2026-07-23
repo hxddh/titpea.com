@@ -3,7 +3,7 @@ import { doubanMovieRatingFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
 const doubanMeta = `Chrome Web Store · ${doubanMovieRatingFacts.category} · No data collection disclosed`;
-const doubanMetaZh = `Chrome Web Store · ${doubanMovieRatingFacts.category} · 声明不收集数据`;
+const doubanMetaZh = "Chrome 网上应用店 · 娱乐 · 声明不收集数据";
 
 export const doubanMovieRatingProduct: BrowserExtensionProduct = {
   slug: "douban-movie-rating",
