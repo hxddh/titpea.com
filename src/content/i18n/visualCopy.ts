@@ -37,7 +37,7 @@ export const visualCopy = {
       en: {
         heroAlt:
           "Goban wood board showing a completed game, black and white stones, the winning line, and game controls",
-        supportingAlt: "Goban reviewing move 13 on a wood board with the move list and blunder explanation visible",
+        supportingAlt: "Goban reviewing a mid-game position on a wood board with the move list and replay controls visible",
         supportingKicker: "Move-by-move review",
         supportingTitle: "Return to the move that changed the game",
         supportingBody:
@@ -51,7 +51,7 @@ export const visualCopy = {
       },
       zh: {
         heroAlt: "Goban 木质棋盘上的完整对局，显示黑白棋子、五连胜线与对局控制",
-        supportingAlt: "Goban 在木质棋盘上复盘第 13 手，旁边显示着法列表与失着说明",
+        supportingAlt: "Goban 在木质棋盘上复盘中局局面，旁边显示着法列表与复盘控制",
         supportingKicker: "逐手复盘",
         supportingTitle: "回到改变局势的那一手",
         supportingBody: "开启复盘分析后，从棋谱中选择任意一手。棋盘会还原当时局面，并在旁边说明关键失着。",
@@ -64,7 +64,7 @@ export const visualCopy = {
     chessboard: {
       en: {
         heroAlt:
-          "Chessboard wood theme showing a mid-game position, piece highlights, move list, and Stockfish controls",
+          "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
         supportingAlt: "Chessboard reviewing a finished game with a centipawn evaluation curve and annotated mistakes",
         supportingKicker: "Engine review",
         supportingTitle: "See where the evaluation turned",
@@ -77,7 +77,7 @@ export const visualCopy = {
           "Keep the same game state while switching appearance. Flip the board, mute sound, and keep local stats by difficulty.",
       },
       zh: {
-        heroAlt: "Chessboard 木色主题中局局面，显示棋子高亮、着法列表与 Stockfish 控制",
+        heroAlt: "Chessboard 木色主题终局局面，显示棋子高亮、着法列表与侧栏控制",
         supportingAlt: "Chessboard 复盘已结束对局，显示兵分走势曲线与失着标注",
         supportingKicker: "引擎复盘",
         supportingTitle: "看清局势从哪里转折",
