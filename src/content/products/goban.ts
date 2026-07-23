@@ -12,19 +12,19 @@ export const gobanProduct: NativeAppProduct = {
     en: {
       title: "Goban",
       description:
-        "A desktop Gomoku game for macOS and Windows, with four AI levels, full-game review, tactical practice, named saves, and SGF tools.",
+        "A desktop Gomoku game for macOS and Windows, with four AI levels, full-game review, tactical practice, a daily challenge, named saves, and SGF tools.",
       eyebrow: "Desktop Gomoku game",
       headline: "A focused Gomoku board for desktop",
-      lead: "Play on a clean 15×15 board, challenge four AI levels, review the full game, then drill the mistakes that decided it.",
+      lead: "Play on a clean 15×15 board, challenge four AI levels, review the full game, then keep a short daily streak with five fixed puzzles.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["Four AI levels", "Full-game replay", "Tactical practice", "SGF import and export"],
+      proof: ["Four AI levels", "Full-game replay", "Daily challenge", "SGF import and export"],
       positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",
-          body: "You want a quiet desktop board for a quick game, a harder AI match, a visual post-game review, or short tactical drills built from your own mistakes.",
+          body: "You want a quiet desktop board for a quick game, a harder AI match, a visual post-game review, short tactical drills, or a five-puzzle daily streak.",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -37,7 +37,7 @@ export const gobanProduct: NativeAppProduct = {
         },
         {
           title: "Local by design",
-          body: "Gameplay, saves, analysis, practice, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
+          body: "Gameplay, saves, analysis, practice, daily challenges, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -63,14 +63,14 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "Tactical practice",
-          body: "Drill winning moves and five-threat defenses on a separate practice board. Built-in positions mix with drills generated from your own blunders.",
+          title: "Practice and daily challenge",
+          body: "Drill winning moves and five-threat defenses anytime, then open Daily for five date-seeded puzzles. Completing a round checks in once; streaks show up in stats.",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Named saves and match stats",
-          body: "Keep up to 30 named local saves, then resume the position you want. Track wins, losses, streaks, and time by difficulty.",
+          body: "Keep up to 30 named local saves, then resume the position you want. Track wins, losses, streaks, daily check-ins, and time by difficulty.",
           intent: "capability",
           surface: "artifact",
         },
@@ -89,7 +89,7 @@ export const gobanProduct: NativeAppProduct = {
         },
         {
           title: "Does it need an account or internet connection?",
-          body: "No account is required. Gameplay, saves, analysis, practice, and SGF work stay local; you only need the internet to download a release.",
+          body: "No account is required. Gameplay, saves, analysis, practice, daily challenges, and SGF work stay local; you only need the internet to download a release.",
         },
         {
           title: "Can I bring in an existing game?",
@@ -99,19 +99,20 @@ export const gobanProduct: NativeAppProduct = {
     },
     zh: {
       title: "五子棋 Goban",
-      description: "面向 macOS 与 Windows 的桌面五子棋，提供四档 AI、整局复盘、战术练习、命名存档与 SGF 棋谱工具。",
+      description:
+        "面向 macOS 与 Windows 的桌面五子棋，提供四档 AI、整局复盘、战术练习、每日挑战、命名存档与 SGF 棋谱工具。",
       eyebrow: "桌面五子棋",
       headline: "一张专注对弈的桌面五子棋盘",
-      lead: "在干净的 15×15 棋盘上挑战四档 AI；对局结束后回看走势，再把关键失着练成短题。",
+      lead: "在干净的 15×15 棋盘上挑战四档 AI；对局结束后回看走势，再用每天固定的五道短题保持练习节奏。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["四档 AI", "整局复盘", "战术练习", "SGF 导入与导出"],
+      proof: ["四档 AI", "整局复盘", "每日挑战", "SGF 导入与导出"],
       positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
-          body: "想安静地下一局棋、挑战更高难度 AI、在局后看清转折点，或把失着练成短题。",
+          body: "想安静地下一局棋、挑战更高难度 AI、在局后看清转折点，或用每日五题保持练习节奏。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -124,7 +125,7 @@ export const gobanProduct: NativeAppProduct = {
         },
         {
           title: "本地运行",
-          body: "对弈、存档、分析、练习和导入的棋谱都在本地完成，不需要账号。Goban 是桌面棋盘，不是在线对战服务。",
+          body: "对弈、存档、分析、练习、每日挑战和导入的棋谱都在本地完成，不需要账号。Goban 是桌面棋盘，不是在线对战服务。",
           intent: "boundary",
           surface: "artifact",
         },
@@ -150,14 +151,14 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "战术练习",
-          body: "在独立小棋盘上练习制胜一手与挡住成五威胁；内置题目会与从你对局失着生成的题目混合。",
+          title: "战术练习与每日挑战",
+          body: "随时练习制胜一手与挡住成五威胁；「每日」固定抽出五题，当天重进仍是同一套，完成一轮打卡一次，连打天数记入统计。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "命名存档与对局统计",
-          body: "最多保留 30 个带名称的本地存档，按局面继续；按难度查看胜负、连胜、手数与用时。",
+          body: "最多保留 30 个带名称的本地存档，按局面继续；按难度查看胜负、连胜、每日打卡、手数与用时。",
           intent: "capability",
           surface: "artifact",
         },
@@ -176,7 +177,7 @@ export const gobanProduct: NativeAppProduct = {
         },
         {
           title: "需要账号或联网吗？",
-          body: "不需要账号。对弈、存档、分析、练习和 SGF 操作都在本地完成；只有下载 release 时需要联网。",
+          body: "不需要账号。对弈、存档、分析、练习、每日挑战和 SGF 操作都在本地完成；只有下载 release 时需要联网。",
         },
         {
           title: "可以导入已有棋局吗？",
