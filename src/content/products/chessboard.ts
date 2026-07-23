@@ -12,19 +12,19 @@ export const chessboardProduct: NativeAppProduct = {
     en: {
       title: "Chessboard",
       description:
-        "A desktop chess app for macOS and Windows, with Stockfish 18, local play, PGN and FEN tools, and full-game review analysis.",
+        "A desktop chess app for macOS and Windows, with Stockfish 18, a 21-lesson beginner course, local play, clocks, PGN and FEN tools, and full-game review.",
       eyebrow: "Desktop chess",
       headline: "A focused chessboard for desktop",
-      lead: "Play against Stockfish 18 or a friend on the same screen, then review the full game with a centipawn curve and annotated mistakes.",
+      lead: "Learn the rules in 21 offline lessons, play Stockfish 18 or a friend on the same screen, then review the full game with a centipawn curve and annotated mistakes.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["Stockfish 18", "Four strength levels", "Full-game review", "PGN and FEN tools"],
+      proof: ["21 beginner lessons", "Stockfish 18", "Full-game review", "PGN and FEN tools"],
       positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",
-          body: "You want a quiet desktop board for a quick game against Stockfish, a local two-player match, or a post-game review that shows where the evaluation turned.",
+          body: "You want to learn chess from scratch on the board, play a quiet game against Stockfish, run a timed local match, or review where the evaluation turned.",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -37,7 +37,7 @@ export const chessboardProduct: NativeAppProduct = {
         },
         {
           title: "Local by design",
-          body: "Gameplay, autosave, analysis, and imported records run locally. Chessboard is a desktop board, not an online chess service.",
+          body: "Lessons, gameplay, autosave, analysis, and imported records run locally. Chessboard is a desktop board, not an online chess service.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -45,20 +45,26 @@ export const chessboardProduct: NativeAppProduct = {
       featuresLabel: "At the board",
       features: [
         {
-          title: "Stockfish at four strengths",
-          body: "Play against Stockfish 18 from beginner Elo 1320 through full strength. Choose white or black; playing black flips the board for you.",
+          title: "21 beginner lessons",
+          body: "An offline course from board coordinates and piece moves through checkmate patterns, draws, and notation. Miss twice and the answer appears; progress saves automatically.",
           intent: "capability",
           surface: "artifact",
         },
         {
-          title: "Two-player on one screen",
-          body: "Switch to local two-player mode and take turns on the same board without an engine reply.",
+          title: "Stockfish with hints",
+          body: "Play against Stockfish 18 from beginner Elo 1320 through full strength. Press H for a full-strength arrow hint without placing the move for you.",
+          intent: "capability",
+          surface: "artifact",
+        },
+        {
+          title: "Two-player clocks and openings",
+          body: "Share one screen in two-player mode with optional 3, 5, or 10 minute clocks. The sidebar names the current ECO opening as the game unfolds.",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Complete rules, clear moves",
-          body: "Legal moves highlight as dots and capture rings. Castling, en passant, promotion, checkmate, stalemate, and draw claims are enforced by chess.js.",
+          body: "Legal moves highlight as dots and capture rings. Castling, en passant, promotion choice, checkmate, stalemate, resign, and draw claims follow chess.js and FIDE timeout rules.",
           intent: "capability",
           surface: "artifact",
         },
@@ -69,14 +75,8 @@ export const chessboardProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "PGN and FEN tools",
-          body: "Copy, export, paste, or import a PGN record; copy the current FEN whenever you need the exact position.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Themes, flip, and stats",
-          body: "Switch wood, night, day, or paper themes, flip the board with F, and keep win–loss–draw stats by difficulty across restarts.",
+          title: "PGN, FEN, themes, and stats",
+          body: "Copy, export, paste, or import standard seven-tag PGN; copy the current FEN; switch wood, night, day, or paper themes; and keep win–loss–draw stats by difficulty.",
           intent: "capability",
           surface: "artifact",
         },
@@ -89,7 +89,7 @@ export const chessboardProduct: NativeAppProduct = {
         },
         {
           title: "Does it need an account or internet connection?",
-          body: "No account is required. Gameplay, autosave, analysis, and PGN work stay local; you only need the internet to download a release.",
+          body: "No account is required. Lessons, gameplay, autosave, analysis, and PGN work stay local; you only need the internet to download a release.",
         },
         {
           title: "Can I bring in an existing game?",
@@ -104,19 +104,19 @@ export const chessboardProduct: NativeAppProduct = {
     zh: {
       title: "国际象棋 Chessboard",
       description:
-        "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18，支持本地对弈、PGN/FEN 棋谱工具与整局复盘分析。",
+        "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18 与 21 课零基础教学，支持本地对弈、棋钟、PGN/FEN 棋谱工具与整局复盘分析。",
       eyebrow: "桌面国际象棋",
       headline: "一张专注对弈的桌面国际象棋盘",
-      lead: "与 Stockfish 18 或同屏好友对弈；局后通过兵分走势曲线和失着标注，回看局势从哪里发生变化。",
+      lead: "用 21 课离线课程从零上手，与 Stockfish 18 或同屏好友对弈；局后通过兵分走势曲线和失着标注回看转折。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["Stockfish 18", "四档强度", "整局复盘", "PGN 与 FEN 工具"],
+      proof: ["21 课零基础教学", "Stockfish 18", "整局复盘", "PGN 与 FEN 工具"],
       positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
-          body: "想安静地下一局棋、挑战 Stockfish，或在局后直观看清局势从哪一着开始转折。",
+          body: "想从棋盘上学会规则，安静地挑战 Stockfish，开一局计时双人对弈，或在局后看清局势从哪一着开始转折。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -129,7 +129,7 @@ export const chessboardProduct: NativeAppProduct = {
         },
         {
           title: "本地运行",
-          body: "对弈、自动存档、分析和导入的棋谱都在本地完成。Chessboard 是桌面棋盘，不是在线对战服务。",
+          body: "课程、对弈、自动存档、分析和导入的棋谱都在本地完成。Chessboard 是桌面棋盘，不是在线对战服务。",
           intent: "boundary",
           surface: "artifact",
         },
@@ -137,20 +137,26 @@ export const chessboardProduct: NativeAppProduct = {
       featuresLabel: "棋盘上的能力",
       features: [
         {
-          title: "四档 Stockfish 强度",
-          body: "内置 Stockfish 18，从入门 Elo 1320 到满强度。可选执白或执黑；执黑时自动翻转视角。",
+          title: "21 课零基础教学",
+          body: "离线课程覆盖棋盘坐标、棋子走法、将杀与和棋，再到记谱与实战杀法。连错两次会标出答案，进度自动保存。",
           intent: "capability",
           surface: "artifact",
         },
         {
-          title: "同屏双人对弈",
-          body: "切换到双人模式后，两人在同一棋盘轮流走子，不需要引擎回着。",
+          title: "Stockfish 与引擎提示",
+          body: "内置 Stockfish 18，从入门 Elo 1320 到满强度。按 H 显示满强度推荐箭头，不会替你落子。",
+          intent: "capability",
+          surface: "artifact",
+        },
+        {
+          title: "双人棋钟与开局名称",
+          body: "同屏双人可开 3 / 5 / 10 分钟棋钟；侧栏按局面显示主流 ECO 开局名称。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "完整规则与清晰走法",
-          body: "合法落点以圆点、吃子以圆环标出。王车易位、吃过路兵、升变、将死、逼和与和棋判定由 chess.js 执行。",
+          body: "合法落点以圆点、吃子以圆环标出。王车易位、吃过路兵、升变选择、将死、逼和、认输与和棋，以及超时在无子力将杀时判和，均按规则执行。",
           intent: "capability",
           surface: "artifact",
         },
@@ -161,14 +167,8 @@ export const chessboardProduct: NativeAppProduct = {
           surface: "artifact",
         },
         {
-          title: "PGN 与 FEN 工具",
-          body: "复制、导出、粘贴或导入 PGN 棋谱；需要精确局面时可随时复制当前 FEN。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "主题、翻转与统计",
-          body: "在木色、夜色、日间、纸本主题间切换，按 F 翻转棋盘，并按难度保留胜负和统计。",
+          title: "PGN、FEN、主题与统计",
+          body: "复制、导出、粘贴或导入带标准七标签的 PGN；随时复制当前 FEN；在木色、夜色、日间、纸本主题间切换，并按难度保留胜负统计。",
           intent: "capability",
           surface: "artifact",
         },
@@ -181,7 +181,7 @@ export const chessboardProduct: NativeAppProduct = {
         },
         {
           title: "需要账号或联网吗？",
-          body: "不需要账号。对弈、自动存档、分析和 PGN 操作都在本地完成；只有下载 release 时需要联网。",
+          body: "不需要账号。课程、对弈、自动存档、分析和 PGN 操作都在本地完成；只有下载 release 时需要联网。",
         },
         {
           title: "可以导入已有棋局吗？",
