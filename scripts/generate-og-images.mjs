@@ -109,7 +109,7 @@ export const images = [
     file: "og-chessboard.png",
     eyebrow: "Chessboard",
     title: "A focused chessboard for desktop",
-    body: "Stockfish 18, 21 beginner lessons, full-game review, and PGN tools for macOS and Windows.",
+    body: "Stockfish 18, beginner lessons, mate drills, and PGN tools for macOS and Windows.",
     accent: "#6b4f2a",
     mark: "♔",
     visual: "stack",
