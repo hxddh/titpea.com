@@ -201,10 +201,10 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
     },
   ),
   pulse: browserInside(
-    { en: "A lamp for waiting agents", zh: "给等待中的 Agent 一盏灯" },
+    { en: "Glance first; open the tray when you need detail", zh: "先扫一眼；需要细节再打开托盘" },
     {
-      en: "Pulse sits in the macOS menu bar: glance for waiting, running, or idle; open the tray for session rows; click through to the terminal that needs you.",
-      zh: "Pulse 待在 macOS 菜单栏：余光看等待、运行或空闲；打开托盘看会话行；点一下跳到需要你的终端。",
+      en: "The menu bar answers whether to look up. The tray lists who is waiting and why, then focuses the matching terminal.",
+      zh: "菜单栏只回答要不要抬头。托盘列出谁在等、为何等，再聚焦到对应终端。",
     },
   ),
   "easier-bookmarks": browserInside(
