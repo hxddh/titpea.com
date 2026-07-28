@@ -123,6 +123,15 @@ export const images = [
     mark: "BM",
     visual: "stack",
   },
+  {
+    file: "og-pulse.png",
+    eyebrow: "Pulse",
+    title: "Know when an agent needs you",
+    body: "A macOS menu-bar lamp for coding agents — idle, running, or waiting — with a session tray that jumps to the right terminal.",
+    accent: "#b42318",
+    mark: "●",
+    visual: "pulse",
+  },
 ];
 
 const escape = (value) =>
@@ -215,6 +224,31 @@ function visualPanel(kind, accent, mark) {
       <text x="28" y="224" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">IMDb 7.7</text>
       <text x="28" y="264" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">RT 94%</text>
       <text x="28" y="304" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22">MC 72/100</text>
+    </g>`;
+  }
+
+  if (kind === "pulse") {
+    return `<g transform="translate(786 108)">
+      <rect width="324" height="360" rx="18" fill="#fff" stroke="#d9dde7"/>
+      <rect x="0" y="0" width="324" height="52" rx="18" fill="#f7f9fc"/>
+      <rect x="0" y="36" width="324" height="16" fill="#f7f9fc"/>
+      <text x="24" y="32" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">menu bar</text>
+      <circle cx="236" cy="26" r="6" fill="${accent}"/>
+      <text x="250" y="31" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="14" font-weight="700">2 · 4m</text>
+      <path d="M0 52h324" stroke="#e4e7ec"/>
+      <text x="24" y="90" fill="${accent}" font-family="Inter, ui-sans-serif, system-ui" font-size="22" font-weight="760">Needs you · 2</text>
+      <text x="24" y="118" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">Claude · Codex</text>
+      <path d="M0 138h324" stroke="#e4e7ec"/>
+      <circle cx="30" cy="172" r="5" fill="${accent}"/>
+      <text x="46" y="168" fill="#111827" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="700">Approve package install</text>
+      <text x="46" y="192" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">Claude · Bash · 4m</text>
+      <circle cx="30" cy="236" r="5" fill="${accent}"/>
+      <text x="46" y="232" fill="#111827" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="700">Review failing CI</text>
+      <text x="46" y="256" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">Codex · pending · 1m</text>
+      <circle cx="30" cy="300" r="5" fill="#16805c"/>
+      <text x="46" y="296" fill="#111827" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="700">Draft release notes</text>
+      <text x="46" y="320" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">Cursor · running</text>
+      <text x="24" y="348" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="12">local probe · harvest · hooks</text>
     </g>`;
   }
 

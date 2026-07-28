@@ -23,6 +23,7 @@ export function productCatalogModel(locale: Locale) {
     if (slug === "storageops") return [copy.storageopsText, copy.storageopsRole];
     if (slug === "httpmon") return [copy.httpmon, copy.httpmonRole];
     if (slug === "pagewise") return [copy.pagewiseText, copy.pagewiseRole];
+    if (slug === "pulse") return [copy.pulseText, copy.pulseRole];
     if (slug === "agent-radar") return [copy.agentRadarText, copy.agentRadarRole];
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
     if (slug === "douban-movie-rating") return [copy.doubanText, copy.doubanRole];

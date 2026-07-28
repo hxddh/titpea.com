@@ -200,6 +200,13 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       zh: "零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
+  pulse: browserInside(
+    { en: "A lamp for waiting agents", zh: "给等待中的 Agent 一盏灯" },
+    {
+      en: "Pulse sits in the macOS menu bar: glance for waiting, running, or idle; open the tray for session rows; click through to the terminal that needs you.",
+      zh: "Pulse 待在 macOS 菜单栏：余光看等待、运行或空闲；打开托盘看会话行；点一下跳到需要你的终端。",
+    },
+  ),
   "easier-bookmarks": browserInside(
     { en: "Your bookmark tree, without the menu maze", zh: "不用层层点菜单，也能看清书签树" },
     {

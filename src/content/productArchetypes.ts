@@ -27,7 +27,8 @@ export type VisualPolicy =
   | "agentRadarTerminal"
   | "gobanScreenshot"
   | "chessboardScreenshot"
-  | "easierBookmarksScreenshot";
+  | "easierBookmarksScreenshot"
+  | "pulseMenuBar";
 export type ProductGroup = "storage" | "personal";
 
 export type ArchetypeSectionSpec = {
@@ -46,7 +47,7 @@ export type ProductArchetypeContract = {
   sectionIndex: boolean;
   indexLabel: Record<Locale, string>;
   applicationCategory: "DeveloperApplication" | "BrowserApplication" | "GameApplication";
-  operatingSystem: "Cross-platform" | "Chrome" | "macOS and Windows";
+  operatingSystem: "Cross-platform" | "Chrome" | "macOS" | "macOS and Windows";
   defaultVisual: VisualPolicy;
   sections: ArchetypeSectionSpec[];
 };
@@ -253,6 +254,31 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         required: true,
       },
       { id: "features", label: { en: "At the board", zh: "棋盘上的能力" }, source: "features", required: true },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
+  menuBarApp: {
+    group: "personal",
+    pageClass: "product-page product-page-menuBarApp",
+    sectionIndex: false,
+    indexLabel: { en: "Read this page", zh: "阅读路径" },
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS",
+    defaultVisual: "pulseMenuBar",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" } },
+      {
+        id: "positioning",
+        label: { en: "Fit and limits", zh: "适用与边界" },
+        source: "positioning",
+        required: true,
+      },
+      {
+        id: "features",
+        label: { en: "In the menu bar", zh: "菜单栏里有什么" },
+        source: "features",
+        required: true,
+      },
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },

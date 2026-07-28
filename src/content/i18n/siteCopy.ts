@@ -21,7 +21,7 @@ export const ui = {
     profileTitle: "Background",
     profileBody: [
       "Years in cloud object storage taught me to keep evidence close to conclusions. The storage products here come from that habit.",
-      "The rest are products and research projects I use myself—reading, time, movies, and tracking the agent landscape. I build and maintain all of them alone.",
+      "The rest are products and research projects I use myself—reading, time, movies, agent status in the menu bar, and tracking the agent landscape. I build and maintain all of them alone.",
     ],
     focusLabel: "Principles",
     focusTitle: "Boundaries I keep across the products",
@@ -65,7 +65,7 @@ export const ui = {
     profileTitle: "背景",
     profileBody: [
       "多年云对象存储工作，让我习惯把检查和结论放在一起。这边的存储产品由此而来。",
-      "其余是自己会用到的产品与研究项目——阅读、时间、电影、跟进 Agent 动向。全部由我一人开发和维护。",
+      "其余是自己会用到的产品与研究项目——阅读、时间、电影、菜单栏里的 Agent 状态，以及跟进 Agent 动向。全部由我一人开发和维护。",
     ],
     focusLabel: "原则",
     focusTitle: "做这些产品时坚持的边界",

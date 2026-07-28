@@ -25,6 +25,7 @@ export const headerCopy: Record<
       goban: string;
       chessboard: string;
       easierBookmarks: string;
+      pulse: string;
     };
   }
 > = {
@@ -51,6 +52,7 @@ export const headerCopy: Record<
       goban: "Goban",
       chessboard: "Chessboard",
       easierBookmarks: "Easier Bookmarks",
+      pulse: "Pulse",
     },
   },
   zh: {
@@ -76,6 +78,7 @@ export const headerCopy: Record<
       goban: "五子棋 Goban",
       chessboard: "国际象棋 Chessboard",
       easierBookmarks: "Easier Bookmarks",
+      pulse: "Pulse",
     },
   },
 };

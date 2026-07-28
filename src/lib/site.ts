@@ -10,7 +10,8 @@ export type ProductSlug =
   | "douban-movie-rating"
   | "goban"
   | "chessboard"
-  | "easier-bookmarks";
+  | "easier-bookmarks"
+  | "pulse";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;
@@ -169,6 +170,13 @@ export type NativeAppProduct = {
   locales: Localized<BrowserExtensionProductCopy>;
 };
 
+export type MenuBarAppProduct = {
+  slug: "pulse";
+  name: string;
+  archetype: "menuBarApp";
+  locales: Localized<BrowserExtensionProductCopy>;
+};
+
 export type AgentWorkbenchProduct = {
   slug: "storage-agent-workbench";
   name: string;
@@ -190,6 +198,7 @@ export type Product =
   | AgentPackageProduct
   | BrowserExtensionProduct
   | NativeAppProduct
+  | MenuBarAppProduct
   | AgentWorkbenchProduct
   | DocumentAgentProduct;
 
@@ -200,6 +209,7 @@ export type ProductArchetype =
   | "agentPackage"
   | "browserExtension"
   | "nativeApp"
+  | "menuBarApp"
   | "agentWorkbench"
   | "documentAgent";
 
