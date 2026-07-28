@@ -1,6 +1,6 @@
 # Titpea Personal Site
 
-Astro static site for `titpea.com`: a bilingual personal product catalog for hxddh's two lines — S3 storage ecosystem tools (Storage Agent, s3-turbo-list, StorageOps, httpmon) and personal/everyday products (PageWise, Agent Radar, World Clock, Douban Movie Rating Assistant, Goban, Chessboard).
+Astro static site for `titpea.com`: a bilingual personal product catalog for hxddh's two lines — S3 storage ecosystem tools (Storage Agent, s3-turbo-list, StorageOps, httpmon) and personal/everyday products (PageWise, Pulse, Agent Radar, World Clock, Douban Movie Rating Assistant, Goban, Chessboard, Easier Bookmarks).
 
 ## Commands
 

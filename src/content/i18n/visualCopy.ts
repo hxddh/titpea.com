@@ -316,6 +316,81 @@ export const visualCopy = {
     },
   },
 
+  pulseMenuBar: {
+    en: {
+      menubarLabel: "menu bar",
+      glanceTitle: "2 · 4m",
+      headerStatus: "Needs you · 2",
+      headerAgents: "Claude · Codex",
+      sections: [
+        {
+          title: "Needs you · 2",
+          rows: [
+            {
+              title: "Approve package install",
+              meta: "Claude · ~/code/pulse · Bash · 4m",
+              state: "waiting" as const,
+              chip: "hooks",
+            },
+            {
+              title: "Review failing CI",
+              meta: "Codex · ~/code/titpea · 1m",
+              state: "waiting" as const,
+              chip: "pending",
+            },
+          ],
+        },
+        {
+          title: "Running · 1",
+          rows: [
+            {
+              title: "Draft release notes",
+              meta: "Cursor · ~/code/pulse",
+              state: "running" as const,
+            },
+          ],
+        },
+      ],
+      footnotes: ["local probe · harvest · hooks", "click a row to focus the terminal"],
+    },
+    zh: {
+      menubarLabel: "菜单栏",
+      glanceTitle: "2 · 4m",
+      headerStatus: "需要你 · 2",
+      headerAgents: "Claude · Codex",
+      sections: [
+        {
+          title: "需要你 · 2",
+          rows: [
+            {
+              title: "批准安装依赖",
+              meta: "Claude · ~/code/pulse · Bash · 4m",
+              state: "waiting" as const,
+              chip: "hooks",
+            },
+            {
+              title: "查看失败的 CI",
+              meta: "Codex · ~/code/titpea · 1m",
+              state: "waiting" as const,
+              chip: "pending",
+            },
+          ],
+        },
+        {
+          title: "运行中 · 1",
+          rows: [
+            {
+              title: "起草 Release 说明",
+              meta: "Cursor · ~/code/pulse",
+              state: "running" as const,
+            },
+          ],
+        },
+      ],
+      footnotes: ["本地探测 · 采集 · hooks", "点击一行聚焦对应终端"],
+    },
+  },
+
   screenshots: {
     en: {
       worldClockLight: "World Clock light theme timezone feed screenshot",

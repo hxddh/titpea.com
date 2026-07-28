@@ -10,6 +10,7 @@ import { worldClockProduct } from "./products/world-clock";
 import { gobanProduct } from "./products/goban";
 import { chessboardProduct } from "./products/chessboard";
 import { easierBookmarksProduct } from "./products/easier-bookmarks";
+import { pulseProduct } from "./products/pulse";
 import { productManifest } from "./productManifest";
 
 export const productSlugs = productManifest.map((item) => item.slug) as ProductSlug[];
@@ -21,6 +22,7 @@ export const products: Record<ProductSlug, Product> = {
   httpmon: httpmonProduct,
   "agent-radar": agentRadarProduct,
   pagewise: pagewiseProduct,
+  pulse: pulseProduct,
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,
   goban: gobanProduct,

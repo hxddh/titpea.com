@@ -30,6 +30,8 @@ export const siteConfig = {
     gobanReleases: "https://github.com/hxddh/goban/releases/latest",
     chessboard: "https://github.com/hxddh/chessboard",
     chessboardReleases: "https://github.com/hxddh/chessboard/releases/latest",
+    pulse: "https://github.com/hxddh/Pulse",
+    pulseReleases: "https://github.com/hxddh/Pulse/releases/latest",
     easierBookmarksChrome: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
     easierBookmarksPrivacy: "/easier-bookmarks/privacy/",
     easierBookmarksPrivacyZh: "/zh/easier-bookmarks/privacy/",

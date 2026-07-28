@@ -126,7 +126,7 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.25.0",
+    "latestRelease": "v1.42.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
@@ -149,7 +149,7 @@
     "repository": "hxddh/chessboard",
     "licenseKey": "gpl-3.0",
     "licenseLabel": "GPLv3",
-    "latestRelease": "v0.8.0",
+    "latestRelease": "v1.19.1",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
@@ -188,5 +188,22 @@
       "no external servers"
     ],
     "volatileFactsPolicy": "Do not hard-code user counts, ratings, update dates, file size, or version numbers in site copy."
+  },
+  "pulse": {
+    "source": "github-api",
+    "repository": "hxddh/Pulse",
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "latestRelease": "v0.27.2",
+    "stableFacts": [
+      "macOS menu bar",
+      "coding agent status lamp",
+      "waiting running idle signals",
+      "session tray",
+      "Claude Codex Cursor coverage",
+      "local-first hooks and harvest",
+      "snooze without losing waiting rows",
+      "power-aware probing"
+    ]
   }
 }

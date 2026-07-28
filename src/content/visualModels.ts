@@ -129,6 +129,25 @@ export type AgentRadarTerminalVisualModel = {
   footnotes: string[];
 };
 
+export type PulseMenuBarVisualModel = {
+  kind: "pulseMenuBar";
+  label: string;
+  menubarLabel: string;
+  glanceTitle: string;
+  headerStatus: string;
+  headerAgents: string;
+  sections: Array<{
+    title: string;
+    rows: Array<{
+      title: string;
+      meta: string;
+      state: "waiting" | "running" | "recent";
+      chip?: string;
+    }>;
+  }>;
+  footnotes: string[];
+};
+
 export type ProductVisualModel =
   | S3BenchmarkVisualModel
   | StorageAgentVisualModel
@@ -137,6 +156,7 @@ export type ProductVisualModel =
   | AgentWorkbenchScreenshotVisualModel
   | HttpmonTerminalVisualModel
   | AgentRadarTerminalVisualModel
+  | PulseMenuBarVisualModel
   | ScreenshotVisualModel;
 
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string, slug?: string): ProductVisualModel {
@@ -279,6 +299,23 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
       label,
       ...copy,
       files: [...copy.files],
+      footnotes: [...copy.footnotes],
+    };
+  }
+
+  if (kind === "pulseMenuBar") {
+    const copy = visualCopy.pulseMenuBar[locale];
+    return {
+      kind,
+      label,
+      menubarLabel: copy.menubarLabel,
+      glanceTitle: copy.glanceTitle,
+      headerStatus: copy.headerStatus,
+      headerAgents: copy.headerAgents,
+      sections: copy.sections.map((section) => ({
+        title: section.title,
+        rows: section.rows.map((row) => ({ ...row })),
+      })),
       footnotes: [...copy.footnotes],
     };
   }
