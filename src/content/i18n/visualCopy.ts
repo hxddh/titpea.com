@@ -328,15 +328,15 @@ export const visualCopy = {
           rows: [
             {
               title: "Approve package install",
-              meta: "Claude · ~/code/pulse · Bash · 4m",
+              meta: "~/code/pulse · Bash · 4m ago",
               state: "waiting" as const,
-              chip: "hooks",
+              chip: "4m",
             },
             {
               title: "Review failing CI",
-              meta: "Codex · ~/code/titpea · 1m",
+              meta: "~/code/titpea · 1m ago",
               state: "waiting" as const,
-              chip: "pending",
+              chip: "1m",
             },
           ],
         },
@@ -345,7 +345,7 @@ export const visualCopy = {
           rows: [
             {
               title: "Draft release notes",
-              meta: "Cursor · ~/code/pulse",
+              meta: "~/code/pulse · 2m ago",
               state: "running" as const,
             },
           ],
@@ -364,15 +364,15 @@ export const visualCopy = {
           rows: [
             {
               title: "批准安装依赖",
-              meta: "Claude · ~/code/pulse · Bash · 4m",
+              meta: "~/code/pulse · Bash · 4 分钟前",
               state: "waiting" as const,
-              chip: "hooks",
+              chip: "4m",
             },
             {
               title: "查看失败的 CI",
-              meta: "Codex · ~/code/titpea · 1m",
+              meta: "~/code/titpea · 1 分钟前",
               state: "waiting" as const,
-              chip: "pending",
+              chip: "1m",
             },
           ],
         },
@@ -381,7 +381,7 @@ export const visualCopy = {
           rows: [
             {
               title: "起草 Release 说明",
-              meta: "Cursor · ~/code/pulse",
+              meta: "~/code/pulse · 2 分钟前",
               state: "running" as const,
             },
           ],
