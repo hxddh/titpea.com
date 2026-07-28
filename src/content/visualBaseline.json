@@ -104,6 +104,16 @@
       "path": "/agent-radar/",
       "viewport": "mobile",
       "state": "faq"
+    },
+    {
+      "path": "/pulse/",
+      "viewport": "desktop",
+      "state": "top"
+    },
+    {
+      "path": "/zh/pulse/",
+      "viewport": "desktop",
+      "state": "top"
     }
   ]
 }
