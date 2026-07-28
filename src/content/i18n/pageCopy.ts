@@ -23,7 +23,7 @@ export const catalogCopy = {
     chessboardRole: "Desktop game",
     easierBookmarksText: "Search and organize Chrome bookmarks without leaving the side panel.",
     easierBookmarksRole: "Bookmark manager",
-    pulseText: "Menu-bar lamp for coding agents: idle, running, or waiting on you.",
+    pulseText: "Menu-bar status for coding-agent sessions: Waiting, Running, Idle, or Error.",
     pulseRole: "Menu-bar status lamp",
   },
   zh: {
@@ -49,7 +49,7 @@ export const catalogCopy = {
     chessboardRole: "桌面游戏",
     easierBookmarksText: "在 Chrome 侧边栏里快速搜索、浏览和整理书签。",
     easierBookmarksRole: "书签管理器",
-    pulseText: "菜单栏状态灯：编码 Agent 空闲、在跑，还是在等你。",
+    pulseText: "编码 Agent 会话的菜单栏状态：等待、运行、空闲或错误。",
     pulseRole: "菜单栏状态灯",
   },
 } as const;

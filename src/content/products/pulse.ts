@@ -11,19 +11,19 @@ export const pulseProduct: MenuBarAppProduct = {
   locales: {
     en: {
       title: "Pulse",
-      description: "A macOS menu-bar status lamp for coding agents: idle, running, or waiting on you.",
+      description: "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or Error.",
       eyebrow: "macOS menu-bar status lamp",
-      headline: "Know when an agent needs you",
-      lead: "Leave an agent running, switch away, and find it stuck on an approval. Pulse shows that in the menu bar: red needs you, green running, gray idle. Open the tray; click a row to focus that terminal.",
+      headline: "See waiting sessions in the menu bar",
+      lead: "Pulse shows local coding-agent sessions as Waiting, Running, Idle, or Error. Waiting comes only from hooks or pending marks. Open the tray to pick a session and focus its terminal.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,
-      proof: ["Red / green / gray", "Sessions in the tray", "Waiting is never inferred", "Runs locally"],
+      proof: ["Waiting / Running / Idle", "Hooks or pending only", "Session tray", "Focus terminal"],
       positioningLabel: "Fit and limits",
       positioning: [
         {
           title: "Use it when",
-          body: "Agents keep running while you are elsewhere, and you want to know without switching terminals — especially with more than one agent at once.",
+          body: "Coding-agent sessions keep running while you are in another app, and you need to notice a Waiting state without switching terminals — especially with more than one session open.",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -36,7 +36,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Out of scope",
-          body: "No quota, spend, or reset timers. No desktop pet or analytics dashboard. The tray does not approve or deny — it takes you to the session.",
+          body: "No quota, spend, or reset timers. No desktop pet or analytics dashboard. The tray does not approve or deny — it opens the session where you act.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -44,8 +44,8 @@ export const pulseProduct: MenuBarAppProduct = {
       featuresLabel: "In the menu bar",
       features: [
         {
-          title: "Menu-bar lamp",
-          body: "Red when something needs you (new waits flash once), green while agents are running, gray when only recent sessions remain, orange if probe and harvest both fail.",
+          title: "Menu-bar status",
+          body: "Red for an explicit Waiting signal (new waits flash once), green while sessions are running, gray when only recent sessions remain, orange if probe and harvest both fail.",
           intent: "capability",
           surface: "artifact",
         },
@@ -57,13 +57,13 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Waiting is not inferred",
-          body: "Waiting only comes from hooks or an explicit pending mark. Agents without a Waiting path stay on Running / recent and say so — the lamp does not invent a red state.",
+          body: "Waiting only comes from hooks or an explicit pending mark. Agents without a Waiting path stay on Running / recent and say so — the lamp does not invent a Waiting state.",
           intent: "capability",
           surface: "cli",
         },
         {
           title: "Snooze keeps the row",
-          body: "Snooze quiets the lamp and notifications for a while. The row stays under Needs you with remaining time. Footer actions clear waits, jump to the oldest wait, or open preferences.",
+          body: "Snooze quiets the lamp and notifications for a while. The row stays under Waiting with remaining time. Footer actions clear waits, jump to the oldest wait, or open preferences.",
           intent: "capability",
           surface: "artifact",
         },
@@ -82,7 +82,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Do I need hooks?",
-          body: "Without hooks you still see running and recent sessions. For Claude Code and Codex, install Waiting Signal hooks so Needs you can light from their approval prompts. Some other agents surface Waiting via pending marks instead.",
+          body: "Without hooks you still see Running and recent sessions. For Claude Code and Codex, install Waiting Signal hooks so approval prompts can create a Waiting signal. Some other agents surface Waiting via pending marks instead.",
         },
         {
           title: "Does it upload my sessions?",
@@ -96,19 +96,19 @@ export const pulseProduct: MenuBarAppProduct = {
     },
     zh: {
       title: "Pulse",
-      description: "macOS 菜单栏状态灯：一眼看出编码 Agent 是空闲、在跑，还是在等你。",
+      description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲或错误。",
       eyebrow: "macOS 菜单栏状态灯",
-      headline: "一眼知道 Agent 要不要你",
-      lead: "开着 Claude Code / Codex / Cursor 写代码，切去开会或写文档，回来发现它早停在授权提示上。Pulse 把这件事放进菜单栏：红灯 = 在等你，绿灯 = 在跑，灰灯 = 没事。点开托盘看会话，点一行跳到对应终端。",
+      headline: "在菜单栏看见等待中的会话",
+      lead: "Pulse 把本机编码 Agent 会话显示为等待、运行、空闲或错误。等待只来自 hooks 或明确的 pending 标记；打开托盘选会话，并聚焦对应终端。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
-      proof: ["红 / 绿 / 灰", "托盘看会话", "Waiting 不推断", "本地运行"],
+      proof: ["等待 / 运行 / 空闲", "Waiting 不推断", "托盘列会话", "聚焦终端"],
       positioningLabel: "适用与边界",
       positioning: [
         {
           title: "什么时候用",
-          body: "Agent 在跑，你去开会或写文档，又不想一直切终端盯着；尤其是好几个 Agent 同时开着的时候。",
+          body: "编码 Agent 会话还在跑，你却在别的应用里；需要不切终端也能发现 Waiting，尤其是同时开着多个会话时。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -121,7 +121,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "明确不做",
-          body: "不做额度、费用或重置倒计时；不是桌面宠物或统计大盘；托盘里也不替你批准或拒绝——只带你回到该看的会话。",
+          body: "不做额度、费用或重置倒计时；不是桌面宠物或统计大盘；托盘里也不替你批准或拒绝——只打开你动手的那个会话。",
           intent: "boundary",
           surface: "artifact",
         },
@@ -129,8 +129,8 @@ export const pulseProduct: MenuBarAppProduct = {
       featuresLabel: "菜单栏里有什么",
       features: [
         {
-          title: "菜单栏三色灯",
-          body: "有人在等你时变红（新等待闪一次），有 Agent 在跑时为绿，只剩最近会话时为灰；探测和采集都失败时为橙。",
+          title: "菜单栏状态",
+          body: "有明确 Waiting 信号时变红（新等待闪一次），有会话在跑时为绿，只剩最近会话时为灰；探测和采集都失败时为橙。",
           intent: "capability",
           surface: "artifact",
         },
@@ -142,13 +142,13 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Waiting 不推断",
-          body: "Waiting 只来自 hooks 或明确的 pending 标记。没有 Waiting 通路的 Agent 仍显示运行中 / 最近，并说明暂无 Waiting，不会硬亮红灯。",
+          body: "Waiting 只来自 hooks 或明确的 pending 标记。没有 Waiting 通路的 Agent 仍显示运行中 / 最近，并说明暂无 Waiting，不会硬造等待状态。",
           intent: "capability",
           surface: "cli",
         },
         {
           title: "稍后只压打扰",
-          body: "稍后暂时关掉菜单栏红灯和通知，行仍留在「需要你」并显示剩余时间。页脚可清除等待、跳到最久等你的项，或打开偏好设置。",
+          body: "稍后暂时关掉菜单栏红灯和通知，行仍留在等待分组并显示剩余时间。页脚可清除等待、跳到等待最久的项，或打开偏好设置。",
           intent: "capability",
           surface: "artifact",
         },
@@ -167,7 +167,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "一定要装 hooks 吗？",
-          body: "不装也能看到运行中和最近会话。Claude Code 与 Codex 要亮「需要你」，在偏好设置的等待信号里装 hooks。部分其他 Agent 用 pending 标记也能出 Waiting。",
+          body: "不装也能看到运行中和最近会话。Claude Code 与 Codex 要让授权提示产生 Waiting，在偏好设置的等待信号里装 hooks。部分其他 Agent 用 pending 标记也能出 Waiting。",
         },
         {
           title: "会上传我的会话吗？",

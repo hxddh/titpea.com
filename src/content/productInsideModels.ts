@@ -201,10 +201,10 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
     },
   ),
   pulse: browserInside(
-    { en: "Glance first; open the tray when you need detail", zh: "先扫一眼；需要细节再打开托盘" },
+    { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
     {
-      en: "The menu bar answers whether to look up. The tray lists who is waiting and why, then focuses the matching terminal.",
-      zh: "菜单栏只回答要不要抬头。托盘列出谁在等、为何等，再聚焦到对应终端。",
+      en: "The menu bar shows Waiting, Running, Idle, or Error. The tray lists affected sessions and opens the matching terminal.",
+      zh: "菜单栏显示等待、运行、空闲或错误。托盘列出相关会话，并打开对应终端。",
     },
   ),
   "easier-bookmarks": browserInside(

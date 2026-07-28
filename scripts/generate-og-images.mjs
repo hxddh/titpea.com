@@ -126,8 +126,8 @@ export const images = [
   {
     file: "og-pulse.png",
     eyebrow: "Pulse",
-    title: "Know when an agent needs you",
-    body: "A macOS menu-bar lamp for coding agents — idle, running, or waiting — with a session tray that jumps to the right terminal.",
+    title: "See waiting sessions in the menu bar",
+    body: "A macOS status lamp for local coding-agent sessions — Waiting, Running, Idle, or Error — with a tray that opens the matching terminal.",
     accent: "#b42318",
     mark: "●",
     visual: "pulse",
@@ -236,7 +236,7 @@ function visualPanel(kind, accent, mark) {
       <circle cx="236" cy="26" r="6" fill="${accent}"/>
       <text x="250" y="31" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="14" font-weight="700">2 · 4m</text>
       <path d="M0 52h324" stroke="#e4e7ec"/>
-      <text x="24" y="90" fill="${accent}" font-family="Inter, ui-sans-serif, system-ui" font-size="22" font-weight="760">Needs you · 2</text>
+      <text x="24" y="90" fill="${accent}" font-family="Inter, ui-sans-serif, system-ui" font-size="22" font-weight="760">Waiting · 2</text>
       <text x="24" y="118" fill="#667085" font-family="SFMono-Regular, Consolas, monospace" font-size="13">Claude · Codex</text>
       <path d="M0 138h324" stroke="#e4e7ec"/>
       <circle cx="30" cy="172" r="5" fill="${accent}"/>
