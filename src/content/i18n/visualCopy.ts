@@ -320,11 +320,11 @@ export const visualCopy = {
     en: {
       menubarLabel: "menu bar",
       glanceTitle: "2 · 4m",
-      headerStatus: "Needs you · 2",
+      headerStatus: "Waiting · 2",
       headerAgents: "Claude · Codex",
       sections: [
         {
-          title: "Needs you · 2",
+          title: "Waiting · 2",
           rows: [
             {
               title: "Approve package install",
@@ -356,11 +356,11 @@ export const visualCopy = {
     zh: {
       menubarLabel: "菜单栏",
       glanceTitle: "2 · 4m",
-      headerStatus: "需要你 · 2",
+      headerStatus: "等待 · 2",
       headerAgents: "Claude · Codex",
       sections: [
         {
-          title: "需要你 · 2",
+          title: "等待 · 2",
           rows: [
             {
               title: "批准安装依赖",
