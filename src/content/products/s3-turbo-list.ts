@@ -9,9 +9,9 @@ export const s3TurboListProduct: S3TurboListProduct = {
   locales: {
     en: {
       title: "s3-turbo-list",
-      description: "Automatic, high-speed S3-compatible list / diff with analysis-ready output.",
+      description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
       eyebrow: "Rust CLI",
-      headline: "List / diff at scale, no scanner to build",
+      headline: "List / diff, no scanner to build",
       lead: "A CLI that discovers parallel work for large S3-compatible list / diff runs.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
@@ -55,7 +55,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
     },
     zh: {
       title: "s3-turbo-list",
-      description: "自动分段的高速 S3 兼容 list / diff，输出可直接分析的结果。",
+      description: "自动分段的 S3 兼容 list / diff，输出可直接分析的 Parquet 结果。",
       eyebrow: "Rust CLI",
       headline: "大桶 list / diff，不用自己搭扫描器",
       lead: "面向大规模 S3 兼容存储，自动发现可并行的 list / diff 工作。",

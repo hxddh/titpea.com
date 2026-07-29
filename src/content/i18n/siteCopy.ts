@@ -1,10 +1,9 @@
 export const ui = {
   en: {
     productIndex: "hxddh / products",
-    homeMetaTitle: "Titpea — Professional agents and productivity products",
-    homeTitle: "Agents & productivity products",
-    homeDescription:
-      "Professional agents and productivity products for S3 storage, reading, and information discovery by hxddh.",
+    homeMetaTitle: "Titpea — Agents and tools by hxddh",
+    homeTitle: "Agents and tools",
+    homeDescription: "Agents and tools for S3 storage, reading, and information discovery by hxddh.",
     homeLead: "S3 ecosystem products, plus tools for reading and information discovery.",
     featuredLabel: "Featured",
     featuredTitle: "Agents for different kinds of work",
@@ -46,9 +45,9 @@ export const ui = {
   },
   zh: {
     productIndex: "hxddh / 产品",
-    homeMetaTitle: "Titpea — 专业 Agent 与效率产品",
-    homeTitle: "专业 Agent 与效率产品",
-    homeDescription: "面向 S3 生态、阅读与信息挖掘的专业 Agent 与效率产品。",
+    homeMetaTitle: "Titpea — Agent 与工具",
+    homeTitle: "Agent 与工具",
+    homeDescription: "面向 S3 生态、阅读与信息挖掘的 Agent 与工具。",
     homeLead: "S3 生态产品、阅读与信息挖掘工具。",
     featuredLabel: "重点",
     featuredTitle: "不同方向的 Agent",

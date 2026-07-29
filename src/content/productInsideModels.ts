@@ -68,14 +68,14 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       kind: "inside",
       kicker: "Desktop investigation agent",
       title: "Chat plans the checks; evidence stays open",
-      body: "Describe a bucket, error, or log. The agent follows storage playbooks, runs large analyses locally, and leaves the material it used beside the answer.",
+      body: "Describe a bucket, error, or log. The agent follows StorageOps skills, runs large analyses locally, and leaves the material it used beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
       title: "对话规划检查，证据留在旁边",
-      body: "就桶、报错或日志开一段对话。Agent 按排查手册调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
+      body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
     },
   },
   storageops: {
@@ -196,15 +196,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   chessboard: browserInside(
     { en: "Learn, drill, then play and review", zh: "先学、做题，再对弈与复盘" },
     {
-      en: "The board keeps beginner lessons, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
-      zh: "零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
+      en: "The board keeps a 67-lesson beginner course, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
+      zh: "67 课零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
   pulse: browserInside(
     { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
     {
-      en: "The menu bar shows Waiting, Running, Idle, or Error. The tray lists affected sessions and opens the matching terminal.",
-      zh: "菜单栏显示等待、运行、空闲或错误。托盘列出相关会话，并打开对应终端。",
+      en: "The menu bar shows Waiting, Running, Idle, or stalled / probe issues. The tray lists affected sessions and opens the matching terminal.",
+      zh: "菜单栏显示等待、运行、空闲，或停滞 / 探测异常。托盘列出相关会话，并打开对应终端。",
     },
   ),
   "easier-bookmarks": browserInside(

@@ -53,7 +53,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       features: [
         {
           title: "IMDb rating",
-          body: "Automatically shows IMDb scores on Douban movie detail pages.",
+          body: "Shows IMDb scores on Douban movie detail pages when a reliable match is found.",
           intent: "capability",
           surface: "browser",
         },
@@ -137,7 +137,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       features: [
         {
           title: "IMDb 评分",
-          body: "在豆瓣电影详情页显示 IMDb 分数。",
+          body: "匹配可靠时，在豆瓣电影详情页显示 IMDb 分数。",
           intent: "capability",
           surface: "browser",
         },

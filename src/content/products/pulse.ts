@@ -11,10 +11,11 @@ export const pulseProduct: MenuBarAppProduct = {
   locales: {
     en: {
       title: "Pulse",
-      description: "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or Error.",
+      description:
+        "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
       eyebrow: "macOS menu-bar status lamp",
       headline: "See waiting sessions in the menu bar",
-      lead: "Pulse shows local coding-agent sessions as Waiting, Running, Idle, or Error. Waiting comes only from hooks or pending marks. Open the tray to pick a session and focus its terminal.",
+      lead: "Pulse shows local coding-agent sessions as Waiting, Running, Idle, or stalled / probe issues. Waiting comes only from hooks or pending marks. Open the tray to pick a session and focus its terminal.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,
@@ -45,7 +46,7 @@ export const pulseProduct: MenuBarAppProduct = {
       features: [
         {
           title: "Menu-bar status",
-          body: "Red for an explicit Waiting signal (new waits flash once), green while sessions are running, gray when only recent sessions remain, orange if probe and harvest both fail.",
+          body: "Red for an explicit Waiting signal (new waits flash once), green while sessions are running, gray when only recent sessions remain, orange when a session is stalled or probe / harvest is unhealthy.",
           intent: "capability",
           surface: "artifact",
         },
@@ -96,10 +97,10 @@ export const pulseProduct: MenuBarAppProduct = {
     },
     zh: {
       title: "Pulse",
-      description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲或错误。",
+      description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲，或停滞 / 探测异常。",
       eyebrow: "macOS 菜单栏状态灯",
       headline: "在菜单栏看见等待中的会话",
-      lead: "Pulse 把本机编码 Agent 会话显示为等待、运行、空闲或错误。等待只来自 hooks 或明确的 pending 标记；打开托盘选会话，并聚焦对应终端。",
+      lead: "Pulse 把本机编码 Agent 会话显示为等待、运行、空闲，或停滞 / 探测异常。等待只来自 hooks 或明确的 pending 标记；打开托盘选会话，并聚焦对应终端。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
@@ -130,7 +131,7 @@ export const pulseProduct: MenuBarAppProduct = {
       features: [
         {
           title: "菜单栏状态",
-          body: "有明确 Waiting 信号时变红（新等待闪一次），有会话在跑时为绿，只剩最近会话时为灰；探测和采集都失败时为橙。",
+          body: "有明确 Waiting 信号时变红（新等待闪一次），有会话在跑时为绿，只剩最近会话时为灰；会话停滞或探测 / 采集异常时为橙。",
           intent: "capability",
           surface: "artifact",
         },

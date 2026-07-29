@@ -36,30 +36,30 @@ export const visualCopy = {
     goban: {
       en: {
         heroAlt:
-          "Goban wood board showing a completed game, black and white stones, the winning line, and game controls",
+          "Goban wood board showing a completed game, black and white stones, a five-in-a-row highlight, and game controls",
         supportingAlt:
           "Goban reviewing a mid-game position on a wood board with the move list and replay controls visible",
         supportingKicker: "Move-by-move review",
-        supportingTitle: "Return to the move that changed the game",
+        supportingTitle: "Return to any recorded move",
         supportingBody:
-          "Enable replay analysis and select any move from the record. The board reconstructs that position and explains decisive mistakes beside it.",
+          "Enable replay analysis and select any move from the record. The board reconstructs that position with the move list and replay controls beside it.",
         notebookAlt:
-          "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row line, and the game sidebar",
+          "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row highlight, and the game sidebar",
         notebookKicker: "Notebook theme",
         notebookTitle: "A board that feels drawn into your notes",
         notebookBody:
-          "Switch from traditional stones to triangle and circle marks on ruled paper. The game state, winning line, and controls remain the same.",
+          "Switch from traditional stones to triangle and circle marks on ruled paper. The game state and controls remain the same.",
       },
       zh: {
-        heroAlt: "Goban 木质棋盘上的完整对局，显示黑白棋子、五连胜线与对局控制",
+        heroAlt: "Goban 木质棋盘上的完整对局，显示黑白棋子、五连高亮与对局控制",
         supportingAlt: "Goban 在木质棋盘上复盘中局局面，旁边显示着法列表与复盘控制",
         supportingKicker: "逐手复盘",
-        supportingTitle: "回到改变局势的那一手",
-        supportingBody: "开启复盘分析后，从棋谱中选择任意一手。棋盘会还原当时局面，并在旁边说明关键失着。",
-        notebookAlt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连胜线和对局侧栏",
+        supportingTitle: "回到棋谱里的任意一手",
+        supportingBody: "开启复盘分析后，从棋谱中选择任意一手。棋盘会还原当时局面，着法列表与复盘控制留在旁边。",
+        notebookAlt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连高亮和对局侧栏",
         notebookKicker: "作业本主题",
         notebookTitle: "像把一局棋画进笔记本",
-        notebookBody: "把传统黑白棋子切换为横线纸上的三角与圆圈，棋局状态、五连胜线和操作面板保持一致。",
+        notebookBody: "把传统黑白棋子切换为横线纸上的三角与圆圈，棋局状态与操作面板保持一致。",
       },
     },
     chessboard: {

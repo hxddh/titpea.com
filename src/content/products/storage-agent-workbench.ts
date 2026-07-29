@@ -9,10 +9,10 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     en: {
       title: "Storage Agent",
       description:
-        "A desktop agent for read-only S3-compatible storage investigations: it calls tools in a chat thread and keeps evidence visible.",
+        "A local-first desktop workbench for read-only S3-compatible storage investigations, with tools in a chat thread and evidence beside the answer.",
       eyebrow: "For SRE & storage ops · Desktop · Read-only · S3-compatible",
-      headline: "Ask an agent about your storage",
-      lead: "Open a chat about a bucket problem, error, or log. Storage Agent runs read-only checks locally and keeps the evidence beside the answer.",
+      headline: "Local read-only storage investigations",
+      lead: "Open a session about a bucket problem, error, or log. Storage Agent runs read-only checks on your machine and keeps the evidence beside the answer.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri desktop · S3-compatible · Apache-2.0 · macOS, Windows, Linux",
@@ -26,8 +26,8 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
         {
-          title: "Follow a storage investigation playbook",
-          body: "The agent loads a storage playbook that matches the problem and follows a known investigation path. Playbooks ship with the app; the agent does not fetch executable modules at runtime or run arbitrary shell commands.",
+          title: "Follow a storage diagnosis skill",
+          body: "The agent loads a StorageOps skill that matches the problem and follows a known investigation path. Skills ship with the app; the agent does not fetch executable modules at runtime or run arbitrary shell commands.",
           intent: "capability",
           surface: "agent",
         },
@@ -39,7 +39,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Answers list what was used — and what is missing",
-          body: "Each conclusion names playbooks used, evidence used, and gaps, so a fluent answer still points at material you can open.",
+          body: "Each conclusion names skills used, evidence used, and gaps, so a fluent answer still points at material you can open.",
           intent: "capability",
           surface: "artifact",
         },
@@ -75,7 +75,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       positioning: [
         {
           title: "Keys and evidence stay on your machine",
-          body: "Credentials, imported evidence, DuckDB state, and chat history live in local app data. Requests go only to the model and S3-compatible storage endpoints you configure.",
+          body: "Credentials live in an encrypted local vault; imported evidence, DuckDB state, and chat history stay in local app data. Requests go only to the model and S3-compatible storage endpoints you configure.",
           intent: "boundary",
           surface: "agent",
         },
@@ -122,10 +122,10 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     },
     zh: {
       title: "Storage Agent",
-      description: "面向 S3 兼容存储的桌面调查 Agent：在对话里调用只读工具，证据可见。",
+      description: "面向 S3 兼容存储的本地优先桌面工作台：在对话里调用只读工具，证据可见。",
       eyebrow: "面向运维与存储排查 · 桌面 · 只读 · S3 兼容",
-      headline: "用 Agent 查清你的对象存储问题",
-      lead: "打开对话，描述桶问题、报错或日志。Storage Agent 在本机运行只读检查，并把证据留在回答旁边。",
+      headline: "本机只读排查对象存储",
+      lead: "打开会话，描述桶问题、报错或日志。Storage Agent 在本机运行只读检查，并把证据留在回答旁边。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: "Tauri 桌面 · S3 兼容 · Apache-2.0 · macOS、Windows、Linux",
@@ -139,8 +139,8 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "agent",
         },
         {
-          title: "按存储排查手册推进",
-          body: "Agent 会加载与问题对应的存储排查手册，按已知检查路径推进。排查手册随应用提供；Agent 不会在运行时拉取可执行模块，也不会执行任意 shell。",
+          title: "按存储诊断 skill 推进",
+          body: "Agent 会加载与问题对应的 StorageOps skill，按已知检查路径推进。Skill 随应用提供；Agent 不会在运行时拉取可执行模块，也不会执行任意 shell。",
           intent: "capability",
           surface: "agent",
         },
@@ -152,7 +152,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "回答写清用了什么、还缺什么",
-          body: "每条结论列出用过的手册、用过的证据和缺口，即使回答很顺，也能回到你能打开的材料核对。",
+          body: "每条结论列出用过的 skill、用过的证据和缺口，即使回答很顺，也能回到你能打开的材料核对。",
           intent: "capability",
           surface: "artifact",
         },
@@ -188,7 +188,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       positioning: [
         {
           title: "密钥和证据留在本机",
-          body: "凭证、导入证据、DuckDB 状态和对话历史都在本机应用数据里。请求只发往你配置的模型与 S3 兼容存储端点。",
+          body: "凭证放在本机加密保险库；导入证据、DuckDB 状态和对话历史留在本机应用数据里。请求只发往你配置的模型与 S3 兼容存储端点。",
           intent: "boundary",
           surface: "agent",
         },
