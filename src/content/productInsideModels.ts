@@ -68,14 +68,14 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       kind: "inside",
       kicker: "Desktop investigation agent",
       title: "Chat plans the checks; evidence stays open",
-      body: "Describe a bucket, error, or log. The agent follows storage playbooks, runs large analyses locally, and leaves the material it used beside the answer.",
+      body: "Describe a bucket, error, or log. The agent follows StorageOps skills, runs large analyses locally, and leaves the material it used beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
       title: "对话规划检查，证据留在旁边",
-      body: "就桶、报错或日志开一段对话。Agent 按排查手册调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
+      body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
     },
   },
   storageops: {
