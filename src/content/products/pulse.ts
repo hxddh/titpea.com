@@ -11,7 +11,8 @@ export const pulseProduct: MenuBarAppProduct = {
   locales: {
     en: {
       title: "Pulse",
-      description: "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
+      description:
+        "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
       eyebrow: "macOS menu-bar status lamp",
       headline: "See waiting sessions in the menu bar",
       lead: "Pulse shows local coding-agent sessions as Waiting, Running, Idle, or stalled / probe issues. Waiting comes only from hooks or pending marks. Open the tray to pick a session and focus its terminal.",

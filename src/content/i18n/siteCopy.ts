@@ -3,8 +3,7 @@ export const ui = {
     productIndex: "hxddh / products",
     homeMetaTitle: "Titpea — Agents and tools by hxddh",
     homeTitle: "Agents and tools",
-    homeDescription:
-      "Agents and tools for S3 storage, reading, and information discovery by hxddh.",
+    homeDescription: "Agents and tools for S3 storage, reading, and information discovery by hxddh.",
     homeLead: "S3 ecosystem products, plus tools for reading and information discovery.",
     featuredLabel: "Featured",
     featuredTitle: "Agents for different kinds of work",
