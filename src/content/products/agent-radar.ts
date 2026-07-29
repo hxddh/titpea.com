@@ -14,8 +14,8 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       description:
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
-      headline: "Unattended research in Markdown",
-      lead: "A Git-backed research loop for the AI-agent field: collect, screen, and commit the weekly brief, watchlist, field notes, and storage notes.",
+      headline: "Scheduled research kept in Markdown",
+      lead: "A Git-backed research loop for the AI-agent field: collect public signals, screen candidates, then commit the weekly brief, watchlist, field notes, and storage notes.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
@@ -95,7 +95,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       description:
         "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
       eyebrow: "Markdown 优先 · GitHub Actions",
-      headline: "跑在 Markdown 里的无人值守研究",
+      headline: "定时研究，结果留在 Markdown",
       lead: "面向 Agent 领域的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新每周论点、观察名单、现场笔记和存储影响。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },

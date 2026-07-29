@@ -12,14 +12,14 @@ export const chessboardProduct: NativeAppProduct = {
     en: {
       title: "Chessboard",
       description:
-        "A desktop chess app for macOS and Windows, with Stockfish 18, a 24-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
+        "A desktop chess app for macOS and Windows, with Stockfish 18, a 67-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
       eyebrow: "Desktop chess",
       headline: "A focused chessboard for desktop",
-      lead: "Learn the rules in 24 offline lessons, drill mates through mate-in-three, play Stockfish 18 or a friend on the same screen, then review with a centipawn curve.",
+      lead: "Learn the rules in 67 offline lessons in English, Simplified Chinese, or Japanese; drill mates through mate-in-three; play Stockfish 18 or a friend on the same screen; then review with a centipawn curve.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["24 beginner lessons", "Mate drills", "Stockfish 18", "Full-game review"],
+      proof: ["67 beginner lessons", "Mate drills", "Stockfish 18", "Full-game review"],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -45,20 +45,20 @@ export const chessboardProduct: NativeAppProduct = {
       featuresLabel: "At the board",
       features: [
         {
-          title: "24 beginner lessons",
-          body: "An offline course from board coordinates and piece moves through pins, saving attacked pieces, checkmate, draws, notation, and opening principles. Miss twice and the answer appears; progress saves and can be reset.",
+          title: "67 beginner lessons",
+          body: "An offline course from board coordinates and piece moves through tactics, checkmate patterns, openings, middlegame ideas, and endgames. UI and lesson text cover English, Simplified Chinese, and Japanese. Miss twice and the answer appears; progress saves and can be reset.",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Mate drills through mate-in-three",
-          body: "Practice mate-in-one, mate-in-two, and mate-in-three offline, including promotion and Arabian mates. Wrong answers undo immediately and show how Black escapes; press H for the solution arrow.",
+          body: "Practice mate-in-one, mate-in-two, and mate-in-three offline, plus capture, tactics, defense, and opening lines. Wrong answers undo immediately and show how Black escapes; press H for the solution arrow.",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Stockfish with hints",
-          body: "Play against Stockfish 18 from beginner Elo 1320 through full strength. Press H for a full-strength arrow hint without placing the move for you.",
+          body: "Play against Stockfish 18 from novice and casual levels through Elo-limited strengths up to full strength. Press H for a full-strength arrow hint without placing the move for you.",
           intent: "capability",
           surface: "artifact",
         },
@@ -104,14 +104,14 @@ export const chessboardProduct: NativeAppProduct = {
     zh: {
       title: "国际象棋 Chessboard",
       description:
-        "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18、24 课零基础教学与一步到三步杀练习，支持本地对弈、棋钟、PGN/FEN 棋谱工具与整局复盘分析。",
+        "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18、67 课零基础教学与一步到三步杀练习，支持本地对弈、棋钟、PGN/FEN 棋谱工具与整局复盘分析。",
       eyebrow: "桌面国际象棋",
       headline: "一张专注对弈的桌面国际象棋盘",
-      lead: "用 24 课离线课程从零上手，练习一步到三步杀，再与 Stockfish 18 或同屏好友对弈；局后通过引擎评估曲线回看转折。",
+      lead: "用 67 课离线课程从零上手（界面与课文支持中文、English、日本語），练习一步到三步杀，再与 Stockfish 18 或同屏好友对弈；局后通过引擎评估曲线回看转折。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["24 课零基础教学", "杀型做题", "Stockfish 18", "整局复盘"],
+      proof: ["67 课零基础教学", "杀型做题", "Stockfish 18", "整局复盘"],
       positioningLabel: "适用与边界",
       positioning: [
         {
@@ -137,20 +137,20 @@ export const chessboardProduct: NativeAppProduct = {
       featuresLabel: "棋盘上的能力",
       features: [
         {
-          title: "24 课零基础教学",
-          body: "离线课程覆盖棋盘坐标、棋子走法、牵制、救受攻的子、将杀与和棋、记谱，再到开局三原则。连错两次会标出答案，进度可保存也可重置。",
+          title: "67 课零基础教学",
+          body: "离线课程从棋盘坐标与棋子走法，讲到战术、杀型、开局、中局思路与残局；界面与课文支持中文、English、日本語。连错两次会标出答案，进度可保存也可重置。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "一步杀到三步杀练习",
-          body: "离线练习一步杀、两步杀与三步杀，含升变杀与阿拉伯杀。答错立即回退，并指出黑方如何化解；按 H 显示正解箭头。",
+          body: "离线练习一步杀、两步杀与三步杀，另有吃子、战术、防守与开局线路。答错立即回退，并指出黑方如何化解；按 H 显示正解箭头。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Stockfish 与引擎提示",
-          body: "内置 Stockfish 18，从入门 Elo 1320 到满强度。按 H 显示满强度推荐箭头，不会替你落子。",
+          body: "内置 Stockfish 18，从新手、休闲档到 Elo 限强，再到满强度。按 H 显示满强度推荐箭头，不会替你落子。",
           intent: "capability",
           surface: "artifact",
         },
