@@ -52,7 +52,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Sessions in the tray",
-          body: "Rows are sessions: task title first, path and last activity on the secondary line, agent identity on the icon. Click a row to focus that terminal when a TTY is available.",
+          body: "Rows are sessions: task title first, then path, phase, model, and last activity when harvest provides them. Agent identity stays on the icon. Click a row to focus that terminal when a TTY is available.",
           intent: "capability",
           surface: "artifact",
         },
@@ -61,6 +61,12 @@ export const pulseProduct: MenuBarAppProduct = {
           body: "Waiting only comes from hooks or an explicit pending mark. Agents without a Waiting path stay on Running / recent and say so — the lamp does not invent a Waiting state.",
           intent: "capability",
           surface: "cli",
+        },
+        {
+          title: "Support health on this Mac",
+          body: "A separate window reports observed coverage for each agent on this Mac — running, installed, not yet observed, or missing data — instead of repeating a static support list.",
+          intent: "capability",
+          surface: "artifact",
         },
         {
           title: "Snooze keeps the row",
@@ -137,7 +143,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "托盘看的是会话",
-          body: "行标题是任务名，次行是路径和上次动静，Agent 身份在图标上。点一行，有 TTY 时聚焦对应终端页。",
+          body: "行标题是任务名；有采集数据时，次行可带路径、阶段、模型和上次动静。Agent 身份在图标上。点一行，有 TTY 时聚焦对应终端页。",
           intent: "capability",
           surface: "artifact",
         },
@@ -146,6 +152,12 @@ export const pulseProduct: MenuBarAppProduct = {
           body: "Waiting 只来自 hooks 或明确的 pending 标记。没有 Waiting 通路的 Agent 仍显示运行中 / 最近，并说明暂无 Waiting，不会硬造等待状态。",
           intent: "capability",
           surface: "cli",
+        },
+        {
+          title: "本机支持健康度",
+          body: "单独窗口按这台 Mac 上的观测结果展示各 Agent：运行中、已安装、尚未观测或缺少数据，而不是重复一张静态支持名单。",
+          intent: "capability",
+          surface: "artifact",
         },
         {
           title: "稍后只压打扰",

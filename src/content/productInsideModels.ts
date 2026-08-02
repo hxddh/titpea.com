@@ -196,15 +196,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   chessboard: browserInside(
     { en: "Learn, drill, then play and review", zh: "先学、做题，再对弈与复盘" },
     {
-      en: "The board keeps a 67-lesson beginner course, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
-      zh: "67 课零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
+      en: "The board keeps a 72-lesson beginner course, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
+      zh: "72 课零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
   pulse: browserInside(
     { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
     {
-      en: "The menu bar shows Waiting, Running, Idle, or stalled / probe issues. The tray lists affected sessions and opens the matching terminal.",
-      zh: "菜单栏显示等待、运行、空闲，或停滞 / 探测异常。托盘列出相关会话，并打开对应终端。",
+      en: "The menu bar shows Waiting, Running, Idle, or stalled / probe issues. The tray lists sessions with observed facts and can open the matching terminal.",
+      zh: "菜单栏显示等待、运行、空闲，或停滞 / 探测异常。托盘列出带观测事实的会话，并可打开对应终端。",
     },
   ),
   "easier-bookmarks": browserInside(
