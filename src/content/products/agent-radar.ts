@@ -15,17 +15,11 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
       eyebrow: "Markdown-first · GitHub Actions",
       headline: "Scheduled research kept in Markdown",
-      lead: "A Git-backed research loop for the AI-agent field: collect public signals, screen candidates, then commit the weekly brief, watchlist, field notes, and storage notes.",
+      lead: "Git-backed AI-agent research on Actions: collect free public signals, screen, synthesize, then commit only after direction and citation gates pass.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: [
-        "Free public sources",
-        "Wide find, narrow write",
-        "Checks before commit",
-        "Light screen, strong draft",
-        "Git as audit log",
-      ],
+      proof: ["Free public sources", "Wide find, narrow write", "Direction gates before commit", "Git as audit log"],
       workflowLabel: "How the pipeline runs",
       workflow: [
         {
@@ -96,11 +90,11 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
       eyebrow: "Markdown 优先 · GitHub Actions",
       headline: "定时研究，结果留在 Markdown",
-      lead: "面向 Agent 领域的 Git 研究循环：采集公开信号、筛选候选、窄范围写入并校验提交，最后更新每周论点、观察名单、现场笔记和存储影响。",
+      lead: "在 GitHub Actions 上跑 Agent 领域研究循环：采集免费公开源、筛选合成，方向与引用门禁通过后才提交周报与观察名单。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["免费公开源", "宽发现、窄写入", "提交前校验", "轻量初筛、强模型起草", "Git 即审计"],
+      proof: ["免费公开源", "宽发现、窄写入", "提交前方向门禁", "Git 即审计"],
       workflowLabel: "流水线怎么跑",
       workflow: [
         {

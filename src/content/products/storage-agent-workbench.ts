@@ -1,5 +1,8 @@
 import type { AgentWorkbenchProduct } from "../../lib/site";
+import { productFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
+
+const facts = productFacts["storage-agent-workbench"];
 
 export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
   slug: "storage-agent-workbench",
@@ -15,7 +18,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       lead: "Open a session about a bucket problem, error, or log. Storage Agent runs read-only checks on your machine and keeps the evidence beside the answer.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
-      meta: "Tauri desktop · S3-compatible · Apache-2.0 · macOS, Windows, Linux",
+      meta: `Tauri desktop · S3-compatible · Apache-2.0 · ${facts.latestRelease} · macOS, Windows, Linux`,
       proof: ["Storage investigation", "Read-only by design", "Evidence visible", "Runs locally"],
       featuresLabel: "How investigations work",
       features: [
@@ -128,7 +131,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       lead: "打开会话，描述桶问题、报错或日志。Storage Agent 在本机运行只读检查，并把证据留在回答旁边。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
-      meta: "Tauri 桌面 · S3 兼容 · Apache-2.0 · macOS、Windows、Linux",
+      meta: `Tauri 桌面 · S3 兼容 · Apache-2.0 · ${facts.latestRelease} · macOS、Windows、Linux`,
       proof: ["存储排查", "只读设计", "证据可见", "本机运行"],
       featuresLabel: "调查怎么推进",
       features: [

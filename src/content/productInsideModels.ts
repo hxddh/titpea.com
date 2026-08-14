@@ -169,14 +169,14 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       kind: "inside",
       kicker: "Local PDF workbench",
       title: "Ask about a page — see what was read",
-      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Citations and follow-along preview keep the source beside the answer.",
+      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Marks stay on the document; citations and follow-along preview keep the source beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "本地 PDF 工作台",
       title: "就某一页提问，看见它读了什么",
-      body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。页引用与跟随预览让原文留在回答旁边。",
+      body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。批注留在文档上；页引用与跟随预览让原文留在回答旁边。",
     },
   },
   "douban-movie-rating": browserInside(
@@ -189,8 +189,8 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   goban: browserInside(
     { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
     {
-      en: "The board keeps the current game, AI controls, move list, practice drills, daily challenges, statistics, appearance, and SGF tools together in one desktop app.",
-      zh: "当前棋局、AI 设置、手数列表、战术练习、每日挑战、对局统计、外观与 SGF 工具都集中在同一个桌面应用里。",
+      en: "The board keeps the current game, free/swap2/Renju rules, AI controls, 130 tactical drills, daily challenges, statistics, and SGF tools together in one desktop app.",
+      zh: "当前棋局、自由式/swap2/连珠规则、AI 设置、130 道战术题、每日挑战、对局统计与 SGF 工具都集中在同一个桌面应用里。",
     },
   ),
   chessboard: browserInside(
@@ -203,8 +203,8 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   pulse: browserInside(
     { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
     {
-      en: "The menu bar shows Waiting, Running, Idle, or stalled / probe issues. The tray lists sessions with observed facts and can open the matching terminal.",
-      zh: "菜单栏显示等待、运行、空闲，或停滞 / 探测异常。托盘列出带观测事实的会话，并可打开对应终端。",
+      en: "The menu bar shows Waiting, Running, Idle, or stalled. The tray lists sessions with observed facts; focus uses the best verified handle when one exists.",
+      zh: "菜单栏显示等待、运行、空闲或停滞。托盘列出带观测事实的会话；有句柄时按可用精度聚焦。",
     },
   ),
   celagent: {

@@ -50,7 +50,8 @@ export const celagentProduct: CliAgentProduct = {
       ],
       casesLabel: "What it covers",
       casesTitle: "Sessions and tasks that need durable object-storage state",
-      casesBody: "Use celagent when a Pi TUI session must survive machine changes, local cache loss, or multi-step Celld work.",
+      casesBody:
+        "Use celagent when a Pi TUI session must survive machine changes, local cache loss, or multi-step Celld work.",
       cases: [
         "cross-machine session restore",
         "BOS-backed conversation history",
@@ -95,7 +96,7 @@ export const celagentProduct: CliAgentProduct = {
       workflow: [
         {
           title: "安装并启动 TUI",
-          body: "从最新 Release 用 install.sh 安装（Windows 用 install.ps1），运行 `celagent` 打开带独立持久化 ID 的 Pi Coding Agent 会话。",
+          body: "从最新 Release 用 install.sh 安装（Windows 用 install.ps1），再运行 `celagent` 打开带持久化 ID 的 Pi 会话。",
           intent: "workflow",
           surface: "cli",
         },

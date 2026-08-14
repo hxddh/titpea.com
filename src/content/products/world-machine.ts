@@ -140,7 +140,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       features: [
         {
           title: "语义循环，不是场景图",
-          body: "世界真相遵循 Entity/Relation → Action → Event → State → Scheduler / Behavior / Agent → Replay → Projection。渲染层只消费投影。",
+          body: "世界真相按 Entity → Action → Event → State → Replay → Projection 推进。渲染层只消费投影。",
           intent: "capability",
           surface: "protocol",
         },
