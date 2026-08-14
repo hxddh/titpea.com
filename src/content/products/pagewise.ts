@@ -15,7 +15,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         "Local PDF workbench with a page-wise document agent: the model reads page by page under budgets, and you see the trail.",
       eyebrow: "Local document agent · macOS / Windows / Linux",
       headline: "See what the agent read, page by page",
-      lead: "Local PDF workbench: the model reads page by page under budgets. Marks stay on the document; citations and follow-along preview bring you back to the source. macOS, Windows, and Linux builds.",
+      lead: "Local PDF workbench with page-wise reads under budgets. Marks stay on the document; citations bring you back to the source across macOS, Windows, and Linux.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: `Tauri desktop · PDF + images · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
