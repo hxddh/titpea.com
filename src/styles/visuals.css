@@ -2,7 +2,9 @@
 .diagnostic-visual,
 .clock-visual,
 .rating-visual,
-.httpmon-terminal-visual {
+.httpmon-terminal-visual,
+.celagent-terminal-visual,
+.world-machine-projection-visual {
   position: relative;
   min-height: auto;
   overflow: hidden;
@@ -1015,7 +1017,8 @@
 .clock-visual,
 .rating-visual,
 .httpmon-terminal-visual,
-.agent-radar-terminal-visual {
+.agent-radar-terminal-visual,
+.celagent-terminal-visual {
   position: relative;
   min-height: auto;
   overflow: hidden;
@@ -1026,7 +1029,8 @@
 }
 
 .httpmon-terminal-visual,
-.agent-radar-terminal-visual {
+.agent-radar-terminal-visual,
+.celagent-terminal-visual {
   display: grid;
   gap: 0;
   padding: 0;
@@ -1039,7 +1043,9 @@
 .httpmon-terminal-bar,
 .httpmon-terminal-foot,
 .agent-radar-terminal-bar,
-.agent-radar-terminal-foot {
+.agent-radar-terminal-foot,
+.celagent-terminal-bar,
+.celagent-terminal-foot {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -1049,7 +1055,8 @@
   letter-spacing: 0.04em;
 }
 
-.agent-radar-terminal-bar {
+.agent-radar-terminal-bar,
+.celagent-terminal-bar {
   border-bottom: 1px solid #193d27;
 }
 
@@ -1058,14 +1065,18 @@
 .httpmon-terminal-response,
 .agent-radar-terminal-command,
 .agent-radar-terminal-files,
-.agent-radar-terminal-brief {
+.agent-radar-terminal-brief,
+.celagent-terminal-command,
+.celagent-terminal-files,
+.celagent-terminal-brief {
   display: grid;
   gap: 7px;
   padding: 17px 18px;
   border-bottom: 1px solid #193d27;
 }
 
-.agent-radar-terminal-command {
+.agent-radar-terminal-command,
+.celagent-terminal-command {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 7px;
@@ -1077,7 +1088,9 @@
 .httpmon-terminal-request strong,
 .httpmon-terminal-response strong,
 .agent-radar-terminal-command strong,
-.agent-radar-terminal-brief strong {
+.agent-radar-terminal-brief strong,
+.celagent-terminal-command strong,
+.celagent-terminal-brief strong {
   color: #f0fff4;
   font-size: 12px;
   line-height: 1.45;
@@ -1086,14 +1099,17 @@
 .httpmon-terminal-request span,
 .httpmon-terminal-response span,
 .agent-radar-terminal-files span,
-.agent-radar-terminal-brief span {
+.agent-radar-terminal-brief span,
+.celagent-terminal-files span,
+.celagent-terminal-brief span {
   color: #72de91;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
-.agent-radar-terminal-files ul {
+.agent-radar-terminal-files ul,
+.celagent-terminal-files ul {
   display: grid;
   gap: 6px;
   margin: 0;
@@ -1101,17 +1117,20 @@
   list-style: none;
 }
 
-.agent-radar-terminal-files code {
+.agent-radar-terminal-files code,
+.celagent-terminal-files code {
   color: #c3f4d0;
   font-size: 11px;
 }
 
-.agent-radar-terminal-brief {
+.agent-radar-terminal-brief,
+.celagent-terminal-brief {
   display: grid;
   gap: 7px;
 }
 
-.agent-radar-terminal-foot {
+.agent-radar-terminal-foot,
+.celagent-terminal-foot {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -1269,4 +1288,112 @@
 .pulse-menubar-foot {
   color: var(--label);
   font-size: 10px;
+}
+
+/* —— World Machine projection visual —— */
+.world-machine-projection-visual {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  color: var(--ink);
+  font-family: var(--mono);
+  background: var(--panel);
+}
+
+.world-machine-projection-bar,
+.world-machine-projection-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  color: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.world-machine-projection-bar {
+  border-bottom: 1px solid var(--line);
+  background: var(--raised);
+}
+
+.world-machine-projection-focus {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.world-machine-projection-focus > span:first-child,
+.world-machine-projection-focus > span:nth-child(3),
+.world-machine-projection-panels span {
+  color: var(--label);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.world-machine-projection-focus strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+  font-family: var(--sans, inherit);
+}
+
+.world-machine-projection-focus ul,
+.world-machine-projection-panels ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.world-machine-projection-focus li,
+.world-machine-projection-panels li {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.world-machine-projection-focus li {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--raised);
+  color: var(--ink);
+}
+
+.world-machine-projection-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.world-machine-projection-panels > div {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 16px 18px;
+}
+
+.world-machine-projection-panels > div:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.world-machine-projection-foot {
+  color: var(--label);
+  font-size: 10px;
+}
+
+@media (max-width: 640px) {
+  .world-machine-projection-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .world-machine-projection-panels > div:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
 }

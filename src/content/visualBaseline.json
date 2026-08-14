@@ -114,6 +114,26 @@
       "path": "/zh/pulse/",
       "viewport": "desktop",
       "state": "top"
+    },
+    {
+      "path": "/celagent/",
+      "viewport": "desktop",
+      "state": "top"
+    },
+    {
+      "path": "/zh/celagent/",
+      "viewport": "desktop",
+      "state": "top"
+    },
+    {
+      "path": "/world-machine/",
+      "viewport": "desktop",
+      "state": "top"
+    },
+    {
+      "path": "/zh/world-machine/",
+      "viewport": "desktop",
+      "state": "top"
     }
   ]
 }

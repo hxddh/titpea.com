@@ -316,6 +316,29 @@ export const visualCopy = {
     },
   },
 
+  celagentTerminal: {
+    en: {
+      kicker: "celagent · BOS session",
+      status: "cas ok",
+      command: "celagent",
+      filesLabel: "COMMANDS",
+      files: ["celagent", "celagent list", "celagent <id>  # restore from BOS", "celagent task ledger"],
+      briefLabel: "persistence",
+      brief: "Authority: BOS · Cache: worker SQLite · Restore: read BOS first · RPO≈0",
+      footnotes: ["Pi TUI · Celld/BOS", "CAS If-Match · cross-machine restore"],
+    },
+    zh: {
+      kicker: "celagent · BOS 会话",
+      status: "cas 通过",
+      command: "celagent",
+      filesLabel: "命令",
+      files: ["celagent", "celagent list", "celagent <id>  # 从 BOS 恢复", "celagent task ledger"],
+      briefLabel: "持久化",
+      brief: "权威：BOS · 缓存：worker SQLite · 恢复：先读 BOS · RPO≈0",
+      footnotes: ["Pi TUI · Celld/BOS", "CAS If-Match · 跨机恢复"],
+    },
+  },
+
   pulseMenuBar: {
     en: {
       menubarLabel: "menu bar",
@@ -388,6 +411,35 @@ export const visualCopy = {
         },
       ],
       footnotes: ["本地探测 · 采集 · hooks", "点击一行聚焦对应终端"],
+    },
+  },
+
+  worldMachineProjection: {
+    en: {
+      kicker: "world-machine · projection",
+      status: "pre-alpha",
+      briefingLabel: "Briefing",
+      briefing: "A place wakes. Notice the first relationship forming.",
+      commandsLabel: "Commands",
+      commands: ["Observe the first cycle", "Steer gently", "Leave the world alone"],
+      collectionLabel: "Collection",
+      collection: ["Place · seeded", "Relation · forming", "Agent · optional"],
+      timelineLabel: "Timeline",
+      timeline: ["t0 · world opened", "t1 · pack activated", "t2 · branch offered"],
+      footnotes: ["Entity → Action → Event → State", "ad-hoc · not notarized"],
+    },
+    zh: {
+      kicker: "world-machine · 投影",
+      status: "pre-alpha",
+      briefingLabel: "Briefing",
+      briefing: "一个地方醒来。注意正在形成的第一段关系。",
+      commandsLabel: "Commands",
+      commands: ["观察第一轮循环", "轻柔干预", "让世界自行运转"],
+      collectionLabel: "Collection",
+      collection: ["Place · 已播种", "Relation · 形成中", "Agent · 可选"],
+      timelineLabel: "Timeline",
+      timeline: ["t0 · 打开世界", "t1 · 激活 Pack", "t2 · 提供分支"],
+      footnotes: ["Entity → Action → Event → State", "ad-hoc · 未公证"],
     },
   },
 

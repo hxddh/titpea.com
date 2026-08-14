@@ -15,11 +15,11 @@ export const pulseProduct: MenuBarAppProduct = {
         "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
       eyebrow: "macOS menu-bar status lamp",
       headline: "See waiting sessions in the menu bar",
-      lead: "Pulse shows local coding-agent sessions as Waiting, Running, Idle, or stalled / probe issues. Waiting comes only from hooks or pending marks. Open the tray to pick a session and focus its terminal.",
+      lead: "Pulse shows local agent sessions as Waiting, Running, Idle, or stalled. Waiting is never inferred. Open the tray; focus uses the best verified handle.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,
-      proof: ["Waiting / Running / Idle", "Hooks or pending only", "Session tray", "Focus terminal"],
+      proof: ["Waiting / Running / Idle", "Hooks or pending only", "32-agent health", "Honest focus tiers"],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -46,13 +46,13 @@ export const pulseProduct: MenuBarAppProduct = {
       features: [
         {
           title: "Menu-bar status",
-          body: "Red for an explicit Waiting signal (new waits flash once), green while sessions are running, gray when only recent sessions remain, orange when a session is stalled or probe / harvest is unhealthy.",
+          body: "Red for an explicit Waiting signal (new waits pulse the red lamp three times), green while sessions are running, gray when only recent sessions remain, orange when a session is stalled or probe / harvest is unhealthy.",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "Sessions in the tray",
-          body: "Rows are sessions: task title first, then path, phase, model, and last activity when harvest provides them. Agent identity stays on the icon. Click a row to focus that terminal when a TTY is available.",
+          body: "Rows are sessions: task title first, then path, phase, model, and last activity when harvest provides them. Click a row to focus at the best verified handle — TTY tab, host workspace, or host app — otherwise observation only.",
           intent: "capability",
           surface: "artifact",
         },
@@ -64,7 +64,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Support health on this Mac",
-          body: "A separate window reports observed coverage for each agent on this Mac — running, installed, not yet observed, or missing data — instead of repeating a static support list.",
+          body: "A separate window reports observed coverage for 32 agents on this Mac — running, installed, not yet observed, permission or schema issues, or missing data — instead of repeating a static support list.",
           intent: "capability",
           surface: "artifact",
         },
@@ -89,7 +89,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "Do I need hooks?",
-          body: "Without hooks you still see Running and recent sessions. For Claude Code and Codex, install Waiting Signal hooks so approval prompts can create a Waiting signal. Some other agents surface Waiting via pending marks instead.",
+          body: "Without hooks you still see Running and recent sessions. For Claude Code and Codex, install native Waiting Signal hooks (no Python) so approval prompts can create a Waiting signal. Some other agents surface Waiting via pending marks instead.",
         },
         {
           title: "Does it upload my sessions?",
@@ -106,11 +106,11 @@ export const pulseProduct: MenuBarAppProduct = {
       description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲，或停滞 / 探测异常。",
       eyebrow: "macOS 菜单栏状态灯",
       headline: "在菜单栏看见等待中的会话",
-      lead: "Pulse 把本机编码 Agent 会话显示为等待、运行、空闲，或停滞 / 探测异常。等待只来自 hooks 或明确的 pending 标记；打开托盘选会话，并聚焦对应终端。",
+      lead: "Pulse 把本机编码 Agent 显示为等待、运行、空闲或停滞。等待只来自 hooks 或 pending，从不推断。打开托盘；有句柄时按 TTY / 工作区 / 宿主 App 精度聚焦。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
-      proof: ["等待 / 运行 / 空闲", "Waiting 不推断", "托盘列会话", "聚焦终端"],
+      proof: ["等待 / 运行 / 空闲", "Waiting 不推断", "32 Agent 健康度", "聚焦分精度"],
       positioningLabel: "适用与边界",
       positioning: [
         {
@@ -137,13 +137,13 @@ export const pulseProduct: MenuBarAppProduct = {
       features: [
         {
           title: "菜单栏状态",
-          body: "有明确 Waiting 信号时变红（新等待闪一次），有会话在跑时为绿，只剩最近会话时为灰；会话停滞或探测 / 采集异常时为橙。",
+          body: "有明确 Waiting 信号时变红（新等待红灯连闪三次），有会话在跑时为绿，只剩最近会话时为灰；会话停滞或探测 / 采集异常时为橙。",
           intent: "capability",
           surface: "artifact",
         },
         {
           title: "托盘看的是会话",
-          body: "行标题是任务名；有采集数据时，次行可带路径、阶段、模型和上次动静。Agent 身份在图标上。点一行，有 TTY 时聚焦对应终端页。",
+          body: "行标题是任务名；有采集数据时，次行可带路径、阶段、模型和上次动静。点一行，按可用的最高精度聚焦：TTY 标签页、宿主工作区或宿主 App；否则只作观测。",
           intent: "capability",
           surface: "artifact",
         },
@@ -155,7 +155,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "本机支持健康度",
-          body: "单独窗口按这台 Mac 上的观测结果展示各 Agent：运行中、已安装、尚未观测或缺少数据，而不是重复一张静态支持名单。",
+          body: "单独窗口按这台 Mac 上的观测结果展示 32 个 Agent：运行中、已安装、尚未观测、权限或格式问题、或缺少数据，而不是重复一张静态支持名单。",
           intent: "capability",
           surface: "artifact",
         },
@@ -180,7 +180,7 @@ export const pulseProduct: MenuBarAppProduct = {
         },
         {
           title: "一定要装 hooks 吗？",
-          body: "不装也能看到运行中和最近会话。Claude Code 与 Codex 要让授权提示产生 Waiting，在偏好设置的等待信号里装 hooks。部分其他 Agent 用 pending 标记也能出 Waiting。",
+          body: "不装也能看到运行中和最近会话。Claude Code 与 Codex 要让授权提示产生 Waiting，在偏好设置里装原生等待信号 hooks（不需要 Python）。部分其他 Agent 用 pending 标记也能出 Waiting。",
         },
         {
           title: "会上传我的会话吗？",

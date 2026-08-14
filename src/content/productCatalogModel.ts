@@ -22,8 +22,10 @@ export function productCatalogModel(locale: Locale) {
     if (slug === "storage-agent-workbench") return [copy.workbenchText, copy.workbenchRole];
     if (slug === "storageops") return [copy.storageopsText, copy.storageopsRole];
     if (slug === "httpmon") return [copy.httpmon, copy.httpmonRole];
+    if (slug === "celagent") return [copy.celagentText, copy.celagentRole];
     if (slug === "pagewise") return [copy.pagewiseText, copy.pagewiseRole];
     if (slug === "pulse") return [copy.pulseText, copy.pulseRole];
+    if (slug === "world-machine") return [copy.worldMachineText, copy.worldMachineRole];
     if (slug === "agent-radar") return [copy.agentRadarText, copy.agentRadarRole];
     if (slug === "world-clock") return [copy.worldClockText, copy.worldClockRole];
     if (slug === "douban-movie-rating") return [copy.doubanText, copy.doubanRole];

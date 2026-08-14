@@ -4,7 +4,7 @@
     "repository": "hxddh/s3-turbo-list",
     "licenseKey": "apache-2.0",
     "licenseLabel": "Apache-2.0",
-    "latestRelease": "v0.23.0",
+    "latestRelease": "v0.30.0",
     "stableFacts": [
       "S3-compatible",
       "Parquet output",
@@ -29,7 +29,8 @@
       "evidence-driven",
       "desktop app",
       "credentials stay local"
-    ]
+    ],
+    "latestRelease": "v0.78.0"
   },
   "storageops": {
     "source": "manual",
@@ -56,7 +57,8 @@
       "NDJSON and HAR export",
       "record and replay",
       "terminal UI"
-    ]
+    ],
+    "latestRelease": "v1.2.1"
   },
   "world-clock": {
     "source": "chrome-web-store",
@@ -93,22 +95,25 @@
     "stableFacts": [
       "local PDF and image analysis",
       "page-wise agent chat",
+      "document marks",
       "visible read trail",
       "character budget page reads",
       "local-first",
       "BYOK",
       "OS keychain",
       "desktop app",
+      "macOS Windows Linux releases",
       "credentials stay local",
       "Markdown export"
-    ]
+    ],
+    "latestRelease": "v7.8.0"
   },
   "agent-radar": {
     "source": "github-api",
     "repository": "hxddh/agent-radar",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v0.7.2",
+    "latestRelease": "v0.23.0",
     "stableFacts": [
       "Markdown-first",
       "agent watchlist",
@@ -126,19 +131,21 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.44.0",
+    "latestRelease": "v1.56.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
       "15x15 Gomoku",
       "four AI levels",
+      "free swap2 and Renju rules",
       "hints",
       "review coaching",
       "full-game evaluation curve and blunder list",
-      "tactical practice drills",
+      "130 tactical practice drills",
+      "VCF drills",
+      "wrong-answer book",
       "daily challenge with streak tracking",
       "match statistics by difficulty",
-      "swap2 opening option",
       "up to 30 named save slots",
       "SGF import and export",
       "local gameplay"
@@ -149,7 +156,7 @@
     "repository": "hxddh/chessboard",
     "licenseKey": "gpl-3.0",
     "licenseLabel": "GPLv3",
-    "latestRelease": "v2.1.2",
+    "latestRelease": "v2.3.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
@@ -195,17 +202,51 @@
     "repository": "hxddh/Pulse",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v0.46.0",
+    "latestRelease": "v0.97.2",
     "stableFacts": [
       "macOS menu bar",
       "coding agent status lamp",
       "waiting running idle stalled signals",
       "session tray",
-      "agent support health window",
-      "Claude Codex Cursor coverage",
+      "32 agent support health",
+      "native harvest and hooks",
+      "honest focus tiers",
       "local-first hooks and harvest",
       "snooze without losing waiting rows",
-      "power-aware probing"
+      "power-aware probing",
+      "ad-hoc not Gatekeeper-ready"
+    ]
+  },
+  "celagent": {
+    "source": "github-api",
+    "repository": "hxddh/celagent",
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "latestRelease": "v0.3.5",
+    "stableFacts": [
+      "Pi Coding Agent TUI",
+      "BOS object-storage session authority",
+      "CAS optimistic lock",
+      "cross-machine session restore",
+      "distributed task ledger",
+      "local-first worker cache",
+      "doctor and cas-probe"
+    ]
+  },
+  "world-machine": {
+    "source": "manual",
+    "repository": "hxddh/world-machine",
+    "licenseKey": "apache-2.0",
+    "licenseLabel": "Apache-2.0",
+    "stableFacts": [
+      "experimental pre-alpha",
+      "semantic world runtime",
+      "Entity Relation Action Event State",
+      "branchable .world documents",
+      "external .worldpack packs",
+      "Pocket Universe and Micro Company packs",
+      "macOS desktop host",
+      "ad-hoc not notarized"
     ]
   }
 }

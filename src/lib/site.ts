@@ -4,6 +4,7 @@ export type ProductSlug =
   | "storage-agent-workbench"
   | "storageops"
   | "httpmon"
+  | "celagent"
   | "agent-radar"
   | "pagewise"
   | "world-clock"
@@ -11,7 +12,8 @@ export type ProductSlug =
   | "goban"
   | "chessboard"
   | "easier-bookmarks"
-  | "pulse";
+  | "pulse"
+  | "world-machine";
 export type CurrentPage = "home" | "about" | ProductSlug;
 export type HeaderNavItem = {
   label: string;
@@ -156,6 +158,13 @@ export type AgentPackageProduct = {
   locales: Localized<AgentPackageProductCopy>;
 };
 
+export type CliAgentProduct = {
+  slug: "celagent";
+  name: string;
+  archetype: "cliAgent";
+  locales: Localized<AgentPackageProductCopy>;
+};
+
 export type BrowserExtensionProduct = {
   slug: ProductSlug;
   name: string;
@@ -191,27 +200,38 @@ export type DocumentAgentProduct = {
   locales: Localized<AgentWorkbenchProductCopy>;
 };
 
+export type WorldRuntimeProduct = {
+  slug: "world-machine";
+  name: string;
+  archetype: "worldRuntime";
+  locales: Localized<AgentWorkbenchProductCopy>;
+};
+
 export type Product =
   | S3TurboListProduct
   | StorageCliProduct
   | MarkdownRadarProduct
   | AgentPackageProduct
+  | CliAgentProduct
   | BrowserExtensionProduct
   | NativeAppProduct
   | MenuBarAppProduct
   | AgentWorkbenchProduct
-  | DocumentAgentProduct;
+  | DocumentAgentProduct
+  | WorldRuntimeProduct;
 
 export type ProductArchetype =
   | "s3TurboList"
   | "storageCli"
   | "markdownRadar"
   | "agentPackage"
+  | "cliAgent"
   | "browserExtension"
   | "nativeApp"
   | "menuBarApp"
   | "agentWorkbench"
-  | "documentAgent";
+  | "documentAgent"
+  | "worldRuntime";
 
 export function pathFor(locale: Locale, slug?: ProductSlug | "about") {
   const path = slug ? `${slug}/` : "";

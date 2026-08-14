@@ -129,6 +129,19 @@ export type AgentRadarTerminalVisualModel = {
   footnotes: string[];
 };
 
+export type CelagentTerminalVisualModel = {
+  kind: "celagentTerminal";
+  label: string;
+  kicker: string;
+  status: string;
+  command: string;
+  filesLabel: string;
+  files: string[];
+  briefLabel: string;
+  brief: string;
+  footnotes: string[];
+};
+
 export type PulseMenuBarVisualModel = {
   kind: "pulseMenuBar";
   label: string;
@@ -148,6 +161,22 @@ export type PulseMenuBarVisualModel = {
   footnotes: string[];
 };
 
+export type WorldMachineProjectionVisualModel = {
+  kind: "worldMachineProjection";
+  label: string;
+  kicker: string;
+  status: string;
+  briefingLabel: string;
+  briefing: string;
+  commandsLabel: string;
+  commands: string[];
+  collectionLabel: string;
+  collection: string[];
+  timelineLabel: string;
+  timeline: string[];
+  footnotes: string[];
+};
+
 export type ProductVisualModel =
   | S3BenchmarkVisualModel
   | StorageAgentVisualModel
@@ -156,7 +185,9 @@ export type ProductVisualModel =
   | AgentWorkbenchScreenshotVisualModel
   | HttpmonTerminalVisualModel
   | AgentRadarTerminalVisualModel
+  | CelagentTerminalVisualModel
   | PulseMenuBarVisualModel
+  | WorldMachineProjectionVisualModel
   | ScreenshotVisualModel;
 
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string, slug?: string): ProductVisualModel {
@@ -303,6 +334,17 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
     };
   }
 
+  if (kind === "celagentTerminal") {
+    const copy = visualCopy.celagentTerminal[locale];
+    return {
+      kind,
+      label,
+      ...copy,
+      files: [...copy.files],
+      footnotes: [...copy.footnotes],
+    };
+  }
+
   if (kind === "pulseMenuBar") {
     const copy = visualCopy.pulseMenuBar[locale];
     return {
@@ -316,6 +358,19 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
         title: section.title,
         rows: section.rows.map((row) => ({ ...row })),
       })),
+      footnotes: [...copy.footnotes],
+    };
+  }
+
+  if (kind === "worldMachineProjection") {
+    const copy = visualCopy.worldMachineProjection[locale];
+    return {
+      kind,
+      label,
+      ...copy,
+      commands: [...copy.commands],
+      collection: [...copy.collection],
+      timeline: [...copy.timeline],
       footnotes: [...copy.footnotes],
     };
   }

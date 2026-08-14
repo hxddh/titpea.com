@@ -20,6 +20,7 @@ export type VisualPolicy =
   | "storageAgent"
   | "storageWorkbench"
   | "httpmonTerminal"
+  | "celagentTerminal"
   | "worldClockScreenshot"
   | "doubanScreenshot"
   | "pagewiseWorkbench"
@@ -28,7 +29,8 @@ export type VisualPolicy =
   | "gobanScreenshot"
   | "chessboardScreenshot"
   | "easierBookmarksScreenshot"
-  | "pulseMenuBar";
+  | "pulseMenuBar"
+  | "worldMachineProjection";
 export type ProductGroup = "storage" | "personal";
 
 export type ArchetypeSectionSpec = {
@@ -151,6 +153,29 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
     ],
   },
+  cliAgent: {
+    group: "storage",
+    pageClass: "product-page product-page-cliAgent",
+    sectionIndex: true,
+    indexLabel: { en: "On this page", zh: "页面内容" },
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Cross-platform",
+    defaultVisual: "celagentTerminal",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
+      { id: "evidence", label: { en: "Persistence model", zh: "持久化模型" }, required: true },
+      {
+        id: "workflow",
+        label: { en: "How a session runs", zh: "一次会话怎么跑" },
+        layout: "steps",
+        numbered: true,
+        source: "workflow",
+        required: true,
+      },
+      { id: "cases", label: { en: "What it covers", zh: "覆盖范围" }, required: true },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
   agentWorkbench: {
     group: "storage",
     pageClass: "product-page product-page-agentWorkbench",
@@ -178,6 +203,39 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       {
         id: "positioning",
         label: { en: "Built to investigate safely", zh: "为安全排查而设计" },
+        source: "positioning",
+        required: true,
+      },
+      { id: "faq", label: { en: "FAQ", zh: "FAQ" }, required: true },
+    ],
+  },
+  worldRuntime: {
+    group: "personal",
+    pageClass: "product-page product-page-worldRuntime",
+    sectionIndex: true,
+    indexLabel: { en: "On this page", zh: "页面内容" },
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS",
+    defaultVisual: "worldMachineProjection",
+    sections: [
+      { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
+      {
+        id: "features",
+        label: { en: "What the runtime does", zh: "运行时做什么" },
+        source: "features",
+        required: true,
+      },
+      {
+        id: "workflow",
+        label: { en: "How a world runs", zh: "一个世界怎么跑" },
+        layout: "steps",
+        numbered: true,
+        source: "workflow",
+        required: true,
+      },
+      {
+        id: "positioning",
+        label: { en: "Experimental status", zh: "实验状态" },
         source: "positioning",
         required: true,
       },

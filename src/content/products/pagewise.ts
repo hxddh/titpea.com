@@ -1,5 +1,8 @@
 import type { DocumentAgentProduct } from "../../lib/site";
+import { productFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
+
+const facts = productFacts.pagewise;
 
 export const pagewiseProduct: DocumentAgentProduct = {
   slug: "pagewise",
@@ -10,13 +13,13 @@ export const pagewiseProduct: DocumentAgentProduct = {
       title: "PageWise",
       description:
         "Local PDF workbench with a page-wise document agent: the model reads page by page under budgets, and you see the trail.",
-      eyebrow: "Local document agent · macOS first",
+      eyebrow: "Local document agent · macOS / Windows / Linux",
       headline: "See what the agent read, page by page",
-      lead: "A local PDF workbench where the model reads page by page under budgets, with citations and preview controls to verify the source.",
-      primaryCta: { label: "Download DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      lead: "Local PDF workbench with page-wise reads under budgets. Marks stay on the document; citations bring you back to the source across macOS, Windows, and Linux.",
+      primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
-      meta: "Tauri desktop · PDF + images · MIT · macOS DMG",
-      proof: ["Page-wise reading", "Visible trail", "Files stay local", "OS keychain", "Bring your own model"],
+      meta: `Tauri desktop · PDF + images · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
+      proof: ["Page-wise reading", "Document marks", "Visible trail", "Files stay local", "Bring your own model"],
       featuresLabel: "What you get in the workbench",
       features: [
         {
@@ -40,6 +43,12 @@ export const pagewiseProduct: DocumentAgentProduct = {
         {
           title: "Workbench around the page",
           body: "Preview with thumbnails, zoom, in-doc search, and outline or bookmark tree. One chat thread per document, saved locally, with Markdown export.",
+          intent: "capability",
+          surface: "artifact",
+        },
+        {
+          title: "Marks stay on the document",
+          body: "Highlight and note marks persist per document, show in the preview, stay visible to the agent, and export with Markdown.",
           intent: "capability",
           surface: "artifact",
         },
@@ -112,22 +121,22 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "What platforms does it run on?",
-          body: "macOS is the release focus — download a DMG from GitHub Releases. The Tauri 2 app also builds for Windows and Linux; the project is MIT-licensed.",
+          body: "GitHub Releases ship macOS DMG, Windows setup/MSI, and Linux AppImage/deb. Builds are unsigned, so the first open may need an OS exception. The project is MIT-licensed.",
         },
       ],
       finalCta: "Read page by page — and return to the source",
-      finalCtaLabel: "Download DMG",
+      finalCtaLabel: "Download latest release",
     },
     zh: {
       title: "PageWise",
       description: "本地 PDF 工作台与按页 Document Agent：模型在预算内读，阅读轨迹对你可见。",
-      eyebrow: "本地文档 agent · macOS 优先",
+      eyebrow: "本地文档 agent · macOS / Windows / Linux",
       headline: "按页读 PDF，并看见它读了什么",
-      lead: "本地 PDF 工作台：模型按页、按预算阅读；页引用和跟随预览让你回到原文核对。",
-      primaryCta: { label: "下载 DMG", href: siteConfig.externalLinks.pagewiseReleases },
+      lead: "本地 PDF 工作台：模型按页、按预算阅读；批注留在文档上，页引用与跟随预览带回原文。提供 macOS、Windows、Linux 安装包。",
+      primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
-      meta: "Tauri 桌面 · PDF 与图片 · MIT · macOS DMG",
-      proof: ["按页阅读", "阅读轨迹可见", "文件留本地", "系统钥匙串", "自备模型"],
+      meta: `Tauri 桌面 · PDF 与图片 · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
+      proof: ["按页阅读", "文档批注", "阅读轨迹可见", "文件留本地", "自备模型"],
       featuresLabel: "工作台里有什么",
       features: [
         {
@@ -151,6 +160,12 @@ export const pagewiseProduct: DocumentAgentProduct = {
         {
           title: "围着页的工作台",
           body: "预览含缩略图、缩放、文内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
+          intent: "capability",
+          surface: "artifact",
+        },
+        {
+          title: "批注留在文档上",
+          body: "高亮与笔记按文档保存，预览里可见，Agent 也能看到，并随 Markdown 导出。",
           intent: "capability",
           surface: "artifact",
         },
@@ -223,11 +238,11 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "支持哪些平台？",
-          body: "发布重点是 macOS，可从 GitHub Releases 下载 DMG。Tauri 2 应用也可构建 Windows 与 Linux；项目采用 MIT 许可。",
+          body: "GitHub Releases 提供 macOS DMG、Windows 安装包与 Linux AppImage/deb。构建未公证，首次打开可能需系统例外。项目采用 MIT 许可。",
         },
       ],
       finalCta: "按页阅读，沿着阅读轨迹回到原文",
-      finalCtaLabel: "下载 DMG",
+      finalCtaLabel: "下载最新版本",
     },
   },
 };

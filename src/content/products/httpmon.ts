@@ -2,7 +2,7 @@ import type { StorageCliProduct } from "../../lib/site";
 import { httpmonFacts } from "../productFacts";
 import { siteConfig } from "../siteConfig";
 
-const meta = `Go · ${httpmonFacts.licenseLabel ?? "MIT"} · local proxy · HTTP / HTTPS / wss handshake · NDJSON / HAR`;
+const meta = `Go · ${httpmonFacts.licenseLabel ?? "MIT"} · ${httpmonFacts.latestRelease ?? "current"} · local proxy · HTTP / HTTPS / wss handshake · NDJSON / HAR`;
 
 export const httpmonProduct: StorageCliProduct = {
   slug: "httpmon",

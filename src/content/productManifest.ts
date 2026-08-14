@@ -16,7 +16,9 @@ export type ProductManifestItem = {
       | "goban"
       | "chessboard"
       | "easierBookmarks"
-      | "pulse";
+      | "pulse"
+      | "celagent"
+      | "worldMachine";
   };
   catalog: { order: number; primary?: boolean };
   visual: VisualPolicy;
@@ -66,6 +68,16 @@ export const productManifest: readonly ProductManifestItem[] = [
     factId: "https-traffic-inspector",
   },
   {
+    slug: "celagent",
+    name: "celagent",
+    group: "storage",
+    nav: { primary: true, label: "celagent" },
+    catalog: { order: 5 },
+    visual: "celagentTerminal",
+    ogImage: "/assets/og-celagent.png",
+    factId: "celagent",
+  },
+  {
     slug: "pagewise",
     name: "PageWise",
     group: "personal",
@@ -86,11 +98,21 @@ export const productManifest: readonly ProductManifestItem[] = [
     factId: "pulse",
   },
   {
+    slug: "world-machine",
+    name: "World Machine",
+    group: "personal",
+    nav: { primary: true, label: "worldMachine" },
+    catalog: { order: 3 },
+    visual: "worldMachineProjection",
+    ogImage: "/assets/og-world-machine.png",
+    factId: "world-machine",
+  },
+  {
     slug: "world-clock",
     name: "World Clock",
     group: "personal",
     nav: { primary: true, label: "worldClock" },
-    catalog: { order: 3 },
+    catalog: { order: 4 },
     visual: "worldClockScreenshot",
     ogImage: "/assets/og-world-clock.png",
     factId: "world-clock",
@@ -100,7 +122,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Douban Movie Rating Assistant",
     group: "personal",
     nav: { primary: true, label: "douban" },
-    catalog: { order: 4 },
+    catalog: { order: 5 },
     visual: "doubanScreenshot",
     ogImage: "/assets/og-douban-movie-rating.png",
     factId: "douban-movie-rating",
@@ -110,7 +132,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Agent Radar",
     group: "personal",
     nav: { primary: false, label: "agentRadar" },
-    catalog: { order: 5 },
+    catalog: { order: 6 },
     visual: "agentRadarTerminal",
     ogImage: "/assets/og-agent-radar.png",
     factId: "agent-radar",
@@ -120,7 +142,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Goban",
     group: "personal",
     nav: { primary: true, label: "goban" },
-    catalog: { order: 6 },
+    catalog: { order: 7 },
     visual: "gobanScreenshot",
     ogImage: "/assets/og-goban.png",
     factId: "goban",
@@ -130,7 +152,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Chessboard",
     group: "personal",
     nav: { primary: true, label: "chessboard" },
-    catalog: { order: 7 },
+    catalog: { order: 8 },
     visual: "chessboardScreenshot",
     ogImage: "/assets/og-chessboard.png",
     factId: "chessboard",
@@ -140,7 +162,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     name: "Easier Bookmarks",
     group: "personal",
     nav: { primary: true, label: "easierBookmarks" },
-    catalog: { order: 8 },
+    catalog: { order: 9 },
     visual: "easierBookmarksScreenshot",
     ogImage: "/assets/og-easier-bookmarks.png",
     factId: "easier-bookmarks",

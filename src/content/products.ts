@@ -4,6 +4,7 @@ import { s3TurboListProduct } from "./products/s3-turbo-list";
 import { storageAgentWorkbenchProduct } from "./products/storage-agent-workbench";
 import { storageOpsProduct } from "./products/storageops";
 import { httpmonProduct } from "./products/httpmon";
+import { celagentProduct } from "./products/celagent";
 import { agentRadarProduct } from "./products/agent-radar";
 import { pagewiseProduct } from "./products/pagewise";
 import { worldClockProduct } from "./products/world-clock";
@@ -11,6 +12,7 @@ import { gobanProduct } from "./products/goban";
 import { chessboardProduct } from "./products/chessboard";
 import { easierBookmarksProduct } from "./products/easier-bookmarks";
 import { pulseProduct } from "./products/pulse";
+import { worldMachineProduct } from "./products/world-machine";
 import { productManifest } from "./productManifest";
 
 export const productSlugs = productManifest.map((item) => item.slug) as ProductSlug[];
@@ -20,9 +22,11 @@ export const products: Record<ProductSlug, Product> = {
   "storage-agent-workbench": storageAgentWorkbenchProduct,
   storageops: storageOpsProduct,
   httpmon: httpmonProduct,
+  celagent: celagentProduct,
   "agent-radar": agentRadarProduct,
   pagewise: pagewiseProduct,
   pulse: pulseProduct,
+  "world-machine": worldMachineProduct,
   "world-clock": worldClockProduct,
   "douban-movie-rating": doubanMovieRatingProduct,
   goban: gobanProduct,

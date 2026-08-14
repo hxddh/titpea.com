@@ -199,6 +199,60 @@ export const productEvidenceModels: Partial<Record<ProductSlug, Record<Locale, P
       ],
     },
   },
+  celagent: {
+    en: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "diagnosisFlow",
+      kicker: "Persistence model",
+      title: "BOS is authority; the worker is a cache",
+      body: "Each turn dual-writes a local worker SQLite cache and BOS with CAS optimistic locking. Restore reads BOS first; the worker is only a miss fallback (RPO≈0).",
+      cards: [
+        {
+          label: "Pi TUI turn",
+          body: "The pi-coding-agent engine handles interaction, tools, and models. A turn_end hook persists without blocking the chat.",
+        },
+        {
+          label: "Worker cache",
+          body: "Local SQLite holds a fast cache with a short write budget. Lost cache can be rebuilt from BOS.",
+        },
+        {
+          label: "BOS CAS write",
+          body: "Direct BOS writes use If-Match optimistic locking, idempotent dedupe, and an async queue. sessions/<id>.json keeps full turns.",
+        },
+        {
+          label: "Cross-machine restore",
+          body: "`celagent <id>` loads history from BOS. `list`, `doctor`, and `cas-probe` check recoverability and conditional-write readiness.",
+        },
+      ],
+    },
+    zh: {
+      id: "evidence",
+      kind: "evidence",
+      variant: "diagnosisFlow",
+      kicker: "持久化模型",
+      title: "BOS 是权威，worker 是缓存",
+      body: "每轮双写本地 worker SQLite 缓存与带 CAS 乐观锁的 BOS。恢复先读 BOS；worker 仅作 miss 回退（RPO≈0）。",
+      cards: [
+        {
+          label: "Pi TUI 回合",
+          body: "pi-coding-agent 引擎负责交互、工具与模型。turn_end 钩子在不阻塞对话的情况下持久化。",
+        },
+        {
+          label: "Worker 缓存",
+          body: "本地 SQLite 做快速缓存，写入预算很短。缓存丢失可从 BOS 重建。",
+        },
+        {
+          label: "BOS CAS 写入",
+          body: "直写 BOS 使用 If-Match 乐观锁、幂等去重与异步队列。sessions/<id>.json 保留完整轮次。",
+        },
+        {
+          label: "跨机恢复",
+          body: "`celagent <id>` 从 BOS 加载历史。`list`、`doctor`、`cas-probe` 检查可恢复性与条件写就绪。",
+        },
+      ],
+    },
+  },
 };
 
 export const productEvidenceModel = (slug: ProductSlug, locale: Locale) =>
