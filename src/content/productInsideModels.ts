@@ -207,6 +207,38 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       zh: "菜单栏显示等待、运行、空闲，或停滞 / 探测异常。托盘列出带观测事实的会话，并可打开对应终端。",
     },
   ),
+  celagent: {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Pi TUI + BOS persistence",
+      title: "Session authority on object storage",
+      body: "celagent runs a full Pi Coding Agent TUI. Each turn dual-writes a local worker cache and BOS with CAS; restore reads BOS first so sessions survive machine changes.",
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Pi TUI + BOS 持久化",
+      title: "会话权威落在对象存储",
+      body: "celagent 运行完整 Pi Coding Agent TUI。每轮双写本地 worker 缓存与带 CAS 的 BOS；恢复先读 BOS，换机器也能找回会话。",
+    },
+  },
+  "world-machine": {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "Experimental semantic runtime",
+      title: "Inspectable worlds with explicit projections",
+      body: "World Machine keeps semantic state in the runtime and feeds GPUI through projection snapshots. Packs supply domain worlds; the kernel stays generic and pre-alpha.",
+    },
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "实验性语义运行时",
+      title: "可检查的世界，投影边界清晰",
+      body: "World Machine 把语义状态留在运行时，经投影快照供给 GPUI。Pack 提供领域世界；内核保持通用，并明确处于 pre-alpha。",
+    },
+  },
   "easier-bookmarks": browserInside(
     { en: "Your bookmark tree, without the menu maze", zh: "不用层层点菜单，也能看清书签树" },
     {

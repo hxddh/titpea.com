@@ -207,5 +207,37 @@
       "snooze without losing waiting rows",
       "power-aware probing"
     ]
+  },
+  "celagent": {
+    "source": "github-api",
+    "repository": "hxddh/celagent",
+    "licenseKey": "mit",
+    "licenseLabel": "MIT",
+    "latestRelease": "v0.3.4",
+    "stableFacts": [
+      "Pi Coding Agent TUI",
+      "BOS object-storage session authority",
+      "CAS optimistic lock",
+      "cross-machine session restore",
+      "distributed task ledger",
+      "local-first worker cache",
+      "doctor and cas-probe"
+    ]
+  },
+  "world-machine": {
+    "source": "manual",
+    "repository": "hxddh/world-machine",
+    "licenseKey": "apache-2.0",
+    "licenseLabel": "Apache-2.0",
+    "stableFacts": [
+      "experimental pre-alpha",
+      "semantic world runtime",
+      "Entity Relation Action Event State",
+      "branchable .world documents",
+      "external .worldpack packs",
+      "Pocket Universe and Micro Company packs",
+      "macOS desktop host",
+      "ad-hoc not notarized"
+    ]
   }
 }

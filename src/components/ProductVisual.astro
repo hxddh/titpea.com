@@ -6,11 +6,13 @@ import StorageOpsAgentVisual from "./visuals/StorageOpsAgentVisual.astro";
 import StorageWorkbenchVisual from "./visuals/StorageWorkbenchVisual.astro";
 import PagewiseWorkbenchVisual from "./visuals/PagewiseWorkbenchVisual.astro";
 import AgentRadarTerminalVisual from "./visuals/AgentRadarTerminalVisual.astro";
+import CelagentTerminalVisual from "./visuals/CelagentTerminalVisual.astro";
 import HttpmonTerminalVisual from "./visuals/HttpmonTerminalVisual.astro";
 import WorldClockVisual from "./visuals/WorldClockVisual.astro";
 import AgentWorkbenchScreenshotVisual from "./visuals/AgentWorkbenchScreenshotVisual.astro";
 import ProductScreenshotVisual from "./visuals/ProductScreenshotVisual.astro";
 import PulseMenuBarVisual from "./visuals/PulseMenuBarVisual.astro";
+import WorldMachineProjectionVisual from "./visuals/WorldMachineProjectionVisual.astro";
 
 interface Props {
   visual: ProductVisualModel;
@@ -26,7 +28,9 @@ const { visual } = Astro.props;
 {visual.kind === "agentWorkbenchScreenshot" && <AgentWorkbenchScreenshotVisual visual={visual} />}
 {visual.kind === "httpmonTerminal" && <HttpmonTerminalVisual visual={visual} />}
 {visual.kind === "agentRadarTerminal" && <AgentRadarTerminalVisual visual={visual} />}
+{visual.kind === "celagentTerminal" && <CelagentTerminalVisual visual={visual} />}
 {visual.kind === "pulseMenuBar" && <PulseMenuBarVisual visual={visual} />}
+{visual.kind === "worldMachineProjection" && <WorldMachineProjectionVisual visual={visual} />}
 {visual.kind === "worldClockScreenshot" && <WorldClockVisual visual={visual} />}
 {visual.kind === "doubanScreenshot" && <DoubanRatingVisual visual={visual} />}
 {visual.kind === "gobanScreenshot" && <ProductScreenshotVisual visual={visual} />}

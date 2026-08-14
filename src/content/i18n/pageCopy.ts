@@ -25,6 +25,10 @@ export const catalogCopy = {
     easierBookmarksRole: "Bookmark manager",
     pulseText: "Menu-bar status for coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
     pulseRole: "Menu-bar status lamp",
+    celagentText: "Pi Coding Agent TUI with BOS session authority, CAS restore, and a distributed task ledger.",
+    celagentRole: "CLI agent",
+    worldMachineText: "Experimental pre-alpha semantic runtime for inspectable, branchable worlds on macOS.",
+    worldMachineRole: "World runtime",
   },
   zh: {
     httpmon: "在终端实时查看一条命令的 HTTP/HTTPS 与 wss 握手，不改系统代理。",
@@ -51,5 +55,9 @@ export const catalogCopy = {
     easierBookmarksRole: "书签管理器",
     pulseText: "编码 Agent 会话的菜单栏状态：等待、运行、空闲，或停滞 / 探测异常。",
     pulseRole: "菜单栏状态灯",
+    celagentText: "Pi Coding Agent TUI，会话权威在 BOS，支持 CAS 恢复与分布式任务 ledger。",
+    celagentRole: "CLI agent",
+    worldMachineText: "实验性 pre-alpha 语义运行时：可检查、可分支的世界，面向 macOS。",
+    worldMachineRole: "世界运行时",
   },
 } as const;

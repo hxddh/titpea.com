@@ -26,6 +26,8 @@ export const headerCopy: Record<
       chessboard: string;
       easierBookmarks: string;
       pulse: string;
+      celagent: string;
+      worldMachine: string;
     };
   }
 > = {
@@ -53,6 +55,8 @@ export const headerCopy: Record<
       chessboard: "Chessboard",
       easierBookmarks: "Easier Bookmarks",
       pulse: "Pulse",
+      celagent: "celagent",
+      worldMachine: "World Machine",
     },
   },
   zh: {
@@ -79,6 +83,8 @@ export const headerCopy: Record<
       chessboard: "国际象棋 Chessboard",
       easierBookmarks: "Easier Bookmarks",
       pulse: "Pulse",
+      celagent: "celagent",
+      worldMachine: "World Machine",
     },
   },
 };

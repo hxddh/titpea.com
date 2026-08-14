@@ -132,6 +132,24 @@ export const images = [
     mark: "●",
     visual: "pulse",
   },
+  {
+    file: "og-celagent.png",
+    eyebrow: "celagent",
+    title: "Pi TUI with sessions on object storage",
+    body: "Full Pi Coding Agent TUI with BOS session authority, CAS restore, and a distributed task ledger.",
+    accent: "#0f766e",
+    mark: "CEL",
+    visual: "terminal",
+  },
+  {
+    file: "og-world-machine.png",
+    eyebrow: "World Machine",
+    title: "Branchable worlds you can inspect",
+    body: "Experimental pre-alpha semantic runtime for persistent, inspectable, branchable worlds on macOS.",
+    accent: "#1d4ed8",
+    mark: "WM",
+    visual: "workbench",
+  },
 ];
 
 const escape = (value) =>
