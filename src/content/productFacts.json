@@ -222,7 +222,7 @@
     "repository": "hxddh/celagent",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v0.3.4",
+    "latestRelease": "v0.3.5",
     "stableFacts": [
       "Pi Coding Agent TUI",
       "BOS object-storage session authority",
