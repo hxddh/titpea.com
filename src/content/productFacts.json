@@ -30,7 +30,7 @@
       "desktop app",
       "credentials stay local"
     ],
-    "latestRelease": "v0.85.0"
+    "latestRelease": "v0.86.0"
   },
   "storageops": {
     "source": "manual",
@@ -106,7 +106,7 @@
       "credentials stay local",
       "Markdown export"
     ],
-    "latestRelease": "v9.5.0"
+    "latestRelease": "v9.6.0"
   },
   "agent-radar": {
     "source": "github-api",
@@ -202,7 +202,7 @@
     "repository": "hxddh/Pulse",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v4.0.0",
+    "latestRelease": "v5.0.0",
     "stableFacts": [
       "macOS menu bar",
       "coding agent status lamp",
