@@ -19,7 +19,7 @@ export const gobanProduct: NativeAppProduct = {
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["Four AI levels", "Free / swap2 / Renju", "130 drills + daily", "SGF import/export"],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -107,7 +107,7 @@ export const gobanProduct: NativeAppProduct = {
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["四档 AI", "自由 / swap2 / 连珠", "130 题 + 每日", "SGF 导入导出"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {

@@ -19,7 +19,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: `Tauri desktop · PDF + images · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
-      proof: ["Page-wise reading", "Document marks", "Visible trail", "Files stay local", "Bring your own model"],
+      proof: [],
       featuresLabel: "What you get in the workbench",
       features: [
         {
@@ -136,7 +136,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: `Tauri 桌面 · PDF 与图片 · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
-      proof: ["按页阅读", "文档批注", "阅读轨迹可见", "文件留本地", "自备模型"],
+      proof: [],
       featuresLabel: "工作台里有什么",
       features: [
         {

@@ -20,7 +20,7 @@ export const celagentProduct: CliAgentProduct = {
       primaryCta: { label: "Install / View releases", href: siteConfig.externalLinks.celagentReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.celagent },
       meta,
-      proof: ["Pi TUI", "BOS authority", "CAS restore", "Task ledger"],
+      proof: [],
       workflowLabel: "How a session runs",
       workflow: [
         {
@@ -91,7 +91,7 @@ export const celagentProduct: CliAgentProduct = {
       primaryCta: { label: "安装 / 查看 Release", href: siteConfig.externalLinks.celagentReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.celagent },
       meta,
-      proof: ["Pi TUI", "BOS 权威", "CAS 恢复", "任务 ledger"],
+      proof: [],
       workflowLabel: "一次会话怎么跑",
       workflow: [
         {

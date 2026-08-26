@@ -25,7 +25,7 @@
     padding-bottom: 54px;
   }
 
-  .product-hero.product-page-agentWorkbench,
+  .product-hero,
   .home-catalog-columns {
     grid-template-columns: 1fr;
   }

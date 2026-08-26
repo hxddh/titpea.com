@@ -19,7 +19,7 @@ export const chessboardProduct: NativeAppProduct = {
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["72 beginner lessons", "Mate drills", "Stockfish 18", "Full-game review"],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -111,7 +111,7 @@ export const chessboardProduct: NativeAppProduct = {
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["72 课零基础教学", "杀型做题", "Stockfish 18", "整局复盘"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {
