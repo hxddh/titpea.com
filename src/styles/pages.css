@@ -1,11 +1,11 @@
 /* Page-specific rules live in home-about.css and product.css. */
 
 .privacy-page {
-  max-width: 840px;
   padding-block: 96px 112px;
 }
 
 .privacy-header {
+  max-width: 34em;
   padding-bottom: 40px;
   border-bottom: 1px solid var(--line);
 }

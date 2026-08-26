@@ -108,7 +108,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
         },
         {
           title: "隐私边界",
-          body: "它只使用 Chrome 书签 API 和扩展本地存储，不含分析、广告、账号、远程代码或外部服务器。",
+          body: "它只使用 Chrome 书签 API 和扩展本地存储，无分析服务、广告、账号、远程代码或外部服务器。",
           intent: "boundary",
           surface: "browser",
         },
