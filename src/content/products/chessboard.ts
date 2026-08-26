@@ -14,7 +14,7 @@ export const chessboardProduct: NativeAppProduct = {
       description:
         "A desktop chess app for macOS and Windows, with Stockfish 18, a 72-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
       eyebrow: "Desktop chess",
-      headline: "A focused chessboard for desktop",
+      headline: "A focused desktop chessboard",
       lead: "Learn in 72 offline lessons, drill mates through mate-in-three, play Stockfish 18 or a friend locally, then review with a centipawn curve.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },

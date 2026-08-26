@@ -9,7 +9,7 @@
 }
 
 .product-hero {
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 }
 
 .product-hero.product-page-s3TurboList {
