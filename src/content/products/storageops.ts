@@ -4,8 +4,6 @@ import { siteConfig } from "../siteConfig";
 
 const facts = productFacts.storageops;
 const meta = `Python · Pi Coding Agent · S3-compatible · ${facts.licenseLabel ?? "MIT"}`;
-const skillPackCount = 16;
-const toolCount = 4;
 
 export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",
