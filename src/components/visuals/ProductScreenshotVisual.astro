@@ -9,8 +9,6 @@ const { visual } = Astro.props;
 const image = visual.images[0];
 ---
 
-<div class="product-scene product-single-screenshot" aria-label={visual.label}>
-  <div class="product-single-screenshot-frame">
-    <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" />
-  </div>
-</div>
+<figure class="product-screenshot-visual">
+  <img src={image.src} alt={image.alt} width={image.width} height={image.height} fetchpriority="high" />
+</figure>
