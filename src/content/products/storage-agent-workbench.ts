@@ -19,7 +19,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: `Tauri desktop · S3-compatible · Apache-2.0 · ${facts.latestRelease} · macOS, Windows, Linux`,
-      proof: ["Storage investigation", "Read-only by design", "Evidence visible", "Runs locally"],
+      proof: [],
       featuresLabel: "How investigations work",
       features: [
         {
@@ -57,15 +57,9 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "The agent investigates with tools",
-          body: "It chooses read-only checks and keeps going under simple budgets for list, preview, and latency — so you are not confirming every small read.",
+          body: "It chooses read-only checks under simple budgets for list, preview, and latency. Analysis stays in local app data; metadata, log rows, inventory, and tool activity stay next to the answer.",
           intent: "workflow",
           surface: "agent",
-        },
-        {
-          title: "Results land locally; you can open them",
-          body: "Analysis stays in local app data. Metadata, log rows, inventory, and tool activity stay next to the answer.",
-          intent: "workflow",
-          surface: "artifact",
         },
         {
           title: "You approve larger actions",
@@ -84,19 +78,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "It cannot change your storage",
-          body: "There are no write, delete, or bucket-policy tools. The agent can investigate; it cannot mutate production.",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "Confirm downloads, large scans, and evidence imports",
-          body: "Ordinary reads stay fast. Downloads, large scans, and evidence imports always ask for approval.",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
-          title: "What it is not",
-          body: "Not a full S3 browser or sync client, not multi-user SaaS, and not auto-fix or arbitrary shell.",
+          body: "There are no write, delete, or bucket-policy tools. The agent can investigate; it cannot mutate production. It is not a full S3 browser, sync client, multi-user SaaS, auto-fix, or arbitrary shell.",
           intent: "boundary",
           surface: "protocol",
         },
@@ -132,7 +114,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: `Tauri 桌面 · S3 兼容 · Apache-2.0 · ${facts.latestRelease} · macOS、Windows、Linux`,
-      proof: ["存储排查", "只读设计", "证据可见", "本机运行"],
+      proof: [],
       featuresLabel: "调查怎么推进",
       features: [
         {
@@ -170,15 +152,9 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Agent 用工具排查",
-          body: "它选择只读检查，并在列表、预览、延迟等简单预算内继续推进——小读取不必处处确认。",
+          body: "它在列表、预览、延迟等简单预算内选择只读检查。分析结果留在本机应用数据里；元数据、日志行、清单和工具活动留在回答旁边。",
           intent: "workflow",
           surface: "agent",
-        },
-        {
-          title: "结果落在本地，你可以打开",
-          body: "分析结果留在本机应用数据里。元数据、日志行、清单和工具活动留在回答旁边。",
-          intent: "workflow",
-          surface: "artifact",
         },
         {
           title: "较大操作由你确认",
@@ -197,19 +173,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "它改不了你的存储",
-          body: "没有写、删或改桶策略的工具。Agent 可以调查，不能改生产。",
-          intent: "boundary",
-          surface: "protocol",
-        },
-        {
-          title: "下载、大扫描和证据导入需确认",
-          body: "普通读取保持顺畅。下载、大扫描和证据导入一定会征求同意。",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
-          title: "它刻意不是什么",
-          body: "不是完整 S3 浏览器或同步客户端，不是多用户 SaaS，也不是自动修复或任意 shell。",
+          body: "没有写、删或改桶策略的工具。Agent 可以调查，不能改生产。它也不是完整 S3 浏览器、同步客户端、多用户 SaaS、自动修复或任意 shell。",
           intent: "boundary",
           surface: "protocol",
         },

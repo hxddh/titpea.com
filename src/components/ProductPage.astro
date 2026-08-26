@@ -37,9 +37,15 @@ const copy = model.copy;
     </div>
   </section>
 
-  <section class="proof-strip shell" aria-label="Product evidence">
-    {copy.proof.map((item) => <span>{item}</span>)}
-  </section>
+  {
+    copy.proof.length > 0 && (
+      <section class="proof-strip shell" aria-label="Product evidence">
+        {copy.proof.map((item) => (
+          <span>{item}</span>
+        ))}
+      </section>
+    )
+  }
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
