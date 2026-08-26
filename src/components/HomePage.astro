@@ -36,10 +36,10 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.featured.label}</p>
       <h2>{model.featured.title}</h2>
     </div>
-    <div class="home-evidence-grid home-featured-grid">
+    <div class="home-evidence-grid">
       {
         model.featured.items.map((item) => (
-          <a class="home-evidence-card home-featured-card" href={item.href}>
+          <a class="home-featured-card" href={item.href}>
             <figure>
               <img
                 src={item.image.src}

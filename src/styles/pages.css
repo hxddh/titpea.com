@@ -1,7 +1,7 @@
 /* Page-specific rules live in home-about.css and product.css. */
 
 .privacy-page {
-  padding-block: 96px 112px;
+  padding-block: var(--section-y);
 }
 
 .privacy-header {

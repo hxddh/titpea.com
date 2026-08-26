@@ -19,7 +19,7 @@
 .brand {
   gap: 10px;
   color: var(--ink);
-  font-weight: 760;
+  font-weight: 600;
 }
 
 .brand-mark {
@@ -187,44 +187,43 @@
 
 .mobile-menu-group {
   display: grid;
-  gap: 1px;
   margin: 0;
-  border-bottom: 1px solid var(--line);
-  background: var(--line);
 }
 
-.mobile-menu-group:last-child {
-  border-bottom: 0;
+.mobile-menu-group + .mobile-menu-group {
+  border-top: 1px solid var(--line);
 }
 
 .mobile-menu-group p,
 .mobile-menu-group a {
   margin: 0;
-  background: var(--panel);
+  background: transparent;
 }
 
 .mobile-menu-group p {
-  padding: 12px 14px 6px;
+  padding: 12px 14px 4px;
   color: var(--muted);
   font-family: var(--sans);
   font-size: 11px;
-}
-
-.mobile-menu-group[data-current="true"] p {
-  color: var(--ink);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .mobile-menu-group a {
+  border-top: 1px solid var(--line);
   padding: 12px 14px;
   color: var(--ink);
   font-size: 15px;
   line-height: 1.25;
 }
 
+.mobile-menu-group[data-current="true"] p {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .mobile-menu-group a[aria-current="page"] {
   background: var(--active-bg);
-  font-weight: 760;
+  font-weight: 600;
 }
 
 .proof-strip {

@@ -1,12 +1,6 @@
-.inside-section,
-.positioning-section,
-.content-section {
-  padding: 94px 0;
-}
-
 .product-hero .eyebrow-name {
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .product-screenshot-showcase {
@@ -15,8 +9,8 @@
   gap: 54px;
   align-items: center;
   border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 86px;
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
 }
 
 .screenshot-showcase-copy h2 {
@@ -53,8 +47,6 @@
   display: grid;
   gap: 26px;
   border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 86px;
 }
 
 .product-page-agentPackage .agent-manifest-visual,
@@ -258,8 +250,8 @@
   display: grid;
   gap: 28px;
   border-top: 1px solid var(--line);
-  padding-top: 86px;
-  padding-bottom: 94px;
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
@@ -441,10 +433,6 @@
   color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
-}
-
-.faq-section {
-  padding-top: 86px;
 }
 
 .faq-list details {
