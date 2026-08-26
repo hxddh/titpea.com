@@ -8,7 +8,7 @@ interface Props {
 const { visual } = Astro.props;
 ---
 
-<div class="clock-visual product-scene clock-scene" aria-label={visual.label}>
+<div class="product-scene clock-scene" aria-label={visual.label}>
   <div class="clock-shot-stack">
     {
       visual.images.map((image) => (
