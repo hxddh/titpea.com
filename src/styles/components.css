@@ -206,7 +206,7 @@
 .mobile-menu-group p {
   padding: 12px 14px 6px;
   color: var(--muted);
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
 }
 

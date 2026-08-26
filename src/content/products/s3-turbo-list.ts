@@ -12,7 +12,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
       eyebrow: "Rust CLI",
       headline: "List / diff, no scanner to build",
-      lead: "A CLI that discovers parallel work for large S3-compatible list / diff runs.",
+      lead: "Discovers parallel work for large S3-compatible list / diff runs.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),

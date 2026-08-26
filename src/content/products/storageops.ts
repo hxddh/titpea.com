@@ -15,7 +15,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
       eyebrow: "Pi Coding Agent extension",
       headline: "Storage diagnosis for Pi",
-      lead: "Skills and tools that help Pi investigate S3-compatible failures from the material you provide.",
+      lead: "Pi skills and tools that diagnose S3-compatible failures from the logs, errors, config, and traces you provide.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,

@@ -24,6 +24,12 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.section-card-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+}
+
 /* A trailing card that would otherwise sit alone in an incomplete last row
    spans the remaining columns, so no empty grid cell exposes the separator
    background. */
@@ -43,7 +49,8 @@
   .section-card-grid-balanced,
   .section-card-grid-evidence,
   .section-card-grid-steps,
-  .section-card-grid-dense {
+  .section-card-grid-dense,
+  .section-card-list {
     grid-template-columns: 1fr;
   }
 
