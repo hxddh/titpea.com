@@ -179,19 +179,13 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
   agentWorkbench: {
     group: "storage",
     pageClass: "product-page product-page-agentWorkbench",
-    sectionIndex: true,
+    sectionIndex: false,
     indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "storageWorkbench",
     sections: [
       { id: "inside", label: { en: "Overview", zh: "概览" }, required: true },
-      {
-        id: "features",
-        label: { en: "How investigations work", zh: "调查怎么推进" },
-        source: "features",
-        required: true,
-      },
       {
         id: "workflow",
         label: { en: "How a session runs", zh: "一次会话怎么跑" },

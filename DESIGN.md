@@ -29,7 +29,9 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 ## Visual Language
 
-- Preserve the existing light technical surface, fine grid, dark ink, and restrained controls.
+- Preserve the existing light technical surface, dark ink, and restrained controls. Do not add a decorative body grid.
+- Home and flagship product heroes are left-aligned. Captions sit below screenshots, not as overlay pills. The remaining catalog is a two-column text list with hairline separators, not a mosaic of equal-weight cards.
+- Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
 - Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
 - Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
 

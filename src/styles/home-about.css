@@ -8,12 +8,16 @@
   padding: 78px 0 62px;
 }
 
-.home-copy,
 .product-copy,
 .about-redesign-copy {
   max-width: 860px;
   margin-inline: auto;
   text-align: center;
+}
+
+.home-copy {
+  max-width: 34em;
+  text-align: left;
 }
 
 .home-hero h1,
@@ -23,6 +27,18 @@
   margin: 0 auto 22px;
   font-size: clamp(2.25rem, 5.1vw, 3.5rem);
   line-height: 1.04;
+}
+
+.home-hero h1 {
+  margin: 0 0 22px;
+}
+
+.home-hero .lead {
+  margin-inline: 0;
+}
+
+.home-hero .actions {
+  justify-content: flex-start;
 }
 
 .meta-line {
@@ -224,30 +240,35 @@
   gap: 14px;
   border: 0;
   background: transparent;
+  overflow: visible;
 }
 
 .home-featured-card {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   gap: 0;
   padding: 0;
 }
 
 .home-featured-card figure {
-  position: relative;
+  position: static;
   margin: 0;
-  overflow: hidden;
-  background: var(--raised);
+  background: transparent;
 }
 
 .home-featured-card img {
   display: block;
   width: 100%;
   height: auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: top center;
+  background: var(--raised);
   transition: transform 180ms ease;
 }
 
@@ -256,17 +277,10 @@
 }
 
 .home-featured-caption {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
+  position: static;
   display: grid;
-  max-width: calc(100% - 24px);
-  gap: 3px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-control);
-  padding: 8px 12px;
-  background: var(--panel);
-  box-shadow: var(--shadow-soft);
+  gap: 4px;
+  padding: 14px 2px 0;
   color: var(--ink);
 }
 
@@ -285,6 +299,52 @@
 
 .home-line-group + .home-line-group {
   margin-top: 26px;
+}
+
+.home-catalog-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+}
+
+.home-catalog-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-catalog-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.home-catalog-list a {
+  display: grid;
+  gap: 4px;
+  min-height: 44px;
+  padding: 16px 0;
+}
+
+.home-catalog-role {
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-catalog-name {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.home-catalog-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .home-thesis-layout {

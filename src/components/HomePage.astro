@@ -11,7 +11,7 @@ const { model } = Astro.props;
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
   <section class="home-hero shell">
-    <div class="home-copy home-workbench-copy">
+    <div class="home-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
@@ -64,21 +64,25 @@ const { model } = Astro.props;
       <p class="section-kicker">{model.more.label}</p>
       <h2>{model.more.title}</h2>
     </div>
-    {
-      model.more.groups.map((group) => (
-        <div class="home-line-group">
-          <p class="about-product-line-label">{group.label}</p>
-          <div class="browser-tool-list compact">
-            {group.items.map((item) => (
-              <a href={item.href}>
-                <span>{item.displayRole}</span>
-                <strong>{item.name}</strong>
-                <p>{item.text}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))
-    }
+    <div class="home-catalog-columns">
+      {
+        model.more.groups.map((group) => (
+          <section class="home-catalog-column">
+            <h3 class="about-product-line-label">{group.label}</h3>
+            <ul class="home-catalog-list">
+              {group.items.map((item) => (
+                <li>
+                  <a href={item.href}>
+                    <span class="home-catalog-role">{item.displayRole}</span>
+                    <strong class="home-catalog-name">{item.name}</strong>
+                    <p class="home-catalog-text">{item.text}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
   </section>
 </SiteLayout>
