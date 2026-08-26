@@ -15,7 +15,16 @@
   padding: var(--card-pad-compact);
 }
 
-.section-card-grid small {
+.section-card-list > article {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.section-card-grid small,
+.section-card-list small {
   width: fit-content;
   border-radius: var(--radius-control);
   background: var(--chip-bg);
@@ -26,7 +35,8 @@
   font-weight: 700;
 }
 
-.section-card-grid h3 {
+.section-card-grid h3,
+.section-card-list h3 {
   max-width: 30ch;
   margin: 0;
   color: var(--ink);
@@ -35,7 +45,8 @@
   text-wrap: balance;
 }
 
-.section-card-grid p {
+.section-card-grid p,
+.section-card-list p {
   max-width: 64ch;
   margin: 0;
   color: var(--muted);

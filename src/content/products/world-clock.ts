@@ -15,7 +15,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       description: "A lightweight Chrome extension showing live time across the cities you choose.",
       eyebrow: "Chrome Extension",
       headline: "Time across cities at a glance",
-      lead: "Open one small popup to see the local time, UTC offset, date, and work-hours context for the cities you care about.",
+      lead: "One popup shows local time, UTC offset, date, and work-hours context for the cities you keep.",
       primaryCta: {
         label: "Install",
         href: siteConfig.externalLinks.worldClockChrome,
@@ -73,7 +73,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       description: "一个很轻的 Chrome 扩展，用来快速查看你选择的城市当前时间。",
       eyebrow: "Chrome 扩展",
       headline: "一眼看清几个城市的时间",
-      lead: "打开一个小弹窗，直接看城市时间、UTC 偏移、日期和工作时段，看完继续手头的事。",
+      lead: "打开弹窗即可看到城市当地时间、UTC 偏移、日期和工作时段。",
       primaryCta: {
         label: "安装扩展",
         href: siteConfig.externalLinks.worldClockChrome,

@@ -27,7 +27,7 @@ export const images = [
   {
     file: "og-s3-turbo-list.png",
     eyebrow: "s3-turbo-list",
-    title: "Automatic S3 inventory and diff",
+    title: "List / diff, no scanner to build",
     body: "Startup discovery, bounded diff, Parquet output, and agent-safe run evidence.",
     accent: "#16a56c",
     mark: "LIST",
@@ -36,7 +36,7 @@ export const images = [
   {
     file: "og-storage-agent-workbench.png",
     eyebrow: "Storage Agent",
-    title: "A native agent for object storage",
+    title: "Read-only storage investigations",
     body: "Ask about S3-compatible storage in plain language; a local agent investigates it read-only.",
     accent: "#2563eb",
     mark: "SAW",
@@ -45,7 +45,7 @@ export const images = [
   {
     file: "og-storageops.png",
     eyebrow: "StorageOps",
-    title: "S3 diagnosis agent for Pi",
+    title: "Storage diagnosis for Pi",
     body: "Object-storage skills, bounded tools, helper scripts, and eval-backed routing.",
     accent: "#7c3aed",
     mark: "PI",
@@ -54,7 +54,7 @@ export const images = [
   {
     file: "og-httpmon.png",
     eyebrow: "httpmon",
-    title: "See CLI HTTP traffic",
+    title: "See HTTP beside the command",
     body: "A local terminal inspector for request and response evidence, HAR export, recording, and replay.",
     accent: "#16854a",
     mark: "HTTP",
@@ -63,7 +63,7 @@ export const images = [
   {
     file: "og-pagewise.png",
     eyebrow: "PageWise",
-    title: "Ask questions about your documents",
+    title: "See what the agent read, page by page",
     body: "Local PDF text, OCR, and page-wise agent chat — files stay on your machine.",
     accent: "#0d9488",
     mark: "PDF",
@@ -72,7 +72,7 @@ export const images = [
   {
     file: "og-world-clock.png",
     eyebrow: "World Clock",
-    title: "A timezone feed in one click",
+    title: "Time across cities at a glance",
     body: "Live city time, work-hours context, and light / dark browser-native themes.",
     accent: "#0f7a3a",
     mark: "UTC",
@@ -81,7 +81,7 @@ export const images = [
   {
     file: "og-douban-movie-rating.png",
     eyebrow: "Douban Movie Rating Assistant",
-    title: "Global ratings inside Douban",
+    title: "More rating context inside Douban",
     body: "IMDb, Rotten Tomatoes, and Metacritic context on the page you are already reading.",
     accent: "#d97706",
     mark: "RT",
@@ -90,7 +90,7 @@ export const images = [
   {
     file: "og-agent-radar.png",
     eyebrow: "Agent Radar",
-    title: "Track AI agent signals in Markdown",
+    title: "Scheduled research kept in Markdown",
     body: "Watchlist, field notes, playbooks, storage implications, and a stdlib Python CLI.",
     accent: "#7c3aed",
     mark: "RADAR",
@@ -108,7 +108,7 @@ export const images = [
   {
     file: "og-chessboard.png",
     eyebrow: "Chessboard",
-    title: "A focused chessboard for desktop",
+    title: "A focused desktop chessboard",
     body: "Stockfish 18, beginner lessons, mate drills, and PGN tools for macOS and Windows.",
     accent: "#6b4f2a",
     mark: "♔",
@@ -126,7 +126,7 @@ export const images = [
   {
     file: "og-pulse.png",
     eyebrow: "Pulse",
-    title: "See waiting sessions in the menu bar",
+    title: "Waiting sessions in the menu bar",
     body: "A macOS status lamp for local coding-agent sessions — Waiting is never inferred — with honest focus tiers and 32-agent support health.",
     accent: "#b42318",
     mark: "●",

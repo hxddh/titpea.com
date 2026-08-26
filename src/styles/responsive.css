@@ -53,6 +53,7 @@
   .about-defaults-grid,
   .home-more-tools .browser-tool-list.compact,
   .browser-tool-list.compact,
+  .section-card-list,
   .positioning-grid,
   .features-grid,
   .workflow-grid,
@@ -242,16 +243,5 @@
 
   .about-current-card > div {
     padding: 22px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-featured-card img,
-  .about-current-card img {
-    transition: none;
-  }
-
-  .home-featured-card:hover img {
-    transform: none;
   }
 }
