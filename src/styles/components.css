@@ -41,8 +41,9 @@
 .nav {
   gap: 18px;
   color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .nav a {
@@ -64,7 +65,7 @@
 .about-contact-row a {
   border: 1px solid var(--soft-line);
   background: var(--panel);
-  font-family: var(--mono);
+  font-family: var(--sans);
 }
 
 .language-switch,
@@ -80,8 +81,9 @@
   border-radius: 6px;
   background: transparent;
   color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
   line-height: 1;
   cursor: pointer;
 }
@@ -125,8 +127,8 @@
   border-radius: 7px;
   padding: 12px 18px;
   color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .button.primary {
@@ -137,6 +139,10 @@
 
 .button:hover {
   border-color: var(--ink);
+}
+
+.button.ghost:hover {
+  background: var(--active-bg);
 }
 
 .mobile-menu {

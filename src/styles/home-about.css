@@ -5,7 +5,7 @@
   grid-template-columns: 1fr;
   gap: 48px;
   align-items: center;
-  padding: 78px 0 62px;
+  padding: 96px 0 72px;
 }
 
 .product-copy,
@@ -263,12 +263,13 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-card);
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
   background: var(--raised);
+  box-shadow: var(--shadow-media);
   transition: transform 180ms ease;
 }
 
@@ -285,9 +286,9 @@
 }
 
 .home-featured-caption strong {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .home-featured-caption p {

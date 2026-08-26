@@ -51,6 +51,10 @@ for (const target of baseline.targets) {
   page.setDefaultTimeout(8_000);
   await page.goto(`${baseUrl}${target.path}`, { waitUntil: "networkidle", timeout: 12_000 });
   await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await document.fonts.load("600 56px Inter");
+  });
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
   if (target.state === "faq") {
