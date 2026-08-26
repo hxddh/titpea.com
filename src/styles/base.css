@@ -41,8 +41,13 @@ h1,
 h2,
 h3 {
   color: var(--ink);
-  letter-spacing: 0;
+  font-weight: 600;
+  letter-spacing: -0.022em;
   text-wrap: balance;
+}
+
+h1 {
+  letter-spacing: -0.038em;
 }
 
 p {

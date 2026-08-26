@@ -23,14 +23,18 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 ## Typography And Copy
 
+- Load Inter for Latin. CJK falls back to the system face. Do not list a webfont that is never fetched.
+- Display headings use weight 600 and negative tracking. Do not create hierarchy only by jumping to 700 at default letter-spacing.
 - Hero headings should normally fit in one or two lines. Shorten copy before shrinking the type.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
+- `mono` is for labels, eyebrows, meta, and commands. Navigation and buttons use `sans`.
 
 ## Visual Language
 
 - Preserve the existing light technical surface, dark ink, and restrained controls. Do not add a decorative body grid.
 - Home and flagship product heroes are left-aligned. Captions sit below screenshots, not as overlay pills. The remaining catalog is a two-column text list with hairline separators, not a mosaic of equal-weight cards.
+- Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Product screenshots sit on a quiet shadow, not a 1px box.
 - Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
 - Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
 - Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
@@ -52,7 +56,7 @@ principle and a constraint seem to disagree, satisfy the constraint and rework t
   - Keep CSS in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Tokens are the single source of truth
   - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
-  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings and prose.
+  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings, prose, navigation, and buttons.
   - Hero headings stay within two lines.
 - Responsive
   - Breakpoints are 900px (tablet to single column) and 640px (phone).

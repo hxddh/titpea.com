@@ -64,10 +64,10 @@
 .product-screenshot-showcase figure {
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 0;
+  border-radius: var(--radius-card);
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-media);
 }
 
 .product-screenshot-showcase img {

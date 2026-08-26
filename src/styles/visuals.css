@@ -104,10 +104,10 @@
 .product-screenshot-visual {
   overflow: hidden;
   margin: 0;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 0;
+  border-radius: var(--radius-card);
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-media);
 }
 
 .product-screenshot-visual img {
