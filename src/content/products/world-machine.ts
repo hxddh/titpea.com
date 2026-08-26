@@ -20,7 +20,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.worldMachine },
       secondaryCta: { label: "Pre-alpha notes", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
-      proof: ["Semantic runtime", "Branchable .world", ".worldpack packs", "Inspectable projection"],
+      proof: [],
       featuresLabel: "What the runtime does",
       features: [
         {
@@ -135,7 +135,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.worldMachine },
       secondaryCta: { label: "Pre-alpha 说明", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
-      proof: ["语义运行时", "可分支 .world", ".worldpack", "可检查投影"],
+      proof: [],
       featuresLabel: "运行时做什么",
       features: [
         {

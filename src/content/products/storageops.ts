@@ -4,8 +4,6 @@ import { siteConfig } from "../siteConfig";
 
 const facts = productFacts.storageops;
 const meta = `Python · Pi Coding Agent · S3-compatible · ${facts.licenseLabel ?? "MIT"}`;
-const skillPackCount = 16;
-const toolCount = 4;
 
 export const storageOpsProduct: AgentPackageProduct = {
   slug: "storageops",
@@ -21,12 +19,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: [
-        "Pi extension",
-        `${skillPackCount} skill packs`,
-        `${toolCount} Pi tools`,
-        "No direct cloud account access",
-      ],
+      proof: [],
       workflowLabel: "How a case runs",
       workflow: [
         {
@@ -100,7 +93,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageops },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
-      proof: ["Pi 扩展", `${skillPackCount} 组 skills`, `${toolCount} 个 Pi 工具`, "不连接云账号"],
+      proof: [],
       workflowLabel: "一次问题怎么处理",
       workflow: [
         {

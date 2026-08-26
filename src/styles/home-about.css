@@ -8,13 +8,16 @@
   padding: 96px 0 72px;
 }
 
-.product-copy,
-.about-redesign-copy {
-  max-width: 860px;
-  margin-inline: auto;
-  text-align: center;
+.product-hero {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 }
 
+.product-hero.product-page-s3TurboList {
+  grid-template-columns: 1fr;
+}
+
+.product-copy,
+.about-redesign-copy,
 .home-copy {
   max-width: 34em;
   text-align: left;
@@ -24,26 +27,26 @@
 .about-hero h1,
 .product-hero h1 {
   max-width: 22ch;
-  margin: 0 auto 22px;
+  margin: 0 0 22px;
   font-size: clamp(2.25rem, 5.1vw, 3.5rem);
   line-height: 1.04;
 }
 
-.home-hero h1 {
-  margin: 0 0 22px;
-}
-
-.home-hero .lead {
+.home-hero .lead,
+.about-hero .lead,
+.product-hero .lead {
   margin-inline: 0;
 }
 
-.home-hero .actions {
+.home-hero .actions,
+.about-hero .actions,
+.product-hero .actions {
   justify-content: flex-start;
 }
 
 .meta-line {
   max-width: 64ch;
-  margin: 18px auto 0;
+  margin: 18px 0 0;
   color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
@@ -70,15 +73,17 @@
   font-weight: 600;
 }
 
-.hero-visual-frame,
-.home-workbench-panel,
-.about-system-panel {
+.hero-visual-frame {
+  width: 100%;
+  margin: 0;
+}
+
+.home-workbench-panel {
   width: min(920px, 100%);
   margin-inline: auto;
 }
 
 .home-workbench-panel,
-.about-system-panel,
 .home-evidence-grid,
 .catalog-grid,
 .about-product-grid,
@@ -93,7 +98,6 @@
 .workbench-flow-card,
 .home-evidence-card,
 .catalog-card,
-.about-system-panel div,
 .about-product-card,
 .browser-tool-list a,
 .examples-card {
@@ -580,28 +584,22 @@
 }
 
 .about-contact-row {
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-.about-contact-row a {
-  border-radius: 999px;
-  padding: 7px 12px;
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 12px;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 32px;
 }
 
 .about-system-panel {
   display: grid;
-  gap: 1px;
+  gap: 26px;
+  width: 100%;
+  margin: 0;
 }
 
 .about-system-panel div {
   display: grid;
   gap: 10px;
-  padding: 24px;
+  padding: 0;
 }
 
 .about-focus-section {
@@ -648,19 +646,15 @@
 .about-defaults-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--line);
+  gap: 48px;
 }
 
 .about-defaults-grid article {
   display: grid;
   gap: 8px;
   align-content: start;
-  padding: 24px 26px;
-  background: var(--panel);
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
 }
 
 .about-defaults-grid strong {

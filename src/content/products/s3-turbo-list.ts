@@ -16,7 +16,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
-      proof: ["Automatic list segmentation", "DiffFlag Parquet", "Resume for list"],
+      proof: [],
       rationaleLabel: "Why it exists",
       rationaleTitle: "The useful work starts after the scan",
       rationaleBody: [
@@ -62,7 +62,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.s3TurboList },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.s3TurboListQuickStart },
       meta: s3MetaLine(),
-      proof: ["自动分段 list", "DiffFlag Parquet", "list 可续跑"],
+      proof: [],
       rationaleLabel: "为什么做",
       rationaleTitle: "扫描之后，才是真正要做的事",
       rationaleBody: [

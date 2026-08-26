@@ -14,12 +14,12 @@ export const chessboardProduct: NativeAppProduct = {
       description:
         "A desktop chess app for macOS and Windows, with Stockfish 18, a 72-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
       eyebrow: "Desktop chess",
-      headline: "A focused chessboard for desktop",
+      headline: "A focused desktop chessboard",
       lead: "Learn in 72 offline lessons, drill mates through mate-in-three, play Stockfish 18 or a friend locally, then review with a centipawn curve.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
-      proof: ["72 beginner lessons", "Mate drills", "Stockfish 18", "Full-game review"],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -111,7 +111,7 @@ export const chessboardProduct: NativeAppProduct = {
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
-      proof: ["72 课零基础教学", "杀型做题", "Stockfish 18", "整局复盘"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {

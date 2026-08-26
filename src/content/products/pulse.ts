@@ -14,12 +14,12 @@ export const pulseProduct: MenuBarAppProduct = {
       description:
         "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
       eyebrow: "macOS menu-bar status lamp",
-      headline: "See waiting sessions in the menu bar",
+      headline: "Waiting sessions in the menu bar",
       lead: "Pulse shows local agent sessions as Waiting, Running, Idle, or stalled. Waiting is never inferred. Open the tray; focus uses the best verified handle.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,
-      proof: ["Waiting / Running / Idle", "Hooks or pending only", "32-agent health", "Honest focus tiers"],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -110,7 +110,7 @@ export const pulseProduct: MenuBarAppProduct = {
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
-      proof: ["等待 / 运行 / 空闲", "Waiting 不推断", "32 Agent 健康度", "聚焦分精度"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {

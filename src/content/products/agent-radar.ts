@@ -19,7 +19,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["Free public sources", "Wide find, narrow write", "Direction gates before commit", "Git as audit log"],
+      proof: [],
       workflowLabel: "How the pipeline runs",
       workflow: [
         {
@@ -94,7 +94,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
-      proof: ["免费公开源", "宽发现、窄写入", "提交前方向门禁", "Git 即审计"],
+      proof: [],
       workflowLabel: "流水线怎么跑",
       workflow: [
         {

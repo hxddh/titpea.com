@@ -22,11 +22,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMeta,
-      proof: [
-        "No result without a reliable match",
-        "IMDb · Rotten Tomatoes · Metacritic",
-        "No data collection disclosed",
-      ],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -110,7 +106,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
-      proof: ["匹配不到不显示", "IMDb · 烂番茄 · Metacritic", "声明不收集数据"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {

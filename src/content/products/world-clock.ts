@@ -22,7 +22,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMeta,
-      proof: ["Work-hours status", "Live city rows", "Light and dark themes", "No data collection disclosed"],
+      proof: [],
       positioningLabel: "Fit and limits",
       positioning: [
         {
@@ -80,7 +80,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       },
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMetaZh,
-      proof: ["工作时段状态", "城市时间行", "浅色和深色主题", "声明不收集数据"],
+      proof: [],
       positioningLabel: "适用与边界",
       positioning: [
         {
