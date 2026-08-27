@@ -36,8 +36,8 @@
 .product-hero h1 {
   max-width: 22ch;
   margin: 0 0 22px;
-  font-size: clamp(2.25rem, 5.1vw, 3.5rem);
-  line-height: 1.04;
+  font-size: clamp(2.65rem, 6.2vw, 4.5rem);
+  line-height: 0.98;
 }
 
 .home-hero .lead,
@@ -69,7 +69,7 @@
 .browser-band-copy h2,
 .home-evidence-heading h2 {
   margin: 0 0 14px;
-  font-size: clamp(1.75rem, 3.4vw, 2.35rem);
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
   line-height: 1.08;
 }
 
@@ -99,7 +99,8 @@
 .home-evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  align-items: start;
+  gap: 36px;
 }
 
 .home-evidence-heading {
@@ -128,9 +129,6 @@
   overflow: hidden;
   border: 0;
   border-radius: var(--radius-card);
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
   background: var(--raised);
   box-shadow: var(--shadow-media);
 }
@@ -145,9 +143,9 @@
 
 .home-featured-caption strong {
   font-family: var(--sans);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .home-featured-caption p {

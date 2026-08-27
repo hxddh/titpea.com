@@ -3,26 +3,24 @@
   --section-index-desktop-scroll-margin: 112px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
-  --paper: #f9fafc;
-  --panel: #ffffff;
-  --ink: #111827;
-  --muted: #5f6877;
-  --faint: #8b95a5;
-  --line: rgba(17, 24, 39, 0.08);
-  --soft-line: rgba(17, 24, 39, 0.12);
-  /* Semantic surface tokens. Light values match the literals they replaced,
-     so light mode is unchanged; the dark blocks below remap them. */
-  --on-ink: #ffffff;
-  --label: #667085;
-  --raised: #fbfcff;
-  --chip-bg: #eef2ff;
-  --chip-ink: #394150;
-  --active-bg: #f3f4f6;
+  --paper: #f2f1ec;
+  --panel: #fbfaf7;
+  --ink: #161513;
+  --muted: #5a564f;
+  --faint: #8c877e;
+  --line: rgba(22, 21, 19, 0.09);
+  --soft-line: rgba(22, 21, 19, 0.14);
+  --on-ink: #fbfaf7;
+  --label: #655f57;
+  --raised: #ebe9e3;
+  --chip-bg: #e6e3db;
+  --chip-ink: #3a372f;
+  --active-bg: #e8e5de;
   /* Translucent veils are tokens too, so dark mode is a
      pure token remap with no per-selector overrides. */
-  --menu-veil: rgba(255, 255, 255, 0.98);
-  --index-veil: rgba(249, 250, 252, 0.94);
-  --proof-veil: rgba(255, 255, 255, 0.72);
+  --menu-veil: rgba(251, 250, 247, 0.98);
+  --index-veil: rgba(242, 241, 236, 0.94);
+  --proof-veil: rgba(251, 250, 247, 0.72);
   /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
   --data-ref-ink: #126547;
@@ -32,10 +30,10 @@
   --sans:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC",
     "Noto Sans CJK SC", sans-serif;
-  --shadow-soft: 0 24px 60px rgba(17, 24, 39, 0.12), 0 2px 8px rgba(17, 24, 39, 0.05);
-  --shadow-media: 0 16px 40px rgba(17, 24, 39, 0.08), 0 1px 3px rgba(17, 24, 39, 0.04);
-  --radius-card: 8px;
-  --radius-control: 999px;
+  --shadow-soft: 0 22px 50px rgba(22, 21, 19, 0.1), 0 2px 6px rgba(22, 21, 19, 0.05);
+  --shadow-media: 0 20px 44px rgba(22, 21, 19, 0.1), 0 1px 2px rgba(22, 21, 19, 0.06);
+  --radius-card: 4px;
+  --radius-control: 3px;
   --section-y: 80px;
   --card-pad: 28px;
   --card-pad-compact: 22px;
@@ -46,22 +44,22 @@
    selectors share the same declarations; keep them in sync. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #0d1117;
-  --panel: #161b22;
-  --ink: #e6edf3;
-  --muted: #9aa7b4;
-  --faint: #6b7685;
+  --paper: #131210;
+  --panel: #1c1b18;
+  --ink: #eceae4;
+  --muted: #a39e94;
+  --faint: #7a756c;
   --line: rgba(255, 255, 255, 0.08);
   --soft-line: rgba(255, 255, 255, 0.14);
-  --on-ink: #0d1117;
-  --label: #8d99a8;
-  --raised: #1c222c;
-  --chip-bg: #1d2531;
-  --chip-ink: #c6d2df;
-  --active-bg: #232b36;
-  --menu-veil: rgba(22, 27, 34, 0.98);
-  --index-veil: rgba(13, 17, 23, 0.92);
-  --proof-veil: rgba(28, 34, 44, 0.6);
+  --on-ink: #131210;
+  --label: #9a958c;
+  --raised: #24221e;
+  --chip-bg: #2a2823;
+  --chip-ink: #d4cfc4;
+  --active-bg: #2c2a25;
+  --menu-veil: rgba(28, 27, 24, 0.98);
+  --index-veil: rgba(19, 18, 16, 0.92);
+  --proof-veil: rgba(36, 34, 30, 0.6);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -73,22 +71,22 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #0d1117;
-    --panel: #161b22;
-    --ink: #e6edf3;
-    --muted: #9aa7b4;
-    --faint: #6b7685;
+    --paper: #131210;
+    --panel: #1c1b18;
+    --ink: #eceae4;
+    --muted: #a39e94;
+    --faint: #7a756c;
     --line: rgba(255, 255, 255, 0.08);
     --soft-line: rgba(255, 255, 255, 0.14);
-    --on-ink: #0d1117;
-    --label: #8d99a8;
-    --raised: #1c222c;
-    --chip-bg: #1d2531;
-    --chip-ink: #c6d2df;
-    --active-bg: #232b36;
-    --menu-veil: rgba(22, 27, 34, 0.98);
-    --index-veil: rgba(13, 17, 23, 0.92);
-    --proof-veil: rgba(28, 34, 44, 0.6);
+    --on-ink: #131210;
+    --label: #9a958c;
+    --raised: #24221e;
+    --chip-bg: #2a2823;
+    --chip-ink: #d4cfc4;
+    --active-bg: #2c2a25;
+    --menu-veil: rgba(28, 27, 24, 0.98);
+    --index-veil: rgba(19, 18, 16, 0.92);
+    --proof-veil: rgba(36, 34, 30, 0.6);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;

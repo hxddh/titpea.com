@@ -11,7 +11,7 @@ export const images = [
     eyebrow: "titpea.com",
     title: "Agents and tools",
     body: "S3 ecosystem products, plus tools for reading and information discovery.",
-    accent: "#121826",
+    accent: "#161513",
     mark: "T",
     visual: "stack",
   },
@@ -20,7 +20,7 @@ export const images = [
     eyebrow: "hxddh",
     title: "Two product lines, one maker",
     body: "Cloud object storage by background — S3 ecosystem tools plus small products for everyday work and life.",
-    accent: "#121826",
+    accent: "#161513",
     mark: "HX",
     visual: "stack",
   },
@@ -299,17 +299,17 @@ function titleTspans(title) {
 
 function svg({ eyebrow, title, body, accent, mark, visual }) {
   return `<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#f8f9fb"/>
-  <path d="M0 0h1200v630H0z" fill="#f8f9fb"/>
-  <path d="M90 98h1020v1H90zM90 532h1020v1H90z" fill="#d9dde7"/>
-  <path d="M91 180h1018M91 250h1018M91 320h1018M91 390h1018M91 460h1018" stroke="#eceff5"/>
+  <rect width="1200" height="630" fill="#f2f1ec"/>
+  <path d="M0 0h1200v630H0z" fill="#f2f1ec"/>
+  <path d="M90 98h1020v1H90zM90 532h1020v1H90z" fill="#d4d1c8"/>
+  <path d="M91 180h1018M91 250h1018M91 320h1018M91 390h1018M91 460h1018" stroke="#e4e2da"/>
   ${visualPanel(visual, accent, mark)}
   <text x="90" y="150" fill="${accent}" font-family="SFMono-Regular, Consolas, monospace" font-size="24" letter-spacing="4" font-weight="700">${escape(eyebrow)}</text>
-  <text fill="#111827" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="56" font-weight="760">${titleTspans(title)}</text>
+  <text fill="#161513" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="56" font-weight="760">${titleTspans(title)}</text>
   <foreignObject x="94" y="326" width="690" height="128">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; color:#4b5563; font-size:30px; line-height:1.35; font-weight:500;">${escape(body)}</div>
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; color:#5a564f; font-size:30px; line-height:1.35; font-weight:500;">${escape(body)}</div>
   </foreignObject>
-  <text x="90" y="572" fill="#111827" font-family="SFMono-Regular, Consolas, monospace" font-size="22" font-weight="700">titpea.com</text>
+  <text x="90" y="572" fill="#161513" font-family="SFMono-Regular, Consolas, monospace" font-size="22" font-weight="700">titpea.com</text>
   <circle cx="1070" cy="561" r="8" fill="${accent}"/>
 </svg>`;
 }

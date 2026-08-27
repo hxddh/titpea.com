@@ -24,19 +24,19 @@ Titpea is a concise personal product site. Its design should make each tool easi
 ## Typography And Copy
 
 - Load Inter for Latin. CJK falls back to the system face. Do not list a webfont that is never fetched.
-- Display headings use weight 600 and negative tracking. Do not create hierarchy only by jumping to 700 at default letter-spacing.
-- Hero headings should normally fit in one or two lines. Shorten copy before shrinking the type.
+- Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing.
+- Hero headings should feel editorial: large type, short copy, one or two lines. Shorten copy before shrinking the type. Section titles stay quieter than the hero so the page has one display voice.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
 - `mono` is for labels, eyebrows, meta, and commands. Navigation, buttons, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
 
 ## Visual Language
 
-- Preserve the existing light technical surface, dark ink, and restrained controls. Do not add a decorative body grid.
-- Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover. The homepage first screen is the featured pair, not a slogan block with duplicate CTAs. Featured product names outrank the catalog list. Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators, not a mosaic of equal-weight cards. The catalog heading names what is there; it does not call them leftovers.
+- Preserve a print-neutral stone paper, warm-black ink, and restrained controls. Do not add a decorative body grid, and do not use cool gray-50 / indigo chip leftovers from a generic dashboard palette.
+- Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover. The homepage first screen is the featured pair, not a slogan block with duplicate CTAs. Featured product names outrank the catalog list. Featured screenshots keep their native aspect so the pair reads as two photographs on the page, not two cropped tiles. Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators, not a mosaic of equal-weight cards. The catalog heading names what is there; it does not call them leftovers.
 - Equal-weight product sections — fit and limits, features, and similar — are two-column hairline lists. Numbered workflows stay as step mosaics; charts, terminals, and the Pulse menu-bar visual keep the box that is the product. The mobile menu is a hairline list, not a 1px tile stack.
-- Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Product screenshots sit on a quiet shadow, not a 1px box.
-- Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
+- Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Product screenshots sit on a quiet print shadow with a tight radius, not a 1px box and not an app-rounded tile.
+- Proof chips are optional. When they appear, they are sharp ink-on-paper labels, not indigo pills. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
 - Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
 - Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
 
