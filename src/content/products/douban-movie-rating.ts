@@ -23,7 +23,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMeta,
       proof: [],
-      positioningLabel: "On Douban pages",
+      positioningLabel: "Context, not a new site",
       positioning: [
         {
           title: "Other ratings in place",
@@ -33,13 +33,13 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "It is not",
+          title: "Douban stays the page",
           body: "It does not replace Douban ratings; it adds context from other rating sources.",
           intent: "boundary",
           surface: "browser",
         },
       ],
-      featuresLabel: "In the page",
+      featuresLabel: "Match, then three scores",
       features: [
         {
           title: "Three sources when matched",
@@ -89,7 +89,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
       proof: [],
-      positioningLabel: "在豆瓣电影页",
+      positioningLabel: "补充对照，不另开站点",
       positioning: [
         {
           title: "想在页内对照其他评分",
@@ -99,13 +99,13 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "它不是什么",
+          title: "豆瓣仍是这一页",
           body: "它不替代豆瓣评分，只补充其他来源的参考信息。",
           intent: "boundary",
           surface: "browser",
         },
       ],
-      featuresLabel: "页面里的信息",
+      featuresLabel: "匹配后再显示",
       features: [
         {
           title: "匹配后对照三个来源",

@@ -19,8 +19,31 @@ const genericHeadings = new Set([
   "一次会话怎么跑",
   "what you get in the workbench",
   "工作台里有什么",
+  "local by design",
+  "本地优先",
+  "at the board",
+  "棋盘上的能力",
+  "in the menu bar",
+  "菜单栏里有什么",
+  "in the page",
+  "页面里的信息",
 ]);
-const genericCardTitles = new Set(["use it when", "什么时候用"]);
+const genericCardTitles = new Set([
+  "use it when",
+  "什么时候用",
+  "current platforms",
+  "local by design",
+  "out of scope",
+  "what it isn't",
+  "it is not",
+  "private by design",
+  "当前支持范围",
+  "本地运行",
+  "明确不做",
+  "它不是什么",
+  "which systems are supported?",
+  "支持哪些系统？",
+]);
 const genericDirectoryLabels = new Set([
   "overview",
   "概览",

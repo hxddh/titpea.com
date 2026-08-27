@@ -30,19 +30,19 @@ export const gobanProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "Current platforms",
-          body: "Desktop releases for macOS and Windows; no online matchmaking.",
+          title: "Apple Silicon and Windows",
+          body: "Desktop releases for macOS (Apple Silicon) and Windows; no Intel Mac build, and no online matchmaking.",
           intent: "boundary",
           surface: "artifact",
         },
         {
-          title: "Local by design",
+          title: "No account, no server",
           body: "Gameplay, saves, analysis, practice, daily challenges, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
           intent: "boundary",
           surface: "artifact",
         },
       ],
-      featuresLabel: "At the board",
+      featuresLabel: "AI, drills, SGF",
       features: [
         {
           title: "Four AI levels",
@@ -84,12 +84,12 @@ export const gobanProduct: NativeAppProduct = {
       faqLabel: "macOS, Windows, records",
       faq: [
         {
-          title: "Which systems are supported?",
-          body: "The current release provides an Apple Silicon arm64 build for macOS and an x64 build for Windows. An Intel Mac build is not published.",
+          title: "Is there an Intel Mac build?",
+          body: "No. The current macOS release is Apple Silicon arm64; Windows is x64. An Intel Mac build is not published.",
         },
         {
-          title: "Does it need an account or internet connection?",
-          body: "No account is required. Gameplay, saves, analysis, practice, daily challenges, and SGF work stay local; you only need the internet to download a release.",
+          title: "Do I need the internet to play?",
+          body: "No. Gameplay, saves, analysis, practice, daily challenges, and SGF work stay local; you only need the internet to download a release.",
         },
         {
           title: "Can I bring in an existing game?",
@@ -118,19 +118,19 @@ export const gobanProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "当前支持范围",
-          body: "提供 macOS 与 Windows 桌面版本，不提供在线匹配。",
+          title: "Apple Silicon 与 Windows",
+          body: "提供 macOS Apple Silicon 与 Windows 桌面版本，没有 Intel Mac 构建，也不提供在线匹配。",
           intent: "boundary",
           surface: "artifact",
         },
         {
-          title: "本地运行",
+          title: "没有账号，也没有服务器",
           body: "对弈、存档、分析、练习、每日挑战和导入的棋谱都在本地完成，不需要账号。Goban 是桌面棋盘，不是在线对战服务。",
           intent: "boundary",
           surface: "artifact",
         },
       ],
-      featuresLabel: "棋盘上的能力",
+      featuresLabel: "AI、战术题、SGF",
       features: [
         {
           title: "四档 AI",
@@ -172,12 +172,12 @@ export const gobanProduct: NativeAppProduct = {
       faqLabel: "系统、棋谱与下载",
       faq: [
         {
-          title: "支持哪些系统？",
-          body: "当前版本提供 macOS Apple Silicon arm64 与 Windows x64 构建，暂未发布 Intel Mac 版本。",
+          title: "有 Intel Mac 版本吗？",
+          body: "没有。当前 macOS 是 Apple Silicon arm64，Windows 是 x64，暂未发布 Intel Mac 版本。",
         },
         {
-          title: "需要账号或联网吗？",
-          body: "不需要账号。对弈、存档、分析、练习、每日挑战和 SGF 操作都在本地完成；只有下载 release 时需要联网。",
+          title: "下棋需要联网吗？",
+          body: "不需要。对弈、存档、分析、练习、每日挑战和 SGF 操作都在本地完成；只有下载 release 时需要联网。",
         },
         {
           title: "可以导入已有棋局吗？",
