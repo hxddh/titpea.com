@@ -3,9 +3,13 @@ import type { Locale, ProductSlug } from "../lib/site";
 
 type LocalizedText = Record<Locale, string>;
 
-const browserInside = (title: LocalizedText, body: LocalizedText): Record<Locale, ProductInsideModel> => ({
-  en: { id: "inside", kind: "inside", kicker: "A look inside", title: title.en, body: body.en },
-  zh: { id: "inside", kind: "inside", kicker: "看一眼", title: title.zh, body: body.zh },
+const productInside = (
+  kicker: LocalizedText,
+  title: LocalizedText,
+  body: LocalizedText,
+): Record<Locale, ProductInsideModel> => ({
+  en: { id: "inside", kind: "inside", kicker: kicker.en, title: title.en, body: body.en },
+  zh: { id: "inside", kind: "inside", kicker: kicker.zh, title: title.zh, body: body.zh },
 });
 
 export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, ProductInsideModel>>> = {
@@ -13,7 +17,7 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
     en: {
       id: "inside",
       kind: "inside",
-      kicker: "What it does",
+      kicker: "List and diff",
       title: "Answers for large buckets",
       body: "One CLI for the two questions that matter before a migration or investigation: what is here, and what changed?",
       panel: {
@@ -39,7 +43,7 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
     zh: {
       id: "inside",
       kind: "inside",
-      kicker: "它解决什么",
+      kicker: "list 与 diff",
       title: "先回答大桶里的两个问题",
       body: "迁移、排查或盘点之前，先弄清两件事：桶里有什么，以及两端到底差了什么。",
       panel: {
@@ -94,7 +98,8 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       body: "Pi 是运行时；StorageOps 提供对象存储 skills、四个调查工具和辅助脚本。带上报错、日志、配置片段或 trace，Pi 就能根据这些材料排查，而不连接你的云账号。",
     },
   },
-  httpmon: browserInside(
+  httpmon: productInside(
+    { en: "Beside the command", zh: "就在命令旁边" },
     { en: "The command runs as before", zh: "命令照常运行，请求同时可见" },
     {
       en: "httpmon starts a local proxy for one subprocess. It supplies the proxy and CA through that process only, then clears the temporary setup when it exits.",
@@ -195,21 +200,24 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       body: "豆瓣电影评分助手只补充参考信息。匹配到影片后，它会把 IMDb、Rotten Tomatoes 和 Metacritic 放到豆瓣详情页，不打断原本的阅读。",
     },
   },
-  goban: browserInside(
+  goban: productInside(
+    { en: "On the board", zh: "棋盘上" },
     { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
     {
       en: "The board keeps the current game, free/swap2/Renju rules, AI controls, 130 tactical drills, daily challenges, statistics, and SGF tools together in one desktop app.",
       zh: "当前棋局、自由式/swap2/连珠规则、AI 设置、130 道战术题、每日挑战、对局统计与 SGF 工具都集中在同一个桌面应用里。",
     },
   ),
-  chessboard: browserInside(
+  chessboard: productInside(
+    { en: "At the chessboard", zh: "在国际象棋棋盘上" },
     { en: "Learn, drill, then play and review", zh: "先学、做题，再对弈与复盘" },
     {
       en: "The board keeps a 72-lesson beginner course, mate drills, Stockfish controls, clocks, SAN move list, review curve, themes, and PGN tools together in one desktop app.",
       zh: "72 课零基础课程、杀型做题、Stockfish 设置、棋钟、SAN 着法列表、复盘曲线、主题与 PGN 工具都集中在同一个桌面应用里。",
     },
   ),
-  pulse: browserInside(
+  pulse: productInside(
+    { en: "Menu-bar lamp", zh: "菜单栏状态灯" },
     { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
     {
       en: "The menu bar shows Waiting, Running, Idle, or stalled. The tray lists sessions with observed facts; focus uses the best verified handle when one exists.",
@@ -248,7 +256,8 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       body: "World Machine 把语义状态留在运行时，经投影快照供给 GPUI。Pack 提供领域世界；内核保持通用，并明确处于 pre-alpha。",
     },
   },
-  "easier-bookmarks": browserInside(
+  "easier-bookmarks": productInside(
+    { en: "In the side panel", zh: "就在侧边栏里" },
     { en: "Your bookmark tree, without the menu maze", zh: "不用层层点菜单，也能看清书签树" },
     {
       en: "The side panel keeps folders, instant search, item actions, and drag or keyboard reordering available beside the page you are browsing.",

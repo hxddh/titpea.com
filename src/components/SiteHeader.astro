@@ -58,11 +58,12 @@ const navGroups = headerNavGroups(locale);
       data-theme-toggle
       data-label-dark={copy.themeToDark}
       data-label-light={copy.themeToLight}
+      data-text-dark={copy.themeDarkText}
+      data-text-light={copy.themeLightText}
       aria-label={copy.themeToDark}
       hidden
     >
-      <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
-      <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+      {copy.themeDarkText}
     </button>
 
     <details class="mobile-menu">

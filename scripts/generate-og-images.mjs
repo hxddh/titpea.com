@@ -17,9 +17,9 @@ export const images = [
   },
   {
     file: "og-about.png",
-    eyebrow: "hxddh",
-    title: "Two product lines, one maker",
-    body: "Cloud object storage by background — S3 ecosystem tools plus small products for everyday work and life.",
+    eyebrow: "About",
+    title: "hxddh",
+    body: "I work on cloud object storage, and I build the tools I want at hand.",
     accent: "#161513",
     mark: "HX",
     visual: "stack",

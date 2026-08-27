@@ -5,7 +5,7 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
   en: {
     id: "results",
     kind: "results",
-    kicker: "What remains",
+    kicker: "After the run",
     title: "List and diff leave different answers",
     body: "Both paths write results for downstream work. They are deliberately not the same operation.",
     paths: [
@@ -30,7 +30,7 @@ export const s3ResultsModels: Record<Locale, ProductResultsModel> = {
   zh: {
     id: "results",
     kind: "results",
-    kicker: "最后留下什么",
+    kicker: "跑完之后",
     title: "list 和 diff 给出不同的答案",
     body: "两条路径都会留下可继续处理的结果，但它们不是同一种操作。",
     paths: [

@@ -51,6 +51,7 @@
     var dark = resolved() === "dark";
     button.setAttribute("aria-pressed", dark ? "true" : "false");
     button.setAttribute("aria-label", dark ? button.dataset.labelLight : button.dataset.labelDark);
+    button.textContent = dark ? button.dataset.textLight : button.dataset.textDark;
     button.hidden = false;
   }
 
