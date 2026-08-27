@@ -126,11 +126,15 @@
   display: block;
   width: 100%;
   height: auto;
-  overflow: hidden;
   border: 0;
-  border-radius: var(--radius-card);
-  background: var(--raised);
-  box-shadow: var(--shadow-media);
+  border-radius: 0;
+  background: transparent;
+}
+
+.home-featured-card:hover .home-featured-caption strong,
+.home-featured-card:focus-visible .home-featured-caption strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .home-featured-caption {
@@ -219,7 +223,7 @@
 
 .about-contact-row {
   justify-content: flex-start;
-  gap: 12px;
+  gap: 8px 28px;
   margin-top: 32px;
 }
 

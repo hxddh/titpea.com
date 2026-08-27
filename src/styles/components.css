@@ -1,6 +1,6 @@
 .site-header {
   display: flex;
-  min-height: 60px;
+  min-height: 52px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -17,20 +17,9 @@
 }
 
 .brand {
-  gap: 10px;
+  min-height: 44px;
   color: var(--ink);
   font-weight: 600;
-}
-
-.brand-mark {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border-radius: var(--radius-card);
-  background: var(--ink);
-  color: var(--on-ink);
-  font-size: 13px;
 }
 
 .header-actions {
@@ -57,11 +46,9 @@
   color: var(--ink);
 }
 
-.button,
 .mobile-menu summary,
 .proof-strip span,
-.provider-list span,
-.about-contact-row a {
+.provider-list span {
   border: 1px solid var(--soft-line);
   background: var(--panel);
   font-family: var(--sans);
@@ -114,34 +101,46 @@
 .actions {
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 8px 28px;
   margin-top: 32px;
 }
 
 .button {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-control);
-  padding: 12px 18px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  padding: 10px 2px;
   color: var(--ink);
-  font-size: 14px;
+  font-family: var(--sans);
+  font-size: 15px;
   font-weight: 600;
 }
 
 .button.primary {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--on-ink);
+  color: var(--ink);
+  background: transparent;
 }
 
-.button:hover {
-  border-color: var(--ink);
+.button.ghost {
+  border-bottom-color: transparent;
+  color: var(--muted);
+  font-weight: 500;
 }
 
-.button.ghost:hover {
-  background: var(--active-bg);
+.button:hover,
+.button:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.button.ghost:hover,
+.button.ghost:focus-visible {
+  background: transparent;
 }
 
 .mobile-menu {
