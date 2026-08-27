@@ -15,19 +15,6 @@ const { model } = Astro.props;
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
-      <div class="actions">
-        {
-          model.hero.actions.map((action) => (
-            <a
-              class:list={["button", action.style]}
-              href={action.href}
-              rel={action.external ? "noreferrer" : undefined}
-            >
-              {action.label}
-            </a>
-          ))
-        }
-      </div>
     </div>
   </section>
 

@@ -44,15 +44,18 @@ export function failureReasons(result) {
         (image) => image.alt.length > 12 && image.naturalWidth >= 600 && image.naturalHeight >= 600,
       )
     : true;
-  const reasons = [];
   const route = result.route;
-
+  const isHome = route?.kind === "home";
+  const reasons = [];
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
   if (result.h1Lines > 3) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
   if (!isAsset && !isAuxCheck && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
-  if (!isAsset && !isAuxCheck && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
+  if (!isAsset && !isAuxCheck && isHome && result.heroCtaCount !== 0) {
+    reasons.push(`home hero should have no CTAs, got ${result.heroCtaCount}`);
+  }
+  if (!isAsset && !isAuxCheck && !isHome && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
     reasons.push(`hero CTA count should be 2-3, got ${result.heroCtaCount}`);
   }
   if (!isAsset && !isAuxCheck && result.cardHeightSpread > 220) {

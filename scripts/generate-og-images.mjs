@@ -9,10 +9,10 @@ export const images = [
   {
     file: "og-home.png",
     eyebrow: "titpea.com",
-    title: "S3 ecosystem and personal tools",
-    body: "Two product lines: engineering tools for S3-compatible storage, and small products for everyday work and life.",
-    accent: "#2457ff",
-    mark: "S3",
+    title: "Agents and tools",
+    body: "S3 ecosystem products, plus tools for reading and information discovery.",
+    accent: "#121826",
+    mark: "T",
     visual: "stack",
   },
   {

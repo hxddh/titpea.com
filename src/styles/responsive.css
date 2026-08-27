@@ -21,8 +21,17 @@
   .about-hero,
   .product-hero {
     gap: 42px;
+  }
+
+  .about-hero,
+  .product-hero {
     padding-top: 54px;
     padding-bottom: 54px;
+  }
+
+  .home-hero {
+    padding-top: 36px;
+    padding-bottom: 12px;
   }
 
   .product-hero,
@@ -112,7 +121,7 @@
     grid-template-columns: 1fr;
     gap: 0;
     width: 100%;
-    padding: 9px 16px;
+    padding: 4px 0;
   }
 
   .product-section-index > span {
@@ -137,7 +146,7 @@
   .product-section-index a {
     flex: 0 0 auto;
     min-height: 44px;
-    padding: 8px 12px;
+    padding: 8px 0;
     scroll-snap-align: start;
   }
 

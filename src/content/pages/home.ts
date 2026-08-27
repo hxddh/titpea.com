@@ -50,18 +50,6 @@ export function buildHomePage(locale: Locale): HomePageModel {
       eyebrow: copy.productIndex,
       title: copy.homeTitle,
       lead: copy.homeLead,
-      actions: [
-        {
-          label: flagship?.name ?? "Storage Agent",
-          href: flagship?.href ?? catalog.featuredProductPath,
-          style: "primary",
-        },
-        {
-          label: personalFlagship?.name ?? "PageWise",
-          href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
-          style: "ghost",
-        },
-      ],
     },
     featured: {
       label: copy.featuredLabel,
