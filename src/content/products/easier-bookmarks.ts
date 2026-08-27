@@ -16,10 +16,10 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "Privacy policy", href: siteConfig.externalLinks.easierBookmarksPrivacy },
       meta: "Chrome Web Store · Workflow & Planning · No external servers",
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "Chrome's tree, side panel",
       positioning: [
         {
-          title: "Use it when",
+          title: "Menus are too small",
           body: "Your bookmark tree has outgrown Chrome's small menus and you want one side panel for finding and organizing it.",
           intent: "fit",
           surface: "browser",
@@ -65,7 +65,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "Questions & privacy",
+      faqLabel: "Install and privacy",
       faq: [
         {
           title: "Where do I install it?",
@@ -91,10 +91,10 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私政策", href: siteConfig.externalLinks.easierBookmarksPrivacyZh },
       meta: "Chrome 网上应用店 · 工作流与规划 · 无外部服务器",
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "Chrome 书签树，侧边栏",
       positioning: [
         {
-          title: "什么时候用",
+          title: "书签菜单已经不够用",
           body: "Chrome 的小菜单已经装不下你的书签树，想在一个侧边栏里完成查找和整理。",
           intent: "fit",
           surface: "browser",
@@ -140,7 +140,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "常见问题与隐私",
+      faqLabel: "安装与隐私",
       faq: [
         {
           title: "从哪里安装？",

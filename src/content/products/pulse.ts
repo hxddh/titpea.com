@@ -20,10 +20,10 @@ export const pulseProduct: MenuBarAppProduct = {
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "When the lamp is enough",
       positioning: [
         {
-          title: "Use it when",
+          title: "You leave the terminal",
           body: "Coding-agent sessions keep running while you are in another app, and you need to notice a Waiting state without switching terminals — especially with more than one session open.",
           intent: "fit",
           surface: "artifact",
@@ -81,7 +81,7 @@ export const pulseProduct: MenuBarAppProduct = {
           surface: "cli",
         },
       ],
-      faqLabel: "Questions & download",
+      faqLabel: "macOS, hooks, privacy",
       faq: [
         {
           title: "Which systems are supported?",
@@ -111,10 +111,10 @@ export const pulseProduct: MenuBarAppProduct = {
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "这盏灯适合什么时候",
       positioning: [
         {
-          title: "什么时候用",
+          title: "人已经离开终端",
           body: "编码 Agent 会话还在跑，你却在别的应用里；需要不切终端也能发现 Waiting，尤其是同时开着多个会话时。",
           intent: "fit",
           surface: "artifact",
@@ -172,7 +172,7 @@ export const pulseProduct: MenuBarAppProduct = {
           surface: "cli",
         },
       ],
-      faqLabel: "常见问题与下载",
+      faqLabel: "系统、hooks 与隐私",
       faq: [
         {
           title: "支持哪些系统？",

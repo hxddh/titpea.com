@@ -47,7 +47,6 @@ export type ProductArchetypeContract = {
   group: ProductGroup;
   pageClass: string;
   sectionIndex: boolean;
-  indexLabel: Record<Locale, string>;
   applicationCategory: "DeveloperApplication" | "BrowserApplication" | "GameApplication";
   operatingSystem: "Cross-platform" | "Chrome" | "macOS" | "macOS and Windows";
   defaultVisual: VisualPolicy;
@@ -59,7 +58,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "storage",
     pageClass: "product-page product-page-s3TurboList",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "s3Benchmark",
@@ -76,7 +74,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "storage",
     pageClass: "product-page product-page-storageCli",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "s3Benchmark",
@@ -105,7 +102,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-markdownRadar",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "agentRadarTerminal",
@@ -134,7 +130,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "storage",
     pageClass: "product-page product-page-agentPackage",
     sectionIndex: true,
-    indexLabel: { en: "Pi and StorageOps", zh: "Pi 与 StorageOps" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "storageAgent",
@@ -157,7 +152,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "storage",
     pageClass: "product-page product-page-cliAgent",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "celagentTerminal",
@@ -180,7 +174,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "storage",
     pageClass: "product-page product-page-agentWorkbench",
     sectionIndex: false,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "storageWorkbench",
@@ -207,7 +200,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-worldRuntime",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS",
     defaultVisual: "worldMachineProjection",
@@ -240,7 +232,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-documentAgent",
     sectionIndex: true,
-    indexLabel: { en: "On this page", zh: "页面内容" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Cross-platform",
     defaultVisual: "pagewiseWorkbench",
@@ -273,7 +264,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-browserExtension",
     sectionIndex: false,
-    indexLabel: { en: "Read this page", zh: "阅读路径" },
     applicationCategory: "BrowserApplication",
     operatingSystem: "Chrome",
     defaultVisual: "worldClockScreenshot",
@@ -293,7 +283,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-nativeApp",
     sectionIndex: false,
-    indexLabel: { en: "Read this page", zh: "阅读路径" },
     applicationCategory: "GameApplication",
     operatingSystem: "macOS and Windows",
     defaultVisual: "gobanScreenshot",
@@ -313,7 +302,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     group: "personal",
     pageClass: "product-page product-page-menuBarApp",
     sectionIndex: false,
-    indexLabel: { en: "Read this page", zh: "阅读路径" },
     applicationCategory: "DeveloperApplication",
     operatingSystem: "macOS",
     defaultVisual: "pulseMenuBar",
