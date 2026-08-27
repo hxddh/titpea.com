@@ -44,22 +44,22 @@
    selectors share the same declarations; keep them in sync. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #131210;
-  --panel: #1c1b18;
-  --ink: #eceae4;
+  --paper: #15130f;
+  --panel: #1e1c17;
+  --ink: #eeebe4;
   --muted: #a39e94;
   --faint: #7a756c;
   --line: rgba(255, 255, 255, 0.08);
   --soft-line: rgba(255, 255, 255, 0.14);
-  --on-ink: #131210;
+  --on-ink: #15130f;
   --label: #9a958c;
-  --raised: #24221e;
-  --chip-bg: #2a2823;
+  --raised: #26231d;
+  --chip-bg: #2c2923;
   --chip-ink: #d4cfc4;
-  --active-bg: #2c2a25;
-  --menu-veil: rgba(28, 27, 24, 0.98);
-  --index-veil: rgba(19, 18, 16, 0.92);
-  --proof-veil: rgba(36, 34, 30, 0.6);
+  --active-bg: #2e2b24;
+  --menu-veil: rgba(30, 28, 23, 0.98);
+  --index-veil: rgba(21, 19, 15, 0.92);
+  --proof-veil: rgba(38, 35, 29, 0.6);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -71,22 +71,22 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #131210;
-    --panel: #1c1b18;
-    --ink: #eceae4;
+    --paper: #15130f;
+    --panel: #1e1c17;
+    --ink: #eeebe4;
     --muted: #a39e94;
     --faint: #7a756c;
     --line: rgba(255, 255, 255, 0.08);
     --soft-line: rgba(255, 255, 255, 0.14);
-    --on-ink: #131210;
+    --on-ink: #15130f;
     --label: #9a958c;
-    --raised: #24221e;
-    --chip-bg: #2a2823;
+    --raised: #26231d;
+    --chip-bg: #2c2923;
     --chip-ink: #d4cfc4;
-    --active-bg: #2c2a25;
-    --menu-veil: rgba(28, 27, 24, 0.98);
-    --index-veil: rgba(19, 18, 16, 0.92);
-    --proof-veil: rgba(36, 34, 30, 0.6);
+    --active-bg: #2e2b24;
+    --menu-veil: rgba(30, 28, 23, 0.98);
+    --index-veil: rgba(21, 19, 15, 0.92);
+    --proof-veil: rgba(38, 35, 29, 0.6);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;

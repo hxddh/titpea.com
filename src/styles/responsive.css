@@ -228,4 +228,10 @@
   .site-footer {
     flex-direction: column;
   }
+
+  .home-evidence-heading h2,
+  .browser-band-copy h2,
+  .about-section-heading h2 {
+    font-size: 1.45rem;
+  }
 }
