@@ -99,9 +99,8 @@
 .home-evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 40px;
-  row-gap: 0;
-  align-items: stretch;
+  gap: 40px;
+  align-items: start;
 }
 
 .home-evidence-heading {
@@ -109,9 +108,6 @@
 }
 
 .home-featured-card {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 2;
   overflow: visible;
   border: 0;
   background: transparent;
@@ -119,17 +115,17 @@
 }
 
 .home-featured-card figure {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 2;
   margin: 0;
   background: transparent;
 }
 
 .home-featured-card img {
-  align-self: end;
+  display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: top center;
   border: 0;
   background: transparent;
 }
@@ -144,8 +140,6 @@
   display: grid;
   gap: 6px;
   margin-top: 14px;
-  border-top: 1px solid var(--line);
-  padding: 14px 0 0;
   color: var(--ink);
 }
 
