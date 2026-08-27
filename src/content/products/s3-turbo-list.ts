@@ -37,7 +37,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       ],
       finalCta: "Start with a dry-run plan",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & how-to",
+      faqLabel: "Before a long run",
       faq: [
         {
           title: "Why not just use aws s3 ls?",
@@ -83,7 +83,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
       ],
       finalCta: "先跑一次 dry-run",
       finalCtaLabel: "打开仓库",
-      faqLabel: "常见问题与用法",
+      faqLabel: "开跑之前",
       faq: [
         {
           title: "为什么不用 aws s3 ls？",

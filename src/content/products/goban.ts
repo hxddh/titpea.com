@@ -20,10 +20,10 @@ export const gobanProduct: NativeAppProduct = {
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "A local Gomoku board",
       positioning: [
         {
-          title: "Use it when",
+          title: "A quiet board, not a lobby",
           body: "You want a quiet desktop board for free, swap2, or Renju play, a harder AI match, a visual post-game review, tactical drills including VCF, or a five-puzzle daily streak.",
           intent: "fit",
           surface: "artifact",
@@ -81,7 +81,7 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
       ],
-      faqLabel: "Questions & download",
+      faqLabel: "macOS, Windows, records",
       faq: [
         {
           title: "Which systems are supported?",
@@ -108,10 +108,10 @@ export const gobanProduct: NativeAppProduct = {
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "本机五子棋盘",
       positioning: [
         {
-          title: "什么时候用",
+          title: "要安静下棋，不要大厅",
           body: "想用自由式、swap2 或连珠下安静一局，挑战更高难度 AI，在局后看清转折，或练含 VCF 的战术题与每日五题。",
           intent: "fit",
           surface: "artifact",
@@ -169,7 +169,7 @@ export const gobanProduct: NativeAppProduct = {
           surface: "artifact",
         },
       ],
-      faqLabel: "常见问题与下载",
+      faqLabel: "系统、棋谱与下载",
       faq: [
         {
           title: "支持哪些系统？",

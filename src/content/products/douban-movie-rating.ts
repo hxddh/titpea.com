@@ -23,10 +23,10 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMeta,
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "On Douban pages",
       positioning: [
         {
-          title: "Use it when",
+          title: "Other ratings in place",
           body: "You browse Douban movie pages but want quick context from IMDb, Rotten Tomatoes, and Metacritic before deciding what to watch.",
           intent: "fit",
           surface: "browser",
@@ -60,7 +60,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "Questions & how-to",
+      faqLabel: "Matching and sources",
       faq: [
         {
           title: "What happens when a movie cannot be matched?",
@@ -89,10 +89,10 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.doubanPrivacy },
       meta: doubanMetaZh,
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "在豆瓣电影页",
       positioning: [
         {
-          title: "什么时候用",
+          title: "想在页内对照其他评分",
           body: "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。",
           intent: "fit",
           surface: "browser",
@@ -126,7 +126,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "常见问题与用法",
+      faqLabel: "匹配与来源",
       faq: [
         {
           title: "匹配不到电影时怎么办？",

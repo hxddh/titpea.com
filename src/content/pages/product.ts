@@ -62,8 +62,9 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     .filter((spec) => sections.some((section) => section.id === spec.id))
     .map((spec) => {
       const section = sections.find((item) => item.id === spec.id)!;
-      const label =
-        "label" in section && typeof section.label === "string" && section.label ? section.label : spec.label[locale];
+      const fromLabel = "label" in section && typeof section.label === "string" ? section.label : "";
+      const fromKicker = "kicker" in section && typeof section.kicker === "string" ? section.kicker : "";
+      const label = fromLabel || fromKicker || spec.label[locale];
       return { id: spec.id, label };
     });
 
@@ -80,7 +81,7 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     seo,
     language: languageLink(locale, alternatePath),
     sectionIndex: contract.sectionIndex,
-    indexLabel: contract.indexLabel[locale],
+    indexLabel: copy.title,
     navItems,
     visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title, slug),
     structuredData,

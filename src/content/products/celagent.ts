@@ -21,7 +21,7 @@ export const celagentProduct: CliAgentProduct = {
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.celagent },
       meta,
       proof: [],
-      workflowLabel: "How a session runs",
+      workflowLabel: "Install, write, restore",
       workflow: [
         {
           title: "Install and start the TUI",
@@ -62,7 +62,7 @@ export const celagentProduct: CliAgentProduct = {
       ],
       finalCta: "Install celagent from the latest release",
       finalCtaLabel: "View releases",
-      faqLabel: "Questions & how-to",
+      faqLabel: "Install and BOS",
       faq: [
         {
           title: "How do I install it?",
@@ -92,7 +92,7 @@ export const celagentProduct: CliAgentProduct = {
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.celagent },
       meta,
       proof: [],
-      workflowLabel: "一次会话怎么跑",
+      workflowLabel: "安装、写入、恢复",
       workflow: [
         {
           title: "安装并启动 TUI",
@@ -132,7 +132,7 @@ export const celagentProduct: CliAgentProduct = {
       ],
       finalCta: "从最新 Release 安装 celagent",
       finalCtaLabel: "查看 Release",
-      faqLabel: "常见问题与用法",
+      faqLabel: "安装与 BOS",
       faq: [
         {
           title: "怎么安装？",

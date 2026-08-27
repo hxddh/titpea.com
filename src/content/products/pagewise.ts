@@ -20,10 +20,10 @@ export const pagewiseProduct: DocumentAgentProduct = {
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },
       meta: `Tauri desktop · PDF + images · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
       proof: [],
-      featuresLabel: "What you get in the workbench",
+      featuresLabel: "Beside the PDF",
       features: [
         {
-          title: "Reads page by page under a budget",
+          title: "A character budget on each page tool",
           body: "Tools force page reads under a character budget. A large lease or report does not flood the first turn with a fake full-coverage summary.",
           intent: "capability",
           surface: "agent",
@@ -53,7 +53,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
       ],
-      workflowLabel: "How a session runs",
+      workflowLabel: "From file to citation",
       workflow: [
         {
           title: "Open a document",
@@ -95,7 +95,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
       ],
-      faqLabel: "Questions & how-to",
+      faqLabel: "Ollama, files, platforms",
       faq: [
         {
           title: "Can it run fully local with Ollama?",
@@ -131,10 +131,10 @@ export const pagewiseProduct: DocumentAgentProduct = {
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.pagewise },
       meta: `Tauri 桌面 · PDF 与图片 · MIT · ${facts.latestRelease} · macOS / Windows / Linux`,
       proof: [],
-      featuresLabel: "工作台里有什么",
+      featuresLabel: "在 PDF 旁边",
       features: [
         {
-          title: "按页读，受字符预算约束",
+          title: "每个页工具都有字符预算",
           body: "工具强制按页读取，并受字符预算约束。大合同或长报告不会第一轮就塞满模型输入，也不会假装已经全覆盖总结。",
           intent: "capability",
           surface: "agent",
@@ -164,7 +164,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
       ],
-      workflowLabel: "一次会话怎么跑",
+      workflowLabel: "从打开到引用",
       workflow: [
         {
           title: "打开文档",
@@ -206,7 +206,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
       ],
-      faqLabel: "常见问题与用法",
+      faqLabel: "Ollama、文件与平台",
       faq: [
         {
           title: "能否用 Ollama 全本地？",

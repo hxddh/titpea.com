@@ -57,7 +57,7 @@ export const httpmonProduct: StorageCliProduct = {
       ],
       finalCta: "Inspect the next command with httpmon",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & how-to",
+      faqLabel: "Proxy, HTTPS, recordings",
       faq: [
         {
           title: "Does it change my system proxy?",
@@ -125,7 +125,7 @@ export const httpmonProduct: StorageCliProduct = {
       ],
       finalCta: "用 httpmon 检查下一条命令",
       finalCtaLabel: "打开仓库",
-      faqLabel: "常见问题与用法",
+      faqLabel: "代理、HTTPS 与录音",
       faq: [
         { title: "会改系统代理吗？", body: "不会。代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
         {

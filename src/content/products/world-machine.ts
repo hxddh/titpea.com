@@ -103,7 +103,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "protocol",
         },
       ],
-      faqLabel: "Questions & source",
+      faqLabel: "Pre-alpha, packs, license",
       faq: [
         {
           title: "Is there a GitHub release yet?",
@@ -218,7 +218,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "protocol",
         },
       ],
-      faqLabel: "常见问题与源码",
+      faqLabel: "pre-alpha、Pack 与许可",
       faq: [
         {
           title: "有 GitHub Release 吗？",

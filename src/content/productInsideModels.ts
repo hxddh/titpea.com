@@ -72,14 +72,14 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       kind: "inside",
       kicker: "Desktop investigation agent",
       title: "Skills choose the path; analysis stays local",
-      body: "Describe a bucket, error, or log. The agent follows StorageOps skills, runs large analyses locally, and leaves the material it used beside the answer.",
+      body: "Describe a bucket, error, or log. The agent follows StorageOps skills and runs large analyses locally.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
       title: "按 skill 选路径，分析留在本机",
-      body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
+      body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成。",
     },
   },
   storageops: {
@@ -173,15 +173,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       id: "inside",
       kind: "inside",
       kicker: "Local PDF workbench",
-      title: "Budgets on the read; marks on the page",
-      body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Marks stay on the document; citations and follow-along preview keep the source beside the answer.",
+      title: "The trail is the interface",
+      body: "Citations, pages-read, and follow-along preview are controls, not a recap. Marks stay on the file; the thread stays with that document.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "本地 PDF 工作台",
-      title: "读有预算，批注留在页上",
-      body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。批注留在文档上；页引用与跟随预览让原文留在回答旁边。",
+      title: "阅读轨迹就是操作界面",
+      body: "页引用、已读页和跟随预览是操作，不是复述。批注留在文件上；线程跟着这篇文档走。",
     },
   },
   "douban-movie-rating": {
@@ -218,10 +218,10 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   ),
   pulse: productInside(
     { en: "Menu-bar lamp", zh: "菜单栏状态灯" },
-    { en: "Status in the menu bar; sessions in the tray", zh: "菜单栏显示状态，托盘列出会话" },
+    { en: "The tray keeps facts; snooze keeps the row", zh: "托盘留下事实，稍后仍留那一行" },
     {
-      en: "The menu bar shows Waiting, Running, Idle, or stalled. The tray lists sessions with observed facts; focus uses the best verified handle when one exists.",
-      zh: "菜单栏显示等待、运行、空闲或停滞。托盘列出带观测事实的会话；有句柄时按可用精度聚焦。",
+      en: "Waiting only arrives from hooks or an explicit pending mark. Snooze quiets the lamp without dropping the session row.",
+      zh: "Waiting 只来自 hooks 或明确的 pending。稍后只关掉红灯，会话行还在。",
     },
   ),
   celagent: {

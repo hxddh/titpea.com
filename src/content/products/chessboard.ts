@@ -20,10 +20,10 @@ export const chessboardProduct: NativeAppProduct = {
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "A local chessboard",
       positioning: [
         {
-          title: "Use it when",
+          title: "No account, no matchmaking",
           body: "You want to learn chess from scratch, practice mate patterns, play a quiet game against Stockfish, run a timed local match, or review where the evaluation turned.",
           intent: "fit",
           surface: "artifact",
@@ -81,7 +81,7 @@ export const chessboardProduct: NativeAppProduct = {
           surface: "artifact",
         },
       ],
-      faqLabel: "Questions & download",
+      faqLabel: "macOS, Windows, records",
       faq: [
         {
           title: "Which systems are supported?",
@@ -112,10 +112,10 @@ export const chessboardProduct: NativeAppProduct = {
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "本机国际象棋盘",
       positioning: [
         {
-          title: "什么时候用",
+          title: "不要账号，也不匹配对手",
           body: "想从棋盘上学会规则，练经典杀型，安静地挑战 Stockfish，开一局计时双人对弈，或在局后看清局势转折。",
           intent: "fit",
           surface: "artifact",
@@ -173,7 +173,7 @@ export const chessboardProduct: NativeAppProduct = {
           surface: "artifact",
         },
       ],
-      faqLabel: "常见问题与下载",
+      faqLabel: "系统、棋谱与下载",
       faq: [
         {
           title: "支持哪些系统？",

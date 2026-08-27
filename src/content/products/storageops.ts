@@ -63,19 +63,19 @@ export const storageOpsProduct: AgentPackageProduct = {
       ],
       finalCta: "Add storage diagnosis skills to Pi",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & how-to",
+      faqLabel: "Pi, buckets, Storage Agent",
       faq: [
         {
           title: "What does StorageOps add to Pi?",
-          body: "It installs object-storage skills, a Pi extension, and helpers. Pi remains the runtime that loads skills and calls tools during a diagnosis.",
+          body: "Object-storage skills, a Pi extension, and helpers. Pi stays the runtime; StorageOps does not add a second agent or a cloud console.",
         },
         {
-          title: "What are the extension tools for?",
-          body: "`scan_secrets` redacts credentials, `detect_domain` ranks likely domains, `search_memory` finds redacted prior-session material, and `capture_http_trace` observes one bounded command through httpmon.",
+          title: "Do I need to connect my cloud account?",
+          body: "No. It diagnoses from the logs, errors, config, and traces you bring. It does not take cloud credentials or open its own cloud session.",
         },
         {
           title: "Does it access or change my bucket?",
-          body: "StorageOps does not take cloud credentials or open its own cloud session. When you choose trace capture, it observes the bounded command you provide through httpmon.",
+          body: "No. StorageOps does not mutate storage. When you choose trace capture, it only observes the bounded command you provide through httpmon.",
         },
         {
           title: "When should I use Storage Agent instead?",
@@ -136,19 +136,19 @@ export const storageOpsProduct: AgentPackageProduct = {
       ],
       finalCta: "给 Pi 加上对象存储诊断 skills",
       finalCtaLabel: "打开仓库",
-      faqLabel: "常见问题与用法",
+      faqLabel: "Pi、桶与 Storage Agent",
       faq: [
         {
           title: "StorageOps 给 Pi 增加了什么？",
-          body: "它安装对象存储 skills、Pi 扩展和辅助脚本。Pi 仍是运行时，负责在排查中加载 skill 和调用工具。",
+          body: "对象存储 skills、一份 Pi 扩展和辅助脚本。Pi 仍是运行时；StorageOps 不会再加一个 Agent，也不会变成云控制台。",
         },
         {
-          title: "4 个扩展工具分别做什么？",
-          body: "`scan_secrets` 脱敏凭据、`detect_domain` 归类问题、`search_memory` 检索已脱敏历史会话；`capture_http_trace` 通过 httpmon 观察一条受限命令的 HTTP trace。",
+          title: "需要接入我的云账号吗？",
+          body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不收取云凭证，也不自建云账号会话。",
         },
         {
           title: "它会访问或修改我的桶吗？",
-          body: "不会。StorageOps 不自建云账号会话，也不修改存储资源；若启用 trace，只观察你提供的那条受限命令。",
+          body: "不会。StorageOps 不改存储资源；若启用 trace，只观察你提供的那条受限命令。",
         },
         {
           title: "什么时候选 Storage Agent？",

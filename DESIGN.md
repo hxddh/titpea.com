@@ -18,7 +18,7 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 - A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims.
 - For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is for adoption blockers, not a second feature list.
-- Keep the section directory for long desktop product pages only. Style it as a text directory, not a row of pills. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
+- Keep the section directory for long desktop product pages only. Style it as a text directory, not a row of pills. The directory names the product, then the product's own section kickers — not Overview, Fit and limits, or Questions & how-to. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
 - Use one source of truth for each product fact. Repeating a claim in the hero, proof strip, body, and FAQ weakens the page instead of strengthening it.
 
 ## Typography And Copy

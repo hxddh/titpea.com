@@ -20,34 +20,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: `Tauri desktop · S3-compatible · Apache-2.0 · ${facts.latestRelease} · macOS, Windows, Linux`,
       proof: [],
-      featuresLabel: "How investigations work",
-      features: [
-        {
-          title: "The agent calls read-only tools",
-          body: "It can review configuration, read metadata, sample objects, and import logs or inventory for DuckDB queries.",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
-          title: "Follow a storage diagnosis skill",
-          body: "The agent loads a StorageOps skill that matches the problem and follows a known investigation path. Skills ship with the app; the agent does not fetch executable modules at runtime or run arbitrary shell commands.",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
-          title: "Large analyses stay local",
-          body: "DuckDB and rule jobs process large datasets on your machine. The agent explains the result with supporting rows and tool records open beside it.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Answers list what was used — and what is missing",
-          body: "Each conclusion names skills used, evidence used, and gaps, so a fluent answer still points at material you can open.",
-          intent: "capability",
-          surface: "artifact",
-        },
-      ],
-      workflowLabel: "How a session runs",
+      workflowLabel: "Ask, then approve",
       workflow: [
         {
           title: "Ask, or pick a starting task",
@@ -83,7 +56,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
       ],
-      faqLabel: "Questions & how-to",
+      faqLabel: "Read-only, keys, StorageOps",
       faq: [
         {
           title: "How is this different from a console with chat?",
@@ -115,34 +88,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       secondaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },
       meta: `Tauri 桌面 · S3 兼容 · Apache-2.0 · ${facts.latestRelease} · macOS、Windows、Linux`,
       proof: [],
-      featuresLabel: "调查怎么推进",
-      features: [
-        {
-          title: "Agent 自己调用只读工具",
-          body: "它可以审查配置、读取元数据、抽样对象，并导入日志或清单供 DuckDB 查询。",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
-          title: "按存储诊断 skill 推进",
-          body: "Agent 会加载与问题对应的 StorageOps skill，按已知检查路径推进。Skill 随应用提供；Agent 不会在运行时拉取可执行模块，也不会执行任意 shell。",
-          intent: "capability",
-          surface: "agent",
-        },
-        {
-          title: "大规模分析在本地完成",
-          body: "DuckDB 与规则任务在本机处理大量数据。Agent 负责解释，并把支撑结论的数据行和工具记录留在回答旁边。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "回答写清用了什么、还缺什么",
-          body: "每条结论列出用过的 skill、用过的证据和缺口，即使回答很顺，也能回到你能打开的材料核对。",
-          intent: "capability",
-          surface: "artifact",
-        },
-      ],
-      workflowLabel: "一次会话怎么跑",
+      workflowLabel: "先问，再确认",
       workflow: [
         {
           title: "提问，或选一个起点任务",
@@ -178,7 +124,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "protocol",
         },
       ],
-      faqLabel: "常见问题与用法",
+      faqLabel: "只读、密钥与 StorageOps",
       faq: [
         {
           title: "和控制台里加聊天框有何不同？",

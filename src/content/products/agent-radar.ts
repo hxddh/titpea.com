@@ -64,7 +64,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       ],
       finalCta: "Open the research loop on GitHub",
       finalCtaLabel: "Open repository",
-      faqLabel: "Questions & how-to",
+      faqLabel: "Audience, Actions, cost",
       faq: [
         {
           title: "Who is this for?",
@@ -139,7 +139,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       ],
       finalCta: "在 GitHub 打开这条研究循环",
       finalCtaLabel: "打开仓库",
-      faqLabel: "常见问题与用法",
+      faqLabel: "给谁用、Actions、花费",
       faq: [
         {
           title: "适合谁用？",

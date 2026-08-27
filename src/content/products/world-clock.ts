@@ -23,10 +23,10 @@ export const worldClockProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "Privacy details", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMeta,
       proof: [],
-      positioningLabel: "Fit and limits",
+      positioningLabel: "Cities you choose",
       positioning: [
         {
-          title: "Use it when",
+          title: "A fast timezone glance",
           body: "You need a fast timezone glance during remote work, travel planning, or cross-region conversations.",
           intent: "fit",
           surface: "browser",
@@ -60,7 +60,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "Questions & how-to",
+      faqLabel: "Location and data",
       faq: [
         {
           title: "Does it collect my location?",
@@ -81,10 +81,10 @@ export const worldClockProduct: BrowserExtensionProduct = {
       secondaryCta: { label: "隐私说明", href: siteConfig.externalLinks.worldClockPrivacy },
       meta: worldClockMetaZh,
       proof: [],
-      positioningLabel: "适用与边界",
+      positioningLabel: "你选的城市",
       positioning: [
         {
-          title: "什么时候用",
+          title: "要快速看时区",
           body: "远程协作、旅行安排、跨地区沟通前，想快速确认几个城市现在几点、是不是工作时间。",
           intent: "fit",
           surface: "browser",
@@ -118,7 +118,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "常见问题与用法",
+      faqLabel: "位置与数据",
       faq: [
         {
           title: "会收集我的位置吗？",
