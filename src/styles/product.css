@@ -32,9 +32,8 @@
   margin: 0;
   overflow: hidden;
   border: 0;
-  border-radius: var(--radius-card);
-  background: var(--panel);
-  box-shadow: var(--shadow-media);
+  border-radius: 0;
+  background: transparent;
 }
 
 .product-screenshot-showcase img {

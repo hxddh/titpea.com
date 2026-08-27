@@ -74,11 +74,11 @@ p {
 
 .eyebrow,
 .section-kicker {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
   letter-spacing: 0;
 }
 

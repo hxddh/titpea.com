@@ -28,17 +28,19 @@ Titpea is a concise personal product site. Its design should make each tool easi
 - Hero headings should feel editorial: large type, short copy, one or two lines. Shorten copy before shrinking the type. Section titles stay quieter than the hero so the page has one display voice.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
-- `mono` is for labels, eyebrows, meta, and commands. Navigation, buttons, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
+- `mono` is for meta, commands, terminals, and data labels. Navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
 
 ## Visual Language
 
 - Preserve a print-neutral stone paper, warm-black ink, and restrained controls. Do not add a decorative body grid, and do not use cool gray-50 / indigo chip leftovers from a generic dashboard palette.
 - Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover. The homepage first screen is the featured pair, not a slogan block with duplicate CTAs. Featured product names outrank the catalog list. Featured screenshots keep their native aspect so the pair reads as two photographs on the page, not two cropped tiles. Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators, not a mosaic of equal-weight cards. The catalog heading names what is there; it does not call them leftovers.
 - Equal-weight product sections — fit and limits, features, and similar — are two-column hairline lists. Numbered workflows stay as step mosaics; charts, terminals, and the Pulse menu-bar visual keep the box that is the product. The mobile menu is a hairline list, not a 1px tile stack.
-- Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Product screenshots sit on a quiet print shadow with a tight radius, not a 1px box and not an app-rounded tile.
+- Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Real product screenshots sit on paper with no card fill, no radius, and no drop shadow. Charts, terminals, and CSS product mocks keep the box that is the product.
+- Product and About hero actions — and the closing CTA — are typographic links with a 44px hit area, not filled capsules. Keep the `.button.primary` class so the href contract still resolves. Kickers and eyebrows are quiet sans bylines, not a second mono heading system.
+- The site wordmark is the word Titpea. Do not put a filled mark, app icon, or letter tile in the header.
 - Proof chips are optional. When they appear, they are sharp ink-on-paper labels, not indigo pills. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
 - Use color sparingly and semantically. Do not add gradients, glow, or decorative effects merely to create visual impact.
-- Use the same card radius and border language across the site, but vary scale, density, and media when the content demands it.
+- Use the same card radius and border language for boxed product mocks and hairline lists, but do not put photographs in that language.
 
 ## Constraints (Measurable Floors)
 
@@ -57,7 +59,7 @@ principle and a constraint seem to disagree, satisfy the constraint and rework t
   - Keep CSS in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Tokens are the single source of truth
   - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
-  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings, prose, navigation, buttons, footer, menu group titles, catalog roles, and the product section directory.
+  - `mono` is for meta, commands, terminals, and data labels; `sans` is for headings, prose, navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory.
   - Hero headings stay within two lines.
 - Responsive
   - Breakpoints are 900px (tablet to single column) and 640px (phone).
@@ -70,7 +72,7 @@ Color is used sparingly and always carries meaning. The palette lives in `tokens
 
 | Role             | Token / value            | Meaning                                        |
 | ---------------- | ------------------------ | ---------------------------------------------- |
-| Ink              | `--ink`                  | Primary text, primary buttons, active state    |
+| Ink              | `--ink`                  | Primary text, primary actions, active state    |
 | Muted            | `--muted`                | Secondary text and quiet labels (AA compliant) |
 | Faint            | `--faint`                | Hairlines and decoration only — never text     |
 | Line / soft line | `--line` / `--soft-line` | Card dividers and borders                      |
