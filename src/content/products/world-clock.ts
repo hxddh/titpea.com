@@ -48,14 +48,14 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "Two visual modes",
+          title: "Paper light, terminal dark",
           body: "The extension supports a light paper-like theme and a dark terminal-style theme.",
           intent: "capability",
           surface: "browser",
         },
         {
-          title: "Multilingual",
-          body: "Includes localized interface text for common languages, including English, Chinese, Japanese, and Korean.",
+          title: "Four interface languages",
+          body: "Includes localized interface text for English, Chinese, Japanese, and Korean.",
           intent: "capability",
           surface: "browser",
         },
@@ -112,8 +112,8 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "多语言",
-          body: "提供多语言界面，包括英文、中文、日文、韩文等。",
+          title: "英文、中文、日文、韩文",
+          body: "界面提供英文、中文、日文、韩文。",
           intent: "capability",
           surface: "browser",
         },

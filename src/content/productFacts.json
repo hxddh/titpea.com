@@ -106,7 +106,7 @@
       "credentials stay local",
       "Markdown export"
     ],
-    "latestRelease": "v10.0.0"
+    "latestRelease": "v11.0.0"
   },
   "agent-radar": {
     "source": "github-api",
