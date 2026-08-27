@@ -48,12 +48,6 @@
   border-top: 1px solid var(--line);
 }
 
-.product-page-agentPackage .agent-manifest-visual,
-.product-page-storageCli .benchmark-visual,
-.product-page-s3TurboList .benchmark-visual {
-  box-shadow: var(--shadow-soft);
-}
-
 .deep-dive-heading {
   display: grid;
   max-width: 760px;
@@ -78,7 +72,7 @@
 .scan-plan {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--panel);
 }
 
@@ -105,11 +99,11 @@
 .s3-purpose-grid span,
 .s3-path-label {
   margin: 0 0 22px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  color: var(--label);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .s3-purpose-grid h3,
@@ -207,7 +201,7 @@
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--line);
   list-style: none;
 }
@@ -323,7 +317,7 @@
   display: grid;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--line);
   gap: 1px;
 }
@@ -422,16 +416,15 @@
 .provider-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px 20px;
   margin-bottom: 24px;
 }
 
 .provider-list span {
-  border-radius: var(--radius-control);
-  padding: 7px 12px;
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 12px;
+  padding: 0;
+  color: var(--label);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .faq-list details {

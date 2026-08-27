@@ -7,9 +7,8 @@
   min-height: auto;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 0;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
 }
 
 .httpmon-terminal-visual {
@@ -93,9 +92,8 @@
   display: grid;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
   font-size: 12px;
 }
 
@@ -386,7 +384,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--line);
 }
 
@@ -556,10 +554,9 @@
 
 .inside-workbench {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 22px;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
 }
 
 .workbench-top {
@@ -579,7 +576,7 @@
   margin-top: 18px;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .output-table div {
@@ -615,9 +612,8 @@
   position: absolute;
   width: min(82%, 360px);
   height: auto;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: var(--shadow-media);
+  border: 1px solid var(--line);
+  border-radius: 0;
 }
 
 .clock-shot.light {
@@ -729,9 +725,8 @@
   display: grid;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
   font-size: 12px;
 }
 
@@ -873,9 +868,8 @@
   min-height: auto;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 0;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
 }
 
 .httpmon-terminal-visual,
@@ -997,9 +991,8 @@
   overflow: hidden;
   min-height: auto;
   border: 1px solid var(--line);
-  border-radius: var(--radius-card);
+  border-radius: 6px;
   background: var(--panel);
-  box-shadow: var(--shadow-soft);
 }
 
 .pulse-menubar-bar,
