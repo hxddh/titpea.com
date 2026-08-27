@@ -37,41 +37,24 @@
     font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
-  .home-evidence,
   .about-focus-section,
-  .home-thesis-layout,
   .product-screenshot-showcase,
   .split-content {
     grid-template-columns: 1fr;
     gap: 34px;
   }
 
-  .catalog-grid,
   .home-evidence-grid,
-  .about-product-grid,
-  .about-current-grid,
   .about-defaults-grid,
-  .home-more-tools .browser-tool-list.compact,
-  .browser-tool-list.compact,
   .section-card-list,
   .positioning-grid,
   .features-grid,
   .workflow-grid,
   .automation-grid,
-  .examples-grid,
   .inventory-grid,
   .deep-dive-grid,
   .deep-dive-benchmark,
   .agent-topology {
-    grid-template-columns: 1fr;
-  }
-
-  .home-principles-list article {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .storage-catalog-grid {
     grid-template-columns: 1fr;
   }
 
@@ -115,10 +98,6 @@
     bottom: -5px;
     left: 32px;
     transform: rotate(135deg);
-  }
-
-  .browser-screenshot-row {
-    grid-template-columns: 1fr;
   }
 
   .benchmark-visual,
@@ -239,9 +218,5 @@
 
   .site-footer {
     flex-direction: column;
-  }
-
-  .about-current-card > div {
-    padding: 22px;
   }
 }
