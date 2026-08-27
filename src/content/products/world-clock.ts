@@ -39,34 +39,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      featuresLabel: "In the popup",
-      features: [
-        {
-          title: "Live city rows",
-          body: "Each row keeps the city, code, UTC offset, work-hour status, local time, seconds, and date in one scan line.",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "Paper light, terminal dark",
-          body: "The extension supports a light paper-like theme and a dark terminal-style theme.",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "Four interface languages",
-          body: "Includes localized interface text for English, Chinese, Japanese, and Korean.",
-          intent: "capability",
-          surface: "browser",
-        },
-      ],
-      faqLabel: "Location and data",
-      faq: [
-        {
-          title: "Does it collect my location?",
-          body: "The Chrome Web Store listing discloses no user-data collection. The extension is meant for manual city-time lookup, not location tracking.",
-        },
-      ],
     },
     zh: {
       title: "世界时钟",
@@ -95,34 +67,6 @@ export const worldClockProduct: BrowserExtensionProduct = {
           body: "只显示你选的城市时间，不读取你的位置、日历或会议。",
           intent: "boundary",
           surface: "browser",
-        },
-      ],
-      featuresLabel: "弹窗里的信息",
-      features: [
-        {
-          title: "一行一个城市",
-          body: "每行一个城市：城市、代码、UTC 偏移、状态、本地时间、秒数和日期，一行看完。",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "浅色 / 深色",
-          body: "提供纸张质感的浅色主题，也有终端感更强的深色主题。",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "英文、中文、日文、韩文",
-          body: "界面提供英文、中文、日文、韩文。",
-          intent: "capability",
-          surface: "browser",
-        },
-      ],
-      faqLabel: "位置与数据",
-      faq: [
-        {
-          title: "会收集我的位置吗？",
-          body: "商店信息显示不收集用户数据。它只做手动城市时间查询，不做位置追踪。",
         },
       ],
     },

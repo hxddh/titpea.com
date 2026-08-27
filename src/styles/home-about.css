@@ -247,10 +247,7 @@
 }
 
 .about-focus-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.58fr) minmax(280px, 0.42fr);
-  gap: 48px;
-  align-items: start;
+  display: block;
 }
 
 .about-section-heading p:not(.section-kicker) {

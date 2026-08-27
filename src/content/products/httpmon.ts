@@ -55,24 +55,23 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "Inspect the next command with httpmon",
       finalCtaLabel: "Open repository",
       faqLabel: "Proxy, HTTPS, recordings",
       faq: [
         {
-          title: "Does it change my system proxy?",
+          title: "The system proxy stays untouched",
           body: "No. Proxy and CA settings are passed only to the wrapped child process and are cleaned up when that process exits.",
         },
         {
-          title: "How does HTTPS remain readable?",
+          title: "HTTPS is decrypted locally",
           body: "httpmon creates a temporary local CA and per-host certificates. It decrypts locally for inspection while forwarding the full response stream unchanged.",
         },
         {
-          title: "What does it support beyond HTTP?",
+          title: "HTTPS and the wss handshake",
           body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
         },
         {
-          title: "Can recordings contain sensitive data?",
+          title: "Recordings can hold secrets",
           body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
         },
       ],
@@ -123,21 +122,20 @@ export const httpmonProduct: StorageCliProduct = {
           surface: "artifact",
         },
       ],
-      finalCta: "用 httpmon 检查下一条命令",
       finalCtaLabel: "打开仓库",
       faqLabel: "代理、HTTPS 与录音",
       faq: [
-        { title: "会改系统代理吗？", body: "不会。代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
+        { title: "不改系统代理", body: "不会。代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
         {
-          title: "为什么 HTTPS 也能查看？",
+          title: "HTTPS 只在本地解密",
           body: "httpmon 会临时创建本地 CA 和按域名签发的证书，仅在本地解密查看；完整响应流会按原样继续转发。",
         },
         {
-          title: "除了 HTTP 还支持什么？",
+          title: "HTTPS 与 wss 握手",
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
         },
         {
-          title: "记录文件里可能有敏感信息吗？",
+          title: "录音可能含敏感信息",
           body: "可能。请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
         },
       ],

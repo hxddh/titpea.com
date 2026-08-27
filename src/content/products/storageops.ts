@@ -61,24 +61,23 @@ export const storageOpsProduct: AgentPackageProduct = {
         "migration",
         "stale reads",
       ],
-      finalCta: "Add storage diagnosis skills to Pi",
       finalCtaLabel: "Open repository",
       faqLabel: "Pi, buckets, Storage Agent",
       faq: [
         {
-          title: "What does StorageOps add to Pi?",
+          title: "Skills on top of Pi",
           body: "Object-storage skills, a Pi extension, and helpers. Pi stays the runtime; StorageOps does not add a second agent or a cloud console.",
         },
         {
-          title: "Do I need to connect my cloud account?",
+          title: "No cloud account required",
           body: "No. It diagnoses from the logs, errors, config, and traces you bring. It does not take cloud credentials or open its own cloud session.",
         },
         {
-          title: "Does it access or change my bucket?",
+          title: "It does not mutate storage",
           body: "No. StorageOps does not mutate storage. When you choose trace capture, it only observes the bounded command you provide through httpmon.",
         },
         {
-          title: "When should I use Storage Agent instead?",
+          title: "When to open Storage Agent",
           body: "Choose StorageOps when you already use Pi and want storage-specific diagnosis. Choose Storage Agent when you want a complete desktop app with built-in tools, local analysis, and approval flows.",
           link: { label: "Open Storage Agent", href: "/storage-agent-workbench/" },
         },
@@ -134,24 +133,23 @@ export const storageOpsProduct: AgentPackageProduct = {
         "迁移",
         "读取结果过期",
       ],
-      finalCta: "给 Pi 加上对象存储诊断 skills",
       finalCtaLabel: "打开仓库",
       faqLabel: "Pi、桶与 Storage Agent",
       faq: [
         {
-          title: "StorageOps 给 Pi 增加了什么？",
+          title: "给 Pi 加上存储 skills",
           body: "对象存储 skills、一份 Pi 扩展和辅助脚本。Pi 仍是运行时；StorageOps 不会再加一个 Agent，也不会变成云控制台。",
         },
         {
-          title: "需要接入我的云账号吗？",
+          title: "不必接入云账号",
           body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不收取云凭证，也不自建云账号会话。",
         },
         {
-          title: "它会访问或修改我的桶吗？",
+          title: "不改你的存储",
           body: "不会。StorageOps 不改存储资源；若启用 trace，只观察你提供的那条受限命令。",
         },
         {
-          title: "什么时候选 Storage Agent？",
+          title: "何时改用 Storage Agent",
           body: "已经使用 Pi、只想增加对象存储排查能力时，选择 StorageOps；需要完整桌面应用、内置工具、本地分析和确认流程时，选择 Storage Agent。",
           link: { label: "打开 Storage Agent", href: "/zh/storage-agent-workbench/" },
         },

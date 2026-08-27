@@ -10,11 +10,12 @@ const { section } = Astro.props;
 
 <section id={section.id} class="shell content-section faq-section">
   <p class="section-kicker">{section.label}</p>
-  <div class="faq-list">
+  <h2 class="section-heading sr-only">{section.label}</h2>
+  <div class="faq-list section-card-list">
     {
       section.items.map((item) => (
-        <details>
-          <summary>{item.title}</summary>
+        <article>
+          <h3>{item.title}</h3>
           <p>
             {item.body}
             {item.link && (
@@ -24,7 +25,7 @@ const { section } = Astro.props;
               </>
             )}
           </p>
-        </details>
+        </article>
       ))
     }
   </div>

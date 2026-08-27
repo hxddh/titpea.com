@@ -21,7 +21,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       secondaryCta: { label: "Pre-alpha notes", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
       proof: [],
-      featuresLabel: "What the runtime does",
+      featuresLabel: "Loop, host, and packs",
       features: [
         {
           title: "A semantic loop, not a scene graph",
@@ -48,7 +48,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "agent",
         },
       ],
-      workflowLabel: "How a world runs",
+      workflowLabel: "Open, install, branch",
       workflow: [
         {
           title: "Open or create a .world",
@@ -75,7 +75,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "Experimental status",
+      positioningLabel: "Unstable on purpose",
       positioning: [
         {
           title: "Pre-alpha by design",
@@ -97,32 +97,23 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "protocol",
         },
         {
-          title: "What it is not",
+          title: "Not an engine marketplace",
           body: "Not a game engine marketplace, not multi-user SaaS, and not a notarized Mac App Store build.",
           intent: "boundary",
           surface: "protocol",
         },
       ],
-      faqLabel: "Pre-alpha, packs, license",
+      faqLabel: "Pre-alpha and packs",
       faq: [
         {
-          title: "Is there a GitHub release yet?",
-          body: "Not as a production GitHub Release. Pre-alpha packaging scripts exist in-repo; see docs/PRE_ALPHA_RELEASES.md. Prefer building from source or following that note.",
+          title: "No production GitHub Release",
+          body: "Pre-alpha packaging scripts exist in-repo; see docs/PRE_ALPHA_RELEASES.md. Prefer building from source or following that note.",
         },
         {
-          title: "Which platforms are supported?",
-          body: "The desktop host targets macOS. CLI and workspace tests run via Cargo; GPUI packaging is the macOS path described in the README.",
-        },
-        {
-          title: "Are included packs auto-run?",
-          body: "No. Pocket Universe and Micro Company ship as included external packs. Home requires explicit Review & Install before content review, quarantine, probe, and activation.",
-        },
-        {
-          title: "What license does it use?",
-          body: "Apache-2.0.",
+          title: "Included packs need Review & Install",
+          body: "Pocket Universe and Micro Company ship as included external packs. Home requires explicit Review & Install before content review, quarantine, probe, and activation.",
         },
       ],
-      finalCta: "Read the experimental runtime on GitHub",
       finalCtaLabel: "Open repository",
     },
     zh: {
@@ -136,7 +127,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       secondaryCta: { label: "Pre-alpha 说明", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
       proof: [],
-      featuresLabel: "运行时做什么",
+      featuresLabel: "循环、宿主与 Pack",
       features: [
         {
           title: "语义循环，不是场景图",
@@ -163,7 +154,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "agent",
         },
       ],
-      workflowLabel: "一个世界怎么跑",
+      workflowLabel: "打开、安装、分支",
       workflow: [
         {
           title: "打开或创建 .world",
@@ -190,7 +181,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "实验状态",
+      positioningLabel: "刻意不稳定",
       positioning: [
         {
           title: "刻意处于 pre-alpha",
@@ -212,32 +203,23 @@ export const worldMachineProduct: WorldRuntimeProduct = {
           surface: "protocol",
         },
         {
-          title: "它刻意不是什么",
+          title: "不是引擎市场",
           body: "不是游戏引擎市场，不是多用户 SaaS，也不是已公证的 Mac App Store 构建。",
           intent: "boundary",
           surface: "protocol",
         },
       ],
-      faqLabel: "pre-alpha、Pack 与许可",
+      faqLabel: "pre-alpha 与 Pack",
       faq: [
         {
-          title: "有 GitHub Release 吗？",
-          body: "还没有生产向的 GitHub Release。仓库内有 pre-alpha 打包脚本；见 docs/PRE_ALPHA_RELEASES.md。优先从源码构建或按该说明操作。",
+          title: "还没有生产向 Release",
+          body: "仓库内有 pre-alpha 打包脚本；见 docs/PRE_ALPHA_RELEASES.md。优先从源码构建或按该说明操作。",
         },
         {
-          title: "支持哪些平台？",
-          body: "桌面宿主面向 macOS。CLI 与工作区测试走 Cargo；GPUI 打包路径见 README 中的 macOS 说明。",
-        },
-        {
-          title: "附带 Pack 会自动运行吗？",
-          body: "不会。Pocket Universe 与 Micro Company 作为附带外部 Pack。Home 需显式 Review & Install，才会进入内容审阅、隔离、探测与激活。",
-        },
-        {
-          title: "使用什么许可？",
-          body: "Apache-2.0。",
+          title: "附带 Pack 需先审阅",
+          body: "Pocket Universe 与 Micro Company 作为附带外部 Pack。Home 需显式 Review & Install，才会进入内容审阅、隔离、探测与激活。",
         },
       ],
-      finalCta: "在 GitHub 阅读这个实验性运行时",
       finalCtaLabel: "打开仓库",
     },
   },

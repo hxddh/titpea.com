@@ -91,11 +91,10 @@ const copy = model.copy;
   }
 
   {
-    copy.finalCta && (
-      <section class="shell final-cta">
-        <h2>{copy.finalCta}</h2>
+    copy.finalCtaLabel && (
+      <section class="shell final-cta" aria-label={copy.finalCtaLabel}>
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">
-          {copy.finalCtaLabel ?? copy.primaryCta.label}
+          {copy.finalCtaLabel}
         </a>
       </section>
     )

@@ -16,6 +16,7 @@ export type PageSeo = {
   ogImage: string;
   ogImageUrl: string;
   structuredData?: Record<string, unknown>;
+  robots?: string;
 };
 
 export type PageLanguageLink = {
@@ -50,7 +51,6 @@ export type HomePageModel = BasePageModel & {
     title: string;
     items: Array<{
       name: string;
-      description: string;
       href: string;
       image: { src: string; alt: string; width: number; height: number };
     }>;
@@ -80,14 +80,10 @@ export type AboutPageModel = BasePageModel & {
     title: string;
     body: string[];
   };
-  lines: Array<{
-    label: string;
-    products: Array<{ name: string; href: string }>;
-  }>;
   focus: {
     label: string;
     title: string;
-    items: Array<{ term: string; text: string }>;
+    body: string[];
   };
 };
 

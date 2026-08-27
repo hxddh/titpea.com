@@ -35,20 +35,19 @@ export const s3TurboListProduct: S3TurboListProduct = {
         "Preset: OSS",
         "Preset: B2",
       ],
-      finalCta: "Start with a dry-run plan",
       finalCtaLabel: "Open repository",
       faqLabel: "Before a long run",
       faq: [
         {
-          title: "Why not just use aws s3 ls?",
+          title: "When aws s3 ls is enough",
           body: "For a quick, small inspection, `aws s3 ls` is often enough. s3-turbo-list is for large inventories and repeatable comparisons where output and recovery matter.",
         },
         {
-          title: "Do I need to prepare hints first?",
+          title: "Hints are optional",
           body: "No. List mode probes real `CommonPrefixes` boundaries on the first run. Hints files remain an optional control for repeated inventories.",
         },
         {
-          title: "How does startup discovery work?",
+          title: "Startup discovery pre-partitions",
           body: "Startup discovery pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can open parallel work earlier instead of relying only on runtime splits.",
         },
       ],
@@ -81,20 +80,19 @@ export const s3TurboListProduct: S3TurboListProduct = {
         "Preset：OSS",
         "Preset：B2",
       ],
-      finalCta: "先跑一次 dry-run",
       finalCtaLabel: "打开仓库",
       faqLabel: "开跑之前",
       faq: [
         {
-          title: "为什么不用 aws s3 ls？",
+          title: "小规模仍可用 aws s3 ls",
           body: "小规模、临时查看当然可以。s3-turbo-list 面向大规模盘点和可重复对比，结果输出和恢复能力更重要。",
         },
         {
-          title: "必须提前准备 hints 吗？",
+          title: "hints 不是前置条件",
           body: "不需要。list 首次运行会探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的额外控制。",
         },
         {
-          title: "启动发现如何工作？",
+          title: "启动发现会预分区",
           body: "启动发现会在 list 启动阶段用并行 single-key 探测为扁平命名空间预分区，让首次运行更早展开并发，而不必只靠运行时拆分逐步提升。",
         },
       ],

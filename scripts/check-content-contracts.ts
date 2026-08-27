@@ -27,6 +27,22 @@ const genericHeadings = new Set([
   "菜单栏里有什么",
   "in the page",
   "页面里的信息",
+  "in the popup",
+  "弹窗里的信息",
+  "what the runtime does",
+  "运行时做什么",
+  "how a world runs",
+  "一个世界怎么跑",
+  "experimental status",
+  "实验状态",
+  "how the pipeline runs",
+  "流水线怎么跑",
+  "built to investigate safely",
+  "为安全排查而设计",
+  "ops and cadence",
+  "运行与节奏",
+  "cli, extensions, and apps",
+  "命令行、扩展与应用",
 ]);
 const genericCardTitles = new Set([
   "use it when",
@@ -35,14 +51,18 @@ const genericCardTitles = new Set([
   "local by design",
   "out of scope",
   "what it isn't",
+  "what it is not",
   "it is not",
   "private by design",
   "当前支持范围",
   "本地运行",
   "明确不做",
   "它不是什么",
+  "它刻意不是什么",
   "which systems are supported?",
   "支持哪些系统？",
+  "what license does it use?",
+  "使用什么许可？",
 ]);
 const genericDirectoryLabels = new Set([
   "overview",
@@ -67,6 +87,12 @@ for (const model of allPageModels) {
     failures.push(`${model.path}: SEO description must be ${minimumDescriptionLength}-180 characters`);
   if (new Set(model.expectedText.filter(Boolean)).size !== model.expectedText.filter(Boolean).length)
     failures.push(`${model.path}: semantic checks must not duplicate text`);
+  if (model.kind === "home") {
+    const catalogTitle = model.more.title.trim().toLowerCase();
+    if (catalogTitle === "cli, extensions, and apps" || catalogTitle === "命令行、扩展与应用") {
+      failures.push(`${model.path}: catalog heading is format taxonomy: ${model.more.title}`);
+    }
+  }
   if (model.kind !== "product") continue;
 
   const { copy, sections } = model;
@@ -75,8 +101,7 @@ for (const model of allPageModels) {
     failures.push(`${model.path}: lead must be concise and specific`);
   if (copy.primaryCta.href === copy.secondaryCta.href)
     failures.push(`${model.path}: primary and secondary CTA must differ`);
-  if (!sections.some((section) => section.kind === "faq")) failures.push(`${model.path}: product narrative needs FAQ`);
-  if (sections.length < 3) failures.push(`${model.path}: product narrative needs at least three rendered sections`);
+  if (sections.length < 1) failures.push(`${model.path}: product narrative needs at least one rendered section`);
   if (genericIndexLabels.has(model.indexLabel))
     failures.push(`${model.path}: generic directory title ${model.indexLabel}`);
   for (const item of model.navItems) {

@@ -1,0 +1,30 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { siteConfig } from "../content/siteConfig";
+import { buildPageSeo, languageLink } from "../content/pages/seo";
+
+const path = "/404.html";
+const seo = buildPageSeo({
+  title: "Page not found - Titpea",
+  description: "This address does not match a Titpea product or page.",
+  path,
+  alternatePath: "/zh/",
+  locale: "en",
+  ogImage: siteConfig.assets.og.home,
+  robots: "noindex",
+});
+---
+
+<SiteLayout seo={seo} locale="en" language={languageLink("en", "/zh/")}>
+  <section class="about-hero shell">
+    <div class="about-redesign-copy">
+      <p class="eyebrow">Titpea</p>
+      <h1>This page is not here</h1>
+      <p class="lead">The address does not match a product or page. 这个地址没有对应的产品或页面。</p>
+      <div class="actions">
+        <a class="button primary" href="/">Home</a>
+        <a class="button ghost" href="/about/">About</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

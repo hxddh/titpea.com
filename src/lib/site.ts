@@ -110,9 +110,9 @@ export type AgentPackageProductCopy = ProductCopy & {
 };
 
 export type BrowserExtensionProductCopy = ProductCopy & {
-  features: ProductContentCard[];
+  features?: ProductContentCard[];
   positioning: ProductContentCard[];
-  faq: ProductContentCard[];
+  faq?: ProductContentCard[];
 };
 
 export type AgentWorkbenchProductCopy = ProductCopy & {

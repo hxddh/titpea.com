@@ -95,30 +95,25 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
       ],
-      faqLabel: "Ollama, files, platforms",
+      faqLabel: "Ollama, scans, first open",
       faq: [
         {
-          title: "Can it run fully local with Ollama?",
-          body: "Yes. Point Assistant (and Scan if needed) at an OpenAI-compatible Ollama endpoint. Files stay on disk; only the payloads you enable go to that local model.",
+          title: "Fully local with Ollama",
+          body: "Point Assistant (and Scan if needed) at an OpenAI-compatible Ollama endpoint. Files stay on disk; only the payloads you enable go to that local model.",
         },
         {
-          title: "When should I enable OpenRouter web search?",
+          title: "OpenRouter web search stays opt-in",
           body: "Only when a question needs outside verification. It is opt-in per call and off by default, so ordinary document Q&A is not polluted by web results.",
         },
         {
-          title: "Do my files leave my computer?",
-          body: "No upload to a PageWise server. Only extracted text — and optional vision payloads — go to the model endpoint you configure.",
-        },
-        {
-          title: "How do scanned pages work?",
+          title: "Scanned pages use a vision model",
           body: "When a text layer is thin or missing, indexing can use a vision / multimodal Scan model. Prefer a vision-capable model for image-heavy PDFs.",
         },
         {
-          title: "What platforms does it run on?",
-          body: "GitHub Releases ship macOS DMG, Windows setup/MSI, and Linux AppImage/deb. Builds are unsigned, so the first open may need an OS exception. The project is MIT-licensed.",
+          title: "First open may need an OS exception",
+          body: "GitHub Releases ship macOS DMG, Windows setup/MSI, and Linux AppImage/deb. Builds are unsigned, so the first open may need an OS exception.",
         },
       ],
-      finalCta: "Read page by page — and return to the source",
       finalCtaLabel: "Download latest release",
     },
     zh: {
@@ -206,30 +201,25 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
       ],
-      faqLabel: "Ollama、文件与平台",
+      faqLabel: "Ollama、扫描与首次打开",
       faq: [
         {
-          title: "能否用 Ollama 全本地？",
-          body: "可以。把对话（以及需要时的 Scan）指到兼容 OpenAI 接口的 Ollama。文件留在磁盘；只有你启用的内容会发给该本地模型。",
+          title: "可用 Ollama 全本地",
+          body: "把对话（以及需要时的 Scan）指到兼容 OpenAI 接口的 Ollama。文件留在磁盘；只有你启用的内容会发给该本地模型。",
         },
         {
-          title: "OpenRouter 网页搜索何时开？",
+          title: "OpenRouter 网页搜索默认关",
           body: "只在需要外网核实时按次打开。默认关闭，避免普通文档问答被网页结果干扰。",
         },
         {
-          title: "我的文件会离开电脑吗？",
-          body: "不会上传到 PageWise 服务器。只有提取文本，以及你启用的图像内容，会发到你配置的模型。",
-        },
-        {
-          title: "扫描页怎么处理？",
+          title: "扫描页走视觉模型",
           body: "文本层稀薄或缺失时，索引可用视觉 / 多模态 Scan 模型。图片多的 PDF 请为 Scan 选支持视觉的模型。",
         },
         {
-          title: "支持哪些平台？",
-          body: "GitHub Releases 提供 macOS DMG、Windows 安装包与 Linux AppImage/deb。构建未公证，首次打开可能需系统例外。项目采用 MIT 许可。",
+          title: "首次打开可能需系统例外",
+          body: "GitHub Releases 提供 macOS DMG、Windows 安装包与 Linux AppImage/deb。构建未公证，首次打开可能需系统例外。",
         },
       ],
-      finalCta: "按页阅读，沿着阅读轨迹回到原文",
       finalCtaLabel: "下载最新版本",
     },
   },

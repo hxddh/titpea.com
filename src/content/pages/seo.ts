@@ -18,6 +18,7 @@ export function buildPageSeo(input: {
   locale: Locale;
   ogImage: string;
   structuredData?: Record<string, unknown>;
+  robots?: string;
 }): PageSeo {
   const enPath = input.locale === "en" ? input.path : input.alternatePath;
   const zhPath = input.locale === "zh" ? input.path : input.alternatePath;
@@ -35,6 +36,7 @@ export function buildPageSeo(input: {
     ogImage: input.ogImage,
     ogImageUrl: absoluteUrl(input.ogImage),
     structuredData: input.structuredData,
+    robots: input.robots,
   };
 }
 
