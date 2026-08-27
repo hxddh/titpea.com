@@ -16,8 +16,8 @@
 .screenshot-showcase-copy h2 {
   max-width: 18ch;
   margin: 0 0 18px;
-  font-size: clamp(2.05rem, 4vw, 2.75rem);
-  line-height: 1.04;
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  line-height: 1.08;
 }
 
 .screenshot-showcase-copy p:not(.section-kicker) {
@@ -56,8 +56,8 @@
 
 .deep-dive-heading h2 {
   margin: 0;
-  font-size: clamp(2.05rem, 4vw, 2.75rem);
-  line-height: 1.04;
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  line-height: 1.08;
 }
 
 .deep-dive-heading p:not(.section-kicker) {
@@ -256,8 +256,8 @@
 
 .s3-results-heading h2 {
   margin: 0;
-  font-size: clamp(2.05rem, 4vw, 2.75rem);
-  line-height: 1.04;
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  line-height: 1.08;
 }
 
 .s3-results-heading p:not(.section-kicker) {
@@ -392,8 +392,8 @@
 #cases h2 {
   max-width: 22ch;
   margin: 0 0 18px;
-  font-size: clamp(2.2rem, 4.4vw, 3rem);
-  line-height: 1.04;
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  line-height: 1.08;
 }
 
 .inside-copy p:not(.section-kicker) {
@@ -441,8 +441,8 @@
   cursor: pointer;
   list-style: none;
   color: var(--ink);
-  font-size: 20px;
-  font-weight: 650;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .faq-list summary::-webkit-details-marker {
@@ -486,5 +486,6 @@
 
 .final-cta h2 {
   margin: 0 0 26px;
-  font-size: clamp(2.15rem, 4.2vw, 3rem);
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  line-height: 1.08;
 }

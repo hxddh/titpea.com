@@ -11,6 +11,8 @@ export function headerUi(locale: Locale) {
     menuText: copy.menuText,
     themeToDark: copy.themeToDark,
     themeToLight: copy.themeToLight,
+    themeDarkText: copy.themeDarkText,
+    themeLightText: copy.themeLightText,
   };
 }
 

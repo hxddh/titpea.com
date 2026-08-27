@@ -77,30 +77,11 @@
 }
 
 .language-switch:hover,
-.language-switch:focus-visible {
-  border-bottom-color: var(--ink);
-  color: var(--ink);
-}
-
+.language-switch:focus-visible,
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
+  border-bottom-color: var(--ink);
   color: var(--ink);
-}
-
-.theme-toggle {
-  padding: 10px 12px;
-}
-
-.theme-icon-light {
-  display: none;
-}
-
-.theme-toggle[aria-pressed="true"] .theme-icon-dark {
-  display: none;
-}
-
-.theme-toggle[aria-pressed="true"] .theme-icon-light {
-  display: inline;
 }
 
 .actions {

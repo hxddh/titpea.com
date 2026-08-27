@@ -235,7 +235,16 @@
 
   .home-evidence-heading h2,
   .browser-band-copy h2,
-  .about-section-heading h2 {
+  .about-section-heading h2,
+  .inside-copy h2,
+  .product-story h2,
+  #cases h2,
+  .screenshot-showcase-copy h2,
+  .deep-dive-heading h2,
+  .s3-results-heading h2,
+  .final-cta h2,
+  .benchmark-head h2,
+  .agent-manifest-head h2 {
     font-size: 1.45rem;
   }
 }
