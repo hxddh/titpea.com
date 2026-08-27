@@ -65,7 +65,7 @@ export const celagentProduct: CliAgentProduct = {
       faq: [
         {
           title: "Install from the latest release",
-          body: "On Unix: `curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh`. On Windows: run install.ps1 from the same release (CLI only; upstream Celld has no Windows package).",
+          body: "On Unix, run install.sh from the latest GitHub release. On Windows, run install.ps1 from the same release. The CLI installs on both; upstream Celld has no Windows package.",
         },
         {
           title: "It does not fork Pi",
@@ -126,7 +126,7 @@ export const celagentProduct: CliAgentProduct = {
       faq: [
         {
           title: "从最新 Release 安装",
-          body: "Unix：`curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh`。Windows：从同一 Release 运行 install.ps1（仅 CLI；上游 Celld 无 Windows 包）。",
+          body: "Unix 从最新 GitHub Release 运行 install.sh。Windows 从同一 Release 运行 install.ps1。CLI 两端都能装；上游 Celld 没有 Windows 包。",
         },
         {
           title: "不会 fork Pi",
