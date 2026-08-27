@@ -57,7 +57,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "The agent investigates with tools",
-          body: "It chooses read-only checks under simple budgets for list, preview, and latency. Analysis stays in local app data; metadata, log rows, inventory, and tool activity stay next to the answer.",
+          body: "It chooses read-only checks under simple budgets for list, preview, and latency. Analysis stays in local app data, with metadata, log rows, inventory, and tool activity kept in the session.",
           intent: "workflow",
           surface: "agent",
         },
@@ -152,7 +152,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Agent 用工具排查",
-          body: "它在列表、预览、延迟等简单预算内选择只读检查。分析结果留在本机应用数据里；元数据、日志行、清单和工具活动留在回答旁边。",
+          body: "它在列表、预览、延迟等简单预算内选择只读检查。分析结果留在本机应用数据里，元数据、日志行、清单和工具活动跟着这次会话走。",
           intent: "workflow",
           surface: "agent",
         },

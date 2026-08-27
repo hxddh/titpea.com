@@ -41,7 +41,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
         {
-          title: "Workbench around the page",
+          title: "Preview, outline, one thread per document",
           body: "Preview with thumbnails, zoom, in-doc search, and outline or bookmark tree. One chat thread per document, saved locally, with Markdown export.",
           intent: "capability",
           surface: "artifact",
@@ -82,12 +82,6 @@ export const pagewiseProduct: DocumentAgentProduct = {
       ],
       positioningLabel: "Local by design",
       positioning: [
-        {
-          title: "Documents stay on disk",
-          body: "PageWise does not upload your PDFs or images to its own servers. Processing stays on your machine.",
-          intent: "boundary",
-          surface: "artifact",
-        },
         {
           title: "Only what the model needs leaves",
           body: "Extracted text — and optional vision payloads you enable — go to the LLM you configure. Nothing else leaves without that setup.",
@@ -158,7 +152,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
         {
-          title: "围着页的工作台",
+          title: "预览、大纲，一文档一条线程",
           body: "预览含缩略图、缩放、文内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
           intent: "capability",
           surface: "artifact",
@@ -199,12 +193,6 @@ export const pagewiseProduct: DocumentAgentProduct = {
       ],
       positioningLabel: "本地优先",
       positioning: [
-        {
-          title: "文档留在磁盘",
-          body: "PageWise 不会把 PDF 或图片上传到自己的服务器。处理在本机完成。",
-          intent: "boundary",
-          surface: "artifact",
-        },
         {
           title: "只送出模型需要的内容",
           body: "提取出的文本，以及你启用的图像内容，会发到你配置的模型。除此之外不会擅自外传。",

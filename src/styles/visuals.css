@@ -1093,10 +1093,10 @@
 }
 
 .pulse-row em {
-  color: var(--chip-ink);
-  background: var(--chip-bg);
-  border-radius: 999px;
-  padding: 4px 8px;
+  color: var(--muted);
+  background: transparent;
+  border-radius: 0;
+  padding: 4px 0;
   font-family: var(--mono);
   font-size: 10px;
   font-style: normal;
@@ -1115,7 +1115,6 @@
 .pulse-lamp-waiting {
   color: #b42318;
   background: #b42318;
-  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.12);
 }
 
 .pulse-lamp-running {
@@ -1170,10 +1169,10 @@
 .world-machine-projection-focus > span:nth-child(3),
 .world-machine-projection-panels span {
   color: var(--label);
+  font-family: var(--sans);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .world-machine-projection-focus strong {
@@ -1202,8 +1201,8 @@
 .world-machine-projection-focus li {
   padding: 8px 10px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--raised);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
 }
 

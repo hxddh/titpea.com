@@ -67,14 +67,14 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       id: "inside",
       kind: "inside",
       kicker: "Desktop investigation agent",
-      title: "Chat plans the checks; evidence stays open",
+      title: "Skills choose the path; analysis stays local",
       body: "Describe a bucket, error, or log. The agent follows StorageOps skills, runs large analyses locally, and leaves the material it used beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
-      title: "对话规划检查，证据留在旁边",
+      title: "按 skill 选路径，分析留在本机",
       body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成，用过的材料留在回答旁边。",
     },
   },
@@ -168,24 +168,33 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       id: "inside",
       kind: "inside",
       kicker: "Local PDF workbench",
-      title: "Ask about a page — see what was read",
+      title: "Budgets on the read; marks on the page",
       body: "Open a PDF, ask a question, and watch the agent read specific pages under a budget. Marks stay on the document; citations and follow-along preview keep the source beside the answer.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "本地 PDF 工作台",
-      title: "就某一页提问，看见它读了什么",
+      title: "读有预算，批注留在页上",
       body: "打开 PDF，提出问题，看 Agent 在预算内读具体页。批注留在文档上；页引用与跟随预览让原文留在回答旁边。",
     },
   },
-  "douban-movie-rating": browserInside(
-    { en: "Ratings without leaving Douban", zh: "不离开豆瓣，也能对照评分" },
-    {
-      en: "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading.",
-      zh: "豆瓣电影评分助手只补充参考信息。匹配到影片后，它会把 IMDb、Rotten Tomatoes 和 Metacritic 放到豆瓣详情页，不打断原本的阅读。",
+  "douban-movie-rating": {
+    en: {
+      id: "inside",
+      kind: "inside",
+      kicker: "On the movie page",
+      title: "Ratings without leaving Douban",
+      body: "The extension adds context rather than replacing Douban: when a reliable match exists, IMDb, Rotten Tomatoes, and Metacritic appear in the page you are already reading.",
     },
-  ),
+    zh: {
+      id: "inside",
+      kind: "inside",
+      kicker: "就在豆瓣页里",
+      title: "不离开豆瓣，也能对照评分",
+      body: "豆瓣电影评分助手只补充参考信息。匹配到影片后，它会把 IMDb、Rotten Tomatoes 和 Metacritic 放到豆瓣详情页，不打断原本的阅读。",
+    },
+  },
   goban: browserInside(
     { en: "Play, inspect, and return to any move", zh: "对弈、查看，再回到任意一手" },
     {

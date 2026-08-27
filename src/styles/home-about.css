@@ -13,7 +13,7 @@
 }
 
 .home-hero {
-  padding: 56px 0 20px;
+  padding: 40px 0 8px;
 }
 
 .product-hero {
@@ -31,13 +31,20 @@
   text-align: left;
 }
 
-.home-hero h1,
 .about-hero h1,
 .product-hero h1 {
   max-width: 22ch;
   margin: 0 0 22px;
   font-size: clamp(2.65rem, 6.2vw, 4.5rem);
   line-height: 0.98;
+}
+
+.home-hero h1 {
+  max-width: 22ch;
+  margin: 0 0 10px;
+  font-size: clamp(1.75rem, 3vw, 2.15rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
 .home-hero .lead,

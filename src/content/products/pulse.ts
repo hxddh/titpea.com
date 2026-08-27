@@ -106,7 +106,7 @@ export const pulseProduct: MenuBarAppProduct = {
       description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲，或停滞 / 探测异常。",
       eyebrow: "macOS 菜单栏状态灯",
       headline: "在菜单栏看见等待中的会话",
-      lead: "Pulse 把本机编码 Agent 显示为等待、运行、空闲或停滞，等待只来自 hooks 或 pending、从不推断，打开托盘后按 TTY / 工作区 / 宿主 App 精度聚焦。",
+      lead: "本机编码 Agent 显示为等待、运行、空闲或停滞。Waiting 只来自 hooks 或 pending，打开托盘后按已验证的 TTY、工作区或宿主 App 聚焦。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · 菜单栏`,
@@ -160,7 +160,7 @@ export const pulseProduct: MenuBarAppProduct = {
           surface: "artifact",
         },
         {
-          title: "稍后只压打扰",
+          title: "稍后仍保留那一行",
           body: "稍后暂时关掉菜单栏红灯和通知，行仍留在等待分组并显示剩余时间。页脚可清除等待、跳到等待最久的项，或打开偏好设置。",
           intent: "capability",
           surface: "artifact",
