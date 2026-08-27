@@ -44,7 +44,6 @@ export type HomePageModel = BasePageModel & {
     eyebrow: string;
     title: string;
     lead: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost"; external?: boolean }>;
   };
   featured: {
     label: string;

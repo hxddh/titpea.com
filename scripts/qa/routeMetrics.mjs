@@ -18,7 +18,7 @@ export async function checkRoute(page, viewport, route) {
       const leadLineHeight = lead ? Number.parseFloat(getComputedStyle(lead).lineHeight) : 0;
       const origin = window.location.origin;
       const expectedPrimary = route.primaryCta ? new URL(route.primaryCta, origin).href : null;
-      const primaryCta = document.querySelector(".button.primary");
+      const primaryCta = document.querySelector(".home-featured-card, .button.primary");
       const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
       const heroActions = hero?.querySelectorAll(".actions a") ?? [];

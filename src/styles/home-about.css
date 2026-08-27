@@ -5,7 +5,15 @@
   grid-template-columns: 1fr;
   gap: 48px;
   align-items: center;
+}
+
+.about-hero,
+.product-hero {
   padding: 80px 0 56px;
+}
+
+.home-hero {
+  padding: 56px 0 20px;
 }
 
 .product-hero {
@@ -38,7 +46,6 @@
   margin-inline: 0;
 }
 
-.home-hero .actions,
 .about-hero .actions,
 .product-hero .actions {
   justify-content: flex-start;
@@ -75,7 +82,6 @@
   line-height: 1.62;
 }
 
-.home-evidence,
 .home-more-tools,
 .about-focus-section,
 .about-defaults {
@@ -86,6 +92,8 @@
 
 .home-evidence {
   display: block;
+  padding-top: 12px;
+  padding-bottom: 64px;
 }
 
 .home-evidence-grid {

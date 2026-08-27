@@ -18,7 +18,7 @@ Titpea is a concise personal product site. Its design should make each tool easi
 
 - A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims.
 - For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is for adoption blockers, not a second feature list.
-- Keep the section directory for long desktop product pages only. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
+- Keep the section directory for long desktop product pages only. Style it as a text directory, not a row of pills. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
 - Use one source of truth for each product fact. Repeating a claim in the hero, proof strip, body, and FAQ weakens the page instead of strengthening it.
 
 ## Typography And Copy
@@ -28,12 +28,12 @@ Titpea is a concise personal product site. Its design should make each tool easi
 - Hero headings should normally fit in one or two lines. Shorten copy before shrinking the type.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
-- `mono` is for labels, eyebrows, meta, and commands. Navigation, buttons, footer, menu group titles, and catalog roles use `sans`. Navigation group labels stay short.
+- `mono` is for labels, eyebrows, meta, and commands. Navigation, buttons, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
 
 ## Visual Language
 
 - Preserve the existing light technical surface, dark ink, and restrained controls. Do not add a decorative body grid.
-- Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover. Featured product names outrank the catalog list. Catalog roles use sans, not uppercase mono. The remaining catalog is a two-column text list with hairline separators, not a mosaic of equal-weight cards.
+- Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover. The homepage first screen is the featured pair, not a slogan block with duplicate CTAs. Featured product names outrank the catalog list. Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators, not a mosaic of equal-weight cards. The catalog heading names what is there; it does not call them leftovers.
 - Equal-weight product sections — fit and limits, features, and similar — are two-column hairline lists. Numbered workflows stay as step mosaics; charts, terminals, and the Pulse menu-bar visual keep the box that is the product. The mobile menu is a hairline list, not a 1px tile stack.
 - Hairlines should recede: borders use ink or white at low opacity, not a painted gray card frame. Product screenshots sit on a quiet shadow, not a 1px box.
 - Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ.
@@ -57,7 +57,7 @@ principle and a constraint seem to disagree, satisfy the constraint and rework t
   - Keep CSS in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Tokens are the single source of truth
   - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
-  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings, prose, navigation, buttons, footer, menu group titles, and catalog roles.
+  - `mono` is for labels, eyebrows, meta, and commands; `sans` is for headings, prose, navigation, buttons, footer, menu group titles, catalog roles, and the product section directory.
   - Hero headings stay within two lines.
 - Responsive
   - Breakpoints are 900px (tablet to single column) and 640px (phone).
