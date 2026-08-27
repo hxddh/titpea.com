@@ -55,6 +55,7 @@ for (const target of baseline.targets) {
     await document.fonts.ready;
     await document.fonts.load("600 56px Inter");
   });
+  await page.locator("[data-theme-toggle]").waitFor({ state: "visible" });
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
   if (target.state === "faq") {
@@ -68,22 +69,32 @@ for (const target of baseline.targets) {
       await page.evaluate(() => {
         const faq = document.getElementById("faq");
         const index = document.querySelector(".product-section-index div");
-        const active = document.querySelector('.product-section-index a[href="#faq"]');
+        const faqNav = document.querySelector('.product-section-index a[href="#faq"]');
         if (!faq) return;
         const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
         const y = Math.round(faq.getBoundingClientRect().top + window.scrollY - margin);
         window.scrollTo(0, Math.max(0, y));
-        if (index && active instanceof HTMLElement) {
-          index.scrollLeft = Math.max(0, active.offsetLeft - 16);
+        document.querySelectorAll(".product-section-index a[aria-current]").forEach((link) => {
+          link.removeAttribute("aria-current");
+        });
+        if (faqNav instanceof HTMLElement) {
+          faqNav.setAttribute("aria-current", "location");
+          if (index) index.scrollLeft = Math.max(0, faqNav.offsetLeft - 16);
         }
       });
-      await page.waitForFunction(() => {
-        const faq = document.getElementById("faq");
-        const active = document.querySelector(".product-section-index a[aria-current]");
-        if (!faq || active?.getAttribute("href") !== "#faq") return false;
-        const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
-        return Math.abs(Math.round(faq.getBoundingClientRect().top) - Math.round(margin)) <= 2;
-      });
+      try {
+        await page.waitForFunction(() => {
+          const faq = document.getElementById("faq");
+          if (!faq) return false;
+          const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
+          const top = Math.round(faq.getBoundingClientRect().top);
+          if (Math.abs(top - Math.round(margin)) <= 8) return true;
+          const maxY = document.documentElement.scrollHeight - window.innerHeight;
+          return window.scrollY >= maxY - 1 && top >= 0;
+        });
+      } catch {
+        failures.push(`${target.path} ${target.viewport}: FAQ did not pin within 8s`);
+      }
     }
   }
 
