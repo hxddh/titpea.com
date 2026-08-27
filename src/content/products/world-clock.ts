@@ -33,7 +33,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "What it isn't",
+          title: "No location, no calendar",
           body: "It shows the city times you choose. It does not read your location, calendar, or meetings.",
           intent: "boundary",
           surface: "browser",
@@ -91,7 +91,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
           priority: "primary",
         },
         {
-          title: "它不是什么",
+          title: "不读位置，也不读日历",
           body: "只显示你选的城市时间，不读取你的位置、日历或会议。",
           intent: "boundary",
           surface: "browser",

@@ -80,7 +80,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "Local by design",
+      positioningLabel: "What leaves the machine",
       positioning: [
         {
           title: "Only what the model needs leaves",
@@ -191,7 +191,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "本地优先",
+      positioningLabel: "什么会离开本机",
       positioning: [
         {
           title: "只送出模型需要的内容",

@@ -30,19 +30,19 @@ export const pulseProduct: MenuBarAppProduct = {
           priority: "primary",
         },
         {
-          title: "Current platforms",
+          title: "macOS 14+; Waiting needs hooks",
           body: "macOS 14+ only. Claude Code and Codex get Waiting through hooks in Preferences → Waiting Signal. Other agents use process probe and session harvest; Waiting depth varies, and some have none.",
           intent: "boundary",
           surface: "artifact",
         },
         {
-          title: "Out of scope",
+          title: "The tray does not approve",
           body: "No quota, spend, or reset timers. No desktop pet or analytics dashboard. The tray does not approve or deny — it opens the session where you act.",
           intent: "boundary",
           surface: "artifact",
         },
       ],
-      featuresLabel: "In the menu bar",
+      featuresLabel: "Lamp, tray, snooze",
       features: [
         {
           title: "Menu-bar status",
@@ -84,8 +84,8 @@ export const pulseProduct: MenuBarAppProduct = {
       faqLabel: "macOS, hooks, privacy",
       faq: [
         {
-          title: "Which systems are supported?",
-          body: "macOS 14+. Current builds are ad-hoc signed, so the first open may need Open from the context menu, or clearing quarantine with xattr.",
+          title: "Why does the first open warn?",
+          body: "Current builds are ad-hoc signed, so the first open may need Open from the context menu, or clearing quarantine with xattr. Pulse itself is macOS 14+ only.",
         },
         {
           title: "Do I need hooks?",
@@ -121,19 +121,19 @@ export const pulseProduct: MenuBarAppProduct = {
           priority: "primary",
         },
         {
-          title: "当前支持范围",
+          title: "只做 macOS 14+",
           body: "只做 macOS 14+。Claude Code 与 Codex 在「偏好设置 → 等待信号」装 hooks 后 Waiting 最完整；其他 Agent 靠进程探测和会话采集，Waiting 深浅不一，有的没有。",
           intent: "boundary",
           surface: "artifact",
         },
         {
-          title: "明确不做",
+          title: "托盘不替你批准",
           body: "不做额度、费用或重置倒计时；不是桌面宠物或统计大盘；托盘里也不替你批准或拒绝——只打开你动手的那个会话。",
           intent: "boundary",
           surface: "artifact",
         },
       ],
-      featuresLabel: "菜单栏里有什么",
+      featuresLabel: "灯、托盘、稍后",
       features: [
         {
           title: "菜单栏状态",
@@ -175,8 +175,8 @@ export const pulseProduct: MenuBarAppProduct = {
       faqLabel: "系统、hooks 与隐私",
       faq: [
         {
-          title: "支持哪些系统？",
-          body: "macOS 14+。当前构建是 ad-hoc 签名，首次打开可能要右键选「打开」，或用 xattr 清掉隔离属性。",
+          title: "首次打开为什么拦截？",
+          body: "当前构建是 ad-hoc 签名，首次打开可能要右键选「打开」，或用 xattr 清掉隔离属性。Pulse 本身只做 macOS 14+。",
         },
         {
           title: "一定要装 hooks 吗？",

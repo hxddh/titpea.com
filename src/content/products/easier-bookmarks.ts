@@ -32,13 +32,13 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "Private by design",
+          title: "No analytics, no servers",
           body: "It uses Chrome's Bookmarks API and local extension storage. There are no analytics, ads, accounts, remote code, or external servers.",
           intent: "boundary",
           surface: "browser",
         },
       ],
-      featuresLabel: "In the side panel",
+      featuresLabel: "Search, edit, reorder",
       features: [
         {
           title: "Search the whole tree",
@@ -107,13 +107,13 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
         {
-          title: "隐私边界",
+          title: "无分析，无外部服务器",
           body: "它只使用 Chrome 书签 API 和扩展本地存储，无分析服务、广告、账号、远程代码或外部服务器。",
           intent: "boundary",
           surface: "browser",
         },
       ],
-      featuresLabel: "侧边栏里的能力",
+      featuresLabel: "搜索、改、排序",
       features: [
         {
           title: "搜索整棵书签树",
