@@ -16,8 +16,8 @@
 .screenshot-showcase-copy h2 {
   max-width: 18ch;
   margin: 0 0 18px;
-  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
-  line-height: 1.06;
+  font-size: clamp(2.05rem, 4vw, 2.75rem);
+  line-height: 1.04;
 }
 
 .screenshot-showcase-copy p:not(.section-kicker) {
@@ -52,7 +52,7 @@
 .product-page-agentPackage .agent-manifest-visual,
 .product-page-storageCli .benchmark-visual,
 .product-page-s3TurboList .benchmark-visual {
-  box-shadow: 0 24px 80px rgba(17, 24, 39, 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
 .deep-dive-heading {
@@ -63,8 +63,8 @@
 
 .deep-dive-heading h2 {
   margin: 0;
-  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
-  line-height: 1.06;
+  font-size: clamp(2.05rem, 4vw, 2.75rem);
+  line-height: 1.04;
 }
 
 .deep-dive-heading p:not(.section-kicker) {
@@ -263,8 +263,8 @@
 
 .s3-results-heading h2 {
   margin: 0;
-  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
-  line-height: 1.06;
+  font-size: clamp(2.05rem, 4vw, 2.75rem);
+  line-height: 1.04;
 }
 
 .s3-results-heading p:not(.section-kicker) {
@@ -399,8 +399,8 @@
 #cases h2 {
   max-width: 22ch;
   margin: 0 0 18px;
-  font-size: clamp(2.1rem, 4vw, 2.7rem);
-  line-height: 1.08;
+  font-size: clamp(2.2rem, 4.4vw, 3rem);
+  line-height: 1.04;
 }
 
 .inside-copy p:not(.section-kicker) {
@@ -428,7 +428,7 @@
 }
 
 .provider-list span {
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   padding: 7px 12px;
   color: var(--ink);
   font-family: var(--mono);
@@ -494,5 +494,5 @@
 
 .final-cta h2 {
   margin: 0 0 26px;
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.15rem, 4.2vw, 3rem);
 }

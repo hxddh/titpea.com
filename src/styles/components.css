@@ -24,13 +24,13 @@
 
 .brand-mark {
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   place-items: center;
-  border-radius: 8px;
+  border-radius: var(--radius-card);
   background: var(--ink);
   color: var(--on-ink);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .header-actions {
@@ -123,7 +123,7 @@
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  border-radius: 7px;
+  border-radius: var(--radius-control);
   padding: 12px 18px;
   color: var(--ink);
   font-size: 14px;
@@ -153,7 +153,7 @@
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   padding: 7px 12px;
   color: var(--ink);
   cursor: pointer;
@@ -234,7 +234,7 @@
 }
 
 .proof-strip span {
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   padding: 6px 13px;
   color: var(--ink);
   font-family: var(--mono);
@@ -347,7 +347,7 @@
   min-width: 180px;
   padding: 8px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--panel);
   box-shadow: var(--shadow-soft);
 }

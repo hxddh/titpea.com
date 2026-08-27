@@ -43,7 +43,7 @@
   .about-hero h1,
   .product-hero h1 {
     max-width: 18ch;
-    font-size: clamp(2.25rem, 10vw, 3rem);
+    font-size: clamp(2.45rem, 11vw, 3.35rem);
   }
 
   .about-focus-section,
@@ -227,5 +227,11 @@
 
   .site-footer {
     flex-direction: column;
+  }
+
+  .home-evidence-heading h2,
+  .browser-band-copy h2,
+  .about-section-heading h2 {
+    font-size: 1.45rem;
   }
 }

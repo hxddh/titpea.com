@@ -40,7 +40,7 @@
         override.setAttribute(ATTR, "");
         document.head.appendChild(override);
       }
-      override.setAttribute("content", pref === "dark" ? "#0d1117" : "#f9fafc");
+      override.setAttribute("content", pref === "dark" ? "#15130f" : "#f2f1ec");
     } else if (override) {
       override.parentNode.removeChild(override);
     }
