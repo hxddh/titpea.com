@@ -27,7 +27,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       positioning: [
         {
           title: "Remote work, travel, cross-region calls",
-          body: "You need a timezone glance during remote work, travel planning, or cross-region conversations.",
+          body: "You need city times during remote work, travel planning, or cross-region conversations.",
           intent: "fit",
           surface: "browser",
           priority: "primary",

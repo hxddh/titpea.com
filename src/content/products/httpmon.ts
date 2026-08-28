@@ -56,16 +56,8 @@ export const httpmonProduct: StorageCliProduct = {
         },
       ],
       finalCtaLabel: "Open repository",
-      faqLabel: "Proxy, HTTPS, recordings",
+      faqLabel: "wss and recordings",
       faq: [
-        {
-          title: "The system proxy stays untouched",
-          body: "Proxy and CA settings are passed only to the wrapped child process and are cleaned up when that process exits.",
-        },
-        {
-          title: "HTTPS is decrypted locally",
-          body: "httpmon creates a temporary local CA and per-host certificates. It decrypts locally for inspection while forwarding the full response stream unchanged.",
-        },
         {
           title: "HTTPS and the wss handshake",
           body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
@@ -123,13 +115,8 @@ export const httpmonProduct: StorageCliProduct = {
         },
       ],
       finalCtaLabel: "打开仓库",
-      faqLabel: "代理、HTTPS 与录制",
+      faqLabel: "wss 与录制",
       faq: [
-        { title: "不改系统代理", body: "代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
-        {
-          title: "HTTPS 只在本地解密",
-          body: "httpmon 会临时创建本地 CA 和按域名签发的证书，仅在本地解密查看；完整响应流会按原样继续转发。",
-        },
         {
           title: "HTTPS 与 wss 握手",
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",

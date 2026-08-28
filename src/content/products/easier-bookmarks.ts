@@ -8,7 +8,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "Easier Bookmarks",
-      description: "A Chrome side-panel bookmark manager for local search, browsing, and organization.",
+      description: "Chrome side panel for the bookmark tree already in this browser.",
       eyebrow: "Chrome extension",
       headline: "Bookmarks in the side panel",
       lead: "Find and move bookmarks in Chrome's side panel — without the bookmark-menu maze.",
@@ -36,13 +36,6 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           body: "It uses Chrome's Bookmarks API and local extension storage. There are no analytics, ads, accounts, remote code, or external servers.",
           intent: "boundary",
           surface: "browser",
-        },
-      ],
-      faqLabel: "What stays on this browser",
-      faq: [
-        {
-          title: "Only language and folder state are stored",
-          body: "Chrome keeps your bookmarks. The extension stores only your language choice and expanded-folder identifiers in local extension storage. Install from the Chrome Web Store, then open it from the toolbar action.",
         },
       ],
     },
@@ -76,13 +69,6 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           body: "它只使用 Chrome 书签 API 和扩展本地存储，无分析服务、广告、账号、远程代码或外部服务器。",
           intent: "boundary",
           surface: "browser",
-        },
-      ],
-      faqLabel: "留在这台浏览器里",
-      faq: [
-        {
-          title: "只存语言和展开状态",
-          body: "书签由 Chrome 保存。扩展只在本地存储界面语言和已展开文件夹的标识。从 Chrome 网上应用店安装后，点击工具栏图标即可在侧边栏打开。",
         },
       ],
     },

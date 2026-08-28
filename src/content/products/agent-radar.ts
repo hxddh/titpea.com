@@ -12,15 +12,15 @@ export const agentRadarProduct: MarkdownRadarProduct = {
     en: {
       title: "Agent Radar",
       description:
-        "A Markdown-first AI Agent trend radar on GitHub Actions: public signals in, Markdown committed after gates pass.",
-      eyebrow: "Markdown-first · GitHub Actions",
+        "Markdown research on GitHub Actions: public agent signals become briefs only after direction and citation gates pass.",
+      eyebrow: "Scheduled Markdown research",
       headline: "Scheduled research kept in Markdown",
-      lead: "A GitHub Actions loop collects public agent signals, then commits Markdown only after direction and citation gates pass.",
+      lead: "Public agent signals become Markdown research only after direction and citation gates pass — hosted on GitHub Actions.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
       proof: [],
-      workflowLabel: "Collect, gate, commit",
+      workflowLabel: "From sources to a commit",
       workflow: [
         {
           title: "Broad discovery",
@@ -66,10 +66,6 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       faqLabel: "Actions and cost",
       faq: [
         {
-          title: "Actions is the unattended host",
-          body: "The same runner can be invoked locally for debugging; the durable state remains the Markdown repo. Daily, weekly, and monthly jobs are the intended host.",
-        },
-        {
           title: "No paid search required",
           body: "Collection uses free public source lanes. Bring your own model keys: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
         },
@@ -85,7 +81,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
       proof: [],
-      workflowLabel: "采集、门禁、提交",
+      workflowLabel: "从信源到提交",
       workflow: [
         {
           title: "多源发现",
@@ -130,10 +126,6 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       finalCtaLabel: "打开仓库",
       faqLabel: "Actions 与花费",
       faq: [
-        {
-          title: "无人值守跑在 Actions",
-          body: "同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。日更、周更、月更任务才是无人值守主场景。",
-        },
         {
           title: "不必付费搜索",
           body: "采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
