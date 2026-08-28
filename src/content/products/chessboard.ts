@@ -12,10 +12,10 @@ export const chessboardProduct: NativeAppProduct = {
     en: {
       title: "Chessboard",
       description:
-        "A desktop chess app for macOS and Windows, with Stockfish 18, a 72-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
+        "A desktop chessboard for macOS and Windows, with Stockfish 18, offline lessons, mate drills, and local review.",
       eyebrow: "Desktop chess",
-      headline: "A focused desktop chessboard",
-      lead: "72 offline lessons in Chinese, English, or Japanese, mate drills through mate-in-three, local play against Stockfish 18 or a friend, then a centipawn review curve.",
+      headline: "Lessons, drills, then a quiet game",
+      lead: "Learn and drill offline, then play Stockfish or a friend on one board — with a review curve after.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
@@ -24,7 +24,7 @@ export const chessboardProduct: NativeAppProduct = {
       positioning: [
         {
           title: "Learn, drill, then play locally",
-          body: "You want to learn chess from scratch, practice mate patterns, play a quiet game against Stockfish, run a timed local match, or review where the evaluation turned.",
+          body: "You want a local board for lessons and a quiet game — not another online chess account.",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -57,11 +57,10 @@ export const chessboardProduct: NativeAppProduct = {
     },
     zh: {
       title: "国际象棋 Chessboard",
-      description:
-        "面向 macOS 与 Windows 的桌面国际象棋，内置 Stockfish 18、72 课零基础教学与一步到三步杀练习，支持本地对弈、棋钟、PGN/FEN 棋谱工具与整局复盘分析。",
+      description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 18、离线课程、杀型练习与本机复盘。",
       eyebrow: "桌面国际象棋",
-      headline: "一张专注对弈的桌面国际象棋盘",
-      lead: "72 课离线课程（中文 / English / 日本語），练习一步到三步杀，再与 Stockfish 18 或同屏好友对弈，局后看评估曲线。",
+      headline: "先学棋，再安静下完一局",
+      lead: "离线学棋、练杀型，再与 Stockfish 或同屏好友对弈；局后看评估曲线。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
@@ -70,7 +69,7 @@ export const chessboardProduct: NativeAppProduct = {
       positioning: [
         {
           title: "先学、再练，再本机对弈",
-          body: "想从棋盘上学会规则，练经典杀型，安静地挑战 Stockfish，开一局计时双人对弈，或在局后看清局势转折。",
+          body: "想在本机学棋、安静下完一局，不要再注册一个在线象棋账号。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",

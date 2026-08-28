@@ -12,10 +12,10 @@ export const gobanProduct: NativeAppProduct = {
     en: {
       title: "Goban",
       description:
-        "A desktop Gomoku game for macOS and Windows, with free, swap2, or Renju rules, four AI levels, full-game review, 130 tactical drills, a daily challenge, and SGF tools.",
+        "A desktop Gomoku board for macOS and Windows: free, swap2, or Renju, with review, drills, and a daily streak.",
       eyebrow: "Desktop Gomoku game",
       headline: "Gomoku with Renju and daily drills",
-      lead: "Free, swap2, or Renju on a 15×15 board, with four AI levels, full-game review, 130 tactical drills including VCF, and a five-puzzle daily streak.",
+      lead: "A quiet 15×15 board for free, swap2, or Renju — with review and drills when you want them.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
@@ -24,7 +24,7 @@ export const gobanProduct: NativeAppProduct = {
       positioning: [
         {
           title: "A quiet board, not a lobby",
-          body: "You want a quiet desktop board for free, swap2, or Renju play, a harder AI match, a visual post-game review, tactical drills including VCF, or a five-puzzle daily streak.",
+          body: "You want a local board for an evening of play or review, not a ranked lobby or another account.",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
@@ -51,11 +51,10 @@ export const gobanProduct: NativeAppProduct = {
     },
     zh: {
       title: "五子棋 Goban",
-      description:
-        "面向 macOS 与 Windows 的桌面五子棋，支持自由式、swap2 与连珠禁手，四档 AI、整局复盘、130 道战术题、每日挑战与 SGF 工具。",
+      description: "面向 macOS 与 Windows 的桌面五子棋：自由式、swap2 或连珠，需要时再复盘与做题。",
       eyebrow: "桌面五子棋",
       headline: "五子棋：连珠规则与战术练习",
-      lead: "15×15 棋盘可选自由式、swap2 或连珠禁手，四档 AI、整局复盘、130 道战术题（含 VCF），以及每日五题连打。",
+      lead: "安静的 15×15 棋盘：自由式、swap2 或连珠；需要时再复盘、做题。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "查看源码", href: siteConfig.externalLinks.goban },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · 本地应用`,
@@ -64,7 +63,7 @@ export const gobanProduct: NativeAppProduct = {
       positioning: [
         {
           title: "要安静下棋，不要大厅",
-          body: "想用自由式、swap2 或连珠下安静一局，挑战更高难度 AI，在局后看清转折，或练含 VCF 的战术题与每日五题。",
+          body: "想在桌面上安静下完一局或复盘，不要排位大厅，也不要再注册账号。",
           intent: "fit",
           surface: "artifact",
           priority: "primary",
