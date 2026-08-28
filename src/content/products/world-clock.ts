@@ -26,8 +26,8 @@ export const worldClockProduct: BrowserExtensionProduct = {
       positioningLabel: "Cities you choose",
       positioning: [
         {
-          title: "A fast timezone glance",
-          body: "You need a fast timezone glance during remote work, travel planning, or cross-region conversations.",
+          title: "Remote work, travel, cross-region calls",
+          body: "You need a timezone glance during remote work, travel planning, or cross-region conversations.",
           intent: "fit",
           surface: "browser",
           priority: "primary",
@@ -56,7 +56,7 @@ export const worldClockProduct: BrowserExtensionProduct = {
       positioningLabel: "你选的城市",
       positioning: [
         {
-          title: "要快速看时区",
+          title: "远程协作、出行、跨地区沟通",
           body: "远程协作、旅行安排、跨地区沟通前，想快速确认几个城市现在几点、是不是工作时间。",
           intent: "fit",
           surface: "browser",

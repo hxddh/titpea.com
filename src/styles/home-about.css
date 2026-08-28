@@ -81,8 +81,7 @@
 }
 
 .home-evidence-heading p:not(.section-kicker),
-.browser-band-copy p,
-.about-system-panel p {
+.browser-band-copy p {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
@@ -93,14 +92,14 @@
 .about-focus-section,
 .about-defaults {
   border-top: 1px solid var(--rule);
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: calc((var(--section-y) + var(--section-y-short)) / 2);
+  padding-bottom: calc((var(--section-y) + var(--section-y-short)) / 2);
 }
 
 .home-evidence {
   display: block;
   padding-top: 12px;
-  padding-bottom: 64px;
+  padding-bottom: calc((var(--section-y) + var(--section-y-short)) / 2);
 }
 
 .home-evidence-grid {
@@ -155,13 +154,6 @@
   line-height: 1.12;
 }
 
-.home-featured-caption p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.5;
-}
-
 .home-catalog-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -211,12 +203,7 @@
   margin-bottom: 26px;
 }
 
-.about-product-line + .about-product-line {
-  margin-top: 16px;
-}
-
-.about-product-line-label,
-.about-system-panel span {
+.about-product-line-label {
   margin: 0 0 12px;
   color: var(--label);
   font-family: var(--sans);
@@ -230,80 +217,10 @@
   margin-top: 32px;
 }
 
-.about-system-panel {
-  display: grid;
-  gap: 26px;
-  width: 100%;
-  margin: 0;
-}
-
-.about-system-panel div {
-  display: grid;
-  gap: 10px;
-  padding: 0;
-}
-
-.about-focus-section {
-  display: block;
-}
-
 .about-section-heading p:not(.section-kicker) {
   max-width: 58ch;
   margin: 0;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.68;
-}
-
-.about-line-products {
-  display: grid;
-  gap: 12px;
-  margin: 4px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.about-line-products li {
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
-}
-
-.about-line-products a {
-  color: var(--ink);
-  font-size: 16px;
-  line-height: 1.35;
-  text-decoration: underline;
-  text-decoration-color: var(--soft-line);
-  text-underline-offset: 3px;
-}
-
-.about-line-products a:hover {
-  text-decoration-color: var(--ink);
-}
-
-.about-defaults-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 48px;
-}
-
-.about-defaults-grid article {
-  display: grid;
-  gap: 8px;
-  align-content: start;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-}
-
-.about-defaults-grid strong {
-  color: var(--ink);
-  font-size: 17px;
-  line-height: 1.35;
-}
-
-.about-defaults-grid p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.62;
 }

@@ -58,7 +58,6 @@
   }
 
   .home-evidence-grid,
-  .about-defaults-grid,
   .section-card-list,
   .positioning-grid,
   .features-grid,
@@ -103,13 +102,11 @@
   }
 
   .scan-plan li > span {
-    margin-bottom: 22px;
+    margin-bottom: 8px;
   }
 
   .benchmark-visual,
   .agent-manifest-visual,
-  .httpmon-terminal-visual,
-  .agent-radar-terminal-visual,
   .inside-workbench {
     padding: 20px;
   }
@@ -184,21 +181,6 @@
   .agent-evidence-grid,
   .inventory-grid {
     grid-template-columns: 1fr;
-  }
-
-  .bars-head {
-    display: none;
-  }
-
-  .bar-row {
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 8px 10px;
-  }
-
-  .bar-row strong,
-  .bar-row em {
-    grid-column: 2;
-    text-align: left;
   }
 
   .output-table div {

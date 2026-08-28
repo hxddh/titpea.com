@@ -63,12 +63,8 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       faqLabel: "Matching and sources",
       faq: [
         {
-          title: "Uncertain matches add nothing",
-          body: "External ratings appear only when titles and movie metadata produce a reliable match. When the match is uncertain, nothing is added and the Douban page remains unchanged.",
-        },
-        {
           title: "Ratings refresh after the cache expires",
-          body: "Found ratings are cached locally in your browser and unmatched results are retried on a shorter interval. After the cache expires, the next visit fetches fresh source data.",
+          body: "Found ratings are cached locally in your browser and unmatched results are retried on a shorter interval. After the cache expires, the next visit fetches fresh source data. External ratings appear only when the match is reliable; an uncertain match adds nothing.",
         },
       ],
     },
@@ -125,12 +121,8 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       faqLabel: "匹配与来源",
       faq: [
         {
-          title: "匹配不上就不加",
-          body: "只有中英文片名与影片信息能够可靠对应时才显示外部评分；无法确认时不显示，豆瓣页面本身照常使用。",
-        },
-        {
           title: "缓存过期后再取新分",
-          body: "已匹配的评分会在浏览器本地缓存，未匹配结果会在更短间隔后重试。缓存过期后，下次打开对应页面时会重新获取来源数据。",
+          body: "已匹配的评分会在浏览器本地缓存，未匹配结果会在更短间隔后重试。缓存过期后，下次打开对应页面时会重新获取来源数据。只有匹配可靠时才显示外部评分；无法确认时不加，豆瓣页面照常使用。",
         },
       ],
     },

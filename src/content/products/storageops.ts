@@ -20,7 +20,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
       proof: [],
-      workflowLabel: "How a case runs",
+      workflowLabel: "From material to next check",
       workflow: [
         {
           title: "Bring the material",
@@ -47,7 +47,7 @@ export const storageOpsProduct: AgentPackageProduct = {
           surface: "agent",
         },
       ],
-      casesLabel: "Where it helps",
+      casesLabel: "Failure classes Pi can load",
       casesTitle: "Storage problems with a known domain",
       casesBody:
         "The skill packs cover recurring S3-compatible failures. Pi loads only the expertise that fits the material in front of it.",
@@ -70,11 +70,11 @@ export const storageOpsProduct: AgentPackageProduct = {
         },
         {
           title: "No cloud account required",
-          body: "No. It diagnoses from the logs, errors, config, and traces you bring. It does not take cloud credentials or open its own cloud session.",
+          body: "It diagnoses from the logs, errors, config, and traces you bring. It does not take cloud credentials or open its own cloud session.",
         },
         {
           title: "It does not mutate storage",
-          body: "No. StorageOps does not mutate storage. When you choose trace capture, it only observes the bounded command you provide through httpmon.",
+          body: "StorageOps does not mutate storage. When you choose trace capture, it only observes the bounded command you provide through httpmon.",
         },
         {
           title: "When to open Storage Agent",
@@ -93,7 +93,7 @@ export const storageOpsProduct: AgentPackageProduct = {
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.storageopsQuickStart },
       meta,
       proof: [],
-      workflowLabel: "一次问题怎么处理",
+      workflowLabel: "从材料到下一步核对",
       workflow: [
         {
           title: "带上现场材料",
@@ -120,7 +120,7 @@ export const storageOpsProduct: AgentPackageProduct = {
           surface: "agent",
         },
       ],
-      casesLabel: "适用问题",
+      casesLabel: "可加载的故障类型",
       casesTitle: "有明确排查领域的对象存储问题",
       casesBody: "每份 skill 对应一类常见的 S3 兼容问题。Pi 会根据材料加载需要的能力，而不是走一套固定套路。",
       cases: [
@@ -142,11 +142,11 @@ export const storageOpsProduct: AgentPackageProduct = {
         },
         {
           title: "不必接入云账号",
-          body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不收取云凭证，也不自建云账号会话。",
+          body: "根据你提供的日志、报错、配置和 trace 排查，不收取云凭证，也不自建云账号会话。",
         },
         {
           title: "不改你的存储",
-          body: "不会。StorageOps 不改存储资源；若启用 trace，只观察你提供的那条受限命令。",
+          body: "StorageOps 不改存储资源；若启用 trace，只观察你提供的那条受限命令。",
         },
         {
           title: "何时改用 Storage Agent",

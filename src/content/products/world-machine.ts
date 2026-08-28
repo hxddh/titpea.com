@@ -16,7 +16,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
         "Experimental pre-alpha semantic runtime for persistent, inspectable, branchable worlds — hosts Tiny Society, Pocket Universe, and Micro Company packs.",
       eyebrow: "Experimental · pre-alpha · macOS",
       headline: "Branchable worlds you can inspect",
-      lead: "An experimental semantic runtime on macOS: Entity/Relation → Action → Event → State → Scheduler → Replay → Projection, hosting Tiny Society, Pocket Universe, and Micro Company packs.",
+      lead: "An experimental macOS runtime for inspectable, branchable worlds, hosting Tiny Society, Pocket Universe, and Micro Company packs.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.worldMachine },
       secondaryCta: { label: "Pre-alpha notes", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
@@ -122,7 +122,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
         "实验性 pre-alpha 语义运行时：持久、可检查、可分支的世界；承载 Tiny Society、Pocket Universe 与 Micro Company 等 Pack。",
       eyebrow: "实验性 · pre-alpha · macOS",
       headline: "可分支、可检查的语义世界",
-      lead: "实验性语义运行时：Entity/Relation → Action → Event → State → Scheduler → Replay → Projection；在 macOS 上承载 Tiny Society、Pocket Universe 与 Micro Company 等 Pack。",
+      lead: "实验性 macOS 语义运行时：可检查、可分支的世界，承载 Tiny Society、Pocket Universe 与 Micro Company 等 Pack。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.worldMachine },
       secondaryCta: { label: "Pre-alpha 说明", href: siteConfig.externalLinks.worldMachinePreAlpha },
       meta,
@@ -131,7 +131,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       features: [
         {
           title: "语义循环，不是场景图",
-          body: "世界真相按 Entity → Action → Event → State → Replay → Projection 推进。渲染层只消费投影。",
+          body: "世界真相沿 Entity/Relation → Action → Event → State 推进。Scheduler / Behavior / Agent 之后才到 Replay 与 Projection。渲染层只消费投影。",
           intent: "capability",
           surface: "protocol",
         },

@@ -48,7 +48,7 @@ export const celagentProduct: CliAgentProduct = {
           surface: "cli",
         },
       ],
-      casesLabel: "What it covers",
+      casesLabel: "Sessions and tasks on BOS",
       casesTitle: "Sessions and tasks that need durable object-storage state",
       casesBody:
         "Use celagent when a Pi TUI session must survive machine changes, local cache loss, or multi-step Celld work.",
@@ -61,15 +61,11 @@ export const celagentProduct: CliAgentProduct = {
         "doctor and cas-probe checks",
       ],
       finalCtaLabel: "View releases",
-      faqLabel: "Install and Pi",
+      faqLabel: "Pi, not a fork",
       faq: [
         {
-          title: "Install from the latest release",
-          body: "On Unix, run install.sh from the latest GitHub release. On Windows, run install.ps1 from the same release. The CLI installs on both; upstream Celld has no Windows package.",
-        },
-        {
           title: "It does not fork Pi",
-          body: "It reuses the pi-coding-agent engine with the full tool set (bash, read, write, grep, find, edit, ls) and multi-model switching.",
+          body: "It reuses the pi-coding-agent engine with the full tool set (bash, read, write, grep, find, edit, ls) and multi-model switching. Install from the latest GitHub release with install.sh, or install.ps1 on Windows; upstream Celld has no Windows package.",
         },
       ],
     },
@@ -110,7 +106,7 @@ export const celagentProduct: CliAgentProduct = {
           surface: "cli",
         },
       ],
-      casesLabel: "覆盖范围",
+      casesLabel: "落在 BOS 上的会话与任务",
       casesTitle: "需要对象存储持久会话与任务状态的场景",
       casesBody: "当 Pi TUI 会话必须在换机、本地缓存丢失或多步 Celld 任务后仍可恢复时，使用 celagent。",
       cases: [
@@ -122,15 +118,11 @@ export const celagentProduct: CliAgentProduct = {
         "doctor 与 cas-probe 自检",
       ],
       finalCtaLabel: "查看 Release",
-      faqLabel: "安装与 Pi",
+      faqLabel: "不 fork Pi",
       faq: [
         {
-          title: "从最新 Release 安装",
-          body: "Unix 从最新 GitHub Release 运行 install.sh。Windows 从同一 Release 运行 install.ps1。CLI 两端都能装；上游 Celld 没有 Windows 包。",
-        },
-        {
           title: "不会 fork Pi",
-          body: "复用 pi-coding-agent 引擎，保留 bash、read、write、grep、find、edit、ls 等全量工具与多模型切换。",
+          body: "复用 pi-coding-agent 引擎，保留 bash、read、write、grep、find、edit、ls 等全量工具与多模型切换。从最新 GitHub Release 用 install.sh 安装（Windows 用 install.ps1）；上游 Celld 没有 Windows 包。",
         },
       ],
     },

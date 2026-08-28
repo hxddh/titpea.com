@@ -158,7 +158,7 @@
   gap: 9px;
   padding: 14px;
   border-right: 1px solid var(--line);
-  background: var(--raised);
+  background: transparent;
 }
 
 .workbench-brand {
@@ -213,7 +213,8 @@
 }
 
 .workbench-session.active {
-  background: var(--raised);
+  background: transparent;
+  box-shadow: inset 1px 0 0 var(--ink);
 }
 
 .workbench-session strong,
@@ -518,27 +519,6 @@
   fill: var(--data-caution-ink);
 }
 
-.automation-path {
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  padding: 18px 0 0;
-  background: transparent;
-}
-
-.automation-path > span {
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-.automation-path p {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.52;
-}
-
 .benchmark-footnotes {
   margin-top: 16px;
 }
@@ -689,7 +669,7 @@
 
   .workbench-input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 12px 0 0;
   }
 
   .workbench-chips {
@@ -746,7 +726,7 @@
   gap: 8px;
   padding: 14px;
   border-right: 1px solid var(--line);
-  background: var(--raised);
+  background: transparent;
 }
 
 .pagewise-files {
@@ -763,7 +743,8 @@
 }
 
 .pagewise-files li.active {
-  background: var(--raised);
+  background: transparent;
+  box-shadow: inset 1px 0 0 var(--ink);
 }
 
 .pagewise-files strong {
@@ -840,28 +821,28 @@
   max-width: 100%;
 }
 
-.pagewise-sidebar {
-  display: none;
-}
+@media (max-width: 900px) {
+  .pagewise-body {
+    grid-template-columns: 1fr;
+  }
 
-.pagewise-preview {
-  border-right: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 14px;
-}
+  .pagewise-sidebar {
+    display: none;
+  }
 
-.pagewise-page {
-  min-height: 120px;
-  padding: 14px;
-}
+  .pagewise-preview {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
 
-.pagewise-chat {
-  padding: 20px 16px 24px;
-}
+  .pagewise-chat {
+    padding: 20px 16px 24px;
+  }
 
-.pagewise-chat .workbench-q {
-  max-width: 100%;
-  font-size: 1.125rem;
+  .pagewise-chat .workbench-q {
+    max-width: 100%;
+    font-size: 1.125rem;
+  }
 }
 
 /* —— Agent Radar terminal visual —— */
@@ -1205,8 +1186,9 @@
 }
 
 .world-machine-projection-focus li {
-  padding: 8px 10px;
-  border: 1px solid var(--line);
+  padding: 6px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
   color: var(--ink);

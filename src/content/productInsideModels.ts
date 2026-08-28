@@ -22,7 +22,7 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       body: "One CLI for the two questions that matter before a migration or investigation: what is here, and what changed?",
       panel: {
         kind: "s3Purpose",
-        label: "What s3-turbo-list is for",
+        label: "List and diff outputs",
         items: [
           {
             label: "LIST",
@@ -71,15 +71,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       id: "inside",
       kind: "inside",
       kicker: "Desktop investigation agent",
-      title: "Skills choose the path; analysis stays local",
-      body: "Describe a bucket, error, or log. The agent follows StorageOps skills and runs large analyses locally.",
+      title: "Read-only tools; analysis stays local",
+      body: "Describe a bucket, error, or log. The desktop agent runs read-only checks locally and keeps evidence in the session.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
-      title: "按 skill 选路径，分析留在本机",
-      body: "就桶、报错或日志开一段会话。Agent 按 StorageOps skill 调用只读工具，大规模分析在本地完成。",
+      title: "只读工具，分析留在本机",
+      body: "描述桶、报错或日志。桌面 Agent 在本机做只读检查，证据留在这次会话里。",
     },
   },
   storageops: {
