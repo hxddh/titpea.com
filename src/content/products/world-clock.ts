@@ -12,9 +12,9 @@ export const worldClockProduct: BrowserExtensionProduct = {
   locales: {
     en: {
       title: "World Clock",
-      description: "A lightweight Chrome extension showing live time across the cities you choose.",
+      description: "A Chrome popup for live time across the cities you choose.",
       eyebrow: "Chrome Extension",
-      headline: "Time across cities at a glance",
+      headline: "City times in one popup",
       lead: "One popup shows local time, UTC offset, date, and work-hours context for the cities you keep.",
       primaryCta: {
         label: "Install",
@@ -42,9 +42,9 @@ export const worldClockProduct: BrowserExtensionProduct = {
     },
     zh: {
       title: "世界时钟",
-      description: "一个很轻的 Chrome 扩展，用来快速查看你选择的城市当前时间。",
+      description: "用来查看所选城市当前时间的 Chrome 弹窗。",
       eyebrow: "Chrome 扩展",
-      headline: "一眼看清几个城市的时间",
+      headline: "弹窗里看几个城市的时间",
       lead: "打开弹窗即可看到城市当地时间、UTC 偏移、日期和工作时段。",
       primaryCta: {
         label: "安装扩展",

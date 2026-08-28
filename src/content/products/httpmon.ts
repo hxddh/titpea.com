@@ -11,7 +11,7 @@ export const httpmonProduct: StorageCliProduct = {
   locales: {
     en: {
       title: "httpmon",
-      description: "A zero-config terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
+      description: "A terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
       eyebrow: "Go CLI",
       headline: "See HTTP beside the command",
       lead: "Wrap curl, aws, Python, or any proxy-aware command and read its requests and responses live — the command's own response unchanged.",
@@ -78,7 +78,7 @@ export const httpmonProduct: StorageCliProduct = {
     },
     zh: {
       title: "httpmon",
-      description: "零配置的终端 HTTP 查看器，用来观察一条命令发出的 HTTP/HTTPS 请求与响应。",
+      description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
       eyebrow: "Go CLI",
       headline: "运行命令时，顺手看 HTTP 请求与响应",
       lead: "用 httpmon 包住 curl、aws、Python 或任何支持代理的命令，实时看请求和响应——命令收到的响应原样不动。",

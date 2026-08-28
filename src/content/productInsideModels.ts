@@ -71,15 +71,15 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       id: "inside",
       kind: "inside",
       kicker: "Desktop investigation agent",
-      title: "Read-only tools; analysis stays local",
-      body: "Describe a bucket, error, or log. The desktop agent runs read-only checks locally and keeps evidence in the session.",
+      title: "Investigation stays on this machine",
+      body: "Consoles manage objects in the browser. Here the investigation runs on this desktop — tools, local analysis, and session evidence in one place.",
     },
     zh: {
       id: "inside",
       kind: "inside",
       kicker: "桌面调查 Agent",
-      title: "只读工具，分析留在本机",
-      body: "描述桶、报错或日志。桌面 Agent 在本机做只读检查，证据留在这次会话里。",
+      title: "排查留在这台机器",
+      body: "控制台在浏览器里管对象。这里排查跑在这台桌面上——工具、本地分析和会话证据都在一处。",
     },
   },
   storageops: {
@@ -210,7 +210,7 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   ),
   chessboard: productInside(
     { en: "At the chessboard", zh: "在国际象棋棋盘上" },
-    { en: "Learn, drill, then play and review", zh: "先学、做题，再对弈与复盘" },
+    { en: "One board for the lesson and the game", zh: "学棋和对弈在同一张盘上" },
     {
       en: "The lesson, the drill, the game, and the review curve stay on one board instead of three apps.",
       zh: "学棋、做题、对弈和复盘都在同一张棋盘上，不用在几个应用之间跳。",
@@ -258,10 +258,10 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
   },
   "easier-bookmarks": productInside(
     { en: "In the side panel", zh: "就在侧边栏里" },
-    { en: "Your bookmark tree, without the menu maze", zh: "不用层层点菜单，也能看清书签树" },
+    { en: "Chrome already has the tree", zh: "书签树还是 Chrome 的" },
     {
-      en: "Chrome already has the tree. The panel is so you can see and move it without the bookmark menu.",
-      zh: "书签树还是 Chrome 的。侧边栏只是让你能看清、挪动，而不用点小菜单。",
+      en: "The side panel is for seeing and moving it in place. There is no second library to import.",
+      zh: "侧边栏只是让你能看清、挪动。不必导入另一套资料库。",
     },
   ),
 };

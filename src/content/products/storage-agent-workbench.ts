@@ -13,7 +13,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       title: "Storage Agent",
       description:
         "A local-first desktop workbench for read-only S3-compatible storage investigations, with tools in a chat thread and evidence beside the answer.",
-      eyebrow: "For SRE & storage ops · Desktop · Read-only · S3-compatible",
+      eyebrow: "For SRE & storage ops",
       headline: "Read-only storage investigations",
       lead: "Open a session about a bucket problem; Storage Agent runs read-only checks on your machine and keeps the evidence beside the answer.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
@@ -76,7 +76,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     zh: {
       title: "Storage Agent",
       description: "面向 S3 兼容存储的本地优先桌面工作台：在对话里调用只读工具，证据可见。",
-      eyebrow: "面向运维与存储排查 · 桌面 · 只读 · S3 兼容",
+      eyebrow: "面向运维与存储排查",
       headline: "本机只读排查对象存储",
       lead: "打开会话描述桶问题、报错或日志，Storage Agent 在本机做只读检查，并把证据留在回答旁边。",
       primaryCta: { label: "下载", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },

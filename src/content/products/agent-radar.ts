@@ -12,7 +12,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
     en: {
       title: "Agent Radar",
       description:
-        "A Markdown-first AI Agent trend radar: an unattended research pipeline on GitHub Actions — collect, screen, synthesize, validate, and commit.",
+        "A Markdown-first AI Agent trend radar on GitHub Actions: public signals in, Markdown committed after gates pass.",
       eyebrow: "Markdown-first · GitHub Actions",
       headline: "Scheduled research kept in Markdown",
       lead: "A GitHub Actions loop collects public agent signals, then commits Markdown only after direction and citation gates pass.",
@@ -77,8 +77,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
     },
     zh: {
       title: "Agent Radar",
-      description:
-        "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上的无人值守研究流水线——采集、筛选、合成、校验、提交。",
+      description: "Markdown 优先的 AI Agent 趋势雷达：跑在 GitHub Actions 上，方向门禁通过后才提交 Markdown。",
       eyebrow: "Markdown 优先 · GitHub Actions",
       headline: "定时研究，结果留在 Markdown",
       lead: "在 GitHub Actions 上采集公开 Agent 信号，方向与引用门禁通过后才写入 Markdown。",

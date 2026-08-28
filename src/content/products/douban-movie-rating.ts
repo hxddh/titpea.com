@@ -39,27 +39,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      featuresLabel: "Match, then three scores",
-      features: [
-        {
-          title: "Three sources when matched",
-          body: "IMDb score, Rotten Tomatoes freshness, and Metacritic appear on the Douban movie page when a reliable match is found.",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "Direct jumps",
-          body: "Click a rating to open the matching IMDb, Rotten Tomatoes, or Metacritic page.",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "Title matching",
-          body: "Matches movies across their Chinese and English titles.",
-          intent: "capability",
-          surface: "browser",
-        },
-      ],
       faqLabel: "Matching and sources",
       faq: [
         {
@@ -94,27 +73,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           title: "豆瓣仍是这一页",
           body: "它不替代豆瓣评分，只补充其他来源的参考信息。",
           intent: "boundary",
-          surface: "browser",
-        },
-      ],
-      featuresLabel: "匹配后再显示",
-      features: [
-        {
-          title: "匹配后对照三个来源",
-          body: "匹配可靠时，在豆瓣电影详情页显示 IMDb 分数、烂番茄新鲜度和 Metacritic。",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "直接跳转",
-          body: "点击评分，打开对应 IMDb、Rotten Tomatoes 或 Metacritic 页面。",
-          intent: "capability",
-          surface: "browser",
-        },
-        {
-          title: "片名匹配",
-          body: "支持中英文电影标题匹配。",
-          intent: "capability",
           surface: "browser",
         },
       ],
