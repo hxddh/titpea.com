@@ -106,6 +106,7 @@ for (const target of baseline.targets) {
     const active = index?.querySelector("a[aria-current]");
     const faq = document.getElementById("faq");
     const menu = document.querySelector(".mobile-menu");
+    const maxY = document.documentElement.scrollHeight - window.innerHeight;
     return {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       h1Lines: h1Rect && h1LineHeight ? Math.round(h1Rect.height / h1LineHeight) : 0,
@@ -114,6 +115,7 @@ for (const target of baseline.targets) {
       menuOpen: menu?.hasAttribute("open") ?? false,
       activeHref: active?.getAttribute("href") ?? null,
       faqTop: faq ? Math.round(faq.getBoundingClientRect().top) : null,
+      scrolledToEnd: window.scrollY >= maxY - 1,
       state: currentTarget.state,
     };
   }, target);
@@ -134,7 +136,10 @@ for (const target of baseline.targets) {
   if (target.state === "menu" && !metrics.menuOpen) failures.push(`${target.path} mobile: menu baseline did not open`);
   if (target.state === "faq" && metrics.activeHref !== "#faq")
     failures.push(`${target.path} ${target.viewport}: FAQ baseline active href is ${metrics.activeHref}`);
-  if (target.state === "faq" && (metrics.faqTop === null || metrics.faqTop < 0 || metrics.faqTop > 220))
+  if (target.state === "faq" && (metrics.faqTop === null || metrics.faqTop < 0))
+    failures.push(`${target.path} ${target.viewport}: FAQ top is ${metrics.faqTop}`);
+  // Short FAQ sections cannot pin under the sticky index; max-scroll is enough.
+  if (target.state === "faq" && metrics.faqTop > 220 && !metrics.scrolledToEnd)
     failures.push(`${target.path} ${target.viewport}: FAQ top is ${metrics.faqTop}`);
   if (screenshotSize < 10_000) failures.push(`${target.path} ${target.viewport}: screenshot too small`);
 
