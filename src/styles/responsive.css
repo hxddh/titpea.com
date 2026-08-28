@@ -181,7 +181,8 @@
 
   .benchmark-kpis,
   .agent-manifest-grid,
-  .agent-evidence-grid {
+  .agent-evidence-grid,
+  .inventory-grid {
     grid-template-columns: 1fr;
   }
 
@@ -228,7 +229,10 @@
 
   .home-evidence-heading h2,
   .browser-band-copy h2,
-  .about-section-heading h2,
+  .about-section-heading h2 {
+    font-size: 1.45rem;
+  }
+
   .inside-copy h2,
   .product-story h2,
   #cases h2,
@@ -237,6 +241,6 @@
   .s3-results-heading h2,
   .benchmark-head h2,
   .agent-manifest-head h2 {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 }

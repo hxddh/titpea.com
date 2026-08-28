@@ -5,62 +5,14 @@
   padding-bottom: var(--section-y);
 }
 
-.section-card-grid {
-  display: grid;
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--line);
-}
-
-.section-card-grid-balanced,
-.section-card-grid-evidence {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.section-card-grid-steps,
-.section-card-grid-dense {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .section-card-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 48px;
 }
 
-/* A trailing card that would otherwise sit alone in an incomplete last row
-   spans the remaining columns, so no empty grid cell exposes the separator
-   background. */
-.section-card-grid-balanced > :last-child:nth-child(odd),
-.section-card-grid-evidence > :last-child:nth-child(odd),
-.section-card-grid-steps > :last-child:nth-child(3n + 1),
-.section-card-grid-dense > :last-child:nth-child(3n + 1) {
-  grid-column: 1 / -1;
-}
-
-.section-card-grid-steps > :last-child:nth-child(3n + 2),
-.section-card-grid-dense > :last-child:nth-child(3n + 2) {
-  grid-column: span 2;
-}
-
 @media (max-width: 900px) {
-  .section-card-grid-balanced,
-  .section-card-grid-evidence,
-  .section-card-grid-steps,
-  .section-card-grid-dense,
   .section-card-list {
     grid-template-columns: 1fr;
-  }
-
-  /* Single column: every card is full width, so clear the desktop spans. */
-  .section-card-grid-balanced > :last-child:nth-child(odd),
-  .section-card-grid-evidence > :last-child:nth-child(odd),
-  .section-card-grid-steps > :last-child:nth-child(3n + 1),
-  .section-card-grid-dense > :last-child:nth-child(3n + 1),
-  .section-card-grid-steps > :last-child:nth-child(3n + 2),
-  .section-card-grid-dense > :last-child:nth-child(3n + 2) {
-    grid-column: auto;
   }
 }

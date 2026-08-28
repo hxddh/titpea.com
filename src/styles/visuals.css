@@ -6,9 +6,9 @@
   position: relative;
   min-height: auto;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: var(--panel);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-window);
+  background: var(--paper);
 }
 
 .httpmon-terminal-visual {
@@ -91,9 +91,9 @@
 .workbench-visual {
   display: grid;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-window);
+  background: var(--paper);
   font-size: 12px;
 }
 
@@ -109,6 +109,7 @@
   display: block;
   width: 100%;
   height: auto;
+  border: 1px solid var(--line);
 }
 
 .workbench-titlebar {
@@ -169,8 +170,8 @@
 .workbench-newchat {
   padding: 7px 10px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
   font-family: var(--mono);
   font-size: 11px;
@@ -180,8 +181,8 @@
 .workbench-search {
   padding: 7px 10px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
+  border-radius: 0;
+  background: transparent;
   color: var(--label);
   font-size: 11px;
 }
@@ -208,11 +209,11 @@
 .workbench-sessions li {
   overflow: hidden;
   padding: 6px 9px;
-  border-radius: 7px;
+  border-radius: 0;
 }
 
 .workbench-session.active {
-  background: var(--panel);
+  background: var(--raised);
 }
 
 .workbench-session strong,
@@ -285,11 +286,12 @@
   gap: 10px;
   width: min(100%, 440px);
   margin-top: 4px;
-  padding: 14px 16px;
-  border: 1px solid var(--soft-line);
-  border-radius: 14px;
-  background: var(--panel);
-  box-shadow: var(--shadow-soft);
+  padding: 12px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   text-align: left;
 }
 
@@ -310,10 +312,10 @@
 }
 
 .workbench-model {
-  padding: 5px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--raised);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 10px;
@@ -329,10 +331,10 @@
 }
 
 .workbench-chips span {
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--muted);
   font-size: 12px;
 }
@@ -352,7 +354,7 @@
 .benchmark-head h2,
 .agent-manifest-head h2 {
   margin: 0;
-  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  font-size: var(--title-section);
   line-height: 1.08;
 }
 
@@ -382,10 +384,10 @@
 .agent-evidence-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: var(--line);
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  gap: 32px;
 }
 
 .agent-manifest-grid,
@@ -399,9 +401,10 @@
 .agent-evidence-grid div {
   display: grid;
   gap: 8px;
-  min-height: 136px;
-  padding: 20px;
-  background: var(--panel);
+  min-height: 0;
+  padding: 18px 0 0;
+  background: transparent;
+  border-top: 1px solid var(--line);
 }
 
 .benchmark-kpis span,
@@ -435,10 +438,11 @@
 
 .benchmark-line-chart {
   margin: 0;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px;
-  background: var(--panel);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 18px 0 0;
+  background: transparent;
 }
 
 .benchmark-line-chart figcaption,
@@ -479,7 +483,7 @@
 }
 
 .chart-point circle {
-  fill: var(--panel);
+  fill: var(--paper);
   stroke: var(--ink);
   stroke-width: 3;
 }
@@ -515,10 +519,11 @@
 }
 
 .automation-path {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px;
-  background: var(--raised);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 18px 0 0;
+  background: transparent;
 }
 
 .automation-path > span {
@@ -553,10 +558,10 @@
 }
 
 .inside-workbench {
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 0;
-  padding: 22px;
-  background: var(--panel);
+  padding: 0;
+  background: transparent;
 }
 
 .workbench-top {
@@ -574,8 +579,8 @@
 .output-table {
   display: grid;
   margin-top: 18px;
-  overflow: hidden;
-  border: 1px solid var(--line);
+  overflow: visible;
+  border: 0;
   border-radius: 0;
 }
 
@@ -584,7 +589,7 @@
   grid-template-columns: minmax(0, 0.32fr) minmax(0, 1fr);
   gap: 16px;
   border-bottom: 1px solid var(--line);
-  padding: 14px 16px;
+  padding: 14px 0;
 }
 
 .output-table div:last-child {
@@ -708,7 +713,7 @@
   }
 
   .workbench-chips span {
-    padding: 5px 10px;
+    padding: 0;
     font-size: 11px;
   }
 
@@ -724,9 +729,9 @@
 .pagewise-visual {
   display: grid;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-window);
+  background: var(--paper);
   font-size: 12px;
 }
 
@@ -754,11 +759,11 @@
 
 .pagewise-files li {
   padding: 7px 9px;
-  border-radius: 7px;
+  border-radius: 0;
 }
 
 .pagewise-files li.active {
-  background: var(--panel);
+  background: var(--raised);
 }
 
 .pagewise-files strong {
@@ -803,10 +808,11 @@
 
 .pagewise-page {
   min-height: 180px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--raised);
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
 }
 
 .pagewise-page p {
@@ -867,9 +873,9 @@
   position: relative;
   min-height: auto;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: var(--panel);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-window);
+  background: var(--paper);
 }
 
 .httpmon-terminal-visual,
@@ -990,9 +996,9 @@
   gap: 0;
   overflow: hidden;
   min-height: auto;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--panel);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-window);
+  background: var(--paper);
 }
 
 .pulse-menubar-bar,
@@ -1139,7 +1145,7 @@
   padding: 0;
   color: var(--ink);
   font-family: var(--mono);
-  background: var(--panel);
+  background: var(--paper);
 }
 
 .world-machine-projection-bar,

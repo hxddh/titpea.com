@@ -122,6 +122,12 @@ assertNoMatch(
   /\b(current|category|role|visual):/,
 );
 
+assertNoMatch(
+  "mosaic card grid stays deleted",
+  ["src/styles/layouts.css", "src/styles/cards.css", "src/styles/tokens.css"],
+  /section-card-grid|--chip-bg|--shadow-media|--card-pad/,
+);
+
 // File budgets. These line limits are tripwires, not style nits: each file
 // has a structural role, and crossing the budget is a signal it is drifting
 // back into doing too much. Raise a budget only alongside a deliberate call
