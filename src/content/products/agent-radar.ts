@@ -20,7 +20,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
       proof: [],
-      workflowLabel: "How the pipeline runs",
+      workflowLabel: "Collect, gate, commit",
       workflow: [
         {
           title: "Broad discovery",
@@ -47,7 +47,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "artifact",
         },
       ],
-      automationLabel: "Ops and cadence",
+      automationLabel: "Actions runs the loop",
       automation: [
         {
           title: "Scheduled on GitHub Actions",
@@ -62,25 +62,24 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "agent",
         },
       ],
-      finalCta: "Open the research loop on GitHub",
       finalCtaLabel: "Open repository",
       faqLabel: "Audience, Actions, cost",
       faq: [
         {
-          title: "Who is this for?",
-          body: "People who want an auditable, scheduled research loop on the AI-agent field — not a news feed and not a private note vault with no promotion rules.",
+          title: "An auditable research loop",
+          body: "For people who want a scheduled research loop on the AI-agent field — not a news feed and not a private note vault with no promotion rules.",
         },
         {
-          title: "Do I run it only on GitHub Actions?",
-          body: "Actions is the intended unattended host. The same runner can be invoked locally for debugging; the durable state remains the Markdown repo.",
+          title: "Actions is the unattended host",
+          body: "The same runner can be invoked locally for debugging; the durable state remains the Markdown repo.",
         },
         {
-          title: "Do I need paid models or paid search?",
-          body: "Collection uses free public source lanes — no paid search. Bring your own model keys: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
+          title: "No paid search required",
+          body: "Collection uses free public source lanes. Bring your own model keys: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
         },
         {
-          title: "How is this different from a Markdown notebook?",
-          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and checks, so Git history is the audit log.",
+          title: "Git history is the audit log",
+          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and checks.",
         },
       ],
     },
@@ -95,7 +94,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       secondaryCta: { label: "快速开始", href: siteConfig.externalLinks.agentRadarQuickStart },
       meta,
       proof: [],
-      workflowLabel: "流水线怎么跑",
+      workflowLabel: "采集、门禁、提交",
       workflow: [
         {
           title: "多源发现",
@@ -122,7 +121,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "artifact",
         },
       ],
-      automationLabel: "运行与节奏",
+      automationLabel: "Actions 跑这条循环",
       automation: [
         {
           title: "定时跑在 GitHub Actions",
@@ -137,25 +136,24 @@ export const agentRadarProduct: MarkdownRadarProduct = {
           surface: "agent",
         },
       ],
-      finalCta: "在 GitHub 打开这条研究循环",
       finalCtaLabel: "打开仓库",
       faqLabel: "给谁用、Actions、花费",
       faq: [
         {
-          title: "适合谁用？",
-          body: "想要可审计、可定时的 Agent 领域研究循环的人——不是新闻流，也不是没有升格规则的私人笔记库。",
+          title: "可审计的研究循环",
+          body: "给想要定时研究 Agent 领域的人——不是新闻流，也不是没有升格规则的私人笔记库。",
         },
         {
-          title: "只能跑在 GitHub Actions 吗？",
-          body: "Actions 是无人值守的主场景。同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。",
+          title: "无人值守跑在 Actions",
+          body: "同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。",
         },
         {
-          title: "一定要付费模型或付费搜索吗？",
-          body: "采集走免费公开源，不用付费搜索。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
+          title: "不必付费搜索",
+          body: "采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
         },
         {
-          title: "和 Markdown 笔记本有何不同？",
-          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与校验，Git 历史就是审计日志。",
+          title: "Git 历史就是审计日志",
+          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与校验。",
         },
       ],
     },

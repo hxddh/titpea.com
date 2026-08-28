@@ -6,10 +6,7 @@ interface Props {
 }
 
 const { section } = Astro.props;
-const mosaic = Boolean(section.numbered);
-const gridClass = mosaic
-  ? `${section.id}-grid section-card-grid section-card-grid-${section.layout ?? "steps"}`
-  : `${section.id}-grid section-card-list`;
+const gridClass = `${section.id}-grid section-card-list`;
 const cardClass = section.numbered ? "workflow-step" : `${section.id}-card`;
 const surfaceCode = {
   cli: "cli",

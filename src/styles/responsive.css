@@ -81,7 +81,8 @@
 
   .s3-purpose-grid article + article,
   .s3-result-paths article + article,
-  .scan-plan li + li {
+  .scan-plan li + li,
+  .product-flow li + li {
     border-top: 1px solid var(--line);
     border-left: 0;
   }
@@ -93,24 +94,16 @@
 
   .scan-plan li {
     min-height: 0;
-    padding: 24px;
+    padding-top: 18px;
   }
 
   .product-flow li {
     min-height: 0;
-    padding: 24px;
+    padding-top: 18px;
   }
 
   .scan-plan li > span {
     margin-bottom: 22px;
-  }
-
-  .scan-plan li:not(:last-child)::after {
-    top: auto;
-    right: auto;
-    bottom: -5px;
-    left: 32px;
-    transform: rotate(135deg);
   }
 
   .benchmark-visual,
@@ -242,7 +235,6 @@
   .screenshot-showcase-copy h2,
   .deep-dive-heading h2,
   .s3-results-heading h2,
-  .final-cta h2,
   .benchmark-head h2,
   .agent-manifest-head h2 {
     font-size: 1.45rem;

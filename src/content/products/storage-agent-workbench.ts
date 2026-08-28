@@ -41,7 +41,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "Built to investigate safely",
+      positioningLabel: "Keys on disk, storage read-only",
       positioning: [
         {
           title: "Keys and evidence stay on your machine",
@@ -59,23 +59,18 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       faqLabel: "Read-only, keys, StorageOps",
       faq: [
         {
-          title: "How is this different from a console with chat?",
+          title: "Not a console with chat",
           body: "Consoles manage objects; chat panels wrap APIs. Storage Agent runs the investigation: plan checks, call tools, analyze locally, and show evidence — without changing production storage.",
         },
         {
-          title: "Can it change my buckets or objects?",
-          body: "No. Access to configured storage is read-only. There are no write, delete, or config-change tools.",
-        },
-        {
-          title: "What if I have no model API key?",
+          title: "Works without a model key",
           body: "Local evidence and rule analysis can still run. Add a model when you want the agent to plan and explain the investigation in chat.",
         },
         {
-          title: "How is this different from StorageOps?",
+          title: "Different from StorageOps",
           body: "StorageOps adds storage skills to Pi. Storage Agent is the full desktop app: chat, tools, local analysis, evidence, and approvals in one place.",
         },
       ],
-      finalCta: "Start a read-only storage investigation",
       finalCtaLabel: "Download Storage Agent",
     },
     zh: {
@@ -109,7 +104,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
           surface: "artifact",
         },
       ],
-      positioningLabel: "为安全排查而设计",
+      positioningLabel: "密钥在本机，存储只读",
       positioning: [
         {
           title: "密钥和证据留在本机",
@@ -127,23 +122,18 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       faqLabel: "只读、密钥与 StorageOps",
       faq: [
         {
-          title: "和控制台里加聊天框有何不同？",
+          title: "不是控制台里加聊天框",
           body: "控制台管对象；聊天面板多半包一层接口。Storage Agent 负责整段调查：规划检查、调用工具、本地分析、展示证据——且不改生产存储。",
         },
         {
-          title: "它会改我的桶或对象吗？",
-          body: "不会。对已配置存储的访问只读。没有写、删或改配置的工具。",
+          title: "没有模型密钥也能用",
+          body: "本地证据和规则分析仍能跑。需要 Agent 在对话里规划与解释时，再接入模型。",
         },
         {
-          title: "没有模型密钥也能用吗？",
-          body: "可以。本地证据和规则分析仍能跑。需要 Agent 在对话里规划与解释时，再接入模型。",
-        },
-        {
-          title: "和 StorageOps 有什么区别？",
+          title: "和 StorageOps 的分工",
           body: "StorageOps 给 Pi 加存储技能。Storage Agent 是完整桌面应用：对话、工具、本地分析、证据与确认都在一处。",
         },
       ],
-      finalCta: "开始一次只读的存储调查",
       finalCtaLabel: "下载 Storage Agent",
     },
   },

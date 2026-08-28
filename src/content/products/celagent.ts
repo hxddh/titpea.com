@@ -60,25 +60,16 @@ export const celagentProduct: CliAgentProduct = {
         "idempotent task ledger",
         "doctor and cas-probe checks",
       ],
-      finalCta: "Install celagent from the latest release",
       finalCtaLabel: "View releases",
-      faqLabel: "Install and BOS",
+      faqLabel: "Install and Pi",
       faq: [
         {
-          title: "How do I install it?",
-          body: "On Unix: `curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh`. On Windows: run install.ps1 from the same release (CLI only; upstream Celld has no Windows package).",
+          title: "Install from the latest release",
+          body: "On Unix, run install.sh from the latest GitHub release. On Windows, run install.ps1 from the same release. The CLI installs on both; upstream Celld has no Windows package.",
         },
         {
-          title: "Where does session authority live?",
-          body: "On BOS. Each turn dual-writes a worker cache and BOS with CAS. Restore reads BOS first; the worker is only a miss fallback.",
-        },
-        {
-          title: "Does it fork Pi?",
-          body: "No. It reuses the pi-coding-agent engine with the full tool set (bash, read, write, grep, find, edit, ls) and multi-model switching.",
-        },
-        {
-          title: "What license does it use?",
-          body: "MIT.",
+          title: "It does not fork Pi",
+          body: "It reuses the pi-coding-agent engine with the full tool set (bash, read, write, grep, find, edit, ls) and multi-model switching.",
         },
       ],
     },
@@ -130,25 +121,16 @@ export const celagentProduct: CliAgentProduct = {
         "幂等任务 ledger",
         "doctor 与 cas-probe 自检",
       ],
-      finalCta: "从最新 Release 安装 celagent",
       finalCtaLabel: "查看 Release",
-      faqLabel: "安装与 BOS",
+      faqLabel: "安装与 Pi",
       faq: [
         {
-          title: "怎么安装？",
-          body: "Unix：`curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh`。Windows：从同一 Release 运行 install.ps1（仅 CLI；上游 Celld 无 Windows 包）。",
+          title: "从最新 Release 安装",
+          body: "Unix 从最新 GitHub Release 运行 install.sh。Windows 从同一 Release 运行 install.ps1。CLI 两端都能装；上游 Celld 没有 Windows 包。",
         },
         {
-          title: "会话权威在哪里？",
-          body: "在 BOS。每轮双写 worker 缓存与带 CAS 的 BOS。恢复先读 BOS；worker 只在 miss 时回退。",
-        },
-        {
-          title: "会 fork Pi 吗？",
-          body: "不会。复用 pi-coding-agent 引擎，保留 bash、read、write、grep、find、edit、ls 等全量工具与多模型切换。",
-        },
-        {
-          title: "使用什么许可？",
-          body: "MIT。",
+          title: "不会 fork Pi",
+          body: "复用 pi-coding-agent 引擎，保留 bash、read、write、grep、find、edit、ls 等全量工具与多模型切换。",
         },
       ],
     },

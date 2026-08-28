@@ -51,6 +51,7 @@ h1 {
 }
 
 p {
+  overflow-wrap: break-word;
   text-wrap: pretty;
 }
 

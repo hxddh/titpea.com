@@ -1,5 +1,4 @@
 import { ui } from "../i18n/siteCopy";
-import { productCatalogModel } from "../productCatalogModel";
 import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { AboutPageModel } from "./types";
@@ -7,7 +6,6 @@ import type { Locale } from "../../lib/site";
 
 export function buildAboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
-  const catalog = productCatalogModel(locale);
   const path = pagePath(locale, "about");
   const alternatePath = pagePath(alternateLocale(locale), "about");
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
@@ -57,20 +55,10 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       title: copy.profileTitle,
       body: [...copy.profileBody],
     },
-    lines: [
-      {
-        label: copy.lineStorageLabel,
-        products: catalog.storage.map((item) => ({ name: item.name, href: item.href })),
-      },
-      {
-        label: copy.linePersonalLabel,
-        products: catalog.personal.map((item) => ({ name: item.name, href: item.href })),
-      },
-    ],
     focus: {
       label: copy.focusLabel,
       title: copy.focusTitle,
-      items: copy.focusItems.map((item) => ({ ...item })),
+      body: [...copy.focusBody],
     },
   };
 }

@@ -63,15 +63,11 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       faqLabel: "Matching and sources",
       faq: [
         {
-          title: "What happens when a movie cannot be matched?",
+          title: "Uncertain matches add nothing",
           body: "External ratings appear only when titles and movie metadata produce a reliable match. When the match is uncertain, nothing is added and the Douban page remains unchanged.",
         },
         {
-          title: "Does it replace Douban ratings?",
-          body: "No. It keeps Douban as the main page and adds IMDb, Rotten Tomatoes, or Metacritic context so you can compare rating systems in place.",
-        },
-        {
-          title: "When are ratings updated?",
+          title: "Ratings refresh after the cache expires",
           body: "Found ratings are cached locally in your browser and unmatched results are retried on a shorter interval. After the cache expires, the next visit fetches fresh source data.",
         },
       ],
@@ -129,15 +125,11 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       faqLabel: "匹配与来源",
       faq: [
         {
-          title: "匹配不到电影时怎么办？",
+          title: "匹配不上就不加",
           body: "只有中英文片名与影片信息能够可靠对应时才显示外部评分；无法确认时不显示，豆瓣页面本身照常使用。",
         },
         {
-          title: "它会替代豆瓣评分吗？",
-          body: "不会。豆瓣仍然是主页面；扩展只是在旁边补充 IMDb、Rotten Tomatoes 或 Metacritic，方便对比。",
-        },
-        {
-          title: "评分什么时候更新？",
+          title: "缓存过期后再取新分",
           body: "已匹配的评分会在浏览器本地缓存，未匹配结果会在更短间隔后重试。缓存过期后，下次打开对应页面时会重新获取来源数据。",
         },
       ],

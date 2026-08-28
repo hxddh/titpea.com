@@ -41,59 +41,11 @@ export const gobanProduct: NativeAppProduct = {
           intent: "boundary",
           surface: "artifact",
         },
-      ],
-      featuresLabel: "AI, drills, SGF",
-      features: [
         {
-          title: "Four AI levels",
-          body: "Choose easy, normal, hard, or extreme, then set your color and a fast, standard, or deep thinking budget.",
+          title: "Bring an SGF",
+          body: "Import, paste, or drag in an SGF file, review the move list, and continue if the position is not finished.",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "Hints you control",
-          body: "Press H to reveal a suggested intersection. The hint never places the stone for you and remains available during review.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Full-game review",
-          body: "Open a full-game evaluation curve and a blunder list after a match. Select a point or mistake to jump directly to that move on the board.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Practice and daily challenge",
-          body: "Drill win moves, five-threat defenses, and VCF across 130 built-in puzzles, with a wrong-answer book. Daily gives five date-seeded puzzles; completing a round checks in once.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Named saves and match stats",
-          body: "Keep up to 30 named local saves, then resume the position you want. Track wins, losses, streaks, daily check-ins, and time by difficulty.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "SGF tools and rule variants",
-          body: "Copy, export, import, paste, or drag in an SGF record. Choose free, swap2, or Renju (forbidden moves); AI and review respect the selected rules.",
-          intent: "capability",
-          surface: "artifact",
-        },
-      ],
-      faqLabel: "macOS, Windows, records",
-      faq: [
-        {
-          title: "Is there an Intel Mac build?",
-          body: "No. The current macOS release is Apple Silicon arm64; Windows is x64. An Intel Mac build is not published.",
-        },
-        {
-          title: "Do I need the internet to play?",
-          body: "No. Gameplay, saves, analysis, practice, daily challenges, and SGF work stay local; you only need the internet to download a release.",
-        },
-        {
-          title: "Can I bring in an existing game?",
-          body: "Yes. Import, paste, or drag in an SGF file, review the move list, and continue if the position is not finished.",
         },
       ],
     },
@@ -129,59 +81,11 @@ export const gobanProduct: NativeAppProduct = {
           intent: "boundary",
           surface: "artifact",
         },
-      ],
-      featuresLabel: "AI、战术题、SGF",
-      features: [
         {
-          title: "四档 AI",
-          body: "可选简单、普通、困难和极难，设置执子颜色，并在快速、标准、深入三档思考预算之间切换。",
+          title: "可以带入 SGF",
+          body: "导入、粘贴或拖入 SGF 文件后，可逐手复盘；棋局未结束时还可以继续下。",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "由你决定是否采纳提示",
-          body: "按 H 显示建议落点。提示不会替你落子，复盘过程中也能使用。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "整局复盘",
-          body: "局后打开全局胜负走势曲线和失着列表；点击曲线节点或失着条目，即可直接跳到棋盘上的对应手数。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "战术练习与每日挑战",
-          body: "内置 130 道题：制胜一手、挡住成五威胁与 VCF，并带错题本。「每日」固定五题，完成一轮打卡一次。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "命名存档与对局统计",
-          body: "最多保留 30 个带名称的本地存档，按局面继续；按难度查看胜负、连胜、每日打卡、手数与用时。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "SGF 工具与规则变体",
-          body: "复制、导出、导入、粘贴或拖入 SGF 棋谱；可选自由式、swap2 或连珠禁手，AI 与复盘都按所选规则运行。",
-          intent: "capability",
-          surface: "artifact",
-        },
-      ],
-      faqLabel: "系统、棋谱与下载",
-      faq: [
-        {
-          title: "有 Intel Mac 版本吗？",
-          body: "没有。当前 macOS 是 Apple Silicon arm64，Windows 是 x64，暂未发布 Intel Mac 版本。",
-        },
-        {
-          title: "下棋需要联网吗？",
-          body: "不需要。对弈、存档、分析、练习、每日挑战和 SGF 操作都在本地完成；只有下载 release 时需要联网。",
-        },
-        {
-          title: "可以导入已有棋局吗？",
-          body: "可以。导入、粘贴或拖入 SGF 文件后，可逐手复盘；棋局未结束时还可以继续下。",
         },
       ],
     },

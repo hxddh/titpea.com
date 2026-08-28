@@ -8,7 +8,7 @@ export const ui = {
     featuredLabel: "Featured",
     featuredTitle: "Storage investigations, and reading with a trail",
     moreToolsLabel: "More",
-    moreToolsTitle: "CLI, extensions, and apps",
+    moreToolsTitle: "The storage line, and tools I keep",
     lineStorageLabel: "Storage",
     linePersonalLabel: "Tools",
     aboutTitle: "About",
@@ -24,23 +24,9 @@ export const ui = {
     ],
     focusLabel: "Principles",
     focusTitle: "Boundaries I keep across the products",
-    focusItems: [
-      {
-        term: "User-controlled state",
-        text: "Application state stays on your device or in a Git repository you control, rather than being locked into a service I operate.",
-      },
-      {
-        term: "Visible evidence",
-        text: "Conclusions stay close to the checks, source material, or run records that produced them — so you can verify them, not just trust them.",
-      },
-      {
-        term: "Read-only investigation",
-        text: "Investigation products do not expose storage-mutation tools; downloads, large scans, and evidence imports require approval.",
-      },
-      {
-        term: "Inspectability",
-        text: "Source-available products can be reviewed directly; the others state their data flow and privacy boundary.",
-      },
+    focusBody: [
+      "Application state stays on your device or in a Git repository you control, rather than locking it into a service I operate. Conclusions stay next to the checks, source material, or run records that produced them, so you can verify them.",
+      "Investigation products do not expose storage-mutation tools; downloads, large scans, and evidence imports wait for approval. Source-available products can be reviewed directly; the others state their data flow and privacy boundary.",
     ],
   },
   zh: {
@@ -52,7 +38,7 @@ export const ui = {
     featuredLabel: "重点",
     featuredTitle: "排查存储，按页阅读",
     moreToolsLabel: "其他",
-    moreToolsTitle: "命令行、扩展与应用",
+    moreToolsTitle: "存储这一线，以及手头的工具",
     lineStorageLabel: "存储",
     linePersonalLabel: "工具",
     aboutTitle: "关于",
@@ -68,11 +54,9 @@ export const ui = {
     ],
     focusLabel: "原则",
     focusTitle: "做这些产品时坚持的边界",
-    focusItems: [
-      { term: "状态由你掌握", text: "应用状态尽量留在你的设备或你控制的 Git 仓库中，不锁进我维护的服务。" },
-      { term: "依据可见", text: "结论旁边保留得出它的检查、原文或运行记录，可以核对，而不是只能相信。" },
-      { term: "调查默认只读", text: "排查产品不提供修改存储的工具；下载、大扫描和证据导入由你确认。" },
-      { term: "实现可检查", text: "提供源码的产品可以直接审阅；其他产品明确说明数据去向与隐私边界。" },
+    focusBody: [
+      "应用状态留在你的设备，或你控制的 Git 仓库里，不锁进我维护的服务。结论旁边保留得出它的检查、原文或运行记录，可以核对，而不是只能相信。",
+      "排查产品不提供修改存储的工具；下载、大扫描和证据导入由你确认。提供源码的产品可以直接审阅；其他产品写清数据去向与隐私边界。",
     ],
   },
 } as const;

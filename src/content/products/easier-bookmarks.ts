@@ -68,15 +68,11 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       faqLabel: "Install and privacy",
       faq: [
         {
-          title: "Where do I install it?",
+          title: "Install from the Chrome Web Store",
           body: "Install Easier Bookmarks from its Chrome Web Store listing, then click the toolbar action to open it in Chrome's side panel.",
         },
         {
-          title: "Does it upload my bookmarks?",
-          body: "No. Bookmark titles, URLs, and folders are handled inside the extension. It has no analytics, account, or external server.",
-        },
-        {
-          title: "What does it store?",
+          title: "Only language and folder state are stored",
           body: "Chrome keeps your bookmarks. The extension stores only your language choice and expanded-folder identifiers in local extension storage.",
         },
       ],
@@ -143,15 +139,11 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       faqLabel: "安装与隐私",
       faq: [
         {
-          title: "从哪里安装？",
+          title: "从 Chrome 网上应用店安装",
           body: "从 Chrome 网上应用店安装 Easier Bookmarks，然后点击工具栏图标，即可在 Chrome 侧边栏里打开。",
         },
         {
-          title: "会上传我的书签吗？",
-          body: "不会。书签标题、网址与文件夹结构只在扩展内处理；它没有分析服务、账号或外部服务器。",
-        },
-        {
-          title: "扩展会保存什么？",
+          title: "只存语言和展开状态",
           body: "书签由 Chrome 保存。扩展只在本地存储界面语言和已展开文件夹的标识。",
         },
       ],
