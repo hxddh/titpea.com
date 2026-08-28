@@ -20,7 +20,13 @@ const { model } = Astro.props;
 const copy = model.copy;
 ---
 
-<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
+<SiteLayout
+  seo={model.seo}
+  current={model.current}
+  locale={model.locale}
+  language={model.language}
+  pageClass={model.pageClass}
+>
   <section class:list={["product-hero shell", model.pageClass]}>
     <div class="product-copy">
       <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>

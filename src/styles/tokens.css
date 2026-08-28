@@ -4,23 +4,18 @@
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
   --paper: #f2f1ec;
-  --panel: #fbfaf7;
+  --panel: #f2f1ec;
   --ink: #161513;
   --muted: #5a564f;
   --faint: #8c877e;
-  --line: rgba(22, 21, 19, 0.09);
+  --line: rgba(22, 21, 19, 0.07);
+  --rule: rgba(22, 21, 19, 0.18);
+  --chrome-line: rgba(22, 21, 19, 0.08);
   --soft-line: rgba(22, 21, 19, 0.14);
   --on-ink: #fbfaf7;
   --label: #655f57;
   --raised: #ebe9e3;
-  --chip-bg: #e6e3db;
-  --chip-ink: #3a372f;
-  --active-bg: #e8e5de;
-  /* Menu and sticky-index fills remap with paper/panel. They stay opaque
-     so chrome does not frost over the page like an app bar. */
-  --menu-veil: #fbfaf7;
   --index-veil: #f2f1ec;
-  --proof-veil: #fbfaf7;
   /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
   --data-ref-ink: #126547;
@@ -31,12 +26,14 @@
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC",
     "Noto Sans CJK SC", sans-serif;
   --shadow-soft: 0 22px 50px rgba(22, 21, 19, 0.1), 0 2px 6px rgba(22, 21, 19, 0.05);
-  --shadow-media: 0 20px 44px rgba(22, 21, 19, 0.1), 0 1px 2px rgba(22, 21, 19, 0.06);
-  --radius-card: 0;
-  --radius-control: 0;
+  --radius-window: 8px;
   --section-y: 80px;
-  --card-pad: 28px;
-  --card-pad-compact: 22px;
+  --section-y-short: 48px;
+  --title-index: clamp(1.65rem, 3vw, 2.05rem);
+  --title-section: clamp(1.4rem, 2.4vw, 1.75rem);
+  --text-kicker: 12px;
+  --text-featured-name: 1.75rem;
+  --text-catalog-name: 15px;
 }
 
 /* Dark theme. Applied when the OS prefers dark (unless the visitor forced
@@ -45,53 +42,45 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper: #15130f;
-  --panel: #1e1c17;
+  --panel: #15130f;
   --ink: #eeebe4;
   --muted: #a39e94;
   --faint: #7a756c;
-  --line: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.06);
+  --rule: rgba(255, 255, 255, 0.16);
+  --chrome-line: rgba(255, 255, 255, 0.07);
   --soft-line: rgba(255, 255, 255, 0.14);
   --on-ink: #15130f;
   --label: #9a958c;
   --raised: #26231d;
-  --chip-bg: #2c2923;
-  --chip-ink: #d4cfc4;
-  --active-bg: #2e2b24;
-  --menu-veil: #1e1c17;
   --index-veil: #15130f;
-  --proof-veil: #26231d;
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
   --data-caution-ink: #edb472;
   --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-media: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
     --paper: #15130f;
-    --panel: #1e1c17;
+    --panel: #15130f;
     --ink: #eeebe4;
     --muted: #a39e94;
     --faint: #7a756c;
-    --line: rgba(255, 255, 255, 0.08);
+    --line: rgba(255, 255, 255, 0.06);
+    --rule: rgba(255, 255, 255, 0.16);
+    --chrome-line: rgba(255, 255, 255, 0.07);
     --soft-line: rgba(255, 255, 255, 0.14);
     --on-ink: #15130f;
     --label: #9a958c;
     --raised: #26231d;
-    --chip-bg: #2c2923;
-    --chip-ink: #d4cfc4;
-    --active-bg: #2e2b24;
-    --menu-veil: #1e1c17;
     --index-veil: #15130f;
-    --proof-veil: #26231d;
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
-    --shadow-media: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 }

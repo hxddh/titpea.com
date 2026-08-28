@@ -10,9 +10,10 @@ interface Props {
   locale?: Locale;
   seo: PageSeo;
   language: PageLanguageLink;
+  pageClass?: string;
 }
 
-const { current = "home", locale = "en", seo, language } = Astro.props;
+const { current = "home", locale = "en", seo, language, pageClass } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
 const year = new Date().getFullYear();
@@ -52,7 +53,7 @@ const year = new Date().getFullYear();
     }
     <title>{seo.title}</title>
   </head>
-  <body>
+  <body class:list={[pageClass]}>
     <a class="skip-link" href="#main-content">{locale === "zh" ? "跳到主要内容" : "Skip to content"}</a>
     <SiteHeader
       current={current}
