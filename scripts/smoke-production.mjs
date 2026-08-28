@@ -55,27 +55,6 @@ async function checkMissingPath() {
     });
     if (response.status !== 404) return `/no-such-titpea-page/: expected 404, got ${response.status}`;
     const html = await response.text();
-    if (includesTitle(html, "Agents and tools by hxddh"))
-      return "/no-such-titpea-page/: unknown path served the home page";
-    if (!includesTitle(html, "Page not found")) return "/no-such-titpea-page/: missing not-found title";
-  } catch (error) {
-    return `/no-such-titpea-page/: ${error.message}`;
-  }
-  return null;
-}
-
-async function checkMissingPath() {
-  try {
-    const url = new URL("/no-such-titpea-page/", baseUrl);
-    url.searchParams.set("_cacheBust", `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-    const response = await fetch(url, {
-      redirect: "follow",
-      cache: "no-store",
-      headers: { "cache-control": "no-cache" },
-      signal: AbortSignal.timeout(requestTimeoutMs),
-    });
-    if (response.status !== 404) return `/no-such-titpea-page/: expected 404, got ${response.status}`;
-    const html = await response.text();
     if (includesTitle(html, "Agents and tools by hxddh")) {
       return "/no-such-titpea-page/: unknown path served the home page";
     }
