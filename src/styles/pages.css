@@ -12,6 +12,10 @@
 
 .privacy-header h1 {
   margin: 0 0 18px;
+  font-size: var(--title-index);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
 .privacy-header .lead {
@@ -43,7 +47,10 @@
 .privacy-content h2 {
   margin: 0 0 12px;
   color: var(--ink);
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-size: var(--title-section);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.16;
 }
 
 .privacy-content p:last-child {

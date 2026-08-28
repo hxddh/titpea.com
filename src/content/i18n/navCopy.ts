@@ -72,7 +72,7 @@ export const headerCopy: Record<
     themeDarkText: "深色",
     themeLightText: "浅色",
     groups: {
-      main: "主要页面",
+      main: "主要",
       storage: "存储",
       personal: "工具",
       external: "外部链接",

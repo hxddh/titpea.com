@@ -65,15 +65,11 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "Install and privacy",
+      faqLabel: "What stays on this browser",
       faq: [
         {
-          title: "Install from the Chrome Web Store",
-          body: "Install Easier Bookmarks from its Chrome Web Store listing, then click the toolbar action to open it in Chrome's side panel.",
-        },
-        {
           title: "Only language and folder state are stored",
-          body: "Chrome keeps your bookmarks. The extension stores only your language choice and expanded-folder identifiers in local extension storage.",
+          body: "Chrome keeps your bookmarks. The extension stores only your language choice and expanded-folder identifiers in local extension storage. Install from the Chrome Web Store, then open it from the toolbar action.",
         },
       ],
     },
@@ -136,15 +132,11 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "安装与隐私",
+      faqLabel: "留在这台浏览器里",
       faq: [
         {
-          title: "从 Chrome 网上应用店安装",
-          body: "从 Chrome 网上应用店安装 Easier Bookmarks，然后点击工具栏图标，即可在 Chrome 侧边栏里打开。",
-        },
-        {
           title: "只存语言和展开状态",
-          body: "书签由 Chrome 保存。扩展只在本地存储界面语言和已展开文件夹的标识。",
+          body: "书签由 Chrome 保存。扩展只在本地存储界面语言和已展开文件夹的标识。从 Chrome 网上应用店安装后，点击工具栏图标即可在侧边栏打开。",
         },
       ],
     },

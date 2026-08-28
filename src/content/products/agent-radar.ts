@@ -63,23 +63,15 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
       ],
       finalCtaLabel: "Open repository",
-      faqLabel: "Audience, Actions, cost",
+      faqLabel: "Actions and cost",
       faq: [
         {
-          title: "An auditable research loop",
-          body: "For people who want a scheduled research loop on the AI-agent field — not a news feed and not a private note vault with no promotion rules.",
-        },
-        {
           title: "Actions is the unattended host",
-          body: "The same runner can be invoked locally for debugging; the durable state remains the Markdown repo.",
+          body: "The same runner can be invoked locally for debugging; the durable state remains the Markdown repo. Daily, weekly, and monthly jobs are the intended host.",
         },
         {
           title: "No paid search required",
           body: "Collection uses free public source lanes. Bring your own model keys: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
-        },
-        {
-          title: "Git history is the audit log",
-          body: "A notebook stores notes. Agent Radar runs collect → screen → synthesize → validate → commit with promote boundaries and checks.",
         },
       ],
     },
@@ -137,23 +129,15 @@ export const agentRadarProduct: MarkdownRadarProduct = {
         },
       ],
       finalCtaLabel: "打开仓库",
-      faqLabel: "给谁用、Actions、花费",
+      faqLabel: "Actions 与花费",
       faq: [
         {
-          title: "可审计的研究循环",
-          body: "给想要定时研究 Agent 领域的人——不是新闻流，也不是没有升格规则的私人笔记库。",
-        },
-        {
           title: "无人值守跑在 Actions",
-          body: "同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。",
+          body: "同一套 runner 也可本地调试；持久状态仍是这个 Markdown 仓库。日更、周更、月更任务才是无人值守主场景。",
         },
         {
           title: "不必付费搜索",
           body: "采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
-        },
-        {
-          title: "Git 历史就是审计日志",
-          body: "笔记本只存笔记。Agent Radar 跑采集 → 筛选 → 合成 → 校验 → 提交，带升格边界与校验。",
         },
       ],
     },

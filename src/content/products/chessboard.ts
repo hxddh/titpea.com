@@ -15,7 +15,7 @@ export const chessboardProduct: NativeAppProduct = {
         "A desktop chess app for macOS and Windows, with Stockfish 18, a 72-lesson course, mate drills, local play, clocks, PGN/FEN tools, and full-game review.",
       eyebrow: "Desktop chess",
       headline: "A focused desktop chessboard",
-      lead: "72 offline lessons, mate drills through mate-in-three, local play against Stockfish 18 or a friend, then a centipawn review curve.",
+      lead: "72 offline lessons in Chinese, English, or Japanese, mate drills through mate-in-three, local play against Stockfish 18 or a friend, then a centipawn review curve.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },
       meta: `macOS + Windows · ${facts.licenseLabel} · ${facts.latestRelease} · Local app`,
@@ -23,7 +23,7 @@ export const chessboardProduct: NativeAppProduct = {
       positioningLabel: "A local chessboard",
       positioning: [
         {
-          title: "No account, no matchmaking",
+          title: "Learn, drill, then play locally",
           body: "You want to learn chess from scratch, practice mate patterns, play a quiet game against Stockfish, run a timed local match, or review where the evaluation turned.",
           intent: "fit",
           surface: "artifact",
@@ -69,7 +69,7 @@ export const chessboardProduct: NativeAppProduct = {
       positioningLabel: "本机国际象棋盘",
       positioning: [
         {
-          title: "不要账号，也不匹配对手",
+          title: "先学、再练，再本机对弈",
           body: "想从棋盘上学会规则，练经典杀型，安静地挑战 Stockfish，开一局计时双人对弈，或在局后看清局势转折。",
           intent: "fit",
           surface: "artifact",

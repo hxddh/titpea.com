@@ -4,7 +4,6 @@
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
   --paper: #f2f1ec;
-  --panel: #f2f1ec;
   --ink: #161513;
   --muted: #5a564f;
   --faint: #8c877e;
@@ -32,6 +31,7 @@
   --title-index: clamp(1.65rem, 3vw, 2.05rem);
   --title-section: clamp(1.4rem, 2.4vw, 1.75rem);
   --text-kicker: 12px;
+  --text-list-title: 17px;
   --text-featured-name: 1.75rem;
   --text-catalog-name: 15px;
 }
@@ -42,7 +42,6 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper: #15130f;
-  --panel: #15130f;
   --ink: #eeebe4;
   --muted: #a39e94;
   --faint: #7a756c;
@@ -65,7 +64,6 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
     --paper: #15130f;
-    --panel: #15130f;
     --ink: #eeebe4;
     --muted: #a39e94;
     --faint: #7a756c;

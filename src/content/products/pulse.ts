@@ -15,7 +15,7 @@ export const pulseProduct: MenuBarAppProduct = {
         "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
       eyebrow: "macOS menu-bar status lamp",
       headline: "Waiting sessions in the menu bar",
-      lead: "Local coding-agent sessions show as Waiting, Running, Idle, or stalled; Waiting is never inferred, and focus uses the best verified handle.",
+      lead: "Local coding-agent sessions show as Waiting, Running, Idle, or stalled; Waiting is never inferred, and opening the tray focuses the verified TTY, workspace, or host app.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },
       meta: `macOS 14+ · ${facts.licenseLabel} · ${facts.latestRelease} · Menu bar`,

@@ -21,7 +21,7 @@ export const visualCopy = {
         heroAlt: "Storage Agent welcome screen with six read-only investigation tasks",
         supportingAlt: "Storage Agent explaining a storage-class mismatch from inspected object evidence",
         supportingKicker: "Example investigation",
-        supportingTitle: "What it checked stays beside the answer",
+        supportingTitle: "Example: storage-class mismatch from object evidence",
         supportingBody:
           "The agent compares object metadata and content, explains a storage-class mismatch, and leaves evidence you can open before the next step.",
       },
@@ -29,7 +29,7 @@ export const visualCopy = {
         heroAlt: "Storage Agent 欢迎页，包含六类只读调查任务",
         supportingAlt: "Storage Agent 根据对象证据解释存储类型差异",
         supportingKicker: "一次调查示例",
-        supportingTitle: "查过的内容留在回答旁边",
+        supportingTitle: "示例：从对象证据看出存储类型差异",
         supportingBody: "Agent 对比对象元数据与内容，解释存储类型差异，并留下你可以打开的证据，再决定下一步。",
       },
     },
@@ -46,7 +46,7 @@ export const visualCopy = {
         notebookAlt:
           "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row highlight, and the game sidebar",
         notebookKicker: "Notebook theme",
-        notebookTitle: "A board that feels drawn into your notes",
+        notebookTitle: "Notebook theme: marks on ruled paper",
         notebookBody:
           "Switch from traditional stones to triangle and circle marks on ruled paper. The game state and controls remain the same.",
       },
@@ -58,7 +58,7 @@ export const visualCopy = {
         supportingBody: "开启复盘分析后，从棋谱中选择任意一手。棋盘会还原当时局面，着法列表与复盘控制留在旁边。",
         notebookAlt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连高亮和对局侧栏",
         notebookKicker: "作业本主题",
-        notebookTitle: "像把一局棋画进笔记本",
+        notebookTitle: "作业本主题：横线纸上的记号",
         notebookBody: "把传统黑白棋子切换为横线纸上的三角与圆圈，棋局状态与操作面板保持一致。",
       },
     },
@@ -236,7 +236,7 @@ export const visualCopy = {
         { title: "Q3-report.pdf", pages: "48 pages" },
         { title: "invoice.png", pages: "OCR" },
       ],
-      // Hero is open/browse state; citation sample stays in Overview evidence.
+      // Hero is open/browse state; citation sample stays in the evidence section.
       activeDoc: "lease-scan.pdf",
       pageLabel: "Page",
       currentPage: "1",

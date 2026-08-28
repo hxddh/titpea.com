@@ -20,7 +20,7 @@
   max-width: 30ch;
   margin: 0;
   color: var(--ink);
-  font-size: 17px;
+  font-size: var(--text-list-title);
   line-height: 1.25;
   text-wrap: balance;
 }

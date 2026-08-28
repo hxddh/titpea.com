@@ -82,7 +82,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "evidence", label: { en: "Local layer", zh: "本地观察层" }, required: true },
       {
         id: "workflow",
-        label: { en: "What you see", zh: "终端里看什么" },
+        label: { en: "Beside the wrapped command", zh: "包住命令后终端里有什么" },
         layout: "steps",
         numbered: true,
         source: "workflow",
@@ -95,7 +95,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "automation",
         required: true,
       },
-      { id: "faq", label: { en: "Proxy, HTTPS, recordings", zh: "代理、HTTPS 与录音" }, required: true },
+      { id: "faq", label: { en: "Proxy, HTTPS, recordings", zh: "代理、HTTPS 与录制" }, required: true },
     ],
   },
   markdownRadar: {
@@ -123,7 +123,7 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "automation",
         required: true,
       },
-      { id: "faq", label: { en: "Audience, Actions, cost", zh: "给谁用、Actions、花费" }, required: true },
+      { id: "faq", label: { en: "Actions and cost", zh: "Actions 与花费" }, required: true },
     ],
   },
   agentPackage: {
@@ -138,13 +138,13 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
       { id: "evidence", label: { en: "Skills and tools", zh: "技能与工具" }, required: true },
       {
         id: "workflow",
-        label: { en: "How a case runs", zh: "一次问题怎么处理" },
+        label: { en: "From material to next check", zh: "从材料到下一步核对" },
         layout: "steps",
         numbered: true,
         source: "workflow",
         required: true,
       },
-      { id: "cases", label: { en: "Where it helps", zh: "适用问题" }, required: true },
+      { id: "cases", label: { en: "Failure classes Pi can load", zh: "可加载的故障类型" }, required: true },
       { id: "faq", label: { en: "Pi, buckets, Storage Agent", zh: "Pi、桶与 Storage Agent" }, required: true },
     ],
   },
@@ -166,8 +166,8 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
         source: "workflow",
         required: true,
       },
-      { id: "cases", label: { en: "What it covers", zh: "覆盖范围" }, required: true },
-      { id: "faq", label: { en: "Install and Pi", zh: "安装与 Pi" }, required: true },
+      { id: "cases", label: { en: "Sessions and tasks on BOS", zh: "落在 BOS 上的会话与任务" }, required: true },
+      { id: "faq", label: { en: "Pi, not a fork", zh: "不 fork Pi" }, required: true },
     ],
   },
   agentWorkbench: {

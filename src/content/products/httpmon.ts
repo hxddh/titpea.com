@@ -19,7 +19,7 @@ export const httpmonProduct: StorageCliProduct = {
       secondaryCta: { label: "Usage", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
       proof: [],
-      workflowLabel: "What you see",
+      workflowLabel: "Beside the wrapped command",
       workflow: [
         {
           title: "Request and response",
@@ -60,7 +60,7 @@ export const httpmonProduct: StorageCliProduct = {
       faq: [
         {
           title: "The system proxy stays untouched",
-          body: "No. Proxy and CA settings are passed only to the wrapped child process and are cleaned up when that process exits.",
+          body: "Proxy and CA settings are passed only to the wrapped child process and are cleaned up when that process exits.",
         },
         {
           title: "HTTPS is decrypted locally",
@@ -72,7 +72,7 @@ export const httpmonProduct: StorageCliProduct = {
         },
         {
           title: "Recordings can hold secrets",
-          body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
+          body: "Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
         },
       ],
     },
@@ -86,7 +86,7 @@ export const httpmonProduct: StorageCliProduct = {
       secondaryCta: { label: "使用方法", href: siteConfig.externalLinks.httpmonQuickStart },
       meta,
       proof: [],
-      workflowLabel: "终端里能看到什么",
+      workflowLabel: "包住命令后终端里有什么",
       workflow: [
         {
           title: "请求和响应",
@@ -123,9 +123,9 @@ export const httpmonProduct: StorageCliProduct = {
         },
       ],
       finalCtaLabel: "打开仓库",
-      faqLabel: "代理、HTTPS 与录音",
+      faqLabel: "代理、HTTPS 与录制",
       faq: [
-        { title: "不改系统代理", body: "不会。代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
+        { title: "不改系统代理", body: "代理和 CA 只传给被包装的子进程；命令退出后，临时内容会一并清理。" },
         {
           title: "HTTPS 只在本地解密",
           body: "httpmon 会临时创建本地 CA 和按域名签发的证书，仅在本地解密查看；完整响应流会按原样继续转发。",
@@ -135,8 +135,8 @@ export const httpmonProduct: StorageCliProduct = {
           body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
         },
         {
-          title: "录音可能含敏感信息",
-          body: "可能。请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
+          title: "录制可能含敏感信息",
+          body: "请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
         },
       ],
     },

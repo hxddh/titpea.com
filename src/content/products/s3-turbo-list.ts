@@ -44,7 +44,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: "Hints are optional",
-          body: "No. List mode probes real `CommonPrefixes` boundaries on the first run. Hints files remain an optional control for repeated inventories.",
+          body: "List mode probes real `CommonPrefixes` boundaries on the first run. Hints files remain an optional control for repeated inventories.",
         },
         {
           title: "Startup discovery pre-partitions",
@@ -89,7 +89,7 @@ export const s3TurboListProduct: S3TurboListProduct = {
         },
         {
           title: "hints 不是前置条件",
-          body: "不需要。list 首次运行会探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的额外控制。",
+          body: "list 首次运行会探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的额外控制。",
         },
         {
           title: "启动发现会预分区",
