@@ -30,12 +30,6 @@ export const chessboardProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "Apple Silicon and Windows",
-          body: "Desktop releases for macOS (Apple Silicon) and Windows; no Intel Mac build, and no online matchmaking or accounts.",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
           title: "Lessons stay on this computer",
           body: "Lessons, drills, gameplay, autosave, analysis, and imported records run locally. Chessboard is a desktop board, not an online chess service.",
           intent: "boundary",
@@ -46,12 +40,6 @@ export const chessboardProduct: NativeAppProduct = {
           body: "Paste or import a PGN file, including FEN-start studies, then review the move list, jump to any position, and continue from there if you choose.",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "GPLv3, including Stockfish",
-          body: "Chessboard is GPLv3. It vendors Stockfish.js 18 (GPLv3) and chess.js 0.13.4 (BSD-2-Clause).",
-          intent: "boundary",
-          surface: "protocol",
         },
       ],
     },
@@ -75,12 +63,6 @@ export const chessboardProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "Apple Silicon 与 Windows",
-          body: "提供 macOS Apple Silicon 与 Windows 桌面版本，没有 Intel Mac 构建，也不提供在线匹配或账号体系。",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
           title: "课程留在这台电脑",
           body: "课程、做题、对弈、自动存档、分析和导入的棋谱都在本地完成。Chessboard 是桌面棋盘，不是在线对战服务。",
           intent: "boundary",
@@ -91,12 +73,6 @@ export const chessboardProduct: NativeAppProduct = {
           body: "粘贴或导入 PGN（含指定 FEN 开局的棋谱）后可逐着复盘，跳到任意局面，也可从该着继续下。",
           intent: "capability",
           surface: "artifact",
-        },
-        {
-          title: "GPLv3，含 Stockfish",
-          body: "Chessboard 使用 GPLv3。内置 Stockfish.js 18（GPLv3）与 chess.js 0.13.4（BSD-2-Clause）。",
-          intent: "boundary",
-          surface: "protocol",
         },
       ],
     },

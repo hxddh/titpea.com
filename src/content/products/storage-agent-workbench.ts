@@ -12,7 +12,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
     en: {
       title: "Storage Agent",
       description:
-        "A local-first desktop workbench for read-only S3-compatible storage investigations, with tools in a chat thread and evidence beside the answer.",
+        "Desktop workbench for read-only S3-compatible investigations: keys stay local, and larger reads wait for approval.",
       eyebrow: "For SRE & storage ops",
       headline: "Read-only storage investigations",
       lead: "Open a session about a bucket problem; Storage Agent runs read-only checks on your machine and keeps the evidence beside the answer.",
@@ -58,10 +58,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       ],
       faqLabel: "Read-only, keys, StorageOps",
       faq: [
-        {
-          title: "Not a console with chat",
-          body: "Consoles manage objects; chat panels wrap APIs. Storage Agent runs the investigation: plan checks, call tools, analyze locally, and show evidence — without changing production storage.",
-        },
         {
           title: "Works without a model key",
           body: "Local evidence and rule analysis can still run. Add a model when you want the agent to plan and explain the investigation in chat.",
@@ -121,10 +117,6 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       ],
       faqLabel: "只读、密钥与 StorageOps",
       faq: [
-        {
-          title: "不是控制台里加聊天框",
-          body: "控制台管对象；聊天面板多半包一层接口。Storage Agent 负责整段调查：规划检查、调用工具、本地分析、展示证据——且不改生产存储。",
-        },
         {
           title: "没有模型密钥也能用",
           body: "本地证据和规则分析仍能跑。需要 Agent 在对话里规划与解释时，再接入模型。",

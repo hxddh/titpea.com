@@ -170,7 +170,7 @@
   margin-bottom: 8px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--text-kicker);
   font-weight: 600;
 }
 
@@ -216,7 +216,7 @@
 .product-flow li > span {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--text-kicker);
   font-weight: 600;
 }
 
@@ -278,7 +278,7 @@
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--text-kicker);
   line-height: 1.4;
 }
 
@@ -341,7 +341,7 @@
 .deep-dive-benchmark span {
   color: var(--label);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--text-kicker);
   font-weight: 600;
 }
 

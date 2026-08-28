@@ -70,7 +70,7 @@ p {
   padding: 22px 0 34px;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: var(--text-kicker);
 }
 
 .eyebrow,

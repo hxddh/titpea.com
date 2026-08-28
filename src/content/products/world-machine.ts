@@ -13,8 +13,8 @@ export const worldMachineProduct: WorldRuntimeProduct = {
     en: {
       title: "World Machine",
       description:
-        "Experimental pre-alpha semantic runtime for persistent, inspectable, branchable worlds — hosts Tiny Society, Pocket Universe, and Micro Company packs.",
-      eyebrow: "Experimental · pre-alpha · macOS",
+        "Experimental pre-alpha semantic runtime on macOS: open a .world, install a pack after review, then branch what happens next.",
+      eyebrow: "Semantic world runtime",
       headline: "Branchable worlds you can inspect",
       lead: "Open a .world, install a pack after review, then branch what happens next.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.worldMachine },
@@ -118,9 +118,8 @@ export const worldMachineProduct: WorldRuntimeProduct = {
     },
     zh: {
       title: "World Machine",
-      description:
-        "实验性 pre-alpha 语义运行时：持久、可检查、可分支的世界；承载 Tiny Society、Pocket Universe 与 Micro Company 等 Pack。",
-      eyebrow: "实验性 · pre-alpha · macOS",
+      description: "实验性 pre-alpha 语义运行时：打开 .world，审阅后安装 Pack，再分支后续路径。",
+      eyebrow: "语义世界运行时",
       headline: "可分支、可检查的语义世界",
       lead: "打开 .world 文档，审阅后再安装 Pack，然后分支后续会发生的事。",
       primaryCta: { label: "查看 GitHub", href: siteConfig.externalLinks.worldMachine },

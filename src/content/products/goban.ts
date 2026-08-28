@@ -30,14 +30,8 @@ export const gobanProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "Apple Silicon and Windows",
-          body: "Desktop releases for macOS (Apple Silicon) and Windows; no Intel Mac build, and no online matchmaking.",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
           title: "No account, no server",
-          body: "Gameplay, saves, analysis, practice, daily challenges, and imported records run locally with no account required. Goban is a desktop board, not an online game service.",
+          body: "No Intel Mac build, no account, no server. Gameplay, saves, and imported records stay local.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -69,14 +63,8 @@ export const gobanProduct: NativeAppProduct = {
           priority: "primary",
         },
         {
-          title: "Apple Silicon 与 Windows",
-          body: "提供 macOS Apple Silicon 与 Windows 桌面版本，没有 Intel Mac 构建，也不提供在线匹配。",
-          intent: "boundary",
-          surface: "artifact",
-        },
-        {
           title: "没有账号，也没有服务器",
-          body: "对弈、存档、分析、练习、每日挑战和导入的棋谱都在本地完成，不需要账号。Goban 是桌面棋盘，不是在线对战服务。",
+          body: "没有 Intel Mac 构建，没有账号，也没有服务器。对弈、存档和导入的棋谱都在本地。",
           intent: "boundary",
           surface: "artifact",
         },

@@ -12,7 +12,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
     en: {
       title: "PageWise",
       description:
-        "Local PDF workbench with a page-wise document agent: the model reads page by page under budgets, and you see the trail.",
+        "Local PDF workbench: page tools stay under budgets, marks stay on the file, and citations open the source page.",
       eyebrow: "Local document agent",
       headline: "See what the agent read, page by page",
       lead: "A local PDF workbench that reads page by page under budgets, keeps marks on the document, and cites back to the source.",
@@ -35,20 +35,8 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
         {
-          title: "The read trail becomes controls",
-          body: "Clickable page citations, pages-read chips, follow-along preview, and ask-about-this on a selection let you jump the preview to what the agent just used.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
           title: "Preview, outline, one thread per document",
           body: "Preview with thumbnails, zoom, in-doc search, and outline or bookmark tree. One chat thread per document, saved locally, with Markdown export.",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "Marks stay on the document",
-          body: "Highlight and note marks persist per document, show in the preview, stay visible to the agent, and export with Markdown.",
           intent: "capability",
           surface: "artifact",
         },
@@ -111,7 +99,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "First open may need an OS exception",
-          body: "GitHub Releases ship macOS DMG, Windows setup/MSI, and Linux AppImage/deb. Builds are unsigned, so the first open may need an OS exception.",
+          body: "Builds are unsigned, so the first open may need an OS exception.",
         },
       ],
       finalCtaLabel: "Download latest release",
@@ -141,20 +129,8 @@ export const pagewiseProduct: DocumentAgentProduct = {
           surface: "agent",
         },
         {
-          title: "沿着阅读轨迹回到原文",
-          body: "点击页码引用、已读页标记或开启跟随预览，都可以回到 Agent 刚读过的页面；选中文字后也能直接「就此提问」。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
           title: "预览、大纲，一文档一条线程",
           body: "预览含缩略图、缩放、文内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
-          intent: "capability",
-          surface: "artifact",
-        },
-        {
-          title: "批注留在文档上",
-          body: "高亮与笔记按文档保存，预览里可见，Agent 也能看到，并随 Markdown 导出。",
           intent: "capability",
           surface: "artifact",
         },
@@ -217,7 +193,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
         },
         {
           title: "首次打开可能需系统例外",
-          body: "GitHub Releases 提供 macOS DMG、Windows 安装包与 Linux AppImage/deb。构建未公证，首次打开可能需系统例外。",
+          body: "构建未公证，首次打开可能需系统例外。",
         },
       ],
       finalCtaLabel: "下载最新版本",

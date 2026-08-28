@@ -12,8 +12,8 @@ export const pulseProduct: MenuBarAppProduct = {
     en: {
       title: "Pulse",
       description:
-        "A macOS menu-bar status lamp for local coding-agent sessions: Waiting, Running, Idle, or stalled / probe issues.",
-      eyebrow: "macOS menu-bar status lamp",
+        "macOS menu-bar status for local coding-agent sessions, with honest Waiting signals from hooks or pending marks.",
+      eyebrow: "Waiting lamp for agent sessions",
       headline: "Waiting sessions in the menu bar",
       lead: "See Waiting coding-agent sessions in the menu bar — then open the tray to the real TTY or host app.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
@@ -30,8 +30,8 @@ export const pulseProduct: MenuBarAppProduct = {
           priority: "primary",
         },
         {
-          title: "macOS 14+; Waiting needs hooks",
-          body: "macOS 14+ only. Claude Code and Codex get Waiting through hooks in Preferences → Waiting Signal. Other agents use process probe and session harvest; Waiting depth varies, and some have none.",
+          title: "Waiting needs hooks",
+          body: "Claude Code and Codex get Waiting through hooks in Preferences → Waiting Signal. Other agents use process probe and session harvest; Waiting depth varies, and some have none.",
           intent: "boundary",
           surface: "artifact",
         },
@@ -59,7 +59,7 @@ export const pulseProduct: MenuBarAppProduct = {
     zh: {
       title: "Pulse",
       description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：等待、运行、空闲，或停滞 / 探测异常。",
-      eyebrow: "macOS 菜单栏状态灯",
+      eyebrow: "编码 Agent 的状态灯",
       headline: "在菜单栏看见等待中的会话",
       lead: "在菜单栏看见 Waiting 的编码 Agent，打开托盘后聚焦到真实的 TTY 或宿主 App。",
       primaryCta: { label: "下载最新版本", href: siteConfig.externalLinks.pulseReleases },
@@ -76,8 +76,8 @@ export const pulseProduct: MenuBarAppProduct = {
           priority: "primary",
         },
         {
-          title: "只做 macOS 14+",
-          body: "只做 macOS 14+。Claude Code 与 Codex 在「偏好设置 → 等待信号」装 hooks 后 Waiting 最完整；其他 Agent 靠进程探测和会话采集，Waiting 深浅不一，有的没有。",
+          title: "Waiting 需要 hooks",
+          body: "Claude Code 与 Codex 在「偏好设置 → 等待信号」装 hooks 后 Waiting 最完整；其他 Agent 靠进程探测和会话采集，Waiting 深浅不一，有的没有。",
           intent: "boundary",
           surface: "artifact",
         },

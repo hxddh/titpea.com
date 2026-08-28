@@ -46,7 +46,7 @@
 
   .home-hero h1 {
     max-width: 18ch;
-    font-size: var(--title-section);
+    font-size: var(--title-home);
   }
 
   .about-focus-section,
@@ -168,11 +168,6 @@
 
   .lead {
     font-size: 17px;
-  }
-
-  .proof-strip {
-    justify-content: flex-start;
-    padding-bottom: 44px;
   }
 
   .benchmark-kpis,
