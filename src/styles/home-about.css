@@ -7,21 +7,17 @@
   align-items: start;
 }
 
-.about-hero,
-.product-hero {
+.about-hero {
   padding: 80px 0 56px;
+}
+
+.product-hero {
+  gap: 22px;
+  padding: 36px 0 48px;
 }
 
 .home-hero {
   padding: 40px 0 8px;
-}
-
-.product-hero {
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-}
-
-.product-hero.product-page-s3TurboList {
-  grid-template-columns: 1fr;
 }
 
 .product-copy,
@@ -35,7 +31,7 @@
 .product-hero h1 {
   max-width: 22ch;
   margin: 0 0 22px;
-  font-size: clamp(2.65rem, 6.2vw, 4.5rem);
+  font-size: var(--title-display);
   line-height: 0.98;
 }
 

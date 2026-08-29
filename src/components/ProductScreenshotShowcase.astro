@@ -1,20 +1,28 @@
 ---
-import type { AgentWorkbenchScreenshotVisualModel } from "../content/visualModels";
+type PhotographPlate = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  kicker: string;
+  title: string;
+  body: string;
+};
 
 interface Props {
-  supporting: AgentWorkbenchScreenshotVisualModel["supporting"];
+  supporting: PhotographPlate;
 }
 
 const { supporting } = Astro.props;
 ---
 
 <section class="product-screenshot-showcase shell">
-  <div class="screenshot-showcase-copy">
-    <p class="section-kicker">{supporting.kicker}</p>
-    <h2>{supporting.title}</h2>
-    <p>{supporting.body}</p>
-  </div>
   <figure>
     <img src={supporting.src} alt={supporting.alt} width={supporting.width} height={supporting.height} loading="lazy" />
+    <figcaption>
+      <p class="section-kicker">{supporting.kicker}</p>
+      <h2>{supporting.title}</h2>
+      <p>{supporting.body}</p>
+    </figcaption>
   </figure>
 </section>
