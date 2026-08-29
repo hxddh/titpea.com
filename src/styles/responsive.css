@@ -18,7 +18,8 @@
   }
 
   .home-hero,
-  .about-hero {
+  .about-hero,
+  .product-hero {
     gap: 42px;
   }
 
@@ -32,13 +33,15 @@
     padding-bottom: 12px;
   }
 
+  .product-hero,
   .home-catalog-columns {
     grid-template-columns: 1fr;
   }
 
-  .about-hero h1 {
+  .about-hero h1,
+  .product-hero h1 {
     max-width: 18ch;
-    font-size: var(--title-display-mobile);
+    font-size: clamp(2.45rem, 11vw, 3.35rem);
   }
 
   .home-hero h1 {
@@ -47,6 +50,7 @@
   }
 
   .about-focus-section,
+  .product-screenshot-showcase,
   .split-content {
     grid-template-columns: 1fr;
     gap: 34px;
@@ -208,7 +212,7 @@
   .inside-copy h2,
   .product-story h2,
   #cases h2,
-  .product-screenshot-showcase figcaption h2,
+  .screenshot-showcase-copy h2,
   .deep-dive-heading h2,
   .s3-results-heading h2,
   .benchmark-head h2,

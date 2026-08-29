@@ -1,14 +1,36 @@
+.product-hero .eyebrow-name {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .product-screenshot-showcase {
   display: grid;
-  gap: 0;
+  grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+  gap: 54px;
+  align-items: start;
   border-top: 1px solid var(--rule);
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
 }
 
+.screenshot-showcase-copy h2 {
+  max-width: 18ch;
+  margin: 0 0 18px;
+  font-size: var(--title-section);
+  line-height: 1.08;
+}
+
+.screenshot-showcase-copy p:not(.section-kicker) {
+  max-width: 48ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
 .product-screenshot-showcase figure {
   margin: 0;
-  overflow: visible;
+  overflow: hidden;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -19,31 +41,6 @@
   width: 100%;
   height: auto;
   border: 1px solid var(--line);
-}
-
-.product-screenshot-showcase figcaption {
-  display: grid;
-  gap: 8px;
-  max-width: 40em;
-  margin-top: 14px;
-}
-
-.product-screenshot-showcase figcaption h2 {
-  margin: 0;
-  font-size: var(--text-featured-name);
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-}
-
-.product-screenshot-showcase figcaption p:not(.section-kicker) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.62;
-}
-
-.product-screenshot-showcase figcaption .section-kicker {
-  margin: 0;
 }
 
 .product-deep-dive {
@@ -388,6 +385,7 @@
 .inside-copy h2,
 .product-story h2,
 #cases h2 {
+  max-width: 22ch;
   margin: 0 0 18px;
   font-size: var(--title-section);
   line-height: 1.08;
@@ -424,17 +422,10 @@
   font-weight: 500;
 }
 
-.faq-list {
-  display: grid;
-  gap: 0;
-}
-
 .faq-list article {
   display: grid;
   align-content: start;
   gap: 8px;
-  border-top: 1px solid var(--line);
-  padding: 16px 0;
 }
 
 .faq-list h3 {
@@ -473,6 +464,13 @@
 .product-page-nativeApp,
 .product-page-menuBarApp {
   --section-y: var(--section-y-short);
+}
+
+.product-page-browserExtension .product-hero,
+.product-page-nativeApp .product-hero,
+.product-page-menuBarApp .product-hero {
+  padding-top: 56px;
+  padding-bottom: 36px;
 }
 
 .product-page-browserExtension .final-cta,

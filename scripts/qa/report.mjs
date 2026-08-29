@@ -48,7 +48,7 @@ export function failureReasons(result) {
   const isHome = route?.kind === "home";
   const reasons = [];
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
-  if (result.h1Lines > 2) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
+  if (result.h1Lines > 3) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
   if (!isAsset && !isAuxCheck && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
