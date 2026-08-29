@@ -128,7 +128,7 @@ for (const target of baseline.targets) {
 
   if (metrics.overflow > 1)
     failures.push(`${target.path} ${target.viewport}: horizontal overflow ${metrics.overflow}px`);
-  if (metrics.h1Lines > 3) failures.push(`${target.path} ${target.viewport}: h1 wraps to ${metrics.h1Lines} lines`);
+  if (metrics.h1Lines > 2) failures.push(`${target.path} ${target.viewport}: h1 wraps to ${metrics.h1Lines} lines`);
   if (target.viewport === "mobile" && metrics.navDisplay !== "none")
     failures.push(`${target.path} mobile: desktop nav visible`);
   if (target.viewport === "mobile" && metrics.mobileDisplay !== "block")

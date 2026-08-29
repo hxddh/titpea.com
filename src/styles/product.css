@@ -1,8 +1,3 @@
-.product-hero .eyebrow-name {
-  color: var(--ink);
-  font-weight: 600;
-}
-
 .product-screenshot-showcase {
   display: grid;
   gap: 0;
@@ -34,10 +29,10 @@
 }
 
 .product-screenshot-showcase figcaption h2 {
-  max-width: 22ch;
   margin: 0;
-  font-size: var(--title-section);
-  line-height: 1.08;
+  font-size: var(--text-featured-name);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
 }
 
 .product-screenshot-showcase figcaption p:not(.section-kicker) {
@@ -393,7 +388,6 @@
 .inside-copy h2,
 .product-story h2,
 #cases h2 {
-  max-width: 22ch;
   margin: 0 0 18px;
   font-size: var(--title-section);
   line-height: 1.08;
