@@ -18,6 +18,7 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
+const photographPlates = "showcases" in model.visual ? (model.visual.showcases ?? []) : [];
 ---
 
 <SiteLayout
@@ -28,6 +29,9 @@ const copy = model.copy;
   pageClass={model.pageClass}
 >
   <section class:list={["product-hero shell", model.pageClass]}>
+    <div class="hero-visual-frame">
+      <ProductVisual visual={model.visual} />
+    </div>
     <div class="product-copy">
       <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
@@ -37,9 +41,6 @@ const copy = model.copy;
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
       <p class="meta-line">{copy.meta}</p>
-    </div>
-    <div class="hero-visual-frame">
-      <ProductVisual visual={model.visual} />
     </div>
   </section>
 
@@ -55,6 +56,8 @@ const copy = model.copy;
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} />}
 
+  {photographPlates.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
+
   {
     model.sections.map((section) => {
       if (section.kind === "inside") {
@@ -64,10 +67,6 @@ const copy = model.copy;
             {model.visual.kind === "agentWorkbenchScreenshot" && (
               <ProductScreenshotShowcase supporting={model.visual.supporting} />
             )}
-            {model.visual.kind === "gobanScreenshot" &&
-              model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
-            {model.visual.kind === "chessboardScreenshot" &&
-              model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
           </>
         );
       }

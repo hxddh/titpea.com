@@ -11,7 +11,7 @@ const { section } = Astro.props;
 <section id={section.id} class="shell content-section faq-section">
   <p class="section-kicker">{section.label}</p>
   <h2 class="section-heading sr-only">{section.label}</h2>
-  <div class="faq-list section-card-list">
+  <div class="faq-list">
     {
       section.items.map((item) => (
         <article>
