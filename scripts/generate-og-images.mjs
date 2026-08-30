@@ -27,7 +27,7 @@ export const images = [
   {
     file: "og-s3-turbo-list.png",
     eyebrow: "s3-turbo-list",
-    title: "List / diff, no scanner to build",
+    title: "List / diff, no scanner",
     body: "Startup discovery, bounded diff, Parquet output, and agent-safe run evidence.",
     accent: "#16a56c",
     mark: "LIST",
@@ -36,7 +36,7 @@ export const images = [
   {
     file: "og-storage-agent-workbench.png",
     eyebrow: "Storage Agent",
-    title: "Read-only storage investigations",
+    title: "Read-only investigations",
     body: "Ask about S3-compatible storage in plain language; a local agent investigates it read-only.",
     accent: "#2563eb",
     mark: "SAW",
@@ -54,7 +54,7 @@ export const images = [
   {
     file: "og-httpmon.png",
     eyebrow: "httpmon",
-    title: "See HTTP beside the command",
+    title: "HTTP beside the command",
     body: "A local terminal inspector for request and response evidence, HAR export, recording, and replay.",
     accent: "#16854a",
     mark: "HTTP",
@@ -63,7 +63,7 @@ export const images = [
   {
     file: "og-pagewise.png",
     eyebrow: "PageWise",
-    title: "See what the agent read, page by page",
+    title: "See the pages it read",
     body: "Local PDF text, OCR, and page-wise agent chat — files stay on your machine.",
     accent: "#0d9488",
     mark: "PDF",
@@ -72,7 +72,7 @@ export const images = [
   {
     file: "og-world-clock.png",
     eyebrow: "World Clock",
-    title: "Time across cities at a glance",
+    title: "City times in one popup",
     body: "Live city time, work-hours context, and light / dark browser-native themes.",
     accent: "#0f7a3a",
     mark: "UTC",
@@ -81,7 +81,7 @@ export const images = [
   {
     file: "og-douban-movie-rating.png",
     eyebrow: "Douban Movie Rating Assistant",
-    title: "More rating context inside Douban",
+    title: "Ratings inside Douban",
     body: "IMDb, Rotten Tomatoes, and Metacritic context on the page you are already reading.",
     accent: "#d97706",
     mark: "RT",
@@ -90,7 +90,7 @@ export const images = [
   {
     file: "og-agent-radar.png",
     eyebrow: "Agent Radar",
-    title: "Scheduled research kept in Markdown",
+    title: "Research in Markdown",
     body: "Watchlist, field notes, playbooks, storage implications, and a stdlib Python CLI.",
     accent: "#7c3aed",
     mark: "RADAR",
@@ -99,7 +99,7 @@ export const images = [
   {
     file: "og-goban.png",
     eyebrow: "Goban",
-    title: "Gomoku with Renju and daily drills",
+    title: "Gomoku with Renju drills",
     body: "Free, swap2, or Renju rules; four AI levels; 130 drills including VCF; daily challenges and SGF tools.",
     accent: "#9b5f20",
     mark: "15×15",
@@ -108,7 +108,7 @@ export const images = [
   {
     file: "og-chessboard.png",
     eyebrow: "Chessboard",
-    title: "A focused desktop chessboard",
+    title: "Learn, then a quiet game",
     body: "Stockfish 18, beginner lessons, mate drills, and PGN tools for macOS and Windows.",
     accent: "#6b4f2a",
     mark: "♔",
@@ -117,7 +117,7 @@ export const images = [
   {
     file: "og-easier-bookmarks.png",
     eyebrow: "Easier Bookmarks",
-    title: "Bookmarks in the side panel",
+    title: "Bookmarks in the panel",
     body: "Fast local search, full organization, keyboard access, and no analytics or external servers.",
     accent: "#2563eb",
     mark: "BM",
@@ -126,7 +126,7 @@ export const images = [
   {
     file: "og-pulse.png",
     eyebrow: "Pulse",
-    title: "Waiting sessions in the menu bar",
+    title: "Waiting in the menu bar",
     body: "A macOS status lamp for local coding-agent sessions — Waiting is never inferred — with honest focus tiers and 32-agent support health.",
     accent: "#b42318",
     mark: "●",
@@ -135,7 +135,7 @@ export const images = [
   {
     file: "og-celagent.png",
     eyebrow: "celagent",
-    title: "Pi TUI with sessions on object storage",
+    title: "Pi TUI, sessions on BOS",
     body: "Full Pi Coding Agent TUI with BOS session authority, CAS restore, and a distributed task ledger.",
     accent: "#0f766e",
     mark: "CEL",
@@ -144,7 +144,7 @@ export const images = [
   {
     file: "og-world-machine.png",
     eyebrow: "World Machine",
-    title: "Branchable worlds you can inspect",
+    title: "Inspect, then branch",
     body: "Experimental pre-alpha semantic runtime for persistent, inspectable, branchable worlds on macOS.",
     accent: "#1d4ed8",
     mark: "WM",

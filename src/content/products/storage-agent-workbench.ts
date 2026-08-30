@@ -14,7 +14,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
       description:
         "Desktop workbench for read-only S3-compatible investigations: keys stay local, and larger reads wait for approval.",
       eyebrow: "For SRE & storage ops",
-      headline: "Read-only storage investigations",
+      headline: "Read-only investigations",
       lead: "Open a session about a bucket problem; Storage Agent runs read-only checks on your machine and keeps the evidence beside the answer.",
       primaryCta: { label: "Download", href: siteConfig.externalLinks.storageAgentWorkbenchReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.storageAgentWorkbench },

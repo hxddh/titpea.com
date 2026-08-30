@@ -14,7 +14,7 @@ export const agentRadarProduct: MarkdownRadarProduct = {
       description:
         "Markdown research on GitHub Actions: public agent signals become briefs only after direction and citation gates pass.",
       eyebrow: "Scheduled Markdown research",
-      headline: "Scheduled research kept in Markdown",
+      headline: "Research in Markdown",
       lead: "Public agent signals become Markdown research only after direction and citation gates pass — hosted on GitHub Actions.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.agentRadar },
       secondaryCta: { label: "Quick start", href: siteConfig.externalLinks.agentRadarQuickStart },

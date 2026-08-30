@@ -14,7 +14,7 @@ export const gobanProduct: NativeAppProduct = {
       description:
         "A desktop Gomoku board for macOS and Windows: free, swap2, or Renju, with review, drills, and a daily streak.",
       eyebrow: "Desktop Gomoku game",
-      headline: "Gomoku with Renju and daily drills",
+      headline: "Gomoku with Renju drills",
       lead: "A quiet 15×15 board for free, swap2, or Renju — with review and drills when you want them.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.gobanReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.goban },

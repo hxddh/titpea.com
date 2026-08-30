@@ -96,7 +96,9 @@ for (const model of allPageModels) {
   if (model.kind !== "product") continue;
 
   const { copy, sections } = model;
-  if (copy.headline.length > 42) failures.push(`${model.path}: headline is too long for a product page`);
+  const maxHeadline = model.locale === "zh" ? 18 : 24;
+  if (copy.headline.length > maxHeadline)
+    failures.push(`${model.path}: headline is too long for a product page (${copy.headline.length} > ${maxHeadline})`);
   if (copy.lead.length < 28 || copy.lead.length > 210)
     failures.push(`${model.path}: lead must be concise and specific`);
   if (copy.primaryCta.href === copy.secondaryCta.href)

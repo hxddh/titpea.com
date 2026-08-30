@@ -38,9 +38,12 @@
     grid-template-columns: 1fr;
   }
 
-  .about-hero h1,
-  .product-hero h1 {
+  .about-hero h1 {
     max-width: 18ch;
+    font-size: clamp(2.45rem, 11vw, 3.35rem);
+  }
+
+  .product-hero h1 {
     font-size: clamp(2.45rem, 11vw, 3.35rem);
   }
 

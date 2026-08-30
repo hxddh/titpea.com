@@ -14,7 +14,7 @@ export const pagewiseProduct: DocumentAgentProduct = {
       description:
         "Local PDF workbench: page tools stay under budgets, marks stay on the file, and citations open the source page.",
       eyebrow: "Local document agent",
-      headline: "See what the agent read, page by page",
+      headline: "See the pages it read",
       lead: "A local PDF workbench that reads page by page under budgets, keeps marks on the document, and cites back to the source.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pagewiseReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.pagewise },

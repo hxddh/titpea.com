@@ -14,7 +14,7 @@ export const pulseProduct: MenuBarAppProduct = {
       description:
         "macOS menu-bar status for local coding-agent sessions, with honest Waiting signals from hooks or pending marks.",
       eyebrow: "Waiting lamp for agent sessions",
-      headline: "Waiting sessions in the menu bar",
+      headline: "Waiting in the menu bar",
       lead: "See Waiting coding-agent sessions in the menu bar — then open the tray to the real TTY or host app.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.pulseReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.pulse },

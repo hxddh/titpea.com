@@ -15,7 +15,7 @@ export const worldMachineProduct: WorldRuntimeProduct = {
       description:
         "Experimental pre-alpha semantic runtime on macOS: open a .world, install a pack after review, then branch what happens next.",
       eyebrow: "Semantic world runtime",
-      headline: "Branchable worlds you can inspect",
+      headline: "Inspect, then branch",
       lead: "Open a .world, install a pack after review, then branch what happens next.",
       primaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.worldMachine },
       secondaryCta: { label: "Pre-alpha notes", href: siteConfig.externalLinks.worldMachinePreAlpha },

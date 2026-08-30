@@ -14,7 +14,7 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       title: "Douban Movie Rating Assistant",
       description: "A Chrome extension that shows IMDb, Rotten Tomatoes, and Metacritic ratings on Douban movie pages.",
       eyebrow: "Chrome Extension",
-      headline: "More rating context inside Douban",
+      headline: "Ratings inside Douban",
       lead: "IMDb, Rotten Tomatoes, and Metacritic appear beside the Douban rating while you stay on the movie page.",
       primaryCta: {
         label: "Install",
