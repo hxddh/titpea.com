@@ -23,4 +23,10 @@ export async function visit(page, url, label) {
   console.error(`[qa] ${label}: ${url.pathname}`);
   await page.goto(url.href, { waitUntil: "domcontentloaded", timeout: 8_000 });
   await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
+  const imageCount = await page.locator("img").count();
+  if (imageCount > 0) {
+    await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete), {
+      timeout: 8_000,
+    });
+  }
 }
