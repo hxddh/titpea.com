@@ -10,7 +10,7 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       title: "Easier Bookmarks",
       description: "Chrome side panel for the bookmark tree already in this browser.",
       eyebrow: "Chrome extension",
-      headline: "Bookmarks in the side panel",
+      headline: "Bookmarks in the panel",
       lead: "Find and move bookmarks in Chrome's side panel — without the bookmark-menu maze.",
       primaryCta: { label: "Install", href: siteConfig.externalLinks.easierBookmarksChrome },
       secondaryCta: { label: "Privacy policy", href: siteConfig.externalLinks.easierBookmarksPrivacy },

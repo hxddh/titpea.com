@@ -14,7 +14,7 @@ export const chessboardProduct: NativeAppProduct = {
       description:
         "A desktop chessboard for macOS and Windows, with Stockfish 18, offline lessons, mate drills, and local review.",
       eyebrow: "Desktop chess",
-      headline: "Lessons, drills, then a quiet game",
+      headline: "Learn, then a quiet game",
       lead: "Learn and drill offline, then play Stockfish or a friend on one board — with a review curve after.",
       primaryCta: { label: "Download latest release", href: siteConfig.externalLinks.chessboardReleases },
       secondaryCta: { label: "View source", href: siteConfig.externalLinks.chessboard },

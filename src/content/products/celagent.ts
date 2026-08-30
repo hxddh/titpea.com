@@ -15,7 +15,7 @@ export const celagentProduct: CliAgentProduct = {
       description:
         "Independent open-source agent: full Pi Coding Agent TUI with Celld/BOS object-storage session persistence (RPO≈0).",
       eyebrow: "Pi TUI · BOS session authority",
-      headline: "Pi TUI with sessions on object storage",
+      headline: "Pi TUI, sessions on BOS",
       lead: "A Pi TUI whose session authority lives on BOS — restore on another machine without losing the thread.",
       primaryCta: { label: "Install / View releases", href: siteConfig.externalLinks.celagentReleases },
       secondaryCta: { label: "View on GitHub", href: siteConfig.externalLinks.celagent },

@@ -63,7 +63,7 @@ principle and a constraint seem to disagree, satisfy the constraint and rework t
 - Tokens are the single source of truth
   - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
   - `mono` is for meta, commands, terminals, and data labels; `sans` is for headings, prose, navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory.
-  - Type sizes come from tokens: `--title-index`, `--title-section`, `--text-kicker`, `--text-list-title`, `--text-featured-name`, `--text-catalog-name`. Hero headings stay within two lines.
+  - Type sizes come from tokens: `--title-index`, `--title-section`, `--text-kicker`, `--text-list-title`, `--text-featured-name`, `--text-catalog-name`. Hero headings stay within two lines. Product headlines: English ≤ 24 characters, Chinese ≤ 18.
 - Responsive
   - Breakpoints are 900px (tablet to single column) and 640px (phone).
   - For bilingual layouts, size shared cards for the longer language so the Chinese page
