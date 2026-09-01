@@ -30,7 +30,7 @@
       "desktop app",
       "credentials stay local"
     ],
-    "latestRelease": "v0.93.1"
+    "latestRelease": "v1.01.0"
   },
   "storageops": {
     "source": "manual",
@@ -202,7 +202,7 @@
     "repository": "hxddh/Pulse",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v11.0.2",
+    "latestRelease": "v11.0.3",
     "stableFacts": [
       "macOS menu bar",
       "coding agent status lamp",
