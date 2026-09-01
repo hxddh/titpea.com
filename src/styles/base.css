@@ -47,7 +47,7 @@ h3 {
 }
 
 h1 {
-  letter-spacing: -0.044em;
+  letter-spacing: -0.03em;
 }
 
 p {
@@ -99,6 +99,25 @@ p {
 
 .prose p {
   margin-bottom: 18px;
+}
+
+:lang(zh) .about-hero h1,
+:lang(zh) .product-hero h1 {
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+}
+
+:lang(zh) .lead,
+:lang(zh) .prose,
+:lang(zh) .section-card-list p,
+:lang(zh) .faq-list p,
+:lang(zh) .product-flow p,
+:lang(zh) .s3-purpose-grid p,
+:lang(zh) .s3-result-paths > article > p,
+:lang(zh) .deep-dive-grid p,
+:lang(zh) .agent-topology p,
+:lang(zh) .deep-dive-benchmark p {
+  line-height: 1.75;
 }
 
 .band {

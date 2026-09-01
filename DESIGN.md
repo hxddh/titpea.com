@@ -87,14 +87,15 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 
 - The wordmark is the word Titpea. Navigation dropdowns and the mobile menu are hairline lists on paper, not floating rounded panels. The mobile menu is a hairline list, not a 1px tile stack.
 - Language and theme controls are text, not boxed icon buttons. Theme reads `Dark` / `Light` (and `深色` / `浅色`).
-- Hairlines have pressure. `--rule` cuts sections; `--line` separates rows in lists, FAQ, and workflows; `--chrome-line` is the header and sticky directory. Do not use one 1px gray for all three.
+- Hairlines have pressure. `--rule` cuts major turns (screenshot, deep-dive, results, closing CTA, footer, home catalog and About bands). `--line` separates equal-weight section kickers and rows in lists, FAQ, and workflows. `--chrome-line` is the header and sticky directory. Do not use one 1px gray for all three.
 - Site chrome radius is zero. `--radius-window` is the only exception, and only on the product object itself.
 - Real product screenshots sit on paper as figures: hairline, no card fill, no radius, no drop shadow. Analysis panels, scan plans, numbered flows, KPI strips, and charts inside a product window sit the same way. Charts, terminals, and CSS product mocks keep one outer contour (`--radius-window` and `--soft-line`) on `--paper` without a site drop shadow. Inside a window, inputs and chips are hairline text.
 
 ## Typography And Copy
 
 - Load Inter for Latin. CJK falls back to the system face. Do not list a webfont that is never fetched.
-- Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing.
+- Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing. Product and About `h1` track at `-0.03em` with line-height `1.06`. Chinese pages (`:lang(zh)`) use `-0.01em` / `1.12` on those headings, and `1.75` on lead, prose, and list body — Inter's Latin tracking must not crush CJK.
+- List body is `--text-list-body` (16px / 1.65). Keep lead at 18px and kickers at 12px. Do not shrink the product/About display size to make a page feel lighter.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
 - `mono` is for meta, commands, terminals, and data labels. Navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
@@ -116,7 +117,7 @@ floors that a change either meets or fails, and several are enforced in CI.
 - Tokens are the single source of truth
   - Spacing, radius, type size, and color come from `tokens.css`; components avoid magic numbers.
   - `mono` is for meta, commands, terminals, and data labels; `sans` is for headings, prose, navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory.
-  - Type sizes come from tokens: `--title-index`, `--title-section`, `--text-kicker`, `--text-list-title`, `--text-featured-name`, `--text-catalog-name`. Hero headings stay within two lines. Product headlines: English ≤ 24 characters, Chinese ≤ 18. The product `h1` is not the product name.
+  - Type sizes come from tokens: `--title-index`, `--title-section`, `--text-kicker`, `--text-list-title`, `--text-list-body`, `--text-featured-name`, `--text-catalog-name`. Hero headings stay within two lines. Product headlines: English ≤ 24 characters, Chinese ≤ 18. The product `h1` is not the product name.
 - Responsive
   - Breakpoints are 900px (tablet to single column) and 640px (phone).
   - For bilingual layouts, size shared cards for the longer language so the Chinese page

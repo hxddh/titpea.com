@@ -35,13 +35,13 @@
   max-width: 22ch;
   margin: 0 0 22px;
   font-size: clamp(2.65rem, 6.2vw, 4.5rem);
-  line-height: 0.98;
+  line-height: 1.06;
 }
 
 .product-hero h1 {
   margin: 0 0 22px;
   font-size: clamp(2.65rem, 6.2vw, 4.5rem);
-  line-height: 0.98;
+  line-height: 1.06;
 }
 
 .home-hero h1 {

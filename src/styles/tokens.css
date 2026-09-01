@@ -32,6 +32,7 @@
   --title-home: clamp(1.2rem, 2vw, 1.45rem);
   --text-kicker: 12px;
   --text-list-title: 17px;
+  --text-list-body: 16px;
   --text-featured-name: 1.75rem;
   --text-catalog-name: 15px;
 }
