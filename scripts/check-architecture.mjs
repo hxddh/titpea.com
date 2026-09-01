@@ -128,6 +128,50 @@ assertNoMatch(
   /section-card-grid|--chip-bg|--shadow-media|--card-pad/,
 );
 
+assertNoMatch(
+  "no CJK webfont",
+  ["src/styles/fonts.css", "src/styles/global.css"],
+  /Noto Sans CJK|Noto Serif CJK|Source Han|WenQuanYi|Sarasa|LXGW|SourceHan/i,
+);
+
+if (!/font-family:\s*Inter;/.test(read("src/styles/fonts.css"))) {
+  fail("Latin webfont stays Inter", "src/styles/fonts.css must declare font-family: Inter");
+} else {
+  pass("Latin webfont stays Inter");
+}
+
+const chromeStyles = [
+  "src/styles/base.css",
+  "src/styles/layouts.css",
+  "src/styles/cards.css",
+  "src/styles/components.css",
+  "src/styles/pages.css",
+  "src/styles/home-about.css",
+  "src/styles/product.css",
+  "src/styles/responsive.css",
+  "src/styles/global.css",
+];
+
+function assertChromeHasNoGlow() {
+  const hits = [];
+  const decorative = /linear-gradient|radial-gradient|conic-gradient|drop-shadow|text-shadow\s*:|box-shadow\s*:/;
+  for (const file of chromeStyles) {
+    read(file)
+      .split("\n")
+      .forEach((line, index) => {
+        if (!decorative.test(line)) return;
+        if (/mask-image:/.test(line)) return;
+        if (/box-shadow:\s*none/.test(line)) return;
+        if (file === "src/styles/base.css" && /box-shadow:\s*var\(--shadow-soft\)/.test(line)) return;
+        hits.push(`${file}:${index + 1}: ${line.trim()}`);
+      });
+  }
+  if (hits.length > 0) fail("site chrome has no glow, gradient, or drop shadow", hits.join("\n"));
+  else pass("site chrome has no glow, gradient, or drop shadow");
+}
+
+assertChromeHasNoGlow();
+
 // File budgets. These line limits are tripwires, not style nits: each file
 // has a structural role, and crossing the budget is a signal it is drifting
 // back into doing too much. Raise a budget only alongside a deliberate call

@@ -78,6 +78,10 @@ const genericDirectoryLabels = new Set([
 ]);
 const genericIndexLabels = new Set(["On this page", "页面内容", "Read this page", "阅读路径"]);
 
+function normalizeCopy(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
 for (const model of allPageModels) {
   const title = model.seo.title.trim();
   const description = model.seo.description.trim();
@@ -99,6 +103,18 @@ for (const model of allPageModels) {
   const maxHeadline = model.locale === "zh" ? 18 : 24;
   if (copy.headline.length > maxHeadline)
     failures.push(`${model.path}: headline is too long for a product page (${copy.headline.length} > ${maxHeadline})`);
+  if (normalizeCopy(copy.headline) === normalizeCopy(copy.title))
+    failures.push(`${model.path}: product h1 must be the slogan, not the product name`);
+  const restated = [
+    copy.finalCta,
+    copy.finalCtaLabel,
+    ...sections.flatMap((section) => ("title" in section && typeof section.title === "string" ? [section.title] : [])),
+  ].filter((text): text is string => Boolean(text));
+  for (const text of restated) {
+    if (normalizeCopy(text) === normalizeCopy(copy.headline)) {
+      failures.push(`${model.path}: closing or section copy restates the hero headline (${text})`);
+    }
+  }
   if (copy.lead.length < 28 || copy.lead.length > 210)
     failures.push(`${model.path}: lead must be concise and specific`);
   if (copy.primaryCta.href === copy.secondaryCta.href)
