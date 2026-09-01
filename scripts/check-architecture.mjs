@@ -140,6 +140,28 @@ if (!/font-family:\s*Inter;/.test(read("src/styles/fonts.css"))) {
   pass("Latin webfont stays Inter");
 }
 
+const baseCss = read("src/styles/base.css");
+if (!/:lang\(zh\) \.about-hero h1/.test(baseCss) || !/:lang\(zh\) \.product-hero h1/.test(baseCss)) {
+  fail(
+    "Chinese optical rules for product/about display type",
+    "src/styles/base.css must set :lang(zh) tracking on .about-hero h1 and .product-hero h1",
+  );
+} else {
+  pass("Chinese optical rules for product/about display type");
+}
+
+if (!/:lang\(zh\) \.lead/.test(baseCss)) {
+  fail("Chinese optical rules for body type", "src/styles/base.css must set :lang(zh) line-height on .lead");
+} else {
+  pass("Chinese optical rules for body type");
+}
+
+if (!/--text-list-body:/.test(read("src/styles/tokens.css"))) {
+  fail("list body size is a token", "src/styles/tokens.css must declare --text-list-body");
+} else {
+  pass("list body size is a token");
+}
+
 const chromeStyles = [
   "src/styles/base.css",
   "src/styles/layouts.css",

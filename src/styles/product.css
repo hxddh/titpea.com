@@ -121,8 +121,8 @@
   max-width: 42ch;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: var(--text-list-body);
+  line-height: 1.65;
 }
 
 .s3-purpose-boundary {
@@ -230,8 +230,8 @@
 .product-flow p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: var(--text-list-body);
+  line-height: 1.65;
 }
 
 .s3-results-section {
@@ -364,8 +364,8 @@
 .deep-dive-benchmark p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: var(--text-list-body);
+  line-height: 1.65;
 }
 
 .inside-section,
@@ -404,7 +404,7 @@
 #cases .section-kicker,
 .faq-section > .section-kicker {
   width: 100%;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line);
   padding-top: 32px;
 }
 
@@ -441,8 +441,8 @@
   max-width: 64ch;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.58;
+  font-size: var(--text-list-body);
+  line-height: 1.65;
   overflow-wrap: anywhere;
 }
 
