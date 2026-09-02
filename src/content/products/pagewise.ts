@@ -34,12 +34,6 @@ export const pagewiseProduct: DocumentAgentProduct = {
           intent: "capability",
           surface: "agent",
         },
-        {
-          title: "Preview, outline, one thread per document",
-          body: "Preview with thumbnails, zoom, in-doc search, and outline or bookmark tree. One chat thread per document, saved locally, with Markdown export.",
-          intent: "capability",
-          surface: "artifact",
-        },
       ],
       workflowLabel: "From file to citation",
       workflow: [
@@ -127,12 +121,6 @@ export const pagewiseProduct: DocumentAgentProduct = {
           body: "有文本层就走文本层；扫描或图片页走视觉模型。对 Agent 来说，调用的是同一套页级工具。",
           intent: "capability",
           surface: "agent",
-        },
-        {
-          title: "预览、大纲，一文档一条线程",
-          body: "预览含缩略图、缩放、文内搜索与大纲或书签树。一文档一线程，本地持久化，可导出 Markdown。",
-          intent: "capability",
-          surface: "artifact",
         },
       ],
       workflowLabel: "从打开到引用",

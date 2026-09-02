@@ -19,13 +19,6 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       positioningLabel: "Chrome's tree, side panel",
       positioning: [
         {
-          title: "Menus are too small",
-          body: "Your bookmark tree has outgrown Chrome's small menus and you want one side panel for finding and organizing it.",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
-        {
           title: "Works with Chrome's bookmark tree",
           body: "It works with the bookmarks and folders already in Chrome. There is no separate library to import, account to create, or sync service of its own; Chrome sync remains whatever you already configured in Chrome.",
           intent: "boundary",
@@ -51,13 +44,6 @@ export const easierBookmarksProduct: BrowserExtensionProduct = {
       proof: [],
       positioningLabel: "Chrome 书签树，侧边栏",
       positioning: [
-        {
-          title: "书签菜单已经不够用",
-          body: "Chrome 的小菜单已经装不下你的书签树，想在一个侧边栏里完成查找和整理。",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
         {
           title: "沿用 Chrome 书签树",
           body: "它管理 Chrome 里已有的书签和文件夹，不需要导入另一套资料库，也不用注册账号或另接同步服务；Chrome 自身同步仍按你的浏览器设置执行。",

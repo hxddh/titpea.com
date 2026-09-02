@@ -26,17 +26,11 @@ export const worldClockProduct: BrowserExtensionProduct = {
       positioningLabel: "Cities you choose",
       positioning: [
         {
-          title: "Remote work, travel, cross-region calls",
-          body: "You need city times during remote work, travel planning, or cross-region conversations.",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
-        {
           title: "No location, no calendar",
           body: "It shows the city times you choose. It does not read your location, calendar, or meetings.",
           intent: "boundary",
           surface: "browser",
+          priority: "primary",
         },
       ],
     },
@@ -56,17 +50,11 @@ export const worldClockProduct: BrowserExtensionProduct = {
       positioningLabel: "你选的城市",
       positioning: [
         {
-          title: "远程协作、出行、跨地区沟通",
-          body: "远程协作、旅行安排、跨地区沟通前，想快速确认几个城市现在几点、是不是工作时间。",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
-        {
           title: "不读位置，也不读日历",
           body: "只显示你选的城市时间，不读取你的位置、日历或会议。",
           intent: "boundary",
           surface: "browser",
+          priority: "primary",
         },
       ],
     },
