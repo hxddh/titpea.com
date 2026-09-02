@@ -35,7 +35,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     path,
     alternatePath,
     primaryCta: flagship?.href ?? catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, copy.featuredTitle, copy.moreToolsTitle],
+    expectedText: [copy.homeTitle, copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
     seo: buildPageSeo({
       title: copy.homeMetaTitle,
       description,

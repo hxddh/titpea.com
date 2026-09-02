@@ -141,13 +141,17 @@ if (!/font-family:\s*Inter;/.test(read("src/styles/fonts.css"))) {
 }
 
 const baseCss = read("src/styles/base.css");
-if (!/:lang\(zh\) \.about-hero h1/.test(baseCss) || !/:lang\(zh\) \.product-hero h1/.test(baseCss)) {
+if (
+  !/:lang\(zh\) \.about-hero h1/.test(baseCss) ||
+  !/:lang\(zh\) \.home-hero h1/.test(baseCss) ||
+  !/:lang\(zh\) \.product-hero h1/.test(baseCss)
+) {
   fail(
-    "Chinese optical rules for product/about display type",
-    "src/styles/base.css must set :lang(zh) tracking on .about-hero h1 and .product-hero h1",
+    "Chinese optical rules for product/about/home display type",
+    "src/styles/base.css must set :lang(zh) tracking on .about-hero h1, .home-hero h1, and .product-hero h1",
   );
 } else {
-  pass("Chinese optical rules for product/about display type");
+  pass("Chinese optical rules for product/about/home display type");
 }
 
 if (!/:lang\(zh\) \.lead/.test(baseCss)) {

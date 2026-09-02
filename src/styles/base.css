@@ -102,6 +102,7 @@ p {
 }
 
 :lang(zh) .about-hero h1,
+:lang(zh) .home-hero h1,
 :lang(zh) .product-hero h1 {
   letter-spacing: -0.01em;
   line-height: 1.12;
@@ -109,6 +110,8 @@ p {
 
 :lang(zh) .lead,
 :lang(zh) .prose,
+:lang(zh) .about-body,
+:lang(zh) .home-catalog-text,
 :lang(zh) .section-card-list p,
 :lang(zh) .faq-list p,
 :lang(zh) .product-flow p,

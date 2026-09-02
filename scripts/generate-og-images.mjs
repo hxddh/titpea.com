@@ -9,8 +9,8 @@ export const images = [
   {
     file: "og-home.png",
     eyebrow: "titpea.com",
-    title: "S3 investigations, and tools I use",
-    body: "Storage Agent and PageWise first. The rest are listed below.",
+    title: "Agents and tools",
+    body: "S3 ecosystem products, plus tools for reading and information discovery.",
     accent: "#161513",
     mark: "T",
     visual: "stack",

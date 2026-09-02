@@ -47,15 +47,38 @@
 .home-hero h1 {
   max-width: 22ch;
   margin: 0 0 10px;
-  font-size: var(--title-home);
+  font-size: var(--title-index);
   letter-spacing: -0.03em;
   line-height: 1.08;
 }
 
 .home-hero .lead,
-.about-hero .lead,
 .product-hero .lead {
   margin-inline: 0;
+}
+
+.home-hero .lead {
+  color: var(--muted);
+}
+
+.about-hero .lead {
+  color: var(--ink);
+}
+
+.about-body {
+  max-width: 58ch;
+  margin: 22px 0 0;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.62;
+}
+
+.about-body p {
+  margin: 0;
+}
+
+.about-body p + p {
+  margin-top: 0.85em;
 }
 
 .about-hero .actions,
@@ -78,23 +101,21 @@
 }
 
 .home-evidence-heading h2,
-.browser-band-copy h2,
-.about-section-heading h2 {
+.browser-band-copy h2 {
   margin: 0 0 14px;
-  font-size: var(--title-index);
+  font-size: var(--title-section);
   line-height: 1.08;
 }
 
-.home-evidence-heading p:not(.section-kicker),
-.browser-band-copy p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.62;
+.browser-band-copy {
+  margin-bottom: 26px;
 }
 
-.home-more-tools,
-.about-note {
+.home-evidence-heading {
+  margin-bottom: 18px;
+}
+
+.home-more-tools {
   border-top: 1px solid var(--rule);
   padding-top: calc((var(--section-y) + var(--section-y-short)) / 2);
   padding-bottom: 0;
@@ -111,10 +132,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
   align-items: end;
-}
-
-.home-evidence-heading {
-  margin-bottom: 26px;
 }
 
 .home-featured-card {
@@ -197,14 +214,9 @@
 
 .home-catalog-text {
   margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.about-section-heading,
-.browser-band-copy {
-  margin-bottom: 26px;
+  color: var(--ink);
+  font-size: var(--text-list-body);
+  line-height: 1.65;
 }
 
 .about-product-line-label {
@@ -219,16 +231,4 @@
   justify-content: flex-start;
   gap: 8px 28px;
   margin-top: 32px;
-}
-
-.about-section-heading p:not(.section-kicker) {
-  max-width: 58ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.68;
-}
-
-.about-section-heading p + p {
-  margin-top: 0.85em;
 }
