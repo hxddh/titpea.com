@@ -43,7 +43,10 @@ function activeSection(index: HTMLElement, sections: SectionLink[]) {
 
   if (hashed) {
     const rect = hashed.section.getBoundingClientRect();
-    if (rect.top >= lowerEdge && rect.top < window.innerHeight - 24) return hashed;
+    // A section parked on the sticky edge still counts: lowerEdge is index
+    // bottom + 2px, and short sections (padding-bottom: 0) sit exactly on
+    // scroll-margin. Keep the hashed target while it remains in view.
+    if (rect.top >= indexRect.bottom - 2 && rect.top < window.innerHeight - 24) return hashed;
   }
 
   return sections.reduce((active, item) => {

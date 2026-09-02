@@ -2,13 +2,13 @@
 .inside-section,
 .product-deep-dive {
   padding-top: var(--section-y);
-  padding-bottom: var(--section-y);
+  padding-bottom: 0;
 }
 
 .section-card-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 48px;
+  gap: 28px 48px;
 }
 
 @media (max-width: 900px) {

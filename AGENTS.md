@@ -7,7 +7,7 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 - [DESIGN.md](DESIGN.md) — judgment, named refusals, measurable floors, and settled page shape.
 - `src/styles/tokens.css` — spacing, type, color. Do not invent parallel tokens.
 
-Do not dump whole stylesheets into context. Use the token and class names already on the page. Judgment stays in `DESIGN.md`; repeatable mechanics stay in CSS; anything that can be asserted stays in CI.
+Do not dump whole stylesheets into context. Use the token and class names already on the page. Judgment stays in `DESIGN.md`; repeatable mechanics stay in CSS; anything that can be asserted stays in CI. Eye review follows the order in `DESIGN.md`.
 
 ## After copy, layout, or style changes
 

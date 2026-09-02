@@ -67,7 +67,7 @@ p {
   justify-content: space-between;
   gap: 20px;
   border-top: 1px solid var(--rule);
-  padding: 22px 0 34px;
+  padding: var(--section-y) 0 34px;
   color: var(--muted);
   font-family: var(--sans);
   font-size: var(--text-kicker);
@@ -129,7 +129,7 @@ p {
   grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
   gap: 84px;
   border-top: 1px solid var(--rule);
-  padding: var(--section-y) 0;
+  padding: var(--section-y) 0 0;
 }
 .skip-link {
   position: fixed;
