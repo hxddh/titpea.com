@@ -75,14 +75,7 @@ export type AboutPageModel = BasePageModel & {
     contactLabel: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
-  profile: {
-    label: string;
-    title: string;
-    body: string[];
-  };
-  focus: {
-    label: string;
-    title: string;
+  note: {
     body: string[];
   };
 };

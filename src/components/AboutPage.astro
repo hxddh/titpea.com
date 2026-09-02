@@ -27,19 +27,9 @@ const { model } = Astro.props;
     </div>
   </section>
 
-  <section class="about-focus-section shell">
+  <section class="about-note shell">
     <div class="about-section-heading">
-      <p class="section-kicker">{model.profile.label}</p>
-      <h2>{model.profile.title}</h2>
-      {model.profile.body.map((paragraph) => <p>{paragraph}</p>)}
-    </div>
-  </section>
-
-  <section class="about-defaults shell">
-    <div class="about-section-heading">
-      <p class="section-kicker">{model.focus.label}</p>
-      <h2>{model.focus.title}</h2>
-      {model.focus.body.map((paragraph) => <p>{paragraph}</p>)}
+      {model.note.body.map((paragraph) => <p>{paragraph}</p>)}
     </div>
   </section>
 </SiteLayout>

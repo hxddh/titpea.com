@@ -94,8 +94,7 @@
 }
 
 .home-more-tools,
-.about-focus-section,
-.about-defaults {
+.about-note {
   border-top: 1px solid var(--rule);
   padding-top: calc((var(--section-y) + var(--section-y-short)) / 2);
   padding-bottom: 0;
@@ -228,4 +227,8 @@
   color: var(--muted);
   font-size: 17px;
   line-height: 1.68;
+}
+
+.about-section-heading p + p {
+  margin-top: 0.85em;
 }

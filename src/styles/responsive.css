@@ -52,7 +52,7 @@
     font-size: var(--title-home);
   }
 
-  .about-focus-section,
+  .about-note,
   .product-screenshot-showcase,
   .split-content {
     grid-template-columns: 1fr;

@@ -29,7 +29,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.profileTitle],
+    expectedText: [copy.aboutHeadline, copy.aboutLead],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -50,15 +50,8 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
         { label: "Email", href: `mailto:${siteConfig.email}`, style: "ghost" },
       ],
     },
-    profile: {
-      label: copy.profileLabel,
-      title: copy.profileTitle,
-      body: [...copy.profileBody],
-    },
-    focus: {
-      label: copy.focusLabel,
-      title: copy.focusTitle,
-      body: [...copy.focusBody],
+    note: {
+      body: [...copy.aboutNote],
     },
   };
 }
