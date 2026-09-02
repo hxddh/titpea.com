@@ -10,7 +10,7 @@ export const images = [
     file: "og-home.png",
     eyebrow: "titpea.com",
     title: "S3 investigations, and tools I use",
-    body: "Storage Agent and PageWise first. The rest are listed below.",
+    body: "Storage Agent and PageWise.",
     accent: "#161513",
     mark: "T",
     visual: "stack",

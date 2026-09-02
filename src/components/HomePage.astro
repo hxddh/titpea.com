@@ -14,14 +14,12 @@ const { model } = Astro.props;
     <div class="home-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
-      <p class="lead">{model.hero.lead}</p>
     </div>
   </section>
 
-  <section class="home-evidence shell">
+  <section class="home-evidence shell" aria-labelledby="home-featured-label">
     <div class="home-evidence-heading">
-      <p class="section-kicker">{model.featured.label}</p>
-      <h2>{model.featured.title}</h2>
+      <h2 class="section-kicker" id="home-featured-label">{model.featured.label}</h2>
     </div>
     <div class="home-evidence-grid">
       {
@@ -47,7 +45,6 @@ const { model } = Astro.props;
 
   <section class="home-more-tools shell">
     <div class="browser-band-copy">
-      <p class="section-kicker">{model.more.label}</p>
       <h2>{model.more.title}</h2>
     </div>
     <div class="home-catalog-columns">

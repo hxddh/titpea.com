@@ -31,7 +31,9 @@ Do not ship any of these. Naming them is the point; vague “keep it clean” is
 - Product `h1` as the product name; the name stays in the eyebrow, the slogan is the heading
 - Home hero CTAs that duplicate the featured pair
 - Restating the hero headline as a closing slogan
-- Franchising the About lead (shelf / 手边 / day job) across Home titles
+- Shrinking the home contents line below section size so a featured slogan outranks the page title
+- About body copy in `--muted`, as if the facts were captions
+- Home leads that narrate the page (`其余列在下面`, `The rest are listed below`)
 - Restyling About headings (`The day job`, `白天做存储`) instead of cutting restated paragraphs
 - Tricolons and motif harvest on Home (`investigations, reading, and discovery`, `the rest of the shelf`)
 - FAQ as a collapsed accordion, or the section directory as sticky pills
@@ -61,12 +63,12 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 ## Home
 
 - The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
-- The home heading stays `--title-home`. It is a contents line, not a brand sentence, and it does not echo the About lead. The featured heading names the two jobs in the photographs.
+- The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. It does not echo the About lead. Featured photographs are labeled by product names; they do not get a second slogan.
 - Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list.
 - Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
 - Featured captions are the product name; they do not paraphrase the lead.
-- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. The catalog heading names the remainder (`其他产品` / `Everything else`), not file formats and not a sequel to a metaphor.
-- About keeps its lead. That sentence is said once. After it, one short note with facts the lead does not contain — not a Background / Principles essay, and not a heading-temperature rewrite.
+- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. The catalog heading uses `--title-section` and names the remainder (`其他产品` / `Everything else`). Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
+- About is one reading block: name, lead, and the short note in `--ink`. Do not park the facts in a second gray band.
 
 ## Product Hero
 
@@ -99,8 +101,8 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 ## Typography And Copy
 
 - Load Inter for Latin. CJK falls back to the system face. Do not list a webfont that is never fetched.
-- Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing. Product and About `h1` track at `-0.03em` with line-height `1.06`. Chinese pages (`:lang(zh)`) use `-0.01em` / `1.12` on those headings, and `1.75` on lead, prose, and list body — Inter's Latin tracking must not crush CJK.
-- List body is `--text-list-body` (16px / 1.65). Keep lead at 18px and kickers at 12px. Do not shrink the product/About display size to make a page feel lighter.
+- Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing. Product and About `h1` track at `-0.03em` with line-height `1.06`. Chinese pages (`:lang(zh)`) use `-0.01em` / `1.12` on product, About, and home headings, and `1.75` on lead, prose, About body, catalog one-liners, and list body — Inter's Latin tracking must not crush CJK.
+- List body is `--text-list-body` (16px / 1.65). Keep product/About lead at 18px and kickers at 12px. Do not shrink the product/About display size to make a page feel lighter. Do not shrink the home heading below `--title-index`.
 - The first viewport is the argument (product: slogan and object; home: the featured pair). Later FAQ, deep-dive, and tables are the audit path. Do not add a second summary that restates the same answer at equal prominence.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Home is a directory. About's lead is said once. Do not flatten product pages by deleting opinionated titles. On short product pages, delete equal-weight cards that only restate the lead.

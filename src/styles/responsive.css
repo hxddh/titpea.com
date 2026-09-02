@@ -49,10 +49,9 @@
 
   .home-hero h1 {
     max-width: 18ch;
-    font-size: var(--title-home);
+    font-size: var(--title-index);
   }
 
-  .about-note,
   .product-screenshot-showcase,
   .split-content {
     grid-template-columns: 1fr;
@@ -206,10 +205,8 @@
     flex-direction: column;
   }
 
-  .home-evidence-heading h2,
-  .browser-band-copy h2,
-  .about-section-heading h2 {
-    font-size: var(--title-index);
+  .browser-band-copy h2 {
+    font-size: var(--title-section);
   }
 
   .inside-copy h2,
