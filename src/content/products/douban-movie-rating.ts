@@ -26,17 +26,11 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       positioningLabel: "Context, not a new site",
       positioning: [
         {
-          title: "Other ratings in place",
-          body: "You browse Douban movie pages but want quick context from IMDb, Rotten Tomatoes, and Metacritic before deciding what to watch.",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
-        {
           title: "Douban stays the page",
           body: "It does not replace Douban ratings; it adds context from other rating sources.",
           intent: "boundary",
           surface: "browser",
+          priority: "primary",
         },
       ],
       faqLabel: "Matching and sources",
@@ -63,17 +57,11 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
       positioningLabel: "补充对照，不另开站点",
       positioning: [
         {
-          title: "想在页内对照其他评分",
-          body: "浏览豆瓣电影页时，想顺手看看 IMDb、Rotten Tomatoes 或 Metacritic 的参考评分。",
-          intent: "fit",
-          surface: "browser",
-          priority: "primary",
-        },
-        {
           title: "豆瓣仍是这一页",
           body: "它不替代豆瓣评分，只补充其他来源的参考信息。",
           intent: "boundary",
           surface: "browser",
+          priority: "primary",
         },
       ],
       faqLabel: "匹配与来源",

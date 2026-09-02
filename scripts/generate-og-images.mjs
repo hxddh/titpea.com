@@ -9,8 +9,8 @@ export const images = [
   {
     file: "og-home.png",
     eyebrow: "titpea.com",
-    title: "Agents and tools",
-    body: "S3 ecosystem products, plus tools for reading and information discovery.",
+    title: "Tools I keep at hand",
+    body: "Cloud object storage is the day job. Investigations, reading, and discovery stay on the same shelf.",
     accent: "#161513",
     mark: "T",
     visual: "stack",
