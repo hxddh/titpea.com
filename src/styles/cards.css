@@ -7,6 +7,10 @@
   padding-top: 18px;
 }
 
+.section-card-list > article.primary {
+  grid-column: 1 / -1;
+}
+
 .section-card-list small {
   width: auto;
   padding: 0;

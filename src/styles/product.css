@@ -10,7 +10,7 @@
   align-items: start;
   border-top: 1px solid var(--rule);
   padding-top: var(--section-y);
-  padding-bottom: var(--section-y);
+  padding-bottom: 0;
 }
 
 .screenshot-showcase-copy h2 {
@@ -239,7 +239,7 @@
   gap: 28px;
   border-top: 1px solid var(--rule);
   padding-top: var(--section-y);
-  padding-bottom: var(--section-y);
+  padding-bottom: 0;
   scroll-margin-top: var(--section-index-desktop-scroll-margin);
 }
 
@@ -405,7 +405,6 @@
 .faq-section > .section-kicker {
   width: 100%;
   border-top: 1px solid var(--line);
-  padding-top: 32px;
 }
 
 .provider-list {
@@ -456,7 +455,7 @@
   display: grid;
   justify-items: start;
   border-top: 1px solid var(--rule);
-  padding: var(--section-y-short) 0 var(--section-y);
+  padding: var(--section-y) 0 var(--section-y);
   text-align: left;
 }
 

@@ -162,6 +162,43 @@ if (!/--text-list-body:/.test(read("src/styles/tokens.css"))) {
   pass("list body size is a token");
 }
 
+if (!/grid-column:\s*1\s*\/\s*-1/.test(read("src/styles/cards.css"))) {
+  fail(
+    "primary cards take the full row",
+    "src/styles/cards.css must let .section-card-list > article.primary span the row",
+  );
+} else {
+  pass("primary cards take the full row");
+}
+
+const productCss = read("src/styles/product.css");
+const kickerRule = productCss.match(
+  /\.positioning-section \.section-kicker,[\s\S]*?\.faq-section > \.section-kicker \{[\s\S]*?\}/,
+);
+if (!kickerRule) {
+  fail(
+    "equal-weight kickers do not add a second pad",
+    "missing equal-weight section-kicker rule in src/styles/product.css",
+  );
+} else if (/padding-top/.test(kickerRule[0])) {
+  fail(
+    "equal-weight kickers do not add a second pad",
+    "equal-weight section kickers must not add padding-top on top of section padding",
+  );
+} else {
+  pass("equal-weight kickers do not add a second pad");
+}
+
+const layoutsCss = read("src/styles/layouts.css");
+if (!/\.product-deep-dive \{[\s\S]*?padding-bottom:\s*0/.test(layoutsCss)) {
+  fail(
+    "section padding-bottom has one owner",
+    "src/styles/layouts.css must set padding-bottom: 0 on stacked product sections",
+  );
+} else {
+  pass("section padding-bottom has one owner");
+}
+
 const chromeStyles = [
   "src/styles/base.css",
   "src/styles/layouts.css",

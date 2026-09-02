@@ -77,7 +77,7 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 
 ## Product Body
 
-- Equal-weight sections — fit and limits, features, numbered workflows — are two-column hairline lists. Card titles name the actual limit or surface (`Apple Silicon and Windows`, `The tray does not approve`).
+- Equal-weight sections — fit and limits, features, numbered workflows — are two-column hairline lists. Card titles name the actual limit or surface (`Apple Silicon and Windows`, `The tray does not approve`). A `primary` card may take the full row so the geometry matches the argument. Do not force materially unequal findings into equal cells, and do not leave an orphaned third peer in a leftover cell if one item already carries the decision.
 - Charts, terminals, and the Pulse menu-bar visual keep the box that is the product.
 - Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ. Workflow evidence tags are mono text, not chips.
 - Browser extensions, native apps, and menu-bar apps use `--section-y-short`; long evidence pages keep `--section-y`.
@@ -88,6 +88,8 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - The wordmark is the word Titpea. Navigation dropdowns and the mobile menu are hairline lists on paper, not floating rounded panels. The mobile menu is a hairline list, not a 1px tile stack.
 - Language and theme controls are text, not boxed icon buttons. Theme reads `Dark` / `Light` (and `深色` / `浅色`).
 - Hairlines have pressure. `--rule` cuts major turns (screenshot, deep-dive, results, closing CTA, footer, home catalog and About bands). `--line` separates equal-weight section kickers and rows in lists, FAQ, and workflows. `--chrome-line` is the header and sticky directory. Do not use one 1px gray for all three.
+- Every gap has one owner. Adjacent sections use padding-top only; the next section or the footer owns the turn. Heading → first paragraph stays close; peer rows in a list are tighter than a section turn (`--section-y`). Do not stack padding-bottom plus padding-top plus a kicker pad on the same cut.
+- If the page feels busy, remove, combine, or reorder content. If it feels loud, reduce competing weight, rules, and scale. Do not do both at once, and do not shrink display type to make a page feel lighter.
 - Site chrome radius is zero. `--radius-window` is the only exception, and only on the product object itself.
 - Real product screenshots sit on paper as figures: hairline, no card fill, no radius, no drop shadow. Analysis panels, scan plans, numbered flows, KPI strips, and charts inside a product window sit the same way. Charts, terminals, and CSS product mocks keep one outer contour (`--radius-window` and `--soft-line`) on `--paper` without a site drop shadow. Inside a window, inputs and chips are hairline text.
 
@@ -96,6 +98,7 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - Load Inter for Latin. CJK falls back to the system face. Do not list a webfont that is never fetched.
 - Display headings use weight 600 and tighter negative tracking at large sizes. Do not create hierarchy only by jumping to 700 at default letter-spacing. Product and About `h1` track at `-0.03em` with line-height `1.06`. Chinese pages (`:lang(zh)`) use `-0.01em` / `1.12` on those headings, and `1.75` on lead, prose, and list body — Inter's Latin tracking must not crush CJK.
 - List body is `--text-list-body` (16px / 1.65). Keep lead at 18px and kickers at 12px. Do not shrink the product/About display size to make a page feel lighter.
+- The first viewport is the argument (product: slogan and object; home: the featured pair). Later FAQ, deep-dive, and tables are the audit path. Do not add a second summary that restates the same answer at equal prominence.
 - Product descriptions should be compact and factual. Avoid generic phrases that could describe any developer tool.
 - Chinese copy should read as natural technical Chinese. Keep command names and established terms such as `skill` and `trace` when translation reduces clarity.
 - `mono` is for meta, commands, terminals, and data labels. Navigation, buttons, kickers, eyebrows, footer, menu group titles, catalog roles, and the product section directory use `sans`. Navigation group labels stay short.
@@ -145,5 +148,11 @@ Do not introduce a third accent color or use green/orange decoratively.
   `a11y:check` runs structural checks, `content:check` keeps headlines and closings honest,
   and `facts:external` keeps external claims fresh.
   After an intentional visual change, refresh the baselines with `npm run visual:approve`.
-- Still review by eye: title line count, text density, image cropping, and horizontal overflow.
+- Still review by eye, in this order:
+  1. First read — if the reader saw only the first viewport, would they remember the central relationship, not merely the title?
+  2. Language — did simplification preserve every qualifier? Did authoring words stay out of the page?
+  3. Composition — one dominant object per reading moment; no accidental empty rectangles; geometry matches the argument.
+  4. Rhythm — each visible gap has one owner; peer values share type role and alignment.
+  5. Restraint — if a surface, rule, or section can go without losing meaning, remove it. Diagnose busy versus loud separately.
 - Every product claim must be traceable to project documentation, a screenshot, a test result, or source code.
+- Encode each accepted correction in the narrowest place: judgment in this file, repeatable mechanics in CSS, anything that can be asserted in CI.
