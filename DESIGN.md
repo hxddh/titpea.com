@@ -63,12 +63,13 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 ## Home
 
 - The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
-- The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. It does not echo the About lead. Featured photographs are labeled by product names; they do not get a second slogan.
-- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list.
+- Keep the last complete Home sentences: title (`Agent 和工具` / `Agents and tools`), lead, featured heading (`排查存储，阅读留痕` / `Storage investigations, and reading with a trail`), and catalog heading (`存储这一线，以及手头的工具` / `The storage line, and tools I keep`). Do not empty Home into a taxonomy plus a UI instruction (`其余列在下面`). Do not franchise the About shelf sentence onto Home titles.
+- The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. Featured photographs are labeled by product names; they do not get a second slogan.
+- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`.
 - Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
 - Featured captions are the product name; they do not paraphrase the lead.
-- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. The catalog heading uses `--title-section` and names the remainder (`其他产品` / `Everything else`). Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
-- About is one reading block: name, lead, and the short note in `--ink`. Do not park the facts in a second gray band.
+- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
+- About is one reading block: name, the lead (once), and the four original body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
 
 ## Product Hero
 

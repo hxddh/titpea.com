@@ -52,6 +52,15 @@
   line-height: 1.08;
 }
 
+.home-hero .lead,
+.product-hero .lead {
+  margin-inline: 0;
+}
+
+.home-hero .lead {
+  color: var(--muted);
+}
+
 .about-hero .lead {
   color: var(--ink);
 }
@@ -70,10 +79,6 @@
 
 .about-body p + p {
   margin-top: 0.85em;
-}
-
-.product-hero .lead {
-  margin-inline: 0;
 }
 
 .about-hero .actions,
@@ -95,6 +100,7 @@
   margin: 0;
 }
 
+.home-evidence-heading h2,
 .browser-band-copy h2 {
   margin: 0 0 14px;
   font-size: var(--title-section);
@@ -107,10 +113,6 @@
 
 .home-evidence-heading {
   margin-bottom: 18px;
-}
-
-.home-evidence-heading .section-kicker {
-  margin-bottom: 0;
 }
 
 .home-more-tools {

@@ -35,7 +35,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
     path,
     alternatePath,
     primaryCta: flagship?.href ?? catalog.featuredProductPath,
-    expectedText: [copy.homeTitle, copy.moreToolsTitle],
+    expectedText: [copy.homeTitle, copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
     seo: buildPageSeo({
       title: copy.homeMetaTitle,
       description,
@@ -49,9 +49,11 @@ export function buildHomePage(locale: Locale): HomePageModel {
     hero: {
       eyebrow: copy.productIndex,
       title: copy.homeTitle,
+      lead: copy.homeLead,
     },
     featured: {
       label: copy.featuredLabel,
+      title: copy.featuredTitle,
       items: [
         {
           name: flagship?.name ?? "Storage Agent",
@@ -82,6 +84,7 @@ export function buildHomePage(locale: Locale): HomePageModel {
       ],
     },
     more: {
+      label: copy.moreToolsLabel,
       title: copy.moreToolsTitle,
       groups: [
         {

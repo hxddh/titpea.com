@@ -44,9 +44,11 @@ export type HomePageModel = BasePageModel & {
   hero: {
     eyebrow: string;
     title: string;
+    lead: string;
   };
   featured: {
     label: string;
+    title: string;
     items: Array<{
       name: string;
       href: string;
@@ -54,6 +56,7 @@ export type HomePageModel = BasePageModel & {
     }>;
   };
   more: {
+    label: string;
     title: string;
     groups: Array<{
       label: string;

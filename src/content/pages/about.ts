@@ -29,7 +29,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.aboutLead],
+    expectedText: [copy.aboutHeadline, copy.aboutLead, ...copy.aboutNote],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
