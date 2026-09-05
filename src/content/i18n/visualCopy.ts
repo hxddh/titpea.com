@@ -18,19 +18,18 @@ export const visualCopy = {
     },
     storageAgent: {
       en: {
-        heroAlt: "Storage Agent welcome screen with six read-only investigation tasks",
-        supportingAlt: "Storage Agent explaining a storage-class mismatch from inspected object evidence",
-        supportingKicker: "Example investigation",
-        supportingTitle: "Example: storage-class mismatch from object evidence",
-        supportingBody:
-          "The agent compares object metadata and content, explains a storage-class mismatch, and leaves evidence you can open before the next step.",
+        heroAlt: "Storage Agent comparing object evidence to explain a storage-class mismatch",
+        supportingAlt: "Storage Agent welcome screen with six investigation starting points",
+        supportingKicker: "Choose a starting point",
+        supportingTitle: "Start a new investigation",
+        supportingBody: "Open a conversation or choose an investigation task from the welcome screen.",
       },
       zh: {
-        heroAlt: "Storage Agent 欢迎页，包含六类只读调查任务",
-        supportingAlt: "Storage Agent 根据对象证据解释存储类型差异",
-        supportingKicker: "一次调查示例",
-        supportingTitle: "示例：从对象证据看出存储类型差异",
-        supportingBody: "Agent 对比对象元数据与内容，解释存储类型差异，并留下你可以打开的证据，再决定下一步。",
+        heroAlt: "Storage Agent 对比对象证据，解释存储类型差异",
+        supportingAlt: "Storage Agent 欢迎页，提供六类调查起点",
+        supportingKicker: "选择起点",
+        supportingTitle: "开始一次调查",
+        supportingBody: "打开会话，或从欢迎页选择一项调查任务。",
       },
     },
     goban: {
@@ -319,29 +318,29 @@ export const visualCopy = {
   celagentTerminal: {
     en: {
       kicker: "celagent · BOS session",
-      status: "cas ok",
+      status: "command reference",
       command: "celagent",
       filesLabel: "COMMANDS",
       files: ["celagent", "celagent list", "celagent <id>  # restore from BOS", "celagent task ledger"],
       briefLabel: "persistence",
-      brief: "Authority: BOS · Cache: worker SQLite · Restore: read BOS first · RPO≈0",
-      footnotes: ["Pi TUI · Celld/BOS", "CAS If-Match · cross-machine restore"],
+      brief: "Completed turns → BOS write queue → restore by session ID after a successful write",
+      footnotes: ["Configure both machines", "Conditional writes detect conflicts"],
     },
     zh: {
       kicker: "celagent · BOS 会话",
-      status: "cas 通过",
+      status: "命令参考",
       command: "celagent",
       filesLabel: "命令",
       files: ["celagent", "celagent list", "celagent <id>  # 从 BOS 恢复", "celagent task ledger"],
       briefLabel: "持久化",
-      brief: "权威：BOS · 缓存：worker SQLite · 恢复：先读 BOS · RPO≈0",
-      footnotes: ["Pi TUI · Celld/BOS", "CAS If-Match · 跨机恢复"],
+      brief: "完成回合 → BOS 写入队列 → 写入成功后按会话 ID 恢复",
+      footnotes: ["两台机器均需配置", "条件写入检测冲突"],
     },
   },
 
   pulseMenuBar: {
     en: {
-      menubarLabel: "menu bar",
+      menubarLabel: "Illustrative session list",
       glanceTitle: "2 · 4m",
       headerStatus: "Waiting · 2",
       headerAgents: "Claude · Codex",
@@ -377,7 +376,7 @@ export const visualCopy = {
       footnotes: ["local probe · harvest · hooks", "click a row to focus the terminal"],
     },
     zh: {
-      menubarLabel: "菜单栏",
+      menubarLabel: "会话列表示意",
       glanceTitle: "2 · 4m",
       headerStatus: "等待 · 2",
       headerAgents: "Claude · Codex",
@@ -416,7 +415,7 @@ export const visualCopy = {
 
   worldMachineProjection: {
     en: {
-      kicker: "world-machine · projection",
+      kicker: "world-machine · illustrative view",
       status: "pre-alpha",
       briefingLabel: "Briefing",
       briefing: "A place wakes. Notice the first relationship forming.",
@@ -429,7 +428,7 @@ export const visualCopy = {
       footnotes: ["Entity → Action → Event → State", "ad-hoc · not notarized"],
     },
     zh: {
-      kicker: "world-machine · 投影",
+      kicker: "world-machine · 界面示意",
       status: "pre-alpha",
       briefingLabel: "简报",
       briefing: "一个地方醒来。注意正在形成的第一段关系。",

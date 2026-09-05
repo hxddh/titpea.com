@@ -63,13 +63,13 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 ## Home
 
 - The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
-- Keep the last complete Home sentences: title (`Agent 和工具` / `Agents and tools`), lead, featured heading (`排查存储，阅读留痕` / `Storage investigations, and reading with a trail`), and catalog heading (`存储这一线，以及手头的工具` / `The storage line, and tools I keep`). Do not empty Home into a taxonomy plus a UI instruction (`其余列在下面`). Do not franchise the About shelf sentence onto Home titles.
+- Home wording follows the current content model. The concise introduction identifies the author; section headings are Selected work / 主要作品 and More tools / 更多工具. Do not duplicate these with kickers.
 - The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. Featured photographs are labeled by product names; they do not get a second slogan.
 - Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`.
 - Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
-- Featured captions are the product name; they do not paraphrase the lead.
+- Featured captions are the product name; they do not paraphrase the lead. On single-column screens put the caption above the image so the name is visible before a tall screenshot.
 - Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
-- About is one reading block: name, the lead (once), and the four original body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
+- About is one reading block: name, the lead (once), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
 
 ## Product Hero
 
@@ -163,3 +163,11 @@ Do not introduce a third accent color or use green/orange decoratively.
   5. Restraint — if a surface, rule, or section can go without losing meaning, remove it. Diagnose busy versus loud separately.
 - Every product claim must be traceable to project documentation, a screenshot, a test result, or source code.
 - Encode each accepted correction in the narrowest place: judgment in this file, repeatable mechanics in CSS, anything that can be asserted in CI.
+
+## Content release, September 2026
+
+- Home groups are Storage and inspection, Agent tools, Everyday tools, and Experimental. Keep experimental maturity visible.
+- Storage Agent leads with the existing investigation result screenshot; the welcome image is a secondary starting-point illustration.
+- Product copy starts with an action and result. Preserve conditions on model data, waiting signals, and successfully persisted sessions. Do not promise zero data loss from a recovery feature.
+- Label schematic interface examples explicitly; they are not captured execution evidence.
+- Keep each metadata segment together when wrapping, including license names.

@@ -283,7 +283,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             alt: copy.heroAlt,
           }
         : {
-            src: siteConfig.assets.screenshots.storageAgentWelcome,
+            src: siteConfig.assets.screenshots.storageAgentInvestigation,
             width: 1800,
             height: 1290,
             alt: copy.heroAlt,
@@ -299,7 +299,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             body: copy.supportingBody,
           }
         : {
-            src: siteConfig.assets.screenshots.storageAgentInvestigation,
+            src: siteConfig.assets.screenshots.storageAgentWelcome,
             width: 1800,
             height: 1290,
             alt: copy.supportingAlt,

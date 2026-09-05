@@ -36,7 +36,7 @@ const copy = model.copy;
         <a class="button primary" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
-      <p class="meta-line">{copy.meta}</p>
+      <p class="meta-line">{copy.meta.split(" · ").map((part) => <span>{part}</span>)}</p>
     </div>
     <div class="hero-visual-frame">
       <ProductVisual visual={model.visual} />
