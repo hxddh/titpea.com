@@ -30,7 +30,7 @@
       "desktop app",
       "credentials stay local"
     ],
-    "latestRelease": "v1.10.0"
+    "latestRelease": "v1.17.3"
   },
   "storageops": {
     "source": "manual",
@@ -131,7 +131,7 @@
     "repository": "hxddh/goban",
     "licenseKey": "mit",
     "licenseLabel": "MIT",
-    "latestRelease": "v1.62.0",
+    "latestRelease": "v1.63.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",
@@ -156,7 +156,7 @@
     "repository": "hxddh/chessboard",
     "licenseKey": "gpl-3.0",
     "licenseLabel": "GPLv3",
-    "latestRelease": "v5.0.0",
+    "latestRelease": "v5.2.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",

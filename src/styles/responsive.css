@@ -220,3 +220,16 @@
     font-size: var(--title-section);
   }
 }
+
+@media (max-width: 900px) {
+  .home-featured-card figure {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-featured-caption {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+}

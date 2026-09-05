@@ -59,11 +59,11 @@ export function buildHomePage(locale: Locale): HomePageModel {
           name: flagship?.name ?? "Storage Agent",
           href: flagship?.href ?? catalog.featuredProductPath,
           image: {
-            src: siteConfig.assets.screenshots.storageAgentWelcome,
+            src: siteConfig.assets.screenshots.storageAgentInvestigation,
             alt:
               locale === "en"
-                ? "Storage Agent welcome screen with read-only investigation tasks"
-                : "Storage Agent 欢迎页与只读调查任务",
+                ? "Storage Agent comparing object evidence in a storage investigation"
+                : "Storage Agent 对比存储调查中的对象证据",
             width: 1800,
             height: 1290,
           },
@@ -89,11 +89,21 @@ export function buildHomePage(locale: Locale): HomePageModel {
       groups: [
         {
           label: copy.lineStorageLabel,
-          items: catalog.storage.filter((item) => !item.isPrimary),
+          items: catalog.storage.filter((item) => !item.isPrimary && item.slug !== "celagent"),
+        },
+        {
+          label: copy.lineAgentLabel,
+          items: catalog.all.filter((item) => ["celagent", "pulse", "agent-radar"].includes(item.slug ?? "")),
         },
         {
           label: copy.linePersonalLabel,
-          items: catalog.personal.filter((item) => !item.isPrimary),
+          items: catalog.personal.filter(
+            (item) => !item.isPrimary && !["pulse", "agent-radar", "world-machine"].includes(item.slug ?? ""),
+          ),
+        },
+        {
+          label: copy.lineExperimentalLabel,
+          items: catalog.all.filter((item) => item.slug === "world-machine"),
         },
       ],
     },

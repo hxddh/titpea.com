@@ -87,12 +87,15 @@
 }
 
 .meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1ch;
+  row-gap: 0.4em;
   max-width: 64ch;
   margin: 18px 0 0;
   color: var(--label);
   font-family: var(--mono);
   font-size: var(--text-kicker);
-  text-wrap: balance;
 }
 
 .hero-visual-frame {
@@ -231,4 +234,12 @@
   justify-content: flex-start;
   gap: 8px 28px;
   margin-top: 32px;
+}
+
+.meta-line > span {
+  white-space: nowrap;
+}
+
+.meta-line > span:not(:last-child)::after {
+  content: " ·";
 }
