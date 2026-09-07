@@ -5,8 +5,8 @@
 
 .product-screenshot-showcase {
   display: grid;
-  grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
-  gap: 54px;
+  grid-template-columns: minmax(220px, 0.28fr) minmax(0, 0.72fr);
+  gap: 64px;
   align-items: start;
   border-top: 1px solid var(--rule);
   padding-top: var(--section-y);
@@ -45,8 +45,13 @@
 
 .product-deep-dive {
   display: grid;
-  gap: 26px;
+  grid-template-columns: minmax(240px, 0.3fr) minmax(0, 0.7fr);
+  gap: 64px;
   border-top: 1px solid var(--rule);
+}
+
+.product-deep-dive > :not(.deep-dive-heading) {
+  grid-column: 2;
 }
 
 .deep-dive-heading {
@@ -378,8 +383,9 @@
 
 .inside-section {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 34px;
+  grid-template-columns: minmax(250px, 0.34fr) minmax(0, 0.66fr);
+  gap: 64px;
+  border-top: 1px solid var(--rule);
 }
 
 .inside-copy h2,
@@ -404,7 +410,7 @@
 #cases .section-kicker,
 .faq-section > .section-kicker {
   width: 100%;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule);
 }
 
 .provider-list {
@@ -468,8 +474,42 @@
 .product-page-browserExtension .product-hero,
 .product-page-nativeApp .product-hero,
 .product-page-menuBarApp .product-hero {
-  padding-top: 56px;
-  padding-bottom: 36px;
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+.product-page-agentWorkbench .product-hero,
+.product-page-documentAgent .product-hero {
+  grid-template-columns: minmax(420px, 0.86fr) minmax(0, 1.14fr);
+}
+
+.product-page-agentWorkbench .hero-visual-frame,
+.product-page-documentAgent .hero-visual-frame {
+  padding-top: 20px;
+  border-top: 3px solid var(--data-ref);
+}
+
+.product-page-storageCli .product-hero,
+.product-page-markdownRadar .product-hero,
+.product-page-cliAgent .product-hero,
+.product-page-agentPackage .product-hero {
+  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+}
+
+.product-page-worldRuntime .product-hero {
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+}
+
+.product-page-worldRuntime .hero-visual-frame {
+  padding: 20px;
+  border-top: 3px solid var(--data-caution);
+  background: color-mix(in srgb, var(--data-caution) 6%, transparent);
+}
+
+.product-page-browserExtension .product-hero,
+.product-page-nativeApp .product-hero,
+.product-page-menuBarApp .product-hero {
+  grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.08fr);
 }
 
 .product-page-browserExtension .final-cta,

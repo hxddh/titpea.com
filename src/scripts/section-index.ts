@@ -58,6 +58,14 @@ function activeSection(index: HTMLElement, sections: SectionLink[]) {
 function mountSectionIndex(index: HTMLElement) {
   const sections = collectSections(index);
   if (sections.length === 0) return;
+  const toggle = index.querySelector<HTMLButtonElement>("[data-section-index-toggle]");
+  const symbol = index.querySelector<HTMLElement>("[data-section-index-symbol]");
+
+  toggle?.addEventListener("click", () => {
+    const open = index.toggleAttribute("data-menu-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    if (symbol) symbol.textContent = open ? "−" : "+";
+  });
 
   let scheduled = false;
   const update = () => {
@@ -74,6 +82,10 @@ function mountSectionIndex(index: HTMLElement) {
     item.link.addEventListener("click", (event) => {
       event.preventDefault();
       setActive(sections, item.id);
+      index.removeAttribute("data-menu-open");
+      toggle?.setAttribute("aria-expanded", "false");
+      if (symbol) symbol.textContent = "+";
+
       const root = document.documentElement;
       const previousScrollBehavior = root.style.scrollBehavior;
       const sectionTop = item.section.getBoundingClientRect().top + window.scrollY;

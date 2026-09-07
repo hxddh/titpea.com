@@ -59,6 +59,7 @@ for (const target of baseline.targets) {
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
   if (target.state === "faq") {
+    if (target.viewport === "mobile") await page.locator("[data-section-index-toggle]").click();
     const faqLink = page.locator('.product-section-index a[href="#faq"]');
     const count = await faqLink.count();
     if (count !== 1) failures.push(`${target.path} ${target.viewport}: expected one FAQ section link, found ${count}`);

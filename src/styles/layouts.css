@@ -5,6 +5,17 @@
   padding-bottom: 0;
 }
 
+.content-section {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.22fr) minmax(0, 0.78fr);
+  gap: 48px;
+}
+
+.content-section > .section-kicker {
+  margin: 0;
+  padding-top: 18px;
+}
+
 .section-card-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -12,6 +23,11 @@
 }
 
 @media (max-width: 900px) {
+  .content-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .section-card-list {
     grid-template-columns: 1fr;
   }

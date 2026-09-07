@@ -6,6 +6,7 @@ export const headerCopy: Record<
     primaryLabel: string;
     menuLabel: string;
     menuText: string;
+    sectionDirectory: string;
     themeToDark: string;
     themeToLight: string;
     themeDarkText: string;
@@ -37,6 +38,7 @@ export const headerCopy: Record<
     primaryLabel: "Primary",
     menuLabel: "Open site menu",
     menuText: "Menu",
+    sectionDirectory: "On this page",
     themeToDark: "Switch to dark theme",
     themeToLight: "Switch to light theme",
     themeDarkText: "Dark",
@@ -67,6 +69,7 @@ export const headerCopy: Record<
     primaryLabel: "主导航",
     menuLabel: "打开站点菜单",
     menuText: "菜单",
+    sectionDirectory: "本页目录",
     themeToDark: "切换到深色主题",
     themeToLight: "切换到浅色主题",
     themeDarkText: "深色",
