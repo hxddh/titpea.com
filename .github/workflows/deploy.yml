@@ -33,9 +33,9 @@ jobs:
       - run: npm run copy:check
       - run: npm run model:check
       - run: npm run manifest:check
-      - run: npm run security:check
       - run: npm run assets:check
       - run: npm run build
+      - run: npm run security:check
       - run: npm run copy:lint
       - run: npm run a11y:check
       # Browser-based QA (Playwright download + preview server + visual/QA) is
