@@ -3,7 +3,7 @@
   overflow: hidden;
   border: 1px solid var(--soft-line);
   border-radius: var(--radius-window);
-  background: var(--paper);
+  background: var(--paper-raised);
   font-size: 12px;
 }
 
@@ -20,6 +20,18 @@
   width: 100%;
   height: auto;
   border: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .product-screenshot-visual img,
+:root[data-theme="dark"] .home-featured-card img {
+  filter: brightness(0.78) saturate(0.88);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .product-screenshot-visual img,
+  :root:not([data-theme="light"]) .home-featured-card img {
+    filter: brightness(0.78) saturate(0.88);
+  }
 }
 
 .workbench-titlebar {
@@ -620,7 +632,7 @@
   overflow: hidden;
   border: 1px solid var(--soft-line);
   border-radius: var(--radius-window);
-  background: var(--paper);
+  background: var(--paper-raised);
   font-size: 12px;
 }
 
@@ -766,7 +778,7 @@
   overflow: hidden;
   border: 1px solid var(--soft-line);
   border-radius: var(--radius-window);
-  background: var(--paper);
+  background: var(--paper-raised);
 }
 
 .httpmon-terminal-visual,

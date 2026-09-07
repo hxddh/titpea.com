@@ -51,6 +51,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       ],
     },
     note: {
+      labels: [...copy.aboutNoteLabels],
       body: [...copy.aboutNote],
     },
   };

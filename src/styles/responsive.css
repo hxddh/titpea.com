@@ -2,7 +2,7 @@
   .shell,
   .site-header,
   .site-footer {
-    width: min(1080px, calc(100% - 32px));
+    width: min(var(--shell), calc(100% - 32px));
   }
 
   .site-header {
@@ -20,22 +20,41 @@
   .home-hero,
   .about-hero,
   .product-hero {
-    gap: 42px;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .product-page .product-hero {
+    grid-template-columns: 1fr;
   }
 
   .about-hero {
     padding-top: 54px;
-    padding-bottom: 0;
+    padding-bottom: 48px;
+  }
+
+  .about-redesign-copy {
+    position: static;
   }
 
   .home-hero {
-    padding-top: 36px;
-    padding-bottom: 12px;
+    padding-top: 44px;
+    padding-bottom: 34px;
   }
 
-  .product-hero,
-  .home-catalog-columns {
+  .home-copy {
     grid-template-columns: 1fr;
+  }
+
+  .home-copy .eyebrow,
+  .home-copy h1,
+  .home-copy .lead {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .home-copy h1 {
+    margin-top: 0;
   }
 
   .about-hero h1 {
@@ -53,9 +72,15 @@
   }
 
   .product-screenshot-showcase,
-  .split-content {
+  .split-content,
+  .inside-section,
+  .product-deep-dive {
     grid-template-columns: 1fr;
     gap: 34px;
+  }
+
+  .product-deep-dive > :not(.deep-dive-heading) {
+    grid-column: 1;
   }
 
   .home-evidence-grid,
@@ -112,37 +137,35 @@
     padding: 20px;
   }
 
+  .product-section-index-name,
+  .product-section-index-links {
+    display: none;
+  }
+
   .product-section-index {
-    grid-template-columns: 1fr;
-    gap: 0;
-    width: 100%;
-    padding: 4px 0;
+    position: static;
+    display: block;
+    margin-top: 0;
+    padding-block: 0;
+    background: transparent;
   }
 
-  .product-section-index > span {
-    display: none;
+  .product-section-index-toggle {
+    display: flex;
   }
 
-  .product-section-index div {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-padding-inline: 16px;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    mask-image: linear-gradient(to right, #000 92%, transparent);
+  .product-section-index[data-menu-open] .product-section-index-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 20px;
+    overflow: visible;
+    padding: 2px 0 12px;
   }
 
-  .product-section-index div::-webkit-scrollbar {
-    display: none;
-  }
-
-  .product-section-index a {
-    flex: 0 0 auto;
+  .product-section-index-links a {
     min-height: 44px;
     padding: 8px 0;
-    scroll-snap-align: start;
+    border-top: 1px solid var(--line);
   }
 
   .inside-section,
@@ -159,6 +182,10 @@
 }
 
 @media (max-width: 640px) {
+  .mobile-menu-panel {
+    width: calc(100vw - 32px);
+  }
+
   .actions {
     margin-top: 26px;
   }
@@ -170,6 +197,74 @@
 
   .lead {
     font-size: 17px;
+  }
+
+  .product-hero {
+    padding-top: 48px;
+    padding-bottom: 38px;
+  }
+
+  .product-hero h1,
+  .about-hero h1 {
+    font-size: clamp(2.5rem, 12vw, 3.15rem);
+  }
+
+  .home-evidence {
+    padding-bottom: 60px;
+  }
+
+  .home-evidence-grid {
+    gap: 58px;
+  }
+
+  .home-featured-card,
+  .home-featured-card:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .home-featured-card:nth-child(even) .home-featured-caption,
+  .home-featured-card:nth-child(even) figure {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .home-featured-caption {
+    grid-template-columns: 32px minmax(0, 1fr);
+    margin: 0;
+  }
+
+  .home-featured-caption p {
+    margin-top: 10px;
+  }
+
+  .home-catalog-group {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 0 30px;
+  }
+
+  .home-catalog-list a {
+    grid-template-columns: minmax(92px, 0.34fr) minmax(0, 0.66fr);
+    gap: 4px 16px;
+    padding: 13px 0 15px;
+  }
+
+  .home-catalog-text {
+    grid-column: 1 / -1;
+  }
+
+  .about-body article {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .about-body p {
+    font-size: 17px;
+  }
+
+  .product-page-worldRuntime .hero-visual-frame {
+    padding: 12px;
   }
 
   .benchmark-kpis,
@@ -218,18 +313,5 @@
   .benchmark-head h2,
   .agent-manifest-head h2 {
     font-size: var(--title-section);
-  }
-}
-
-@media (max-width: 900px) {
-  .home-featured-card figure {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .home-featured-caption {
-    order: -1;
-    margin-top: 0;
-    margin-bottom: 0.5em;
   }
 }

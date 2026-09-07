@@ -3,17 +3,18 @@
   --section-index-desktop-scroll-margin: 112px;
   --section-index-mobile-scroll-margin: 24px;
   color-scheme: light;
-  --paper: #f2f1ec;
-  --ink: #161513;
-  --muted: #5a564f;
+  --paper: #f3f1ea;
+  --paper-raised: #faf8f1;
+  --ink: #171713;
+  --muted: #5b584f;
   --faint: #8c877e;
   --line: rgba(22, 21, 19, 0.07);
   --rule: rgba(22, 21, 19, 0.18);
   --chrome-line: rgba(22, 21, 19, 0.08);
   --soft-line: rgba(22, 21, 19, 0.14);
   --on-ink: #fbfaf7;
-  --label: #655f57;
-  --index-veil: #f2f1ec;
+  --label: #676257;
+  --index-veil: rgba(243, 241, 234, 0.94);
   /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
   --data-ref-ink: #126547;
@@ -25,9 +26,11 @@
     "Noto Sans CJK SC", sans-serif;
   --shadow-soft: 0 22px 50px rgba(22, 21, 19, 0.1), 0 2px 6px rgba(22, 21, 19, 0.05);
   --radius-window: 8px;
+  --shell: 1160px;
   --section-y: 56px;
   --section-y-short: 40px;
-  --title-index: clamp(1.65rem, 3vw, 2.05rem);
+  --title-index: clamp(2.2rem, 4vw, 3.35rem);
+  --title-display: clamp(3rem, 5.2vw, 4rem);
   --title-section: clamp(1.4rem, 2.4vw, 1.75rem);
   --text-kicker: 12px;
   --text-list-title: 17px;
@@ -42,6 +45,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper: #15130f;
+  --paper-raised: #1c1a15;
   --ink: #eeebe4;
   --muted: #a39e94;
   --faint: #7a756c;
@@ -51,7 +55,7 @@
   --soft-line: rgba(255, 255, 255, 0.14);
   --on-ink: #15130f;
   --label: #9a958c;
-  --index-veil: #15130f;
+  --index-veil: rgba(21, 19, 15, 0.94);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -63,6 +67,7 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
     --paper: #15130f;
+    --paper-raised: #1c1a15;
     --ink: #eeebe4;
     --muted: #a39e94;
     --faint: #7a756c;
@@ -72,7 +77,7 @@
     --soft-line: rgba(255, 255, 255, 0.14);
     --on-ink: #15130f;
     --label: #9a958c;
-    --index-veil: #15130f;
+    --index-veil: rgba(21, 19, 15, 0.94);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;

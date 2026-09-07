@@ -76,6 +76,7 @@ export async function checkSectionIndex(page, viewport, route) {
 
     if (viewport.name !== "desktop") {
       await visit(page, new URL(path, baseUrl), `${viewport.name} pointer ${anchor.label}`);
+      await page.locator("[data-section-index-toggle]").click();
       const pointerAnchor = page.locator(".product-section-index a").nth(anchor.index);
       await pointerAnchor.evaluate((link) => {
         link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });

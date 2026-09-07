@@ -106,7 +106,7 @@
       "credentials stay local",
       "Markdown export"
     ],
-    "latestRelease": "v11.0.0"
+    "latestRelease": "v12.0.0"
   },
   "agent-radar": {
     "source": "github-api",
@@ -156,7 +156,7 @@
     "repository": "hxddh/chessboard",
     "licenseKey": "gpl-3.0",
     "licenseLabel": "GPLv3",
-    "latestRelease": "v5.2.0",
+    "latestRelease": "v5.2.1",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",

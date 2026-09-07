@@ -7,7 +7,7 @@ Titpea is a concise personal product site. Its design should make each tool easi
 Protect them in this order:
 
 1. Facts and CI floors — contrast, 44px targets, CSP, headline length and line count, external release tags.
-2. Settled page shape — product heroes stay copy-left / object-right (s3-turbo-list stays one column); the home first screen is the featured pair; short products have no Inside.
+2. Settled page shape — product heroes stay copy-left / object-right (s3-turbo-list stays one column); Home moves from a concise author index into two large featured case studies; short products have no Inside.
 3. The reader's job on that page — what the tool changes, how it runs, what remains.
 4. Craft — type, hairlines, spacing, bilingual density.
 
@@ -56,24 +56,24 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is optional, and only for adoption blockers that are not already on the page. Short products may be hero, photographs, and one fit list.
 - Remaining FAQ answers stay visible as a hairline list. Do not require every product to have FAQ or three sections.
 - Closing product actions may repeat the primary download or repository link. They must not restate the hero headline.
-- Keep the section directory for long desktop product pages only. Style it as a text directory. It names the product, then the product's own section kickers — not Overview, Fit and limits, or Questions & how-to. On mobile it is a normal, horizontally scrollable directory rather than a sticky control.
+- Keep the section directory for long desktop product pages only. Style it as a text directory. It names the product, then the product's own section kickers — not Overview, Fit and limits, or Questions & how-to. On mobile it becomes a compact disclosure so no destination is clipped or hidden behind a horizontal gesture.
 - Use one source of truth for each product fact. The section after the hero should not inventory the lead. FAQ asks the extra fact (an Intel Mac build, a first-open warning), not the platforms line already in the meta.
 - Unknown addresses serve a real 404 page, not the homepage with a 200.
 
 ## Home
 
-- The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
+- The opening is an author index followed immediately by the featured work. Home hero CTA count is 0.
 - Home wording follows the current content model. The concise introduction identifies the author; section headings are Selected work / 主要作品 and More tools / 更多工具. Do not duplicate these with kickers.
-- The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. Featured photographs are labeled by product names; they do not get a second slogan.
-- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`.
-- Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
-- Featured captions are the product name; they do not paraphrase the lead. On single-column screens put the caption above the image so the name is visible before a tall screenshot.
-- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
-- About is one reading block: name, the lead (once), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
+- The home heading is `--title-index`, an author index rather than a campaign slogan, and not quieter than the next heading. Featured photographs are paired with the product name, role, and existing catalog sentence; they do not get a second slogan.
+- Featured product names outrank the catalog: display-scale names beside the photograph, `--text-catalog-name` in the index. The featured and catalog headings use `--title-section`.
+- Featured screenshots keep their native proportion and receive enough horizontal space for the product surface to remain legible. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
+- Featured captions sit beside the image on wide screens and above it on single-column screens. The two cases alternate direction to create an editorial reading rhythm without changing their information weight.
+- Catalog roles use sans, not uppercase mono. The remaining products form one compact index: a group column and aligned product rows with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
+- About is an author statement beside a numbered practice index. The lead appears once; the concise body paragraphs stay in `--ink`. Do not restore generic biography headings or park the facts in a second gray band.
 
 ## Product Hero
 
-- Copy left, object right (`minmax(0, 1.15fr) minmax(0, 0.85fr)`). s3-turbo-list stays one column.
+- Copy left, object right. Evidence-heavy products give the object the larger column; compact utilities stay closer to an even split. s3-turbo-list stays one column.
 - `h1` is `copy.headline` (the slogan). The eyebrow is `{title} · {eyebrow}`.
 - Shorten copy before shrinking type. Hero headings stay within two lines. English ≤ 24 characters, Chinese ≤ 18.
 - Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover.

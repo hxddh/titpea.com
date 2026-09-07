@@ -2,22 +2,21 @@
 .about-hero,
 .product-hero {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
+  gap: 64px;
   align-items: start;
 }
 
-.about-hero,
 .product-hero {
-  padding: 80px 0 0;
+  padding: 76px 0 52px;
 }
 
 .home-hero {
-  padding: 40px 0 8px;
+  padding: 72px 0 44px;
 }
 
 .product-hero {
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
 }
 
 .product-hero.product-page-s3TurboList {
@@ -27,26 +26,52 @@
 .product-copy,
 .about-redesign-copy,
 .home-copy {
-  max-width: 34em;
   text-align: left;
+}
+
+.home-copy {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.28fr) minmax(0, 0.72fr);
+  column-gap: 48px;
+}
+
+.home-copy .eyebrow {
+  grid-row: 1 / span 2;
+}
+
+.home-copy h1,
+.home-copy .lead {
+  grid-column: 2;
+}
+
+.about-hero {
+  grid-template-columns: minmax(260px, 0.38fr) minmax(0, 0.62fr);
+  gap: 96px;
+  padding: 80px 0 72px;
+}
+
+.about-redesign-copy {
+  position: sticky;
+  top: 40px;
 }
 
 .about-hero h1 {
   max-width: 22ch;
   margin: 0 0 22px;
-  font-size: clamp(2.65rem, 6.2vw, 4.5rem);
+  font-size: var(--title-display);
   line-height: 1.06;
 }
 
 .product-hero h1 {
   margin: 0 0 22px;
-  font-size: clamp(2.65rem, 6.2vw, 4.5rem);
+  font-size: var(--title-display);
   line-height: 1.06;
+  text-wrap: pretty;
 }
 
 .home-hero h1 {
   max-width: 22ch;
-  margin: 0 0 10px;
+  margin: -0.18em 0 12px;
   font-size: var(--title-index);
   letter-spacing: -0.03em;
   line-height: 1.08;
@@ -66,19 +91,38 @@
 }
 
 .about-body {
-  max-width: 58ch;
-  margin: 22px 0 0;
+  display: grid;
+  max-width: 64ch;
+  margin: 0;
   color: var(--ink);
-  font-size: 18px;
-  line-height: 1.62;
+  border-top: 2px solid var(--ink);
+}
+
+.about-body article {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 18px;
+  padding: 28px 0 30px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.about-body h2 {
+  margin: 0 0 10px;
+  font-size: var(--text-list-title);
+  line-height: 1.25;
 }
 
 .about-body p {
   margin: 0;
+  font-size: 18px;
+  line-height: 1.68;
 }
 
-.about-body p + p {
-  margin-top: 0.85em;
+.about-body .about-note-index {
+  color: var(--data-ref-ink);
+  font-family: var(--mono);
+  font-size: var(--text-kicker);
+  font-weight: 600;
 }
 
 .about-hero .actions,
@@ -101,6 +145,7 @@
 .hero-visual-frame {
   width: 100%;
   margin: 0;
+  min-width: 0;
 }
 
 .home-evidence-heading h2,
@@ -115,33 +160,60 @@
 }
 
 .home-evidence-heading {
-  margin-bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.home-evidence-heading span {
+  color: var(--data-ref-ink);
+  font-family: var(--mono);
+  font-size: var(--text-kicker);
+  font-weight: 600;
 }
 
 .home-more-tools {
-  border-top: 1px solid var(--rule);
-  padding-top: calc((var(--section-y) + var(--section-y-short)) / 2);
+  border-top: 2px solid var(--ink);
+  padding-top: 18px;
   padding-bottom: 0;
 }
 
 .home-evidence {
   display: block;
-  padding-top: 12px;
-  padding-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 80px;
 }
 
 .home-evidence-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
-  align-items: end;
+  grid-template-columns: 1fr;
+  gap: 72px;
 }
 
 .home-featured-card {
-  overflow: visible;
+  display: grid;
+  grid-template-columns: minmax(210px, 0.32fr) minmax(0, 0.68fr);
+  gap: 48px;
+  align-items: start;
   border: 0;
   background: transparent;
   padding: 0;
+}
+
+.home-featured-card:nth-child(even) {
+  grid-template-columns: minmax(0, 0.68fr) minmax(210px, 0.32fr);
+}
+
+.home-featured-card:nth-child(even) .home-featured-caption {
+  grid-column: 2;
+}
+
+.home-featured-card:nth-child(even) figure {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .home-featured-card figure {
@@ -165,23 +237,69 @@
 
 .home-featured-caption {
   display: grid;
-  gap: 6px;
-  margin-top: 14px;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 18px;
+  margin: 0;
   color: var(--ink);
 }
 
+.home-featured-number {
+  color: var(--data-ref-ink);
+  font-family: var(--mono);
+  font-size: var(--text-kicker);
+  font-weight: 600;
+  padding-top: 7px;
+}
+
+.home-featured-role {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--label);
+  font-size: var(--text-kicker);
+  font-weight: 600;
+}
+
 .home-featured-caption strong {
+  display: inline-block;
   font-family: var(--sans);
-  font-size: var(--text-featured-name);
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.12;
 }
 
-.home-catalog-columns {
+.home-featured-caption p {
+  max-width: 28ch;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: var(--text-list-body);
+  line-height: 1.65;
+}
+
+.home-catalog-index {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-catalog-group {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.24fr) minmax(0, 0.76fr);
   gap: 48px;
+  padding: 28px 0 34px;
+  border-top: 1px solid var(--rule);
+}
+
+.home-catalog-group-heading {
+  display: grid;
+  align-content: start;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.home-catalog-group-heading > span {
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: var(--text-kicker);
+  font-weight: 600;
 }
 
 .home-catalog-list {
@@ -196,9 +314,11 @@
 
 .home-catalog-list a {
   display: grid;
-  gap: 1px;
+  grid-template-columns: minmax(105px, 0.2fr) minmax(145px, 0.28fr) minmax(0, 0.52fr);
+  gap: 24px;
+  align-items: baseline;
   min-height: 44px;
-  padding: 8px 0;
+  padding: 12px 0 14px;
 }
 
 .home-catalog-role {
@@ -215,6 +335,12 @@
   line-height: 1.25;
 }
 
+.home-catalog-list a:hover .home-catalog-name,
+.home-catalog-list a:focus-visible .home-catalog-name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .home-catalog-text {
   margin: 0;
   color: var(--ink);
@@ -223,11 +349,11 @@
 }
 
 .about-product-line-label {
-  margin: 0 0 12px;
-  color: var(--label);
+  margin: 0;
+  color: var(--ink);
   font-family: var(--sans);
-  font-size: var(--text-kicker);
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .about-contact-row {
