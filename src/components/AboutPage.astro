@@ -15,6 +15,9 @@ const { model } = Astro.props;
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
+      <div class="about-body">
+        {model.note.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
       <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
         {
           model.hero.actions.map((action) => (
@@ -24,19 +27,6 @@ const { model } = Astro.props;
           ))
         }
       </div>
-    </div>
-    <div class="about-body">
-      {
-        model.note.body.map((paragraph, index) => (
-          <article>
-            <p class="about-note-index">{String(index + 1).padStart(2, "0")}</p>
-            <div>
-              <h2>{model.note.labels[index]}</h2>
-              <p>{paragraph}</p>
-            </div>
-          </article>
-        ))
-      }
     </div>
   </section>
 </SiteLayout>

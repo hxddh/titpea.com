@@ -21,7 +21,7 @@
   .about-hero,
   .product-hero {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 42px;
   }
 
   .product-page .product-hero {
@@ -30,31 +30,12 @@
 
   .about-hero {
     padding-top: 54px;
-    padding-bottom: 48px;
-  }
-
-  .about-redesign-copy {
-    position: static;
+    padding-bottom: 0;
   }
 
   .home-hero {
-    padding-top: 44px;
-    padding-bottom: 34px;
-  }
-
-  .home-copy {
-    grid-template-columns: 1fr;
-  }
-
-  .home-copy .eyebrow,
-  .home-copy h1,
-  .home-copy .lead {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .home-copy h1 {
-    margin-top: 0;
+    padding-top: 36px;
+    padding-bottom: 12px;
   }
 
   .about-hero h1 {
@@ -179,6 +160,22 @@
   .s3-results-section {
     scroll-margin-top: var(--section-index-mobile-scroll-margin);
   }
+
+  .home-featured-card figure {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-featured-caption {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .home-catalog-group {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -209,39 +206,14 @@
     font-size: clamp(2.5rem, 12vw, 3.15rem);
   }
 
-  .home-evidence {
-    padding-bottom: 60px;
-  }
-
-  .home-evidence-grid {
-    gap: 58px;
-  }
-
-  .home-featured-card,
-  .home-featured-card:nth-child(even) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .home-featured-card:nth-child(even) .home-featured-caption,
-  .home-featured-card:nth-child(even) figure {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .home-featured-caption {
-    grid-template-columns: 32px minmax(0, 1fr);
-    margin: 0;
-  }
-
-  .home-featured-caption p {
-    margin-top: 10px;
-  }
-
   .home-catalog-group {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 24px 0 30px;
+    gap: 12px;
+    padding: 8px 0 24px;
+  }
+
+  .home-catalog-group + .home-catalog-group {
+    padding-top: 24px;
   }
 
   .home-catalog-list a {
@@ -252,19 +224,6 @@
 
   .home-catalog-text {
     grid-column: 1 / -1;
-  }
-
-  .about-body article {
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 14px;
-  }
-
-  .about-body p {
-    font-size: 17px;
-  }
-
-  .product-page-worldRuntime .hero-visual-frame {
-    padding: 12px;
   }
 
   .benchmark-kpis,

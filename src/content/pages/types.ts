@@ -50,11 +50,8 @@ export type HomePageModel = BasePageModel & {
     label: string;
     title: string;
     items: Array<{
-      number: string;
       name: string;
       href: string;
-      text: string;
-      displayRole: string;
       image: { src: string; alt: string; width: number; height: number };
     }>;
   };
@@ -79,7 +76,6 @@ export type AboutPageModel = BasePageModel & {
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
   note: {
-    labels: string[];
     body: string[];
   };
 };

@@ -21,20 +21,11 @@ const { model } = Astro.props;
   <section class="home-evidence shell">
     <div class="home-evidence-heading">
       <h2>{model.featured.title}</h2>
-      <span aria-hidden="true">01—02</span>
     </div>
     <div class="home-evidence-grid">
       {
         model.featured.items.map((item) => (
           <a class="home-featured-card" href={item.href}>
-            <div class="home-featured-caption">
-              <span class="home-featured-number">{item.number}</span>
-              <div>
-                <span class="home-featured-role">{item.displayRole}</span>
-                <strong>{item.name}</strong>
-                <p>{item.text}</p>
-              </div>
-            </div>
             <figure>
               <img
                 src={item.image.src}
@@ -43,6 +34,9 @@ const { model } = Astro.props;
                 height={item.image.height}
                 loading="eager"
               />
+              <figcaption class="home-featured-caption">
+                <strong>{item.name}</strong>
+              </figcaption>
             </figure>
           </a>
         ))
@@ -56,12 +50,9 @@ const { model } = Astro.props;
     </div>
     <div class="home-catalog-index">
       {
-        model.more.groups.map((group, groupIndex) => (
-          <section class="home-catalog-group" data-group-index={String(groupIndex + 1).padStart(2, "0")}>
-            <div class="home-catalog-group-heading">
-              <span aria-hidden="true">{String(groupIndex + 1).padStart(2, "0")}</span>
-              <h3 class="about-product-line-label">{group.label}</h3>
-            </div>
+        model.more.groups.map((group) => (
+          <section class="home-catalog-group">
+            <h3 class="about-product-line-label">{group.label}</h3>
             <ul class="home-catalog-list">
               {group.items.map((item) => (
                 <li>

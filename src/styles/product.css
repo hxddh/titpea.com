@@ -483,12 +483,6 @@
   grid-template-columns: minmax(420px, 0.86fr) minmax(0, 1.14fr);
 }
 
-.product-page-agentWorkbench .hero-visual-frame,
-.product-page-documentAgent .hero-visual-frame {
-  padding-top: 20px;
-  border-top: 3px solid var(--data-ref);
-}
-
 .product-page-storageCli .product-hero,
 .product-page-markdownRadar .product-hero,
 .product-page-cliAgent .product-hero,
@@ -498,12 +492,6 @@
 
 .product-page-worldRuntime .product-hero {
   grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
-}
-
-.product-page-worldRuntime .hero-visual-frame {
-  padding: 20px;
-  border-top: 3px solid var(--data-caution);
-  background: color-mix(in srgb, var(--data-caution) 6%, transparent);
 }
 
 .product-page-browserExtension .product-hero,
