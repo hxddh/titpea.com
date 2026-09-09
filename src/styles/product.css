@@ -5,8 +5,8 @@
 
 .product-screenshot-showcase {
   display: grid;
-  grid-template-columns: minmax(220px, 0.28fr) minmax(0, 0.72fr);
-  gap: 64px;
+  grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+  gap: 54px;
   align-items: start;
   border-top: 1px solid var(--rule);
   padding-top: var(--section-y);
@@ -23,7 +23,7 @@
 .screenshot-showcase-copy p:not(.section-kicker) {
   max-width: 48ch;
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 17px;
   line-height: 1.62;
 }
@@ -45,13 +45,8 @@
 
 .product-deep-dive {
   display: grid;
-  grid-template-columns: minmax(240px, 0.3fr) minmax(0, 0.7fr);
-  gap: 64px;
+  gap: 26px;
   border-top: 1px solid var(--rule);
-}
-
-.product-deep-dive > :not(.deep-dive-heading) {
-  grid-column: 2;
 }
 
 .deep-dive-heading {
@@ -68,7 +63,7 @@
 
 .deep-dive-heading p:not(.section-kicker) {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 17px;
   line-height: 1.62;
 }
@@ -125,7 +120,7 @@
 .s3-result-paths > article > p {
   max-width: 42ch;
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: var(--text-list-body);
   line-height: 1.65;
 }
@@ -188,9 +183,9 @@
 
 .scan-plan p {
   margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
+  color: var(--ink);
+  font-size: var(--text-list-body);
+  line-height: 1.65;
 }
 
 .product-flow {
@@ -234,7 +229,7 @@
 
 .product-flow p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: var(--text-list-body);
   line-height: 1.65;
 }
@@ -262,7 +257,7 @@
 
 .s3-results-heading p:not(.section-kicker) {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 17px;
   line-height: 1.62;
 }
@@ -368,7 +363,7 @@
 .agent-topology p,
 .deep-dive-benchmark p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: var(--text-list-body);
   line-height: 1.65;
 }
@@ -383,9 +378,8 @@
 
 .inside-section {
   display: grid;
-  grid-template-columns: minmax(250px, 0.34fr) minmax(0, 0.66fr);
-  gap: 64px;
-  border-top: 1px solid var(--rule);
+  grid-template-columns: 1fr;
+  gap: 34px;
 }
 
 .inside-copy h2,
@@ -399,7 +393,7 @@
 
 .inside-copy p:not(.section-kicker) {
   max-width: 54ch;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 17px;
   line-height: 1.64;
 }
@@ -410,7 +404,7 @@
 #cases .section-kicker,
 .faq-section > .section-kicker {
   width: 100%;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line);
 }
 
 .provider-list {
@@ -474,30 +468,8 @@
 .product-page-browserExtension .product-hero,
 .product-page-nativeApp .product-hero,
 .product-page-menuBarApp .product-hero {
-  padding-top: 64px;
-  padding-bottom: 48px;
-}
-
-.product-page-agentWorkbench .product-hero,
-.product-page-documentAgent .product-hero {
-  grid-template-columns: minmax(420px, 0.86fr) minmax(0, 1.14fr);
-}
-
-.product-page-storageCli .product-hero,
-.product-page-markdownRadar .product-hero,
-.product-page-cliAgent .product-hero,
-.product-page-agentPackage .product-hero {
-  grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
-}
-
-.product-page-worldRuntime .product-hero {
-  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
-}
-
-.product-page-browserExtension .product-hero,
-.product-page-nativeApp .product-hero,
-.product-page-menuBarApp .product-hero {
-  grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.08fr);
+  padding-top: 56px;
+  padding-bottom: 36px;
 }
 
 .product-page-browserExtension .final-cta,

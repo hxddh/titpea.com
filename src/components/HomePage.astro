@@ -48,10 +48,10 @@ const { model } = Astro.props;
     <div class="browser-band-copy">
       <h2>{model.more.title}</h2>
     </div>
-    <div class="home-catalog-index">
+    <div class="home-catalog-columns">
       {
         model.more.groups.map((group) => (
-          <section class="home-catalog-group">
+          <section class="home-catalog-column">
             <h3 class="about-product-line-label">{group.label}</h3>
             <ul class="home-catalog-list">
               {group.items.map((item) => (

@@ -38,6 +38,7 @@ Do not ship any of these. Naming them is the point; vague “keep it clean” is
 - Tricolons and motif harvest on Home (`investigations, reading, and discovery`, `the rest of the shelf`)
 - Numbered Home/About indexes (`01—02`, a practice list) or decorative `--data-ref` / `--data-caution` bars on chrome
 - Stacked magazine case studies that push the featured pair below the first screen
+- Spreadsheet Home catalogs (role | name | one-liner columns) or product reading rails that park a kicker in an empty left cell
 - FAQ as a collapsed accordion, or the section directory as sticky pills
 - Card titles that could sit on any product (`Local by design`, `What it isn't`, `Current platforms`)
 - A dark-theme redesign as a “refresh”
@@ -70,12 +71,12 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`.
 - Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
 - Featured captions are the product name; they do not paraphrase the lead. On single-column screens put the caption above the image so the name is visible before a tall screenshot.
-- Catalog roles use sans, not uppercase mono. The remaining products form one compact index: a group column and aligned product rows with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
+- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
 - About is one reading block: name, the lead (once), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
 
 ## Product Hero
 
-- Copy left, object right. Evidence-heavy products give the object the larger column; compact utilities stay closer to an even split. s3-turbo-list stays one column.
+- Copy left, object right (`minmax(0, 1.15fr) minmax(0, 0.85fr)`). s3-turbo-list stays one column.
 - `h1` is `copy.headline` (the slogan). The eyebrow is `{title} · {eyebrow}`.
 - Shorten copy before shrinking type. Hero headings stay within two lines. English ≤ 24 characters, Chinese ≤ 18.
 - Product and About heroes are left-aligned. Captions sit below screenshots, not as overlay pills. Screenshots do not scale on hover.
@@ -90,6 +91,7 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ. Workflow evidence tags are mono text, not chips.
 - Browser extensions, native apps, and menu-bar apps use `--section-y-short`; long evidence pages keep `--section-y`.
 - Equal-weight in-section titles use `--text-list-title`, quieter than `--title-section`.
+- Equal-weight section body — cards, workflows, purpose lists — stays in `--ink`. `--muted` is for kickers, FAQ audit answers, and home lead, not the argument.
 
 ## Chrome
 
