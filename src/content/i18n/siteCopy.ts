@@ -18,7 +18,6 @@ export const ui = {
     aboutHeadline: "hxddh",
     aboutLead: "I work on cloud object storage and build tools I use myself.",
     contactLabel: "Contact links",
-    aboutNoteLabels: ["Keep the evidence", "Build for daily use", "Publish the boundaries"],
     aboutNote: [
       "I keep the logs and checks behind a storage diagnosis. That habit carries into my software: Storage Agent keeps investigation evidence, and PageWise links answers back to the page.",
       "There are also small apps for playing chess, checking the time, and sorting bookmarks. I develop and maintain every project myself.",
@@ -44,7 +43,6 @@ export const ui = {
     aboutHeadline: "hxddh",
     aboutLead: "我做云对象存储，也开发自己会用的工具。",
     contactLabel: "联系方式",
-    aboutNoteLabels: ["留下依据", "为日常而做", "公开边界"],
     aboutNote: [
       "存储排查时，我习惯保留得出结论的日志和检查记录。做成工具以后，这个习惯也留了下来：Storage Agent 可以查看调查证据，PageWise 可以沿着页引用回到原文。",
       "这里也有下棋、看时间和整理书签的小软件。所有项目都由我独立开发和维护。",

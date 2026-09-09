@@ -29,7 +29,7 @@
   --shell: 1160px;
   --section-y: 56px;
   --section-y-short: 40px;
-  --title-index: clamp(2.2rem, 4vw, 3.35rem);
+  --title-index: clamp(1.65rem, 3vw, 2.05rem);
   --title-display: clamp(3rem, 5.2vw, 4rem);
   --title-section: clamp(1.4rem, 2.4vw, 1.75rem);
   --text-kicker: 12px;
