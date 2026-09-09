@@ -3,14 +3,19 @@
 .product-hero {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
   align-items: start;
+}
+
+.home-hero,
+.about-hero {
+  gap: 48px;
 }
 
 .product-hero {
   padding: 76px 0 52px;
   grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
   align-items: center;
+  gap: 64px;
 }
 
 .home-hero {
