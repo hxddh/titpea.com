@@ -190,6 +190,16 @@ export type ProductVisualModel =
   | WorldMachineProjectionVisualModel
   | ScreenshotVisualModel;
 
+export type ProductShowcaseFigure = AgentWorkbenchScreenshotVisualModel["supporting"];
+
+export function visualShowcases(visual: ProductVisualModel): ProductShowcaseFigure[] {
+  if (visual.kind === "agentWorkbenchScreenshot") return [visual.supporting];
+  if (visual.kind === "gobanScreenshot" || visual.kind === "chessboardScreenshot") {
+    return visual.showcases ?? [];
+  }
+  return [];
+}
+
 export function visualModel(kind: VisualPolicy, locale: Locale, label: string, slug?: string): ProductVisualModel {
   if (kind === "s3Benchmark") {
     const copy = visualCopy.s3Benchmark[locale];

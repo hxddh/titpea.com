@@ -55,9 +55,9 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 
 ## Page Composition
 
-- A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims.
-- For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is optional, and only for adoption blockers that are not already on the page. Short products may be hero, photographs, and one fit list.
-- Remaining FAQ answers stay visible as a hairline list. Do not require every product to have FAQ or three sections.
+- A product page should earn every section. Prefer a short sequence of product-specific evidence over a fixed template with repeated claims. An Inside section is only valid when it has an object (a panel). Copy-only Inside that restates the hero belongs in a card, the hero caption, or nowhere.
+- For core tools, the usual shape is: what the tool changes, how it works, and what remains after the run. FAQ is optional, and only for adoption blockers that are not already on the page. Short products may be hero, photographs, and one fit list. Extra photographs after the hero are part of that shape; they must not depend on an Inside section existing.
+- Remaining FAQ answers stay visible as a hairline list. Do not require every product to have FAQ or three sections. An empty FAQ array does not render.
 - Closing product actions may repeat the primary download or repository link. They must not restate the hero headline.
 - Keep the section directory for long desktop product pages only. Style it as a text directory. It names the product, then the product's own section kickers — not Overview, Fit and limits, or Questions & how-to. On mobile it becomes a compact disclosure so no destination is clipped or hidden behind a horizontal gesture.
 - Use one source of truth for each product fact. The section after the hero should not inventory the lead. FAQ asks the extra fact (an Intel Mac build, a first-open warning), not the platforms line already in the meta.
@@ -68,11 +68,11 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
 - Home wording follows the current content model. The concise introduction identifies the author; section headings are Selected work / 主要作品 and More tools / 更多工具. Do not duplicate these with kickers.
 - The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. Featured photographs are labeled by product names; they do not get a second slogan.
-- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`.
-- Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow.
+- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`. The photograph is the object; the name is a caption. Do not grow the featured name until it competes with the screenshot.
+- Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow. Featured figures use `--soft-line` so the pair reads as objects on the first screen.
 - Featured captions are the product name; they do not paraphrase the lead. On single-column screens put the caption above the image so the name is visible before a tall screenshot.
-- Catalog roles use sans, not uppercase mono. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions.
-- About is one reading block: name, the lead (once), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band.
+- Catalog roles use sans, not uppercase mono. Omit the role when the product name already carries the job. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions. Vary sentence length so the list is not eight copies of the same grammar.
+- About is one reading block: name, the lead (once, as the object), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band. Do not add a third paragraph that restates the contact row.
 
 ## Product Hero
 
@@ -170,7 +170,7 @@ Do not introduce a third accent color or use green/orange decoratively.
 
 ## Content release, September 2026
 
-- Home groups are Storage and inspection, Agent tools, Everyday tools, and Experimental. Keep experimental maturity visible.
+- Home groups are Storage, Agents, Everyday, and Experimental. Keep experimental maturity visible.
 - Storage Agent leads with the existing investigation result screenshot; the welcome image is a secondary starting-point illustration.
 - Product copy starts with an action and result. Preserve conditions on model data, waiting signals, and successfully persisted sessions. Do not promise zero data loss from a recovery feature.
 - Label schematic interface examples explicitly; they are not captured execution evidence.

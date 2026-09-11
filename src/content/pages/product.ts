@@ -5,7 +5,7 @@ import { s3ResultsModels } from "../productResultsModels";
 import { productPageRegistry } from "../productPageRegistry";
 import { productStructuredData } from "../productSeo";
 import { productSections } from "../productSections";
-import { visualModel } from "../visualModels";
+import { visualModel, visualShowcases } from "../visualModels";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { ProductPageModel } from "./types";
 import type { ProductPageSection } from "../productPageTypes";
@@ -58,6 +58,7 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     ogImage: registry.ogImage,
     structuredData,
   });
+  const visual = visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title, slug);
   const navItems = contract.sections
     .filter((spec) => sections.some((section) => section.id === spec.id))
     .map((spec) => {
@@ -83,7 +84,8 @@ export function buildProductPage(slug: ProductSlug, locale: Locale): ProductPage
     sectionIndex: contract.sectionIndex,
     indexLabel: copy.title,
     navItems,
-    visual: visualModel(registry.visual ?? contract.defaultVisual, locale, copy.title, slug),
+    visual,
+    showcases: visualShowcases(visual),
     structuredData,
     copy,
     sections,

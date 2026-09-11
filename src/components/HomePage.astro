@@ -57,7 +57,7 @@ const { model } = Astro.props;
               {group.items.map((item) => (
                 <li>
                   <a href={item.href}>
-                    <span class="home-catalog-role">{item.displayRole}</span>
+                    {item.displayRole ? <span class="home-catalog-role">{item.displayRole}</span> : null}
                     <strong class="home-catalog-name">{item.name}</strong>
                     <p class="home-catalog-text">{item.text}</p>
                   </a>

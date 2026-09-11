@@ -108,6 +108,11 @@ p {
   line-height: 1.12;
 }
 
+:lang(zh) .home-featured-caption strong {
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
 ::selection {
   color: var(--paper);
   background: var(--ink);

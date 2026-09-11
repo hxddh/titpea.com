@@ -1,6 +1,6 @@
 import type { PageSectionId } from "../productArchetypes";
 import type { ProductPageSection } from "../productPageTypes";
-import type { ProductVisualModel } from "../visualModels";
+import type { ProductShowcaseFigure, ProductVisualModel } from "../visualModels";
 import type { CurrentPage, Locale, Product, ProductSlug } from "../../lib/site";
 
 export type PageSeo = {
@@ -102,6 +102,7 @@ export type ProductPageModel = BasePageModel & {
   indexLabel: string;
   navItems: Array<{ id: PageSectionId; label: string }>;
   visual: ProductVisualModel;
+  showcases: ProductShowcaseFigure[];
   structuredData: Record<string, unknown>;
   copy: Product["locales"][Locale];
   sections: ProductPageSection[];

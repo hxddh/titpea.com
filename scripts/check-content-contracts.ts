@@ -129,6 +129,9 @@ for (const model of allPageModels) {
     }
   }
   for (const section of sections) {
+    if (section.kind === "inside" && !section.panel) {
+      failures.push(`${model.path}: inside section has no object; fold the copy or add a panel`);
+    }
     const heading = ("title" in section ? section.title : section.label).trim();
     if (genericHeadings.has(heading.toLowerCase()) || genericHeadings.has(heading)) {
       failures.push(`${model.path}: generic section heading ${heading}`);
