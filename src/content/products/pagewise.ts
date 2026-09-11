@@ -33,6 +33,12 @@ export const pagewiseProduct: DocumentAgentProduct = {
           intent: "capability",
           surface: "agent",
         },
+        {
+          title: "One conversation per document",
+          body: "Each file keeps a local thread. Open it again to continue asking and annotating on the same PDF.",
+          intent: "capability",
+          surface: "artifact",
+        },
       ],
       workflowLabel: "Find the source page",
       workflow: [
@@ -100,6 +106,12 @@ export const pagewiseProduct: DocumentAgentProduct = {
           body: "有文本层的 PDF 可直接读取。扫描页和图片需要配置支持视觉的模型。",
           intent: "capability",
           surface: "agent",
+        },
+        {
+          title: "每份文档一条会话",
+          body: "每份文件保留一条本地线程。再次打开时，继续对同一份 PDF 提问和批注。",
+          intent: "capability",
+          surface: "artifact",
         },
       ],
       workflowLabel: "从问题找到页面",

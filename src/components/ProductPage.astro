@@ -53,23 +53,14 @@ const copy = model.copy;
     )
   }
 
+  {model.showcases.map((figure) => <ProductScreenshotShowcase supporting={figure} />)}
+
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} locale={model.locale} />}
 
   {
     model.sections.map((section) => {
       if (section.kind === "inside") {
-        return (
-          <>
-            <ProductInside section={section} />
-            {model.visual.kind === "agentWorkbenchScreenshot" && (
-              <ProductScreenshotShowcase supporting={model.visual.supporting} />
-            )}
-            {model.visual.kind === "gobanScreenshot" &&
-              model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
-            {model.visual.kind === "chessboardScreenshot" &&
-              model.visual.showcases?.map((supporting) => <ProductScreenshotShowcase supporting={supporting} />)}
-          </>
-        );
+        return <ProductInside section={section} />;
       }
 
       if (section.kind === "evidence") {

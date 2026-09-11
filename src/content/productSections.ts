@@ -107,7 +107,7 @@ function sectionFromSpec(locale: Locale, copy: ProductCopy, spec: ArchetypeSecti
   }
 
   if (id === "faq") {
-    if (!copy.faq) return null;
+    if (!copy.faq?.length) return null;
     return section({
       id: "faq",
       kind: "faq",

@@ -1,17 +1,6 @@
 import type { ProductInsideModel } from "./productPageTypes";
 import type { Locale, ProductSlug } from "../lib/site";
 
-type LocalizedText = Record<Locale, string>;
-
-const productInside = (
-  kicker: LocalizedText,
-  title: LocalizedText,
-  body: LocalizedText,
-): Record<Locale, ProductInsideModel> => ({
-  en: { id: "inside", kind: "inside", kicker: kicker.en, title: title.en, body: body.en },
-  zh: { id: "inside", kind: "inside", kicker: kicker.zh, title: title.zh, body: body.zh },
-});
-
 export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, ProductInsideModel>>> = {
   "s3-turbo-list": {
     en: {
@@ -66,46 +55,6 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
       },
     },
   },
-  "storage-agent-workbench": {
-    en: {
-      id: "inside",
-      kind: "inside",
-      kicker: "An investigation example",
-      title: "Compare storage classes",
-      body: "The investigation above compares object metadata and content to explain a storage-class difference. Open its evidence to inspect the objects behind the answer.",
-    },
-    zh: {
-      id: "inside",
-      kind: "inside",
-      kicker: "调查示例",
-      title: "对比对象的存储类型",
-      body: "上图对比对象元数据与内容，解释存储类型差异。打开对应证据，可以查看结论涉及的对象。",
-    },
-  },
-  storageops: {
-    en: {
-      id: "inside",
-      kind: "inside",
-      kicker: "Pi extension + skill pack",
-      title: "Domain skills Pi can load on demand",
-      body: "Pi stays the runtime. StorageOps does not open a cloud session; diagnosis stays on material already in the chat.",
-    },
-    zh: {
-      id: "inside",
-      kind: "inside",
-      kicker: "Pi 扩展与 skill pack",
-      title: "按需加载的对象存储技能",
-      body: "Pi 仍是运行时。StorageOps 不接入云账号；排查只根据聊天里已有的材料。",
-    },
-  },
-  httpmon: productInside(
-    { en: "Local proxy, one process", zh: "本地代理，只包住子进程" },
-    { en: "The command runs as before", zh: "命令照常运行，请求同时可见" },
-    {
-      en: "httpmon starts a local proxy for one subprocess. It supplies the proxy and CA through that process only, then clears the temporary setup when it exits.",
-      zh: "httpmon 只为当前子进程启动本地代理，并向它传入代理和 CA。命令退出后，临时设置会自动清理。",
-    },
-  ),
   "agent-radar": {
     en: {
       id: "inside",
@@ -166,54 +115,6 @@ export const productInsideModels: Partial<Record<ProductSlug, Record<Locale, Pro
           },
         ],
       },
-    },
-  },
-  pagewise: {
-    en: {
-      id: "inside",
-      kind: "inside",
-      kicker: "Continue reading",
-      title: "Return to the same document",
-      body: "Each document keeps one local conversation. Open it again to continue asking questions and annotating.",
-    },
-    zh: {
-      id: "inside",
-      kind: "inside",
-      kicker: "继续阅读",
-      title: "接着读同一份文件",
-      body: "每份文档保留一条本地会话。再次打开时，继续提问和批注。",
-    },
-  },
-  celagent: {
-    en: {
-      id: "inside",
-      kind: "inside",
-      kicker: "Storage setup",
-      title: "Use the same BOS configuration",
-      body: "Configure the bucket and credential profile on both machines. Run `celagent doctor` to verify access and `celagent cas-probe` to check conditional writes before relying on recovery.",
-    },
-    zh: {
-      id: "inside",
-      kind: "inside",
-      kicker: "存储配置",
-      title: "两台机器连接同一个 BOS 桶",
-      body: "在两台机器上配置桶与凭证 profile。用 `celagent doctor` 检查访问，再用 `celagent cas-probe` 检查条件写入，确认后再依赖会话恢复。",
-    },
-  },
-  "world-machine": {
-    en: {
-      id: "inside",
-      kind: "inside",
-      kicker: "World documents",
-      title: "Keep the earlier branch",
-      body: "A .world document stores state and branch history. Inspect its events and replay an earlier path while exploring a different continuation.",
-    },
-    zh: {
-      id: "inside",
-      kind: "inside",
-      kicker: "世界文档",
-      title: "保留之前的分支",
-      body: ".world 文档保存世界状态和分支历史。尝试另一条路径时，仍可查看事件和回放之前的分支。",
     },
   },
 };

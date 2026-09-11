@@ -32,8 +32,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "Matching and sources",
-      faq: [],
     },
     zh: {
       title: "豆瓣电影评分助手",
@@ -57,8 +55,6 @@ export const doubanMovieRatingProduct: BrowserExtensionProduct = {
           surface: "browser",
         },
       ],
-      faqLabel: "匹配与来源",
-      faq: [],
     },
   },
 };

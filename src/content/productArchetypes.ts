@@ -78,7 +78,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Cross-platform",
     defaultVisual: "s3Benchmark",
     sections: [
-      { id: "inside", label: { en: "One command", zh: "一条命令" }, required: true },
       { id: "evidence", label: { en: "Local layer", zh: "本地观察层" }, required: true },
       {
         id: "workflow",
@@ -134,7 +133,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Cross-platform",
     defaultVisual: "storageAgent",
     sections: [
-      { id: "inside", label: { en: "Pi extension + skill pack", zh: "Pi 扩展与 skill pack" }, required: true },
       { id: "evidence", label: { en: "Skills and tools", zh: "技能与工具" }, required: true },
       {
         id: "workflow",
@@ -156,7 +154,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Cross-platform",
     defaultVisual: "celagentTerminal",
     sections: [
-      { id: "inside", label: { en: "Pi TUI + BOS persistence", zh: "Pi TUI + BOS 持久化" }, required: true },
       { id: "evidence", label: { en: "Persistence model", zh: "持久化模型" }, required: true },
       {
         id: "workflow",
@@ -178,7 +175,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Cross-platform",
     defaultVisual: "storageWorkbench",
     sections: [
-      { id: "inside", label: { en: "Desktop investigation agent", zh: "桌面调查 Agent" }, required: true },
       {
         id: "workflow",
         label: { en: "Ask, then approve", zh: "先问，再确认" },
@@ -204,7 +200,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "macOS",
     defaultVisual: "worldMachineProjection",
     sections: [
-      { id: "inside", label: { en: "Experimental semantic runtime", zh: "实验性语义运行时" }, required: true },
       {
         id: "features",
         label: { en: "Loop, host, and packs", zh: "循环、宿主与 Pack" },
@@ -236,7 +231,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Cross-platform",
     defaultVisual: "pagewiseWorkbench",
     sections: [
-      { id: "inside", label: { en: "Local PDF workbench", zh: "本地 PDF 工作台" }, required: true },
       {
         id: "features",
         label: { en: "Beside the PDF", zh: "在 PDF 旁边" },
@@ -268,7 +262,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "Chrome",
     defaultVisual: "worldClockScreenshot",
     sections: [
-      { id: "inside", label: { en: "On the page", zh: "就在页里" } },
       {
         id: "positioning",
         label: { en: "Cities you choose", zh: "你选的城市" },
@@ -287,7 +280,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "macOS and Windows",
     defaultVisual: "gobanScreenshot",
     sections: [
-      { id: "inside", label: { en: "On the board", zh: "棋盘上" } },
       {
         id: "positioning",
         label: { en: "A local board", zh: "本机棋盘" },
@@ -306,7 +298,6 @@ export const productArchetypeContracts: Record<ProductArchetype, ProductArchetyp
     operatingSystem: "macOS",
     defaultVisual: "pulseMenuBar",
     sections: [
-      { id: "inside", label: { en: "Menu-bar lamp", zh: "菜单栏状态灯" } },
       {
         id: "positioning",
         label: { en: "When the lamp is enough", zh: "这盏灯适合什么时候" },

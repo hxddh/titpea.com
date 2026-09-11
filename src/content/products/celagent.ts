@@ -25,7 +25,7 @@ export const celagentProduct: CliAgentProduct = {
       workflow: [
         {
           title: "Configure storage first",
-          body: "Install the release, configure the BOS bucket and credentials, then run `celagent doctor` to check connectivity before starting a session.",
+          body: "Install the release, configure the BOS bucket and credentials, then run `celagent doctor` and `celagent cas-probe` before relying on recovery.",
           intent: "workflow",
           surface: "cli",
         },
@@ -74,7 +74,7 @@ export const celagentProduct: CliAgentProduct = {
       workflow: [
         {
           title: "先配置存储",
-          body: "安装发布版本，配置 BOS 桶和凭证。启动会话前，用 `celagent doctor` 检查连通性。",
+          body: "安装发布版本，配置 BOS 桶和凭证。启动会话前，用 `celagent doctor` 检查访问，再用 `celagent cas-probe` 检查条件写入。",
           intent: "workflow",
           surface: "cli",
         },
