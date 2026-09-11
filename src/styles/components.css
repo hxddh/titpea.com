@@ -347,3 +347,35 @@
   background: transparent;
   color: var(--ink);
 }
+
+/* MOCKUP ONLY (iteration review, not for merge): header search entry. */
+.header-search {
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-search input[type="search"] {
+  width: 118px;
+  min-height: 44px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 0 2px;
+}
+
+.header-search input[type="search"]::placeholder {
+  color: var(--muted);
+}
+
+.header-search input[type="search"]:hover {
+  border-bottom-color: var(--soft-line);
+}
+
+.header-search input[type="search"]:focus-visible {
+  outline-offset: 4px;
+  border-bottom-color: var(--ink);
+}

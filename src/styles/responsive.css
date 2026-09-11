@@ -13,6 +13,11 @@
     display: none;
   }
 
+  /* MOCKUP ONLY: keep the narrow header uncrowded; search lives in the menu on mobile (open question). */
+  .header-search {
+    display: none;
+  }
+
   .mobile-menu {
     display: block;
   }
@@ -233,6 +238,12 @@
 
   .browser-band-copy h2 {
     font-size: var(--title-section);
+  }
+
+  /* MOCKUP ONLY: stack the decision rows on phones. */
+  .home-decision-row {
+    flex-direction: column;
+    gap: 2px;
   }
 
   .inside-copy h2,

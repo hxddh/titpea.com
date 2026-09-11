@@ -7,6 +7,29 @@ interface Props {
 }
 
 const { model } = Astro.props;
+
+// MOCKUP ONLY (iteration review, not for merge): storage decision strip data.
+// Real implementation would live in src/content/storageDecision.ts + content:check.
+const isZh = model.locale === "zh";
+const decisionTitle = isZh ? "存储选哪个" : "Which storage tool";
+const decisionLabel = isZh ? "存储" : "Storage";
+const decisionRows = (
+  isZh
+    ? [
+        ["列举太慢、桶太大，中断要能续跑", "s3-turbo-list", "/zh/s3-turbo-list/"],
+        ["线上出问题，但什么都不能动", "Storage Agent", "/zh/storage-agent-workbench/"],
+        ["让 agent 用聊天里的日志和 trace 诊断", "StorageOps", "/zh/storageops/"],
+        ["看一条命令实际发了什么请求", "httpmon", "/zh/httpmon/"],
+        ["把 Pi 会话停在 BOS，换机器继续", "celagent", "/zh/celagent/"],
+      ]
+    : [
+        ["Listing is slow, the bucket is huge, the run must resume", "s3-turbo-list", "/s3-turbo-list/"],
+        ["Something is wrong in production, touch nothing", "Storage Agent", "/storage-agent-workbench/"],
+        ["Let the agent diagnose from chat logs and traces", "StorageOps", "/storageops/"],
+        ["See what a command actually sent", "httpmon", "/httpmon/"],
+        ["Park a Pi session on BOS, resume it elsewhere", "celagent", "/celagent/"],
+      ]
+) as const;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -42,6 +65,23 @@ const { model } = Astro.props;
         ))
       }
     </div>
+  </section>
+
+  <section class="home-decision shell" aria-label={decisionTitle}>
+    <p class="about-product-line-label">{decisionLabel}</p>
+    <h2>{decisionTitle}</h2>
+    <ul class="home-decision-list">
+      {
+        decisionRows.map(([condition, name, href]) => (
+          <li>
+            <a class="home-decision-row" href={href}>
+              <span class="home-decision-cond">{condition}</span>
+              <strong class="home-decision-name">{name} →</strong>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 
   <section class="home-more-tools shell">

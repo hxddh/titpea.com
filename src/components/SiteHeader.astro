@@ -48,6 +48,17 @@ const navGroups = headerNavGroups(locale);
       }
     </nav>
 
+    <!-- MOCKUP ONLY (iteration review, not for merge): search entry, text-style like the language switch. -->
+    <form class="header-search" role="search" action={homeHref} method="get">
+      <input
+        type="search"
+        name="q"
+        autocomplete="off"
+        placeholder={locale === "zh" ? "搜索" : "Search"}
+        aria-label={locale === "zh" ? "站内搜索" : "Site search"}
+      />
+    </form>
+
     <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
       {alternateLabel}
     </a>

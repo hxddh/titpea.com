@@ -18,6 +18,31 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
+
+// MOCKUP ONLY (iteration review, not for merge): live-release line.
+// Real implementation would fetch GitHub latest releases at build time.
+const isZhPage = model.locale === "zh";
+const mockRelease: Record<string, { version: string; age: string; href: string }> = isZhPage
+  ? {
+      "storage-agent-workbench": {
+        version: "v1.17.3",
+        age: "12 天前发布",
+        href: "https://github.com/hxddh/storage-agent-workbench/releases",
+      },
+      pagewise: { version: "v12.0.0", age: "5 天前发布", href: "https://github.com/hxddh/pagewise/releases" },
+      pulse: { version: "v11.0.3", age: "26 天前发布", href: "https://github.com/hxddh/Pulse/releases/latest" },
+    }
+  : {
+      "storage-agent-workbench": {
+        version: "v1.17.3",
+        age: "released 12 days ago",
+        href: "https://github.com/hxddh/storage-agent-workbench/releases",
+      },
+      pagewise: { version: "v12.0.0", age: "released 5 days ago", href: "https://github.com/hxddh/pagewise/releases" },
+      pulse: { version: "v11.0.3", age: "released 26 days ago", href: "https://github.com/hxddh/Pulse/releases/latest" },
+    };
+const release = mockRelease[model.slug];
+const releaseNotesLabel = isZhPage ? "更新说明" : "Release notes";
 ---
 
 <SiteLayout
@@ -37,6 +62,17 @@ const copy = model.copy;
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
       <p class="meta-line">{copy.meta.split(" · ").map((part) => <span>{part}</span>)}</p>
+      {
+        release && (
+          <p class="meta-line release-line">
+            <span class="release-version">{release.version}</span>
+            <span>{release.age}</span>
+            <a class="release-notes-link" href={release.href} rel="noreferrer">
+              {releaseNotesLabel} →
+            </a>
+          </p>
+        )
+      }
     </div>
     <div class="hero-visual-frame">
       <ProductVisual visual={model.visual} />
