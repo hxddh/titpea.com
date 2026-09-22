@@ -1,5 +1,6 @@
 import { ui } from "../i18n/siteCopy";
 import { productCatalogModel } from "../productCatalogModel";
+import { catalogLines } from "../productManifest";
 import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath } from "./seo";
 import type { HomePageModel } from "./types";
@@ -64,8 +65,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
               locale === "en"
                 ? "Storage Agent comparing object evidence in a storage investigation"
                 : "Storage Agent 对比存储调查中的对象证据",
-            width: 1800,
-            height: 1290,
+            width: 1310,
+            height: 980,
           },
         },
         {
@@ -77,8 +78,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
               locale === "en"
                 ? "PageWise analyzing a financial table beside its source PDF page"
                 : "PageWise 在 PDF 原页旁分析财务表格",
-            width: 1800,
-            height: 1200,
+            width: 1590,
+            height: 990,
           },
         },
       ],
@@ -86,26 +87,16 @@ export function buildHomePage(locale: Locale): HomePageModel {
     more: {
       label: copy.moreToolsLabel,
       title: copy.moreToolsTitle,
-      groups: [
-        {
-          label: copy.lineStorageLabel,
-          items: catalog.storage.filter((item) => !item.isPrimary && item.slug !== "celagent"),
-        },
-        {
-          label: copy.lineAgentLabel,
-          items: catalog.all.filter((item) => ["celagent", "pulse", "agent-radar"].includes(item.slug ?? "")),
-        },
-        {
-          label: copy.linePersonalLabel,
-          items: catalog.personal.filter(
-            (item) => !item.isPrimary && !["pulse", "agent-radar", "world-machine"].includes(item.slug ?? ""),
-          ),
-        },
-        {
-          label: copy.lineExperimentalLabel,
-          items: catalog.all.filter((item) => item.slug === "world-machine"),
-        },
-      ],
+      groups: catalogLines.map((line) => ({
+        label: {
+          storage: copy.lineStorageLabel,
+          agents: copy.lineAgentLabel,
+          everyday: copy.linePersonalLabel,
+          experimental: copy.lineExperimentalLabel,
+        }[line],
+        line,
+        items: catalog.all.filter((item) => item.line === line && !item.isPrimary),
+      })),
     },
   };
 }

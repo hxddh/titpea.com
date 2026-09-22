@@ -35,7 +35,7 @@ export const httpmonProduct: StorageCliProduct = {
         },
         {
           title: "Focused traffic",
-          body: "Use `--filter` when a command is noisy and only a URL or host matters to the investigation.",
+          body: "Use `--filter` when a command is noisy and only a URL or host matters to the investigation. When those logs and traces are already in a Pi chat, diagnose them with StorageOps.",
           intent: "workflow",
           surface: "cli",
         },
@@ -94,7 +94,7 @@ export const httpmonProduct: StorageCliProduct = {
         },
         {
           title: "关心的请求",
-          body: "命令请求很多时，用 `--filter` 按 URL 或域名筛选，只看需要排查的部分。",
+          body: "命令请求很多时，用 `--filter` 按 URL 或域名筛选，只看需要排查的部分。日志和 trace 已经在 Pi 的聊天里时，用 StorageOps 排查。",
           intent: "workflow",
           surface: "cli",
         },

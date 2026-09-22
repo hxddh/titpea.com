@@ -11,6 +11,35 @@
   gap: 28px 48px;
 }
 
+.workflow-figure-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px 54px;
+  align-items: start;
+}
+
+.workflow-figure-row .section-card-list {
+  grid-template-columns: 1fr;
+}
+
+.workflow-figure-row figure {
+  margin: 0;
+}
+
+.workflow-figure-row img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--soft-line);
+}
+
+.workflow-figure-row figcaption {
+  margin-top: 10px;
+  color: var(--ink);
+  font-size: var(--text-list-body);
+  line-height: 1.65;
+}
+
 @media (max-width: 900px) {
   .section-card-list {
     grid-template-columns: 1fr;

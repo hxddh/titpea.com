@@ -1,11 +1,20 @@
 import { ui } from "../i18n/siteCopy";
+import { productFacts } from "../productFacts";
 import { absoluteUrl, siteConfig } from "../siteConfig";
 import { alternateLocale, buildPageSeo, languageLink, pagePath, pageTitle } from "./seo";
 import type { AboutPageModel } from "./types";
 import type { Locale } from "../../lib/site";
 
+function withReleases(paragraph: string) {
+  return paragraph
+    .replaceAll("{storageAgent}", productFacts["storage-agent-workbench"].latestRelease ?? "")
+    .replaceAll("{pagewise}", productFacts.pagewise.latestRelease ?? "")
+    .replaceAll("{pulse}", productFacts.pulse.latestRelease ?? "");
+}
+
 export function buildAboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
+  const note = copy.aboutNote.map(withReleases);
   const path = pagePath(locale, "about");
   const alternatePath = pagePath(alternateLocale(locale), "about");
   const inLanguage = { en: "en", zh: "zh-CN" }[locale];
@@ -29,7 +38,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
     current: "about",
     path,
     alternatePath,
-    expectedText: [copy.aboutHeadline, copy.aboutLead, ...copy.aboutNote],
+    expectedText: [copy.aboutHeadline, copy.aboutLead, ...note],
     seo: buildPageSeo({
       title: pageTitle(copy.aboutTitle),
       description: copy.aboutDescription,
@@ -51,7 +60,7 @@ export function buildAboutPage(locale: Locale): AboutPageModel {
       ],
     },
     note: {
-      body: [...copy.aboutNote],
+      body: note,
     },
   };
 }

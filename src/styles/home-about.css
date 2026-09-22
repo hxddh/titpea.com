@@ -59,7 +59,10 @@
 }
 
 .home-hero .lead {
-  color: var(--muted);
+  max-width: 38em;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.62;
 }
 
 .about-hero .lead,
@@ -216,6 +219,14 @@
   font-size: var(--text-catalog-name);
   font-weight: 600;
   line-height: 1.25;
+}
+
+.home-catalog-column[data-line="storage"] .home-catalog-name {
+  font-size: var(--text-featured-name);
+}
+
+.home-catalog-column[data-line="experimental"] .home-catalog-name {
+  font-weight: 500;
 }
 
 .home-catalog-list a:hover .home-catalog-name,

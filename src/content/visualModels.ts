@@ -113,6 +113,7 @@ export type AgentWorkbenchScreenshotVisualModel = {
     kicker: string;
     title: string;
     body: string;
+    beside?: "workflow";
   };
 };
 
@@ -288,14 +289,14 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
       hero: isPagewise
         ? {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,
-            width: 1800,
-            height: 1200,
+            width: 1590,
+            height: 990,
             alt: copy.heroAlt,
           }
         : {
             src: siteConfig.assets.screenshots.storageAgentInvestigation,
-            width: 1800,
-            height: 1290,
+            width: 1310,
+            height: 980,
             alt: copy.heroAlt,
           },
       supporting: isPagewise
@@ -316,6 +317,7 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
             kicker: copy.supportingKicker,
             title: copy.supportingTitle,
             body: copy.supportingBody,
+            beside: "workflow" as const,
           },
     };
   }

@@ -56,7 +56,8 @@
   .product-screenshot-showcase,
   .split-content,
   .inside-section,
-  .product-deep-dive {
+  .product-deep-dive,
+  .workflow-figure-row {
     grid-template-columns: 1fr;
     gap: 34px;
   }

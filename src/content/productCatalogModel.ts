@@ -1,7 +1,7 @@
 import { indexedProduct, localizedProductTitle } from "./productIndex";
 import { catalogCopy } from "./i18n/pageCopy";
 import { type Locale, type ProductSlug } from "../lib/site";
-import { productManifest } from "./productManifest";
+import { catalogLines, productManifest, type CatalogLine } from "./productManifest";
 
 export type ProductCatalogItem = {
   id: string;
@@ -13,6 +13,7 @@ export type ProductCatalogItem = {
   isPrimary?: boolean;
   slug?: ProductSlug;
   group: "storage" | "personal";
+  line: CatalogLine;
 };
 
 export function productCatalogModel(locale: Locale) {
@@ -46,6 +47,7 @@ export function productCatalogModel(locale: Locale) {
       slug: item.slug,
       isPrimary: item.catalog.primary,
       group: item.group,
+      line: item.line,
     } satisfies ProductCatalogItem;
   });
   const storage = catalogItems.filter((item) => item.group === "storage");

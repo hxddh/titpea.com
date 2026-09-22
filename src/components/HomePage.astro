@@ -51,7 +51,7 @@ const { model } = Astro.props;
     <div class="home-catalog-columns">
       {
         model.more.groups.map((group) => (
-          <section class="home-catalog-column">
+          <section class="home-catalog-column" data-line={group.line}>
             <h3 class="about-product-line-label">{group.label}</h3>
             <ul class="home-catalog-list">
               {group.items.map((item) => (

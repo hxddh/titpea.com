@@ -30,7 +30,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "Inspect the checks",
-          body: "Review tool activity and analysis results. Object metadata, log rows, and inventories stay with the session so you can check the conclusion.",
+          body: "Review tool activity and analysis results. Object metadata, log rows, and inventories stay with the session so you can check the conclusion. To park a Pi session on BOS and resume it on another machine, use celagent.",
           intent: "workflow",
           surface: "artifact",
         },
@@ -83,7 +83,7 @@ export const storageAgentWorkbenchProduct: AgentWorkbenchProduct = {
         },
         {
           title: "查看结论的依据",
-          body: "查看工具活动和分析结果。对象元数据、日志行和清单随会话保存，可以打开对应证据，再决定下一步怎么处理。",
+          body: "查看工具活动和分析结果。对象元数据、日志行和清单随会话保存，可以打开对应证据，再决定下一步怎么处理。要把 Pi 会话停在 BOS、换机器继续，用 celagent。",
           intent: "workflow",
           surface: "artifact",
         },

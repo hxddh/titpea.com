@@ -1,10 +1,14 @@
 import type { ProductSlug } from "../lib/site";
 import type { ProductGroup, VisualPolicy } from "./productArchetypes";
 
+export const catalogLines = ["storage", "agents", "everyday", "experimental"] as const;
+export type CatalogLine = (typeof catalogLines)[number];
+
 export type ProductManifestItem = {
   slug: ProductSlug;
   name: string;
   group: ProductGroup;
+  line: CatalogLine;
   nav: {
     primary: boolean;
     label?:
@@ -31,6 +35,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "s3-turbo-list",
     name: "s3-turbo-list",
     group: "storage",
+    line: "storage",
     nav: { primary: true },
     catalog: { order: 1 },
     visual: "s3Benchmark",
@@ -41,6 +46,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "storage-agent-workbench",
     name: "Storage Agent",
     group: "storage",
+    line: "storage",
     nav: { primary: true, label: "storageAgent" },
     catalog: { order: 2, primary: true },
     visual: "agentWorkbenchScreenshot",
@@ -51,6 +57,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "storageops",
     name: "StorageOps",
     group: "storage",
+    line: "storage",
     nav: { primary: true },
     catalog: { order: 3 },
     visual: "storageAgent",
@@ -61,6 +68,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "httpmon",
     name: "httpmon",
     group: "storage",
+    line: "storage",
     nav: { primary: true },
     catalog: { order: 4 },
     visual: "httpmonTerminal",
@@ -71,6 +79,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "celagent",
     name: "celagent",
     group: "storage",
+    line: "agents",
     nav: { primary: true, label: "celagent" },
     catalog: { order: 5 },
     visual: "celagentTerminal",
@@ -81,6 +90,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "pagewise",
     name: "PageWise",
     group: "personal",
+    line: "everyday",
     nav: { primary: false, label: "pagewise" },
     catalog: { order: 1, primary: true },
     visual: "agentWorkbenchScreenshot",
@@ -91,6 +101,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "pulse",
     name: "Pulse",
     group: "personal",
+    line: "agents",
     nav: { primary: true, label: "pulse" },
     catalog: { order: 2 },
     visual: "pulseMenuBar",
@@ -101,6 +112,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "world-machine",
     name: "World Machine",
     group: "personal",
+    line: "experimental",
     nav: { primary: true, label: "worldMachine" },
     catalog: { order: 3 },
     visual: "worldMachineProjection",
@@ -111,6 +123,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "world-clock",
     name: "World Clock",
     group: "personal",
+    line: "everyday",
     nav: { primary: true, label: "worldClock" },
     catalog: { order: 4 },
     visual: "worldClockScreenshot",
@@ -121,6 +134,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "douban-movie-rating",
     name: "Douban Movie Rating Assistant",
     group: "personal",
+    line: "everyday",
     nav: { primary: true, label: "douban" },
     catalog: { order: 5 },
     visual: "doubanScreenshot",
@@ -131,6 +145,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "agent-radar",
     name: "Agent Radar",
     group: "personal",
+    line: "agents",
     nav: { primary: false, label: "agentRadar" },
     catalog: { order: 6 },
     visual: "agentRadarTerminal",
@@ -141,6 +156,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "goban",
     name: "Goban",
     group: "personal",
+    line: "everyday",
     nav: { primary: true, label: "goban" },
     catalog: { order: 7 },
     visual: "gobanScreenshot",
@@ -151,6 +167,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "chessboard",
     name: "Chessboard",
     group: "personal",
+    line: "everyday",
     nav: { primary: true, label: "chessboard" },
     catalog: { order: 8 },
     visual: "chessboardScreenshot",
@@ -161,6 +178,7 @@ export const productManifest: readonly ProductManifestItem[] = [
     slug: "easier-bookmarks",
     name: "Easier Bookmarks",
     group: "personal",
+    line: "everyday",
     nav: { primary: true, label: "easierBookmarks" },
     catalog: { order: 9 },
     visual: "easierBookmarksScreenshot",

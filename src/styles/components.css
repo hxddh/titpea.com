@@ -29,7 +29,7 @@
 }
 
 .nav {
-  gap: 18px;
+  gap: 14px;
   color: var(--label);
   font-family: var(--sans);
   font-size: 13px;

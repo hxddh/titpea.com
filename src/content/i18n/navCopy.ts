@@ -14,7 +14,9 @@ export const headerCopy: Record<
     groups: {
       main: string;
       storage: string;
-      personal: string;
+      agents: string;
+      everyday: string;
+      experimental: string;
       external: string;
     };
     links: {
@@ -46,7 +48,9 @@ export const headerCopy: Record<
     groups: {
       main: "Main",
       storage: "Storage",
-      personal: "Tools",
+      agents: "Agents",
+      everyday: "Everyday",
+      experimental: "Experimental",
       external: "External",
     },
     links: {
@@ -77,7 +81,9 @@ export const headerCopy: Record<
     groups: {
       main: "主要",
       storage: "存储",
-      personal: "工具",
+      agents: "Agent",
+      everyday: "日常",
+      experimental: "实验",
       external: "外部链接",
     },
     links: {

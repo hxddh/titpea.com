@@ -60,6 +60,7 @@ export type HomePageModel = BasePageModel & {
     title: string;
     groups: Array<{
       label: string;
+      line: "storage" | "agents" | "everyday" | "experimental";
       items: ProductCatalogItemModel[];
     }>;
   };

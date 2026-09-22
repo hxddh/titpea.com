@@ -1,7 +1,7 @@
 import { pathFor, type CurrentPage, type DesktopNavEntry, type HeaderNavGroup, type Locale } from "../lib/site";
 import { headerCopy } from "./i18n/navCopy";
 import { siteConfig } from "./siteConfig";
-import { productManifest } from "./productManifest";
+import { catalogLines, productManifest } from "./productManifest";
 
 export function headerUi(locale: Locale) {
   const copy = headerCopy[locale];
@@ -27,10 +27,10 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
         { label: copy.links.about, href: pathFor(locale, "about"), current: "about", showInPrimary: true },
       ],
     },
-    ...(["storage", "personal"] as const).map((group) => ({
-      label: copy.groups[group],
+    ...catalogLines.map((line) => ({
+      label: copy.groups[line],
       items: productManifest
-        .filter((item) => item.group === group)
+        .filter((item) => item.line === line)
         .map((item) => ({
           label: item.nav.label ? copy.links[item.nav.label] : item.name,
           href: pathFor(locale, item.slug),
@@ -46,12 +46,10 @@ export function headerNavGroups(locale: Locale): HeaderNavGroup[] {
 }
 
 export function desktopNavEntries(locale: Locale, current: CurrentPage): DesktopNavEntry[] {
-  const copy = headerCopy[locale];
   const groups = headerNavGroups(locale);
   const main = groups[0];
-  const storage = groups[1];
-  const personal = groups[2];
-  const external = groups[3];
+  const external = groups[groups.length - 1];
+  const lines = groups.slice(1, -1);
   const about = main.items.find((item) => item.href.includes("about"))!;
   const github = external.items[0];
 
@@ -62,18 +60,12 @@ export function desktopNavEntries(locale: Locale, current: CurrentPage): Desktop
       href: about.href,
       current: about.current,
     },
-    {
-      kind: "dropdown",
-      label: copy.groups.storage,
-      items: [...storage.items],
-      open: storage.items.some((item) => item.current === current),
-    },
-    {
-      kind: "dropdown",
-      label: copy.groups.personal,
-      items: [...personal.items],
-      open: personal.items.some((item) => item.current === current),
-    },
+    ...lines.map((line) => ({
+      kind: "dropdown" as const,
+      label: line.label,
+      items: [...line.items],
+      open: line.items.some((item) => item.current === current),
+    })),
     {
       kind: "link",
       label: github.label,

@@ -91,7 +91,7 @@ export const visualCopy = {
   s3Benchmark: {
     en: {
       kickerSuffix: "field benchmark",
-      title: "1M objects in 18.8s",
+      title: "c=8 is the reference",
       body: "2 vCPU host · default list QPS · OSS Beijing. Observed under constraint, not a throughput ceiling.",
       objectUnit: "objects",
       chartLabel: "Elapsed time by concurrency",
@@ -100,7 +100,7 @@ export const visualCopy = {
     },
     zh: {
       kickerSuffix: "实测",
-      title: "18.8 秒列举 100 万对象",
+      title: "c=8 是参考运行",
       body: "2 vCPU 云主机 · 默认 list QPS · 北京 OSS。受限环境实测，不是性能上限。",
       objectUnit: "对象",
       chartLabel: "不同并发下的完成耗时",

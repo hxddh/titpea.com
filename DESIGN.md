@@ -66,12 +66,13 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 ## Home
 
 - The first screen is the featured pair, not a slogan block with duplicate CTAs. Home hero CTA count is 0.
-- Home wording follows the current content model. The concise introduction identifies the author; section headings are Selected work / 主要作品 and More tools / 更多工具. Do not duplicate these with kickers.
-- The home heading is `--title-index`, a contents line, not a brand sentence and not quieter than the next heading. Featured photographs are labeled by product names; they do not get a second slogan.
-- Featured product names outrank the catalog: `--text-featured-name` under the photograph, `--text-catalog-name` in the list. The featured and catalog headings use `--title-section`. The photograph is the object; the name is a caption. Do not grow the featured name until it competes with the screenshot.
+- Home wording follows the current content model. The concise introduction is the relationship between the featured pair, said once, in `--ink` at 18px: Storage Agent keeps the evidence in the session, and PageWise links the answer back to the page. About does not repeat it. Section headings are Selected work / 主要作品 and More tools / 更多工具. Do not duplicate these with kickers.
+- The home heading is `--title-index`, a contents line, not a brand sentence, and it ranks above `--title-section`. Featured photographs are labeled by product names; they do not get a second slogan. Featured investigation and reading screenshots are cropped to the evidence region and keep that crop's native proportion.
+- Featured product names use `--text-featured-name` under the photograph. Storage catalog names use the same size. Other catalog names stay `--text-catalog-name`. The featured and catalog headings use `--title-section`. The photograph is the object; the name is a caption. Do not grow the featured name until it competes with the screenshot.
 - Featured screenshots keep their native proportion. Align the pair by the caption baseline, not by cropping both into a 3:2 tile. Each photograph is a print figure: square hairline, no fill, no radius, no drop shadow. Featured figures use `--soft-line` so the pair reads as objects on the first screen.
 - Featured captions are the product name; they do not paraphrase the lead. On single-column screens put the caption above the image so the name is visible before a tall screenshot.
-- Catalog roles use sans, not uppercase mono. Omit the role when the product name already carries the job. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions. Vary sentence length so the list is not eight copies of the same grammar.
+- Catalog roles use sans, not uppercase mono. Omit the role when the product name already carries the job. The remaining products are a two-column text list with hairline separators. Catalog one-liners use `--text-list-body` in ink, not 14px muted captions. Storage names use `--text-featured-name`. Experimental names use weight 500. Vary sentence length so the list is not eight copies of the same grammar.
+- Header groups use the same four lines as the catalog: Storage, Agents, Everyday, Experimental. A product belongs to one line.
 - About is one reading block: name, the lead (once, as the object), and the concise body paragraphs in `--ink`. Do not restore Background / Principles as headings. Do not park the facts in a second gray band. Do not add a third paragraph that restates the contact row.
 
 ## Product Hero
@@ -91,7 +92,8 @@ Do not compensate by making a sterile anti-design: black, white, thin rules, and
 - Proof chips are optional. Short product pages should omit them when the same facts already live in the hero, workflow, or FAQ. Workflow evidence tags are mono text, not chips.
 - Browser extensions, native apps, and menu-bar apps use `--section-y-short`; long evidence pages keep `--section-y`.
 - Equal-weight in-section titles use `--text-list-title`, quieter than `--title-section`.
-- Equal-weight section body — cards, workflows, purpose lists — stays in `--ink`. `--muted` is for kickers, FAQ audit answers, and home lead, not the argument.
+- Equal-weight section body — cards, workflows, purpose lists — stays in `--ink`. `--muted` is for kickers and FAQ audit answers, not the argument. The home lead is the argument.
+- Storage Agent's welcome illustration sits beside the workflow steps. It does not open a second section that restates those steps.
 
 ## Chrome
 

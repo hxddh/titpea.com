@@ -1,11 +1,13 @@
 ---
 import type { ProductSection } from "../content/productSections";
+import type { ProductShowcaseFigure } from "../content/visualModels";
 
 interface Props {
   section: Extract<ProductSection, { kind: "cards" }>;
+  figure?: ProductShowcaseFigure;
 }
 
-const { section } = Astro.props;
+const { section, figure } = Astro.props;
 const gridClass = `${section.id}-grid section-card-list`;
 const cardClass = section.numbered ? "workflow-step" : `${section.id}-card`;
 const surfaceCode = {
@@ -20,20 +22,30 @@ const surfaceCode = {
 <section id={section.id} class={`shell content-section ${section.id}-section`}>
   <p class="section-kicker">{section.label}</p>
   <h2 class="section-heading sr-only">{section.label}</h2>
-  <div class={gridClass}>
+  <div class:list={[figure && "workflow-figure-row"]}>
+    <div class={gridClass}>
+      {
+        section.items.map((item, index) => (
+          <article
+            class:list={[cardClass, item.priority === "primary" && "primary", item.compact && "compact"]}
+            data-intent={item.intent}
+            data-surface={item.surface ? surfaceCode[item.surface] : undefined}
+          >
+            {section.numbered && <span>{String(index + 1).padStart(2, "0")}</span>}
+            {item.evidence && <small>{item.evidence}</small>}
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
     {
-      section.items.map((item, index) => (
-        <article
-          class:list={[cardClass, item.priority === "primary" && "primary", item.compact && "compact"]}
-          data-intent={item.intent}
-          data-surface={item.surface ? surfaceCode[item.surface] : undefined}
-        >
-          {section.numbered && <span>{String(index + 1).padStart(2, "0")}</span>}
-          {item.evidence && <small>{item.evidence}</small>}
-          <h3>{item.title}</h3>
-          <p>{item.body}</p>
-        </article>
-      ))
+      figure && (
+        <figure>
+          <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" />
+          <figcaption>{figure.body}</figcaption>
+        </figure>
+      )
     }
   </div>
 </section>

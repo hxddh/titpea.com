@@ -19,7 +19,7 @@ export const images = [
     file: "og-about.png",
     eyebrow: "About",
     title: "hxddh",
-    body: "I work on cloud object storage and build tools I use myself.",
+    body: "I keep the logs and checks behind a storage diagnosis.",
     accent: "#161513",
     mark: "HX",
     visual: "stack",
@@ -27,7 +27,7 @@ export const images = [
   {
     file: "og-s3-turbo-list.png",
     eyebrow: "s3-turbo-list",
-    title: "List objects. Find diffs",
+    title: "1M objects in 18.8s",
     body: "List and compare S3 objects in parallel. Save Parquet files for further analysis.",
     accent: "#16a56c",
     mark: "LIST",

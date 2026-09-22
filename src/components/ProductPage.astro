@@ -18,6 +18,8 @@ interface Props {
 
 const { model } = Astro.props;
 const copy = model.copy;
+const openingShowcases = model.showcases.filter((figure) => figure.beside !== "workflow");
+const workflowFigure = model.showcases.find((figure) => figure.beside === "workflow");
 ---
 
 <SiteLayout
@@ -53,7 +55,7 @@ const copy = model.copy;
     )
   }
 
-  {model.showcases.map((figure) => <ProductScreenshotShowcase supporting={figure} />)}
+  {openingShowcases.map((figure) => <ProductScreenshotShowcase supporting={figure} />)}
 
   {model.sectionIndex && <ProductSectionIndex label={model.indexLabel} items={model.navItems} locale={model.locale} />}
 
@@ -83,7 +85,7 @@ const copy = model.copy;
         return <ProductFaqSection section={section} />;
       }
 
-      return <ProductCardsSection section={section} />;
+      return <ProductCardsSection section={section} figure={section.id === "workflow" ? workflowFigure : undefined} />;
     })
   }
 
