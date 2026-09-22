@@ -289,14 +289,14 @@ export function visualModel(kind: VisualPolicy, locale: Locale, label: string, s
       hero: isPagewise
         ? {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,
-            width: 1590,
-            height: 990,
+            width: 1800,
+            height: 1200,
             alt: copy.heroAlt,
           }
         : {
             src: siteConfig.assets.screenshots.storageAgentInvestigation,
-            width: 1310,
-            height: 980,
+            width: 1800,
+            height: 1290,
             alt: copy.heroAlt,
           },
       supporting: isPagewise

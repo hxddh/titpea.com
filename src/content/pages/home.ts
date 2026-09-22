@@ -65,8 +65,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
               locale === "en"
                 ? "Storage Agent comparing object evidence in a storage investigation"
                 : "Storage Agent 对比存储调查中的对象证据",
-            width: 1310,
-            height: 980,
+            width: 1800,
+            height: 1290,
           },
         },
         {
@@ -78,8 +78,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
               locale === "en"
                 ? "PageWise analyzing a financial table beside its source PDF page"
                 : "PageWise 在 PDF 原页旁分析财务表格",
-            width: 1590,
-            height: 990,
+            width: 1800,
+            height: 1200,
           },
         },
       ],
