@@ -1,0 +1,35 @@
+---
+import type { PathsSection } from "../../content/schema";
+
+interface Props {
+  section: PathsSection;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="product-section s3-results-section">
+  <div class="shell">
+    <header class="section-head">
+      <p class="section-kicker">{section.kicker}</p>
+      <h2>{section.title}</h2>
+      <p class="sub">{section.body}</p>
+    </header>
+    <div class="s3-result-paths">
+      {
+        section.paths.map((path) => (
+          <article class="panel">
+            <p class="panel-label">{path.label}</p>
+            <h3>{path.title}</h3>
+            <div class="s3-path-flow" aria-label={`${path.input} to ${path.output}`}>
+              <span>{path.input}</span>
+              <i aria-hidden="true" />
+              <strong>{path.output}</strong>
+            </div>
+            <p>{path.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

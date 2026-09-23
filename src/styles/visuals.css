@@ -1,12 +1,3 @@
-.workbench-visual {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid var(--soft-line);
-  border-radius: var(--radius-window);
-  background: var(--paper-raised);
-  font-size: 12px;
-}
-
 .product-screenshot-visual {
   overflow: hidden;
   margin: 0;
@@ -32,233 +23,6 @@
   :root:not([data-theme="light"]) .home-featured-card img {
     filter: brightness(0.78) saturate(0.88);
   }
-}
-
-.workbench-titlebar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--line);
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.03em;
-}
-
-.workbench-title {
-  flex: 1;
-  color: var(--ink);
-  font-weight: 600;
-  text-align: center;
-}
-
-.workbench-spacer {
-  width: 42px;
-}
-
-.workbench-dots {
-  display: inline-flex;
-  gap: 5px;
-}
-
-.workbench-dots i {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: var(--soft-line);
-}
-
-.workbench-body {
-  display: grid;
-  grid-template-columns: minmax(0, 0.32fr) minmax(0, 1fr);
-}
-
-.workbench-sidebar {
-  display: grid;
-  align-content: start;
-  gap: 9px;
-  padding: 14px;
-  border-right: 1px solid var(--line);
-  background: transparent;
-}
-
-.workbench-brand {
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.workbench-newchat {
-  padding: 4px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.workbench-search {
-  padding: 4px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--label);
-  font-size: 11px;
-}
-
-.workbench-group {
-  margin-top: 4px;
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.workbench-sessions {
-  display: grid;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.workbench-session,
-.workbench-sessions li {
-  overflow: hidden;
-  padding: 6px 9px;
-  border-radius: 0;
-}
-
-.workbench-session.active {
-  background: transparent;
-  box-shadow: inset 1px 0 0 var(--ink);
-}
-
-.workbench-session strong,
-.workbench-sessions strong {
-  display: block;
-  overflow: hidden;
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.workbench-sessions strong {
-  color: var(--muted);
-}
-
-.workbench-session small,
-.workbench-sessions small {
-  color: var(--label);
-  font-size: 10px;
-}
-
-.workbench-connected {
-  margin-top: 4px;
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 10px;
-}
-
-.workbench-connected::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 6px;
-  border-radius: 999px;
-  background: #22c55e;
-  vertical-align: middle;
-}
-
-.workbench-welcome {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 14px;
-  padding: 30px 26px;
-  text-align: center;
-}
-
-.workbench-q {
-  max-width: 24ch;
-  margin: 0;
-  color: var(--ink);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.workbench-sub {
-  max-width: 42ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.workbench-input {
-  display: grid;
-  gap: 10px;
-  width: min(100%, 440px);
-  margin-top: 4px;
-  padding: 12px 0 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  text-align: left;
-}
-
-.workbench-input-ph {
-  color: var(--label);
-  font-size: 13px;
-}
-
-.workbench-input-foot {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.workbench-attach {
-  color: var(--label);
-  font-size: 13px;
-}
-
-.workbench-model {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 10px;
-  white-space: nowrap;
-}
-
-.workbench-chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  max-width: 440px;
-}
-
-.workbench-chips span {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--muted);
-  font-size: 12px;
 }
 
 .benchmark-visual,
@@ -388,16 +152,6 @@
   stroke-width: 3;
 }
 
-.chart-point.is-reference circle {
-  fill: var(--data-ref);
-  stroke: var(--data-ref);
-}
-
-.chart-point.is-caution circle {
-  fill: var(--data-caution);
-  stroke: var(--data-caution);
-}
-
 .chart-x-label,
 .chart-y-label,
 .chart-annotation {
@@ -408,14 +162,6 @@
 
 .chart-annotation {
   fill: var(--ink);
-}
-
-.chart-point.is-reference .chart-annotation {
-  fill: var(--data-ref-ink);
-}
-
-.chart-point.is-caution .chart-annotation {
-  fill: var(--data-caution-ink);
 }
 
 .benchmark-footnotes {
@@ -465,245 +211,12 @@
 }
 
 /* Storage Agent welcome mock: keep desktop proportions, stack on narrow screens. */
-@media (max-width: 900px) {
-  .workbench-body {
-    grid-template-columns: 1fr;
-  }
-
-  .workbench-sidebar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 10px;
-    padding: 12px 14px;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .workbench-brand {
-    flex: 1 1 100%;
-    font-size: 12px;
-  }
-
-  .workbench-newchat {
-    flex: 0 1 auto;
-    padding: 4px 0;
-    font-size: 10px;
-  }
-
-  .workbench-connected {
-    flex: 0 0 auto;
-    margin-top: 0;
-    margin-left: auto;
-    font-size: 9px;
-  }
-
-  .workbench-search,
-  .workbench-group,
-  .workbench-session,
-  .workbench-sessions {
-    display: none;
-  }
-
-  .workbench-welcome {
-    padding: 22px 18px 26px;
-    gap: 12px;
-  }
-
-  .workbench-q {
-    max-width: 100%;
-    font-size: clamp(1.125rem, 4.8vw, 1.375rem);
-  }
-
-  .workbench-sub {
-    max-width: 100%;
-    font-size: 12px;
-  }
-
-  .workbench-input {
-    width: 100%;
-    padding: 12px 0 0;
-  }
-
-  .workbench-chips {
-    max-width: 100%;
-    gap: 6px;
-  }
-}
-
-@media (max-width: 640px) {
-  .workbench-sidebar {
-    display: none;
-  }
-
-  .workbench-welcome {
-    padding: 20px 16px 24px;
-  }
-
-  .workbench-q {
-    font-size: 1.125rem;
-    line-height: 1.25;
-  }
-
-  .workbench-chips span {
-    padding: 0;
-    font-size: 11px;
-  }
-
-  .workbench-model {
-    max-width: min(100%, 180px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-/* —— PageWise workbench visual —— */
-
-.pagewise-visual {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid var(--soft-line);
-  border-radius: var(--radius-window);
-  background: var(--paper-raised);
-  font-size: 12px;
-}
-
-.pagewise-body {
-  display: grid;
-  grid-template-columns: minmax(0, 0.24fr) minmax(0, 0.42fr) minmax(0, 0.34fr);
-}
-
-.pagewise-sidebar {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  padding: 14px;
-  border-right: 1px solid var(--line);
-  background: transparent;
-}
-
-.pagewise-files {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pagewise-files li {
-  padding: 7px 9px;
-  border-radius: 0;
-}
-
-.pagewise-files li.active {
-  background: transparent;
-  box-shadow: inset 1px 0 0 var(--ink);
-}
-
-.pagewise-files strong {
-  display: block;
-  overflow: hidden;
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.pagewise-files small {
-  color: var(--label);
-  font-size: 10px;
-}
-
-.pagewise-preview {
-  display: grid;
-  align-content: start;
-  gap: 12px;
-  padding: 16px;
-  border-right: 1px solid var(--line);
-}
-
-.pagewise-preview-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  color: var(--label);
-  font-family: var(--mono);
-  font-size: 10px;
-}
-
-.pagewise-preview-head strong {
-  overflow: hidden;
-  color: var(--ink);
-  font-size: 11px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.pagewise-page {
-  min-height: 180px;
-  padding: 18px 0 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-}
-
-.pagewise-page p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.pagewise-chat {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 12px;
-  padding: 22px 18px;
-  text-align: center;
-}
-
-.pagewise-chat .workbench-q {
-  max-width: 22ch;
-  font-size: 18px;
-}
-
-.pagewise-chat .workbench-chips {
-  max-width: 100%;
-}
-
-@media (max-width: 900px) {
-  .pagewise-body {
-    grid-template-columns: 1fr;
-  }
-
-  .pagewise-sidebar {
-    display: none;
-  }
-
-  .pagewise-preview {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .pagewise-chat {
-    padding: 20px 16px 24px;
-  }
-
-  .pagewise-chat .workbench-q {
-    max-width: 100%;
-    font-size: 1.125rem;
-  }
-}
 
 /* —— Agent Radar terminal visual —— */
 .terminal-visual,
 .diagnostic-visual,
 .httpmon-terminal-visual,
-.agent-radar-terminal-visual,
-.celagent-terminal-visual,
+.terminal-brief-visual,
 .world-machine-projection-visual {
   position: relative;
   min-height: auto;
@@ -714,8 +227,7 @@
 }
 
 .httpmon-terminal-visual,
-.agent-radar-terminal-visual,
-.celagent-terminal-visual {
+.terminal-brief-visual {
   display: grid;
   gap: 0;
   padding: 0;
@@ -727,10 +239,8 @@
 
 .httpmon-terminal-bar,
 .httpmon-terminal-foot,
-.agent-radar-terminal-bar,
-.agent-radar-terminal-foot,
-.celagent-terminal-bar,
-.celagent-terminal-foot {
+.terminal-brief-bar,
+.terminal-brief-foot {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -741,20 +251,16 @@
 }
 
 .httpmon-terminal-bar,
-.agent-radar-terminal-bar,
-.celagent-terminal-bar {
+.terminal-brief-bar {
   border-bottom: 1px solid #193d27;
 }
 
 .httpmon-terminal-command,
 .httpmon-terminal-request,
 .httpmon-terminal-response,
-.agent-radar-terminal-command,
-.agent-radar-terminal-files,
-.agent-radar-terminal-brief,
-.celagent-terminal-command,
-.celagent-terminal-files,
-.celagent-terminal-brief {
+.terminal-brief-command,
+.terminal-brief-files,
+.terminal-brief-brief {
   display: grid;
   gap: 7px;
   padding: 17px 18px;
@@ -762,8 +268,7 @@
 }
 
 .httpmon-terminal-command,
-.agent-radar-terminal-command,
-.celagent-terminal-command {
+.terminal-brief-command {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 7px;
@@ -774,10 +279,8 @@
 .httpmon-terminal-command strong,
 .httpmon-terminal-request strong,
 .httpmon-terminal-response strong,
-.agent-radar-terminal-command strong,
-.agent-radar-terminal-brief strong,
-.celagent-terminal-command strong,
-.celagent-terminal-brief strong {
+.terminal-brief-command strong,
+.terminal-brief-brief strong {
   color: #f0fff4;
   font-size: 12px;
   line-height: 1.45;
@@ -785,10 +288,8 @@
 
 .httpmon-terminal-request span,
 .httpmon-terminal-response span,
-.agent-radar-terminal-files span,
-.agent-radar-terminal-brief span,
-.celagent-terminal-files span,
-.celagent-terminal-brief span {
+.terminal-brief-files span,
+.terminal-brief-brief span {
   color: #72de91;
   font-size: 11px;
   font-weight: 600;
@@ -811,8 +312,7 @@
   white-space: nowrap;
 }
 
-.agent-radar-terminal-files ul,
-.celagent-terminal-files ul {
+.terminal-brief-files ul {
   display: grid;
   gap: 6px;
   margin: 0;
@@ -820,21 +320,18 @@
   list-style: none;
 }
 
-.agent-radar-terminal-files code,
-.celagent-terminal-files code {
+.terminal-brief-files code {
   color: #c3f4d0;
   font-size: 11px;
 }
 
-.agent-radar-terminal-brief,
-.celagent-terminal-brief {
+.terminal-brief-brief {
   display: grid;
   gap: 7px;
 }
 
 .httpmon-terminal-foot,
-.agent-radar-terminal-foot,
-.celagent-terminal-foot {
+.terminal-brief-foot {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -974,16 +471,6 @@
 .pulse-lamp-waiting {
   color: #b42318;
   background: #b42318;
-}
-
-.pulse-lamp-running {
-  color: var(--data-ref);
-  background: var(--data-ref);
-}
-
-.pulse-lamp-recent {
-  color: var(--faint);
-  background: transparent;
 }
 
 .pulse-menubar-foot {
@@ -1129,4 +616,33 @@
   .clock-shot.light {
     display: none;
   }
+}
+
+/* State classes built at render time (is-${state}, pulse-lamp-${state}). */
+.chart-point.is-reference circle {
+  fill: var(--data-ref);
+  stroke: var(--data-ref);
+}
+
+.chart-point.is-caution circle {
+  fill: var(--data-caution);
+  stroke: var(--data-caution);
+}
+
+.chart-point.is-reference .chart-annotation {
+  fill: var(--data-ref-ink);
+}
+
+.chart-point.is-caution .chart-annotation {
+  fill: var(--data-caution-ink);
+}
+
+.pulse-lamp-running {
+  color: var(--data-ref);
+  background: var(--data-ref);
+}
+
+.pulse-lamp-recent {
+  color: var(--faint);
+  background: transparent;
 }

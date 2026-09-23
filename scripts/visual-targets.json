@@ -1,0 +1,8 @@
+{
+  "targets": [
+    { "path": "/", "viewport": "desktop", "state": "top" },
+    { "path": "/zh/", "viewport": "mobile", "state": "menu" },
+    { "path": "/storage-agent-workbench/", "viewport": "desktop", "state": "top" },
+    { "path": "/zh/httpmon/", "viewport": "mobile", "state": "faq" }
+  ]
+}

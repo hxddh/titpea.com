@@ -1,20 +1,13 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
-import { productModel } from "../content/siteModel";
-import { productSlugs } from "../content/products";
+import { products } from "../content/products";
+import { productPage, type ProductPageModel } from "../lib/pages";
 
 export function getStaticPaths() {
-  return productSlugs.map((slug) => ({
-    params: { slug },
-    props: { model: productModel(slug, "en") },
-  }));
+  return products.map((product) => ({ params: { slug: product.slug }, props: { model: productPage(product, "en") } }));
 }
 
-interface Props {
-  model: ReturnType<typeof productModel>;
-}
-
-const { model } = Astro.props;
+const { model } = Astro.props as { model: ProductPageModel };
 ---
 
 <ProductPage model={model} />

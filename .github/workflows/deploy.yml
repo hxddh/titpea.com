@@ -4,6 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Redeploy daily so download buttons and meta lines pick up new release tags
+  # without a commit.
+  schedule:
+    - cron: "17 3 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -20,28 +24,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Sync release tags
+        run: npm run releases:sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run format:check
       - run: npm run typecheck
-      - run: npm run boundaries:check
-      - run: npm run architecture:check
-      - run: npm run deadcode:check
-      - run: npm run manifest:products
-      - run: npm run facts:check
-      - run: npm run facts:external
-      - run: npm run contracts:check
-      - run: npm run content:check
-      - run: npm run copy:check
-      - run: npm run model:check
-      - run: npm run manifest:check
-      - run: npm run assets:check
+      - run: npm run check
       - run: npm run build
-      - run: npm run security:check
-      - run: npm run copy:lint
-      - run: npm run a11y:check
-      # Browser-based QA (Playwright download + preview server + visual/QA) is
-      # the expensive part of CI, so it runs only on pull requests — where
-      # layout regressions are introduced — and not again on the push to main.
-      # The browser binary is cached to avoid re-downloading it every run.
+      - run: npm run check:dist
+      # Browser QA (Playwright + preview server) is the expensive part, so it
+      # runs only on pull requests, where layout regressions are introduced.
       - name: Cache Playwright browser
         if: github.event_name == 'pull_request'
         id: playwright-cache
@@ -53,8 +46,7 @@ jobs:
         if: github.event_name == 'pull_request' && steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
       # zh pages need real CJK glyphs, or the visual baselines compare tofu
-      # boxes and the Chinese visual regression check is meaningless. Keep this
-      # font in sync with local baseline refreshes: Noto Sans CJK.
+      # boxes. Keep this font in sync with local baseline refreshes.
       - name: Install CJK fonts
         if: github.event_name == 'pull_request'
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
@@ -73,8 +65,7 @@ jobs:
           if [ "$ready" != true ]; then cat /tmp/titpea-preview.log; exit 1; fi
           npm run qa:pages
           npm run visual:check
-      # Only keep the rendered screenshots when QA fails, so a regression can be
-      # inspected without paying for artifact storage on every green run.
+      # Keep the rendered screenshots only when QA fails.
       - uses: actions/upload-artifact@v4
         if: failure() && github.event_name == 'pull_request'
         with:
@@ -96,6 +87,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Sync release tags
+        run: npm run releases:sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run build
       - name: Deploy
         run: npx --yes wrangler@4.69.0 pages deploy dist --project-name=titpea --branch=main

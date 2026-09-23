@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import type { AboutPageModel } from "../content/siteModel";
+import type { AboutPageModel } from "../lib/pages";
 
 interface Props {
   model: AboutPageModel;
@@ -17,7 +17,7 @@ const { model } = Astro.props;
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
       <div class="about-body">
-        {model.note.body.map((paragraph) => <p>{paragraph}</p>)}
+        {model.body.map((paragraph) => <p>{paragraph}</p>)}
       </div>
       <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
         {

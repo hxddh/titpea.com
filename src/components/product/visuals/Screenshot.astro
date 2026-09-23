@@ -1,0 +1,13 @@
+---
+import type { Visual } from "../../../content/schema";
+
+interface Props {
+  visual: Extract<Visual, { kind: "screenshot" }>;
+}
+
+const { image } = Astro.props.visual;
+---
+
+<figure class="product-scene product-screenshot-visual">
+  <img src={image.src} alt={image.alt} width={image.width} height={image.height} fetchpriority="high" />
+</figure>

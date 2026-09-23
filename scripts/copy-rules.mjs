@@ -57,3 +57,19 @@ export function zhMixedSpacingIssues(text) {
   }
   return issues;
 }
+
+/** All Chinese copy rules applied to a list of visible strings. */
+export function copyIssues(strings) {
+  const issues = new Set();
+  const text = strings.join("\n");
+  const lower = text.toLowerCase();
+  for (const term of zhForbiddenTerms)
+    if (lower.includes(term.trim().toLowerCase())) issues.add(`forbidden term "${term.trim()}"`);
+  for (const issue of zhMixedSpacingIssues(text)) issues.add(issue);
+  for (const sentence of strings.flatMap((value) => value.split(/[。！？；\n]/))) {
+    for (const { pattern, label } of zhAwkwardPatterns)
+      if (pattern.test(sentence)) issues.add(`${label}: ${sentence.trim()}`);
+    for (const issue of zhSentenceIssues(sentence)) issues.add(issue);
+  }
+  return [...issues];
+}

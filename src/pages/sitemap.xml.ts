@@ -1,4 +1,4 @@
-import { allPageModels } from "../content/siteModel";
+import { allPages } from "../lib/pages";
 
 const escapeXml = (value: string) =>
   value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -22,7 +22,7 @@ export function GET() {
       },
     },
   ];
-  const urls = [...allPageModels.map((model) => model.seo), ...privacyRoutes]
+  const urls = [...allPages.map((model) => model.seo), ...privacyRoutes]
     .map((seo) => {
       const alternates = [
         `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(seo.alternates.en)}"/>`,

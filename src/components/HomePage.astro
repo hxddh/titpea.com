@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import type { HomePageModel } from "../content/siteModel";
+import type { HomePageModel } from "../lib/pages";
 
 interface Props {
   model: HomePageModel;
@@ -61,7 +61,7 @@ const { model } = Astro.props;
               {group.items.map((item) => (
                 <li>
                   <a class="catalog-card" href={item.href}>
-                    {item.displayRole ? <span class="home-catalog-role">{item.displayRole}</span> : null}
+                    {item.role ? <span class="home-catalog-role">{item.role}</span> : null}
                     <strong class="home-catalog-name">{item.name}</strong>
                     <p class="home-catalog-text">{item.text}</p>
                   </a>

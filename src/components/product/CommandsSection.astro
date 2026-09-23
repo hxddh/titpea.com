@@ -1,0 +1,44 @@
+---
+import type { Commands } from "../../content/schema";
+
+interface Props {
+  commands: Commands;
+  copyLabel: string;
+  copiedLabel: string;
+}
+
+const { commands, copyLabel, copiedLabel } = Astro.props;
+---
+
+<section id="start" class="product-section commands-section">
+  <div class="shell narrow">
+    <header class="section-head">
+      <h2>{commands.title}</h2>
+      {commands.sub && <p class="sub">{commands.sub}</p>}
+    </header>
+    <ol class="command-list">
+      {
+        commands.items.map((item) => (
+          <li class="command">
+            <p class="command-comment">{item.comment}</p>
+            <div class="command-line">
+              <code class="command-code">{item.command}</code>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy={item.command}
+                data-copy-label={copyLabel}
+                data-copied-label={copiedLabel}
+                hidden
+              >
+                {copyLabel}
+              </button>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<script is:inline src="/scripts/copy.js" defer></script>

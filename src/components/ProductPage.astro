@@ -1,107 +1,99 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import ProductCardsSection from "./ProductCardsSection.astro";
-import ProductCasesSection from "./ProductCasesSection.astro";
-import ProductDeepDive from "./ProductDeepDive.astro";
-import ProductFaqSection from "./ProductFaqSection.astro";
-import ProductInside from "./ProductInside.astro";
-import ProductResults from "./ProductResults.astro";
-import ProductSectionIndex from "./ProductSectionIndex.astro";
-import ProductStorySection from "./ProductStorySection.astro";
-import ProductVisual from "./ProductVisual.astro";
-import ProductScreenshotShowcase from "./ProductScreenshotShowcase.astro";
-import type { ProductPageModel } from "../content/siteModel";
+import { ui } from "../content/site";
+import type { ProductPageModel } from "../lib/pages";
+import CardsSection from "./product/CardsSection.astro";
+import CasesSection from "./product/CasesSection.astro";
+import CommandsSection from "./product/CommandsSection.astro";
+import FaqSection from "./product/FaqSection.astro";
+import FlowSection from "./product/FlowSection.astro";
+import LocalNav from "./product/LocalNav.astro";
+import PanelSection from "./product/PanelSection.astro";
+import PathsSection from "./product/PathsSection.astro";
+import ShowcaseSection from "./product/ShowcaseSection.astro";
+import StatsBand from "./product/StatsBand.astro";
+import StorySection from "./product/StorySection.astro";
+import Visual from "./product/Visual.astro";
 
 interface Props {
   model: ProductPageModel;
 }
 
 const { model } = Astro.props;
-const copy = model.copy;
-const openingShowcases = model.showcases.filter((figure) => figure.beside !== "workflow");
-const workflowFigure = model.showcases.find((figure) => figure.beside === "workflow");
+const { copy } = model;
+const copyUi = ui[model.locale];
+const showcases = copy.showcases ?? [];
+const opening = showcases.filter((figure) => !figure.beside);
+const besideSection = (id: string) => showcases.find((figure) => figure.beside === id);
+const hasFaq = copy.sections.some((section) => section.kind === "faq");
 ---
 
-<SiteLayout
-  seo={model.seo}
-  current={model.current}
-  locale={model.locale}
-  language={model.language}
-  pageClass={model.pageClass}
-  localNav
->
-  <ProductSectionIndex
-    label={model.indexLabel}
+<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language} localNav>
+  <LocalNav
+    label={copy.title}
     items={model.sectionIndex ? model.navItems : []}
     locale={model.locale}
     cta={copy.primaryCta}
   />
 
-  <section class:list={["product-hero", model.pageClass]} data-visual-kind={model.visual.kind}>
+  <section class="product-hero" data-frame={model.frame}>
     <div class="wash" aria-hidden="true"></div>
     <div class="shell product-copy">
       <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
       <div class="actions">
-        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">{copy.primaryCta.label}</a>
+        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+          {copy.primaryCta.label}
+          {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+        </a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
       <p class="meta-line">{copy.meta.split(" · ").map((part) => <span>{part}</span>)}</p>
     </div>
     <div class="shell hero-visual-frame">
-      <ProductVisual visual={model.visual} />
+      <Visual visual={copy.visual} />
     </div>
   </section>
 
-  {
-    copy.proof.length > 0 && (
-      <section class="proof-strip shell" aria-label="Product evidence">
-        {copy.proof.map((item) => (
-          <span>{item}</span>
-        ))}
-      </section>
-    )
-  }
+  {copy.stats && <StatsBand stats={copy.stats} />}
 
-  {openingShowcases.map((figure) => <ProductScreenshotShowcase supporting={figure} />)}
+  {opening.map((showcase) => <ShowcaseSection showcase={showcase} />)}
 
   {
-    model.sections.map((section) => {
-      if (section.kind === "inside") {
-        return <ProductInside section={section} />;
-      }
-
-      if (section.kind === "evidence") {
-        return <ProductDeepDive section={section} />;
-      }
-
-      if (section.kind === "results") {
-        return <ProductResults section={section} />;
-      }
-
-      if (section.kind === "story") {
-        return <ProductStorySection section={section} />;
-      }
-
-      if (section.kind === "cases") {
-        return <ProductCasesSection section={section} />;
-      }
-
-      if (section.kind === "faq") {
-        return <ProductFaqSection section={section} />;
-      }
-
-      return <ProductCardsSection section={section} figure={section.id === "workflow" ? workflowFigure : undefined} />;
+    copy.sections.map((section) => {
+      const start =
+        section.kind === "faq" && copy.commands ? (
+          <CommandsSection commands={copy.commands} copyLabel={copyUi.copy} copiedLabel={copyUi.copied} />
+        ) : null;
+      if (section.kind === "cards") return <CardsSection section={section} figure={besideSection(section.id)} />;
+      if (section.kind === "faq")
+        return (
+          <>
+            {start}
+            <FaqSection section={section} />
+          </>
+        );
+      if (section.kind === "story") return <StorySection section={section} />;
+      if (section.kind === "cases") return <CasesSection section={section} />;
+      if (section.kind === "flow") return <FlowSection section={section} />;
+      if (section.kind === "paths") return <PathsSection section={section} />;
+      return <PanelSection section={section} />;
     })
   }
 
   {
-    copy.finalCtaLabel && (
-      <section class="shell final-cta" aria-label={copy.finalCtaLabel}>
+    copy.commands && !hasFaq && (
+      <CommandsSection commands={copy.commands} copyLabel={copyUi.copy} copiedLabel={copyUi.copied} />
+    )
+  }
+
+  {
+    copy.finalCta && (
+      <section class="shell final-cta" aria-label={copy.finalCta}>
         <p class="final-cta-name">{copy.title}</p>
         <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-          {copy.finalCtaLabel}
+          {copy.finalCta}
         </a>
       </section>
     )

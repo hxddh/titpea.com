@@ -1,10 +1,10 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
-import { buildPageSeo, languageLink } from "../../../content/pages/seo";
+import { buildSeo, languageLink } from "../../../lib/pages";
 
 const path = "/easier-bookmarks/privacy/";
 const alternatePath = "/zh/easier-bookmarks/privacy/";
-const seo = buildPageSeo({
+const seo = buildSeo({
   title: "Easier Bookmarks Privacy Policy - Titpea",
   description: "How Easier Bookmarks handles bookmark data and local preferences.",
   path,

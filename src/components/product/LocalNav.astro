@@ -1,0 +1,51 @@
+---
+import { ui } from "../../content/site";
+import type { Locale } from "../../content/schema";
+
+interface Props {
+  label: string;
+  items: Array<{ id: string; label: string }>;
+  locale: Locale;
+  cta: { label: string; href: string };
+}
+
+const { label, items, locale, cta } = Astro.props;
+const directoryLabel = ui[locale].sectionDirectory;
+const directoryId = `section-directory-${locale}`;
+---
+
+<nav class="product-section-index" aria-label={label} data-section-index>
+  <div class="local-nav-bar glass">
+    <span class="product-section-index-name">{label}</span>
+    {
+      items.length > 0 && (
+        <>
+          <button
+            class="product-section-index-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls={directoryId}
+            data-section-index-toggle
+          >
+            <span>{directoryLabel}</span>
+            <span aria-hidden="true" data-section-index-symbol>
+              +
+            </span>
+          </button>
+          <div class="product-section-index-links" id={directoryId}>
+            {items.map((item) => (
+              <a href={`#${item.id}`} data-section-link={item.id}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </>
+      )
+    }
+    <a class="button primary local-nav-cta" href={cta.href} rel="noreferrer">{cta.label}</a>
+  </div>
+</nav>
+
+<script>
+  import "../../scripts/section-index";
+</script>

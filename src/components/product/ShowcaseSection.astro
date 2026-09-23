@@ -1,0 +1,22 @@
+---
+import type { Showcase } from "../../content/schema";
+
+interface Props {
+  showcase: Showcase;
+}
+
+const { showcase } = Astro.props;
+---
+
+<section class="product-section product-screenshot-showcase">
+  <div class="shell">
+    <header class="section-head compact">
+      <p class="section-kicker">{showcase.kicker}</p>
+      <h2>{showcase.title}</h2>
+      <p class="sub">{showcase.body}</p>
+    </header>
+    <figure class="shot show-shot">
+      <img src={showcase.src} alt={showcase.alt} width={showcase.width} height={showcase.height} loading="lazy" />
+    </figure>
+  </div>
+</section>

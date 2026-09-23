@@ -1,16 +1,16 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { siteConfig } from "../content/siteConfig";
-import { buildPageSeo, languageLink } from "../content/pages/seo";
+import { site } from "../content/site";
+import { buildSeo, languageLink } from "../lib/pages";
 
 const path = "/404.html";
-const seo = buildPageSeo({
+const seo = buildSeo({
   title: "Page not found - Titpea",
   description: "This address does not match a Titpea product or page.",
   path,
   alternatePath: "/zh/",
   locale: "en",
-  ogImage: siteConfig.assets.og.home,
+  ogImage: site.og.home,
   robots: "noindex",
 });
 ---
