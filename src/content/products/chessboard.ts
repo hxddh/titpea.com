@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "Chessboard",
     description:
-      "A desktop chessboard for macOS and Windows, with Stockfish 18, offline lessons, mate drills, and local review.",
+      "A desktop chessboard for macOS and Windows, with Stockfish 19, offline lessons, mate drills, and local review.",
     eyebrow: "Desktop chess",
     headline: "Learn, then play.",
     lead: "Offline lessons. Mate drills. Stockfish or a friend.",
@@ -87,7 +87,7 @@ export default defineProduct({
         items: [
           { title: "Offline lessons", body: "From zero to intermediate." },
           { title: "Mate drills", body: "Practise mating patterns." },
-          { title: "Stockfish 18", body: "Play the engine locally." },
+          { title: "Stockfish 19", body: "Play the engine locally." },
           { title: "A friend, same screen", body: "Two players, one board." },
           { title: "Bring a PGN", body: "Including FEN-start studies." },
           { title: "Local saves", body: "Games, saves, and analysis." },
@@ -116,7 +116,7 @@ export default defineProduct({
   },
   zh: {
     title: "国际象棋 Chessboard",
-    description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 18、离线课程、杀型练习与本机复盘。",
+    description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19、离线课程、杀型练习与本机复盘。",
     eyebrow: "桌面国际象棋",
     headline: "学棋、练习，再下一局",
     lead: "离线课程。杀型练习。与 Stockfish 或好友对弈。",
@@ -189,7 +189,7 @@ export default defineProduct({
         items: [
           { title: "离线课程", body: "从零基础到中级。" },
           { title: "杀型练习", body: "反复练习杀型。" },
-          { title: "引擎对弈", body: "在本机与 Stockfish 18 下棋。" },
+          { title: "引擎对弈", body: "在本机与 Stockfish 19 下棋。" },
           { title: "同屏对弈", body: "两人共用一块棋盘。" },
           { title: "带入 PGN", body: "支持指定 FEN 开局的棋谱。" },
           { title: "本机保存", body: "对弈、存档与分析。" },

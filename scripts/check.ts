@@ -101,7 +101,9 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
   if (locale === "zh" && /[。.！!]$/.test(copy.headline))
     fail(`${at}: the Chinese headline has no closing punctuation`);
   const words = (text: string) => text.trim().split(/\s+/).length;
-  const cjk = (text: string) => text.replace(/[\s，。、；：！？（）“”]/g, "").length;
+  // CJK characters count one each; a Latin name or number counts as one unit.
+  const cjk = (text: string) =>
+    text.replace(/[A-Za-z0-9][\w.+-]*/g, "x").replace(/[\s，。、；：！？（）“”]/g, "").length;
   const tooLong = (text: string, en: number, zh: number) => (locale === "en" ? words(text) > en : cjk(text) > zh);
   if (tooLong(copy.lead, 14, 36)) fail(`${at}: lead is not 2–3 short fragments: "${copy.lead}"`);
   for (const section of copy.sections) {

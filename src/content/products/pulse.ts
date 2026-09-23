@@ -74,7 +74,7 @@ export default defineProduct({
         id: "features",
         label: "Know which session needs you.",
         items: [
-          { title: "Four states", body: "Waiting, running, idle, or stalled." },
+          { title: "Session states", body: "Waiting, running, idle, stalled, or probe error." },
           { title: "Hooks add detail", body: "Fuller waiting states for Claude Code and Codex." },
           { title: "Other agents vary", body: "Process and session detection; waiting support varies." },
           { title: "Back to the session", body: "Answer in the original terminal or app." },
@@ -166,7 +166,7 @@ export default defineProduct({
         id: "features",
         label: "哪个会话在等你，一眼可见",
         items: [
-          { title: "四种状态", body: "等待、运行、空闲或停滞。" },
+          { title: "会话状态", body: "等待、运行、空闲、停滞或探测异常。" },
           { title: "hooks 补全等待", body: "Claude Code 与 Codex 等待状态更完整。" },
           { title: "其他 Agent 各不同", body: "进程探测与会话采集，等待支持不一。" },
           { title: "回到原会话", body: "在对应终端或应用里处理请求。" },

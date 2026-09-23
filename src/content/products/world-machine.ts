@@ -140,7 +140,7 @@ export default defineProduct({
           { title: "观察第一轮", body: "一个地方，和运行中形成的关系。" },
           { title: "选择下一步", body: "观察、任其运行，或在分支上干预。" },
           { title: "查看状态", body: "时间线和检查器显示事件与状态。" },
-          { title: "Pack 定义世界", body: "Tiny Society 等 Pack 提供不同世界。" },
+          { title: "Pack 定义世界", body: "Pocket Universe、Tiny Society、Micro Company。" },
           { title: "契约有文档", body: "运行时、Pack 契约、投影接口。" },
         ],
       },
