@@ -114,7 +114,8 @@ export default defineProduct({
             },
           ],
           boundaryLabel: "Not a sync engine",
-          boundary: "It does not copy objects or replace a storage browser. It leaves a reliable basis for the next decision.",
+          boundary:
+            "It does not copy objects or replace a storage browser. It leaves a reliable basis for the next decision.",
         },
       },
       {
@@ -155,14 +156,16 @@ export default defineProduct({
             title: "A usable object list",
             input: "One bucket",
             output: "Parquet object list",
-            detail: "Checkpoint and resume keep a long list recoverable; optional trace and manifest files record how it ran.",
+            detail:
+              "Checkpoint and resume keep a long list recoverable; optional trace and manifest files record how it ran.",
           },
           {
             label: "DIFF",
             title: "An ordered difference set",
             input: "Source bucket + target bucket",
             output: "Parquet with DiffFlag",
-            detail: "Both sides list in parallel and merge in key order, so tools can filter equal, missing, or changed.",
+            detail:
+              "Both sides list in parallel and merge in key order, so tools can filter equal, missing, or changed.",
           },
         ],
       },
@@ -289,7 +292,7 @@ export default defineProduct({
       {
         kind: "panel",
         id: "inside",
-        nav: "list 与 diff",
+        nav: "列举与对比",
         kicker: "list 与 diff",
         title: "弄清有什么，差了什么",
         body: "迁移、排查或盘点之前，先回答这两个问题。",
