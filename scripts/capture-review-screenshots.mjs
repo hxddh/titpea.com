@@ -51,7 +51,7 @@ async function capture(page, viewport, target, suffix = "") {
       leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       sectionIndexTop: index ? Math.round(index.getBoundingClientRect().top) : null,
-      sectionCurrentCount: index ? index.querySelectorAll("a[aria-current]").length : null,
+      sectionCurrentCount: index ? index.querySelectorAll("[data-section-link][aria-current]").length : null,
     };
   });
   await page.screenshot({ path, fullPage: false });
@@ -95,7 +95,7 @@ for (const viewport of viewports) {
       await page.waitForTimeout(120);
       await capture(page, viewport, target, "-sticky-scroll");
 
-      const firstAnchor = page.locator(".product-section-index a").first();
+      const firstAnchor = page.locator(".product-section-index [data-section-link]").first();
       if ((await firstAnchor.count()) > 0) {
         await firstAnchor.click();
         await page.waitForTimeout(300);

@@ -9,14 +9,14 @@ async function sectionState(page, href) {
     const target = document.getElementById(targetId);
     const indexRect = index?.getBoundingClientRect();
     const rect = target?.getBoundingClientRect();
-    const active = index?.querySelector("a[aria-current]");
+    const active = index?.querySelector("[data-section-link][aria-current]");
     return {
       targetId,
       indexPosition: index ? getComputedStyle(index).position : null,
       indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
       indexTop: indexRect ? Math.round(indexRect.top) : null,
       indexBottom: indexRect ? Math.round(indexRect.bottom) : null,
-      currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
+      currentCount: index ? index.querySelectorAll("[data-section-link][aria-current]").length : 0,
       currentHref: active?.getAttribute("href") ?? null,
       targetTop: rect ? Math.round(rect.top) : null,
       targetExists: Boolean(target),
@@ -36,13 +36,14 @@ function checkClickedSection(viewport, path, anchors, anchor, state, screenshot,
     anchorCount: anchors.length,
     textOk:
       state.targetExists &&
-      state.indexPosition === (viewport.name === "desktop" ? "sticky" : "static") &&
-      (viewport.name === "desktop" ? state.indexOverflow <= 1 : state.indexOverflow >= 0) &&
-      (viewport.name !== "desktop" || (state.indexTop !== null && state.indexTop >= 0)) &&
+      state.indexPosition === "sticky" &&
+      state.indexOverflow <= 1 &&
+      state.indexTop !== null &&
+      state.indexTop >= 0 &&
       state.currentCount === 1 &&
       state.currentHref === anchor.href &&
       state.targetTop !== null &&
-      state.targetTop >= (viewport.name === "desktop" ? (state.indexBottom ?? 0) : 0) &&
+      state.targetTop >= (state.indexBottom ?? 0) &&
       state.targetTop < viewport.height - 24,
     details: state,
     screenshot,
@@ -53,7 +54,7 @@ export async function checkSectionIndex(page, viewport, route) {
   const path = route.path;
   const results = [];
   await visit(page, new URL(path, baseUrl), `${viewport.name} anchors`);
-  const anchors = await page.locator(".product-section-index a").evaluateAll((links) =>
+  const anchors = await page.locator(".product-section-index [data-section-link]").evaluateAll((links) =>
     links.map((link, index) => ({
       index,
       href: link.getAttribute("href") ?? "",
@@ -63,7 +64,7 @@ export async function checkSectionIndex(page, viewport, route) {
 
   for (const anchor of anchors) {
     await visit(page, new URL(path, baseUrl), `${viewport.name} anchor ${anchor.label}`);
-    const anchorLink = page.locator(".product-section-index a").nth(anchor.index);
+    const anchorLink = page.locator(".product-section-index [data-section-link]").nth(anchor.index);
     await anchorLink.evaluate((link) => {
       link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
       link.click();
@@ -77,7 +78,7 @@ export async function checkSectionIndex(page, viewport, route) {
     if (viewport.name !== "desktop") {
       await visit(page, new URL(path, baseUrl), `${viewport.name} pointer ${anchor.label}`);
       await page.locator("[data-section-index-toggle]").click();
-      const pointerAnchor = page.locator(".product-section-index a").nth(anchor.index);
+      const pointerAnchor = page.locator(".product-section-index [data-section-link]").nth(anchor.index);
       await pointerAnchor.evaluate((link) => {
         link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
       });
@@ -90,8 +91,6 @@ export async function checkSectionIndex(page, viewport, route) {
     }
   }
 
-  if (viewport.name !== "desktop") return results;
-
   await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
   await page.waitForTimeout(sectionIndexPolicy.qaStickyWaitMs);
   const stickyState = await page.evaluate(() => {
@@ -101,7 +100,7 @@ export async function checkSectionIndex(page, viewport, route) {
       indexPosition: index ? getComputedStyle(index).position : null,
       indexTop: rect ? Math.round(rect.top) : null,
       indexOverflow: index ? index.scrollWidth - index.clientWidth : 0,
-      currentCount: index ? index.querySelectorAll("a[aria-current]").length : 0,
+      currentCount: index ? index.querySelectorAll("[data-section-link][aria-current]").length : 0,
     };
   });
   const screenshot = screenshotName(viewport.name, path, "_sticky-scroll");
@@ -118,7 +117,7 @@ export async function checkSectionIndex(page, viewport, route) {
     textOk:
       stickyState.indexPosition === "sticky" &&
       stickyState.indexTop === sectionIndexPolicy.stickyTopPx &&
-      (viewport.name === "desktop" ? stickyState.indexOverflow <= 1 : stickyState.indexOverflow >= 0) &&
+      stickyState.indexOverflow <= 1 &&
       stickyState.currentCount === 1,
     details: stickyState,
     screenshot,

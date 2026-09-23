@@ -27,12 +27,13 @@ export function failureReasons(result) {
     result.path.includes("sticky-scroll");
   const anchorOk =
     isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 4 : result.anchorCount === 0) : true;
+  // Every product page pins its local nav; pages with sections also mark one active.
   const productIndexOk = result.productIndex
-    ? result.productIndex.position === (isDesktop ? "sticky" : "static") &&
-      (isDesktop ? result.productIndex.overflow <= 1 : result.productIndex.overflow >= 0) &&
-      result.productIndex.currentCount === 1 &&
-      (isDesktop || result.productIndex.linkRows === 1)
-    : true;
+    ? result.productIndex.position === "sticky" &&
+      result.productIndex.overflow <= 1 &&
+      result.productIndex.currentCount === (result.anchorCount > 0 ? 1 : 0) &&
+      (isDesktop || result.productIndex.linkRows <= 1)
+    : !isProductPage || isAuxCheck;
   const featuresGridOk =
     isProductPage && !isAuxCheck && result.featuresGrid !== null ? result.featuresGrid === "grid" : true;
   const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;

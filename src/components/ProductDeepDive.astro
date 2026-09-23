@@ -6,91 +6,30 @@ interface Props {
 }
 
 const { section } = Astro.props;
-const sectionClass =
-  section.variant === "scanPlan"
-    ? "shell product-deep-dive s3-scan-plan"
-    : section.variant === "diagnosisFlow"
-      ? "shell product-deep-dive diagnosis-flow"
-      : section.variant === "trafficFlow"
-        ? "shell product-deep-dive traffic-flow"
-        : section.variant === "runChain"
-          ? "shell product-deep-dive s3-deep-dive"
-          : "shell product-deep-dive storageops-deep-dive";
+const variantClass = {
+  scanPlan: "s3-scan-plan",
+  diagnosisFlow: "diagnosis-flow",
+  trafficFlow: "traffic-flow",
+}[section.variant];
 ---
 
-<section id={section.id} class={sectionClass}>
-  <div class="deep-dive-heading">
-    <p class="section-kicker">{section.kicker}</p>
-    <h2>{section.title}</h2>
-    <p>{section.body}</p>
-  </div>
-  {
-    (section.variant === "diagnosisFlow" || section.variant === "trafficFlow") && (
-      <ol class="product-flow" aria-label={section.title}>
-        {section.cards.map((card, index) => (
-          <li>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{card.label}</h3>
-              <p>{card.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    )
-  }
-  {
-    section.variant === "scanPlan" && (
-      <ol class="scan-plan" aria-label={section.title}>
-        {section.cards.map((card, index) => (
-          <li>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{card.label}</h3>
-              <p>{card.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    )
-  }
-  {
-    section.variant === "runChain" && (
-      <>
-        <div class="deep-dive-grid s3-run-grid">
-          {section.cards.map((card) => (
-            <article>
-              <span>{card.value}</span>
-              <h3>{card.label}</h3>
-              <p>{card.body}</p>
-            </article>
-          ))}
-        </div>
-        {section.benchmark && (
-          <div class="deep-dive-benchmark">
-            {section.benchmark.map((item) => (
-              <div>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-                {item.body && <p>{item.body}</p>}
-              </div>
-            ))}
-          </div>
-        )}
-      </>
-    )
-  }
-  {
-    section.variant === "agentTopology" && (
-      <div class="agent-topology">
-        {section.cards.map((card) => (
-          <article>
-            <span>{card.label}</span>
-            {card.value && <strong>{card.value}</strong>}
+<section id={section.id} class:list={["product-section product-deep-dive", variantClass]}>
+  <div class="shell">
+    <header class="section-head">
+      <p class="section-kicker">{section.kicker}</p>
+      <h2>{section.title}</h2>
+      <p class="sub">{section.body}</p>
+    </header>
+    <ol class="feature-grid product-flow" aria-label={section.title} data-count={section.cards.length} data-numbered>
+      {
+        section.cards.map((card, index) => (
+          <li class="feature-card">
+            <span class="feature-step">{index + 1}</span>
+            <h3>{card.label}</h3>
             <p>{card.body}</p>
-          </article>
-        ))}
-      </div>
-    )
-  }
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </section>

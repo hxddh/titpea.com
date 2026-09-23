@@ -8,75 +8,50 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="inside-section shell">
-  <div class="inside-copy">
-    <p class="section-kicker">{section.kicker}</p>
-    <h2>{section.title}</h2>
-    <p>{section.body}</p>
+<section id={section.id} class="product-section inside-section">
+  <div class="shell">
+    <header class="section-head">
+      <p class="section-kicker">{section.kicker}</p>
+      <h2>{section.title}</h2>
+      <p class="sub">{section.body}</p>
+    </header>
+    {
+      section.panel?.kind === "s3Purpose" && (
+        <div class="s3-purpose-panel" aria-label={section.panel.label}>
+          <div class="feature-grid s3-purpose-grid" data-count={section.panel.items.length}>
+            {section.panel.items.map((item) => (
+              <article class="feature-card">
+                <small class="feature-evidence">{item.label}</small>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <p class="s3-purpose-boundary">
+            <strong>{section.panel.boundaryLabel}</strong>
+            <span>{section.panel.boundary}</span>
+          </p>
+        </div>
+      )
+    }
+    {
+      section.panel?.kind === "agentEvidence" && (
+        <div class="panel agent-evidence-panel" aria-label={section.panel.label}>
+          <div class="panel-top">
+            <span>{section.panel.eyebrow}</span>
+            <strong>{section.panel.title}</strong>
+          </div>
+          <div class="feature-grid agent-evidence-grid" data-count={section.panel.metrics.length}>
+            {section.panel.metrics.map((metric) => (
+              <article class="feature-card">
+                <small class="feature-evidence">{metric.label}</small>
+                <h3>{metric.value}</h3>
+                <p>{metric.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
-  {
-    section.panel?.kind === "s3Purpose" && (
-      <div class="s3-purpose-panel" aria-label={section.panel.label}>
-        <div class="s3-purpose-grid">
-          {section.panel.items.map((item) => (
-            <article>
-              <span>{item.label}</span>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </article>
-          ))}
-        </div>
-        <p class="s3-purpose-boundary">
-          <strong>{section.panel.boundaryLabel}</strong>
-          <span>{section.panel.boundary}</span>
-        </p>
-      </div>
-    )
-  }
-  {
-    section.panel?.kind === "metricWorkbench" && (
-      <div class="inside-workbench inventory-workbench" aria-label={section.panel.label}>
-        <div class="workbench-top">
-          <span>s3-turbo-list</span>
-          <strong>{section.panel.title}</strong>
-        </div>
-        <div class="inventory-grid benchmark-metrics">
-          {section.panel.metrics.map((metric) => (
-            <div class={metric.strong ? "metric-tile strong" : "metric-tile"}>
-              <span>{metric.label}</span>
-              <strong>{metric.value}</strong>
-              <p>{metric.body}</p>
-            </div>
-          ))}
-        </div>
-        <div class="output-table benchmark-table" aria-label="Automation surfaces">
-          {section.panel.rows.map((row) => (
-            <div>
-              <span>{row.label}</span>
-              <strong>{row.value}</strong>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-  {
-    section.panel?.kind === "agentEvidence" && (
-      <div class="inside-workbench agent-evidence-panel" aria-label={section.panel.label}>
-        <div class="workbench-top">
-          <span>{section.panel.eyebrow}</span>
-          <strong>{section.panel.title}</strong>
-        </div>
-        <div class="agent-evidence-grid">
-          {section.panel.metrics.map((metric) => (
-            <div>
-              <span>{metric.label}</span>
-              <strong>{metric.value}</strong>
-              <p>{metric.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
 </section>

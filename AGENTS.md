@@ -4,8 +4,10 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — judgment, named refusals, measurable floors, and settled page shape.
-- `src/styles/tokens.css` — spacing, type, color. Do not invent parallel tokens.
+- [DESIGN.md](DESIGN.md) — the page shape (glass chrome, centered hero, feature cards, showcase, FAQ), measurable floors, and review order.
+- `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
+
+Stylesheets: `base.css` (type, buttons, photographs, wash), `chrome.css` (header, menus, product local nav, footer), `pages.css` (Home, About, legal), `product.css` (product sections), `visuals.css` (product mocks).
 
 Do not dump whole stylesheets into context. Use the token and class names already on the page. Judgment stays in `DESIGN.md`; repeatable mechanics stay in CSS; anything that can be asserted stays in CI. Eye review follows the order in `DESIGN.md`.
 
@@ -25,7 +27,7 @@ For layout or rendered copy, also run preview and:
 npm run qa:pages
 ```
 
-After an intentional visual change, `npm run visual:approve`, then let CI re-check. If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact.
+After an intentional visual change, refresh the Linux baselines with `VISUAL_BASELINE_PLATFORM=linux npm run visual:approve` on Linux with `fonts-noto-cjk` installed (as CI does), then let CI re-check. If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact.
 
 ## Ship
 

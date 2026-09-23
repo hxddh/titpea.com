@@ -1,7 +1,7 @@
 export const sectionIndexPolicy = {
-  stickyTopPx: 0,
-  desktopScrollMarginPx: 112,
-  mobileScrollMarginPx: 24,
+  stickyTopPx: 10,
+  desktopScrollMarginPx: 84,
+  mobileScrollMarginPx: 76,
   activationViewportRatio: 0.18,
   minimumActivationOffsetPx: 44,
   clickStabilizeDelayMs: 80,
