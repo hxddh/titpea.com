@@ -1,4 +1,4 @@
-import { siteRoutes } from "../src/content/siteModel.ts";
+import { siteRoutes } from "../src/lib/pages.ts";
 
 const baseUrl = process.env.SMOKE_BASE_URL ?? "https://titpea.com";
 // A fresh deploy can take a little while to reach every CDN edge, so give the

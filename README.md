@@ -13,13 +13,15 @@ npm run build
 ## Quality Checks
 
 ```sh
-npm run format:check
+npm run check          # product files, copy, releases, share images, style rules
+npm run typecheck
 npm run build
+npm run check:dist     # CSP, landmarks, structured data, sitemap
 npm run preview -- --host 127.0.0.1 --port 4321
-npm run qa:pages
+npm run qa:pages       # desktop, tablet, mobile layout and navigation
 ```
 
-`qa:pages` checks desktop, tablet, and mobile layouts for page overflow, navigation breakpoints, product anchor links, key copy, and the mobile menu open state.
+Each product is one file in `src/content/products/`. Release tags in `src/content/releases.json` are refreshed by `npm run releases:sync`, which CI runs before every build.
 
 See [DESIGN.md](DESIGN.md) for design principles and review rules, and [AGENTS.md](AGENTS.md) for how agents should load that guidance.
 
@@ -27,7 +29,7 @@ See [DESIGN.md](DESIGN.md) for design principles and review rules, and [AGENTS.m
 
 The site is deployed to the existing Cloudflare Pages project `titpea`.
 
-GitHub Actions builds and deploys on every push to `main`. Configure this repository secret before running the deployment workflow:
+GitHub Actions builds and deploys on every push to `main`. A daily scheduled run (02:17 Singapore time) checks product repositories for new release tags and redeploys only when one changed. Configure this repository secret before running the deployment workflow:
 
 - `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with Cloudflare Pages edit access for the account.
 

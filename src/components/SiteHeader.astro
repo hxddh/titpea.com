@@ -1,6 +1,7 @@
 ---
-import { pathFor, type CurrentPage, type Locale } from "../lib/site";
-import { desktopNavEntries, headerNavGroups, headerUi } from "../content/nav";
+import { ui } from "../content/site";
+import type { Locale } from "../content/schema";
+import { navGroups, pathFor, type CurrentPage } from "../lib/pages";
 
 interface Props {
   current: CurrentPage;
@@ -13,41 +14,36 @@ interface Props {
 }
 
 const { current, locale, alternateHref, alternateLabel, alternateLocale, scrollsAway = false } = Astro.props;
-const copy = headerUi(locale);
-const homeHref = pathFor(locale);
-const desktopNav = desktopNavEntries(locale, current);
-const navGroups = headerNavGroups(locale);
+const copy = ui[locale];
+const groups = navGroups(locale);
+const lineGroups = groups.filter((group) => group.line);
+const github = groups[groups.length - 1].items[0];
+const isCurrent = (item: { current?: CurrentPage }) => (item.current === current ? "page" : undefined);
 ---
 
 <header class="site-header" data-static={scrollsAway ? "" : undefined}>
   <div class="site-header-bar glass">
-    <a class="brand" href={homeHref} aria-label="Titpea home">Titpea</a>
+    <a class="brand" href={pathFor(locale)} aria-label="Titpea home">Titpea</a>
 
     <nav class="nav" aria-label={copy.primaryLabel}>
+      <a href={pathFor(locale, "about")} aria-current={current === "about" ? "page" : undefined}>{copy.about}</a>
       {
-        desktopNav.map((entry) =>
-          entry.kind === "link" ? (
-            <a
-              href={entry.href}
-              aria-current={entry.current === current ? "page" : undefined}
-              rel={entry.external ? "noreferrer" : undefined}
-            >
-              {entry.label}
-            </a>
-          ) : (
-            <details class="nav-dropdown">
-              <summary aria-current={entry.open ? "page" : undefined}>{entry.label}</summary>
-              <div class="nav-dropdown-panel" role="menu">
-                {entry.items.map((item) => (
-                  <a href={item.href} role="menuitem" aria-current={item.current === current ? "page" : undefined}>
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </details>
-          ),
-        )
+        lineGroups.map((group) => (
+          <details class="nav-dropdown">
+            <summary aria-current={group.items.some((item) => item.current === current) ? "page" : undefined}>
+              {group.label}
+            </summary>
+            <div class="nav-dropdown-panel" role="menu">
+              {group.items.map((item) => (
+                <a href={item.href} role="menuitem" aria-current={isCurrent(item)}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </details>
+        ))
       }
+      <a href={github.href} rel="noreferrer">{github.label}</a>
     </nav>
 
     <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
@@ -72,7 +68,7 @@ const navGroups = headerNavGroups(locale);
       <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>
       <div class="mobile-menu-panel">
         {
-          navGroups.map((group) => (
+          groups.map((group) => (
             <section
               class="mobile-menu-group"
               aria-label={group.label}
@@ -80,11 +76,7 @@ const navGroups = headerNavGroups(locale);
             >
               <p>{group.label}</p>
               {group.items.map((item) => (
-                <a
-                  href={item.href}
-                  aria-current={item.current === current ? "page" : undefined}
-                  rel={item.external ? "noreferrer" : undefined}
-                >
+                <a href={item.href} aria-current={isCurrent(item)} rel={item.external ? "noreferrer" : undefined}>
                   {item.label}
                 </a>
               ))}

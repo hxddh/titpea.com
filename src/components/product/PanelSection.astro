@@ -1,0 +1,58 @@
+---
+import type { PanelSection } from "../../content/schema";
+
+interface Props {
+  section: PanelSection;
+}
+
+const { section } = Astro.props;
+const { panel } = section;
+---
+
+<section id={section.id} class="product-section inside-section">
+  <div class="shell">
+    <header class="section-head">
+      <p class="section-kicker">{section.kicker}</p>
+      <h2>{section.title}</h2>
+      <p class="sub">{section.body}</p>
+    </header>
+    {
+      panel.kind === "purpose" && (
+        <div class="s3-purpose-panel" aria-label={panel.label}>
+          <div class="feature-grid s3-purpose-grid" data-count={panel.items.length}>
+            {panel.items.map((item) => (
+              <article class="feature-card">
+                <small class="feature-evidence">{item.label}</small>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <p class="s3-purpose-boundary">
+            <strong>{panel.boundaryLabel}</strong>
+            <span>{panel.boundary}</span>
+          </p>
+        </div>
+      )
+    }
+    {
+      panel.kind === "excerpt" && (
+        <div class="panel agent-evidence-panel" aria-label={panel.label}>
+          <div class="panel-top">
+            <span>{panel.eyebrow}</span>
+            <strong>{panel.title}</strong>
+          </div>
+          <div class="feature-grid agent-evidence-grid" data-count={panel.items.length}>
+            {panel.items.map((item) => (
+              <article class="feature-card">
+                <small class="feature-evidence">{item.label}</small>
+                <h3>{item.value}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

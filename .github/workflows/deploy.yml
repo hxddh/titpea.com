@@ -4,6 +4,11 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Once a day at 02:17 Singapore time (18:17 UTC), look for new product
+  # release tags. The site redeploys only when one changed. The odd minute
+  # avoids GitHub's crowded top-of-hour schedule.
+  schedule:
+    - cron: "17 18 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -11,7 +16,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Scheduled runs only: did any product publish a new release?
+  releases:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v6.0.3
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 22
+      - id: sync
+        run: |
+          npm run releases:sync
+          if git diff --quiet src/content/releases.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
   validate:
+    needs: releases
+    # Every push and pull request; on the schedule, only when a tag changed.
+    if: always() && (github.event_name != 'schedule' || needs.releases.outputs.changed == 'true')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.3
@@ -20,28 +50,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Sync release tags
+        run: npm run releases:sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run format:check
       - run: npm run typecheck
-      - run: npm run boundaries:check
-      - run: npm run architecture:check
-      - run: npm run deadcode:check
-      - run: npm run manifest:products
-      - run: npm run facts:check
-      - run: npm run facts:external
-      - run: npm run contracts:check
-      - run: npm run content:check
-      - run: npm run copy:check
-      - run: npm run model:check
-      - run: npm run manifest:check
-      - run: npm run assets:check
+      - run: npm run check
       - run: npm run build
-      - run: npm run security:check
-      - run: npm run copy:lint
-      - run: npm run a11y:check
-      # Browser-based QA (Playwright download + preview server + visual/QA) is
-      # the expensive part of CI, so it runs only on pull requests — where
-      # layout regressions are introduced — and not again on the push to main.
-      # The browser binary is cached to avoid re-downloading it every run.
+      - run: npm run check:dist
+      # Browser QA (Playwright + preview server) is the expensive part, so it
+      # runs only on pull requests, where layout regressions are introduced.
       - name: Cache Playwright browser
         if: github.event_name == 'pull_request'
         id: playwright-cache
@@ -53,8 +72,7 @@ jobs:
         if: github.event_name == 'pull_request' && steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
       # zh pages need real CJK glyphs, or the visual baselines compare tofu
-      # boxes and the Chinese visual regression check is meaningless. Keep this
-      # font in sync with local baseline refreshes: Noto Sans CJK.
+      # boxes. Keep this font in sync with local baseline refreshes.
       - name: Install CJK fonts
         if: github.event_name == 'pull_request'
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
@@ -73,8 +91,7 @@ jobs:
           if [ "$ready" != true ]; then cat /tmp/titpea-preview.log; exit 1; fi
           npm run qa:pages
           npm run visual:check
-      # Only keep the rendered screenshots when QA fails, so a regression can be
-      # inspected without paying for artifact storage on every green run.
+      # Keep the rendered screenshots only when QA fails.
       - uses: actions/upload-artifact@v4
         if: failure() && github.event_name == 'pull_request'
         with:
@@ -84,7 +101,7 @@ jobs:
 
   deploy:
     needs: validate
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: always() && needs.validate.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -96,6 +113,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Sync release tags
+        run: npm run releases:sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run build
       - name: Deploy
         run: npx --yes wrangler@4.69.0 pages deploy dist --project-name=titpea --branch=main

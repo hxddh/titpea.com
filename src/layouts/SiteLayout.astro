@@ -1,8 +1,8 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
-import { siteConfig } from "../content/siteConfig";
-import type { PageLanguageLink, PageSeo } from "../content/siteModel";
-import type { CurrentPage, Locale } from "../lib/site";
+import { site, ui } from "../content/site";
+import type { Locale } from "../content/schema";
+import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
 
 interface Props {
@@ -17,7 +17,8 @@ interface Props {
 
 const { current = "home", locale = "en", seo, language, pageClass, localNav = false } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
-const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
+const imageUrl = seo.ogImageUrl;
+const copy = ui[locale];
 const year = new Date().getFullYear();
 ---
 
@@ -55,7 +56,7 @@ const year = new Date().getFullYear();
     <title>{seo.title}</title>
   </head>
   <body class:list={[pageClass]}>
-    <a class="skip-link" href="#main-content">{locale === "zh" ? "跳到主要内容" : "Skip to content"}</a>
+    <a class="skip-link" href="#main-content">{copy.skipLink}</a>
     <SiteHeader
       current={current}
       locale={locale}
@@ -69,10 +70,10 @@ const year = new Date().getFullYear();
     </main>
     <footer class="site-footer">
       <div class="shell foot">
-        <span>© {year} {siteConfig.brand}</span>
-        <nav aria-label={locale === "zh" ? "页脚" : "Footer"}>
-          <a href={siteConfig.githubProfile} rel="noreferrer">GitHub</a>
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        <span>© {year} {site.brand}</span>
+        <nav aria-label={copy.footerLabel}>
+          <a href={site.github} rel="noreferrer">GitHub</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
         </nav>
       </div>
     </footer>

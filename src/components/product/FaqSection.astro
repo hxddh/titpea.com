@@ -1,0 +1,35 @@
+---
+import type { FaqSection } from "../../content/schema";
+
+interface Props {
+  section: FaqSection;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="product-section faq-section">
+  <div class="shell narrow">
+    <header class="section-head">
+      <h2>{section.label}</h2>
+    </header>
+    <div class="faq-list">
+      {
+        section.items.map((item, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>{item.title}</summary>
+            <p class="faq-answer">
+              {item.body}
+              {item.link && (
+                <>
+                  {" "}
+                  <a href={item.link.href}>{item.link.label}</a>
+                </>
+              )}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

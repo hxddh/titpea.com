@@ -1,0 +1,39 @@
+---
+import type { Visual } from "../../../content/schema";
+
+interface Props {
+  visual: Extract<Visual, { kind: "terminalBrief" }>;
+}
+
+const { visual } = Astro.props;
+---
+
+<div class="terminal-brief-visual" aria-label={visual.label}>
+  <div class="terminal-brief-bar">
+    <span>{visual.kicker}</span>
+    <span>{visual.status}</span>
+  </div>
+  <div class="terminal-brief-command">
+    <span>$</span>
+    <strong>{visual.command}</strong>
+  </div>
+  <div class="terminal-brief-files">
+    <span>{visual.filesLabel}</span>
+    <ul>
+      {
+        visual.files.map((file) => (
+          <li>
+            <code>{file}</code>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="terminal-brief-brief">
+    <span>{visual.briefLabel}</span>
+    <strong>{visual.brief}</strong>
+  </div>
+  <div class="terminal-brief-foot">
+    {visual.footnotes.map((item) => <span>{item}</span>)}
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "s3-turbo-list": {
+    "repo": "hxddh/s3-turbo-list",
+    "version": "v0.31.0"
+  },
+  "storage-agent-workbench": {
+    "repo": "hxddh/storage-agent-workbench",
+    "version": "v1.17.3"
+  },
+  "httpmon": {
+    "repo": "hxddh/https-traffic-inspector",
+    "version": "v1.2.1"
+  },
+  "celagent": {
+    "repo": "hxddh/celagent",
+    "version": "v0.4.3"
+  },
+  "pagewise": {
+    "repo": "hxddh/pagewise",
+    "version": "v12.0.0"
+  },
+  "pulse": {
+    "repo": "hxddh/Pulse",
+    "version": "v11.0.3"
+  },
+  "agent-radar": {
+    "repo": "hxddh/agent-radar",
+    "version": "v0.23.0"
+  },
+  "goban": {
+    "repo": "hxddh/goban",
+    "version": "v1.63.0"
+  },
+  "chessboard": {
+    "repo": "hxddh/chessboard",
+    "version": "v7.3.0"
+  }
+}

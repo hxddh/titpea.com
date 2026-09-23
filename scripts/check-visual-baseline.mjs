@@ -2,14 +2,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import sharp from "sharp";
-import baseline from "../src/content/visualBaseline.json" with { type: "json" };
+import baseline from "./visual-targets.json" with { type: "json" };
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://127.0.0.1:4321";
 const outDir = process.env.VISUAL_BASELINE_OUT_DIR ?? "/tmp/titpea-visual-baseline";
 const baselinePlatform = process.env.VISUAL_BASELINE_PLATFORM ?? process.platform;
 const baselineDir = path.join("tests/visual-baselines", baselinePlatform);
 const approve = process.env.VISUAL_APPROVE === "1";
-const changedPixelLimit = 0.004;
+// A few screens, compared loosely: layout regressions move far more than
+// 1% of pixels, while font rasterization and release-tag bumps move less.
+const changedPixelLimit = 0.01;
 const faqChangedPixelLimit = 0.05; // sticky index + scroll snap still leave ~4% churn on CI re-runs
 const viewports = {
   desktop: { width: 1440, height: 1100 },

@@ -1,0 +1,22 @@
+---
+import type { CasesSection } from "../../content/schema";
+
+interface Props {
+  section: CasesSection;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="product-section cases-section">
+  <div class="shell narrow">
+    <header class="section-head">
+      <p class="section-kicker">{section.label}</p>
+      <h2>{section.title}</h2>
+    </header>
+    <div class="provider-list" aria-label={section.label}>
+      {section.items.map((item) => <span>{item}</span>)}
+    </div>
+    {section.body && <p class="sub">{section.body}</p>}
+  </div>
+</section>

@@ -38,11 +38,15 @@ export async function checkRoute(page, viewport, route) {
         primaryCta: primaryCta instanceof HTMLAnchorElement ? primaryCta.href : null,
         expectedPrimary,
         structuredDataOk: route.kind === "product" ? Boolean(structuredData?.includes('"SoftwareApplication"')) : true,
+        // Prose only: commands and code are quoted verbatim from the product's docs.
         visibleForbiddenTerms:
           route.locale === "zh"
-            ? zhForbiddenTerms.filter((term) =>
-                (document.body.innerText ?? "").toLowerCase().includes(term.trim().toLowerCase()),
-              )
+            ? (() => {
+                const prose = document.body.cloneNode(true);
+                prose.querySelectorAll("pre, code, script").forEach((node) => node.remove());
+                const text = (prose.textContent ?? "").toLowerCase();
+                return zhForbiddenTerms.filter((term) => text.includes(term.trim().toLowerCase()));
+              })()
             : [],
         nav: nav ? getComputedStyle(nav).display : null,
         mobile: mobile ? getComputedStyle(mobile).display : null,

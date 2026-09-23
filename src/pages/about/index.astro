@@ -1,8 +1,6 @@
 ---
 import AboutPage from "../../components/AboutPage.astro";
-import { aboutModel } from "../../content/siteModel";
-
-const model = aboutModel("en");
+import { aboutPage } from "../../lib/pages";
 ---
 
-<AboutPage model={model} />
+<AboutPage model={aboutPage("en")} />
