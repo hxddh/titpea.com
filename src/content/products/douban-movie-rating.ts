@@ -14,8 +14,8 @@ export default defineProduct({
     navLabel: "Douban Ratings",
     description: "A Chrome extension that shows IMDb, Rotten Tomatoes, and Metacritic ratings on Douban movie pages.",
     eyebrow: "Chrome Extension",
-    headline: "Ratings beside Douban",
-    lead: "Compare IMDb, Rotten Tomatoes, and Metacritic beside the Douban rating. External scores appear only when the film match is reliable.",
+    headline: "Ratings beside Douban.",
+    lead: "IMDb, Rotten Tomatoes, Metacritic. Shown only when the film match is reliable.",
     catalog: {
       role: "On Douban",
       text: "IMDb, Rotten Tomatoes, and Metacritic — only when the match is reliable.",
@@ -42,13 +42,13 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "Context, not a new site",
+        id: "features",
+        label: "Context on the Douban page.",
         items: [
-          {
-            title: "Ratings refresh after the cache expires",
-            body: "Matched ratings are cached in your browser. A visit after expiry fetches fresh data; unmatched films are retried sooner.",
-          },
+          { title: "Three outside scores", body: "IMDb, Rotten Tomatoes, and Metacritic beside Douban." },
+          { title: "Reliable matches only", body: "External scores appear only when the film match is reliable." },
+          { title: "Cached in your browser", body: "Refreshed after expiry; unmatched films are retried sooner." },
+          { title: "No data collection disclosed", body: "See the privacy details on the store." },
         ],
       },
     ],
@@ -59,7 +59,7 @@ export default defineProduct({
     description: "在豆瓣电影页面补充 IMDb、Rotten Tomatoes 和 Metacritic 评分的 Chrome 扩展。",
     eyebrow: "Chrome 扩展",
     headline: "在豆瓣，对照其他评分",
-    lead: "在豆瓣电影页对照 IMDb、烂番茄和 Metacritic 评分。只有影片匹配可靠时才显示外部评分。",
+    lead: "对照 IMDb、烂番茄和 Metacritic。影片匹配可靠时才显示。",
     catalog: {
       role: "豆瓣页上",
       text: "影片匹配可靠时，才对照 IMDb、烂番茄和 Metacritic。",
@@ -86,13 +86,13 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
+        id: "features",
         label: "补充对照，不另开站点",
         items: [
-          {
-            title: "缓存过期后更新评分",
-            body: "已匹配的评分保存在浏览器缓存中。缓存过期后，再次访问影片页会获取新数据；未匹配影片的重试间隔更短。",
-          },
+          { title: "三个外部评分", body: "对照 IMDb、烂番茄和 Metacritic。" },
+          { title: "只认可靠匹配", body: "只有影片匹配可靠时才显示外部评分。" },
+          { title: "缓存在浏览器", body: "缓存过期后再访问会更新；未匹配影片重试更快。" },
+          { title: "声明不收集数据", body: "详见应用店隐私说明。" },
         ],
       },
     ],

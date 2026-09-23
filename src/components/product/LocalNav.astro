@@ -4,19 +4,23 @@ import type { Locale } from "../../content/schema";
 
 interface Props {
   label: string;
+  icon?: string;
   items: Array<{ id: string; label: string }>;
   locale: Locale;
   cta: { label: string; href: string };
 }
 
-const { label, items, locale, cta } = Astro.props;
+const { label, icon, items, locale, cta } = Astro.props;
 const directoryLabel = ui[locale].sectionDirectory;
 const directoryId = `section-directory-${locale}`;
 ---
 
 <nav class="product-section-index" aria-label={label} data-section-index>
   <div class="local-nav-bar glass">
-    <span class="product-section-index-name">{label}</span>
+    <span class="product-section-index-name">
+      {icon && <img src={icon} alt="" width="26" height="26" />}
+      {label}
+    </span>
     {
       items.length > 0 && (
         <>

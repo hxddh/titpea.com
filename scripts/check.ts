@@ -90,10 +90,38 @@ function visibleStrings(value: unknown, key = ""): string[] {
 
 function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
   const at = `${product.slug} (${locale})`;
-  if (copy.headline.length > headlineLimit[locale]) {
-    fail(`${at}: headline "${copy.headline}" is ${copy.headline.length} characters (max ${headlineLimit[locale]})`);
+  const claim = copy.headline.replace(/[.。]$/, "");
+  if (claim.length > headlineLimit[locale]) {
+    fail(`${at}: headline "${copy.headline}" is ${claim.length} characters (max ${headlineLimit[locale]})`);
   }
-  if (norm(copy.headline) === norm(copy.title)) fail(`${at}: the h1 is the slogan, not the product name`);
+  if (norm(copy.headline) === norm(copy.title)) fail(`${at}: the h1 is the claim, not the product name`);
+
+  // Omni voice: short declarative claims, fragment cards, questions in the FAQ.
+  if (locale === "en" && !copy.headline.endsWith(".")) fail(`${at}: the English headline ends with a period`);
+  if (locale === "zh" && /[。.！!]$/.test(copy.headline))
+    fail(`${at}: the Chinese headline has no closing punctuation`);
+  const words = (text: string) => text.trim().split(/\s+/).length;
+  // CJK characters count one each; a Latin name or number counts as one unit.
+  const cjk = (text: string) =>
+    text.replace(/[A-Za-z0-9][\w.+-]*/g, "x").replace(/[\s，。、；：！？（）“”]/g, "").length;
+  const tooLong = (text: string, en: number, zh: number) => (locale === "en" ? words(text) > en : cjk(text) > zh);
+  if (tooLong(copy.lead, 14, 36)) fail(`${at}: lead is not 2–3 short fragments: "${copy.lead}"`);
+  for (const section of copy.sections) {
+    if (product.sectionIndex && !section.nav) fail(`${at}: section "${section.id}" needs a short nav label`);
+    if (section.nav && tooLong(section.nav, 4, 8)) fail(`${at}: nav label "${section.nav}" is longer than 4 words`);
+    if (section.kind === "faq") {
+      if (section.label !== (locale === "en" ? "FAQ" : "常见问题")) fail(`${at}: the FAQ heading is FAQ / 常见问题`);
+      for (const item of section.items) {
+        if (!/[?？]$/.test(item.title)) fail(`${at}: FAQ entry is not a question: "${item.title}"`);
+      }
+    }
+    if (section.kind === "cards") {
+      for (const item of section.items) {
+        if (tooLong(item.title, 5, 10)) fail(`${at}: card title is long: "${item.title}"`);
+        if (tooLong(item.body, 12, 24)) fail(`${at}: card body is not a short fragment: "${item.body}"`);
+      }
+    }
+  }
   if (copy.lead.length > leadLimit[locale])
     fail(`${at}: lead is ${copy.lead.length} characters (max ${leadLimit[locale]})`);
   if (copy.primaryCta.href === copy.secondaryCta.href)

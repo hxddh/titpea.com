@@ -13,8 +13,8 @@ export default defineProduct({
     title: "World Clock",
     description: "A Chrome popup for live time across the cities you choose.",
     eyebrow: "Chrome Extension",
-    headline: "Your cities, right now",
-    lead: "One popup shows local time, UTC offset, date, and work-hours context for the cities you keep.",
+    headline: "Your cities, right now.",
+    lead: "One popup. Local time, UTC offset, date. Work-hours context.",
     catalog: {
       role: "",
       text: "Time, date, and work hours for the cities you keep.",
@@ -51,14 +51,12 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "Cities you choose",
+        id: "features",
+        label: "It shows the cities you choose.",
         items: [
-          {
-            title: "No location, no calendar",
-            body: "It shows the city times you choose. It does not read your location, calendar, or meetings.",
-            priority: "primary",
-          },
+          { title: "Work hours in view", body: "Time, UTC offset, date, and work hours." },
+          { title: "No location, no calendar", body: "Location, calendar, and meetings are not read." },
+          { title: "No data collection disclosed", body: "See the privacy details on the store." },
         ],
       },
     ],
@@ -68,7 +66,7 @@ export default defineProduct({
     description: "用来查看所选城市当前时间的 Chrome 弹窗。",
     eyebrow: "Chrome 扩展",
     headline: "几个城市，此刻几点",
-    lead: "打开弹窗即可看到城市当地时间、UTC 偏移、日期和工作时段。",
+    lead: "一个弹窗。当地时间、UTC 偏移和日期。附带工作时段。",
     catalog: {
       role: "",
       text: "你选的城市，此刻几点。",
@@ -105,14 +103,12 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "你选的城市",
+        id: "features",
+        label: "只显示你选的城市",
         items: [
-          {
-            title: "不读位置，也不读日历",
-            body: "只显示你选的城市时间，不读取你的位置、日历或会议。",
-            priority: "primary",
-          },
+          { title: "工作时段", body: "当地时间、UTC 偏移、日期和工作时段。" },
+          { title: "不读位置和日历", body: "不读取你的位置、日历或会议。" },
+          { title: "声明不收集数据", body: "详见应用店隐私说明。" },
         ],
       },
     ],

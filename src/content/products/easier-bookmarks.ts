@@ -13,8 +13,8 @@ export default defineProduct({
     title: "Easier Bookmarks",
     description: "Chrome side panel for the bookmark tree already in this browser.",
     eyebrow: "Chrome extension",
-    headline: "Bookmarks at your side",
-    lead: "Search and move the bookmarks you already have, directly in Chrome’s side panel. Keep your existing folders and browser sync settings.",
+    headline: "Bookmarks at your side.",
+    lead: "Your bookmark tree. Chrome’s side panel. No external servers.",
     catalog: {
       role: "Side panel",
       text: "Search the bookmarks Chrome already has.",
@@ -42,16 +42,29 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "Chrome's tree, side panel",
+        id: "features",
+        label: "Your folders stay as they are.",
+        items: [
+          { title: "Search bookmarks", body: "Find what Chrome already has." },
+          { title: "Move bookmarks", body: "Reorganize in the side panel." },
+          { title: "Existing folders", body: "No separate library to import." },
+          { title: "No account", body: "Nothing to sign up for." },
+          { title: "Chrome’s own sync", body: "Whatever you configured in Chrome." },
+          { title: "No analytics", body: "No ads, remote code, or servers." },
+        ],
+      },
+      {
+        kind: "faq",
+        id: "faq",
+        label: "FAQ",
         items: [
           {
-            title: "Works with Chrome's bookmark tree",
-            body: "It works with the bookmarks and folders already in Chrome. There is no separate library to import, account to create, or sync service of its own; Chrome sync remains whatever you already configured in Chrome.",
+            title: "Does it sync bookmarks itself?",
+            body: "No. It has no sync service of its own. Chrome sync remains whatever you already configured in Chrome.",
           },
           {
-            title: "No analytics, no servers",
-            body: "It uses Chrome's Bookmarks API and local extension storage. There are no analytics, ads, accounts, remote code, or external servers.",
+            title: "What data does it use?",
+            body: "It uses Chrome’s Bookmarks API and local extension storage. There are no analytics, ads, accounts, remote code, or external servers.",
           },
         ],
       },
@@ -62,7 +75,7 @@ export default defineProduct({
     description: "Chrome 侧边栏书签管理器，可在本地搜索、浏览和整理书签。",
     eyebrow: "Chrome 扩展",
     headline: "书签在侧边，随手整理",
-    lead: "在 Chrome 侧边栏查找和移动已有书签，沿用原来的文件夹。Chrome 同步仍按你的浏览器设置执行。",
+    lead: "已有的书签树。Chrome 侧边栏。无外部服务器。",
     catalog: {
       role: "侧边栏",
       text: "搜索 Chrome 里已有的书签。",
@@ -90,15 +103,28 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "Chrome 书签树，侧边栏",
+        id: "features",
+        label: "文件夹保持原样",
+        items: [
+          { title: "搜索书签", body: "查找 Chrome 里已有的书签。" },
+          { title: "移动书签", body: "在侧边栏里整理。" },
+          { title: "沿用文件夹", body: "不需要导入另一套资料库。" },
+          { title: "无需账号", body: "不用注册账号。" },
+          { title: "Chrome 自身同步", body: "按你的浏览器设置执行。" },
+          { title: "无分析服务", body: "无广告、远程代码或外部服务器。" },
+        ],
+      },
+      {
+        kind: "faq",
+        id: "faq",
+        label: "常见问题",
         items: [
           {
-            title: "沿用 Chrome 书签树",
-            body: "它管理 Chrome 里已有的书签和文件夹，不需要导入另一套资料库，也不用注册账号或另接同步服务；Chrome 自身同步仍按你的浏览器设置执行。",
+            title: "它自己同步书签吗？",
+            body: "不。它没有另接的同步服务，Chrome 自身同步仍按你的浏览器设置执行。",
           },
           {
-            title: "无分析，无外部服务器",
+            title: "它会用到哪些数据？",
             body: "它只使用 Chrome 书签 API 和扩展本地存储，无分析服务、广告、账号、远程代码或外部服务器。",
           },
         ],

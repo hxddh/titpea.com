@@ -38,11 +38,24 @@ Every page uses the same few parts. Build new content from them before inventing
 
 ## Product Pages
 
-- `h1` is the slogan (`copy.headline`), not the product name. The eyebrow is `{title} · {eyebrow}`. English ≤ 24 characters, Chinese ≤ 18, and the heading stays within two lines at every breakpoint. Shorten copy before shrinking type.
+- `h1` is the claim (`copy.headline`), not the product name: a short declarative sentence. English ≤ 24 characters plus a closing period; Chinese ≤ 18 characters, no closing punctuation. It stacks into two lines at most at every breakpoint. Shorten copy before shrinking type.
+- The eyebrow is `{title} · {eyebrow}`. Products with an app icon show it above the eyebrow and in the local nav.
 - Hero actions: one filled `.button.primary.large` and one `.button.ghost` text link with a chevron. Keep 2–3.
-- Earn every section. Short products may be hero, one showcase, and one card grid. An Inside section needs a real object (a panel), not copy restating the hero.
+- Earn every section. Short products may be hero, one showcase, and one card grid. A panel section needs a real object, not copy restating the hero.
 - One source of truth per fact. The section after the hero does not inventory the lead, and FAQ asks the extra fact, not the platforms line already in the meta.
 - Label schematic interface examples explicitly; they are not captured execution evidence.
+
+## Voice
+
+Omni says each thing once, in as few words as the fact allows. The figures and the photographs carry the claim; the words label them.
+
+- **Lead**: 2–3 fragments, each ending in a period ("Read-only checks. Local keys. Evidence in the session."). Chinese uses 2–3 短句 with 。.
+- **Section headings** are one declarative sentence ("Every check leaves evidence."). English ends with a period; Chinese has no closing punctuation. Kickers stay 1–4 words. On pages with a local nav, each section also sets a 1–4 word `nav` label.
+- **Cards**: a 2–4 word title and a 3–8 word fragment. One idea per card. The main grid holds 3, 6, or 9 equal-weight cards; a numbered flow is kept only when order matters.
+- **Showcases**: a short sentence over the photograph ("Scans become Markdown.").
+- **FAQ**: headed `FAQ` / `常见问题`. Questions are questions. Answers are full sentences and carry the conditions that do not fit a card.
+- Shortening never drops a qualifier: support that depends on the agent, pre-alpha status, "after a successful write", "only when the match is reliable", data posture. A condition that does not fit a card moves to the FAQ.
+- No new claims in the name of brevity: no "fast", "only", "seamless", or numbers that are not in the product's docs.
 
 ## Type
 
