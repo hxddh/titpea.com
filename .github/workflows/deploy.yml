@@ -4,10 +4,11 @@ on:
   pull_request:
   push:
     branches: [main]
-  # Redeploy daily so download buttons and meta lines pick up new release tags
-  # without a commit.
+  # Once a day at 02:17 Singapore time (18:17 UTC), look for new product
+  # release tags. The site redeploys only when one changed. The odd minute
+  # avoids GitHub's crowded top-of-hour schedule.
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "17 18 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -15,7 +16,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Scheduled runs only: did any product publish a new release?
+  releases:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v6.0.3
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 22
+      - id: sync
+        run: |
+          npm run releases:sync
+          if git diff --quiet src/content/releases.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
   validate:
+    needs: releases
+    # Every push and pull request; on the schedule, only when a tag changed.
+    if: always() && (github.event_name != 'schedule' || needs.releases.outputs.changed == 'true')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.3
@@ -75,7 +101,7 @@ jobs:
 
   deploy:
     needs: validate
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: always() && needs.validate.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read

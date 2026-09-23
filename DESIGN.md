@@ -26,7 +26,7 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Showcase.** A compact head (kicker, `--title-show` heading, sub) above a full-width photograph.
 - **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
-- **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). Tags come from `releases.json`, which CI refreshes before every build and on a daily schedule; nobody edits a version by hand.
+- **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). Tags come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when a tag changed; nobody edits a version by hand.
 - **Closing action.** The product name and one large filled capsule. It may repeat the primary download or repository link, and it never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
 

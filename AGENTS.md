@@ -43,4 +43,4 @@ After an intentional visual change to one of the four baseline screens, refresh 
 
 ## Ship
 
-When CI is green, merge to `main`. The deploy job syncs release tags, builds, deploys, and runs the production smoke test; a daily scheduled run redeploys so new release tags go live without a commit.
+When CI is green, merge to `main`. The deploy job syncs release tags, builds, deploys, and runs the production smoke test; every day at 02:17 Singapore time a scheduled run checks for new release tags and redeploys only when one changed.
