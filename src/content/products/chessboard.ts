@@ -189,7 +189,7 @@ export default defineProduct({
         items: [
           { title: "离线课程", body: "从零基础到中级。" },
           { title: "杀型练习", body: "反复练习杀型。" },
-          { title: "Stockfish 18", body: "在本机与引擎对弈。" },
+          { title: "引擎对弈", body: "在本机与 Stockfish 18 下棋。" },
           { title: "同屏对弈", body: "两人共用一块棋盘。" },
           { title: "带入 PGN", body: "支持指定 FEN 开局的棋谱。" },
           { title: "本机保存", body: "对弈、存档与分析。" },

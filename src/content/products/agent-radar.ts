@@ -14,8 +14,8 @@ export default defineProduct({
     title: "Agent Radar",
     description: "Scheduled research on the agent industry, with sourced Markdown briefs and watchlists saved in Git.",
     eyebrow: "Scheduled Markdown research",
-    headline: "Agent news, with sources",
-    lead: "Collect public agent news on GitHub Actions and save sourced Markdown briefs and watchlists. Relevance and citation checks run before each commit.",
+    headline: "Agent news, with sources.",
+    lead: "Public sources. Citation checks. Markdown briefs in Git.",
     catalog: {
       role: "Weekly briefs",
       text: "Sourced Markdown briefs, on a GitHub Actions timer.",
@@ -55,9 +55,10 @@ export default defineProduct({
       {
         kind: "panel",
         id: "inside",
+        nav: "Research loop",
         kicker: "One research loop",
-        title: "Research you can review in Git",
-        body: "Markdown files hold the research. A lightweight model screens sources and another drafts the report; the runner checks proposed changes before committing them.",
+        title: "Research you can review in Git.",
+        body: "Markdown files hold the research. A light model screens sources, another drafts, and checks run before each commit.",
         panel: {
           kind: "excerpt",
           label: "radar.md excerpt",
@@ -85,67 +86,46 @@ export default defineProduct({
       {
         kind: "flow",
         id: "evidence",
+        nav: "What it keeps",
         kicker: "Auditable state",
-        title: "What the pipeline leaves in Git",
-        body: "The runner updates weekly theses, the agent watchlist, field notes, and storage implications within fixed write bounds. When a candidate enters the watchlist or brief, the change remains reviewable in repository history.",
+        title: "Every change stays in Git.",
+        body: "The runner updates four files within fixed write bounds, and each change stays reviewable in history.",
         steps: [
-          {
-            label: "Weekly thesis",
-            body: "Current judgment, what changed, and open questions for the Agent industry.",
-          },
-          {
-            label: "Watchlist",
-            body: "Mainstream and emerging agents with evidence labels — not a raw link dump.",
-          },
-          {
-            label: "Field notes",
-            body: "Real workflows and reusable patterns captured as they show up in the wild.",
-          },
-          {
-            label: "Storage implications",
-            body: "Where agents keep workspace state, sandboxes, logs, and replay — a side lens, not the whole product.",
-          },
+          { label: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
+          { label: "Watchlist", body: "Mainstream and emerging agents, with evidence labels." },
+          { label: "Field notes", body: "Real workflows and reusable patterns." },
+          { label: "Storage implications", body: "Workspaces, sandboxes, logs, and replay, as a side lens." },
         ],
       },
       {
         kind: "cards",
         id: "workflow",
-        label: "From sources to a commit",
+        nav: "How it works",
+        label: "From sources to a commit.",
         items: [
-          {
-            title: "Collect public sources",
-            body: "Read official pages, GitHub releases, feeds, packages, and papers. Collection does not require paid search.",
-          },
-          {
-            title: "Select and draft",
-            body: "Score relevance and remove duplicates before model screening and drafting. The model can update only designated research files.",
-          },
-          {
-            title: "Check before committing",
-            body: "Check citations, quota, language coverage, and freshness. Failed checks remain visible in telemetry and issues. Git records accepted changes.",
-          },
+          { title: "Collect public sources", body: "Official pages, releases, feeds, packages, papers." },
+          { title: "Screen, then draft", body: "Relevance and dedup first; models edit designated files only." },
+          { title: "Check, then commit", body: "Citations, quota, language coverage, freshness." },
         ],
         numbered: true,
       },
       {
-        kind: "cards",
-        id: "automation",
-        label: "Actions runs the loop",
-        items: [
-          {
-            title: "Run on a schedule",
-            body: "Daily, weekly, and monthly jobs run on GitHub Actions and produce bilingual reports. Local runs are available for debugging.",
-          },
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
-        label: "Actions and cost",
+        nav: "FAQ",
+        label: "FAQ",
         items: [
           {
-            title: "No paid search required",
-            body: "Collection uses free public source lanes. Bring your own model keys: a lighter model can screen, a stronger one can draft, so spend stays intentional.",
+            title: "Does it need paid search?",
+            body: "No. Collection uses free public source lanes. Bring your own model keys: a lighter model can screen and a stronger one can draft, so spend stays intentional.",
+          },
+          {
+            title: "Where does it run?",
+            body: "Daily, weekly, and monthly jobs run on GitHub Actions and produce bilingual reports. Local runs are available for debugging.",
+          },
+          {
+            title: "What if a check fails?",
+            body: "Failed checks remain visible in telemetry and issues. Git records the accepted changes.",
           },
         ],
       },
@@ -157,7 +137,7 @@ export default defineProduct({
     description: "定时整理 Agent 产业动态，把带来源的 Markdown 周报与观察名单保存在 Git 中。",
     eyebrow: "Markdown 优先 · GitHub Actions",
     headline: "Agent 动态，按周整理",
-    lead: "在 GitHub Actions 上采集公开 Agent 动态，整理成带来源的 Markdown 周报与观察名单。相关性与引用检查通过后提交到 Git。",
+    lead: "公开来源。引用校验。Markdown 周报存进 Git。",
     catalog: {
       role: "每周简报",
       text: "GitHub Actions 定时跑，生成带来源的 Markdown 周报。",
@@ -197,9 +177,10 @@ export default defineProduct({
       {
         kind: "panel",
         id: "inside",
+        nav: "研究循环",
         kicker: "一条研究循环",
         title: "在 Git 里查看研究记录",
-        body: "Markdown 文件保存研究内容。轻量模型筛选来源，另一模型起草报告；程序校验修改后提交到 Git。",
+        body: "Markdown 文件保存研究内容。轻量模型筛来源，另一模型起草，校验通过才提交。",
         panel: {
           kind: "excerpt",
           label: "radar.md 摘录",
@@ -227,67 +208,46 @@ export default defineProduct({
       {
         kind: "flow",
         id: "evidence",
+        nav: "留存内容",
         kicker: "可审计状态",
-        title: "流水线留在 Git 里的结果",
-        body: "Runner 在写入边界内更新每周论点、观察名单、现场笔记与存储影响。候选被纳入观察名单或周报后，每次变化都能在仓库历史里核对。",
+        title: "每次变化都留在 Git 里",
+        body: "Runner 在固定写入边界内更新四类文件，每次变化都能在仓库历史里核对。",
         steps: [
-          {
-            label: "每周论点",
-            body: "当前判断、已变化点，以及对 Agent 产业的开放问题。",
-          },
-          {
-            label: "观察名单",
-            body: "主流与新兴 agent，并标注证据强度——不是原始链接堆。",
-          },
-          {
-            label: "现场笔记",
-            body: "记录真实工作流和可复用模式，随公开信号积累。",
-          },
-          {
-            label: "存储影响",
-            body: "Agent 把工作区、沙箱、日志与回放放在哪里——侧重视角，不是产品全部。",
-          },
+          { label: "每周论点", body: "当前判断、已变化点和开放问题。" },
+          { label: "观察名单", body: "主流与新兴 agent，标注证据强度。" },
+          { label: "现场笔记", body: "真实工作流和可复用模式。" },
+          { label: "存储影响", body: "工作区、沙箱、日志与回放，作为侧面视角。" },
         ],
       },
       {
         kind: "cards",
         id: "workflow",
+        nav: "用法",
         label: "从信源到提交",
         items: [
-          {
-            title: "采集公开来源",
-            body: "读取官网、GitHub Release、订阅源、软件包和论文。采集不需要付费搜索。",
-          },
-          {
-            title: "筛选并起草",
-            body: "先按相关性筛选、去除重复，再交给模型初筛和起草。模型只能修改指定研究文件。",
-          },
-          {
-            title: "校验后提交",
-            body: "检查引用、配额、双语与时效。失败记录保留在遥测和 issue 中，通过的修改提交到 Git。",
-          },
+          { title: "采集公开来源", body: "官网、Release、订阅源、软件包、论文。" },
+          { title: "先筛再起草", body: "先按相关性筛选去重，模型只改指定文件。" },
+          { title: "校验后提交", body: "引用、配额、双语覆盖、时效。" },
         ],
         numbered: true,
       },
       {
-        kind: "cards",
-        id: "automation",
-        label: "Actions 跑这条循环",
-        items: [
-          {
-            title: "按计划运行",
-            body: "日更、周更、月更任务在 GitHub Actions 上运行，输出双语报告。本地运行可用于调试。",
-          },
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
-        label: "Actions 与花费",
+        nav: "常见问题",
+        label: "常见问题",
         items: [
           {
-            title: "不必付费搜索",
-            body: "采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
+            title: "需要付费搜索吗？",
+            body: "不需要。采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
+          },
+          {
+            title: "在哪里运行？",
+            body: "日更、周更、月更任务在 GitHub Actions 上运行，输出双语报告。本地运行可用于调试。",
+          },
+          {
+            title: "校验失败会怎样？",
+            body: "失败记录保留在遥测和 issue 中，通过的修改提交到 Git。",
           },
         ],
       },
