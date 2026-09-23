@@ -20,15 +20,35 @@
 
 /* Home */
 .home-hero {
-  padding-bottom: 8px;
+  padding-top: 28px;
+  padding-bottom: 0;
+}
+
+.home-hero h1 {
+  font-size: clamp(2.15rem, 4.2vw, 3rem);
 }
 
 .home-hero .lead {
-  max-width: 30em;
+  max-width: 34em;
+  margin-top: 12px;
 }
 
 .home-evidence {
-  padding-top: var(--section-y);
+  padding-top: 28px;
+}
+
+.home-evidence-title {
+  margin: 0 0 16px;
+  font-size: var(--title-show);
+  line-height: 1.12;
+  text-align: center;
+}
+
+.home-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
 }
 
 .home-featured-card {
@@ -40,19 +60,22 @@
   text-decoration: none;
 }
 
-.home-featured-card + .home-featured-card {
-  margin-top: var(--section-y-short);
+.home-figure {
+  margin: 0;
+  border: 1px solid var(--line);
 }
 
-.home-evidence .section-head + .home-featured-card {
-  margin-top: 56px;
+.home-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .home-featured-copy {
   display: block;
-  max-width: var(--narrow);
-  margin: 0 auto 36px;
-  text-align: center;
+  max-width: none;
+  margin: 12px 0 0;
+  text-align: left;
 }
 
 .home-featured-copy .section-kicker,
@@ -62,14 +85,21 @@
 
 .home-featured-name {
   display: block;
-  font-size: var(--title-show);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.028em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.home-featured-copy .section-kicker {
+  margin-bottom: 2px;
 }
 
 .home-featured-copy .sub {
-  margin-top: 10px;
+  max-width: 36em;
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .home-featured-more {
@@ -77,9 +107,9 @@
   align-items: center;
   gap: 4px;
   min-height: 44px;
-  margin-top: 8px;
+  margin-top: 0;
   color: var(--link);
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .home-featured-more::after {
@@ -90,11 +120,6 @@
 
 .home-featured-card:hover .home-featured-more {
   text-decoration: underline;
-}
-
-.home-featured-card .shot {
-  max-width: 1040px;
-  margin-inline: auto;
 }
 
 .home-more-tools {
@@ -253,8 +278,13 @@
 }
 
 @media (max-width: 900px) {
+  .home-evidence-grid,
   .home-catalog-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+  }
+
+  .home-featured-card + .home-featured-card {
+    margin-top: 8px;
   }
 }
 
@@ -280,8 +310,12 @@
     display: none;
   }
 
-  .home-featured-copy {
-    margin-bottom: 24px;
+  .home-hero {
+    padding-top: 20px;
+  }
+
+  .home-evidence {
+    padding-top: 20px;
   }
 
   .about-body {
