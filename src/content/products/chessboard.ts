@@ -4,6 +4,7 @@ export default defineProduct({
   slug: "chessboard",
   line: "everyday",
   repo: "hxddh/chessboard",
+  icon: "/assets/icons/chessboard.webp",
   og: "/assets/og-chessboard.png",
   schema: {
     category: "GameApplication",
@@ -15,8 +16,8 @@ export default defineProduct({
     description:
       "A desktop chessboard for macOS and Windows, with Stockfish 18, offline lessons, mate drills, and local review.",
     eyebrow: "Desktop chess",
-    headline: "Learn, then play",
-    lead: "Take an offline lesson, practise a mating pattern, then play Stockfish or a friend on the same board. Review the evaluation curve after the game.",
+    headline: "Learn, then play.",
+    lead: "Offline lessons. Mate drills. Stockfish or a friend.",
     catalog: {
       role: "Stockfish + lessons",
       text: "Learn, drill, then play Stockfish or a friend on the same board.",
@@ -65,8 +66,8 @@ export default defineProduct({
         width: 1223,
         height: 768,
         kicker: "Engine review",
-        title: "See where the evaluation turned",
-        body: "Run a full-game Stockfish pass to build a centipawn curve and mark mistakes on the move list. Jump to any position, then continue from there.",
+        title: "Mistakes show on the curve.",
+        body: "A full-game Stockfish pass builds a centipawn curve and marks mistakes; jump to any position and play on.",
       },
       {
         src: "/assets/chessboard-theme.webp",
@@ -74,23 +75,40 @@ export default defineProduct({
         width: 1223,
         height: 768,
         kicker: "Board themes",
-        title: "Wood, night, day, or paper",
-        body: "Keep the same game state while switching appearance. Flip the board, mute sound, and keep local stats by difficulty.",
+        title: "Four boards, one game.",
+        body: "Switch between wood, night, day, and paper without losing the position.",
       },
     ],
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "A local chessboard",
+        id: "features",
+        label: "Lessons and games stay on this computer.",
+        items: [
+          { title: "Offline lessons", body: "From zero to intermediate." },
+          { title: "Mate drills", body: "Practise mating patterns." },
+          { title: "Stockfish 18", body: "Play the engine locally." },
+          { title: "A friend, same screen", body: "Two players, one board." },
+          { title: "Bring a PGN", body: "Including FEN-start studies." },
+          { title: "Local saves", body: "Games, saves, and analysis." },
+        ],
+      },
+      {
+        kind: "faq",
+        id: "faq",
+        label: "FAQ",
         items: [
           {
-            title: "Bring a PGN",
+            title: "Can I play online?",
+            body: "No. Online matchmaking is not included. Play against the engine or a friend on the same screen.",
+          },
+          {
+            title: "What can I do with a PGN?",
             body: "Paste or import a PGN, including FEN-start studies. Review the moves, jump to a position, or continue playing from it.",
           },
           {
-            title: "Lessons and games on this computer",
-            body: "Lessons, drills, gameplay, saves, and analysis run locally. Play against the engine or a friend on the same screen; online matchmaking is not included.",
+            title: "Does it keep stats?",
+            body: "Yes. Local stats are kept by difficulty. You can also flip the board and mute sound.",
           },
         ],
       },
@@ -101,7 +119,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 18、离线课程、杀型练习与本机复盘。",
     eyebrow: "桌面国际象棋",
     headline: "学棋、练习，再下一局",
-    lead: "离线学棋、练习杀型，再与 Stockfish 或同屏好友对弈。下完一局，查看评估曲线和逐着分析。",
+    lead: "离线课程。杀型练习。与 Stockfish 或好友对弈。",
     catalog: {
       role: "Stockfish 与课程",
       text: "学棋、做题，再与 Stockfish 或同屏好友下一局。",
@@ -150,8 +168,8 @@ export default defineProduct({
         width: 1223,
         height: 768,
         kicker: "引擎复盘",
-        title: "看清局势从哪里转折",
-        body: "一键跑完 Stockfish 评估，生成引擎评估曲线并在着法列表标注失着；跳到任意局面后可继续下。",
+        title: "失着落在曲线上",
+        body: "Stockfish 跑完整局，生成评估曲线并标注失着；跳到任意局面可继续下。",
       },
       {
         src: "/assets/chessboard-theme.webp",
@@ -159,23 +177,40 @@ export default defineProduct({
         width: 1223,
         height: 768,
         kicker: "棋盘主题",
-        title: "木色、夜色、日间或纸本",
-        body: "切换外观时局面不变。可翻转棋盘、开关音效，并按难度保留本地胜负统计。",
+        title: "四种棋盘，同一局棋",
+        body: "木色、夜色、日间、纸本随意切换，局面不变。",
       },
     ],
     sections: [
       {
         kind: "cards",
-        id: "positioning",
-        label: "本机国际象棋盘",
+        id: "features",
+        label: "学棋与对弈都在这台电脑上",
+        items: [
+          { title: "离线课程", body: "从零基础到中级。" },
+          { title: "杀型练习", body: "反复练习杀型。" },
+          { title: "Stockfish 18", body: "在本机与引擎对弈。" },
+          { title: "同屏对弈", body: "两人共用一块棋盘。" },
+          { title: "带入 PGN", body: "支持指定 FEN 开局的棋谱。" },
+          { title: "本机保存", body: "对弈、存档与分析。" },
+        ],
+      },
+      {
+        kind: "faq",
+        id: "faq",
+        label: "常见问题",
         items: [
           {
-            title: "带入 PGN 复盘",
+            title: "能在线对战吗？",
+            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。",
+          },
+          {
+            title: "PGN 能做什么？",
             body: "粘贴或导入 PGN，支持指定 FEN 开局的棋谱。逐着查看，跳到任意局面，也可从那里继续下。",
           },
           {
-            title: "在这台电脑上学棋与对弈",
-            body: "课程、做题、对弈、存档和分析都在本地完成。可以与引擎或同屏好友下棋，不提供在线匹配。",
+            title: "有对局统计吗？",
+            body: "有。按难度保留本地胜负统计，还可以翻转棋盘、开关音效。",
           },
         ],
       },

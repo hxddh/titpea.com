@@ -15,6 +15,7 @@ export default defineProduct({
     },
   },
   repo: "hxddh/storage-agent-workbench",
+  icon: "/assets/icons/storage-agent-workbench.webp",
   og: "/assets/og-storage-agent-workbench.png",
   schema: {
     category: "DeveloperApplication",
@@ -26,8 +27,8 @@ export default defineProduct({
     description:
       "Desktop workbench for read-only S3-compatible investigations: keys stay local, and larger reads wait for approval.",
     eyebrow: "Object storage investigations",
-    headline: "Inspect S3 with evidence",
-    lead: "Describe a bucket problem, or bring an error or log. Storage Agent runs read-only checks on your machine and keeps the results and evidence in the same session.",
+    headline: "Inspect S3 with evidence.",
+    lead: "Read-only checks. Local keys. Evidence in the session.",
     catalog: {
       role: "S3 investigation",
       text: "Read-only S3 investigations on the desktop; the checks stay beside the answer.",
@@ -60,53 +61,39 @@ export default defineProduct({
         alt: "Storage Agent welcome screen with six investigation starting points",
         kicker: "Choose a starting point",
         title: "Start a new investigation",
-        body: "Open a conversation or choose an investigation task from the welcome screen.",
-        beside: "workflow",
+        body: "Open a conversation, or pick a task on the welcome screen.",
+        beside: "features",
       },
     ],
     sections: [
       {
         kind: "cards",
-        id: "workflow",
-        label: "From a question to evidence",
+        id: "features",
+        label: "Every check leaves evidence.",
         items: [
-          {
-            title: "Start with the problem",
-            body: "Bring an error, access log, bucket configuration, or capacity question. The agent selects tools for the investigation.",
-          },
-          {
-            title: "Inspect the checks",
-            body: "Review tool activity and analysis results. Object metadata, log rows, and inventories stay with the session so you can check the conclusion. To park a Pi session on BOS and resume it on another machine, use celagent.",
-          },
-        ],
-        numbered: true,
-      },
-      {
-        kind: "cards",
-        id: "positioning",
-        label: "Data and storage access",
-        items: [
-          {
-            title: "Credentials and session records",
-            body: "Storage credentials stay in a local encrypted vault. Evidence and conversation history stay in the app’s local data directory. Requests go to your configured model and S3-compatible endpoints.",
-          },
-          {
-            title: "Read-only storage tools",
-            body: "The app has no tools to write or delete objects or change bucket policies. Downloads, large scans, and evidence imports require your confirmation.",
-          },
+          { title: "Start from the problem", body: "An error, an access log, a bucket config." },
+          { title: "The agent picks the tools", body: "Checks chosen for the case." },
+          { title: "Evidence stays", body: "Metadata, log rows, inventories." },
+          { title: "Read-only tools", body: "No writes, deletes, or policy changes." },
+          { title: "You approve", body: "Downloads, large scans, evidence imports." },
+          { title: "Keys stay local", body: "An encrypted vault on this machine." },
         ],
       },
       {
         kind: "faq",
         id: "faq",
-        label: "Read-only, keys, StorageOps",
+        label: "FAQ",
         items: [
           {
-            title: "Works without a model key",
-            body: "Local evidence and rule analysis can still run. Add a model when you want the agent to plan and explain the investigation in chat.",
+            title: "Does it need a model key?",
+            body: "No. Local evidence and rule analysis still run without one. Add a model when you want the agent to plan and explain the investigation in chat.",
           },
           {
-            title: "Different from StorageOps",
+            title: "Where does my data go?",
+            body: "Storage credentials stay in a local encrypted vault. Evidence and conversation history stay in the app’s local data directory. Requests go to the model and S3-compatible endpoints you configure.",
+          },
+          {
+            title: "How is it different from StorageOps?",
             body: "StorageOps adds storage skills to Pi. Storage Agent is the full desktop app: chat, tools, local analysis, evidence, and approvals in one place.",
           },
         ],
@@ -119,7 +106,7 @@ export default defineProduct({
     description: "面向 S3 兼容存储的本地优先桌面工作台：在对话里调用只读工具，证据可见。",
     eyebrow: "对象存储排查",
     headline: "查清存储问题，留下依据",
-    lead: "描述桶的问题，或带上报错和日志。Storage Agent 在本机执行只读检查，把结果和证据放进同一次会话。",
+    lead: "只读检查。密钥在本机。证据在会话里。",
     catalog: {
       role: "S3 排查",
       text: "在桌面做只读 S3 排查，检查记录就在结论旁边。",
@@ -152,53 +139,39 @@ export default defineProduct({
         alt: "Storage Agent 欢迎页，提供六类调查起点",
         kicker: "选择起点",
         title: "开始一次调查",
-        body: "打开会话，或从欢迎页选择一项调查任务。",
-        beside: "workflow",
+        body: "打开会话，或在欢迎页选一项调查任务。",
+        beside: "features",
       },
     ],
     sections: [
       {
         kind: "cards",
-        id: "workflow",
-        label: "从问题到证据",
+        id: "features",
+        label: "每一步检查都留下依据",
         items: [
-          {
-            title: "从一个问题开始",
-            body: "从报错、访问日志、桶配置或容量问题开始。Agent 选择对应工具检查。",
-          },
-          {
-            title: "查看结论的依据",
-            body: "查看工具活动和分析结果。对象元数据、日志行和清单随会话保存，可以打开对应证据，再决定下一步怎么处理。要把 Pi 会话停在 BOS、换机器继续，用 celagent。",
-          },
-        ],
-        numbered: true,
-      },
-      {
-        kind: "cards",
-        id: "positioning",
-        label: "数据与操作范围",
-        items: [
-          {
-            title: "凭证与会话记录",
-            body: "存储凭证保存在本机加密保险库，证据和会话记录保存在本机应用数据目录。请求会发往你配置的模型和 S3 兼容存储端点。",
-          },
-          {
-            title: "存储工具只读",
-            body: "应用不提供写入、删除或修改桶策略的工具。下载、大范围扫描和证据导入需要你确认。",
-          },
+          { title: "从问题开始", body: "报错、访问日志、桶配置。" },
+          { title: "Agent 选工具", body: "按问题挑检查项。" },
+          { title: "证据留下", body: "对象元数据、日志行、清单。" },
+          { title: "工具只读", body: "不写入、不删除、不改策略。" },
+          { title: "由你确认", body: "下载、大范围扫描、证据导入。" },
+          { title: "密钥在本机", body: "保存在本机加密保险库。" },
         ],
       },
       {
         kind: "faq",
         id: "faq",
-        label: "只读、密钥与 StorageOps",
+        label: "常见问题",
         items: [
           {
-            title: "没有模型密钥也能用",
-            body: "本地证据和规则分析仍能跑。需要 Agent 在对话里规划与解释时，再接入模型。",
+            title: "没有模型密钥能用吗？",
+            body: "能。本地证据和规则分析照常运行。需要 Agent 在对话里规划与解释时，再接入模型。",
           },
           {
-            title: "和 StorageOps 的分工",
+            title: "数据会发到哪里？",
+            body: "存储凭证保存在本机加密保险库，证据和会话记录保存在本机应用数据目录。请求会发往你配置的模型和 S3 兼容存储端点。",
+          },
+          {
+            title: "和 StorageOps 有什么不同？",
             body: "StorageOps 给 Pi 加存储技能。Storage Agent 是完整桌面应用：对话、工具、本地分析、证据与确认都在一处。",
           },
         ],

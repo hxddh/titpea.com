@@ -3,6 +3,7 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "world-machine",
   line: "experimental",
+  icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",
   schema: {
     category: "DeveloperApplication",

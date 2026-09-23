@@ -15,6 +15,7 @@ export default defineProduct({
     },
   },
   repo: "hxddh/pagewise",
+  icon: "/assets/icons/pagewise.webp",
   og: "/assets/og-pagewise.png",
   schema: {
     category: "DeveloperApplication",
@@ -26,7 +27,7 @@ export default defineProduct({
     description: "Read and annotate PDFs on your desktop, ask questions, and check answers against page citations.",
     eyebrow: "PDF reading and questions",
     headline: "Ask. Check the page.",
-    lead: "Open a PDF and ask a question, or select a passage first. Answers include page citations, pages read are visible, and annotations stay on the document.",
+    lead: "Ask a question. Check the cited page. Annotate in place.",
     catalog: {
       role: "PDF agent",
       text: "Ask a PDF a question, then follow the citation back to the page.",
@@ -58,72 +59,57 @@ export default defineProduct({
         height: 1200,
         alt: "PageWise welcome screen with open-document action and recent files",
         kicker: "Open or continue",
-        title: "Start with a document on disk",
-        body: "Open a PDF or drag it in. Recent files stay local so you can continue the same thread.",
+        title: "Start from a file on disk.",
+        body: "Open or drag in a PDF; recent files stay local.",
       },
     ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "Text and scanned pages",
+        nav: "Features",
+        label: "Notes and threads stay with the file.",
         items: [
-          {
-            title: "Read within limits",
-            body: "Page reads have character and step budgets. A search miss does not mean the document contains no relevant information.",
-          },
-          {
-            title: "Scans need a vision model",
-            body: "PDFs with a text layer can be read directly. Scanned pages and images need a configured vision model.",
-          },
-          {
-            title: "One conversation per document",
-            body: "Each file keeps a local thread. Open it again to continue asking and annotating on the same PDF.",
-          },
+          { title: "Annotations stay", body: "Notes stay on the document." },
+          { title: "One thread per file", body: "A local thread; reopen to keep asking." },
+          { title: "Files stay local", body: "Text goes to the model you configure." },
+          { title: "Text layers read directly", body: "Scans and images need a vision model." },
+          { title: "Local model option", body: "Connect Ollama for a local model." },
+          { title: "Keys in the keychain", body: "macOS, Windows, or Linux system keychain." },
         ],
       },
       {
         kind: "cards",
-        id: "workflow",
-        label: "Find the source page",
+        id: "how",
+        nav: "How it works",
+        label: "Answers point back to the page.",
         items: [
-          {
-            title: "Ask about the document",
-            body: "Ask a question or select a passage. PageWise searches the document and reads relevant pages.",
-          },
-          {
-            title: "Check the answer",
-            body: "Open a page citation, inspect the pages read, or let the preview follow the reading progress.",
-          },
+          { title: "Ask or select", body: "Ask a question, or select a passage first." },
+          { title: "PageWise reads", body: "It searches the document and reads relevant pages." },
+          { title: "Check the answer", body: "Open a citation, see pages read, or follow the preview." },
         ],
         numbered: true,
       },
       {
-        kind: "cards",
-        id: "positioning",
-        label: "What the model receives",
-        items: [
-          {
-            title: "Text and optional images",
-            body: "Files stay on your machine. Extracted text goes to the model you configure; enabling vision also sends the corresponding images. Connect Ollama to use a local model.",
-          },
-          {
-            title: "Keys in the system keychain",
-            body: "Credentials use macOS Keychain, Windows Credential Manager, or Linux Secret Service. Assistant and Scan can use different models.",
-          },
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
-        label: "Search and first open",
+        nav: "FAQ",
+        label: "FAQ",
         items: [
           {
-            title: "Web search is off by default",
-            body: "OpenRouter web search is enabled per call when you want to check an external source.",
+            title: "What does the model receive?",
+            body: "Files stay on your machine. Extracted text goes to the model you configure; enabling vision also sends the corresponding images. Connect Ollama to use a local model. Assistant and Scan can use different models.",
           },
           {
-            title: "First open on macOS",
+            title: "Can it miss something?",
+            body: "Yes. Page reads have character and step budgets, so a search miss does not mean the document contains no relevant information.",
+          },
+          {
+            title: "Does it search the web?",
+            body: "Not by default. OpenRouter web search is enabled per call when you want to check an external source.",
+          },
+          {
+            title: "How do I open it on macOS?",
             body: "The build is not notarized. See the release instructions for the current installation steps.",
           },
         ],
@@ -136,7 +122,7 @@ export default defineProduct({
     description: "在桌面阅读和批注 PDF，围绕文档提问，沿页引用核对回答。",
     eyebrow: "PDF 阅读与问答",
     headline: "问过之后，回到原文",
-    lead: "打开 PDF，直接提问，或选中一段再问。回答附带页引用，读过的页面可查看，批注保留在文档上。",
+    lead: "直接提问。按页引用核对。批注留在文档上。",
     catalog: {
       role: "PDF agent",
       text: "问 PDF 一个问题，再顺着页引用回到原文。",
@@ -168,72 +154,57 @@ export default defineProduct({
         height: 1200,
         alt: "PageWise 欢迎页，包含打开文档与最近文件",
         kicker: "打开或继续",
-        title: "从磁盘上的文档开始",
-        body: "打开 PDF 或拖入文件。最近文档留在本地，可继续同一条线程。",
+        title: "从磁盘上的文件开始",
+        body: "打开或拖入 PDF，最近文档留在本机。",
       },
     ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "文本与扫描件",
+        nav: "功能",
+        label: "批注和会话跟着文件走",
         items: [
-          {
-            title: "读取有范围",
-            body: "单次读取受字符和步数预算限制。搜索未命中不等于文档没有相关内容。",
-          },
-          {
-            title: "扫描页需要视觉模型",
-            body: "有文本层的 PDF 可直接读取。扫描页和图片需要配置支持视觉的模型。",
-          },
-          {
-            title: "每份文档一条会话",
-            body: "每份文件保留一条本地线程。再次打开时，继续对同一份 PDF 提问和批注。",
-          },
+          { title: "批注留在原处", body: "批注保留在文档上。" },
+          { title: "每份文件一条线程", body: "本地线程，再次打开接着问。" },
+          { title: "文件留在本机", body: "文本发给你配置的模型。" },
+          { title: "文本层直接读取", body: "扫描页和图片需要视觉模型。" },
+          { title: "可用本地模型", body: "连接 Ollama 使用本地模型。" },
+          { title: "密钥进系统钥匙串", body: "macOS、Windows 或 Linux 系统钥匙串。" },
         ],
       },
       {
         kind: "cards",
-        id: "workflow",
-        label: "从问题找到页面",
+        id: "how",
+        nav: "用法",
+        label: "回答附带页引用，可回原页",
         items: [
-          {
-            title: "围绕文档提问",
-            body: "直接提问，或选中一段再问。PageWise 根据问题搜索文档、读取相关页面。",
-          },
-          {
-            title: "核对回答",
-            body: "点击引用定位原文，查看已读页，或让预览跟随阅读进度。",
-          },
+          { title: "提问或选中", body: "直接提问，或选中一段再问。" },
+          { title: "PageWise 读取", body: "搜索文档，读取相关页面。" },
+          { title: "核对回答", body: "点开引用、查看已读页，或让预览跟随进度。" },
         ],
         numbered: true,
       },
       {
-        kind: "cards",
-        id: "positioning",
-        label: "模型会收到什么",
-        items: [
-          {
-            title: "文本与可选图像",
-            body: "文件保存在本机。问答时，提取的文本会发送给你配置的模型；启用视觉处理时，也会发送相应图像。可连接 Ollama 使用本地模型。",
-          },
-          {
-            title: "密钥进系统钥匙串",
-            body: "凭证使用 macOS Keychain、Windows Credential Manager 或 Linux Secret Service。对话与 Scan 可使用不同模型。",
-          },
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
-        label: "网页搜索与首次打开",
+        nav: "常见问题",
+        label: "常见问题",
         items: [
           {
-            title: "网页搜索默认关闭",
-            body: "需要核对外部来源时，可按次启用 OpenRouter 网页搜索。",
+            title: "模型会收到什么？",
+            body: "文件保存在本机。问答时，提取的文本会发送给你配置的模型；启用视觉处理时，也会发送相应图像。可连接 Ollama 使用本地模型。对话与 Scan 可使用不同模型。",
           },
           {
-            title: "在 macOS 首次打开",
+            title: "会漏掉内容吗？",
+            body: "可能。单次读取受字符和步数预算限制，搜索未命中不等于文档没有相关内容。",
+          },
+          {
+            title: "会联网搜索吗？",
+            body: "默认不会。需要核对外部来源时，可按次启用 OpenRouter 网页搜索。",
+          },
+          {
+            title: "在 macOS 上怎么首次打开？",
             body: "构建尚未公证，请按当前版本的发布说明安装。",
           },
         ],

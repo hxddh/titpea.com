@@ -6,11 +6,24 @@
   padding-bottom: 0;
 }
 
+/* The claim stacks into two short lines, as large as the hero allows. */
 .product-hero h1 {
+  max-width: 14ch;
   margin: 0 auto;
   font-size: var(--title-hero);
   line-height: 1.04;
   letter-spacing: -0.035em;
+}
+
+:lang(zh) .product-hero h1 {
+  max-width: 10em;
+}
+
+.app-icon {
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 22px;
+  filter: drop-shadow(var(--shadow-icon));
 }
 
 .product-copy .eyebrow {
@@ -544,6 +557,11 @@
 
   :lang(zh) .product-hero h1 {
     font-size: clamp(2.125rem, 9.6vw, 2.5rem);
+  }
+
+  .app-icon {
+    width: 84px;
+    height: 84px;
   }
 
   .hero-visual-frame {

@@ -14,8 +14,8 @@ export default defineProduct({
     title: "celagent",
     description: "Pi’s terminal interface with sessions saved on BOS and restored by ID on another configured machine.",
     eyebrow: "Pi terminal agent",
-    headline: "Resume on another device",
-    lead: "Use Pi’s terminal interface with sessions saved on BOS. Restore the history by session ID on another machine configured for the same storage.",
+    headline: "Resume on another device.",
+    lead: "Pi’s terminal. Sessions on BOS. Resume on a configured machine.",
     catalog: {
       role: "Session recovery",
       text: "Park the Pi session on BOS, resume it on another machine.",
@@ -61,61 +61,60 @@ export default defineProduct({
     },
     sections: [
       {
-        kind: "flow",
-        id: "evidence",
-        kicker: "Persistence model",
-        title: "Successful writes can be recovered",
-        body: "Completed turns are queued for BOS with conditional writes. A successful write makes the session recoverable on another configured machine.",
-        steps: [
-          {
-            label: "Native session history",
-            body: "sessions/<id>.jsonl stores Pi history, including tool calls and branches. Older JSON sessions use a legacy text recovery path.",
-          },
-          {
-            label: "Conflicts and failures",
-            body: "Conditional writes detect conflicting updates. Retryable write failures remain queued; a BOS timeout or permission error does not silently fall back to truncated cache.",
-          },
+        kind: "cards",
+        id: "features",
+        nav: "Features",
+        label: "Every turn is saved to BOS.",
+        items: [
+          { title: "Pi, unchanged", body: "Pi’s terminal interface, engine, and tools." },
+          { title: "Native history", body: "Tool calls and branches, kept in JSONL." },
+          { title: "Saved per turn", body: "Completed turns queue for BOS." },
+          { title: "Conflict checks", body: "Conditional writes detect conflicting updates." },
+          { title: "Failures stay queued", body: "Retryable write failures remain in the queue." },
+          { title: "BOS first", body: "No silent fallback to truncated cache." },
         ],
       },
       {
         kind: "cards",
         id: "workflow",
-        label: "Configure, save, resume",
+        nav: "How it works",
+        label: "Configure, save, resume.",
         items: [
-          {
-            title: "Configure storage first",
-            body: "Install the release, configure the BOS bucket and credentials, then run `celagent doctor` and `celagent cas-probe` before relying on recovery.",
-          },
-          {
-            title: "Save at the end of a turn",
-            body: "Completed turns enter the BOS write queue with conditional writes for conflict handling. Retryable network failures remain queued; cross-machine recovery requires a successful write.",
-          },
-          {
-            title: "Resume a saved session",
-            body: "Run `celagent list`, then `celagent <id>` on another configured machine. Recovery reads BOS first; only a missing object falls back to the worker cache.",
-          },
+          { title: "Configure storage", body: "Set up BOS, then run `celagent doctor` and `celagent cas-probe`." },
+          { title: "Wait for the write", body: "Recovery needs a successful BOS write." },
+          { title: "Resume by ID", body: "`celagent list`, then `celagent <id>` on a configured machine." },
         ],
         numbered: true,
       },
       {
         kind: "cases",
         id: "cases",
-        label: "Beyond conversation history",
-        title: "Distributed tasks",
+        nav: "Tasks",
+        label: "Beyond chat",
+        title: "Tasks recover from checkpoints.",
         items: ["celagent task submit", "celagent task status", "celagent task ledger"],
-        body: "Celld tasks have checkpoint recovery and an idempotent task ledger. See the repository for setup and command details.",
+        body: "Celld tasks have checkpoint recovery and an idempotent task ledger; see the repository for setup.",
       },
       {
         kind: "faq",
         id: "faq",
-        label: "Recovery and Pi",
+        nav: "FAQ",
+        label: "FAQ",
         items: [
           {
-            title: "A saved conversation is not a synced workspace",
-            body: "Session recovery does not set up the project files or environment on the other machine. Wait for the BOS write to succeed before relying on remote recovery.",
+            title: "Does it sync my workspace?",
+            body: "No. Session recovery does not set up the project files or environment on the other machine. Wait for the BOS write to succeed before relying on remote recovery.",
           },
           {
-            title: "Pi engine and installation",
+            title: "What if a BOS write fails?",
+            body: "Retryable failures stay queued, and cross-machine recovery waits for a successful write. Recovery reads BOS first; only a missing object falls back to the worker cache. A BOS timeout or permission error does not fall back to truncated cache.",
+          },
+          {
+            title: "How is history stored?",
+            body: "sessions/<id>.jsonl stores Pi history, including tool calls and branches. Older JSON sessions use a legacy text recovery path.",
+          },
+          {
+            title: "How do I install it?",
             body: "celagent reuses the Pi engine and its tools. Install from the GitHub release with install.sh, or install.ps1 on Windows; upstream Celld has no Windows package.",
           },
         ],
@@ -128,7 +127,7 @@ export default defineProduct({
     description: "使用 Pi 的终端界面，把会话保存在 BOS，通过 ID 在另一台已配置的机器上恢复。",
     eyebrow: "Pi 终端 Agent",
     headline: "换台机器，接着聊",
-    lead: "使用 Pi 的终端界面，会话保存在 BOS。通过会话 ID，在另一台已配置相同存储的机器上恢复历史。",
+    lead: "Pi 的终端界面。会话存在 BOS。在已配置的机器上按 ID 恢复。",
     catalog: {
       role: "会话恢复",
       text: "把 Pi 会话停在 BOS，换一台机器继续。",
@@ -174,61 +173,60 @@ export default defineProduct({
     },
     sections: [
       {
-        kind: "flow",
-        id: "evidence",
-        kicker: "持久化模型",
-        title: "写入成功后，可以跨机恢复",
-        body: "完成的回合进入 BOS 条件写入队列。写入成功后，另一台已配置的机器可以恢复该会话。",
-        steps: [
-          {
-            label: "原生会话历史",
-            body: "sessions/<id>.jsonl 保存 Pi 历史，包含工具调用和分支。旧 JSON 会话使用兼容的文本恢复路径。",
-          },
-          {
-            label: "冲突与失败",
-            body: "条件写入检测并发冲突，可重试的写入失败会留队。BOS 超时或权限失败时，不会静默退回截断缓存。",
-          },
+        kind: "cards",
+        id: "features",
+        nav: "功能",
+        label: "每一轮都存进 BOS",
+        items: [
+          { title: "原样的 Pi", body: "Pi 的终端界面、引擎和工具。" },
+          { title: "原生历史", body: "工具调用和分支，存为 JSONL。" },
+          { title: "每轮保存", body: "完成的回合进入 BOS 写入队列。" },
+          { title: "冲突检测", body: "条件写入检测并发冲突。" },
+          { title: "失败留队", body: "可重试的写入失败留在队列。" },
+          { title: "先读 BOS", body: "不静默退回截断缓存。" },
         ],
       },
       {
         kind: "cards",
         id: "workflow",
+        nav: "用法",
         label: "配置、保存、恢复",
         items: [
-          {
-            title: "先配置存储",
-            body: "安装发布版本，配置 BOS 桶和凭证。启动会话前，用 `celagent doctor` 检查访问，再用 `celagent cas-probe` 检查条件写入。",
-          },
-          {
-            title: "每轮结束后保存",
-            body: "完成的回合进入 BOS 写入队列，通过条件写入处理冲突。可重试的网络失败会留队；跨机恢复需要等待写入成功。",
-          },
-          {
-            title: "恢复已保存的会话",
-            body: "在另一台已配置的机器上运行 `celagent list`，再用 `celagent <id>` 恢复。先读 BOS，仅对象不存在时才回退到 worker 缓存。",
-          },
+          { title: "先配置存储", body: "配好 BOS，运行 doctor 和 cas-probe。" },
+          { title: "等写入成功", body: "BOS 写入成功后才能跨机恢复。" },
+          { title: "按 ID 恢复", body: "在已配置的机器上 list，再按 ID 打开。" },
         ],
         numbered: true,
       },
       {
         kind: "cases",
         id: "cases",
+        nav: "任务",
         label: "对话之外",
-        title: "分布式任务",
+        title: "任务可从断点恢复",
         items: ["celagent task submit", "celagent task status", "celagent task ledger"],
-        body: "Celld 任务支持断点恢复和幂等任务记录。配置与命令细节见仓库文档。",
+        body: "Celld 任务支持断点恢复和幂等任务记录。配置细节见仓库文档。",
       },
       {
         kind: "faq",
         id: "faq",
-        label: "恢复条件与 Pi",
+        nav: "常见问题",
+        label: "常见问题",
         items: [
           {
-            title: "恢复会话不等于同步工作区",
-            body: "另一台机器仍需准备项目文件和运行环境。依赖跨机恢复前，先确认 BOS 写入成功。",
+            title: "会同步工作区吗？",
+            body: "不会。恢复会话不会在另一台机器上准备项目文件和运行环境。依赖跨机恢复前，先确认 BOS 写入成功。",
           },
           {
-            title: "Pi 引擎与安装",
+            title: "BOS 写入失败会怎样？",
+            body: "可重试的失败会留队，跨机恢复要等写入成功。恢复先读 BOS，仅对象不存在时才回退到 worker 缓存；BOS 超时或权限失败时，不会静默退回截断缓存。",
+          },
+          {
+            title: "历史怎么保存？",
+            body: "sessions/<id>.jsonl 保存 Pi 历史，包含工具调用和分支。旧 JSON 会话使用兼容的文本恢复路径。",
+          },
+          {
+            title: "怎么安装？",
             body: "celagent 复用 Pi 引擎及其工具。从 GitHub Release 用 install.sh 安装，Windows 使用 install.ps1；上游 Celld 没有 Windows 包。",
           },
         ],

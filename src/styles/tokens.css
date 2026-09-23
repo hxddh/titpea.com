@@ -44,6 +44,7 @@
   --shadow-shot: 0 40px 90px -30px rgba(20, 30, 60, 0.35), 0 12px 30px -12px rgba(20, 30, 60, 0.18);
   --shadow-panel: 0 18px 50px -24px rgba(20, 30, 60, 0.28);
   --shadow-glass: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--line), 0 8px 24px -12px var(--glass-shade);
+  --shadow-icon: 0 14px 22px rgba(0, 0, 0, 0.18);
   --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   /* Semantic data colors: reference (baseline) and caution (outlier). */
@@ -57,7 +58,7 @@
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, "Segoe UI", "Helvetica Neue",
     "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  --title-hero: clamp(2.75rem, 6.6vw, 5.25rem);
+  --title-hero: clamp(2.75rem, 7vw, 5.5rem);
   --title-display: clamp(2.5rem, 5.6vw, 4.5rem);
   --title-section: clamp(2.125rem, 4.6vw, 3.5rem);
   --title-show: clamp(1.625rem, 3.2vw, 2.25rem);

@@ -121,6 +121,7 @@ export type ProductPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   copy: ProductCopy;
+  icon?: string;
   version?: string;
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
@@ -160,7 +161,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const path = pathFor(locale, product.slug);
   const alternatePath = pathFor(otherLocale(locale), product.slug);
   const navItems = copy.sections.flatMap((section) => {
-    const item = { id: section.id, label: "label" in section ? section.label : section.kicker };
+    const item = { id: section.id, label: section.nav ?? ("label" in section ? section.label : section.kicker) };
     // The command block sits just before the FAQ, so its link does too.
     return section.kind === "faq" && copy.commands ? [{ id: "start", label: copy.commands.title }, item] : [item];
   });
@@ -185,6 +186,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     }),
     language: languageLink(locale, alternatePath),
     copy,
+    icon: product.icon,
     version,
     downloadsRelease: Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",

@@ -13,6 +13,9 @@ export type Image = { src: string; alt: string; width: number; height: number };
 
 /* ---------- Sections ---------- */
 
+/** Every section may set `nav`: a 1–4 word label for the local nav when its heading is a sentence. */
+type SectionNav = { nav?: string };
+
 export type Card = {
   title: string;
   body: string;
@@ -77,14 +80,16 @@ export type PanelSection = {
       };
 };
 
-export type Section =
+export type Section = (
   | CardsSection
   | FaqSection
   | StorySection
   | CasesSection
   | FlowSection
   | PathsSection
-  | PanelSection;
+  | PanelSection
+) &
+  SectionNav;
 
 /* ---------- The product object ---------- */
 
@@ -205,7 +210,7 @@ export type ProductCopy = {
   navLabel?: string;
   description: string;
   eyebrow: string;
-  /** The hero h1: the slogan, not the name. English ≤ 24 characters, Chinese ≤ 18. */
+  /** The hero h1: a short declarative claim, not the name. English ≤ 24 characters plus a closing period, Chinese ≤ 18. */
   headline: string;
   lead: string;
   catalog: { role: string; text: string };
@@ -227,6 +232,8 @@ export type Product = {
   line: Line;
   /** The two featured products lead Home with this photograph. */
   featured?: { image: Omit<Image, "alt"> & { alt: Record<Locale, string> } };
+  /** App icon shown above the hero headline and in the local nav, when the product has one. */
+  icon?: string;
   /** GitHub repository whose latest release fills `{version}`. */
   repo?: string;
   og: string;
