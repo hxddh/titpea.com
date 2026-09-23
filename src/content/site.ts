@@ -37,6 +37,8 @@ type Ui = {
   featuredTitle: string;
   moreToolsTitle: string;
   learnMore: string;
+  browseTools: string;
+  aboutMore: string;
   // About
   aboutTitle: string;
   aboutDescription: string;
@@ -71,14 +73,16 @@ export const ui: Record<Locale, Ui> = {
       experimental: "Experimental",
       external: "External",
     },
-    productIndex: "hxddh / products",
+    productIndex: "Independent software by hxddh",
     homeMetaTitle: "Titpea — Agents and tools by hxddh",
-    homeTitle: "Agents and tools",
+    homeTitle: "Agents and tools.",
     homeDescription: "Software by hxddh, from S3 investigations and PDF reading to desktop chess and browser tools.",
-    homeLead: "Storage Agent keeps the evidence in the session. PageWise links the answer back to the page.",
+    homeLead: "S3 investigations. PDF reading. Chess, clocks, and browser tools.",
     featuredTitle: "Selected work",
     moreToolsTitle: "More tools",
     learnMore: "Learn more",
+    browseTools: "Browse all tools",
+    aboutMore: "About hxddh",
     aboutTitle: "About",
     aboutDescription: "About hxddh — I keep the logs and checks behind a storage diagnosis.",
     aboutHeadline: "hxddh",
@@ -112,14 +116,16 @@ export const ui: Record<Locale, Ui> = {
       experimental: "实验",
       external: "外部链接",
     },
-    productIndex: "hxddh / 产品",
+    productIndex: "hxddh 独立开发的软件",
     homeMetaTitle: "Titpea — Agent 和工具",
     homeTitle: "Agent 和工具",
     homeDescription: "hxddh 独立开发的软件：对象存储排查、PDF 阅读，以及桌面和浏览器里的日常工具。",
-    homeLead: "Storage Agent 把证据留在会话里，PageWise 让回答回到原页。",
+    homeLead: "对象存储排查。PDF 阅读。棋类、时钟和浏览器小工具。",
     featuredTitle: "主要作品",
     moreToolsTitle: "更多工具",
     learnMore: "了解更多",
+    browseTools: "浏览全部工具",
+    aboutMore: "关于 hxddh",
     aboutTitle: "关于",
     aboutDescription: "关于 hxddh——存储排查时，我习惯保留得出结论的日志和检查记录。",
     aboutHeadline: "hxddh",

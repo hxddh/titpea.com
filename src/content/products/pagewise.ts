@@ -30,7 +30,7 @@ export default defineProduct({
     lead: "Ask a question. Check the cited page. Annotate in place.",
     catalog: {
       role: "PDF agent",
-      text: "Ask a PDF a question, then follow the citation back to the page.",
+      text: "Ask a PDF. Follow the citation to the page.",
     },
     primaryCta: {
       label: "Download latest release",
@@ -125,7 +125,7 @@ export default defineProduct({
     lead: "直接提问。按页引用核对。批注留在文档上。",
     catalog: {
       role: "PDF agent",
-      text: "问 PDF 一个问题，再顺着页引用回到原文。",
+      text: "向 PDF 提问。顺着页引用回到原文。",
     },
     primaryCta: {
       label: "下载最新版本",

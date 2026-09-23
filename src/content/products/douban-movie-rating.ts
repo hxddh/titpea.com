@@ -13,7 +13,7 @@ export default defineProduct({
     title: "Douban Movie Rating Assistant",
     navLabel: "Douban Ratings",
     description: "A Chrome extension that shows IMDb, Rotten Tomatoes, and Metacritic ratings on Douban movie pages.",
-    eyebrow: "Chrome Extension",
+    eyebrow: "Chrome extension",
     headline: "Ratings beside Douban.",
     lead: "IMDb, Rotten Tomatoes, Metacritic. Shown only when the film match is reliable.",
     catalog: {

@@ -13,38 +13,53 @@ const { model } = Astro.props;
   <section class="home-hero">
     <div class="wash" aria-hidden="true"></div>
     <div class="shell home-copy">
+      <ul class="home-icons" aria-label={model.hero.eyebrow}>
+        {
+          model.hero.icons.map((icon) => (
+            <li>
+              <a href={icon.href} title={icon.name}>
+                <img src={icon.src} alt={icon.name} width="72" height="72" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
+      <div class="actions">
+        <a class="button primary large" href="#more-title">{model.hero.browse}</a>
+        <a class="button ghost" href={model.hero.about.href}>{model.hero.about.label}</a>
+      </div>
     </div>
   </section>
 
   <section class="home-evidence" aria-labelledby="featured-title">
     <div class="shell">
-      <h2 id="featured-title" class="home-evidence-title">{model.featured.title}</h2>
-      <div class="home-evidence-grid">
-        {
-          model.featured.items.map((item) => (
-            <a class="home-featured-card" href={item.href}>
-              <figure class="home-figure">
-                <img
-                  src={item.image.src}
-                  alt={item.image.alt}
-                  width={item.image.width}
-                  height={item.image.height}
-                  loading="eager"
-                />
-              </figure>
-              <span class="home-featured-copy">
-                {item.role ? <span class="section-kicker">{item.role}</span> : null}
-                <strong class="home-featured-name">{item.name}</strong>
-                <span class="sub">{item.text}</span>
-                <span class="home-featured-more">{model.featured.learnMore}</span>
-              </span>
-            </a>
-          ))
-        }
-      </div>
+      <header class="section-head">
+        <h2 id="featured-title">{model.featured.title}</h2>
+      </header>
+      {
+        model.featured.items.map((item) => (
+          <a class="home-featured-card" href={item.href}>
+            <span class="home-featured-copy">
+              <span class="section-kicker">{item.role}</span>
+              <strong class="home-featured-name">{item.name}</strong>
+              <span class="sub">{item.text}</span>
+              <span class="home-featured-more">{model.featured.learnMore}</span>
+            </span>
+            <figure class="shot">
+              <img
+                src={item.image.src}
+                alt={item.image.alt}
+                width={item.image.width}
+                height={item.image.height}
+                loading="eager"
+              />
+            </figure>
+          </a>
+        ))
+      }
     </div>
   </section>
 
@@ -61,9 +76,18 @@ const { model } = Astro.props;
               {group.items.map((item) => (
                 <li>
                   <a class="catalog-card" href={item.href}>
-                    {item.role ? <span class="home-catalog-role">{item.role}</span> : null}
+                    <span class="catalog-card-top">
+                      <span class="home-catalog-role">{item.role}</span>
+                      {item.icon && <img class="catalog-icon" src={item.icon} alt="" width="44" height="44" />}
+                    </span>
                     <strong class="home-catalog-name">{item.name}</strong>
                     <p class="home-catalog-text">{item.text}</p>
+                    <span class="catalog-card-foot">
+                      {item.version && <span class="catalog-version">{item.version}</span>}
+                      <span class="catalog-arrow" aria-hidden="true">
+                        →
+                      </span>
+                    </span>
                   </a>
                 </li>
               ))}
