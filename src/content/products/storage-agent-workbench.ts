@@ -31,7 +31,7 @@ export default defineProduct({
     lead: "Read-only checks. Local keys. Evidence in the session.",
     catalog: {
       role: "S3 investigation",
-      text: "Read-only S3 investigations on the desktop; the checks stay beside the answer.",
+      text: "Read-only S3 checks. Evidence beside the answer.",
     },
     primaryCta: {
       label: "Download",
@@ -109,7 +109,7 @@ export default defineProduct({
     lead: "只读检查。密钥在本机。证据在会话里。",
     catalog: {
       role: "S3 排查",
-      text: "在桌面做只读 S3 排查，检查记录就在结论旁边。",
+      text: "只读 S3 排查。证据就在结论旁边。",
     },
     primaryCta: {
       label: "下载",
