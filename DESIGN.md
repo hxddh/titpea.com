@@ -21,20 +21,20 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Hero.** Centered, over a soft color wash (`.wash`). Eyebrow, then `h1`, then a balanced lede, then actions, then a mono meta line. Product heroes put the product object below the copy, centered.
 - **Product object.** Real screenshots sit in the wide frame (1040px) as photographs: rounded (`--radius-shot`), lifted (`--shadow-shot`). CSS mocks, terminals, and charts stay in the narrow frame (820px) so their type keeps product scale. They keep their own window contour (`--radius-window`).
 - **Section.** A centered section head (optional kicker, `h2` at `--title-section`, optional `.sub`), then one object: a feature grid, a showcase photograph, a numbered flow, a panel, or the FAQ.
-- **Feature cards.** `--paper-raised` fill, `--radius-card`, no border, no shadow. The grid picks its columns from the item count: 1 is a narrow single column, 2 and 4 are two columns, anything else is three. A `primary` card spans the row. Numbered flows use an accent step badge.
+- **Feature cards.** `--paper-raised` fill, `--radius-card`, no border, no shadow. The grid picks its columns from the item count: 1 is a narrow single column, 2 and 4 are two columns, anything else is three. A `primary` card spans the row. Numbered flows use an accent step badge. On phones plain feature cards pair up in two columns, as Omni does; numbered flows and panels stay one column.
 - **Stats band.** A short sentence heading and 2–4 large figures, each with a few words of label. Only figures traceable to the product's README, docs, or tests; never derived or rounded into a bigger claim. Omit the band when the hero object already shows the numbers (s3-turbo-list's chart).
 - **Showcase.** A compact head (kicker, `--title-show` heading, sub) above a full-width photograph.
 - **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
 - **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). Tags come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when a tag changed; nobody edits a version by hand.
-- **Closing action.** The product name and one large filled capsule. It may repeat the primary download or repository link, and it never restates the hero headline.
+- **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
 
 ## Home
 
-- The hero is the contents line (`Agents and tools` / `Agent 和工具`) and the relationship between the featured pair, said once in the lede. Home hero CTA count is 0; the featured rows are the actions.
+- The hero opens on the row of app icons, each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card with its role, name, and one-liner. A product belongs to one line, and the header dropdowns use the same four lines.
+- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. Products with an app icon show it in the card's top right. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## Product Pages
 
@@ -88,7 +88,10 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 - The header dropdowns and mobile menu are `<details>` with outside-click and Escape close.
 - The local nav highlights the section in view, scrolls to the exact offset on click, and closes its narrow-screen disclosure on outside click, Escape, or selection.
 - Copy buttons appear only where the Clipboard API exists and read `Copied` / `已复制` for a moment after a write.
-- Capsules press to `scale(0.98)`; catalog cards lift 2px on hover. `prefers-reduced-motion` turns off smooth scroll, the lift, and transitions.
+- Capsules press to `scale(0.98)`; catalog cards lift 4px with `--shadow-card-hover` and their arrow nudges right; hero icons rise on hover.
+- Product screenshots are buttons: a click opens the full image in a `<dialog>` over a blurred backdrop (`zoom.js`). Esc, Close, or any click closes it. On phones the image opens 960px wide and pans sideways.
+- Cards, showcase photographs, and stats below the fold rise into place once as they scroll in, a beat apart within a row (`reveal.js`). Anything already on screen at load never hides.
+- `prefers-reduced-motion` turns off smooth scroll, the lift, the reveal, and transitions.
 - No script is inline; CSP stays `script-src 'self'; style-src 'self'`.
 
 ## Constraints (Measurable Floors)
@@ -101,7 +104,8 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - Every `<img>` declares intrinsic `width` and `height`. Heroes use `fetchpriority="high"`; later photographs lazy-load.
   - CSS stays in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Responsive
-  - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (single column, 16px gutter).
+  - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (16px gutter; feature cards two columns, everything else one).
+  - Chinese headings break at punctuation and spaces, never inside a word (`word-break: keep-all`).
   - For bilingual layouts, size shared cards for the longer language.
 
 ## Review Before Release

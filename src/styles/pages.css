@@ -127,32 +127,41 @@
 }
 
 .catalog-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 24px 26px 26px;
+  padding: 24px 26px 22px;
   border-radius: var(--radius-card);
   color: var(--ink);
   background: var(--paper-raised);
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .catalog-card:hover {
   text-decoration: none;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.catalog-card::after {
-  content: "›";
-  margin-top: auto;
-  padding-top: 14px;
-  color: var(--link);
-  font-size: 22px;
-  line-height: 1;
+.catalog-card-top {
+  display: block;
+  margin-bottom: 4px;
+  padding-right: 52px;
+}
+
+.catalog-icon {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 .home-catalog-role {
-  margin-bottom: 4px;
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
@@ -171,6 +180,63 @@
   font-size: var(--text-card-body);
   line-height: 1.47;
   letter-spacing: -0.01em;
+}
+
+.catalog-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.catalog-version {
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  background: var(--code-bg);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.catalog-arrow {
+  margin-left: auto;
+  color: var(--link);
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.catalog-card:hover .catalog-arrow {
+  transform: translateX(4px);
+}
+
+/* Home hero: the app icons, a row of doors into the products. */
+.home-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.home-icons a {
+  display: block;
+  border-radius: 18px;
+  transition: transform 0.25s ease;
+}
+
+.home-icons a:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.home-icons img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 /* About */
@@ -276,8 +342,13 @@
     border-radius: 18px;
   }
 
-  .catalog-card::after {
-    display: none;
+  .home-icons {
+    gap: 8px;
+  }
+
+  .home-icons img {
+    width: 48px;
+    height: 48px;
   }
 
   .home-featured-copy {
@@ -290,11 +361,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .catalog-card {
+  .catalog-card,
+  .catalog-arrow,
+  .home-icons a {
     transition: none;
   }
 
-  .catalog-card:hover {
+  .catalog-card:hover,
+  .catalog-card:hover .catalog-arrow,
+  .home-icons a:hover {
     transform: none;
   }
 }

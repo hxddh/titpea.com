@@ -45,6 +45,11 @@
   --shadow-panel: 0 18px 50px -24px rgba(20, 30, 60, 0.28);
   --shadow-glass: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--line), 0 8px 24px -12px var(--glass-shade);
   --shadow-icon: 0 14px 22px rgba(0, 0, 0, 0.18);
+  --shadow-card-hover: 0 22px 44px -26px rgba(20, 30, 60, 0.34);
+  --zoom-backdrop: rgba(251, 251, 253, 0.82);
+  /* Per-card stagger for scroll reveal; public/scripts/reveal.js sets it inline. */
+  --reveal-delay: 0ms;
+  --shadow-icon-small: 0 6px 12px rgba(0, 0, 0, 0.16);
   --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   /* Semantic data colors: reference (baseline) and caution (outlier). */
@@ -110,6 +115,8 @@
   --wash-3: rgba(40, 170, 150, 0.16);
   --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
   --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
+  --zoom-backdrop: rgba(0, 0, 0, 0.82);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -141,6 +148,8 @@
     --wash-3: rgba(40, 170, 150, 0.16);
     --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
+    --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
+    --zoom-backdrop: rgba(0, 0, 0, 0.82);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;

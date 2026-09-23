@@ -26,6 +26,8 @@ const showcases = copy.showcases ?? [];
 const opening = showcases.filter((figure) => !figure.beside);
 const besideSection = (id: string) => showcases.find((figure) => figure.beside === id);
 const hasFaq = copy.sections.some((section) => section.kind === "faq");
+// Every page closes on its main action; finalCta only renames the button.
+const closing = copy.finalCta ?? copy.primaryCta.label;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language} localNav>
@@ -90,14 +92,17 @@ const hasFaq = copy.sections.some((section) => section.kind === "faq");
     )
   }
 
-  {
-    copy.finalCta && (
-      <section class="shell final-cta" aria-label={copy.finalCta}>
-        <p class="final-cta-name">{copy.title}</p>
-        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-          {copy.finalCta}
-        </a>
-      </section>
-    )
-  }
+  <section class="shell final-cta" aria-label={closing}>
+    {model.icon && <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />}
+    <p class="final-cta-name">{copy.title}</p>
+    <div class="actions">
+      <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+        {closing}
+        {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+      </a>
+      <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
+    </div>
+  </section>
 </SiteLayout>
+
+<script is:inline src="/scripts/zoom.js" defer></script>

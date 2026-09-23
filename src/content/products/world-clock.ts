@@ -12,7 +12,7 @@ export default defineProduct({
   en: {
     title: "World Clock",
     description: "A Chrome popup for live time across the cities you choose.",
-    eyebrow: "Chrome Extension",
+    eyebrow: "Chrome extension",
     headline: "Your cities, right now.",
     lead: "One popup. Local time, UTC offset, date. Work-hours context.",
     catalog: {

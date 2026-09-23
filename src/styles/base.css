@@ -71,6 +71,13 @@ h3 {
   text-wrap: balance;
 }
 
+/* Chinese headings break at punctuation and spaces, not inside a word;
+   overflow-wrap still breaks a line that would not fit. */
+:lang(zh) :is(h1, h2, h3) {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 h3 {
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -315,5 +322,106 @@ p {
   .button,
   .skip-link {
     transition: none;
+  }
+}
+
+/* Screenshot zoom (public/scripts/zoom.js). */
+.zoom-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.zoom-trigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.zoom-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 56px var(--gutter) var(--gutter);
+  border: 0;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.zoom-dialog::backdrop {
+  background: var(--zoom-backdrop);
+  backdrop-filter: var(--glass-blur);
+}
+
+.zoom-dialog[open] {
+  display: grid;
+  place-items: center;
+}
+
+.zoom-dialog img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 80px);
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-shot);
+  box-shadow: var(--shadow-shot);
+}
+
+.zoom-close {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow-glass);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.zoom-open {
+  overflow: hidden;
+}
+
+/* Scroll reveal (public/scripts/reveal.js adds .reveal only below the fold). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Two classes outrank a card's own hover transition; the script drops both
+   once the rise ends, so hover goes back to the card's timing. */
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s ease var(--reveal-delay),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay);
+}
+
+/* On phones the zoomed screenshot keeps a readable width and pans sideways. */
+@media (max-width: 640px) {
+  .zoom-dialog[open] {
+    display: block;
+    place-items: normal;
+    overflow: auto;
+    padding-top: 64px;
+  }
+
+  .zoom-dialog img {
+    width: 960px;
+    max-width: none;
+    max-height: none;
   }
 }

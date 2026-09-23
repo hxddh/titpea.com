@@ -199,7 +199,15 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
 
 /* ---------- Home ---------- */
 
-export type CatalogItem = { slug: string; name: string; href: string; role: string; text: string };
+export type CatalogItem = {
+  slug: string;
+  name: string;
+  href: string;
+  role: string;
+  text: string;
+  icon?: string;
+  version?: string;
+};
 
 export type HomePageModel = {
   kind: "home";
@@ -209,7 +217,14 @@ export type HomePageModel = {
   alternatePath: string;
   seo: PageSeo;
   language: PageLanguageLink;
-  hero: { eyebrow: string; title: string; lead: string };
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    icons: Array<{ src: string; href: string; name: string }>;
+    browse: string;
+    about: { label: string; href: string };
+  };
   featured: {
     title: string;
     learnMore: string;
@@ -224,8 +239,11 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   slug: product.slug,
   name: product[locale].title,
   href: pathFor(locale, product.slug),
-  role: product[locale].catalog.role,
+  // Cards without a catalog role fall back to the product eyebrow, so every card has a kicker.
+  role: product[locale].catalog.role || product[locale].eyebrow,
   text: product[locale].catalog.text,
+  icon: product.icon,
+  version: versionOf(product.slug),
 });
 
 export function homePage(locale: Locale): HomePageModel {
@@ -257,7 +275,16 @@ export function homePage(locale: Locale): HomePageModel {
       },
     }),
     language: languageLink(locale, alternatePath),
-    hero: { eyebrow: copy.productIndex, title: copy.homeTitle, lead: copy.homeLead },
+    hero: {
+      eyebrow: copy.productIndex,
+      title: copy.homeTitle,
+      lead: copy.homeLead,
+      icons: products
+        .filter((product) => product.icon)
+        .map((product) => ({ src: product.icon!, href: pathFor(locale, product.slug), name: product[locale].title })),
+      browse: copy.browseTools,
+      about: { label: copy.aboutMore, href: pathFor(locale, "about") },
+    },
     featured: {
       title: copy.featuredTitle,
       learnMore: copy.learnMore,
@@ -276,7 +303,8 @@ export function homePage(locale: Locale): HomePageModel {
           .map((product) => catalogItem(product, locale)),
       })),
     },
-    primaryCta: pathFor(locale, featured[0]?.slug),
+    // The hero's primary button jumps to the full catalog.
+    primaryCta: `${path}#more-title`,
     expectedText: [copy.homeTitle, copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
   };
 }

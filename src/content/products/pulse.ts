@@ -4,6 +4,7 @@ export default defineProduct({
   slug: "pulse",
   line: "agents",
   repo: "hxddh/Pulse",
+  icon: "/assets/icons/pulse.webp",
   og: "/assets/og-pulse.png",
   schema: {
     category: "DeveloperApplication",
