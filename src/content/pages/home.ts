@@ -55,9 +55,12 @@ export function buildHomePage(locale: Locale): HomePageModel {
     featured: {
       label: copy.featuredLabel,
       title: copy.featuredTitle,
+      learnMore: copy.learnMore,
       items: [
         {
           name: flagship?.name ?? "Storage Agent",
+          role: flagship?.displayRole ?? "",
+          text: flagship?.text ?? "",
           href: flagship?.href ?? catalog.featuredProductPath,
           image: {
             src: siteConfig.assets.screenshots.storageAgentInvestigation,
@@ -71,6 +74,8 @@ export function buildHomePage(locale: Locale): HomePageModel {
         },
         {
           name: personalFlagship?.name ?? "PageWise",
+          role: personalFlagship?.displayRole ?? "",
+          text: personalFlagship?.text ?? "",
           href: personalFlagship?.href ?? pathFor(locale, "pagewise"),
           image: {
             src: siteConfig.assets.screenshots.pagewiseAnalysis,

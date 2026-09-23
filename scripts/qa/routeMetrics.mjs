@@ -52,7 +52,7 @@ export async function checkRoute(page, viewport, route) {
         heroCtaCount: heroActions.length,
         heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
         cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
-        anchorCount: document.querySelectorAll(".product-section-index a").length,
+        anchorCount: document.querySelectorAll(".product-section-index [data-section-link]").length,
         productIndex: (() => {
           const index = document.querySelector(".product-section-index");
           if (!index) return null;
@@ -61,9 +61,11 @@ export async function checkRoute(page, viewport, route) {
             position: style.position,
             overflow: index.scrollWidth - index.clientWidth,
             top: Math.round(index.getBoundingClientRect().top),
-            currentCount: index.querySelectorAll("a[aria-current]").length,
+            currentCount: index.querySelectorAll("[data-section-link][aria-current]").length,
             linkRows: new Set(
-              Array.from(index.querySelectorAll("a")).map((link) => Math.round(link.getBoundingClientRect().top)),
+              Array.from(index.querySelectorAll("[data-section-link]")).map((link) =>
+                Math.round(link.getBoundingClientRect().top),
+              ),
             ).size,
           };
         })(),

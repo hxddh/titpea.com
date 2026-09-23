@@ -8,19 +8,21 @@ interface Props {
   alternateHref: string;
   alternateLabel: string;
   alternateLocale: Locale;
+  /** Product pages pin their own local nav, so the site header scrolls away. */
+  scrollsAway?: boolean;
 }
 
-const { current, locale, alternateHref, alternateLabel, alternateLocale } = Astro.props;
+const { current, locale, alternateHref, alternateLabel, alternateLocale, scrollsAway = false } = Astro.props;
 const copy = headerUi(locale);
 const homeHref = pathFor(locale);
 const desktopNav = desktopNavEntries(locale, current);
 const navGroups = headerNavGroups(locale);
 ---
 
-<header class="site-header">
-  <a class="brand" href={homeHref} aria-label="Titpea home">Titpea</a>
+<header class="site-header" data-static={scrollsAway ? "" : undefined}>
+  <div class="site-header-bar glass">
+    <a class="brand" href={homeHref} aria-label="Titpea home">Titpea</a>
 
-  <div class="header-actions">
     <nav class="nav" aria-label={copy.primaryLabel}>
       {
         desktopNav.map((entry) =>

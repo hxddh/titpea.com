@@ -123,9 +123,9 @@ assertNoMatch(
 );
 
 assertNoMatch(
-  "mosaic card grid stays deleted",
-  ["src/styles/layouts.css", "src/styles/cards.css", "src/styles/tokens.css"],
-  /section-card-grid|--chip-bg|--shadow-media|--card-pad/,
+  "retired editorial layer stays deleted",
+  ["src/styles/global.css"],
+  /components\.css|home-about\.css|layouts\.css|cards\.css|responsive\.css/,
 );
 
 assertNoMatch(
@@ -166,81 +166,53 @@ if (!/--text-list-body:/.test(read("src/styles/tokens.css"))) {
   pass("list body size is a token");
 }
 
-if (!/grid-column:\s*1\s*\/\s*-1/.test(read("src/styles/cards.css"))) {
-  fail(
-    "primary cards take the full row",
-    "src/styles/cards.css must let .section-card-list > article.primary span the row",
-  );
+if (!/\.feature-card\.primary \{\s*grid-column:\s*1\s*\/\s*-1/.test(read("src/styles/product.css"))) {
+  fail("primary cards take the full row", "src/styles/product.css must let .feature-card.primary span the row");
 } else {
   pass("primary cards take the full row");
 }
 
-const productCss = read("src/styles/product.css");
-const kickerRule = productCss.match(
-  /\.positioning-section \.section-kicker,[\s\S]*?\.faq-section > \.section-kicker \{[\s\S]*?\}/,
-);
-if (!kickerRule) {
-  fail(
-    "equal-weight kickers do not add a second pad",
-    "missing equal-weight section-kicker rule in src/styles/product.css",
-  );
-} else if (/padding-top/.test(kickerRule[0])) {
-  fail(
-    "equal-weight kickers do not add a second pad",
-    "equal-weight section kickers must not add padding-top on top of section padding",
-  );
-} else {
-  pass("equal-weight kickers do not add a second pad");
-}
-
-const layoutsCss = read("src/styles/layouts.css");
-if (!/\.product-deep-dive \{[\s\S]*?padding-bottom:\s*0/.test(layoutsCss)) {
-  fail(
-    "section padding-bottom has one owner",
-    "src/styles/layouts.css must set padding-bottom: 0 on stacked product sections",
-  );
-} else {
-  pass("section padding-bottom has one owner");
-}
-
-const chromeStyles = [
+const pageStyles = [
   "src/styles/base.css",
-  "src/styles/layouts.css",
-  "src/styles/cards.css",
-  "src/styles/components.css",
+  "src/styles/chrome.css",
   "src/styles/pages.css",
-  "src/styles/home-about.css",
   "src/styles/product.css",
-  "src/styles/responsive.css",
   "src/styles/global.css",
 ];
 
-function assertChromeHasNoGlow() {
+// Depth is a token decision. Page stylesheets may use shadows, glass blur,
+// and the hero wash, but only through tokens.css, so light and dark stay in
+// step and one-off glows cannot creep back in.
+function assertDepthUsesTokens() {
   const hits = [];
-  const decorative = /linear-gradient|radial-gradient|conic-gradient|drop-shadow|text-shadow\s*:|box-shadow\s*:/;
-  for (const file of chromeStyles) {
-    read(file)
-      .split("\n")
-      .forEach((line, index) => {
-        if (!decorative.test(line)) return;
-        if (/mask-image:/.test(line)) return;
-        if (/box-shadow:\s*none/.test(line)) return;
-        if (file === "src/styles/base.css" && /box-shadow:\s*var\(--shadow-soft\)/.test(line)) return;
-        hits.push(`${file}:${index + 1}: ${line.trim()}`);
-      });
+  for (const file of pageStyles) {
+    const lines = read(file).split("\n");
+    lines.forEach((line, index) => {
+      const declaration = /^\s*(box-shadow|text-shadow|backdrop-filter|-webkit-backdrop-filter|filter)\s*:/.exec(line);
+      if (declaration) {
+        // Multi-line values continue until the terminating semicolon.
+        let value = line.slice(line.indexOf(":") + 1);
+        for (let next = index + 1; !value.includes(";") && next < lines.length; next += 1) value += lines[next];
+        if (/rgba?\(|#[0-9a-f]{3,8}\b/i.test(value)) hits.push(`${file}:${index + 1}: raw color in ${declaration[1]}`);
+      }
+      if (/(linear|radial|conic)-gradient/.test(line) && !/var\(--wash-|mask-image|#000/.test(line)) {
+        hits.push(`${file}:${index + 1}: gradient outside the hero wash`);
+      }
+    });
   }
-  if (hits.length > 0) fail("site chrome has no glow, gradient, or drop shadow", hits.join("\n"));
-  else pass("site chrome has no glow, gradient, or drop shadow");
+  if (hits.length > 0) fail("shadows, glass, and wash come from tokens", hits.join("\n"));
+  else pass("shadows, glass, and wash come from tokens");
 }
 
-assertChromeHasNoGlow();
+assertDepthUsesTokens();
 
 // File budgets. These line limits are tripwires, not style nits: each file
 // has a structural role, and crossing the budget is a signal it is drifting
 // back into doing too much. Raise a budget only alongside a deliberate call
 // about that file's responsibility, not to make a check pass.
 const fileBudgets = [
-  { path: "src/styles/pages.css", maxLines: 150, role: "pages.css stays thin" },
+  { path: "src/styles/pages.css", maxLines: 360, role: "pages.css holds only Home, About, and legal pages" },
+  { path: "src/styles/product.css", maxLines: 560, role: "product.css holds only product page sections" },
   { path: "scripts/qa-pages.mjs", maxLines: 80, role: "qa-pages.mjs stays an orchestrator" },
   { path: "src/content/pages/product.ts", maxLines: 140, role: "product page model stays an assembler" },
   { path: "src/components/HomePage.astro", maxLines: 180, role: "HomePage stays a renderer" },

@@ -10,8 +10,9 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="about-hero shell">
-    <div class="about-redesign-copy">
+  <section class="about-hero">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="shell narrow about-copy">
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
@@ -21,7 +22,11 @@ const { model } = Astro.props;
       <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
         {
           model.hero.actions.map((action) => (
-            <a class:list={["button", action.style]} href={action.href} rel="noreferrer">
+            <a
+              class:list={["button", action.style, action.style === "primary" && "large"]}
+              href={action.href}
+              rel="noreferrer"
+            >
               {action.label}
             </a>
           ))

@@ -156,7 +156,7 @@
     "repository": "hxddh/chessboard",
     "licenseKey": "gpl-3.0",
     "licenseLabel": "GPLv3",
-    "latestRelease": "v7.2.0",
+    "latestRelease": "v7.3.0",
     "stableFacts": [
       "desktop app",
       "Apple Silicon macOS and Windows x64 releases",

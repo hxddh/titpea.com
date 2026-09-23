@@ -276,7 +276,7 @@
 .benchmark-head h2,
 .agent-manifest-head h2 {
   margin: 0;
-  font-size: var(--title-section);
+  font-size: var(--title-show);
   line-height: 1.08;
 }
 
@@ -300,10 +300,7 @@
   font-size: 12px;
 }
 
-.benchmark-kpis,
-.agent-manifest-grid,
-.inventory-grid,
-.agent-evidence-grid {
+.agent-manifest-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: visible;
@@ -312,15 +309,11 @@
   gap: 32px;
 }
 
-.agent-manifest-grid,
-.agent-evidence-grid {
+.agent-manifest-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.benchmark-kpis div,
-.agent-manifest-grid div,
-.metric-tile,
-.agent-evidence-grid div {
+.agent-manifest-grid div {
   display: grid;
   gap: 8px;
   min-height: 0;
@@ -329,29 +322,14 @@
   border-top: 1px solid var(--line);
 }
 
-.benchmark-kpis span,
 .agent-manifest-grid span,
-.metric-tile span,
-.agent-evidence-grid span,
-.workbench-top span,
-.output-table span,
 .benchmark-footnotes span {
   color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
 }
 
-.benchmark-kpis strong,
-.metric-tile strong {
-  color: var(--ink);
-  font-size: 28px;
-  line-height: 1.1;
-}
-
-.benchmark-kpis p,
-.metric-tile p,
-.agent-manifest-grid p,
-.agent-evidence-grid p {
+.agent-manifest-grid p {
   margin: 0;
   color: var(--muted);
   font-size: 14px;
@@ -444,8 +422,7 @@
   margin-top: 16px;
 }
 
-.agent-manifest-grid strong,
-.agent-evidence-grid strong {
+.agent-manifest-grid strong {
   color: var(--ink);
   font-size: 18px;
   line-height: 1.28;
@@ -456,51 +433,6 @@
   margin-top: 18px;
   border-top: 1px solid var(--line);
   padding-top: 16px;
-}
-
-.inside-workbench {
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background: transparent;
-}
-
-.workbench-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.workbench-top strong {
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-.output-table {
-  display: grid;
-  margin-top: 18px;
-  overflow: visible;
-  border: 0;
-  border-radius: 0;
-}
-
-.output-table div {
-  display: grid;
-  grid-template-columns: minmax(0, 0.32fr) minmax(0, 1fr);
-  gap: 16px;
-  border-bottom: 1px solid var(--line);
-  padding: 14px 0;
-}
-
-.output-table div:last-child {
-  border-bottom: 0;
-}
-
-.output-table strong {
-  color: var(--ink);
-  font-size: 14px;
-  line-height: 1.42;
 }
 
 .clock-scene {
@@ -1164,5 +1096,37 @@
   .world-machine-projection-panels > div:first-child {
     border-right: 0;
     border-bottom: 1px solid var(--line);
+  }
+}
+
+/* Narrow screens: product visuals keep their box but shed padding, and
+   side-by-side mock grids stack. */
+@media (max-width: 900px) {
+  .benchmark-visual,
+  .agent-manifest-visual {
+    padding: 20px;
+  }
+
+  .agent-manifest-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  /* The offset light/dark overlap reads as a glitch on a narrow screen;
+     show a single, centered screenshot instead. */
+  .clock-shot-stack {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+  }
+
+  .clock-shot {
+    position: static;
+    width: min(100%, 340px);
+  }
+
+  .clock-shot.light {
+    display: none;
   }
 }

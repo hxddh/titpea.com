@@ -61,10 +61,20 @@ function mountSectionIndex(index: HTMLElement) {
   const toggle = index.querySelector<HTMLButtonElement>("[data-section-index-toggle]");
   const symbol = index.querySelector<HTMLElement>("[data-section-index-symbol]");
 
-  toggle?.addEventListener("click", () => {
-    const open = index.toggleAttribute("data-menu-open");
-    toggle.setAttribute("aria-expanded", String(open));
+  const setOpen = (open: boolean) => {
+    index.toggleAttribute("data-menu-open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
     if (symbol) symbol.textContent = open ? "−" : "+";
+  };
+
+  toggle?.addEventListener("click", () => setOpen(!index.hasAttribute("data-menu-open")));
+  document.addEventListener("click", (event) => {
+    if (index.hasAttribute("data-menu-open") && !index.contains(event.target as Node)) setOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !index.hasAttribute("data-menu-open")) return;
+    setOpen(false);
+    toggle?.focus();
   });
 
   let scheduled = false;
@@ -82,9 +92,7 @@ function mountSectionIndex(index: HTMLElement) {
     item.link.addEventListener("click", (event) => {
       event.preventDefault();
       setActive(sections, item.id);
-      index.removeAttribute("data-menu-open");
-      toggle?.setAttribute("aria-expanded", "false");
-      if (symbol) symbol.textContent = "+";
+      setOpen(false);
 
       const root = document.documentElement;
       const previousScrollBehavior = root.style.scrollBehavior;

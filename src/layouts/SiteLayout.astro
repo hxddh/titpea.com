@@ -11,9 +11,11 @@ interface Props {
   seo: PageSeo;
   language: PageLanguageLink;
   pageClass?: string;
+  /** True on product pages, which pin a product local nav instead of the site header. */
+  localNav?: boolean;
 }
 
-const { current = "home", locale = "en", seo, language, pageClass } = Astro.props;
+const { current = "home", locale = "en", seo, language, pageClass, localNav = false } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl || siteConfig.assets.favicon;
 const year = new Date().getFullYear();
@@ -37,13 +39,12 @@ const year = new Date().getFullYear();
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
     {seo.robots && <meta name="robots" content={seo.robots} />}
-    <meta name="theme-color" content="#f2f1ec" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={seo.canonicalUrl} />
     <link rel="alternate" hreflang="en" href={seo.alternates.en} />
     <link rel="alternate" hreflang="zh-CN" href={seo.alternates.zh} />
     <link rel="alternate" hreflang="x-default" href={seo.alternates.xDefault} />
-    <link rel="preload" href="/fonts/inter-latin-wght.3100e775.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     {
@@ -61,13 +62,19 @@ const year = new Date().getFullYear();
       alternateHref={language.href}
       alternateLabel={language.label}
       alternateLocale={language.locale}
+      scrollsAway={localNav}
     />
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
-      <span>© {year} {siteConfig.brand}</span>
-      <span>{siteConfig.email}</span>
+      <div class="shell foot">
+        <span>© {year} {siteConfig.brand}</span>
+        <nav aria-label={locale === "zh" ? "页脚" : "Footer"}>
+          <a href={siteConfig.githubProfile} rel="noreferrer">GitHub</a>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

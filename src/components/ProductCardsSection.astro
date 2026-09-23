@@ -8,8 +8,7 @@ interface Props {
 }
 
 const { section, figure } = Astro.props;
-const gridClass = `${section.id}-grid section-card-list`;
-const cardClass = section.numbered ? "workflow-step" : `${section.id}-card`;
+const gridClass = `${section.id}-grid feature-grid`;
 const surfaceCode = {
   cli: "cli",
   agent: "agent",
@@ -19,20 +18,21 @@ const surfaceCode = {
 };
 ---
 
-<section id={section.id} class={`shell content-section ${section.id}-section`}>
-  <p class="section-kicker">{section.label}</p>
-  <h2 class="section-heading sr-only">{section.label}</h2>
-  <div class:list={[figure && "workflow-figure-row"]}>
-    <div class={gridClass}>
+<section id={section.id} class={`product-section content-section ${section.id}-section`}>
+  <div class="shell">
+    <header class="section-head">
+      <h2>{section.label}</h2>
+    </header>
+    <div class={gridClass} data-count={section.items.length} data-numbered={section.numbered ? "" : undefined}>
       {
         section.items.map((item, index) => (
           <article
-            class:list={[cardClass, item.priority === "primary" && "primary", item.compact && "compact"]}
+            class:list={["feature-card", item.priority === "primary" && "primary", item.compact && "compact"]}
             data-intent={item.intent}
             data-surface={item.surface ? surfaceCode[item.surface] : undefined}
           >
-            {section.numbered && <span>{String(index + 1).padStart(2, "0")}</span>}
-            {item.evidence && <small>{item.evidence}</small>}
+            {section.numbered && <span class="feature-step">{index + 1}</span>}
+            {item.evidence && <small class="feature-evidence">{item.evidence}</small>}
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </article>
@@ -41,9 +41,11 @@ const surfaceCode = {
     </div>
     {
       figure && (
-        <figure>
-          <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" />
-          <figcaption>{figure.body}</figcaption>
+        <figure class="show-figure">
+          <div class="shot">
+            <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" />
+          </div>
+          <figcaption class="shot-caption">{figure.body}</figcaption>
         </figure>
       )
     }

@@ -69,13 +69,13 @@ for (const target of baseline.targets) {
       // scrollIntoView(inline:center) left ~4% FAQ screenshot churn on CI.
       await page.evaluate(() => {
         const faq = document.getElementById("faq");
-        const index = document.querySelector(".product-section-index div");
+        const index = document.querySelector(".product-section-index-links");
         const faqNav = document.querySelector('.product-section-index a[href="#faq"]');
         if (!faq) return;
         const margin = Number.parseFloat(getComputedStyle(faq).scrollMarginTop) || 0;
         const y = Math.round(faq.getBoundingClientRect().top + window.scrollY - margin);
         window.scrollTo(0, Math.max(0, y));
-        document.querySelectorAll(".product-section-index a[aria-current]").forEach((link) => {
+        document.querySelectorAll(".product-section-index [data-section-link][aria-current]").forEach((link) => {
           link.removeAttribute("aria-current");
         });
         if (faqNav instanceof HTMLElement) {
@@ -104,7 +104,7 @@ for (const target of baseline.targets) {
     const h1Rect = h1?.getBoundingClientRect();
     const h1LineHeight = h1 ? Number.parseFloat(getComputedStyle(h1).lineHeight) : 0;
     const index = document.querySelector(".product-section-index");
-    const active = index?.querySelector("a[aria-current]");
+    const active = index?.querySelector("[data-section-link][aria-current]");
     const faq = document.getElementById("faq");
     const menu = document.querySelector(".mobile-menu");
     const maxY = document.documentElement.scrollHeight - window.innerHeight;

@@ -18,13 +18,6 @@ export type ProductInsidePanel =
       boundary: string;
     }
   | {
-      kind: "metricWorkbench";
-      label: string;
-      title: string;
-      metrics: Array<{ label: string; value: string; body: string; strong?: boolean }>;
-      rows: Array<{ label: string; value: string }>;
-    }
-  | {
       kind: "agentEvidence";
       label: string;
       eyebrow: string;
@@ -35,12 +28,11 @@ export type ProductInsidePanel =
 export type ProductEvidenceModel = {
   id: "evidence";
   kind: "evidence";
-  variant: "runChain" | "agentTopology" | "scanPlan" | "diagnosisFlow" | "trafficFlow";
+  variant: "scanPlan" | "diagnosisFlow" | "trafficFlow";
   kicker: string;
   title: string;
   body: string;
   cards: Array<{ label: string; value?: string; body: string }>;
-  benchmark?: Array<{ label: string; value: string; body?: string }>;
 };
 
 export type ProductResultsModel = {

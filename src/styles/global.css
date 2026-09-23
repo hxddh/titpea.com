@@ -1,11 +1,7 @@
 @import "./fonts.css";
 @import "./tokens.css";
 @import "./base.css";
-@import "./components.css";
-@import "./home-about.css";
-@import "./product.css";
-@import "./pages.css";
-@import "./layouts.css";
-@import "./cards.css";
+@import "./chrome.css";
 @import "./visuals.css";
-@import "./responsive.css";
+@import "./pages.css";
+@import "./product.css";

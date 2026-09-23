@@ -49,8 +49,11 @@ export type HomePageModel = BasePageModel & {
   featured: {
     label: string;
     title: string;
+    learnMore: string;
     items: Array<{
       name: string;
+      role: string;
+      text: string;
       href: string;
       image: { src: string; alt: string; width: number; height: number };
     }>;
