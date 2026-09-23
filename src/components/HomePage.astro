@@ -21,30 +21,30 @@ const { model } = Astro.props;
 
   <section class="home-evidence" aria-labelledby="featured-title">
     <div class="shell">
-      <header class="section-head">
-        <h2 id="featured-title">{model.featured.title}</h2>
-      </header>
-      {
-        model.featured.items.map((item) => (
-          <a class="home-featured-card" href={item.href}>
-            <span class="home-featured-copy">
-              <span class="section-kicker">{item.role}</span>
-              <strong class="home-featured-name">{item.name}</strong>
-              <span class="sub">{item.text}</span>
-              <span class="home-featured-more">{model.featured.learnMore}</span>
-            </span>
-            <figure class="shot">
-              <img
-                src={item.image.src}
-                alt={item.image.alt}
-                width={item.image.width}
-                height={item.image.height}
-                loading="eager"
-              />
-            </figure>
-          </a>
-        ))
-      }
+      <h2 id="featured-title" class="home-evidence-title">{model.featured.title}</h2>
+      <div class="home-evidence-grid">
+        {
+          model.featured.items.map((item) => (
+            <a class="home-featured-card" href={item.href}>
+              <figure class="home-figure">
+                <img
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  width={item.image.width}
+                  height={item.image.height}
+                  loading="eager"
+                />
+              </figure>
+              <span class="home-featured-copy">
+                {item.role ? <span class="section-kicker">{item.role}</span> : null}
+                <strong class="home-featured-name">{item.name}</strong>
+                <span class="sub">{item.text}</span>
+                <span class="home-featured-more">{model.featured.learnMore}</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 

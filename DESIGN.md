@@ -32,8 +32,8 @@ Every page uses the same few parts. Build new content from them before inventing
 
 ## Home
 
-- The hero is the contents line (`Agents and tools` / `Agent 和工具`) and the relationship between the featured pair, said once in the lede. Home hero CTA count is 0; the featured rows are the actions.
-- `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link.
+- The hero is the contents line (`Agents and tools` / `Agent 和工具`) and the relationship between the featured pair, said once in the lede. Home hero CTA count is 0; the featured pair is the action. The home title stays compact so both screenshots are on the first screen.
+- `Selected work` / `主要作品` introduces the pair side by side. Each item is the full captured screenshot at its native proportion, then the role, name, one-liner, and `Learn more ›`. The whole item is one link. Do not crop the frame, round it, or lift it with a shadow. On narrow screens the pair stacks, image first.
 - `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card with its role, name, and one-liner. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## Product Pages
