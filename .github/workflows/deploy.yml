@@ -59,25 +59,26 @@ jobs:
       - run: npm run check
       - run: npm run build
       - run: npm run check:dist
-      # Browser QA (Playwright + preview server) is the expensive part, so it
-      # runs only on pull requests, where layout regressions are introduced.
+      # Browser QA (Playwright + preview server) runs on pull requests and on
+      # every push to main, so a direct push that breaks a page never deploys.
+      # Scheduled runs only move release tags and skip it.
       - name: Cache Playwright browser
-        if: github.event_name == 'pull_request'
+        if: github.event_name != 'schedule'
         id: playwright-cache
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Install Playwright browser
-        if: github.event_name == 'pull_request' && steps.playwright-cache.outputs.cache-hit != 'true'
+        if: github.event_name != 'schedule' && steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
       # zh pages need real CJK glyphs, or the visual baselines compare tofu
       # boxes. Keep this font in sync with local baseline refreshes.
       - name: Install CJK fonts
-        if: github.event_name == 'pull_request'
+        if: github.event_name != 'schedule'
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
       - name: Page QA
-        if: github.event_name == 'pull_request'
+        if: github.event_name != 'schedule'
         timeout-minutes: 8
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
@@ -93,7 +94,7 @@ jobs:
           npm run visual:check
       # Keep the rendered screenshots only when QA fails.
       - uses: actions/upload-artifact@v4
-        if: failure() && github.event_name == 'pull_request'
+        if: failure() && github.event_name != 'schedule'
         with:
           name: visual-baseline-${{ github.sha }}
           path: /tmp/titpea-visual-baseline

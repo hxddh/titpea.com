@@ -1,4 +1,5 @@
 ---
+import { srcsetFor } from "../../lib/images";
 import type { CardsSection, Showcase } from "../../content/schema";
 
 interface Props {
@@ -42,7 +43,15 @@ const { section, figure } = Astro.props;
       figure && (
         <figure class="show-figure">
           <div class="shot">
-            <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" />
+            <img
+              src={figure.src}
+              srcset={srcsetFor(figure.src, figure.width)}
+              sizes="(max-width: 1000px) calc(100vw - 44px), 560px"
+              alt={figure.alt}
+              width={figure.width}
+              height={figure.height}
+              loading="lazy"
+            />
           </div>
           <figcaption class="shot-caption">{figure.body}</figcaption>
         </figure>

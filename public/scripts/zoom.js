@@ -36,7 +36,7 @@
     trigger.append(shot);
     trigger.addEventListener("click", function () {
       ensureDialog();
-      image.src = shot.currentSrc || shot.src;
+      image.src = shot.getAttribute("src");
       image.alt = shot.alt;
       document.documentElement.classList.add("zoom-open");
       dialog.showModal();

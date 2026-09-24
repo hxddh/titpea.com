@@ -97,8 +97,11 @@ export async function checkRoute(page, viewport, route) {
                 images: images.map((image) => ({
                   src: image.getAttribute("src"),
                   alt: image.getAttribute("alt") ?? "",
-                  naturalWidth: image.naturalWidth,
-                  naturalHeight: image.naturalHeight,
+                  // The source screenshot's size (width/height attributes), not the
+                  // srcset candidate this viewport happened to load.
+                  sourceWidth: Number(image.getAttribute("width")),
+                  sourceHeight: Number(image.getAttribute("height")),
+                  loaded: image.complete && image.naturalWidth > 0,
                 })),
               };
             })()

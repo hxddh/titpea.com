@@ -33,7 +33,7 @@ export default defineProduct({
       kind: "screenshot",
       label: "Douban Movie Rating Assistant",
       image: {
-        src: "/assets/douban-rating-assistant.png",
+        src: "/assets/douban-rating-assistant.webp",
         alt: "Douban Movie Rating Assistant showing IMDb, Rotten Tomatoes, and Metacritic inside a Douban movie page",
         width: 1442,
         height: 886,
@@ -77,7 +77,7 @@ export default defineProduct({
       kind: "screenshot",
       label: "豆瓣电影评分助手",
       image: {
-        src: "/assets/douban-rating-assistant.png",
+        src: "/assets/douban-rating-assistant.webp",
         alt: "豆瓣电影评分助手在豆瓣电影页中显示 IMDb、Rotten Tomatoes 和 Metacritic 评分的截图",
         width: 1442,
         height: 886,

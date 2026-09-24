@@ -16,6 +16,7 @@
     "format:check": "prettier --check .",
     "releases:sync": "node scripts/sync-releases.mjs",
     "assets:og": "tsx scripts/generate-og-images.ts",
+    "assets:images": "tsx scripts/generate-image-variants.ts",
     "qa:pages": "tsx scripts/qa-pages.mjs",
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "visual:approve": "VISUAL_APPROVE=1 tsx scripts/check-visual-baseline.mjs",
