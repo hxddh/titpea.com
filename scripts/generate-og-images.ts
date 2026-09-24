@@ -33,7 +33,13 @@ export const cards: Card[] = [
     body: ui.en.homeLead,
     icons: products.flatMap((product) => (product.icon ? [product.icon] : [])),
   },
-  { file: site.og.about, eyebrow: ui.en.aboutTitle, title: ui.en.aboutHeadline, body: ui.en.aboutLead },
+  {
+    file: site.og.about,
+    eyebrow: ui.en.aboutEyebrow,
+    title: ui.en.aboutHeadline.replace("{count}", String(products.length)),
+    body: ui.en.aboutLead,
+    icons: products.flatMap((product) => (product.icon ? [product.icon] : [])),
+  },
   ...products.map((product) => ({
     file: product.og,
     eyebrow: product.en.title,

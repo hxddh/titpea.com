@@ -27,6 +27,7 @@ const parts = (text: string) => text.split(/`([^`]+)`/).map((part, index) => ({ 
         </ul>
       )
     }
+    {notes.languageNote && <p class="whats-new-language">{notes.languageNote}</p>}
     <p class="whats-new-link">
       <a class="button ghost" href={notes.url} rel="noreferrer">{notes.linkLabel}</a>
     </p>

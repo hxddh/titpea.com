@@ -7,6 +7,8 @@ interface Props {
 }
 
 const { model } = Astro.props;
+const shown = model.releases.items.slice(0, model.releasesShown);
+const folded = model.releases.items.slice(model.releasesShown);
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -16,19 +18,47 @@ const { model } = Astro.props;
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
-      <div class="about-body">
-        {model.body.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-      <div class="actions about-contact-row" aria-label={model.hero.contactLabel}>
+    </div>
+    <div class="shell">
+      <dl class="stats about-stats" data-count={model.stats.length}>
         {
-          model.hero.actions.map((action) => (
-            <a
-              class:list={["button", action.style, action.style === "primary" && "large"]}
-              href={action.href}
-              rel="noreferrer"
-            >
-              {action.label}
-            </a>
+          model.stats.map((stat) => (
+            <div class="stat">
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="about-lines" aria-labelledby="lines-title">
+    <div class="shell">
+      <header class="section-head">
+        <h2 id="lines-title">{model.lines.title}</h2>
+        <p class="sub">{model.lines.sub}</p>
+      </header>
+      <div class="about-line-grid">
+        {
+          model.lines.groups.map((group) => (
+            <section class="about-line" aria-label={group.label}>
+              <h3>{group.label}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href}>
+                      {item.icon ? (
+                        <img src={item.icon} alt="" width="28" height="28" />
+                      ) : (
+                        <span class="about-line-dot" aria-hidden="true" />
+                      )}
+                      <span>{item.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))
         }
       </div>
@@ -61,7 +91,7 @@ const { model } = Astro.props;
       </header>
       <ol class="release-list">
         {
-          model.releases.items.map((item) => (
+          shown.map((item) => (
             <li>
               <a href={item.href}>
                 {item.icon ? (
@@ -69,17 +99,67 @@ const { model } = Astro.props;
                 ) : (
                   <span class="release-dot" aria-hidden="true" />
                 )}
-                <strong>{item.name}</strong>
-                <span class="release-version">{item.version}</span>
-                {item.released && <span class="release-date">{item.released}</span>}
+                <span class="release-main">
+                  <strong>{item.name}</strong>
+                  {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
+                </span>
+                <span class="release-meta">
+                  <span class="release-version">{item.version}</span>
+                  {item.released && <span class="release-date">{item.released}</span>}
+                </span>
               </a>
             </li>
           ))
         }
       </ol>
-      <p class="release-feed">
-        <a class="button ghost" href={model.releases.feed.href}>{model.releases.feed.label}</a>
-      </p>
+      {
+        folded.length > 0 && (
+          <details class="release-more">
+            <summary>
+              {model.releases.moreLabel} ({model.releases.items.length})
+            </summary>
+            <ol class="release-list">
+              {folded.map((item) => (
+                <li>
+                  <a href={item.href}>
+                    {item.icon ? (
+                      <img src={item.icon} alt="" width="36" height="36" />
+                    ) : (
+                      <span class="release-dot" aria-hidden="true" />
+                    )}
+                    <span class="release-main">
+                      <strong>{item.name}</strong>
+                      {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
+                    </span>
+                    <span class="release-meta">
+                      <span class="release-version">{item.version}</span>
+                      {item.released && <span class="release-date">{item.released}</span>}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </details>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="shell final-cta about-contact" aria-label={model.contact.label}>
+    <p class="final-cta-name">{model.contact.title}</p>
+    <p class="about-contact-sub">{model.contact.sub}</p>
+    <div class="actions">
+      {
+        model.contact.actions.map((action) => (
+          <a
+            class:list={["button", action.style, action.style === "primary" && "large"]}
+            href={action.href}
+            rel="noreferrer"
+          >
+            {action.label}
+          </a>
+        ))
+      }
     </div>
   </section>
 </SiteLayout>

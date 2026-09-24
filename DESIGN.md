@@ -27,7 +27,7 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block. A command may carry `capturedOutput`: the real output of that exact command at a named version, behind `Show real output` / `查看实际输出`. Never hand-written.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
 - **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). The hero meta line ends with the release date (`Released Sep 4, 2026` / `2026年9月4日发布`), and catalog cards show tag and date. Tags and publish dates come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when one changed; nobody edits a version or date by hand. Dates are absolute, never "3 days ago", because the site does not rebuild every day.
-- **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. `scripts/sync-releases.mjs` refreshes them with the tag.
+- **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. When the notes are in the other language, one line says so (`Quoted from the Chinese release notes.` / `摘自英文发布说明。`). `scripts/sync-releases.mjs` refreshes them with the tag and lists every quoted line in the CI run summary for the owner to read.
 - **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
@@ -42,9 +42,15 @@ Every page uses the same few parts. Build new content from them before inventing
 
 ## About
 
-- The hero is the name, one sentence of practice, a short note, and GitHub / Email.
-- `How the tools work.` shows three habits as feature cards. Each card only restates facts already on product pages.
-- `Latest releases.` lists every product with a GitHub release, newest first, with icon, tag, and date, built from `releases.json`.
+The page answers, in order: what Titpea is, what it holds, how the tools behave, what shipped lately, and how to reach the person behind it.
+
+- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and one lede naming the range. No actions in the hero.
+- Stats in the hero: products, product lines, products with GitHub releases, and total GitHub releases published. Every figure is computed at build from the product files and `releases.json`; the release total appears only when every repository reported its count.
+- `Four lines of work.`: one raised card per line, listing its products with icons, each a link.
+- `How the tools work.`: four cards. Three habits, each restating facts already on product pages, and `Source in the open` with the open-source count and licenses read from each product's meta line.
+- `Latest releases.`: the six newest, with icon, tag, date (on phones too), and the first quoted highlight; the rest fold under `All releases (n)`.
+- Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
+- No personal details beyond what the owner has published; nothing about the person is inferred.
 
 ## Releases Feed
 
