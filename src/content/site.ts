@@ -31,6 +31,8 @@ type Ui = {
   /** `{version}` is the latest release tag. */
   whatsNew: string;
   commandOutput: string;
+  notesInEnglish: string;
+  notesInChinese: string;
   releaseNotes: string;
   playVideo: string;
   home: string;
@@ -49,18 +51,26 @@ type Ui = {
   aboutMore: string;
   // About
   aboutTitle: string;
+  aboutMetaTitle: string;
   aboutDescription: string;
+  aboutEyebrow: string;
+  /** `{count}` is the number of products. */
   aboutHeadline: string;
   aboutLead: string;
   contactLabel: string;
-  /** `{<slug>}` is replaced by that product's synced release tag. */
-  aboutNote: string[];
-  /** Three habits, each backed by facts already on the product pages. */
+  aboutStats: { products: string; lines: string; released: string; releases: string };
+  aboutLinesTitle: string;
+  aboutLinesSub: string;
+  /** Three habits backed by product facts, plus the open-source line (`{open}` of `{count}`, `{licenses}`). */
   aboutPrinciplesTitle: string;
   aboutPrinciples: Array<{ title: string; body: string }>;
+  aboutOpenSource: { title: string; body: string };
   aboutReleasesTitle: string;
   aboutReleasesSub: string;
+  aboutReleasesMore: string;
   aboutFeed: string;
+  aboutContactTitle: string;
+  aboutContactSub: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -81,6 +91,8 @@ export const ui: Record<Locale, Ui> = {
     pauseVideo: "Pause",
     whatsNew: "What’s new in {version}.",
     commandOutput: "Show real output",
+    notesInEnglish: "Quoted from the English release notes.",
+    notesInChinese: "Quoted from the Chinese release notes.",
     releaseNotes: "Release notes",
     playVideo: "Play",
     home: "Home",
@@ -104,14 +116,21 @@ export const ui: Record<Locale, Ui> = {
     browseTools: "Browse all tools",
     aboutMore: "About hxddh",
     aboutTitle: "About",
-    aboutDescription: "About hxddh — I keep the logs and checks behind a storage diagnosis.",
-    aboutHeadline: "hxddh",
-    aboutLead: "I keep the logs and checks behind a storage diagnosis.",
+    aboutMetaTitle: "About Titpea — hxddh",
+    aboutDescription:
+      "Titpea is one person’s product shelf: storage investigations, agents, and small everyday apps, built and released by hxddh.",
+    aboutEyebrow: "About Titpea",
+    aboutHeadline: "One person. {count} tools.",
+    aboutLead: "Storage investigations, agents, and small everyday apps. Built and released by hxddh.",
     contactLabel: "Contact links",
-    aboutNote: [
-      "There are also small apps for playing chess, checking the time, and sorting bookmarks.",
-      "I ship every project myself.",
-    ],
+    aboutStats: {
+      products: "Products",
+      lines: "Product lines",
+      released: "With GitHub releases",
+      releases: "GitHub releases published",
+    },
+    aboutLinesTitle: "Four lines of work.",
+    aboutLinesSub: "Every product belongs to one of them.",
     aboutPrinciplesTitle: "How the tools work.",
     aboutPrinciples: [
       {
@@ -124,12 +143,16 @@ export const ui: Record<Locale, Ui> = {
       },
       {
         title: "Read before write",
-        body: "Storage Agent's tools are read-only. StorageOps does not change storage.",
+        body: "Storage Agent’s tools are read-only. StorageOps does not change storage.",
       },
     ],
+    aboutOpenSource: { title: "Source in the open", body: "{open} of {count} products are open source: {licenses}." },
     aboutReleasesTitle: "Latest releases.",
-    aboutReleasesSub: "Tags and dates come from GitHub on every build.",
+    aboutReleasesSub: "Tags, dates, and highlights come from GitHub on every build.",
+    aboutReleasesMore: "All releases",
     aboutFeed: "Follow releases (Atom)",
+    aboutContactTitle: "Say hello.",
+    aboutContactSub: "The code is on GitHub. Everything else, by email.",
   },
   zh: {
     primaryLabel: "主导航",
@@ -148,6 +171,8 @@ export const ui: Record<Locale, Ui> = {
     pauseVideo: "暂停",
     whatsNew: "{version} 更新了什么",
     commandOutput: "查看实际输出",
+    notesInEnglish: "摘自英文发布说明。",
+    notesInChinese: "摘自中文发布说明。",
     releaseNotes: "发布说明",
     playVideo: "播放",
     home: "首页",
@@ -171,11 +196,20 @@ export const ui: Record<Locale, Ui> = {
     browseTools: "浏览全部工具",
     aboutMore: "关于 hxddh",
     aboutTitle: "关于",
-    aboutDescription: "关于 hxddh——存储排查时，我习惯保留得出结论的日志和检查记录。",
-    aboutHeadline: "hxddh",
-    aboutLead: "存储排查时，我习惯保留得出结论的日志和检查记录。",
+    aboutMetaTitle: "关于 Titpea — hxddh",
+    aboutDescription: "Titpea 是一个人的产品架：对象存储排查、Agent 和日常小工具，由 hxddh 开发并发布。",
+    aboutEyebrow: "关于 Titpea",
+    aboutHeadline: "一个人，{count} 个工具",
+    aboutLead: "对象存储排查、Agent 和日常小工具。由 hxddh 开发并发布。",
     contactLabel: "联系方式",
-    aboutNote: ["这里也有下棋、看时间和整理书签的小软件。", "每个项目都由我自己发布。"],
+    aboutStats: {
+      products: "个产品",
+      lines: "条产品线",
+      released: "个有 GitHub Release",
+      releases: "次 GitHub 发布",
+    },
+    aboutLinesTitle: "四条产品线",
+    aboutLinesSub: "每个产品只属于其中一条。",
     aboutPrinciplesTitle: "这些工具怎么做事",
     aboutPrinciples: [
       {
@@ -191,8 +225,12 @@ export const ui: Record<Locale, Ui> = {
         body: "Storage Agent 的工具只读。StorageOps 不修改存储。",
       },
     ],
+    aboutOpenSource: { title: "代码公开", body: "{count} 个产品中有 {open} 个开源：{licenses}。" },
     aboutReleasesTitle: "最近的发布",
-    aboutReleasesSub: "版本号和日期在每次构建时从 GitHub 读取。",
+    aboutReleasesSub: "版本号、日期和要点在每次构建时从 GitHub 读取。",
+    aboutReleasesMore: "全部发布",
     aboutFeed: "订阅发布（Atom）",
+    aboutContactTitle: "打个招呼",
+    aboutContactSub: "代码在 GitHub，其他事情发邮件。",
   },
 };

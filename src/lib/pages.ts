@@ -10,7 +10,7 @@ export type CurrentPage = "home" | "about" | (string & {});
 type ReleaseNotes = { summary: string; items: string[]; url: string };
 const releaseTags = releases as Record<
   string,
-  { repo: string; version: string; published?: string; notes?: ReleaseNotes }
+  { repo: string; version: string; published?: string; releaseCount?: number; notes?: ReleaseNotes }
 >;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
@@ -140,7 +140,7 @@ export type ProductPageModel = {
   /** Publish date of that release, already formatted for the locale. */
   released?: string;
   /** Summary and highlights quoted from the release's own notes. */
-  whatsNew?: ReleaseNotes & { title: string; linkLabel: string; released?: string };
+  whatsNew?: ReleaseNotes & { title: string; linkLabel: string; released?: string; languageNote?: string };
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -221,11 +221,21 @@ function whatsNewFor(slug: string, locale: Locale, version?: string) {
   const notes = releaseTags[slug]?.notes;
   if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
   const copy = ui[locale];
+  // Notes are quoted in their own language; say so when it is not the page's.
+  const quoted = [notes.summary, ...notes.items].join(" ");
+  const notesAreChinese = /[\u4e00-\u9fff]/.test(quoted);
+  const languageNote =
+    locale === "zh" && !notesAreChinese
+      ? copy.notesInEnglish
+      : locale === "en" && notesAreChinese
+        ? copy.notesInChinese
+        : undefined;
   return {
     ...notes,
     title: copy.whatsNew.replace("{version}", version),
     linkLabel: copy.releaseNotes,
     released: releasedOf(slug, locale),
+    languageNote,
   };
 }
 
@@ -353,31 +363,55 @@ export type AboutPageModel = {
   alternatePath: string;
   seo: PageSeo;
   language: PageLanguageLink;
-  hero: {
-    eyebrow: string;
+  hero: { eyebrow: string; title: string; lead: string };
+  stats: Array<{ value: string; label: string }>;
+  lines: {
     title: string;
-    lead: string;
-    contactLabel: string;
-    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
+    sub: string;
+    groups: Array<{ label: string; items: Array<{ name: string; href: string; icon?: string }> }>;
   };
-  body: string[];
   principles: { title: string; items: Array<{ title: string; body: string }> };
   releases: {
     title: string;
     sub: string;
+    moreLabel: string;
     feed: { label: string; href: string };
-    items: Array<{ name: string; href: string; icon?: string; version: string; released?: string }>;
+    items: Array<{
+      name: string;
+      href: string;
+      icon?: string;
+      version: string;
+      released?: string;
+      highlight?: string;
+    }>;
   };
+  contact: {
+    title: string;
+    sub: string;
+    label: string;
+    actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
+  };
+  /** How many releases show before the rest fold away. */
+  releasesShown: number;
   expectedText: string[];
 };
 
-const withReleases = (text: string) => text.replace(/\{([a-z0-9-]+)\}/g, (match, slug) => versionOf(slug) ?? match);
+const licensePattern = /\b(MIT|Apache-2\.0|GPLv3)\b/;
 
 export function aboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
   const path = pathFor(locale, "about");
   const alternatePath = pathFor(otherLocale(locale), "about");
-  const body = copy.aboutNote.map(withReleases);
+  const count = String(products.length);
+  const released = products.filter((product) => versionOf(product.slug));
+  // Shown only when every synced repository reported its release count.
+  const releaseCounts = released.map((product) => releaseTags[product.slug]?.releaseCount);
+  const totalReleases = releaseCounts.every((value) => typeof value === "number")
+    ? releaseCounts.reduce((sum, value) => sum + (value ?? 0), 0)
+    : undefined;
+  const licensed = products.filter((product) => licensePattern.test(product.en.meta));
+  const licenses = [...new Set(licensed.map((product) => product.en.meta.match(licensePattern)![1]))].sort();
+  const headline = copy.aboutHeadline.replace("{count}", count);
   return {
     kind: "about",
     locale,
@@ -385,7 +419,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
     path,
     alternatePath,
     seo: buildSeo({
-      title: pageTitle(copy.aboutTitle),
+      title: copy.aboutMetaTitle,
       description: copy.aboutDescription,
       path,
       alternatePath,
@@ -393,12 +427,11 @@ export function aboutPage(locale: Locale): AboutPageModel {
       ogImage: site.og.about,
       structuredData: {
         "@context": "https://schema.org",
-        "@type": "ProfilePage",
+        "@type": "AboutPage",
         inLanguage: locale === "zh" ? "zh-CN" : "en",
-        mainEntity: {
+        about: {
           "@type": "Person",
-          name: copy.aboutHeadline,
-          description: copy.aboutLead,
+          name: "hxddh",
           url: absoluteUrl(path),
           sameAs: [site.github],
           email: `mailto:${site.email}`,
@@ -406,35 +439,68 @@ export function aboutPage(locale: Locale): AboutPageModel {
       },
     }),
     language: languageLink(locale, alternatePath),
-    hero: {
-      eyebrow: copy.aboutTitle,
-      title: copy.aboutHeadline,
-      lead: copy.aboutLead,
-      contactLabel: copy.contactLabel,
-      actions: [
-        { label: "GitHub", href: site.github, style: "primary" },
-        { label: "Email", href: `mailto:${site.email}`, style: "ghost" },
+    hero: { eyebrow: copy.aboutEyebrow, title: headline, lead: copy.aboutLead },
+    stats: [
+      { value: count, label: copy.aboutStats.products },
+      { value: String(lines.length), label: copy.aboutStats.lines },
+      { value: String(released.length), label: copy.aboutStats.released },
+      ...(totalReleases ? [{ value: String(totalReleases), label: copy.aboutStats.releases }] : []),
+    ],
+    lines: {
+      title: copy.aboutLinesTitle,
+      sub: copy.aboutLinesSub,
+      groups: lines.map((line) => ({
+        label: copy.groups[line],
+        items: products
+          .filter((product) => product.line === line)
+          .map((product) => ({ name: product[locale].title, href: pathFor(locale, product.slug), icon: product.icon })),
+      })),
+    },
+    principles: {
+      title: copy.aboutPrinciplesTitle,
+      items: [
+        ...copy.aboutPrinciples,
+        {
+          title: copy.aboutOpenSource.title,
+          body: copy.aboutOpenSource.body
+            .replace("{open}", String(licensed.length))
+            .replace("{count}", count)
+            .replace("{licenses}", licenses.join(locale === "zh" ? "、" : ", ")),
+        },
       ],
     },
-    body,
-    principles: { title: copy.aboutPrinciplesTitle, items: copy.aboutPrinciples },
     releases: {
       title: copy.aboutReleasesTitle,
       sub: copy.aboutReleasesSub,
+      moreLabel: copy.aboutReleasesMore,
       feed: { label: copy.aboutFeed, href: "/releases.xml" },
       // Newest release first; the list rebuilds itself from releases.json.
-      items: products
-        .filter((product) => versionOf(product.slug))
+      items: released
         .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
-        .map((product) => ({
-          name: product[locale].title,
-          href: pathFor(locale, product.slug),
-          icon: product.icon,
-          version: versionOf(product.slug)!,
-          released: releasedOf(product.slug, locale),
-        })),
+        .map((product) => {
+          const notes = releaseTags[product.slug]?.notes;
+          return {
+            name: product[locale].title,
+            href: pathFor(locale, product.slug),
+            icon: product.icon,
+            version: versionOf(product.slug)!,
+            released: releasedOf(product.slug, locale),
+            highlight: notes?.items[0] ?? (notes?.summary || undefined),
+          };
+        }),
     },
-    expectedText: [copy.aboutHeadline, copy.aboutLead, ...body, copy.aboutReleasesTitle],
+    releasesShown: 6,
+    contact: {
+      title: copy.aboutContactTitle,
+      sub: copy.aboutContactSub,
+      label: copy.contactLabel,
+      actions: [
+        { label: "GitHub", href: site.github, style: "primary" },
+        { label: "Email", href: `mailto:${site.email}`, style: "ghost" },
+        { label: copy.aboutFeed, href: "/releases.xml", style: "ghost" },
+      ],
+    },
+    expectedText: [headline, copy.aboutLead, copy.aboutLinesTitle, copy.aboutReleasesTitle],
   };
 }
 

@@ -56,7 +56,12 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && isHome && result.heroCtaCount !== 2) {
     reasons.push(`home hero should have 2 CTAs, got ${result.heroCtaCount}`);
   }
-  if (!isAsset && !isAuxCheck && !isHome && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
+  // About keeps its actions in the closing band; its hero has none.
+  const isAbout = route?.kind === "about";
+  if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount !== 0) {
+    reasons.push(`about hero should have no CTAs, got ${result.heroCtaCount}`);
+  }
+  if (!isAsset && !isAuxCheck && !isHome && !isAbout && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
     reasons.push(`hero CTA count should be 2-3, got ${result.heroCtaCount}`);
   }
   if (!isAsset && !isAuxCheck && result.cardHeightSpread > 220) {
