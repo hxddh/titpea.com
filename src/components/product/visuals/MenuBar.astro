@@ -24,7 +24,7 @@ const { visual } = Astro.props;
     {
       visual.sections.map((section) => (
         <section class="pulse-menubar-section">
-          <h3>{section.title}</h3>
+          <p class="pulse-menubar-title">{section.title}</p>
           <ul>
             {section.rows.map((row) => (
               <li class={`pulse-row pulse-row-${row.state}`}>

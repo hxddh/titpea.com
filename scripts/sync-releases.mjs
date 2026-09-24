@@ -4,6 +4,7 @@
 // schedule. If GitHub cannot be reached, the committed tags stay and the
 // build continues; `--strict` turns that into a failure.
 import fs from "node:fs";
+import { highlightsFrom, summaryFrom } from "./release-notes.mjs";
 
 const file = new URL("../src/content/releases.json", import.meta.url);
 const releases = JSON.parse(fs.readFileSync(file, "utf8"));
@@ -22,13 +23,26 @@ for (const [slug, entry] of Object.entries(releases)) {
   try {
     const response = await fetch(`https://api.github.com/repos/${entry.repo}/releases/latest`, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const { tag_name: tag, published_at: publishedAt } = await response.json();
+    const { tag_name: tag, published_at: publishedAt, name, body, html_url: url } = await response.json();
     if (!/^v?\d+\.\d+/.test(tag ?? "")) throw new Error(`unexpected tag ${JSON.stringify(tag)}`);
     const published = /^\d{4}-\d{2}-\d{2}/.test(publishedAt ?? "") ? publishedAt.slice(0, 10) : entry.published;
-    if (tag !== entry.version || published !== entry.published) {
+    const notes = {
+      summary: summaryFrom(name ?? "", body ?? "", tag),
+      items: highlightsFrom(body ?? ""),
+      url: url ?? `https://github.com/${entry.repo}/releases/tag/${tag}`,
+    };
+    // Keep the committed highlights when a release body yields nothing new.
+    const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
+    if (
+      tag !== entry.version ||
+      published !== entry.published ||
+      JSON.stringify(nextNotes) !== JSON.stringify(entry.notes)
+    ) {
       changes.push(`${slug}: ${entry.version} → ${tag} (${published})`);
       entry.version = tag;
       entry.published = published;
+      if (nextNotes) entry.notes = nextNotes;
+      else delete entry.notes;
     }
   } catch (error) {
     problems.push(`${slug} (${entry.repo}): ${error.message}`);

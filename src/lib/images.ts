@@ -1,13 +1,15 @@
-// Responsive screenshots: when `npm run assets:images` has written a
-// `-900w.webp` sibling for a public image, offer both through srcset.
+// Responsive screenshots: when `npm run assets:images` has written
+// `-<width>w.webp` siblings for a public image, offer them through srcset.
 import fs from "node:fs";
 
-const variantWidth = 900;
+const variantWidths = [900, 1200];
 
 export function srcsetFor(src: string, width: number): string | undefined {
-  const variant = src.replace(/\.(webp|png|jpg)$/, `-${variantWidth}w.webp`);
-  if (variant === src || !fs.existsSync(`public${variant}`)) return undefined;
-  return `${variant} ${variantWidth}w, ${src} ${width}w`;
+  const variants = variantWidths
+    .map((variantWidth) => ({ variantWidth, path: src.replace(/\.(webp|png|jpg)$/, `-${variantWidth}w.webp`) }))
+    .filter(({ path }) => path !== src && fs.existsSync(`public${path}`));
+  if (variants.length === 0) return undefined;
+  return [...variants.map(({ path, variantWidth }) => `${path} ${variantWidth}w`), `${src} ${width}w`].join(", ");
 }
 
 /** Screenshots never render wider than the 1040px wide frame. */

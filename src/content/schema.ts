@@ -206,7 +206,8 @@ export type Stat = { value: string; label: string };
 export type Commands = {
   title: string;
   sub?: string;
-  items: Array<{ comment: string; command: string }>;
+  /** `capturedOutput` is real, captured output of that exact command (never written by hand). */
+  items: Array<{ comment: string; command: string; capturedOutput?: string }>;
 };
 
 export type ProductCopy = {

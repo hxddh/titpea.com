@@ -5,9 +5,10 @@ interface Props {
   commands: Commands;
   copyLabel: string;
   copiedLabel: string;
+  outputLabel: string;
 }
 
-const { commands, copyLabel, copiedLabel } = Astro.props;
+const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
 ---
 
 <section id="start" class="product-section commands-section">
@@ -22,7 +23,7 @@ const { commands, copyLabel, copiedLabel } = Astro.props;
           <li class="command">
             <p class="command-comment">{item.comment}</p>
             <div class="command-line">
-              <code class="command-code">{item.command}</code>
+              <code class="command-code" tabindex="0" set:text={item.command} />
               <button
                 class="copy-button"
                 type="button"
@@ -34,6 +35,12 @@ const { commands, copyLabel, copiedLabel } = Astro.props;
                 {copyLabel}
               </button>
             </div>
+            {item.capturedOutput && (
+              <details class="command-output">
+                <summary>{outputLabel}</summary>
+                <pre tabindex="0" set:text={item.capturedOutput} />
+              </details>
+            )}
           </li>
         ))
       }

@@ -1,7 +1,8 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { site } from "../content/site";
-import { buildSeo, languageLink } from "../lib/pages";
+import { products } from "../content/products";
+import { buildSeo, languageLink, pathFor } from "../lib/pages";
 
 const path = "/404.html";
 const seo = buildSeo({
@@ -27,5 +28,24 @@ const seo = buildSeo({
         <a class="button ghost" href="/zh/">中文首页</a>
       </div>
     </header>
+    <nav class="notfound-products" aria-label="Products · 产品">
+      <p class="section-kicker">Products · 产品</p>
+      <ul>
+        {
+          products.map((product) => (
+            <li>
+              <a href={pathFor("en", product.slug)}>
+                {product.icon ? (
+                  <img src={product.icon} alt="" width="28" height="28" />
+                ) : (
+                  <span class="release-dot" aria-hidden="true" />
+                )}
+                <span>{product.en.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </article>
 </SiteLayout>

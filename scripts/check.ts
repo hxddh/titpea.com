@@ -82,7 +82,9 @@ const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
 /** Every visible string in a product's copy, without links, image paths, or commands. */
 function visibleStrings(value: unknown, key = ""): string[] {
   if (typeof value === "string")
-    return ["href", "src", "command", "className", "kind", "id", "frame"].includes(key) ? [] : [value];
+    return ["href", "src", "command", "capturedOutput", "className", "kind", "id", "frame"].includes(key)
+      ? []
+      : [value];
   if (Array.isArray(value)) return value.flatMap((item) => visibleStrings(item, key));
   if (value && typeof value === "object") return Object.entries(value).flatMap(([k, v]) => visibleStrings(v, k));
   return [];

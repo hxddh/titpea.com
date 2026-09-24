@@ -7,7 +7,11 @@ import { lines, locales, type Line, type Locale, type Product, type ProductCopy 
 
 export type CurrentPage = "home" | "about" | (string & {});
 
-const releaseTags = releases as Record<string, { repo: string; version: string; published?: string }>;
+type ReleaseNotes = { summary: string; items: string[]; url: string };
+const releaseTags = releases as Record<
+  string,
+  { repo: string; version: string; published?: string; notes?: ReleaseNotes }
+>;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
 
@@ -135,6 +139,8 @@ export type ProductPageModel = {
   version?: string;
   /** Publish date of that release, already formatted for the locale. */
   released?: string;
+  /** Summary and highlights quoted from the release's own notes. */
+  whatsNew?: ReleaseNotes & { title: string; linkLabel: string; released?: string };
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -201,12 +207,25 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     icon: product.icon,
     version,
     released: releasedOf(product.slug, locale),
+    whatsNew: whatsNewFor(product.slug, locale, version),
     downloadsRelease: Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
     navItems,
     primaryCta: copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
+  };
+}
+
+function whatsNewFor(slug: string, locale: Locale, version?: string) {
+  const notes = releaseTags[slug]?.notes;
+  if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
+  const copy = ui[locale];
+  return {
+    ...notes,
+    title: copy.whatsNew.replace("{version}", version),
+    linkLabel: copy.releaseNotes,
+    released: releasedOf(slug, locale),
   };
 }
 
@@ -346,6 +365,7 @@ export type AboutPageModel = {
   releases: {
     title: string;
     sub: string;
+    feed: { label: string; href: string };
     items: Array<{ name: string; href: string; icon?: string; version: string; released?: string }>;
   };
   expectedText: string[];
@@ -401,6 +421,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
     releases: {
       title: copy.aboutReleasesTitle,
       sub: copy.aboutReleasesSub,
+      feed: { label: copy.aboutFeed, href: "/releases.xml" },
       // Newest release first; the list rebuilds itself from releases.json.
       items: products
         .filter((product) => versionOf(product.slug))
@@ -466,3 +487,35 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   browserVisual:
     page.kind === "product" ? productBySlug(page.slug).schema.category === "BrowserApplication" : undefined,
 }));
+
+/* ---------- Releases feed ---------- */
+
+export type FeedEntry = {
+  slug: string;
+  name: string;
+  version: string;
+  published: string;
+  pageUrl: string;
+  notesUrl: string;
+  summary: string;
+  items: string[];
+};
+
+/** Every product with a GitHub release, newest first, for /releases.xml. */
+export const feedEntries = (): FeedEntry[] =>
+  products
+    .filter((product) => releaseTags[product.slug]?.published)
+    .map((product) => {
+      const release = releaseTags[product.slug];
+      return {
+        slug: product.slug,
+        name: product.en.title,
+        version: release.version,
+        published: release.published!,
+        pageUrl: absoluteUrl(pathFor("en", product.slug)),
+        notesUrl: release.notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
+        summary: release.notes?.summary || product.en.catalog.text,
+        items: release.notes?.items ?? [],
+      };
+    })
+    .sort((a, b) => b.published.localeCompare(a.published));

@@ -18,6 +18,7 @@
     "assets:og": "tsx scripts/generate-og-images.ts",
     "assets:images": "tsx scripts/generate-image-variants.ts",
     "qa:pages": "tsx scripts/qa-pages.mjs",
+    "a11y:check": "node scripts/a11y-check.mjs",
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "visual:approve": "VISUAL_APPROVE=1 tsx scripts/check-visual-baseline.mjs",
     "smoke:production": "tsx scripts/smoke-production.mjs",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@types/node": "^22.20.4",
+    "axe-core": "^4.13.0",
     "playwright": "^1.60.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",

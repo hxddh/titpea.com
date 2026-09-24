@@ -14,6 +14,7 @@ import ShowcaseSection from "./product/ShowcaseSection.astro";
 import StatsBand from "./product/StatsBand.astro";
 import StorySection from "./product/StorySection.astro";
 import Visual from "./product/Visual.astro";
+import WhatsNewSection from "./product/WhatsNewSection.astro";
 
 interface Props {
   model: ProductPageModel;
@@ -77,8 +78,18 @@ const metaParts = copy.meta
   {
     copy.sections.map((section) => {
       const start =
-        section.kind === "faq" && copy.commands ? (
-          <CommandsSection commands={copy.commands} copyLabel={copyUi.copy} copiedLabel={copyUi.copied} />
+        section.kind === "faq" ? (
+          <>
+            {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
+            {copy.commands && (
+              <CommandsSection
+                commands={copy.commands}
+                copyLabel={copyUi.copy}
+                copiedLabel={copyUi.copied}
+                outputLabel={copyUi.commandOutput}
+              />
+            )}
+          </>
         ) : null;
       if (section.kind === "cards") return <CardsSection section={section} figure={besideSection(section.id)} />;
       if (section.kind === "faq")
@@ -96,9 +107,16 @@ const metaParts = copy.meta
     })
   }
 
+  {!hasFaq && model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
+
   {
     copy.commands && !hasFaq && (
-      <CommandsSection commands={copy.commands} copyLabel={copyUi.copy} copiedLabel={copyUi.copied} />
+      <CommandsSection
+        commands={copy.commands}
+        copyLabel={copyUi.copy}
+        copiedLabel={copyUi.copied}
+        outputLabel={copyUi.commandOutput}
+      />
     )
   }
 

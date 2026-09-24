@@ -36,6 +36,14 @@ export default defineProduct({
         {
           comment: "Local preflight — no S3 access",
           command: "s3-turbo-list doctor --simple",
+          capturedOutput: `OK binary_version: 0.31.0
+OK working_directory: /tmp/inventory
+OK config_parse: resolved configuration is valid TOML/CLI state
+WARN config_file: local s3-turbo-list.toml not found; run init-config if you want a starter config
+WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
+OK endpoint_profile: no endpoint compatibility profile selected
+OK endpoint_url: no explicit endpoint URL required by the selected profile
+SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
         },
         {
           comment: "Full recursive inventory → Parquet in out/",
@@ -234,6 +242,14 @@ export default defineProduct({
         {
           comment: "本地预检，不访问 S3",
           command: "s3-turbo-list doctor --simple",
+          capturedOutput: `OK binary_version: 0.31.0
+OK working_directory: /tmp/inventory
+OK config_parse: resolved configuration is valid TOML/CLI state
+WARN config_file: local s3-turbo-list.toml not found; run init-config if you want a starter config
+WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
+OK endpoint_profile: no endpoint compatibility profile selected
+OK endpoint_url: no explicit endpoint URL required by the selected profile
+SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
         },
         {
           comment: "完整递归清单 → out/ 里的 Parquet",

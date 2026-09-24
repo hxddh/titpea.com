@@ -92,6 +92,15 @@ for (const { file } of pages) {
   if (!sitemap.includes(`<loc>https://titpea.com${route}</loc>`)) fail(`sitemap.xml: missing ${route}`);
 }
 
+/* ---------- Releases feed ---------- */
+
+const feed = fs.existsSync("dist/releases.xml") ? fs.readFileSync("dist/releases.xml", "utf8") : "";
+if (!feed.includes('<feed xmlns="http://www.w3.org/2005/Atom">')) fail("releases.xml: missing Atom feed");
+if ((feed.match(/<entry>/g) ?? []).length === 0) fail("releases.xml: no entries");
+for (const page of pages.filter(({ file }) => !file.endsWith("404.html"))) {
+  if (!page.html.includes('href="/releases.xml"')) fail(`${page.file}: missing releases feed link`);
+}
+
 if (failures.length > 0) {
   console.error(`Dist check failed (${failures.length}):`);
   for (const failure of failures) console.error(`- ${failure}`);

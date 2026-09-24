@@ -24,9 +24,11 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Feature cards.** `--paper-raised` fill, `--radius-card`, no border, no shadow. The grid picks its columns from the item count: 1 is a narrow single column, 2 and 4 are two columns, anything else is three. A `primary` card spans the row. Numbered flows use an accent step badge. On phones plain feature cards pair up in two columns, as Omni does; numbered flows and panels stay one column.
 - **Stats band.** A short sentence heading and 2–4 large figures, each with a few words of label. Only figures traceable to the product's README, docs, or tests; never derived or rounded into a bigger claim. Omit the band when the hero object already shows the numbers (s3-turbo-list's chart).
 - **Showcase.** A compact head (kicker, `--title-show` heading, sub) above a full-width photograph. A showcase may carry a short muted recording (`video`) with the photograph as its poster; it plays only in view, never under reduced motion, and has a Pause / Play button. Screenshots and recordings come from the real app with real output: never a scripted model, staged answer text, or a mock presented as a capture.
-- **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block.
+- **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block. A command may carry `capturedOutput`: the real output of that exact command at a named version, behind `Show real output` / `查看实际输出`. Never hand-written.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
 - **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). The hero meta line ends with the release date (`Released Sep 4, 2026` / `2026年9月4日发布`), and catalog cards show tag and date. Tags and publish dates come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when one changed; nobody edits a version or date by hand. Dates are absolute, never "3 days ago", because the site does not rebuild every day.
+- **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. `scripts/sync-releases.mjs` refreshes them with the tag.
+- **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
 
@@ -43,6 +45,14 @@ Every page uses the same few parts. Build new content from them before inventing
 - The hero is the name, one sentence of practice, a short note, and GitHub / Email.
 - `How the tools work.` shows three habits as feature cards. Each card only restates facts already on product pages.
 - `Latest releases.` lists every product with a GitHub release, newest first, with icon, tag, and date, built from `releases.json`.
+
+## Releases Feed
+
+- `/releases.xml` is an Atom feed of every product's latest release, newest first, built from `releases.json`. Every page links it in `<head>`; About links it under `Latest releases.`
+
+## 404
+
+- Home, the Chinese home, and a two-column directory of every product with its icon.
 
 ## Share Images
 
@@ -114,7 +124,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - Every image has an `alt`; decorative images use `alt=""`.
 - Performance
   - Every `<img>` declares intrinsic `width` and `height`. Heroes use `fetchpriority="high"`; later photographs lazy-load.
-  - Screenshots are WebP. Any screenshot 1400px or wider gets a `-900w.webp` sibling (`npm run assets:images`), offered through `srcset`, so phones fetch the small one. Zoom always opens the original.
+  - Screenshots are WebP. Any screenshot 1400px or wider gets `-900w.webp` and `-1200w.webp` siblings (`npm run assets:images`), offered through `srcset`, so phones and tablets fetch a smaller file. The Inter font is preloaded. Zoom always opens the original.
   - CSS stays in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Responsive
   - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (16px gutter; feature cards two columns, everything else one).
@@ -127,6 +137,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check` (source): headline and lead lengths, English/Chinese structure parity, generic headings, Chinese copy rules, release entries, share images, token-only depth, zh optics.
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
+  - `a11y:check`: axe-core (WCAG 2.1 A/AA and best practices) on every page, light and dark, desktop and phone; any violation fails.
   - `visual:check`: four screens, compared loosely.
   - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
