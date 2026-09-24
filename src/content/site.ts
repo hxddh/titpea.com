@@ -8,11 +8,11 @@ export const site = {
   github: "https://github.com/hxddh",
   og: { home: "/assets/og-home.png", about: "/assets/og-about.png" },
   /**
-   * Cloudflare Web Analytics (cookieless) is switched on in the Cloudflare
-   * Pages dashboard, which injects its beacon; the CSP already allows it.
-   * Set this to true only once it is on, so About states it truthfully.
+   * Cloudflare Web Analytics site token (public; it ships in every page).
+   * When set, every page loads Cloudflare's cookieless beacon as an external
+   * script and About discloses it. Empty means no analytics at all.
    */
-  analytics: false,
+  analyticsToken: "",
 } as const;
 
 export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;

@@ -1,28 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
-    <linearGradient id="fill" x1="0" y1="0" x2="0.55" y2="1">
-      <stop offset="0" stop-color="#6f86f8"/>
-      <stop offset="1" stop-color="#3e50d4"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#22c3a6"/><stop offset="1" stop-color="#0b5a5e"/></linearGradient>
     <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c7efe8"/></linearGradient>
   </defs>
   <g clip-path="url(#tile)">
-    <rect width="1024" height="1024" fill="url(#fill)"/>
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <ellipse cx="512" cy="780" rx="230" ry="36" fill="#063c3f" fill-opacity="0.35"/>
+    <path d="M292 322 L 334 704 Q 342 760 398 760 H 626 Q 682 760 690 704 L 732 322 Z" fill="url(#body)"/>
+    <ellipse cx="512" cy="322" rx="220" ry="62" fill="#e9fffb"/>
+    <ellipse cx="512" cy="326" rx="178" ry="40" fill="#0c6b6a"/>
+    <path d="M318 548 H 430 L 472 452 L 532 652 L 576 520 L 604 548 H 706" fill="none" stroke="#0c6b6a" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
     <rect width="1024" height="1024" fill="url(#sheen)"/>
-    
-    
-    <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="50">
-      <ellipse cx="462" cy="330" rx="178" ry="50"/>
-      <path d="M284 330 L 322 690 Q 330 742 382 742 H 542 Q 594 742 602 690 L 640 330"/>
-    </g>
-    <circle cx="640" cy="640" r="128" fill="#4a5ddc"/>
-    <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="50">
-      <circle cx="640" cy="640" r="108"/>
-      <path d="M718 718 L 800 800"/>
-    </g>
   </g>
 </svg>

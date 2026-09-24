@@ -521,7 +521,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
     contact: {
       title: copy.aboutContactTitle,
       sub: copy.aboutContactSub,
-      analytics: site.analytics ? copy.aboutAnalytics : undefined,
+      analytics: site.analyticsToken ? copy.aboutAnalytics : undefined,
       label: copy.contactLabel,
       actions: [
         { label: "GitHub", href: site.github, style: "primary" },

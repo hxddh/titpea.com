@@ -63,7 +63,7 @@ The page answers, in order: what Titpea is, what it holds, how the tools behave,
 ## App Icons
 
 - Every product has an icon, and every list of products shows them (the home shelf, catalog cards, About, the release list, 404, share images). `npm run check` fails without one.
-- Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a gentle top sheen and one white glyph in 50 px round strokes that says what the product does. Families share a motif: storage tools are blue with a bucket (Storage Agent, s3-turbo-list, StorageOps) and httpmon's eye; agent tools are graphite; everyday tools take their own colour.
+- Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a top sheen and one image that says what the product does — a turbine for s3-turbo-list, a prism for httpmon, a phosphor radar for Agent Radar. Each has its own colour so no two read alike, the mark survives 28 px, and no third-party logo appears.
 - `npm run assets:icons` renders `public/assets/icons/<slug>.webp`. `design/icons/README.md` records which icons are official and which are site-designed.
 
 ## Analytics

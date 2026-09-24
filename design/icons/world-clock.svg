@@ -1,29 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
-    <linearGradient id="fill" x1="0" y1="0" x2="0.55" y2="1">
-      <stop offset="0" stop-color="#f6ecd7"/>
-      <stop offset="1" stop-color="#dcc49a"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#fbf4e4"/><stop offset="1" stop-color="#e7d6b2"/></linearGradient>
     <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+    <clipPath id="globe"><circle cx="512" cy="512" r="290"/></clipPath>
+    <radialGradient id="shade" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/><stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#000000" stop-opacity="0.22"/></radialGradient>
   </defs>
   <g clip-path="url(#tile)">
-    <rect width="1024" height="1024" fill="url(#fill)"/>
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <ellipse cx="512" cy="826" rx="250" ry="34" fill="#8a6a3f" fill-opacity="0.22"/>
+    <g clip-path="url(#globe)"><rect x="222.0" y="222" width="73.5" height="580" fill="#ffd98a"/><rect x="294.5" y="222" width="73.5" height="580" fill="#f9b870"/><rect x="367.0" y="222" width="73.5" height="580" fill="#f08f5c"/><rect x="439.5" y="222" width="73.5" height="580" fill="#d86a67"/><rect x="512.0" y="222" width="73.5" height="580" fill="#a85a86"/><rect x="584.5" y="222" width="73.5" height="580" fill="#6f5a9e"/><rect x="657.0" y="222" width="73.5" height="580" fill="#43588f"/><rect x="729.5" y="222" width="73.5" height="580" fill="#2b3f6b"/><rect x="222" y="222" width="580" height="580" fill="url(#shade)"/></g>
+    <circle cx="512" cy="512" r="290" fill="none" stroke="#3a2d1f" stroke-width="18"/>
+    <path d="M512 512 L 512 326" stroke="#fffaf0" stroke-width="40" stroke-linecap="round"/>
+    <path d="M512 512 L 650 596" stroke="#fffaf0" stroke-width="40" stroke-linecap="round"/>
+    <circle cx="512" cy="512" r="36" fill="#fffaf0"/>
+    <circle cx="512" cy="512" r="14" fill="#3a2d1f"/>
     <rect width="1024" height="1024" fill="url(#sheen)"/>
-    
-    
-    <g fill="none" stroke="#3a2d1f" stroke-linecap="round">
-      <circle cx="512" cy="512" r="292" stroke-width="46"/>
-      <ellipse cx="512" cy="512" rx="130" ry="292" stroke-width="22" stroke-opacity="0.45"/>
-      <path d="M220 512 H 804" stroke-width="22" stroke-opacity="0.45"/>
-    </g>
-    <g fill="none" stroke="#c0661c" stroke-linecap="round" stroke-width="46">
-      <path d="M512 512 L 512 318"/>
-      <path d="M512 512 L 646 590"/>
-    </g>
-    <circle cx="512" cy="512" r="34" fill="#c0661c"/>
   </g>
 </svg>
