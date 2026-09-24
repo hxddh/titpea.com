@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.35em 0;
-  max-width: 80ch;
+  max-width: 96ch;
   margin: 18px auto 0;
   color: var(--muted);
   font-family: var(--mono);
@@ -50,11 +50,11 @@
   letter-spacing: 0;
 }
 
-.meta-line span {
+.meta-line > span {
   white-space: nowrap;
 }
 
-.meta-line span + span::before {
+.meta-line > span + span::before {
   content: "·";
   margin: 0 0.7em;
   color: var(--faint);

@@ -25,7 +25,7 @@ type Ui = {
   themeLightText: string;
   copy: string;
   copied: string;
-  /** `{date}` is the latest release's publish date. */
+  /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
   released: string;
   pauseVideo: string;
   playVideo: string;
@@ -72,7 +72,7 @@ export const ui: Record<Locale, Ui> = {
     themeLightText: "Light",
     copy: "Copy",
     copied: "Copied",
-    released: "Released {date}",
+    released: " ({date})",
     pauseVideo: "Pause",
     playVideo: "Play",
     home: "Home",
@@ -135,7 +135,7 @@ export const ui: Record<Locale, Ui> = {
     themeLightText: "浅色",
     copy: "复制",
     copied: "已复制",
-    released: "{date}发布",
+    released: "（{date}）",
     pauseVideo: "暂停",
     playVideo: "播放",
     home: "首页",
