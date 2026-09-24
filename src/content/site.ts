@@ -7,6 +7,12 @@ export const site = {
   email: "info@titpea.com",
   github: "https://github.com/hxddh",
   og: { home: "/assets/og-home.png", about: "/assets/og-about.png" },
+  /**
+   * Cloudflare Web Analytics (cookieless) is switched on in the Cloudflare
+   * Pages dashboard, which injects its beacon; the CSP already allows it.
+   * Set this to true only once it is on, so About states it truthfully.
+   */
+  analytics: false,
 } as const;
 
 export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;
@@ -71,6 +77,7 @@ type Ui = {
   aboutFeed: string;
   aboutContactTitle: string;
   aboutContactSub: string;
+  aboutAnalytics: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -153,6 +160,7 @@ export const ui: Record<Locale, Ui> = {
     aboutFeed: "Follow releases (Atom)",
     aboutContactTitle: "Say hello.",
     aboutContactSub: "The code is on GitHub. Everything else, by email.",
+    aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
   },
   zh: {
     primaryLabel: "主导航",
@@ -232,5 +240,6 @@ export const ui: Record<Locale, Ui> = {
     aboutFeed: "订阅发布（Atom）",
     aboutContactTitle: "打个招呼",
     aboutContactSub: "代码在 GitHub，其他事情发邮件。",
+    aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
   },
 };

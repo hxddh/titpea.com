@@ -3,7 +3,15 @@
 import releases from "../content/releases.json";
 import { products } from "../content/products";
 import { absoluteUrl, site, ui } from "../content/site";
-import { lines, locales, type Line, type Locale, type Product, type ProductCopy } from "../content/schema";
+import {
+  lines,
+  locales,
+  type Line,
+  type Locale,
+  type Product,
+  type ProductCopy,
+  type ReleaseHighlights,
+} from "../content/schema";
 
 export type CurrentPage = "home" | "about" | (string & {});
 
@@ -135,7 +143,7 @@ export type ProductPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   copy: ProductCopy;
-  icon?: string;
+  icon: string;
   version?: string;
   /** Publish date of that release, already formatted for the locale. */
   released?: string;
@@ -207,7 +215,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     icon: product.icon,
     version,
     released: releasedOf(product.slug, locale),
-    whatsNew: whatsNewFor(product.slug, locale, version),
+    whatsNew: whatsNewFor(product.slug, locale, version, product[locale].releaseHighlights),
     downloadsRelease: Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
@@ -217,10 +225,22 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   };
 }
 
-function whatsNewFor(slug: string, locale: Locale, version?: string) {
-  const notes = releaseTags[slug]?.notes;
-  if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
+function whatsNewFor(slug: string, locale: Locale, version?: string, override?: ReleaseHighlights) {
   const copy = ui[locale];
+  const synced = releaseTags[slug]?.notes;
+  const url = synced?.url ?? `https://github.com/${releaseTags[slug]?.repo}/releases/tag/${version}`;
+  if (version && override?.version === version) {
+    return {
+      summary: override.summary ?? "",
+      items: override.items,
+      url,
+      title: copy.whatsNew.replace("{version}", version),
+      linkLabel: copy.releaseNotes,
+      released: releasedOf(slug, locale),
+    };
+  }
+  const notes = synced;
+  if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
   // Notes are quoted in their own language; say so when it is not the page's.
   const quoted = [notes.summary, ...notes.items].join(" ");
   const notesAreChinese = /[\u4e00-\u9fff]/.test(quoted);
@@ -247,7 +267,7 @@ export type CatalogItem = {
   href: string;
   role: string;
   text: string;
-  icon?: string;
+  icon: string;
   version?: string;
   released?: string;
 };
@@ -323,9 +343,11 @@ export function homePage(locale: Locale): HomePageModel {
       eyebrow: copy.productIndex,
       title: copy.homeTitle,
       lead: copy.homeLead,
-      icons: products
-        .filter((product) => product.icon)
-        .map((product) => ({ src: product.icon!, href: pathFor(locale, product.slug), name: product[locale].title })),
+      icons: products.map((product) => ({
+        src: product.icon,
+        href: pathFor(locale, product.slug),
+        name: product[locale].title,
+      })),
       browse: copy.browseTools,
       about: { label: copy.aboutMore, href: pathFor(locale, "about") },
     },
@@ -368,7 +390,7 @@ export type AboutPageModel = {
   lines: {
     title: string;
     sub: string;
-    groups: Array<{ label: string; items: Array<{ name: string; href: string; icon?: string }> }>;
+    groups: Array<{ label: string; items: Array<{ name: string; href: string; icon: string }> }>;
   };
   principles: { title: string; items: Array<{ title: string; body: string }> };
   releases: {
@@ -379,7 +401,7 @@ export type AboutPageModel = {
     items: Array<{
       name: string;
       href: string;
-      icon?: string;
+      icon: string;
       version: string;
       released?: string;
       highlight?: string;
@@ -388,6 +410,8 @@ export type AboutPageModel = {
   contact: {
     title: string;
     sub: string;
+    /** Shown only while site.analytics is on. */
+    analytics?: string;
     label: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
@@ -479,13 +503,17 @@ export function aboutPage(locale: Locale): AboutPageModel {
         .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
         .map((product) => {
           const notes = releaseTags[product.slug]?.notes;
+          const override = product[locale].releaseHighlights;
+          const current = override?.version === versionOf(product.slug) ? override : undefined;
           return {
             name: product[locale].title,
             href: pathFor(locale, product.slug),
             icon: product.icon,
             version: versionOf(product.slug)!,
             released: releasedOf(product.slug, locale),
-            highlight: notes?.items[0] ?? (notes?.summary || undefined),
+            highlight: current
+              ? (current.items[0] ?? current.summary)
+              : (notes?.items[0] ?? (notes?.summary || undefined)),
           };
         }),
     },
@@ -493,6 +521,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
     contact: {
       title: copy.aboutContactTitle,
       sub: copy.aboutContactSub,
+      analytics: site.analytics ? copy.aboutAnalytics : undefined,
       label: copy.contactLabel,
       actions: [
         { label: "GitHub", href: site.github, style: "primary" },

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#43c05a"/>
+      <stop offset="1" stop-color="#1e8a39"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#fill)"/>
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+    
+    
+    <path d="M600.0 200.0 L 658.8 349.1 L 818.7 358.9 L 695.1 460.9 L 735.2 616.1 L 600.0 530.0 L 464.8 616.1 L 504.9 460.9 L 381.3 358.9 L 541.2 349.1 Z" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="40" stroke-linejoin="round"/>
+    <path d="M440.0 340.0 L 503.5 502.6 L 677.8 512.7 L 542.7 623.4 L 586.9 792.3 L 440.0 698.0 L 293.1 792.3 L 337.3 623.4 L 202.2 512.7 L 376.5 502.6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="40" stroke-linejoin="round"/>
+  </g>
+</svg>

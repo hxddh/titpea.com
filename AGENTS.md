@@ -27,8 +27,9 @@ Settled design decisions in DESIGN.md (for example the Omni home) are the owner'
 1. Copy the closest `src/content/products/<slug>.ts` and rewrite both locales. Keep the section ids identical across locales.
 2. Import it in `src/content/products/index.ts` where it belongs in site order.
 3. If it ships GitHub releases, set `repo` and add an entry to `releases.json` (`npm run releases:sync` fills the tag), and write `{version}` in its meta line.
-4. `npm run assets:og <slug>` renders its share image.
-5. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
+4. Give it an icon: official artwork as `design/icons/<slug>-official.png`, or a site-designed `design/icons/<slug>.svg` (see `design/icons/README.md`), then `npm run assets:icons`.
+5. `npm run assets:og <slug>` renders its share image.
+6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
 
 A new hero object is the only case that needs a component: add a `kind` to `Visual` in `schema.ts` and a file in `components/product/visuals/`.
 
@@ -42,7 +43,7 @@ npm run check:dist   # built output rules
 
 For layout or rendered copy, also run `npm run preview` and `npm run qa:pages`.
 
-After an intentional visual change to one of the four baseline screens, refresh them with `VISUAL_BASELINE_PLATFORM=linux npm run visual:approve` on Linux with `fonts-noto-cjk` installed (as CI does). If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact.
+After an intentional visual change to one of the baseline screens (`scripts/visual-targets.json`), refresh them with `VISUAL_BASELINE_PLATFORM=linux npm run visual:approve` on Linux with `fonts-noto-cjk` installed (as CI does). If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact.
 
 ## Ship
 

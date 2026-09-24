@@ -49,7 +49,7 @@ const metaParts = copy.meta
   <section class="product-hero" data-frame={model.frame}>
     <div class="wash" aria-hidden="true"></div>
     <div class="shell product-copy">
-      {model.icon && <img class="app-icon" src={model.icon} alt="" width="104" height="104" />}
+      <img class="app-icon" src={model.icon} alt="" width="104" height="104" />
       <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
@@ -121,7 +121,7 @@ const metaParts = copy.meta
   }
 
   <section class="shell final-cta" aria-label={closing}>
-    {model.icon && <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />}
+    <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />
     <p class="final-cta-name">{copy.title}</p>
     <div class="actions">
       <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">

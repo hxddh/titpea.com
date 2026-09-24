@@ -210,6 +210,13 @@ export type Commands = {
   items: Array<{ comment: string; command: string; capturedOutput?: string }>;
 };
 
+/**
+ * Hand-written release highlights for one tag, in this page's language. Used
+ * only while that tag is the latest release; any other tag falls back to the
+ * notes quoted from GitHub, so an override can never outlive its release.
+ */
+export type ReleaseHighlights = { version: string; summary?: string; items: string[] };
+
 export type ProductCopy = {
   /** Name as shown in the catalog, nav, and eyebrow. */
   title: string;
@@ -231,6 +238,7 @@ export type ProductCopy = {
   showcases?: Showcase[];
   sections: Section[];
   finalCta?: string;
+  releaseHighlights?: ReleaseHighlights;
 };
 
 export type Product = {
@@ -239,8 +247,11 @@ export type Product = {
   line: Line;
   /** The two featured products lead Home with this photograph. */
   featured?: { image: Omit<Image, "alt"> & { alt: Record<Locale, string> } };
-  /** App icon shown above the hero headline and in the local nav, when the product has one. */
-  icon?: string;
+  /**
+   * App icon: hero, local nav, catalog, About, 404, share image. Required
+   * (npm run check). Official artwork or a site-designed tile; see design/icons.
+   */
+  icon: string;
   /** GitHub repository whose latest release fills `{version}`. */
   repo?: string;
   og: string;

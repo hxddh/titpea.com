@@ -3,6 +3,7 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "douban-movie-rating",
   line: "everyday",
+  icon: "/assets/icons/douban-movie-rating.webp",
   og: "/assets/og-douban-movie-rating.png",
   schema: {
     category: "BrowserApplication",

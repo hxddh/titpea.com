@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#f6ecd7"/>
+      <stop offset="1" stop-color="#dcc49a"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#fill)"/>
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+    
+    
+    <g fill="none" stroke="#3a2d1f" stroke-linecap="round">
+      <circle cx="512" cy="512" r="292" stroke-width="46"/>
+      <ellipse cx="512" cy="512" rx="130" ry="292" stroke-width="22" stroke-opacity="0.45"/>
+      <path d="M220 512 H 804" stroke-width="22" stroke-opacity="0.45"/>
+    </g>
+    <g fill="none" stroke="#c0661c" stroke-linecap="round" stroke-width="46">
+      <path d="M512 512 L 512 318"/>
+      <path d="M512 512 L 646 590"/>
+    </g>
+    <circle cx="512" cy="512" r="34" fill="#c0661c"/>
+  </g>
+</svg>

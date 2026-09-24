@@ -27,7 +27,7 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block. A command may carry `capturedOutput`: the real output of that exact command at a named version, behind `Show real output` / `查看实际输出`. Never hand-written.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
 - **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). The hero meta line ends with the release date (`Released Sep 4, 2026` / `2026年9月4日发布`), and catalog cards show tag and date. Tags and publish dates come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when one changed; nobody edits a version or date by hand. Dates are absolute, never "3 days ago", because the site does not rebuild every day.
-- **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. When the notes are in the other language, one line says so (`Quoted from the Chinese release notes.` / `摘自英文发布说明。`). `scripts/sync-releases.mjs` refreshes them with the tag and lists every quoted line in the CI run summary for the owner to read.
+- **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. When the notes are in the other language, one line says so (`Quoted from the Chinese release notes.` / `摘自英文发布说明。`). `scripts/sync-releases.mjs` refreshes them with the tag and lists every quoted line in the CI run summary for the owner to read. A product may set `releaseHighlights` (per language, pinned to one tag) to replace the quoted lines with hand-written ones; it applies only while that tag is the latest release.
 - **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
@@ -36,9 +36,9 @@ Every page uses the same few parts. Build new content from them before inventing
 
 **Settled direction — the owner decided this twice (PR #150, PR #153).** Home follows Omni: the icon hero with two actions, then stacked showcase rows with lifted, rounded screenshots, then the catalog. Do not bring back the side-by-side hairline pair, a compact hero with no actions, or flat unshadowed screenshots, even to fit both captures on the first screen. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
 
-- The hero opens on the row of app icons, each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
+- The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. Products with an app icon show it in the card's top right. A product belongs to one line, and the header dropdowns use the same four lines.
+- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. Every card shows its app icon in the top right. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## About
 
@@ -59,6 +59,16 @@ The page answers, in order: what Titpea is, what it holds, how the tools behave,
 ## 404
 
 - Home, the Chinese home, and a two-column directory of every product with its icon.
+
+## App Icons
+
+- Every product has an icon, and every list of products shows them (the home shelf, catalog cards, About, the release list, 404, share images). `npm run check` fails without one.
+- Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a gentle top sheen and one white glyph in 50 px round strokes that says what the product does. Families share a motif: storage tools are blue with a bucket (Storage Agent, s3-turbo-list, StorageOps) and httpmon's eye; agent tools are graphite; everyday tools take their own colour.
+- `npm run assets:icons` renders `public/assets/icons/<slug>.webp`. `design/icons/README.md` records which icons are official and which are site-designed.
+
+## Analytics
+
+- Off unless the owner turns on Cloudflare Web Analytics in the Pages dashboard, which injects its cookieless beacon; the CSP allows only that script and its endpoint. `site.analytics` must be set to true at the same time, which shows the one-line disclosure on About.
 
 ## Share Images
 
@@ -144,7 +154,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
   - `a11y:check`: axe-core (WCAG 2.1 A/AA and best practices) on every page, light and dark, desktop and phone; any violation fails.
-  - `visual:check`: four screens, compared loosely.
+  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's principles and product lines, and 404. Section targets crop to their own section so release data synced at build never moves them.
   - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
   1. First read: from the first viewport alone, does the reader know what the product changes?

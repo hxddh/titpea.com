@@ -48,11 +48,7 @@ const folded = model.releases.items.slice(model.releasesShown);
                 {group.items.map((item) => (
                   <li>
                     <a href={item.href}>
-                      {item.icon ? (
-                        <img src={item.icon} alt="" width="28" height="28" />
-                      ) : (
-                        <span class="about-line-dot" aria-hidden="true" />
-                      )}
+                      <img src={item.icon} alt="" width="28" height="28" />
                       <span>{item.name}</span>
                     </a>
                   </li>
@@ -94,11 +90,7 @@ const folded = model.releases.items.slice(model.releasesShown);
           shown.map((item) => (
             <li>
               <a href={item.href}>
-                {item.icon ? (
-                  <img src={item.icon} alt="" width="36" height="36" />
-                ) : (
-                  <span class="release-dot" aria-hidden="true" />
-                )}
+                <img src={item.icon} alt="" width="36" height="36" />
                 <span class="release-main">
                   <strong>{item.name}</strong>
                   {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
@@ -122,11 +114,7 @@ const folded = model.releases.items.slice(model.releasesShown);
               {folded.map((item) => (
                 <li>
                   <a href={item.href}>
-                    {item.icon ? (
-                      <img src={item.icon} alt="" width="36" height="36" />
-                    ) : (
-                      <span class="release-dot" aria-hidden="true" />
-                    )}
+                    <img src={item.icon} alt="" width="36" height="36" />
                     <span class="release-main">
                       <strong>{item.name}</strong>
                       {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
@@ -148,6 +136,7 @@ const folded = model.releases.items.slice(model.releasesShown);
   <section class="shell final-cta about-contact" aria-label={model.contact.label}>
     <p class="final-cta-name">{model.contact.title}</p>
     <p class="about-contact-sub">{model.contact.sub}</p>
+    {model.contact.analytics && <p class="about-analytics">{model.contact.analytics}</p>}
     <div class="actions">
       {
         model.contact.actions.map((action) => (
