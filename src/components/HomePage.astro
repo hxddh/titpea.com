@@ -81,7 +81,7 @@ const { model } = Astro.props;
                   <a class="catalog-card" href={item.href}>
                     <span class="catalog-card-top">
                       <span class="home-catalog-role">{item.role}</span>
-                      {item.icon && <img class="catalog-icon" src={item.icon} alt="" width="44" height="44" />}
+                      <img class="catalog-icon" src={item.icon} alt="" width="44" height="44" />
                     </span>
                     <strong class="home-catalog-name">{item.name}</strong>
                     <p class="home-catalog-text">{item.text}</p>

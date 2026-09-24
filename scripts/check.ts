@@ -183,6 +183,26 @@ for (const page of allPages) {
   if (!seo.canonicalUrl.startsWith(site.baseUrl)) fail(`${page.path}: canonical URL must be absolute`);
 }
 
+/* ---------- App icons ---------- */
+
+// Every product shows an icon wherever products appear together; a missing
+// one breaks the row. Sources live in design/icons (npm run assets:icons).
+for (const product of products) {
+  if (!product.icon) {
+    fail(`${product.slug}: missing icon — add design/icons/${product.slug}.svg and run npm run assets:icons`);
+    continue;
+  }
+  const file = `public${product.icon}`;
+  if (!fs.existsSync(file)) {
+    fail(`${product.icon}: missing — run npm run assets:icons`);
+    continue;
+  }
+  const meta = await sharp(file).metadata();
+  if (meta.width !== meta.height || (meta.width ?? 0) < 160) {
+    fail(`${product.icon}: must be square and at least 160px, got ${meta.width}×${meta.height}`);
+  }
+}
+
 /* ---------- Share images ---------- */
 
 for (const image of new Set(siteRoutes.map((route) => route.ogImage))) {

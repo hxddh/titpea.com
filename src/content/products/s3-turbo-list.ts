@@ -4,6 +4,7 @@ export default defineProduct({
   slug: "s3-turbo-list",
   line: "storage",
   repo: "hxddh/s3-turbo-list",
+  icon: "/assets/icons/s3-turbo-list.webp",
   og: "/assets/og-s3-turbo-list.png",
   schema: {
     category: "DeveloperApplication",

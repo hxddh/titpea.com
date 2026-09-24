@@ -4,6 +4,7 @@ export default defineProduct({
   slug: "httpmon",
   line: "storage",
   repo: "hxddh/https-traffic-inspector",
+  icon: "/assets/icons/httpmon.webp",
   og: "/assets/og-httpmon.png",
   schema: {
     category: "DeveloperApplication",

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#22c3a6"/><stop offset="1" stop-color="#0b5a5e"/></linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c7efe8"/></linearGradient>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <ellipse cx="512" cy="780" rx="230" ry="36" fill="#063c3f" fill-opacity="0.35"/>
+    <path d="M292 322 L 334 704 Q 342 760 398 760 H 626 Q 682 760 690 704 L 732 322 Z" fill="url(#body)"/>
+    <ellipse cx="512" cy="322" rx="220" ry="62" fill="#e9fffb"/>
+    <ellipse cx="512" cy="326" rx="178" ry="40" fill="#0c6b6a"/>
+    <path d="M318 548 H 430 L 472 452 L 532 652 L 576 520 L 604 548 H 706" fill="none" stroke="#0c6b6a" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+  </g>
+</svg>

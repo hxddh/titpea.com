@@ -28,7 +28,8 @@ if (approve) fs.mkdirSync(baselineDir, { recursive: true });
 
 function screenshotName(target) {
   const route = target.path.replaceAll("/", "_") || "_home";
-  return `${target.viewport}${route}_${target.state}.png`;
+  const state = target.state === "section" ? `section-${target.section}` : target.state;
+  return `${target.viewport}${route}_${state}.png`;
 }
 
 async function changedPixelRatio(actualPath, expectedPath) {
@@ -49,7 +50,8 @@ async function changedPixelRatio(actualPath, expectedPath) {
 
 const browser = await chromium.launch({ headless: true });
 for (const target of baseline.targets) {
-  const page = await browser.newPage({ viewport: viewports[target.viewport] });
+  // Reduced motion: scroll reveal and smooth scrolling never race a capture.
+  const page = await browser.newPage({ viewport: viewports[target.viewport], reducedMotion: "reduce" });
   page.setDefaultTimeout(8_000);
   await page.goto(`${baseUrl}${target.path}`, { waitUntil: "networkidle", timeout: 12_000 });
   await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
@@ -60,6 +62,15 @@ for (const target of baseline.targets) {
   await page.locator("[data-theme-toggle]").waitFor({ state: "visible" });
 
   if (target.state === "menu") await page.locator(".mobile-menu summary").click();
+  if (target.state === "section") {
+    // Pin a section (target.section is its id) just under the sticky chrome.
+    await page.evaluate((id) => {
+      const section = document.getElementById(id);
+      if (section)
+        window.scrollTo(0, Math.max(0, Math.round(section.getBoundingClientRect().top + window.scrollY - 96)));
+    }, target.section);
+    await page.waitForTimeout(150);
+  }
   if (target.state === "faq") {
     if (target.viewport === "mobile") await page.locator("[data-section-index-toggle]").click();
     const faqLink = page.locator('.product-section-index a[href="#faq"]');
@@ -126,7 +137,23 @@ for (const target of baseline.targets) {
   const name = screenshotName(target);
   const actualPath = path.join(outDir, name);
   const expectedPath = path.join(baselineDir, name);
-  await page.screenshot({ path: actualPath, fullPage: false, animations: "disabled" });
+  // A section target captures only its own section, so data synced at build
+  // time elsewhere on the page (versions, release notes) never moves it.
+  const clip =
+    target.state === "section"
+      ? await page.evaluate((id) => {
+          const box = document.getElementById(id)?.closest("section")?.getBoundingClientRect();
+          return box
+            ? {
+                x: 0,
+                y: Math.max(0, box.top),
+                width: window.innerWidth,
+                height: Math.min(box.height, window.innerHeight - Math.max(0, box.top)),
+              }
+            : undefined;
+        }, target.section)
+      : undefined;
+  await page.screenshot({ path: actualPath, fullPage: false, animations: "disabled", clip });
   const screenshotSize = fs.statSync(actualPath).size;
 
   if (metrics.overflow > 1)

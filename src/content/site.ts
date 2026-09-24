@@ -7,6 +7,15 @@ export const site = {
   email: "info@titpea.com",
   github: "https://github.com/hxddh",
   og: { home: "/assets/og-home.png", about: "/assets/og-about.png" },
+  /**
+   * Cloudflare Web Analytics. The zone's "automatic setup" site injects the
+   * cookieless beacon at the edge, so pages carry no token of their own
+   * (adding one as well would count every view twice). Either one being on
+   * makes About disclose it.
+   */
+  analyticsAutoInjected: true,
+  /** Site token for the JS-snippet method, only if automatic setup is off. */
+  analyticsToken: "",
 } as const;
 
 export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;
@@ -71,6 +80,7 @@ type Ui = {
   aboutFeed: string;
   aboutContactTitle: string;
   aboutContactSub: string;
+  aboutAnalytics: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -153,6 +163,7 @@ export const ui: Record<Locale, Ui> = {
     aboutFeed: "Follow releases (Atom)",
     aboutContactTitle: "Say hello.",
     aboutContactSub: "The code is on GitHub. Everything else, by email.",
+    aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
   },
   zh: {
     primaryLabel: "主导航",
@@ -232,5 +243,6 @@ export const ui: Record<Locale, Ui> = {
     aboutFeed: "订阅发布（Atom）",
     aboutContactTitle: "打个招呼",
     aboutContactSub: "代码在 GitHub，其他事情发邮件。",
+    aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
   },
 };

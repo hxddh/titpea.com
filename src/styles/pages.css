@@ -220,8 +220,8 @@
 
 /* Home hero: the app icons, a row of doors into the products. */
 .home-icons {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
   justify-content: center;
   gap: 14px;
   margin: 0 0 28px;
@@ -241,8 +241,8 @@
 
 .home-icons img {
   display: block;
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
   filter: drop-shadow(var(--shadow-icon-small));
 }
 
@@ -305,24 +305,6 @@
   height: 28px;
 }
 
-.about-line-dot {
-  flex: none;
-  position: relative;
-  width: 28px;
-  height: 28px;
-}
-
-.about-line-dot::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-pill);
-  background: var(--soft-line);
-}
-
 .about-principles .feature-grid {
   margin-top: 48px;
 }
@@ -360,14 +342,6 @@
 .release-list img {
   width: 36px;
   height: 36px;
-}
-
-.release-dot {
-  justify-self: center;
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-pill);
-  background: var(--soft-line);
 }
 
 .release-main {
@@ -424,6 +398,12 @@
   border-top: 0;
 }
 
+.about-analytics {
+  margin: 6px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .about-contact-sub {
   margin: 8px auto 0;
   color: var(--muted);
@@ -470,25 +450,7 @@
   height: 28px;
 }
 
-.notfound-products .release-dot {
-  flex: none;
-  width: 28px;
-  height: 8px;
-  background: none;
-  position: relative;
-}
-
-.notfound-products .release-dot::after {
-  content: "";
-  position: absolute;
-  left: 10px;
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-pill);
-  background: var(--soft-line);
-}
-
-.privacy-page {
+.notfound-products .privacy-page {
   padding-top: 72px;
 }
 
@@ -592,8 +554,8 @@
   }
 
   .home-icons img {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 
   .home-featured-copy {

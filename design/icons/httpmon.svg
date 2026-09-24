@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#232843"/><stop offset="1" stop-color="#090b16"/></linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/></linearGradient>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <path d="M0 596 L 430 520" stroke="#ffffff" stroke-width="30" stroke-linecap="round"/>
+    <g opacity="0.95"><path d="M604 522 L 1024 420 L 1024 477 Z" fill="#ff5c5c"/><path d="M604 522 L 1024 477 L 1024 533 Z" fill="#ffa94d"/><path d="M604 522 L 1024 533 L 1024 590 Z" fill="#ffe066"/><path d="M604 522 L 1024 590 L 1024 647 Z" fill="#51d88a"/><path d="M604 522 L 1024 647 L 1024 703 Z" fill="#4dabf7"/><path d="M604 522 L 1024 703 L 1024 760 Z" fill="#9775fa"/></g>
+    <path d="M512 246 L 760 700 H 264 Z" fill="url(#glass)" stroke="#ffffff" stroke-width="22" stroke-linejoin="round"/>
+    <path d="M430 520 L 604 522" stroke="#ffffff" stroke-opacity="0.55" stroke-width="16" stroke-linecap="round"/>
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+  </g>
+</svg>

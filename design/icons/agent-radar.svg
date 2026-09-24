@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.5" r="0.7"><stop offset="0" stop-color="#0f5a3c"/><stop offset="1" stop-color="#02140d"/></radialGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
+    <linearGradient id="sweep" x1="0.349" y1="0.215" x2="0.785" y2="0.349"><stop offset="0" stop-color="#46f0a0" stop-opacity="0"/><stop offset="1" stop-color="#46f0a0" stop-opacity="0.55"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <g fill="none" stroke="#46f0a0" stroke-opacity="0.35" stroke-width="10">
+      <circle cx="512" cy="512" r="330"/><circle cx="512" cy="512" r="220"/><circle cx="512" cy="512" r="110"/>
+      <path d="M182 512 H 842 M512 182 V 842"/>
+    </g>
+    <path d="M512 512 L 357.1 220.6 A 330 330 0 0 1 803.4 357.1 Z" fill="url(#sweep)"/>
+    <path d="M512 512 L 803.4 357.1" stroke="#c8ffe2" stroke-width="18" stroke-linecap="round"/>
+    <g filter="url(#glow)">
+      <circle cx="689" cy="335" r="26" fill="#d6ffe9"/>
+      <circle cx="540" cy="354" r="18" fill="#9dfcc9"/>
+      <circle cx="270" cy="652" r="16" fill="#46f0a0" fill-opacity="0.7"/>
+      <circle cx="597" cy="693" r="14" fill="#46f0a0" fill-opacity="0.55"/>
+    </g>
+    <circle cx="512" cy="512" r="22" fill="#c8ffe2"/>
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+  </g>
+</svg>

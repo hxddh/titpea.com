@@ -35,11 +35,7 @@ const seo = buildSeo({
           products.map((product) => (
             <li>
               <a href={pathFor("en", product.slug)}>
-                {product.icon ? (
-                  <img src={product.icon} alt="" width="28" height="28" />
-                ) : (
-                  <span class="release-dot" aria-hidden="true" />
-                )}
+                <img src={product.icon} alt="" width="28" height="28" />
                 <span>{product.en.title}</span>
               </a>
             </li>

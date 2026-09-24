@@ -3,6 +3,7 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "storageops",
   line: "storage",
+  icon: "/assets/icons/storageops.webp",
   og: "/assets/og-storageops.png",
   schema: {
     category: "DeveloperApplication",
