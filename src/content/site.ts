@@ -25,6 +25,10 @@ type Ui = {
   themeLightText: string;
   copy: string;
   copied: string;
+  /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
+  released: string;
+  pauseVideo: string;
+  playVideo: string;
   home: string;
   about: string;
   groups: { main: string; external: string } & Record<Line, string>;
@@ -47,6 +51,11 @@ type Ui = {
   contactLabel: string;
   /** `{<slug>}` is replaced by that product's synced release tag. */
   aboutNote: string[];
+  /** Three habits, each backed by facts already on the product pages. */
+  aboutPrinciplesTitle: string;
+  aboutPrinciples: Array<{ title: string; body: string }>;
+  aboutReleasesTitle: string;
+  aboutReleasesSub: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -63,6 +72,9 @@ export const ui: Record<Locale, Ui> = {
     themeLightText: "Light",
     copy: "Copy",
     copied: "Copied",
+    released: " ({date})",
+    pauseVideo: "Pause",
+    playVideo: "Play",
     home: "Home",
     about: "About",
     groups: {
@@ -90,8 +102,25 @@ export const ui: Record<Locale, Ui> = {
     contactLabel: "Contact links",
     aboutNote: [
       "There are also small apps for playing chess, checking the time, and sorting bookmarks.",
-      "I ship every project myself. Storage Agent is {storage-agent-workbench}, PageWise is {pagewise}, and Pulse is {pulse}.",
+      "I ship every project myself.",
     ],
+    aboutPrinciplesTitle: "How the tools work.",
+    aboutPrinciples: [
+      {
+        title: "Evidence in view",
+        body: "Storage Agent keeps the checks beside the answer. PageWise cites the page.",
+      },
+      {
+        title: "Local by default",
+        body: "Keys stay in a local vault. Files stay on disk. Bookmarks need no server.",
+      },
+      {
+        title: "Read before write",
+        body: "Storage Agent's tools are read-only. StorageOps does not change storage.",
+      },
+    ],
+    aboutReleasesTitle: "Latest releases.",
+    aboutReleasesSub: "Tags and dates come from GitHub on every build.",
   },
   zh: {
     primaryLabel: "主导航",
@@ -106,6 +135,9 @@ export const ui: Record<Locale, Ui> = {
     themeLightText: "浅色",
     copy: "复制",
     copied: "已复制",
+    released: "（{date}）",
+    pauseVideo: "暂停",
+    playVideo: "播放",
     home: "首页",
     about: "关于",
     groups: {
@@ -131,9 +163,23 @@ export const ui: Record<Locale, Ui> = {
     aboutHeadline: "hxddh",
     aboutLead: "存储排查时，我习惯保留得出结论的日志和检查记录。",
     contactLabel: "联系方式",
-    aboutNote: [
-      "这里也有下棋、看时间和整理书签的小软件。",
-      "每个项目都由我自己发布。Storage Agent 当前是 {storage-agent-workbench}，PageWise 是 {pagewise}，Pulse 是 {pulse}。",
+    aboutNote: ["这里也有下棋、看时间和整理书签的小软件。", "每个项目都由我自己发布。"],
+    aboutPrinciplesTitle: "这些工具怎么做事",
+    aboutPrinciples: [
+      {
+        title: "证据摆在眼前",
+        body: "Storage Agent 把检查放在结论旁边。PageWise 给出页引用。",
+      },
+      {
+        title: "默认留在本机",
+        body: "密钥在本机保险库。文件留在磁盘。书签不经服务器。",
+      },
+      {
+        title: "只读优先",
+        body: "Storage Agent 的工具只读。StorageOps 不修改存储。",
+      },
     ],
+    aboutReleasesTitle: "最近的发布",
+    aboutReleasesSub: "版本号和日期在每次构建时从 GitHub 读取。",
   },
 };

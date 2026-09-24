@@ -1,6 +1,6 @@
 // Refresh src/content/releases.json from each repository's latest GitHub
-// release, so download buttons, meta lines, and About carry the current tag
-// without hand edits. CI runs this before every build and on a daily
+// release (tag and publish date), so download buttons, meta lines, catalog
+// cards, and About carry the current tag and date without hand edits. CI runs this before every build and on a daily
 // schedule. If GitHub cannot be reached, the committed tags stay and the
 // build continues; `--strict` turns that into a failure.
 import fs from "node:fs";
@@ -22,11 +22,13 @@ for (const [slug, entry] of Object.entries(releases)) {
   try {
     const response = await fetch(`https://api.github.com/repos/${entry.repo}/releases/latest`, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const { tag_name: tag } = await response.json();
+    const { tag_name: tag, published_at: publishedAt } = await response.json();
     if (!/^v?\d+\.\d+/.test(tag ?? "")) throw new Error(`unexpected tag ${JSON.stringify(tag)}`);
-    if (tag !== entry.version) {
-      changes.push(`${slug}: ${entry.version} → ${tag}`);
+    const published = /^\d{4}-\d{2}-\d{2}/.test(publishedAt ?? "") ? publishedAt.slice(0, 10) : entry.published;
+    if (tag !== entry.version || published !== entry.published) {
+      changes.push(`${slug}: ${entry.version} → ${tag} (${published})`);
       entry.version = tag;
+      entry.published = published;
     }
   } catch (error) {
     problems.push(`${slug} (${entry.repo}): ${error.message}`);

@@ -1,21 +1,46 @@
-// Render the 1200×630 share images from the same copy the pages use:
-// a centered headline over the hero wash, the product name above it, and
-// the catalog line below. `npm run assets:og [slug ...]` rewrites them.
+// Render the 1200×630 share images from the same copy and assets the pages
+// use. A product with a screenshot gets a split card: icon, name, headline,
+// and catalog line on the left, the screenshot bleeding off the right edge.
+// Other products get a centered card with their icon when they have one;
+// Home shows the row of app icons. `npm run assets:og [slug ...]` rewrites them.
 import fs from "node:fs/promises";
 import sharp from "sharp";
 import { products } from "../src/content/products/index.ts";
 import { site, ui } from "../src/content/site.ts";
+import type { Product } from "../src/content/schema.ts";
 
-type Card = { file: string; eyebrow: string; title: string; body: string };
+type Card = {
+  file: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  icons?: string[];
+  screenshot?: string;
+};
+
+const heroScreenshot = (product: Product) => {
+  const visual = product.en.visual;
+  if (visual.kind === "screenshot") return visual.image.src;
+  if (visual.kind === "clockScreenshots") return visual.images[0]?.src;
+  return product.featured?.image.src ?? product.en.showcases?.[0]?.src;
+};
 
 export const cards: Card[] = [
-  { file: site.og.home, eyebrow: site.brand, title: ui.en.homeTitle, body: ui.en.homeLead },
+  {
+    file: site.og.home,
+    eyebrow: site.brand,
+    title: ui.en.homeTitle,
+    body: ui.en.homeLead,
+    icons: products.flatMap((product) => (product.icon ? [product.icon] : [])),
+  },
   { file: site.og.about, eyebrow: ui.en.aboutTitle, title: ui.en.aboutHeadline, body: ui.en.aboutLead },
   ...products.map((product) => ({
     file: product.og,
     eyebrow: product.en.title,
     title: product.en.headline,
     body: product.en.catalog.text,
+    icons: product.icon ? [product.icon] : undefined,
+    screenshot: heroScreenshot(product),
   })),
 ];
 
@@ -39,45 +64,112 @@ function wrap(text: string, maxChars: number) {
 }
 
 const sans = "-apple-system, 'SF Pro Display', Inter, 'Helvetica Neue', Arial, sans-serif";
+const W = 1200;
+const H = 630;
 
-function svg({ eyebrow, title, body }: Card) {
-  const titleLines = wrap(title, 26);
-  const bodyLines = wrap(body, 52).slice(0, 2);
-  const titleSize = titleLines.length > 1 ? 72 : 84;
-  const titleTop = 300 - ((titleLines.length - 1) * titleSize * 1.04) / 2;
-  const bodyTop = titleTop + (titleLines.length - 1) * titleSize * 1.04 + 82;
-  return `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <defs>
+const wash = `<defs>
     <radialGradient id="w1" cx="22%" cy="42%" r="40%"><stop offset="0" stop-color="#5aa0ff" stop-opacity=".30"/><stop offset="1" stop-color="#5aa0ff" stop-opacity="0"/></radialGradient>
     <radialGradient id="w2" cx="80%" cy="36%" r="38%"><stop offset="0" stop-color="#ff96be" stop-opacity=".24"/><stop offset="1" stop-color="#ff96be" stop-opacity="0"/></radialGradient>
     <radialGradient id="w3" cx="55%" cy="86%" r="44%"><stop offset="0" stop-color="#78dcc8" stop-opacity=".24"/><stop offset="1" stop-color="#78dcc8" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
   </defs>
-  <rect width="1200" height="630" fill="#fbfbfd"/>
-  <rect width="1200" height="630" fill="url(#w1)"/>
-  <rect width="1200" height="630" fill="url(#w2)"/>
-  <rect width="1200" height="630" fill="url(#w3)"/>
-  <rect x="470" y="48" width="260" height="52" rx="26" fill="#ffffff" fill-opacity=".72" stroke="#000000" stroke-opacity=".08"/>
-  <text x="600" y="82" text-anchor="middle" fill="#1d1d1f" font-family="${sans}" font-size="24" font-weight="600">titpea.com</text>
-  <text x="600" y="${titleTop - 92}" text-anchor="middle" fill="#6e6e73" font-family="${sans}" font-size="30" font-weight="600">${escape(eyebrow)}</text>
-  <text text-anchor="middle" fill="#1d1d1f" font-family="${sans}" font-size="${titleSize}" font-weight="700" letter-spacing="-2">${titleLines
-    .map((line, index) => `<tspan x="600" y="${titleTop + index * titleSize * 1.04}">${escape(line)}</tspan>`)
-    .join("")}</text>
-  <text text-anchor="middle" fill="#6e6e73" font-family="${sans}" font-size="30">${bodyLines
-    .map((line, index) => `<tspan x="600" y="${bodyTop + index * 42}">${escape(line)}</tspan>`)
-    .join("")}</text>
-  <rect x="540" y="560" width="120" height="6" rx="3" fill="#0071e3"/>
-</svg>`;
-}
+  <rect width="${W}" height="${H}" fill="#fbfbfd"/>
+  <rect width="${W}" height="${H}" fill="url(#w1)"/>
+  <rect width="${W}" height="${H}" fill="url(#w2)"/>
+  <rect width="${W}" height="${H}" fill="url(#w3)"/>`;
 
-export const renderOg = (card: Card) =>
-  sharp(Buffer.from(svg(card)))
+const textLines = (lines: string[], x: number, top: number, step: number, anchor: string) =>
+  lines.map((line, index) => `<tspan x="${x}" y="${top + index * step}">${escape(line)}</tspan>`).join("");
+
+async function roundedImage(file: string, width: number, height: number, radius: number) {
+  const mask = Buffer.from(
+    `<svg width="${width}" height="${height}"><rect width="${width}" height="${height}" rx="${radius}" fill="#fff"/></svg>`,
+  );
+  const resized = await sharp(`public${file}`)
+    .resize(width, height, { fit: "cover", position: "top" })
     .png()
     .toBuffer();
+  return sharp(resized)
+    .composite([{ input: mask, blend: "dest-in" }])
+    .png()
+    .toBuffer();
+}
+
+/** Split card: copy on the left, the screenshot bleeding off the right edge. */
+async function splitCard(card: Card) {
+  const meta = await sharp(`public${card.screenshot!}`).metadata();
+  const shotWidth = 700;
+  const shotHeight = Math.round((shotWidth * (meta.height ?? 1)) / (meta.width ?? 1));
+  const shotX = 590;
+  const shotY = 118;
+  const visibleWidth = W - shotX;
+  const visibleHeight = Math.min(shotHeight, H - shotY);
+  const hasIcon = Boolean(card.icons?.length);
+  const titleLines = wrap(card.title, 15).slice(0, 3);
+  const bodyLines = wrap(card.body, 30).slice(0, 3);
+  const eyebrowY = hasIcon ? 250 : 170;
+  const titleTop = eyebrowY + 76;
+  const bodyTop = titleTop + (titleLines.length - 1) * 64 + 64;
+  const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+  ${wash}
+  <rect x="${shotX + 20}" y="${shotY + 34}" width="${shotWidth - 40}" height="${shotHeight}" rx="18" fill="#141e3c" fill-opacity=".30" filter="url(#shadow)"/>
+  <text x="72" y="${eyebrowY}" fill="#6e6e73" font-family="${sans}" font-size="30" font-weight="600">${escape(card.eyebrow)}</text>
+  <text fill="#1d1d1f" font-family="${sans}" font-size="62" font-weight="700" letter-spacing="-1.6">${textLines(titleLines, 72, titleTop, 64, "start")}</text>
+  <text fill="#6e6e73" font-family="${sans}" font-size="26">${textLines(bodyLines, 72, bodyTop, 36, "start")}</text>
+  <text x="72" y="578" fill="#1d1d1f" font-family="${sans}" font-size="22" font-weight="600">titpea.com</text>
+  <rect x="72" y="592" width="64" height="5" rx="2.5" fill="#0071e3"/>
+</svg>`;
+  const shot = await roundedImage(card.screenshot!, shotWidth, shotHeight, 18);
+  const visible = await sharp(shot).extract({ left: 0, top: 0, width: visibleWidth, height: visibleHeight }).toBuffer();
+  const layers: sharp.OverlayOptions[] = [{ input: visible, left: shotX, top: shotY }];
+  if (hasIcon) layers.push({ input: await roundedImage(card.icons![0], 96, 96, 22), left: 72, top: 96 });
+  return sharp(Buffer.from(svg)).composite(layers).png().toBuffer();
+}
+
+/** Centered card: icons (if any), eyebrow, headline, and body over the wash. */
+async function centeredCard(card: Card) {
+  const icons = card.icons ?? [];
+  const iconSize = icons.length > 1 ? 76 : 96;
+  const iconGap = 16;
+  const titleLines = wrap(card.title, 26);
+  const bodyLines = wrap(card.body, 52).slice(0, 2);
+  const titleSize = titleLines.length > 1 ? 72 : 84;
+  const shift = icons.length ? 58 : 0;
+  const titleTop = 300 + shift - ((titleLines.length - 1) * titleSize * 1.04) / 2;
+  const bodyTop = titleTop + (titleLines.length - 1) * titleSize * 1.04 + 78;
+  const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+  ${wash}
+  ${
+    icons.length
+      ? ""
+      : `<rect x="470" y="48" width="260" height="52" rx="26" fill="#ffffff" fill-opacity=".72" stroke="#000000" stroke-opacity=".08"/>
+  <text x="600" y="82" text-anchor="middle" fill="#1d1d1f" font-family="${sans}" font-size="24" font-weight="600">titpea.com</text>`
+  }
+  <text x="600" y="${titleTop - 88}" text-anchor="middle" fill="#6e6e73" font-family="${sans}" font-size="30" font-weight="600">${escape(card.eyebrow)}</text>
+  <text text-anchor="middle" fill="#1d1d1f" font-family="${sans}" font-size="${titleSize}" font-weight="700" letter-spacing="-2">${textLines(titleLines, 600, titleTop, titleSize * 1.04, "middle")}</text>
+  <text text-anchor="middle" fill="#6e6e73" font-family="${sans}" font-size="30">${textLines(bodyLines, 600, bodyTop, 42, "middle")}</text>
+  ${icons.length ? `<text x="600" y="586" text-anchor="middle" fill="#1d1d1f" font-family="${sans}" font-size="22" font-weight="600">titpea.com</text>` : `<rect x="540" y="560" width="120" height="6" rx="3" fill="#0071e3"/>`}
+</svg>`;
+  const rowWidth = icons.length * iconSize + (icons.length - 1) * iconGap;
+  const layers = await Promise.all(
+    icons.map(async (icon, index) => ({
+      input: await roundedImage(icon, iconSize, iconSize, Math.round(iconSize * 0.23)),
+      left: Math.round(600 - rowWidth / 2 + index * (iconSize + iconGap)),
+      top: 52,
+    })),
+  );
+  return sharp(Buffer.from(svg)).composite(layers).png().toBuffer();
+}
+
+export const renderOg = (card: Card) => (card.screenshot ? splitCard(card) : centeredCard(card));
 
 const requested = new Set(process.argv.slice(2));
 const selected =
   requested.size > 0 ? cards.filter((card) => [...requested].some((name) => card.file.includes(name))) : cards;
 for (const card of selected) {
-  await fs.writeFile(new URL(`../public${card.file}`, import.meta.url), await renderOg(card));
+  const png = await sharp(await renderOg(card))
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+  await fs.writeFile(new URL(`../public${card.file}`, import.meta.url), png);
   console.log(`generated ${card.file}`);
 }

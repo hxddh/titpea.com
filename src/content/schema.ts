@@ -189,6 +189,12 @@ export type Showcase = Image & {
   kicker: string;
   title: string;
   body: string;
+  /**
+   * A short muted screen recording of the real app. The image above is its
+   * poster and the fallback; the recording plays only in view and never under
+   * reduced motion.
+   */
+  video?: { mp4: string; webm?: string };
   /** Sit under the section with this id instead of opening the page. */
   beside?: string;
 };

@@ -45,6 +45,17 @@ export default defineProduct({
       timeline: ["t0 · world opened", "t1 · pack activated", "t2 · branch offered"],
       footnotes: ["Entity → Action → Event → State", "ad-hoc · not notarized"],
     },
+    showcases: [
+      {
+        src: "/assets/world-machine-world.webp",
+        width: 1100,
+        height: 896,
+        alt: "World Machine on macOS showing the Ares Pocket Colony world at world time 110: world contents, the current thread, and the timeline",
+        kicker: "The macOS app",
+        title: "A world in motion.",
+        body: "Ares Pocket Colony at world time 110: contents, the current thread, the timeline.",
+      },
+    ],
     sections: [
       {
         kind: "cards",
@@ -129,6 +140,17 @@ export default defineProduct({
       timeline: ["t0 · 打开世界", "t1 · 激活 Pack", "t2 · 提供分支"],
       footnotes: ["Entity → Action → Event → State", "ad-hoc · 未公证"],
     },
+    showcases: [
+      {
+        src: "/assets/world-machine-world.webp",
+        width: 1100,
+        height: 896,
+        alt: "macOS 上的 World Machine，显示世界时间 110 的 Ares Pocket Colony：世界内容、当前线索和时间线",
+        kicker: "macOS 应用",
+        title: "运行中的世界",
+        body: "世界时间 110 的 Ares Pocket Colony：世界内容、当前线索和时间线。",
+      },
+    ],
     sections: [
       {
         kind: "cards",

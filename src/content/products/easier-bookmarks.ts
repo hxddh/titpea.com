@@ -33,7 +33,7 @@ export default defineProduct({
       label: "Easier Bookmarks",
       frame: "wide",
       image: {
-        src: "/assets/easier-bookmarks.png",
+        src: "/assets/easier-bookmarks.webp",
         alt: "Easier Bookmarks Chrome side panel showing a searchable bookmark tree",
         width: 1280,
         height: 800,
@@ -94,7 +94,7 @@ export default defineProduct({
       label: "Easier Bookmarks",
       frame: "wide",
       image: {
-        src: "/assets/easier-bookmarks.png",
+        src: "/assets/easier-bookmarks.webp",
         alt: "Easier Bookmarks Chrome 侧边栏，显示可搜索的书签树",
         width: 1280,
         height: 800,

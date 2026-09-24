@@ -28,6 +28,7 @@ Settled design decisions in DESIGN.md (for example the Omni home) are the owner'
 2. Import it in `src/content/products/index.ts` where it belongs in site order.
 3. If it ships GitHub releases, set `repo` and add an entry to `releases.json` (`npm run releases:sync` fills the tag), and write `{version}` in its meta line.
 4. `npm run assets:og <slug>` renders its share image.
+5. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` variants that `srcset` uses.
 
 A new hero object is the only case that needs a component: add a `kind` to `Visual` in `schema.ts` and a file in `components/product/visuals/`.
 

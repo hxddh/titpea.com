@@ -42,7 +42,7 @@ export function failureReasons(result) {
       result.browserVisual.hasPrivacyText &&
       result.browserVisual.imageCount > 0 &&
       result.browserVisual.images.every(
-        (image) => image.alt.length > 12 && image.naturalWidth >= 600 && image.naturalHeight >= 600,
+        (image) => image.alt.length > 12 && image.loaded && image.sourceWidth >= 600 && image.sourceHeight >= 600,
       )
     : true;
   const route = result.route;

@@ -199,6 +199,13 @@
   font-size: 12px;
 }
 
+.catalog-released {
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid var(--soft-line);
+  font-family: var(--sans);
+}
+
 .catalog-arrow {
   margin-left: auto;
   color: var(--link);
@@ -258,6 +265,75 @@
 
 .about-body p + p {
   margin-top: 0.85em;
+}
+
+.about-principles,
+.about-releases {
+  padding-top: var(--section-y);
+}
+
+.about-principles .feature-grid {
+  margin-top: 48px;
+}
+
+/* Release list: newest first, one hairline row per product. */
+.release-list {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.release-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.release-list a {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  color: var(--ink);
+}
+
+.release-list a:hover {
+  text-decoration: none;
+}
+
+.release-list a:hover strong {
+  color: var(--link);
+}
+
+.release-list img {
+  width: 36px;
+  height: 36px;
+}
+
+.release-dot {
+  justify-self: center;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--soft-line);
+}
+
+.release-list strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.release-version {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.release-date {
+  min-width: 8.5em;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
 }
 
 /* Privacy and 404 */
@@ -357,6 +433,20 @@
 
   .about-body {
     margin-top: 32px;
+  }
+
+  .release-list a {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .release-list img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .release-date {
+    display: none;
   }
 }
 

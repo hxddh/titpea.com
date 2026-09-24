@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import type { HomePageModel } from "../lib/pages";
+import { screenshotSizes, srcsetFor } from "../lib/images";
 
 interface Props {
   model: HomePageModel;
@@ -51,6 +52,8 @@ const { model } = Astro.props;
             <figure class="shot">
               <img
                 src={item.image.src}
+                srcset={srcsetFor(item.image.src, item.image.width)}
+                sizes={screenshotSizes}
                 alt={item.image.alt}
                 width={item.image.width}
                 height={item.image.height}
@@ -83,7 +86,12 @@ const { model } = Astro.props;
                     <strong class="home-catalog-name">{item.name}</strong>
                     <p class="home-catalog-text">{item.text}</p>
                     <span class="catalog-card-foot">
-                      {item.version && <span class="catalog-version">{item.version}</span>}
+                      {item.version && (
+                        <span class="catalog-version">
+                          {item.version}
+                          {item.released && <span class="catalog-released">{item.released}</span>}
+                        </span>
+                      )}
                       <span class="catalog-arrow" aria-hidden="true">
                         →
                       </span>

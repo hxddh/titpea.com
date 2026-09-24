@@ -33,14 +33,14 @@ export default defineProduct({
       label: "World Clock",
       images: [
         {
-          src: "/assets/world-clock-light.png",
+          src: "/assets/world-clock-light.webp",
           alt: "World Clock light theme timezone feed screenshot",
           width: 716,
           height: 776,
           className: "clock-shot light",
         },
         {
-          src: "/assets/world-clock-dark.png",
+          src: "/assets/world-clock-dark.webp",
           alt: "World Clock dark theme timezone feed screenshot",
           width: 702,
           height: 778,
@@ -85,14 +85,14 @@ export default defineProduct({
       label: "世界时钟",
       images: [
         {
-          src: "/assets/world-clock-light.png",
+          src: "/assets/world-clock-light.webp",
           alt: "世界时钟浅色主题时区列表截图",
           width: 716,
           height: 776,
           className: "clock-shot light",
         },
         {
-          src: "/assets/world-clock-dark.png",
+          src: "/assets/world-clock-dark.webp",
           alt: "世界时钟深色主题时区列表截图",
           width: 702,
           height: 778,

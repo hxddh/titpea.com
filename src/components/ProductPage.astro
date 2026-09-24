@@ -28,6 +28,12 @@ const besideSection = (id: string) => showcases.find((figure) => figure.beside =
 const hasFaq = copy.sections.some((section) => section.kind === "faq");
 // Every page closes on its main action; finalCta only renames the button.
 const closing = copy.finalCta ?? copy.primaryCta.label;
+// The version in the meta line carries its release date: "v1.17.3 (Sep 4, 2026)".
+const metaParts = copy.meta
+  .split(" · ")
+  .map((part) =>
+    part === model.version && model.released ? part + copyUi.released.replace("{date}", model.released) : part,
+  );
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language} localNav>
@@ -53,7 +59,7 @@ const closing = copy.finalCta ?? copy.primaryCta.label;
         </a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
-      <p class="meta-line">{copy.meta.split(" · ").map((part) => <span>{part}</span>)}</p>
+      <p class="meta-line">{metaParts.map((part) => <span>{part}</span>)}</p>
     </div>
     <div class="shell hero-visual-frame">
       <Visual visual={copy.visual} />
@@ -62,7 +68,11 @@ const closing = copy.finalCta ?? copy.primaryCta.label;
 
   {copy.stats && <StatsBand stats={copy.stats} />}
 
-  {opening.map((showcase) => <ShowcaseSection showcase={showcase} />)}
+  {
+    opening.map((showcase) => (
+      <ShowcaseSection showcase={showcase} pauseLabel={copyUi.pauseVideo} playLabel={copyUi.playVideo} />
+    ))
+  }
 
   {
     copy.sections.map((section) => {
@@ -106,3 +116,4 @@ const closing = copy.finalCta ?? copy.primaryCta.label;
 </SiteLayout>
 
 <script is:inline src="/scripts/zoom.js" defer></script>
+<script is:inline src="/scripts/video.js" defer></script>

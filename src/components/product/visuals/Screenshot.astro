@@ -1,5 +1,6 @@
 ---
 import type { Visual } from "../../../content/schema";
+import { screenshotSizes, srcsetFor } from "../../../lib/images";
 
 interface Props {
   visual: Extract<Visual, { kind: "screenshot" }>;
@@ -9,5 +10,13 @@ const { image } = Astro.props.visual;
 ---
 
 <figure class="product-scene product-screenshot-visual">
-  <img src={image.src} alt={image.alt} width={image.width} height={image.height} fetchpriority="high" />
+  <img
+    src={image.src}
+    srcset={srcsetFor(image.src, image.width)}
+    sizes={screenshotSizes}
+    alt={image.alt}
+    width={image.width}
+    height={image.height}
+    fetchpriority="high"
+  />
 </figure>

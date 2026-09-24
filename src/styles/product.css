@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.35em 0;
-  max-width: 80ch;
+  max-width: 96ch;
   margin: 18px auto 0;
   color: var(--muted);
   font-family: var(--mono);
@@ -50,11 +50,11 @@
   letter-spacing: 0;
 }
 
-.meta-line span {
+.meta-line > span {
   white-space: nowrap;
 }
 
-.meta-line span + span::before {
+.meta-line > span + span::before {
   content: "·";
   margin: 0 0.7em;
   color: var(--faint);
@@ -591,7 +591,7 @@
 
   /* Short feature cards pair up on phones, as Omni does; numbered flows and
      panels keep one column so their longer bodies stay readable. */
-  .feature-grid:not(.product-flow, .s3-purpose-grid, .agent-evidence-grid, [data-count="1"]) {
+  .feature-grid:not(.product-flow, .s3-purpose-grid, .agent-evidence-grid, [data-count="1"], [data-count="3"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -637,4 +637,37 @@
   .faq-item summary::after {
     transition: none;
   }
+}
+
+/* Showcase recording (public/scripts/video.js). */
+.show-video {
+  position: relative;
+}
+
+.show-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow-glass);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.video-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
 }

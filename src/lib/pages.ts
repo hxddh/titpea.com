@@ -7,9 +7,19 @@ import { lines, locales, type Line, type Locale, type Product, type ProductCopy 
 
 export type CurrentPage = "home" | "about" | (string & {});
 
-const releaseTags = releases as Record<string, { repo: string; version: string }>;
+const releaseTags = releases as Record<string, { repo: string; version: string; published?: string }>;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** The latest release's publish date, written out for the locale ("Sep 4, 2026" / "2026年9月4日"). */
+export function releasedOf(slug: string, locale: Locale): string | undefined {
+  const match = releaseTags[slug]?.published?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return undefined;
+  const [, year, month, day] = match.map(Number);
+  return locale === "zh" ? `${year}年${month}月${day}日` : `${months[month - 1]} ${day}, ${year}`;
+}
 
 export function pathFor(locale: Locale, slug?: string) {
   const prefix = locale === "zh" ? "/zh" : "";
@@ -123,6 +133,8 @@ export type ProductPageModel = {
   copy: ProductCopy;
   icon?: string;
   version?: string;
+  /** Publish date of that release, already formatted for the locale. */
+  released?: string;
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -188,6 +200,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     copy,
     icon: product.icon,
     version,
+    released: releasedOf(product.slug, locale),
     downloadsRelease: Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
@@ -207,6 +220,7 @@ export type CatalogItem = {
   text: string;
   icon?: string;
   version?: string;
+  released?: string;
 };
 
 export type HomePageModel = {
@@ -244,6 +258,7 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   text: product[locale].catalog.text,
   icon: product.icon,
   version: versionOf(product.slug),
+  released: releasedOf(product.slug, locale),
 });
 
 export function homePage(locale: Locale): HomePageModel {
@@ -327,6 +342,12 @@ export type AboutPageModel = {
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
   };
   body: string[];
+  principles: { title: string; items: Array<{ title: string; body: string }> };
+  releases: {
+    title: string;
+    sub: string;
+    items: Array<{ name: string; href: string; icon?: string; version: string; released?: string }>;
+  };
   expectedText: string[];
 };
 
@@ -376,7 +397,23 @@ export function aboutPage(locale: Locale): AboutPageModel {
       ],
     },
     body,
-    expectedText: [copy.aboutHeadline, copy.aboutLead, ...body],
+    principles: { title: copy.aboutPrinciplesTitle, items: copy.aboutPrinciples },
+    releases: {
+      title: copy.aboutReleasesTitle,
+      sub: copy.aboutReleasesSub,
+      // Newest release first; the list rebuilds itself from releases.json.
+      items: products
+        .filter((product) => versionOf(product.slug))
+        .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
+        .map((product) => ({
+          name: product[locale].title,
+          href: pathFor(locale, product.slug),
+          icon: product.icon,
+          version: versionOf(product.slug)!,
+          released: releasedOf(product.slug, locale),
+        })),
+    },
+    expectedText: [copy.aboutHeadline, copy.aboutLead, ...body, copy.aboutReleasesTitle],
   };
 }
 

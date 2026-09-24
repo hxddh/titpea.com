@@ -23,10 +23,10 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Section.** A centered section head (optional kicker, `h2` at `--title-section`, optional `.sub`), then one object: a feature grid, a showcase photograph, a numbered flow, a panel, or the FAQ.
 - **Feature cards.** `--paper-raised` fill, `--radius-card`, no border, no shadow. The grid picks its columns from the item count: 1 is a narrow single column, 2 and 4 are two columns, anything else is three. A `primary` card spans the row. Numbered flows use an accent step badge. On phones plain feature cards pair up in two columns, as Omni does; numbered flows and panels stay one column.
 - **Stats band.** A short sentence heading and 2–4 large figures, each with a few words of label. Only figures traceable to the product's README, docs, or tests; never derived or rounded into a bigger claim. Omit the band when the hero object already shows the numbers (s3-turbo-list's chart).
-- **Showcase.** A compact head (kicker, `--title-show` heading, sub) above a full-width photograph.
+- **Showcase.** A compact head (kicker, `--title-show` heading, sub) above a full-width photograph. A showcase may carry a short muted recording (`video`) with the photograph as its poster; it plays only in view, never under reduced motion, and has a Pause / Play button. Screenshots and recordings come from the real app with real output: never a scripted model, staged answer text, or a mock presented as a capture.
 - **Commands.** `Get started` / `开始使用`: the install and first-run commands, each with a Copy button, sitting just before the FAQ. Only commands that appear verbatim in the product's README; a desktop app whose install is a download gets no command block.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
-- **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). Tags come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when a tag changed; nobody edits a version by hand.
+- **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). The hero meta line ends with the release date (`Released Sep 4, 2026` / `2026年9月4日发布`), and catalog cards show tag and date. Tags and publish dates come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when one changed; nobody edits a version or date by hand. Dates are absolute, never "3 days ago", because the site does not rebuild every day.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Footer.** Copyright on the left, GitHub and email on the right.
 
@@ -37,6 +37,16 @@ Every page uses the same few parts. Build new content from them before inventing
 - The hero opens on the row of app icons, each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link.
 - `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. Products with an app icon show it in the card's top right. A product belongs to one line, and the header dropdowns use the same four lines.
+
+## About
+
+- The hero is the name, one sentence of practice, a short note, and GitHub / Email.
+- `How the tools work.` shows three habits as feature cards. Each card only restates facts already on product pages.
+- `Latest releases.` lists every product with a GitHub release, newest first, with icon, tag, and date, built from `releases.json`.
+
+## Share Images
+
+- `npm run assets:og` renders every 1200×630 card from the page copy. A product with a screenshot gets the split card (icon, name, headline, catalog line on the left, the screenshot bleeding off the right edge); other products get the centered card with their icon; Home shows the icon row.
 
 ## Product Pages
 
@@ -104,6 +114,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - Every image has an `alt`; decorative images use `alt=""`.
 - Performance
   - Every `<img>` declares intrinsic `width` and `height`. Heroes use `fetchpriority="high"`; later photographs lazy-load.
+  - Screenshots are WebP. Any screenshot 1400px or wider gets a `-900w.webp` sibling (`npm run assets:images`), offered through `srcset`, so phones fetch the small one. Zoom always opens the original.
   - CSS stays in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Responsive
   - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (16px gutter; feature cards two columns, everything else one).
@@ -117,6 +128,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
   - `visual:check`: four screens, compared loosely.
+  - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
   1. First read: from the first viewport alone, does the reader know what the product changes?
   2. Language: did simplification keep every qualifier?

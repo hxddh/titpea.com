@@ -1,38 +1,47 @@
 {
   "s3-turbo-list": {
     "repo": "hxddh/s3-turbo-list",
-    "version": "v0.31.0"
+    "version": "v0.31.0",
+    "published": "2026-08-14"
   },
   "storage-agent-workbench": {
     "repo": "hxddh/storage-agent-workbench",
-    "version": "v1.17.3"
+    "version": "v1.17.3",
+    "published": "2026-09-04"
   },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
-    "version": "v1.2.1"
+    "version": "v1.2.1",
+    "published": "2026-08-04"
   },
   "celagent": {
     "repo": "hxddh/celagent",
-    "version": "v0.4.3"
+    "version": "v0.4.3",
+    "published": "2026-08-26"
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v12.0.0"
+    "version": "v12.0.0",
+    "published": "2026-09-05"
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v11.0.3"
+    "version": "v11.0.3",
+    "published": "2026-08-30"
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
-    "version": "v0.23.0"
+    "version": "v0.23.0",
+    "published": "2026-08-03"
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v1.63.0"
+    "version": "v1.63.0",
+    "published": "2026-09-05"
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v7.3.0"
+    "version": "v7.3.0",
+    "published": "2026-09-22"
   }
 }
