@@ -4,6 +4,8 @@
 // schedule. If GitHub cannot be reached, the committed tags stay and the
 // build continues; `--strict` turns that into a failure.
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
+import * as prettier from "prettier";
 import { highlightsFrom, summaryFrom } from "./release-notes.mjs";
 
 const file = new URL("../src/content/releases.json", import.meta.url);
@@ -49,7 +51,12 @@ for (const [slug, entry] of Object.entries(releases)) {
   }
 }
 
-if (changes.length > 0) fs.writeFileSync(file, `${JSON.stringify(releases, null, 2)}\n`);
+// Written through Prettier so a synced file passes format:check as committed.
+if (changes.length > 0) {
+  const path = fileURLToPath(file);
+  const options = (await prettier.resolveConfig(path)) ?? {};
+  fs.writeFileSync(file, await prettier.format(JSON.stringify(releases), { ...options, filepath: path }));
+}
 
 console.log(changes.length > 0 ? `Release tags updated:\n- ${changes.join("\n- ")}` : "Release tags are current.");
 if (problems.length > 0) {
