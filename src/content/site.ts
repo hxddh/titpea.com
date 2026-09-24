@@ -8,10 +8,13 @@ export const site = {
   github: "https://github.com/hxddh",
   og: { home: "/assets/og-home.png", about: "/assets/og-about.png" },
   /**
-   * Cloudflare Web Analytics site token (public; it ships in every page).
-   * When set, every page loads Cloudflare's cookieless beacon as an external
-   * script and About discloses it. Empty means no analytics at all.
+   * Cloudflare Web Analytics. The zone's "automatic setup" site injects the
+   * cookieless beacon at the edge, so pages carry no token of their own
+   * (adding one as well would count every view twice). Either one being on
+   * makes About disclose it.
    */
+  analyticsAutoInjected: true,
+  /** Site token for the JS-snippet method, only if automatic setup is off. */
   analyticsToken: "",
 } as const;
 

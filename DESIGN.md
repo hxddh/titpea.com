@@ -68,7 +68,9 @@ The page answers, in order: what Titpea is, what it holds, how the tools behave,
 
 ## Analytics
 
-- Off unless the owner turns on Cloudflare Web Analytics in the Pages dashboard, which injects its cookieless beacon; the CSP allows only that script and its endpoint. `site.analytics` must be set to true at the same time, which shows the one-line disclosure on About.
+- Cloudflare Web Analytics, cookieless. The zone's "automatic setup" site injects the beacon at the edge (`site.analyticsAutoInjected`), so pages carry no token; the CSP allows only that script (`static.cloudflareinsights.com`) and its endpoint (`cloudflareinsights.com`). Before the CSP allowed them, the injected beacon was blocked and the dashboard read 0.
+- `site.analyticsToken` is only for the JS-snippet method with automatic setup turned off; never both, or every view counts twice.
+- Whenever either is on, About shows the one-line disclosure.
 
 ## Share Images
 

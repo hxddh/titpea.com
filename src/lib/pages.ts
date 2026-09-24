@@ -410,7 +410,7 @@ export type AboutPageModel = {
   contact: {
     title: string;
     sub: string;
-    /** Shown only while site.analytics is on. */
+    /** Shown only while Web Analytics is on (edge-injected or by token). */
     analytics?: string;
     label: string;
     actions: Array<{ label: string; href: string; style: "primary" | "ghost" }>;
@@ -521,7 +521,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
     contact: {
       title: copy.aboutContactTitle,
       sub: copy.aboutContactSub,
-      analytics: site.analyticsToken ? copy.aboutAnalytics : undefined,
+      analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
       label: copy.contactLabel,
       actions: [
         { label: "GitHub", href: site.github, style: "primary" },
