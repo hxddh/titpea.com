@@ -1,0 +1,34 @@
+---
+// Quoted from the release's own notes by scripts/sync-releases.mjs; code
+// spans in the notes (`SlowDown`) render as code.
+import type { ProductPageModel } from "../../lib/pages";
+
+interface Props {
+  notes: NonNullable<ProductPageModel["whatsNew"]>;
+}
+
+const { notes } = Astro.props;
+const parts = (text: string) => text.split(/`([^`]+)`/).map((part, index) => ({ code: index % 2 === 1, part }));
+---
+
+<section id="whats-new" class="product-section whats-new">
+  <div class="shell narrow">
+    <header class="section-head">
+      {notes.released && <p class="section-kicker">{notes.released}</p>}
+      <h2>{notes.title}</h2>
+      {notes.summary && <p class="sub">{notes.summary}</p>}
+    </header>
+    {
+      notes.items.length > 0 && (
+        <ul class="whats-new-list">
+          {notes.items.map((item) => (
+            <li>{parts(item).map(({ code, part }) => (code ? <code>{part}</code> : part))}</li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="whats-new-link">
+      <a class="button ghost" href={notes.url} rel="noreferrer">{notes.linkLabel}</a>
+    </p>
+  </div>
+</section>

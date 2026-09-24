@@ -50,6 +50,9 @@
   /* Per-card stagger for scroll reveal; public/scripts/reveal.js sets it inline. */
   --reveal-delay: 0ms;
   --shadow-icon-small: 0 6px 12px rgba(0, 0, 0, 0.16);
+  /* Hairline around app icons, so dark tiles keep their edge on a black canvas. */
+  --icon-ring: 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --icon-radius: 22.5%;
   --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   /* Semantic data colors: reference (baseline) and caution (outlier). */
@@ -57,6 +60,7 @@
   --data-ref-ink: #126547;
   --data-caution: #c27a17;
   --data-caution-ink: #985b0a;
+  --data-alert: #b42318;
 
   /* Type */
   --sans:
@@ -116,11 +120,13 @@
   --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
   --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
   --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
+  --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
   --zoom-backdrop: rgba(0, 0, 0, 0.82);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
   --data-caution-ink: #edb472;
+  --data-alert: #ff7b72;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -149,10 +155,12 @@
     --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
+    --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
     --zoom-backdrop: rgba(0, 0, 0, 0.82);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
+    --data-alert: #ff7b72;
   }
 }

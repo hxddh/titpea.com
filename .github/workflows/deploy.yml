@@ -91,6 +91,7 @@ jobs:
           done
           if [ "$ready" != true ]; then cat /tmp/titpea-preview.log; exit 1; fi
           npm run qa:pages
+          npm run a11y:check
           npm run visual:check
       # Keep the rendered screenshots only when QA fails.
       - uses: actions/upload-artifact@v4

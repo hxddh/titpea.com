@@ -391,7 +391,7 @@
 }
 
 .pulse-menubar-header strong {
-  color: #b42318;
+  color: var(--data-alert);
   font-size: 15px;
   line-height: 1.3;
 }
@@ -409,7 +409,7 @@
   border-bottom: 1px solid var(--soft-line);
 }
 
-.pulse-menubar-section h3 {
+.pulse-menubar-title {
   margin: 0;
   color: var(--label);
   font-family: var(--mono);
@@ -469,8 +469,8 @@
 }
 
 .pulse-lamp-waiting {
-  color: #b42318;
-  background: #b42318;
+  color: var(--data-alert);
+  background: var(--data-alert);
 }
 
 .pulse-menubar-foot {

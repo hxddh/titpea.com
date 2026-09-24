@@ -28,6 +28,10 @@ type Ui = {
   /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
   released: string;
   pauseVideo: string;
+  /** `{version}` is the latest release tag. */
+  whatsNew: string;
+  commandOutput: string;
+  releaseNotes: string;
   playVideo: string;
   home: string;
   about: string;
@@ -56,6 +60,7 @@ type Ui = {
   aboutPrinciples: Array<{ title: string; body: string }>;
   aboutReleasesTitle: string;
   aboutReleasesSub: string;
+  aboutFeed: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -74,6 +79,9 @@ export const ui: Record<Locale, Ui> = {
     copied: "Copied",
     released: " ({date})",
     pauseVideo: "Pause",
+    whatsNew: "What’s new in {version}.",
+    commandOutput: "Show real output",
+    releaseNotes: "Release notes",
     playVideo: "Play",
     home: "Home",
     about: "About",
@@ -121,6 +129,7 @@ export const ui: Record<Locale, Ui> = {
     ],
     aboutReleasesTitle: "Latest releases.",
     aboutReleasesSub: "Tags and dates come from GitHub on every build.",
+    aboutFeed: "Follow releases (Atom)",
   },
   zh: {
     primaryLabel: "主导航",
@@ -137,6 +146,9 @@ export const ui: Record<Locale, Ui> = {
     copied: "已复制",
     released: "（{date}）",
     pauseVideo: "暂停",
+    whatsNew: "{version} 更新了什么",
+    commandOutput: "查看实际输出",
+    releaseNotes: "发布说明",
     playVideo: "播放",
     home: "首页",
     about: "关于",
@@ -181,5 +193,6 @@ export const ui: Record<Locale, Ui> = {
     ],
     aboutReleasesTitle: "最近的发布",
     aboutReleasesSub: "版本号和日期在每次构建时从 GitHub 读取。",
+    aboutFeed: "订阅发布（Atom）",
   },
 };

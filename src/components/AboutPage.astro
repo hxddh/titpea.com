@@ -77,6 +77,9 @@ const { model } = Astro.props;
           ))
         }
       </ol>
+      <p class="release-feed">
+        <a class="button ghost" href={model.releases.feed.href}>{model.releases.feed.label}</a>
+      </p>
     </div>
   </section>
 </SiteLayout>

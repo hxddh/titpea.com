@@ -425,3 +425,16 @@ p {
     max-height: none;
   }
 }
+
+/* Every rendered app icon: one radius and one ring, so a dark tile never
+   dissolves into the dark canvas. */
+.app-icon,
+.home-icons img,
+.catalog-icon,
+.final-cta-icon,
+.release-list img,
+.notfound-products img,
+.product-section-index-name img {
+  border-radius: var(--icon-radius);
+  box-shadow: var(--icon-ring);
+}

@@ -93,7 +93,6 @@
 }
 
 .button-version {
-  opacity: 0.72;
   font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
@@ -670,4 +669,70 @@
   content: "";
   position: absolute;
   inset: -6px;
+}
+
+/* What's new: quoted release highlights on hairlines, like the FAQ. */
+.whats-new-list {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.whats-new-list li {
+  position: relative;
+  padding: 16px 0 16px 22px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-list-body);
+  line-height: 1.5;
+}
+
+.whats-new-list li::before {
+  content: "";
+  position: absolute;
+  top: 1.45em;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.whats-new-list code {
+  padding: 1px 5px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 0.88em;
+}
+
+.whats-new-link {
+  margin: 24px 0 0;
+  text-align: center;
+}
+
+/* Real output under a command, collapsed until asked for. */
+.command-output {
+  margin-top: 10px;
+}
+
+.command-output summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--link);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.command-output pre {
+  margin: 4px 0 0;
+  padding: 16px 20px;
+  overflow-x: auto;
+  border-radius: 16px;
+  color: var(--ink);
+  background: var(--code-bg);
+  box-shadow: inset 0 0 0 1px var(--line);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
 }
