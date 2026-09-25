@@ -97,6 +97,9 @@ export function languageLink(locale: Locale, alternatePath: string): PageLanguag
 export type NavItem = { label: string; href: string; current?: CurrentPage; external?: boolean };
 export type NavGroup = { label: string; line?: Line; items: NavItem[] };
 
+/** Copy without its `code` markers, for structured data and meta text. */
+export const plainText = (text: string) => text.replaceAll("`", "");
+
 const navLabel = (product: Product, locale: Locale) => product[locale].navLabel ?? product[locale].title;
 
 /** Home and About, then each product line with all of its products, then GitHub. */
@@ -154,6 +157,8 @@ export type ProductPageModel = {
   frame: "wide" | "narrow";
   sectionIndex: boolean;
   navItems: Array<{ id: string; label: string }>;
+  /** Before the closing band: where to go next. */
+  related: { title: string; items: CatalogItem[]; all: { label: string; href: string } };
   primaryCta: string;
   expectedText: string[];
 };
@@ -175,7 +180,7 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     mainEntity: faq.items.map((item) => ({
       "@type": "Question",
       name: item.title,
-      acceptedAnswer: { "@type": "Answer", text: item.body },
+      acceptedAnswer: { "@type": "Answer", text: plainText(item.body) },
     })),
   };
   return { "@context": "https://schema.org", "@graph": faqPage ? [app, faqPage] : [app] };
@@ -220,10 +225,13 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
     navItems,
+    related: relatedFor(product, locale),
     primaryCta: copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
   };
 }
+
+const hasChinese = (text: string) => /[\u4e00-\u9fff]/.test(text);
 
 function whatsNewFor(slug: string, locale: Locale, version?: string, override?: ReleaseHighlights) {
   const copy = ui[locale];
@@ -243,7 +251,7 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
   if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
   // Notes are quoted in their own language; say so when it is not the page's.
   const quoted = [notes.summary, ...notes.items].join(" ");
-  const notesAreChinese = /[\u4e00-\u9fff]/.test(quoted);
+  const notesAreChinese = hasChinese(quoted);
   const languageNote =
     locale === "zh" && !notesAreChinese
       ? copy.notesInEnglish
@@ -270,6 +278,8 @@ export type CatalogItem = {
   icon: string;
   version?: string;
   released?: string;
+  /** Shown instead of the tag when the product has no GitHub releases. */
+  badge?: string;
 };
 
 export type HomePageModel = {
@@ -291,7 +301,13 @@ export type HomePageModel = {
   featured: {
     title: string;
     learnMore: string;
-    items: Array<CatalogItem & { image: { src: string; alt: string; width: number; height: number } }>;
+    items: Array<
+      CatalogItem & {
+        image: { src: string; alt: string; width: number; height: number };
+        /** Phone crop of the same capture. */
+        detail?: { src: string; width: number; height: number };
+      }
+    >;
   };
   more: { title: string; groups: Array<{ label: string; line: Line; items: CatalogItem[] }> };
   primaryCta: string;
@@ -308,7 +324,31 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   icon: product.icon,
   version: versionOf(product.slug),
   released: releasedOf(product.slug, locale),
+  badge: versionOf(product.slug) ? undefined : (product[locale].catalog.badge ?? product[locale].meta.split(" · ")[0]),
 });
+
+/**
+ * Up to three other products to read next: the rest of this product's line
+ * in site order after it, then the other lines, so the list never runs dry.
+ */
+function relatedFor(product: Product, locale: Locale) {
+  const copy = ui[locale];
+  const index = products.indexOf(product);
+  const after = [...products.slice(index + 1), ...products.slice(0, index)];
+  const items = [
+    ...after.filter((other) => other.line === product.line),
+    ...after.filter((other) => other.line !== product.line),
+  ].slice(0, 3);
+  const sameLine = items.every((other) => other.line === product.line);
+  // "更多 Agent 工具": Latin words inside Chinese take spaces.
+  const line = copy.groups[product.line];
+  const lineLabel = locale === "zh" && /[A-Za-z]/.test(line) ? ` ${line} ` : line;
+  return {
+    title: sameLine ? copy.relatedInLine.replace("{line}", lineLabel) : copy.moreToolsTitle,
+    items: items.map((other) => catalogItem(other, locale)),
+    all: { label: copy.browseAllTools, href: `${pathFor(locale)}#more-title` },
+  };
+}
 
 export function homePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
@@ -355,8 +395,16 @@ export function homePage(locale: Locale): HomePageModel {
       title: copy.featuredTitle,
       learnMore: copy.learnMore,
       items: featured.map((product) => {
-        const image = product.featured!.image;
-        return { ...catalogItem(product, locale), image: { ...image, alt: image.alt[locale] } };
+        const { image, detail } = product.featured!;
+        return {
+          ...catalogItem(product, locale),
+          image: { ...image, alt: image.alt[locale] },
+          detail: detail && {
+            src: image.src.replace(/\.(webp|png|jpg)$/, "-detail.webp"),
+            width: detail.width,
+            height: detail.height,
+          },
+        };
       }),
     },
     more: {
@@ -511,9 +559,12 @@ export function aboutPage(locale: Locale): AboutPageModel {
             icon: product.icon,
             version: versionOf(product.slug)!,
             released: releasedOf(product.slug, locale),
-            highlight: current
-              ? (current.items[0] ?? current.summary)
-              : (notes?.items[0] ?? (notes?.summary || undefined)),
+            // One line in the page's language: an English page skips
+            // highlights written in Chinese (Chinese pages keep English ones,
+            // as What's new does, since most notes are English).
+            highlight: (current ? [...current.items, current.summary] : [...(notes?.items ?? []), notes?.summary]).find(
+              (line) => line && (locale === "zh" || !hasChinese(line)),
+            ),
           };
         }),
     },

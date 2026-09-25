@@ -1,0 +1,31 @@
+---
+import type { CatalogItem } from "../lib/pages";
+
+interface Props {
+  item: CatalogItem;
+}
+
+const { item } = Astro.props;
+---
+
+<a class="catalog-card" href={item.href}>
+  <span class="catalog-card-top">
+    <span class="home-catalog-role">{item.role}</span>
+    <img class="catalog-icon" src={item.icon} alt="" width="44" height="44" />
+  </span>
+  <strong class="home-catalog-name">{item.name}</strong>
+  <p class="home-catalog-text">{item.text}</p>
+  <span class="catalog-card-foot">
+    {
+      item.version ? (
+        <span class="catalog-version">
+          {item.version}
+          {item.released && <span class="catalog-released">{item.released}</span>}
+        </span>
+      ) : (
+        item.badge && <span class="catalog-badge">{item.badge}</span>
+      )
+    }
+    <span class="catalog-arrow" aria-hidden="true">→</span>
+  </span>
+</a>

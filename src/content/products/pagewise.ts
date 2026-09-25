@@ -13,6 +13,8 @@ export default defineProduct({
         zh: "PageWise 在 PDF 原页旁分析财务表格",
       },
     },
+    // The question and the start of the cited answer.
+    detail: { x: 1080, y: 100, width: 720, height: 576 },
   },
   repo: "hxddh/pagewise",
   icon: "/assets/icons/pagewise.webp",

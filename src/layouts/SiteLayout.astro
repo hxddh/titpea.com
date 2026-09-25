@@ -2,6 +2,7 @@
 import SiteHeader from "../components/SiteHeader.astro";
 import { site, ui } from "../content/site";
 import type { Locale } from "../content/schema";
+import { navGroups } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
 
@@ -20,6 +21,23 @@ const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();
+// The footer maps the whole site: every product line, then Titpea itself.
+const [main, ...rest] = navGroups(locale);
+const footerGroups: Array<{
+  label: string;
+  items: Array<{ label: string; href: string; external?: boolean; hreflang?: string }>;
+}> = [
+  ...rest.filter((group) => group.line),
+  {
+    label: site.brand,
+    items: [
+      ...main.items,
+      { label: copy.footerFeed, href: "/releases.xml" },
+      { label: "GitHub", href: site.github, external: true },
+      { label: language.label, href: language.href, hreflang: language.hreflang },
+    ],
+  },
+];
 ---
 
 <!doctype html>
@@ -77,12 +95,29 @@ const year = new Date().getFullYear();
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="shell foot">
-        <span>© {year} {site.brand}</span>
-        <nav aria-label={copy.footerLabel}>
-          <a href={site.github} rel="noreferrer">GitHub</a>
+      <nav class="shell foot-map" aria-label={copy.footerLabel}>
+        {
+          footerGroups.map((group) => (
+            <div class="foot-group">
+              <p class="foot-group-label">{group.label}</p>
+              <ul>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href} rel={item.external ? "noreferrer" : undefined} hreflang={item.hreflang}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </nav>
+      <div class="shell">
+        <div class="foot">
+          <span>© {year} {site.brand}</span>
           <a href={`mailto:${site.email}`}>{site.email}</a>
-        </nav>
+        </div>
       </div>
     </footer>
     <script is:inline src="/scripts/reveal.js" defer></script>

@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import type { PathsSection } from "../../content/schema";
 
 interface Props {
@@ -13,7 +14,7 @@ const { section } = Astro.props;
     <header class="section-head">
       <p class="section-kicker">{section.kicker}</p>
       <h2>{section.title}</h2>
-      <p class="sub">{section.body}</p>
+      <p class="sub"><Prose text={section.body} /></p>
     </header>
     <div class="s3-result-paths">
       {

@@ -20,6 +20,7 @@ export default defineProduct({
     catalog: {
       role: "Pre-alpha",
       text: "Open a world and try another branch. macOS, pre-alpha.",
+      badge: "macOS · Apache-2.0",
     },
     primaryCta: {
       label: "View on GitHub",
@@ -115,6 +116,7 @@ export default defineProduct({
     catalog: {
       role: "Pre-alpha",
       text: "打开一个世界，试另一条分支。macOS，pre-alpha。",
+      badge: "macOS · Apache-2.0",
     },
     primaryCta: {
       label: "查看 GitHub",
