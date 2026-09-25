@@ -1,7 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { ui } from "../content/site";
-import CatalogCard from "./CatalogCard.astro";
 import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
 import CasesSection from "./product/CasesSection.astro";
@@ -10,10 +9,8 @@ import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
 import PanelSection from "./product/PanelSection.astro";
-import PathsSection from "./product/PathsSection.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
 import StatsBand from "./product/StatsBand.astro";
-import StorySection from "./product/StorySection.astro";
 import Visual from "./product/Visual.astro";
 import WhatsNewSection from "./product/WhatsNewSection.astro";
 
@@ -100,10 +97,8 @@ const metaParts = copy.meta
             <FaqSection section={section} />
           </>
         );
-      if (section.kind === "story") return <StorySection section={section} />;
       if (section.kind === "cases") return <CasesSection section={section} />;
       if (section.kind === "flow") return <FlowSection section={section} />;
-      if (section.kind === "paths") return <PathsSection section={section} />;
       return <PanelSection section={section} />;
     })
   }
@@ -133,25 +128,22 @@ const metaParts = copy.meta
     </div>
   </section>
 
-  <section class="product-related" aria-labelledby="related-title">
-    <div class="shell">
-      <header class="section-head compact">
-        <h2 id="related-title">{model.related.title}</h2>
-      </header>
-      <ul class="home-catalog-list">
-        {
-          model.related.items.map((item) => (
-            <li>
-              <CatalogCard item={item} />
-            </li>
-          ))
-        }
-      </ul>
-      <p class="product-related-all">
-        <a class="button ghost" href={model.related.all.href}>{model.related.all.label}</a>
-      </p>
-    </div>
-  </section>
+  <nav class="shell product-related" aria-labelledby="related-title">
+    <h2 id="related-title" class="product-related-title">{model.related.title}</h2>
+    <ul class="product-related-list">
+      {
+        model.related.items.map((item) => (
+          <li>
+            <a href={item.href}>
+              <img src={item.icon} alt="" width="40" height="40" />
+              <span>{item.name}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="button ghost" href={model.related.all.href}>{model.related.all.label}</a>
+  </nav>
 </SiteLayout>
 
 <script is:inline src="/scripts/zoom.js" defer></script>

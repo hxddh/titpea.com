@@ -99,18 +99,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "cards",
-        id: "workflow",
-        nav: "How it works",
-        label: "From sources to a commit.",
-        items: [
-          { title: "Collect public sources", body: "Official pages, releases, feeds, packages, papers." },
-          { title: "Screen, then draft", body: "Relevance and dedup first; models edit designated files only." },
-          { title: "Check, then commit", body: "Citations, quota, language coverage, freshness." },
-        ],
-        numbered: true,
-      },
-      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -219,18 +207,6 @@ export default defineProduct({
           { label: "现场笔记", body: "真实工作流和可复用模式。" },
           { label: "存储影响", body: "工作区、沙箱、日志与回放，作为侧面视角。" },
         ],
-      },
-      {
-        kind: "cards",
-        id: "workflow",
-        nav: "用法",
-        label: "从信源到提交",
-        items: [
-          { title: "采集公开来源", body: "官网、Release、订阅源、软件包、论文。" },
-          { title: "先筛再起草", body: "先按相关性筛选去重，模型只改指定文件。" },
-          { title: "校验后提交", body: "引用、配额、双语覆盖、时效。" },
-        ],
-        numbered: true,
       },
       {
         kind: "faq",

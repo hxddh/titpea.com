@@ -24,9 +24,6 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
     <p class="section-kicker">{visual.kicker}</p>
     <h2>{visual.title}</h2>
     <p>{visual.body}</p>
-    <div class="benchmark-meta">
-      {visual.meta.map((item) => <span>{item}</span>)}
-    </div>
   </div>
   <figure class="benchmark-line-chart" aria-labelledby="benchmark-chart-title">
     <figcaption id="benchmark-chart-title">{visual.chartLabel}</figcaption>
@@ -66,7 +63,4 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
     </svg>
     <p>{visual.chartCaption}</p>
   </figure>
-</div>
-<div class="benchmark-footnotes">
-  {visual.footnotes.map((item) => <span>{item}</span>)}
 </div>

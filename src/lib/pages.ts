@@ -100,6 +100,9 @@ export type NavGroup = { label: string; line?: Line; items: NavItem[] };
 /** Copy without its `code` markers, for structured data and meta text. */
 export const plainText = (text: string) => text.replaceAll("`", "");
 
+/** Local nav links on a product page, Get started and FAQ included. */
+export const maxNavLinks = 4;
+
 const navLabel = (product: Product, locale: Locale) => product[locale].navLabel ?? product[locale].title;
 
 /** Home and About, then each product line with all of its products, then GitHub. */
@@ -151,7 +154,7 @@ export type ProductPageModel = {
   /** Publish date of that release, already formatted for the locale. */
   released?: string;
   /** Summary and highlights quoted from the release's own notes. */
-  whatsNew?: ReleaseNotes & { title: string; linkLabel: string; released?: string; languageNote?: string };
+  whatsNew?: ReleaseNotes & { version: string; title: string; linkLabel: string; released?: string };
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -191,14 +194,23 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const copy = withVersion(product[locale], version);
   const path = pathFor(locale, product.slug);
   const alternatePath = pathFor(otherLocale(locale), product.slug);
-  const navItems = copy.sections.flatMap((section) => {
-    const item = { id: section.id, label: section.nav ?? ("label" in section ? section.label : section.kicker) };
-    // The command block sits just before the FAQ, so its link does too.
-    return section.kind === "faq" && copy.commands ? [{ id: "start", label: copy.commands.title }, item] : [item];
-  });
-  if (copy.commands && !copy.sections.some((section) => section.kind === "faq")) {
-    navItems.push({ id: "start", label: copy.commands.title });
-  }
+  // The local nav holds at most four links: the first sections in page
+  // order, then Get started and FAQ, which always stay (in that order).
+  const faq = copy.sections.find((section) => section.kind === "faq");
+  const tail = [
+    ...(copy.commands ? [{ id: "start", label: copy.commands.title }] : []),
+    ...(faq ? [{ id: faq.id, label: faq.nav ?? faq.label }] : []),
+  ];
+  const navItems = [
+    ...copy.sections
+      .filter((section) => section.kind !== "faq")
+      .map((section) => ({
+        id: section.id,
+        label: section.nav ?? ("label" in section ? section.label : section.kicker),
+      }))
+      .slice(0, maxNavLinks - tail.length),
+    ...tail,
+  ];
   return {
     kind: "product",
     locale,
@@ -232,6 +244,9 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
 }
 
 const hasChinese = (text: string) => /[\u4e00-\u9fff]/.test(text);
+/** Release notes are quoted only in the page's own language, line by line. */
+const inPageLanguage = (line: string | undefined, locale: Locale): line is string =>
+  Boolean(line) && (locale === "zh") === hasChinese(line!);
 
 function whatsNewFor(slug: string, locale: Locale, version?: string, override?: ReleaseHighlights) {
   const copy = ui[locale];
@@ -242,6 +257,7 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
       summary: override.summary ?? "",
       items: override.items,
       url,
+      version,
       title: copy.whatsNew.replace("{version}", version),
       linkLabel: copy.releaseNotes,
       released: releasedOf(slug, locale),
@@ -249,21 +265,16 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
   }
   const notes = synced;
   if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
-  // Notes are quoted in their own language; say so when it is not the page's.
-  const quoted = [notes.summary, ...notes.items].join(" ");
-  const notesAreChinese = hasChinese(quoted);
-  const languageNote =
-    locale === "zh" && !notesAreChinese
-      ? copy.notesInEnglish
-      : locale === "en" && notesAreChinese
-        ? copy.notesInChinese
-        : undefined;
+  // Lines in another language are left to the release page: with none left,
+  // the section is one line (tag, date, link).
   return {
-    ...notes,
+    summary: inPageLanguage(notes.summary, locale) ? notes.summary : "",
+    items: notes.items.filter((item) => inPageLanguage(item, locale)),
+    url,
+    version,
     title: copy.whatsNew.replace("{version}", version),
     linkLabel: copy.releaseNotes,
     released: releasedOf(slug, locale),
-    languageNote,
   };
 }
 
@@ -559,11 +570,9 @@ export function aboutPage(locale: Locale): AboutPageModel {
             icon: product.icon,
             version: versionOf(product.slug)!,
             released: releasedOf(product.slug, locale),
-            // One line in the page's language: an English page skips
-            // highlights written in Chinese (Chinese pages keep English ones,
-            // as What's new does, since most notes are English).
+            // One line in the page's language, or none.
             highlight: (current ? [...current.items, current.summary] : [...(notes?.items ?? []), notes?.summary]).find(
-              (line) => line && (locale === "zh" || !hasChinese(line)),
+              (line) => inPageLanguage(line, locale),
             ),
           };
         }),

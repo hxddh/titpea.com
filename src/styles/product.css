@@ -338,13 +338,6 @@
   line-height: 1.5;
 }
 
-.panel-label {
-  margin-bottom: 8px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
 .agent-evidence-panel {
   max-width: 1040px;
   margin: 56px auto 0;
@@ -392,53 +385,7 @@
   font-weight: 600;
 }
 
-/* Results paths (s3-turbo-list) */
-.s3-result-paths {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin: 56px auto 0;
-}
-
-.s3-path-flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 10px;
-  margin: 14px 0 16px;
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0;
-}
-
-.s3-path-flow span,
-.s3-path-flow strong {
-  padding: 5px 10px;
-  border-radius: 8px;
-  background: var(--code-bg);
-}
-
-.s3-path-flow strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.s3-path-flow i {
-  width: 18px;
-  height: 1px;
-  background: var(--faint);
-}
-
-/* Story and cases */
-.story-prose {
-  max-width: 36em;
-  margin: 36px auto 0;
-  text-align: center;
-  text-wrap: pretty;
-  font-size: var(--text-sub);
-  line-height: 1.55;
-}
-
+/* Cases */
 .provider-list {
   display: flex;
   flex-wrap: wrap;
@@ -536,18 +483,48 @@
   margin-top: 28px;
 }
 
-/* After the closing band: the next products to read, as catalog cards. */
+/* After the closing band: a quiet row of the next products to read. */
 .product-related {
-  padding-top: var(--section-y);
-}
-
-.product-related .home-catalog-list {
-  margin-top: 36px;
-}
-
-.product-related-all {
-  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: var(--section-y);
   text-align: center;
+}
+
+.product-related-title {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-kicker);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.product-related-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-related-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: var(--text-card-body);
+  font-weight: 500;
+}
+
+.product-related-list img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 @media (max-width: 1000px) {
@@ -559,10 +536,6 @@
 @media (max-width: 900px) {
   .product-section {
     scroll-margin-top: var(--section-index-mobile-scroll-margin);
-  }
-
-  .s3-result-paths {
-    grid-template-columns: 1fr;
   }
 
   .stats,
@@ -758,9 +731,28 @@
   line-height: 1.6;
 }
 
-.whats-new-language {
-  margin: 14px 0 0;
+/* No notes in the page's language: tag · date · release notes, one line. */
+.whats-new.is-compact {
+  padding-top: calc(var(--section-y) / 2);
+}
+
+.whats-new-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 0;
+  margin: 0 auto;
   color: var(--muted);
-  font-size: 13px;
-  text-align: center;
+  font-size: var(--text-card-body);
+}
+
+.whats-new-line > :not(:last-child)::after {
+  content: "·";
+  margin: 0 0.7em;
+  color: var(--faint);
+}
+
+.whats-new-line span:first-child {
+  color: var(--ink);
+  font-family: var(--mono);
 }

@@ -52,7 +52,6 @@ export default defineProduct({
         width: 1100,
         height: 896,
         alt: "World Machine on macOS showing the Ares Pocket Colony world at world time 110: world contents, the current thread, and the timeline",
-        kicker: "The macOS app",
         title: "A world in motion.",
         body: "Ares Pocket Colony at world time 110: contents, the current thread, the timeline.",
       },
@@ -64,12 +63,15 @@ export default defineProduct({
         nav: "Features",
         label: "Every branch stays with the world.",
         items: [
-          { title: "Start with Pocket Universe", body: "The packaged app’s starting world." },
-          { title: "Watch a first cycle", body: "A place, and relationships forming as it runs." },
-          { title: "Choose what’s next", body: "Observe, leave it running, or intervene on a branch." },
-          { title: "Inspect the state", body: "The timeline and inspector show events and state." },
-          { title: "Packs define worlds", body: "Pocket Universe, Tiny Society, Micro Company." },
-          { title: "Documented contracts", body: "Runtime, pack contracts, projection interfaces." },
+          { title: "Watch a first cycle", body: "Pocket Universe starts a place; relationships form as it runs." },
+          {
+            title: "Choose what’s next",
+            body: "Observe, leave it running, or intervene; the timeline shows each branch.",
+          },
+          {
+            title: "Packs define worlds",
+            body: "Pocket Universe, Tiny Society, Micro Company, on documented contracts.",
+          },
         ],
       },
       {
@@ -148,7 +150,6 @@ export default defineProduct({
         width: 1100,
         height: 896,
         alt: "macOS 上的 World Machine，显示世界时间 110 的 Ares Pocket Colony：世界内容、当前线索和时间线",
-        kicker: "macOS 应用",
         title: "运行中的世界",
         body: "世界时间 110 的 Ares Pocket Colony：世界内容、当前线索和时间线。",
       },
@@ -160,12 +161,9 @@ export default defineProduct({
         nav: "功能",
         label: "每条分支都留在世界里",
         items: [
-          { title: "起点世界", body: "打包应用从 Pocket Universe 开始。" },
-          { title: "观察第一轮", body: "一个地方，和运行中形成的关系。" },
-          { title: "选择下一步", body: "观察、任其运行，或在分支上干预。" },
-          { title: "查看状态", body: "时间线和检查器显示事件与状态。" },
-          { title: "Pack 定义世界", body: "Pocket Universe、Tiny Society、Micro Company。" },
-          { title: "契约有文档", body: "运行时、Pack 契约、投影接口。" },
+          { title: "观察第一轮", body: "Pocket Universe 从一个地方开始，关系在运行中形成。" },
+          { title: "选择下一步", body: "观察、任其运行或干预；时间线记录每条分支。" },
+          { title: "Pack 定义世界", body: "Pocket Universe、Tiny Society、Micro Company，契约有文档。" },
         ],
       },
       {

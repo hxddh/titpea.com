@@ -76,6 +76,7 @@ const genericHeadings = new Set(
     "它不是什么",
   ].map(norm),
 );
+const maxCards = 6;
 const headlineLimit: Record<Locale, number> = { en: 24, zh: 18 };
 const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
 
@@ -122,6 +123,21 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
         if (tooLong(item.title, 5, 10)) fail(`${at}: card title is long: "${item.title}"`);
         if (tooLong(item.body, 12, 24)) fail(`${at}: card body is not a short fragment: "${item.body}"`);
       }
+    }
+  }
+  // Simplicity: one page carries at most six cards, feature cards and numbered
+  // steps together, and a card body adds to its title instead of repeating it.
+  const cards = copy.sections.reduce(
+    (count, section) =>
+      count + (section.kind === "cards" ? section.items.length : section.kind === "flow" ? section.steps.length : 0),
+    0,
+  );
+  if (cards > maxCards) fail(`${at}: ${cards} cards on one page (max ${maxCards})`);
+  for (const section of copy.sections) {
+    if (section.kind !== "cards") continue;
+    for (const item of section.items) {
+      if (norm(item.body).startsWith(norm(item.title)))
+        fail(`${at}: card "${item.title}" repeats its title in the body`);
     }
   }
   if (copy.lead.length > leadLimit[locale])

@@ -67,12 +67,9 @@ export default defineProduct({
         nav: "Features",
         label: "The traffic, beside the command.",
         items: [
-          { title: "Request and response", body: "Method, URL, headers, status, timing." },
-          { title: "Decoded preview", body: "Decompressed for httpmon’s display only." },
+          { title: "Request and response", body: "Method, URL, headers, status, timing; decoded for display only." },
           { title: "Original stream", body: "The command gets its response unchanged." },
           { title: "Filter", body: "`--filter` by URL or host." },
-          { title: "NDJSON and HAR", body: "NDJSON for commands, HAR 1.2 for inspectors." },
-          { title: "Record and replay", body: "Replay an authorized session, original or comparison target." },
         ],
       },
       {
@@ -85,8 +82,7 @@ export default defineProduct({
         steps: [
           { label: "Start locally", body: "Put `httpmon` before a proxy-aware command. No system proxy changes." },
           { label: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
-          { label: "Forward and display", body: "The command gets its stream; httpmon shows headers, status, timing." },
-          { label: "Save when needed", body: "NDJSON, HAR, or a recording, to replay or share." },
+          { label: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
         ],
       },
       {
@@ -172,12 +168,9 @@ export default defineProduct({
         nav: "功能",
         label: "流量就在命令旁边",
         items: [
-          { title: "请求和响应", body: "方法、URL、头、状态码、耗时。" },
-          { title: "解压预览", body: "只为 httpmon 的显示而解压。" },
+          { title: "请求和响应", body: "方法、URL、头、状态码、耗时；解压只为显示。" },
           { title: "原始响应流", body: "命令收到的响应原样不动。" },
           { title: "筛选", body: "用 `--filter` 按 URL 或域名筛。" },
-          { title: "NDJSON 与 HAR", body: "NDJSON 给命令，HAR 1.2 给检查工具。" },
-          { title: "录制和回放", body: "回放已获授权的会话，到原端点或对比环境。" },
         ],
       },
       {
@@ -190,8 +183,7 @@ export default defineProduct({
         steps: [
           { label: "本地启动", body: "在支持代理的命令前加 `httpmon`，系统代理不变。" },
           { label: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
-          { label: "转发并显示", body: "命令照常收到响应，终端显示请求头、状态码和耗时。" },
-          { label: "按需留存", body: "要复查或分享时，导出 NDJSON、HAR 或录制文件。" },
+          { label: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
         ],
       },
       {

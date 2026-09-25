@@ -1,6 +1,6 @@
 ---
-// Quoted from the release's own notes by scripts/sync-releases.mjs; code
-// spans in the notes (`SlowDown`) render as code.
+// Quoted from the release's own notes by scripts/sync-releases.mjs, only in
+// the page's language; code spans in the notes (`SlowDown`) render as code.
 import type { ProductPageModel } from "../../lib/pages";
 import Prose from "./Prose.astro";
 
@@ -9,35 +9,48 @@ interface Props {
 }
 
 const { notes } = Astro.props;
+// Nothing quoted in the page's language: the release is one line.
+const quoted = Boolean(notes.summary) || notes.items.length > 0;
 ---
 
-<section id="whats-new" class="product-section whats-new">
-  <div class="shell narrow">
-    <header class="section-head">
-      {notes.released && <p class="section-kicker">{notes.released}</p>}
-      <h2>{notes.title}</h2>
-      {
-        notes.summary && (
-          <p class="sub">
-            <Prose text={notes.summary} />
-          </p>
-        )
-      }
-    </header>
-    {
-      notes.items.length > 0 && (
-        <ul class="whats-new-list">
-          {notes.items.map((item) => (
-            <li>
-              <Prose text={item} />
-            </li>
-          ))}
-        </ul>
-      )
-    }
-    {notes.languageNote && <p class="whats-new-language">{notes.languageNote}</p>}
-    <p class="whats-new-link">
-      <a class="button ghost" href={notes.url} rel="noreferrer">{notes.linkLabel}</a>
-    </p>
-  </div>
-</section>
+{
+  quoted ? (
+    <section id="whats-new" class="product-section whats-new">
+      <div class="shell narrow">
+        <header class="section-head">
+          {notes.released && <p class="section-kicker">{notes.released}</p>}
+          <h2>{notes.title}</h2>
+          {notes.summary && (
+            <p class="sub">
+              <Prose text={notes.summary} />
+            </p>
+          )}
+        </header>
+        {notes.items.length > 0 && (
+          <ul class="whats-new-list">
+            {notes.items.map((item) => (
+              <li>
+                <Prose text={item} />
+              </li>
+            ))}
+          </ul>
+        )}
+        <p class="whats-new-link">
+          <a class="button ghost" href={notes.url} rel="noreferrer">
+            {notes.linkLabel}
+          </a>
+        </p>
+      </div>
+    </section>
+  ) : (
+    <section id="whats-new" class="product-section whats-new is-compact" aria-label={notes.title}>
+      <p class="shell whats-new-line">
+        <span>{notes.version}</span>
+        {notes.released && <span>{notes.released}</span>}
+        <a href={notes.url} rel="noreferrer">
+          {notes.linkLabel} ›
+        </a>
+      </p>
+    </section>
+  )
+}
