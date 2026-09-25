@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import type { StorySection } from "../../content/schema";
 
 interface Props {
@@ -15,7 +16,13 @@ const { section } = Astro.props;
       <h2>{section.title}</h2>
     </header>
     <div class="prose story-prose">
-      {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      {
+        section.body.map((paragraph) => (
+          <p>
+            <Prose text={paragraph} />
+          </p>
+        ))
+      }
     </div>
   </div>
 </section>

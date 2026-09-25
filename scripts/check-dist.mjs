@@ -1,5 +1,5 @@
 // Built-output checks: security headers and CSP, accessibility landmarks,
-// structured data, Chinese headings, and the sitemap. Runs after the build.
+// structured data, raw code markers, Chinese headings, and the sitemap. Runs after the build.
 //   npm run check:dist
 import fs from "node:fs";
 import path from "node:path";
@@ -74,6 +74,17 @@ for (const { file, html } of pages) {
       fail(`${file}: image without intrinsic size`);
   }
   if (/target="_blank"/.test(html) && !/rel="[^"]*noopener/.test(html)) fail(`${file}: target=_blank lacks noopener`);
+
+  // Copy never shows raw Markdown code markers: `x` renders as <code>.
+  const visible = text(
+    html
+      .replace(/<(script|style|code|pre)\b[\s\S]*?<\/\1>/gi, " ")
+      .replace(/<[^>]+\b(?:content|data-[\w-]+)="[^"]*"[^>]*>/g, " "),
+  );
+  if (visible.includes("`")) fail(`${file}: a raw backtick shows in page text (use Prose.astro)`);
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    if (match[1].includes("`")) fail(`${file}: structured data carries a raw backtick (use plainText)`);
+  }
 
   // Chinese headings read as headings, not sentences.
   if (/<html lang="zh-CN">/.test(html)) {

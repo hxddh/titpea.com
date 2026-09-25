@@ -227,7 +227,11 @@ export type ProductCopy = {
   /** The hero h1: a short declarative claim, not the name. English ≤ 24 characters plus a closing period, Chinese ≤ 18. */
   headline: string;
   lead: string;
-  catalog: { role: string; text: string };
+  /**
+   * Catalog card. `badge` is the chip a card without GitHub releases shows in
+   * place of the tag; it defaults to the first part of the meta line.
+   */
+  catalog: { role: string; text: string; badge?: string };
   primaryCta: Link;
   secondaryCta: Link;
   /** Mono meta line, segments joined by " · ". `{version}` is replaced by the synced release tag. */
@@ -246,7 +250,15 @@ export type Product = {
   /** Catalog group and header dropdown. */
   line: Line;
   /** The two featured products lead Home with this photograph. */
-  featured?: { image: Omit<Image, "alt"> & { alt: Record<Locale, string> } };
+  featured?: {
+    image: Omit<Image, "alt"> & { alt: Record<Locale, string> };
+    /**
+     * Phones show this crop of the same capture (source pixels), sized so its
+     * text stays legible at phone width; `npm run assets:images` writes it as
+     * `<image>-detail.webp`. The card still opens the product page.
+     */
+    detail?: { x: number; y: number; width: number; height: number };
+  };
   /**
    * App icon: hero, local nav, catalog, About, 404, share image. Required
    * (npm run check). Official artwork or a site-designed tile; see design/icons.

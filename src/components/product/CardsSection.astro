@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import { srcsetFor } from "../../lib/images";
 import type { CardsSection, Showcase } from "../../content/schema";
 
@@ -27,7 +28,7 @@ const { section, figure } = Astro.props;
             {item.evidence && <small class="feature-evidence">{item.evidence}</small>}
             <h3>{item.title}</h3>
             <p>
-              {item.body}
+              <Prose text={item.body} />
               {item.link && (
                 <>
                   {" "}
@@ -53,7 +54,9 @@ const { section, figure } = Astro.props;
               loading="lazy"
             />
           </div>
-          <figcaption class="shot-caption">{figure.body}</figcaption>
+          <figcaption class="shot-caption">
+            <Prose text={figure.body} />
+          </figcaption>
         </figure>
       )
     }

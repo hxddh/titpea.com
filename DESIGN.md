@@ -30,15 +30,17 @@ Every page uses the same few parts. Build new content from them before inventing
 - **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, a one-line summary, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. When the notes are in the other language, one line says so (`Quoted from the Chinese release notes.` / `摘自英文发布说明。`). `scripts/sync-releases.mjs` refreshes them with the tag and lists every quoted line in the CI run summary for the owner to read. A product may set `releaseHighlights` (per language, pinned to one tag) to replace the quoted lines with hand-written ones; it applies only while that tag is the latest release.
 - **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
-- **Footer.** Copyright on the left, GitHub and email on the right.
+- **Where next.** After the closing action, `More in {line}` / `更多{line}工具`: up to three catalog cards (the same card as Home), taken from the rest of the product's line in site order after it, then from the other lines (the heading becomes `More tools` / `更多工具`), and an `All tools` link to the catalog. A product page never dead-ends.
+- **Footer.** A map of the site: one column per product line with every product, then a Titpea column (Home, About, the releases feed, GitHub, the other language). Below it, copyright on the left and email on the right.
+- **Code in copy.** Product copy writes code as `` `code` ``; `Prose.astro` renders it as an inline code chip and structured data drops the backticks. `check:dist` fails if a raw backtick reaches page text.
 
 ## Home
 
 **Settled direction — the owner decided this twice (PR #150, PR #153).** Home follows Omni: the icon hero with two actions, then stacked showcase rows with lifted, rounded screenshots, then the catalog. Do not bring back the side-by-side hairline pair, a compact hero with no actions, or flat unshadowed screenshots, even to fit both captures on the first screen. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
 
 - The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
-- `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. Every card shows its app icon in the top right. A product belongs to one line, and the header dropdowns use the same four lines.
+- `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link. On phones the screenshot becomes `featured.detail`, a crop of the same real capture where its text is legible (the reading, the cited answer), its cut edge fading out; `npm run assets:images` writes it.
+- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. A product without GitHub releases shows a chip saying where it lives instead (`Chrome Web Store`, `Python`; `catalog.badge`, or the first part of its meta line), so every card ends on the same row. Every card shows its app icon in the top right. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## About
 
@@ -48,7 +50,7 @@ The page answers, in order: what Titpea is, what it holds, how the tools behave,
 - Stats in the hero: products, product lines, products with GitHub releases, and total GitHub releases published. Every figure is computed at build from the product files and `releases.json`; the release total appears only when every repository reported its count.
 - `Four lines of work.`: one raised card per line, listing its products with icons, each a link.
 - `How the tools work.`: four cards. Three habits, each restating facts already on product pages, and `Source in the open` with the open-source count and licenses read from each product's meta line.
-- `Latest releases.`: the six newest, with icon, tag, date (on phones too), and the first quoted highlight; the rest fold under `All releases (n)`.
+- `Latest releases.`: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language (an English page skips highlights written in Chinese); the rest fold under `All releases (n)`.
 - Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
 - No personal details beyond what the owner has published; nothing about the person is inferred.
 

@@ -24,6 +24,7 @@ type Ui = {
   // Chrome
   primaryLabel: string;
   footerLabel: string;
+  footerFeed: string;
   skipLink: string;
   menuLabel: string;
   menuText: string;
@@ -55,6 +56,9 @@ type Ui = {
   homeLead: string;
   featuredTitle: string;
   moreToolsTitle: string;
+  /** Product page, before the closing band: "More in {line}". */
+  relatedInLine: string;
+  browseAllTools: string;
   learnMore: string;
   browseTools: string;
   aboutMore: string;
@@ -87,6 +91,7 @@ export const ui: Record<Locale, Ui> = {
   en: {
     primaryLabel: "Primary",
     footerLabel: "Footer",
+    footerFeed: "Releases feed",
     skipLink: "Skip to content",
     menuLabel: "Open site menu",
     menuText: "Menu",
@@ -122,6 +127,8 @@ export const ui: Record<Locale, Ui> = {
     homeLead: "S3 investigations. PDF reading. Chess, clocks, and browser tools.",
     featuredTitle: "Selected work",
     moreToolsTitle: "More tools",
+    relatedInLine: "More in {line}",
+    browseAllTools: "All tools",
     learnMore: "Learn more",
     browseTools: "Browse all tools",
     aboutMore: "About hxddh",
@@ -168,6 +175,7 @@ export const ui: Record<Locale, Ui> = {
   zh: {
     primaryLabel: "主导航",
     footerLabel: "页脚",
+    footerFeed: "发布订阅",
     skipLink: "跳到主要内容",
     menuLabel: "打开站点菜单",
     menuText: "菜单",
@@ -203,6 +211,8 @@ export const ui: Record<Locale, Ui> = {
     homeLead: "对象存储排查。PDF 阅读。棋类、时钟和浏览器小工具。",
     featuredTitle: "主要作品",
     moreToolsTitle: "更多工具",
+    relatedInLine: "更多{line}工具",
+    browseAllTools: "全部工具",
     learnMore: "了解更多",
     browseTools: "浏览全部工具",
     aboutMore: "关于 hxddh",

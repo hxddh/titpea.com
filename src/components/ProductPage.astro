@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { ui } from "../content/site";
+import CatalogCard from "./CatalogCard.astro";
 import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
 import CasesSection from "./product/CasesSection.astro";
@@ -129,6 +130,26 @@ const metaParts = copy.meta
         {model.downloadsRelease && <span class="button-version">{model.version}</span>}
       </a>
       <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
+    </div>
+  </section>
+
+  <section class="product-related" aria-labelledby="related-title">
+    <div class="shell">
+      <header class="section-head compact">
+        <h2 id="related-title">{model.related.title}</h2>
+      </header>
+      <ul class="home-catalog-list">
+        {
+          model.related.items.map((item) => (
+            <li>
+              <CatalogCard item={item} />
+            </li>
+          ))
+        }
+      </ul>
+      <p class="product-related-all">
+        <a class="button ghost" href={model.related.all.href}>{model.related.all.label}</a>
+      </p>
     </div>
   </section>
 </SiteLayout>

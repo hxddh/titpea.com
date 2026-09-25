@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import type { Showcase } from "../../content/schema";
 import { screenshotSizes, srcsetFor } from "../../lib/images";
 
@@ -16,7 +17,7 @@ const { showcase, pauseLabel, playLabel } = Astro.props;
     <header class="section-head compact">
       <p class="section-kicker">{showcase.kicker}</p>
       <h2>{showcase.title}</h2>
-      <p class="sub">{showcase.body}</p>
+      <p class="sub"><Prose text={showcase.body} /></p>
     </header>
     {
       showcase.video ? (

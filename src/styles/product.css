@@ -54,7 +54,8 @@
   white-space: nowrap;
 }
 
-.meta-line > span + span::before {
+/* The separator trails its item, so a wrapped line never starts with "·". */
+.meta-line > span:not(:last-child)::after {
   content: "·";
   margin: 0 0.7em;
   color: var(--faint);
@@ -274,6 +275,8 @@
   font-size: var(--text-card-body);
   line-height: 1.5;
   letter-spacing: -0.01em;
+  /* Fill the card: "pretty" pulled two-line copy in to half its width. */
+  text-wrap: wrap;
 }
 
 .feature-card p a {
@@ -533,6 +536,20 @@
   margin-top: 28px;
 }
 
+/* After the closing band: the next products to read, as catalog cards. */
+.product-related {
+  padding-top: var(--section-y);
+}
+
+.product-related .home-catalog-list {
+  margin-top: 36px;
+}
+
+.product-related-all {
+  margin: 24px 0 0;
+  text-align: center;
+}
+
 @media (max-width: 1000px) {
   .feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -698,11 +715,15 @@
   background: var(--accent);
 }
 
-.whats-new-list code {
+/* `code` spans in product copy and quoted release notes (Prose.astro). */
+.inline-code {
   padding: 1px 5px;
   border-radius: 6px;
+  /* Ink, not the surrounding muted grey: 4.5:1 on the code chip. */
+  color: var(--ink);
   background: var(--code-bg);
   font-size: 0.88em;
+  overflow-wrap: anywhere;
 }
 
 .whats-new-link {

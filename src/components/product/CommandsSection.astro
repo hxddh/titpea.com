@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import type { Commands } from "../../content/schema";
 
 interface Props {
@@ -15,13 +16,21 @@ const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
   <div class="shell narrow">
     <header class="section-head">
       <h2>{commands.title}</h2>
-      {commands.sub && <p class="sub">{commands.sub}</p>}
+      {
+        commands.sub && (
+          <p class="sub">
+            <Prose text={commands.sub} />
+          </p>
+        )
+      }
     </header>
     <ol class="command-list">
       {
         commands.items.map((item) => (
           <li class="command">
-            <p class="command-comment">{item.comment}</p>
+            <p class="command-comment">
+              <Prose text={item.comment} />
+            </p>
             <div class="command-line">
               <code class="command-code" tabindex="0" set:text={item.command} />
               <button

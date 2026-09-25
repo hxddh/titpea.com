@@ -1,4 +1,5 @@
 ---
+import Prose from "./Prose.astro";
 import type { FaqSection } from "../../content/schema";
 
 interface Props {
@@ -19,7 +20,7 @@ const { section } = Astro.props;
           <details class="faq-item" open={index === 0}>
             <summary>{item.title}</summary>
             <p class="faq-answer">
-              {item.body}
+              <Prose text={item.body} />
               {item.link && (
                 <>
                   {" "}
