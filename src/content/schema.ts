@@ -13,7 +13,10 @@ export type Image = { src: string; alt: string; width: number; height: number };
 
 /* ---------- Sections ---------- */
 
-/** Every section may set `nav`: a 1–4 word label for the local nav when its heading is a sentence. */
+/**
+ * A section's `label` / `kicker` is its short name in the local nav; it is not
+ * shown on the page (headings carry sections alone). `nav` overrides it.
+ */
 type SectionNav = { nav?: string };
 
 export type Card = {
@@ -30,9 +33,6 @@ export type CardsSection = { kind: "cards"; id: string; label: string; items: Ca
 /** Adoption questions, rendered as a disclosure list and as FAQPage structured data. */
 export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: Card[] };
 
-/** A short argument in prose. */
-export type StorySection = { kind: "story"; id: string; label: string; title: string; body: string[] };
-
 /** Named compatibility targets. */
 export type CasesSection = { kind: "cases"; id: string; label: string; title: string; items: string[]; body?: string };
 
@@ -44,16 +44,6 @@ export type FlowSection = {
   title: string;
   body: string;
   steps: Array<{ label: string; body: string }>;
-};
-
-/** Two outputs of one tool, each as input → output. */
-export type PathsSection = {
-  kind: "paths";
-  id: string;
-  kicker: string;
-  title: string;
-  body: string;
-  paths: Array<{ label: string; title: string; input: string; output: string; detail: string }>;
 };
 
 /** A product-specific object: a purpose split or a document excerpt. */
@@ -80,16 +70,7 @@ export type PanelSection = {
       };
 };
 
-export type Section = (
-  | CardsSection
-  | FaqSection
-  | StorySection
-  | CasesSection
-  | FlowSection
-  | PathsSection
-  | PanelSection
-) &
-  SectionNav;
+export type Section = (CardsSection | FaqSection | CasesSection | FlowSection | PanelSection) & SectionNav;
 
 /* ---------- The product object ---------- */
 
@@ -114,11 +95,9 @@ export type Visual = VisualBase &
         kicker: string;
         title: string;
         body: string;
-        meta: string[];
         points: Array<{ label: string; seconds: number; state?: "reference" | "caution" }>;
         chartLabel: string;
         chartCaption: string;
-        footnotes: string[];
       }
     | {
         kind: "skillMap";
@@ -186,7 +165,6 @@ export type VisualKind = Visual["kind"];
 
 /** A photograph after the hero: a compact head over the full captured frame. */
 export type Showcase = Image & {
-  kicker: string;
   title: string;
   body: string;
   /**

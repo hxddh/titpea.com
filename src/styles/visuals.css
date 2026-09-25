@@ -53,8 +53,6 @@
   line-height: 1.58;
 }
 
-.benchmark-meta,
-.benchmark-footnotes,
 .agent-flow-line {
   display: flex;
   flex-wrap: wrap;
@@ -86,8 +84,7 @@
   border-top: 1px solid var(--line);
 }
 
-.agent-manifest-grid span,
-.benchmark-footnotes span {
+.agent-manifest-grid span {
   color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
@@ -162,10 +159,6 @@
 
 .chart-annotation {
   fill: var(--ink);
-}
-
-.benchmark-footnotes {
-  margin-top: 16px;
 }
 
 .agent-manifest-grid strong {

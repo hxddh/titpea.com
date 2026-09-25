@@ -67,12 +67,9 @@ export default defineProduct({
         nav: "Features",
         label: "Every turn is saved to BOS.",
         items: [
-          { title: "Pi, unchanged", body: "Pi’s terminal interface, engine, and tools." },
-          { title: "Native history", body: "Tool calls and branches, kept in JSONL." },
-          { title: "Saved per turn", body: "Completed turns queue for BOS." },
-          { title: "Conflict checks", body: "Conditional writes detect conflicting updates." },
-          { title: "Failures stay queued", body: "Retryable write failures remain in the queue." },
-          { title: "BOS first", body: "No silent fallback to truncated cache." },
+          { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
+          { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
+          { title: "BOS first", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
         ],
       },
       {
@@ -179,12 +176,9 @@ export default defineProduct({
         nav: "功能",
         label: "每一轮都存进 BOS",
         items: [
-          { title: "原样的 Pi", body: "Pi 的终端界面、引擎和工具。" },
-          { title: "原生历史", body: "工具调用和分支，存为 JSONL。" },
-          { title: "每轮保存", body: "完成的回合进入 BOS 写入队列。" },
-          { title: "冲突检测", body: "条件写入检测并发冲突。" },
-          { title: "失败留队", body: "可重试的写入失败留在队列。" },
-          { title: "先读 BOS", body: "不静默退回截断缓存。" },
+          { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
+          { title: "每轮保存", body: "完成的回合进入 BOS 写入队列；条件写入检测冲突。" },
+          { title: "先读 BOS", body: "写入失败留在队列；不静默退回截断缓存。" },
         ],
       },
       {

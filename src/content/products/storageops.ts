@@ -97,12 +97,9 @@ export default defineProduct({
         nav: "Features",
         label: "Pi stays the runtime.",
         items: [
-          { title: "Skills on Pi", body: "No second agent, no cloud console." },
-          { title: "No cloud account", body: "Diagnosis from the material you bring." },
+          { title: "Skills on Pi", body: "No second agent, no cloud console, no cloud account." },
           { title: "Secrets redacted", body: "Before material reaches the agent context." },
-          { title: "Read-only trace", body: "One bounded command, through httpmon." },
-          { title: "Storage untouched", body: "StorageOps does not mutate storage." },
-          { title: "You make the change", body: "Likely cause, evidence, and your next check." },
+          { title: "Storage untouched", body: "At most one read-only traced command; you make the change." },
         ],
       },
       {
@@ -115,8 +112,7 @@ export default defineProduct({
         steps: [
           { label: "Bring the material", body: "An exact error, `@log` file, config excerpt, or debug output." },
           { label: "Pick the domain", body: "`detect_domain` ranks likely areas and points Pi to a skill." },
-          { label: "Load a skill", body: "A focused method: SigV4, IAM, lifecycle, replication, Spark S3A." },
-          { label: "Call a tool", body: "Redact, search past sessions, parse material, or trace one command." },
+          { label: "Load a skill", body: "SigV4, IAM, lifecycle, replication, Spark S3A; tools read the evidence." },
         ],
       },
       {
@@ -255,12 +251,9 @@ export default defineProduct({
         nav: "功能",
         label: "Pi 仍是运行时",
         items: [
-          { title: "装在 Pi 上", body: "不加第二个 Agent，不做云控制台。" },
-          { title: "不接云账号", body: "只看你带来的材料。" },
+          { title: "装在 Pi 上", body: "不加第二个 Agent，不做云控制台，不接云账号。" },
           { title: "先脱敏", body: "凭据值在进入 Agent 上下文前脱敏。" },
-          { title: "只读 trace", body: "经 httpmon 观察一条受限命令。" },
-          { title: "不改存储", body: "StorageOps 不修改存储资源。" },
-          { title: "由你修改", body: "可能原因、依据和下一步核对。" },
+          { title: "不改存储", body: "最多只读 trace 一条命令；改动由你来做。" },
         ],
       },
       {
@@ -273,8 +266,7 @@ export default defineProduct({
         steps: [
           { label: "带上材料", body: "原始报错、`@日志文件`、配置片段或 debug 输出。" },
           { label: "识别领域", body: "`detect_domain` 给出优先方向，提示 Pi 读哪份 skill。" },
-          { label: "加载 skill", body: "一类问题一套方法：SigV4、IAM、生命周期、复制、Spark S3A。" },
-          { label: "调用工具", body: "脱敏、检索历史会话、解析材料，或 trace 一条命令。" },
+          { label: "加载 skill", body: "SigV4、IAM、生命周期、复制、Spark S3A；再由工具读证据。" },
         ],
       },
       {

@@ -57,8 +57,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
       label: "s3-turbo-list",
       kicker: "v0.21.0 field benchmark",
       title: "c=8 is the reference",
-      body: "2 vCPU host · default list QPS · OSS Beijing. Observed under constraint, not a throughput ceiling.",
-      meta: ["1,000,413 objects", "Alibaba Cloud OSS · Beijing", "v0.21.0"],
+      body: "1,000,413 objects · 2 vCPU host, same-region OSS Beijing · default list QPS · 2026-06-18. Observed under constraint, not a throughput ceiling.",
       points: [
         {
           label: "c=1",
@@ -97,7 +96,6 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
       ],
       chartLabel: "Elapsed time by concurrency",
       chartCaption: "c=8 is the Parquet reference run. c=24 is a scheduling outlier, not a general limit.",
-      footnotes: ["2 vCPU · 3.4 GiB · same-region ECS → OSS · default list QPS · 2026-06-18"],
     },
     sections: [
       {
@@ -114,29 +112,18 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
             {
               label: "LIST",
               title: "What is in a bucket",
-              body: "A large S3-compatible bucket becomes an analysis-ready object list, without hand-tuning a scanner first.",
+              body: "One bucket becomes a Parquet object list, with no scanner tuning first; checkpoints make a long run resumable.",
             },
             {
               label: "DIFF",
               title: "What changed between two",
-              body: "Source and target object metadata, compared into one ordered difference dataset.",
+              body: "Source and target list in parallel and merge in key order: one Parquet set flagging equal, missing, or changed.",
             },
           ],
           boundaryLabel: "Not a sync engine",
           boundary:
             "It does not copy objects or replace a storage browser. It leaves a reliable basis for the next decision.",
         },
-      },
-      {
-        kind: "story",
-        id: "story",
-        nav: "Why",
-        label: "Why it exists",
-        title: "The useful work starts after the scan.",
-        body: [
-          "A scan is rarely the end. You need an object list to analyze, or a difference set to decide whether a migration is complete.",
-          "s3-turbo-list makes both its default output. Planning, recovery, and evidence appear only when a run needs them. To see what a storage command sent, use httpmon.",
-        ],
       },
       {
         kind: "flow",
@@ -150,32 +137,6 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           { label: "Run segments", body: "Open parallel list work without a prepared hints file." },
           { label: "Split the long tail", body: "Fan out long segments only while useful capacity is available." },
           { label: "Write the list", body: "An analysis-ready object list, not terminal-only output." },
-        ],
-      },
-      {
-        kind: "paths",
-        id: "results",
-        nav: "Outputs",
-        kicker: "After the run",
-        title: "List and diff leave different answers.",
-        body: "Both write results for downstream work. They are deliberately not the same operation.",
-        paths: [
-          {
-            label: "LIST",
-            title: "A usable object list",
-            input: "One bucket",
-            output: "Parquet object list",
-            detail:
-              "Checkpoint and resume keep a long list recoverable; optional trace and manifest files record how it ran.",
-          },
-          {
-            label: "DIFF",
-            title: "An ordered difference set",
-            input: "Source bucket + target bucket",
-            output: "Parquet with DiffFlag",
-            detail:
-              "Both sides list in parallel and merge in key order, so tools can filter equal, missing, or changed.",
-          },
         ],
       },
       {
@@ -263,8 +224,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
       label: "s3-turbo-list",
       kicker: "v0.21.0 实测",
       title: "c=8 是参考运行",
-      body: "2 vCPU 云主机 · 默认 list QPS · 北京 OSS。受限环境实测，不是性能上限。",
-      meta: ["1,000,413 对象", "Alibaba Cloud OSS · Beijing", "v0.21.0"],
+      body: "1,000,413 个对象 · 2 vCPU 云主机，同地域北京 OSS · 默认 list QPS · 2026-06-18。受限环境实测，不是性能上限。",
       points: [
         {
           label: "c=1",
@@ -303,7 +263,6 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
       ],
       chartLabel: "不同并发下的完成耗时",
       chartCaption: "c=8 是 Parquet 参考运行；c=24 是特定调度异常，不代表通用性能边界。",
-      footnotes: ["2 vCPU · 3.4 GiB · same-region ECS → OSS · default list QPS · 2026-06-18"],
     },
     sections: [
       {
@@ -320,28 +279,17 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
             {
               label: "LIST",
               title: "桶里有什么",
-              body: "把大规模 S3 兼容存储写成可分析的对象 list，不必先手动调扫描参数。",
+              body: "一个桶写成 Parquet 对象 list，不必先调扫描参数；长任务可从 checkpoint 继续。",
             },
             {
               label: "DIFF",
               title: "两端差了什么",
-              body: "对比源端和目标端的对象元数据，得到一份有序的差异结果。",
+              body: "两端并行列举、按 key 合并，得到一份标出相同、缺失和变化的 Parquet。",
             },
           ],
           boundaryLabel: "不负责同步对象",
           boundary: "它不复制对象，也不替代存储浏览器，只为后续判断留下可靠依据。",
         },
-      },
-      {
-        kind: "story",
-        id: "story",
-        nav: "为什么做",
-        label: "为什么做",
-        title: "扫描之后，才是真正要做的事",
-        body: [
-          "扫描通常不是终点。你需要一份 list 结果继续分析，或一份差异结果判断迁移是否完成。",
-          "s3-turbo-list 默认留下这两种结果。计划、恢复和证据只在任务需要时出现。要看一条存储命令实际发出的请求，用 httpmon。",
-        ],
       },
       {
         kind: "flow",
@@ -355,30 +303,6 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           { label: "并行列举", body: "按边界展开并行任务，不必预先准备 hints 文件。" },
           { label: "处理长尾", body: "仍有可用余量时，才拆分耗时的片段。" },
           { label: "写出 list", body: "留下可分析的对象 list，而不只是终端输出。" },
-        ],
-      },
-      {
-        kind: "paths",
-        id: "results",
-        nav: "输出结果",
-        kicker: "跑完之后",
-        title: "list 和 diff 给出不同的答案",
-        body: "两条路径都留下可继续处理的结果，但它们刻意不是同一种操作。",
-        paths: [
-          {
-            label: "LIST",
-            title: "一份可用的对象 list",
-            input: "一个存储桶",
-            output: "Parquet list",
-            detail: "长任务可以从 checkpoint 继续；可选的 trace 和 manifest 文件记录运行过程。",
-          },
-          {
-            label: "DIFF",
-            title: "一份有序的差异结果",
-            input: "源端桶 + 目标端桶",
-            output: "带 DiffFlag 的 Parquet",
-            detail: "两端并行列举，再按 key 合并；下游可直接筛出相同、缺失和变化的对象。",
-          },
         ],
       },
       {

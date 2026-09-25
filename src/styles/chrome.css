@@ -367,9 +367,16 @@
   }
 }
 
-@media (max-width: 560px) {
+/* Phones already carry every product in the menu; the footer stays one line. */
+@media (max-width: 640px) {
   .foot-map {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: none;
+  }
+
+  .site-footer .foot {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
 }
 

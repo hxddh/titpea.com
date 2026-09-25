@@ -41,8 +41,6 @@ type Ui = {
   /** `{version}` is the latest release tag. */
   whatsNew: string;
   commandOutput: string;
-  notesInEnglish: string;
-  notesInChinese: string;
   releaseNotes: string;
   playVideo: string;
   home: string;
@@ -106,8 +104,6 @@ export const ui: Record<Locale, Ui> = {
     pauseVideo: "Pause",
     whatsNew: "What’s new in {version}.",
     commandOutput: "Show real output",
-    notesInEnglish: "Quoted from the English release notes.",
-    notesInChinese: "Quoted from the Chinese release notes.",
     releaseNotes: "Release notes",
     playVideo: "Play",
     home: "Home",
@@ -190,8 +186,6 @@ export const ui: Record<Locale, Ui> = {
     pauseVideo: "暂停",
     whatsNew: "{version} 更新了什么",
     commandOutput: "查看实际输出",
-    notesInEnglish: "摘自英文发布说明。",
-    notesInChinese: "摘自中文发布说明。",
     releaseNotes: "发布说明",
     playVideo: "播放",
     home: "首页",
