@@ -1,6 +1,7 @@
 /**
  * Capture optimized product screenshots from local Goban / Chessboard web UIs.
  * Usage: node scripts/capture-board-screenshots.mjs
+ *        node scripts/capture-board-screenshots.mjs --featured  (Home's Chessboard row only)
  */
 import fs from "node:fs/promises";
 import http from "node:http";
@@ -230,6 +231,52 @@ async function captureChessboard(browser) {
   await server.close();
 }
 
+/**
+ * Home's featured row: the finished Stockfish review on the final position,
+ * in the page's language, at 1800x1200 so it stays sharp at full row width.
+ */
+async function captureChessboardFeatured(browser, lang) {
+  const server = await serveDir(path.join(appsRoot, "chessboard/src/web"));
+  const context = await browser.newContext({ viewport: { width: 1200, height: 800 }, deviceScaleFactor: 1.5 });
+  const page = await context.newPage();
+  await page.addInitScript(
+    ({ pgn, langId }) => {
+      localStorage.setItem(
+        "chess.v1.settings",
+        JSON.stringify({
+          soundOn: false,
+          flipped: false,
+          themeId: "wood",
+          mode: "pvp",
+          difficulty: "normal",
+          humanColor: "w",
+          langId,
+        }),
+      );
+      localStorage.setItem("chess.panelOpen", "1");
+      localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
+    },
+    { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" },
+  );
+  await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
+  await page.waitForSelector("#board");
+  await page.waitForTimeout(1000);
+  await openPanel(page);
+  await page.click("#an-run");
+  // The accuracy line appears only once every ply has been evaluated.
+  await page.waitForSelector("#acc-line:not([hidden])", { timeout: 120000 });
+  await page.waitForTimeout(800);
+  await page.click("#rep-start");
+  await page.waitForTimeout(300);
+  await page.click("#rep-end");
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(600);
+  await dismissToasts(page);
+  await writeWebp(page, `chessboard-featured-${lang}.webp`);
+  await context.close();
+  await server.close();
+}
+
 async function convertExistingGobanFallback() {
   // If capture fails partially, convert existing JPGs so site paths resolve.
   for (const base of ["goban-game-board", "goban-review", "goban-notebook"]) {
@@ -253,6 +300,11 @@ async function convertExistingGobanFallback() {
 async function main() {
   await fs.mkdir(outDir, { recursive: true });
   const browser = await chromium.launch({ headless: true });
+  if (process.argv.includes("--featured")) {
+    for (const lang of ["en", "zh"]) await captureChessboardFeatured(browser, lang);
+    await browser.close();
+    return;
+  }
   try {
     await captureGoban(browser);
   } catch (err) {

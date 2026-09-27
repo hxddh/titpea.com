@@ -223,13 +223,17 @@ export type ProductCopy = {
   releaseHighlights?: ReleaseHighlights;
 };
 
+export const featuredSrc = (featured: NonNullable<Product["featured"]>, locale: Locale) =>
+  typeof featured.image.src === "string" ? featured.image.src : featured.image.src[locale];
+
 export type Product = {
   slug: string;
   /** Catalog group and header dropdown. */
   line: Line;
-  /** The two featured products lead Home with this photograph. */
+  /** The featured products (at most three) lead Home with this photograph. */
   featured?: {
-    image: Omit<Image, "alt"> & { alt: Record<Locale, string> };
+    /** One capture, or one per locale when the app's own UI is in that language. */
+    image: Omit<Image, "src" | "alt"> & { src: string | Record<Locale, string>; alt: Record<Locale, string> };
     /**
      * Phones show this crop of the same capture (source pixels), sized so its
      * text stays legible at phone width; `npm run assets:images` writes it as

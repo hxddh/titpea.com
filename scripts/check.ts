@@ -28,7 +28,8 @@ for (const file of files) if (!slugs.includes(file)) fail(`products/${file}.ts i
 for (const product of products) {
   if (!files.includes(product.slug)) fail(`${product.slug}: slug must match its file name`);
 }
-if (products.filter((product) => product.featured).length !== 2) fail("exactly two products lead Home as featured");
+const featuredCount = products.filter((product) => product.featured).length;
+if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Home as featured");
 
 /* ---------- Releases ---------- */
 

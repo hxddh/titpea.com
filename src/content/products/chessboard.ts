@@ -3,6 +3,22 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "chessboard",
   line: "everyday",
+  featured: {
+    image: {
+      src: {
+        en: "/assets/chessboard-featured-en.webp",
+        zh: "/assets/chessboard-featured-zh.webp",
+      },
+      width: 1800,
+      height: 1200,
+      alt: {
+        en: "Chessboard after a full-game Stockfish review: the final position, the evaluation curve with marked mistakes, and each side's accuracy",
+        zh: "Chessboard 用 Stockfish 复盘完整局：终局局面、标出失着的评估曲线，以及双方精准度",
+      },
+    },
+    // The evaluation curve and each side's accuracy.
+    detail: { x: 1270, y: 650, width: 530, height: 530 },
+  },
   repo: "hxddh/chessboard",
   icon: "/assets/icons/chessboard.webp",
   og: "/assets/og-chessboard.png",

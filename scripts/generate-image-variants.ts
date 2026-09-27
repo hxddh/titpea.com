@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import { products } from "../src/content/products";
+import { featuredSrc, locales } from "../src/content/schema";
 
 const dir = "public/assets";
 const variantWidths = [900, 1200];
@@ -26,13 +27,16 @@ for (const file of fs.readdirSync(dir)) {
 
 // Phone crops of the Home featured captures (see `featured.detail`).
 for (const product of products) {
-  const detail = product.featured?.detail;
-  if (!detail) continue;
-  const source = path.join("public", product.featured!.image.src);
-  const target = source.replace(/\.(webp|png|jpg)$/, "-detail.webp");
-  await sharp(source)
-    .extract({ left: detail.x, top: detail.y, width: detail.width, height: detail.height })
-    .webp({ quality: 84 })
-    .toFile(target);
-  console.log(`${target} (${fs.statSync(target).size} bytes)`);
+  const featured = product.featured;
+  if (!featured?.detail) continue;
+  const { detail } = featured;
+  for (const src of new Set(locales.map((locale) => featuredSrc(featured, locale)))) {
+    const source = path.join("public", src);
+    const target = source.replace(/\.(webp|png|jpg)$/, "-detail.webp");
+    await sharp(source)
+      .extract({ left: detail.x, top: detail.y, width: detail.width, height: detail.height })
+      .webp({ quality: 84 })
+      .toFile(target);
+    console.log(`${target} (${fs.statSync(target).size} bytes)`);
+  }
 }
