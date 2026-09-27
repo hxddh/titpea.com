@@ -61,10 +61,12 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/chessboard-review.webp",
-        alt: "Chessboard reviewing a finished game with a centipawn evaluation curve and annotated mistakes",
-        width: 1223,
+        src: "/assets/chessboard-review-en.webp",
+        alt: "Chessboard finishing a Stockfish review of a 17-move game, then stepping through it move by move as the evaluation curve marks mistakes",
+        width: 1222,
         height: 768,
+        // Recorded from the app's own review (scripts/record-board-demos.mjs).
+        video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Mistakes show on the curve.",
         body: "A full-game Stockfish pass builds a centipawn curve and marks mistakes; jump to any position and play on.",
       },
@@ -161,10 +163,11 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/chessboard-review.webp",
-        alt: "Chessboard 复盘已结束对局，显示引擎评估曲线与失着标注",
-        width: 1223,
+        src: "/assets/chessboard-review-zh.webp",
+        alt: "Chessboard 用 Stockfish 分析完一局 17 回合的棋，再逐手回放，评估曲线标出失着",
+        width: 1222,
         height: 768,
+        video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "失着落在曲线上",
         body: "Stockfish 跑完整局，生成评估曲线并标注失着；跳到任意局面可继续下。",
       },

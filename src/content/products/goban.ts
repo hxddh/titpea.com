@@ -44,10 +44,12 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/goban-review.webp",
-        alt: "Goban reviewing a mid-game position on a wood board with the move list and replay controls visible",
-        width: 1223,
+        src: "/assets/goban-review-en.webp",
+        alt: "Goban replaying a 15-move game move by move on a wood board, with replay analysis marking each move and the record in the sidebar",
+        width: 1222,
         height: 768,
+        // Recorded from the app replaying the game (scripts/record-board-demos.mjs).
+        video: { mp4: "/assets/goban-review-en.mp4", webm: "/assets/goban-review-en.webm" },
         title: "Records become positions.",
         body: "Turn on replay analysis, then pick a move to rebuild its position.",
       },
@@ -123,10 +125,11 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/goban-review.webp",
-        alt: "Goban 在木质棋盘上复盘中局局面，旁边显示着法列表与复盘控制",
-        width: 1223,
+        src: "/assets/goban-review-zh.webp",
+        alt: "Goban 在木质棋盘上逐手回放一局 15 手的对局，复盘分析标注每一手，侧栏显示棋谱",
+        width: 1222,
         height: 768,
+        video: { mp4: "/assets/goban-review-zh.mp4", webm: "/assets/goban-review-zh.webm" },
         title: "棋谱回到棋盘上",
         body: "开启复盘分析，选任意一手即可还原当时局面。",
       },
