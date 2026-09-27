@@ -1,4 +1,16 @@
 import { allPages } from "../lib/pages";
+import releases from "../content/releases.json";
+
+// lastmod is the day a page's content last changed on its own: a product page
+// on its latest release, Home and About on the newest release anywhere. Pages
+// with no such date carry none rather than a build date that moves daily.
+const published = releases as Record<string, { published?: string }>;
+const newest = Object.values(published)
+  .map((entry) => entry.published ?? "")
+  .sort()
+  .at(-1);
+const lastmodFor = (model: (typeof allPages)[number]) =>
+  model.kind === "product" ? published[model.slug]?.published : newest;
 
 const escapeXml = (value: string) =>
   value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -22,14 +34,18 @@ export function GET() {
       },
     },
   ];
-  const urls = [...allPages.map((model) => model.seo), ...privacyRoutes]
+  const urls = [
+    ...allPages.map((model) => ({ ...model.seo, lastmod: lastmodFor(model) })),
+    ...privacyRoutes.map((route) => ({ ...route, lastmod: undefined })),
+  ]
     .map((seo) => {
       const alternates = [
         `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(seo.alternates.en)}"/>`,
         `<xhtml:link rel="alternate" hreflang="zh-CN" href="${escapeXml(seo.alternates.zh)}"/>`,
         `<xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(seo.alternates.xDefault)}"/>`,
       ].join("");
-      return `<url><loc>${escapeXml(seo.canonicalUrl)}</loc>${alternates}</url>`;
+      const lastmod = seo.lastmod ? `<lastmod>${seo.lastmod}</lastmod>` : "";
+      return `<url><loc>${escapeXml(seo.canonicalUrl)}</loc>${lastmod}${alternates}</url>`;
     })
     .join("");
 

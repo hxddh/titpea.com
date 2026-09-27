@@ -19,8 +19,11 @@ const { model } = Astro.props;
         {
           model.hero.icons.map((icon) => (
             <li>
-              <a href={icon.href} title={icon.name}>
+              <a href={icon.href}>
                 <img src={icon.src} alt={icon.name} width="72" height="72" />
+                <span class="home-icon-name" aria-hidden="true">
+                  {icon.name}
+                </span>
               </a>
             </li>
           ))

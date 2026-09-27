@@ -220,7 +220,7 @@ export const ui: Record<Locale, Ui> = {
     aboutStats: {
       products: "个产品",
       lines: "条产品线",
-      released: "个有 GitHub Release",
+      released: "个有 GitHub 发布",
       releases: "次 GitHub 发布",
     },
     aboutLinesTitle: "四条产品线",
