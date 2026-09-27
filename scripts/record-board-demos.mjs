@@ -44,7 +44,14 @@ const CHESS_PGN = `[Event "Site capture"]
 11. d4 Kd6 12. Bf4+ Ke7 13. Bxd5 cxd5 14. Nxd5+ Ke8
 15. Nf6+ gxf6 16. Qxe5+ Be7 17. Qxe7# 1-0`;
 
-const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".wasm": "application/wasm", ".svg": "image/svg+xml", ".png": "image/png" };
+const types = {
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "text/javascript",
+  ".wasm": "application/wasm",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+};
 
 async function serveDir(root) {
   const server = http.createServer(async (req, res) => {
@@ -79,9 +86,10 @@ async function record(browser, name, root, init, act, trimStart) {
   });
   await context.addInitScript(init.script, init.arg);
   const page = await context.newPage();
+  // The recording starts with the page, so offsets are measured from here.
+  const started = Date.now();
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
-  const started = Date.now();
   const markStart = await act(page);
   const video = page.video();
   await context.close();
@@ -91,9 +99,29 @@ async function record(browser, name, root, init, act, trimStart) {
   const mp4 = path.join(outDir, `${name}.mp4`);
   const webm = path.join(outDir, `${name}.webm`);
   const common = ["-y", "-ss", from, "-i", raw, "-an", "-vf", "fps=30,scale=1222:-2:flags=lanczos"];
-  execFileSync(ffmpeg, [...common, "-c:v", "libx264", "-preset", "slow", "-crf", "26", "-pix_fmt", "yuv420p", "-movflags", "+faststart", mp4], { stdio: "ignore" });
-  execFileSync(ffmpeg, [...common, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "40", "-row-mt", "1", webm], { stdio: "ignore" });
-  for (const file of [mp4, webm]) console.log(`${path.basename(file)} ${Math.round((await fs.stat(file)).size / 1024)} KB`);
+  execFileSync(
+    ffmpeg,
+    [
+      ...common,
+      "-c:v",
+      "libx264",
+      "-preset",
+      "slow",
+      "-crf",
+      "26",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart",
+      mp4,
+    ],
+    { stdio: "ignore" },
+  );
+  execFileSync(ffmpeg, [...common, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "40", "-row-mt", "1", webm], {
+    stdio: "ignore",
+  });
+  for (const file of [mp4, webm])
+    console.log(`${path.basename(file)} ${Math.round((await fs.stat(file)).size / 1024)} KB`);
 }
 
 async function recordGoban(browser, lang) {
@@ -107,7 +135,17 @@ async function recordGoban(browser, lang) {
         localStorage.setItem("goban.v12.lang", lang);
         localStorage.setItem(
           "goban.v11.settings",
-          JSON.stringify({ mode: "pvp", difficulty: "normal", humanColor: "b", soundOn: false, themeId: "wood", thinkLevel: "standard", showCoords: true, analysisOn: true, openingRule: "standard" }),
+          JSON.stringify({
+            mode: "pvp",
+            difficulty: "normal",
+            humanColor: "b",
+            soundOn: false,
+            themeId: "wood",
+            thinkLevel: "standard",
+            showCoords: true,
+            analysisOn: true,
+            openingRule: "standard",
+          }),
         );
         localStorage.setItem("goban.panelOpen", "1");
       },
@@ -146,7 +184,15 @@ async function recordChessboard(browser, lang) {
       script: ({ pgn, lang }) => {
         localStorage.setItem(
           "chess.v1.settings",
-          JSON.stringify({ soundOn: false, flipped: false, themeId: "wood", mode: "pvp", difficulty: "normal", humanColor: "w", langId: lang === "en" ? "en" : "zh-CN" }),
+          JSON.stringify({
+            soundOn: false,
+            flipped: false,
+            themeId: "wood",
+            mode: "pvp",
+            difficulty: "normal",
+            humanColor: "w",
+            langId: lang === "en" ? "en" : "zh-CN",
+          }),
         );
         localStorage.setItem("chess.panelOpen", "1");
         localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
@@ -165,10 +211,14 @@ async function recordChessboard(browser, lang) {
       if (await run.isVisible().catch(() => false)) {
         await run.click();
         await page
-          .waitForFunction(() => {
-            const button = document.getElementById("an-run");
-            return button && !button.disabled && !button.classList.contains("busy");
-          }, null, { timeout: 60000 })
+          .waitForFunction(
+            () => {
+              const button = document.getElementById("an-run");
+              return button && !button.disabled && !button.classList.contains("busy");
+            },
+            null,
+            { timeout: 60000 },
+          )
           .catch(() => {});
       }
       const moves = page.locator("#move-list button");
