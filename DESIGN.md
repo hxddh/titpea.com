@@ -102,10 +102,11 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 ## Type
 
 - System face first (`-apple-system`, SF Pro), then Inter for Latin elsewhere, then the system CJK face. Do not load a CJK webfont.
-- Display weight is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.01em` and looser line-height on headings, and `1.7` on body copy, so Latin tracking never crushes CJK.
-- Sizes come from tokens: `--title-hero`, `--title-display`, `--title-section`, `--title-show`, `--text-lede`, `--text-sub`, `--text-kicker`, `--text-card-title`, `--text-card-body`, `--text-list-body`, `--text-catalog-name`.
-- Secondary copy (lede, sub, card body, FAQ answers) is `--muted`. Headings, names, and About body are `--ink`.
-- `mono` is for meta lines, commands, terminals, evidence labels, and data. Everything else is `sans`.
+- Display weight is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.005em` on headings and no tracking at all on reading text, which is 16px (`--text-card-body` steps up) at line-height `1.75` and wraps with `text-wrap: pretty` so no character is stranded on a last line. At the same pixel size CJK reads smaller than Latin.
+- Sizes come from tokens: `--title-hero`, `--title-display`, `--title-section`, `--title-show`, `--text-lede`, `--text-sub`, `--text-kicker`, `--text-card-title`, `--text-card-body`, `--text-list-body`, `--text-catalog-name`, and the floor `--text-small` (14px) / `--text-meta` (13px). Nothing outside a hero product mock is smaller than 13px; mocks keep at least 12px. Reading text is at least 15px on phones too; FAQ answers are `--text-list-body` (16px).
+- Reading text (card bodies, FAQ answers, catalog one-liners, panel copy) is `--ink-2`, at least 7:1. `--muted` is for labels, dates, chips, captions, the lede and subs. Headings, names, and About body are `--ink`.
+- `mono` is for release tags, commands, terminals, evidence labels, and data. The hero meta line is `sans` at 14px with only its tag in mono.
+- `npm run a11y:check` holds both floors on every page, theme, and viewport: reading text 7:1, no text under 13px outside hero mocks.
 
 ## Color and Depth
 
@@ -113,7 +114,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 | ------------------- | -------------------------------------- | -------------------------------------------------- |
 | Canvas              | `--paper`                              | Page background                                    |
 | Raised              | `--paper-raised`                       | Feature cards, catalog cards, panels               |
-| Ink / muted         | `--ink` / `--muted`                    | Primary and secondary text (both AA)               |
+| Ink / ink-2 / muted | `--ink` / `--ink-2` / `--muted`        | Headings; reading text (7:1); labels (AA)          |
 | Faint               | `--faint`                              | Decoration only, never text                        |
 | Accent              | `--accent-fill`, `--link`, `--accent`  | The filled primary action, links, and focus rings  |
 | Glass               | `--glass`, `--glass-blur`, `--menu-bg` | Header and local nav bars; near-opaque menu panels |

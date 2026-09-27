@@ -28,11 +28,8 @@ const hasFaq = copy.sections.some((section) => section.kind === "faq");
 // Every page closes on its main action; finalCta only renames the button.
 const closing = copy.finalCta ?? copy.primaryCta.label;
 // The version in the meta line carries its release date: "v1.17.3 (Sep 4, 2026)".
-const metaParts = copy.meta
-  .split(" · ")
-  .map((part) =>
-    part === model.version && model.released ? part + copyUi.released.replace("{date}", model.released) : part,
-  );
+const metaParts = copy.meta.split(" · ");
+const releasedNote = model.released ? copyUi.released.replace("{date}", model.released) : "";
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language} localNav>
@@ -58,7 +55,20 @@ const metaParts = copy.meta
         </a>
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
-      <p class="meta-line">{metaParts.map((part) => <span>{part}</span>)}</p>
+      <p class="meta-line">
+        {
+          metaParts.map((part) =>
+            part === model.version ? (
+              <span>
+                <span class="meta-tag">{part}</span>
+                {releasedNote}
+              </span>
+            ) : (
+              <span>{part}</span>
+            ),
+          )
+        }
+      </p>
     </div>
     <div class="shell hero-visual-frame">
       <Visual visual={copy.visual} />

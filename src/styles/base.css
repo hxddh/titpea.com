@@ -266,7 +266,12 @@ p {
   filter: blur(8px);
 }
 
-/* Chinese optics: Latin tracking must not crush CJK. */
+/* Chinese optics: Latin tracking must not crush CJK, and at the same pixel
+   size CJK reads smaller than Latin, so reading text steps up to 16px. */
+html:lang(zh) {
+  --text-card-body: 16px;
+}
+
 :lang(zh) body {
   letter-spacing: 0;
 }
@@ -275,7 +280,7 @@ p {
 :lang(zh) .home-hero h1,
 :lang(zh) .product-hero h1,
 :lang(zh) h2 {
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
   line-height: 1.16;
 }
 
@@ -286,8 +291,12 @@ p {
 :lang(zh) .feature-card p,
 :lang(zh) .catalog-card p,
 :lang(zh) .faq-answer,
-:lang(zh) .panel p {
-  line-height: 1.7;
+:lang(zh) .panel p,
+:lang(zh) .whats-new-list li {
+  line-height: 1.75;
+  letter-spacing: 0;
+  /* No single character stranded on a last line. */
+  text-wrap: pretty;
 }
 
 /* Utilities */
@@ -386,7 +395,7 @@ p {
   background: var(--glass-strong);
   box-shadow: var(--shadow-glass);
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-small);
   cursor: pointer;
 }
 

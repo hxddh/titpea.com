@@ -12,6 +12,8 @@
   --paper-raised: #f5f5f7;
   --ink: #1d1d1f;
   --muted: #6e6e73;
+  /* Reading text (card bodies, answers): 10:1, where --muted is for labels. */
+  --ink-2: #424245;
   --label: #6e6e73;
   --faint: #86868b;
   --on-ink: #ffffff;
@@ -75,6 +77,10 @@
   --text-lede: clamp(1.1875rem, 2vw, 1.5rem);
   --text-sub: clamp(1.0625rem, 1.6vw, 1.3125rem);
   --text-kicker: 14px;
+  /* The floor: labels, dates, chips, captions. Nothing outside a product
+     mock is smaller. */
+  --text-meta: 13px;
+  --text-small: 14px;
   --text-card-title: 19px;
   --text-card-body: 15px;
   --text-list-body: 16px;
@@ -101,6 +107,7 @@
   --paper-raised: #161617;
   --ink: #f5f5f7;
   --muted: #a1a1a6;
+  --ink-2: #d2d2d7;
   --label: #a1a1a6;
   --faint: #6e6e73;
   --on-ink: #ffffff;
@@ -136,6 +143,7 @@
     --paper-raised: #161617;
     --ink: #f5f5f7;
     --muted: #a1a1a6;
+    --ink-2: #d2d2d7;
     --label: #a1a1a6;
     --faint: #6e6e73;
     --on-ink: #ffffff;
