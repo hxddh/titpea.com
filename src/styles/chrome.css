@@ -367,6 +367,17 @@
   }
 }
 
+/* 404 lists every product in the page itself; the map would repeat it. */
+.page-notfound .foot-map {
+  display: none;
+}
+
+.page-notfound .site-footer .foot {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 /* Phones already carry every product in the menu; the footer stays one line. */
 @media (max-width: 640px) {
   .foot-map {

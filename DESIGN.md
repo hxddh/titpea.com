@@ -31,14 +31,14 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again (the download keeps its release tag). `finalCta` only renames the filled button. It never restates the hero headline.
 - **Where next.** After the closing action, one quiet row: `More in {line}` / `更多{line}工具` in small type, three products as icon and name (no cards, one-liners, or tags), taken from the rest of the product's line in site order after it, then from the other lines (the label becomes `More tools` / `更多工具`), and an `All tools` link. A product page never dead-ends, and its ending stays one band.
-- **Footer.** On desktop, a map of the site: one column per product line with every product, then a Titpea column (Home, About, the releases feed, GitHub, the other language). Phones skip the map (the menu already lists every product). Then copyright on the left and email on the right.
+- **Footer.** On desktop (except 404, whose page already lists every product), a map of the site: one column per product line with every product, then a Titpea column (Home, About, the releases feed, GitHub, the other language). Phones skip the map (the menu already lists every product). Then copyright on the left and email on the right.
 - **Code in copy.** Product copy writes code as `` `code` ``; `Prose.astro` renders it as an inline code chip and structured data drops the backticks. `check:dist` fails if a raw backtick reaches page text.
 
 ## Home
 
 **Settled direction — the owner decided this twice (PR #150, PR #153).** Home follows Omni: the icon hero with two actions, then stacked showcase rows with lifted, rounded screenshots, then the catalog. Do not bring back the side-by-side hairline pair, a compact hero with no actions, or flat unshadowed screenshots, even to fit both captures on the first screen. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
 
-- The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product, then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
+- The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product whose name appears in a small glass label when pointed at or focused (above the top row, below the bottom row), then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows: role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot. The whole row is one link. On phones the screenshot becomes `featured.detail`, a crop of the same real capture where its text is legible (the reading, the cited answer), its cut edge fading out; `npm run assets:images` writes it.
 - `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. A product without GitHub releases shows a chip saying where it lives instead (`Chrome Web Store`, `Python`; `catalog.badge`, or the first part of its meta line), so every card ends on the same row. Every card shows its app icon in the top right. A product belongs to one line, and the header dropdowns use the same four lines.
 
@@ -56,6 +56,7 @@ The page answers, in order: what Titpea is, what it holds, how the tools behave,
 
 ## Releases Feed
 
+- `sitemap.xml` gives each product page a `lastmod` of its latest release date, and Home and About the newest release anywhere; pages without such a date carry none (never the build date).
 - `/releases.xml` is an Atom feed of every product's latest release, newest first, built from `releases.json`. Every page links it in `<head>`; About links it under `Latest releases.`
 
 ## 404

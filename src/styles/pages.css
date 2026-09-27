@@ -242,9 +242,53 @@
 }
 
 .home-icons a {
+  position: relative;
   display: block;
   border-radius: 18px;
   transition: transform 0.25s ease;
+}
+
+/* The product's name, under its icon while pointed at or focused. Hidden
+   labels take no space, so the edge columns never widen the page. */
+.home-icon-name {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 2;
+  display: none;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow-glass);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* The top row labels above, so a name never covers the icon beneath. */
+.home-icons li:nth-child(-n + 7) .home-icon-name {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+/* Edge columns anchor to their inner side. */
+.home-icons li:nth-child(7n + 1) .home-icon-name {
+  left: 0;
+  transform: none;
+}
+
+.home-icons li:nth-child(7n) .home-icon-name {
+  right: 0;
+  left: auto;
+  transform: none;
+}
+
+.home-icons a:hover .home-icon-name,
+.home-icons a:focus-visible .home-icon-name {
+  display: block;
 }
 
 .home-icons a:hover {
@@ -462,7 +506,8 @@
   height: 28px;
 }
 
-.notfound-products .privacy-page {
+/* Privacy and 404 open at the same height as the other heroes. */
+.privacy-page {
   padding-top: 72px;
 }
 
