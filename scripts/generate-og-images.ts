@@ -7,7 +7,7 @@ import fs from "node:fs/promises";
 import sharp from "sharp";
 import { products } from "../src/content/products/index.ts";
 import { site, ui } from "../src/content/site.ts";
-import type { Product } from "../src/content/schema.ts";
+import { featuredSrc, type Product } from "../src/content/schema.ts";
 
 type Card = {
   file: string;
@@ -22,7 +22,7 @@ const heroScreenshot = (product: Product) => {
   const visual = product.en.visual;
   if (visual.kind === "screenshot") return visual.image.src;
   if (visual.kind === "clockScreenshots") return visual.images[0]?.src;
-  return product.featured?.image.src ?? product.en.showcases?.[0]?.src;
+  return (product.featured && featuredSrc(product.featured, "en")) ?? product.en.showcases?.[0]?.src;
 };
 
 export const cards: Card[] = [

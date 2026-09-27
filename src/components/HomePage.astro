@@ -53,7 +53,7 @@ const { model } = Astro.props;
               <span class="sub">{item.text}</span>
               <span class="home-featured-more">{model.featured.learnMore}</span>
             </span>
-            <figure class="shot" data-detail={item.detail ? "" : undefined}>
+            <figure class="shot" data-detail={item.detail ? (item.detail.cut ? "cut" : "edge") : undefined}>
               <picture>
                 {item.detail && (
                   <source

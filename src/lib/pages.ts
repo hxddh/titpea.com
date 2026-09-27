@@ -4,6 +4,7 @@ import releases from "../content/releases.json";
 import { products } from "../content/products";
 import { absoluteUrl, site, ui } from "../content/site";
 import {
+  featuredSrc,
   lines,
   locales,
   type Line,
@@ -316,7 +317,8 @@ export type HomePageModel = {
       CatalogItem & {
         image: { src: string; alt: string; width: number; height: number };
         /** Phone crop of the same capture. */
-        detail?: { src: string; width: number; height: number };
+        /** `cut`: the crop stops short of the capture's right edge, so that edge fades. */
+        detail?: { src: string; width: number; height: number; cut: boolean };
       }
     >;
   };
@@ -407,13 +409,15 @@ export function homePage(locale: Locale): HomePageModel {
       learnMore: copy.learnMore,
       items: featured.map((product) => {
         const { image, detail } = product.featured!;
+        const src = featuredSrc(product.featured!, locale);
         return {
           ...catalogItem(product, locale),
-          image: { ...image, alt: image.alt[locale] },
+          image: { ...image, src, alt: image.alt[locale] },
           detail: detail && {
-            src: image.src.replace(/\.(webp|png|jpg)$/, "-detail.webp"),
+            src: src.replace(/\.(webp|png|jpg)$/, "-detail.webp"),
             width: detail.width,
             height: detail.height,
+            cut: detail.x + detail.width < image.width,
           },
         };
       }),
