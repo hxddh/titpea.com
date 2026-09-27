@@ -3,7 +3,8 @@
  * (the apps' own src/web, served locally): Goban replays a game move by
  * move, Chessboard runs its Stockfish review and steps through the result.
  * Nothing is scripted inside the apps; the recording only clicks their UI.
- * Writes public/assets/<name>.mp4 (H.264) and .webm (VP9) next to the poster.
+ * Each loop is recorded twice, with the app in English and in Chinese, and
+ * written as public/assets/<name>-<en|zh>.mp4 (H.264) and .webm (VP9).
  *
  *   git clone https://github.com/hxddh/goban /tmp/board-apps/goban
  *   git clone https://github.com/hxddh/chessboard /tmp/board-apps/chessboard
@@ -73,6 +74,7 @@ async function record(browser, name, root, init, act, trimStart) {
   const context = await browser.newContext({
     viewport: VIEWPORT,
     recordVideo: { dir, size: VIEWPORT },
+    locale: init.arg.lang === "en" ? "en-US" : "zh-CN",
     permissions: ["clipboard-read", "clipboard-write"],
   });
   await context.addInitScript(init.script, init.arg);
@@ -94,13 +96,15 @@ async function record(browser, name, root, init, act, trimStart) {
   for (const file of [mp4, webm]) console.log(`${path.basename(file)} ${Math.round((await fs.stat(file)).size / 1024)} KB`);
 }
 
-async function recordGoban(browser) {
+async function recordGoban(browser, lang) {
   await record(
     browser,
-    "goban-review",
+    `goban-review-${lang}`,
     path.join(appsRoot, "goban/src/web"),
     {
-      script: () => {
+      arg: { lang },
+      script: ({ lang }) => {
+        localStorage.setItem("goban.v12.lang", lang);
         localStorage.setItem(
           "goban.v11.settings",
           JSON.stringify({ mode: "pvp", difficulty: "normal", humanColor: "b", soundOn: false, themeId: "wood", thinkLevel: "standard", showCoords: true, analysisOn: true, openingRule: "standard" }),
@@ -133,22 +137,29 @@ async function recordGoban(browser) {
   );
 }
 
-async function recordChessboard(browser) {
+async function recordChessboard(browser, lang) {
   await record(
     browser,
-    "chessboard-review",
+    `chessboard-review-${lang}`,
     path.join(appsRoot, "chessboard/src/web"),
     {
-      script: ({ pgn }) => {
-        localStorage.setItem("chess.v1.settings", JSON.stringify({ soundOn: false, flipped: false, themeId: "wood", mode: "pvp", difficulty: "normal", humanColor: "w" }));
+      script: ({ pgn, lang }) => {
+        localStorage.setItem(
+          "chess.v1.settings",
+          JSON.stringify({ soundOn: false, flipped: false, themeId: "wood", mode: "pvp", difficulty: "normal", humanColor: "w", langId: lang === "en" ? "en" : "zh-CN" }),
+        );
         localStorage.setItem("chess.panelOpen", "1");
         localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
       },
-      arg: { pgn: CHESS_PGN },
+      arg: { pgn: CHESS_PGN, lang },
     },
     async (page) => {
       await page.waitForTimeout(800);
       await quiet(page);
+      if (!(await page.evaluate(() => document.getElementById("app")?.classList.contains("panel-open")))) {
+        await page.click("#toggle-panel");
+        await page.waitForTimeout(400);
+      }
       // Stockfish reviews every ply in the browser; the loop starts once it has.
       const run = page.locator("#an-run");
       if (await run.isVisible().catch(() => false)) {
@@ -180,8 +191,13 @@ async function recordChessboard(browser) {
 
 const browser = await chromium.launch({ headless: true });
 try {
-  await recordGoban(browser);
-  await recordChessboard(browser);
+  // `--only goban` or `--only chessboard` records one app. Chessboard needs its
+  // bundle built first (npm run build in its checkout).
+  const only = process.argv.includes("--only") ? process.argv[process.argv.indexOf("--only") + 1] : undefined;
+  for (const lang of ["en", "zh"]) {
+    if (!only || only === "goban") await recordGoban(browser, lang);
+    if (!only || only === "chessboard") await recordChessboard(browser, lang);
+  }
 } finally {
   await browser.close();
 }
