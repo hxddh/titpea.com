@@ -239,7 +239,7 @@
   gap: 16px;
   padding: 14px 18px;
   color: #8ebca0;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 
@@ -284,7 +284,7 @@
 .terminal-brief-files span,
 .terminal-brief-brief span {
   color: #72de91;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
 }
@@ -293,14 +293,14 @@
 .httpmon-terminal-response p {
   margin: 0;
   color: #92bba0;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
 .httpmon-terminal-response code {
   overflow: hidden;
   color: #c3f4d0;
-  font-size: 11px;
+  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -315,7 +315,7 @@
 
 .terminal-brief-files code {
   color: #c3f4d0;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .terminal-brief-brief {
@@ -330,7 +330,7 @@
   gap: 16px;
   padding: 14px 18px;
   color: #719d7f;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* —— Pulse menu-bar visual —— */
@@ -353,7 +353,7 @@
   gap: 16px;
   padding: 14px 18px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 
@@ -392,7 +392,7 @@
 .pulse-menubar-header span {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .pulse-menubar-section {
@@ -406,7 +406,7 @@
   margin: 0;
   color: var(--label);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -437,7 +437,7 @@
   margin: 3px 0 0;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -447,7 +447,7 @@
   border-radius: 0;
   padding: 4px 0;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   letter-spacing: 0.04em;
 }
@@ -468,7 +468,7 @@
 
 .pulse-menubar-foot {
   color: var(--label);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* —— World Machine projection visual —— */
@@ -488,7 +488,7 @@
   gap: 16px;
   padding: 14px 18px;
   color: var(--label);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.04em;
 }
 
@@ -508,7 +508,7 @@
 .world-machine-projection-panels span {
   color: var(--label);
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0;
 }
@@ -565,7 +565,7 @@
 
 .world-machine-projection-foot {
   color: var(--label);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 @media (max-width: 640px) {

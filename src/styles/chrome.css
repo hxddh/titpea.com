@@ -63,7 +63,7 @@
   color: var(--ink);
   background: transparent;
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-small);
   letter-spacing: -0.01em;
   white-space: nowrap;
   cursor: pointer;
@@ -196,7 +196,7 @@
 .mobile-menu-group p {
   margin: 6px 12px 2px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-meta);
   font-weight: 600;
 }
 
@@ -263,7 +263,7 @@
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-meta);
   white-space: nowrap;
 }
 
@@ -287,7 +287,7 @@
   color: var(--ink);
   background: transparent;
   font: inherit;
-  font-size: 14px;
+  font-size: var(--text-small);
   cursor: pointer;
 }
 
@@ -296,7 +296,7 @@
   min-height: 34px;
   margin-left: 6px;
   padding: 0 16px;
-  font-size: 14px;
+  font-size: var(--text-small);
 }
 
 /* 44px hit area around the compact capsule. */
@@ -317,7 +317,7 @@
   padding: 40px 0 36px;
   border-top: 1px solid var(--line);
   color: var(--faint);
-  font-size: 13px;
+  font-size: var(--text-meta);
   letter-spacing: -0.01em;
 }
 
