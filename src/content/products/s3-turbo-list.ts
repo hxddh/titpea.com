@@ -176,7 +176,6 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
         ],
       },
     ],
-    finalCta: "Open repository",
   },
   zh: {
     title: "s3-turbo-list",
@@ -185,7 +184,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
     headline: "18.8 秒列出一百万对象",
     lead: "自动发现可并行的工作。大规模 list 与 diff。输出 Parquet。",
     catalog: {
-      role: "List / Diff",
+      role: "列举 / 对比",
       text: "并行列举和对比 S3 对象，输出可继续分析的 Parquet。",
     },
     primaryCta: {
@@ -296,7 +295,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
         id: "evidence",
         nav: "扫描方式",
         kicker: "list 如何展开",
-        title: "扫描计划跟着桶的结构走",
+        title: "扫描计划随桶而定",
         body: "有结构的地方先并行展开，仍然耗时的长尾片段再继续拆分。",
         steps: [
           { label: "识别结构", body: "先探测真实的前缀边界，再开始递归扫描。" },
@@ -342,6 +341,5 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
         ],
       },
     ],
-    finalCta: "打开仓库",
   },
 });

@@ -119,13 +119,12 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Open repository",
   },
   zh: {
     title: "Agent Radar",
     description: "定时整理 Agent 产业动态，把带来源的 Markdown 周报与观察名单保存在 Git 中。",
     eyebrow: "Markdown 优先 · GitHub Actions",
-    headline: "Agent 动态，按周整理",
+    headline: "Agent 动态，附来源",
     lead: "公开来源。引用校验。Markdown 周报存进 Git。",
     catalog: {
       role: "每周简报",
@@ -229,6 +228,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "打开仓库",
   },
 });

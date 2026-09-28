@@ -25,9 +25,10 @@ const showcases = copy.showcases ?? [];
 const opening = showcases.filter((figure) => !figure.beside);
 const besideSection = (id: string) => showcases.find((figure) => figure.beside === id);
 const hasFaq = copy.sections.some((section) => section.kind === "faq");
-// Every page closes on its main action; finalCta only renames the button.
-const closing = copy.finalCta ?? copy.primaryCta.label;
-// The version in the meta line carries its release date: "v1.17.3 (Sep 4, 2026)".
+// Every page closes on its main action, under the same label as the hero.
+const closing = copy.primaryCta.label;
+// The version in the meta line carries its release date: "v1.17.3 (Sep 4, 2026)",
+// or only the date when the download button already shows the version.
 const metaParts = copy.meta.split(" · ");
 const releasedNote = model.released ? copyUi.released.replace("{date}", model.released) : "";
 ---
@@ -58,7 +59,10 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
       <p class="meta-line">
         {
           metaParts.map((part) =>
-            part === model.version ? (
+            // The download button already names the version; the meta line then gives only its date.
+            part === model.version && model.downloadsRelease && model.released ? (
+              <span>{model.released}</span>
+            ) : part === model.version ? (
               <span>
                 <span class="meta-tag">{part}</span>
                 {releasedNote}

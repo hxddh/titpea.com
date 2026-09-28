@@ -110,13 +110,12 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Open repository",
   },
   zh: {
     title: "httpmon",
     description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
     eyebrow: "Go CLI",
-    headline: "看这条命令发了什么请求",
+    headline: "看清命令的 HTTP 流量",
     lead: "包住支持代理的命令。实时看请求和响应。原始响应不变。",
     catalog: {
       role: "",
@@ -178,7 +177,7 @@ export default defineProduct({
         id: "how",
         nav: "工作方式",
         kicker: "一条命令，一层本地观察",
-        title: "只配置被包住的这条命令",
+        title: "只配置被包住的进程",
         body: "本地 MITM 代理把地址和临时 CA 交给一个子进程。",
         steps: [
           { label: "本地启动", body: "在支持代理的命令前加 `httpmon`，系统代理不变。" },
@@ -211,6 +210,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "打开仓库",
   },
 });

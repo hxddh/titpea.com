@@ -23,7 +23,7 @@ export default defineProduct({
       text: "The menu-bar lamp for coding agents that are waiting.",
     },
     primaryCta: {
-      label: "Download latest release",
+      label: "Download",
       href: "https://github.com/hxddh/Pulse/releases/latest",
     },
     secondaryCta: {
@@ -115,7 +115,7 @@ export default defineProduct({
       text: "菜单栏上看哪个编码 Agent 在等你。",
     },
     primaryCta: {
-      label: "下载最新版本",
+      label: "下载",
       href: "https://github.com/hxddh/Pulse/releases/latest",
     },
     secondaryCta: {

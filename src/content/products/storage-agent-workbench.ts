@@ -100,7 +100,6 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Download Storage Agent",
   },
   zh: {
     title: "Storage Agent",
@@ -177,6 +176,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "下载 Storage Agent",
   },
 });

@@ -23,7 +23,7 @@ export default defineProduct({
       text: "Freestyle, swap2, or Renju. Review an SGF when you want.",
     },
     primaryCta: {
-      label: "Download latest release",
+      label: "Download",
       href: "https://github.com/hxddh/goban/releases/latest",
     },
     secondaryCta: {
@@ -38,8 +38,8 @@ export default defineProduct({
       image: {
         src: "/assets/goban-game-board-en.webp",
         alt: "Goban wood board showing a finished game with Black's five in a row, the move record, and game controls",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
       },
     },
     showcases: [
@@ -56,8 +56,8 @@ export default defineProduct({
       {
         src: "/assets/goban-notebook-en.webp",
         alt: "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row highlight, and the game sidebar",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
         title: "Stones become marks.",
         body: "Triangles and circles on ruled paper; the game and controls stay.",
       },
@@ -104,7 +104,7 @@ export default defineProduct({
       text: "自由式、swap2 或连珠。需要时再复盘。",
     },
     primaryCta: {
-      label: "下载最新版本",
+      label: "下载",
       href: "https://github.com/hxddh/goban/releases/latest",
     },
     secondaryCta: {
@@ -119,8 +119,8 @@ export default defineProduct({
       image: {
         src: "/assets/goban-game-board-zh.webp",
         alt: "Goban 木质棋盘上的完整对局，显示黑棋五连、棋谱与对局控制",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
       },
     },
     showcases: [
@@ -136,8 +136,8 @@ export default defineProduct({
       {
         src: "/assets/goban-notebook-zh.webp",
         alt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连高亮和对局侧栏",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
         title: "棋子变成记号",
         body: "横线纸上画三角与圆圈，棋局与操作不变。",
       },
@@ -146,7 +146,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "每一局都留在这台电脑上",
+        label: "每一局都留在本机",
         items: [
           { title: "三套规则", body: "自由式、swap2 或连珠。" },
           { title: "带入 SGF", body: "导入、粘贴或拖入文件。" },

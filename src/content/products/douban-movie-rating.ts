@@ -66,7 +66,7 @@ export default defineProduct({
       text: "影片匹配可靠时，才对照 IMDb、烂番茄和 Metacritic。",
     },
     primaryCta: {
-      label: "安装扩展",
+      label: "安装",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
     },
     secondaryCta: {

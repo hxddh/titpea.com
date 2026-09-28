@@ -207,7 +207,8 @@ export type ProductCopy = {
   lead: string;
   /**
    * Catalog card. `badge` is the chip a card without GitHub releases shows in
-   * place of the tag; it defaults to the first part of the meta line.
+   * place of the tag: where the product lives. It defaults to `GitHub` when the
+   * primary action opens GitHub, else the first part of the meta line.
    */
   catalog: { role: string; text: string; badge?: string };
   primaryCta: Link;
@@ -219,7 +220,6 @@ export type ProductCopy = {
   visual: Visual;
   showcases?: Showcase[];
   sections: Section[];
-  finalCta?: string;
   releaseHighlights?: ReleaseHighlights;
 };
 

@@ -22,7 +22,7 @@ export default defineProduct({
       text: "Park the Pi session on BOS, resume it on another machine.",
     },
     primaryCta: {
-      label: "Install / View releases",
+      label: "Install",
       href: "https://github.com/hxddh/celagent/releases/latest",
     },
     secondaryCta: {
@@ -118,7 +118,6 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "View releases",
   },
   zh: {
     title: "celagent",
@@ -131,7 +130,7 @@ export default defineProduct({
       text: "把 Pi 会话停在 BOS，换一台机器继续。",
     },
     primaryCta: {
-      label: "安装 / 查看 Release",
+      label: "安装",
       href: "https://github.com/hxddh/celagent/releases/latest",
     },
     secondaryCta: {
@@ -227,6 +226,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "查看 Release",
   },
 });

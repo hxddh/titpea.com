@@ -379,10 +379,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px 10px;
-  margin: 24px 0 0;
+  max-width: 60ch;
+  margin: 24px auto 0;
   color: var(--ink-2);
   font-size: 15px;
   text-align: center;
+  text-wrap: balance;
 }
 
 .s3-purpose-boundary strong {
@@ -583,24 +585,9 @@
     margin-top: 36px;
   }
 
-  /* Short feature cards pair up on phones, as Omni does; numbered flows and
-     panels keep one column so their longer bodies stay readable. */
-  .feature-grid:not(.product-flow, .s3-purpose-grid, .agent-evidence-grid, [data-count="1"], [data-count="3"]) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .feature-card {
     padding: 20px 20px 22px;
     border-radius: 18px;
-  }
-
-  .feature-grid:not(.product-flow, .s3-purpose-grid, .agent-evidence-grid) .feature-card {
-    padding: 16px 16px 18px;
-  }
-
-  .feature-grid:not(.product-flow, .s3-purpose-grid, .agent-evidence-grid) .feature-card h3 {
-    margin-bottom: 4px;
-    font-size: 16px;
   }
 
   .show-shot,

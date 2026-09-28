@@ -20,7 +20,6 @@ export default defineProduct({
     catalog: {
       role: "Pre-alpha",
       text: "Open a world and try another branch. macOS, pre-alpha.",
-      badge: "macOS · Apache-2.0",
     },
     primaryCta: {
       label: "View on GitHub",
@@ -107,28 +106,26 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Open repository",
   },
   zh: {
     title: "World Machine",
-    description: "查看世界状态，尝试不同分支。面向 macOS 的实验性运行时，当前为 pre-alpha。",
+    description: "查看世界状态，尝试不同分支。面向 macOS 的实验性运行时，当前为早期预览版。",
     eyebrow: "macOS 实验项目",
     headline: "让世界走向不同分支",
-    lead: "打开一个世界。尝试另一条分支。macOS pre-alpha。",
+    lead: "打开一个世界。尝试另一条分支。macOS 早期预览版。",
     catalog: {
-      role: "Pre-alpha",
-      text: "打开一个世界，试另一条分支。macOS，pre-alpha。",
-      badge: "macOS · Apache-2.0",
+      role: "早期预览",
+      text: "打开一个世界，试另一条分支。macOS，早期预览版。",
     },
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/world-machine",
     },
     secondaryCta: {
-      label: "Pre-alpha 说明",
+      label: "早期预览说明",
       href: "https://github.com/hxddh/world-machine/blob/main/docs/PRE_ALPHA_RELEASES.md",
     },
-    meta: "Experimental · pre-alpha · macOS desktop · Apache-2.0",
+    meta: "实验 · 早期预览 · macOS 桌面 · Apache-2.0",
     visual: {
       kind: "worldProjection",
       label: "World Machine",
@@ -186,7 +183,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的 pre-alpha，文件格式和公开 API 可能改变。",
+            body: "不稳定。World Machine 是实验性的早期预览版，文件格式和公开 API 可能改变。",
           },
           {
             title: "怎么获取？",
@@ -194,11 +191,10 @@ export default defineProduct({
           },
           {
             title: "分发包公证了吗？",
-            body: "没有。当前分发包使用 ad-hoc 签名，尚未公证，请按 pre-alpha 说明构建。",
+            body: "没有。当前分发包使用 ad-hoc 签名，尚未公证，请按早期预览说明构建。",
           },
         ],
       },
     ],
-    finalCta: "打开仓库",
   },
 });

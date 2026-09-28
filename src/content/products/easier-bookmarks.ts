@@ -82,7 +82,7 @@ export default defineProduct({
       text: "搜索 Chrome 里已有的书签。",
     },
     primaryCta: {
-      label: "安装扩展",
+      label: "安装",
       href: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
     },
     secondaryCta: {
