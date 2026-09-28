@@ -13,8 +13,6 @@ export default defineProduct({
         zh: "Storage Agent 对比存储调查中的对象证据",
       },
     },
-    // The reading of the evidence: its first bullets, legible on a phone.
-    detail: { x: 450, y: 430, width: 720, height: 576 },
   },
   repo: "hxddh/storage-agent-workbench",
   icon: "/assets/icons/storage-agent-workbench.webp",

@@ -234,12 +234,6 @@ export type Product = {
   featured?: {
     /** One capture, or one per locale when the app's own UI is in that language. */
     image: Omit<Image, "src" | "alt"> & { src: string | Record<Locale, string>; alt: Record<Locale, string> };
-    /**
-     * Phones show this crop of the same capture (source pixels), sized so its
-     * text stays legible at phone width; `npm run assets:images` writes it as
-     * `<image>-detail.webp`. The card still opens the product page.
-     */
-    detail?: { x: number; y: number; width: number; height: number };
   };
   /**
    * App icon: hero, local nav, catalog, About, 404, share image. Required

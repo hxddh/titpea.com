@@ -16,8 +16,6 @@ export default defineProduct({
         zh: "Chessboard 用 Stockfish 复盘完整局：终局局面、标出失着的评估曲线，以及双方精准度",
       },
     },
-    // The evaluation curve and each side's accuracy.
-    detail: { x: 1270, y: 650, width: 530, height: 530 },
   },
   repo: "hxddh/chessboard",
   icon: "/assets/icons/chessboard.webp",
