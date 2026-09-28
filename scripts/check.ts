@@ -145,7 +145,6 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
     fail(`${at}: lead is ${copy.lead.length} characters (max ${leadLimit[locale]})`);
   if (copy.primaryCta.href === copy.secondaryCta.href)
     fail(`${at}: primary and secondary actions go to the same place`);
-  if (copy.finalCta && norm(copy.finalCta) === norm(copy.headline)) fail(`${at}: closing action restates the headline`);
   if (copy.sections.length === 0) fail(`${at}: needs at least one section`);
   const ids = copy.sections.map((section) => section.id);
   if (new Set(ids).size !== ids.length) fail(`${at}: duplicate section ids ${ids.join(", ")}`);

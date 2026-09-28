@@ -339,7 +339,13 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   icon: product.icon,
   version: versionOf(product.slug),
   released: releasedOf(product.slug, locale),
-  badge: versionOf(product.slug) ? undefined : (product[locale].catalog.badge ?? product[locale].meta.split(" · ")[0]),
+  // Without a release tag the chip says where the product lives: GitHub, or the store in its meta line.
+  badge: versionOf(product.slug)
+    ? undefined
+    : (product[locale].catalog.badge ??
+      (product[locale].primaryCta.href.startsWith("https://github.com/")
+        ? "GitHub"
+        : product[locale].meta.split(" · ")[0])),
 });
 
 /**

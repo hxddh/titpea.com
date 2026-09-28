@@ -22,7 +22,7 @@ export default defineProduct({
       text: "Ask a PDF. Follow the citation to the page.",
     },
     primaryCta: {
-      label: "Download latest release",
+      label: "Download",
       href: "https://github.com/hxddh/pagewise/releases",
     },
     secondaryCta: {
@@ -100,7 +100,6 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Download latest release",
   },
   zh: {
     title: "PageWise",
@@ -109,11 +108,11 @@ export default defineProduct({
     headline: "问过之后，回到原文",
     lead: "直接提问。按页引用核对。批注留在文档上。",
     catalog: {
-      role: "PDF agent",
+      role: "PDF Agent",
       text: "向 PDF 提问。顺着页引用回到原文。",
     },
     primaryCta: {
-      label: "下载最新版本",
+      label: "下载",
       href: "https://github.com/hxddh/pagewise/releases",
     },
     secondaryCta: {
@@ -191,6 +190,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "下载最新版本",
   },
 });

@@ -1,7 +1,8 @@
 // Accessibility gate: axe-core (WCAG 2.x A/AA plus best practices) on every
 // page in the sitemap, light and dark, desktop and phone. Any violation fails.
-// Two readability floors on top: reading text (card bodies, answers) reaches
-// 7:1, and no text outside a hero product mock is smaller than 13px.
+// Readability floors on top: reading text (card bodies, answers) reaches 7:1,
+// no text outside a hero product mock is smaller than 13px, and a Chinese
+// heading never leaves a single character alone on its last line.
 // Needs the preview server, like qa:pages:
 //   npm run a11y:check
 import fs from "node:fs";
@@ -79,6 +80,24 @@ for (const colorScheme of ["light", "dark"]) {
           if (element.closest(".hero-visual-frame, svg, .sr-only, .skip-link") || !visible(element)) continue;
           const size = Number.parseFloat(getComputedStyle(element).fontSize);
           if (size < 12.9) problems.push(`${size}px text: "${element.textContent.trim().slice(0, 40)}"`);
+        }
+        // A Chinese heading has no spaces to break at, so one that does not fit
+        // strands its last character; keep such headings short enough to fit.
+        if (document.documentElement.lang.startsWith("zh")) {
+          for (const heading of document.querySelectorAll("h1, h2, h3")) {
+            if (!visible(heading)) continue;
+            const range = document.createRange();
+            range.selectNodeContents(heading);
+            const lines = new Map();
+            for (const rect of range.getClientRects()) {
+              const top = Math.round(rect.top);
+              lines.set(top, (lines.get(top) ?? 0) + rect.width);
+            }
+            const widths = [...lines.values()];
+            const size = Number.parseFloat(getComputedStyle(heading).fontSize);
+            if (widths.length > 1 && widths.at(-1) < size * 1.6)
+              problems.push(`heading strands one character: "${heading.textContent.trim().slice(0, 40)}"`);
+          }
         }
         return problems.slice(0, 5);
       });

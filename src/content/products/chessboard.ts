@@ -39,7 +39,7 @@ export default defineProduct({
       text: "Learn, drill, then play Stockfish or a friend on the same board.",
     },
     primaryCta: {
-      label: "Download latest release",
+      label: "Download",
       href: "https://github.com/hxddh/chessboard/releases/latest",
     },
     secondaryCta: {
@@ -71,8 +71,8 @@ export default defineProduct({
       image: {
         src: "/assets/chessboard-game-board-en.webp",
         alt: "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
       },
     },
     showcases: [
@@ -89,8 +89,8 @@ export default defineProduct({
       {
         src: "/assets/chessboard-theme-en.webp",
         alt: "Chessboard night theme showing a chess position with the sidebar and theme controls visible",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
         title: "Four boards, one game.",
         body: "Switch between wood, night, day, and paper without losing the position.",
       },
@@ -141,7 +141,7 @@ export default defineProduct({
       text: "学棋、做题，再与 Stockfish 或同屏好友下一局。",
     },
     primaryCta: {
-      label: "下载最新版本",
+      label: "下载",
       href: "https://github.com/hxddh/chessboard/releases/latest",
     },
     secondaryCta: {
@@ -173,8 +173,8 @@ export default defineProduct({
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
         alt: "Chessboard 木色主题终局局面，显示棋子高亮、着法列表与侧栏控制",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
       },
     },
     showcases: [
@@ -190,8 +190,8 @@ export default defineProduct({
       {
         src: "/assets/chessboard-theme-zh.webp",
         alt: "Chessboard 夜色主题棋盘，侧栏与主题控制可见",
-        width: 1223,
-        height: 768,
+        width: 2446,
+        height: 1536,
         title: "四种棋盘，同一局棋",
         body: "木色、夜色、日间、纸本随意切换，局面不变。",
       },

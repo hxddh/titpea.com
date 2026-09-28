@@ -73,7 +73,7 @@ export default defineProduct({
       text: "你选的城市，此刻几点。",
     },
     primaryCta: {
-      label: "安装扩展",
+      label: "安装",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
     },
     secondaryCta: {

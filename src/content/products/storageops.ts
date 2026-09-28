@@ -162,7 +162,6 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "Open repository",
   },
   zh: {
     title: "StorageOps",
@@ -274,7 +273,7 @@ export default defineProduct({
         id: "cases",
         nav: "故障类型",
         label: "故障类型",
-        title: "有明确排查领域的对象存储问题",
+        title: "有明确领域的存储故障",
         items: [
           "AccessDenied",
           "SignatureDoesNotMatch",
@@ -316,6 +315,5 @@ export default defineProduct({
         ],
       },
     ],
-    finalCta: "打开仓库",
   },
 });

@@ -15,6 +15,8 @@ const outDir = path.join(__dirname, "../public/assets");
 const appsRoot = "/tmp/board-apps";
 
 const VIEWPORT = { width: 1223, height: 768 };
+// 2x pixels so the captures stay sharp on high-density screens.
+const SCALE = 2;
 
 const GOMUKU_SGF = `(;GM[1]FF[4]SZ[15]AP[Goban:capture]
 ;B[hh];W[ih];B[gh];W[hg];B[gi];W[ig];B[gj];W[jh];B[gk];W[kh]
@@ -97,6 +99,7 @@ async function captureGoban(browser, lang) {
   const server = await serveDir(path.join(appsRoot, "goban/src/web"));
   const context = await browser.newContext({
     viewport: VIEWPORT,
+    deviceScaleFactor: SCALE,
     permissions: ["clipboard-read", "clipboard-write"],
   });
   const page = await context.newPage();
@@ -156,7 +159,7 @@ async function captureGoban(browser, lang) {
 
 async function captureChessboard(browser, lang) {
   const server = await serveDir(path.join(appsRoot, "chessboard/src/web"));
-  const context = await browser.newContext({ viewport: VIEWPORT });
+  const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: SCALE });
   const page = await context.newPage();
   await page.addInitScript(
     ({ pgn, langId }) => {
