@@ -318,9 +318,6 @@ export type HomePageModel = {
     items: Array<
       CatalogItem & {
         image: { src: string; alt: string; width: number; height: number };
-        /** Phone crop of the same capture. */
-        /** `cut`: the crop stops short of the capture's right edge, so that edge fades. */
-        detail?: { src: string; width: number; height: number; cut: boolean };
       }
     >;
   };
@@ -416,17 +413,10 @@ export function homePage(locale: Locale): HomePageModel {
       title: copy.featuredTitle,
       learnMore: copy.learnMore,
       items: featured.map((product) => {
-        const { image, detail } = product.featured!;
-        const src = featuredSrc(product.featured!, locale);
+        const { image } = product.featured!;
         return {
           ...catalogItem(product, locale),
-          image: { ...image, src, alt: image.alt[locale] },
-          detail: detail && {
-            src: src.replace(/\.(webp|png|jpg)$/, "-detail.webp"),
-            width: detail.width,
-            height: detail.height,
-            cut: detail.x + detail.width < image.width,
-          },
+          image: { ...image, src: featuredSrc(product.featured!, locale), alt: image.alt[locale] },
         };
       }),
     },

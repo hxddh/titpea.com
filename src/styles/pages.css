@@ -576,11 +576,6 @@
 }
 
 @media (max-width: 640px) {
-  /* Phones show the featured capture's detail crop; a cut right edge fades. */
-  .home-featured-card .shot[data-detail="cut"] img {
-    mask-image: linear-gradient(to right, #000 84%, transparent);
-  }
-
   .home-hero,
   .about-hero,
   .product-hero,

@@ -53,26 +53,16 @@ const { model } = Astro.props;
               <span class="sub">{item.text}</span>
               <span class="home-featured-more">{model.featured.learnMore}</span>
             </span>
-            <figure class="shot" data-detail={item.detail ? (item.detail.cut ? "cut" : "edge") : undefined}>
-              <picture>
-                {item.detail && (
-                  <source
-                    media="(max-width: 640px)"
-                    srcset={item.detail.src}
-                    width={item.detail.width}
-                    height={item.detail.height}
-                  />
-                )}
-                <img
-                  src={item.image.src}
-                  srcset={srcsetFor(item.image.src, item.image.width)}
-                  sizes={screenshotSizes}
-                  alt={item.image.alt}
-                  width={item.image.width}
-                  height={item.image.height}
-                  loading="eager"
-                />
-              </picture>
+            <figure class="shot">
+              <img
+                src={item.image.src}
+                srcset={srcsetFor(item.image.src, item.image.width)}
+                sizes={screenshotSizes}
+                alt={item.image.alt}
+                width={item.image.width}
+                height={item.image.height}
+                loading="eager"
+              />
             </figure>
           </a>
         ))
