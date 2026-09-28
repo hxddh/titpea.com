@@ -119,57 +119,44 @@
 
 .home-catalog-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.catalog-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 24px 26px 22px;
-  border-radius: var(--radius-card);
+/* The catalog is an index: icon, name, one line. Versions live on product pages. */
+.catalog-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--soft-line);
   color: var(--ink);
-  background: var(--paper-raised);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
 }
 
-.catalog-card:hover {
+.catalog-row:hover {
   text-decoration: none;
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
 }
 
-.catalog-card-top {
-  display: block;
-  margin-bottom: 4px;
-  padding-right: 52px;
+.catalog-row:hover .home-catalog-name {
+  color: var(--link);
 }
 
 .catalog-icon {
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   filter: drop-shadow(var(--shadow-icon-small));
 }
 
-.home-catalog-role {
-  color: var(--muted);
-  font-size: var(--text-meta);
-  font-weight: 500;
+.catalog-row-copy {
+  display: grid;
+  gap: 2px;
 }
 
 .home-catalog-name {
-  /* A long name wraps before the icon in the top right. */
-  padding-right: 40px;
   font-size: var(--text-catalog-name);
   font-weight: 600;
   line-height: 1.25;
@@ -177,57 +164,22 @@
 }
 
 .home-catalog-text {
-  margin: 8px 0 0;
   color: var(--ink-2);
   font-size: var(--text-card-body);
-  line-height: 1.47;
+  line-height: 1.45;
   letter-spacing: -0.01em;
 }
 
-.catalog-card-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 42px;
-  margin-top: auto;
-  padding-top: 18px;
-}
-
-.catalog-version {
-  padding: 2px 9px;
-  border-radius: var(--radius-pill);
+.catalog-chevron {
   color: var(--muted);
-  box-shadow: inset 0 0 0 1px var(--soft-line);
-  font-family: var(--mono);
-  font-size: var(--text-meta);
-}
-
-/* A product without GitHub releases shows where it lives instead of a tag. */
-.catalog-badge {
-  padding: 2px 9px;
-  border-radius: var(--radius-pill);
-  color: var(--muted);
-  box-shadow: inset 0 0 0 1px var(--soft-line);
-  font-size: var(--text-meta);
-}
-
-.catalog-released {
-  margin-left: 6px;
-  padding-left: 6px;
-  border-left: 1px solid var(--soft-line);
-  font-family: var(--sans);
-}
-
-.catalog-arrow {
-  margin-left: auto;
-  color: var(--link);
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
   transition: transform 0.25s ease;
 }
 
-.catalog-card:hover .catalog-arrow {
-  transform: translateX(4px);
+.catalog-row:hover .catalog-chevron {
+  transform: translateX(3px);
+  color: var(--link);
 }
 
 /* Home hero: the app icons, a row of doors into the products. */
@@ -569,7 +521,6 @@
 }
 
 @media (max-width: 900px) {
-  .home-catalog-list,
   .about-line-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -591,12 +542,6 @@
 
   .home-catalog-list {
     grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .catalog-card {
-    padding: 18px 20px 20px;
-    border-radius: 18px;
   }
 
   .home-icons {
@@ -624,14 +569,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .catalog-card,
-  .catalog-arrow,
+  .catalog-chevron,
   .home-icons a {
     transition: none;
   }
 
-  .catalog-card:hover,
-  .catalog-card:hover .catalog-arrow,
+  .catalog-row:hover .catalog-chevron,
   .home-icons a:hover {
     transform: none;
   }
