@@ -267,9 +267,11 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
   const notes = synced;
   if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
   // Lines in another language are left to the release page: with none left,
-  // the section is one line (tag, date, link).
+  // the section is one line (tag, date, link). The release title is the
+  // author's shorthand ("context economy and Codex chrome"), so only a
+  // curated override carries a summary.
   return {
-    summary: inPageLanguage(notes.summary, locale) ? notes.summary : "",
+    summary: "",
     items: notes.items.filter((item) => inPageLanguage(item, locale)),
     url,
     version,
@@ -449,7 +451,6 @@ export type AboutPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
-  stats: Array<{ value: string; label: string }>;
   lines: {
     title: string;
     sub: string;
@@ -491,11 +492,6 @@ export function aboutPage(locale: Locale): AboutPageModel {
   const alternatePath = pathFor(otherLocale(locale), "about");
   const count = String(products.length);
   const released = products.filter((product) => versionOf(product.slug));
-  // Shown only when every synced repository reported its release count.
-  const releaseCounts = released.map((product) => releaseTags[product.slug]?.releaseCount);
-  const totalReleases = releaseCounts.every((value) => typeof value === "number")
-    ? releaseCounts.reduce((sum, value) => sum + (value ?? 0), 0)
-    : undefined;
   const licensed = products.filter((product) => licensePattern.test(product.en.meta));
   const licenses = [...new Set(licensed.map((product) => product.en.meta.match(licensePattern)![1]))].sort();
   const headline = copy.aboutHeadline.replace("{count}", count);
@@ -527,12 +523,6 @@ export function aboutPage(locale: Locale): AboutPageModel {
     }),
     language: languageLink(locale, alternatePath),
     hero: { eyebrow: copy.aboutEyebrow, title: headline, lead: copy.aboutLead },
-    stats: [
-      { value: count, label: copy.aboutStats.products },
-      { value: String(lines.length), label: copy.aboutStats.lines },
-      { value: String(released.length), label: copy.aboutStats.released },
-      ...(totalReleases ? [{ value: String(totalReleases), label: copy.aboutStats.releases }] : []),
-    ],
     lines: {
       title: copy.aboutLinesTitle,
       sub: copy.aboutLinesSub,
@@ -574,9 +564,9 @@ export function aboutPage(locale: Locale): AboutPageModel {
             icon: product.icon,
             version: versionOf(product.slug)!,
             released: releasedOf(product.slug, locale),
-            // One line in the page's language, or none.
-            highlight: (current ? [...current.items, current.summary] : [...(notes?.items ?? []), notes?.summary]).find(
-              (line) => inPageLanguage(line, locale),
+            // One highlight in the page's language, or none; never the release title.
+            highlight: (current ? [...current.items, current.summary] : (notes?.items ?? [])).find((line) =>
+              inPageLanguage(line, locale),
             ),
           };
         }),

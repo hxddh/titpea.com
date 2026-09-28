@@ -69,7 +69,7 @@ export default defineProduct({
       label: "Chessboard",
       frame: "wide",
       image: {
-        src: "/assets/chessboard-game-board.webp",
+        src: "/assets/chessboard-game-board-en.webp",
         alt: "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
         width: 1223,
         height: 768,
@@ -87,7 +87,7 @@ export default defineProduct({
         body: "A full-game Stockfish pass builds a centipawn curve and marks mistakes; jump to any position and play on.",
       },
       {
-        src: "/assets/chessboard-theme.webp",
+        src: "/assets/chessboard-theme-en.webp",
         alt: "Chessboard night theme showing a chess position with the sidebar and theme controls visible",
         width: 1223,
         height: 768,
@@ -171,7 +171,7 @@ export default defineProduct({
       label: "国际象棋 Chessboard",
       frame: "wide",
       image: {
-        src: "/assets/chessboard-game-board.webp",
+        src: "/assets/chessboard-game-board-zh.webp",
         alt: "Chessboard 木色主题终局局面，显示棋子高亮、着法列表与侧栏控制",
         width: 1223,
         height: 768,
@@ -188,7 +188,7 @@ export default defineProduct({
         body: "Stockfish 跑完整局，生成评估曲线并标注失着；跳到任意局面可继续下。",
       },
       {
-        src: "/assets/chessboard-theme.webp",
+        src: "/assets/chessboard-theme-zh.webp",
         alt: "Chessboard 夜色主题棋盘，侧栏与主题控制可见",
         width: 1223,
         height: 768,

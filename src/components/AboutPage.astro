@@ -19,18 +19,6 @@ const folded = model.releases.items.slice(model.releasesShown);
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
     </div>
-    <div class="shell">
-      <dl class="stats about-stats" data-count={model.stats.length}>
-        {
-          model.stats.map((stat) => (
-            <div class="stat">
-              <dt>{stat.label}</dt>
-              <dd>{stat.value}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </div>
   </section>
 
   <section class="about-lines" aria-labelledby="lines-title">

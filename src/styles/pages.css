@@ -307,10 +307,6 @@
   padding-bottom: 0;
 }
 
-.about-stats {
-  margin-top: 64px;
-}
-
 .about-lines,
 .about-principles,
 .about-releases {
@@ -594,11 +590,6 @@
     grid-template-columns: 1fr;
     gap: 10px;
     margin-top: 36px;
-  }
-
-  .about-stats.stats[data-count="3"] {
-    --stat-columns: 3;
-    gap: 24px 8px;
   }
 
   .home-catalog-list {

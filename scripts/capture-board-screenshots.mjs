@@ -93,14 +93,15 @@ async function openPanel(page) {
   }
 }
 
-async function captureGoban(browser) {
+async function captureGoban(browser, lang) {
   const server = await serveDir(path.join(appsRoot, "goban/src/web"));
   const context = await browser.newContext({
     viewport: VIEWPORT,
     permissions: ["clipboard-read", "clipboard-write"],
   });
   const page = await context.newPage();
-  await page.addInitScript(() => {
+  await page.addInitScript((lang) => {
+    localStorage.setItem("goban.v12.lang", lang);
     localStorage.setItem(
       "goban.v11.settings",
       JSON.stringify({
@@ -116,7 +117,7 @@ async function captureGoban(browser) {
       }),
     );
     localStorage.setItem("goban.panelOpen", "1");
-  });
+  }, lang);
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
   await page.waitForTimeout(500);
@@ -132,41 +133,33 @@ async function captureGoban(browser) {
   await page.waitForTimeout(800);
   await openPanel(page);
   await dismissToasts(page);
-  await writeWebp(page, "goban-game-board.webp");
+  await writeWebp(page, `goban-game-board-${lang}.webp`);
 
-  // Mid-game review with analysis annotations in the sidebar
   const moves = page.locator("#move-list button");
   const moveCount = await moves.count();
-  if (moveCount > 6) {
-    await moves.nth(Math.min(6, moveCount - 1)).click();
-    await page.waitForTimeout(400);
-  }
-  await dismissToasts(page);
-  await writeWebp(page, "goban-review.webp");
 
-  // Notebook theme at the finished position
-  const notebook = page.locator('#theme-seg button[data-theme="notebook"]');
-  if (await notebook.isVisible().catch(() => false)) {
-    await notebook.click();
-    await page.waitForTimeout(300);
-  }
+  // Notebook theme at the finished position; the theme lives in the settings dialog.
+  await page.click("#settings-btn");
+  await page.click('#theme-seg button[data-theme="notebook"]');
+  await page.click("#settings-close");
+  await page.waitForTimeout(300);
   if (moveCount > 0) {
     await moves.nth(moveCount - 1).click();
     await page.waitForTimeout(300);
   }
   await dismissToasts(page);
-  await writeWebp(page, "goban-notebook.webp");
+  await writeWebp(page, `goban-notebook-${lang}.webp`);
 
   await context.close();
   await server.close();
 }
 
-async function captureChessboard(browser) {
+async function captureChessboard(browser, lang) {
   const server = await serveDir(path.join(appsRoot, "chessboard/src/web"));
   const context = await browser.newContext({ viewport: VIEWPORT });
   const page = await context.newPage();
   await page.addInitScript(
-    ({ pgn }) => {
+    ({ pgn, langId }) => {
       localStorage.setItem(
         "chess.v1.settings",
         JSON.stringify({
@@ -176,12 +169,13 @@ async function captureChessboard(browser) {
           mode: "pvp",
           difficulty: "normal",
           humanColor: "w",
+          langId,
         }),
       );
       localStorage.setItem("chess.panelOpen", "1");
       localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
     },
-    { pgn: CHESS_PGN },
+    { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" },
   );
 
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
@@ -189,43 +183,23 @@ async function captureChessboard(browser) {
   await page.waitForTimeout(1000);
   await openPanel(page);
   await dismissToasts(page);
-  await writeWebp(page, "chessboard-game-board.webp");
+  await writeWebp(page, `chessboard-game-board-${lang}.webp`);
 
   const analyzeBtn = page.locator("#an-run");
   if (await analyzeBtn.isVisible().catch(() => false)) {
     await analyzeBtn.click();
-    // Stockfish evaluates each ply (~120ms); wait for the button to re-enable or timeout.
-    await page
-      .waitForFunction(
-        () => {
-          const btn = document.getElementById("an-run");
-          return btn && !btn.disabled && !btn.classList.contains("busy");
-        },
-        { timeout: 45000 },
-      )
-      .catch(() => {});
+    // The accuracy line appears only once every ply has been evaluated.
+    await page.waitForSelector("#acc-line:not([hidden])", { timeout: 120000 });
     await page.waitForTimeout(800);
   }
-  const moves = page.locator("#move-list button");
-  const moveCount = await moves.count();
-  if (moveCount > 10) {
-    await moves.nth(10).click();
-    await page.waitForTimeout(400);
-  }
+  // Night theme on the final position, with the Setup tab's theme controls in view.
+  await page.click("#rep-end").catch(() => {});
+  await page.click("#tab-setup");
+  await page.click('#theme-seg button[data-theme="night"]');
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(400);
   await dismissToasts(page);
-  await writeWebp(page, "chessboard-review.webp");
-
-  const night = page.locator('#theme-seg button[data-theme="night"]');
-  if (await night.isVisible().catch(() => false)) {
-    await night.click();
-    await page.waitForTimeout(350);
-  }
-  if (moveCount > 0) {
-    await moves.nth(moveCount - 1).click();
-    await page.waitForTimeout(300);
-  }
-  await dismissToasts(page);
-  await writeWebp(page, "chessboard-theme.webp");
+  await writeWebp(page, `chessboard-theme-${lang}.webp`);
 
   await context.close();
   await server.close();
@@ -277,26 +251,6 @@ async function captureChessboardFeatured(browser, lang) {
   await server.close();
 }
 
-async function convertExistingGobanFallback() {
-  // If capture fails partially, convert existing JPGs so site paths resolve.
-  for (const base of ["goban-game-board", "goban-review", "goban-notebook"]) {
-    const webp = path.join(outDir, `${base}.webp`);
-    try {
-      await fs.access(webp);
-      continue;
-    } catch {
-      // fall through
-    }
-    const jpg = path.join(outDir, `${base}.jpg`);
-    try {
-      await sharp(jpg).webp({ quality: 82 }).toFile(webp);
-      console.log(`fallback converted ${base}.jpg -> .webp`);
-    } catch (err) {
-      console.warn(`missing both ${base}.webp and ${base}.jpg`, err.message);
-    }
-  }
-}
-
 async function main() {
   await fs.mkdir(outDir, { recursive: true });
   const browser = await chromium.launch({ headless: true });
@@ -305,30 +259,11 @@ async function main() {
     await browser.close();
     return;
   }
-  try {
-    await captureGoban(browser);
-  } catch (err) {
-    console.warn("goban capture failed:", err);
-    await convertExistingGobanFallback();
-  }
-  try {
-    await captureChessboard(browser);
-  } catch (err) {
-    console.error("chessboard capture failed:", err);
-    throw err;
+  for (const lang of ["en", "zh"]) {
+    await captureGoban(browser, lang);
+    await captureChessboard(browser, lang);
   }
   await browser.close();
-  // Remove superseded JPGs after successful webp writes
-  for (const base of ["goban-game-board", "goban-review", "goban-notebook"]) {
-    const webp = path.join(outDir, `${base}.webp`);
-    const jpg = path.join(outDir, `${base}.jpg`);
-    try {
-      await fs.access(webp);
-      await fs.rm(jpg, { force: true });
-    } catch {
-      // keep jpg if webp missing
-    }
-  }
 }
 
 main().catch((err) => {
