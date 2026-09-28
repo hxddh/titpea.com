@@ -69,7 +69,6 @@ type Ui = {
   aboutHeadline: string;
   aboutLead: string;
   contactLabel: string;
-  aboutStats: { products: string; lines: string; released: string; releases: string };
   aboutLinesTitle: string;
   aboutLinesSub: string;
   /** Three habits backed by product facts, plus the open-source line (`{open}` of `{count}`, `{licenses}`). */
@@ -136,12 +135,6 @@ export const ui: Record<Locale, Ui> = {
     aboutHeadline: "One person. {count} tools.",
     aboutLead: "Storage investigations, agents, and small everyday apps. Built and released by hxddh.",
     contactLabel: "Contact links",
-    aboutStats: {
-      products: "Products",
-      lines: "Product lines",
-      released: "With GitHub releases",
-      releases: "GitHub releases published",
-    },
     aboutLinesTitle: "Four lines of work.",
     aboutLinesSub: "Every product belongs to one of them.",
     aboutPrinciplesTitle: "How the tools work.",
@@ -217,12 +210,6 @@ export const ui: Record<Locale, Ui> = {
     aboutHeadline: "一个人，{count} 个工具",
     aboutLead: "对象存储排查、Agent 和日常小工具。由 hxddh 开发并发布。",
     contactLabel: "联系方式",
-    aboutStats: {
-      products: "个产品",
-      lines: "条产品线",
-      released: "个有 GitHub 发布",
-      releases: "次 GitHub 发布",
-    },
     aboutLinesTitle: "四条产品线",
     aboutLinesSub: "每个产品只属于其中一条。",
     aboutPrinciplesTitle: "这些工具怎么做事",

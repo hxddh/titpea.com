@@ -3,19 +3,6 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "pagewise",
   line: "everyday",
-  featured: {
-    image: {
-      src: "/assets/pagewise-analysis.webp",
-      width: 1800,
-      height: 1200,
-      alt: {
-        en: "PageWise analyzing a financial table beside its source PDF page",
-        zh: "PageWise 在 PDF 原页旁分析财务表格",
-      },
-    },
-    // The question and the start of the cited answer.
-    detail: { x: 1080, y: 100, width: 720, height: 576 },
-  },
   repo: "hxddh/pagewise",
   icon: "/assets/icons/pagewise.webp",
   og: "/assets/og-pagewise.png",

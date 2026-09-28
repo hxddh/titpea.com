@@ -36,8 +36,8 @@ export default defineProduct({
       label: "Goban",
       frame: "wide",
       image: {
-        src: "/assets/goban-game-board.webp",
-        alt: "Goban wood board showing a completed game, black and white stones, a five-in-a-row highlight, and game controls",
+        src: "/assets/goban-game-board-en.webp",
+        alt: "Goban wood board showing a finished game with Black's five in a row, the move record, and game controls",
         width: 1223,
         height: 768,
       },
@@ -54,7 +54,7 @@ export default defineProduct({
         body: "Turn on replay analysis, then pick a move to rebuild its position.",
       },
       {
-        src: "/assets/goban-notebook.webp",
+        src: "/assets/goban-notebook-en.webp",
         alt: "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row highlight, and the game sidebar",
         width: 1223,
         height: 768,
@@ -117,8 +117,8 @@ export default defineProduct({
       label: "五子棋 Goban",
       frame: "wide",
       image: {
-        src: "/assets/goban-game-board.webp",
-        alt: "Goban 木质棋盘上的完整对局，显示黑白棋子、五连高亮与对局控制",
+        src: "/assets/goban-game-board-zh.webp",
+        alt: "Goban 木质棋盘上的完整对局，显示黑棋五连、棋谱与对局控制",
         width: 1223,
         height: 768,
       },
@@ -134,7 +134,7 @@ export default defineProduct({
         body: "开启复盘分析，选任意一手即可还原当时局面。",
       },
       {
-        src: "/assets/goban-notebook.webp",
+        src: "/assets/goban-notebook-zh.webp",
         alt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连高亮和对局侧栏",
         width: 1223,
         height: 768,
