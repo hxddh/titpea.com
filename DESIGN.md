@@ -41,14 +41,13 @@ Every page uses the same few parts. Build new content from them before inventing
 
 - The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product whose name appears in a small glass label when pointed at or focused (above the top row, below the bottom row), then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows, Storage Agent and Chessboard: a professional tool and an everyday one, so the range shows in two picks. Each row is role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot, and the whole row is one link. Three is the ceiling; a new pick replaces one rather than adding a row. When the app's UI shows words, each locale gets a capture in its own language (`featured.image.src` per locale). Phones show the same whole screenshot: a crop cut sentences mid-line and read as a broken image.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. Each product is a raised card, all of it one link: role kicker (the catalog role, or the product eyebrow when there is none), name, one-liner, then the release tag chip and an arrow. A product without GitHub releases shows a chip saying where it lives instead (`GitHub`, `Chrome Web Store`; `catalog.badge`, else `GitHub` when its primary action opens GitHub, else the first part of its meta line), so every card ends on the same row and every chip answers the same question. Every card shows its app icon in the top right. A product belongs to one line, and the header dropdowns use the same four lines.
+- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. It is an index, one centered column: each product is one row, all of it a link, with its icon, name, one line (`catalog.text`), and a `›`, rows split by hairlines. No kicker, tag, or date: those live on the product page. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## About
 
-The page answers, in order: what Titpea is, what it holds, how the tools behave, what shipped lately, and how to reach the person behind it.
+The page answers, in order: what Titpea is, how the tools behave, what shipped lately, and how to reach the person behind it. The product list lives on Home; About does not repeat it.
 
 - Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and one lede naming the range. No actions in the hero.
-- `Four lines of work.`: one raised card per line, listing its products with icons, each a link.
 - `How the tools work.`: four cards. Three habits, each restating facts already on product pages, and `Source in the open` with the open-source count and licenses read from each product's meta line.
 - `Latest releases.`: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language, or none; the rest fold under `All releases (n)`.
 - Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
@@ -160,7 +159,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
   - `a11y:check`: axe-core (WCAG 2.1 A/AA and best practices) on every page, light and dark, desktop and phone; any violation fails.
-  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's principles and product lines, and 404. Section targets crop to their own section so release data synced at build never moves them.
+  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's principles (desktop and zh phone), and 404. Section targets crop to their own section so release data synced at build never moves them.
   - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
   1. First read: from the first viewport alone, does the reader know what the product changes?

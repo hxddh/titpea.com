@@ -5,7 +5,7 @@
     { "path": "/storage-agent-workbench/", "viewport": "desktop", "state": "top" },
     { "path": "/zh/httpmon/", "viewport": "mobile", "state": "faq" },
     { "path": "/about/", "viewport": "desktop", "state": "section", "section": "principles-title" },
-    { "path": "/zh/about/", "viewport": "mobile", "state": "section", "section": "lines-title" },
+    { "path": "/zh/about/", "viewport": "mobile", "state": "section", "section": "principles-title" },
     { "path": "/404.html", "viewport": "mobile", "state": "top" }
   ]
 }

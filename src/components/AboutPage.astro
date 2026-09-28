@@ -21,34 +21,6 @@ const folded = model.releases.items.slice(model.releasesShown);
     </div>
   </section>
 
-  <section class="about-lines" aria-labelledby="lines-title">
-    <div class="shell">
-      <header class="section-head">
-        <h2 id="lines-title">{model.lines.title}</h2>
-        <p class="sub">{model.lines.sub}</p>
-      </header>
-      <div class="about-line-grid">
-        {
-          model.lines.groups.map((group) => (
-            <section class="about-line" aria-label={group.label}>
-              <h3>{group.label}</h3>
-              <ul>
-                {group.items.map((item) => (
-                  <li>
-                    <a href={item.href}>
-                      <img src={item.icon} alt="" width="28" height="28" />
-                      <span>{item.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <section class="about-principles" aria-labelledby="principles-title">
     <div class="shell">
       <header class="section-head">

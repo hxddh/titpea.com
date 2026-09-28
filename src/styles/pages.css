@@ -102,7 +102,8 @@
 }
 
 .home-catalog-group {
-  margin-top: 56px;
+  max-width: 760px;
+  margin: 56px auto 0;
 }
 
 .home-catalog-group + .home-catalog-group {
@@ -118,9 +119,6 @@
 }
 
 .home-catalog-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 40px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -259,54 +257,9 @@
   padding-bottom: 0;
 }
 
-.about-lines,
 .about-principles,
 .about-releases {
   padding-top: var(--section-y);
-}
-
-.about-line-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 48px;
-}
-
-.about-line {
-  padding: 22px 20px 20px;
-  border-radius: var(--radius-card);
-  background: var(--paper-raised);
-}
-
-.about-line h3 {
-  margin: 0 0 12px;
-  font-size: var(--text-card-title);
-}
-
-.about-line ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.about-line a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  color: var(--ink);
-  font-size: 15px;
-}
-
-.about-line a:hover {
-  text-decoration: none;
-  color: var(--link);
-}
-
-.about-line img {
-  flex: none;
-  width: 28px;
-  height: 28px;
 }
 
 .about-principles .feature-grid {
@@ -520,28 +473,12 @@
   font-size: 0.88em;
 }
 
-@media (max-width: 900px) {
-  .about-line-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 640px) {
   .home-hero,
   .about-hero,
   .product-hero,
   .privacy-page {
     padding-top: 48px;
-  }
-
-  .about-line-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 36px;
-  }
-
-  .home-catalog-list {
-    grid-template-columns: 1fr;
   }
 
   .home-icons {

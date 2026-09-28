@@ -205,12 +205,8 @@ export type ProductCopy = {
   /** The hero h1: a short declarative claim, not the name. English ≤ 24 characters plus a closing period, Chinese ≤ 18. */
   headline: string;
   lead: string;
-  /**
-   * Catalog card. `badge` is the chip a card without GitHub releases shows in
-   * place of the tag: where the product lives. It defaults to `GitHub` when the
-   * primary action opens GitHub, else the first part of the meta line.
-   */
-  catalog: { role: string; text: string; badge?: string };
+  /** Home: `role` is the featured kicker; `text` is the one line in the index. */
+  catalog: { role: string; text: string };
   primaryCta: Link;
   secondaryCta: Link;
   /** Mono meta line, segments joined by " · ". `{version}` is replaced by the synced release tag. */
