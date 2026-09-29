@@ -207,7 +207,8 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
       .filter((section) => section.kind !== "faq")
       .map((section) => ({
         id: section.id,
-        label: section.nav ?? ("label" in section ? section.label : section.kicker),
+        label:
+          section.nav ?? ("label" in section ? section.label : "kicker" in section ? section.kicker : section.title),
       }))
       .slice(0, maxNavLinks - tail.length),
     ...tail,

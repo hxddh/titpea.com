@@ -1,0 +1,27 @@
+---
+import Prose from "./Prose.astro";
+import type { DataSection } from "../../content/schema";
+
+interface Props {
+  section: DataSection;
+}
+
+const { section } = Astro.props;
+---
+
+<section id={section.id} class="product-section data-section">
+  <div class="shell narrow">
+    <header class="section-head">
+      <h2>{section.title}</h2>
+    </header>
+    <ul class="data-list">
+      {
+        section.items.map((item) => (
+          <li>
+            <Prose text={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

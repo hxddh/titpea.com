@@ -54,17 +54,6 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "features",
-        nav: "Features",
-        label: "Notes and threads stay with the file.",
-        items: [
-          { title: "Notes and threads stay", body: "Annotations stay on the document; reopen it to keep asking." },
-          { title: "Files stay local", body: "Text goes only to the model you configure, or to Ollama locally." },
-          { title: "Keys in the keychain", body: "macOS, Windows, or Linux system keychain." },
-        ],
-      },
-      {
-        kind: "cards",
         id: "how",
         nav: "How it works",
         label: "Answers point back to the page.",
@@ -76,15 +65,22 @@ export default defineProduct({
         numbered: true,
       },
       {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "Files stay on your machine; notes and threads stay with the document.",
+          "Extracted text, and page images with vision on, go to the model you configure, or to Ollama locally.",
+          "API keys stay in the macOS, Windows, or Linux system keychain.",
+        ],
+      },
+      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
         label: "FAQ",
         items: [
-          {
-            title: "What does the model receive?",
-            body: "Files stay on your machine. Extracted text goes to the model you configure; enabling vision also sends the corresponding images. Connect Ollama to use a local model. Assistant and Scan can use different models.",
-          },
           {
             title: "Can it miss something?",
             body: "Yes. Page reads have character and step budgets, so a search miss does not mean the document contains no relevant information.",
@@ -144,17 +140,6 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "features",
-        nav: "功能",
-        label: "批注和会话跟着文件走",
-        items: [
-          { title: "批注与线程跟着文件", body: "批注留在文档上；再次打开接着问。" },
-          { title: "文件留在本机", body: "文本只发给你配置的模型，也可用 Ollama 在本机跑。" },
-          { title: "密钥进系统钥匙串", body: "macOS、Windows 或 Linux 系统钥匙串。" },
-        ],
-      },
-      {
-        kind: "cards",
         id: "how",
         nav: "用法",
         label: "回答附带页引用，可回原页",
@@ -166,15 +151,22 @@ export default defineProduct({
         numbered: true,
       },
       {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "文件保存在本机；批注和会话留在文档上。",
+          "提取的文本（启用视觉处理时还有页面图像）发给你配置的模型，或本机的 Ollama。",
+          "API 密钥保存在 macOS、Windows 或 Linux 系统钥匙串。",
+        ],
+      },
+      {
         kind: "faq",
         id: "faq",
         nav: "常见问题",
         label: "常见问题",
         items: [
-          {
-            title: "模型会收到什么？",
-            body: "文件保存在本机。问答时，提取的文本会发送给你配置的模型；启用视觉处理时，也会发送相应图像。可连接 Ollama 使用本地模型。对话与 Scan 可使用不同模型。",
-          },
           {
             title: "会漏掉内容吗？",
             body: "可能。单次读取受字符和步数预算限制，搜索未命中不等于文档没有相关内容。",

@@ -36,9 +36,10 @@ export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: Card[] 
 /** Named compatibility targets. */
 export type CasesSection = { kind: "cases"; id: string; label: string; title: string; items: string[]; body?: string };
 
-/** A numbered run, with a centered head. */
+/** A run with a centered head. Numbered unless `ordered: false`: only a real sequence gets numbers. */
 export type FlowSection = {
   kind: "flow";
+  ordered?: false;
   id: string;
   kicker: string;
   title: string;
@@ -70,7 +71,11 @@ export type PanelSection = {
       };
 };
 
-export type Section = (CardsSection | FaqSection | CasesSection | FlowSection | PanelSection) & SectionNav;
+/** Where the product's data goes: two or three plain, checkable sentences. */
+export type DataSection = { kind: "data"; id: "data"; title: string; items: string[] };
+
+export type Section = (CardsSection | FaqSection | CasesSection | FlowSection | PanelSection | DataSection) &
+  SectionNav;
 
 /* ---------- The product object ---------- */
 

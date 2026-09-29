@@ -7,6 +7,8 @@ interface Props {
 }
 
 const { section } = Astro.props;
+const ordered = section.ordered !== false;
+const List = ordered ? "ol" : "ul";
 ---
 
 <section id={section.id} class="product-section product-deep-dive">
@@ -15,11 +17,16 @@ const { section } = Astro.props;
       <h2>{section.title}</h2>
       <p class="sub"><Prose text={section.body} /></p>
     </header>
-    <ol class="feature-grid product-flow" aria-label={section.title} data-count={section.steps.length} data-numbered>
+    <List
+      class="feature-grid product-flow"
+      aria-label={section.title}
+      data-count={section.steps.length}
+      data-numbered={ordered ? "" : undefined}
+    >
       {
         section.steps.map((step, index) => (
           <li class="feature-card">
-            <span class="feature-step">{index + 1}</span>
+            {ordered && <span class="feature-step">{index + 1}</span>}
             <h3>{step.label}</h3>
             <p>
               <Prose text={step.body} />
@@ -27,6 +34,6 @@ const { section } = Astro.props;
           </li>
         ))
       }
-    </ol>
+    </List>
   </div>
 </section>
