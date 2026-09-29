@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Titpea: a stack of three app tiles, offset up and to the right. -->
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a9bff"/><stop offset="1" stop-color="#5a44ff"/></linearGradient>
+    <radialGradient id="glow" cx="0.25" cy="0.12" r="0.9"><stop offset="0" stop-color="#fff" stop-opacity="0.38"/><stop offset="0.55" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.55"/><stop offset="1" stop-color="#fff" stop-opacity="0.08"/></linearGradient>
+    <g id="tile">
+      <rect width="520" height="520" rx="146" fill="url(#fill)"/>
+      <rect width="520" height="520" rx="146" fill="url(#glow)"/>
+      <rect x="6" y="6" width="508" height="508" rx="140" fill="none" stroke="url(#edge)" stroke-width="12"/>
+    </g>
+  </defs>
+  <use href="#tile" x="352" y="152" opacity="0.3"/>
+  <use href="#tile" x="252" y="252" opacity="0.6"/>
+  <use href="#tile" x="152" y="352"/>
+</svg>

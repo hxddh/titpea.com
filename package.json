@@ -17,6 +17,7 @@
     "releases:sync": "node scripts/sync-releases.mjs",
     "assets:og": "tsx scripts/generate-og-images.ts",
     "assets:images": "tsx scripts/generate-image-variants.ts",
+    "assets:favicon": "tsx scripts/generate-favicons.ts",
     "assets:icons": "tsx scripts/generate-icons.ts",
     "qa:pages": "tsx scripts/qa-pages.mjs",
     "a11y:check": "node scripts/a11y-check.mjs",
