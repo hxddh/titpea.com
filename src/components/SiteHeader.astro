@@ -23,7 +23,9 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
 
 <header class="site-header" data-static={scrollsAway ? "" : undefined}>
   <div class="site-header-bar glass">
-    <a class="brand" href={pathFor(locale)} aria-label="Titpea home">Titpea</a>
+    <a class="brand" href={pathFor(locale)} aria-label="Titpea home"
+      ><img src="/favicon.svg" alt="" width="22" height="22" />Titpea</a
+    >
 
     <nav class="nav" aria-label={copy.primaryLabel}>
       <a href={pathFor(locale, "about")} aria-current={current === "about" ? "page" : undefined}>{copy.about}</a>

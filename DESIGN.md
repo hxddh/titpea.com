@@ -17,7 +17,7 @@ When a principle and a constraint disagree, satisfy the constraint and rework th
 
 Every page uses the same few parts. Build new content from them before inventing a new part.
 
-- **Chrome.** A glass pill header (`.site-header-bar.glass`) holds the wordmark Titpea, the four product lines as dropdowns, About, GitHub, language, and theme. On product pages the header scrolls away and the **local nav** pins instead: a glass pill with the product name, at most four section links (the first sections, then `Get started` and `FAQ`), and one filled primary action. On narrow screens the section links collapse behind a `Sections` / `目录` disclosure and the action hides only when that disclosure is present.
+- **Chrome.** A glass pill header (`.site-header-bar.glass`) holds the site mark and the wordmark Titpea, the four product lines as dropdowns, About, GitHub, language, and theme. On product pages the header scrolls away and the **local nav** pins instead: a glass pill with the product name, at most four section links (the first sections, then `Get started` and `FAQ`), and one filled primary action. On narrow screens the section links collapse behind a `Sections` / `目录` disclosure and the action hides only when that disclosure is present.
 - **Hero.** Centered, over a soft color wash (`.wash`). Eyebrow, then `h1`, then a balanced lede, then actions, then a mono meta line. Product heroes put the product object below the copy, centered.
 - **Product object.** Real screenshots sit in the wide frame (1040px) as photographs: rounded (`--radius-shot`), lifted (`--shadow-shot`). CSS mocks, terminals, and charts stay in the narrow frame (820px) so their type keeps product scale. They keep their own window contour (`--radius-window`).
 - **Section.** A centered section head (`h2` at `--title-section`, optional `.sub`), then one object: a feature grid, a showcase photograph, a flow, a panel, the data statement, or the FAQ. No kicker above section headings: the heading carries the section alone. A section's `label` / `kicker` is only its name in the local nav. On product pages a small label above text survives only as the hero eyebrow, the label on a captured object (`httpmon v1.2.1 · captured output`), and the release date over What's new.
@@ -66,8 +66,10 @@ The page answers, in order: what Titpea is, how the tools behave, what shipped l
 ## App Icons
 
 - Every product has an icon, and every list of products shows them (the home shelf, catalog cards, About, the release list, 404, share images). `npm run check` fails without one.
-- Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a top sheen and one image that says what the product does — a turbine for s3-turbo-list, a prism for httpmon, a phosphor radar for Agent Radar. Each has its own colour so no two read alike, the mark survives 28 px, and no third-party logo appears.
+- Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a top sheen and one image that says what the product does — a card-catalog drawer for s3-turbo-list, a stethoscope for StorageOps, a radar dish for Agent Radar. Each has its own colour so no two read alike, the mark survives 28 px, and no third-party logo appears.
 - `npm run assets:icons` renders `public/assets/icons/<slug>.webp`. `design/icons/README.md` records which icons are official and which are site-designed.
+
+- **Site mark.** A stack of three app tiles in the accent gradient, offset up and to the right, the back two translucent: a set of tools, not one product. Source `design/brand/titpea-mark.svg`; `npm run assets:favicon` writes `favicon.svg`, a 16/32/48 `favicon.ico`, and a 180px `apple-touch-icon.png` on the page colour. It sits at 22px before the wordmark in the header and nowhere else on the page.
 
 ## Analytics
 
