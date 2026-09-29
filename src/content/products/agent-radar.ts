@@ -87,6 +87,7 @@ export default defineProduct({
       {
         kind: "flow",
         id: "evidence",
+        ordered: false,
         nav: "What it keeps",
         kicker: "Auditable state",
         title: "Every change stays in Git.",
@@ -196,6 +197,7 @@ export default defineProduct({
       {
         kind: "flow",
         id: "evidence",
+        ordered: false,
         nav: "留存内容",
         kicker: "可审计状态",
         title: "每次变化都留在 Git 里",

@@ -75,7 +75,16 @@ export default defineProduct({
           { title: "Evidence stays", body: "Metadata, log rows, inventories." },
           { title: "Read-only tools", body: "No writes, deletes, or policy changes." },
           { title: "You approve", body: "Downloads, large scans, evidence imports." },
-          { title: "Keys stay local", body: "An encrypted vault on this machine." },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        title: "Where your data goes.",
+        items: [
+          "Storage credentials stay in an encrypted vault on this machine.",
+          "Evidence and conversation history stay in the app’s local data directory.",
+          "Requests go to the model and S3-compatible endpoints you configure.",
         ],
       },
       {
@@ -86,10 +95,6 @@ export default defineProduct({
           {
             title: "Does it need a model key?",
             body: "No. Local evidence and rule analysis still run without one. Add a model when you want the agent to plan and explain the investigation in chat.",
-          },
-          {
-            title: "Where does my data go?",
-            body: "Storage credentials stay in a local encrypted vault. Evidence and conversation history stay in the app’s local data directory. Requests go to the model and S3-compatible endpoints you configure.",
           },
           {
             title: "How is it different from StorageOps?",
@@ -151,7 +156,16 @@ export default defineProduct({
           { title: "证据留下", body: "对象元数据、日志行、清单。" },
           { title: "工具只读", body: "不写入、不删除、不改策略。" },
           { title: "由你确认", body: "下载、大范围扫描、证据导入。" },
-          { title: "密钥在本机", body: "保存在本机加密保险库。" },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        title: "数据的去向",
+        items: [
+          "存储凭证保存在本机加密保险库。",
+          "证据和会话记录保存在本机应用数据目录。",
+          "请求发往你配置的模型和 S3 兼容存储端点。",
         ],
       },
       {
@@ -162,10 +176,6 @@ export default defineProduct({
           {
             title: "没有模型密钥能用吗？",
             body: "能。本地证据和规则分析照常运行。需要 Agent 在对话里规划与解释时，再接入模型。",
-          },
-          {
-            title: "数据会发到哪里？",
-            body: "存储凭证保存在本机加密保险库，证据和会话记录保存在本机应用数据目录。请求会发往你配置的模型和 S3 兼容存储端点。",
           },
           {
             title: "和 StorageOps 有什么不同？",

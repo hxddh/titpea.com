@@ -5,6 +5,7 @@ import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
 import CasesSection from "./product/CasesSection.astro";
 import CommandsSection from "./product/CommandsSection.astro";
+import DataSection from "./product/DataSection.astro";
 import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
@@ -113,6 +114,7 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
         );
       if (section.kind === "cases") return <CasesSection section={section} />;
       if (section.kind === "flow") return <FlowSection section={section} />;
+      if (section.kind === "data") return <DataSection section={section} />;
       return <PanelSection section={section} />;
     })
   }

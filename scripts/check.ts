@@ -119,6 +119,13 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
         if (!/[?？]$/.test(item.title)) fail(`${at}: FAQ entry is not a question: "${item.title}"`);
       }
     }
+    if (section.kind === "data") {
+      if (section.items.length < 2 || section.items.length > 3)
+        fail(`${at}: the data section says two or three things`);
+      for (const item of section.items) {
+        if (tooLong(item, 22, 48)) fail(`${at}: data sentence is long: "${item}"`);
+      }
+    }
     if (section.kind === "cards") {
       for (const item of section.items) {
         if (tooLong(item.title, 5, 10)) fail(`${at}: card title is long: "${item.title}"`);
