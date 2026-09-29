@@ -16,6 +16,8 @@ const chartPoints = visual.points.map((point, index) => ({
   x: chart.left + (plotWidth * index) / (visual.points.length - 1),
   y: chart.top + ((maxSeconds - point.seconds) / (maxSeconds - minSeconds)) * plotHeight,
 }));
+const secondsLabel = (seconds: number) =>
+  visual.points.find((point) => point.seconds === seconds)?.display ?? `${seconds.toFixed(0)}s`;
 const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ");
 ---
 
@@ -42,8 +44,8 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
         y1={(chart.top + chart.height - chart.bottom) / 2}
         x2={chart.width - chart.right}
         y2={(chart.top + chart.height - chart.bottom) / 2}></line>
-      <text class="chart-y-label" x="0" y={chart.top + 4}>{maxSeconds.toFixed(0)}s</text>
-      <text class="chart-y-label" x="0" y={chart.height - chart.bottom}>{minSeconds.toFixed(0)}s</text>
+      <text class="chart-y-label" x="0" y={chart.top + 4}>{secondsLabel(maxSeconds)}</text>
+      <text class="chart-y-label" x="0" y={chart.height - chart.bottom}>{secondsLabel(minSeconds)}</text>
       <polyline class="chart-line" points={linePoints}></polyline>
       {
         chartPoints.map((point) => (
@@ -52,9 +54,9 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
             <text class="chart-x-label" x={point.x} y={chart.height - 16} text-anchor="middle">
               {point.label}
             </text>
-            {point.state && (
+            {(point.state || point.display) && (
               <text class="chart-annotation" x={point.x} y={point.y - 14} text-anchor="middle">
-                {point.seconds}s
+                {point.display ?? `${point.seconds}s`}
               </text>
             )}
           </g>

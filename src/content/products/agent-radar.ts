@@ -43,14 +43,14 @@ export default defineProduct({
     visual: {
       kind: "terminalBrief",
       label: "Agent Radar",
-      kicker: "agent-radar 0.23.0 · captured output",
+      kicker: "agent-radar 0.25.0 · captured output",
       status: "created",
       command: "python scripts/agent_radar.py init",
       filesLabel: "CREATED",
       files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
-      briefLabel: "radar.md in the repository · 2026-09-23",
+      briefLabel: "radar.md in the repository · 2026-09-29",
       brief: "1. AI Agents are moving from chat and IDE autocomplete toward task-based execution.",
-      footnotes: ["Markdown-first · GitHub Actions", "checks before commit · Git as audit"],
+      footnotes: ["Markdown-first · GitHub Actions", "checks before commit · gaps labeled in Git"],
     },
     sections: [
       {
@@ -59,7 +59,7 @@ export default defineProduct({
         nav: "Research loop",
         kicker: "One research loop",
         title: "Research you can review in Git.",
-        body: "Markdown files hold the research. A light model screens sources, another drafts, and checks run before each commit.",
+        body: "Markdown files hold the research. One model screens sources, then drafts; checks run before each commit, and gaps are labeled.",
         panel: {
           kind: "excerpt",
           label: "radar.md excerpt",
@@ -107,15 +107,15 @@ export default defineProduct({
         items: [
           {
             title: "Does it need paid search?",
-            body: "No. Collection uses free public source lanes. Bring your own model keys: a lighter model can screen and a stronger one can draft, so spend stays intentional.",
+            body: "No. Collection uses free public source lanes. You configure the model route; the pinned route runs GPT-5 Mini to screen and draft, priced against a $4 monthly budget.",
           },
           {
             title: "Where does it run?",
-            body: "Daily, weekly, and monthly jobs run on GitHub Actions and produce bilingual reports. Local runs are available for debugging.",
+            body: "Daily, weekly, and monthly jobs run on GitHub Actions and produce bilingual reports. If a Chinese half comes out thin, the runner regenerates it, or labels the report when it cannot. Local runs are available for debugging.",
           },
           {
             title: "What if a check fails?",
-            body: "Failed checks remain visible in telemetry and issues. Git records the accepted changes.",
+            body: "Most checks repair or label instead of refusing: a missing section gets an explicit gap line. Failures stay visible in telemetry, validate warnings, and issues; Git records what was published.",
           },
         ],
       },
@@ -153,14 +153,14 @@ export default defineProduct({
     visual: {
       kind: "terminalBrief",
       label: "Agent Radar",
-      kicker: "agent-radar 0.23.0 · 实际输出",
+      kicker: "agent-radar 0.25.0 · 实际输出",
       status: "created",
       command: "python scripts/agent_radar.py init",
       filesLabel: "已创建",
       files: ["radar.md", "agent-watchlist.md", "user-field-notes.md", "playbook.md", "storage-angle.md"],
-      briefLabel: "仓库里的 radar.md · 2026-09-23",
+      briefLabel: "仓库里的 radar.md · 2026-09-29",
       brief: "1. AI Agents are moving from chat and IDE autocomplete toward task-based execution.",
-      footnotes: ["Markdown 优先 · GitHub Actions", "提交前校验 · Git 即审计"],
+      footnotes: ["Markdown 优先 · GitHub Actions", "提交前校验 · 缺口在 Git 里标明"],
     },
     sections: [
       {
@@ -169,7 +169,7 @@ export default defineProduct({
         nav: "研究循环",
         kicker: "一条研究循环",
         title: "在 Git 里查看研究记录",
-        body: "Markdown 文件保存研究内容。轻量模型筛来源，另一模型起草，校验通过才提交。",
+        body: "Markdown 文件保存研究内容。同一模型先筛来源再起草；提交前运行校验，未通过的部分在报告里标明。",
         panel: {
           kind: "excerpt",
           label: "radar.md 摘录",
@@ -217,15 +217,15 @@ export default defineProduct({
         items: [
           {
             title: "需要付费搜索吗？",
-            body: "不需要。采集走免费公开源。你自备模型密钥：轻量模型可初筛，强模型起草，花费可主动控制。",
+            body: "不需要。采集走免费公开源。模型路线由你配置；固定路线用 GPT-5 Mini 筛选和起草，按每月 4 美元预算核算。",
           },
           {
             title: "在哪里运行？",
-            body: "日更、周更、月更任务在 GitHub Actions 上运行，输出双语报告。本地运行可用于调试。",
+            body: "日更、周更、月更任务在 GitHub Actions 上运行，输出双语报告。中文部分过薄时，Runner 会重新生成；生成失败则在报告里注明。本地运行可用于调试。",
           },
           {
             title: "校验失败会怎样？",
-            body: "失败记录保留在遥测和 issue 中，通过的修改提交到 Git。",
+            body: "多数校验会修复或标注，而不是拒绝提交：缺失的章节会写明缺口。失败记录保留在遥测、validate 警告和 issue 中，Git 记录实际发布的内容。",
           },
         ],
       },

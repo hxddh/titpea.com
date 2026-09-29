@@ -45,13 +45,13 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/goban-review-en.webp",
-        alt: "Goban replaying a 15-move game move by move on a wood board, with replay analysis marking each move and the record in the sidebar",
+        alt: "Goban's sidebar Review panel on a finished game: the score curve, the numbered mistakes, and the explanation of one move",
         width: 1222,
         height: 768,
-        // Recorded from the app replaying the game (scripts/record-board-demos.mjs).
+        // Recorded from the app's own Review panel (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/goban-review-en.mp4", webm: "/assets/goban-review-en.webm" },
-        title: "Records become positions.",
-        body: "Turn on replay analysis, then pick a move to rebuild its position.",
+        title: "Review names the mistakes.",
+        body: "Open Review: a score curve and the mistakes it can prove. Pick one to see why.",
       },
       {
         src: "/assets/goban-notebook-en.webp",
@@ -69,10 +69,10 @@ export default defineProduct({
         label: "Every game stays on this computer.",
         items: [
           { title: "Three rule sets", body: "Freestyle, swap2, or Renju." },
+          { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
           { title: "Review an SGF", body: "Import, paste, or drag in a file." },
-          { title: "Keep playing", body: "Continue an unfinished position." },
+          { title: "Replay the key move", body: "Retry from before the mistake; the original game stays." },
           { title: "Practise positions", body: "Drills and a daily streak." },
-          { title: "Local records", body: "Games, saves, and imported records." },
           { title: "No account", body: "Nothing to sign in to; no server." },
         ],
       },
@@ -88,6 +88,10 @@ export default defineProduct({
           {
             title: "What happens when I import an SGF?",
             body: "The move list opens for review. If the position is unfinished, you can continue playing from it.",
+          },
+          {
+            title: "How strong is the computer?",
+            body: "All four levels use one engine. Beginner blocks your fours but often misses open threes; Normal takes about 0.4 seconds a move; Extreme uses Hard's search with two and a half times the time. By default you alternate colours on Hard and Extreme. The rule set is chosen in Settings and applies from the next game.",
           },
         ],
       },
@@ -126,12 +130,12 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/goban-review-zh.webp",
-        alt: "Goban 在木质棋盘上逐手回放一局 15 手的对局，复盘分析标注每一手，侧栏显示棋谱",
+        alt: "Goban 侧栏的复盘面板：一局下完后的评分曲线、按手数列出的失着，以及其中一手的解释",
         width: 1222,
         height: 768,
         video: { mp4: "/assets/goban-review-zh.mp4", webm: "/assets/goban-review-zh.webm" },
-        title: "棋谱回到棋盘上",
-        body: "开启复盘分析，选任意一手即可还原当时局面。",
+        title: "复盘点出失着",
+        body: "打开复盘：评分曲线与可证明的失着，点一手看原因。",
       },
       {
         src: "/assets/goban-notebook-zh.webp",
@@ -149,10 +153,10 @@ export default defineProduct({
         label: "每一局都留在本机",
         items: [
           { title: "三套规则", body: "自由式、swap2 或连珠。" },
+          { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
           { title: "带入 SGF", body: "导入、粘贴或拖入文件。" },
-          { title: "接着下", body: "未结束的局面可以续下。" },
+          { title: "重下关键一手", body: "回到失着之前再下，原局一手不改。" },
           { title: "做题练习", body: "战术题与每日打卡。" },
-          { title: "棋谱在本机", body: "对弈、存档与导入的棋谱。" },
           { title: "无需账号", body: "不用登录，也不连服务器。" },
         ],
       },
@@ -168,6 +172,10 @@ export default defineProduct({
           {
             title: "导入 SGF 之后会怎样？",
             body: "默认打开复盘，逐手查看棋谱。棋局尚未结束时，可以从那里继续下。",
+          },
+          {
+            title: "电脑有多强？",
+            body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手约 0.4 秒；极限与困难同一套搜索，多给两倍半的时间。困难与极限默认每局轮流执子。规则在设置里选，从下一局起生效。",
           },
         ],
       },

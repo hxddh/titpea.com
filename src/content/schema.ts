@@ -100,7 +100,8 @@ export type Visual = VisualBase &
         kicker: string;
         title: string;
         body: string;
-        points: Array<{ label: string; seconds: number; state?: "reference" | "caution" }>;
+        /** `display` replaces the plotted number wherever it is printed (for example "~19s" for an approximate figure). */
+        points: Array<{ label: string; seconds: number; display?: string; state?: "reference" | "caution" }>;
         chartLabel: string;
         chartCaption: string;
       }
@@ -148,20 +149,6 @@ export type Visual = VisualBase &
           title: string;
           rows: Array<{ title: string; meta: string; state: "waiting" | "running" | "recent"; chip?: string }>;
         }>;
-        footnotes: string[];
-      }
-    | {
-        kind: "worldProjection";
-        kicker: string;
-        status: string;
-        briefingLabel: string;
-        briefing: string;
-        commandsLabel: string;
-        commands: string[];
-        collectionLabel: string;
-        collection: string[];
-        timelineLabel: string;
-        timeline: string[];
         footnotes: string[];
       }
   );

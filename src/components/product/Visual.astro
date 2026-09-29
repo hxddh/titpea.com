@@ -7,7 +7,6 @@ import S3Benchmark from "./visuals/S3Benchmark.astro";
 import Screenshot from "./visuals/Screenshot.astro";
 import SkillMap from "./visuals/SkillMap.astro";
 import TerminalBrief from "./visuals/TerminalBrief.astro";
-import WorldProjection from "./visuals/WorldProjection.astro";
 
 interface Props {
   visual: Visual;
@@ -23,4 +22,3 @@ const { visual } = Astro.props;
 {visual.kind === "httpTerminal" && <HttpTerminal visual={visual} />}
 {visual.kind === "terminalBrief" && <TerminalBrief visual={visual} />}
 {visual.kind === "menuBar" && <MenuBar visual={visual} />}
-{visual.kind === "worldProjection" && <WorldProjection visual={visual} />}
