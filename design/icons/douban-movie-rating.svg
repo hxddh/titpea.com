@@ -1,26 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#3ccf6a"/><stop offset="1" stop-color="#0c7a34"/></linearGradient>
-    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
-      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a7a"/><stop offset="1" stop-color="#e2425a"/></linearGradient>
     <clipPath id="tile"><rect width="1024" height="1024" rx="230"/></clipPath>
-    <clipPath id="bar"><rect x="230" y="340" width="560" height="90" rx="22"/></clipPath>
   </defs>
   <g clip-path="url(#tile)">
     <rect width="1024" height="1024" fill="url(#bg)"/>
-
-    <ellipse cx="512" cy="812" rx="260" ry="34" fill="#053d19" fill-opacity="0.3"/>
-    <g transform="rotate(-14 240 430)">
-      <rect x="230" y="340" width="560" height="90" rx="22" fill="#ffffff"/>
-      <g clip-path="url(#bar)"><path d="M250 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/><path d="M346 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/><path d="M442 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/><path d="M538 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/><path d="M634 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/><path d="M730 340 l 60 0 l -40 90 l -60 0 z" fill="#0b4d24"/></g>
-    </g>
-    <rect x="230" y="430" width="564" height="360" rx="40" fill="#ffffff"/>
-    <circle cx="262" cy="430" r="22" fill="#0b4d24"/>
-    <rect x="290" y="500" width="330" height="56" rx="28" fill="#f5c518"/>
-    <rect x="290" y="584" width="410" height="56" rx="28" fill="#fa4c2e"/>
-    <rect x="290" y="668" width="250" height="56" rx="28" fill="#2d3437"/>
-    <rect width="1024" height="1024" fill="url(#sheen)"/>
+    <path d="M232 352 Q 232 312 272 312 H 752 Q 792 312 792 352 V 432 A 80 80 0 0 0 792 592 V 672 Q 792 712 752 712 H 272 Q 232 712 232 672 V 592 A 80 80 0 0 0 232 432 Z" fill="#fff"/>
+    <path d="M512 392 L 545 460 L 620 471 L 566 523 L 579 598 L 512 563 L 445 598 L 458 523 L 404 471 L 479 460 Z" fill="#e5475d" stroke="#e5475d" stroke-width="18" stroke-linejoin="round"/>
   </g>
 </svg>
