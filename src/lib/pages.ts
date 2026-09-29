@@ -437,7 +437,6 @@ export type AboutPageModel = {
   principles: { title: string; items: Array<{ title: string; body: string }> };
   releases: {
     title: string;
-    sub: string;
     moreLabel: string;
     feed: { label: string; href: string };
     items: Array<{
@@ -471,8 +470,8 @@ export function aboutPage(locale: Locale): AboutPageModel {
   const count = String(products.length);
   const released = products.filter((product) => versionOf(product.slug));
   const licensed = products.filter((product) => licensePattern.test(product.en.meta));
-  const licenses = [...new Set(licensed.map((product) => product.en.meta.match(licensePattern)![1]))].sort();
   const headline = copy.aboutHeadline.replace("{count}", count);
+  const lead = copy.aboutLead.replace("{open}", String(licensed.length)).replace("{count}", count);
   return {
     kind: "about",
     locale,
@@ -500,23 +499,10 @@ export function aboutPage(locale: Locale): AboutPageModel {
       },
     }),
     language: languageLink(locale, alternatePath),
-    hero: { eyebrow: copy.aboutEyebrow, title: headline, lead: copy.aboutLead },
-    principles: {
-      title: copy.aboutPrinciplesTitle,
-      items: [
-        ...copy.aboutPrinciples,
-        {
-          title: copy.aboutOpenSource.title,
-          body: copy.aboutOpenSource.body
-            .replace("{open}", String(licensed.length))
-            .replace("{count}", count)
-            .replace("{licenses}", licenses.join(locale === "zh" ? "、" : ", ")),
-        },
-      ],
-    },
+    hero: { eyebrow: copy.aboutEyebrow, title: headline, lead },
+    principles: { title: copy.aboutPrinciplesTitle, items: copy.aboutPrinciples },
     releases: {
       title: copy.aboutReleasesTitle,
-      sub: copy.aboutReleasesSub,
       moreLabel: copy.aboutReleasesMore,
       feed: { label: copy.aboutFeed, href: "/releases.xml" },
       // Newest release first; the list rebuilds itself from releases.json.
@@ -551,7 +537,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
         { label: copy.aboutFeed, href: "/releases.xml", style: "ghost" },
       ],
     },
-    expectedText: [headline, copy.aboutLead, copy.aboutReleasesTitle],
+    expectedText: [headline, lead, copy.aboutReleasesTitle],
   };
 }
 

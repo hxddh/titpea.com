@@ -47,9 +47,9 @@ Every page uses the same few parts. Build new content from them before inventing
 
 The page answers, in order: what Titpea is, how the tools behave, what shipped lately, and how to reach the person behind it. The product list lives on Home; About does not repeat it.
 
-- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and one lede naming the range. No actions in the hero.
-- `How the tools work.`: four cards. Three habits, each restating facts already on product pages, and `Source in the open` with the open-source count and licenses read from each product's meta line.
-- `Latest releases.`: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language, or none; the rest fold under `All releases (n)`.
+- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and a one-line lede of facts: who builds and releases them and how many are open source (counted from each product's meta line). It does not repeat Home's lede. No actions in the hero.
+- `Three habits.` / `三个做法`: three cards, each naming the products it is true of (Storage Agent, PageWise, StorageOps, Easier Bookmarks), so no card claims something for all tools that only some do.
+- `Latest releases.`, with no sub: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language, or none; the rest fold under `All releases (n)`.
 - Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
 - No personal details beyond what the owner has published; nothing about the person is inferred.
 

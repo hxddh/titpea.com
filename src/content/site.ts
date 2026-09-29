@@ -72,9 +72,7 @@ type Ui = {
   /** Three habits backed by product facts, plus the open-source line (`{open}` of `{count}`, `{licenses}`). */
   aboutPrinciplesTitle: string;
   aboutPrinciples: Array<{ title: string; body: string }>;
-  aboutOpenSource: { title: string; body: string };
   aboutReleasesTitle: string;
-  aboutReleasesSub: string;
   aboutReleasesMore: string;
   aboutFeed: string;
   aboutContactTitle: string;
@@ -131,26 +129,24 @@ export const ui: Record<Locale, Ui> = {
       "Titpea is one person’s product shelf: storage investigations, agents, and small everyday apps, built and released by hxddh.",
     aboutEyebrow: "About Titpea",
     aboutHeadline: "One person. {count} tools.",
-    aboutLead: "Storage investigations, agents, and small everyday apps. Built and released by hxddh.",
+    aboutLead: "Built and released by hxddh. {open} of {count} are open source.",
     contactLabel: "Contact links",
-    aboutPrinciplesTitle: "How the tools work.",
+    aboutPrinciplesTitle: "Three habits.",
     aboutPrinciples: [
       {
         title: "Evidence in view",
         body: "Storage Agent keeps the checks beside the answer. PageWise cites the page.",
       },
       {
-        title: "Local by default",
-        body: "Keys stay in a local vault. Files stay on disk. Bookmarks need no server.",
+        title: "Keys and files stay local",
+        body: "Storage Agent keeps keys in a local vault. PageWise reads files on your disk. Easier Bookmarks needs no server.",
       },
       {
         title: "Read before write",
         body: "Storage Agent’s tools are read-only. StorageOps does not change storage.",
       },
     ],
-    aboutOpenSource: { title: "Source in the open", body: "{open} of {count} products are open source: {licenses}." },
     aboutReleasesTitle: "Latest releases.",
-    aboutReleasesSub: "Tags, dates, and highlights come from GitHub on every build.",
     aboutReleasesMore: "All releases",
     aboutFeed: "Follow releases (Atom)",
     aboutContactTitle: "Say hello.",
@@ -204,26 +200,24 @@ export const ui: Record<Locale, Ui> = {
     aboutDescription: "Titpea 是一个人的产品架：对象存储排查、Agent 和日常小工具，由 hxddh 开发并发布。",
     aboutEyebrow: "关于 Titpea",
     aboutHeadline: "一个人，{count} 个工具",
-    aboutLead: "对象存储排查、Agent 和日常小工具。由 hxddh 开发并发布。",
+    aboutLead: "由 hxddh 开发并发布，其中 {open} 个开源。",
     contactLabel: "联系方式",
-    aboutPrinciplesTitle: "这些工具怎么做事",
+    aboutPrinciplesTitle: "三个做法",
     aboutPrinciples: [
       {
         title: "证据摆在眼前",
         body: "Storage Agent 把检查放在结论旁边。PageWise 给出页引用。",
       },
       {
-        title: "默认留在本机",
-        body: "密钥在本机保险库。文件留在磁盘。书签不经服务器。",
+        title: "密钥和文件留在本机",
+        body: "Storage Agent 把密钥放在本机保险库。PageWise 读取你磁盘上的文件。Easier Bookmarks 不经服务器。",
       },
       {
         title: "只读优先",
         body: "Storage Agent 的工具只读。StorageOps 不修改存储。",
       },
     ],
-    aboutOpenSource: { title: "代码公开", body: "{count} 个产品中有 {open} 个开源：{licenses}。" },
     aboutReleasesTitle: "最近的发布",
-    aboutReleasesSub: "版本号、日期和要点在每次构建时从 GitHub 读取。",
     aboutReleasesMore: "全部发布",
     aboutFeed: "订阅发布（Atom）",
     aboutContactTitle: "打个招呼",
