@@ -25,13 +25,13 @@ export default defineProduct({
   en: {
     title: "Storage Agent",
     description:
-      "Desktop workbench for read-only S3-compatible investigations: keys stay local, and larger reads wait for approval.",
-    eyebrow: "Object storage investigations",
-    headline: "Inspect S3 with evidence.",
-    lead: "Read-only checks. Local keys. Evidence in the session.",
+      "Local-first desktop Agent for S3-compatible storage: read-only tools, keys in a local vault, and Issues it remembers between tasks.",
+    eyebrow: "Looks after object storage",
+    headline: "Your S3, looked after.",
+    lead: "Read-only tools. Local keys. Issues it remembers.",
     catalog: {
       role: "S3 investigation",
-      text: "Read-only S3 checks. Evidence beside the answer.",
+      text: "Read-only S3 checks. What needs care, remembered between tasks.",
     },
     primaryCta: {
       label: "Download",
@@ -53,28 +53,18 @@ export default defineProduct({
         height: 1290,
       },
     },
-    showcases: [
-      {
-        src: "/assets/storage-agent-safety.webp",
-        width: 1252,
-        height: 908,
-        alt: "Storage Agent Safety settings: secrets in the encrypted local vault, read-only cloud access, and approval options for gated tools such as import_evidence",
-        title: "You approve what moves.",
-        body: "Keys stay in the local vault. Downloads, large scans, and evidence imports wait for you.",
-        beside: "features",
-      },
-    ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "Every check leaves evidence.",
+        label: "Findings outlast the task.",
         items: [
-          { title: "Start from the problem", body: "An error, an access log, a bucket config." },
-          { title: "The agent picks the tools", body: "Checks chosen for the case." },
-          { title: "Evidence stays", body: "Metadata, log rows, inventories." },
+          { title: "Result first", body: "The answer, findings by severity, next steps." },
+          { title: "Remembers your storage", body: "Accounts, buckets, and open Issues, most severe first." },
+          { title: "Fixes you apply", body: "Generated text you run with your own credentials." },
+          { title: "Verify, read-only", body: "A re-check that can resolve the Issue." },
+          { title: "Opt-in watch", body: "Re-checks an account on a schedule you set." },
           { title: "Read-only tools", body: "No writes, deletes, or policy changes." },
-          { title: "You approve", body: "Downloads, large scans, evidence imports." },
         ],
       },
       {
@@ -83,7 +73,7 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Storage credentials stay in an encrypted vault on this machine.",
-          "Evidence and conversation history stay in the app’s local data directory.",
+          "Evidence and task history stay in the app’s local data directory.",
           "Requests go to the model and S3-compatible endpoints you configure.",
         ],
       },
@@ -94,11 +84,19 @@ export default defineProduct({
         items: [
           {
             title: "Does it need a model key?",
-            body: "No. Local evidence and rule analysis still run without one. Add a model when you want the agent to plan and explain the investigation in chat.",
+            body: "Not for a local model: Ollama, LM Studio, vLLM, and llama.cpp run without one. Hosted providers such as OpenAI, Anthropic, DeepSeek, and OpenRouter need their key.",
+          },
+          {
+            title: "What does the watch do?",
+            body: "Nothing until you turn it on for an account; it is off by default. On its schedule it runs a bounded, read-only sweep and opens one task only when something new turns up and a model is configured.",
+          },
+          {
+            title: "What happens when I upgrade from v4?",
+            body: "On first start, v5 imports your model and storage settings, known buckets and Issues, and past results. The v4 database is left untouched.",
           },
           {
             title: "How is it different from StorageOps?",
-            body: "StorageOps adds storage skills to Pi. Storage Agent is the full desktop app: chat, tools, local analysis, evidence, and approvals in one place.",
+            body: "StorageOps adds storage skills to Pi. Storage Agent is the full desktop app: tasks, read-only tools, local analysis, and the Issues it remembers.",
           },
         ],
       },
@@ -106,13 +104,13 @@ export default defineProduct({
   },
   zh: {
     title: "Storage Agent",
-    description: "面向 S3 兼容存储的本地优先桌面工作台：在对话里调用只读工具，证据可见。",
-    eyebrow: "对象存储排查",
-    headline: "查清存储问题，留下依据",
-    lead: "只读检查。密钥在本机。证据在会话里。",
+    description: "面向 S3 兼容存储的本地优先桌面 Agent：只读工具，密钥在本机，发现的问题跨任务保留。",
+    eyebrow: "照看对象存储",
+    headline: "替你照看 S3，留下依据",
+    lead: "只读工具。密钥在本机。发现的问题会被记住。",
     catalog: {
       role: "S3 排查",
-      text: "只读 S3 排查。证据就在结论旁边。",
+      text: "只读 S3 排查。需要关注的问题跨任务保留。",
     },
     primaryCta: {
       label: "下载",
@@ -134,28 +132,18 @@ export default defineProduct({
         height: 1290,
       },
     },
-    showcases: [
-      {
-        src: "/assets/storage-agent-safety.webp",
-        width: 1252,
-        height: 908,
-        alt: "Storage Agent 的安全设置：密钥只存在本机加密保险库，云端访问只读，import_evidence 等受控工具有审批选项",
-        title: "数据移动由你批准",
-        body: "密钥留在本机保险库。下载、大范围扫描和证据导入都等你确认。",
-        beside: "features",
-      },
-    ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "每一步检查都留下依据",
+        label: "发现不随任务结束",
         items: [
-          { title: "从问题开始", body: "报错、访问日志、桶配置。" },
-          { title: "Agent 选工具", body: "按问题挑检查项。" },
-          { title: "证据留下", body: "对象元数据、日志行、清单。" },
+          { title: "结论在前", body: "答案、按严重度排列的发现、下一步。" },
+          { title: "记住你的存储", body: "账户、桶和未解决的问题，最严重的在前。" },
+          { title: "修复由你执行", body: "生成修复文本，用你自己的凭证执行。" },
+          { title: "只读验证", body: "重新检查，可将问题标为已解决。" },
+          { title: "可选巡检", body: "按你设定的周期重查账户。" },
           { title: "工具只读", body: "不写入、不删除、不改策略。" },
-          { title: "由你确认", body: "下载、大范围扫描、证据导入。" },
         ],
       },
       {
@@ -164,7 +152,7 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "存储凭证保存在本机加密保险库。",
-          "证据和会话记录保存在本机应用数据目录。",
+          "证据和任务记录保存在本机应用数据目录。",
           "请求发往你配置的模型和 S3 兼容存储端点。",
         ],
       },
@@ -175,11 +163,19 @@ export default defineProduct({
         items: [
           {
             title: "没有模型密钥能用吗？",
-            body: "能。本地证据和规则分析照常运行。需要 Agent 在对话里规划与解释时，再接入模型。",
+            body: "用本地模型就不需要：Ollama、LM Studio、vLLM 和 llama.cpp 无需密钥。OpenAI、Anthropic、DeepSeek、OpenRouter 等托管服务需要各自的密钥。",
+          },
+          {
+            title: "巡检会做什么？",
+            body: "默认关闭，需要你为某个账户开启。开启后按周期做一次受限的只读检查，只有发现新情况且已配置模型时，才会新开一个任务。",
+          },
+          {
+            title: "从 v4 升级会怎样？",
+            body: "v5 首次启动时导入模型与存储设置、已知的桶和问题，以及过往结果。v4 的数据库保持原样。",
           },
           {
             title: "和 StorageOps 有什么不同？",
-            body: "StorageOps 给 Pi 加存储技能。Storage Agent 是完整桌面应用：对话、工具、本地分析、证据与确认都在一处。",
+            body: "StorageOps 给 Pi 加存储技能。Storage Agent 是完整桌面应用：任务、只读工具、本地分析，以及它记住的问题。",
           },
         ],
       },

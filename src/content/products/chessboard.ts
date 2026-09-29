@@ -57,8 +57,8 @@ export default defineProduct({
           label: "puzzles: 168 hand-written, 1,002 engine-mined",
         },
         {
-          value: "195",
-          label: "ECO openings recognised",
+          value: "3,810",
+          label: "named opening positions",
         },
       ],
     },
@@ -82,7 +82,7 @@ export default defineProduct({
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Mistakes show on the curve.",
-        body: "A full-game Stockfish pass builds a centipawn curve and marks mistakes; jump to any position and play on.",
+        body: "A full-game Stockfish pass draws a win-chance curve and marks mistakes; jump to any position and play on.",
       },
       {
         src: "/assets/chessboard-theme-en.webp",
@@ -90,7 +90,7 @@ export default defineProduct({
         width: 2446,
         height: 1536,
         title: "Four boards, one game.",
-        body: "Switch between wood, night, day, and paper without losing the position.",
+        body: "Switch between wood, night, day, and paper, or to Merida pieces, without losing the position.",
       },
     ],
     sections: [
@@ -104,7 +104,7 @@ export default defineProduct({
           { title: "Stockfish 19", body: "Play the engine locally." },
           { title: "A friend, same screen", body: "Two players, one board." },
           { title: "Bring a PGN", body: "Including FEN-start studies." },
-          { title: "Local saves", body: "Games, saves, and analysis." },
+          { title: "Retry your mistakes", body: "Each ? and ?? explained; try again from before it." },
         ],
       },
       {
@@ -159,8 +159,8 @@ export default defineProduct({
           label: "道题：手写 168，引擎挖出 1,002",
         },
         {
-          value: "195",
-          label: "条 ECO 开局可识别",
+          value: "3,810",
+          label: "个开局局面可识别",
         },
       ],
     },
@@ -183,7 +183,7 @@ export default defineProduct({
         height: 768,
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "失着落在曲线上",
-        body: "Stockfish 跑完整局，生成评估曲线并标注失着；跳到任意局面可继续下。",
+        body: "Stockfish 跑完整局，画出胜率曲线并标注失着；跳到任意局面可继续下。",
       },
       {
         src: "/assets/chessboard-theme-zh.webp",
@@ -191,7 +191,7 @@ export default defineProduct({
         width: 2446,
         height: 1536,
         title: "四种棋盘，同一局棋",
-        body: "木色、夜色、日间、纸本随意切换，局面不变。",
+        body: "木色、夜色、日间、纸本随意切换，也可换梅里达棋子，局面不变。",
       },
     ],
     sections: [
@@ -205,7 +205,7 @@ export default defineProduct({
           { title: "引擎对弈", body: "在本机与 Stockfish 19 下棋。" },
           { title: "同屏对弈", body: "两人共用一块棋盘。" },
           { title: "带入 PGN", body: "支持指定 FEN 开局的棋谱。" },
-          { title: "本机保存", body: "对弈、存档与分析。" },
+          { title: "失着再试", body: "每个 ? 与 ?? 附一句说明，可回到失着前再试。" },
         ],
       },
       {

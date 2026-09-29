@@ -209,8 +209,7 @@
 .terminal-visual,
 .diagnostic-visual,
 .httpmon-terminal-visual,
-.terminal-brief-visual,
-.world-machine-projection-visual {
+.terminal-brief-visual {
   position: relative;
   min-height: auto;
   overflow: hidden;
@@ -469,114 +468,6 @@
 .pulse-menubar-foot {
   color: var(--label);
   font-size: 12px;
-}
-
-/* —— World Machine projection visual —— */
-.world-machine-projection-visual {
-  display: grid;
-  gap: 0;
-  padding: 0;
-  color: var(--ink);
-  font-family: var(--mono);
-  background: var(--paper);
-}
-
-.world-machine-projection-bar,
-.world-machine-projection-foot {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 18px;
-  color: var(--label);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-}
-
-.world-machine-projection-bar {
-  border-bottom: 1px solid var(--line);
-}
-
-.world-machine-projection-focus {
-  display: grid;
-  gap: 8px;
-  padding: 18px;
-  border-bottom: 1px solid var(--line);
-}
-
-.world-machine-projection-focus > span:first-child,
-.world-machine-projection-focus > span:nth-child(3),
-.world-machine-projection-panels span {
-  color: var(--label);
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
-.world-machine-projection-focus strong {
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.4;
-  font-family: var(--sans, inherit);
-}
-
-.world-machine-projection-focus ul,
-.world-machine-projection-panels ul {
-  display: grid;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.world-machine-projection-focus li,
-.world-machine-projection-panels li {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.world-machine-projection-focus li {
-  padding: 6px 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-}
-
-.world-machine-projection-panels {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.world-machine-projection-panels > div {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  padding: 16px 18px;
-}
-
-.world-machine-projection-panels > div:first-child {
-  border-right: 1px solid var(--line);
-}
-
-.world-machine-projection-foot {
-  color: var(--label);
-  font-size: 12px;
-}
-
-@media (max-width: 640px) {
-  .world-machine-projection-panels {
-    grid-template-columns: 1fr;
-  }
-
-  .world-machine-projection-panels > div:first-child {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
 }
 
 /* Narrow screens: product visuals keep their box but shed padding, and

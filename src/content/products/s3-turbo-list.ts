@@ -15,7 +15,7 @@ export default defineProduct({
     title: "s3-turbo-list",
     description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
     eyebrow: "Rust CLI",
-    headline: "1M objects in 18.8s.",
+    headline: "1M objects in ~19s.",
     lead: "Finds the parallel work. Lists and diffs large buckets. Parquet out.",
     catalog: {
       role: "List / Diff",
@@ -37,13 +37,14 @@ export default defineProduct({
         {
           comment: "Local preflight — no S3 access",
           command: "s3-turbo-list doctor --simple",
-          capturedOutput: `OK binary_version: 0.31.0
+          capturedOutput: `OK binary_version: 0.35.1
 OK working_directory: /tmp/inventory
 OK config_parse: resolved configuration is valid TOML/CLI state
-WARN config_file: local s3-turbo-list.toml not found; run init-config if you want a starter config
+WARN config_file: no config file loaded (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply — run init-config for a starter config
 WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
 OK endpoint_profile: no endpoint compatibility profile selected
 OK endpoint_url: no explicit endpoint URL required by the selected profile
+SKIP proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
 SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
         },
         {
@@ -55,47 +56,25 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
     visual: {
       kind: "s3Benchmark",
       label: "s3-turbo-list",
-      kicker: "v0.21.0 field benchmark",
-      title: "c=8 is the reference",
-      body: "1,000,413 objects · 2 vCPU host, same-region OSS Beijing · default list QPS · 2026-06-18. Observed under constraint, not a throughput ceiling.",
+      kicker: "Third-party benchmark · Alibaba Cloud OSS",
+      title: "One stream against -c 8",
+      body: "1M objects on Alibaba Cloud OSS, measured by a third party and quoted in the project README. Listing speed is bounded by the requests per second the provider serves.",
       points: [
         {
-          label: "c=1",
-          seconds: 41.7,
+          label: "1 stream",
+          seconds: 55,
+          display: "~55s",
         },
         {
-          label: "c=2",
-          seconds: 20.6,
-        },
-        {
-          label: "c=4",
-          seconds: 18.6,
-        },
-        {
-          label: "c=8",
-          seconds: 18.8,
+          label: "-c 8",
+          seconds: 19,
+          display: "~19s",
           state: "reference",
         },
-        {
-          label: "c=16",
-          seconds: 19.9,
-        },
-        {
-          label: "c=24",
-          seconds: 25.1,
-          state: "caution",
-        },
-        {
-          label: "c=32",
-          seconds: 20.4,
-        },
-        {
-          label: "c=64",
-          seconds: 22.3,
-        },
       ],
-      chartLabel: "Elapsed time by concurrency",
-      chartCaption: "c=8 is the Parquet reference run. c=24 is a scheduling outlier, not a general limit.",
+      chartLabel: "Elapsed time, single stream and -c 8",
+      chartCaption:
+        "Approximate times as reported. Results depend on bucket structure and the provider’s request-rate limit.",
     },
     sections: [
       {
@@ -112,7 +91,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
             {
               label: "LIST",
               title: "What is in a bucket",
-              body: "One bucket becomes a Parquet object list, with no scanner tuning first; checkpoints make a long run resumable.",
+              body: "One bucket becomes a Parquet object list, with no scanner tuning first.",
             },
             {
               label: "DIFF",
@@ -171,7 +150,11 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           },
           {
             title: "What does startup discovery do?",
-            body: "It pre-partitions flat namespaces at list startup with parallel single-key probes, so the first run can open parallel work earlier instead of relying only on runtime splits.",
+            body: "A few delimiter probes find real `CommonPrefixes` boundaries and cache them. A flat namespace with no prefixes is split by single-key probes instead, so the first run starts parallel either way.",
+          },
+          {
+            title: "Can an interrupted run pick up where it stopped?",
+            body: "Yes, when it ran with `--resume` from the start: only `--resume` runs keep a checkpoint. Progress is saved on Ctrl-C or SIGTERM; after a crash, the next `--resume` lists the unfinished segments again rather than skipping rows.",
           },
         ],
       },
@@ -181,7 +164,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
     title: "s3-turbo-list",
     description: "自动分段的 S3 兼容 list / diff，输出可直接分析的 Parquet 结果。",
     eyebrow: "Rust CLI",
-    headline: "18.8 秒列出一百万对象",
+    headline: "约 19 秒列出一百万对象",
     lead: "自动发现可并行的工作。大规模 list 与 diff。输出 Parquet。",
     catalog: {
       role: "列举 / 对比",
@@ -203,13 +186,14 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
         {
           comment: "本地预检，不访问 S3",
           command: "s3-turbo-list doctor --simple",
-          capturedOutput: `OK binary_version: 0.31.0
+          capturedOutput: `OK binary_version: 0.35.1
 OK working_directory: /tmp/inventory
 OK config_parse: resolved configuration is valid TOML/CLI state
-WARN config_file: local s3-turbo-list.toml not found; run init-config if you want a starter config
+WARN config_file: no config file loaded (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply — run init-config for a starter config
 WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
 OK endpoint_profile: no endpoint compatibility profile selected
 OK endpoint_url: no explicit endpoint URL required by the selected profile
+SKIP proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
 SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
         },
         {
@@ -221,47 +205,24 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
     visual: {
       kind: "s3Benchmark",
       label: "s3-turbo-list",
-      kicker: "v0.21.0 实测",
-      title: "c=8 是参考运行",
-      body: "1,000,413 个对象 · 2 vCPU 云主机，同地域北京 OSS · 默认 list QPS · 2026-06-18。受限环境实测，不是性能上限。",
+      kicker: "第三方基准测试 · 阿里云 OSS",
+      title: "单流对比 -c 8",
+      body: "阿里云 OSS 上的 1M 个对象，由第三方实测，数据引自项目 README。列举速度受限于服务商每秒响应的请求数。",
       points: [
         {
-          label: "c=1",
-          seconds: 41.7,
+          label: "单流",
+          seconds: 55,
+          display: "约 55s",
         },
         {
-          label: "c=2",
-          seconds: 20.6,
-        },
-        {
-          label: "c=4",
-          seconds: 18.6,
-        },
-        {
-          label: "c=8",
-          seconds: 18.8,
+          label: "-c 8",
+          seconds: 19,
+          display: "约 19s",
           state: "reference",
         },
-        {
-          label: "c=16",
-          seconds: 19.9,
-        },
-        {
-          label: "c=24",
-          seconds: 25.1,
-          state: "caution",
-        },
-        {
-          label: "c=32",
-          seconds: 20.4,
-        },
-        {
-          label: "c=64",
-          seconds: 22.3,
-        },
       ],
-      chartLabel: "不同并发下的完成耗时",
-      chartCaption: "c=8 是 Parquet 参考运行；c=24 是特定调度异常，不代表通用性能边界。",
+      chartLabel: "单流与 -c 8 的完成耗时",
+      chartCaption: "均为报告中的近似值。实际结果取决于桶的结构和服务商的请求速率上限。",
     },
     sections: [
       {
@@ -278,7 +239,7 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
             {
               label: "LIST",
               title: "桶里有什么",
-              body: "一个桶写成 Parquet 对象 list，不必先调扫描参数；长任务可从 checkpoint 继续。",
+              body: "一个桶写成 Parquet 对象 list，不必先调扫描参数。",
             },
             {
               label: "DIFF",
@@ -336,7 +297,11 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           },
           {
             title: "启动发现做了什么？",
-            body: "它在 list 启动阶段用并行 single-key 探测为扁平命名空间预分区，让首次运行更早展开并发，而不必只靠运行时拆分。",
+            body: "先用几次 delimiter 探测找到真实的 `CommonPrefixes` 边界并缓存。没有前缀的扁平命名空间改用 single-key 探测拆分，所以首次运行都能并行展开。",
+          },
+          {
+            title: "中断的任务能接着跑吗？",
+            body: "能，前提是从第一次运行就加上 `--resume`：只有 `--resume` 运行会保留 checkpoint。按 Ctrl-C 或收到 SIGTERM 时保存进度；若进程崩溃，下次 `--resume` 会重新列举未完成的片段，而不是跳过未写出的行。",
           },
         ],
       },

@@ -44,7 +44,7 @@ export default defineProduct({
     },
     commands: {
       title: "Get started",
-      sub: "storageops install also installs Pi Coding Agent. Configure a model key before the first diagnosis.",
+      sub: "Needs Node.js 22.19+ and Python 3.11+. storageops install adds Pi Coding Agent when it is missing. Configure a model key before the first diagnosis.",
       items: [
         {
           comment: "Install StorageOps",
@@ -85,7 +85,7 @@ export default defineProduct({
         {
           number: "TRACE",
           title: "capture_http_trace",
-          body: "Observe one bounded read-only storage command through the managed httpmon helper.",
+          body: "Observe one bounded storage command through the managed httpmon helper.",
         },
       ],
       flow: ["input: error, command, config, redacted log", "Pi: skills + tools + deterministic helpers"],
@@ -99,7 +99,7 @@ export default defineProduct({
         items: [
           { title: "Skills on Pi", body: "No second agent, no cloud console, no cloud account." },
           { title: "Secrets redacted", body: "Before material reaches the agent context." },
-          { title: "Storage untouched", body: "At most one read-only traced command; you make the change." },
+          { title: "Storage untouched", body: "At most one bounded, traced command; you make the change." },
         ],
       },
       {
@@ -149,11 +149,11 @@ export default defineProduct({
           },
           {
             title: "Can it change my storage?",
-            body: "No. StorageOps does not mutate storage. When you choose trace capture, it only observes the bounded read-only command you provide through httpmon.",
+            body: "StorageOps does not mutate storage. Trace capture runs the one command you provide through httpmon: known storage commands must be read-only, but an unknown command still runs, so give it only side-effect-free commands.",
           },
           {
             title: "When should I open Storage Agent?",
-            body: "Choose StorageOps when you already use Pi and want storage-specific diagnosis. Choose Storage Agent when you want a complete desktop app with built-in tools, local analysis, and approval flows.",
+            body: "Choose StorageOps when you already use Pi and want storage-specific diagnosis. Choose Storage Agent when you want a complete desktop app with built-in read-only tools, local analysis, and Issues it remembers between tasks.",
             link: {
               label: "Open Storage Agent",
               href: "/storage-agent-workbench/",
@@ -197,7 +197,7 @@ export default defineProduct({
     },
     commands: {
       title: "开始使用",
-      sub: "storageops install 会一并安装 Pi Coding Agent。第一次诊断前先配置模型密钥。",
+      sub: "需要 Node.js 22.19+ 和 Python 3.11+。缺少 Pi Coding Agent 时，storageops install 会一并安装。第一次诊断前先配置模型密钥。",
       items: [
         {
           comment: "安装 StorageOps",
@@ -238,7 +238,7 @@ export default defineProduct({
         {
           number: "TRACE",
           title: "capture_http_trace",
-          body: "通过受管的 httpmon helper 观察一条受限的只读存储命令。",
+          body: "通过受管的 httpmon helper 观察一条受限的存储命令。",
         },
       ],
       flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
@@ -252,7 +252,7 @@ export default defineProduct({
         items: [
           { title: "装在 Pi 上", body: "不加第二个 Agent，不做云控制台，不接云账号。" },
           { title: "先脱敏", body: "凭据值在进入 Agent 上下文前脱敏。" },
-          { title: "不改存储", body: "最多只读 trace 一条命令；改动由你来做。" },
+          { title: "不改存储", body: "最多受限 trace 一条命令；改动由你来做。" },
         ],
       },
       {
@@ -302,11 +302,11 @@ export default defineProduct({
           },
           {
             title: "会改动我的存储吗？",
-            body: "不会。StorageOps 不修改存储资源；若启用 trace，只经 httpmon 观察你提供的那条受限只读命令。",
+            body: "StorageOps 不修改存储资源。trace 会经 httpmon 运行你提供的那一条命令：已知的存储命令必须只读，但未知命令同样会被执行，所以只交给它没有副作用的命令。",
           },
           {
             title: "什么时候改用 Storage Agent？",
-            body: "已经使用 Pi、只想增加对象存储排查能力时，选择 StorageOps；需要完整桌面应用、内置工具、本地分析和确认流程时，选择 Storage Agent。",
+            body: "已经使用 Pi、只想增加对象存储排查能力时，选择 StorageOps；需要完整桌面应用、内置只读工具、本地分析，并跨任务记住发现的问题时，选择 Storage Agent。",
             link: {
               label: "打开 Storage Agent",
               href: "/zh/storage-agent-workbench/",

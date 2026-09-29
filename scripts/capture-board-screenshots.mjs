@@ -4,74 +4,18 @@
  *        node scripts/capture-board-screenshots.mjs --featured  (Home's Chessboard row only)
  */
 import fs from "node:fs/promises";
-import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import sharp from "sharp";
+import { assertPinned, CHESS_PGN, GOMOKU_SGF, serveDir } from "./board-apps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "../public/assets");
-const appsRoot = "/tmp/board-apps";
 
 const VIEWPORT = { width: 1223, height: 768 };
 // 2x pixels so the captures stay sharp on high-density screens.
 const SCALE = 2;
-
-const GOMUKU_SGF = `(;GM[1]FF[4]SZ[15]AP[Goban:capture]
-;B[hh];W[ih];B[gh];W[hg];B[gi];W[ig];B[gj];W[jh];B[gk];W[kh]
-;B[gl];W[fi];B[fm];W[eh];B[en]
-)`;
-
-// Short decisive miniature with enough moves for a review curve.
-const CHESS_PGN = `[Event "Site capture"]
-[Site "titpea.com"]
-[Date "2026.07.23"]
-[White "Player"]
-[Black "Stockfish"]
-[Result "1-0"]
-
-1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. Ng5 d5 5. exd5 Nxd5
-6. Nxf7 Kxf7 7. Qf3+ Ke6 8. Nc3 Nb4 9. Qe4 c6 10. a3 Na6
-11. d4 Kd6 12. Bf4+ Ke7 13. Bxd5 cxd5 14. Nxd5+ Ke8
-15. Nf6+ gxf6 16. Qxe5+ Be7 17. Qxe7# 1-0`;
-
-function contentType(filePath) {
-  if (filePath.endsWith(".html")) return "text/html; charset=utf-8";
-  if (filePath.endsWith(".css")) return "text/css; charset=utf-8";
-  if (filePath.endsWith(".js")) return "text/javascript; charset=utf-8";
-  if (filePath.endsWith(".wasm")) return "application/wasm";
-  if (filePath.endsWith(".svg")) return "image/svg+xml";
-  if (filePath.endsWith(".png")) return "image/png";
-  return "application/octet-stream";
-}
-
-async function serveDir(root) {
-  const server = http.createServer(async (req, res) => {
-    try {
-      const urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
-      const rel = urlPath === "/" ? "/index.html" : urlPath;
-      const filePath = path.join(root, rel);
-      if (!filePath.startsWith(root)) {
-        res.writeHead(403);
-        res.end("forbidden");
-        return;
-      }
-      const data = await fs.readFile(filePath);
-      res.writeHead(200, { "Content-Type": contentType(filePath) });
-      res.end(data);
-    } catch {
-      res.writeHead(404);
-      res.end("missing");
-    }
-  });
-  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-  const { port } = server.address();
-  return {
-    origin: `http://127.0.0.1:${port}`,
-    close: () => new Promise((resolve) => server.close(resolve)),
-  };
-}
 
 async function writeWebp(page, outName) {
   const png = await page.screenshot({ type: "png" });
@@ -96,7 +40,7 @@ async function openPanel(page) {
 }
 
 async function captureGoban(browser, lang) {
-  const server = await serveDir(path.join(appsRoot, "goban/src/web"));
+  const server = await serveDir(assertPinned("goban"));
   const context = await browser.newContext({
     viewport: VIEWPORT,
     deviceScaleFactor: SCALE,
@@ -127,7 +71,7 @@ async function captureGoban(browser, lang) {
 
   await page.evaluate(async (sgf) => {
     await navigator.clipboard.writeText(sgf);
-  }, GOMUKU_SGF);
+  }, GOMOKU_SGF);
   await page.click("#sgf-paste");
   const confirm = page.locator("#confirm-ok");
   if (await confirm.isVisible().catch(() => false)) {
@@ -158,7 +102,7 @@ async function captureGoban(browser, lang) {
 }
 
 async function captureChessboard(browser, lang) {
-  const server = await serveDir(path.join(appsRoot, "chessboard/src/web"));
+  const server = await serveDir(assertPinned("chessboard"));
   const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: SCALE });
   const page = await context.newPage();
   await page.addInitScript(
@@ -213,7 +157,7 @@ async function captureChessboard(browser, lang) {
  * in the page's language, at 1800x1200 so it stays sharp at full row width.
  */
 async function captureChessboardFeatured(browser, lang) {
-  const server = await serveDir(path.join(appsRoot, "chessboard/src/web"));
+  const server = await serveDir(assertPinned("chessboard"));
   const context = await browser.newContext({ viewport: { width: 1200, height: 800 }, deviceScaleFactor: 1.5 });
   const page = await context.newPage();
   await page.addInitScript(
