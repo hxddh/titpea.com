@@ -290,10 +290,6 @@ export type CatalogItem = {
   role: string;
   text: string;
   icon: string;
-  version?: string;
-  released?: string;
-  /** Shown instead of the tag when the product has no GitHub releases. */
-  badge?: string;
 };
 
 export type HomePageModel = {
@@ -334,15 +330,6 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   role: product[locale].catalog.role || product[locale].eyebrow,
   text: product[locale].catalog.text,
   icon: product.icon,
-  version: versionOf(product.slug),
-  released: releasedOf(product.slug, locale),
-  // Without a release tag the chip says where the product lives: GitHub, or the store in its meta line.
-  badge: versionOf(product.slug)
-    ? undefined
-    : (product[locale].catalog.badge ??
-      (product[locale].primaryCta.href.startsWith("https://github.com/")
-        ? "GitHub"
-        : product[locale].meta.split(" · ")[0])),
 });
 
 /**
@@ -447,11 +434,6 @@ export type AboutPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
-  lines: {
-    title: string;
-    sub: string;
-    groups: Array<{ label: string; items: Array<{ name: string; href: string; icon: string }> }>;
-  };
   principles: { title: string; items: Array<{ title: string; body: string }> };
   releases: {
     title: string;
@@ -519,16 +501,6 @@ export function aboutPage(locale: Locale): AboutPageModel {
     }),
     language: languageLink(locale, alternatePath),
     hero: { eyebrow: copy.aboutEyebrow, title: headline, lead: copy.aboutLead },
-    lines: {
-      title: copy.aboutLinesTitle,
-      sub: copy.aboutLinesSub,
-      groups: lines.map((line) => ({
-        label: copy.groups[line],
-        items: products
-          .filter((product) => product.line === line)
-          .map((product) => ({ name: product[locale].title, href: pathFor(locale, product.slug), icon: product.icon })),
-      })),
-    },
     principles: {
       title: copy.aboutPrinciplesTitle,
       items: [
@@ -579,7 +551,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
         { label: copy.aboutFeed, href: "/releases.xml", style: "ghost" },
       ],
     },
-    expectedText: [headline, copy.aboutLead, copy.aboutLinesTitle, copy.aboutReleasesTitle],
+    expectedText: [headline, copy.aboutLead, copy.aboutReleasesTitle],
   };
 }
 
