@@ -51,10 +51,18 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
       <h1>{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
       <div class="actions">
-        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-          {copy.primaryCta.label}
-          {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-        </a>
+        {
+          copy.primaryCta.soon ? (
+            <span class="button primary large is-soon" aria-disabled="true">
+              {copy.primaryCta.label}
+            </span>
+          ) : (
+            <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+              {copy.primaryCta.label}
+              {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+            </a>
+          )
+        }
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
       <p class="meta-line">
@@ -136,10 +144,18 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
     <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />
     <p class="final-cta-name">{copy.title}</p>
     <div class="actions">
-      <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-        {closing}
-        {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-      </a>
+      {
+        copy.primaryCta.soon ? (
+          <span class="button primary large is-soon" aria-disabled="true">
+            {closing}
+          </span>
+        ) : (
+          <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+            {closing}
+            {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+          </a>
+        )
+      }
       <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
     </div>
   </section>

@@ -7,7 +7,7 @@ interface Props {
   icon: string;
   items: Array<{ id: string; label: string }>;
   locale: Locale;
-  cta: { label: string; href: string };
+  cta: { label: string; href: string; soon?: true };
 }
 
 const { label, icon, items, locale, cta } = Astro.props;
@@ -46,7 +46,17 @@ const directoryId = `section-directory-${locale}`;
         </>
       )
     }
-    <a class="button primary local-nav-cta" href={cta.href} rel="noreferrer">{cta.label}</a>
+    {
+      cta.soon ? (
+        <span class="button primary local-nav-cta is-soon" aria-disabled="true">
+          {cta.label}
+        </span>
+      ) : (
+        <a class="button primary local-nav-cta" href={cta.href} rel="noreferrer">
+          {cta.label}
+        </a>
+      )
+    }
   </div>
 </nav>
 

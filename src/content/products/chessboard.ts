@@ -28,13 +28,13 @@ export default defineProduct({
   en: {
     title: "Chessboard",
     description:
-      "A desktop chessboard for macOS and Windows, with Stockfish 19, offline lessons, mate drills, and local review.",
+      "A desktop chess app for macOS and Windows, with Stockfish 19, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
     headline: "Learn, then play.",
-    lead: "Offline lessons. Mate drills. Stockfish or a friend.",
+    lead: "Lessons. 40,000 puzzles. Stockfish or a friend.",
     catalog: {
       role: "Stockfish + lessons",
-      text: "Learn, drill, then play Stockfish or a friend on the same board.",
+      text: "Learn, solve puzzles, then play Stockfish or a friend on the same board.",
     },
     primaryCta: {
       label: "Download",
@@ -53,8 +53,8 @@ export default defineProduct({
           label: "lessons from zero to intermediate",
         },
         {
-          value: "1,170",
-          label: "puzzles: 168 hand-written, 1,002 engine-mined",
+          value: "40,000",
+          label: "Lichess puzzles, rated 600–2799",
         },
         {
           value: "3,810",
@@ -68,7 +68,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-en.webp",
-        alt: "Chessboard wood theme showing a finished game, piece highlights, move list, and sidebar controls",
+        alt: "Chessboard in light appearance with the wood board, showing a finished game, the move list, and sidebar controls",
         width: 2446,
         height: 1536,
       },
@@ -86,11 +86,11 @@ export default defineProduct({
       },
       {
         src: "/assets/chessboard-theme-en.webp",
-        alt: "Chessboard night theme showing a chess position with the sidebar and theme controls visible",
+        alt: "Chessboard in dark appearance with the green board on the final position of the game, preferences closed",
         width: 2446,
         height: 1536,
-        title: "Four boards, one game.",
-        body: "Switch between wood, night, day, and paper, or to Merida pieces, without losing the position.",
+        title: "Five boards, light or dark.",
+        body: "Wood, green, blue, paper, or marble, with a choice of piece sets; the position stays.",
       },
     ],
     sections: [
@@ -100,11 +100,21 @@ export default defineProduct({
         label: "Lessons and games stay on this computer.",
         items: [
           { title: "Offline lessons", body: "From zero to intermediate." },
-          { title: "Mate drills", body: "Practise mating patterns." },
-          { title: "Stockfish 19", body: "Play the engine locally." },
+          { title: "Rated puzzles", body: "28 themes, with Sprint and Streak modes." },
+          { title: "A twelve-rung ladder", body: "Named Stockfish opponents; each result moves your rating." },
           { title: "A friend, same screen", body: "Two players, one board." },
-          { title: "Bring a PGN", body: "Including FEN-start studies." },
+          { title: "A searchable library", body: "Filter your games and explore their openings." },
           { title: "Retry your mistakes", body: "Each ? and ?? explained; try again from before it." },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        title: "Where your data goes.",
+        items: [
+          "Games, puzzles, lessons, and progress stay on this computer, in the app's storage and a local data file.",
+          "Sync goes online only when you turn it on and press Sync, and sends Lichess or Chess.com only your user name.",
+          "Check for updates, in the About panel, asks GitHub for the latest release only when you press it.",
         ],
       },
       {
@@ -114,15 +124,19 @@ export default defineProduct({
         items: [
           {
             title: "Can I play online?",
-            body: "No. Online matchmaking is not included. Play against the engine or a friend on the same screen.",
+            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off by default, can import your recent games from Lichess or Chess.com.",
           },
           {
             title: "What can I do with a PGN?",
             body: "Paste or import a PGN, including FEN-start studies. Review the moves, jump to a position, or continue playing from it.",
           },
           {
-            title: "Does it keep stats?",
-            body: "Yes. Local stats are kept by difficulty. You can also flip the board and mute sound.",
+            title: "Does it track my progress?",
+            body: "Yes. Games against the engine give you a rating, kept apart from your puzzle rating, and the result card shows each change. The Me page adds a rating curve, a practice calendar with your streak, and your strengths and weaknesses.",
+          },
+          {
+            title: "How many games can the library hold?",
+            body: "Up to 10,000, stored in the app's database with a mirror in a local data file. On macOS it is not yet confirmed that the packaged app can use that database; if it cannot, the library falls back to its older storage, loses no games, but holds fewer than 10,000.",
           },
         ],
       },
@@ -130,13 +144,13 @@ export default defineProduct({
   },
   zh: {
     title: "国际象棋 Chessboard",
-    description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19、离线课程、杀型练习与本机复盘。",
+    description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
     headline: "学棋、练习，再下一局",
-    lead: "离线课程。杀型练习。与 Stockfish 或好友对弈。",
+    lead: "课程。四万道谜题。与 Stockfish 或好友对弈。",
     catalog: {
       role: "Stockfish 与课程",
-      text: "学棋、做题，再与 Stockfish 或同屏好友下一局。",
+      text: "学棋、解谜题，再与 Stockfish 或同屏好友下一局。",
     },
     primaryCta: {
       label: "下载",
@@ -155,8 +169,8 @@ export default defineProduct({
           label: "课，从零基础到中级",
         },
         {
-          value: "1,170",
-          label: "道题：手写 168，引擎挖出 1,002",
+          value: "40,000",
+          label: "道 Lichess 谜题，600–2799 分",
         },
         {
           value: "3,810",
@@ -170,7 +184,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
-        alt: "Chessboard 木色主题终局局面，显示棋子高亮、着法列表与侧栏控制",
+        alt: "Chessboard 浅色外观、木色棋盘上的终局，显示着法列表与侧栏控制",
         width: 2446,
         height: 1536,
       },
@@ -187,11 +201,11 @@ export default defineProduct({
       },
       {
         src: "/assets/chessboard-theme-zh.webp",
-        alt: "Chessboard 夜色主题棋盘，侧栏与主题控制可见",
+        alt: "Chessboard 深色外观、绿色棋盘，对局终局局面",
         width: 2446,
         height: 1536,
-        title: "四种棋盘，同一局棋",
-        body: "木色、夜色、日间、纸本随意切换，也可换梅里达棋子，局面不变。",
+        title: "五种棋盘，浅色或深色",
+        body: "木、绿、蓝、纸墨、大理石，棋子也有多套可选，局面不变。",
       },
     ],
     sections: [
@@ -201,11 +215,21 @@ export default defineProduct({
         label: "学棋与对弈都在这台电脑上",
         items: [
           { title: "离线课程", body: "从零基础到中级。" },
-          { title: "杀型练习", body: "反复练习杀型。" },
-          { title: "引擎对弈", body: "在本机与 Stockfish 19 下棋。" },
+          { title: "谜题评级", body: "28 个主题，另有冲刺与连胜。" },
+          { title: "十二档对手", body: "每档一个 Stockfish 角色，胜负计入等级分。" },
           { title: "同屏对弈", body: "两人共用一块棋盘。" },
-          { title: "带入 PGN", body: "支持指定 FEN 开局的棋谱。" },
+          { title: "可搜索的棋谱库", body: "按条件筛选对局，附开局浏览器。" },
           { title: "失着再试", body: "每个 ? 与 ?? 附一句说明，可回到失着前再试。" },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        title: "数据的去向",
+        items: [
+          "对局、谜题、课程与进度都留在这台电脑上，存在应用自己的存储和本机数据文件里。",
+          "只有打开同步并点「同步」时才联网：向 Lichess 或 Chess.com 取回你最近的对局，只发送用户名。",
+          "「关于」里的「检查更新」只在你点它时向 GitHub 查询最新版本。",
         ],
       },
       {
@@ -215,15 +239,19 @@ export default defineProduct({
         items: [
           {
             title: "能在线对战吗？",
-            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。",
+            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步默认关闭，能从 Lichess 或 Chess.com 导入你最近的对局。",
           },
           {
             title: "PGN 能做什么？",
             body: "粘贴或导入 PGN，支持指定 FEN 开局的棋谱。逐着查看，跳到任意局面，也可从那里继续下。",
           },
           {
-            title: "有对局统计吗？",
-            body: "有。按难度保留本地胜负统计，还可以翻转棋盘、开关音效。",
+            title: "能看到自己的进步吗？",
+            body: "能。与引擎对局有自己的等级分，和谜题评级分开记，结果卡上显示每次涨跌。「我的」页还有评级曲线、练习日历与连续天数，以及强项与弱项。",
+          },
+          {
+            title: "棋谱库能存多少局？",
+            body: "最多一万局，存在应用的数据库里，并在本机数据文件中另存一份镜像。macOS 打包版能否使用这个数据库尚未在真机上确认；若不能，棋谱库退回旧的存法，不丢棋，但存不到一万局。",
           },
         ],
       },

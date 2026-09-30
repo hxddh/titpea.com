@@ -447,3 +447,13 @@ html:lang(zh) {
   border-radius: var(--icon-radius);
   box-shadow: var(--icon-ring);
 }
+
+/* A primary action that is not available yet (a store listing in review):
+   same shape, no fill, not a link. */
+.button.primary.is-soon,
+.button.primary.is-soon:hover {
+  color: var(--ink-2);
+  background: var(--paper-raised);
+  box-shadow: none;
+  cursor: default;
+}

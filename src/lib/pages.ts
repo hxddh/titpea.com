@@ -163,7 +163,7 @@ export type ProductPageModel = {
   navItems: Array<{ id: string; label: string }>;
   /** Before the closing band: where to go next. */
   related: { title: string; items: CatalogItem[]; all: { label: string; href: string } };
-  primaryCta: string;
+  primaryCta?: string;
   expectedText: string[];
 };
 
@@ -177,7 +177,7 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     operatingSystem: product.schema.os,
     url: absoluteUrl(path),
     ...(version ? { softwareVersion: version.replace(/^v/, "") } : {}),
-    ...(copy.primaryCta.href.startsWith("http") ? { sameAs: copy.primaryCta.href } : {}),
+    ...(!copy.primaryCta.soon && copy.primaryCta.href.startsWith("http") ? { sameAs: copy.primaryCta.href } : {}),
   };
   const faqPage = faq && {
     "@type": "FAQPage",
@@ -235,12 +235,12 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     version,
     released: releasedOf(product.slug, locale),
     whatsNew: whatsNewFor(product.slug, locale, version, product[locale].releaseHighlights),
-    downloadsRelease: Boolean(version) && /\/releases/.test(copy.primaryCta.href),
+    downloadsRelease: !copy.primaryCta.soon && Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
     navItems,
     related: relatedFor(product, locale),
-    primaryCta: copy.primaryCta.href,
+    primaryCta: copy.primaryCta.soon ? undefined : copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
   };
 }

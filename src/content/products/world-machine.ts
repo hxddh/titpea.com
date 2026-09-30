@@ -36,20 +36,20 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-day-600.webp",
-        alt: "World Machine showing a Tiny Society World 600 days in, at day 602: harbour residents in front of the lighthouse, pub, bakery and school, gauges for work, money in town and spirits, and a Let the day pass card. Captured from the app running in its Linux preview.",
+        src: "/assets/world-machine-plot.webp",
+        alt: "World Machine on day 27 of Tiny Society: a plot on the square offers a clock tower, bookshop, cheese shop, surgery, pottery or gallery with their costs, while Evan asks whether to stay or take a job. Captured from the app running in its Linux preview.",
         width: 1100,
         height: 900,
       },
     },
     showcases: [
       {
-        src: "/assets/world-machine-return.webp",
+        src: "/assets/world-machine-moment.webp",
         width: 1100,
         height: 900,
-        alt: "A return to Tiny Society on day 27: a While you were away card, 1 of 9, says the great storm caught the harbour unready, while Noah says Nobody was ready for that. Captured from the app running in its Linux preview.",
-        title: "While you were away.",
-        body: "The return tells what happened, one beat at a time.",
+        alt: "A moment in Tiny Society on day 360: a three-panel strip titled Rosa settles for good, captioned before, during and after, over the harbour. Captured from the app running in its Linux preview.",
+        title: "Moments become panels.",
+        body: "Weddings, births and farewells, drawn before, during and after.",
       },
     ],
     sections: [
@@ -59,12 +59,12 @@ export default defineProduct({
         nav: "Features",
         label: "Live in it, or leave it.",
         items: [
+          { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
+          { title: "Build on plots", body: "What you build decides who moves in." },
+          { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk to anyone", body: "People understand everyday phrasing, in English or Chinese." },
-          { title: "Build and suggest", body: "Make a bench or a well; suggest a picnic." },
-          { title: "Keepsakes and letters", body: "Friends leave things to keep; letters arrive while you are away." },
-          { title: "On your desktop", body: "Show a World as a strip along the screen." },
-          { title: "Share a World", body: "Save postcards; World codes open as read-only visits." },
-          { title: "A file you keep", body: "Each World is a `.world` document, replayed from its events." },
+          { title: "On any screen edge", body: "A strip you can click; drag its letters open." },
+          { title: "Share a World", body: "Read-only World codes; a friend's resident can visit." },
         ],
       },
       {
@@ -86,7 +86,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. A World saved by an earlier Pack version may not open after an update; nothing is deleted, and the file keeps its whole history.",
+            body: "No. World Machine is an experimental pre-alpha. Releases v0.20 to v0.23 each open Worlds saved by the release before, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history.",
           },
           {
             title: "How do I open it the first time?",
@@ -132,20 +132,20 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-day-600.webp",
-        alt: "World Machine 显示已运行 600 天的 Tiny Society 世界（第 602 天）。港口居民站在灯塔、酒馆、面包店和学校前，上方是工作、镇上的钱和心情三条指标，下方是「让这一天过去」卡片。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        src: "/assets/world-machine-plot.webp",
+        alt: "Tiny Society 第 27 天的 World Machine：广场上的一块地可以建钟楼、书店、奶酪店、诊所、陶艺坊或画廊，各标造价；Evan 在问留下还是去接那份工作。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         width: 1100,
         height: 900,
       },
     },
     showcases: [
       {
-        src: "/assets/world-machine-return.webp",
+        src: "/assets/world-machine-moment.webp",
         width: 1100,
         height: 900,
-        alt: "第 27 天回到 Tiny Society：「While you were away」卡片第 1 / 9 条写着大风暴让港口措手不及，Noah 说没人准备好。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-        title: "你不在的时候",
-        body: "回来时，发生的事一件一件讲给你。",
+        alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题「Rosa settles for good」，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        title: "大事画成三格",
+        body: "婚礼、出生、告别，画成之前、当时、之后。",
       },
     ],
     sections: [
@@ -155,12 +155,12 @@ export default defineProduct({
         nav: "功能",
         label: "住进去，或放着它",
         items: [
+          { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
+          { title: "在地块上建造", body: "你建的东西决定谁搬来。" },
+          { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "和谁都能聊", body: "听得懂日常说法，中文英文都行。" },
-          { title: "建造与提议", body: "造一张长椅或一口井，提议一次野餐。" },
-          { title: "纪念品与来信", body: "朋友留下纪念品，你不在时也有来信。" },
-          { title: "放到桌面上", body: "把世界显示为屏幕边的一条长带。" },
-          { title: "分享一个世界", body: "保存明信片；World 代码以只读访问打开。" },
-          { title: "留在文件里", body: "每个世界是一个 `.world` 文档，由事件重放。" },
+          { title: "放在屏幕任意边", body: "长条可以点居民，拖开来信。" },
+          { title: "分享一个世界", body: "World 代码只读打开；朋友的居民能来做客。" },
         ],
       },
       {
@@ -182,7 +182,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。更新后，旧版 Pack 保存的世界可能打不开；文件不会被删除，完整历史仍在其中。",
+            body: "不稳定。World Machine 是实验性的早期预览版。v0.20 到 v0.23 每一版都能打开上一版保存的世界，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。",
           },
           {
             title: "第一次怎么打开？",

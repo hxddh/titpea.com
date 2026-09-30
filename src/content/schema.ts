@@ -90,6 +90,8 @@ export type Visual = VisualBase &
     | {
         kind: "screenshot";
         image: Image;
+        /** Shown under the image; required wording for anything that is not a plain capture. */
+        caption?: string;
       }
     | {
         kind: "clockScreenshots";
@@ -147,7 +149,13 @@ export type Visual = VisualBase &
         headerAgents: string;
         sections: Array<{
           title: string;
-          rows: Array<{ title: string; meta: string; state: "waiting" | "running" | "recent"; chip?: string }>;
+          /** Lamp shape: waiting solid, running ring, recent (your turn) hollow, process dashed. */
+          rows: Array<{
+            title: string;
+            meta: string;
+            state: "waiting" | "running" | "recent" | "process";
+            chip?: string;
+          }>;
         }>;
         footnotes: string[];
       }
@@ -199,7 +207,8 @@ export type ProductCopy = {
   lead: string;
   /** Home: `role` is the featured kicker; `text` is the one line in the index. */
   catalog: { role: string; text: string };
-  primaryCta: Link;
+  /** `soon` renders the label as an unlinked, not-yet-available action (a store listing still in review). */
+  primaryCta: Link & { soon?: true };
   secondaryCta: Link;
   /** Mono meta line, segments joined by " · ". `{version}` is replaced by the synced release tag. */
   meta: string;

@@ -6,7 +6,7 @@ interface Props {
   visual: Extract<Visual, { kind: "screenshot" }>;
 }
 
-const { image } = Astro.props.visual;
+const { image, caption } = Astro.props.visual;
 ---
 
 <figure class="product-scene product-screenshot-visual">
@@ -19,4 +19,5 @@ const { image } = Astro.props.visual;
     height={image.height}
     fetchpriority="high"
   />
+  {caption && <figcaption class="shot-caption">{caption}</figcaption>}
 </figure>

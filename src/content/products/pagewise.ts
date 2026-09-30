@@ -14,10 +14,10 @@ export default defineProduct({
   en: {
     title: "PageWise",
     description:
-      "Read and annotate PDFs on your desktop, ask questions, and check each citation on its page, scanned pages included.",
+      "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
     eyebrow: "PDF reading and questions",
     headline: "Ask. Check the page.",
-    lead: "Ask a question. Each citation checked on its page. Scans read locally.",
+    lead: "Ask a question. Quotes and numbers checked on the page. Scans read locally.",
     catalog: {
       role: "PDF agent",
       text: "Ask a PDF. Follow the citation to the page.",
@@ -69,11 +69,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Keep what the page confirms.",
+        label: "Evidence that leaves with the document.",
         items: [
-          { title: "Scanned pages too", body: "Search, highlights, and citation checks work on scans." },
-          { title: "Keep what checks out", body: "Save verified sentences to the record, with their evidence." },
-          { title: "Export a brief", body: "One Markdown file: conclusions, evidence, and what to re-check." },
+          { title: "Numbers checked too", body: "A figure the quoted passage does not state is flagged." },
+          { title: "Cited tables", body: "Every cell cited; export as CSV with its sources." },
+          { title: "Evidence in the PDF", body: "Findings and marks exported as highlights any PDF reader shows." },
         ],
       },
       {
@@ -95,11 +95,19 @@ export default defineProduct({
         items: [
           {
             title: "Can it miss something?",
-            body: "Yes. Page reads have character and step budgets, so a search miss does not mean the document contains no relevant information.",
+            body: "Yes. Page reads have character and step budgets, so a search miss does not mean the document contains no relevant information. For questions that ask for every item, the first suggestion names unread pages that match.",
+          },
+          {
+            title: "Can a found citation still be wrong?",
+            body: "Yes. PageWise checks the quoted words and the numbers in the sentence. Other mistakes, such as who owes what, are checked only when you ask your model to review each passage, one short call per citation, and the model can misread too. A number the model rounded may be flagged even when the answer is right.",
           },
           {
             title: "Which scans can it read?",
             body: "English and Simplified Chinese. Handwriting, vertical Chinese, and other languages go to the vision model, if you set one. A quote not found on a scan is marked unconfirmed, not absent.",
+          },
+          {
+            title: "Does exporting evidence change my PDF?",
+            body: "No. It writes a copy to a new file you choose, with only the evidence found on its page. A signed PDF's signature does not survive in the copy, and encrypted PDFs cannot be annotated.",
           },
           {
             title: "Does it search the web?",
@@ -115,10 +123,10 @@ export default defineProduct({
   },
   zh: {
     title: "PageWise",
-    description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用，扫描页也不例外。",
+    description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
     eyebrow: "PDF 阅读与问答",
     headline: "问过之后，回到原文",
-    lead: "直接提问。引用逐条对照原页核对。扫描件在本机识别。",
+    lead: "直接提问。引文和数字对照原页核对。扫描件在本机识别。",
     catalog: {
       role: "PDF Agent",
       text: "向 PDF 提问。顺着页引用回到原文。",
@@ -170,11 +178,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "留下原页确认过的内容",
+        label: "证据随文档带走",
         items: [
-          { title: "扫描页同样可查", body: "扫描页上也能搜索、高亮和核对引用。" },
-          { title: "只留核实过的", body: "把核实过的句子连同依据存入记录。" },
-          { title: "导出简报", body: "一份 Markdown：结论、依据和待复核项。" },
+          { title: "数字也核对", body: "引文段落里没有的数字会被标出。" },
+          { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
+          { title: "证据写进 PDF", body: "发现与批注导出为任何阅读器可见的高亮。" },
         ],
       },
       {
@@ -196,11 +204,19 @@ export default defineProduct({
         items: [
           {
             title: "会漏掉内容吗？",
-            body: "可能。单次读取受字符和步数预算限制，搜索未命中不等于文档没有相关内容。",
+            body: "可能。单次读取受字符和步数预算限制，搜索未命中不等于文档没有相关内容。问“全部”“哪些”这类问题时，第一条建议会列出与问题相符但没读过的页。",
+          },
+          {
+            title: "找到原文的引用还会错吗？",
+            body: "会。PageWise 核对引文原话和句中的数字。其他错误（比如谁承担什么义务）只有在你让模型逐段复核时才检查，每条引用一次简短调用，模型也可能读错。模型把数字取整或换算时，即使回答正确也可能被标出。",
           },
           {
             title: "哪些扫描件能识别？",
             body: "英文和简体中文。手写、竖排中文和其他语言的页面交给视觉模型（如已配置）。在扫描页上找不到的引用标为未确认，而不是判定不存在。",
+          },
+          {
+            title: "导出证据会改动原 PDF 吗？",
+            body: "不会。它写到你另选的新文件里，只写入在原页找到的证据。带数字签名的 PDF，副本里的签名会失效；加密的 PDF 无法写入批注。",
           },
           {
             title: "会联网搜索吗？",
