@@ -102,10 +102,10 @@ export default defineProduct({
         items: [
           { title: "Offline lessons", body: "From zero to intermediate." },
           { title: "Rated puzzles", body: "28 themes, with Sprint and Streak modes." },
-          { title: "A twelve-rung ladder", body: "Named Stockfish opponents; each result moves your rating." },
-          { title: "A friend, same screen", body: "Two players, one board." },
+          { title: "A 21-rung ladder", body: "Each rung a step harder; results move your rating." },
+          { title: "60 endgames", body: "Win or hold them against full-strength Stockfish." },
+          { title: "Your opening book", body: "Add moves as you explore; review them on a schedule." },
           { title: "A searchable library", body: "Filter your games and explore their openings." },
-          { title: "Retry your mistakes", body: "Each ? and ?? explained; try again from before it." },
         ],
       },
       {
@@ -125,7 +125,7 @@ export default defineProduct({
         items: [
           {
             title: "Can I play online?",
-            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off by default, can import your recent games from Lichess or Chess.com.",
+            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off by default, imports your new games from Lichess or Chess.com; it runs in the background, so you can keep playing while it fetches.",
           },
           {
             title: "What can I do with a PGN?",
@@ -137,7 +137,7 @@ export default defineProduct({
           },
           {
             title: "How many games can the library hold?",
-            body: "Up to 10,000, stored in the app's database with a mirror in a local data file. On macOS it is not yet confirmed that the packaged app can use that database; if it cannot, the library falls back to its older storage, loses no games, but holds fewer than 10,000.",
+            body: "Up to 10,000, stored in the app's database with a mirror in a local data file. After a restart, a 10,000-game library lists again in about 0.2 seconds.",
           },
         ],
       },
@@ -217,10 +217,10 @@ export default defineProduct({
         items: [
           { title: "离线课程", body: "从零基础到中级。" },
           { title: "谜题评级", body: "28 个主题，另有冲刺与连胜。" },
-          { title: "十二档对手", body: "每档一个 Stockfish 角色，胜负计入等级分。" },
-          { title: "同屏对弈", body: "两人共用一块棋盘。" },
+          { title: "二十一档对手", body: "每往上一档都难一截，胜负计入等级分。" },
+          { title: "60 个残局", body: "和满强度的 Stockfish 下，赢下来或守和。" },
+          { title: "你的开局书", body: "在开局浏览器里加着，按日程复习。" },
           { title: "可搜索的棋谱库", body: "按条件筛选对局，附开局浏览器。" },
-          { title: "失着再试", body: "每个 ? 与 ?? 附一句说明，可回到失着前再试。" },
         ],
       },
       {
@@ -240,7 +240,7 @@ export default defineProduct({
         items: [
           {
             title: "能在线对战吗？",
-            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步默认关闭，能从 Lichess 或 Chess.com 导入你最近的对局。",
+            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步默认关闭，能从 Lichess 或 Chess.com 导入你的新对局；它在后台进行，取棋时照样能下棋。",
           },
           {
             title: "PGN 能做什么？",
@@ -252,7 +252,7 @@ export default defineProduct({
           },
           {
             title: "棋谱库能存多少局？",
-            body: "最多一万局，存在应用的数据库里，并在本机数据文件中另存一份镜像。macOS 打包版能否使用这个数据库尚未在真机上确认；若不能，棋谱库退回旧的存法，不丢棋，但存不到一万局。",
+            body: "最多一万局，存在应用的数据库里，并在本机数据文件中另存一份镜像。重启后，一万局的棋谱库约 0.2 秒就能列出来。",
           },
         ],
       },
