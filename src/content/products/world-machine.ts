@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 export default defineProduct({
   slug: "world-machine",
-  line: "experimental",
+  line: "games",
   repo: "hxddh/world-machine",
   icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",

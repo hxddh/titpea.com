@@ -69,9 +69,9 @@ type Ui = {
   aboutHeadline: string;
   aboutLead: string;
   contactLabel: string;
-  /** Three habits backed by product facts, plus the open-source line (`{open}` of `{count}`, `{licenses}`). */
-  aboutPrinciplesTitle: string;
-  aboutPrinciples: Array<{ title: string; body: string }>;
+  /** One block per product line: when you reach for it, and what it changes. The products are listed from the catalog. */
+  aboutScenesTitle: string;
+  aboutScenes: Record<Line, { when: string; value: string }>;
   aboutReleasesTitle: string;
   aboutReleasesMore: string;
   aboutFeed: string;
@@ -108,7 +108,7 @@ export const ui: Record<Locale, Ui> = {
       storage: "Storage",
       agents: "Agents",
       everyday: "Everyday",
-      experimental: "Experimental",
+      games: "Games",
       external: "External",
     },
     productIndex: "Independent software by hxddh",
@@ -126,26 +126,30 @@ export const ui: Record<Locale, Ui> = {
     aboutTitle: "About",
     aboutMetaTitle: "About Titpea — hxddh",
     aboutDescription:
-      "Titpea is one person’s product shelf: storage investigations, agents, and small everyday apps, built and released by hxddh.",
+      "Titpea is one person’s product shelf: object storage, agents, everyday apps, and games, built and released by hxddh.",
     aboutEyebrow: "About Titpea",
     aboutHeadline: "One person. {count} tools.",
-    aboutLead: "Built and released by hxddh. {open} of {count} are open source.",
+    aboutLead: "Storage, agents, everyday, games.",
     contactLabel: "Contact links",
-    aboutPrinciplesTitle: "Three habits.",
-    aboutPrinciples: [
-      {
-        title: "Evidence in view",
-        body: "Storage Agent keeps the checks beside the answer. PageWise cites the page.",
+    aboutScenesTitle: "Where they help.",
+    aboutScenes: {
+      storage: {
+        when: "A bucket misbehaves, or a million objects need counting.",
+        value: "Find the cause with read-only tools and keep the evidence; list large buckets fast.",
       },
-      {
-        title: "Keys and files stay local",
-        body: "Storage Agent keeps keys in a local vault. PageWise reads files on your disk. Easier Bookmarks needs no server.",
+      agents: {
+        when: "Several agents are running, or you want to keep up with the field.",
+        value: "See which one is waiting for you, carry a session to another machine, read sourced weekly briefs.",
       },
-      {
-        title: "Read before write",
-        body: "Storage Agent’s tools are read-only. StorageOps does not change storage.",
+      everyday: {
+        when: "Reading PDFs and foreign pages, tidying bookmarks, checking times and ratings.",
+        value: "Answers you can check against the page; a translation only when you ask for it.",
       },
-    ],
+      games: {
+        when: "Chess, Gomoku, or a small world of your own.",
+        value: "Review the game when it ends; the world keeps going while you are away.",
+      },
+    },
     aboutReleasesTitle: "Latest releases.",
     aboutReleasesMore: "All releases",
     aboutFeed: "Follow releases (Atom)",
@@ -180,7 +184,7 @@ export const ui: Record<Locale, Ui> = {
       storage: "存储",
       agents: "Agent",
       everyday: "日常",
-      experimental: "实验",
+      games: "游戏",
       external: "外部链接",
     },
     productIndex: "hxddh 独立开发的软件",
@@ -197,26 +201,30 @@ export const ui: Record<Locale, Ui> = {
     aboutMore: "关于 hxddh",
     aboutTitle: "关于",
     aboutMetaTitle: "关于 Titpea — hxddh",
-    aboutDescription: "Titpea 是一个人的产品架：对象存储排查、Agent 和日常小工具，由 hxddh 开发并发布。",
+    aboutDescription: "Titpea 是一个人的产品架：对象存储、Agent、日常小工具和游戏，由 hxddh 开发并发布。",
     aboutEyebrow: "关于 Titpea",
     aboutHeadline: "一个人，{count} 个工具",
-    aboutLead: "由 hxddh 开发并发布，其中 {open} 个开源。",
+    aboutLead: "存储、Agent、日常、游戏。",
     contactLabel: "联系方式",
-    aboutPrinciplesTitle: "三个做法",
-    aboutPrinciples: [
-      {
-        title: "证据摆在眼前",
-        body: "Storage Agent 把检查放在结论旁边。PageWise 给出页引用。",
+    aboutScenesTitle: "用在哪里",
+    aboutScenes: {
+      storage: {
+        when: "桶出了问题，或要盘点上百万个对象。",
+        value: "只读查清原因、留下依据；大桶也能很快列清。",
       },
-      {
-        title: "密钥和文件留在本机",
-        body: "Storage Agent 把密钥放在本机保险库。PageWise 读取你磁盘上的文件。Easier Bookmarks 不经服务器。",
+      agents: {
+        when: "同时跑着几个 Agent，或想跟上这个领域。",
+        value: "一眼看出哪个在等你；会话换台机器接着用；每周动态附来源。",
       },
-      {
-        title: "只读优先",
-        body: "Storage Agent 的工具只读。StorageOps 不修改存储。",
+      everyday: {
+        when: "读 PDF 和外文网页，整理书签，看时间和评分。",
+        value: "回答能回到原页核对；译文只在需要时出现。",
       },
-    ],
+      games: {
+        when: "下国际象棋、五子棋，或者养一个小世界。",
+        value: "下完能复盘；你离开时，世界仍在继续。",
+      },
+    },
     aboutReleasesTitle: "最近的发布",
     aboutReleasesMore: "全部发布",
     aboutFeed: "订阅发布（Atom）",
