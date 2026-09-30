@@ -19,41 +19,46 @@ const seo = buildSeo({
     <header class="privacy-header">
       <p class="eyebrow"><a href="/zh/easier-bookmarks/">Easier Bookmarks</a></p>
       <h1>隐私政策</h1>
-      <p class="privacy-updated">更新日期：2026 年 7 月 18 日</p>
+      <p class="privacy-updated">更新日期：2026 年 9 月 30 日</p>
       <p class="lead">Easier Bookmarks 是 Chrome 侧边栏，管理这台浏览器里已有的书签。</p>
     </header>
 
     <div class="privacy-content prose">
       <section>
-        <h2>扩展程序处理的信息</h2>
+        <h2>扩展会访问什么，以及原因</h2>
         <p>
-          Easier Bookmarks 会使用 Chrome 书签 API 读取和处理书签标题、已保存的网址及文件夹结构。扩展还会在
-          <code>chrome.storage.local</code> 中保存界面语言和已展开文件夹的标识。Chrome 网上应用店可能将已保存的书签网址归类为「Web
-          history」；本扩展只通过书签 API 读取书签网址，不读取一般浏览历史。
+          Easier Bookmarks
+          不收集、不传输、不出售、不共享你的任何数据。它没有服务器、没有账号、没有统计分析，也没有广告；所有操作都只在你的浏览器内完成。
+        </p>
+        <ul>
+          <li>
+            <code>bookmarks</code>：显示你的 Chrome 书签，并在你操作时新建、编辑、移动或删除书签。修改直接作用于 Chrome
+            自带的书签，因此 Chrome 同步的行为与你手动编辑书签完全相同。
+          </li>
+          <li>
+            <code>storage</code>：记住哪些文件夹处于展开状态、你从面板中打开过的最多 500 个书签的 ID
+            及最近打开时间（用于搜索排序），以及是否已申请过下方的可选权限。数据通过 <code>chrome.storage.local</code> 保存在本地。
+          </li>
+          <li><code>sidePanel</code>：在 Chrome 侧边栏中显示扩展界面。</li>
+          <li><code>favicon</code>：从 Chrome 本地图标缓存中读取网站图标并显示，不会发起任何网络请求。</li>
+          <li>
+            <code>tabs</code>（可选）：仅在你第一次选择「+ →
+            书签」时申请，且只在你这样操作时读取当前标签页的标题和网址，用于自动填写。你可以拒绝，届时表单将以空白打开。
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>保存在你设备上的内容</h2>
+        <p>
+          仅包括上方 <code>storage</code> 一栏所列内容：文件夹展开状态、最多 500 个书签的 ID 及最近打开时间，以及是否已申请过可选权限。这些数据不会被发送到任何地方，卸载扩展后即被删除。书签本身属于
+          Chrome 自带数据；如果你开启了 Chrome 同步，Chrome 会照常同步，与是否安装本扩展无关。
         </p>
       </section>
       <section>
-        <h2>信息的用途</h2>
+        <h2>我们绝不会做的事</h2>
         <p>
-          这些信息只用于在扩展内显示、搜索和管理书签，以及记住界面偏好。Easier Bookmarks
-          不使用分析服务、广告、用户账号或外部服务器，也不会向开发者或任何第三方传输书签数据或界面偏好。
+          我们不收集个人信息、浏览记录、书签内容或使用数据；不使用远程代码、第三方服务或跟踪器；不出售你的数据，不将其转让给第三方，也不将其用于上述功能以外的任何目的。
         </p>
-        <p>Chrome 可能会按照用户自己的浏览器设置同步书签。该功能由 Chrome 控制，并非 Easier Bookmarks 提供。</p>
-      </section>
-      <section>
-        <h2>共享和出售</h2>
-        <p>Easier Bookmarks 不会向第三方出售、出租、分享或转移用户数据。</p>
-      </section>
-      <section>
-        <h2>保留和删除</h2>
-        <p>
-          书签会保留在 Chrome 的书签存储中，直到用户修改或删除。界面偏好会保留在 Chrome
-          的本地扩展存储中，直到用户更改、清除这些数据或卸载扩展。
-        </p>
-      </section>
-      <section>
-        <h2>安全</h2>
-        <p>所有可执行代码都包含在安装的扩展中。Easier Bookmarks 不会下载或执行远程代码，也不会通过网络发送用户数据。</p>
       </section>
       <section>
         <h2>Chrome API 有限使用</h2>
@@ -61,11 +66,11 @@ const seo = buildSeo({
       </section>
       <section>
         <h2>政策变更</h2>
-        <p>如果本政策发生变化，更新后的版本和修订日期会发布在本页面。</p>
+        <p>如本政策有更新，新版本将发布在本页面，并注明新的日期。</p>
       </section>
       <section>
         <h2>联系方式</h2>
-        <p>如有隐私问题，请发送邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。</p>
+        <p>如有隐私问题，请发邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。</p>
       </section>
     </div>
   </article>

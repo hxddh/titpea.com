@@ -46,6 +46,21 @@ const { showcase, pauseLabel, playLabel } = Astro.props;
             {pauseLabel}
           </button>
         </figure>
+      ) : showcase.caption ? (
+        <figure class="show-figure">
+          <div class="shot">
+            <img
+              src={showcase.src}
+              srcset={srcsetFor(showcase.src, showcase.width)}
+              sizes={screenshotSizes}
+              alt={showcase.alt}
+              width={showcase.width}
+              height={showcase.height}
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="shot-caption">{showcase.caption}</figcaption>
+        </figure>
       ) : (
         <figure class="shot show-shot">
           <img
