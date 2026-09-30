@@ -19,48 +19,53 @@ const seo = buildSeo({
     <header class="privacy-header">
       <p class="eyebrow"><a href="/easier-bookmarks/">Easier Bookmarks</a></p>
       <h1>Privacy Policy</h1>
-      <p class="privacy-updated">Last updated: July 18, 2026</p>
+      <p class="privacy-updated">Last updated: September 30, 2026</p>
       <p class="lead">Easier Bookmarks is a local Chrome side panel for the bookmarks already in this browser.</p>
     </header>
 
     <div class="privacy-content prose">
       <section>
-        <h2>Information the extension handles</h2>
+        <h2>What the extension accesses, and why</h2>
         <p>
-          Easier Bookmarks reads and handles bookmark titles, saved URLs, and folder structure through the Chrome
-          Bookmarks API. It also stores the selected interface language and expanded-folder identifiers in
-          <code>chrome.storage.local</code>. Chrome Web Store may classify saved bookmark URLs as Web history; Easier
-          Bookmarks reads bookmark URLs through the Bookmarks API and does not read general browsing history.
+          Easier Bookmarks does not collect, transmit, sell, or share any of your data. It has no servers, accounts,
+          analytics, or advertising; everything happens inside your browser.
+        </p>
+        <ul>
+          <li>
+            <code>bookmarks</code>: showing your Chrome bookmarks and creating, editing, moving, or deleting them when
+            you ask. Changes go to Chrome's own bookmarks, so Chrome Sync behaves as it does for bookmarks you edit
+            yourself.
+          </li>
+          <li>
+            <code>storage</code>: remembering which folders are open, the IDs and last-opened times of up to 500
+            bookmarks you opened from the panel (to rank search results), and whether the optional permission below was
+            already requested. Stored locally with <code>chrome.storage.local</code>.
+          </li>
+          <li><code>sidePanel</code>: displaying the extension in Chrome's side panel.</li>
+          <li>
+            <code>favicon</code>: showing each site's icon from Chrome's local icon cache. No network requests are made.
+          </li>
+          <li>
+            <code>tabs</code> (optional): requested only the first time you choose + → Bookmark, and used only then to read
+            the current tab's title and address so they can be filled in. You can decline; the form then opens empty.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>What stays on your device</h2>
+        <p>
+          Only the items listed under <code>storage</code>: which folders are open, the IDs and last-opened times of up
+          to 500 bookmarks, and whether the optional permission was requested. They are never sent anywhere and are
+          removed when you uninstall the extension. Your bookmarks themselves are Chrome's own data; with Chrome Sync
+          on, Chrome syncs them exactly as it does without this extension.
         </p>
       </section>
       <section>
-        <h2>How information is used</h2>
+        <h2>What we never do</h2>
         <p>
-          This information is used only inside the extension to display, search, and manage bookmarks and to remember
-          interface preferences. Easier Bookmarks does not use analytics, advertising, user accounts, or external
-          servers. It does not transmit bookmark data or interface preferences to the developer or any third party.
-        </p>
-        <p>
-          Chrome itself may sync bookmarks according to the user's Chrome settings. That browser feature is controlled
-          by Chrome and is not operated by Easier Bookmarks.
-        </p>
-      </section>
-      <section>
-        <h2>Sharing and sale</h2>
-        <p>Easier Bookmarks does not sell, rent, share, or transfer user data to third parties.</p>
-      </section>
-      <section>
-        <h2>Retention and deletion</h2>
-        <p>
-          Bookmarks remain in Chrome's bookmark storage until the user changes or deletes them. Interface preferences
-          remain in Chrome's local extension storage until they are changed, cleared, or the extension is removed.
-        </p>
-      </section>
-      <section>
-        <h2>Security</h2>
-        <p>
-          All executable code is included in the installed extension. Easier Bookmarks does not download or execute
-          remote code and does not send user data over the network.
+          We do not collect personal information, browsing history, bookmark contents, or usage data. We do not use
+          remote code, third-party services, or trackers. Your data is not sold, transferred to third parties, or used
+          for any purpose other than the features described above.
         </p>
       </section>
       <section>
@@ -72,7 +77,7 @@ const seo = buildSeo({
       </section>
       <section>
         <h2>Changes to this policy</h2>
-        <p>If this policy changes, the updated version and revision date will be published on this page.</p>
+        <p>If this policy changes, the updated version will be published on this page with a new date.</p>
       </section>
       <section>
         <h2>Contact</h2>
