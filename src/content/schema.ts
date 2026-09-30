@@ -176,6 +176,8 @@ export type Showcase = Image & {
    * reduced motion.
    */
   video?: { mp4: string; webm?: string };
+  /** Shown under the image; required wording for anything that is not a plain capture. */
+  caption?: string;
   /** Sit under the section with this id instead of opening the page. */
   beside?: string;
 };
