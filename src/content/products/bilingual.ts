@@ -30,7 +30,7 @@ export default defineProduct({
       label: "Privacy policy",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome extension · Chrome 138+ · 1.4 · On-device translation",
+    meta: "Chrome extension · Chrome 138+ · 1.6.1 · On-device translation",
     visual: {
       kind: "screenshot",
       label: "Bilingual",
@@ -65,8 +65,8 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Translation runs on Chrome’s built-in on-device model by default; page text stays on your computer.",
-          "Precise translation sends text to your chosen provider only when you ask, using your own key kept in the extension’s IndexedDB.",
+          "Translation runs on Chrome’s built-in on-device model by default, inside the extension’s own hidden document; page text stays on your computer.",
+          "Only when you ask, Precise translation sends paragraphs straight to your chosen provider; your own key stays in the extension’s IndexedDB.",
           "No account, no analytics, no data collection; site access is requested only for sites you switch on.",
         ],
       },
@@ -77,7 +77,7 @@ export default defineProduct({
         items: [
           {
             title: "What do I need to run it?",
-            body: "Desktop Chrome 138 or later. The first use downloads Chrome’s on-device language model.",
+            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own offscreen document.",
           },
           {
             title: "Which key do I hold?",
@@ -114,7 +114,7 @@ export default defineProduct({
       label: "隐私政策",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome 扩展 · Chrome 138+ · 1.4 · 本地翻译",
+    meta: "Chrome 扩展 · Chrome 138+ · 1.6.1 · 本地翻译",
     visual: {
       kind: "screenshot",
       label: "对读",
@@ -146,8 +146,8 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "默认使用 Chrome 内置的本地翻译模型，网页文字不离开你的电脑。",
-          "精译用你自己的密钥，存在扩展的 IndexedDB 中；只有你要看时，文字才发给你选择的服务商。",
+          "默认使用 Chrome 内置的本地翻译模型，在扩展自己的隐藏页面里运行，网页文字不离开你的电脑。",
+          "精译用你自己的密钥，存在扩展的 IndexedDB 中；只有你要看时，段落文字才从浏览器直接发给你选择的服务商。",
           "没有账号，无分析服务，不收集任何数据；只在你打开某个网站的开关时，才申请该站点的权限。",
         ],
       },
@@ -158,7 +158,7 @@ export default defineProduct({
         items: [
           {
             title: "需要什么环境？",
-            body: "桌面版 Chrome 138 或更高版本。第一次使用时，Chrome 会下载本地翻译模型。",
+            body: "桌面版 Chrome 138 或更高版本。启用一个语言对时，Chrome 会下载一次语言包，之后这个语言对在所有网站上都能用（翻译在扩展自己的隐藏页面里运行）。",
           },
           {
             title: "按哪个键？",

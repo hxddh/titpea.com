@@ -1,7 +1,7 @@
 /**
  * Record short muted demo loops from the real Goban / Chessboard web UIs
- * (the apps' own src/web, served locally): Goban replays a game move by
- * move, Chessboard runs its Stockfish review and steps through the result.
+ * (the apps' own src/web, served locally): Goban steps through the mistakes
+ * its review names, Chessboard runs its Stockfish review and steps through the result.
  * Nothing is scripted inside the apps; the recording only clicks their UI.
  * Each loop is recorded twice, with the app in English and in Chinese, and
  * written as public/assets/<name>-<en|zh>.mp4 (H.264) and .webm (VP9).
@@ -99,15 +99,15 @@ async function recordGoban(browser, lang) {
             openingRule: "standard",
           }),
         );
-        localStorage.setItem("goban.panelOpen", "1");
       },
     },
     async (page) => {
       await pasteGoban(page, GOMOKU_SGF);
       await page.waitForTimeout(700);
       await quiet(page);
-      // Open the sidebar Review panel and let its engine pass settle, so the
-      // mistake list does not change mid-take.
+      // Review is a state of the board (v1.74+): open it from the ⋯ menu and
+      // let its engine pass settle, so the mistake list does not change mid-take.
+      await page.click("#more-btn");
       await page.click("#sgf-review");
       await page.waitForSelector("#review-side:not([hidden])");
       await page.waitForSelector("#review-progress", { state: "hidden", timeout: 60000 }).catch(() => {});

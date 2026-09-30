@@ -17,9 +17,9 @@ export default defineProduct({
       "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
     eyebrow: "PDF reading and questions",
     headline: "Ask. Check the page.",
-    lead: "Ask a question. Quotes and numbers checked on the page. Scans read locally.",
+    lead: "Ask a question. Each citation: verified, “check the page”, or not found.",
     catalog: {
-      role: "PDF agent",
+      role: "PDF assistant",
       text: "Ask a PDF. Follow the citation to the page.",
     },
     primaryCta: {
@@ -71,9 +71,9 @@ export default defineProduct({
         nav: "Features",
         label: "Evidence that leaves with the document.",
         items: [
-          { title: "Numbers checked too", body: "A figure the quoted passage does not state is flagged." },
+          { title: "Numbers checked too", body: "A figure the quoted passage does not state shows “check the page”." },
           { title: "Cited tables", body: "Every cell cited; export as CSV with its sources." },
-          { title: "Evidence in the PDF", body: "Findings and marks exported as highlights any PDF reader shows." },
+          { title: "PDF with evidence", body: "Findings as highlights, from the one Export… dialog." },
         ],
       },
       {
@@ -99,11 +99,11 @@ export default defineProduct({
           },
           {
             title: "Can a found citation still be wrong?",
-            body: "Yes. PageWise checks the quoted words and the numbers in the sentence. Other mistakes, such as who owes what, are checked only when you ask your model to review each passage, one short call per citation, and the model can misread too. A number the model rounded may be flagged even when the answer is right.",
+            body: "Yes. PageWise checks the quoted words and the numbers in the sentence. Other mistakes, such as who owes what, are checked only when you ask your model to review each passage (More, under the answer), one short call per citation, and the model can misread too. A review that disagrees lowers the chip to not found; one that agrees never raises it. A number the model rounded may show “check the page” even when the answer is right.",
           },
           {
             title: "Which scans can it read?",
-            body: "English and Simplified Chinese. Handwriting, vertical Chinese, and other languages go to the vision model, if you set one. A quote not found on a scan is marked unconfirmed, not absent.",
+            body: "English, plus Simplified Chinese when the interface language is Chinese. Handwriting, vertical Chinese, and other languages go to the vision model, if you set one. A quote not found on a scan shows “check the page”, not “not found”.",
           },
           {
             title: "Does exporting evidence change my PDF?",
@@ -126,9 +126,9 @@ export default defineProduct({
     description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
     eyebrow: "PDF 阅读与问答",
     headline: "问过之后，回到原文",
-    lead: "直接提问。引文和数字对照原页核对。扫描件在本机识别。",
+    lead: "直接提问。每条引用标为已核对、请看原页或未找到。扫描件在本机识别。",
     catalog: {
-      role: "PDF Agent",
+      role: "PDF 助手",
       text: "向 PDF 提问。顺着页引用回到原文。",
     },
     primaryCta: {
@@ -180,9 +180,9 @@ export default defineProduct({
         nav: "功能",
         label: "证据随文档带走",
         items: [
-          { title: "数字也核对", body: "引文段落里没有的数字会被标出。" },
+          { title: "数字也核对", body: "引文段落里没有的数字标为“请看原页”。" },
           { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
-          { title: "证据写进 PDF", body: "发现与批注导出为任何阅读器可见的高亮。" },
+          { title: "带证据的 PDF", body: "结论写成高亮，在“导出…”里选。" },
         ],
       },
       {
@@ -208,11 +208,11 @@ export default defineProduct({
           },
           {
             title: "找到原文的引用还会错吗？",
-            body: "会。PageWise 核对引文原话和句中的数字。其他错误（比如谁承担什么义务）只有在你让模型逐段复核时才检查，每条引用一次简短调用，模型也可能读错。模型把数字取整或换算时，即使回答正确也可能被标出。",
+            body: "会。PageWise 核对引文原话和句中的数字。其他错误（比如谁承担什么义务）只有在你从回答下的“更多操作”里让模型逐段复核时才检查，每条引用一次简短调用，模型也可能读错。复核认为原文说法不同时，引用降为“未找到”；复核认同也不会提升等级。模型把数字取整或换算时，即使回答正确也可能显示“请看原页”。",
           },
           {
             title: "哪些扫描件能识别？",
-            body: "英文和简体中文。手写、竖排中文和其他语言的页面交给视觉模型（如已配置）。在扫描页上找不到的引用标为未确认，而不是判定不存在。",
+            body: "英文；界面语言为中文时，也识别简体中文。手写、竖排中文和其他语言的页面交给视觉模型（如已配置）。在扫描页上找不到的引用显示“请看原页”，而不是“未找到”。",
           },
           {
             title: "导出证据会改动原 PDF 吗？",

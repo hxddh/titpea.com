@@ -72,7 +72,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Storage credentials stay in an encrypted vault on this machine.",
+          "Storage credentials stay in an encrypted vault on this machine and are masked from tool output.",
           "Evidence and task history stay in the app’s local data directory.",
           "Requests go to the model and S3-compatible endpoints you configure.",
         ],
@@ -85,6 +85,10 @@ export default defineProduct({
           {
             title: "Does it need a model key?",
             body: "Not for a local model: Ollama, LM Studio, vLLM, and llama.cpp run without one. Hosted providers such as OpenAI, Anthropic, DeepSeek, and OpenRouter need their key. A local model with no context window set is treated as 16,384 tokens; set a larger value in Settings if your server runs one.",
+          },
+          {
+            title: "Will a small local model work?",
+            body: "Yes. A local model with a 16k window can finish a first survey, and its first request fits in 8k. With Ollama, the app sends the planned window as `num_ctx`. Test in Settings makes one real tool call and warns when Ollama’s context is smaller than planned.",
           },
           {
             title: "What does the watch do?",
@@ -155,7 +159,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "存储凭证保存在本机加密保险库。",
+          "存储凭证保存在本机加密保险库，并在工具输出中遮蔽。",
           "证据和任务记录保存在本机应用数据目录。",
           "请求发往你配置的模型和 S3 兼容存储端点。",
         ],
@@ -168,6 +172,10 @@ export default defineProduct({
           {
             title: "没有模型密钥能用吗？",
             body: "用本地模型就不需要：Ollama、LM Studio、vLLM 和 llama.cpp 无需密钥。OpenAI、Anthropic、DeepSeek、OpenRouter 等托管服务需要各自的密钥。未设置上下文窗口的本地模型按 16,384 个 token 处理；服务端支持更大窗口时，请在设置里调高。",
+          },
+          {
+            title: "小的本地模型够用吗？",
+            body: "够用。16k 窗口的本地模型能完成首次盘点，首个请求在 8k 内就放得下。使用 Ollama 时，应用会以 `num_ctx` 把规划好的窗口发给它。设置里的“测试”会真实调用一次工具，并在 Ollama 的上下文小于规划值时提醒你。",
           },
           {
             title: "巡检会做什么？",
