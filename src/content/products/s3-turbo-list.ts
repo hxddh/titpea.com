@@ -37,7 +37,7 @@ export default defineProduct({
         {
           comment: "Local preflight — no S3 access",
           command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.38.0
+          capturedOutput: `OK    binary_version: 0.39.0
 OK    working_directory: /tmp/inventory
 OK    config_parse: resolved configuration is valid TOML/CLI state
 OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
@@ -156,7 +156,7 @@ Doctor status: ok`,
           },
           {
             title: "Can an interrupted run pick up where it stopped?",
-            body: "Yes. Every interrupted `list` run saves a checkpoint on Ctrl-C or SIGTERM. Run it again with `--resume` and the same `--output-dir`, and it lists only the key ranges not yet written; that output covers only those ranges, so combine it with the interrupted run’s. A crash leaves the previous checkpoint unchanged, and `diff` runs do not checkpoint.",
+            body: "Yes. Every interrupted `list` run saves a checkpoint on Ctrl-C or SIGTERM. Run it again with `--resume` and the same `--output-dir`, and it lists only the key ranges not yet written; that output covers only those ranges, so combine it with the interrupted run’s. A crash leaves the previous checkpoint unchanged, and `diff` and `--start-after` runs do not checkpoint.",
           },
         ],
       },
@@ -188,7 +188,7 @@ Doctor status: ok`,
         {
           comment: "本地预检，不访问 S3",
           command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.38.0
+          capturedOutput: `OK    binary_version: 0.39.0
 OK    working_directory: /tmp/inventory
 OK    config_parse: resolved configuration is valid TOML/CLI state
 OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
@@ -305,7 +305,7 @@ Doctor status: ok`,
           },
           {
             title: "中断的任务能接着跑吗？",
-            body: "能。每次中断的 `list` 运行都会在 Ctrl-C 或 SIGTERM 时保存 checkpoint。用同一个 `--output-dir` 加上 `--resume` 再跑一次，只列举尚未写出的 key 范围；续跑的输出只含这些范围，需要与中断那次的输出合并。进程崩溃时保留上一次的 checkpoint，`diff` 运行不保存 checkpoint。",
+            body: "能。每次中断的 `list` 运行都会在 Ctrl-C 或 SIGTERM 时保存 checkpoint。用同一个 `--output-dir` 加上 `--resume` 再跑一次，只列举尚未写出的 key 范围；续跑的输出只含这些范围，需要与中断那次的输出合并。进程崩溃时保留上一次的 checkpoint，`diff` 和 `--start-after` 运行不保存 checkpoint。",
           },
         ],
       },
