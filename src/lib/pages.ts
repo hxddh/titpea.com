@@ -361,9 +361,7 @@ export function homePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
   const path = pathFor(locale);
   const alternatePath = pathFor(otherLocale(locale));
-  const featured = products
-    .filter((product) => product.featured)
-    .sort((a, b) => a.featured!.order - b.featured!.order);
+  const featured = products.filter((product) => product.featured).sort((a, b) => a.featured!.order - b.featured!.order);
   return {
     kind: "home",
     locale,

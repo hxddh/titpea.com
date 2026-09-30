@@ -114,7 +114,8 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "Independent software by hxddh",
     homeMetaTitle: "Titpea — Worlds, games, and tools by hxddh",
     homeTitle: "Worlds, games, and tools.",
-    homeDescription: "Software by hxddh: a small world that keeps living, desktop chess you can review, translation when you ask, and tools for S3 storage and coding agents.",
+    homeDescription:
+      "Software by hxddh: a small world that keeps living, desktop chess you can review, translation when you ask, and tools for S3 storage and coding agents.",
     homeLead: "A world that keeps going. Chess you can review. Translation when you ask.",
     featuredTitle: "Selected work",
     moreToolsTitle: "More tools",
@@ -190,7 +191,8 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "hxddh 独立开发的软件",
     homeMetaTitle: "Titpea — 小世界、棋局和工具",
     homeTitle: "小世界、棋局和工具",
-    homeDescription: "hxddh 独立开发的软件：一个自己运转的小世界、能复盘的桌面国际象棋、需要时才出现的翻译，以及对象存储和编码 Agent 工具。",
+    homeDescription:
+      "hxddh 独立开发的软件：一个自己运转的小世界、能复盘的桌面国际象棋、需要时才出现的翻译，以及对象存储和编码 Agent 工具。",
     homeLead: "自己运转的小世界。能复盘的国际象棋。需要时才出现的翻译。",
     featuredTitle: "主要作品",
     moreToolsTitle: "更多工具",
