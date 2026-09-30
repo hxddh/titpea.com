@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 export default defineProduct({
   slug: "goban",
-  line: "everyday",
+  line: "games",
   repo: "hxddh/goban",
   icon: "/assets/icons/goban.webp",
   og: "/assets/og-goban.png",

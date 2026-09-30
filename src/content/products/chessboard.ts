@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 export default defineProduct({
   slug: "chessboard",
-  line: "everyday",
+  line: "games",
   featured: {
     image: {
       src: {

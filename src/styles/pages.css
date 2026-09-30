@@ -257,13 +257,88 @@
   padding-bottom: 0;
 }
 
-.about-principles,
+.about-scenes,
 .about-releases {
   padding-top: var(--section-y);
 }
 
-.about-principles .feature-grid {
+/* Where they help: one card per product line, its products as small links. */
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
   margin-top: 48px;
+}
+
+.scene-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: var(--paper-raised);
+}
+
+.scene-card h3 {
+  margin: 0;
+  font-size: var(--text-card-title);
+  letter-spacing: -0.02em;
+}
+
+.scene-when {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: var(--text-list-body);
+  line-height: 1.5;
+}
+
+.scene-value {
+  margin: 6px 0 0;
+  color: var(--ink-2);
+  font-size: var(--text-card-body);
+  line-height: 1.55;
+}
+
+.scene-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: auto 0 0;
+  padding: 20px 0 0;
+  list-style: none;
+}
+
+.scene-products a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px 0 8px;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--text-small);
+  font-weight: 500;
+}
+
+.scene-products a:hover {
+  text-decoration: none;
+  box-shadow: 0 0 0 1px var(--soft-line);
+}
+
+.scene-products img {
+  width: 28px;
+  height: 28px;
+  border-radius: 22.5%;
+}
+
+@media (max-width: 720px) {
+  .scene-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scene-card {
+    padding: 22px;
+  }
 }
 
 /* Release list: newest first, one hairline row per product. */

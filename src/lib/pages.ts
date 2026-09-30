@@ -435,7 +435,16 @@ export type AboutPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
-  principles: { title: string; items: Array<{ title: string; body: string }> };
+  scenes: {
+    title: string;
+    items: Array<{
+      line: Line;
+      label: string;
+      when: string;
+      value: string;
+      products: Array<{ name: string; href: string; icon: string }>;
+    }>;
+  };
   releases: {
     title: string;
     moreLabel: string;
@@ -462,17 +471,14 @@ export type AboutPageModel = {
   expectedText: string[];
 };
 
-const licensePattern = /\b(MIT|Apache-2\.0|GPLv3)\b/;
-
 export function aboutPage(locale: Locale): AboutPageModel {
   const copy = ui[locale];
   const path = pathFor(locale, "about");
   const alternatePath = pathFor(otherLocale(locale), "about");
   const count = String(products.length);
   const released = products.filter((product) => versionOf(product.slug));
-  const licensed = products.filter((product) => licensePattern.test(product.en.meta));
   const headline = copy.aboutHeadline.replace("{count}", count);
-  const lead = copy.aboutLead.replace("{open}", String(licensed.length)).replace("{count}", count);
+  const lead = copy.aboutLead;
   return {
     kind: "about",
     locale,
@@ -501,7 +507,21 @@ export function aboutPage(locale: Locale): AboutPageModel {
     }),
     language: languageLink(locale, alternatePath),
     hero: { eyebrow: copy.aboutEyebrow, title: headline, lead },
-    principles: { title: copy.aboutPrinciplesTitle, items: copy.aboutPrinciples },
+    scenes: {
+      title: copy.aboutScenesTitle,
+      items: lines.map((line) => ({
+        line,
+        label: copy.groups[line],
+        ...copy.aboutScenes[line],
+        products: products
+          .filter((product) => product.line === line)
+          .map((product) => ({
+            name: product[locale].title,
+            href: pathFor(locale, product.slug),
+            icon: product.icon,
+          })),
+      })),
+    },
     releases: {
       title: copy.aboutReleasesTitle,
       moreLabel: copy.aboutReleasesMore,

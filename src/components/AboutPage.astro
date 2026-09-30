@@ -21,21 +21,32 @@ const folded = model.releases.items.slice(model.releasesShown);
     </div>
   </section>
 
-  <section class="about-principles" aria-labelledby="principles-title">
+  <section class="about-scenes" aria-labelledby="scenes-title">
     <div class="shell">
       <header class="section-head">
-        <h2 id="principles-title">{model.principles.title}</h2>
+        <h2 id="scenes-title">{model.scenes.title}</h2>
       </header>
-      <ul class="feature-grid" data-count={model.principles.items.length}>
+      <div class="scene-grid">
         {
-          model.principles.items.map((item) => (
-            <li class="feature-card">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </li>
+          model.scenes.items.map((scene) => (
+            <article class="scene-card">
+              <h3>{scene.label}</h3>
+              <p class="scene-when">{scene.when}</p>
+              <p class="scene-value">{scene.value}</p>
+              <ul class="scene-products">
+                {scene.products.map((product) => (
+                  <li>
+                    <a href={product.href}>
+                      <img src={product.icon} alt="" width="28" height="28" loading="lazy" />
+                      <span>{product.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))
         }
-      </ul>
+      </div>
     </div>
   </section>
 

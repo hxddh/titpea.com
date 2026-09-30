@@ -42,14 +42,14 @@ Every page uses the same few parts. Build new content from them before inventing
 
 - The hero opens on the shelf of app icons (two rows of seven, every product), each a link to its product whose name appears in a small glass label when pointed at or focused (above the top row, below the bottom row), then `Independent software by hxddh`, the contents line (`Agents and tools.` / `Agent 和工具`), and a lede that names the range in three fragments. Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
 - `Selected work` / `主要作品` introduces two showcase rows, Storage Agent and Chessboard: a professional tool and an everyday one, so the range shows in two picks. Each row is role kicker, product name, one-liner, `Learn more ›`, then the full captured screenshot, and the whole row is one link. Three is the ceiling; a new pick replaces one rather than adding a row. When the app's UI shows words, each locale gets a capture in its own language (`featured.image.src` per locale). Phones show the same whole screenshot: a crop cut sentences mid-line and read as a broken image.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Experimental. It is an index, one centered column: each product is one row, all of it a link, with its icon, name, one line (`catalog.text`), and a `›`, rows split by hairlines. No kicker, tag, or date: those live on the product page. A product belongs to one line, and the header dropdowns use the same four lines.
+- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Games. It is an index, one centered column: each product is one row, all of it a link, with its icon, name, one line (`catalog.text`), and a `›`, rows split by hairlines. No kicker, tag, or date: those live on the product page. A product belongs to one line, and the header dropdowns use the same four lines.
 
 ## About
 
-The page answers, in order: what Titpea is, how the tools behave, what shipped lately, and how to reach the person behind it. The product list lives on Home; About does not repeat it.
+The page answers, in order: what Titpea is, where its tools help, what shipped lately, and how to reach the person behind it. Home lists the products; About groups them by the work they help with.
 
-- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and a one-line lede of facts: who builds and releases them and how many are open source (counted from each product's meta line). It does not repeat Home's lede. No actions in the hero.
-- `Three habits.` / `三个做法`: three cards, each naming the products it is true of (Storage Agent, PageWise, StorageOps, Easier Bookmarks), so no card claims something for all tools that only some do.
+- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and a lede that only names the four lines: `Storage, agents, everyday, games.` / `存储、Agent、日常、游戏。` No actions in the hero.
+- `Where they help.` / `用在哪里`: one card per product line, two short sentences each (when you reach for it; what it changes), then that line's products as small icon links, taken from the catalog so a new product appears on its own. Every claim is one its product page already makes. No list of principles: a habit that only some products share is not claimed for all.
 - `Latest releases.`, with no sub: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language, or none; the rest fold under `All releases (n)`.
 - Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
 - No personal details beyond what the owner has published; nothing about the person is inferred.
@@ -164,7 +164,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
   - `a11y:check`: axe-core (WCAG 2.1 A/AA and best practices) on every page, light and dark, desktop and phone; any violation fails.
-  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's principles (desktop and zh phone), and 404. Section targets crop to their own section so release data synced at build never moves them.
+  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's scenes (desktop and zh phone), and 404. Section targets crop to their own section so release data synced at build never moves them.
   - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
   1. First read: from the first viewport alone, does the reader know what the product changes?
@@ -176,7 +176,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 
 ## Content release, September 2026
 
-- Home groups are Storage, Agents, Everyday, and Experimental. Keep experimental maturity visible.
+- Home groups are Storage, Agents, Everyday, and Games (Chessboard, Goban, World Machine). World Machine keeps its pre-alpha maturity visible on its own page.
 - Storage Agent leads with the existing investigation result screenshot. The welcome image is a secondary starting-point illustration.
 - Product copy starts with an action and result. Preserve conditions on model data, waiting signals, and successfully persisted sessions. Do not promise zero data loss from a recovery feature.
 - Keep each metadata segment together when wrapping, including license names.

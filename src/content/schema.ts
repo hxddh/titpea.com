@@ -5,8 +5,8 @@
 export type Locale = "en" | "zh";
 export const locales: Locale[] = ["en", "zh"];
 
-export type Line = "storage" | "agents" | "everyday" | "experimental";
-export const lines: Line[] = ["storage", "agents", "everyday", "experimental"];
+export type Line = "storage" | "agents" | "everyday" | "games";
+export const lines: Line[] = ["storage", "agents", "everyday", "games"];
 
 export type Link = { label: string; href: string };
 export type Image = { src: string; alt: string; width: number; height: number };
