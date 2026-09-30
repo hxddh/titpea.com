@@ -31,6 +31,8 @@ Settled design decisions in DESIGN.md (for example the Omni home) are the owner'
 5. `npm run assets:og <slug>` renders its share image.
 6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
 
+Replacing an image under the same file name is fine: the build appends `?v=<content hash>` to every `/assets/` URL (`src/integrations/asset-versions.mjs`), so browsers and the CDN fetch the new bytes.
+
 A new hero object is the only case that needs a component: add a `kind` to `Visual` in `schema.ts` and a file in `components/product/visuals/`.
 
 ## After copy, layout, or style changes

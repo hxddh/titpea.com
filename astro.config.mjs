@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import assetVersions from "./src/integrations/asset-versions.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://titpea.com",
   trailingSlash: "always",
+  integrations: [assetVersions()],
   vite: {
     build: {
       assetsInlineLimit: 0,

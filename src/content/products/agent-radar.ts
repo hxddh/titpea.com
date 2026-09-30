@@ -107,7 +107,7 @@ export default defineProduct({
         items: [
           {
             title: "Does it need paid search?",
-            body: "No. Collection uses free public source lanes. You configure the model route; the pinned route runs GPT-5 Mini to screen and draft, priced against a $4 monthly budget.",
+            body: "No. Collection uses free public source lanes. You configure the model route; the pinned route runs GPT-5 Mini to screen and draft, about $2.6 a month against a $4 budget, with fallback models pinned in the workflow.",
           },
           {
             title: "Where does it run?",
@@ -217,7 +217,7 @@ export default defineProduct({
         items: [
           {
             title: "需要付费搜索吗？",
-            body: "不需要。采集走免费公开源。模型路线由你配置；固定路线用 GPT-5 Mini 筛选和起草，按每月 4 美元预算核算。",
+            body: "不需要。采集走免费公开源。模型路线由你配置；固定路线用 GPT-5 Mini 筛选和起草，每月约 2.6 美元，预算为 4 美元；备用模型也固定在工作流里。",
           },
           {
             title: "在哪里运行？",

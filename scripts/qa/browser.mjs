@@ -25,6 +25,11 @@ export async function visit(page, url, label) {
   await page.locator("body").waitFor({ state: "visible", timeout: 8_000 });
   const imageCount = await page.locator("img").count();
   if (imageCount > 0) {
+    // Lazy images far below the fold only load once scrolled near; start
+    // them all so the wait below covers every image on the page.
+    await page.evaluate(() => {
+      for (const image of document.querySelectorAll('img[loading="lazy"]')) image.loading = "eager";
+    });
     await page.waitForFunction(() => Array.from(document.images).every((image) => image.complete), {
       timeout: 8_000,
     });
