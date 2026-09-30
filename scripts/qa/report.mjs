@@ -1,5 +1,8 @@
 import { screenshotName } from "./config.mjs";
 
+// The build appends ?v=<content hash> to asset URLs (src/integrations/asset-versions.mjs).
+const unversioned = (url) => url?.replace(/\?v=[0-9a-f]+$/, "");
+
 export function failureReasons(result) {
   const isDesktop = result.viewport === "desktop";
   const isAsset = result.viewport === "asset";
@@ -76,9 +79,9 @@ export function failureReasons(result) {
     reasons.push(`canonical mismatch: ${result.canonical}`);
   if (route && result.alternate !== `https://titpea.com${route.alternatePath}`)
     reasons.push(`alternate mismatch: ${result.alternate}`);
-  if (route && result.ogImage !== `https://titpea.com${route.ogImage}`)
+  if (route && unversioned(result.ogImage) !== `https://titpea.com${route.ogImage}`)
     reasons.push(`og:image mismatch: ${result.ogImage}`);
-  if (route && result.twitterImage !== `https://titpea.com${route.ogImage}`)
+  if (route && unversioned(result.twitterImage) !== `https://titpea.com${route.ogImage}`)
     reasons.push(`twitter:image mismatch: ${result.twitterImage}`);
   if (route?.primaryCta && result.primaryCta !== result.expectedPrimary)
     reasons.push(`primary CTA mismatch: expected ${result.expectedPrimary}, got ${result.primaryCta}`);
