@@ -2,7 +2,8 @@
 
 Every product needs an icon; `npm run check` fails without one. `npm run assets:icons`
 renders each source here to `public/assets/icons/<slug>.webp` (208 px, clipped to the
-site tile, radius 22.5%).
+site tile, radius 22.5%). Official PNGs are first cropped to their opaque tile, so
+store-style artwork with a transparent margin and drop shadow fills the tile like the rest.
 
 | Product                                                          | Source                                                                                | Kind                                                                                 |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
