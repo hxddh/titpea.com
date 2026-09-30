@@ -4,6 +4,7 @@ export default defineProduct({
   slug: "chessboard",
   line: "games",
   featured: {
+    order: 2,
     image: {
       src: {
         en: "/assets/chessboard-featured-en.webp",

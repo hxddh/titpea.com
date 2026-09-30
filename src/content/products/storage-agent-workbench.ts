@@ -3,17 +3,6 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "storage-agent-workbench",
   line: "storage",
-  featured: {
-    image: {
-      src: "/assets/storage-agent-investigation.webp",
-      width: 1800,
-      height: 1290,
-      alt: {
-        en: "Storage Agent comparing object evidence in a storage investigation",
-        zh: "Storage Agent 对比存储调查中的对象证据",
-      },
-    },
-  },
   repo: "hxddh/storage-agent-workbench",
   icon: "/assets/icons/storage-agent-workbench.webp",
   og: "/assets/og-storage-agent-workbench.png",

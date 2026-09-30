@@ -30,6 +30,8 @@ for (const product of products) {
 }
 const featuredCount = products.filter((product) => product.featured).length;
 if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Home as featured");
+const featuredOrder = products.flatMap((product) => (product.featured ? [product.featured.order] : [])).sort();
+if (featuredOrder.some((order, index) => order !== index + 1)) fail("featured rows are ordered 1, 2, 3 without gaps");
 
 /* ---------- Releases ---------- */
 
