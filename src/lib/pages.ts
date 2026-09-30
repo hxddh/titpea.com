@@ -315,6 +315,7 @@ export type HomePageModel = {
     items: Array<
       CatalogItem & {
         image: { src: string; alt: string; width: number; height: number };
+        caption?: string;
       }
     >;
   };
@@ -360,7 +361,9 @@ export function homePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
   const path = pathFor(locale);
   const alternatePath = pathFor(otherLocale(locale));
-  const featured = products.filter((product) => product.featured);
+  const featured = products
+    .filter((product) => product.featured)
+    .sort((a, b) => a.featured!.order - b.featured!.order);
   return {
     kind: "home",
     locale,
@@ -405,6 +408,7 @@ export function homePage(locale: Locale): HomePageModel {
         return {
           ...catalogItem(product, locale),
           image: { ...image, src: featuredSrc(product.featured!, locale), alt: image.alt[locale] },
+          caption: product.featured!.caption?.[locale],
         };
       }),
     },

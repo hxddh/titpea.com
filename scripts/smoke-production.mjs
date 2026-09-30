@@ -55,7 +55,7 @@ async function checkMissingPath() {
     });
     if (response.status !== 404) return `/no-such-titpea-page/: expected 404, got ${response.status}`;
     const html = await response.text();
-    if (includesTitle(html, "Agents and tools by hxddh")) {
+    if (includesTitle(html, "Worlds, games, and tools by hxddh")) {
       return "/no-such-titpea-page/: unknown path served the home page";
     }
     if (!includesTitle(html, "Page not found")) return "/no-such-titpea-page/: missing not-found title";

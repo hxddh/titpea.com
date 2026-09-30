@@ -181,12 +181,14 @@
 }
 
 /* Home hero: the app icons, a row of doors into the products. */
+/* Two centred rows: at most eight icons wide, so fifteen read as 8 + 7. */
 .home-icons {
-  display: grid;
-  grid-template-columns: repeat(7, auto);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin: 0 0 28px;
+  max-width: calc(8 * 60px + 7 * 14px);
+  margin: 0 auto 28px;
   padding: 0;
   list-style: none;
 }
@@ -219,18 +221,19 @@
 }
 
 /* The top row labels above, so a name never covers the icon beneath. */
-.home-icons li:nth-child(-n + 7) .home-icon-name {
+.home-icons li:nth-child(-n + 8) .home-icon-name {
   top: auto;
   bottom: calc(100% + 8px);
 }
 
 /* Edge columns anchor to their inner side. */
-.home-icons li:nth-child(7n + 1) .home-icon-name {
+.home-icons li:nth-child(8n + 1) .home-icon-name {
   left: 0;
   transform: none;
 }
 
-.home-icons li:nth-child(7n) .home-icon-name {
+.home-icons li:nth-child(8n) .home-icon-name,
+.home-icons li:last-child .home-icon-name {
   right: 0;
   left: auto;
   transform: none;
@@ -557,12 +560,13 @@
   }
 
   .home-icons {
-    gap: 8px;
+    gap: 6px;
+    max-width: calc(8 * 34px + 7 * 6px);
   }
 
   .home-icons img {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
   }
 
   .home-featured-copy {

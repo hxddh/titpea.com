@@ -3,6 +3,22 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "bilingual",
   line: "everyday",
+  featured: {
+    order: 3,
+    image: {
+      src: { en: "/assets/bilingual-en.webp", zh: "/assets/bilingual-zh.webp" },
+      width: 1280,
+      height: 800,
+      alt: {
+        en: "Store image: a French article with one paragraph’s English translation in the right margin",
+        zh: "商店图片：英文文章中一段的中文译文显示在右侧边注",
+      },
+    },
+    caption: {
+      en: "Illustration: store image with sample translations",
+      zh: "示意图：商店图片，译文为示例",
+    },
+  },
   icon: "/assets/icons/bilingual.webp",
   og: "/assets/og-bilingual.png",
   schema: {

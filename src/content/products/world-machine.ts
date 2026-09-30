@@ -3,6 +3,18 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "world-machine",
   line: "games",
+  featured: {
+    order: 1,
+    image: {
+      src: "/assets/world-machine-town.webp",
+      width: 1100,
+      height: 900,
+      alt: {
+        en: "World Machine on day 1,082 of a Tiny Society town at dusk: the whole town stacked up the hill, lit windows, a telescope and a lighthouse, and Mara asking how to open the new bread cart. Captured from the app running in its Linux preview.",
+        zh: "World Machine 里 Tiny Society 小镇的第 1082 天黄昏：整座小镇沿山坡层层排开，窗里亮着灯，有望远镜和灯塔，Mara 在问新面包车怎么开张。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+      },
+    },
+  },
   repo: "hxddh/world-machine",
   icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",
@@ -36,13 +48,21 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-plot.webp",
-        alt: "World Machine on day 27 of Tiny Society: a plot on the square offers a clock tower, bookshop, cheese shop, surgery, pottery or gallery with their costs, while Evan asks whether to stay or take a job. Captured from the app running in its Linux preview.",
+        src: "/assets/world-machine-noon.webp",
+        alt: "World Machine on day 1,082 of a Tiny Society town at noon: gauges for work, money in town and spirits, the harbour street with its shops and plots, and Mara asking how to open the new bread cart. Captured from the app running in its Linux preview.",
         width: 1100,
         height: 900,
       },
     },
     showcases: [
+      {
+        src: "/assets/world-machine-ares.webp",
+        width: 1100,
+        height: 900,
+        alt: "Pocket Universe on Ares, sol 180: habitat modules and domes on red regolith under a butterscotch sky, gauges for trust, tension and stores, and colonists talking by the solar panel. Captured from the app running in its Linux preview.",
+        title: "Not only a harbour.",
+        body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
+      },
       {
         src: "/assets/world-machine-moment.webp",
         width: 1100,
@@ -63,7 +83,7 @@ export default defineProduct({
           { title: "Build on plots", body: "What you build decides who moves in." },
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk to anyone", body: "People understand everyday phrasing, in English or Chinese." },
-          { title: "On any screen edge", body: "A strip you can click; drag its letters open." },
+          { title: "Agent-ready", body: "Let a local agent like Pi, or your key, drive it." },
           { title: "Share a World", body: "Read-only World codes; a friend's resident can visit." },
         ],
       },
@@ -86,7 +106,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. Releases v0.20 to v0.23 each open Worlds saved by the release before, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history.",
+            body: "No. World Machine is an experimental pre-alpha. Releases v0.20 to v0.24 each open Worlds saved by the release before, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history.",
           },
           {
             title: "How do I open it the first time?",
@@ -95,6 +115,10 @@ export default defineProduct({
           {
             title: "How far does a World move while I am away?",
             body: "One period for every six hours you were away, at most 28 periods (a week) per return. The return briefing says how many.",
+          },
+          {
+            title: "Can an agent drive it?",
+            body: "Yes, if you want. People choose from actions the World offers through one agent interface, and a local agent such as Pi can make those choices. With World voice on in Settings, a local agent or your own API key also tells you what happened while you were away and answers the people you talk to. Pi runs with no tools, extensions or session, and every decision is recorded, so replaying a World never asks the agent again.",
           },
           {
             title: "Do people understand everything I type?",
@@ -132,13 +156,21 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-plot.webp",
-        alt: "Tiny Society 第 27 天的 World Machine：广场上的一块地可以建钟楼、书店、奶酪店、诊所、陶艺坊或画廊，各标造价；Evan 在问留下还是去接那份工作。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        src: "/assets/world-machine-noon.webp",
+        alt: "World Machine 里 Tiny Society 小镇的第 1082 天正午：工作、镇上的钱与心气三个指标，港口街道上的店铺和空地，Mara 在问新面包车怎么开张。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         width: 1100,
         height: 900,
       },
     },
     showcases: [
+      {
+        src: "/assets/world-machine-ares.webp",
+        width: 1100,
+        height: 900,
+        alt: "Pocket Universe 的 Ares 第 180 个火星日：红色风化层上的居住舱和穹顶、奶糖色的天空，信任、紧张与储备三个指标，殖民者在太阳能板旁聊天。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        title: "不只是港口",
+        body: "Pocket Universe 可以落在 Ares、1987 年的 Maple Street 或 Icebridge，各有各的样子。",
+      },
       {
         src: "/assets/world-machine-moment.webp",
         width: 1100,
@@ -159,7 +191,7 @@ export default defineProduct({
           { title: "在地块上建造", body: "你建的东西决定谁搬来。" },
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "和谁都能聊", body: "听得懂日常说法，中文英文都行。" },
-          { title: "放在屏幕任意边", body: "长条可以点居民，拖开来信。" },
+          { title: "可接 Agent", body: "本机 Agent（如 Pi）或你自己的密钥，都能驱动它。" },
           { title: "分享一个世界", body: "World 代码只读打开；朋友的居民能来做客。" },
         ],
       },
@@ -182,7 +214,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.20 到 v0.23 每一版都能打开上一版保存的世界，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。",
+            body: "不稳定。World Machine 是实验性的早期预览版。v0.20 到 v0.24 每一版都能打开上一版保存的世界，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。",
           },
           {
             title: "第一次怎么打开？",
@@ -191,6 +223,10 @@ export default defineProduct({
           {
             title: "离开时世界会走多远？",
             body: "每离开六小时前进一个周期，每次回来最多 28 个周期（一周）。回来时的简报会说明走了多少。",
+          },
+          {
+            title: "能让 Agent 来驱动吗？",
+            body: "可以，看你需要。居民通过统一的 Agent 接口，从世界给出的行动里做选择，本机 Agent（如 Pi）可以替他们选。在设置里打开世界之声后，本机 Agent 或你自己的 API 密钥还会讲述你离开时发生的事，并替居民回答你。Pi 运行时不带工具、扩展和会话；每个决定都会记录下来，回放世界时不会再问 Agent。",
           },
           {
             title: "我打的每句话都能听懂吗？",

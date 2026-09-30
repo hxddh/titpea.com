@@ -232,8 +232,12 @@ export type Product = {
   line: Line;
   /** The featured products (at most three) lead Home with this photograph. */
   featured?: {
+    /** Row order on Home, from 1. */
+    order: number;
     /** One capture, or one per locale when the app's own UI is in that language. */
     image: Omit<Image, "src" | "alt"> & { src: string | Record<Locale, string>; alt: Record<Locale, string> };
+    /** Shown under the image; required wording for anything that is not a plain capture. */
+    caption?: Record<Locale, string>;
   };
   /**
    * App icon: hero, local nav, catalog, About, 404, share image. Required
