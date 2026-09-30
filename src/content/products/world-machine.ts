@@ -49,7 +49,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/world-machine-noon.webp",
-        alt: "World Machine on day 1,082 of a Tiny Society town at noon: gauges for work, money in town and spirits, the harbour street with its shops and plots, and Mara asking how to open the new bread cart. Captured from the app running in its Linux preview.",
+        alt: "Tiny Society on day 21 at noon, drawn with hand-inked outlines: gauges for work, money in town and spirits, four houses and a shop above the harbour with two staked plots, and a card saying chapter 2, The year of the great storm, has ended. Captured from the app running in its Linux preview.",
         width: 1100,
         height: 900,
       },
@@ -71,6 +71,14 @@ export default defineProduct({
         title: "Moments become panels.",
         body: "Weddings, births and farewells, drawn before, during and after.",
       },
+      {
+        src: "/assets/world-machine-night.webp",
+        width: 1100,
+        height: 900,
+        alt: "The same Tiny Society harbour on day 21 at night: lit windows under a dark blue sky, and the gauges, buttons and chapter card all turned dark to match. Captured from the app running in its Linux preview.",
+        title: "After dark, the window goes dark.",
+        body: "Cards, buttons and gauges never outshine the night sky.",
+      },
     ],
     sections: [
       {
@@ -84,7 +92,7 @@ export default defineProduct({
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk to anyone", body: "People understand everyday phrasing, in English or Chinese." },
           { title: "Agent-ready", body: "Let a local agent like Pi, or your key, drive it." },
-          { title: "Share a World", body: "Read-only World codes; a friend's resident can visit." },
+          { title: "Share a World", body: "Size-limited, checked World codes; a friend's resident can visit." },
         ],
       },
       {
@@ -106,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. Releases v0.20 to v0.24 each open Worlds saved by the release before, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history.",
+            body: "No. World Machine is an experimental pre-alpha. v0.25 opens and plays on Worlds saved by v0.20 to v0.24, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -118,7 +126,7 @@ export default defineProduct({
           },
           {
             title: "Can an agent drive it?",
-            body: "Yes, if you want. People choose from actions the World offers through one agent interface, and a local agent such as Pi can make those choices. With World voice on in Settings, a local agent or your own API key also tells you what happened while you were away and answers the people you talk to. Pi runs with no tools, extensions or session, and every decision is recorded, so replaying a World never asks the agent again.",
+            body: "Yes, if you want. People choose from actions the World offers through one agent interface, and a local agent such as Pi can make those choices. With World voice on in Settings, a local agent or your own API key also tells you what happened while you were away and answers the people you talk to. Your API key stays in your login keychain and is never handed to a Pack. Pi runs with no tools, extensions or session, and every decision is recorded, so replaying a World never asks the agent again.",
           },
           {
             title: "Do people understand everything I type?",
@@ -157,7 +165,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/world-machine-noon.webp",
-        alt: "World Machine 里 Tiny Society 小镇的第 1082 天正午：工作、镇上的钱与心气三个指标，港口街道上的店铺和空地，Mara 在问新面包车怎么开张。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        alt: "Tiny Society 第 21 天正午，线条像手绘墨线：工作、镇上的钱与心气三个指标，港口上方四栋房子和一家店，两块插着小旗的空地。一张卡片写着第 2 章「The year of the great storm」已结束。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         width: 1100,
         height: 900,
       },
@@ -179,6 +187,14 @@ export default defineProduct({
         title: "大事画成三格",
         body: "婚礼、出生、告别，画成之前、当时、之后。",
       },
+      {
+        src: "/assets/world-machine-night.webp",
+        width: 1100,
+        height: 900,
+        alt: "同一座 Tiny Society 港口第 21 天的夜里：深蓝夜空下窗里亮着灯，指标、按钮和章节卡片也都随之变暗。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        title: "天黑了，窗口也暗下来",
+        body: "卡片、按钮和指标都不会比夜空更亮。",
+      },
     ],
     sections: [
       {
@@ -192,7 +208,7 @@ export default defineProduct({
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "和谁都能聊", body: "听得懂日常说法，中文英文都行。" },
           { title: "可接 Agent", body: "本机 Agent（如 Pi）或你自己的密钥，都能驱动它。" },
-          { title: "分享一个世界", body: "World 代码只读打开；朋友的居民能来做客。" },
+          { title: "分享一个世界", body: "World 代码有大小上限并经检查；朋友的居民能来做客。" },
         ],
       },
       {
@@ -214,7 +230,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.20 到 v0.24 每一版都能打开上一版保存的世界，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。",
+            body: "不稳定。World Machine 是实验性的早期预览版。v0.25 能打开 v0.20 到 v0.24 保存的世界并继续运行，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
@@ -226,7 +242,7 @@ export default defineProduct({
           },
           {
             title: "能让 Agent 来驱动吗？",
-            body: "可以，看你需要。居民通过统一的 Agent 接口，从世界给出的行动里做选择，本机 Agent（如 Pi）可以替他们选。在设置里打开世界之声后，本机 Agent 或你自己的 API 密钥还会讲述你离开时发生的事，并替居民回答你。Pi 运行时不带工具、扩展和会话；每个决定都会记录下来，回放世界时不会再问 Agent。",
+            body: "可以，看你需要。居民通过统一的 Agent 接口，从世界给出的行动里做选择，本机 Agent（如 Pi）可以替他们选。在设置里打开世界之声后，本机 Agent 或你自己的 API 密钥还会讲述你离开时发生的事，并替居民回答你。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack。Pi 运行时不带工具、扩展和会话；每个决定都会记录下来，回放世界时不会再问 Agent。",
           },
           {
             title: "我打的每句话都能听懂吗？",
