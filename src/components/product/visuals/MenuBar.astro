@@ -19,12 +19,12 @@ const { visual } = Astro.props;
   <div class="pulse-menubar-panel">
     <div class="pulse-menubar-header">
       <strong>{visual.headerStatus}</strong>
-      <span>{visual.headerAgents}</span>
+      {visual.headerAgents ? <span>{visual.headerAgents}</span> : null}
     </div>
     {
       visual.sections.map((section) => (
         <section class="pulse-menubar-section">
-          <p class="pulse-menubar-title">{section.title}</p>
+          {section.title ? <p class="pulse-menubar-title">{section.title}</p> : null}
           <ul>
             {section.rows.map((row) => (
               <li class={`pulse-row pulse-row-${row.state}`}>

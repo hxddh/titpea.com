@@ -146,14 +146,17 @@ export type Visual = VisualBase &
         menubarLabel: string;
         glanceTitle: string;
         headerStatus: string;
-        headerAgents: string;
+        /** Optional second header line; omit when the app's header has none. */
+        headerAgents?: string;
         sections: Array<{
-          title: string;
+          /** Omit for one ungrouped list, as the tray shows since Pulse 26. */
+          title?: string;
           /** Lamp shape: waiting solid, running ring, recent (your turn) hollow, process dashed. */
           rows: Array<{
             title: string;
             meta: string;
             state: "waiting" | "running" | "recent" | "process";
+            /** Trailing time or tag: wait length, turn length, or "Your turn". */
             chip?: string;
           }>;
         }>;

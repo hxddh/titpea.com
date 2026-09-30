@@ -37,13 +37,13 @@ export default defineProduct({
         {
           comment: "Local preflight — no S3 access",
           command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.37.0
+          capturedOutput: `OK    binary_version: 0.38.0
 OK    working_directory: /tmp/inventory
 OK    config_parse: resolved configuration is valid TOML/CLI state
 OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
 OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
 OK    provider: no provider preset; plain S3 settings apply
-OK    endpoint_url: no explicit endpoint URL required by the provider preset
+OK    endpoint_url: no endpoint URL: requests go to AWS S3 (pass --endpoint-url or --provider for another service)
 SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
@@ -152,7 +152,7 @@ Doctor status: ok`,
           },
           {
             title: "What does startup discovery do?",
-            body: "Every run starts with a few delimiter probes that find real `CommonPrefixes` boundaries; nothing is cached in the working directory. A flat namespace with no prefixes is split by single-key probes instead, so the run starts parallel either way.",
+            body: "Every run starts with a few delimiter probes that find real `CommonPrefixes` boundaries; nothing is cached in the working directory. A flat namespace with no prefixes is split by single-key probes instead, and so is a large flat directory under one prefix (like `data/part-…` under `data/`), so the run starts parallel either way.",
           },
           {
             title: "Can an interrupted run pick up where it stopped?",
@@ -188,13 +188,13 @@ Doctor status: ok`,
         {
           comment: "本地预检，不访问 S3",
           command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.37.0
+          capturedOutput: `OK    binary_version: 0.38.0
 OK    working_directory: /tmp/inventory
 OK    config_parse: resolved configuration is valid TOML/CLI state
 OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
 OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
 OK    provider: no provider preset; plain S3 settings apply
-OK    endpoint_url: no explicit endpoint URL required by the provider preset
+OK    endpoint_url: no endpoint URL: requests go to AWS S3 (pass --endpoint-url or --provider for another service)
 SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
@@ -301,7 +301,7 @@ Doctor status: ok`,
           },
           {
             title: "启动发现做了什么？",
-            body: "每次运行都先用几次 delimiter 探测找到真实的 `CommonPrefixes` 边界，不在工作目录里缓存。没有前缀的扁平命名空间改用 single-key 探测拆分，所以每次运行都能并行展开。",
+            body: "每次运行都先用几次 delimiter 探测找到真实的 `CommonPrefixes` 边界，不在工作目录里缓存。没有前缀的扁平命名空间改用 single-key 探测拆分，单个前缀下的大型扁平目录（如 `data/` 下的 `data/part-…`）也一样，所以每次运行都能并行展开。",
           },
           {
             title: "中断的任务能接着跑吗？",

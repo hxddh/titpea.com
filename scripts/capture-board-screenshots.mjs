@@ -2,6 +2,7 @@
  * Capture optimized product screenshots from local Goban / Chessboard web UIs.
  * Usage: node scripts/capture-board-screenshots.mjs
  *        node scripts/capture-board-screenshots.mjs --featured  (Home's Chessboard row only)
+ *        node scripts/capture-board-screenshots.mjs --only goban  (or chessboard)
  */
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -31,6 +32,7 @@ async function dismissToasts(page) {
   });
 }
 
+/** Chessboard's side panel; Goban has none since v1.74. */
 async function openPanel(page) {
   const open = await page.evaluate(() => document.getElementById("app")?.classList.contains("panel-open"));
   if (!open) {
@@ -61,30 +63,23 @@ async function captureGoban(browser, lang) {
         openingRule: "standard",
       }),
     );
-    localStorage.setItem("goban.panelOpen", "1");
   }, lang);
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
   await page.waitForTimeout(500);
 
+  // v1.74+: one board, a top bar and the timeline under it; no sidebar.
   await pasteGoban(page, GOMOKU_SGF);
   await page.waitForTimeout(800);
-  await openPanel(page);
   await dismissToasts(page);
   await writeWebp(page, `goban-game-board-${lang}.webp`);
 
-  const moves = page.locator("#move-list button");
-  const moveCount = await moves.count();
-
-  // Notebook theme at the finished position; the theme lives in the settings dialog.
+  // Notebook theme at the finished position; Settings is in the ⋯ menu.
+  await page.click("#more-btn");
   await page.click("#settings-btn");
   await page.click('#theme-seg button[data-theme="notebook"]');
   await page.click("#settings-close");
   await page.waitForTimeout(300);
-  if (moveCount > 0) {
-    await moves.nth(moveCount - 1).click();
-    await page.waitForTimeout(300);
-  }
   await dismissToasts(page);
   await writeWebp(page, `goban-notebook-${lang}.webp`);
 
@@ -197,9 +192,11 @@ async function main() {
     await browser.close();
     return;
   }
+  // `--only goban` or `--only chessboard` captures one app.
+  const only = process.argv.includes("--only") ? process.argv[process.argv.indexOf("--only") + 1] : undefined;
   for (const lang of ["en", "zh"]) {
-    await captureGoban(browser, lang);
-    await captureChessboard(browser, lang);
+    if (!only || only === "goban") await captureGoban(browser, lang);
+    if (!only || only === "chessboard") await captureChessboard(browser, lang);
   }
   await browser.close();
 }
