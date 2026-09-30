@@ -14,6 +14,7 @@ import agentRadar from "./agent-radar";
 import goban from "./goban";
 import chessboard from "./chessboard";
 import easierBookmarks from "./easier-bookmarks";
+import bilingual from "./bilingual";
 
 export const products: Product[] = [
   s3TurboList,
@@ -30,4 +31,5 @@ export const products: Product[] = [
   goban,
   chessboard,
   easierBookmarks,
+  bilingual,
 ];

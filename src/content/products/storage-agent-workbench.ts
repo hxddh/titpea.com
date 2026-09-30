@@ -31,7 +31,7 @@ export default defineProduct({
     lead: "Read-only tools. Local keys. Issues it remembers.",
     catalog: {
       role: "S3 investigation",
-      text: "Read-only S3 checks. What needs care, remembered between tasks.",
+      text: "Read-only S3 checks. What needs attention, remembered between tasks.",
     },
     primaryCta: {
       label: "Download",
@@ -59,8 +59,8 @@ export default defineProduct({
         id: "features",
         label: "Findings outlast the task.",
         items: [
-          { title: "Result first", body: "The answer, findings by severity, next steps." },
           { title: "Remembers your storage", body: "Accounts, buckets, and open Issues, most severe first." },
+          { title: "Fix packs", body: "An AWS CLI command, a Terraform resource, or the API document." },
           { title: "Fixes you apply", body: "Generated text you run with your own credentials." },
           { title: "Verify, read-only", body: "A re-check that can resolve the Issue." },
           { title: "Opt-in watch", body: "Re-checks an account on a schedule you set." },
@@ -84,7 +84,7 @@ export default defineProduct({
         items: [
           {
             title: "Does it need a model key?",
-            body: "Not for a local model: Ollama, LM Studio, vLLM, and llama.cpp run without one. Hosted providers such as OpenAI, Anthropic, DeepSeek, and OpenRouter need their key.",
+            body: "Not for a local model: Ollama, LM Studio, vLLM, and llama.cpp run without one. Hosted providers such as OpenAI, Anthropic, DeepSeek, and OpenRouter need their key. A local model with no context window set is treated as 16,384 tokens; set a larger value in Settings if your server runs one.",
           },
           {
             title: "What does the watch do?",
@@ -92,7 +92,11 @@ export default defineProduct({
           },
           {
             title: "What happens when I upgrade from v4?",
-            body: "On first start, v5 imports your model and storage settings, known buckets and Issues, and past results. The v4 database is left untouched.",
+            body: "Upgrading from v4 imports your model and storage settings, known buckets and Issues, and past results on first start. The v4 database is left untouched.",
+          },
+          {
+            title: "What will a fix change?",
+            body: "Each fix comes with a preview drawn from evidence the app holds, such as anonymous requests in the bucket’s access logs or existing lifecycle rules. When the evidence cannot tell, it says so.",
           },
           {
             title: "How is it different from StorageOps?",
@@ -138,8 +142,8 @@ export default defineProduct({
         id: "features",
         label: "发现不随任务结束",
         items: [
-          { title: "结论在前", body: "答案、按严重度排列的发现、下一步。" },
           { title: "记住你的存储", body: "账户、桶和未解决的问题，最严重的在前。" },
+          { title: "三种修复格式", body: "AWS CLI 命令、Terraform 资源或 API 文档。" },
           { title: "修复由你执行", body: "生成修复文本，用你自己的凭证执行。" },
           { title: "只读验证", body: "重新检查，可将问题标为已解决。" },
           { title: "可选巡检", body: "按你设定的周期重查账户。" },
@@ -163,7 +167,7 @@ export default defineProduct({
         items: [
           {
             title: "没有模型密钥能用吗？",
-            body: "用本地模型就不需要：Ollama、LM Studio、vLLM 和 llama.cpp 无需密钥。OpenAI、Anthropic、DeepSeek、OpenRouter 等托管服务需要各自的密钥。",
+            body: "用本地模型就不需要：Ollama、LM Studio、vLLM 和 llama.cpp 无需密钥。OpenAI、Anthropic、DeepSeek、OpenRouter 等托管服务需要各自的密钥。未设置上下文窗口的本地模型按 16,384 个 token 处理；服务端支持更大窗口时，请在设置里调高。",
           },
           {
             title: "巡检会做什么？",
@@ -171,7 +175,11 @@ export default defineProduct({
           },
           {
             title: "从 v4 升级会怎样？",
-            body: "v5 首次启动时导入模型与存储设置、已知的桶和问题，以及过往结果。v4 的数据库保持原样。",
+            body: "从 v4 升级后首次启动，会导入模型与存储设置、已知的桶和问题，以及过往结果。v4 的数据库保持原样。",
+          },
+          {
+            title: "修复会改变什么？",
+            body: "每个修复都附带影响预估，依据是应用已有的证据，例如桶访问日志里的匿名请求或现有的生命周期规则。证据不足以判断时，它会直说。",
           },
           {
             title: "和 StorageOps 有什么不同？",

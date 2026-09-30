@@ -16,7 +16,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { assertPinned, CHESS_PGN, GOMOKU_SGF, serveDir } from "./board-apps.mjs";
+import { assertPinned, CHESS_PGN, GOMOKU_SGF, pasteGoban, serveDir } from "./board-apps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "../public/assets");
@@ -94,10 +94,8 @@ async function recordGoban(browser, lang) {
             difficulty: "normal",
             humanColor: "b",
             soundOn: false,
-            themeId: "wood",
             thinkLevel: "standard",
             showCoords: true,
-            analysisOn: true,
             openingRule: "standard",
           }),
         );
@@ -105,10 +103,7 @@ async function recordGoban(browser, lang) {
       },
     },
     async (page) => {
-      await page.evaluate((sgf) => navigator.clipboard.writeText(sgf), GOMOKU_SGF);
-      await page.click("#sgf-paste");
-      const confirm = page.locator("#confirm-ok");
-      if (await confirm.isVisible().catch(() => false)) await confirm.click();
+      await pasteGoban(page, GOMOKU_SGF);
       await page.waitForTimeout(700);
       await quiet(page);
       // Open the sidebar Review panel and let its engine pass settle, so the
@@ -147,7 +142,6 @@ async function recordChessboard(browser, lang) {
           JSON.stringify({
             soundOn: false,
             flipped: false,
-            themeId: "wood",
             mode: "pvp",
             difficulty: "normal",
             humanColor: "w",
@@ -170,16 +164,9 @@ async function recordChessboard(browser, lang) {
       const run = page.locator("#an-run");
       if (await run.isVisible().catch(() => false)) {
         await run.click();
-        await page
-          .waitForFunction(
-            () => {
-              const button = document.getElementById("an-run");
-              return button && !button.disabled && !button.classList.contains("busy");
-            },
-            null,
-            { timeout: 60000 },
-          )
-          .catch(() => {});
+        // The accuracy line appears only once every ply has been evaluated.
+        await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
+        await page.waitForTimeout(800);
       }
       const moves = page.locator("#move-list button");
       const count = await moves.count();

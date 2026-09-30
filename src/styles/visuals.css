@@ -521,12 +521,22 @@
   fill: var(--data-caution-ink);
 }
 
+/* Lamp shapes, as in Pulse 24: solid = needs you, ring = running,
+   hollow = your turn / recent, dashed = process only. Shape carries the state
+   without colour; --muted keeps the grey outlines above 3:1 in both themes. */
 .pulse-lamp-running {
   color: var(--data-ref);
-  background: var(--data-ref);
+  background: transparent;
+  border-width: 3px;
 }
 
 .pulse-lamp-recent {
-  color: var(--faint);
+  color: var(--muted);
   background: transparent;
+}
+
+.pulse-lamp-process {
+  color: var(--muted);
+  background: transparent;
+  border-style: dashed;
 }

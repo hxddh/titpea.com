@@ -8,7 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import sharp from "sharp";
-import { assertPinned, CHESS_PGN, GOMOKU_SGF, serveDir } from "./board-apps.mjs";
+import { assertPinned, CHESS_PGN, GOMOKU_SGF, pasteGoban, serveDir } from "./board-apps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "../public/assets");
@@ -56,10 +56,8 @@ async function captureGoban(browser, lang) {
         difficulty: "normal",
         humanColor: "b",
         soundOn: false,
-        themeId: "wood",
         thinkLevel: "standard",
         showCoords: true,
-        analysisOn: true,
         openingRule: "standard",
       }),
     );
@@ -69,14 +67,7 @@ async function captureGoban(browser, lang) {
   await page.waitForSelector("#board");
   await page.waitForTimeout(500);
 
-  await page.evaluate(async (sgf) => {
-    await navigator.clipboard.writeText(sgf);
-  }, GOMOKU_SGF);
-  await page.click("#sgf-paste");
-  const confirm = page.locator("#confirm-ok");
-  if (await confirm.isVisible().catch(() => false)) {
-    await confirm.click();
-  }
+  await pasteGoban(page, GOMOKU_SGF);
   await page.waitForTimeout(800);
   await openPanel(page);
   await dismissToasts(page);
@@ -112,7 +103,6 @@ async function captureChessboard(browser, lang) {
         JSON.stringify({
           soundOn: false,
           flipped: false,
-          themeId: "wood",
           mode: "pvp",
           difficulty: "normal",
           humanColor: "w",
@@ -136,13 +126,15 @@ async function captureChessboard(browser, lang) {
   if (await analyzeBtn.isVisible().catch(() => false)) {
     await analyzeBtn.click();
     // The accuracy line appears only once every ply has been evaluated.
-    await page.waitForSelector("#acc-line:not([hidden])", { timeout: 120000 });
+    await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
     await page.waitForTimeout(800);
   }
-  // Night theme on the final position, with the Setup tab's theme controls in view.
+  // Dark appearance with the green board on the final position, set in Preferences.
   await page.click("#rep-end").catch(() => {});
-  await page.click("#tab-setup");
-  await page.click('#theme-seg button[data-theme="night"]');
+  await page.click("#prefs-open");
+  await page.click('#prefs-look button[data-appearance="dark"]');
+  await page.click('#prefs-look button[data-board-id="green"]');
+  await page.click("#prefs-close");
   await page.mouse.move(0, 0);
   await page.waitForTimeout(400);
   await dismissToasts(page);
@@ -167,7 +159,6 @@ async function captureChessboardFeatured(browser, lang) {
         JSON.stringify({
           soundOn: false,
           flipped: false,
-          themeId: "wood",
           mode: "pvp",
           difficulty: "normal",
           humanColor: "w",
@@ -185,7 +176,7 @@ async function captureChessboardFeatured(browser, lang) {
   await openPanel(page);
   await page.click("#an-run");
   // The accuracy line appears only once every ply has been evaluated.
-  await page.waitForSelector("#acc-line:not([hidden])", { timeout: 120000 });
+  await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
   await page.waitForTimeout(800);
   await page.click("#rep-start");
   await page.waitForTimeout(300);

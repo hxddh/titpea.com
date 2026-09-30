@@ -29,7 +29,7 @@ export default defineProduct({
       label: "Usage",
       href: "https://github.com/hxddh/https-traffic-inspector#usage",
     },
-    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / wss handshake · NDJSON / HAR",
+    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "Get started",
       sub: "Requires Go 1.24+. Pre-built binaries are on the Releases page.",
@@ -47,14 +47,14 @@ export default defineProduct({
     visual: {
       kind: "httpTerminal",
       label: "httpmon",
-      kicker: "httpmon v1.2.1 · captured output",
+      kicker: "httpmon v1.4.1 · captured output",
       status: "captured",
       requestLabel: "REQUEST #1",
       requestMeta: "Host: proxy.golang.org · Accept: */* · User-Agent: curl/8.5.0",
-      responseLabel: "RESPONSE",
-      response: "HTTP/1.1 200 OK",
-      responseMeta: "Content-Type: text/plain; charset=UTF-8 · Content-Length: 63",
-      body: "v1.0.2 v1.0.0 v1.1.1 …",
+      responseLabel: "RESPONSE #1",
+      response: "HTTP/2.0 200 OK (3.21s)",
+      responseMeta: "Content-Type: text/plain; charset=UTF-8 · Content-Length: 91",
+      body: "v1.3.0 v1.0.2 v1.0.0 v1.1.1 v1.4.1 …",
       footnotes: ["local HTTPS inspection", "original response stream stays with the command"],
       command: "httpmon curl -sS https://proxy.golang.org/github.com/hxddh/https-traffic-inspector/@v/list",
       method: "GET",
@@ -69,7 +69,7 @@ export default defineProduct({
         items: [
           { title: "Request and response", body: "Method, URL, headers, status, timing; decoded for display only." },
           { title: "Original stream", body: "The command gets its response unchanged." },
-          { title: "Filter", body: "`--filter` by URL or host." },
+          { title: "HTTP/2 and gRPC", body: "Trailers carried through; gRPC status decoded." },
         ],
       },
       {
@@ -80,7 +80,10 @@ export default defineProduct({
         title: "Only the wrapped process is configured.",
         body: "A local MITM proxy gives its address and a temporary CA to one child process.",
         steps: [
-          { label: "Start locally", body: "Put `httpmon` before a proxy-aware command. No system proxy changes." },
+          {
+            label: "Start locally",
+            body: "Put `httpmon` before a proxy-aware command. It listens on `127.0.0.1` only; no system proxy changes.",
+          },
           { label: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
           { label: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
         ],
@@ -93,11 +96,11 @@ export default defineProduct({
         items: [
           {
             title: "Which commands can it wrap?",
-            body: "curl, aws, Python, Node, or any other proxy-aware command. Only that child process gets the proxy address and temporary CA; your system proxy and global network settings stay as they are.",
+            body: "curl, aws, Python, Node, or any other proxy-aware command. Only that child process gets the proxy address and temporary CA; your system proxy and global network settings stay as they are. Go programs skip the proxy for loopback targets, Node’s built-in `fetch` needs Node 22.21 or 24, and JVM tools are not configured automatically.",
           },
           {
-            title: "Does it handle HTTPS and wss?",
-            body: "It handles HTTPS and captures the `wss://` upgrade handshake. After the 101 response, WebSocket frames are spliced in both directions.",
+            title: "Does it handle HTTPS, HTTP/2, and WebSocket?",
+            body: "Yes. HTTPS is decrypted locally. HTTP/2 is negotiated with the command and the upstream separately; gRPC calls show their status from the trailers, and their bodies are summarised, not decoded. For `wss://` and `ws://` the upgrade handshake is logged, then frames are spliced in both directions.",
           },
           {
             title: "Can recordings hold secrets?",
@@ -129,7 +132,7 @@ export default defineProduct({
       label: "使用方法",
       href: "https://github.com/hxddh/https-traffic-inspector#usage",
     },
-    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / wss handshake · NDJSON / HAR",
+    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "开始使用",
       sub: "需要 Go 1.24+。Releases 页面也有预编译二进制。",
@@ -147,14 +150,14 @@ export default defineProduct({
     visual: {
       kind: "httpTerminal",
       label: "httpmon",
-      kicker: "httpmon v1.2.1 · 实际输出",
+      kicker: "httpmon v1.4.1 · 实际输出",
       status: "已捕获",
       requestLabel: "REQUEST #1",
       requestMeta: "Host: proxy.golang.org · Accept: */* · User-Agent: curl/8.5.0",
-      responseLabel: "RESPONSE",
-      response: "HTTP/1.1 200 OK",
-      responseMeta: "Content-Type: text/plain; charset=UTF-8 · Content-Length: 63",
-      body: "v1.0.2 v1.0.0 v1.1.1 …",
+      responseLabel: "RESPONSE #1",
+      response: "HTTP/2.0 200 OK (3.21s)",
+      responseMeta: "Content-Type: text/plain; charset=UTF-8 · Content-Length: 91",
+      body: "v1.3.0 v1.0.2 v1.0.0 v1.1.1 v1.4.1 …",
       footnotes: ["HTTPS 只在本地解密查看", "原始响应流继续交给命令"],
       command: "httpmon curl -sS https://proxy.golang.org/github.com/hxddh/https-traffic-inspector/@v/list",
       method: "GET",
@@ -169,7 +172,7 @@ export default defineProduct({
         items: [
           { title: "请求和响应", body: "方法、URL、头、状态码、耗时；解压只为显示。" },
           { title: "原始响应流", body: "命令收到的响应原样不动。" },
-          { title: "筛选", body: "用 `--filter` 按 URL 或域名筛。" },
+          { title: "HTTP/2 与 gRPC", body: "透传 trailers，解出 gRPC 状态。" },
         ],
       },
       {
@@ -180,7 +183,7 @@ export default defineProduct({
         title: "只配置被包住的进程",
         body: "本地 MITM 代理把地址和临时 CA 交给一个子进程。",
         steps: [
-          { label: "本地启动", body: "在支持代理的命令前加 `httpmon`，系统代理不变。" },
+          { label: "本地启动", body: "在支持代理的命令前加 `httpmon`。只监听 `127.0.0.1`，系统代理不变。" },
           { label: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
           { label: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
         ],
@@ -193,11 +196,11 @@ export default defineProduct({
         items: [
           {
             title: "能包住哪些命令？",
-            body: "curl、aws、Python、Node 或其他支持代理的命令。只有这个子进程拿到代理地址和临时 CA，系统代理和全局网络设置保持不变。",
+            body: "curl、aws、Python、Node 或其他支持代理的命令。只有这个子进程拿到代理地址和临时 CA，系统代理和全局网络设置保持不变。Go 程序访问本机回环地址时不走代理；Node 内置的 `fetch` 需要 Node 22.21 或 24；JVM 工具不会自动配置。",
           },
           {
-            title: "支持 HTTPS 和 wss 吗？",
-            body: "支持 HTTPS，也会记录 `wss://` 的升级握手。收到 101 响应后，WebSocket 帧会在两端之间直接转发。",
+            title: "支持 HTTPS、HTTP/2 和 WebSocket 吗？",
+            body: "支持。HTTPS 在本地解密查看。HTTP/2 与命令和上游分别协商；gRPC 调用会从 trailers 解出状态，消息体只做摘要，不解码。`wss://` 和 `ws://` 会记录升级握手，之后帧在两端之间直接转发。",
           },
           {
             title: "录制会含敏感信息吗？",

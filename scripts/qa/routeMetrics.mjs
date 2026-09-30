@@ -21,7 +21,7 @@ export async function checkRoute(page, viewport, route) {
       const primaryCta = document.querySelector(".home-featured-card, .button.primary");
       const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
-      const heroActions = hero?.querySelectorAll(".actions a") ?? [];
+      const heroActions = hero?.querySelectorAll(".actions a, .actions .button.is-soon") ?? [];
       const cards = Array.from(document.querySelectorAll(".section-card-grid > article"));
       const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
 
@@ -85,8 +85,11 @@ export async function checkRoute(page, viewport, route) {
               const images = Array.from(document.querySelectorAll(".product-scene img"));
               return {
                 imageCount: images.length,
+                // A listing still in review shows the unlinked "coming soon" action instead.
                 hasChromeCta: Boolean(
-                  document.querySelector(`a.button.primary[href^="https://chromewebstore.google.com/detail"]`),
+                  document.querySelector(
+                    `a.button.primary[href^="https://chromewebstore.google.com/detail"], .product-hero .button.primary.is-soon`,
+                  ),
                 ),
                 hasPrivacyText:
                   route.locale === "zh"

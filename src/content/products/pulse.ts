@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "Pulse",
     description:
-      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Support varies by agent.",
+      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Seven agents, through their own hooks.",
     eyebrow: "Waiting lamp for agent sessions",
     headline: "Which agent needs you.",
     lead: "Red means blocked. Your turn stays quiet. Every lamp says why.",
@@ -36,15 +36,15 @@ export default defineProduct({
       label: "Pulse",
       menubarLabel: "Illustrative session list",
       glanceTitle: "1 · 4m",
-      headerStatus: "Needs you · 1 · Your turn · 1",
-      headerAgents: "Claude · Codex",
+      headerStatus: "1 needs you · 2 running · 1 your turn",
+      headerAgents: "updated 3s ago",
       sections: [
         {
           title: "Needs you · 1",
           rows: [
             {
-              title: "Approve package install",
-              meta: "Red: Claude's hook reported permission, 4m ago",
+              title: "Add a package · Claude",
+              meta: "Bash: npm install",
               state: "waiting",
               chip: "4m",
             },
@@ -54,25 +54,30 @@ export default defineProduct({
           title: "Your turn · 1",
           rows: [
             {
-              title: "Review failing CI",
-              meta: "~/code/titpea · Codex · turn ended 1m ago",
+              title: "Review failing CI · Codex",
+              meta: "~/code/titpea · 1m ago",
               state: "recent",
               chip: "Your turn",
             },
           ],
         },
         {
-          title: "Running · 1",
+          title: "Running · 2",
           rows: [
             {
-              title: "Draft release notes",
-              meta: "~/code/pulse · 2m ago",
+              title: "Draft release notes · Gemini",
+              meta: "~/code/pulse · 2m",
               state: "running",
+            },
+            {
+              title: "Pi",
+              meta: "Process only · no hook event yet",
+              state: "process",
             },
           ],
         },
       ],
-      footnotes: ["local probe · harvest · hooks", "a row focuses its tab, workspace, or app when known"],
+      footnotes: ["hooks · process · session file", "↩ Go to terminal, or Open app"],
     },
     sections: [
       {
@@ -82,10 +87,10 @@ export default defineProduct({
         items: [
           { title: "Red means blocked", body: "A permission request or a question is waiting." },
           { title: "Your turn, quietly", body: "Finished turns are counted in the header; no banner, no sound." },
-          { title: "Every lamp says why", body: "Which signal, what kind, and how long ago." },
-          { title: "Support varies by agent", body: "32 agents; some have no waiting signal." },
-          { title: "Back to the session", body: "Focus its tab, workspace, or app when known." },
-          { title: "No blind approve", body: "Allow appears only beside the full request." },
+          { title: "Every lamp says why", body: "Hover the menu-bar lamp for the rule behind its colour." },
+          { title: "Seven agents, own hooks", body: "Five turn red; Codex and Cursor show running and your turn." },
+          { title: "Back to the session", body: "Go to terminal when the pane is known; otherwise Open app." },
+          { title: "Answers stay in the agent", body: "Pulse never answers; reply in the agent's own prompt." },
         ],
       },
       {
@@ -93,9 +98,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Session detection, collection, and hooks run on this Mac; hook history never leaves it.",
-          "Update checks read the public GitHub releases with an anonymous request.",
-          "With a Respond key file, remote verdicts travel only through your own sync tool.",
+          "State comes only from each agent's own hooks on this Mac; Pulse reads no protected app data.",
+          "Hooks add only observe-only events, and removing them restores each file byte for byte.",
+          "Update checks read the public GitHub releases anonymously and open the release page.",
         ],
       },
       {
@@ -105,15 +110,11 @@ export default defineProduct({
         items: [
           {
             title: "Which agents show waiting?",
-            body: "It depends on the agent. Claude Code turns red from its hooks, or from its own `claude agents --json` report when hooks are not installed. Codex waits come from its session data, and its hooks add Your turn once you trust them with `/hooks` in Codex. Your turn comes only from Claude Code and Codex hooks. Some agents, such as Aider and Continue, have no waiting signal and show Running. Install or reinstall hooks in Settings → Waiting signals.",
+            body: "Five: Claude Code, Gemini CLI, Copilot CLI, OpenCode and Pi, through the hook, plugin or extension each vendor documents. Codex and Cursor show running and your turn only, and say they do not report waiting. Install them in Settings → Hooks. A session that started before Pulse shows as a process until its next event.",
           },
           {
             title: "Why is an agent not turning red?",
-            body: "Open Settings → About → Run self-check. It runs only when you click, reads without changing anything, and says which signal is verified, unconfirmed, or needs action on this Mac.",
-          },
-          {
-            title: "Can I answer a request from Pulse?",
-            body: "Only after you opt in to Respond with a key file. The row and banner offer Deny; there is no rules engine, always-allow, or auto-approve, and every failure falls back to the agent's own prompt.",
+            body: "Open ⋯ → Diagnostics… → Run self-check. It reads each agent's hook file and the events Pulse has seen, runs no agent CLI, writes nothing, and says which contracts are proven on this Mac.",
           },
           {
             title: "Why does macOS block the first open?",
@@ -125,7 +126,8 @@ export default defineProduct({
   },
   zh: {
     title: "Pulse",
-    description: "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持程度因 Agent 而异。",
+    description:
+      "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持七个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的状态灯",
     headline: "看看哪个 Agent 需要你",
     lead: "红灯只给阻塞。轮到你只安静计数。每盏灯都说出原因。",
@@ -146,16 +148,16 @@ export default defineProduct({
       kind: "menuBar",
       label: "Pulse",
       menubarLabel: "会话列表示意",
-      glanceTitle: "1 · 4m",
-      headerStatus: "需要你 · 1 · 轮到你 · 1",
-      headerAgents: "Claude · Codex",
+      glanceTitle: "1 · 4 分钟",
+      headerStatus: "1 个需要你 · 2 个运行中 · 1 个轮到你",
+      headerAgents: "3 秒前更新",
       sections: [
         {
           title: "需要你 · 1",
           rows: [
             {
-              title: "批准安装依赖",
-              meta: "红灯：Claude 的 hook 报告了「权限」· 4 分钟前",
+              title: "添加依赖 · Claude",
+              meta: "Bash: npm install",
               state: "waiting",
               chip: "4m",
             },
@@ -165,25 +167,30 @@ export default defineProduct({
           title: "轮到你 · 1",
           rows: [
             {
-              title: "查看失败的 CI",
-              meta: "~/code/titpea · Codex · 1 分钟前回合结束",
+              title: "查看失败的 CI · Codex",
+              meta: "~/code/titpea · 1 分钟前",
               state: "recent",
               chip: "轮到你",
             },
           ],
         },
         {
-          title: "运行中 · 1",
+          title: "运行中 · 2",
           rows: [
             {
-              title: "起草 Release 说明",
-              meta: "~/code/pulse · 2 分钟前",
+              title: "起草 Release 说明 · Gemini",
+              meta: "~/code/pulse · 2 分钟",
               state: "running",
+            },
+            {
+              title: "Pi",
+              meta: "仅进程 · 还没有 hook 事件",
+              state: "process",
             },
           ],
         },
       ],
-      footnotes: ["本地探测 · 采集 · hooks", "有句柄时聚焦对应标签页、工作区或应用"],
+      footnotes: ["hooks · 进程 · 会话文件", "↩ 前往终端，或打开应用"],
     },
     sections: [
       {
@@ -193,10 +200,10 @@ export default defineProduct({
         items: [
           { title: "红灯只给阻塞", body: "授权请求或提问正在等你。" },
           { title: "轮到你不报警", body: "做完的回合只在头部计数，不弹通知、不响。" },
-          { title: "每盏灯说原因", body: "哪个信号、哪一类、多久之前。" },
-          { title: "支持因 Agent 而异", body: "共 32 个 Agent，部分没有等待信号。" },
-          { title: "回到原会话", body: "有可靠句柄时聚焦标签页、工作区或应用。" },
-          { title: "不盲目批准", body: "「同意」只出现在完整请求旁。" },
+          { title: "每盏灯说原因", body: "悬停菜单栏图标，看决定颜色的规则。" },
+          { title: "七个 Agent", body: "五个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
+          { title: "回到原会话", body: "能精确落点时「前往终端」，否则「打开应用」。" },
+          { title: "回答留在 Agent 里", body: "Pulse 不回答请求，在 Agent 自己的提示里作答。" },
         ],
       },
       {
@@ -204,9 +211,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "会话探测、采集和 hooks 都在本机进行，hook 事件记录不出这台 Mac。",
-          "更新检查以匿名请求读取公开的 GitHub Release。",
-          "配置 Respond 密钥文件后，远端判决只经你自己的同步工具送回。",
+          "状态只来自各 Agent 在本机的官方 hook；Pulse 不读取受 macOS 保护的应用数据。",
+          "hook 只装观察型事件，移除时逐字节还原每个文件。",
+          "更新检查以匿名请求读取公开的 GitHub Release，有新版本时打开发布页。",
         ],
       },
       {
@@ -216,15 +223,11 @@ export default defineProduct({
         items: [
           {
             title: "哪些 Agent 能显示等待？",
-            body: "取决于 Agent 本身。Claude Code 靠 hooks 亮红灯；没装 hooks 时，靠它自己的 `claude agents --json` 报告。Codex 的等待来自会话数据；在 Codex 里用 `/hooks` 信任一次后，它的 hooks 会补上「轮到你」。「轮到你」只来自 Claude Code 与 Codex 的 hooks。Aider、Continue 等部分 Agent 没有等待信号，只显示运行中。在「偏好设置 → 等待信号」安装或重新安装 hooks。",
+            body: "五个：Claude Code、Gemini CLI、Copilot CLI、OpenCode 和 Pi，走各家文档里的 hook、插件或扩展。Codex 与 Cursor 只显示运行中和轮到你，并注明不会报告它在等你。在「偏好设置 → Hooks」安装。Pulse 启动前就在跑的会话，要等它的下一个事件，之前只显示为进程。",
           },
           {
             title: "Agent 为什么没亮红灯？",
-            body: "打开「偏好设置 → 关于 → 运行自检」。自检只在点击时运行、只读，逐条说明这台 Mac 上哪条信号已验证、未证实或需处理。",
-          },
-          {
-            title: "能在 Pulse 里回应请求吗？",
-            body: "只有放置密钥文件、启用 Respond 之后才能。行与横幅只给「拒绝」；没有规则引擎、总是允许或自动批准，任何失败都回落到 Agent 自己的提示。",
+            body: "打开「⋯ → 诊断… → 运行自检」。自检读取各 Agent 的 hook 文件和 Pulse 收到的事件，不运行任何 Agent 命令、不写入任何东西，逐条说明哪些约定在这台 Mac 上已被证实。",
           },
           {
             title: "为什么首次打开被 macOS 拦下？",

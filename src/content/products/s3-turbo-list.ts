@@ -36,20 +36,22 @@ export default defineProduct({
       items: [
         {
           comment: "Local preflight — no S3 access",
-          command: "s3-turbo-list doctor --simple",
-          capturedOutput: `OK binary_version: 0.35.1
-OK working_directory: /tmp/inventory
-OK config_parse: resolved configuration is valid TOML/CLI state
-WARN config_file: no config file loaded (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply — run init-config for a starter config
-WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
-OK endpoint_profile: no endpoint compatibility profile selected
-OK endpoint_url: no explicit endpoint URL required by the selected profile
-SKIP proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
-SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
+          command: "s3-turbo-list doctor",
+          capturedOutput: `OK    binary_version: 0.37.0
+OK    working_directory: /tmp/inventory
+OK    config_parse: resolved configuration is valid TOML/CLI state
+OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
+OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
+OK    provider: no provider preset; plain S3 settings apply
+OK    endpoint_url: no explicit endpoint URL required by the provider preset
+SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
+SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
+Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
+Doctor status: ok`,
         },
         {
           comment: "Full recursive inventory → Parquet in out/",
-          command: "s3-turbo-list --output-dir out list --region us-east-2 --bucket my-bucket",
+          command: "s3-turbo-list list --bucket my-bucket --region us-east-2 --output-dir out",
         },
       ],
     },
@@ -146,15 +148,15 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           },
           {
             title: "Do I need a hints file?",
-            body: "No. List mode probes real `CommonPrefixes` boundaries on the first run. Hints files remain an optional control for repeated inventories.",
+            body: "No. List mode probes real `CommonPrefixes` boundaries itself. Hints files remain an optional control for repeated inventories.",
           },
           {
             title: "What does startup discovery do?",
-            body: "A few delimiter probes find real `CommonPrefixes` boundaries and cache them. A flat namespace with no prefixes is split by single-key probes instead, so the first run starts parallel either way.",
+            body: "Every run starts with a few delimiter probes that find real `CommonPrefixes` boundaries; nothing is cached in the working directory. A flat namespace with no prefixes is split by single-key probes instead, so the run starts parallel either way.",
           },
           {
             title: "Can an interrupted run pick up where it stopped?",
-            body: "Yes, when it ran with `--resume` from the start: only `--resume` runs keep a checkpoint. Progress is saved on Ctrl-C or SIGTERM; after a crash, the next `--resume` lists the unfinished segments again rather than skipping rows.",
+            body: "Yes. Every interrupted `list` run saves a checkpoint on Ctrl-C or SIGTERM. Run it again with `--resume` and the same `--output-dir`, and it lists only the key ranges not yet written; that output covers only those ranges, so combine it with the interrupted run’s. A crash leaves the previous checkpoint unchanged, and `diff` runs do not checkpoint.",
           },
         ],
       },
@@ -185,20 +187,22 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
       items: [
         {
           comment: "本地预检，不访问 S3",
-          command: "s3-turbo-list doctor --simple",
-          capturedOutput: `OK binary_version: 0.35.1
-OK working_directory: /tmp/inventory
-OK config_parse: resolved configuration is valid TOML/CLI state
-WARN config_file: no config file loaded (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply — run init-config for a starter config
-WARN aws_profile: AWS_PROFILE is not set; the AWS SDK will use its default credential chain
-OK endpoint_profile: no endpoint compatibility profile selected
-OK endpoint_url: no explicit endpoint URL required by the selected profile
-SKIP proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
-SKIP network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint`,
+          command: "s3-turbo-list doctor",
+          capturedOutput: `OK    binary_version: 0.37.0
+OK    working_directory: /tmp/inventory
+OK    config_parse: resolved configuration is valid TOML/CLI state
+OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
+OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
+OK    provider: no provider preset; plain S3 settings apply
+OK    endpoint_url: no explicit endpoint URL required by the provider preset
+SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
+SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
+Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
+Doctor status: ok`,
         },
         {
           comment: "完整递归清单 → out/ 里的 Parquet",
-          command: "s3-turbo-list --output-dir out list --region us-east-2 --bucket my-bucket",
+          command: "s3-turbo-list list --bucket my-bucket --region us-east-2 --output-dir out",
         },
       ],
     },
@@ -293,15 +297,15 @@ SKIP network: doctor is a local preflight and does not contact S3 endpoints; use
           },
           {
             title: "需要准备 hints 文件吗？",
-            body: "不需要。list 首次运行会探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的可选控制。",
+            body: "不需要。list 会自己探测真实的 `CommonPrefixes` 边界。hints 文件只是反复盘点时的可选控制。",
           },
           {
             title: "启动发现做了什么？",
-            body: "先用几次 delimiter 探测找到真实的 `CommonPrefixes` 边界并缓存。没有前缀的扁平命名空间改用 single-key 探测拆分，所以首次运行都能并行展开。",
+            body: "每次运行都先用几次 delimiter 探测找到真实的 `CommonPrefixes` 边界，不在工作目录里缓存。没有前缀的扁平命名空间改用 single-key 探测拆分，所以每次运行都能并行展开。",
           },
           {
             title: "中断的任务能接着跑吗？",
-            body: "能，前提是从第一次运行就加上 `--resume`：只有 `--resume` 运行会保留 checkpoint。按 Ctrl-C 或收到 SIGTERM 时保存进度；若进程崩溃，下次 `--resume` 会重新列举未完成的片段，而不是跳过未写出的行。",
+            body: "能。每次中断的 `list` 运行都会在 Ctrl-C 或 SIGTERM 时保存 checkpoint。用同一个 `--output-dir` 加上 `--resume` 再跑一次，只列举尚未写出的 key 范围；续跑的输出只含这些范围，需要与中断那次的输出合并。进程崩溃时保留上一次的 checkpoint，`diff` 运行不保存 checkpoint。",
           },
         ],
       },
