@@ -35,7 +35,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-en.webp",
-        alt: "Store image: Easier Bookmarks in Chrome’s side panel beside a web page, the Work folder open with site icons",
+        alt: "Store image: Easier Bookmarks in Chrome’s side panel beside a web page, a search box and + button at the top, the Work folder open with site icons, and a count of 14 bookmarks at the foot",
         width: 1280,
         height: 800,
       },
@@ -52,7 +52,7 @@ export default defineProduct({
           { title: "Save this page", body: "Title and link filled in. Already saved? It opens that one." },
           { title: "Drag to organize", body: "Into any folder or between items. Or Alt + ↑ / ↓." },
           { title: "Undo, not “Are you sure?”", body: "A deleted folder comes back whole, in place." },
-          { title: "Existing folders", body: "Chrome’s own bookmarks. Nothing to import." },
+          { title: "One key away", body: "Alt + B opens it; Control + B on Mac." },
         ],
       },
       {
@@ -92,7 +92,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-zh.webp",
-        alt: "商店图片：网页旁的 Chrome 侧边栏里是 Easier Bookmarks，“工作”文件夹已展开，带网站图标",
+        alt: "商店图片：网页旁的 Chrome 侧边栏里是 Easier Bookmarks，顶部是搜索框和 + 按钮，“工作”文件夹已展开，带网站图标，底部显示 14 个书签",
         width: 1280,
         height: 800,
       },
@@ -109,7 +109,7 @@ export default defineProduct({
           { title: "收藏当前页", body: "标题和网址自动填好；已收藏过就打开原书签。" },
           { title: "拖拽整理", body: "放进任意文件夹或两项之间，也可以按 Alt + ↑ / ↓。" },
           { title: "撤销代替确认", body: "删掉的文件夹连同内容原位恢复。" },
-          { title: "沿用文件夹", body: "就是 Chrome 自己的书签，无需导入。" },
+          { title: "一键打开", body: "按 Alt + B 打开；Mac 上为 Control + B。" },
         ],
       },
       {
