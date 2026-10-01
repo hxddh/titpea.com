@@ -50,8 +50,8 @@ export default defineProduct({
       title: "Lessons, puzzles, openings",
       items: [
         {
-          value: "96",
-          label: "lessons from zero to intermediate",
+          value: "120",
+          label: "lessons from zero to advanced",
         },
         {
           value: "40,000",
@@ -100,12 +100,12 @@ export default defineProduct({
         id: "features",
         label: "Lessons and games stay on this computer.",
         items: [
-          { title: "Offline lessons", body: "From zero to intermediate." },
-          { title: "Rated puzzles", body: "28 themes, with Sprint and Streak modes." },
+          { title: "Offline lessons", body: "From first moves to calculation." },
+          { title: "Rated puzzles", body: "28 themes; Rush, Streak, Look ahead, Blind mate." },
+          { title: "Guess the move", body: "Ten master games; other moves cost win chance." },
           { title: "A 21-rung ladder", body: "Each rung a step harder; results move your rating." },
           { title: "60 endgames", body: "Win or hold them against full-strength Stockfish." },
-          { title: "Your opening book", body: "Add moves as you explore; review them on a schedule." },
-          { title: "A searchable library", body: "Filter your games and explore their openings." },
+          { title: "Your opening book", body: "Up to 5,000 lines a side, reviewed on a schedule." },
         ],
       },
       {
@@ -137,7 +137,7 @@ export default defineProduct({
           },
           {
             title: "How many games can the library hold?",
-            body: "Up to 10,000, stored in the app's database with a mirror in a local data file. After a restart, a 10,000-game library lists again in about 0.2 seconds.",
+            body: "Up to 10,000. Filter them, find every game that reached a position, and explore their openings. Games are stored in the app's database with a mirror in a local data file. After a restart, a 10,000-game library lists again in about 0.2 seconds.",
           },
         ],
       },
@@ -166,8 +166,8 @@ export default defineProduct({
       title: "课程、题库、开局",
       items: [
         {
-          value: "96",
-          label: "课，从零基础到中级",
+          value: "120",
+          label: "课，从零基础到进阶",
         },
         {
           value: "40,000",
@@ -215,12 +215,12 @@ export default defineProduct({
         id: "features",
         label: "学棋与对弈都在这台电脑上",
         items: [
-          { title: "离线课程", body: "从零基础到中级。" },
-          { title: "谜题评级", body: "28 个主题，另有冲刺与连胜。" },
+          { title: "离线课程", body: "从认识棋盘到计算。" },
+          { title: "谜题评级", body: "28 个主题；冲刺、连胜、看 N 步、盲走。" },
+          { title: "名局猜着", body: "十局名局，和原着不同就按胜率差扣分。" },
           { title: "二十一档对手", body: "每往上一档都难一截，胜负计入等级分。" },
           { title: "60 个残局", body: "和满强度的 Stockfish 下，赢下来或守和。" },
-          { title: "你的开局书", body: "在开局浏览器里加着，按日程复习。" },
-          { title: "可搜索的棋谱库", body: "按条件筛选对局，附开局浏览器。" },
+          { title: "你的开局书", body: "每方最多 5,000 条线，按日程复习。" },
         ],
       },
       {
@@ -252,7 +252,7 @@ export default defineProduct({
           },
           {
             title: "棋谱库能存多少局？",
-            body: "最多一万局，存在应用的数据库里，并在本机数据文件中另存一份镜像。重启后，一万局的棋谱库约 0.2 秒就能列出来。",
+            body: "最多一万局。可以按条件筛选、找出经过某个局面的所有对局，并浏览它们的开局。对局存在应用的数据库里，并在本机数据文件中另存一份镜像。重启后，一万局的棋谱库约 0.2 秒就能列出来。",
           },
         ],
       },

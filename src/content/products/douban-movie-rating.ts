@@ -17,7 +17,7 @@ export default defineProduct({
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
     eyebrow: "Chrome extension",
     headline: "Ratings beside Douban.",
-    lead: "IMDb, Rotten Tomatoes, Metacritic. In the film info, as Douban tags. Title matches labelled.",
+    lead: "IMDb, Rotten Tomatoes, Metacritic. In the film info, like the cast. Title matches labelled.",
     catalog: {
       role: "On Douban",
       text: "IMDb, Rotten Tomatoes, and Metacritic in the film info; title matches labelled.",
@@ -30,13 +30,13 @@ export default defineProduct({
       label: "Privacy details",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
     },
-    meta: "Chrome Web Store · 1.4.1 · Ratings from OMDb",
+    meta: "Chrome Web Store · 1.6.1 · Ratings from OMDb",
     visual: {
       kind: "screenshot",
       label: "Douban Movie Rating Assistant",
       image: {
         src: "/assets/douban-movie-rating-ratings.webp",
-        alt: "Store image: a Douban film info panel for The Shawshank Redemption ending in an Other ratings line with IMDb 9.3 from 3.01 million votes, Rotten Tomatoes 89%, and Metacritic 82",
+        alt: "Store image: a Douban film info panel for The Shawshank Redemption ending in an Other ratings line written like the director and cast lines, as blue links split by slashes: IMDb 9.3 (3.01 million votes) / Rotten Tomatoes 89% / Metacritic 82",
         width: 1280,
         height: 800,
       },
@@ -51,6 +51,7 @@ export default defineProduct({
           { title: "In Douban’s own style", body: "IMDb with its vote count; click a score to open its site." },
           { title: "Says how it matched", body: "By the page’s IMDb ID; otherwise by title, and marked so." },
           { title: "Your own free key", body: "When the shared daily quota runs out, add an OMDb key." },
+          { title: "Quiet until needed", body: "Fades in once ratings arrive; speaks up only when you must act." },
         ],
       },
       {
@@ -82,7 +83,7 @@ export default defineProduct({
           },
           {
             title: "Why are ratings sometimes missing?",
-            body: "Ratings come from the OMDb API, and the built-in shared key has a daily limit. When it runs out, the page offers a link to enter a free OMDb key of your own, which is checked before it is saved. A request that fails or takes longer than 8 seconds can be retried with a click.",
+            body: "When OMDb has no entry or no rating for a film, nothing is shown. Ratings come from the OMDb API, and the built-in shared key has a daily limit. When it runs out, the page offers a link to enter a free OMDb key of your own, which is checked before it is saved. A request that fails or takes longer than 8 seconds can be retried with a click.",
           },
         ],
       },
@@ -94,7 +95,7 @@ export default defineProduct({
     description: "在豆瓣电影页面补充 IMDb、烂番茄和 Metacritic 评分的 Chrome 扩展（非豆瓣官方）。",
     eyebrow: "Chrome 扩展",
     headline: "在豆瓣，对照其他评分",
-    lead: "对照 IMDb、烂番茄和 Metacritic。以豆瓣标签的样式，显示在影片信息末尾。按片名匹配时会标注。",
+    lead: "对照 IMDb、烂番茄和 Metacritic。像导演、主演一样，写在影片信息末尾。按片名匹配时会标注。",
     catalog: {
       role: "豆瓣页上",
       text: "在影片信息里对照 IMDb、烂番茄和 Metacritic，按片名匹配会标注。",
@@ -107,13 +108,13 @@ export default defineProduct({
       label: "隐私说明",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
     },
-    meta: "Chrome 网上应用店 · 1.4.1 · 评分来自 OMDb",
+    meta: "Chrome 网上应用店 · 1.6.1 · 评分来自 OMDb",
     visual: {
       kind: "screenshot",
       label: "豆瓣电影评分助手",
       image: {
         src: "/assets/douban-movie-rating-ratings.webp",
-        alt: "商店图片：《肖申克的救赎》的豆瓣影片信息末尾多出一行「其他评分」，显示 IMDb 9.3（301 万人）、烂番茄 89% 和 Metacritic 82",
+        alt: "商店图片：《肖申克的救赎》的豆瓣影片信息末尾多出一行「其他评分」，与导演、主演行写法相同，蓝色链接以斜杠分隔：IMDb 9.3（301万人）/ 烂番茄 89% / Metacritic 82",
         width: 1280,
         height: 800,
       },
@@ -125,9 +126,10 @@ export default defineProduct({
         id: "features",
         label: "补充对照，不另开站点",
         items: [
-          { title: "豆瓣标签样式", body: "IMDb 附评分人数；点任一评分即可打开原站。" },
+          { title: "豆瓣原有写法", body: "IMDb 附评分人数；点任一评分即可打开原站。" },
           { title: "写明匹配方式", body: "优先用页面上的 IMDb 编号；没有时按片名匹配并标注。" },
           { title: "自己的免费 Key", body: "公共 Key 每日额度用完时，填入你的 OMDb Key。" },
+          { title: "平时安静", body: "评分到了才淡入；只在需要你操作时提示。" },
         ],
       },
       {
@@ -159,7 +161,7 @@ export default defineProduct({
           },
           {
             title: "为什么有时看不到评分？",
-            body: "评分来自 OMDb API，内置的公共 Key 每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb Key，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。",
+            body: "OMDb 未收录该片或暂无评分时，不显示任何内容。评分来自 OMDb API，内置的公共 Key 每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb Key，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。",
           },
         ],
       },

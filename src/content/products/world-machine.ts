@@ -75,9 +75,9 @@ export default defineProduct({
         src: "/assets/world-machine-night.webp",
         width: 1100,
         height: 900,
-        alt: "The same Tiny Society harbour on day 21 at night: lit windows under a dark blue sky, and the gauges, buttons and chapter card all turned dark to match. Captured from the app running in its Linux preview.",
-        title: "After dark, the window goes dark.",
-        body: "Cards, buttons and gauges never outshine the night sky.",
+        alt: "Tiny Society at night in spring: lit windows under a starry sky, the gauges and zoom buttons dark to match, while the drawer listing the new pier and a lamp on the point, and Evan's card offering a pier for timber, are warm paper. Captured from the app running in its Linux preview.",
+        title: "At night, pages are paper under a lamp.",
+        body: "In the light appearance. Gauges and buttons stay as dark as the sky.",
       },
     ],
     sections: [
@@ -90,9 +90,9 @@ export default defineProduct({
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
           { title: "Build on plots", body: "What you build decides who moves in." },
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
-          { title: "Talk to anyone", body: "People understand everyday phrasing, in English or Chinese." },
-          { title: "Agent-ready", body: "Let a local agent like Pi, or your key, drive it." },
-          { title: "Share a World", body: "Size-limited, checked World codes; a friend's resident can visit." },
+          { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
+          { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
+          { title: "Agent-ready", body: "Pi, your own key, or this Mac's model can voice it." },
         ],
       },
       {
@@ -103,7 +103,7 @@ export default defineProduct({
         items: [
           "Your Worlds are files on your Mac; there is no account or telemetry, and nothing is uploaded.",
           "Once per launch, the app asks `api.github.com` for the latest release.",
-          "World voice is off by default; with your API key, each return sends that World's recorded facts to `api.anthropic.com`.",
+          "World voice is off by default; with your API key, it sends only that World's facts and your words to `api.anthropic.com`.",
         ],
       },
       {
@@ -114,23 +114,27 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. v0.25 opens and plays on Worlds saved by v0.20 to v0.24, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. v0.26 opens and plays on Worlds saved by v0.20 to v0.25, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
             body: "Download the DMG from the Releases page and drag World Machine onto Applications; it runs on Apple Silicon or Intel. Builds are not notarized, so the first launch needs a one-time Open Anyway step, described in the install guide.",
           },
           {
+            title: "Is there a free demo?",
+            body: "Yes. World Machine Demo, on the same Releases page, is the first hour of Tiny Society, up to day 21. Your harbour stays in My Worlds, and the full app opens it and carries on.",
+          },
+          {
             title: "How far does a World move while I am away?",
             body: "One period for every six hours you were away, at most 28 periods (a week) per return. The return briefing says how many.",
           },
           {
-            title: "Can an agent drive it?",
-            body: "Yes, if you want. People choose from actions the World offers through one agent interface, and a local agent such as Pi can make those choices. With World voice on in Settings, a local agent or your own API key also tells you what happened while you were away and answers the people you talk to. Your API key stays in your login keychain and is never handed to a Pack. Pi runs with no tools, extensions or session, and every decision is recorded, so replaying a World never asks the agent again.",
+            title: "What does World voice do?",
+            body: "When you turn it on in Settings, a model words what happened while you were away and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools, extensions or session, and every verdict is recorded, so replaying a World never asks a model again.",
           },
           {
             title: "Do people understand everything I type?",
-            body: "Not everything. Without World voice, people hear 28 kinds of everyday talk in English and Chinese, and some new phrasing is missed.",
+            body: "Not everything. Without World voice, people hear 28 kinds of everyday talk in English and Chinese, and about 110 everyday phrases in Japanese; some new phrasing is missed.",
           },
           {
             title: "Can I add other World Packs?",
@@ -191,9 +195,9 @@ export default defineProduct({
         src: "/assets/world-machine-night.webp",
         width: 1100,
         height: 900,
-        alt: "同一座 Tiny Society 港口第 21 天的夜里：深蓝夜空下窗里亮着灯，指标、按钮和章节卡片也都随之变暗。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-        title: "天黑了，窗口也暗下来",
-        body: "卡片、按钮和指标都不会比夜空更亮。",
+        alt: "春天夜里的 Tiny Society：星空下窗里亮着灯，指标和缩放按钮随之变暗；右侧抽屉列着在建的新码头和岬角上的灯，Evan 的卡片说给他木料就造码头，二者都是暖色的纸。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        title: "夜里，页面像灯下的纸",
+        body: "浅色外观下如此；指标和按钮仍和夜空一样暗。",
       },
     ],
     sections: [
@@ -206,9 +210,9 @@ export default defineProduct({
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
           { title: "在地块上建造", body: "你建的东西决定谁搬来。" },
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
-          { title: "和谁都能聊", body: "听得懂日常说法，中文英文都行。" },
-          { title: "可接 Agent", body: "本机 Agent（如 Pi）或你自己的密钥，都能驱动它。" },
-          { title: "分享一个世界", body: "World 代码有大小上限并经检查；朋友的居民能来做客。" },
+          { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
+          { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
+          { title: "可接 Agent", body: "Pi、你的密钥或 Mac 自带模型，都能为世界发声。" },
         ],
       },
       {
@@ -219,7 +223,7 @@ export default defineProduct({
         items: [
           "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
           "每次启动，应用向 `api.github.com` 查询一次最新版本。",
-          "世界之声默认关闭；使用你的 API 密钥时，每次回来会把该世界已记录的事实发给 `api.anthropic.com`。",
+          "世界之声默认关闭；使用你的 API 密钥时，只会把该世界已记录的事实和你说的话发给 `api.anthropic.com`。",
         ],
       },
       {
@@ -230,23 +234,27 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.25 能打开 v0.20 到 v0.24 保存的世界并继续运行，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。v0.26 能打开 v0.20 到 v0.25 保存的世界并继续运行，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
             body: "从 Releases 页面下载 DMG，把 World Machine 拖进「应用程序」，Apple 芯片与 Intel 都能运行。构建尚未公证，首次启动需要一次「仍要打开」，步骤见安装指南。",
           },
           {
+            title: "有免费试玩版吗？",
+            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的第一个小时，玩到第 21 天。你的港口会留在「我的世界」里，完整版应用能打开它接着玩。",
+          },
+          {
             title: "离开时世界会走多远？",
             body: "每离开六小时前进一个周期，每次回来最多 28 个周期（一周）。回来时的简报会说明走了多少。",
           },
           {
-            title: "能让 Agent 来驱动吗？",
-            body: "可以，看你需要。居民通过统一的 Agent 接口，从世界给出的行动里做选择，本机 Agent（如 Pi）可以替他们选。在设置里打开世界之声后，本机 Agent 或你自己的 API 密钥还会讲述你离开时发生的事，并替居民回答你。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack。Pi 运行时不带工具、扩展和会话；每个决定都会记录下来，回放世界时不会再问 Agent。",
+            title: "世界之声能做什么？",
+            body: "在设置里打开后，由模型讲述你离开时发生的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具、扩展和会话；每个裁定都会记录下来，回放世界时不会再问模型。",
           },
           {
             title: "我打的每句话都能听懂吗？",
-            body: "不是每句。不开世界之声时，居民能听懂中英文里 28 类日常话题，部分新说法会听不懂。",
+            body: "不是每句。不开世界之声时，居民能听懂中英文里 28 类日常话题，以及约 110 句日文日常说法；部分新说法会听不懂。",
           },
           {
             title: "能添加其他 World Pack 吗？",
