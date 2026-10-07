@@ -761,3 +761,41 @@
   color: var(--ink);
   font-family: var(--mono);
 }
+
+/* Utility sections (get started, data, what's new, FAQ) answer questions
+   rather than argue, so their headings step down a tier and the 56px size
+   stays with the two or three sections that make the case. */
+:is(.commands-section, .data-section, .whats-new, .faq-section) .section-head h2 {
+  font-size: var(--title-show);
+  line-height: 1.12;
+}
+
+/* Product color (tokens.css maps it from body[data-product]). */
+.product-hero .eyebrow,
+.content-section .section-kicker {
+  color: var(--product-ink, var(--muted));
+}
+
+.stat dd {
+  color: var(--product-ink, var(--ink));
+}
+
+.feature-step {
+  color: var(--paper);
+  background: var(--product-ink, var(--accent-fill));
+}
+
+.final-cta {
+  margin-top: var(--section-y);
+  padding-top: 72px;
+  padding-bottom: 72px;
+  border-radius: var(--radius-card);
+  background: var(--product-band, transparent);
+}
+
+/* Games: a book face for the display lines. */
+body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .final-cta-name) {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}

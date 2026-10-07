@@ -8,11 +8,10 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<a class="catalog-row" href={item.href}>
-  <img class="catalog-icon" src={item.icon} alt="" width="48" height="48" />
-  <span class="catalog-row-copy">
+<a class="catalog-card" href={item.href}>
+  <img class="catalog-icon" src={item.icon} alt="" width="48" height="48" loading="lazy" />
+  <span class="catalog-card-copy">
     <strong class="home-catalog-name">{item.name}</strong>
     <span class="home-catalog-text">{item.text}</span>
   </span>
-  <span class="catalog-chevron" aria-hidden="true">›</span>
 </a>

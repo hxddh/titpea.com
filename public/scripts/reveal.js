@@ -3,7 +3,9 @@
 (function () {
   if (!("IntersectionObserver" in window)) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var targets = document.querySelectorAll(".feature-card, .show-shot, .show-figure, .home-featured-card .shot, .stat");
+  var targets = document.querySelectorAll(
+    ".feature-card, .show-shot, .show-figure, .home-featured-card, .catalog-card, .shipping-card, .stat",
+  );
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {

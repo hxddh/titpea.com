@@ -34,7 +34,14 @@ const metaParts = copy.meta.split(" · ");
 const releasedNote = model.released ? copyUi.released.replace("{date}", model.released) : "";
 ---
 
-<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language} localNav>
+<SiteLayout
+  seo={model.seo}
+  current={model.current}
+  locale={model.locale}
+  language={model.language}
+  localNav
+  product={{ slug: model.slug, line: model.line }}
+>
   <LocalNav
     label={copy.title}
     icon={model.icon}

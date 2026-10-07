@@ -96,6 +96,42 @@
   --gutter: 22px;
   --section-y: 120px;
   --section-y-short: 96px;
+
+  /* Product colors, sampled from each product's icon (npm run assets:icons
+     does not write these; re-sample by hand when an icon changes). tint is
+     decoration only (washes, rules, dots); ink is the readable variant,
+     at least 4.8:1 on both paper tones, for figures, step numbers and
+     kickers. A product page maps its pair to --product-tint/--product-ink. */
+  --tint-agent-radar: #28b868;
+  --ink-agent-radar: #1b7b46;
+  --tint-bilingual: #e88828;
+  --ink-bilingual: #a05911;
+  --tint-celagent: #9868f8;
+  --ink-celagent: #7d41f6;
+  --tint-chessboard: #c87828;
+  --ink-chessboard: #9b5d1f;
+  --tint-douban-movie-rating: #389858;
+  --ink-douban-movie-rating: #2d7a47;
+  --tint-easier-bookmarks: #3858d8;
+  --ink-easier-bookmarks: #3858d8;
+  --tint-goban: #d8a878;
+  --ink-goban: #945f2b;
+  --tint-httpmon: #38b8e8;
+  --ink-httpmon: #127499;
+  --tint-pagewise: #5868d8;
+  --ink-pagewise: #5061d6;
+  --tint-pulse: #6e6e73;
+  --ink-pulse: #6c6c70;
+  --tint-s3-turbo-list: #f89848;
+  --ink-s3-turbo-list: #ad5207;
+  --tint-storage-agent-workbench: #5878e8;
+  --ink-storage-agent-workbench: #3b60e4;
+  --tint-storageops: #189888;
+  --ink-storageops: #13796c;
+  --tint-world-clock: #18a858;
+  --ink-world-clock: #127b41;
+  --tint-world-machine: #e8a858;
+  --ink-world-machine: #9a5f15;
 }
 
 /* Chinese pages: the same stack, but Latin text takes "Inter Latin", which
@@ -113,6 +149,36 @@ html:lang(zh) {
   color-scheme: dark;
   --paper: #000000;
   --paper-raised: #161617;
+  --tint-agent-radar: #42d684;
+  --ink-agent-radar: #28b868;
+  --tint-bilingual: #e98c30;
+  --ink-bilingual: #e88828;
+  --tint-celagent: #9869f7;
+  --ink-celagent: #9b6df8;
+  --tint-chessboard: #d98c40;
+  --ink-chessboard: #c87828;
+  --tint-douban-movie-rating: #57c17b;
+  --ink-douban-movie-rating: #399a59;
+  --tint-easier-bookmarks: #3f5ed9;
+  --ink-easier-bookmarks: #6b83e2;
+  --tint-goban: #d8a878;
+  --ink-goban: #d8a878;
+  --tint-httpmon: #38b8e8;
+  --ink-httpmon: #38b8e8;
+  --tint-pagewise: #5868d8;
+  --ink-pagewise: #7582df;
+  --tint-pulse: #8a8a8f;
+  --ink-pulse: #89898e;
+  --tint-s3-turbo-list: #f5984b;
+  --ink-s3-turbo-list: #f89848;
+  --tint-storage-agent-workbench: #5878e8;
+  --ink-storage-agent-workbench: #6583ea;
+  --tint-storageops: #39e0cb;
+  --ink-storageops: #189a8a;
+  --tint-world-clock: #36e283;
+  --ink-world-clock: #18a858;
+  --tint-world-machine: #e8a858;
+  --ink-world-machine: #e8a858;
   --ink: #f5f5f7;
   --muted: #a1a1a6;
   --ink-2: #d2d2d7;
@@ -149,6 +215,36 @@ html:lang(zh) {
     color-scheme: dark;
     --paper: #000000;
     --paper-raised: #161617;
+    --tint-agent-radar: #42d684;
+    --ink-agent-radar: #28b868;
+    --tint-bilingual: #e98c30;
+    --ink-bilingual: #e88828;
+    --tint-celagent: #9869f7;
+    --ink-celagent: #9b6df8;
+    --tint-chessboard: #d98c40;
+    --ink-chessboard: #c87828;
+    --tint-douban-movie-rating: #57c17b;
+    --ink-douban-movie-rating: #399a59;
+    --tint-easier-bookmarks: #3f5ed9;
+    --ink-easier-bookmarks: #6b83e2;
+    --tint-goban: #d8a878;
+    --ink-goban: #d8a878;
+    --tint-httpmon: #38b8e8;
+    --ink-httpmon: #38b8e8;
+    --tint-pagewise: #5868d8;
+    --ink-pagewise: #7582df;
+    --tint-pulse: #8a8a8f;
+    --ink-pulse: #89898e;
+    --tint-s3-turbo-list: #f5984b;
+    --ink-s3-turbo-list: #f89848;
+    --tint-storage-agent-workbench: #5878e8;
+    --ink-storage-agent-workbench: #6583ea;
+    --tint-storageops: #39e0cb;
+    --ink-storageops: #189a8a;
+    --tint-world-clock: #36e283;
+    --ink-world-clock: #18a858;
+    --tint-world-machine: #e8a858;
+    --ink-world-machine: #e8a858;
     --ink: #f5f5f7;
     --muted: #a1a1a6;
     --ink-2: #d2d2d7;
@@ -178,5 +274,95 @@ html:lang(zh) {
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
+  }
+}
+
+/* Each product page wears its own color pair (body[data-product], set by
+   SiteLayout). The hero wash leans to the product tint; figures, step numbers
+   and kickers take its ink. Buttons and links keep the one site blue. */
+body[data-product="agent-radar"] {
+  --product-tint: var(--tint-agent-radar);
+  --product-ink: var(--ink-agent-radar);
+}
+body[data-product="bilingual"] {
+  --product-tint: var(--tint-bilingual);
+  --product-ink: var(--ink-bilingual);
+}
+body[data-product="celagent"] {
+  --product-tint: var(--tint-celagent);
+  --product-ink: var(--ink-celagent);
+}
+body[data-product="chessboard"] {
+  --product-tint: var(--tint-chessboard);
+  --product-ink: var(--ink-chessboard);
+}
+body[data-product="douban-movie-rating"] {
+  --product-tint: var(--tint-douban-movie-rating);
+  --product-ink: var(--ink-douban-movie-rating);
+}
+body[data-product="easier-bookmarks"] {
+  --product-tint: var(--tint-easier-bookmarks);
+  --product-ink: var(--ink-easier-bookmarks);
+}
+body[data-product="goban"] {
+  --product-tint: var(--tint-goban);
+  --product-ink: var(--ink-goban);
+}
+body[data-product="httpmon"] {
+  --product-tint: var(--tint-httpmon);
+  --product-ink: var(--ink-httpmon);
+}
+body[data-product="pagewise"] {
+  --product-tint: var(--tint-pagewise);
+  --product-ink: var(--ink-pagewise);
+}
+body[data-product="pulse"] {
+  --product-tint: var(--tint-pulse);
+  --product-ink: var(--ink-pulse);
+}
+body[data-product="s3-turbo-list"] {
+  --product-tint: var(--tint-s3-turbo-list);
+  --product-ink: var(--ink-s3-turbo-list);
+}
+body[data-product="storage-agent-workbench"] {
+  --product-tint: var(--tint-storage-agent-workbench);
+  --product-ink: var(--ink-storage-agent-workbench);
+}
+body[data-product="storageops"] {
+  --product-tint: var(--tint-storageops);
+  --product-ink: var(--ink-storageops);
+}
+body[data-product="world-clock"] {
+  --product-tint: var(--tint-world-clock);
+  --product-ink: var(--ink-world-clock);
+}
+body[data-product="world-machine"] {
+  --product-tint: var(--tint-world-machine);
+  --product-ink: var(--ink-world-machine);
+}
+
+body[data-product] {
+  --wash-1: color-mix(in srgb, var(--product-tint) 30%, transparent);
+  --wash-2: color-mix(in srgb, var(--product-tint) 14%, transparent);
+  --wash-3: color-mix(in srgb, var(--product-tint) 18%, transparent);
+  --product-band: color-mix(in srgb, var(--product-tint) 9%, var(--paper));
+}
+
+/* Games sit on warmer paper with a book face for display type. */
+body[data-line="games"] {
+  --paper: #fbf8f2;
+  --paper-raised: #f4efe5;
+  --display: ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+:root[data-theme="dark"] body[data-line="games"] {
+  --paper: #0d0b08;
+  --paper-raised: #1b1813;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body[data-line="games"] {
+    --paper: #0d0b08;
+    --paper-raised: #1b1813;
   }
 }

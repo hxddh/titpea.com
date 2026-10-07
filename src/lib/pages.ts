@@ -144,6 +144,7 @@ export type ProductPageModel = {
   kind: "product";
   locale: Locale;
   slug: string;
+  line: Line;
   current: string;
   path: string;
   alternatePath: string;
@@ -223,6 +224,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     kind: "product",
     locale,
     slug: product.slug,
+    line: product.line,
     current: product.slug,
     path,
     alternatePath,
@@ -310,6 +312,8 @@ export type HomePageModel = {
   hero: {
     eyebrow: string;
     title: string;
+    /** The title in pieces that never wrap inside ("|" in the copy). */
+    titleParts: string[];
     lead: string;
     icons: Array<{ src: string; href: string; name: string }>;
     browse: string;
@@ -325,7 +329,12 @@ export type HomePageModel = {
       }
     >;
   };
-  more: { title: string; groups: Array<{ label: string; line: Line; items: CatalogItem[] }> };
+  shipping: { title: string; more: { label: string; href: string }; items: ReleaseItem[] };
+  more: {
+    title: string;
+    filter: { label: string; all: string };
+    groups: Array<{ label: string; note: string; line: Line; items: CatalogItem[] }>;
+  };
   primaryCta: string;
   expectedText: string[];
 };
@@ -357,7 +366,7 @@ function relatedFor(product: Product, locale: Locale) {
   const line = copy.groups[product.line];
   const lineLabel = locale === "zh" && /[A-Za-z]/.test(line) ? ` ${line} ` : line;
   return {
-    title: sameLine ? copy.relatedInLine.replace("{line}", lineLabel) : copy.moreToolsTitle,
+    title: sameLine ? copy.relatedInLine.replace("{line}", lineLabel) : copy.relatedTitle,
     items: items.map((other) => catalogItem(other, locale)),
     all: { label: copy.browseAllTools, href: `${pathFor(locale)}#more-title` },
   };
@@ -394,14 +403,15 @@ export function homePage(locale: Locale): HomePageModel {
     language: languageLink(locale, alternatePath),
     hero: {
       eyebrow: copy.productIndex,
-      title: copy.homeTitle,
+      title: copy.homeTitle.replaceAll("|", ""),
+      titleParts: copy.homeTitle.split("|"),
       lead: copy.homeLead,
       icons: products.map((product) => ({
         src: product.icon,
         href: pathFor(locale, product.slug),
         name: product[locale].title,
       })),
-      browse: copy.browseTools,
+      browse: copy.browseTools.replace("{count}", String(products.length)),
       about: { label: copy.aboutMore, href: pathFor(locale, "about") },
     },
     featured: {
@@ -416,20 +426,59 @@ export function homePage(locale: Locale): HomePageModel {
         };
       }),
     },
+    // What shipped last: release cadence is the plainest evidence the tools are alive.
+    shipping: {
+      title: copy.shippingTitle,
+      more: { label: copy.shippingMore, href: `${pathFor(locale, "about")}#releases-title` },
+      items: releaseItems(locale).slice(0, 3),
+    },
+    // Every product, featured ones included, so a filtered line is complete.
     more: {
       title: copy.moreToolsTitle,
+      filter: { label: copy.filterLabel, all: copy.filterAll },
       groups: lines.map((line) => ({
         label: copy.groups[line],
+        note: copy.groupNotes[line],
         line,
-        items: products
-          .filter((product) => product.line === line && !product.featured)
-          .map((product) => catalogItem(product, locale)),
+        items: products.filter((product) => product.line === line).map((product) => catalogItem(product, locale)),
       })),
     },
     // The hero's primary button jumps to the full catalog.
     primaryCta: `${path}#more-title`,
-    expectedText: [copy.homeTitle, copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
+    expectedText: [copy.homeTitle.replaceAll("|", ""), copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
   };
+}
+
+export type ReleaseItem = {
+  name: string;
+  href: string;
+  icon: string;
+  version: string;
+  released?: string;
+  highlight?: string;
+};
+
+/** Every product with a release, newest first, each with one highlight in the page's language or none. */
+function releaseItems(locale: Locale): ReleaseItem[] {
+  return products
+    .filter((product) => versionOf(product.slug))
+    .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
+    .map((product) => {
+      const notes = releaseTags[product.slug]?.notes;
+      const override = product[locale].releaseHighlights;
+      const current = override?.version === versionOf(product.slug) ? override : undefined;
+      return {
+        name: product[locale].title,
+        href: pathFor(locale, product.slug),
+        icon: product.icon,
+        version: versionOf(product.slug)!,
+        released: releasedOf(product.slug, locale),
+        // Never the release title.
+        highlight: (current ? [...current.items, current.summary] : (notes?.items ?? [])).find((line) =>
+          inPageLanguage(line, locale),
+        ),
+      };
+    });
 }
 
 /* ---------- About ---------- */
@@ -484,7 +533,6 @@ export function aboutPage(locale: Locale): AboutPageModel {
   const path = pathFor(locale, "about");
   const alternatePath = pathFor(otherLocale(locale), "about");
   const count = String(products.length);
-  const released = products.filter((product) => versionOf(product.slug));
   const headline = copy.aboutHeadline.replace("{count}", count);
   const lead = copy.aboutLead;
   return {
@@ -535,24 +583,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
       moreLabel: copy.aboutReleasesMore,
       feed: { label: copy.aboutFeed, href: "/releases.xml" },
       // Newest release first; the list rebuilds itself from releases.json.
-      items: released
-        .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
-        .map((product) => {
-          const notes = releaseTags[product.slug]?.notes;
-          const override = product[locale].releaseHighlights;
-          const current = override?.version === versionOf(product.slug) ? override : undefined;
-          return {
-            name: product[locale].title,
-            href: pathFor(locale, product.slug),
-            icon: product.icon,
-            version: versionOf(product.slug)!,
-            released: releasedOf(product.slug, locale),
-            // One highlight in the page's language, or none; never the release title.
-            highlight: (current ? [...current.items, current.summary] : (notes?.items ?? [])).find((line) =>
-              inPageLanguage(line, locale),
-            ),
-          };
-        }),
+      items: releaseItems(locale),
     },
     releasesShown: 6,
     contact: {
