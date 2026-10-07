@@ -59,7 +59,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "It reads the title, year, and IMDb ID from the film page you open, or from a hovered link’s film page.",
+          "It reads the title, year, and IMDb ID from the open film page, or fetches a hovered film’s page from Douban.",
           "It sends them, with an API key, only to OMDb. Settings and your optional key sit in Chrome sync storage.",
           "Ratings are cached locally for up to 7 days. No server, no analytics, no tracking; uninstalling removes its settings and cache.",
         ],
@@ -137,7 +137,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "在影片详情页读取片名、年份和 IMDb 编号；鼠标停在其他影片的链接上时，读取该片的豆瓣页面取得同样信息。",
+          "在影片详情页读取片名、年份和 IMDb 编号；鼠标停在其他影片链接上时，会向豆瓣请求该片页面取得同样信息。",
           "这些信息连同 API 密钥只发送给 OMDb。设置和你填写的 OMDb 密钥存在 Chrome 同步存储中。",
           "评分缓存在本机，最长 7 天。没有服务器，无分析服务，没有广告或追踪代码；卸载即删除全部设置与缓存。",
         ],
