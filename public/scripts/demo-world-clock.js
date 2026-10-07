@@ -23,15 +23,13 @@
     .filter(function (c) {
       return c.zone === localTz;
     })[0];
-  var region;
-  try {
-    region = new Intl.Locale(navigator.language).maximize().region;
-  } catch (e) {}
   var list = [
     {
       name: known ? known.name : localTz.split("/").pop().replace(/_/g, " "),
       zone: localTz,
-      country: known ? known.country : region,
+      // A zone we can't place in a country gets no weekend dimming, rather
+      // than the browser language's region (an en-GB visitor in Jerusalem).
+      country: known ? known.country : undefined,
       local: true,
     },
   ].concat(
@@ -87,6 +85,7 @@
   }
   // Weekend days from CLDR week data, as the popup dims them.
   function weekend(cc) {
+    if (!cc) return [];
     try {
       var l = new Intl.Locale("und-" + cc);
       return (l.getWeekInfo ? l.getWeekInfo() : l.weekInfo).weekend || [6, 7];

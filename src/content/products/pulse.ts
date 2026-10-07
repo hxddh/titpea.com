@@ -119,7 +119,7 @@ export default defineProduct({
           },
           {
             title: "How do I remove Pulse?",
-            body: "In Settings → Hooks, Remove all puts every agent's files back byte for byte. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
+            body: "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
           },
           {
             title: "Is there a keyboard shortcut?",
@@ -235,7 +235,7 @@ export default defineProduct({
           },
           {
             title: "怎样卸载 Pulse？",
-            body: "在“设置 → Hooks”点“全部移除”，逐字节还原每个 Agent 的配置。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
+            body: "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
           },
           {
             title: "有快捷键吗？",

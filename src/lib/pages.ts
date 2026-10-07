@@ -171,6 +171,11 @@ export type ProductPageModel = {
 function productStructuredData(product: Product, copy: ProductCopy, path: string, locale: Locale, version?: string) {
   const faq = copy.sections.find((section) => section.kind === "faq");
   const action = !copy.primaryCta.soon && copy.primaryCta.href.startsWith("http") ? copy.primaryCta.href : undefined;
+  const repoUrl = product.repo
+    ? `https://github.com/${product.repo}`
+    : action && /^https:\/\/github\.com\/[^/]+\/[^/#?]+\/?$/.test(action)
+      ? action
+      : undefined;
   const app = {
     "@type": "SoftwareApplication",
     name: copy.title,
@@ -179,12 +184,14 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     applicationCategory: product.schema.category,
     operatingSystem: product.schema.os,
     url: absoluteUrl(path),
-    // Every product is free; a store listing installs, anything else downloads.
+    // Every product is free. A store listing installs and a release downloads;
+    // a source-only product's repository is only its sameAs, never a download.
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     author: { "@type": "Person", name: "hxddh", url: site.github },
     ...(version ? { softwareVersion: version.replace(/^v/, "") } : {}),
-    ...(action ? { [action.includes("chromewebstore.google.com") ? "installUrl" : "downloadUrl"]: action } : {}),
-    ...(product.repo ? { sameAs: `https://github.com/${product.repo}` } : {}),
+    ...(action?.includes("chromewebstore.google.com") ? { installUrl: action } : {}),
+    ...(action && /\/releases(\/|$)/.test(action) ? { downloadUrl: action } : {}),
+    ...(repoUrl ? { sameAs: repoUrl } : {}),
   };
   const faqPage = faq && {
     "@type": "FAQPage",
