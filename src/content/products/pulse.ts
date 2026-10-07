@@ -56,13 +56,11 @@ export default defineProduct({
             },
             {
               title: "Review failing CI · Codex",
-              meta: "titpea · 1m ago",
               state: "recent",
               chip: "Your turn",
             },
             {
               title: "Terminal session running · Pi",
-              meta: "Started before Pulse — details after its next step",
               state: "process",
             },
           ],
@@ -174,13 +172,11 @@ export default defineProduct({
             },
             {
               title: "查看失败的 CI · Codex",
-              meta: "titpea · 1分钟前",
               state: "recent",
               chip: "轮到你",
             },
             {
               title: "终端会话正在运行 · Pi",
-              meta: "在 Pulse 之前启动——下一步之后显示详情",
               state: "process",
             },
           ],

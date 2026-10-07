@@ -31,7 +31,7 @@ const { visual } = Astro.props;
                 <span class={`pulse-lamp pulse-lamp-${row.state}`} aria-hidden="true" />
                 <div>
                   <strong>{row.title}</strong>
-                  <p>{row.meta}</p>
+                  {row.meta && <p>{row.meta}</p>}
                 </div>
                 {row.chip ? <em>{row.chip}</em> : null}
               </li>
