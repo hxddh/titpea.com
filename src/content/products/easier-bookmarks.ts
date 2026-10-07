@@ -35,7 +35,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-en.webp",
-        alt: "Store image: Easier Bookmarks in Chrome’s side panel beside a web page, a search box and + button at the top, the Work folder open with site icons, and a count of 14 bookmarks at the foot",
+        alt: "Store image: Easier Bookmarks in Chrome’s side panel beside a web page, a search box and star button at the top, the Work folder open with site icons, and a count of 14 bookmarks at the foot",
         width: 1280,
         height: 800,
       },
@@ -95,7 +95,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-zh.webp",
-        alt: "商店图片：网页旁的 Chrome 侧边栏里是 Easier Bookmarks，顶部是搜索框和 + 按钮，“工作”文件夹已展开，带网站图标，底部显示 14 个书签",
+        alt: "商店图片：网页旁的 Chrome 侧边栏里是 Easier Bookmarks，顶部是搜索框和星标按钮，“工作”文件夹已展开，带网站图标，底部显示 14 个书签",
         width: 1280,
         height: 800,
       },
