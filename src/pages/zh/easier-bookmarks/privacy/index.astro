@@ -17,19 +17,20 @@ const seo = buildSeo({
 <SiteLayout seo={seo} current="easier-bookmarks" locale="zh" language={languageLink("zh", alternatePath)}>
   <article class="privacy-page shell">
     <header class="privacy-header">
-      <p class="eyebrow"><a href="/zh/easier-bookmarks/">Easier Bookmarks</a></p>
+      <p class="eyebrow">
+        <a href="/zh/easier-bookmarks/">Easier Bookmarks</a>
+      </p>
       <h1>隐私政策</h1>
       <p class="privacy-updated">更新日期：2026 年 10 月 7 日</p>
-      <p class="lead">Easier Bookmarks 是 Chrome 侧边栏，管理这台浏览器里已有的书签。</p>
+      <p class="lead">
+        Easier Bookmarks
+        不收集、不传输、不出售、不共享你的任何数据。它没有服务器、没有账号、没有统计分析，也没有广告。所有操作都只在你的浏览器内完成。
+      </p>
     </header>
 
     <div class="privacy-content prose">
       <section>
         <h2>扩展会访问什么，以及原因</h2>
-        <p>
-          Easier Bookmarks
-          不收集、不传输、不出售、不共享你的任何数据。它没有服务器、没有账号、没有统计分析，也没有广告；所有操作都只在你的浏览器内完成。
-        </p>
         <ul>
           <li>
             <code>bookmarks</code>：显示你的 Chrome 书签，并在你操作时新建、编辑、移动或删除书签。修改直接作用于 Chrome
@@ -37,12 +38,15 @@ const seo = buildSeo({
           </li>
           <li>
             <code>storage</code>：记住哪些文件夹处于展开状态、你从面板或地址栏打开过的最多 500 个书签的 ID
-            及最近打开时间（用于搜索排序）、你上次手动为书签选择的文件夹，以及是否已申请过下方的可选权限。数据通过 <code
-              >chrome.storage.local</code
-            > 保存在本地。
+            及最近打开时间（用于搜索排序）、你上次手动为书签选择的文件夹，以及是否已申请过下方的可选权限。数据通过
+            <code>chrome.storage.local</code> 保存在本地。
           </li>
-          <li><code>sidePanel</code>：在 Chrome 侧边栏中显示扩展界面。</li>
-          <li><code>favicon</code>：从 Chrome 本地图标缓存中读取网站图标并显示，不会发起任何网络请求。</li>
+          <li>
+            <code>sidePanel</code>：在 Chrome 侧边栏中显示扩展界面。
+          </li>
+          <li>
+            <code>favicon</code>：从 Chrome 本地图标缓存中读取网站图标并显示，不会发起任何网络请求。
+          </li>
           <li>
             <code>tabs</code>（可选）：仅在你第一次收藏当前页（☆ 按钮或
             ⌘/Ctrl+D）时申请。授权后，在面板打开期间读取当前标签页的标题和网址，用于收藏该页并显示它是否已被收藏。扩展只在内存中把网址与你的书签比对，不另存副本，自身也不发送。如果你收藏了该页，网址会保存在这条
@@ -50,7 +54,8 @@ const seo = buildSeo({
           </li>
         </ul>
         <p>
-          地址栏搜索（输入 <code>b</code> 加空格）不需要任何权限。你在其后输入的内容只在扩展内与书签匹配，不会被保存或发送。
+          地址栏搜索（输入 <code>b</code>{" "}
+          加空格）不需要任何权限。你在其后输入的内容只在扩展内与书签匹配，不会被保存或发送。
         </p>
       </section>
       <section>
@@ -76,7 +81,9 @@ const seo = buildSeo({
       </section>
       <section>
         <h2>联系方式</h2>
-        <p>如有隐私问题，请发邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。</p>
+        <p>
+          如有隐私问题，请发邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。
+        </p>
       </section>
     </div>
   </article>
