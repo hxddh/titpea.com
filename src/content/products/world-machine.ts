@@ -88,7 +88,7 @@ export default defineProduct({
         label: "Live in it, or leave it.",
         items: [
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
-          { title: "Build on plots", body: "What you build decides who moves in." },
+          { title: "Build, and it shows", body: "Scaffolding at once; after the fête, bunting for a few days." },
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
           { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
@@ -208,7 +208,7 @@ export default defineProduct({
         label: "住进去，或放着它",
         items: [
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
-          { title: "在地块上建造", body: "你建的东西决定谁搬来。" },
+          { title: "建了就看得见", body: "一开工就搭起脚手架；游园会后，彩旗挂上几天。" },
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
