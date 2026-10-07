@@ -17,7 +17,7 @@ export default defineProduct({
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
     eyebrow: "Chrome extension",
     headline: "Ratings beside Douban.",
-    lead: "IMDb, Rotten Tomatoes, Metacritic. In the film info, like the cast. Title matches labelled.",
+    lead: "IMDb, Rotten Tomatoes, Metacritic. At the end of the film details. Title matches labelled.",
     catalog: {
       role: "On Douban",
       text: "IMDb, Rotten Tomatoes, and Metacritic in the film info; title matches labelled.",
@@ -114,7 +114,7 @@ export default defineProduct({
       label: "豆瓣电影评分助手",
       image: {
         src: "/assets/douban-movie-rating-ratings.webp",
-        alt: "商店图片：《肖申克的救赎》的豆瓣影片信息末尾多出一行「其他评分」，与导演、主演行写法相同，蓝色链接以斜杠分隔：IMDb 9.3（301万人）/ 烂番茄 89% / Metacritic 82",
+        alt: "商店图片：《肖申克的救赎》的豆瓣影片信息末尾多出一行“其他评分”，与导演、主演行写法相同，蓝色链接以斜杠分隔：IMDb 9.3（301万人）/ 烂番茄 89% / Metacritic 82",
         width: 1280,
         height: 800,
       },
@@ -128,7 +128,7 @@ export default defineProduct({
         items: [
           { title: "豆瓣原有写法", body: "IMDb 附评分人数；点任一评分即可打开原站。" },
           { title: "写明匹配方式", body: "优先用页面上的 IMDb 编号；没有时按片名匹配并标注。" },
-          { title: "自己的免费 Key", body: "公共 Key 每日额度用完时，填入你的 OMDb Key。" },
+          { title: "自己的免费密钥", body: "公共密钥每日额度用完时，填入你的 OMDb 密钥。" },
           { title: "平时安静", body: "评分到了才淡入；只在需要你操作时提示。" },
         ],
       },
@@ -137,8 +137,8 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "从豆瓣电影页读取片名、年份和 IMDb 编号，连同 API Key 只发送给 OMDb。",
-          "设置和你填写的 OMDb Key 存在 Chrome 同步存储中；评分缓存在本机，最长 7 天。",
+          "从豆瓣电影页读取片名、年份和 IMDb 编号，连同 API 密钥只发送给 OMDb。",
+          "设置和你填写的 OMDb 密钥存在 Chrome 同步存储中；评分缓存在本机，最长 7 天。",
           "没有服务器，无分析服务，没有广告或追踪代码；卸载即删除全部设置与缓存。",
         ],
       },
@@ -157,11 +157,11 @@ export default defineProduct({
           },
           {
             title: "按片名匹配可靠吗？",
-            body: "豆瓣页面没有 IMDb 编号时，扩展按片名向 OMDb 查询，年份允许相差一年。结果旁会标注「按片名匹配」，鼠标悬停可查看匹配到的影片和年份。",
+            body: "豆瓣页面没有 IMDb 编号时，扩展按片名向 OMDb 查询，年份允许相差一年。结果旁会标注“按片名匹配”，鼠标悬停可查看匹配到的影片和年份。",
           },
           {
             title: "为什么有时看不到评分？",
-            body: "OMDb 未收录该片或暂无评分时，不显示任何内容。评分来自 OMDb API，内置的公共 Key 每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb Key，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。",
+            body: "OMDb 未收录该片或暂无评分时，不显示任何内容。评分来自 OMDb API，内置的公共密钥每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb 密钥，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。",
           },
         ],
       },

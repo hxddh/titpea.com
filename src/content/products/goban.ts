@@ -58,8 +58,8 @@ export default defineProduct({
         alt: "Goban notebook theme showing a completed game with triangle and circle pieces, a five-in-a-row highlight, and the timeline",
         width: 2446,
         height: 1536,
-        title: "Stones become marks.",
-        body: "Triangles and circles on ruled paper; the game stays as it was.",
+        title: "A notebook board, too.",
+        body: "One of four boards: triangles and circles on ruled paper; the game stays as it was.",
       },
     ],
     sections: [
@@ -139,11 +139,11 @@ export default defineProduct({
       },
       {
         src: "/assets/goban-notebook-zh.webp",
-        alt: "Goban 作业本主题完整棋局，显示三角与圆形棋子、五连高亮和时间线",
+        alt: "Goban 练习本棋盘上的完整棋局，显示三角与圆形棋子、五连高亮和时间线",
         width: 2446,
         height: 1536,
-        title: "棋子变成记号",
-        body: "横线纸上画三角与圆圈，棋局不变。",
+        title: "还有练习本棋盘",
+        body: "四套棋盘之一：横线纸上画三角和圆圈，棋局不变。",
       },
     ],
     sections: [
@@ -175,7 +175,7 @@ export default defineProduct({
           },
           {
             title: "电脑有多强？",
-            body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手约 0.4 秒；极限与困难同一套搜索，多给两倍半的时间。困难与极限默认每局轮流执子。规则在「新局」卡片里选，按开始时生效。",
+            body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手约 0.4 秒；极限与困难同一套搜索，多给两倍半的时间。困难与极限默认每局轮流执子。规则在“新局”卡片里选，按开始时生效。",
           },
         ],
       },

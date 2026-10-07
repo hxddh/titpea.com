@@ -46,8 +46,8 @@ export default defineProduct({
     description:
       "A desktop chess app for macOS and Windows, with Stockfish 19, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
-    headline: "Learn, then play.",
-    lead: "Lessons. 40,000 puzzles. Stockfish or a friend.",
+    headline: "Chess you can review.",
+    lead: "A Stockfish review marks the mistakes. Lessons. 40,000 puzzles.",
     catalog: {
       role: "Stockfish + lessons",
       text: "Learn, solve puzzles, then play Stockfish or a friend on the same board.",
@@ -185,8 +185,8 @@ export default defineProduct({
     title: "国际象棋 Chessboard",
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
-    headline: "学棋、练习，再下一局",
-    lead: "课程。四万道谜题。与 Stockfish 或好友对弈。",
+    headline: "下完一局，复盘失着",
+    lead: "Stockfish 复盘标出失着。课程。四万道谜题。",
     catalog: {
       role: "Stockfish 与课程",
       text: "学棋、解谜题，再与 Stockfish 或同屏好友下一局。",
@@ -290,8 +290,8 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "对局、谜题、课程与进度都留在这台电脑上，存在应用自己的存储和本机数据文件里。",
-          "只有打开同步并点「同步」时才联网：向 Lichess 或 Chess.com 取回你最近的对局，只发送用户名。",
-          "「关于」里的「检查更新」只在你点它时向 GitHub 查询最新版本。",
+          "只有打开同步并点“同步”时才联网：向 Lichess 或 Chess.com 取回你最近的对局，只发送用户名。",
+          "“关于”里的“检查更新”只在你点它时向 GitHub 查询最新版本。",
         ],
       },
       {
@@ -309,7 +309,7 @@ export default defineProduct({
           },
           {
             title: "能看到自己的进步吗？",
-            body: "能。与引擎对局有自己的等级分，和谜题评级分开记，结果卡上显示每次涨跌。「我的」页还有评级曲线、练习日历与连续天数，以及强项与弱项。",
+            body: "能。与引擎对局有自己的等级分，和谜题评级分开记，结果卡上显示每次涨跌。“我的”页还有评级曲线、练习日历与连续天数，以及强项与弱项。",
           },
           {
             title: "棋谱库能存多少局？",

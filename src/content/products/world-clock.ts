@@ -114,7 +114,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "No data collection: no network requests, and no web pages read.",
+          "No data collection and no analytics: no network requests, and no web pages read.",
           "Your cities, theme and time format sync through Chrome’s storage between your own browsers, never to the developer.",
           "It asks for one permission, `storage`, and needs no account.",
         ],
@@ -246,7 +246,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "声明不收集数据：不联网，也不读取网页。",
+          "不收集任何数据，没有分析服务：不联网，也不读取网页。",
           "你的城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不会发送给开发者。",
           "只申请一项权限 `storage`，无需账号。",
         ],

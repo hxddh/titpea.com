@@ -13,10 +13,11 @@ export default defineProduct({
   sectionIndex: true,
   en: {
     title: "celagent",
-    description: "Pi’s terminal interface with sessions saved on BOS and restored by ID on another configured machine.",
-    eyebrow: "Pi terminal agent",
+    description:
+      "Pi, the open-source terminal coding agent, with sessions saved to Baidu Object Storage (BOS) and restored by ID on another configured machine.",
+    eyebrow: "Built on Pi, the open-source terminal coding agent",
     headline: "Resume on another device.",
-    lead: "Pi’s terminal. Sessions on BOS. Resume on a configured machine.",
+    lead: "Pi sessions, saved to Baidu Object Storage (BOS). Resume on another configured machine.",
     catalog: {
       role: "Session recovery",
       text: "Park the Pi session on BOS, resume it on another machine.",
@@ -29,7 +30,7 @@ export default defineProduct({
       label: "View on GitHub",
       href: "https://github.com/hxddh/celagent",
     },
-    meta: "Pi Coding Agent TUI · Celld/BOS · MIT · {version}",
+    meta: "Pi Coding Agent TUI · Baidu BOS · MIT · {version}",
     commands: {
       title: "Get started",
       sub: "The installer fetches the GitHub Release binary with the celld runtime.",
@@ -121,10 +122,10 @@ export default defineProduct({
   },
   zh: {
     title: "celagent",
-    description: "使用 Pi 的终端界面，把会话保存在 BOS，通过 ID 在另一台已配置的机器上恢复。",
-    eyebrow: "Pi 终端 Agent",
+    description: "基于开源终端编码 Agent Pi，把会话保存在百度对象存储（BOS），按 ID 在另一台已配置的机器上恢复。",
+    eyebrow: "基于开源终端编码 Agent Pi",
     headline: "换台机器，接着聊",
-    lead: "Pi 的终端界面。会话存在 BOS。在已配置的机器上按 ID 恢复。",
+    lead: "Pi 编码会话存进百度对象存储（BOS）。在已配置的另一台机器上，按 ID 接着用。",
     catalog: {
       role: "会话恢复",
       text: "把 Pi 会话停在 BOS，换一台机器继续。",
@@ -137,7 +138,7 @@ export default defineProduct({
       label: "查看 GitHub",
       href: "https://github.com/hxddh/celagent",
     },
-    meta: "Pi Coding Agent TUI · Celld/BOS · MIT · {version}",
+    meta: "Pi 编码 Agent 终端界面 · 百度 BOS · MIT · {version}",
     commands: {
       title: "开始使用",
       sub: "安装脚本从 GitHub Release 下载二进制，含 celld 运行时。",
