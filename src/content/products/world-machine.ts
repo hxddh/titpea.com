@@ -114,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. App v0.26 opens and plays on Worlds saved by app versions v0.20 to v0.25. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by any app version from v0.20 on. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -234,7 +234,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.26 版应用能打开 v0.20 到 v0.25 版应用保存的世界并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 及之后任一版本保存的世界并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
