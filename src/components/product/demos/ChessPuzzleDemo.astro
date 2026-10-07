@@ -39,7 +39,8 @@ const squares = ranks.flatMap((rank, row) =>
     return {
       name,
       code,
-      dark: ("abcdefgh".indexOf(file) + rank) % 2 === 0,
+      // a1 is dark: file index 0 + rank 1 is odd.
+      dark: ("abcdefgh".indexOf(file) + rank) % 2 === 1,
       label: code ? fill(demo.square, { square: name, piece: pieceName(code) }) : name,
       file: row === 7 ? file : undefined,
       rank: col === 0 ? String(rank) : undefined,

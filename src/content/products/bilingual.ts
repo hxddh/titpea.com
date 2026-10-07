@@ -82,7 +82,7 @@ export default defineProduct({
         items: [
           "Translation runs on Chrome’s built-in on-device model by default, inside the extension’s own hidden document; page text stays on your computer.",
           "Only when you ask, Precise translation sends paragraphs straight to your chosen provider; your own key stays in the extension’s IndexedDB.",
-          "No account, no analytics, no data collection; site access only for sites you switch on; Incognito keeps nothing per site.",
+          "No account, no analytics, no data collection; site access only for sites you switch on; Incognito keeps no translations, terms, or layouts.",
         ],
       },
       {
