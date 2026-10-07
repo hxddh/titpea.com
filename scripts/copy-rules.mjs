@@ -7,6 +7,8 @@ export const zhForbiddenTerms = [
   "warnings",
   "exit codes",
   "解决方案",
+  // Owner rule (October 2026): copy never leans on 依据 as a selling point.
+  "依据",
   "赋能",
   "无缝",
   "强大",

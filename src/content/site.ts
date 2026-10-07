@@ -123,9 +123,9 @@ export const ui: Record<Locale, Ui> = {
       games: "Games",
       external: "External",
     },
-    productIndex: "Made by one developer, hxddh",
-    homeMetaTitle: "Titpea — Software that shows its work, by hxddh",
-    homeTitle: "Software that shows its work.",
+    productIndex: "One developer, hxddh",
+    homeMetaTitle: "Titpea — Small software by hxddh",
+    homeTitle: "Small software, made with care.",
     homeDescription:
       "Software by one developer, hxddh: a small world, desktop chess that marks your mistakes, translation when you ask, and tools for S3 storage and coding agents.",
     homeLead: "A world that tells you what changed. Chess that marks your mistakes. Translation only when you ask.",
@@ -159,7 +159,7 @@ export const ui: Record<Locale, Ui> = {
     aboutScenes: {
       storage: {
         when: "A bucket misbehaves, or a million objects need counting.",
-        value: "Find the cause with read-only tools and keep the evidence; list large buckets fast.",
+        value: "Find the cause with read-only tools; list large buckets fast.",
       },
       agents: {
         when: "Several agents are running, or you want to keep up with the field.",
@@ -212,10 +212,9 @@ export const ui: Record<Locale, Ui> = {
       games: "游戏",
       external: "外部链接",
     },
-    productIndex: "hxddh 一个人做的软件",
-    homeMetaTitle: "Titpea — 把依据摆出来的小软件",
-    // "|" marks where the title may wrap; elsewhere it stays whole.
-    homeTitle: "把依据摆出来的|小软件",
+    productIndex: "hxddh，一个人开发",
+    homeMetaTitle: "Titpea — hxddh 的小软件",
+    homeTitle: "认真做的小软件",
     homeDescription:
       "hxddh 一个人做的软件：回来时告诉你发生了什么的小世界、标出失着的桌面国际象棋、只在你要时出现的译文，以及对象存储和编码 Agent 工具。",
     homeLead: "回来时告诉你发生了什么的小世界。标出失着的国际象棋。只在你要时出现的译文。",
@@ -248,7 +247,7 @@ export const ui: Record<Locale, Ui> = {
     aboutScenes: {
       storage: {
         when: "桶出了问题，或要盘点上百万个对象。",
-        value: "只读查清原因、留下依据；大桶也能很快列清。",
+        value: "只读查清原因；大桶也能很快列清。",
       },
       agents: {
         when: "同时跑着几个 Agent，或想跟上这个领域。",

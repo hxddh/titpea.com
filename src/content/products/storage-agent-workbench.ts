@@ -103,7 +103,7 @@ export default defineProduct({
     title: "Storage Agent",
     description: "面向 S3 兼容存储的本地优先桌面 Agent：只读工具，密钥在本机，发现的问题跨任务保留。",
     eyebrow: "照看对象存储",
-    headline: "替你照看 S3，留下依据",
+    headline: "替你照看 S3",
     lead: "只读工具。密钥在本机。发现的问题会被记住。",
     catalog: {
       role: "S3 排查",
@@ -176,7 +176,7 @@ export default defineProduct({
           },
           {
             title: "修复会改变什么？",
-            body: "每个修复都附带影响预估，依据是应用已有的证据，例如桶访问日志里的匿名请求或现有的生命周期规则。证据不足以判断时，它会直说。",
+            body: "每个修复都附带影响预估，估算基于应用已有的证据，例如桶访问日志里的匿名请求或现有的生命周期规则。证据不足以判断时，它会直说。",
           },
           {
             title: "和 StorageOps 有什么不同？",
