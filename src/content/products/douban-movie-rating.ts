@@ -20,7 +20,7 @@ export default defineProduct({
     lead: "IMDb, Rotten Tomatoes, Metacritic. In the film details and on hover. Title matches labelled.",
     catalog: {
       role: "On Douban",
-      text: "IMDb, Rotten Tomatoes, and Metacritic in the film info and on hover; title matches labelled.",
+      text: "IMDb, Rotten Tomatoes, and Metacritic in film info and on hover. Title matches marked.",
     },
     primaryCta: {
       label: "Install",
