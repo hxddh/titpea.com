@@ -21,15 +21,6 @@ const headers = {
 const changes = [];
 const problems = [];
 
-/** Number of GitHub releases, read from the pagination of a one-per-page list. */
-async function releaseCount(repo) {
-  const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=1`, { headers });
-  if (!response.ok) throw new Error(`HTTP ${response.status} counting releases`);
-  const last = response.headers.get("link")?.match(/[?&]page=(\d+)>;\s*rel="last"/);
-  if (last) return Number(last[1]);
-  return (await response.json()).length;
-}
-
 for (const [slug, entry] of Object.entries(releases)) {
   try {
     const response = await fetch(`https://api.github.com/repos/${entry.repo}/releases/latest`, { headers });
@@ -42,19 +33,17 @@ for (const [slug, entry] of Object.entries(releases)) {
       items: highlightsFrom(body ?? ""),
       url: url ?? `https://github.com/${entry.repo}/releases/tag/${tag}`,
     };
-    const count = await releaseCount(entry.repo);
     // Keep the committed highlights when a release body yields nothing new.
     const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
     if (
       tag !== entry.version ||
       published !== entry.published ||
-      count !== entry.releaseCount ||
       JSON.stringify(nextNotes) !== JSON.stringify(entry.notes)
     ) {
       changes.push(`${slug}: ${entry.version} → ${tag} (${published})`);
       entry.version = tag;
       entry.published = published;
-      entry.releaseCount = count;
+      delete entry.releaseCount;
       if (nextNotes) entry.notes = nextNotes;
       else delete entry.notes;
     }
@@ -69,15 +58,15 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   const cell = (text = "") => String(text).replaceAll("|", "\\|").replaceAll("\n", " ");
   const rows = Object.entries(releases).map(
     ([slug, entry]) =>
-      `| ${slug} | ${cell(entry.version)} | ${cell(entry.published)} | ${entry.releaseCount ?? ""} | ${cell(entry.notes?.summary)} | ${cell((entry.notes?.items ?? []).join(" · "))} |`,
+      `| ${slug} | ${cell(entry.version)} | ${cell(entry.published)} | ${cell(entry.notes?.summary)} | ${cell((entry.notes?.items ?? []).join(" · "))} |`,
   );
   fs.appendFileSync(
     process.env.GITHUB_STEP_SUMMARY,
     [
       "### Release notes quoted on titpea.com",
       "",
-      "| Product | Tag | Date | Releases | Summary | Highlights |",
-      "| --- | --- | --- | --- | --- | --- |",
+      "| Product | Tag | Date | Summary | Highlights |",
+      "| --- | --- | --- | --- | --- |",
       ...rows,
       "",
     ].join("\n"),

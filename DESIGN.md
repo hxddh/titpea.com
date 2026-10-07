@@ -150,7 +150,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - Every image has an `alt`; decorative images use `alt=""`.
 - Performance
   - Every `<img>` declares intrinsic `width` and `height`. Heroes use `fetchpriority="high"`; later photographs lazy-load.
-  - Screenshots are WebP. Any screenshot 1400px or wider gets `-900w.webp` and `-1200w.webp` siblings (`npm run assets:images`), offered through `srcset`, so phones and tablets fetch a smaller file. The Inter font is preloaded. Zoom always opens the original.
+  - Screenshots are WebP. Every screenshot gets `-900w.webp` and `-1200w.webp` siblings where narrower than the original (`npm run assets:images`), offered through `srcset`, so phones and tablets fetch a smaller file. Inter is not preloaded: Apple devices use the system font first and would download it for nothing. Zoom always opens the original.
   - CSS stays in external stylesheets so the strict CSP never blocks an inlined `<style>`.
 - Responsive
   - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (16px gutter; everything one column).

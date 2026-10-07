@@ -98,6 +98,14 @@
   --section-y-short: 96px;
 }
 
+/* Chinese pages: the same stack, but Latin text takes "Inter Latin", which
+   leaves General Punctuation (“ ” … —) to the CJK face, full width. */
+html:lang(zh) {
+  --sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Latin", "Segoe UI", "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+}
+
 /* Dark theme. Applied when the OS prefers dark (unless the visitor forced
    light) or when data-theme="dark" is set by the header toggle. The two
    selectors share the same declarations; keep them in sync. */

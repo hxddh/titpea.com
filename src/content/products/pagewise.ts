@@ -7,7 +7,7 @@ export default defineProduct({
   icon: "/assets/icons/pagewise.webp",
   og: "/assets/og-pagewise.png",
   schema: {
-    category: "DeveloperApplication",
+    category: "BusinessApplication",
     os: "Cross-platform",
   },
   sectionIndex: true,

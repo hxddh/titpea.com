@@ -176,7 +176,8 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
     </ul>
     <a class="button ghost" href={model.related.all.href}>{model.related.all.label}</a>
   </nav>
+  <Fragment slot="scripts">
+    <script is:inline src="/scripts/zoom.js" defer></script>
+    <script is:inline src="/scripts/video.js" defer></script>
+  </Fragment>
 </SiteLayout>
-
-<script is:inline src="/scripts/zoom.js" defer></script>
-<script is:inline src="/scripts/video.js" defer></script>

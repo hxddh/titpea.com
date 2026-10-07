@@ -23,7 +23,7 @@ export default defineProduct({
   og: "/assets/og-chessboard.png",
   schema: {
     category: "GameApplication",
-    os: "macOS and Windows",
+    os: "macOS, Windows",
   },
   sectionIndex: false,
   en: {

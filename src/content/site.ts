@@ -27,6 +27,7 @@ type Ui = {
   footerFeed: string;
   skipLink: string;
   menuLabel: string;
+  homeLabel: string;
   menuText: string;
   sectionDirectory: string;
   themeToDark: string;
@@ -87,6 +88,7 @@ export const ui: Record<Locale, Ui> = {
     footerFeed: "Releases feed",
     skipLink: "Skip to content",
     menuLabel: "Open site menu",
+    homeLabel: "Titpea home",
     menuText: "Menu",
     sectionDirectory: "Sections",
     themeToDark: "Switch to dark theme",
@@ -164,6 +166,7 @@ export const ui: Record<Locale, Ui> = {
     footerFeed: "发布订阅",
     skipLink: "跳到主要内容",
     menuLabel: "打开站点菜单",
+    homeLabel: "Titpea 首页",
     menuText: "菜单",
     sectionDirectory: "目录",
     themeToDark: "切换到深色主题",

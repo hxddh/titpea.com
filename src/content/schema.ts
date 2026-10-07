@@ -250,8 +250,8 @@ export type Product = {
   repo?: string;
   og: string;
   schema: {
-    category: "DeveloperApplication" | "BrowserApplication" | "GameApplication";
-    os: "Cross-platform" | "Chrome" | "macOS" | "macOS and Windows";
+    category: "DeveloperApplication" | "BrowserApplication" | "GameApplication" | "BusinessApplication";
+    os: "Cross-platform" | "Chrome" | "macOS" | "macOS, Windows";
   };
   /** Long pages pin their own section links in the local nav. */
   sectionIndex: boolean;

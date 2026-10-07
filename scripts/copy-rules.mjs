@@ -51,6 +51,10 @@ export function zhMixedSpacingIssues(text) {
     { pattern: /Pi诊断/g, label: "missing space in Pi 诊断" },
     { pattern: /Chrome扩展/g, label: "missing space in Chrome 扩展" },
     { pattern: /JSON(?=[\u4e00-\u9fff])/g, label: "missing space after JSON" },
+    {
+      pattern: /[\u4e00-\u9fff][?!,;](?=\s|$|[\u4e00-\u9fff])/g,
+      label: "half-width punctuation after Chinese (use ？！，；)",
+    },
   ];
   for (const { pattern, label } of patterns) {
     if (pattern.test(text)) issues.push(label);

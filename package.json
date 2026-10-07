@@ -24,7 +24,8 @@
     "visual:check": "tsx scripts/check-visual-baseline.mjs",
     "visual:approve": "VISUAL_APPROVE=1 tsx scripts/check-visual-baseline.mjs",
     "smoke:production": "tsx scripts/smoke-production.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "astro": "^6.4.6"

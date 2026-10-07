@@ -1,13 +1,15 @@
-// After the build, every reference to a file under /assets/ in the built pages
-// gets `?v=<first 10 hex of its SHA-256>`. A replaced icon or screenshot keeps
-// its file name, so without this a browser or CDN could keep showing the old
-// image; with it, the URL changes exactly when the bytes do.
+// After the build, every reference to a file under /assets/ or /scripts/ in
+// the built pages gets `?v=<first 10 hex of its SHA-256>`. A replaced icon,
+// screenshot or script keeps its file name, so without this a browser or CDN
+// could keep serving the old bytes; with it, the URL changes exactly when the
+// bytes do, and public/_headers can let browsers cache these files for a year.
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const assetRef = /((?:https:\/\/titpea\.com)?\/assets\/[\w./-]+?\.(?:webp|png|jpg|jpeg|svg|ico|mp4|webm))(?![\w?])/g;
+const assetRef =
+  /((?:https:\/\/titpea\.com)?\/(?:assets\/[\w./-]+?\.(?:webp|png|jpg|jpeg|svg|ico|mp4|webm)|scripts\/[\w.-]+?\.js))(?![\w?])/g;
 
 function* pages(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

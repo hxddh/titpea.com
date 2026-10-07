@@ -19,7 +19,7 @@ export type CurrentPage = "home" | "about" | (string & {});
 type ReleaseNotes = { summary: string; items: string[]; url: string };
 const releaseTags = releases as Record<
   string,
-  { repo: string; version: string; published?: string; releaseCount?: number; notes?: ReleaseNotes }
+  { repo: string; version: string; published?: string; notes?: ReleaseNotes }
 >;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
@@ -167,17 +167,23 @@ export type ProductPageModel = {
   expectedText: string[];
 };
 
-function productStructuredData(product: Product, copy: ProductCopy, path: string, version?: string) {
+function productStructuredData(product: Product, copy: ProductCopy, path: string, locale: Locale, version?: string) {
   const faq = copy.sections.find((section) => section.kind === "faq");
+  const action = !copy.primaryCta.soon && copy.primaryCta.href.startsWith("http") ? copy.primaryCta.href : undefined;
   const app = {
     "@type": "SoftwareApplication",
     name: copy.title,
     description: copy.description,
+    inLanguage: locale === "zh" ? "zh-CN" : "en",
     applicationCategory: product.schema.category,
     operatingSystem: product.schema.os,
     url: absoluteUrl(path),
+    // Every product is free; a store listing installs, anything else downloads.
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    author: { "@type": "Person", name: "hxddh", url: site.github },
     ...(version ? { softwareVersion: version.replace(/^v/, "") } : {}),
-    ...(!copy.primaryCta.soon && copy.primaryCta.href.startsWith("http") ? { sameAs: copy.primaryCta.href } : {}),
+    ...(action ? { [action.includes("chromewebstore.google.com") ? "installUrl" : "downloadUrl"]: action } : {}),
+    ...(product.repo ? { sameAs: `https://github.com/${product.repo}` } : {}),
   };
   const faqPage = faq && {
     "@type": "FAQPage",
@@ -227,7 +233,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
       alternatePath,
       locale,
       ogImage: product.og,
-      structuredData: productStructuredData(product, copy, path, version),
+      structuredData: productStructuredData(product, copy, path, locale, version),
     }),
     language: languageLink(locale, alternatePath),
     copy,
@@ -503,7 +509,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
           name: "hxddh",
           url: absoluteUrl(path),
           sameAs: [site.github],
-          email: `mailto:${site.email}`,
+          email: site.email,
         },
       },
     }),
@@ -640,8 +646,12 @@ export const feedEntries = (): FeedEntry[] =>
         published: release.published!,
         pageUrl: absoluteUrl(pathFor("en", product.slug)),
         notesUrl: release.notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
-        summary: release.notes?.summary || product.en.catalog.text,
-        items: release.notes?.items ?? [],
+        // Like the product pages: never the release title, only English lines.
+        summary: product.en.catalog.text,
+        items: (product.en.releaseHighlights?.version === release.version
+          ? product.en.releaseHighlights.items
+          : (release.notes?.items ?? [])
+        ).filter((line) => inPageLanguage(line, "en")),
       };
     })
     .sort((a, b) => b.published.localeCompare(a.published));
