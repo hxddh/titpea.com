@@ -22,8 +22,13 @@ export async function checkRoute(page, viewport, route) {
       const structuredData = document.querySelector('script[type="application/ld+json"]')?.textContent ?? null;
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero");
       const heroActions = hero?.querySelectorAll(".actions a, .actions .button.is-soon") ?? [];
-      const cards = Array.from(document.querySelectorAll(".section-card-grid > article"));
-      const cardHeights = cards.map((card) => Math.round(card.getBoundingClientRect().height));
+      // Height spread among the cards of one grid; the worst grid on the page counts.
+      const gridSpreads = Array.from(document.querySelectorAll(".feature-grid")).map((grid) => {
+        const heights = Array.from(grid.querySelectorAll(":scope > article"), (card) =>
+          Math.round(card.getBoundingClientRect().height),
+        );
+        return heights.length > 1 ? Math.max(...heights) - Math.min(...heights) : 0;
+      });
 
       return {
         overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -55,7 +60,7 @@ export async function checkRoute(page, viewport, route) {
         leadLines: leadRect && leadLineHeight ? Math.round(leadRect.height / leadLineHeight) : 0,
         heroCtaCount: heroActions.length,
         heroTop: hero ? Math.round(hero.getBoundingClientRect().top) : null,
-        cardHeightSpread: cardHeights.length > 1 ? Math.max(...cardHeights) - Math.min(...cardHeights) : 0,
+        cardHeightSpread: Math.max(0, ...gridSpreads),
         anchorCount: document.querySelectorAll(".product-section-index [data-section-link]").length,
         productIndex: (() => {
           const index = document.querySelector(".product-section-index");
@@ -73,8 +78,8 @@ export async function checkRoute(page, viewport, route) {
             ).size,
           };
         })(),
-        featuresGrid: document.querySelector(".features-grid, .automation-grid")
-          ? getComputedStyle(document.querySelector(".features-grid, .automation-grid")).display
+        featuresGrid: document.querySelector(".feature-grid")
+          ? getComputedStyle(document.querySelector(".feature-grid")).display
           : null,
         imageCount: document.querySelectorAll("img").length,
         brokenImages: Array.from(document.querySelectorAll("img")).filter(

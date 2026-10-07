@@ -32,8 +32,9 @@ const { showcase, pauseLabel, playLabel } = Astro.props;
             aria-label={showcase.alt}
             data-autoplay
           >
-            {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
+            {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
             <source src={showcase.video.mp4} type="video/mp4" />
+            {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
           </video>
           <button
             class="video-toggle"

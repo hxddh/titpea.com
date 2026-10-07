@@ -51,8 +51,13 @@ const footerGroups: Array<{
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.brand} />
+    <meta property="og:locale" content={locale === "zh" ? "zh_CN" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "zh" ? "en_US" : "zh_CN"} />
     <meta property="og:url" content={seo.canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
@@ -60,24 +65,28 @@ const footerGroups: Array<{
     {seo.robots && <meta name="robots" content={seo.robots} />}
     <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-    <link rel="canonical" href={seo.canonicalUrl} />
-    <link rel="alternate" hreflang="en" href={seo.alternates.en} />
-    <link rel="alternate" hreflang="zh-CN" href={seo.alternates.zh} />
-    <link rel="alternate" hreflang="x-default" href={seo.alternates.xDefault} />
-    <link
-      rel="preload"
-      href="/fonts/inter-latin-wght.3100e775.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    {
+      /* A noindex page (the 404) has no canonical address and no translations. */
+      !seo.robots?.includes("noindex") && (
+        <>
+          <link rel="canonical" href={seo.canonicalUrl} />
+          <link rel="alternate" hreflang="en" href={seo.alternates.en} />
+          <link rel="alternate" hreflang="zh-CN" href={seo.alternates.zh} />
+          <link rel="alternate" hreflang="x-default" href={seo.alternates.xDefault} />
+        </>
+      )
+    }
     <link rel="alternate" type="application/atom+xml" title="Titpea releases" href="/releases.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     {
       seo.structuredData && (
-        <script is:inline type="application/ld+json" set:html={JSON.stringify(seo.structuredData)} />
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(seo.structuredData).replace(/</g, "\\u003c")}
+        />
       )
     }
     <title>{seo.title}</title>
@@ -121,6 +130,7 @@ const footerGroups: Array<{
         </div>
       </div>
     </footer>
+    <slot name="scripts" />
     <script is:inline src="/scripts/reveal.js" defer></script>
     {
       site.analyticsToken && (

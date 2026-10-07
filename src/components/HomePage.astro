@@ -45,7 +45,7 @@ const { model } = Astro.props;
         <h2 id="featured-title">{model.featured.title}</h2>
       </header>
       {
-        model.featured.items.map((item) => (
+        model.featured.items.map((item, index) => (
           <a class="home-featured-card" href={item.href}>
             <span class="home-featured-copy">
               <span class="section-kicker">{item.role}</span>
@@ -61,7 +61,8 @@ const { model } = Astro.props;
                 alt={item.image.alt}
                 width={item.image.width}
                 height={item.image.height}
-                loading="eager"
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
               {item.caption && <figcaption class="shot-caption">{item.caption}</figcaption>}
             </figure>

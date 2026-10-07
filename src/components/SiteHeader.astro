@@ -23,7 +23,7 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
 
 <header class="site-header" data-static={scrollsAway ? "" : undefined}>
   <div class="site-header-bar glass">
-    <a class="brand" href={pathFor(locale)} aria-label="Titpea home"
+    <a class="brand" href={pathFor(locale)} aria-label={copy.homeLabel}
       ><img src="/favicon.svg" alt="" width="22" height="22" />Titpea</a
     >
 
@@ -35,9 +35,9 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
             <summary aria-current={group.items.some((item) => item.current === current) ? "page" : undefined}>
               {group.label}
             </summary>
-            <div class="nav-dropdown-panel" role="menu">
+            <div class="nav-dropdown-panel">
               {group.items.map((item) => (
-                <a href={item.href} role="menuitem" aria-current={isCurrent(item)}>
+                <a href={item.href} aria-current={isCurrent(item)}>
                   {item.label}
                 </a>
               ))}
@@ -71,8 +71,9 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
       <div class="mobile-menu-panel">
         {
           groups.map((group) => (
-            <section
+            <div
               class="mobile-menu-group"
+              role="group"
               aria-label={group.label}
               data-current={group.items.some((item) => item.current === current) ? "true" : undefined}
             >
@@ -82,7 +83,7 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
                   {item.label}
                 </a>
               ))}
-            </section>
+            </div>
           ))
         }
       </div>

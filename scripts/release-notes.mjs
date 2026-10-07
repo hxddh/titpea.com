@@ -1,6 +1,8 @@
 // Release highlights for product pages: a one-line summary and up to three
-// items from a release's own notes. Text is quoted and trimmed, never
-// rewritten; a release whose notes yield nothing shows no section.
+// items per language from a release's own notes. Text is quoted, never
+// rewritten or cut: a line too long to quote whole, or one that quotes code,
+// is left to the release page. A release whose notes yield nothing shows no
+// section.
 
 const MAX_ITEMS = 3;
 const cjk = /[　-鿿＀-￯]/;
@@ -29,16 +31,22 @@ const tidy = (text) =>
     .replace(/\s*[—–:：-]\s*$/, "")
     .replace(/[.。]$/, "");
 
+/** The line as quoted, or null when it is too long to quote whole. */
+const whole = (text, max) => (text.length <= max ? text : null);
+
 function item(bullet) {
   const bold = bullet.match(/^\*\*(.+?)\*\*/);
   // A bold lead that is a sentence ("A throttled run says it was throttled.")
   // is the item; a short label ("Prefix —") is not enough on its own.
-  if (bold && (bold[1].split(/\s+/).length >= 3 || cjk.test(bold[1]))) return clip(tidy(bold[1]), 110);
+  if (bold && (bold[1].split(/\s+/).length >= 3 || cjk.test(bold[1]))) return whole(tidy(bold[1]), 110);
   if (bold) return null;
   const text = plain(bullet);
-  if (cjk.test(text)) return clip(tidy(text.split(/[：；。]/)[0]), 48);
-  return clip(tidy(text.split(/(?<=[.!?])\s/)[0]), 110);
+  if (cjk.test(text)) return whole(tidy(text.split(/[：；。]/)[0]), 48);
+  return whole(tidy(text.split(/(?<=[.!?])\s/)[0]), 110);
 }
+
+/** Code, file names and flags are for the changelog, not a product page. */
+const quotesCode = (text) => /`|"[^"]*"|\bschema\b|--\w/.test(text);
 
 /** Top-level bullets, in order, reduced to one line each. */
 export function highlightsFrom(markdown = "") {
@@ -57,10 +65,13 @@ export function highlightsFrom(markdown = "") {
     }
   }
   if (current) bullets.push(current);
-  return bullets
-    .map(item)
-    .filter((text) => text && text.length > 3)
-    .slice(0, MAX_ITEMS);
+  const lines = bullets.map(item).filter((text) => text && text.length > 3 && !quotesCode(text));
+  // Up to three per language, so a Chinese list after an English one still
+  // reaches the Chinese pages.
+  return [
+    ...lines.filter((text) => !cjk.test(text)).slice(0, MAX_ITEMS),
+    ...lines.filter((text) => cjk.test(text)).slice(0, MAX_ITEMS),
+  ];
 }
 
 /**

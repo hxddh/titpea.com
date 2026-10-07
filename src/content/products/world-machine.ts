@@ -19,7 +19,7 @@ export default defineProduct({
   icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",
   schema: {
-    category: "DeveloperApplication",
+    category: "GameApplication",
     os: "macOS",
   },
   sectionIndex: true,
