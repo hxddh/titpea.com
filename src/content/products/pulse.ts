@@ -40,7 +40,7 @@ export default defineProduct({
       sections: [
         {
           // One list in lamp order, no group headings; only waiting, stalled and
-          // running rows have a second line (Pulse 28 tray).
+          // running rows have a second line (Pulse 29 tray).
           rows: [
             {
               title: "Add a package · Claude",
@@ -90,8 +90,8 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "State comes only from each agent's own hooks; Pulse reads no session files, transcripts or protected app data.",
-          "The event log keeps each prompt redacted and cut to 200 characters, in a file only you can read, on this Mac.",
-          "Update checks ask GitHub anonymously for the latest public release and open its page.",
+          "The event log, readable only by you, keeps prompts cut to 200 characters with credentials redacted, on this Mac.",
+          "Pulse makes no network connection: no update check, nothing reported. Releases… in Settings only opens the releases page in your browser.",
         ],
       },
       {
@@ -105,15 +105,15 @@ export default defineProduct({
           },
           {
             title: "What does installing the hooks change?",
-            body: "Install them from the setup card on first open or in Settings → Hooks; for Codex, Pulse writes only `~/.codex/hooks.json`, then you run `/hooks` in Codex to trust it. Only observe-only events are added, and removing them restores each file byte for byte; a file changed since then loses only Pulse's entries.",
+            body: "Install them from the setup card on first open or with Install all in Settings → Hooks; for Codex, Pulse writes only `~/.codex/hooks.json`, then you run `/hooks` in Codex to trust it. Only observe-only events are added, and removing them restores each file byte for byte; a file changed since then loses only Pulse's entries.",
           },
           {
             title: "Why is an agent not turning red?",
-            body: "Open Settings → Hooks. Each agent on this Mac has a row: whether its hook is installed (or why it failed) and how long ago its last event arrived, with its own Install or Remove button. Copy report gives the same as plain text, without paths, prompts or sessions.",
+            body: "Open Settings → Hooks. Each agent on this Mac has a row: whether its hook is installed (or why it failed) and how long ago its last event arrived; Install all and Remove all sit above the rows. Copy report gives the same as plain text, without paths, prompts, sessions or projects.",
           },
           {
-            title: "Does Dismiss answer the agent?",
-            body: "No. Dismiss on the banner, like ⌘D in the tray, only stops Pulse reminding you of that wait and withdraws the banner. The prompt still waits in the agent's own window, and Pulse stays in the background.",
+            title: "Does Ignore answer the agent?",
+            body: "No. Ignore on the banner, like ⌘D in the tray, only stops Pulse reminding you of that wait and withdraws its banner. The prompt still waits in the agent's own window, and Pulse stays in the background.",
           },
           {
             title: "Why does macOS block the first open?",
@@ -121,7 +121,11 @@ export default defineProduct({
           },
           {
             title: "How do I remove Pulse?",
-            body: "Settings → Uninstall Pulse… lists what it will remove, then takes out every agent's Pulse hooks, the login item and `~/Library/Application Support/Pulse`, quits, and shows Pulse.app in Finder for you to drag to the Trash. If a hook cannot be removed, it stops and deletes nothing.",
+            body: "In Settings → Hooks, Remove all puts every agent's files back byte for byte. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
+          },
+          {
+            title: "Is there a keyboard shortcut?",
+            body: "Pulse has no global shortcut of its own. Open Pulse again from Spotlight, Raycast or the Finder and the tray opens with the oldest wait selected; ↩ takes you to its prompt. For a key, give Pulse a shortcut in your launcher.",
           },
         ],
       },
@@ -151,7 +155,7 @@ export default defineProduct({
       kind: "menuBar",
       label: "Pulse",
       menubarLabel: "会话列表示意",
-      glanceTitle: "1 · 4 分",
+      glanceTitle: "1·4分钟",
       headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
       sections: [
         {
@@ -160,17 +164,17 @@ export default defineProduct({
               title: "添加依赖 · Claude",
               meta: "Bash: npm install",
               state: "waiting",
-              chip: "4 分",
+              chip: "4分钟",
             },
             {
               title: "修好不稳定的测试 · Claude",
-              meta: "Bash · swift test · 12 分钟前",
+              meta: "Bash · swift test · 12分钟前",
               state: "running",
-              chip: "14 分",
+              chip: "14分钟",
             },
             {
               title: "查看失败的 CI · Codex",
-              meta: "titpea · 1 分钟前",
+              meta: "titpea · 1分钟前",
               state: "recent",
               chip: "轮到你",
             },
@@ -204,8 +208,8 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "状态只来自各 Agent 自己的 hook；Pulse 不读取会话文件、transcript 或受 macOS 保护的应用数据。",
-          "事件日志里的提示已脱敏、至多 200 字，文件只有你能读，只在本机。",
-          "更新检查以匿名请求向 GitHub 询问最新的公开版本，有新版本时打开发布页。",
+          "事件日志里的提示至多 200 字、凭据已抹掉，文件只有你能读，只在本机。",
+          "Pulse 不连网络：不检查更新，不上报任何东西。设置里的“版本发布…”只在浏览器里打开发布页。",
         ],
       },
       {
@@ -219,11 +223,11 @@ export default defineProduct({
           },
           {
             title: "安装 hook 会改动什么？",
-            body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”安装；Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。只装观察型事件，移除时逐字节还原每个文件；之后改过的文件只删掉 Pulse 的条目。",
+            body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”点“全部安装”；Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。只装观察型事件，移除时逐字节还原每个文件；之后改过的文件只删掉 Pulse 的条目。",
           },
           {
             title: "Agent 为什么没亮红灯？",
-            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：hook 装没装（装失败会写原因）、最近一次事件是多久前，各带自己的“安装”或“移除”。“复制报告”给出同样内容的纯文本，不含路径、提示或会话。",
+            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：hook 装没装（装失败会写原因）、最近一次事件是多久前；列表上方是“全部安装”和“全部移除”。“复制报告”给出同样内容的纯文本，不含路径、提示、会话或项目。",
           },
           {
             title: "横幅上的“忽略”会替我回答吗？",
@@ -235,7 +239,11 @@ export default defineProduct({
           },
           {
             title: "怎样卸载 Pulse？",
-            body: "“设置 → 卸载 Pulse…”先列出要移除的东西。确认后，它移除每个 Agent 的 Pulse hook、登录项和 `~/Library/Application Support/Pulse`。然后它退出，并在访达里显示 Pulse.app，由你拖进废纸篓。有 hook 移除不了时，它会停下，什么都不删。",
+            body: "在“设置 → Hooks”点“全部移除”，逐字节还原每个 Agent 的配置。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
+          },
+          {
+            title: "有快捷键吗？",
+            body: "Pulse 没有自己的全局快捷键。在 Spotlight、Raycast 或访达里再打开 Pulse，托盘就会打开并选中最久的等待，按 ↩ 就到提示。想要按键，就在启动器里给 Pulse 设一个快捷方式。",
           },
         ],
       },
