@@ -19,7 +19,7 @@ const seo = buildSeo({
     <header class="privacy-header">
       <p class="eyebrow"><a href="/zh/easier-bookmarks/">Easier Bookmarks</a></p>
       <h1>隐私政策</h1>
-      <p class="privacy-updated">更新日期：2026 年 9 月 30 日</p>
+      <p class="privacy-updated">更新日期：2026 年 10 月 7 日</p>
       <p class="lead">Easier Bookmarks 是 Chrome 侧边栏，管理这台浏览器里已有的书签。</p>
     </header>
 
@@ -36,21 +36,26 @@ const seo = buildSeo({
             自带的书签，因此 Chrome 同步的行为与你手动编辑书签完全相同。
           </li>
           <li>
-            <code>storage</code>：记住哪些文件夹处于展开状态、你从面板中打开过的最多 500 个书签的 ID
-            及最近打开时间（用于搜索排序），以及是否已申请过下方的可选权限。数据通过 <code>chrome.storage.local</code> 保存在本地。
+            <code>storage</code>：记住哪些文件夹处于展开状态、你从面板或地址栏打开过的最多 500 个书签的 ID
+            及最近打开时间（用于搜索排序）、你上次手动为书签选择的文件夹，以及是否已申请过下方的可选权限。数据通过 <code
+              >chrome.storage.local</code
+            > 保存在本地。
           </li>
           <li><code>sidePanel</code>：在 Chrome 侧边栏中显示扩展界面。</li>
           <li><code>favicon</code>：从 Chrome 本地图标缓存中读取网站图标并显示，不会发起任何网络请求。</li>
           <li>
-            <code>tabs</code>（可选）：仅在你第一次选择「+ →
-            书签」时申请，且只在你这样操作时读取当前标签页的标题和网址，用于自动填写。你可以拒绝，届时表单将以空白打开。
+            <code>tabs</code>（可选）：仅在你第一次收藏当前页（☆ 按钮或
+            ⌘/Ctrl+D）时申请。授权后，在面板打开期间读取当前标签页的标题和网址，用于收藏该页并显示它是否已被收藏。网址只在内存中与你的书签比对，不会被保存或发送。你可以拒绝，届时通过空白表单收藏，也不会标记当前页。
           </li>
         </ul>
+        <p>
+          地址栏搜索（输入 <code>b</code> 加空格）不需要任何权限。你在其后输入的内容只在扩展内与书签匹配，不会被保存或发送。
+        </p>
       </section>
       <section>
         <h2>保存在你设备上的内容</h2>
         <p>
-          仅包括上方 <code>storage</code> 一栏所列内容：文件夹展开状态、最多 500 个书签的 ID 及最近打开时间，以及是否已申请过可选权限。这些数据不会被发送到任何地方，卸载扩展后即被删除。书签本身属于
+          仅包括上方 <code>storage</code> 一栏所列内容：文件夹展开状态、最多 500 个书签的 ID 及最近打开时间、上次手动选择的文件夹，以及是否已申请过可选权限。这些数据不会被发送到任何地方，卸载扩展后即被删除。书签本身属于
           Chrome 自带数据；如果你开启了 Chrome 同步，Chrome 会照常同步，与是否安装本扩展无关。
         </p>
       </section>

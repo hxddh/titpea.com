@@ -19,7 +19,7 @@ const seo = buildSeo({
     <header class="privacy-header">
       <p class="eyebrow"><a href="/easier-bookmarks/">Easier Bookmarks</a></p>
       <h1>Privacy Policy</h1>
-      <p class="privacy-updated">Last updated: September 30, 2026</p>
+      <p class="privacy-updated">Last updated: October 7, 2026</p>
       <p class="lead">Easier Bookmarks is a local Chrome side panel for the bookmarks already in this browser.</p>
     </header>
 
@@ -38,26 +38,34 @@ const seo = buildSeo({
           </li>
           <li>
             <code>storage</code>: remembering which folders are open, the IDs and last-opened times of up to 500
-            bookmarks you opened from the panel (to rank search results), and whether the optional permission below was
-            already requested. Stored locally with <code>chrome.storage.local</code>.
+            bookmarks you opened from the panel or the address bar (to rank search results), the folder you last chose
+            by hand for a bookmark, and whether the optional permission below was already requested. Stored locally with <code
+              >chrome.storage.local</code
+            >.
           </li>
           <li><code>sidePanel</code>: displaying the extension in Chrome's side panel.</li>
           <li>
             <code>favicon</code>: showing each site's icon from Chrome's local icon cache. No network requests are made.
           </li>
           <li>
-            <code>tabs</code> (optional): requested only the first time you choose + → Bookmark, and used only then to read
-            the current tab's title and address so they can be filled in. You can decline; the form then opens empty.
+            <code>tabs</code> (optional): requested only the first time you save the current page (the ☆ button or ⌘/Ctrl+D).
+            Once granted, while the panel is open, it reads the active tab's title and address to save the page and to show
+            whether that page is already bookmarked. That address is compared with your bookmarks in memory and is never stored
+            or sent. You can decline; the page is then saved through an empty form and nothing is marked.
           </li>
         </ul>
+        <p>
+          The address-bar search (type <code>b</code> and a space) needs no permission. What you type after it is matched
+          against your bookmarks inside the extension and is not stored or sent.
+        </p>
       </section>
       <section>
         <h2>What stays on your device</h2>
         <p>
           Only the items listed under <code>storage</code>: which folders are open, the IDs and last-opened times of up
-          to 500 bookmarks, and whether the optional permission was requested. They are never sent anywhere and are
-          removed when you uninstall the extension. Your bookmarks themselves are Chrome's own data; with Chrome Sync
-          on, Chrome syncs them exactly as it does without this extension.
+          to 500 bookmarks, the folder last chosen by hand, and whether the optional permission was requested. They are
+          never sent anywhere and are removed when you uninstall the extension. Your bookmarks themselves are Chrome's
+          own data; with Chrome Sync on, Chrome syncs them exactly as it does without this extension.
         </p>
       </section>
       <section>

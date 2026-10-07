@@ -63,9 +63,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "It uses Chrome’s Bookmarks API and local storage: open folders, recently opened bookmarks for search order, and your last-picked folder.",
+          "Local storage holds open folders, recently opened bookmarks for search order, and your last-picked folder. No analytics, ads, accounts, or servers.",
           "Optional tabs access, asked at your first save, reads the active tab’s title and address to save it or show it’s saved.",
-          "That address and what you type after `b` are never stored or sent. No analytics, ads, accounts, remote code, or servers.",
+          "It keeps no copy of that address or your `b` searches. Saved bookmarks sync only through Chrome Sync, if it’s on.",
         ],
       },
     ],
@@ -120,9 +120,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "只使用 Chrome 书签 API 和扩展本地存储：展开的文件夹、最近打开过的书签（用于搜索排序）和你上次选的文件夹。",
+          "本地只存展开的文件夹、最近打开的书签（用于搜索排序）和上次选的文件夹。无分析服务、广告、账号或服务器。",
           "标签页权限是可选的：第一次收藏当前页时才申请，读取当前标签页的标题和网址，用于收藏并显示是否已收藏。",
-          "这个网址和你在 `b` 后输入的内容都不会被保存或发送。无分析服务，也没有广告、账号、远程代码或外部服务器。",
+          "扩展不另存这个网址和你在 `b` 后输入的内容。收藏的书签只在你开启 Chrome 同步时随之同步。",
         ],
       },
     ],
