@@ -127,8 +127,8 @@ export const ui: Record<Locale, Ui> = {
     homeMetaTitle: "Titpea — Small software by hxddh",
     homeTitle: "Small software, made with care.",
     homeDescription:
-      "Software by one developer, hxddh: a small world, desktop chess that marks your mistakes, translation when you ask, and tools for S3 storage and coding agents.",
-    homeLead: "A world that tells you what changed. Chess that marks your mistakes. Translation only when you ask.",
+      "Software by one developer, hxddh: tools for object storage and coding agents, browser extensions for everyday reading, desktop board games, and a small world.",
+    homeLead: "Tools for object storage and coding agents, everyday browser extensions, and a few games.",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
     relatedTitle: "More tools",
@@ -216,8 +216,8 @@ export const ui: Record<Locale, Ui> = {
     homeMetaTitle: "Titpea — hxddh 的小软件",
     homeTitle: "认真做的小软件",
     homeDescription:
-      "hxddh 一个人做的软件：回来时告诉你发生了什么的小世界、标出失着的桌面国际象棋、只在你要时出现的译文，以及对象存储和编码 Agent 工具。",
-    homeLead: "回来时告诉你发生了什么的小世界。标出失着的国际象棋。只在你要时出现的译文。",
+      "hxddh 一个人开发的软件：对象存储和编码 Agent 工具、日常用的浏览器扩展、桌面棋类游戏，以及一个小世界。",
+    homeLead: "对象存储和编码 Agent 工具，日常用的浏览器扩展，还有几款游戏。",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
