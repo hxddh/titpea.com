@@ -26,12 +26,12 @@
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v28.0.0",
-    "published": "2026-09-30"
+    "version": "v29.0.0",
+    "published": "2026-10-07"
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
-    "version": "v0.26.2",
+    "version": "v0.26.3",
     "published": "2026-10-07"
   },
   "goban": {
@@ -41,8 +41,8 @@
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v8.2.0",
-    "published": "2026-10-01"
+    "version": "v8.3.0",
+    "published": "2026-10-07"
   },
   "world-machine": {
     "repo": "hxddh/world-machine",
