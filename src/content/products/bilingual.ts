@@ -38,9 +38,8 @@ export default defineProduct({
       text: "Read the original; hold a key for the translation.",
     },
     primaryCta: {
-      label: "Coming to Chrome",
-      href: "#",
-      soon: true,
+      label: "Install",
+      href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
     },
     secondaryCta: {
       label: "Privacy policy",
@@ -122,9 +121,8 @@ export default defineProduct({
       text: "默认只看原文，按住一个键看译文。",
     },
     primaryCta: {
-      label: "即将上架",
-      href: "#",
-      soon: true,
+      label: "安装",
+      href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
     },
     secondaryCta: {
       label: "隐私政策",
