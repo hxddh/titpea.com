@@ -17,10 +17,10 @@ export default defineProduct({
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
     eyebrow: "Chrome extension",
     headline: "Ratings beside Douban.",
-    lead: "IMDb, Rotten Tomatoes, Metacritic. At the end of the film details. Title matches labelled.",
+    lead: "IMDb, Rotten Tomatoes, Metacritic. In the film details and on hover. Title matches labelled.",
     catalog: {
       role: "On Douban",
-      text: "IMDb, Rotten Tomatoes, and Metacritic in the film info; title matches labelled.",
+      text: "IMDb, Rotten Tomatoes, and Metacritic in the film info and on hover; title matches labelled.",
     },
     primaryCta: {
       label: "Install",
@@ -30,7 +30,7 @@ export default defineProduct({
       label: "Privacy details",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
     },
-    meta: "Chrome Web Store · 1.6.1 · Ratings from OMDb",
+    meta: "Chrome Web Store · 1.7 · Ratings from OMDb",
     visual: {
       kind: "screenshot",
       label: "Douban Movie Rating Assistant",
@@ -49,9 +49,9 @@ export default defineProduct({
         label: "Context on the Douban page.",
         items: [
           { title: "In Douban’s own style", body: "IMDb with its vote count; click a score to open its site." },
+          { title: "Hover a film link", body: "Top 250, charts, recommendations: its ratings appear under the link." },
           { title: "Says how it matched", body: "By the page’s IMDb ID; otherwise by title, and marked so." },
           { title: "Your own free key", body: "When the shared daily quota runs out, add an OMDb key." },
-          { title: "Quiet until needed", body: "Fades in once ratings arrive; speaks up only when you must act." },
         ],
       },
       {
@@ -59,9 +59,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Reads the title, year, and IMDb ID from the Douban movie page and sends them, with an API key, only to OMDb.",
-          "Settings and your optional OMDb key sit in Chrome sync storage; ratings are cached locally for up to 7 days.",
-          "No server, no analytics, no tracking; uninstalling removes its settings and cache.",
+          "It reads the title, year, and IMDb ID from the film page you open, or from a hovered link’s film page.",
+          "It sends them, with an API key, only to OMDb. Settings and your optional key sit in Chrome sync storage.",
+          "Ratings are cached locally for up to 7 days. No server, no analytics, no tracking; uninstalling removes its settings and cache.",
         ],
       },
       {
@@ -75,7 +75,7 @@ export default defineProduct({
           },
           {
             title: "Which pages does it run on?",
-            body: "Only Douban film detail pages (movie.douban.com/subject/…). You can switch it off in the toolbar popup.",
+            body: "Only on movie.douban.com. Film detail pages get the ratings line; elsewhere, such as Top 250, charts, and a detail page’s recommendations, it looks a film up only when you rest the pointer on its link for about 0.3 seconds. You can switch it off in the toolbar popup.",
           },
           {
             title: "How reliable is a title match?",
@@ -83,7 +83,7 @@ export default defineProduct({
           },
           {
             title: "Why are ratings sometimes missing?",
-            body: "When OMDb has no entry or no rating for a film, nothing is shown. Ratings come from the OMDb API, and the built-in shared key has a daily limit. When it runs out, the page offers a link to enter a free OMDb key of your own, which is checked before it is saved. A request that fails or takes longer than 8 seconds can be retried with a click.",
+            body: "When OMDb has no entry or no rating for a film, nothing is shown. Ratings come from the OMDb API, and the built-in shared key has a daily limit. When it runs out, the page offers a link to enter a free OMDb key of your own, which is checked before it is saved. A request that fails or takes longer than 8 seconds can be retried with a click. A hover shows nothing when a lookup fails, and a note only when the quota is used up, a key is invalid, or requests are rate-limited.",
           },
         ],
       },
@@ -95,10 +95,10 @@ export default defineProduct({
     description: "在豆瓣电影页面补充 IMDb、烂番茄和 Metacritic 评分的 Chrome 扩展（非豆瓣官方）。",
     eyebrow: "Chrome 扩展",
     headline: "在豆瓣，对照其他评分",
-    lead: "对照 IMDb、烂番茄和 Metacritic。像导演、主演一样，写在影片信息末尾。按片名匹配时会标注。",
+    lead: "对照 IMDb、烂番茄和 Metacritic。写在影片信息末尾，列表里悬停片名也能看。按片名匹配时会标注。",
     catalog: {
       role: "豆瓣页上",
-      text: "在影片信息里对照 IMDb、烂番茄和 Metacritic，按片名匹配会标注。",
+      text: "在影片信息里或悬停片名时对照 IMDb、烂番茄和 Metacritic，按片名匹配会标注。",
     },
     primaryCta: {
       label: "安装",
@@ -108,7 +108,7 @@ export default defineProduct({
       label: "隐私说明",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
     },
-    meta: "Chrome 网上应用店 · 1.6.1 · 评分来自 OMDb",
+    meta: "Chrome 网上应用店 · 1.7 · 评分来自 OMDb",
     visual: {
       kind: "screenshot",
       label: "豆瓣电影评分助手",
@@ -127,9 +127,9 @@ export default defineProduct({
         label: "补充对照，不另开站点",
         items: [
           { title: "豆瓣原有写法", body: "IMDb 附评分人数；点任一评分即可打开原站。" },
+          { title: "悬停即看", body: "Top 250、排行榜和推荐里，鼠标停在影片链接上即显示评分。" },
           { title: "写明匹配方式", body: "优先用页面上的 IMDb 编号；没有时按片名匹配并标注。" },
           { title: "自己的免费密钥", body: "公共密钥每日额度用完时，填入你的 OMDb 密钥。" },
-          { title: "平时安静", body: "评分到了才淡入；只在需要你操作时提示。" },
         ],
       },
       {
@@ -137,9 +137,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "从豆瓣电影页读取片名、年份和 IMDb 编号，连同 API 密钥只发送给 OMDb。",
-          "设置和你填写的 OMDb 密钥存在 Chrome 同步存储中；评分缓存在本机，最长 7 天。",
-          "没有服务器，无分析服务，没有广告或追踪代码；卸载即删除全部设置与缓存。",
+          "在影片详情页读取片名、年份和 IMDb 编号；鼠标停在其他影片的链接上时，读取该片的豆瓣页面取得同样信息。",
+          "这些信息连同 API 密钥只发送给 OMDb。设置和你填写的 OMDb 密钥存在 Chrome 同步存储中。",
+          "评分缓存在本机，最长 7 天。没有服务器，无分析服务，没有广告或追踪代码；卸载即删除全部设置与缓存。",
         ],
       },
       {
@@ -153,7 +153,7 @@ export default defineProduct({
           },
           {
             title: "在哪些页面上运行？",
-            body: "只在豆瓣电影详情页（movie.douban.com/subject/…）运行。可以在工具栏弹窗里关闭。",
+            body: "只在 movie.douban.com 上运行。电影详情页的影片信息末尾多一行其他评分；在 Top 250、排行榜、详情页的推荐等处，只有鼠标在影片链接上停留约 0.3 秒时才查询该片。可以在工具栏弹窗里关闭。",
           },
           {
             title: "按片名匹配可靠吗？",
@@ -161,7 +161,7 @@ export default defineProduct({
           },
           {
             title: "为什么有时看不到评分？",
-            body: "OMDb 未收录该片或暂无评分时，不显示任何内容。评分来自 OMDb API，内置的公共密钥每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb 密钥，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。",
+            body: "OMDb 未收录该片或暂无评分时，不显示任何内容。评分来自 OMDb API，内置的公共密钥每日额度有限。额度用完时，页面上会给出入口，可填入自己免费申请的 OMDb 密钥，保存前自动验证。请求出错或超过 8 秒未返回时，点击即可重试。悬停查询出错时不显示任何内容，只在额度用完、密钥无效或请求过于频繁时给出提示。",
           },
         ],
       },
