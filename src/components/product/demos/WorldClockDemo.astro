@@ -1,0 +1,67 @@
+---
+import type { WorldClockDemo } from "../../../content/schema";
+import { screenshotSizes, srcsetFor } from "../../../lib/images";
+
+interface Props {
+  demo: WorldClockDemo;
+  caption: string;
+}
+
+const { demo, caption } = Astro.props;
+const { fallback } = demo;
+---
+
+<div
+  class="demo-clock"
+  data-demo-clock
+  data-local={demo.local}
+  data-tomorrow={demo.tomorrow}
+  data-yesterday={demo.yesterday}
+  data-now={demo.now}
+  data-cities={JSON.stringify(demo.cities)}
+  data-local-names={JSON.stringify(demo.localNames)}
+>
+  {/* Without JS (or before it runs) the store image of the same mechanic stands in. */}
+  <figure class="show-figure demo-fallback" data-demo-fallback>
+    <div class="shot">
+      <img
+        src={fallback.src}
+        srcset={srcsetFor(fallback.src, fallback.width)}
+        sizes={screenshotSizes}
+        alt={fallback.alt}
+        width={fallback.width}
+        height={fallback.height}
+        loading="lazy"
+      />
+    </div>
+    <figcaption class="shot-caption">{fallback.caption}</figcaption>
+  </figure>
+
+  <figure class="demo-figure" data-demo-live hidden>
+    <div class="clock-popup" role="group" aria-label={demo.label}>
+      <div class="clock-popup-top">
+        <p class="clock-popup-title">{demo.appTitle}</p>
+        <span class="clock-popup-shift" data-shift-chip aria-hidden="true" hidden></span>
+      </div>
+      <ol class="clock-rows" data-rows></ol>
+      <div class="clock-popup-foot">
+        <input
+          class="clock-slider"
+          type="range"
+          min="-72"
+          max="72"
+          step="1"
+          value="0"
+          aria-label={demo.slider}
+          data-slider
+        />
+        <button class="clock-now" type="button" data-now-button>{demo.now}</button>
+      </div>
+      <p class="clock-hint">{demo.hint}</p>
+    </div>
+    <figcaption class="shot-caption">{caption}</figcaption>
+    <p class="sr-only" aria-live="polite" data-status></p>
+  </figure>
+</div>
+
+<script is:inline src="/scripts/demo-world-clock.js" defer></script>

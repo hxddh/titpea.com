@@ -27,59 +27,189 @@
   max-width: 30em;
 }
 
+/* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
+.title-part {
+  display: inline-block;
+}
+
+/* Just shipped: the three latest releases, a quiet strip under the hero. */
+.home-shipping {
+  padding-top: 72px;
+}
+
+.home-strip-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1040px;
+  margin: 0 auto 14px;
+}
+
+.home-strip-head h2 {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-kicker);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.home-strip-more {
+  font-size: var(--text-kicker);
+}
+
+.home-strip-more::after {
+  content: " ›";
+}
+
+.shipping-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.shipping-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  height: 100%;
+  padding: 16px 18px;
+  border-radius: var(--radius-card);
+  background: var(--paper-raised);
+  color: var(--ink);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.shipping-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.shipping-card img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(var(--shadow-icon-small));
+}
+
+.shipping-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.shipping-copy strong {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.shipping-meta {
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.shipping-note {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 4px;
+  color: var(--ink-2);
+  font-size: var(--text-small);
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Selected work: three tall cards side by side, a picture and a line each. */
 .home-evidence {
   padding-top: var(--section-y);
 }
 
+.home-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1040px;
+  margin: 48px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
 .home-featured-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--paper-raised);
   color: var(--ink);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .home-featured-card:hover {
   text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.home-featured-card + .home-featured-card {
-  margin-top: var(--section-y-short);
+.home-featured-shot {
+  position: relative;
+  margin: 0;
 }
 
-.home-evidence .section-head + .home-featured-card {
-  margin-top: 56px;
+.home-featured-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-featured-caption {
+  padding: 8px 20px 0;
+  color: var(--muted);
+  font-size: var(--text-small);
 }
 
 .home-featured-copy {
-  display: block;
-  max-width: var(--narrow);
-  margin: 0 auto 36px;
-  text-align: center;
-}
-
-.home-featured-copy .section-kicker,
-.home-featured-copy .sub {
-  display: block;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 18px 22px 22px;
 }
 
 .home-featured-name {
-  display: block;
-  font-size: var(--title-show);
+  font-size: 22px;
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.028em;
+  line-height: 1.2;
+  letter-spacing: -0.022em;
 }
 
-.home-featured-copy .sub {
-  margin-top: 10px;
+.home-featured-text {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: var(--text-card-body);
+  line-height: 1.45;
 }
 
 .home-featured-more {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  min-height: 44px;
-  margin-top: 8px;
+  margin-top: auto;
+  padding-top: 14px;
   color: var(--link);
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .home-featured-more::after {
@@ -92,54 +222,116 @@
   text-decoration: underline;
 }
 
-.home-featured-card .shot {
-  max-width: 1040px;
-  margin-inline: auto;
-}
-
+/* Every tool: filter by line, then cards in a grid, each line with who it is for. */
 .home-more-tools {
   padding-top: var(--section-y);
 }
 
-.home-catalog-group {
-  max-width: 760px;
-  margin: 56px auto 0;
+.home-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 32px auto 0;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--paper-raised);
 }
 
-.home-catalog-group + .home-catalog-group {
-  margin-top: 44px;
+.home-filter[hidden] {
+  display: none;
+}
+
+.home-filter button {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.home-filter button[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-glass);
+  font-weight: 600;
+}
+
+.home-catalog {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.home-catalog[data-filter="storage"] .home-catalog-group:not([data-line="storage"]),
+.home-catalog[data-filter="agents"] .home-catalog-group:not([data-line="agents"]),
+.home-catalog[data-filter="everyday"] .home-catalog-group:not([data-line="everyday"]),
+.home-catalog[data-filter="games"] .home-catalog-group:not([data-line="games"]) {
+  display: none;
+}
+
+.home-catalog-group {
+  margin-top: 48px;
+}
+
+.home-catalog-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-bottom: 14px;
 }
 
 .home-catalog-label {
-  margin: 0 0 14px;
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.home-catalog-note {
+  margin: 0;
   color: var(--muted);
-  font-size: var(--text-kicker);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 15px;
 }
 
 .home-catalog-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* The catalog is an index: icon, name, one line. Versions live on product pages. */
-.catalog-row {
+/* A card per tool: icon, name, one line. Versions live on product pages. */
+.catalog-card {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) auto;
-  gap: 16px;
-  align-items: center;
-  padding: 16px 0;
-  border-top: 1px solid var(--soft-line);
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  height: 100%;
+  padding: 18px;
+  border-radius: var(--radius-card);
+  background: var(--paper-raised);
   color: var(--ink);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.catalog-row:hover {
+.catalog-card:hover {
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.catalog-row:hover .home-catalog-name {
+.catalog-card:hover .home-catalog-name {
   color: var(--link);
 }
 
@@ -149,9 +341,9 @@
   filter: drop-shadow(var(--shadow-icon-small));
 }
 
-.catalog-row-copy {
+.catalog-card-copy {
   display: grid;
-  gap: 2px;
+  gap: 4px;
 }
 
 .home-catalog-name {
@@ -168,16 +360,22 @@
   letter-spacing: -0.01em;
 }
 
-.catalog-chevron {
-  color: var(--muted);
-  font-size: 22px;
-  line-height: 1;
-  transition: transform 0.25s ease;
+@media (max-width: 960px) {
+  .home-featured-grid,
+  .home-catalog-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shipping-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-.catalog-row:hover .catalog-chevron {
-  transform: translateX(3px);
-  color: var(--link);
+@media (max-width: 640px) {
+  .home-featured-grid,
+  .home-catalog-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Home hero: the app icons, a row of doors into the products. */
@@ -197,7 +395,9 @@
   position: relative;
   display: block;
   border-radius: 18px;
-  transition: transform 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 /* The product's name, under its icon while pointed at or focused. Hidden
@@ -569,10 +769,6 @@
     height: 34px;
   }
 
-  .home-featured-copy {
-    margin-bottom: 24px;
-  }
-
   .release-list a {
     grid-template-columns: 28px minmax(0, 1fr) auto;
     gap: 10px;
@@ -585,13 +781,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .catalog-chevron,
-  .home-icons a {
+  .home-icons a,
+  .shipping-card,
+  .home-featured-card,
+  .catalog-card {
     transition: none;
   }
 
-  .catalog-row:hover .catalog-chevron,
-  .home-icons a:hover {
+  .home-icons a:hover,
+  .shipping-card:hover,
+  .home-featured-card:hover,
+  .catalog-card:hover {
     transform: none;
   }
 }

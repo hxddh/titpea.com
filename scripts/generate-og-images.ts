@@ -135,8 +135,10 @@ async function splitCard(card: Card) {
 /** Centered card: icons (if any), eyebrow, headline, and body over the wash. */
 async function centeredCard(card: Card) {
   const icons = card.icons ?? [];
-  const iconSize = icons.length > 1 ? 76 : 96;
   const iconGap = 16;
+  // A row of icons fits the card with 48px to spare on each side; never wider than 76px.
+  const iconSize =
+    icons.length > 1 ? Math.min(76, Math.floor((1200 - 96 - (icons.length - 1) * iconGap) / icons.length)) : 96;
   const titleLines = wrap(card.title, 26);
   const bodyLines = wrap(card.body, 52).slice(0, 2);
   const titleSize = titleLines.length > 1 ? 72 : 84;

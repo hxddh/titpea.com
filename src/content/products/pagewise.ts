@@ -17,7 +17,7 @@ export default defineProduct({
       "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
     eyebrow: "PDF reading and questions",
     headline: "Ask. Check the page.",
-    lead: "Ask a question. Each citation: verified, “check the page”, or not found.",
+    lead: "Each citation: verified, “check the page”, or not found. Scans read locally.",
     catalog: {
       role: "PDF assistant",
       text: "Ask a PDF. Follow the citation to the page.",

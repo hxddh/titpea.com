@@ -96,7 +96,7 @@ export default defineProduct({
           { label: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
           { label: "Watchlist", body: "Mainstream and emerging agents, with evidence labels." },
           { label: "Field notes", body: "Real workflows and reusable patterns." },
-          { label: "Storage implications", body: "Workspaces, sandboxes, logs, and replay, as a side lens." },
+          { label: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
         ],
       },
       {
@@ -139,7 +139,7 @@ export default defineProduct({
       label: "快速开始",
       href: "https://github.com/hxddh/agent-radar#cli-usage",
     },
-    meta: "Python · Markdown-first · GitHub Actions · MIT · {version}",
+    meta: "Python · Markdown 优先 · GitHub Actions · MIT · {version}",
     commands: {
       title: "开始使用",
       sub: "只需要 Python 3.10+ 和标准库。在仓库目录里运行。",
@@ -204,9 +204,9 @@ export default defineProduct({
         body: "Runner 在固定写入边界内更新四类文件，每次变化都能在仓库历史里核对。",
         steps: [
           { label: "每周论点", body: "当前判断、已变化点和开放问题。" },
-          { label: "观察名单", body: "主流与新兴 agent，标注证据强度。" },
+          { label: "观察名单", body: "主流与新兴 Agent，标注证据强度。" },
           { label: "现场笔记", body: "真实工作流和可复用模式。" },
-          { label: "存储影响", body: "工作区、沙箱、日志与回放，作为侧面视角。" },
+          { label: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
         ],
       },
       {

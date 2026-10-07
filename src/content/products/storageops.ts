@@ -15,7 +15,7 @@ export default defineProduct({
     description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
     eyebrow: "Pi Coding Agent extension",
     headline: "S3 diagnosis for Pi.",
-    lead: "Skills and tools for Pi. Your logs and traces. No cloud account.",
+    lead: "Skills and tools for Pi, the open-source terminal coding agent. No cloud account.",
     catalog: {
       role: "Pi extension",
       text: "Storage diagnosis for Pi, from logs and traces already in the chat.",
@@ -165,10 +165,10 @@ export default defineProduct({
   },
   zh: {
     title: "StorageOps",
-    description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与 skill pack。",
+    description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与技能包。",
     eyebrow: "Pi Coding Agent 扩展",
     headline: "在 Pi 里排查对象存储",
-    lead: "给 Pi 的 skills 和工具。用你的日志和 trace 排查。不接云账号。",
+    lead: "给开源终端编码 Agent Pi 的技能包和工具。用你的日志和 trace 排查。不接云账号。",
     catalog: {
       role: "Pi 扩展",
       text: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
@@ -181,7 +181,7 @@ export default defineProduct({
       label: "快速开始",
       href: "https://github.com/hxddh/storageops#quick-start",
     },
-    meta: "Python · Pi Coding Agent · S3-compatible · MIT",
+    meta: "Python · Pi Coding Agent · S3 兼容 · MIT",
     stats: {
       title: "Pi 多了什么",
       items: [
@@ -204,7 +204,7 @@ export default defineProduct({
           command: "python3 -m pip install storageops -i https://pypi.org/simple",
         },
         {
-          comment: "把技能和工具装进 Pi",
+          comment: "把技能包和工具装进 Pi",
           command: "storageops install",
         },
         {
@@ -217,18 +217,18 @@ export default defineProduct({
       kind: "skillMap",
       label: "StorageOps",
       kicker: "Pi Agent",
-      title: "Pi 先加载 skill，再调用工具",
-      body: "StorageOps 给 Pi 一条对象存储排查路径：skill 决定方法，扩展工具再安全地处理现场证据。",
+      title: "Pi 先加载技能包，再调用工具",
+      body: "StorageOps 给 Pi 一条对象存储排查路径：技能包决定方法，扩展工具再安全地处理现场证据。",
       cards: [
         {
           number: "SKILL",
-          title: "16 组诊断 skills",
+          title: "16 个技能包",
           body: "Pi 可按需加载鉴权、协议兼容、性能、生命周期、迁移、一致性等对象存储领域的排查方法。",
         },
         {
           number: "ROUTE",
           title: "detect_domain",
-          body: "判断优先排查方向，并提示 Pi 接下来该读取哪份 skill。",
+          body: "判断优先排查方向，并提示 Pi 接下来该读取哪个技能包。",
         },
         {
           number: "SAFE",
@@ -241,7 +241,7 @@ export default defineProduct({
           body: "通过受管的 httpmon helper 观察一条受限的存储命令。",
         },
       ],
-      flow: ["输入：报错、命令、配置、脱敏日志", "Pi：skills、工具与确定性辅助脚本"],
+      flow: ["输入：报错、命令、配置、脱敏日志", "Pi：技能包、工具与确定性辅助脚本"],
     },
     sections: [
       {
@@ -260,12 +260,12 @@ export default defineProduct({
         id: "how",
         nav: "排查过程",
         kicker: "Pi 加载什么、调用什么",
-        title: "skill 定方法，工具读证据",
+        title: "技能包定方法，工具读证据",
         body: "Pi 是运行时。StorageOps 补上对象存储领域的知识和工具。",
         steps: [
           { label: "带上材料", body: "原始报错、`@日志文件`、配置片段或 debug 输出。" },
-          { label: "识别领域", body: "`detect_domain` 给出优先方向，提示 Pi 读哪份 skill。" },
-          { label: "加载 skill", body: "SigV4、IAM、生命周期、复制、Spark S3A；再由工具读证据。" },
+          { label: "识别领域", body: "`detect_domain` 给出优先方向，提示 Pi 读哪个技能包。" },
+          { label: "加载技能包", body: "SigV4、IAM、生命周期、复制、Spark S3A；再由工具读证据。" },
         ],
       },
       {
@@ -284,7 +284,7 @@ export default defineProduct({
           "迁移",
           "读取结果过期",
         ],
-        body: "skill 包覆盖常见的 S3 兼容故障。Pi 只加载与眼前材料相符的那部分。",
+        body: "技能包覆盖常见的 S3 兼容故障。Pi 只加载与眼前材料相符的那部分。",
       },
       {
         kind: "faq",
@@ -294,7 +294,7 @@ export default defineProduct({
         items: [
           {
             title: "它是另一个 Agent 吗？",
-            body: "不是。StorageOps 是对象存储 skills、一份 Pi 扩展和辅助脚本。Pi 仍是运行时；StorageOps 不会再加一个 Agent，也不是云控制台。",
+            body: "不是。StorageOps 是对象存储技能包、一份 Pi 扩展和辅助脚本。Pi 仍是运行时；StorageOps 不会再加一个 Agent，也不是云控制台。",
           },
           {
             title: "需要接入云账号吗？",

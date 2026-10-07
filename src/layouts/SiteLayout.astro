@@ -14,9 +14,11 @@ interface Props {
   pageClass?: string;
   /** True on product pages, which pin a product local nav instead of the site header. */
   localNav?: boolean;
+  /** Product pages take their product's color pair, and games their warmer canvas (tokens.css). */
+  product?: { slug: string; line: string };
 }
 
-const { current = "home", locale = "en", seo, language, pageClass, localNav = false } = Astro.props;
+const { current = "home", locale = "en", seo, language, pageClass, localNav = false, product } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
@@ -91,7 +93,7 @@ const footerGroups: Array<{
     }
     <title>{seo.title}</title>
   </head>
-  <body class:list={[pageClass]}>
+  <body class:list={[pageClass]} data-product={product?.slug} data-line={product?.line}>
     <a class="skip-link" href="#main-content">{copy.skipLink}</a>
     <SiteHeader
       current={current}

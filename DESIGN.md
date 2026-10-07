@@ -1,6 +1,6 @@
 # Titpea Design Principles
 
-Titpea is a personal product site. Each product page reads like a product launch page: one clear claim, the product itself shown large, then a short run of evidence. The home page is a directory built from the same pieces. The reference is the Omni page (hanxiao.io/omni): centered heroes, glass chrome, large photographs, feature cards, and a FAQ you can open.
+Titpea is a personal product site. Each product page reads like a product launch page: one clear claim, the product itself shown large, then a short run of what it does. The home page is a directory built from the same pieces. The reference is the Omni page (hanxiao.io/omni): centered heroes, glass chrome, large photographs, feature cards, and a FAQ you can open.
 
 ## When Rules Compete
 
@@ -38,11 +38,12 @@ Every page uses the same few parts. Build new content from them before inventing
 
 ## Home
 
-**Settled direction — the owner decided this twice (PR #150, PR #153).** Home follows Omni: the icon hero with two actions, then stacked showcase rows with lifted, rounded screenshots, then the catalog. Do not bring back the side-by-side hairline pair, a compact hero with no actions, or flat unshadowed screenshots, even to fit both captures on the first screen. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
+**Settled direction — the owner decided this in October 2026 (the studio home, replacing the stacked Omni rows of PR #150 and #153).** Home says who makes this and what the tools have in common, shows that they are alive, then lets a visitor find the right one. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
 
-- The hero opens on the shelf of app icons (two centred rows, at most eight wide, every product), each a link to its product whose name appears in a small glass label when pointed at or focused (above the top row, below the bottom row), then `Independent software by hxddh`, the contents line (`Worlds, games, and tools.` / `小世界、棋局和工具`), and a lede that names the three featured products in three fragments (`A world that keeps going. Chess you can review. Translation when you ask.`). Two actions: `Browse all tools` jumps to the catalog; `About hxddh ›` is the text link.
-- `Selected work` / `主要作品` introduces three showcase rows, in `featured.order`: World Machine, Chessboard, Bilingual (the owner's picks, September 2026: the most distinctive first, the one still in store review last). Storage and agent tools are in the catalog below. Each row is role kicker, product name, one-liner, `Learn more ›`, then the full screenshot, and the whole row is one link. Three is the ceiling; a new pick replaces one rather than adding a row. An image that is not a plain capture (a store image with sample translations) carries `featured.caption`, shown under it, as on its product page. When the app's UI shows words, each locale gets a capture in its own language (`featured.image.src` per locale). Phones show the same whole screenshot: a crop cut sentences mid-line and read as a broken image.
-- `More tools` / `更多工具` groups the rest into Storage, Agents, Everyday, and Games. It is an index, one centered column: each product is one row, all of it a link, with its icon, name, one line (`catalog.text`), and a `›`, rows split by hairlines. No kicker, tag, or date: those live on the product page. A product belongs to one line, and the header dropdowns use the same four lines.
+- The hero keeps the shelf of app icons (two centred rows, at most eight wide, every product), each a link whose name appears in a small glass label when pointed at or focused. Then the person (`One developer, hxddh` / `hxddh，一个人开发`), the title (`Small software, made with care.` / `认真做的小软件`; a `|` in the copy marks where a title may wrap, so a phone never strands a character), and a lede of three fragments naming the featured products. Two actions: `Browse all {count} tools` jumps to the catalog; `About hxddh ›` is the text link.
+- `Just shipped` / `最近发布`: the three newest releases from `releases.json` (icon, name, tag, date, and one highlight in the page's language when the release has one), with `All releases ›` to About. Release cadence shows the tools are alive.
+- `Selected work` / `主要作品`: three tall cards side by side, in `featured.order` (World Machine, Chessboard, Bilingual — the owner's picks). Each card is the screenshot (16:11, top-anchored), role kicker, name, one line, `Learn more ›`; the whole card is one link and its image is decorative (`alt=""`; the card's text names it). An image that is not a plain capture keeps its `featured.caption`. Three is the ceiling. Phones stack the cards.
+- `Every tool` / `全部工具`: a segmented filter (All, Storage, Agents, Everyday, Games; hidden without JavaScript, when every line shows), then each line with who it is for (`groupNotes`) and a grid of cards (icon, name, `catalog.text`; three columns, two on tablets, one on phones). Featured products appear in their line too, so a filtered line is complete. No kicker, tag, or date: those live on the product page.
 
 ## About
 
@@ -94,10 +95,12 @@ The page answers, in order: what Titpea is, where its tools help, what shipped l
 
 ## Voice
 
+- **No 依据 framing (owner rule, October 2026).** Site and product copy never sells the work as "evidence", "依据" or "shows its work"; that framing is too narrow. Say what the product does. A feature that is literally called evidence in the product (PageWise exporting evidence highlights) keeps its name. `依据` is in `zhForbiddenTerms`.
+
 Omni says each thing once, in as few words as the fact allows. The figures and the photographs carry the claim; the words label them.
 
-- **Lead**: 2–3 fragments, each ending in a period ("Read-only checks. Local keys. Evidence in the session."). Chinese uses 2–3 短句 with 。.
-- **Section headings** are one declarative sentence ("Every check leaves evidence."). English ends with a period; Chinese has no closing punctuation. On pages with a local nav, each section also sets a 1–4 word `nav` label.
+- **Lead**: 2–3 fragments, each ending in a period ("Lessons. 40,000 puzzles. Stockfish or a friend."). Chinese uses 2–3 短句 with 。.
+- **Section headings** are one declarative sentence ("Every city moves together."). English ends with a period; Chinese has no closing punctuation. On pages with a local nav, each section also sets a 1–4 word `nav` label.
 - **Cards**: a 2–4 word title and a 3–12 word fragment. One idea per card. At most six per page: the main grid holds 3 or 6 equal-weight cards, and a numbered flow is kept only when order matters (a grid plus a flow share the six).
 - **Showcases**: a short sentence over the photograph ("Scans become Markdown.").
 - **FAQ**: headed `FAQ` / `常见问题`. Questions are questions. Answers are full sentences and carry the conditions that do not fit a card.
@@ -124,9 +127,12 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 | Accent              | `--accent-fill`, `--link`, `--accent`  | The filled primary action, links, and focus rings  |
 | Glass               | `--glass`, `--glass-blur`, `--menu-bg` | Header and local nav bars; near-opaque menu panels |
 | Wash                | `--wash-1..3`                          | Hero background only                               |
+| Product color       | `--product-tint` / `--product-ink`     | A product page's own pair, sampled from its icon   |
 | Reference / caution | `--data-ref` / `--data-caution`        | A baseline or recommended data point / an outlier  |
 
-- One accent. Do not use green or orange decoratively.
+- One interactive accent: buttons, links and focus rings are the site blue everywhere. Each product page also wears its own color pair (`--tint-<slug>` / `--ink-<slug>` in `tokens.css`, sampled from the icon, mapped through `body[data-product]`): the hero wash leans to the tint, and the hero kicker, section kickers, stat figures and step badges take the ink (at least 4.8:1 on both paper tones); the closing band sits on a faint tint (`--product-band`). Home, About and the catalog stay neutral. When an icon changes, re-sample its pair.
+- Games (`body[data-line="games"]`) sit on warmer paper and set display lines (hero, section and stats headings, the closing name) in a book face (`--display`, system serif), so a game does not read like a CLI.
+- Utility sections (get started, data, what's new, FAQ) set their headings at `--title-show`; the section size is for the two or three sections that argue the case.
 - Depth is a token decision: shadows, blur, and gradients in page stylesheets come only from `tokens.css`. `architecture:check` enforces this.
 - Glass is for chrome. Content never floats. Menu panels use `--menu-bg`, because a glass panel nested in a glass bar cannot blur the page behind it.
 - Dark mode is a first-class theme (OS preference or the header toggle), with pure black canvas and a `#161617` raised tone.

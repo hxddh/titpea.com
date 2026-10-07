@@ -60,7 +60,7 @@ export default defineProduct({
         width: 1100,
         height: 900,
         alt: "Pocket Universe on Ares, sol 180: habitat modules and domes on red regolith under a butterscotch sky, gauges for trust, tension and stores, and colonists talking by the solar panel. Captured from the app running in its Linux preview.",
-        title: "Not only a harbour.",
+        title: "Not only a harbour town.",
         body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
       },
       {
@@ -68,7 +68,7 @@ export default defineProduct({
         width: 1100,
         height: 900,
         alt: "A moment in Tiny Society on day 360: a three-panel strip titled Rosa settles for good, captioned before, during and after, over the harbour. Captured from the app running in its Linux preview.",
-        title: "Moments become panels.",
+        title: "Big moments, in three panels.",
         body: "Weddings, births and farewells, drawn before, during and after.",
       },
       {
@@ -76,8 +76,8 @@ export default defineProduct({
         width: 1100,
         height: 900,
         alt: "Tiny Society at night in spring: lit windows under a starry sky, the gauges and zoom buttons dark to match, while the drawer listing the new pier and a lamp on the point, and Evan's card offering a pier for timber, are warm paper. Captured from the app running in its Linux preview.",
-        title: "At night, pages are paper under a lamp.",
-        body: "In the light appearance. Gauges and buttons stay as dark as the sky.",
+        title: "At night, the windows light up.",
+        body: "In the light appearance, the drawer and cards stay readable; gauges and buttons go as dark as the sky.",
       },
     ],
     sections: [
@@ -92,7 +92,7 @@ export default defineProduct({
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
           { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
-          { title: "Agent-ready", body: "Pi, your own key, or this Mac's model can voice it." },
+          { title: "Agent-ready", body: "Pi, a local agent, or your own API key can voice it." },
         ],
       },
       {
@@ -114,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. v0.26 opens and plays on Worlds saved by v0.20 to v0.25, but a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. App v0.26 opens and plays on Worlds saved by app versions v0.20 to v0.25. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -169,7 +169,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/world-machine-noon.webp",
-        alt: "Tiny Society 第 21 天正午，线条像手绘墨线：工作、镇上的钱与心气三个指标，港口上方四栋房子和一家店，两块插着小旗的空地。一张卡片写着第 2 章「The year of the great storm」已结束。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        alt: "Tiny Society 第 21 天正午，线条像手绘墨线：工作、镇上的钱与心气三个指标，港口上方四栋房子和一家店，两块插着小旗的空地。一张卡片写着第 2 章“The year of the great storm”已结束。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         width: 1100,
         height: 900,
       },
@@ -187,7 +187,7 @@ export default defineProduct({
         src: "/assets/world-machine-moment.webp",
         width: 1100,
         height: 900,
-        alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题「Rosa settles for good」，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+        alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题“Rosa settles for good”，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "大事画成三格",
         body: "婚礼、出生、告别，画成之前、当时、之后。",
       },
@@ -196,8 +196,8 @@ export default defineProduct({
         width: 1100,
         height: 900,
         alt: "春天夜里的 Tiny Society：星空下窗里亮着灯，指标和缩放按钮随之变暗；右侧抽屉列着在建的新码头和岬角上的灯，Evan 的卡片说给他木料就造码头，二者都是暖色的纸。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-        title: "夜里，页面像灯下的纸",
-        body: "浅色外观下如此；指标和按钮仍和夜空一样暗。",
+        title: "夜里，窗户亮起灯",
+        body: "浅色外观下，抽屉和卡片仍然清楚易读；指标和按钮随夜空一起变暗。",
       },
     ],
     sections: [
@@ -212,7 +212,7 @@ export default defineProduct({
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
-          { title: "可接 Agent", body: "Pi、你的密钥或 Mac 自带模型，都能为世界发声。" },
+          { title: "可接 Agent", body: "本机 Agent Pi 或你自己的 API 密钥，都能为世界发声。" },
         ],
       },
       {
@@ -234,15 +234,15 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.26 能打开 v0.20 到 v0.25 保存的世界并继续运行，但更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。v0.26 版应用能打开 v0.20 到 v0.25 版应用保存的世界并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
-            body: "从 Releases 页面下载 DMG，把 World Machine 拖进「应用程序」，Apple 芯片与 Intel 都能运行。构建尚未公证，首次启动需要一次「仍要打开」，步骤见安装指南。",
+            body: "从 Releases 页面下载 DMG，把 World Machine 拖进“应用程序”，Apple 芯片与 Intel 都能运行。构建尚未公证，首次启动需要一次“仍要打开”，步骤见安装指南。",
           },
           {
             title: "有免费试玩版吗？",
-            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的第一个小时，玩到第 21 天。你的港口会留在「我的世界」里，完整版应用能打开它接着玩。",
+            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的第一个小时，玩到第 21 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
           },
           {
             title: "离开时世界会走多远？",

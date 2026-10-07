@@ -2,7 +2,7 @@
 import CatalogCard from "./CatalogCard.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import type { HomePageModel } from "../lib/pages";
-import { screenshotSizes, srcsetFor } from "../lib/images";
+import { srcsetFor } from "../lib/images";
 
 interface Props {
   model: HomePageModel;
@@ -30,7 +30,13 @@ const { model } = Astro.props;
         }
       </ul>
       <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.title}</h1>
+      <h1>
+        {
+          model.hero.titleParts.length > 1
+            ? model.hero.titleParts.map((part) => <span class="title-part">{part}</span>)
+            : model.hero.title
+        }
+      </h1>
       <p class="lead">{model.hero.lead}</p>
       <div class="actions">
         <a class="button primary large" href="#more-title">{model.hero.browse}</a>
@@ -39,36 +45,73 @@ const { model } = Astro.props;
     </div>
   </section>
 
+  <section class="home-shipping" aria-labelledby="shipping-title" data-visual-live>
+    <div class="shell">
+      <header class="home-strip-head">
+        <h2 id="shipping-title">{model.shipping.title}</h2>
+        <a class="home-strip-more" href={model.shipping.more.href}>{model.shipping.more.label}</a>
+      </header>
+      <ul class="shipping-list">
+        {
+          model.shipping.items.map((item) => (
+            <li>
+              <a class="shipping-card" href={item.href}>
+                <img src={item.icon} alt="" width="40" height="40" />
+                <span class="shipping-copy">
+                  <strong>{item.name}</strong>
+                  <span class="shipping-meta">
+                    {item.version}
+                    {item.released && (
+                      <>
+                        {" "}
+                        · <time>{item.released}</time>
+                      </>
+                    )}
+                  </span>
+                  {item.highlight && <span class="shipping-note">{item.highlight}</span>}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <section class="home-evidence" aria-labelledby="featured-title">
     <div class="shell">
       <header class="section-head">
         <h2 id="featured-title">{model.featured.title}</h2>
       </header>
-      {
-        model.featured.items.map((item, index) => (
-          <a class="home-featured-card" href={item.href}>
-            <span class="home-featured-copy">
-              <span class="section-kicker">{item.role}</span>
-              <strong class="home-featured-name">{item.name}</strong>
-              <span class="sub">{item.text}</span>
-              <span class="home-featured-more">{model.featured.learnMore}</span>
-            </span>
-            <figure class="shot">
-              <img
-                src={item.image.src}
-                srcset={srcsetFor(item.image.src, item.image.width)}
-                sizes={screenshotSizes}
-                alt={item.image.alt}
-                width={item.image.width}
-                height={item.image.height}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-              />
-              {item.caption && <figcaption class="shot-caption">{item.caption}</figcaption>}
-            </figure>
-          </a>
-        ))
-      }
+      <ul class="home-featured-grid">
+        {
+          model.featured.items.map((item) => (
+            <li>
+              <a class="home-featured-card" href={item.href}>
+                <figure class="home-featured-shot">
+                  <img
+                    src={item.image.src}
+                    srcset={srcsetFor(item.image.src, item.image.width)}
+                    sizes="(max-width: 760px) calc(100vw - 44px), 340px"
+                    alt=""
+                    width={item.image.width}
+                    height={item.image.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {item.caption && <figcaption class="home-featured-caption">{item.caption}</figcaption>}
+                </figure>
+                <span class="home-featured-copy">
+                  <span class="section-kicker">{item.role}</span>
+                  <strong class="home-featured-name">{item.name}</strong>
+                  <span class="home-featured-text">{item.text}</span>
+                  <span class="home-featured-more">{model.featured.learnMore}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -77,20 +120,38 @@ const { model } = Astro.props;
       <header class="section-head">
         <h2 id="more-title">{model.more.title}</h2>
       </header>
-      {
-        model.more.groups.map((group) => (
-          <section class="home-catalog-group" data-line={group.line} aria-label={group.label}>
-            <h3 class="home-catalog-label">{group.label}</h3>
-            <ul class="home-catalog-list">
-              {group.items.map((item) => (
-                <li>
-                  <CatalogCard item={item} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
-      }
+      <div class="home-filter" role="group" aria-label={model.more.filter.label} data-home-filter hidden>
+        <button type="button" aria-pressed="true" data-filter="all">{model.more.filter.all}</button>
+        {
+          model.more.groups.map((group) => (
+            <button type="button" aria-pressed="false" data-filter={group.line}>
+              {group.label}
+            </button>
+          ))
+        }
+      </div>
+      <div class="home-catalog" data-home-catalog>
+        {
+          model.more.groups.map((group) => (
+            <section class="home-catalog-group" data-line={group.line} aria-labelledby={`line-${group.line}`}>
+              <header class="home-catalog-head">
+                <h3 class="home-catalog-label" id={`line-${group.line}`}>
+                  {group.label}
+                </h3>
+                <p class="home-catalog-note">{group.note}</p>
+              </header>
+              <ul class="home-catalog-list">
+                {group.items.map((item) => (
+                  <li>
+                    <CatalogCard item={item} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
     </div>
   </section>
+  <script is:inline slot="scripts" src="/scripts/home-filter.js" defer></script>
 </SiteLayout>

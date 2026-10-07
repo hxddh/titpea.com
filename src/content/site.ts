@@ -55,6 +55,16 @@ type Ui = {
   homeLead: string;
   featuredTitle: string;
   moreToolsTitle: string;
+  /** Product pages: the row of other products before the footer. */
+  relatedTitle: string;
+  /** Home: the latest releases strip. */
+  shippingTitle: string;
+  shippingMore: string;
+  /** Home catalog filter. */
+  filterLabel: string;
+  filterAll: string;
+  /** Home catalog: who each product line is for. */
+  groupNotes: Record<Line, string>;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
   browseAllTools: string;
@@ -113,18 +123,29 @@ export const ui: Record<Locale, Ui> = {
       games: "Games",
       external: "External",
     },
-    productIndex: "Independent software by hxddh",
-    homeMetaTitle: "Titpea — Worlds, games, and tools by hxddh",
-    homeTitle: "Worlds, games, and tools.",
+    productIndex: "One developer, hxddh",
+    homeMetaTitle: "Titpea — Small software by hxddh",
+    homeTitle: "Small software, made with care.",
     homeDescription:
-      "Software by hxddh: a small world that keeps living, desktop chess you can review, translation when you ask, and tools for S3 storage and coding agents.",
-    homeLead: "A world that keeps going. Chess you can review. Translation when you ask.",
+      "Software by one developer, hxddh: a small world, desktop chess that marks your mistakes, translation when you ask, and tools for S3 storage and coding agents.",
+    homeLead: "A world that tells you what changed. Chess that marks your mistakes. Translation only when you ask.",
     featuredTitle: "Selected work",
-    moreToolsTitle: "More tools",
+    moreToolsTitle: "Every tool",
+    relatedTitle: "More tools",
+    shippingTitle: "Just shipped",
+    shippingMore: "All releases",
+    filterLabel: "Show tools for",
+    filterAll: "All",
+    groupNotes: {
+      storage: "For people who run S3-compatible storage.",
+      agents: "For developers who work with coding agents.",
+      everyday: "For reading, and for the browser.",
+      games: "Board games, and a small world.",
+    },
     relatedInLine: "More in {line}",
     browseAllTools: "All tools",
     learnMore: "Learn more",
-    browseTools: "Browse all tools",
+    browseTools: "Browse all {count} tools",
     aboutMore: "About hxddh",
     aboutTitle: "About",
     aboutMetaTitle: "About Titpea — hxddh",
@@ -138,7 +159,7 @@ export const ui: Record<Locale, Ui> = {
     aboutScenes: {
       storage: {
         when: "A bucket misbehaves, or a million objects need counting.",
-        value: "Find the cause with read-only tools and keep the evidence; list large buckets fast.",
+        value: "Find the cause with read-only tools; list large buckets fast.",
       },
       agents: {
         when: "Several agents are running, or you want to keep up with the field.",
@@ -191,18 +212,29 @@ export const ui: Record<Locale, Ui> = {
       games: "游戏",
       external: "外部链接",
     },
-    productIndex: "hxddh 独立开发的软件",
-    homeMetaTitle: "Titpea — 小世界、棋局和工具",
-    homeTitle: "小世界、棋局和工具",
+    productIndex: "hxddh，一个人开发",
+    homeMetaTitle: "Titpea — hxddh 的小软件",
+    homeTitle: "认真做的小软件",
     homeDescription:
-      "hxddh 独立开发的软件：一个自己运转的小世界、能复盘的桌面国际象棋、需要时才出现的翻译，以及对象存储和编码 Agent 工具。",
-    homeLead: "自己运转的小世界。能复盘的国际象棋。需要时才出现的翻译。",
+      "hxddh 一个人做的软件：回来时告诉你发生了什么的小世界、标出失着的桌面国际象棋、只在你要时出现的译文，以及对象存储和编码 Agent 工具。",
+    homeLead: "回来时告诉你发生了什么的小世界。标出失着的国际象棋。只在你要时出现的译文。",
     featuredTitle: "主要作品",
-    moreToolsTitle: "更多工具",
+    moreToolsTitle: "全部工具",
+    relatedTitle: "更多工具",
+    shippingTitle: "最近发布",
+    shippingMore: "全部发布",
+    filterLabel: "按类别看",
+    filterAll: "全部",
+    groupNotes: {
+      storage: "给管理 S3 兼容存储的人。",
+      agents: "给和编码 Agent 一起工作的开发者。",
+      everyday: "读文档，用浏览器。",
+      games: "棋盘游戏，和一个小世界。",
+    },
     relatedInLine: "更多{line}工具",
     browseAllTools: "全部工具",
     learnMore: "了解更多",
-    browseTools: "浏览全部工具",
+    browseTools: "浏览全部 {count} 个工具",
     aboutMore: "关于 hxddh",
     aboutTitle: "关于",
     aboutMetaTitle: "关于 Titpea — hxddh",
@@ -215,7 +247,7 @@ export const ui: Record<Locale, Ui> = {
     aboutScenes: {
       storage: {
         when: "桶出了问题，或要盘点上百万个对象。",
-        value: "只读查清原因、留下依据；大桶也能很快列清。",
+        value: "只读查清原因；大桶也能很快列清。",
       },
       agents: {
         when: "同时跑着几个 Agent，或想跟上这个领域。",

@@ -74,7 +74,85 @@ export type PanelSection = {
 /** Where the product's data goes: two or three plain, checkable sentences. */
 export type DataSection = { kind: "data"; id: "data"; title: string; items: string[] };
 
-export type Section = (CardsSection | FaqSection | CasesSection | FlowSection | PanelSection | DataSection) &
+/** A city in the World Clock demo: a real IANA zone, so daylight saving is real. */
+export type DemoCity = { name: string; zone: string; country: string };
+
+/**
+ * A working copy of the World Clock popup's time scroll, run on the visitor's
+ * own clock (public/scripts/demo-world-clock.js). Without JS, `fallback`
+ * shows instead.
+ */
+export type WorldClockDemo = {
+  kind: "worldClock";
+  /** Popup header, as the extension titles it. */
+  appTitle: string;
+  /** Accessible name of the popup copy. */
+  label: string;
+  local: string;
+  tomorrow: string;
+  yesterday: string;
+  /** Accessible name of the hour slider. */
+  slider: string;
+  /** The reset action that returns to the current time. */
+  now: string;
+  hint: string;
+  /** The cities after the visitor's own; one that shares the visitor's zone is skipped, as in the extension. */
+  cities: DemoCity[];
+  /** Names the visitor's own zone when it matches; otherwise the zone's last segment. */
+  localNames: DemoCity[];
+  fallback: Image & { caption: string };
+};
+
+/**
+ * One puzzle from the app's shipped set, solved on the page
+ * (public/scripts/demo-chess.js). Moves are checked against `line` only; the
+ * board renders without JS as the static position.
+ */
+export type ChessPuzzleDemo = {
+  kind: "chessPuzzle";
+  /** The puzzle position, side to move included. */
+  fen: string;
+  /** The solution: the solver's moves and the forced replies, alternating. */
+  line: Array<{ from: string; to: string; san: string }>;
+  label: string;
+  prompt: string;
+  /** After a solver move that is right but not yet mate. */
+  good: string;
+  /** `{move}` is the reply's SAN. */
+  reply: string;
+  wrong: string;
+  solved: string;
+  reset: string;
+  /** `{piece}` and `{square}`. */
+  selected: string;
+  /** `{square}` and `{piece}`; an empty square reads as the square alone. */
+  square: string;
+  /** `{color}` and `{piece}`. */
+  piece: string;
+  colors: { w: string; b: string };
+  pieces: { k: string; q: string; r: string; b: string; n: string; p: string };
+};
+
+/** A live demo of the product's core mechanic, captioned with what it is. */
+export type DemoSection = {
+  kind: "demo";
+  id: string;
+  title: string;
+  body: string;
+  /** Says what the demo is, for example a working copy, or where its data comes from. */
+  caption: string;
+  demo: WorldClockDemo | ChessPuzzleDemo;
+};
+
+export type Section = (
+  | CardsSection
+  | FaqSection
+  | CasesSection
+  | FlowSection
+  | PanelSection
+  | DataSection
+  | DemoSection
+) &
   SectionNav;
 
 /* ---------- The product object ---------- */

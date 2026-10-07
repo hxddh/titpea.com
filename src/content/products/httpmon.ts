@@ -107,8 +107,12 @@ export default defineProduct({
             body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
           },
           {
-            title: "What if the logs are already in Pi?",
-            body: "When those logs and traces are already in a Pi chat, diagnose them with StorageOps.",
+            title: "Does it diagnose storage errors?",
+            body: "No. httpmon shows the traffic and leaves the judgment to you. To diagnose S3-compatible storage errors in Pi, the open-source terminal coding agent, use StorageOps, which captures traces through httpmon.",
+            link: {
+              label: "Open StorageOps",
+              href: "/storageops/",
+            },
           },
         ],
       },
@@ -132,7 +136,7 @@ export default defineProduct({
       label: "使用方法",
       href: "https://github.com/hxddh/https-traffic-inspector#usage",
     },
-    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
+    meta: "Go · MIT · {version} · 本地代理 · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "开始使用",
       sub: "需要 Go 1.24+。Releases 页面也有预编译二进制。",
@@ -207,8 +211,12 @@ export default defineProduct({
             body: "会。请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
           },
           {
-            title: "日志已经在 Pi 里了怎么办？",
-            body: "日志和 trace 已经在 Pi 的聊天里时，用 StorageOps 排查。",
+            title: "它能诊断存储故障吗？",
+            body: "不能。httpmon 只展示流量，判断交给你。想在开源终端编码 Agent Pi 里诊断 S3 兼容存储的故障，请用 StorageOps，它会经 httpmon 采集 trace。",
+            link: {
+              label: "打开 StorageOps",
+              href: "/zh/storageops/",
+            },
           },
         ],
       },

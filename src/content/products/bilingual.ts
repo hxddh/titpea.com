@@ -67,8 +67,8 @@ export default defineProduct({
           { title: "Hold to see", body: "Point at a paragraph; its translation floats beside it." },
           { title: "Both languages", body: "In the margin when there is room, otherwise below each paragraph." },
           {
-            title: "Tuned for five sites",
-            body: "X, Reddit, GitHub, Hacker News, Wikipedia: content only, no buttons.",
+            title: "Tuned for six sites",
+            body: "X, Reddit, GitHub, Hacker News, Wikipedia, Stack Overflow: content only, no buttons.",
           },
           { title: "Sentence alignment", body: "Point at a sentence; its counterpart lights up." },
           { title: "Word lookup", body: "Hold the key and rest on a word to see its meaning." },
@@ -149,7 +149,10 @@ export default defineProduct({
         items: [
           { title: "按住即现", body: "指向哪段，那段译文就浮在旁边。" },
           { title: "双语对照", body: "右侧有空放边注，否则放在每段下方。" },
-          { title: "常用网站适配", body: "X、Reddit、GitHub 等网站只译正文，不碰按钮。" },
+          {
+            title: "常用网站适配",
+            body: "X、Reddit、GitHub、Hacker News、维基百科、Stack Overflow：只译正文，不碰按钮。",
+          },
           { title: "句级对齐", body: "指向一句，另一侧的对应句同时高亮。" },
           { title: "查词", body: "按住键停在词上，看它的意思。" },
           { title: "38 种译文语言", body: "本地不支持的语言组合，可改用精译。" },

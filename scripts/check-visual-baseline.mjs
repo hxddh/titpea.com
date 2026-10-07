@@ -137,6 +137,12 @@ for (const target of baseline.targets) {
   const name = screenshotName(target);
   const actualPath = path.join(outDir, name);
   const expectedPath = path.join(baselineDir, name);
+  // Blocks filled from live data at build time (the Home "Just shipped"
+  // strip quotes the latest release notes) are taken out of the layout, so
+  // a new release never moves a baseline.
+  await page.evaluate(() => {
+    for (const element of document.querySelectorAll("[data-visual-live]")) element.style.display = "none";
+  });
   // A section target captures only its own section, so data synced at build
   // time elsewhere on the page (versions, release notes) never moves it.
   const clip =

@@ -44,15 +44,6 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/world-clock-scroll-en.webp",
-        alt: "Store image: the popup shifted three hours ahead, a +3h chip in its header; London and Berlin stay bright, the rest fade",
-        width: 1280,
-        height: 800,
-        title: "Every city moves together.",
-        body: "Scroll or press the arrow keys to shift by the hour. Esc returns to now.",
-        caption: "Illustration: store image; time and cities are examples",
-      },
-      {
         src: "/assets/world-clock-search-en.webp",
         alt: "Store image: World Clock settings with “san” typed in search, listing San Francisco (already added, ticked), Santiago, San Juan and other zones with their local times, above the Theme and Time format switches",
         width: 1280,
@@ -63,6 +54,48 @@ export default defineProduct({
       },
     ],
     sections: [
+      {
+        kind: "demo",
+        id: "try",
+        title: "Every city moves together.",
+        body: "Scroll, drag, or press the arrow keys to shift by the hour. Esc returns to now.",
+        caption: "Try it: a working copy of the popup’s time scroll, on your own clock.",
+        demo: {
+          kind: "worldClock",
+          appTitle: "World Clock",
+          label: "World Clock popup, working copy",
+          local: "Local",
+          tomorrow: "Tomorrow",
+          yesterday: "Yesterday",
+          slider: "Shift time by the hour",
+          now: "Now",
+          hint: "Scroll or drag the cities to shift time",
+          // The extension's default cities (popup.js defaultCities).
+          cities: [
+            { name: "New York", zone: "America/New_York", country: "US" },
+            { name: "London", zone: "Europe/London", country: "GB" },
+            { name: "Tokyo", zone: "Asia/Tokyo", country: "JP" },
+            { name: "Sydney", zone: "Australia/Sydney", country: "AU" },
+          ],
+          localNames: [
+            { name: "Beijing", zone: "Asia/Shanghai", country: "CN" },
+            { name: "Hong Kong", zone: "Asia/Hong_Kong", country: "HK" },
+            { name: "Taipei", zone: "Asia/Taipei", country: "TW" },
+            { name: "Singapore", zone: "Asia/Singapore", country: "SG" },
+            { name: "Berlin", zone: "Europe/Berlin", country: "DE" },
+            { name: "Paris", zone: "Europe/Paris", country: "FR" },
+            { name: "Los Angeles", zone: "America/Los_Angeles", country: "US" },
+            { name: "Chicago", zone: "America/Chicago", country: "US" },
+          ],
+          fallback: {
+            src: "/assets/world-clock-scroll-en.webp",
+            alt: "Store image: the popup shifted three hours ahead, a +3h chip in its header; London and Berlin stay bright, the rest fade",
+            width: 1280,
+            height: 800,
+            caption: "Illustration: store image; time and cities are examples",
+          },
+        },
+      },
       {
         kind: "cards",
         id: "features",
@@ -81,7 +114,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "No data collection: no network requests, and no web pages read.",
+          "No data collection and no analytics: no network requests, and no web pages read.",
           "Your cities, theme and time format sync through Chrome’s storage between your own browsers, never to the developer.",
           "It asks for one permission, `storage`, and needs no account.",
         ],
@@ -144,15 +177,6 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/world-clock-scroll-zh.webp",
-        alt: "商店图片：弹窗时间向后拨了三小时，顶部显示 +3h；伦敦和柏林常亮，其余淡出",
-        width: 1280,
-        height: 800,
-        title: "所有城市一起拨动",
-        body: "滚动鼠标或按方向键，按小时前后调整。按 Esc 回到现在。",
-        caption: "示意图：商店图片，时间和城市为示例",
-      },
-      {
         src: "/assets/world-clock-search-zh.webp",
         alt: "商店图片：世界时钟设置页，搜索框输入“新”，匹配新德里和已添加（打勾）的新加坡，并显示当地时间，下方是主题和时间格式切换",
         width: 1280,
@@ -163,6 +187,47 @@ export default defineProduct({
       },
     ],
     sections: [
+      {
+        kind: "demo",
+        id: "try",
+        title: "所有城市一起拨动",
+        body: "滚动、拖动或按方向键，按小时前后调整。按 Esc 回到现在。",
+        caption: "试一试：弹窗时间滚动的可用副本，用的是你自己的时钟。",
+        demo: {
+          kind: "worldClock",
+          appTitle: "世界时钟",
+          label: "世界时钟弹窗的可用副本",
+          local: "本地",
+          tomorrow: "明天",
+          yesterday: "昨天",
+          slider: "按小时调整时间",
+          now: "现在",
+          hint: "在城市列表上滚动或拖动，调整时间",
+          cities: [
+            { name: "纽约", zone: "America/New_York", country: "US" },
+            { name: "伦敦", zone: "Europe/London", country: "GB" },
+            { name: "东京", zone: "Asia/Tokyo", country: "JP" },
+            { name: "悉尼", zone: "Australia/Sydney", country: "AU" },
+          ],
+          localNames: [
+            { name: "北京", zone: "Asia/Shanghai", country: "CN" },
+            { name: "香港", zone: "Asia/Hong_Kong", country: "HK" },
+            { name: "台北", zone: "Asia/Taipei", country: "TW" },
+            { name: "新加坡", zone: "Asia/Singapore", country: "SG" },
+            { name: "柏林", zone: "Europe/Berlin", country: "DE" },
+            { name: "巴黎", zone: "Europe/Paris", country: "FR" },
+            { name: "洛杉矶", zone: "America/Los_Angeles", country: "US" },
+            { name: "芝加哥", zone: "America/Chicago", country: "US" },
+          ],
+          fallback: {
+            src: "/assets/world-clock-scroll-zh.webp",
+            alt: "商店图片：弹窗时间向后拨了三小时，顶部显示 +3h；伦敦和柏林常亮，其余淡出",
+            width: 1280,
+            height: 800,
+            caption: "示意图：商店图片，时间和城市为示例",
+          },
+        },
+      },
       {
         kind: "cards",
         id: "features",
@@ -181,7 +246,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "声明不收集数据：不联网，也不读取网页。",
+          "不收集任何数据，没有分析服务：不联网，也不读取网页。",
           "你的城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不会发送给开发者。",
           "只申请一项权限 `storage`，无需账号。",
         ],

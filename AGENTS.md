@@ -8,7 +8,7 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
-Settled design decisions in DESIGN.md (for example the Omni home) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
+Settled design decisions in DESIGN.md (for example the studio home) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
 
 ## Where things live
 
