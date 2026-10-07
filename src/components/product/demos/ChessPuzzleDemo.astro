@@ -1,0 +1,102 @@
+---
+import type { ChessPuzzleDemo } from "../../../content/schema";
+
+interface Props {
+  demo: ChessPuzzleDemo;
+  caption: string;
+}
+
+const { demo, caption } = Astro.props;
+
+// The board is drawn at build time from the FEN, so without JS it still shows
+// the position; demo-chess.js adds the moves. The side to move sits at the bottom.
+const [placement, turn] = demo.fen.split(" ");
+const pieceAt = new Map<string, string>();
+placement.split("/").forEach((row, index) => {
+  let file = 0;
+  for (const char of row) {
+    if (/\d/.test(char)) file += Number(char);
+    else {
+      const color = char === char.toUpperCase() ? "w" : "b";
+      pieceAt.set(`${"abcdefgh"[file]}${8 - index}`, color + char.toLowerCase());
+      file += 1;
+    }
+  }
+});
+const files = turn === "b" ? [..."hgfedcba"] : [..."abcdefgh"];
+const ranks = turn === "b" ? [1, 2, 3, 4, 5, 6, 7, 8] : [8, 7, 6, 5, 4, 3, 2, 1];
+const fill = (template: string, values: Record<string, string>) =>
+  template.replace(/\{(\w+)\}/g, (_, key: string) => values[key] ?? "");
+const pieceName = (code: string) =>
+  fill(demo.piece, {
+    color: demo.colors[code[0] as "w" | "b"],
+    piece: demo.pieces[code[1] as keyof typeof demo.pieces],
+  });
+const squares = ranks.flatMap((rank, row) =>
+  files.map((file, col) => {
+    const name = `${file}${rank}`;
+    const code = pieceAt.get(name);
+    return {
+      name,
+      code,
+      dark: ("abcdefgh".indexOf(file) + rank) % 2 === 0,
+      label: code ? fill(demo.square, { square: name, piece: pieceName(code) }) : name,
+      file: row === 7 ? file : undefined,
+      rank: col === 0 ? String(rank) : undefined,
+    };
+  }),
+);
+---
+
+<figure
+  class="demo-figure demo-chess"
+  data-demo-chess
+  data-fen={demo.fen}
+  data-line={JSON.stringify(demo.line)}
+  data-good={demo.good}
+  data-reply={demo.reply}
+  data-wrong={demo.wrong}
+  data-solved={demo.solved}
+  data-selected={demo.selected}
+  data-square={demo.square}
+  data-piece={demo.piece}
+  data-colors={JSON.stringify(demo.colors)}
+  data-pieces={JSON.stringify(demo.pieces)}
+>
+  <div class="chess-frame">
+    <div class="chess-board" role="group" aria-label={demo.label} aria-describedby="chess-demo-message" data-board>
+      {
+        squares.map((square) => (
+          <button
+            class:list={["chess-square", square.dark ? "is-dark" : "is-light"]}
+            type="button"
+            tabindex="-1"
+            data-sq={square.name}
+            data-file={square.file}
+            data-rank={square.rank}
+            aria-label={square.label}
+          >
+            {square.code && (
+              <img
+                class="chess-piece"
+                src={`/assets/pieces/${square.code}.svg`}
+                alt=""
+                width="45"
+                height="45"
+                data-piece-code={square.code}
+              />
+            )}
+          </button>
+        ))
+      }
+    </div>
+    <div class="chess-status">
+      <img class="chess-turn" src={`/assets/pieces/${turn}k.svg`} alt="" width="28" height="28" />
+      <p class="chess-message" id="chess-demo-message" aria-live="polite" data-message>{demo.prompt}</p>
+      <button class="chess-reset" type="button" data-reset hidden>{demo.reset}</button>
+    </div>
+  </div>
+  <figcaption class="shot-caption">{caption}</figcaption>
+</figure>
+
+<script is:inline src="/scripts/demo-chess.js" defer></script>

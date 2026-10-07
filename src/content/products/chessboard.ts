@@ -1,5 +1,20 @@
 import { defineProduct } from "../schema";
 
+// The demo puzzle: Lichess puzzle 6kxUl (lichess.org/training/6kxUl, CC0),
+// one of the 40,000 Chessboard ships, row "6kxUl" in src/web/js/lichess/band-0600.js
+// at hxddh/chessboard v8.2.0 (rated 600, themes "sacrifice m2"). The FEN is the
+// puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
+// board). Checked with the app's chess.js: no mate in one, Rxd1 is White's only
+// legal reply, and Rxd1# is the only mate after it.
+const puzzle = {
+  fen: "r2r2k1/5ppp/1p1q4/4B2b/2B1p3/P1Q1P2P/1PP2PP1/2K4R b - - 0 20",
+  line: [
+    { from: "d6", to: "d1", san: "Qd1+" },
+    { from: "h1", to: "d1", san: "Rxd1" },
+    { from: "d8", to: "d1", san: "Rxd1#" },
+  ],
+};
+
 export default defineProduct({
   slug: "chessboard",
   line: "games",
@@ -95,6 +110,29 @@ export default defineProduct({
       },
     ],
     sections: [
+      {
+        kind: "demo",
+        id: "try",
+        title: "Solve one here.",
+        body: "Tap a piece, then its square, or use the arrow keys and Enter.",
+        caption: "A position from Chessboard’s built-in Lichess puzzle set (puzzle 6kxUl).",
+        demo: {
+          kind: "chessPuzzle",
+          ...puzzle,
+          label: "Puzzle board",
+          prompt: "Black to move. Mate in two.",
+          good: "Right.",
+          reply: "Right. White plays {move}. Your move.",
+          wrong: "Not this one. Try again.",
+          solved: "Checkmate. The app has 40,000 more, rated 600–2799.",
+          reset: "Reset",
+          selected: "{piece} on {square} selected",
+          square: "{square}, {piece}",
+          piece: "{color} {piece}",
+          colors: { w: "white", b: "black" },
+          pieces: { k: "king", q: "queen", r: "rook", b: "bishop", n: "knight", p: "pawn" },
+        },
+      },
       {
         kind: "cards",
         id: "features",
@@ -210,6 +248,29 @@ export default defineProduct({
       },
     ],
     sections: [
+      {
+        kind: "demo",
+        id: "try",
+        title: "在这里解一道",
+        body: "先点棋子，再点目标格；也可以用方向键和回车。",
+        caption: "取自 Chessboard 内置的 Lichess 题库（谜题 6kxUl）。",
+        demo: {
+          kind: "chessPuzzle",
+          ...puzzle,
+          label: "谜题棋盘",
+          prompt: "黑方走，两步杀。",
+          good: "对了。",
+          reply: "对了。白方走 {move}，轮到你。",
+          wrong: "不是这步，再想想。",
+          solved: "将死。应用里还有四万道，600–2799 分。",
+          reset: "重来",
+          selected: "已选中{square}的{piece}",
+          square: "{square}，{piece}",
+          piece: "{color}{piece}",
+          colors: { w: "白", b: "黑" },
+          pieces: { k: "王", q: "后", r: "车", b: "象", n: "马", p: "兵" },
+        },
+      },
       {
         kind: "cards",
         id: "features",

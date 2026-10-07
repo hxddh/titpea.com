@@ -6,6 +6,7 @@ import CardsSection from "./product/CardsSection.astro";
 import CasesSection from "./product/CasesSection.astro";
 import CommandsSection from "./product/CommandsSection.astro";
 import DataSection from "./product/DataSection.astro";
+import DemoSection from "./product/DemoSection.astro";
 import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
@@ -26,6 +27,8 @@ const showcases = copy.showcases ?? [];
 const opening = showcases.filter((figure) => !figure.beside);
 const besideSection = (id: string) => showcases.find((figure) => figure.beside === id);
 const hasFaq = copy.sections.some((section) => section.kind === "faq");
+// A live demo opens the page, right after the hero and stats, before any photograph.
+const demos = copy.sections.flatMap((section) => (section.kind === "demo" ? [section] : []));
 // Every page closes on its main action, under the same label as the hero.
 const closing = copy.primaryCta.label;
 // The version in the meta line carries its release date: "v1.17.3 (Sep 4, 2026)",
@@ -97,6 +100,8 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
 
   {copy.stats && <StatsBand stats={copy.stats} />}
 
+  {demos.map((section) => <DemoSection section={section} />)}
+
   {
     opening.map((showcase) => (
       <ShowcaseSection showcase={showcase} pauseLabel={copyUi.pauseVideo} playLabel={copyUi.playVideo} />
@@ -130,6 +135,7 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
       if (section.kind === "cases") return <CasesSection section={section} />;
       if (section.kind === "flow") return <FlowSection section={section} />;
       if (section.kind === "data") return <DataSection section={section} />;
+      if (section.kind === "demo") return null;
       return <PanelSection section={section} />;
     })
   }

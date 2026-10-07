@@ -64,6 +64,18 @@
   --data-caution-ink: #985b0a;
   --data-alert: #b42318;
 
+  /* Demo board: Chessboard's classic squares and marks (src/web/js/board.js),
+     the same in both themes, as the board is in the app. */
+  --board-light: #f0d9b5;
+  --board-dark: #b58863;
+  --board-select: rgba(20, 85, 30, 0.5);
+  --board-last: rgba(155, 199, 0, 0.41);
+  --board-check: rgba(245, 70, 55, 0.6);
+  --board-wrong: rgba(180, 35, 24, 0.45);
+  /* Where a moving piece starts, relative to its new square; public/scripts/demo-chess.js sets them. */
+  --piece-dx: 0px;
+  --piece-dy: 0px;
+
   /* Type */
   --sans:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, "Segoe UI", "Helvetica Neue",

@@ -86,7 +86,22 @@ const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
 /** Every visible string in a product's copy, without links, image paths, or commands. */
 function visibleStrings(value: unknown, key = ""): string[] {
   if (typeof value === "string")
-    return ["href", "src", "command", "capturedOutput", "className", "kind", "id", "frame"].includes(key)
+    return [
+      "href",
+      "src",
+      "command",
+      "capturedOutput",
+      "className",
+      "kind",
+      "id",
+      "frame",
+      "zone",
+      "country",
+      "fen",
+      "from",
+      "to",
+      "san",
+    ].includes(key)
       ? []
       : [value];
   if (Array.isArray(value)) return value.flatMap((item) => visibleStrings(item, key));
@@ -180,6 +195,14 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
 const shape = (copy: ProductCopy) =>
   JSON.stringify({
     sections: copy.sections.map((section) => [section.kind, section.id, "items" in section ? section.items.length : 0]),
+    // A demo runs the same thing in both languages: the same zones, or the same position and line.
+    demos: copy.sections.flatMap((section) =>
+      section.kind !== "demo"
+        ? []
+        : section.demo.kind === "worldClock"
+          ? [[section.demo.kind, ...section.demo.cities.map((city) => city.zone)]]
+          : [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]],
+    ),
     showcases: copy.showcases?.length ?? 0,
     stats: copy.stats?.items.length ?? 0,
     commands: copy.commands?.items.map((item) => item.command) ?? [],
@@ -259,7 +282,9 @@ for (const file of styleFiles) {
 
 // Depth is a token decision: page styles may use shadow, blur, and the wash
 // only through tokens, so light and dark stay in step.
-for (const file of ["base.css", "chrome.css", "pages.css", "product.css"].map((name) => `src/styles/${name}`)) {
+for (const file of ["base.css", "chrome.css", "pages.css", "product.css", "demos.css"].map(
+  (name) => `src/styles/${name}`,
+)) {
   const lines = read(file).split("\n");
   lines.forEach((line, index) => {
     const declaration = /^\s*(box-shadow|text-shadow|backdrop-filter|-webkit-backdrop-filter|filter)\s*:/.exec(line);
