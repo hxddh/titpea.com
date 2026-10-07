@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle 6kxUl (lichess.org/training/6kxUl, CC0),
 // one of the 40,000 Chessboard ships, row "6kxUl" in src/web/js/lichess/band-0600.js
-// at hxddh/chessboard v8.2.0 (rated 600, themes "sacrifice m2"). The FEN is the
+// at hxddh/chessboard v8.3.0 (rated 600, themes "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with the app's chess.js: no mate in one, Rxd1 is White's only
 // legal reply, and Rxd1# is the only mate after it.
@@ -73,7 +73,7 @@ export default defineProduct({
           label: "Lichess puzzles, rated 600–2799",
         },
         {
-          value: "3,810",
+          value: "3,815",
           label: "named opening positions",
         },
       ],
@@ -142,7 +142,7 @@ export default defineProduct({
           { title: "Rated puzzles", body: "28 themes; Rush, Streak, Look ahead, Blind mate." },
           { title: "Guess the move", body: "Ten master games; other moves cost win chance." },
           { title: "A 21-rung ladder", body: "Each rung a step harder; results move your rating." },
-          { title: "60 endgames", body: "Win or hold them against full-strength Stockfish." },
+          { title: "90 endgames", body: "Win or hold them against full-strength Stockfish." },
           { title: "Your opening book", body: "Up to 5,000 lines a side, reviewed on a schedule." },
         ],
       },
@@ -172,6 +172,10 @@ export default defineProduct({
           {
             title: "Does it track my progress?",
             body: "Yes. Games against the engine give you a rating, kept apart from your puzzle rating, and the result card shows each change. The Me page adds a rating curve, a practice calendar with your streak, and your strengths and weaknesses.",
+          },
+          {
+            title: "How do Look ahead and Blind mate work?",
+            body: "Look ahead stops the board at a puzzle and writes the next 2–6 half-moves as text; play them in your head, then say which piece can capture or give check, or whether there is a mate. Once the puzzle’s own line runs out, Stockfish plays on. Blind mate shows a mate in one or two for 3 seconds, then hides the pieces. Both pick puzzles from the built-in Lichess set at your rating in that mode.",
           },
           {
             title: "How many games can the library hold?",
@@ -212,7 +216,7 @@ export default defineProduct({
           label: "道 Lichess 谜题，600–2799 分",
         },
         {
-          value: "3,810",
+          value: "3,815",
           label: "个开局局面可识别",
         },
       ],
@@ -280,7 +284,7 @@ export default defineProduct({
           { title: "谜题评级", body: "28 个主题；冲刺、连胜、看 N 步、盲走。" },
           { title: "名局猜着", body: "十局名局，和原着不同就按胜率差扣分。" },
           { title: "二十一档对手", body: "每往上一档都难一截，胜负计入等级分。" },
-          { title: "60 个残局", body: "和满强度的 Stockfish 下，赢下来或守和。" },
+          { title: "90 个残局", body: "和满强度的 Stockfish 下，赢下来或守和。" },
           { title: "你的开局书", body: "每方最多 5,000 条线，按日程复习。" },
         ],
       },
@@ -310,6 +314,10 @@ export default defineProduct({
           {
             title: "能看到自己的进步吗？",
             body: "能。与引擎对局有自己的等级分，和谜题评级分开记，结果卡上显示每次涨跌。“我的”页还有评级曲线、练习日历与连续天数，以及强项与弱项。",
+          },
+          {
+            title: "“看 N 步”和“盲走”怎么练？",
+            body: "“看 N 步”让棋盘停在题面，接下来的 2–6 个半回合只写成文字，你在脑子里走完，再回答哪个子能吃子、哪个子能将军、有没有一步杀；题目自带的线走完后，由 Stockfish 接着走。“盲走”把一步杀或两步杀的局面亮 3 秒，然后藏起棋子，凭记忆走出杀着。两种都从内置的 Lichess 题库里按你在这个模式的评级出题。",
           },
           {
             title: "棋谱库能存多少局？",

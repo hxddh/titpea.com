@@ -232,7 +232,8 @@ export type Visual = VisualBase &
           /** Lamp shape: waiting solid, running ring, recent (your turn) hollow, process dashed. */
           rows: Array<{
             title: string;
-            meta: string;
+            /** Second line: only waiting, stalled and running rows have one in the tray (Pulse 29). */
+            meta?: string;
             state: "waiting" | "running" | "recent" | "process";
             /** Trailing time or tag: wait length, turn length, or "Your turn". */
             chip?: string;

@@ -45,7 +45,7 @@ export default defineProduct({
       label: "Privacy policy",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome extension · Chrome 138+ · 1.6.1 · On-device translation",
+    meta: "Chrome extension · Chrome 138+ · 1.6.5 · On-device translation",
     visual: {
       kind: "screenshot",
       label: "Bilingual",
@@ -82,7 +82,7 @@ export default defineProduct({
         items: [
           "Translation runs on Chrome’s built-in on-device model by default, inside the extension’s own hidden document; page text stays on your computer.",
           "Only when you ask, Precise translation sends paragraphs straight to your chosen provider; your own key stays in the extension’s IndexedDB.",
-          "No account, no analytics, no data collection; site access is requested only for sites you switch on.",
+          "No account, no analytics, no data collection; site access only for sites you switch on; Incognito keeps nothing per site.",
         ],
       },
       {
@@ -92,7 +92,7 @@ export default defineProduct({
         items: [
           {
             title: "What do I need to run it?",
-            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own offscreen document.",
+            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own offscreen document. Local files work too, once you turn on “Allow access to file URLs” for it in `chrome://extensions`.",
           },
           {
             title: "Which key do I hold?",
@@ -128,7 +128,7 @@ export default defineProduct({
       label: "隐私政策",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome 扩展 · Chrome 138+ · 1.6.1 · 本地翻译",
+    meta: "Chrome 扩展 · Chrome 138+ · 1.6.5 · 本地翻译",
     visual: {
       kind: "screenshot",
       label: "对读",
@@ -165,7 +165,7 @@ export default defineProduct({
         items: [
           "默认使用 Chrome 内置的本地翻译模型，在扩展自己的隐藏页面里运行，网页文字不离开你的电脑。",
           "精译用你自己的密钥，存在扩展的 IndexedDB 中；只有你要看时，段落文字才从浏览器直接发给你选择的服务商。",
-          "没有账号，无分析服务，不收集任何数据；只在你打开某个网站的开关时，才申请该站点的权限。",
+          "没有账号，无分析服务，不收集任何数据；只为你打开开关的网站申请权限；无痕窗口里不存译文、术语和各站排版。",
         ],
       },
       {
@@ -175,7 +175,7 @@ export default defineProduct({
         items: [
           {
             title: "需要什么环境？",
-            body: "桌面版 Chrome 138 或更高版本。启用一个语言对时，Chrome 会下载一次语言包，之后这个语言对在所有网站上都能用（翻译在扩展自己的隐藏页面里运行）。",
+            body: "桌面版 Chrome 138 或更高版本。启用一个语言对时，Chrome 会下载一次语言包，之后这个语言对在所有网站上都能用（翻译在扩展自己的隐藏页面里运行）。在 `chrome://extensions` 里为它打开“允许访问文件网址”后，本地文件也能用。",
           },
           {
             title: "按哪个键？",
