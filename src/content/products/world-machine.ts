@@ -88,7 +88,7 @@ export default defineProduct({
         label: "Live in it, or leave it.",
         items: [
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
-          { title: "Build on plots", body: "What you build decides who moves in." },
+          { title: "Build, and it shows", body: "Scaffolding at once; after the fête, bunting for a few days." },
           { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
           { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
@@ -114,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. App v0.26 opens and plays on Worlds saved by app versions v0.20 to v0.25. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -208,7 +208,7 @@ export default defineProduct({
         label: "住进去，或放着它",
         items: [
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
-          { title: "在地块上建造", body: "你建的东西决定谁搬来。" },
+          { title: "建了就看得见", body: "一开工就搭起脚手架；游园会后，彩旗挂上几天。" },
           { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
@@ -234,7 +234,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。v0.26 版应用能打开 v0.20 到 v0.25 版应用保存的世界并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",

@@ -52,8 +52,10 @@ const seo = buildSeo({
           <li>
             <code>tabs</code> (optional): requested only the first time you save the current page (the ☆ button or ⌘/Ctrl+D).
             Once granted, while the panel is open, it reads the active tab's title and address to save the page and to show
-            whether that page is already bookmarked. That address is compared with your bookmarks in memory and is never stored
-            or sent. You can decline; the page is then saved through an empty form and nothing is marked.
+            whether that page is already bookmarked. The extension compares that address with your bookmarks in memory, keeps
+            no separate copy, and does not send it anywhere itself. If you save the page, the address is stored in that Chrome
+            bookmark, which Chrome Sync syncs if you have it on. You can decline; the page is then saved through an empty
+            form and nothing is marked.
           </li>
         </ul>
         <p>
