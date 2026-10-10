@@ -1,0 +1,117 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { buildSeo, languageLink } from "../../../lib/pages";
+
+const path = "/douban-movie-rating/privacy/";
+const alternatePath = "/zh/douban-movie-rating/privacy/";
+const seo = buildSeo({
+  title: "Douban Movie Rating Assistant Privacy Policy - Titpea",
+  description:
+    "How Douban Movie Rating Assistant handles film details, your optional OMDb key and its local rating cache.",
+  path,
+  alternatePath,
+  locale: "en",
+  ogImage: "/assets/og-douban-movie-rating.png",
+});
+---
+
+<SiteLayout seo={seo} current="douban-movie-rating" locale="en" language={languageLink("en", alternatePath)}>
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow">
+        <a href="/douban-movie-rating/">Douban Movie Rating Assistant</a>
+      </p>
+      <h1>Privacy Policy</h1>
+      <p class="privacy-updated">Last updated: October 10, 2026</p>
+      <p class="lead">
+        Douban Movie Rating Assistant (豆瓣电影评分助手) is an unofficial Chrome extension that shows IMDb, Rotten
+        Tomatoes and Metacritic ratings on Douban movie pages. It collects no personal information. It has no servers,
+        no accounts, no analytics and no advertising.
+      </p>
+    </header>
+
+    <div class="privacy-content prose">
+      <section>
+        <h2>What the extension reads</h2>
+        <ul>
+          <li>
+            Film details: on a film page (<code>movie.douban.com/subject/…</code>), it reads the title, year and IMDb ID
+            shown on the page to look up ratings.
+          </li>
+          <li>
+            Hover lookups: on other movie.douban.com pages, such as Top 250, charts and a film page's recommendations,
+            it does nothing until you rest the pointer on a link to a film for about 0.3 seconds. It then fetches that
+            film's Douban page from movie.douban.com and reads the same three details.
+          </li>
+          <li>It runs only on movie.douban.com and does not read any other website.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is sent, and to whom</h2>
+        <p>
+          Only to the OMDb API (<code>www.omdbapi.com</code>): the film's IMDb ID, or its title and year, together with
+          an API key (the built-in shared key, or your own if you entered one). OMDb handles these requests under its
+          own terms and policies. Nothing is sent to the developer or to anyone else.
+        </p>
+        <p>
+          Each rating is a link. If you click one, your browser opens IMDb, Rotten Tomatoes or Metacritic with that
+          film's IMDb ID or title in the address, as any link would.
+        </p>
+      </section>
+      <section>
+        <h2>What stays on your device</h2>
+        <ul>
+          <li>
+            Settings: whether the extension is on, and the OMDb API key you may choose to enter. Stored in Chrome sync
+            storage (<code>chrome.storage.sync</code>), so Chrome Sync carries them between your own browsers if you
+            have it on.
+          </li>
+          <li>
+            Rating cache: results are kept in local storage (<code>chrome.storage.local</code>) for up to 7 days (1 day
+            for films released in the last 90 days or not found on OMDb) so pages load faster.
+          </li>
+          <li>
+            Request timestamps: while the shared key is in use, the times of the last minute's requests are kept locally
+            to stay within its rate limit.
+          </li>
+        </ul>
+        <p>
+          When you open the toolbar popup, it checks whether the current tab is a Douban movie page to show its status.
+          That check is not stored or sent.
+        </p>
+      </section>
+      <section>
+        <h2>Deleting your data</h2>
+        <p>
+          Clear the API key in the extension's settings to remove it. Uninstalling the extension removes all of its
+          settings and cached data.
+        </p>
+      </section>
+      <section>
+        <h2>What we never do</h2>
+        <p>
+          We do not collect names, email addresses, accounts or browsing history. We do not use remote code, analytics
+          or trackers. Your data is not sold, transferred to third parties beyond the OMDb requests described above, or
+          used for any purpose other than showing ratings.
+        </p>
+      </section>
+      <section>
+        <h2>Limited Use</h2>
+        <p>
+          Douban Movie Rating Assistant's use of information received from Chrome APIs adheres to the Chrome Web Store
+          User Data Policy, including the Limited Use requirements.
+        </p>
+      </section>
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>If this policy changes, the updated version will be published on this page with a new date.</p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, email <a href="mailto:info@titpea.com">info@titpea.com</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</SiteLayout>

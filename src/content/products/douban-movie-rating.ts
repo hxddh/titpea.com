@@ -27,8 +27,8 @@ export default defineProduct({
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
     },
     secondaryCta: {
-      label: "Privacy details",
-      href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
+      label: "Privacy policy",
+      href: "/douban-movie-rating/privacy/",
     },
     meta: "Chrome Web Store · 1.7 · Ratings from OMDb",
     visual: {
@@ -105,8 +105,8 @@ export default defineProduct({
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
     },
     secondaryCta: {
-      label: "隐私说明",
-      href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif#privacy",
+      label: "隐私政策",
+      href: "/zh/douban-movie-rating/privacy/",
     },
     meta: "Chrome 网上应用店 · 1.7 · 评分来自 OMDb",
     visual: {

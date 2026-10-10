@@ -33,6 +33,22 @@ export function GET() {
         xDefault: "https://titpea.com/easier-bookmarks/privacy/",
       },
     },
+    {
+      canonicalUrl: "https://titpea.com/douban-movie-rating/privacy/",
+      alternates: {
+        en: "https://titpea.com/douban-movie-rating/privacy/",
+        zh: "https://titpea.com/zh/douban-movie-rating/privacy/",
+        xDefault: "https://titpea.com/douban-movie-rating/privacy/",
+      },
+    },
+    {
+      canonicalUrl: "https://titpea.com/zh/douban-movie-rating/privacy/",
+      alternates: {
+        en: "https://titpea.com/douban-movie-rating/privacy/",
+        zh: "https://titpea.com/zh/douban-movie-rating/privacy/",
+        xDefault: "https://titpea.com/douban-movie-rating/privacy/",
+      },
+    },
   ];
   const urls = [
     ...allPages.map((model) => ({ ...model.seo, lastmod: lastmodFor(model) })),
