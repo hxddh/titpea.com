@@ -6,7 +6,7 @@
  *
  *   git clone https://github.com/hxddh/goban /tmp/board-apps/goban
  *   git clone https://github.com/hxddh/chessboard /tmp/board-apps/chessboard
- *   git -C /tmp/board-apps/goban checkout v1.76.0
+ *   git -C /tmp/board-apps/goban checkout v2.1.0
  *   git -C /tmp/board-apps/chessboard checkout v10.1.0
  *   (chessboard) npm ci && node scripts/gen-engine-src.mjs && node scripts/bundle.mjs
  */
@@ -18,7 +18,7 @@ import path from "node:path";
 export const appsRoot = process.env.BOARD_APPS ?? "/tmp/board-apps";
 
 /** Bump these, re-check out, and re-run both scripts when a new release ships. */
-export const pinned = { goban: "v1.76.0", chessboard: "v10.1.0" };
+export const pinned = { goban: "v2.1.0", chessboard: "v10.1.0" };
 
 export function assertPinned(app) {
   const dir = path.join(appsRoot, app);
@@ -115,7 +115,7 @@ export async function serveDir(root) {
   return { origin: `http://127.0.0.1:${server.address().port}`, close: () => new Promise((r) => server.close(r)) };
 }
 
-/** Goban keeps Paste in its History dialog, opened from the ⋯ menu (v1.74+); Paste closes the dialog itself. */
+/** Goban keeps Paste in its Games dialog (History before v2.0), opened from the ⋯ menu; Paste closes the dialog itself. */
 export async function pasteGoban(page, sgf) {
   await page.evaluate((text) => navigator.clipboard.writeText(text), sgf);
   await page.click("#more-btn");

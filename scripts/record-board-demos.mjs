@@ -109,7 +109,6 @@ async function recordGoban(browser, lang) {
             difficulty: "normal",
             humanColor: "b",
             soundOn: false,
-            thinkLevel: "standard",
             showCoords: true,
             openingRule: "standard",
           }),
