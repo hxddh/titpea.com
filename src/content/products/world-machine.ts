@@ -114,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version. Each World Pack has its own version, and a World saved by an older Pack version may not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version. Each World Pack has its own version, and a World saved by a Pack version the app does not ship does not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -122,7 +122,7 @@ export default defineProduct({
           },
           {
             title: "Is there a free demo?",
-            body: "Yes. World Machine Demo, on the same Releases page, is the first hour of Tiny Society, up to day 21. Your harbour stays in My Worlds, and the full app opens it and carries on.",
+            body: "Yes. World Machine Demo, on the same Releases page, is 20 to 30 minutes of Tiny Society, up to day 8. Your harbour stays in My Worlds, and the full app opens it and carries on.",
           },
           {
             title: "How far does a World move while I am away?",
@@ -130,11 +130,11 @@ export default defineProduct({
           },
           {
             title: "What does World voice do?",
-            body: "When you turn it on in Settings, a model words what happened while you were away and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools, extensions or session, and every verdict is recorded, so replaying a World never asks a model again.",
+            body: "When you turn it on in Settings, a model words what happened while you were away and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Crisis and sexual topics are never sent to a model, and each model answer is marked “Written by AI” with a Report button. What talk does, such as warmth or a favour done, is decided only by the World's own reading of your words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools or extensions and keeps no session on disk, and every verdict is recorded, so replaying a World never asks a model again.",
           },
           {
             title: "Do people understand everything I type?",
-            body: "Not everything. Without World voice, people hear 28 kinds of everyday talk in English and Chinese, and about 110 everyday phrases in Japanese; some new phrasing is missed.",
+            body: "Not everything. Without World voice, people hear 28 kinds of everyday talk in English, Chinese and Japanese; some new phrasing is missed.",
           },
           {
             title: "Can I add other World Packs?",
@@ -234,7 +234,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行。每个 World Pack 有自己的版本号，更旧的 Pack 版本保存的世界可能打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行。每个 World Pack 有自己的版本号，由应用未内置的 Pack 版本保存的世界打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
@@ -242,7 +242,7 @@ export default defineProduct({
           },
           {
             title: "有免费试玩版吗？",
-            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的第一个小时，玩到第 21 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
+            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的 20 到 30 分钟，玩到第 8 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
           },
           {
             title: "离开时世界会走多远？",
@@ -250,11 +250,11 @@ export default defineProduct({
           },
           {
             title: "世界之声能做什么？",
-            body: "在设置里打开后，由模型讲述你离开时发生的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具、扩展和会话；每个裁定都会记录下来，回放世界时不会再问模型。",
+            body: "在设置里打开后，由模型讲述你离开时发生的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。涉及危机和性的话题从不发给模型；模型写的每句回答都标有“AI 撰写”，并带“举报”按钮。对话带来的结果，比如好感或帮成的忙，只由世界自己对你原话的理解决定。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具和扩展，也不在磁盘上保留会话；每个裁定都会记录下来，回放世界时不会再问模型。",
           },
           {
             title: "我打的每句话都能听懂吗？",
-            body: "不是每句。不开世界之声时，居民能听懂中英文里 28 类日常话题，以及约 110 句日文日常说法；部分新说法会听不懂。",
+            body: "不是每句。不开世界之声时，居民能听懂中文、英文和日文里 28 类日常话题；部分新说法会听不懂。",
           },
           {
             title: "能添加其他 World Pack 吗？",

@@ -7,7 +7,7 @@
  *   git clone https://github.com/hxddh/goban /tmp/board-apps/goban
  *   git clone https://github.com/hxddh/chessboard /tmp/board-apps/chessboard
  *   git -C /tmp/board-apps/goban checkout v1.76.0
- *   git -C /tmp/board-apps/chessboard checkout v8.2.0
+ *   git -C /tmp/board-apps/chessboard checkout v10.0.0
  *   (chessboard) npm ci && node scripts/gen-engine-src.mjs && node scripts/bundle.mjs
  */
 import { execFileSync } from "node:child_process";
@@ -18,7 +18,7 @@ import path from "node:path";
 export const appsRoot = process.env.BOARD_APPS ?? "/tmp/board-apps";
 
 /** Bump these, re-check out, and re-run both scripts when a new release ships. */
-export const pinned = { goban: "v1.76.0", chessboard: "v8.2.0" };
+export const pinned = { goban: "v1.76.0", chessboard: "v10.0.0" };
 
 export function assertPinned(app) {
   const dir = path.join(appsRoot, app);
@@ -56,6 +56,36 @@ export const CHESS_PGN = `[Event "Site capture"]
 6. Nxf7 Kxf7 7. Qf3+ Ke6 8. Nc3 Nb4 9. Qe4 c6 10. a3 Na6
 11. d4 Kd6 12. Bf4+ Ke7 13. Bxd5 cxd5 14. Nxd5+ Ke8
 15. Nf6+ gxf6 16. Qxe5+ Be7 17. Qxe7# 1-0`;
+
+/**
+ * Chessboard's saved state for a capture, as an init script (9.0+ keys, no
+ * `chess.v1.` prefix): a two-player board holding `pgn`, the panel open, sound
+ * off, light wood unless `look` says otherwise. A profile that is not empty
+ * also skips the first-run question (10.0).
+ */
+export function chessboardInit({ pgn, langId, look }) {
+  localStorage.setItem(
+    "chess.settings",
+    JSON.stringify({
+      soundOn: false,
+      mode: "pvp",
+      langId,
+      view: "play",
+      appearance: "light",
+      boardId: "wood",
+      ...look,
+    }),
+  );
+  localStorage.setItem("chess.panelOpen", "1");
+  localStorage.setItem("chess.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
+}
+
+/** Run Chessboard's Stockfish review; the accuracy line fills in only once every ply is evaluated. */
+export async function analyseChessboard(page) {
+  await page.click("#an-run");
+  await page.waitForSelector("#acc-line:not([hidden])", { state: "attached", timeout: 300000 });
+  await page.waitForTimeout(800);
+}
 
 const types = {
   ".html": "text/html; charset=utf-8",
