@@ -36,12 +36,12 @@
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v1.76.0",
-    "published": "2026-09-30"
+    "version": "v2.1.0",
+    "published": "2026-10-10"
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v10.0.0",
+    "version": "v10.1.0",
     "published": "2026-10-10"
   },
   "world-machine": {
