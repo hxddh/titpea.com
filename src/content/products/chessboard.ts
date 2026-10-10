@@ -171,7 +171,7 @@ export default defineProduct({
           },
           {
             title: "Will my 8.x data carry over?",
-            body: "No. Version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero. Version 10.0 reads 9.0 saves, so moving from 9.0 to 10.0 keeps everything.",
+            body: "No. Version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero. Version 10.0 reads 9.0 saves, so moving from 9.0 to 10.0 keeps everything. Version 10.1 reads 10.0 saves; the format did not change.",
           },
           {
             title: "What can I do with a PGN?",
@@ -317,7 +317,7 @@ export default defineProduct({
           },
           {
             title: "8.x 的数据能带过来吗？",
-            body: "不能。9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。10.0 读得了 9.0 的存档，从 9.0 升到 10.0 不用重来。",
+            body: "不能。9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。10.0 读得了 9.0 的存档，从 9.0 升到 10.0 不用重来。10.1 读 10.0 的存档，格式没变。",
           },
           {
             title: "PGN 能做什么？",
