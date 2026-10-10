@@ -41,12 +41,12 @@
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v8.3.0",
-    "published": "2026-10-07"
+    "version": "v10.0.0",
+    "published": "2026-10-10"
   },
   "world-machine": {
     "repo": "hxddh/world-machine",
-    "version": "v0.27.0",
-    "published": "2026-10-07"
+    "version": "v0.29.0",
+    "published": "2026-10-10"
   }
 }
