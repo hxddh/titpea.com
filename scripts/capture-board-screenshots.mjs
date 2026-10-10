@@ -9,7 +9,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import sharp from "sharp";
-import { assertPinned, CHESS_PGN, GOMOKU_SGF, pasteGoban, serveDir } from "./board-apps.mjs";
+import {
+  analyseChessboard,
+  assertPinned,
+  CHESS_PGN,
+  chessboardInit,
+  GOMOKU_SGF,
+  pasteGoban,
+  serveDir,
+} from "./board-apps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "../public/assets");
@@ -87,28 +95,21 @@ async function captureGoban(browser, lang) {
   await server.close();
 }
 
+/** Chessboard 9.0+: light and dark are in Settings · General, the board in Settings · Board; Play returns to the game. */
+async function chessboardDarkGreen(page) {
+  await page.click('#rail button[data-view="settings"]');
+  await page.click("#cat-general");
+  await page.click('button[data-appearance="dark"]');
+  await page.click("#cat-board");
+  await page.click('button[data-board-id="green"]');
+  await page.click('#rail button[data-view="play"]');
+}
+
 async function captureChessboard(browser, lang) {
   const server = await serveDir(assertPinned("chessboard"));
   const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: SCALE });
   const page = await context.newPage();
-  await page.addInitScript(
-    ({ pgn, langId }) => {
-      localStorage.setItem(
-        "chess.v1.settings",
-        JSON.stringify({
-          soundOn: false,
-          flipped: false,
-          mode: "pvp",
-          difficulty: "normal",
-          humanColor: "w",
-          langId,
-        }),
-      );
-      localStorage.setItem("chess.panelOpen", "1");
-      localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
-    },
-    { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" },
-  );
+  await page.addInitScript(chessboardInit, { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" });
 
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
@@ -117,21 +118,12 @@ async function captureChessboard(browser, lang) {
   await dismissToasts(page);
   await writeWebp(page, `chessboard-game-board-${lang}.webp`);
 
-  const analyzeBtn = page.locator("#an-run");
-  if (await analyzeBtn.isVisible().catch(() => false)) {
-    await analyzeBtn.click();
-    // The accuracy line appears only once every ply has been evaluated.
-    await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
-    await page.waitForTimeout(800);
-  }
-  // Dark appearance with the green board on the final position, set in Preferences.
+  // Dark appearance with the green board on the final position of the reviewed game.
+  await analyseChessboard(page);
   await page.click("#rep-end").catch(() => {});
-  await page.click("#prefs-open");
-  await page.click('#prefs-look button[data-appearance="dark"]');
-  await page.click('#prefs-look button[data-board-id="green"]');
-  await page.click("#prefs-close");
+  await chessboardDarkGreen(page);
   await page.mouse.move(0, 0);
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(600);
   await dismissToasts(page);
   await writeWebp(page, `chessboard-theme-${lang}.webp`);
 
@@ -147,32 +139,12 @@ async function captureChessboardFeatured(browser, lang) {
   const server = await serveDir(assertPinned("chessboard"));
   const context = await browser.newContext({ viewport: { width: 1200, height: 800 }, deviceScaleFactor: 1.5 });
   const page = await context.newPage();
-  await page.addInitScript(
-    ({ pgn, langId }) => {
-      localStorage.setItem(
-        "chess.v1.settings",
-        JSON.stringify({
-          soundOn: false,
-          flipped: false,
-          mode: "pvp",
-          difficulty: "normal",
-          humanColor: "w",
-          langId,
-        }),
-      );
-      localStorage.setItem("chess.panelOpen", "1");
-      localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
-    },
-    { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" },
-  );
+  await page.addInitScript(chessboardInit, { pgn: CHESS_PGN, langId: lang === "zh" ? "zh-CN" : "en" });
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
   await page.waitForTimeout(1000);
   await openPanel(page);
-  await page.click("#an-run");
-  // The accuracy line appears only once every ply has been evaluated.
-  await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
-  await page.waitForTimeout(800);
+  await analyseChessboard(page);
   await page.click("#rep-start");
   await page.waitForTimeout(300);
   await page.click("#rep-end");

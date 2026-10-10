@@ -1,10 +1,11 @@
 /**
  * Record short muted demo loops from the real Goban / Chessboard web UIs
  * (the apps' own src/web, served locally): Goban steps through the mistakes
- * its review names, Chessboard runs its Stockfish review and steps through the result.
+ * its review names, Chessboard runs its Stockfish review and steps through its key moments.
  * Nothing is scripted inside the apps; the recording only clicks their UI.
  * Each loop is recorded twice, with the app in English and in Chinese, and
- * written as public/assets/<name>-<en|zh>.mp4 (H.264) and .webm (VP9).
+ * written as public/assets/<name>-<en|zh>.mp4 (H.264) and .webm (VP9), with
+ * its first frame as the .webp poster.
  *
  *   Check out the pinned releases (scripts/board-apps.mjs), then
  *   pip install imageio-ffmpeg
@@ -16,7 +17,16 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { assertPinned, CHESS_PGN, GOMOKU_SGF, pasteGoban, serveDir } from "./board-apps.mjs";
+import sharp from "sharp";
+import {
+  analyseChessboard,
+  assertPinned,
+  CHESS_PGN,
+  chessboardInit,
+  GOMOKU_SGF,
+  pasteGoban,
+  serveDir,
+} from "./board-apps.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.join(__dirname, "../public/assets");
@@ -74,7 +84,12 @@ async function record(browser, name, root, init, act, trimStart) {
   execFileSync(ffmpeg, [...common, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "40", "-row-mt", "1", webm], {
     stdio: "ignore",
   });
-  for (const file of [mp4, webm])
+  // The poster (the showcase image and the fallback) is the recording's first frame.
+  const frame = path.join(dir, "poster.png");
+  execFileSync(ffmpeg, ["-y", "-i", mp4, "-frames:v", "1", frame], { stdio: "ignore" });
+  const poster = path.join(outDir, `${name}.webp`);
+  await sharp(frame).webp({ quality: 82 }).toFile(poster);
+  for (const file of [mp4, webm, poster])
     console.log(`${path.basename(file)} ${Math.round((await fs.stat(file)).size / 1024)} KB`);
 }
 
@@ -135,24 +150,7 @@ async function recordChessboard(browser, lang) {
     browser,
     `chessboard-review-${lang}`,
     assertPinned("chessboard"),
-    {
-      script: ({ pgn, lang }) => {
-        localStorage.setItem(
-          "chess.v1.settings",
-          JSON.stringify({
-            soundOn: false,
-            flipped: false,
-            mode: "pvp",
-            difficulty: "normal",
-            humanColor: "w",
-            langId: lang === "en" ? "en" : "zh-CN",
-          }),
-        );
-        localStorage.setItem("chess.panelOpen", "1");
-        localStorage.setItem("chess.v1.save", JSON.stringify({ v: 1, pgn, savedAt: Date.now() }));
-      },
-      arg: { pgn: CHESS_PGN, lang },
-    },
+    { script: chessboardInit, arg: { pgn: CHESS_PGN, langId: lang === "en" ? "en" : "zh-CN", lang } },
     async (page) => {
       await page.waitForTimeout(800);
       await quiet(page);
@@ -161,25 +159,27 @@ async function recordChessboard(browser, lang) {
         await page.waitForTimeout(400);
       }
       // Stockfish reviews every ply in the browser; the loop starts once it has.
-      const run = page.locator("#an-run");
-      if (await run.isVisible().catch(() => false)) {
-        await run.click();
-        // The accuracy line appears only once every ply has been evaluated.
-        await page.waitForSelector("#acc-line:not([hidden])", { timeout: 240000 });
-        await page.waitForTimeout(800);
-      }
-      const moves = page.locator("#move-list button");
-      const count = await moves.count();
-      await moves.nth(0).click();
+      await analyseChessboard(page);
       await quiet(page);
-      await page.waitForTimeout(400);
+      // 9.0+: the review's first layer is the summary, the curve and the key
+      // moments; bring it to the top of the panel and start at the first moment.
+      await page.evaluate(() => document.getElementById("rv-summary")?.scrollIntoView({ block: "start" }));
+      const prev = page.locator("#rv-km .km-prev");
+      const next = page.locator("#rv-km .km-next");
+      while (await prev.isEnabled()) await prev.click();
+      await page.waitForTimeout(600);
       const start = Date.now();
-      for (let index = 0; index < count; index += 1) {
-        await moves.nth(index).click();
+      await page.waitForTimeout(1800);
+      while (await next.isEnabled()) {
+        await next.click();
         await quiet(page);
-        await page.waitForTimeout(360);
+        await page.waitForTimeout(1800);
       }
-      await page.waitForTimeout(1600);
+      // The second layer: the full report folded under the key moments.
+      await page.click("#rv-full > summary");
+      await page.evaluate(() => document.getElementById("rv-full")?.scrollIntoView({ block: "start" }));
+      await quiet(page);
+      await page.waitForTimeout(2400);
       return start;
     },
     0,
