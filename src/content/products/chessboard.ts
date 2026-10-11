@@ -2,7 +2,8 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// at hxddh/chessboard v10.0.0 (rated 600, themes "sacrifice m2"). The FEN is the
+// (line 18 at hxddh/chessboard v11.0.0, unchanged since v10.0.0; rated 600, themes
+// "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
 // in two, Bxf2 is White's only legal reply, and Rxf2# is the only mate after it.
@@ -99,7 +100,7 @@ export default defineProduct({
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Key moments first.",
-        body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again. Accuracy and every graded move wait in the full report.",
+        body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again. From the result bar, Review this game stops at your first ?? move, or at your first ? if there is none. Accuracy and every graded move wait in the full report.",
       },
       {
         src: "/assets/chessboard-theme-en.webp",
@@ -170,8 +171,8 @@ export default defineProduct({
             body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings · Data, imports your games from Lichess or Chess.com into the library.",
           },
           {
-            title: "Will my 8.x data carry over?",
-            body: "No. Version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero. Version 10.0 reads 9.0 saves, so moving from 9.0 to 10.0 keeps everything. Version 10.1 reads 10.0 saves; the format did not change.",
+            title: "Will my saves from an older version carry over?",
+            body: "From 10.x, yes: version 11.0 reads 10.0 and 10.1 saves, and the save format did not change. Version 10.0 reads 9.0 saves, so moving from 9.0 to 10.0 keeps everything. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
           },
           {
             title: "What can I do with a PGN?",
@@ -183,7 +184,7 @@ export default defineProduct({
           },
           {
             title: "How do Look ahead and Blind mate work?",
-            body: "Both are under Train, Puzzles, Focus. Look ahead stops the board at a puzzle and writes the next 2–6 half-moves as text; play them in your head, then say which piece can capture or give check, or whether there is a mate. Once the puzzle’s own line runs out, Stockfish plays on. Blind mate shows a mate in one or two for 3 seconds, then hides the pieces. Both pick puzzles from the built-in Lichess set at your rating in that mode.",
+            body: "Both are under Train, Puzzles, More ways to practise, Focus. Look ahead stops the board at a puzzle and writes the next 2–6 half-moves as text; play them in your head, then say which piece can capture or give check, or whether there is a mate. Once the puzzle’s own line runs out, Stockfish plays on. Blind mate shows a mate in one or two for 3 seconds, then hides the pieces. Both pick puzzles from the built-in Lichess set at your rating in that mode.",
           },
           {
             title: "How many games can the library hold?",
@@ -248,7 +249,7 @@ export default defineProduct({
         height: 768,
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",
-        body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次；精准度和每一手的分级收在完整报告里。",
+        body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。从结果条点“复盘这局”，分析完停在你的第一个 ??，没有就停在第一个 ?。精准度和每一手的分级收在完整报告里。",
       },
       {
         src: "/assets/chessboard-theme-zh.webp",
@@ -316,8 +317,8 @@ export default defineProduct({
             body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 · 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
           },
           {
-            title: "8.x 的数据能带过来吗？",
-            body: "不能。9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。10.0 读得了 9.0 的存档，从 9.0 升到 10.0 不用重来。10.1 读 10.0 的存档，格式没变。",
+            title: "旧版本的存档能带过来吗？",
+            body: "10.x 的可以：11.0 读得了 10.0 和 10.1 的存档，存档格式没变。10.0 读得了 9.0 的存档，从 9.0 升到 10.0 不用重来。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
           },
           {
             title: "PGN 能做什么？",
@@ -329,7 +330,7 @@ export default defineProduct({
           },
           {
             title: "“看 N 步”和“盲走”怎么练？",
-            body: "两种都在“训练 · 谜题 · 专项”里。“看 N 步”让棋盘停在题面，接下来的 2–6 个半回合只写成文字，你在脑子里走完，再回答哪个子能吃子、哪个子能将军、有没有一步杀；题目自带的线走完后，由 Stockfish 接着走。“盲走”把一步杀或两步杀的局面亮 3 秒，然后藏起棋子，凭记忆走出杀着。两种都从内置的 Lichess 题库里按你在这个模式的评级出题。",
+            body: "两种都在“训练 · 谜题 · 更多练法 · 专项”里。“看 N 步”让棋盘停在题面，接下来的 2–6 个半回合只写成文字，你在脑子里走完，再回答哪个子能吃子、哪个子能将军、有没有一步杀；题目自带的线走完后，由 Stockfish 接着走。“盲走”把一步杀或两步杀的局面亮 3 秒，然后藏起棋子，凭记忆走出杀着。两种都从内置的 Lichess 题库里按你在这个模式的评级出题。",
           },
           {
             title: "棋谱库能存多少局？",
