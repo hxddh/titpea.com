@@ -29,6 +29,11 @@
     "version": "v29.0.1",
     "published": "2026-10-07"
   },
+  "readout": {
+    "repo": "hxddh/readout",
+    "version": "v3.1.0",
+    "published": "2026-10-11"
+  },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
     "version": "v0.26.3",

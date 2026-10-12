@@ -163,7 +163,8 @@ export const ui: Record<Locale, Ui> = {
       },
       agents: {
         when: "Several agents are running, or you want to keep up with the field.",
-        value: "See which one is waiting for you, carry a session to another machine, read sourced weekly briefs.",
+        value:
+          "See which one is waiting for you, read what it writes as it changes, carry a session to another machine, read sourced weekly briefs.",
       },
       everyday: {
         when: "Reading PDFs and foreign pages, tidying bookmarks, checking times and ratings.",
@@ -251,7 +252,7 @@ export const ui: Record<Locale, Ui> = {
       },
       agents: {
         when: "同时跑着几个 Agent，或想跟上这个领域。",
-        value: "一眼看出哪个在等你；会话换台机器接着用；每周动态附来源。",
+        value: "一眼看出哪个在等你；它写的文档边写边读；会话换台机器接着用；每周动态附来源。",
       },
       everyday: {
         when: "读 PDF 和外文网页，整理书签，看时间和评分。",

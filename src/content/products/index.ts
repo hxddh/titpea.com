@@ -7,6 +7,7 @@ import httpmon from "./httpmon";
 import celagent from "./celagent";
 import pagewise from "./pagewise";
 import pulse from "./pulse";
+import readout from "./readout";
 import worldMachine from "./world-machine";
 import worldClock from "./world-clock";
 import doubanMovieRating from "./douban-movie-rating";
@@ -24,6 +25,7 @@ export const products: Product[] = [
   celagent,
   pagewise,
   pulse,
+  readout,
   worldMachine,
   worldClock,
   doubanMovieRating,
