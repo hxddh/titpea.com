@@ -31,14 +31,6 @@ export default defineProduct({
       href: "https://github.com/hxddh/readout",
     },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
-    commands: {
-      title: "Get started",
-      sub: "First choose Readout → Install Command Line Tool… to get `readout`.",
-      items: [
-        { comment: "Open a file and bring Readout forward", command: "readout plan.md" },
-        { comment: "Open a file without switching apps", command: "readout -b plan.md" },
-      ],
-    },
     visual: {
       kind: "screenshot",
       label: "Readout",
@@ -106,8 +98,8 @@ export default defineProduct({
             body: "Builds are ad-hoc signed and not notarized. Open System Settings → Privacy & Security, find the message about Readout and click Open Anyway.",
           },
           {
-            title: "How do I have Claude Code open files in Readout?",
-            body: "Install the command line tool, then add a `PostToolUse` hook to `~/.claude/settings.json` with the matcher `Write|Edit|MultiEdit` and the command `readout --hook`. The hook opens the written file in the background, and only when it is Markdown.",
+            title: "Can I open files from the terminal or Claude Code?",
+            body: "Choose Readout → Install Command Line Tool… to get `readout`: `readout plan.md` opens a file and brings Readout forward, `readout -b plan.md` opens it without switching apps. For Claude Code, add a `PostToolUse` hook to `~/.claude/settings.json` with the matcher `Write|Edit|MultiEdit` and the command `readout --hook`. The hook opens the written file in the background, and only when it is Markdown.",
           },
           {
             title: "Which folders does ⌥⌘R look in?",
@@ -145,14 +137,6 @@ export default defineProduct({
       href: "https://github.com/hxddh/readout",
     },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
-    commands: {
-      title: "开始使用",
-      sub: "先选择 Readout → 安装命令行工具…，即可使用 `readout`。",
-      items: [
-        { comment: "打开文件并切换到 Readout", command: "readout plan.md" },
-        { comment: "打开文件但不切换应用", command: "readout -b plan.md" },
-      ],
-    },
     visual: {
       kind: "screenshot",
       label: "Readout",
@@ -217,8 +201,8 @@ export default defineProduct({
             body: "构建是 ad-hoc 签名、未经公证。打开“系统设置 → 隐私与安全性”，找到关于 Readout 的提示，点击“仍要打开”。",
           },
           {
-            title: "怎样让 Claude Code 写完就在 Readout 中打开？",
-            body: "先安装命令行工具，再在 `~/.claude/settings.json` 中加入 `PostToolUse` hook。matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
+            title: "能从终端或 Claude Code 打开文件吗？",
+            body: "选择 Readout → 安装命令行工具…，即可使用 `readout`。`readout plan.md` 打开文件并切换到 Readout；`readout -b plan.md` 打开但不切换应用。配合 Claude Code 时，在 `~/.claude/settings.json` 中加入 `PostToolUse` hook。matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
           },
           {
             title: "⌥⌘R 会在哪些文件夹里找？",
