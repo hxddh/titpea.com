@@ -45,7 +45,7 @@ export default defineProduct({
       label: "Privacy policy",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome extension · Chrome 138+ · 1.6.6 · On-device translation",
+    meta: "Chrome extension · Chrome 138+ · 1.7.0 · On-device translation",
     visual: {
       kind: "screenshot",
       label: "Bilingual",
@@ -128,7 +128,7 @@ export default defineProduct({
       label: "隐私政策",
       href: "https://hxddh.github.io/bilingual-site/",
     },
-    meta: "Chrome 扩展 · Chrome 138+ · 1.6.6 · 本地翻译",
+    meta: "Chrome 扩展 · Chrome 138+ · 1.7.0 · 本地翻译",
     visual: {
       kind: "screenshot",
       label: "对读",
