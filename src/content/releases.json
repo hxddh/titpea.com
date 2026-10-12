@@ -12,7 +12,7 @@
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
     "version": "v1.4.1",
-    "published": "2026-09-30"
+    "published": "2026-09-29"
   },
   "celagent": {
     "repo": "hxddh/celagent",
@@ -32,7 +32,7 @@
   "readout": {
     "repo": "hxddh/readout",
     "version": "v3.1.0",
-    "published": "2026-10-11"
+    "published": "2026-10-12"
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
