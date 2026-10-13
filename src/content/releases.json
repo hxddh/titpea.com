@@ -31,7 +31,7 @@
   },
   "readout": {
     "repo": "hxddh/readout",
-    "version": "v3.1.0",
+    "version": "v3.3.0",
     "published": "2026-10-12"
   },
   "agent-radar": {

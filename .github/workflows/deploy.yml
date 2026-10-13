@@ -88,7 +88,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
       - name: Page QA
         if: github.event_name != 'schedule'
-        timeout-minutes: 8
+        # 16 products take about 7.5 minutes; leave room as the site grows.
+        timeout-minutes: 12
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
           echo $! > /tmp/titpea-preview.pid
