@@ -99,7 +99,7 @@ export default defineProduct({
           },
           {
             title: "Can I open files from the terminal or Claude Code?",
-            body: "Agents need no setup: the folders in Settings are enough. For a `readout` command, link the script inside the app with `ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, and `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps. To use a Claude Code hook instead of a watched folder, add `readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit` in `~/.claude/settings.json`. It opens the written file in the background, and only when it is Markdown.",
+            body: "Agents need no setup: the folders in Settings are enough. For a `readout` command, link the script inside the app with `mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, and `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps. To use a Claude Code hook instead of a watched folder, add `readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit` in `~/.claude/settings.json`. It opens the written file in the background, and only when it is Markdown.",
           },
           {
             title: "Which folders does Readout watch?",
@@ -202,7 +202,7 @@ export default defineProduct({
           },
           {
             title: "能从终端或 Claude Code 打开文件吗？",
-            body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想要 `readout` 命令，可以把 App 里自带的脚本链接出来，`~/.local/bin` 需要在 `PATH` 中。链接命令：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。如果想用 Claude Code hook 代替文件夹监视，在 `~/.claude/settings.json` 里添加 `PostToolUse` hook；matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
+            body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想要 `readout` 命令，可以把 App 里自带的脚本链接出来，`~/.local/bin` 需要在 `PATH` 中。链接命令：`mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。如果想用 Claude Code hook 代替文件夹监视，在 `~/.claude/settings.json` 里添加 `PostToolUse` hook；matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
           },
           {
             title: "Readout 会监视哪些文件夹？",
