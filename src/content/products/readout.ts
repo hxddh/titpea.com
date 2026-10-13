@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "Readout",
     description:
-      "A native, read-only Markdown reader for macOS, made for what AI agents write: it follows the file live and marks what changed since you last read it.",
+      "A native, read-only Markdown reader for macOS, made for what AI agents write: it opens their new documents, follows them live and marks what changed since you last read.",
     eyebrow: "Markdown reader for macOS",
     headline: "Read what agents write.",
     lead: "Follows the file live. Marks what changed. Read-only.",
@@ -69,7 +69,7 @@ export default defineProduct({
             title: "GitHub-flavoured Markdown",
             body: "Tables, alerts, footnotes, highlighted code, KaTeX math and Mermaid.",
           },
-          { title: "Newest file, one key", body: "⌥⌘R opens the latest Markdown in your agents’ folders." },
+          { title: "Opens new documents", body: "New Markdown in an agent folder opens in the background." },
         ],
       },
       {
@@ -99,11 +99,11 @@ export default defineProduct({
           },
           {
             title: "Can I open files from the terminal or Claude Code?",
-            body: "Choose Readout → Install Command Line Tool… to get `readout`: `readout plan.md` opens a file and brings Readout forward, `readout -b plan.md` opens it without switching apps. For Claude Code, add a `PostToolUse` hook to `~/.claude/settings.json` with the matcher `Write|Edit|MultiEdit` and the command `readout --hook`. The hook opens the written file in the background, and only when it is Markdown.",
+            body: "Agents need no setup: the folders in Settings are enough. For a `readout` command, link the script inside the app with `ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, and `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps. To use a Claude Code hook instead of a watched folder, add `readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit` in `~/.claude/settings.json`. It opens the written file in the background, and only when it is Markdown.",
           },
           {
-            title: "Which folders does ⌥⌘R look in?",
-            body: "The Agent folders you add in Settings; Claude Code’s `~/.claude/plans` is added on first launch when it exists. The global shortcut can be changed or turned off there.",
+            title: "Which folders does Readout watch?",
+            body: "The Agent folders you add in Settings; Claude Code’s `~/.claude/plans` is added on first launch when it exists. A new Markdown document there opens as a tab behind the one you are reading, and your terminal keeps focus. Edits to files that were already there open nothing, and when more than three new documents appear at once, only the newest opens. ⌥⌘R opens the newest one from anywhere; the shortcut can be changed or turned off in Settings.",
           },
           {
             title: "Does it work in Quick Look?",
@@ -120,7 +120,7 @@ export default defineProduct({
   zh: {
     title: "Readout",
     description:
-      "为 AI Agent 写的文档打造的 macOS 原生只读 Markdown 阅读器：跟随文件实时更新，标出自你上次阅读以来哪里变了。",
+      "为 AI Agent 写的文档打造的 macOS 原生只读 Markdown 阅读器：自动打开 Agent 新建的文档，跟随写入实时更新，标出自你上次阅读以来哪里变了。",
     eyebrow: "macOS Markdown 阅读器",
     headline: "读 Agent 写的文档",
     lead: "实时跟随写入。标出改动。始终只读。",
@@ -145,7 +145,7 @@ export default defineProduct({
         src: "/assets/readout-plan-zh.webp",
         alt: "Readout 的阅读视图，显示一份中英混排的 Agent 实现计划（来自 zkywsg/Daily-LLM）。可以看到标题、引用说明、Goal 等段落、任务复选框和代码块。",
         width: 900,
-        height: 800,
+        height: 830,
       },
       caption: "Readout 的阅读视图，由它自己的测试在 WebKit 中渲染，未包含窗口外框。",
     },
@@ -172,7 +172,7 @@ export default defineProduct({
           { title: "记得读过哪里", body: "读过后标记自动消退，重启后仍然保留。" },
           { title: "带进度的大纲", body: "侧边栏列出标题，以及每节任务的完成数。" },
           { title: "完整 GFM", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
-          { title: "一键打开最新文件", body: "按 ⌥⌘R 打开 Agent 文件夹里最新的 Markdown。" },
+          { title: "自动打开新文档", body: "Agent 文件夹里新建的 Markdown 在后台打开，不抢焦点。" },
         ],
       },
       {
@@ -202,11 +202,11 @@ export default defineProduct({
           },
           {
             title: "能从终端或 Claude Code 打开文件吗？",
-            body: "选择 Readout → 安装命令行工具…，即可使用 `readout`。`readout plan.md` 打开文件并切换到 Readout；`readout -b plan.md` 打开但不切换应用。配合 Claude Code 时，在 `~/.claude/settings.json` 中加入 `PostToolUse` hook。matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
+            body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想要 `readout` 命令，可以把 App 里自带的脚本链接出来，`~/.local/bin` 需要在 `PATH` 中。链接命令：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。如果想用 Claude Code hook 代替文件夹监视，在 `~/.claude/settings.json` 里添加 `PostToolUse` hook；matcher 设为 `Write|Edit|MultiEdit`，命令为 `readout --hook`。只有写入的是 Markdown 文件时，它才在后台打开。",
           },
           {
-            title: "⌥⌘R 会在哪些文件夹里找？",
-            body: "在设置里添加的“Agent 文件夹”；首次启动时，如果 Claude Code 的 `~/.claude/plans` 存在，会自动加入。全局快捷键也可以在那里更换或关闭。",
+            title: "Readout 会监视哪些文件夹？",
+            body: "在设置里添加的“Agent 文件夹”；首次启动时，如果 Claude Code 的 `~/.claude/plans` 存在，会自动加入。Agent 在这里新建的 Markdown 文档会作为标签页排在正在阅读的文档之后打开，终端保持焦点。修改已有文件不会打开任何文档；同时出现超过三个新文档时，只打开最新的一个。在任何地方按 ⌥⌘R 可打开最新的一个，这个全局快捷键可以在设置里更换或关闭。",
           },
           {
             title: "支持 Quick Look 吗？",
