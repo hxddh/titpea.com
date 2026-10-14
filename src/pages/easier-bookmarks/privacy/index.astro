@@ -21,7 +21,7 @@ const seo = buildSeo({
         <a href="/easier-bookmarks/">Easier Bookmarks</a>
       </p>
       <h1>Privacy Policy</h1>
-      <p class="privacy-updated">Last updated: October 8, 2026</p>
+      <p class="privacy-updated">Last updated: October 14, 2026</p>
       <p class="lead">
         Easier Bookmarks does not collect, transmit, sell or share any of your data. It has no servers, no accounts, no
         analytics and no advertising. Everything it does happens inside your own browser.
@@ -65,14 +65,20 @@ const seo = buildSeo({
           The address-bar search (type <code>b</code> and a space) needs no permission. What you type after it is matched
           against your bookmarks inside the extension and is not stored or sent.
         </p>
+        <p>
+          When you drag a link into the panel or paste addresses into it, the extension reads what you dropped or
+          pasted, only at that moment, to save it as bookmarks.
+        </p>
       </section>
       <section>
         <h2>What stays on your device</h2>
         <p>
           Only the items listed under <code>storage</code> above: which folders are open, the IDs and last-opened times of
-          up to 500 bookmarks, the folder last chosen by hand, and whether the optional permission was requested. They are
-          never sent anywhere and are removed when you uninstall the extension. Your bookmarks themselves are Chrome's own
-          data; if you use Chrome Sync, Chrome syncs them exactly as it does without this extension.
+          up to 500 bookmarks, the folder last chosen by hand, and whether the optional permission was requested; plus a copy
+          of the part of your bookmark list that was last on screen (at most a few hundred rows, in the extension's own local
+          storage) so the panel can show it the instant it opens. They are never sent anywhere and are removed when you uninstall
+          the extension. Your bookmarks themselves are Chrome's own data; if you use Chrome Sync, Chrome syncs them exactly
+          as it does without this extension.
         </p>
       </section>
       <section>
