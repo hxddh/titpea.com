@@ -75,6 +75,17 @@ for (const { file, html } of pages) {
   }
   if (/target="_blank"/.test(html) && !/rel="[^"]*noopener/.test(html)) fail(`${file}: target=_blank lacks noopener`);
 
+  // Every local file a page loads exists in the build (a missing one ships as a broken image).
+  for (const match of html.matchAll(/\b(?:src|href|poster|srcset|content)="([^"]+)"/g)) {
+    for (const candidate of match[1].split(",")) {
+      const url = candidate.trim().split(/\s+/)[0];
+      const local = url.replace(/^https:\/\/titpea\.com(?=\/)/, "");
+      if (!/^\/(?:assets|_astro|scripts)\//.test(local)) continue;
+      const target = path.join("dist", decodeURIComponent(local.replace(/[?#].*$/, "")));
+      if (!fs.existsSync(target)) fail(`${file}: ${local.replace(/[?#].*$/, "")} is missing from the build`);
+    }
+  }
+
   // Copy never shows raw Markdown code markers: `x` renders as <code>.
   const visible = text(
     html

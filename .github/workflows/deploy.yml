@@ -35,7 +35,10 @@ jobs:
       - id: sync
         run: |
           npm run releases:sync
-          if git diff --quiet src/content/releases.json; then
+          # Only a new tag or date counts. Notes are filled in at every build and
+          # never committed, so comparing the whole file redeployed every day.
+          tags() { node -e 'const d=JSON.parse(require("fs").readFileSync(0,"utf8"));console.log(JSON.stringify(Object.fromEntries(Object.entries(d).map(([k,v])=>[k,[v.version,v.published]]))))'; }
+          if [ "$(git show HEAD:src/content/releases.json | tags)" = "$(tags < src/content/releases.json)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
