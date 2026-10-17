@@ -372,6 +372,15 @@ for (const product of products) {
 
 const tokens = read("src/styles/tokens.css");
 
+function contrastOnWhite(hex: string): number {
+  const channel = (offset: number) => {
+    const value = Number.parseInt(hex.slice(offset, offset + 2), 16) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+  return 1.05 / (luminance + 0.05);
+}
+
 // Each product page wears its own color pair (DESIGN.md): --tint-<slug> and
 // --ink-<slug> in the light :root, in both dark blocks (the toggle and the OS
 // preference), and the body[data-product] rule that maps them.
@@ -405,6 +414,14 @@ for (const product of products) {
     !mapping.includes(`--product-ink: var(--ink-${product.slug})`)
   ) {
     fail(`tokens.css: body[data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
+  }
+  // The filled primary action: one colour in both themes, under a white label.
+  const fill = colorBlocks[0][1]?.match(new RegExp(`--fill-${product.slug}:\\s*(#[0-9a-f]{6});`))?.[1];
+  if (!fill) fail(`tokens.css: --fill-${product.slug} (a #rrggbb) is missing in the light :root block`);
+  else if (contrastOnWhite(fill) < 4.5)
+    fail(`tokens.css: white on --fill-${product.slug} is ${contrastOnWhite(fill).toFixed(2)}:1, below 4.5:1`);
+  if (!mapping?.includes(`--product-fill: var(--fill-${product.slug})`)) {
+    fail(`tokens.css: body[data-product="${product.slug}"] must map --product-fill to --fill-${product.slug}`);
   }
 }
 const defined = new Set([...tokens.matchAll(/(--[a-z0-9-]+):/g)].map((match) => match[1]));

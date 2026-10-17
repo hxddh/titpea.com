@@ -88,10 +88,11 @@ The page answers, in order: what Titpea is, where its tools help, what shipped l
 ## App Icons
 
 - Every product has an icon, and every list of products shows them (the home shelf, catalog cards, About, the release list, 404, share images). `npm run check` fails without one.
+- Every rendered icon sits in one plate: a ring of plate colour, a hairline edge and one drop shadow (`--plate-l/m/s` by icon size, light and dark), so official artwork and site-drawn tiles read as one family. The plate replaces per-list drop shadows.
 - Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a top sheen and one image that says what the product does — a card-catalog drawer for s3-turbo-list, a stethoscope for StorageOps, a radar dish for Agent Radar. Each has its own colour so no two read alike, the mark survives 28 px, and no third-party logo appears.
 - `npm run assets:icons` renders `public/assets/icons/<slug>.webp`. `design/icons/README.md` records which icons are official and which are site-designed.
 
-- **Site mark.** A stack of three app tiles in the accent gradient, offset up and to the right, the back two translucent: a set of tools, not one product. Source `design/brand/titpea-mark.svg`; `npm run assets:favicon` writes `favicon.svg`, a 16/32/48 `favicon.ico`, and a 180px `apple-touch-icon.png` on the page colour. It sits at 22px before the wordmark in the header and nowhere else on the page.
+- **Site mark.** A stack of three app tiles in the accent gradient, offset up and to the right, the back two translucent: a set of tools, not one product. Source `design/brand/titpea-mark.svg`; `npm run assets:favicon` writes `favicon.svg`, a 16/32/48 `favicon.ico`, and a 180px `apple-touch-icon.png` on the page colour. It sits at 22px before the wordmark (`Titpea` in Fraunces) in the header and nowhere else on the page.
 
 ## Analytics
 
@@ -130,8 +131,9 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 
 ## Type
 
-- System face first (`-apple-system`, SF Pro), then Inter for Latin elsewhere, then the system CJK face. Do not load a CJK webfont.
-- Display weight is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.005em` on headings and no tracking at all on reading text, which is 16px (`--text-card-body` steps up) at line-height `1.75` and wraps with `text-wrap: pretty` so no character is stranded on a last line. A Chinese lede wraps only between phrases (`word-break: keep-all`) in balanced lines, so it never leaves one word alone either (`a11y:check` holds it). At the same pixel size CJK reads smaller than Latin.
+- Reading text: system face first (`-apple-system`, SF Pro), then Inter for Latin elsewhere, then the system CJK face. Do not load a CJK webfont.
+- Display face: English display lines (hero titles, section headings except the small strip labels `Just shipped` and `More in …`) and the wordmark are set in Fraunces (self-hosted, Latin only, weight and optical-size axes; `Fraunces-OFL.txt`), through `--display-face`. Chinese pages reset `--display-face` to the system sans, so a Latin serif never sits beside CJK sans in one heading; the wordmark stays Fraunces because the name is Latin. Fraunces display weight is 560 on hero titles and 600 on section heads, tracked `-0.018em` / `-0.02em`. The Home title sets its second line in the accent italic (`--display-accent`, via `::first-line`, so the copy stays one string).
+- System-sans display weight (Chinese pages) is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.005em` on headings and no tracking at all on reading text, which is 16px (`--text-card-body` steps up) at line-height `1.75` and wraps with `text-wrap: pretty` so no character is stranded on a last line. A Chinese lede wraps only between phrases (`word-break: keep-all`) in balanced lines, so it never leaves one word alone either (`a11y:check` holds it). At the same pixel size CJK reads smaller than Latin.
 - Sizes come from tokens: `--title-hero`, `--title-display`, `--title-section`, `--title-show`, `--text-lede`, `--text-sub`, `--text-kicker`, `--text-card-title`, `--text-card-body`, `--text-list-body`, `--text-catalog-name`, and the floor `--text-small` (14px) / `--text-meta` (13px). Nothing outside a hero product mock is smaller than 13px; mocks keep at least 12px. Reading text is at least 15px on phones too; FAQ answers are `--text-list-body` (16px).
 - Reading text (card bodies, FAQ answers, catalog one-liners, panel copy) is `--ink-2`, at least 7:1. `--muted` is for labels, dates, chips, captions, the lede and subs. Headings, names, and About body are `--ink`.
 - `mono` is for release tags, commands, terminals, evidence labels, and data. The hero meta line is `sans` at 14px with only its tag in mono.
@@ -149,10 +151,12 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 | Glass               | `--glass`, `--glass-blur`, `--menu-bg` | Header and local nav bars; near-opaque menu panels |
 | Wash                | `--wash-1..3`                          | Hero background only                               |
 | Product color       | `--product-tint` / `--product-ink`     | A product page's own pair, sampled from its icon   |
+| Product fill        | `--product-fill` (`--fill-<slug>`)     | The product page's filled primary action           |
+| Icon plate          | `--plate-l/m/s`                        | Every rendered app icon                            |
 | Reference / caution | `--data-ref` / `--data-caution`        | A baseline or recommended data point / an outlier  |
 
-- One interactive accent: buttons, links and focus rings are the site blue everywhere. Each product page also wears its own color pair (`--tint-<slug>` / `--ink-<slug>` in `tokens.css`, sampled from the icon, mapped through `body[data-product]`): the hero wash leans to the tint, and the hero kicker, section kickers, stat figures and step badges take the ink (at least 4.8:1 on both paper tones); the closing band sits on a faint tint (`--product-band`). Home, About and the catalog stay neutral. When an icon changes, re-sample its pair.
-- Games (`body[data-line="games"]`) sit on warmer paper and set display lines (hero, section and stats headings, the closing name) in a book face (`--display`, system serif), so a game does not read like a CLI.
+- Links and focus rings are the site blue everywhere, and so are primary buttons off product pages. Each product page wears its own color pair (`--tint-<slug>` / `--ink-<slug>` in `tokens.css`, sampled from the icon, mapped through `body[data-product]`): the hero glow (`--hero-glow`) is the tint, clearly visible in both themes; the primary action is filled with the light-theme ink (`--fill-<slug>`, white label at least 4.5:1 in both themes); the current local-nav section is underlined in the tint; the hero kicker, section kickers, stat figures and step badges take the ink (at least 4.8:1 on both paper tones); the closing band sits on a faint tint (`--product-band`, on the raised paper in dark mode so warm tints do not turn brown). Home, About and the catalog stay neutral. When an icon changes, re-sample its pair.
+- Games (`body[data-line="games"]`) sit on warmer paper and set display lines (hero, section and stats headings, the closing name) in a book face (`--display`: Fraunces for Latin, the system serif for CJK), so a game does not read like a CLI.
 - Utility sections (get started, data, what's new, FAQ) set their headings at `--title-show`; the section size is for the two or three sections that argue the case.
 - Depth is a token decision: shadows, blur, and gradients in page stylesheets come only from `tokens.css`. `npm run check` enforces this.
 - Glass is for chrome. Content never floats. Menu panels use `--menu-bg`, because a glass panel nested in a glass bar cannot blur the page behind it.
@@ -172,7 +176,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 ## Constraints (Measurable Floors)
 
 - Accessibility
-  - Text contrast: at least 4.5:1 for body and labels, and 3:1 for text 18px+ or non-text. White on `--accent-fill` passes in both themes.
+  - Text contrast: at least 4.5:1 for body and labels, and 3:1 for text 18px+ or non-text. White on `--accent-fill` and on every `--fill-<slug>` passes in both themes.
   - Interactive targets are at least 44×44px. Compact capsules extend their hit area with a pseudo-element.
   - Every image has an `alt`; decorative images use `alt=""`.
 - Performance
