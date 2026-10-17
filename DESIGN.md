@@ -133,7 +133,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 - One interactive accent: buttons, links and focus rings are the site blue everywhere. Each product page also wears its own color pair (`--tint-<slug>` / `--ink-<slug>` in `tokens.css`, sampled from the icon, mapped through `body[data-product]`): the hero wash leans to the tint, and the hero kicker, section kickers, stat figures and step badges take the ink (at least 4.8:1 on both paper tones); the closing band sits on a faint tint (`--product-band`). Home, About and the catalog stay neutral. When an icon changes, re-sample its pair.
 - Games (`body[data-line="games"]`) sit on warmer paper and set display lines (hero, section and stats headings, the closing name) in a book face (`--display`, system serif), so a game does not read like a CLI.
 - Utility sections (get started, data, what's new, FAQ) set their headings at `--title-show`; the section size is for the two or three sections that argue the case.
-- Depth is a token decision: shadows, blur, and gradients in page stylesheets come only from `tokens.css`. `architecture:check` enforces this.
+- Depth is a token decision: shadows, blur, and gradients in page stylesheets come only from `tokens.css`. `npm run check` enforces this.
 - Glass is for chrome. Content never floats. Menu panels use `--menu-bg`, because a glass panel nested in a glass bar cannot blur the page behind it.
 - Dark mode is a first-class theme (OS preference or the header toggle), with pure black canvas and a `#161617` raised tone.
 
