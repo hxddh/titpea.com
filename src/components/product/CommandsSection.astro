@@ -1,4 +1,5 @@
 ---
+import CommandReplay from "./CommandReplay.astro";
 import Prose from "./Prose.astro";
 import type { Commands } from "../../content/schema";
 
@@ -8,13 +9,17 @@ interface Props {
   copiedLabel: string;
   outputLabel: string;
   controls: { pause: string; play: string };
+  /** Tool pages: the commands side by side as numbered steps. */
+  steps?: boolean;
+  /** The command whose replay already plays in the hero; it is not repeated here. */
+  replayInHero?: string;
 }
 
-const { commands, copyLabel, copiedLabel, outputLabel, controls } = Astro.props;
+const { commands, copyLabel, copiedLabel, outputLabel, controls, steps = false, replayInHero } = Astro.props;
 ---
 
-<section id="start" class="product-section commands-section">
-  <div class="shell narrow">
+<section id="start" class="product-section commands-section" data-layout={steps ? "steps" : undefined}>
+  <div class:list={["shell", !steps && "narrow"]}>
     <header class="section-head">
       <h2>{commands.title}</h2>
       {
@@ -25,10 +30,11 @@ const { commands, copyLabel, copiedLabel, outputLabel, controls } = Astro.props;
         )
       }
     </header>
-    <ol class="command-list">
+    <ol class="command-list" data-count={commands.items.length}>
       {
-        commands.items.map((item) => (
+        commands.items.map((item, index) => (
           <li class="command">
+            {steps && <span class="command-step">{index + 1}</span>}
             <p class="command-comment">
               <Prose text={item.comment} />
             </p>
@@ -45,28 +51,11 @@ const { commands, copyLabel, copiedLabel, outputLabel, controls } = Astro.props;
                 {copyLabel}
               </button>
             </div>
-            {item.capturedOutput && item.replay && (
-              <figure class="command-replay" data-replay>
-                <figcaption class="replay-bar">
-                  <span>{item.replay.label}</span>
-                  <button
-                    class="demo-toggle"
-                    type="button"
-                    data-replay-toggle
-                    data-pause-label={controls.pause}
-                    data-play-label={controls.play}
-                  >
-                    {controls.play}
-                  </button>
-                </figcaption>
-                {/* The command, then its output: demo-replay.js prints them in order; "$ " comes from CSS. */}
-                <pre
-                  class="replay-screen"
-                  tabindex="0"
-                  data-replay-screen
-                  set:text={`${item.command}\n${item.capturedOutput}`}
-                />
-              </figure>
+            {item.capturedOutput && item.replay && item.command !== replayInHero && (
+              <CommandReplay
+                item={{ ...item, capturedOutput: item.capturedOutput, replay: item.replay }}
+                controls={controls}
+              />
             )}
             {item.capturedOutput && !item.replay && (
               <details class="command-output">

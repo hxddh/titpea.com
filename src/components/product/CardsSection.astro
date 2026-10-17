@@ -6,9 +6,11 @@ import type { CardsSection, Showcase } from "../../content/schema";
 interface Props {
   section: CardsSection;
   figure?: Showcase;
+  /** Plain: titled lines on the canvas, no raised card (every template but games). */
+  plain?: boolean;
 }
 
-const { section, figure } = Astro.props;
+const { section, figure, plain = false } = Astro.props;
 ---
 
 <section id={section.id} class={`product-section content-section ${section.id}-section`}>
@@ -20,6 +22,7 @@ const { section, figure } = Astro.props;
       class={`${section.id}-grid feature-grid`}
       data-count={section.items.length}
       data-numbered={section.numbered ? "" : undefined}
+      data-variant={plain ? "plain" : undefined}
     >
       {
         section.items.map((item, index) => (

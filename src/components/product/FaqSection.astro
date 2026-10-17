@@ -4,20 +4,22 @@ import type { FaqSection } from "../../content/schema";
 
 interface Props {
   section: FaqSection;
+  /** Two columns, every answer open: the short extension pages. */
+  grid?: boolean;
 }
 
-const { section } = Astro.props;
+const { section, grid = false } = Astro.props;
 ---
 
 <section id={section.id} class="product-section faq-section">
-  <div class="shell narrow">
+  <div class:list={["shell", !grid && "narrow"]}>
     <header class="section-head">
       <h2>{section.label}</h2>
     </header>
-    <div class="faq-list">
+    <div class="faq-list" data-layout={grid ? "grid" : undefined}>
       {
         section.items.map((item, index) => (
-          <details class="faq-item" open={index === 0}>
+          <details class="faq-item" open={grid || index === 0}>
             <summary>{item.title}</summary>
             <p class="faq-answer">
               <Prose text={item.body} />

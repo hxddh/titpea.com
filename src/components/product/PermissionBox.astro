@@ -1,0 +1,39 @@
+---
+import Prose from "./Prose.astro";
+import { ui } from "../../content/site";
+import type { Locale, PrivacySummary } from "../../content/schema";
+
+interface Props {
+  privacy: PrivacySummary;
+  locale: Locale;
+  /** The page's own data section, when it has one. */
+  dataHref?: string;
+}
+
+const { privacy, locale, dataHref } = Astro.props;
+const copy = ui[locale];
+---
+
+{/* Extension pages: what the extension touches, before anyone installs it. Same facts as the privacy index. */}
+<div class="permission-box">
+  <dl>
+    <div>
+      <dt>{copy.privacyColumns.network}</dt>
+      <dd>
+        <strong data-network={privacy.network}>{copy.privacyLevels[privacy.network]}</strong>
+        <span><Prose text={privacy.networkNote} /></span>
+      </dd>
+    </div>
+    <div>
+      <dt>{copy.privacyColumns.stays}</dt>
+      <dd><Prose text={privacy.stays} /></dd>
+    </div>
+  </dl>
+  {
+    dataHref && (
+      <a class="permission-link" href={dataHref}>
+        {copy.privacyDataLink}
+      </a>
+    )
+  }
+</div>
