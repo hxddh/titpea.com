@@ -8,7 +8,7 @@ export default defineProduct({
     image: {
       src: "/assets/world-machine-town.webp",
       width: 1100,
-      height: 900,
+      height: 848,
       alt: {
         en: "World Machine on day 1,082 of a Tiny Society town at dusk: the whole town stacked up the hill, lit windows, a telescope and a lighthouse, and Mara asking how to open the new bread cart. Captured from the app running in its Linux preview.",
         zh: "World Machine 里 Tiny Society 小镇的第 1082 天黄昏：整座小镇沿山坡层层排开，窗里亮着灯，有望远镜和灯塔，Mara 在问新面包车怎么开张。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
@@ -51,14 +51,14 @@ export default defineProduct({
         src: "/assets/world-machine-noon.webp",
         alt: "Tiny Society on day 21 at noon, drawn with hand-inked outlines: gauges for work, money in town and spirits, four houses and a shop above the harbour with two staked plots, and a card saying chapter 2, The year of the great storm, has ended. Captured from the app running in its Linux preview.",
         width: 1100,
-        height: 900,
+        height: 848,
       },
     },
     showcases: [
       {
         src: "/assets/world-machine-ares.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "Pocket Universe on Ares, sol 180: habitat modules and domes on red regolith under a butterscotch sky, gauges for trust, tension and stores, and colonists talking by the solar panel. Captured from the app running in its Linux preview.",
         title: "Not only a harbour town.",
         body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
@@ -66,7 +66,7 @@ export default defineProduct({
       {
         src: "/assets/world-machine-moment.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "A moment in Tiny Society on day 360: a three-panel strip titled Rosa settles for good, captioned before, during and after, over the harbour. Captured from the app running in its Linux preview.",
         title: "Big moments, in three panels.",
         body: "Weddings, births and farewells, drawn before, during and after.",
@@ -74,7 +74,7 @@ export default defineProduct({
       {
         src: "/assets/world-machine-night.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "Tiny Society at night in spring: lit windows under a starry sky, the gauges and zoom buttons dark to match, while the drawer listing the new pier and a lamp on the point, and Evan's card offering a pier for timber, are warm paper. Captured from the app running in its Linux preview.",
         title: "At night, the windows light up.",
         body: "In the light appearance, the drawer and cards stay readable; gauges and buttons go as dark as the sky.",
@@ -172,14 +172,14 @@ export default defineProduct({
         src: "/assets/world-machine-noon.webp",
         alt: "Tiny Society 第 21 天正午，线条像手绘墨线：工作、镇上的钱与心气三个指标，港口上方四栋房子和一家店，两块插着小旗的空地。一张卡片写着第 2 章“The year of the great storm”已结束。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         width: 1100,
-        height: 900,
+        height: 848,
       },
     },
     showcases: [
       {
         src: "/assets/world-machine-ares.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "Pocket Universe 的 Ares 第 180 个火星日：红色风化层上的居住舱和穹顶、奶糖色的天空，信任、紧张与储备三个指标，殖民者在太阳能板旁聊天。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "不只是港口",
         body: "Pocket Universe 可以落在 Ares、1987 年的 Maple Street 或 Icebridge，各有各的样子。",
@@ -187,7 +187,7 @@ export default defineProduct({
       {
         src: "/assets/world-machine-moment.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题“Rosa settles for good”，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "大事画成三格",
         body: "婚礼、出生、告别，画成之前、当时、之后。",
@@ -195,7 +195,7 @@ export default defineProduct({
       {
         src: "/assets/world-machine-night.webp",
         width: 1100,
-        height: 900,
+        height: 848,
         alt: "春天夜里的 Tiny Society：星空下窗里亮着灯，指标和缩放按钮随之变暗；右侧抽屉列着在建的新码头和岬角上的灯，Evan 的卡片说给他木料就造码头，二者都是暖色的纸。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "夜里，窗户亮起灯",
         body: "浅色外观下，抽屉和卡片仍然清楚易读；指标和按钮随夜空一起变暗。",
