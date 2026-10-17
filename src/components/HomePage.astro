@@ -1,5 +1,6 @@
 ---
 import CatalogCard from "./CatalogCard.astro";
+import FamilyBand from "./product/FamilyBand.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import type { HomePageModel } from "../lib/pages";
 import { srcsetFor } from "../lib/images";
@@ -121,37 +122,55 @@ const { model } = Astro.props;
       <header class="section-head">
         <h2 id="more-title">{model.more.title}</h2>
       </header>
-      <div class="home-filter" role="group" aria-label={model.more.filter.label} data-home-filter hidden>
-        <button type="button" aria-pressed="true" data-filter="all">{model.more.filter.all}</button>
+      <div class="home-families">
+        {model.families.map((family) => <FamilyBand family={family} level="h3" />)}
+      </div>
+      {/* Hidden until the script runs: without it every card shows. */}
+      <div class="home-facets" role="group" aria-label={model.more.filter.label} data-home-filter hidden>
+        <div class="home-facet" role="group" aria-labelledby="facet-for">
+          <span class="home-facet-label" id="facet-for">{model.more.filter.forLabel}</span>
+          <button type="button" aria-pressed="true" data-facet="purpose" data-value="all">
+            {model.more.filter.all}
+          </button>
+          {
+            model.more.filter.purposes.map((option) => (
+              <button type="button" aria-pressed="false" data-facet="purpose" data-value={option.value}>
+                {option.label}
+              </button>
+            ))
+          }
+        </div>
+        <div class="home-facet" role="group" aria-labelledby="facet-runs-on">
+          <span class="home-facet-label" id="facet-runs-on">{model.more.filter.runsOnLabel}</span>
+          <button type="button" aria-pressed="true" data-facet="platform" data-value="all">
+            {model.more.filter.all}
+          </button>
+          {
+            model.more.filter.platforms.map((option) => (
+              <button type="button" aria-pressed="false" data-facet="platform" data-value={option.value}>
+                {option.label}
+              </button>
+            ))
+          }
+        </div>
+        <p
+          class="home-facet-count"
+          aria-live="polite"
+          data-count-template={model.more.filter.count}
+          data-none={model.more.filter.none}
+        >
+          {model.more.filter.count.replace("{count}", String(model.more.items.length))}
+        </p>
+      </div>
+      <ul class="home-catalog-list" data-home-catalog>
         {
-          model.more.groups.map((group) => (
-            <button type="button" aria-pressed="false" data-filter={group.line}>
-              {group.label}
-            </button>
+          model.more.items.map((item) => (
+            <li data-purposes={item.purposes.join(" ")} data-platforms={item.runsOn.join(" ")}>
+              <CatalogCard item={item} />
+            </li>
           ))
         }
-      </div>
-      <div class="home-catalog" data-home-catalog>
-        {
-          model.more.groups.map((group) => (
-            <section class="home-catalog-group" data-line={group.line} aria-labelledby={`line-${group.line}`}>
-              <header class="home-catalog-head">
-                <h3 class="home-catalog-label" id={`line-${group.line}`}>
-                  {group.label}
-                </h3>
-                <p class="home-catalog-note">{group.note}</p>
-              </header>
-              <ul class="home-catalog-list">
-                {group.items.map((item) => (
-                  <li>
-                    <CatalogCard item={item} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
-        }
-      </div>
+      </ul>
     </div>
   </section>
   <script is:inline slot="scripts" src="/scripts/home-filter.js" defer></script>

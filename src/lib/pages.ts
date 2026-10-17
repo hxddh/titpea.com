@@ -2,16 +2,19 @@
 // site copy, and the synced release tags. Components only render these.
 import releases from "../content/releases.json";
 import { products } from "../content/products";
-import { about, absoluteUrl, site, ui, type AboutPerson } from "../content/site";
+import { about, absoluteUrl, familyMembers, familyOf, site, ui, type AboutPerson } from "../content/site";
 import {
   featuredSrc,
   lines,
   locales,
+  type FamilyId,
   type Line,
   type Locale,
+  type Platform,
   type PrivacySummary,
   type Product,
   type ProductCopy,
+  type Purpose,
   type ReleaseHighlights,
 } from "../content/schema";
 
@@ -176,6 +179,8 @@ export type ProductPageModel = {
   navItems: Array<{ id: string; label: string }>;
   /** Before the closing band: where to go next. */
   related: { title: string; items: CatalogItem[]; all: { label: string; href: string } };
+  /** Members of a family see the whole family, with this page marked, above the related row. */
+  family?: Family;
   primaryCta?: string;
   expectedText: string[];
 };
@@ -267,6 +272,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     sectionIndex: product.sectionIndex,
     navItems,
     related: relatedFor(product, locale),
+    family: familyFor(product.slug, locale),
     primaryCta: copy.primaryCta.soon ? undefined : copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
   };
@@ -320,6 +326,25 @@ export type CatalogItem = {
   icon: string;
 };
 
+/** A catalog card: the item, a thumbnail, chips, and the facet values it answers to. */
+export type CatalogCardItem = CatalogItem & {
+  thumb:
+    | { kind: "image"; src: string; width: number; height: number }
+    | { kind: "command"; command: string }
+    | { kind: "icon" };
+  chips: Array<{ label: string; tone?: "status" }>;
+  purposes: Purpose[];
+  runsOn: Platform[];
+};
+
+/** Products that work together, in order, each with its step. `current` marks this page. */
+export type Family = {
+  id: FamilyId;
+  title: string;
+  sub: string;
+  members: Array<{ slug: string; name: string; href: string; icon: string; role: string; current: boolean }>;
+};
+
 export type HomePageModel = {
   kind: "home";
   locale: Locale;
@@ -349,10 +374,21 @@ export type HomePageModel = {
     >;
   };
   shipping: { title: string; more: { label: string; href: string }; items: ReleaseItem[] };
+  families: Family[];
   more: {
     title: string;
-    filter: { label: string; all: string };
-    groups: Array<{ label: string; note: string; line: Line; items: CatalogItem[] }>;
+    filter: {
+      label: string;
+      all: string;
+      forLabel: string;
+      runsOnLabel: string;
+      purposes: Array<{ value: Purpose; label: string }>;
+      platforms: Array<{ value: Platform; label: string }>;
+      /** `{count}` is replaced in the page as filters change. */
+      count: string;
+      none: string;
+    };
+    items: CatalogCardItem[];
   };
   primaryCta: string;
   expectedText: string[];
@@ -367,6 +403,68 @@ const catalogItem = (product: Product, locale: Locale): CatalogItem => ({
   text: product[locale].catalog.text,
   icon: product.icon,
 });
+
+/**
+ * The catalog thumbnail: the hero screenshot, the Home photograph, or the
+ * first showcase, whichever exists first; tools without a picture show their
+ * first command; anything else shows its icon.
+ */
+function thumbFor(product: Product, locale: Locale): CatalogCardItem["thumb"] {
+  const copy = product[locale];
+  const image =
+    copy.visual.kind === "screenshot"
+      ? copy.visual.image
+      : product.featured
+        ? { ...product.featured.image, src: featuredSrc(product.featured, locale) }
+        : copy.showcases?.[0];
+  if (image) return { kind: "image", src: image.src, width: image.width, height: image.height };
+  const command = copy.commands?.items[0]?.command;
+  if (command) return { kind: "command", command };
+  return { kind: "icon" };
+}
+
+const catalogCard = (product: Product, locale: Locale): CatalogCardItem => {
+  const copy = ui[locale];
+  return {
+    ...catalogItem(product, locale),
+    thumb: thumbFor(product, locale),
+    chips: [
+      { label: copy.types[product.type] },
+      // A platform that only repeats the type ("Chrome extension" · "Chrome") adds nothing.
+      ...product.runsOn
+        .filter((platform) => !copy.types[product.type].includes(copy.platforms[platform]))
+        .map((platform) => ({ label: copy.platforms[platform] })),
+      ...(product.status === "preview" ? [{ label: copy.statusPreview, tone: "status" as const }] : []),
+    ],
+    purposes: product.purposes,
+    runsOn: product.runsOn,
+  };
+};
+
+function familyFor(slug: string, locale: Locale): Family | undefined {
+  const id = familyOf(slug);
+  return id ? familyModel(id, locale, slug) : undefined;
+}
+
+function familyModel(id: FamilyId, locale: Locale, current?: string): Family {
+  const copy = ui[locale].families[id];
+  return {
+    id,
+    title: copy.title,
+    sub: copy.sub,
+    members: familyMembers[id].map((member) => {
+      const product = products.find((candidate) => candidate.slug === member)!;
+      return {
+        slug: member,
+        name: product[locale].title,
+        href: pathFor(locale, member),
+        icon: product.icon,
+        role: copy.roles[member],
+        current: member === current,
+      };
+    }),
+  };
+}
 
 /**
  * Up to three other products to read next: the rest of this product's line
@@ -451,16 +549,26 @@ export function homePage(locale: Locale): HomePageModel {
       more: { label: copy.shippingMore, href: pathFor(locale, "releases") },
       items: releaseItems(locale).slice(0, 3),
     },
-    // Every product, featured ones included, so a filtered line is complete.
+    families: (Object.keys(familyMembers) as FamilyId[]).map((id) => familyModel(id, locale)),
+    // Every product, featured ones included, so a filtered view is complete.
     more: {
       title: copy.moreToolsTitle,
-      filter: { label: copy.filterLabel, all: copy.filterAll },
-      groups: lines.map((line) => ({
-        label: copy.groups[line],
-        note: copy.groupNotes[line],
-        line,
-        items: products.filter((product) => product.line === line).map((product) => catalogItem(product, locale)),
-      })),
+      filter: {
+        label: copy.filterLabel,
+        all: copy.filterAll,
+        forLabel: copy.filterFor,
+        runsOnLabel: copy.filterRunsOn,
+        // Only values some product answers to, in schema order.
+        purposes: (Object.keys(copy.purposes) as Purpose[])
+          .filter((value) => products.some((product) => product.purposes.includes(value)))
+          .map((value) => ({ value, label: copy.purposes[value] })),
+        platforms: (Object.keys(copy.platforms) as Platform[])
+          .filter((value) => products.some((product) => product.runsOn.includes(value)))
+          .map((value) => ({ value, label: copy.platforms[value] })),
+        count: copy.filterCount,
+        none: copy.filterNone,
+      },
+      items: products.map((product) => catalogCard(product, locale)),
     },
     // The hero's primary button jumps to the full catalog.
     primaryCta: `${path}#more-title`,
@@ -840,6 +948,15 @@ export type SiteRoute = {
   /** Section links the local nav shows: the nav items when `sectionIndex`, otherwise none. */
   sectionLinks?: number;
   browserVisual?: boolean;
+  /** Home: how many cards the catalog shows unfiltered, for "Coding agents", and for that on Mac (QA). */
+  catalogCounts?: { all: number; agents: number; agentsOnMac: number };
+};
+
+const agentProducts = products.filter((product) => product.purposes.includes("agents"));
+const catalogCounts = {
+  all: products.length,
+  agents: agentProducts.length,
+  agentsOnMac: agentProducts.filter((product) => product.runsOn.includes("mac")).length,
 };
 
 export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
@@ -858,6 +975,7 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   sectionLinks: page.kind === "product" ? (page.sectionIndex ? page.navItems.length : 0) : undefined,
   browserVisual:
     page.kind === "product" ? productBySlug(page.slug).schema.category === "BrowserApplication" : undefined,
+  catalogCounts: page.kind === "home" ? catalogCounts : undefined,
 }));
 
 /* ---------- Releases feed ---------- */

@@ -10,6 +10,7 @@ import CommandReplay from "./product/CommandReplay.astro";
 import CommandsSection from "./product/CommandsSection.astro";
 import DataSection from "./product/DataSection.astro";
 import DemoSection from "./product/DemoSection.astro";
+import FamilyBand from "./product/FamilyBand.astro";
 import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
@@ -254,10 +255,18 @@ const commandsProps = {
     </div>
   </section>
 
-  {/* ③ family band: products that work with this one, above the related row. */}
-  <slot name="family" />
-
-  <nav class="shell product-related" aria-labelledby="related-title">
+  {/* A family member shows its family in place of the related row. */}
+  {
+    model.family && (
+      <div class="shell product-family">
+        <FamilyBand family={model.family} />
+        <a class="button ghost" href={model.related.all.href}>
+          {model.related.all.label}
+        </a>
+      </div>
+    )
+  }
+  <nav class="shell product-related" aria-labelledby="related-title" hidden={Boolean(model.family)}>
     <h2 id="related-title" class="product-related-title">{model.related.title}</h2>
     <ul class="product-related-list">
       {

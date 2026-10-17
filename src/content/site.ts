@@ -94,8 +94,6 @@ type Ui = {
   /** Home catalog filter. */
   filterLabel: string;
   filterAll: string;
-  /** Home catalog: who each product line is for. */
-  groupNotes: Record<Line, string>;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
   /** Catalog facets and chips. */
@@ -200,14 +198,8 @@ export const ui: Record<Locale, Ui> = {
     relatedTitle: "More tools",
     shippingTitle: "Just shipped",
     shippingMore: "All releases",
-    filterLabel: "Show tools for",
+    filterLabel: "Filter tools",
     filterAll: "All",
-    groupNotes: {
-      storage: "For people who run S3-compatible storage.",
-      agents: "For developers who work with coding agents.",
-      everyday: "For reading, and for the browser.",
-      games: "Board games, and a small world.",
-    },
     relatedInLine: "More in {line}",
     filterFor: "For",
     filterRunsOn: "Runs on",
@@ -363,14 +355,8 @@ export const ui: Record<Locale, Ui> = {
     relatedTitle: "更多工具",
     shippingTitle: "最近发布",
     shippingMore: "全部发布",
-    filterLabel: "按类别看",
+    filterLabel: "筛选工具",
     filterAll: "全部",
-    groupNotes: {
-      storage: "给管理 S3 兼容存储的人。",
-      agents: "给和编码 Agent 一起工作的开发者。",
-      everyday: "读文档，用浏览器。",
-      games: "棋盘游戏，和一个小世界。",
-    },
     relatedInLine: "更多{line}工具",
     filterFor: "用途",
     filterRunsOn: "运行在",

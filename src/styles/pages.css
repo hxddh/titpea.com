@@ -224,103 +224,217 @@
   text-decoration: underline;
 }
 
-/* Every tool: filter by line, then cards in a grid, each line with who it is for. */
+/* Every tool: the families first, then two facet rows and one grid of cards. */
 .home-more-tools {
   padding-top: var(--section-y);
 }
 
-.home-filter {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
-  width: fit-content;
-  max-width: 100%;
-  margin: 32px auto 0;
-  padding: 4px;
-  border-radius: var(--radius-pill);
+.home-families {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1040px;
+  margin: 36px auto 0;
+}
+
+/* A family: products that work together, in the order you reach for them.
+   Home shows each one as a card; a member's page shows its own, marked. */
+.family-band {
+  padding: 20px 22px 22px;
+  border-radius: var(--radius-card);
   background: var(--paper-raised);
 }
 
-.home-filter[hidden] {
-  display: none;
-}
-
-.home-filter button {
-  min-height: 36px;
-  padding: 0 16px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  color: var(--ink-2);
-  background: transparent;
-  font: inherit;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.home-filter button[aria-pressed="true"] {
-  color: var(--ink);
-  background: var(--paper);
-  box-shadow: var(--shadow-glass);
-  font-weight: 600;
-}
-
-.home-catalog {
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
-.home-catalog[data-filter="storage"] .home-catalog-group:not([data-line="storage"]),
-.home-catalog[data-filter="agents"] .home-catalog-group:not([data-line="agents"]),
-.home-catalog[data-filter="everyday"] .home-catalog-group:not([data-line="everyday"]),
-.home-catalog[data-filter="games"] .home-catalog-group:not([data-line="games"]) {
-  display: none;
-}
-
-.home-catalog-group {
-  margin-top: 48px;
-}
-
-.home-catalog-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 12px;
-  margin-bottom: 14px;
-}
-
-.home-catalog-label {
+.family-title {
   margin: 0;
-  font-size: 19px;
+  font-size: var(--text-catalog-name);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.home-catalog-note {
-  margin: 0;
+.family-sub {
+  margin: 2px 0 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--text-small);
 }
 
-.home-catalog-list {
+.family-members {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 8px;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
 }
 
-/* A card per tool: icon, name, one line. Versions live on product pages. */
-.catalog-card {
+.family-member {
+  position: relative;
+}
+
+/* The arrow between steps sits in the gap, centred on the icons. */
+.family-member + .family-member::before {
+  content: "→";
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  color: var(--faint);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.family-link {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+  justify-items: center;
+  gap: 2px;
+  padding: 0 2px;
+  color: var(--ink);
+  text-align: center;
+}
+
+.family-link img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  border-radius: var(--icon-radius);
+  box-shadow: var(--icon-ring);
+  filter: drop-shadow(var(--shadow-icon-small));
+}
+
+.family-link strong {
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.family-role {
+  color: var(--muted);
+  font-size: var(--text-meta);
+  line-height: 1.35;
+}
+
+a.family-link:hover {
+  text-decoration: none;
+}
+
+a.family-link:hover strong {
+  color: var(--link);
+}
+
+.family-link[aria-current="page"] strong {
+  color: var(--ink);
+}
+
+.family-link[aria-current="page"] img {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Product page: the family in place of the related row, after the closing band. */
+.product-family {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  max-width: 720px;
+  margin-top: var(--section-y);
+}
+
+.product-family .family-band {
+  width: 100%;
+}
+
+.product-family .family-head {
+  text-align: center;
+}
+
+.product-related[hidden] {
+  display: none;
+}
+
+/* Facets: what it is for, and where it runs. One value per row; both apply. */
+.home-facets {
+  display: grid;
+  gap: 10px;
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-facets[hidden] {
+  display: none;
+}
+
+.home-facet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-facet-label {
+  flex: none;
+  width: 72px;
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.home-facet button {
+  flex: none;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+
+.home-facet button:hover {
+  color: var(--ink);
+  border-color: var(--soft-line);
+}
+
+.home-facet button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+  font-weight: 600;
+}
+
+.home-facet-count {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.home-catalog-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1040px;
+  margin: 20px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-catalog-list > li[hidden] {
+  display: none;
+}
+
+/* A card per tool: a picture of the real thing, then icon, name, one line,
+   and chips for what it is and where it runs. Versions live on product pages. */
+.catalog-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  background: var(--paper-raised);
+  background: var(--paper);
   color: var(--ink);
   transition:
     transform 0.25s ease,
@@ -337,15 +451,66 @@
   color: var(--link);
 }
 
-.catalog-icon {
-  width: 48px;
-  height: 48px;
+.catalog-thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+
+.catalog-thumb.is-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  filter: var(--shot-dim);
+}
+
+.catalog-thumb.is-icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--icon-radius);
+  box-shadow: var(--icon-ring);
   filter: drop-shadow(var(--shadow-icon-small));
+}
+
+/* A tool without a picture shows the first command from its page. */
+.catalog-thumb.is-command {
+  place-items: start;
+  padding: 16px;
+  background: var(--code-bg);
+}
+
+.catalog-thumb.is-command code {
+  color: var(--ink-2);
+  font: var(--text-meta)/1.55 var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.catalog-thumb.is-command code::before {
+  content: "$ ";
+  color: var(--faint);
 }
 
 .catalog-card-copy {
   display: grid;
-  gap: 4px;
+  align-content: start;
+  gap: 8px;
+  flex: 1;
+  padding: 14px 16px 16px;
+}
+
+.catalog-card-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.catalog-card-name .catalog-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
 }
 
 .home-catalog-name {
@@ -357,9 +522,32 @@
 
 .home-catalog-text {
   color: var(--ink-2);
-  font-size: var(--text-card-body);
+  font-size: var(--text-small);
   line-height: 1.45;
   letter-spacing: -0.01em;
+}
+
+.catalog-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.catalog-chip {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  background: var(--paper-raised);
+  font-size: var(--text-meta);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.catalog-chip.is-status {
+  color: var(--data-caution-ink);
+  border-color: var(--data-caution);
 }
 
 @media (max-width: 960px) {
@@ -368,32 +556,77 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .home-families {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .shipping-list {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .home-featured-grid,
-  .home-catalog-list {
+  .home-featured-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* One row that scrolls sideways, instead of wrapping into two. */
-  .home-filter {
+  .home-catalog-list {
+    gap: 12px;
+  }
+
+  /* Two cards a row: the picture, name and chips; the line waits for the page. */
+  .catalog-card .home-catalog-text {
+    display: none;
+  }
+
+  .catalog-card-copy {
+    padding: 10px 12px 12px;
+  }
+
+  .family-band {
+    padding: 18px 16px;
+  }
+
+  /* Four steps do not fit in a row: two columns, icon beside its words, in reading order. */
+  .family-members {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+
+  .family-member + .family-member::before {
+    content: none;
+  }
+
+  .family-link {
+    grid-template-columns: 36px minmax(0, 1fr);
+    justify-items: start;
+    column-gap: 10px;
+    text-align: left;
+  }
+
+  .family-link img {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+
+  /* Each facet row scrolls sideways instead of wrapping. */
+  .home-facet {
     flex-wrap: nowrap;
-    justify-content: flex-start;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
   }
 
-  .home-filter::-webkit-scrollbar {
+  .home-facet::-webkit-scrollbar {
     display: none;
   }
 
-  .home-filter button {
-    flex: none;
+  .home-facet-label {
+    width: auto;
+    margin-right: 4px;
   }
 }
 
