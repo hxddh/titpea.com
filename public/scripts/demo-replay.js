@@ -6,8 +6,15 @@
 // simply shows.
 (function () {
   var figures = document.querySelectorAll("[data-replay]");
-  if (!figures.length || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!figures.length) return;
+  // No animation here: the output is already all visible, so Play has nothing to do.
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    figures.forEach(function (figure) {
+      var toggle = figure.querySelector("[data-replay-toggle]");
+      if (toggle) toggle.hidden = true;
+    });
+    return;
+  }
   var TYPE_MS = 38;
   var LINE_MS = 170;
   var PAUSE_AFTER_COMMAND_MS = 450;

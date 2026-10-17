@@ -297,8 +297,6 @@
   height: 40px;
   margin-bottom: 6px;
   border-radius: var(--icon-radius);
-  box-shadow: var(--icon-ring);
-  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 .family-link strong {
@@ -327,7 +325,8 @@ a.family-link:hover strong {
 
 .family-link[aria-current="page"] img {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  /* Outside the plate ring (--plate-s is 4px wide). */
+  outline-offset: 6px;
 }
 
 /* Product page: the family in place of the related row, after the closing band. */
@@ -471,8 +470,6 @@ a.family-link:hover strong {
   width: 64px;
   height: 64px;
   border-radius: var(--icon-radius);
-  box-shadow: var(--icon-ring);
-  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 /* A tool without a picture shows the first command from its page. */

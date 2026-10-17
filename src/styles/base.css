@@ -461,6 +461,7 @@ html
     .product-section-index-name img,
     .scene-products img,
     .privacy-tool img,
+    .family-link img,
     .icon-plate
   ) {
   border-radius: var(--icon-radius);
@@ -472,7 +473,7 @@ html .app-icon {
   box-shadow: var(--plate-l);
 }
 
-html :is(.catalog-icon, .final-cta-icon) {
+html :is(.catalog-icon, .final-cta-icon, .catalog-thumb.is-icon img) {
   box-shadow: var(--plate-m);
 }
 

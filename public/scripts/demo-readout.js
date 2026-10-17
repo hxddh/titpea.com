@@ -12,8 +12,13 @@
 // loops; Pause / Play stops and resumes it.
 (function () {
   var root = document.querySelector("[data-demo-readout]");
-  if (!root || !("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!root) return;
+  // No animation here: every block already shows, so Pause has nothing to do.
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var still = root.querySelector("[data-readout-toggle]");
+    if (still) still.hidden = true;
+    return;
+  }
   var d = root.dataset;
   var writes = JSON.parse(d.writes);
   var doc = root.querySelector("[data-doc]");
