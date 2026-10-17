@@ -31,15 +31,20 @@
   border-radius: var(--radius-pill);
 }
 
+/* The wordmark: "Titpea" in the display face beside the three-tile mark
+   (the mark is also the favicon, so it stays). Chinese pages too: the name
+   is Latin. */
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-right: auto;
   color: var(--ink);
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: Fraunces, ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 19px;
+  font-weight: 620;
+  letter-spacing: -0.01em;
 }
 
 .brand:hover {
@@ -275,9 +280,12 @@
   text-decoration: none;
 }
 
+/* The current section: an underline in the product colour. */
 .product-section-index-links a[aria-current] {
   color: var(--ink);
-  background: var(--code-bg);
+  background: transparent;
+  text-decoration: underline 2px var(--product-tint, var(--accent));
+  text-underline-offset: 7px;
 }
 
 .product-section-index-toggle {
