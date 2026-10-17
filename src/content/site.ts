@@ -230,7 +230,8 @@ export const ui: Record<Locale, Ui> = {
     releasesHeadline: "What shipped, and when.",
     releasesLead: "The latest version of each tool, newest first.",
     releasesUndatedTitle: "Without GitHub releases.",
-    releasesUndatedSub: "Chrome extensions update through the Chrome Web Store, and StorageOps installs from PyPI. Versions are the ones on their pages.",
+    releasesUndatedSub:
+      "Chrome extensions update through the Chrome Web Store, and StorageOps installs from PyPI. Versions are the ones on their pages.",
     privacyMetaTitle: "Privacy — Titpea",
     privacyDescription:
       "Which Titpea tools go online, when, and where each keeps your data, with links to every product’s own data section and privacy policy.",
