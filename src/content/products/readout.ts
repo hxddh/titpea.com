@@ -34,14 +34,14 @@ export default defineProduct({
     visual: {
       kind: "screenshot",
       label: "Readout",
-      frame: "narrow",
+      frame: "wide",
       image: {
-        src: "/assets/readout-plan-en.webp",
-        alt: "Readout’s reading view at the top of an implementation plan written for coding agents (from obra/superpowers): the title, a quoted note for agentic workers, then Goal, Architecture, Tech Stack and Design spec paragraphs with inline code.",
-        width: 900,
-        height: 662,
+        src: "/assets/readout-window.webp",
+        alt: "A Readout window: an agent’s plan with its outline and task counts in the sidebar, and unread changes marked in the margin.",
+        width: 1024,
+        height: 674,
       },
-      caption: "Readout’s reading view, rendered in WebKit by its own test suite; the window around it is not shown.",
+      caption: "Readout on macOS, from its repository.",
     },
     showcases: [
       {
@@ -147,14 +147,14 @@ export default defineProduct({
     visual: {
       kind: "screenshot",
       label: "Readout",
-      frame: "narrow",
+      frame: "wide",
       image: {
-        src: "/assets/readout-plan-zh.webp",
-        alt: "Readout 的阅读视图，显示一份中英混排的 Agent 实现计划（来自 zkywsg/Daily-LLM）。可以看到标题、引用说明、Goal 等段落、任务复选框和代码块。",
-        width: 900,
-        height: 806,
+        src: "/assets/readout-window.webp",
+        alt: "Readout 窗口：一份 Agent 写的计划，侧栏是大纲和各节任务进度，页边标出未读的改动。",
+        width: 1024,
+        height: 674,
       },
-      caption: "Readout 的阅读视图，由它自己的测试在 WebKit 中渲染，未包含窗口外框。",
+      caption: "macOS 上的 Readout，图片来自它的仓库。",
     },
     showcases: [
       {
