@@ -53,7 +53,7 @@ jobs:
           echo "A release tag changed, but some repositories could not be read; not deploying."
           exit 1
       # validate builds from this exact sync instead of asking GitHub again.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: steps.sync.outputs.changed == 'true'
         with:
           name: releases-${{ github.run_id }}
@@ -131,7 +131,7 @@ jobs:
           npm run a11y:check
           npm run visual:check
       # The deploy job ships exactly this build, the one QA just checked.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
           name: site-${{ github.sha }}
@@ -139,7 +139,7 @@ jobs:
           retention-days: 7
           if-no-files-found: error
       # Keep the rendered screenshots only when QA fails.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure() && github.event_name != 'schedule'
         with:
           name: visual-baseline-${{ github.sha }}
