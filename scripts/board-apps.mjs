@@ -6,9 +6,10 @@
  *
  *   git clone https://github.com/hxddh/goban /tmp/board-apps/goban
  *   git clone https://github.com/hxddh/chessboard /tmp/board-apps/chessboard
- *   git -C /tmp/board-apps/goban checkout v2.1.0
- *   git -C /tmp/board-apps/chessboard checkout v11.0.0
- *   (chessboard) npm ci && node scripts/gen-engine-src.mjs && node scripts/bundle.mjs
+ *   git -C /tmp/board-apps/goban checkout v3.1.0
+ *   git -C /tmp/board-apps/chessboard checkout v14.0.0
+ *   (chessboard) npm ci && node scripts/gen-engine-src.mjs && node scripts/gen-maia-src.mjs && node scripts/bundle.mjs
+ *   (gen-maia-src writes the Maia nets the app ships since 13.0, as its own scripts/sync-dist.mjs does)
  */
 import { execFileSync } from "node:child_process";
 import fs from "node:fs/promises";
@@ -18,7 +19,7 @@ import path from "node:path";
 export const appsRoot = process.env.BOARD_APPS ?? "/tmp/board-apps";
 
 /** Bump these, re-check out, and re-run both scripts when a new release ships. */
-export const pinned = { goban: "v2.1.0", chessboard: "v11.0.0" };
+export const pinned = { goban: "v3.1.0", chessboard: "v14.0.0" };
 
 export function assertPinned(app) {
   const dir = path.join(appsRoot, app);

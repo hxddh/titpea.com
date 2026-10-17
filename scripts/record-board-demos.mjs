@@ -50,19 +50,21 @@ async function record(browser, name, root, init, act, trimStart) {
   });
   await context.addInitScript(init.script, init.arg);
   const page = await context.newPage();
-  // The recording starts with the page, so offsets are measured from here.
-  const started = Date.now();
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
   const markStart = await act(page);
+  // The take is the last part of the recording, which ends when the context
+  // closes. Its start is measured back from that end: the recorder's frames
+  // can trail the page by seconds while the apps' engines run, so an offset
+  // from the page's opening lands in the wrong place.
+  const take = ((Date.now() - markStart) / 1000 - trimStart).toFixed(2);
   const video = page.video();
   await context.close();
   await server.close();
   const raw = await video.path();
-  const from = ((markStart - started) / 1000 + trimStart).toFixed(2);
   const mp4 = path.join(outDir, `${name}.mp4`);
   const webm = path.join(outDir, `${name}.webm`);
-  const common = ["-y", "-ss", from, "-i", raw, "-an", "-vf", "fps=30,scale=1222:-2:flags=lanczos"];
+  const common = ["-y", "-sseof", `-${take}`, "-i", raw, "-an", "-vf", "fps=30,scale=1222:-2:flags=lanczos"];
   execFileSync(
     ffmpeg,
     [
@@ -125,14 +127,25 @@ async function recordGoban(browser, lang) {
       await page.click("#sgf-review");
       await page.waitForSelector("#review-side:not([hidden])");
       await page.waitForSelector("#review-progress", { state: "hidden", timeout: 60000 }).catch(() => {});
-      await page.waitForTimeout(600);
+      // Step through the mistakes it names: each chip rebuilds that position
+      // and shows its explanation beside the curve. Review opens on the last
+      // one, so pick the first before the take starts.
+      // v3.0+ adds mistakes as its engine confirms them ("+2 awaiting the
+      // engine"), so wait until the chip list has stopped growing.
+      const chips = page.locator("#review-side-chips button[data-i]");
+      let count = await chips.count();
+      for (let still = 0, tries = 0; still < 4 && tries < 60; tries += 1) {
+        await page.waitForTimeout(500);
+        const now = await chips.count();
+        still = now === count ? still + 1 : 0;
+        count = now;
+      }
+      await chips.nth(0).click();
+      await page.waitForTimeout(2000);
       await quiet(page);
       const start = Date.now();
-      // Step through the mistakes it names: each chip rebuilds that position
-      // and shows its explanation beside the curve.
-      const chips = page.locator("#review-side-chips button[data-i]");
-      const count = await chips.count();
-      for (let index = 0; index < count; index += 1) {
+      await page.waitForTimeout(1800);
+      for (let index = 1; index < count; index += 1) {
         await chips.nth(index).click();
         await quiet(page);
         await page.waitForTimeout(1800);
