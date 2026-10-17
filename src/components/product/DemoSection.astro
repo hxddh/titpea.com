@@ -1,14 +1,16 @@
 ---
 import Prose from "./Prose.astro";
+import ReadoutDemo from "./demos/ReadoutDemo.astro";
 import ChessPuzzleDemo from "./demos/ChessPuzzleDemo.astro";
 import WorldClockDemo from "./demos/WorldClockDemo.astro";
 import type { DemoSection } from "../../content/schema";
 
 interface Props {
   section: DemoSection;
+  controls: { pause: string; play: string };
 }
 
-const { section } = Astro.props;
+const { section, controls } = Astro.props;
 const { demo } = section;
 ---
 
@@ -20,5 +22,6 @@ const { demo } = section;
     </header>
     {demo.kind === "worldClock" && <WorldClockDemo demo={demo} caption={section.caption} />}
     {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
+    {demo.kind === "readout" && <ReadoutDemo demo={demo} caption={section.caption} controls={controls} />}
   </div>
 </section>

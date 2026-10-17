@@ -90,6 +90,8 @@ export async function checkRoute(page, viewport, route) {
               const images = Array.from(document.querySelectorAll(".product-scene img"));
               return {
                 imageCount: images.length,
+                // A working copy of the extension as the hero object stands in for its screenshot.
+                liveDemo: Boolean(document.querySelector(".hero-demo .demo-figure")),
                 // A listing still in review shows the unlinked "coming soon" action instead.
                 hasChromeCta: Boolean(
                   document.querySelector(

@@ -73,6 +73,79 @@ export default defineProduct({
         },
       ],
       footnotes: ["hook events · processes", "Click a row to go · › for details"],
+      // The still above is the third scene. Strings and rules from Pulse 30:
+      // L10n.swift (counts, lamp sentences, "now"), TrayState.swift (the title
+      // only while something waits; the count alone under a minute) and
+      // EXPERIENCE.md §3–4 (one lamp, frozen row order, second lines).
+      lampSentence: "Red: an agent is waiting on you.",
+      scenes: [
+        {
+          lamp: "running",
+          headerStatus: "2 running · 1 your turn",
+          lampSentence: "Green: agents are working and nothing needs you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Read · package.json · now", state: "running", chip: "1m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1",
+          headerStatus: "1 needs you · 1 running · 1 your turn",
+          lampSentence: "Red: an agent is waiting on you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "now" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1 · 4m",
+          headerStatus: "1 needs you · 1 running · 1 your turn",
+          lampSentence: "Red: an agent is waiting on you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "4m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "running",
+          headerStatus: "2 running · 1 your turn",
+          lampSentence: "Green: agents are working and nothing needs you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash · npm install · now", state: "running", chip: "5m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+      ],
     },
     sections: [
       {
@@ -199,6 +272,75 @@ export default defineProduct({
         },
       ],
       footnotes: ["hook 事件 · 进程", "点一行前往 · 点“›”看详情"],
+      lampSentence: "红：有 Agent 在等你。",
+      scenes: [
+        {
+          lamp: "running",
+          headerStatus: "2 运行中 · 1 轮到你",
+          lampSentence: "绿：Agent 在工作，没有需要你的事。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Read · package.json · 刚刚", state: "running", chip: "1分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1",
+          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          lampSentence: "红：有 Agent 在等你。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "刚刚" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1·4分钟",
+          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          lampSentence: "红：有 Agent 在等你。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "4分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "running",
+          headerStatus: "2 运行中 · 1 轮到你",
+          lampSentence: "绿：Agent 在工作，没有需要你的事。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash · npm install · 刚刚", state: "running", chip: "5分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+      ],
     },
     sections: [
       {

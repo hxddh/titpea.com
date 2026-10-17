@@ -57,16 +57,26 @@ export default defineProduct({
     },
     meta: "Chrome extension · Chrome 138+ · 2.0.2 · On-device translation",
     visual: {
-      kind: "screenshot",
+      kind: "demo",
       label: "Bilingual",
-      frame: "wide",
-      image: {
-        src: "/assets/bilingual-en.webp",
-        alt: "Store image: a French article with one paragraph’s English translation in the right margin",
-        width: 1280,
-        height: 800,
+      caption:
+        "Try it: sample text written for this page, in French with an English translation. Here the translation is fixed; the extension translates the pages you read.",
+      demo: {
+        kind: "bilingual",
+        label: "Bilingual peek, working copy",
+        sourceLang: "fr",
+        targetLang: "en",
+        source:
+          "Le matin, le marché du quartier s’anime avant même l’ouverture des boutiques. Les maraîchers installent leurs étals, et l’odeur du pain chaud flotte déjà dans la rue. On y vient pour faire ses courses, mais surtout pour prendre des nouvelles des voisins.",
+        translation:
+          "In the morning, the neighbourhood market comes to life before the shops have even opened. Growers set up their stalls, and the smell of warm bread already drifts down the street. People come to do their shopping, but mostly to catch up with their neighbours.",
+        hint: "Hold {key} to see the translation. Tap it twice to keep it.",
+        touchHint: "Tap Show translation to see it.",
+        show: "Show translation",
+        shown: "Translation shown: {text}",
+        hidden: "Translation hidden",
+        translationLabel: "English translation: ",
       },
-      caption: "Illustration: store image with sample translations",
     },
     sections: [
       {
@@ -148,16 +158,25 @@ export default defineProduct({
     },
     meta: "Chrome 扩展 · Chrome 138+ · 2.0.2 · 本地翻译",
     visual: {
-      kind: "screenshot",
+      kind: "demo",
       label: "对读",
-      frame: "wide",
-      image: {
-        src: "/assets/bilingual-zh.webp",
-        alt: "商店图片：英文文章中一段的中文译文显示在右侧边注",
-        width: 1280,
-        height: 800,
+      caption: "试一试：为本页撰写的示例文字，英文原文配中文译文。这里的译文是预先写好的；扩展翻译的是你正在读的网页。",
+      demo: {
+        kind: "bilingual",
+        label: "对读浮现的可用副本",
+        sourceLang: "en",
+        targetLang: "zh-CN",
+        source:
+          "In the morning, the neighbourhood market comes to life before the shops have even opened. Growers set up their stalls, and the smell of warm bread already drifts down the street. People come to do their shopping, but mostly to catch up with their neighbours.",
+        translation:
+          "清晨，商店还没开门，街区的集市就已经热闹起来。菜农摆好摊位，街上已经飘着刚出炉的面包香。人们来这里买菜，更多是为了和邻居聊聊近况。",
+        hint: "按住 {key} 看译文，连按两下保持显示。",
+        touchHint: "点“显示译文”查看。",
+        show: "显示译文",
+        shown: "已显示译文：{text}",
+        hidden: "已收起译文",
+        translationLabel: "中文译文：",
       },
-      caption: "示意图：商店图片，译文为示例",
     },
     sections: [
       {

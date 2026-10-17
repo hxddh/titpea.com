@@ -1,0 +1,18 @@
+---
+import type { Visual } from "../../../content/schema";
+import BilingualDemo from "../demos/BilingualDemo.astro";
+import WorldClockDemo from "../demos/WorldClockDemo.astro";
+
+interface Props {
+  visual: Extract<Visual, { kind: "demo" }>;
+}
+
+// A live demo as the hero object: the product doing its main job, first.
+const { visual } = Astro.props;
+const { demo } = visual;
+---
+
+<div class="hero-demo">
+  {demo.kind === "worldClock" && <WorldClockDemo demo={demo} caption={visual.caption} hero />}
+  {demo.kind === "bilingual" && <BilingualDemo demo={demo} caption={visual.caption} />}
+</div>

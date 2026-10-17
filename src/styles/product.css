@@ -104,7 +104,7 @@
   height: auto;
 }
 
-.hero-visual-frame > :not(.product-screenshot-visual, .clock-scene) {
+.hero-visual-frame > :not(.product-screenshot-visual, .clock-scene, .hero-demo) {
   box-shadow: var(--shadow-shot);
 }
 

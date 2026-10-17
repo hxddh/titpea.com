@@ -1,6 +1,7 @@
 ---
 import type { Visual } from "../../content/schema";
 import ClockScreenshots from "./visuals/ClockScreenshots.astro";
+import HeroDemo from "./visuals/HeroDemo.astro";
 import HttpTerminal from "./visuals/HttpTerminal.astro";
 import MenuBar from "./visuals/MenuBar.astro";
 import S3Benchmark from "./visuals/S3Benchmark.astro";
@@ -10,9 +11,11 @@ import TerminalBrief from "./visuals/TerminalBrief.astro";
 
 interface Props {
   visual: Visual;
+  /** Pause / Play labels for an animated object. */
+  controls: { pause: string; play: string };
 }
 
-const { visual } = Astro.props;
+const { visual, controls } = Astro.props;
 ---
 
 {visual.kind === "screenshot" && <Screenshot visual={visual} />}
@@ -21,4 +24,5 @@ const { visual } = Astro.props;
 {visual.kind === "skillMap" && <SkillMap visual={visual} />}
 {visual.kind === "httpTerminal" && <HttpTerminal visual={visual} />}
 {visual.kind === "terminalBrief" && <TerminalBrief visual={visual} />}
-{visual.kind === "menuBar" && <MenuBar visual={visual} />}
+{visual.kind === "menuBar" && <MenuBar visual={visual} controls={controls} />}
+{visual.kind === "demo" && <HeroDemo visual={visual} />}

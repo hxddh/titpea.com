@@ -54,6 +54,7 @@ SKIP  proxy: the request host depends on the bucket and region (virtual-hosted o
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
 Doctor status: ok`,
+          replay: { label: "s3-turbo-list v0.39.0 · captured output" },
         },
         {
           comment: "Full recursive inventory → Parquet in out/",
@@ -221,6 +222,7 @@ SKIP  proxy: the request host depends on the bucket and region (virtual-hosted o
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
 Doctor status: ok`,
+          replay: { label: "s3-turbo-list v0.39.0 · 实际输出" },
         },
         {
           comment: "完整递归清单 → out/ 里的 Parquet",

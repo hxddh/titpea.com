@@ -203,7 +203,14 @@ const shape = (copy: ProductCopy) =>
         ? []
         : section.demo.kind === "worldClock"
           ? [[section.demo.kind, ...section.demo.cities.map((city) => city.zone)]]
-          : [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]],
+          : section.demo.kind === "chessPuzzle"
+            ? [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]]
+            : [
+                [
+                  section.demo.kind,
+                  ...[section.demo.blocks.length, ...section.demo.writes.map((write) => write.after)].map(String),
+                ],
+              ],
     ),
     showcases: copy.showcases?.length ?? 0,
     stats: copy.stats?.items.length ?? 0,

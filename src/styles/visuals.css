@@ -93,68 +93,86 @@
   line-height: 1.5;
 }
 
-.benchmark-line-chart {
+/* Two measured runs as two bars from zero, on one scale; the figure ends each row. */
+.benchmark-bars {
   margin: 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
   padding: 18px 0 0;
-  background: transparent;
+  border-top: 1px solid var(--line);
 }
 
-.benchmark-line-chart figcaption,
-.benchmark-line-chart p {
+.benchmark-bars figcaption,
+.benchmark-bars > p {
+  margin: 0;
   color: var(--label);
   font-family: var(--mono);
   font-size: 12px;
-}
-
-.benchmark-line-chart svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 14px 0 8px;
-}
-
-.benchmark-line-chart p {
-  margin: 0;
   line-height: 1.5;
 }
 
-.chart-axis,
-.chart-guide {
-  stroke: var(--soft-line);
-  stroke-width: 1;
+.benchmark-bars dl {
+  display: grid;
+  gap: 18px;
+  margin: 20px 0 16px;
 }
 
-.chart-guide {
-  stroke-dasharray: 3 5;
+.benchmark-bar {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
 }
 
-.chart-line {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 3;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.chart-point circle {
-  fill: var(--paper);
-  stroke: var(--ink);
-  stroke-width: 3;
-}
-
-.chart-x-label,
-.chart-y-label,
-.chart-annotation {
-  fill: var(--label);
+.benchmark-bar dt {
+  color: var(--label);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-.chart-annotation {
+.benchmark-bar dd {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4.5em;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+.benchmark-bar svg {
+  display: block;
+  width: 100%;
+  height: 28px;
+}
+
+.benchmark-track {
+  fill: var(--line);
+}
+
+.benchmark-fill {
   fill: var(--ink);
+}
+
+.benchmark-bar dd span {
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.benchmark-bar.is-reference .benchmark-fill {
+  fill: var(--data-ref);
+}
+
+.benchmark-bar.is-reference dd span {
+  color: var(--data-ref-ink);
+}
+
+.benchmark-bar.is-caution .benchmark-fill {
+  fill: var(--data-caution);
+}
+
+.benchmark-bar.is-caution dd span {
+  color: var(--data-caution-ink);
 }
 
 .agent-manifest-grid strong {
@@ -498,25 +516,7 @@
   }
 }
 
-/* State classes built at render time (is-${state}, pulse-lamp-${state}). */
-.chart-point.is-reference circle {
-  fill: var(--data-ref);
-  stroke: var(--data-ref);
-}
-
-.chart-point.is-caution circle {
-  fill: var(--data-caution);
-  stroke: var(--data-caution);
-}
-
-.chart-point.is-reference .chart-annotation {
-  fill: var(--data-ref-ink);
-}
-
-.chart-point.is-caution .chart-annotation {
-  fill: var(--data-caution-ink);
-}
-
+/* State classes built at render time (pulse-lamp-${state}). */
 /* Lamp shapes, as in Pulse 24: solid = needs you, ring = running,
    hollow = your turn / recent, dashed = process only. Shape carries the state
    without colour; --muted keeps the grey outlines above 3:1 in both themes. */

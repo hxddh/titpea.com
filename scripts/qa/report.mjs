@@ -34,7 +34,7 @@ export function failureReasons(result) {
   const browserVisualOk = result.browserVisual
     ? result.browserVisual.hasChromeCta &&
       result.browserVisual.hasPrivacyText &&
-      result.browserVisual.imageCount > 0 &&
+      (result.browserVisual.imageCount > 0 || result.browserVisual.liveDemo) &&
       result.browserVisual.images.every(
         (image) => image.alt.length > 12 && image.loaded && image.sourceWidth >= 600 && image.sourceHeight >= 600,
       )

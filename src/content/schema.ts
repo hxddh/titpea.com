@@ -143,6 +143,56 @@ export type ChessPuzzleDemo = {
   pieces: { k: string; q: string; r: string; b: string; n: string; p: string };
 };
 
+/**
+ * Bilingual's peek: a sample paragraph whose translation shows beside it only
+ * while the reveal key is held (⌥ on Mac, Shift elsewhere, chosen as the
+ * extension does), or while the toggle is on (public/scripts/demo-bilingual.js).
+ * Both texts are written for the page; the caption must say they are samples.
+ */
+export type BilingualDemo = {
+  kind: "bilingual";
+  /** Accessible name of the demo. */
+  label: string;
+  /** BCP 47 tags of the two texts. */
+  sourceLang: string;
+  targetLang: string;
+  source: string;
+  translation: string;
+  /** `{key}` is the platform's reveal key. */
+  hint: string;
+  /** Shown instead of the hint on touch screens. */
+  touchHint: string;
+  /** The toggle button, for touch, keyboard and screen readers. */
+  show: string;
+  /** Announced when the translation appears; `{text}` is the translation. */
+  shown: string;
+  hidden: string;
+  /** Labels the translation for screen readers. */
+  translationLabel: string;
+};
+
+/**
+ * Readout's change marks: a small Markdown pane that receives a few writes in
+ * order (public/scripts/demo-readout.js). Each new block gets the thin bar and
+ * keeps it until at least half of it has been in view for 800 ms; then it
+ * thins and fades, as in Readout. The reader's place stays put. Under reduced
+ * motion the pane shows the last write at once, its new blocks still marked.
+ */
+export type ReadoutDemo = {
+  kind: "readout";
+  label: string;
+  /** Window title: the file name. */
+  file: string;
+  /** The document before the first write: Markdown-like blocks. */
+  blocks: ReadoutBlock[];
+  /** Each write inserts one block after the block at `after` (an index into the document as it then stands). */
+  writes: Array<{ after: number; block: ReadoutBlock }>;
+  /** Announced for each write: `{text}` is the new block's text. */
+  written: string;
+};
+
+export type ReadoutBlock = { kind: "h1" | "h2" | "p" | "task" | "done"; text: string };
+
 /** A live demo of the product's core mechanic, captioned with what it is. */
 export type DemoSection = {
   kind: "demo";
@@ -151,7 +201,7 @@ export type DemoSection = {
   body: string;
   /** Says what the demo is, for example a working copy, or where its data comes from. */
   caption: string;
-  demo: WorldClockDemo | ChessPuzzleDemo;
+  demo: WorldClockDemo | ChessPuzzleDemo | ReadoutDemo;
 };
 
 export type Section = (
@@ -240,18 +290,43 @@ export type Visual = VisualBase &
           /** Omit for one ungrouped list, as the tray shows since Pulse 26. */
           title?: string;
           /** Lamp shape: waiting solid, running ring, recent (your turn) hollow, process dashed. */
-          rows: Array<{
-            title: string;
-            /** Second line: only waiting, stalled and running rows have one in the tray (Pulse 29). */
-            meta?: string;
-            state: "waiting" | "running" | "recent" | "process";
-            /** Trailing time or tag: wait length, turn length, or "Your turn". */
-            chip?: string;
-          }>;
+          rows: MenuBarRow[];
         }>;
         footnotes: string[];
+        /**
+         * Optional animation (public/scripts/demo-pulse.js): the menu bar and
+         * the tray step through these scenes in order and loop. The fields
+         * above are the still shown without JS and under reduced motion. Every
+         * scene keeps the same rows with the same line count, so nothing moves.
+         */
+        scenes?: Array<{
+          lamp: MenuBarRow["state"];
+          /** Menu-bar title; only while something waits. */
+          glanceTitle?: string;
+          headerStatus: string;
+          /** The lamp's tooltip: the rule that set it (Pulse's lampSentence). */
+          lampSentence: string;
+          rows: MenuBarRow[];
+        }>;
+        /** The still's tooltip, shown with `scenes`. */
+        lampSentence?: string;
+      }
+    | {
+        /** A live demo as the hero object, captioned with what it is. */
+        kind: "demo";
+        caption: string;
+        demo: WorldClockDemo | BilingualDemo;
       }
   );
+
+export type MenuBarRow = {
+  title: string;
+  /** Second line: only waiting, stalled and running rows have one in the tray (Pulse 29). */
+  meta?: string;
+  state: "waiting" | "running" | "stalled" | "recent" | "process";
+  /** Trailing time or tag: wait length, turn length, or "Your turn". */
+  chip?: string;
+};
 
 export type VisualKind = Visual["kind"];
 
@@ -282,8 +357,11 @@ export type Commands = {
   /**
    * `capturedOutput` is real, captured output of that exact command (never
    * written by hand); `asOf` names the release it was captured from.
+   * `replay` shows it as a terminal that types the command and prints the
+   * captured lines in order once scrolled into view (public/scripts/demo-replay.js);
+   * its label names the version the output came from.
    */
-  items: Array<{ comment: string; command: string; capturedOutput?: string } & AsOf>;
+  items: Array<{ comment: string; command: string; capturedOutput?: string; replay?: { label: string } } & AsOf>;
 };
 
 /**

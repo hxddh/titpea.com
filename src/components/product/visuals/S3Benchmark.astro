@@ -5,20 +5,15 @@ interface Props {
   visual: Extract<Visual, { kind: "s3Benchmark" }>;
 }
 
+// Two measured runs, two bars from zero: each bar is only its own figure, so
+// nothing suggests the times in between that nobody measured.
 const { visual } = Astro.props;
-const chart = { width: 760, height: 280, left: 42, right: 28, top: 28, bottom: 42 };
-const minSeconds = Math.min(...visual.points.map((point) => point.seconds));
 const maxSeconds = Math.max(...visual.points.map((point) => point.seconds));
-const plotWidth = chart.width - chart.left - chart.right;
-const plotHeight = chart.height - chart.top - chart.bottom;
-const chartPoints = visual.points.map((point, index) => ({
+const bars = visual.points.map((point) => ({
   ...point,
-  x: chart.left + (plotWidth * index) / (visual.points.length - 1),
-  y: chart.top + ((maxSeconds - point.seconds) / (maxSeconds - minSeconds)) * plotHeight,
+  text: point.display ?? `${point.seconds}s`,
+  share: ((point.seconds / maxSeconds) * 100).toFixed(1),
 }));
-const secondsLabel = (seconds: number) =>
-  visual.points.find((point) => point.seconds === seconds)?.display ?? `${seconds.toFixed(0)}s`;
-const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ");
 ---
 
 <div class="terminal-visual benchmark-visual benchmark-report" aria-label={visual.label}>
@@ -27,42 +22,24 @@ const linePoints = chartPoints.map((point) => `${point.x},${point.y}`).join(" ")
     <h2>{visual.title}</h2>
     <p>{visual.body}</p>
   </div>
-  <figure class="benchmark-line-chart" aria-labelledby="benchmark-chart-title">
+  <figure class="benchmark-bars" aria-labelledby="benchmark-chart-title">
     <figcaption id="benchmark-chart-title">{visual.chartLabel}</figcaption>
-    <svg viewBox={`0 0 ${chart.width} ${chart.height}`} role="img" aria-label={visual.chartLabel}>
-      <line class="chart-axis" x1={chart.left} y1={chart.top} x2={chart.left} y2={chart.height - chart.bottom}></line>
-      <line
-        class="chart-axis"
-        x1={chart.left}
-        y1={chart.height - chart.bottom}
-        x2={chart.width - chart.right}
-        y2={chart.height - chart.bottom}></line>
-      <line class="chart-guide" x1={chart.left} y1={chart.top} x2={chart.width - chart.right} y2={chart.top}></line>
-      <line
-        class="chart-guide"
-        x1={chart.left}
-        y1={(chart.top + chart.height - chart.bottom) / 2}
-        x2={chart.width - chart.right}
-        y2={(chart.top + chart.height - chart.bottom) / 2}></line>
-      <text class="chart-y-label" x="0" y={chart.top + 4}>{secondsLabel(maxSeconds)}</text>
-      <text class="chart-y-label" x="0" y={chart.height - chart.bottom}>{secondsLabel(minSeconds)}</text>
-      <polyline class="chart-line" points={linePoints}></polyline>
+    <dl>
       {
-        chartPoints.map((point) => (
-          <g class:list={["chart-point", point.state && `is-${point.state}`]}>
-            <circle cx={point.x} cy={point.y} r="5" />
-            <text class="chart-x-label" x={point.x} y={chart.height - 16} text-anchor="middle">
-              {point.label}
-            </text>
-            {(point.state || point.display) && (
-              <text class="chart-annotation" x={point.x} y={point.y - 14} text-anchor="middle">
-                {point.display ?? `${point.seconds}s`}
-              </text>
-            )}
-          </g>
+        bars.map((bar) => (
+          <div class:list={["benchmark-bar", bar.state && `is-${bar.state}`]}>
+            <dt>{bar.label}</dt>
+            <dd>
+              <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                <rect class="benchmark-track" x="0" y="0" width="100" height="10" />
+                <rect class="benchmark-fill" x="0" y="0" width={bar.share} height="10" />
+              </svg>
+              <span>{bar.text}</span>
+            </dd>
+          </div>
         ))
       }
-    </svg>
+    </dl>
     <p>{visual.chartCaption}</p>
   </figure>
 </div>

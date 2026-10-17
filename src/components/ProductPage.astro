@@ -102,13 +102,17 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
       </p>
     </div>
     <div class="shell hero-visual-frame">
-      <Visual visual={copy.visual} />
+      <Visual visual={copy.visual} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
     </div>
   </section>
 
   {copy.stats && <StatsBand stats={copy.stats} />}
 
-  {demos.map((section) => <DemoSection section={section} />)}
+  {
+    demos.map((section) => (
+      <DemoSection section={section} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+    ))
+  }
 
   {
     opening.map((showcase) => (
@@ -128,6 +132,7 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
                 copyLabel={copyUi.copy}
                 copiedLabel={copyUi.copied}
                 outputLabel={copyUi.commandOutput}
+                controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }}
               />
             )}
           </>
@@ -157,6 +162,7 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
         copyLabel={copyUi.copy}
         copiedLabel={copyUi.copied}
         outputLabel={copyUi.commandOutput}
+        controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }}
       />
     )
   }

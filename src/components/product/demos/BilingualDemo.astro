@@ -1,0 +1,40 @@
+---
+import type { BilingualDemo } from "../../../content/schema";
+
+interface Props {
+  demo: BilingualDemo;
+  caption: string;
+}
+
+const { demo, caption } = Astro.props;
+// The key is chosen in the browser, as the extension chooses it; Shift is the
+// default outside macOS, so the hint starts with it.
+const [hintBefore, hintAfter] = demo.hint.split("{key}");
+---
+
+<figure
+  class="demo-figure demo-bilingual"
+  data-demo-bilingual
+  data-shown={demo.shown}
+  data-hidden={demo.hidden}
+  data-touch-hint={demo.touchHint}
+>
+  <div class="bilingual-page" role="group" aria-label={demo.label}>
+    <p class="bilingual-source" lang={demo.sourceLang}>{demo.source}</p>
+    {/* The margin note: always laid out, so showing it never moves the page. */}
+    <p class="bilingual-note" lang={demo.targetLang} data-note>
+      <span class="sr-only">{demo.translationLabel}</span>
+      {demo.translation}
+    </p>
+  </div>
+  <div class="bilingual-controls">
+    <p class="bilingual-hint" data-hint>
+      {hintBefore}<kbd data-key>Shift</kbd>{hintAfter}
+    </p>
+    <button class="bilingual-toggle" type="button" aria-pressed="false" data-toggle>{demo.show}</button>
+  </div>
+  <figcaption class="shot-caption">{caption}</figcaption>
+  <p class="sr-only" aria-live="polite" data-status></p>
+</figure>
+
+<script is:inline src="/scripts/demo-bilingual.js" defer></script>
