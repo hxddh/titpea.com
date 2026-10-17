@@ -6,7 +6,7 @@ import sharp from "sharp";
 import releases from "../src/content/releases.json" with { type: "json" };
 import { products } from "../src/content/products/index.ts";
 import { locales, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
-import { site, ui } from "../src/content/site.ts";
+import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
 import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
@@ -32,6 +32,36 @@ const featuredCount = products.filter((product) => product.featured).length;
 if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Home as featured");
 const featuredOrder = products.flatMap((product) => (product.featured ? [product.featured.order] : [])).sort();
 if (featuredOrder.some((order, index) => order !== index + 1)) fail("featured rows are ordered 1, 2, 3 without gaps");
+
+/* ---------- Catalog facets and families ---------- */
+
+for (const product of products) {
+  if (product.runsOn.length === 0) fail(`${product.slug}: runsOn names at least one platform`);
+  if (product.purposes.length === 0) fail(`${product.slug}: purposes names at least one purpose`);
+  if (new Set(product.runsOn).size !== product.runsOn.length) fail(`${product.slug}: runsOn lists a platform twice`);
+  if (new Set(product.purposes).size !== product.purposes.length) fail(`${product.slug}: purposes lists one twice`);
+  for (const locale of locales) {
+    const copy = ui[locale];
+    if (!copy.types[product.type]) fail(`site.ts ${locale}: no label for type ${product.type}`);
+    for (const platform of product.runsOn)
+      if (!copy.platforms[platform]) fail(`site.ts ${locale}: no label for platform ${platform}`);
+    for (const purpose of product.purposes)
+      if (!copy.purposes[purpose]) fail(`site.ts ${locale}: no label for purpose ${purpose}`);
+  }
+}
+const familySlugs = Object.values(familyMembers).flat();
+if (new Set(familySlugs).size !== familySlugs.length) fail("site.ts familyMembers: a product belongs to one family");
+for (const [id, members] of Object.entries(familyMembers)) {
+  if (members.length < 2) fail(`site.ts familyMembers.${id}: a family has at least two products`);
+  for (const slug of members) {
+    if (!slugs.includes(slug)) fail(`site.ts familyMembers.${id}: ${slug} is not a product`);
+    for (const locale of locales) {
+      const family = ui[locale].families[id as keyof typeof familyMembers];
+      if (!family?.title || !family.sub) fail(`site.ts ${locale}: family ${id} needs a title and a line`);
+      if (!family?.roles[slug]) fail(`site.ts ${locale}: family ${id} has no role for ${slug}`);
+    }
+  }
+}
 
 /* ---------- Releases ---------- */
 
