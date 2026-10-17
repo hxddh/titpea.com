@@ -1,6 +1,9 @@
 import { baseUrl, outDir, screenshotName } from "./config.mjs";
-import { visit } from "./browser.mjs";
+import { settle, visit } from "./browser.mjs";
 import { sectionIndexPolicy } from "../../src/scripts/section-index-policy.ts";
+
+// Past the index's own re-read after a click, plus a few frames for it to land.
+const clickSettleMs = sectionIndexPolicy.clickStabilizeDelayMs + 100;
 
 async function sectionState(page, href) {
   return page.evaluate((href) => {
@@ -24,7 +27,7 @@ async function sectionState(page, href) {
   }, href);
 }
 
-function checkClickedSection(viewport, path, anchors, anchor, state, screenshot, pointer = false) {
+function checkClickedSection(viewport, path, anchorCount, anchor, state, screenshot, pointer = false) {
   return {
     viewport: viewport.name,
     path: `${path} ${pointer ? "pointer" : "anchor"}:${anchor.label}`,
@@ -33,8 +36,9 @@ function checkClickedSection(viewport, path, anchors, anchor, state, screenshot,
     mobile: viewport.name === "desktop" ? "none" : "block",
     h1: pointer ? "pointer-click" : "anchor-click",
     h1Lines: 1,
-    anchorCount: anchors.length,
+    anchorCount,
     textOk:
+      Boolean(anchor.href) &&
       state.targetExists &&
       state.indexPosition === "sticky" &&
       state.indexOverflow <= 1 &&
@@ -50,49 +54,69 @@ function checkClickedSection(viewport, path, anchors, anchor, state, screenshot,
   };
 }
 
-export async function checkSectionIndex(page, viewport, route) {
-  const path = route.path;
-  const results = [];
-  await visit(page, new URL(path, baseUrl), `${viewport.name} anchors`);
-  const anchors = await page.locator(".product-section-index [data-section-link]").evaluateAll((links) =>
-    links.map((link, index) => ({
-      index,
-      href: link.getAttribute("href") ?? "",
-      label: link.textContent?.trim() ?? "",
-    })),
+/**
+ * One task per local-nav link and viewport (a scripted click; on tablet and
+ * phone also a real pointer click through the opened menu), plus one sticky
+ * scroll check. Each starts from a fresh load, so tasks run in any order.
+ */
+export function sectionIndexTasks(routes, viewports) {
+  return viewports.flatMap((viewport) =>
+    routes
+      .filter((route) => route.sectionIndex)
+      .flatMap((route) => [
+        ...Array.from({ length: route.sectionLinks ?? 0 }, (_, index) => [
+          { kind: "anchor", viewport, route, index },
+          ...(viewport.name !== "desktop" ? [{ kind: "pointer", viewport, route, index }] : []),
+        ]).flat(),
+        { kind: "sticky", viewport, route },
+      ]),
   );
+}
 
-  for (const anchor of anchors) {
-    await visit(page, new URL(path, baseUrl), `${viewport.name} anchor ${anchor.label}`);
-    const anchorLink = page.locator(".product-section-index [data-section-link]").nth(anchor.index);
-    await anchorLink.evaluate((link) => {
+async function anchorAt(page, index) {
+  return page.locator(".product-section-index [data-section-link]").evaluateAll(
+    (links, index) => ({
+      count: links.length,
+      index,
+      href: links[index]?.getAttribute("href") ?? "",
+      label: links[index]?.textContent?.trim() ?? `#${index}`,
+    }),
+    index,
+  );
+}
+
+export async function runSectionIndexTask(page, task) {
+  const { viewport, route } = task;
+  const path = route.path;
+  await visit(page, new URL(path, baseUrl), `${viewport.name} ${task.kind} ${path}`, { images: false });
+  await page.evaluate(() => document.fonts.ready);
+
+  if (task.kind === "sticky") return checkSticky(page, viewport, path);
+
+  const anchor = await anchorAt(page, task.index);
+  const link = page.locator(".product-section-index [data-section-link]").nth(task.index);
+  if (task.kind === "anchor") {
+    await link.evaluate((link) => {
       link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
       link.click();
     });
-    await page.waitForTimeout(sectionIndexPolicy.qaClickWaitMs);
-    const scrollState = await sectionState(page, anchor.href);
-    const anchorScreenshot = screenshotName(viewport.name, path, `_anchor-${scrollState.targetId}`);
-    await page.screenshot({ path: `${outDir}/${anchorScreenshot}`, fullPage: false });
-    results.push(checkClickedSection(viewport, path, anchors, anchor, scrollState, anchorScreenshot));
-
-    if (viewport.name !== "desktop") {
-      await visit(page, new URL(path, baseUrl), `${viewport.name} pointer ${anchor.label}`);
-      await page.locator("[data-section-index-toggle]").click();
-      const pointerAnchor = page.locator(".product-section-index [data-section-link]").nth(anchor.index);
-      await pointerAnchor.evaluate((link) => {
-        link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
-      });
-      await pointerAnchor.click();
-      await page.waitForTimeout(sectionIndexPolicy.qaClickWaitMs);
-      const pointerState = await sectionState(page, anchor.href);
-      const pointerScreenshot = screenshotName(viewport.name, path, `_pointer-${pointerState.targetId}`);
-      await page.screenshot({ path: `${outDir}/${pointerScreenshot}`, fullPage: false });
-      results.push(checkClickedSection(viewport, path, anchors, anchor, pointerState, pointerScreenshot, true));
-    }
+  } else {
+    await page.locator("[data-section-index-toggle]").click();
+    await link.evaluate((link) => {
+      link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
+    });
+    await link.click();
   }
+  await settle(page, clickSettleMs);
+  const state = await sectionState(page, anchor.href);
+  const screenshot = screenshotName(viewport.name, path, `_${task.kind}-${state.targetId || task.index}`);
+  await page.screenshot({ path: `${outDir}/${screenshot}`, fullPage: false });
+  return checkClickedSection(viewport, path, anchor.count, anchor, state, screenshot, task.kind === "pointer");
+}
 
+async function checkSticky(page, viewport, path) {
   await page.evaluate(() => window.scrollTo({ top: 2600, left: 0, behavior: "instant" }));
-  await page.waitForTimeout(sectionIndexPolicy.qaStickyWaitMs);
+  await settle(page, 0);
   const stickyState = await page.evaluate(() => {
     const index = document.querySelector(".product-section-index");
     const rect = index?.getBoundingClientRect();
@@ -105,7 +129,7 @@ export async function checkSectionIndex(page, viewport, route) {
   });
   const screenshot = screenshotName(viewport.name, path, "_sticky-scroll");
   await page.screenshot({ path: `${outDir}/${screenshot}`, fullPage: false });
-  results.push({
+  return {
     viewport: viewport.name,
     path: `${path} sticky-scroll`,
     overflow: 0,
@@ -121,7 +145,5 @@ export async function checkSectionIndex(page, viewport, route) {
       stickyState.currentCount === 1,
     details: stickyState,
     screenshot,
-  });
-
-  return results;
+  };
 }

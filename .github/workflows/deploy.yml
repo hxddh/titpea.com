@@ -4,9 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
-  # Once a day at 02:17 Singapore time (18:17 UTC), look for new product
-  # release tags. The site redeploys only when one changed. The odd minute
-  # avoids GitHub's crowded top-of-hour schedule.
+  # Once a day, look for new product release tags; the site redeploys only
+  # when one changed. The cron says 18:17 UTC (02:17 Singapore time), but
+  # GitHub starts scheduled runs late: in practice 3 to 6.5 hours later. The
+  # odd minute avoids GitHub's crowded top-of-hour schedule.
   schedule:
     - cron: "17 18 * * *"
   workflow_dispatch:
@@ -14,9 +15,11 @@ on:
 permissions:
   contents: read
 
+# A newer push to a pull request cancels its older run. Runs on main (push,
+# schedule, dispatch) never cancel a running one, so a deploy is never cut off.
 concurrency:
   group: titpea-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # Scheduled runs only: did any product publish a new release?
@@ -32,24 +35,36 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - id: sync
-        run: |
-          npm run releases:sync
-          # Only a new tag or date counts. Notes are filled in at every build and
-          # never committed, so comparing the whole file redeployed every day.
-          tags() { node -e 'const d=JSON.parse(require("fs").readFileSync(0,"utf8"));console.log(JSON.stringify(Object.fromEntries(Object.entries(d).map(([k,v])=>[k,[v.version,v.published]]))))'; }
-          if [ "$(git show HEAD:src/content/releases.json | tags)" = "$(tags < src/content/releases.json)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
+      - name: Sync release tags
+        id: fetch
+        continue-on-error: true
+        run: npm run releases:sync -- --strict
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      # Only a new tag or date counts (scripts/release-tags-changed.mjs).
+      - id: sync
+        run: node scripts/release-tags-changed.mjs
+      # A build that will deploy must carry every current tag: if a repository
+      # could not be read, stop rather than ship its committed (older) one.
+      # With nothing changed, an unreadable repository just waits for tomorrow.
+      - name: Stop on a partial sync
+        if: steps.sync.outputs.changed == 'true' && steps.fetch.outcome == 'failure'
+        run: |
+          echo "A release tag changed, but some repositories could not be read; not deploying."
+          exit 1
+      # validate builds from this exact sync instead of asking GitHub again.
+      - uses: actions/upload-artifact@v4
+        if: steps.sync.outputs.changed == 'true'
+        with:
+          name: releases-${{ github.run_id }}
+          path: src/content/releases.json
+          retention-days: 1
+          if-no-files-found: error
 
   validate:
     needs: releases
     # Every push and pull request; on the schedule, only when a tag changed.
-    if: always() && (github.event_name != 'schedule' || needs.releases.outputs.changed == 'true')
+    if: always() && (github.event_name != 'schedule' || (needs.releases.result == 'success' && needs.releases.outputs.changed == 'true'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.3
@@ -60,11 +75,19 @@ jobs:
       - run: npm ci
       # A build that will deploy must carry the current tags: if GitHub cannot
       # be read, stop rather than ship the committed (older) ones. Pull
-      # requests keep going on the committed tags.
+      # requests keep going on the committed tags. A scheduled run reuses the
+      # releases job's sync, so the tags it compared are the tags it ships.
       - name: Sync release tags
+        if: github.event_name != 'schedule'
         run: npm run releases:sync -- ${{ github.event_name != 'pull_request' && '--strict' || '' }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - name: Use the scheduled sync
+        if: github.event_name == 'schedule'
+        uses: actions/download-artifact@v4
+        with:
+          name: releases-${{ github.run_id }}
+          path: src/content
       - run: npm run format:check
       - run: npm run typecheck
       - run: npm test
@@ -91,8 +114,9 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
       - name: Page QA
         if: github.event_name != 'schedule'
-        # 16 products take about 7.5 minutes; leave room as the site grows.
-        timeout-minutes: 12
+        # QA and a11y run on a pool of pages sized to the runner's cores; 16
+        # products take about 2 minutes locally on 4 cores. Room to grow.
+        timeout-minutes: 8
         run: |
           npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/titpea-preview.log 2>&1 &
           echo $! > /tmp/titpea-preview.pid

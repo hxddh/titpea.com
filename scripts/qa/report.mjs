@@ -6,30 +6,19 @@ const unversioned = (url) => url?.replace(/\?v=[0-9a-f]+$/, "");
 export function failureReasons(result) {
   const isDesktop = result.viewport === "desktop";
   const isAsset = result.viewport === "asset";
-  const isProductPage =
-    !isAsset &&
-    (result.path.includes("s3-turbo-list") ||
-      result.path.includes("storageops") ||
-      result.path.includes("httpmon") ||
-      result.path.includes("world-clock") ||
-      result.path.includes("douban-movie-rating"));
-  const isMainProductPage =
-    !isAsset &&
-    (result.path.includes("s3-turbo-list") || result.path.includes("storageops") || result.path.includes("httpmon"));
+  // A route visit carries its route; menu, anchor, pointer and sticky checks do not.
+  const isAuxCheck = !isAsset && !result.route;
+  // Which pages are product pages, and how many section links each shows,
+  // come from the product data (siteRoutes), never from a list of slugs.
+  const isProductPage = !isAsset && result.route?.kind === "product";
   const isBrowserProductPage = !isAsset && result.route?.browserVisual;
+  const isPrivacy = result.route?.kind === "privacy";
   const navOk = isDesktop
     ? result.nav === "flex" && result.mobile === "none"
     : isAsset
       ? true
       : result.nav === "none" && result.mobile === "block";
-  const isAuxCheck =
-    result.path.includes("menu") ||
-    result.path.includes("anchor-click") ||
-    result.path.includes("anchor:") ||
-    result.path.includes("pointer:") ||
-    result.path.includes("sticky-scroll");
-  const anchorOk =
-    isProductPage && !isAuxCheck ? (isMainProductPage ? result.anchorCount >= 4 : result.anchorCount === 0) : true;
+  const anchorOk = isProductPage ? result.anchorCount === (result.route.sectionLinks ?? 0) : true;
   // Every product page pins its local nav; pages with sections also mark one active.
   const productIndexOk = result.productIndex
     ? result.productIndex.position === "sticky" &&
@@ -39,7 +28,9 @@ export function failureReasons(result) {
     : !isProductPage || isAuxCheck;
   const featuresGridOk =
     isProductPage && !isAuxCheck && result.featuresGrid !== null ? result.featuresGrid === "grid" : true;
-  const imagesOk = isBrowserProductPage ? result.imageCount > 0 && result.brokenImages === 0 : true;
+  // Every route visit loads every image; none may be broken. Extension pages must also show some.
+  const imagesOk =
+    isAsset || isAuxCheck ? true : result.brokenImages === 0 && (!isBrowserProductPage || result.imageCount > 0);
   const browserVisualOk = result.browserVisual
     ? result.browserVisual.hasChromeCta &&
       result.browserVisual.hasPrivacyText &&
@@ -53,7 +44,8 @@ export function failureReasons(result) {
   const reasons = [];
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
   if (result.h1Lines > 2) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
-  if (!isAsset && !isAuxCheck && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
+  // A privacy policy is a document: its lead is a paragraph and it has no actions.
+  if (!isAsset && !isAuxCheck && !isPrivacy && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
   if (!isAsset && !isAuxCheck && isHome && result.heroCtaCount !== 2) {
@@ -64,7 +56,14 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount !== 0) {
     reasons.push(`about hero should have no CTAs, got ${result.heroCtaCount}`);
   }
-  if (!isAsset && !isAuxCheck && !isHome && !isAbout && (result.heroCtaCount < 2 || result.heroCtaCount > 3)) {
+  if (
+    !isAsset &&
+    !isAuxCheck &&
+    !isHome &&
+    !isAbout &&
+    !isPrivacy &&
+    (result.heroCtaCount < 2 || result.heroCtaCount > 3)
+  ) {
     reasons.push(`hero CTA count should be 2-3, got ${result.heroCtaCount}`);
   }
   if (!isAsset && !isAuxCheck && result.cardHeightSpread > 220) {
@@ -89,7 +88,6 @@ export function failureReasons(result) {
     reasons.push("missing SoftwareApplication structured data");
   if (result.visibleForbiddenTerms?.length > 0)
     reasons.push(`Chinese copy contains forbidden terms: ${result.visibleForbiddenTerms.join(", ")}`);
-  if (result.oldS3Facts) reasons.push("outdated s3-turbo-list facts are still visible");
   if (!result.textOk)
     reasons.push(`content or interaction check failed${result.details ? `: ${JSON.stringify(result.details)}` : ""}`);
   if (!navOk) reasons.push(`navigation visibility mismatch: nav=${result.nav}, mobile=${result.mobile}`);

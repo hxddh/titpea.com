@@ -29,7 +29,7 @@ See [DESIGN.md](DESIGN.md) for design principles and review rules, and [AGENTS.m
 
 The site is deployed to the existing Cloudflare Pages project `titpea`.
 
-GitHub Actions builds and deploys on every push to `main`. A daily scheduled run (02:17 Singapore time) checks product repositories for new release tags and redeploys only when one changed. Configure this repository secret before running the deployment workflow:
+GitHub Actions builds and deploys on every push to `main`. A daily scheduled run checks product repositories for new release tags and redeploys only when one changed. Its cron is 18:17 UTC (02:17 Singapore time), but GitHub starts scheduled runs hours late, in practice 3 to 6.5 hours after that. Configure this repository secret before running the deployment workflow:
 
 - `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with Cloudflare Pages edit access for the account.
 

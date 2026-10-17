@@ -638,6 +638,8 @@ export type SiteRoute = {
   expectedText: string[];
   primaryCta?: string;
   sectionIndex?: boolean;
+  /** Section links the local nav shows: the nav items when `sectionIndex`, otherwise none. */
+  sectionLinks?: number;
   browserVisual?: boolean;
 };
 
@@ -654,6 +656,7 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   expectedText: page.expectedText,
   primaryCta: page.kind === "about" ? undefined : page.primaryCta,
   sectionIndex: page.kind === "product" ? page.sectionIndex : undefined,
+  sectionLinks: page.kind === "product" ? (page.sectionIndex ? page.navItems.length : 0) : undefined,
   browserVisual:
     page.kind === "product" ? productBySlug(page.slug).schema.category === "BrowserApplication" : undefined,
 }));

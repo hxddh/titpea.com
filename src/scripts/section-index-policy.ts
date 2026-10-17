@@ -4,7 +4,6 @@ export const sectionIndexPolicy = {
   mobileScrollMarginPx: 76,
   activationViewportRatio: 0.18,
   minimumActivationOffsetPx: 44,
+  /** After a click, the index re-reads the active section this much later; QA waits past it, then for a steady state. */
   clickStabilizeDelayMs: 80,
-  qaClickWaitMs: 700,
-  qaStickyWaitMs: 100,
 } as const;

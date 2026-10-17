@@ -5,7 +5,7 @@ import { zhForbiddenTerms } from "../copy-rules.mjs";
 
 export async function checkRoute(page, viewport, route) {
   const path = route.path;
-  await visit(page, new URL(path, baseUrl), `${viewport.name} route`);
+  await visit(page, new URL(path, baseUrl), `${viewport.name} route`, { images: true });
   const metrics = await page.evaluate(
     ({ route, zhForbiddenTerms }) => {
       const nav = document.querySelector(".nav");
@@ -114,7 +114,6 @@ export async function checkRoute(page, viewport, route) {
               };
             })()
           : null,
-        oldS3Facts: document.body.innerText.includes("MIT License") || document.body.innerText.includes("v0.5.0"),
         text: document.body.innerText,
       };
     },

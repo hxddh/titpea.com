@@ -11,6 +11,13 @@ export const lines: Line[] = ["storage", "agents", "everyday", "games"];
 export type Link = { label: string; href: string };
 export type Image = { src: string; alt: string; width: number; height: number };
 
+/**
+ * Provenance: the release tag a capture or claim describes ("v14.0.0").
+ * Optional. `npm run check` warns when the product's synced release is a
+ * major version ahead of it, and lists every such capture and claim.
+ */
+export type AsOf = { asOf?: string };
+
 /* ---------- Sections ---------- */
 
 /**
@@ -30,8 +37,11 @@ export type Card = {
 /** Equal-weight cards: fit, limits, features. `numbered` makes them a step flow. */
 export type CardsSection = { kind: "cards"; id: string; label: string; items: Card[]; numbered?: boolean };
 
+/** One adoption question. `asOf` names the release its answer describes. */
+export type FaqItem = Card & AsOf;
+
 /** Adoption questions, rendered as a disclosure list and as FAQPage structured data. */
-export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: Card[] };
+export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: FaqItem[] };
 
 /** Named compatibility targets. */
 export type CasesSection = { kind: "cases"; id: string; label: string; title: string; items: string[]; body?: string };
@@ -165,12 +175,12 @@ type VisualBase = {
 
 export type Visual = VisualBase &
   (
-    | {
+    | ({
         kind: "screenshot";
         image: Image;
         /** Shown under the image; required wording for anything that is not a plain capture. */
         caption?: string;
-      }
+      } & AsOf)
     | {
         kind: "clockScreenshots";
         images: Array<Image & { className: string }>;
@@ -245,21 +255,22 @@ export type Visual = VisualBase &
 
 export type VisualKind = Visual["kind"];
 
-/** A photograph after the hero: a compact head over the full captured frame. */
-export type Showcase = Image & {
-  title: string;
-  body: string;
-  /**
-   * A short muted screen recording of the real app. The image above is its
-   * poster and the fallback; the recording plays only in view and never under
-   * reduced motion.
-   */
-  video?: { mp4: string; webm?: string };
-  /** Shown under the image; required wording for anything that is not a plain capture. */
-  caption?: string;
-  /** Sit under the section with this id instead of opening the page. */
-  beside?: string;
-};
+/** A photograph after the hero: a compact head over the full captured frame. `asOf` names the release it shows. */
+export type Showcase = Image &
+  AsOf & {
+    title: string;
+    body: string;
+    /**
+     * A short muted screen recording of the real app. The image above is its
+     * poster and the fallback; the recording plays only in view and never under
+     * reduced motion.
+     */
+    video?: { mp4: string; webm?: string };
+    /** Shown under the image; required wording for anything that is not a plain capture. */
+    caption?: string;
+    /** Sit under the section with this id instead of opening the page. */
+    beside?: string;
+  };
 
 /** One figure in the stats band. Every figure must be traceable to the product's docs or tests. */
 export type Stat = { value: string; label: string };
@@ -268,8 +279,11 @@ export type Stat = { value: string; label: string };
 export type Commands = {
   title: string;
   sub?: string;
-  /** `capturedOutput` is real, captured output of that exact command (never written by hand). */
-  items: Array<{ comment: string; command: string; capturedOutput?: string }>;
+  /**
+   * `capturedOutput` is real, captured output of that exact command (never
+   * written by hand); `asOf` names the release it was captured from.
+   */
+  items: Array<{ comment: string; command: string; capturedOutput?: string } & AsOf>;
 };
 
 /**
