@@ -105,6 +105,15 @@ for (const { file, html } of pages) {
   }
 }
 
+/* ---------- SVG assets ---------- */
+
+// style-src 'self' also blocks inline styles inside SVGs served as files.
+for (const file of fs.readdirSync("dist", { recursive: true })) {
+  if (typeof file !== "string" || !file.endsWith(".svg")) continue;
+  const svg = fs.readFileSync(path.join("dist", file), "utf8");
+  if (/\sstyle="|<style[\s>]/.test(svg)) fail(`dist/${file}: inline style conflicts with the CSP`);
+}
+
 /* ---------- Sitemap ---------- */
 
 const sitemap = fs.readFileSync("dist/sitemap.xml", "utf8");
