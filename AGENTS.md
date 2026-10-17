@@ -35,6 +35,12 @@ Replacing an image under the same file name is fine: the build appends `?v=<cont
 
 A new hero object is the only case that needs a component: add a `kind` to `Visual` in `schema.ts` and a file in `components/product/visuals/`.
 
+### Provenance: `asOf`
+
+Screenshot visuals, showcases, `commands.items` (for their `capturedOutput`) and FAQ items take an optional `asOf: "v14.0.0"`: the release tag the capture or answer describes. Set it when you capture a screenshot or output, or write an answer that depends on a version. `npm run check` fails on a value that is not a tag, and warns (without failing) when the product's release in `releases.json` is a major version ahead, listing each item so it can be recaptured or rechecked.
+
+`npm run check` also fails when a product names an image or recording under `public/` that does not exist, when an image's declared `width`/`height` differ from the file's own size, and when `tokens.css` lacks the product's `--tint-<slug>`/`--ink-<slug>` (light and both dark blocks) or its `body[data-product]` mapping.
+
 ## After copy, layout, or style changes
 
 ```sh
@@ -49,4 +55,4 @@ After an intentional visual change to one of the baseline screens (`scripts/visu
 
 ## Ship
 
-When CI is green, merge to `main`. The deploy job syncs release tags, builds, deploys, and runs the production smoke test; every day at 02:17 Singapore time a scheduled run checks for new release tags and redeploys only when one changed.
+When CI is green, merge to `main`. The deploy job syncs release tags, builds, deploys, and runs the production smoke test; once a day a scheduled run checks for new release tags and redeploys only when one changed. The cron is set for 18:17 UTC (02:17 Singapore time), but GitHub starts scheduled runs late, in practice 3 to 6.5 hours late (roughly 21:00–00:45 UTC, 05:00–08:45 Singapore time), so do not count on the exact time.

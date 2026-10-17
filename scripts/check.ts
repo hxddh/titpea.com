@@ -91,6 +91,7 @@ function visibleStrings(value: unknown, key = ""): string[] {
       "src",
       "command",
       "capturedOutput",
+      "asOf",
       "className",
       "kind",
       "id",
@@ -265,9 +266,137 @@ for (const image of new Set(siteRoutes.map((route) => route.ogImage))) {
   }
 }
 
+/* ---------- Product images ---------- */
+
+// Every screenshot, showcase, featured photograph, demo fallback and
+// recording a product names must exist, and an image's declared width and
+// height (which size the frame and the srcset) must be the file's own.
+type ImageRef = { at: string; src: string; width?: number; height?: number };
+
+function productImages(value: unknown, at: string): ImageRef[] {
+  if (Array.isArray(value)) return value.flatMap((item, index) => productImages(item, `${at}[${index}]`));
+  if (!value || typeof value !== "object") return [];
+  const record = value as Record<string, unknown>;
+  const refs: ImageRef[] = [];
+  const size = {
+    width: typeof record.width === "number" ? record.width : undefined,
+    height: typeof record.height === "number" ? record.height : undefined,
+  };
+  if (typeof record.src === "string") refs.push({ at, src: record.src, ...size });
+  // A featured photograph may carry one capture per locale.
+  if (record.src && typeof record.src === "object") {
+    for (const [locale, src] of Object.entries(record.src)) {
+      if (typeof src === "string") refs.push({ at: `${at}.src.${locale}`, src, ...size });
+    }
+  }
+  for (const key of ["mp4", "webm"]) {
+    if (typeof record[key] === "string") refs.push({ at: `${at}.${key}`, src: record[key] as string });
+  }
+  for (const [key, child] of Object.entries(record)) {
+    if (key !== "src") refs.push(...productImages(child, `${at}.${key}`));
+  }
+  return refs;
+}
+
+const imageSizes = new Map<string, Promise<{ width?: number; height?: number }>>();
+for (const product of products) {
+  const refs = [
+    ...(product.featured ? productImages(product.featured, `${product.slug}.featured`) : []),
+    ...locales.flatMap((locale) => productImages(product[locale], `${product.slug}.${locale}`)),
+  ];
+  for (const ref of refs) {
+    // Only files the site serves itself; external links are not images here.
+    if (!ref.src.startsWith("/")) continue;
+    const file = `public${ref.src.split(/[?#]/)[0]}`;
+    if (!fs.existsSync(file)) {
+      fail(`${ref.at}: ${ref.src} does not exist`);
+      continue;
+    }
+    if (ref.width === undefined && ref.height === undefined) continue;
+    if (!imageSizes.has(file)) imageSizes.set(file, sharp(file).metadata());
+    const meta = await imageSizes.get(file)!;
+    if (meta.width !== ref.width || meta.height !== ref.height) {
+      fail(`${ref.at}: ${ref.src} is declared ${ref.width}×${ref.height} but the file is ${meta.width}×${meta.height}`);
+    }
+  }
+}
+
+/* ---------- Provenance ---------- */
+
+// `asOf` names the release a screenshot, showcase, captured output or FAQ
+// answer describes. A product whose synced release is a whole major version
+// ahead gets a warning (not a failure), listing every such item to recheck.
+const tagPattern = /^v?(\d+)\.\d+(\.\d+)?([-+][\w.]+)?$/;
+const majorOf = (tag: string) => Number(tagPattern.exec(tag)?.[1]);
+const staleClaims: string[] = [];
+
+function asOfRefs(value: unknown, at: string): Array<{ at: string; asOf: string }> {
+  if (Array.isArray(value)) return value.flatMap((item, index) => asOfRefs(item, `${at}[${index}]`));
+  if (!value || typeof value !== "object") return [];
+  const record = value as Record<string, unknown>;
+  const label = typeof record.title === "string" ? ` "${record.title}"` : "";
+  return [
+    ...(typeof record.asOf === "string" ? [{ at: `${at}${label}`, asOf: record.asOf }] : []),
+    ...Object.entries(record).flatMap(([key, child]) => asOfRefs(child, `${at}.${key}`)),
+  ];
+}
+
+for (const product of products) {
+  const release = (releases as Record<string, { version?: string }>)[product.slug]?.version;
+  for (const locale of locales) {
+    for (const ref of asOfRefs(product[locale], `${product.slug}.${locale}`)) {
+      if (!tagPattern.test(ref.asOf)) {
+        fail(`${ref.at}: asOf "${ref.asOf}" is not a release tag like v1.2.3`);
+        continue;
+      }
+      if (!release) {
+        fail(`${ref.at}: asOf ${ref.asOf}, but ${product.slug} has no releases.json entry`);
+        continue;
+      }
+      if (majorOf(release) > majorOf(ref.asOf)) staleClaims.push(`${ref.at}: as of ${ref.asOf}, release is ${release}`);
+    }
+  }
+}
+
 /* ---------- Style ---------- */
 
 const tokens = read("src/styles/tokens.css");
+
+// Each product page wears its own color pair (DESIGN.md): --tint-<slug> and
+// --ink-<slug> in the light :root, in both dark blocks (the toggle and the OS
+// preference), and the body[data-product] rule that maps them.
+function cssBlock(css: string, selector: string): string | undefined {
+  const start = css.indexOf(`${selector} {`);
+  if (start === -1) return undefined;
+  let depth = 0;
+  for (let index = css.indexOf("{", start); index < css.length; index += 1) {
+    if (css[index] === "{") depth += 1;
+    if (css[index] === "}" && --depth === 0) return css.slice(start, index + 1);
+  }
+  return undefined;
+}
+const darkMedia = cssBlock(tokens, "@media (prefers-color-scheme: dark)");
+const colorBlocks: Array<[string, string | undefined]> = [
+  ["light :root", cssBlock(tokens, ":root")],
+  [':root[data-theme="dark"]', cssBlock(tokens, ':root[data-theme="dark"]')],
+  ["prefers-color-scheme: dark", darkMedia && cssBlock(darkMedia, ':root:not([data-theme="light"])')],
+];
+for (const [name, block] of colorBlocks) if (!block) fail(`tokens.css: cannot find the ${name} block`);
+for (const product of products) {
+  for (const [name, block] of colorBlocks) {
+    if (!block) continue;
+    for (const token of [`--tint-${product.slug}`, `--ink-${product.slug}`]) {
+      if (!new RegExp(`${token}:\\s*[^;]+;`).test(block)) fail(`tokens.css: ${token} is missing in the ${name} block`);
+    }
+  }
+  const mapping = cssBlock(tokens, `body[data-product="${product.slug}"]`);
+  if (
+    !mapping?.includes(`--product-tint: var(--tint-${product.slug})`) ||
+    !mapping.includes(`--product-ink: var(--ink-${product.slug})`)
+  ) {
+    fail(`tokens.css: body[data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
+  }
+}
 const defined = new Set([...tokens.matchAll(/(--[a-z0-9-]+):/g)].map((match) => match[1]));
 const styleFiles = fs.readdirSync("src/styles").map((file) => `src/styles/${file}`);
 for (const file of styleFiles) {
@@ -318,6 +447,10 @@ if (tokenPx("--section-index-mobile-scroll-margin") !== sectionIndexPolicy.mobil
 
 /* ---------- Report ---------- */
 
+if (staleClaims.length > 0) {
+  console.warn(`Warning: ${staleClaims.length} capture(s) or claim(s) are a major release behind (asOf):`);
+  for (const claim of staleClaims) console.warn(`- ${claim}`);
+}
 if (failures.length > 0) {
   console.error(`Check failed (${failures.length}):`);
   for (const failure of failures) console.error(`- ${failure}`);
