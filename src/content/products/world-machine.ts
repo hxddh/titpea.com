@@ -85,9 +85,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "The world grows with you.",
+        label: "Its people act on their own.",
         items: [
-          { title: "A morning each day", body: "A letter, today's choice, something looked after, a find." },
+          { title: "What a morning brings", body: "A letter, today's choice, something looked after, a find." },
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
           { title: "Build, paint, name", body: "Scaffolding at once; paint a flag; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
@@ -206,9 +206,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "世界和你一起长大",
+        label: "居民自己过日子",
         items: [
-          { title: "每天一个早晨", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
+          { title: "早晨带来什么", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
           { title: "建造、绘制、命名", body: "一开工就搭起脚手架；画一面旗，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },

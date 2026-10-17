@@ -12,13 +12,32 @@ export const zhForbiddenTerms = [
   "Markdown-first",
   "skill pack",
   "解决方案",
-  // Owner rule (October 2026): copy never leans on 依据 as a selling point.
+  // Owner rule (October 2026): copy never leans on 依据 or 证据 as a selling point.
   "依据",
+  "证据",
   "赋能",
   "无缝",
   "强大",
   "上下文能力",
 ];
+
+// Owner rule (October 2026): English copy is never framed as "evidence" either.
+export const enForbiddenTerms = ["evidence", "shows its work"];
+
+// The one exception: what a product itself names that way, quoted as it appears.
+export const forbiddenTermQuotes = [
+  "“PDF with evidence”", // PageWise's export, quoted by its menu name
+  "“带证据的 PDF”", // the same export in PageWise's Chinese interface
+  "Evidence: Strong (official blog)", // a line quoted verbatim from Agent Radar's radar.md
+];
+
+const withoutQuotes = (text) => forbiddenTermQuotes.reduce((rest, quote) => rest.split(quote).join(""), text);
+
+/** The owner's forbidden English terms, in copy of either locale. */
+export function enCopyIssues(strings) {
+  const lower = withoutQuotes(strings.join("\n")).toLowerCase();
+  return enForbiddenTerms.filter((term) => lower.includes(term)).map((term) => `forbidden term "${term}"`);
+}
 
 export const zhAwkwardPatterns = [
   { pattern: /不仅仅是|不只是一个|提供了一个/, label: "AI-like filler phrase" },
@@ -73,7 +92,7 @@ export function zhMixedSpacingIssues(text) {
 export function copyIssues(strings) {
   const issues = new Set();
   const text = strings.join("\n");
-  const lower = text.toLowerCase();
+  const lower = withoutQuotes(text).toLowerCase();
   for (const term of zhForbiddenTerms)
     if (lower.includes(term.trim().toLowerCase())) issues.add(`forbidden term "${term.trim()}"`);
   for (const issue of zhMixedSpacingIssues(text)) issues.add(issue);

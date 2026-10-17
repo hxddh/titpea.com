@@ -138,7 +138,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Five places, one Settings page.",
+        label: "Practice built from your games.",
         items: [
           { title: "Five places", body: "Today, Play, Train, Games and Me, plus one Settings page." },
           { title: "What to do next", body: "Today lists up to three tasks, each saying where it came from." },
@@ -291,7 +291,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "五个去处，一处设置",
+        label: "练习从你的对局里来",
         items: [
           { title: "五个去处", body: "今天、下棋、训练、棋谱、我的，外加一个设置页。" },
           { title: "接下来练什么", body: "今天页最多列三项，每项写明从哪来。" },

@@ -72,10 +72,10 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Know which session needs you.",
+        label: "Four lamp colours, in the menu bar.",
         items: [
-          { title: "Red means blocked", body: "A permission or question waits; its banner leaves once answered." },
-          { title: "Your turn, quietly", body: "Finished turns are counted in the header; no banner, no sound." },
+          { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
+          { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
           { title: "Last step, turn time", body: "Running rows show the latest tool step and the turn's length." },
           { title: "Orange means stalled", body: "Twenty minutes without news; the row names the last step." },
           { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
@@ -192,10 +192,10 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "哪个会话需要你，一眼可见",
+        label: "菜单栏里的四种灯色",
         items: [
-          { title: "红灯只给阻塞", body: "授权或提问在等你；回答后横幅自动撤回。" },
-          { title: "轮到你不报警", body: "做完的回合只在头部计数，不弹通知、不响。" },
+          { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
+          { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
           { title: "上一步与本回合", body: "运行中的行写出最近一步工具，和这一回合跑了多久。" },
           { title: "橙色表示停滞", body: "二十分钟没有新动静，行上点名上一步。" },
           { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },

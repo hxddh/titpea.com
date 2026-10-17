@@ -62,10 +62,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "The translation waits until you ask.",
+        label: "Sentence by sentence, word by word.",
         items: [
-          { title: "Hold to see", body: "Point at a paragraph; its translation floats beside it." },
-          { title: "Both languages", body: "In the margin when there is room, otherwise below each paragraph." },
+          { title: "Margin or below", body: "In the margin when there is room, otherwise below each paragraph." },
           {
             title: "Tuned for six sites",
             body: "X, Reddit, GitHub, Hacker News, Wikipedia, Stack Overflow: content only, no buttons.",
@@ -145,10 +144,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "译文等你来叫",
+        label: "按句对齐，按词查义",
         items: [
-          { title: "按住即现", body: "指向哪段，那段译文就浮在旁边。" },
-          { title: "双语对照", body: "右侧有空放边注，否则放在每段下方。" },
+          { title: "边注或段下", body: "右侧有空放边注，否则放在每段下方。" },
           {
             title: "常用网站适配",
             body: "X、Reddit、GitHub、Hacker News、维基百科、Stack Overflow：只译正文，不碰按钮。",

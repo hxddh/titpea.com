@@ -66,7 +66,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Every turn is saved to BOS.",
+        label: "The full Pi session, not a summary.",
         items: [
           { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
           { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
@@ -174,7 +174,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "每一轮都存进 BOS",
+        label: "完整的 Pi 会话，不是摘要",
         items: [
           { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
           { title: "每轮保存", body: "完成的回合进入 BOS 写入队列；条件写入检测冲突。" },

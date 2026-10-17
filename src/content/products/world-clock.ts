@@ -99,9 +99,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Only the cities you choose.",
+        label: "Up to 10 cities, in your order.",
         items: [
-          { title: "Working hours bright", body: "9 to 18 stay lit; weekends follow each city’s country." },
+          { title: "Local weekends", body: "9 to 18 stay lit; weekends follow each city’s country." },
           { title: "Offsets from you", body: "+7h or −5h from your local time, plus Tomorrow or Yesterday." },
           { title: "Clock changes ahead", body: "Daylight-saving shifts flagged two weeks early, like −7h → −8h." },
           { title: "Copy the times", body: "Click one time, or ⌘C / Ctrl+C for every city." },
@@ -231,9 +231,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "只显示你选的城市",
+        label: "最多 10 个城市，顺序由你定",
         items: [
-          { title: "工作时间常亮", body: "9 点到 18 点常亮；周末按各城市所在国家。" },
+          { title: "各地周末", body: "9 点到 18 点常亮；周末按各城市所在国家。" },
           { title: "相对你的时差", body: "显示 +7h、−5h 这样的时差，以及明天或昨天。" },
           { title: "提前提示换时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
           { title: "复制时间", body: "点击复制一个，或按 ⌘C / Ctrl+C 复制全部城市。" },

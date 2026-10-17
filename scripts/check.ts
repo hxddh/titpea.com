@@ -9,7 +9,7 @@ import { locales, type Locale, type Product, type ProductCopy } from "../src/con
 import { site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
-import { copyIssues } from "./copy-rules.mjs";
+import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
 
 const failures: string[] = [];
 const fail = (message: string) => failures.push(message);
@@ -191,6 +191,7 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
     if (!privacy.test(visibleStrings(copy).join("\n"))) fail(`${at}: browser extension must state its data posture`);
   }
   if (locale === "zh") for (const issue of copyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);
+  for (const issue of enCopyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);
 }
 
 const shape = (copy: ProductCopy) =>
@@ -216,6 +217,8 @@ for (const product of products) {
 }
 
 for (const issue of copyIssues(visibleStrings(ui.zh))) fail(`site copy (zh): ${issue}`);
+for (const locale of locales)
+  for (const issue of enCopyIssues(visibleStrings(ui[locale]))) fail(`site copy (${locale}): ${issue}`);
 for (const key of Object.keys(ui.en)) if (!(key in ui.zh)) fail(`site copy: "${key}" is missing in zh`);
 
 /* ---------- Pages and routes ---------- */

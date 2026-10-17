@@ -66,9 +66,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Set up a game, then learn from it.",
+        label: "Import an SGF and play on.",
         items: [
-          { title: "Three rule sets", body: "Freestyle, swap2, or Renju, picked on the New game card." },
+          { title: "Pick the rules", body: "Freestyle, swap2, or Renju, on the New game card." },
           { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
           { title: "One-click rematch", body: "Play again keeps your settings; on Alt, colours swap." },
           { title: "Replay the key move", body: "Start again from that move; the original game stays." },
@@ -164,9 +164,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "开一局，再从中学",
+        label: "导入 SGF，接着下",
         items: [
-          { title: "三套规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
+          { title: "选规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
           { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
           { title: "一键再来", body: "“再来一局”沿用设置；选“轮流”时自动换色。" },
           { title: "重下关键一手", body: "从那一手重下，原局一手不改。" },

@@ -34,7 +34,7 @@ export default defineProduct({
       items: [
         {
           value: "16",
-          label: "skill packs, including triage, evidence reporting, and eval",
+          label: "skill packs, including triage, reporting, and eval",
         },
         {
           value: "4",
@@ -65,7 +65,7 @@ export default defineProduct({
       label: "StorageOps",
       kicker: "Pi Agent",
       title: "A Pi diagnosis uses skills, then tools",
-      body: "StorageOps gives Pi a storage-specific route: a skill chooses the method, then an extension tool handles the evidence safely.",
+      body: "StorageOps gives Pi a storage-specific route: a skill chooses the method, then an extension tool redacts secrets or traces one command.",
       cards: [
         {
           number: "SKILL",
@@ -95,9 +95,12 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Pi stays the runtime.",
+        label: "No second agent, no cloud console.",
         items: [
-          { title: "Skills on Pi", body: "No second agent, no cloud console, no cloud account." },
+          {
+            title: "Past sessions, searchable",
+            body: "`search_memory` returns scored, redacted snippets from earlier Pi sessions.",
+          },
           { title: "Secrets redacted", body: "Before material reaches the agent context." },
           { title: "Storage untouched", body: "At most one bounded, traced command; you make the change." },
         ],
@@ -107,12 +110,15 @@ export default defineProduct({
         id: "how",
         nav: "How it works",
         kicker: "What Pi loads and calls",
-        title: "Skills set the method. Tools read the evidence.",
-        body: "Pi is the runtime. StorageOps supplies the storage knowledge and the tools.",
+        title: "Skills set the method. Tools read logs and traces.",
+        body: "13 diagnostic skill packs, from security and protocol compatibility to notifications.",
         steps: [
           { label: "Bring the material", body: "An exact error, `@log` file, config excerpt, or debug output." },
           { label: "Pick the domain", body: "`detect_domain` ranks likely areas and points Pi to a skill." },
-          { label: "Load a skill", body: "SigV4, IAM, lifecycle, replication, Spark S3A; tools read the evidence." },
+          {
+            label: "Load a skill",
+            body: "SigV4, IAM, lifecycle, replication, Spark S3A; helper scripts parse logs and policies.",
+          },
         ],
       },
       {
@@ -187,7 +193,7 @@ export default defineProduct({
       items: [
         {
           value: "16",
-          label: "个技能包，含分诊、证据报告和评测",
+          label: "个技能包，含分诊、报告和评测",
         },
         {
           value: "4",
@@ -218,7 +224,7 @@ export default defineProduct({
       label: "StorageOps",
       kicker: "Pi Agent",
       title: "Pi 先加载技能包，再调用工具",
-      body: "StorageOps 给 Pi 一条对象存储排查路径：技能包决定方法，扩展工具再安全地处理现场证据。",
+      body: "StorageOps 给 Pi 一条对象存储排查路径：技能包决定方法，扩展工具再脱敏凭据，或 trace 一条命令。",
       cards: [
         {
           number: "SKILL",
@@ -248,9 +254,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Pi 仍是运行时",
+        label: "不加 Agent，不做云控制台",
         items: [
-          { title: "装在 Pi 上", body: "不加第二个 Agent，不做云控制台，不接云账号。" },
+          { title: "旧会话可检索", body: "`search_memory` 检索以往的 Pi 会话，返回打分并脱敏的片段。" },
           { title: "先脱敏", body: "凭据值在进入 Agent 上下文前脱敏。" },
           { title: "不改存储", body: "最多受限 trace 一条命令；改动由你来做。" },
         ],
@@ -260,12 +266,12 @@ export default defineProduct({
         id: "how",
         nav: "排查过程",
         kicker: "Pi 加载什么、调用什么",
-        title: "技能包定方法，工具读证据",
-        body: "Pi 是运行时。StorageOps 补上对象存储领域的知识和工具。",
+        title: "技能包定方法，工具读日志和 trace",
+        body: "13 个诊断技能包，从安全、协议兼容到事件通知。",
         steps: [
           { label: "带上材料", body: "原始报错、`@日志文件`、配置片段或 debug 输出。" },
           { label: "识别领域", body: "`detect_domain` 给出优先方向，提示 Pi 读哪个技能包。" },
-          { label: "加载技能包", body: "SigV4、IAM、生命周期、复制、Spark S3A；再由工具读证据。" },
+          { label: "加载技能包", body: "SigV4、IAM、生命周期、复制、Spark S3A；辅助脚本解析日志和策略。" },
         ],
       },
       {

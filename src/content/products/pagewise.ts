@@ -57,7 +57,7 @@ export default defineProduct({
         kind: "cards",
         id: "how",
         nav: "How it works",
-        label: "Answers point back to the page.",
+        label: "Every answer lists the pages it read.",
         items: [
           { title: "Ask or select", body: "Ask a question, or select a passage first." },
           { title: "PageWise reads", body: "It searches the document and reads relevant pages." },
@@ -170,7 +170,7 @@ export default defineProduct({
         kind: "cards",
         id: "how",
         nav: "用法",
-        label: "回答附带页引用，可回原页",
+        label: "每个回答都写明读了哪几页",
         items: [
           { title: "提问或选中", body: "直接提问，或选中一段再问。" },
           { title: "PageWise 读取", body: "搜索文档，读取相关页面。" },

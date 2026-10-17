@@ -59,10 +59,10 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Read as the agent writes.",
+        label: "Built for files agents keep rewriting.",
         items: [
-          { title: "Follows the file", body: "Updates land block by block; the paragraph you are reading stays put." },
-          { title: "Marks what changed", body: "New and edited blocks get a bar; click it for the words." },
+          { title: "Your place holds", body: "Block-by-block updates; at the end, it follows like a terminal." },
+          { title: "Which words changed", body: "Click an edited block’s bar; N jumps to the next change." },
           { title: "Remembers what you read", body: "Marks fade once read, and survive a relaunch." },
           {
             title: "Outline with progress",
@@ -172,10 +172,10 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Agent 边写，你边读",
+        label: "为 Agent 反复改写的文件而做",
         items: [
-          { title: "跟随写入", body: "按段落增量更新，你正在读的段落不会跳动。" },
-          { title: "标出变更", body: "新增和修改的段落旁有一条细线，点开看改了哪些词。" },
+          { title: "读到哪停在哪", body: "按段落增量更新；读到末尾时，像终端一样跟着走。" },
+          { title: "改了哪些词", body: "点修改段落旁的细线查看；按 N 跳到下一处。" },
           { title: "记得读过哪里", body: "读过后标记自动消退，重启后仍然保留。" },
           { title: "带进度的大纲", body: "标题旁显示任务完成数，有未读变更的章节标出圆点。" },
           { title: "完整 GFM", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
