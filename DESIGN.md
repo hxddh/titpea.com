@@ -15,7 +15,7 @@ When a principle and a constraint disagree, satisfy the constraint and rework th
 
 ## Page Shape
 
-Every page uses the same few parts. Build new content from them before inventing a new part.
+Every page builds from the same few parts below; build new content from them before inventing a new part. Product pages arrange them by kind (see Templates), so a CLI, an app, an extension and a game no longer share one layout.
 
 - **Chrome.** A glass pill header (`.site-header-bar.glass`) holds the site mark and the wordmark Titpea, the four product lines as dropdowns, About, GitHub, language, and theme. On product pages the header scrolls away and the **local nav** pins instead: a glass pill with the product name, at most four section links (the first sections, then `Get started` and `FAQ`), and one filled primary action. On narrow screens the section links collapse behind a `Sections` / `目录` disclosure and the action hides only when that disclosure is present.
 - **Hero.** Centered, over a soft color wash (`.wash`). Eyebrow, then `h1`, then a balanced lede, then actions, then a mono meta line. Product heroes put the product object below the copy, centered.
@@ -36,6 +36,17 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Where next.** After the closing action, one quiet row: `More in {line}` / `更多{line}工具` in small type, three products as icon and name (no cards, one-liners, or tags), taken from the rest of the product's line in site order after it, then from the other lines (the label becomes `More tools` / `更多工具`), and an `All tools` link. A product page never dead-ends, and its ending stays one band.
 - **Footer.** On desktop (except 404, whose page already lists every product), a map of the site: one column per product line with every product, then a Titpea column (Home, About, Releases, Privacy, the releases feed, GitHub, the other language). Phones skip the map (the menu already lists every product). Then copyright on the left and email on the right.
 - **Code in copy.** Product copy writes code as `` `code` ``; `Prose.astro` renders it as an inline code chip and structured data drops the backticks. `check:dist` fails if a raw backtick reaches page text.
+
+## Templates
+
+A product's `type` (`schema.ts`) picks one of four body compositions (`templateOf`). The chrome, tokens, data statement, FAQ content, closing action and where-next row stay shared. Where a template differs from the parts above, the template wins.
+
+- **Tool** (`cli`, `pi`, `actions`: s3-turbo-list, httpmon, StorageOps, celagent, Agent Radar). A split hero: claim, lede, the first `Get started` command ready to copy, actions and meta on the left; the product object on the right. When a command carries a captured `replay`, that terminal takes the hero's right side and the product's own object (s3-turbo-list's chart) follows as the first section; the replay is not repeated in `Get started`. Two or more commands sit side by side as numbered steps. `cases` whose items all name a status (`Verified: AWS S3`) render as a table, one row per status. Hero `h1` steps down to about 60px.
+- **App** (`desktop`, `mac`, `experiment`: Storage Agent, PageWise, Pulse, Readout, World Machine). The centered hero and the large real capture stay. The install note becomes an amber pill under the download. Showcases sit beside their text, alternating sides, as a session told in pictures.
+- **Extension** (`extension`: World Clock, Douban, Easier Bookmarks, Bilingual). A split hero with the working demo or capture on the right, and under the actions a box with what the extension touches: the network level and where data stays, the same facts as `/privacy/` (`privacy` in the product file, never new claims). Features are a plain three-column list; the FAQ is two columns with every answer open. The page stays short.
+- **Game** (`game`: Chessboard, Goban). Unchanged: serif display lines, warm paper, raised cards, centered heads.
+
+On every template but game: feature cards drop the raised fill for a titled line under a hairline, section heads and their `.sub` sit left over left-aligned text, and narrow sections share the shell's left edge. The "at most six cards" ceiling still applies.
 
 ## Home
 
