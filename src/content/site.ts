@@ -172,7 +172,7 @@ export const ui: Record<Locale, Ui> = {
       },
       games: {
         when: "Chess, Gomoku, or a small world of your own.",
-        value: "Review the game when it ends; the world keeps going while you are away.",
+        value: "Review the game when it ends; a small world grows a day at a time.",
       },
     },
     aboutReleasesTitle: "Latest releases.",
@@ -260,7 +260,7 @@ export const ui: Record<Locale, Ui> = {
       },
       games: {
         when: "下国际象棋、五子棋，或者养一个小世界。",
-        value: "下完能复盘；你离开时，世界仍在继续。",
+        value: "下完能复盘；小世界一天一天地长大。",
       },
     },
     aboutReleasesTitle: "最近的发布",

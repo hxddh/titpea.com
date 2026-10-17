@@ -26,13 +26,13 @@ export default defineProduct({
   en: {
     title: "World Machine",
     description:
-      "A small persistent world that keeps living while you are away and tells you what changed when you return. An experimental macOS app in pre-alpha.",
+      "A small persistent world that grows a day at a time: each day you sit down with it, a morning brings a letter, a choice and a find. An experimental macOS app in pre-alpha.",
     eyebrow: "Experimental macOS project",
-    headline: "A world that keeps going.",
-    lead: "Leave it. Come back to the news. macOS pre-alpha.",
+    headline: "It grows a day at a time.",
+    lead: "Come back each day. A morning waits. macOS pre-alpha.",
     catalog: {
       role: "Pre-alpha",
-      text: "A world that keeps living while you are away. macOS, pre-alpha.",
+      text: "A small world with a morning for every day you visit. macOS, pre-alpha.",
     },
     primaryCta: {
       label: "Download",
@@ -85,11 +85,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Live in it, or leave it.",
+        label: "The world grows with you.",
         items: [
+          { title: "A morning each day", body: "A letter, today's choice, something looked after, a find." },
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
-          { title: "Build, and it shows", body: "Scaffolding at once; after the fête, bunting for a few days." },
-          { title: "Designs and names", body: "Paint a flag or a sail; name boats and babies." },
+          { title: "Build, paint, name", body: "Scaffolding at once; paint a flag; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
           { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
           { title: "Agent-ready", body: "Pi, a local agent, or your own API key can voice it." },
@@ -114,7 +114,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version. Each World Pack has its own version, and a World saved by a Pack version the app does not ship does not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version; Worlds saved by v0.28 and v0.29 open too, though no test holds one of their files. Each World Pack has its own version, and a World saved by a Pack version the app does not ship does not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -125,12 +125,12 @@ export default defineProduct({
             body: "Yes. World Machine Demo, on the same Releases page, is 20 to 30 minutes of Tiny Society, up to day 8. Your harbour stays in My Worlds, and the full app opens it and carries on.",
           },
           {
-            title: "How far does a World move while I am away?",
-            body: "One period for every six hours you were away, at most 28 periods (a week) per return. The return briefing says how many.",
+            title: "Does a World move while I am away?",
+            body: "No, not since v0.30. Opening a World on a new day of this computer's calendar begins a sitting, which passes one World day, or three on a World's very first. A week or a month away still brings one day. A World from v0.29 or earlier gets one day at its next sitting, and the time it was away is not caught up. When the day is spent, a Goodnight card comes up and the World sleeps until tomorrow.",
           },
           {
             title: "What does World voice do?",
-            body: "When you turn it on in Settings, a model words what happened while you were away and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Crisis and sexual topics are never sent to a model, and each model answer is marked “Written by AI” with a Report button. What talk does, such as warmth or a favour done, is decided only by the World's own reading of your words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools or extensions and keeps no session on disk, and every verdict is recorded, so replaying a World never asks a model again.",
+            body: "When you turn it on in Settings, a model words what the World tells you when you come back and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Crisis and sexual topics are never sent to a model, and each model answer is marked “Written by AI” with a Report button. What talk does, such as warmth or a favour done, is decided only by the World's own reading of your words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools or extensions and keeps no session on disk, and every verdict is recorded, so replaying a World never asks a model again.",
           },
           {
             title: "Do people understand everything I type?",
@@ -146,13 +146,14 @@ export default defineProduct({
   },
   zh: {
     title: "World Machine",
-    description: "一个在你离开时仍在继续的小世界，回来时告诉你发生了什么。面向 macOS 的实验性应用，当前为早期预览版。",
+    description:
+      "一个一天一天长大的小世界：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。面向 macOS 的实验性应用，当前为早期预览版。",
     eyebrow: "macOS 实验项目",
-    headline: "离开时，世界仍在继续",
-    lead: "放着它。回来听新鲜事。macOS 早期预览版。",
+    headline: "世界一天一天地长大",
+    lead: "每天回来看看。早晨在等你。macOS 早期预览版。",
     catalog: {
       role: "早期预览",
-      text: "你离开时仍在继续的小世界。macOS，早期预览版。",
+      text: "每天来，都有早晨等你的小世界。macOS，早期预览版。",
     },
     primaryCta: {
       label: "下载",
@@ -205,11 +206,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "住进去，或放着它",
+        label: "世界和你一起长大",
         items: [
+          { title: "每天一个早晨", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
-          { title: "建了就看得见", body: "一开工就搭起脚手架；游园会后，彩旗挂上几天。" },
-          { title: "设计与命名", body: "画旗帜或船帆，给船和新生儿起名。" },
+          { title: "建造、绘制、命名", body: "一开工就搭起脚手架；画一面旗，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
           { title: "可接 Agent", body: "本机 Agent Pi 或你自己的 API 密钥，都能为世界发声。" },
@@ -234,7 +235,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行。每个 World Pack 有自己的版本号，由应用未内置的 Pack 版本保存的世界打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行；v0.28 与 v0.29 保存的世界也能打开，只是没有测试用到它们的文件。每个 World Pack 有自己的版本号，由应用未内置的 Pack 版本保存的世界打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
@@ -245,12 +246,12 @@ export default defineProduct({
             body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的 20 到 30 分钟，玩到第 8 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
           },
           {
-            title: "离开时世界会走多远？",
-            body: "每离开六小时前进一个周期，每次回来最多 28 个周期（一周）。回来时的简报会说明走了多少。",
+            title: "我不在时世界还会走吗？",
+            body: "不会，v0.30 起是这样。在这台电脑日历上的新一天打开世界，就是一次到访：世界走一天，全新世界的第一次走三天。离开一周或一个月，也只走一天。v0.29 及更早版本的世界，下次到访只走一天，离开的时间不会补上。这一天过完后会出现“晚安”卡片，世界睡到明天。",
           },
           {
             title: "世界之声能做什么？",
-            body: "在设置里打开后，由模型讲述你离开时发生的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。涉及危机和性的话题从不发给模型；模型写的每句回答都标有“AI 撰写”，并带“举报”按钮。对话带来的结果，比如好感或帮成的忙，只由世界自己对你原话的理解决定。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具和扩展，也不在磁盘上保留会话；每个裁定都会记录下来，回放世界时不会再问模型。",
+            body: "在设置里打开后，由模型讲述你回来时世界告诉你的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。涉及危机和性的话题从不发给模型；模型写的每句回答都标有“AI 撰写”，并带“举报”按钮。对话带来的结果，比如好感或帮成的忙，只由世界自己对你原话的理解决定。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具和扩展，也不在磁盘上保留会话；每个裁定都会记录下来，回放世界时不会再问模型。",
           },
           {
             title: "我打的每句话都能听懂吗？",
