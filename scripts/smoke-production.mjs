@@ -1,4 +1,5 @@
 import { siteRoutes } from "../src/lib/pages.ts";
+import { privacyRoutes } from "./privacy-routes.mjs";
 
 const baseUrl = process.env.SMOKE_BASE_URL ?? "https://titpea.com";
 // A fresh deploy can take a little while to reach every CDN edge, so give the
@@ -11,7 +12,8 @@ const retryDelayMs = 5_000;
 // landmarks, declare the right language, and render its own page-specific
 // <title>. Driving this from siteRoutes keeps the smoke test in sync with
 // content automatically instead of hardcoding strings that silently drift.
-const checks = siteRoutes.map((route) => ({
+// The privacy pages that store listings link to are checked the same way.
+const checks = [...siteRoutes, ...privacyRoutes].map((route) => ({
   path: route.path,
   title: route.title,
   lang: route.locale === "zh" ? "zh-CN" : "en",
