@@ -73,7 +73,7 @@ export default defineProduct({
         items: [
           { title: "In the page margin", body: "With the panel closed, cited sentences show their state there." },
           { title: "Cited tables", body: "Every cell cited; export as CSV with its sources." },
-          { title: "PDF with evidence", body: "Findings and your marks as highlights, from Export…" },
+          { title: "A highlighted PDF copy", body: "Findings and your marks as highlights, from Export…" },
         ],
       },
       {
@@ -111,7 +111,7 @@ export default defineProduct({
           },
           {
             title: "Does the PDF export change my original?",
-            body: "No. PDF with evidence writes a copy to a new file you choose, with located findings and your marks as highlights. A signed PDF's signature does not survive in the copy, and encrypted PDFs cannot be annotated.",
+            body: "No. The “PDF with evidence” export writes a copy to a new file you choose, with located findings and your marks as highlights. A signed PDF's signature does not survive in the copy, and encrypted PDFs cannot be annotated.",
           },
           {
             title: "Does it search the web?",
@@ -186,7 +186,7 @@ export default defineProduct({
         items: [
           { title: "写在页边", body: "关闭侧栏时，引用本页的句子连同核对状态显示在页边。" },
           { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
-          { title: "带证据的 PDF", body: "结论和你的批注写成高亮，在“导出…”里选。" },
+          { title: "带高亮的 PDF 副本", body: "结论和你的批注写成高亮，在“导出…”里选。" },
         ],
       },
       {
