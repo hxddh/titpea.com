@@ -870,6 +870,13 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
   margin-top: 26px;
 }
 
+/* Long install commands wrap at spaces rather than scrolling under the button. */
+.hero-command .command-code {
+  overflow-x: visible;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 /* A captured replay takes the hero; the product's own object follows it. */
 .hero-visual-section .hero-visual-frame {
   margin-top: 0;
