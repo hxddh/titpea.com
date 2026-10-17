@@ -29,6 +29,11 @@ export default defineProduct({
       label: "Quick start",
       href: "https://github.com/hxddh/agent-radar#cli-usage",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "Scheduled GitHub Actions runs fetch public sources and send them to the model route you configure.",
+      stays: "Reports, telemetry and run logs are committed to your own repository; model keys are repository secrets.",
+    },
     meta: "Python · Markdown-first · GitHub Actions · MIT · {version}",
     commands: {
       title: "Get started",
@@ -100,6 +105,17 @@ export default defineProduct({
         ],
       },
       {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "Scheduled runs on GitHub Actions read free public sources; the X and Reddit OAuth lanes stay off unless you add their secrets.",
+          "Collected text goes to the model route you configure: GitHub Models with the built-in token, or Vercel AI Gateway with your key.",
+          "Reports, telemetry and run logs are committed to your own repository; local commands other than `source-refresh` and `trigger` stay offline.",
+        ],
+      },
+      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -138,6 +154,11 @@ export default defineProduct({
     secondaryCta: {
       label: "快速开始",
       href: "https://github.com/hxddh/agent-radar#cli-usage",
+    },
+    privacy: {
+      network: "automatic",
+      networkNote: "GitHub Actions 定时运行，抓取公开来源，交给你配置的模型线路。",
+      stays: "报告、遥测和运行日志提交到你自己的仓库；模型密钥存为仓库 secret。",
     },
     meta: "Python · Markdown 优先 · GitHub Actions · MIT · {version}",
     commands: {
@@ -207,6 +228,17 @@ export default defineProduct({
           { label: "观察名单", body: "主流与新兴 Agent，来源强度分 Strong 到 None。" },
           { label: "现场笔记", body: "真实工作流和可复用模式。" },
           { label: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "GitHub Actions 定时运行，只读免费公开来源；X 和 Reddit OAuth 线路要你添加对应 secret 才开启。",
+          "收集到的文本交给你配置的模型线路：GitHub Models 用内置令牌，Vercel AI Gateway 用你的密钥。",
+          "报告、遥测和运行日志提交到你自己的仓库；除 `source-refresh` 和 `trigger` 外，本地命令都不联网。",
         ],
       },
       {

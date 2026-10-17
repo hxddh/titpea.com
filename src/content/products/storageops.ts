@@ -28,6 +28,12 @@ export default defineProduct({
       label: "Quick start",
       href: "https://github.com/hxddh/storageops#quick-start",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote:
+        "What you give Pi goes to the model you configure; install, doctor and --version check PyPI and npm for updates.",
+      stays: "Pi sessions under ~/.storageops on this machine; no object storage access keys needed.",
+    },
     meta: "Python · Pi Coding Agent · S3-compatible · MIT",
     stats: {
       title: "What Pi gets",
@@ -140,6 +146,17 @@ export default defineProduct({
         body: "The skill packs cover recurring S3-compatible failures. Pi loads only what fits the material in front of it.",
       },
       {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "Logs, errors and configs you give Pi go to the model provider you configure. StorageOps needs no storage access keys.",
+          "Sessions stay under `~/.storageops/agent/sessions/` and may hold your logs; the optional `api-key` file there is plain text.",
+          "`install`, `doctor` and `--version` check PyPI and npm for newer versions; `STORAGEOPS_SKIP_VERSION_CHECK` turns that off.",
+        ],
+      },
+      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -186,6 +203,11 @@ export default defineProduct({
     secondaryCta: {
       label: "快速开始",
       href: "https://github.com/hxddh/storageops#quick-start",
+    },
+    privacy: {
+      network: "onRequest",
+      networkNote: "你交给 Pi 的内容发往你配置的模型；install、doctor 和 --version 会向 PyPI 与 npm 查询新版本。",
+      stays: "Pi 会话留在本机 ~/.storageops 下；不需要对象存储的访问密钥。",
     },
     meta: "Python · Pi Coding Agent · S3 兼容 · MIT",
     stats: {
@@ -291,6 +313,17 @@ export default defineProduct({
           "读取结果过期",
         ],
         body: "技能包覆盖常见的 S3 兼容故障。Pi 只加载与眼前材料相符的那部分。",
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "你交给 Pi 的日志、报错和配置会发往你配置的模型服务；StorageOps 不需要对象存储的访问密钥。",
+          "会话保存在本机 `~/.storageops/agent/sessions/`，可能含你的日志；可选的 `api-key` 文件是明文。",
+          "`install`、`doctor` 和 `--version` 会向 PyPI 与 npm 查询新版本，设置 `STORAGEOPS_SKIP_VERSION_CHECK` 可关闭。",
+        ],
       },
       {
         kind: "faq",
