@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "Pulse",
     description:
-      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Seven agents, through their own hooks.",
+      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
     headline: "Which agent needs you.",
     lead: "Red means blocked. Your turn stays quiet. Every lamp says why.",
@@ -40,7 +40,7 @@ export default defineProduct({
       sections: [
         {
           // One list in lamp order, no group headings; only waiting, stalled and
-          // running rows have a second line (Pulse 29 tray).
+          // running rows have a second line (Pulse 30 tray).
           rows: [
             {
               title: "Add a package · Claude",
@@ -78,8 +78,8 @@ export default defineProduct({
           { title: "Your turn, quietly", body: "Finished turns are counted in the header; no banner, no sound." },
           { title: "Last step, turn time", body: "Running rows show the latest tool step and the turn's length." },
           { title: "Orange means stalled", body: "Twenty minutes without news; the row names the last step." },
-          { title: "Seven agents, own hooks", body: "Five turn red; Codex and Cursor show running and your turn." },
-          { title: "Click to go", body: "Its terminal when known, else the app; › shows details." },
+          { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
+          { title: "Click to go", body: "Its terminal when known, else the app; › opens details and timeline." },
         ],
       },
       {
@@ -99,7 +99,7 @@ export default defineProduct({
         items: [
           {
             title: "Which agents show waiting?",
-            body: "Five: Claude Code, Gemini CLI, Copilot CLI, OpenCode and Pi, through the hook, plugin or extension each vendor documents. Codex and Cursor show running and your turn only, and say they do not report waiting. A session that started before Pulse shows as process only until its next step.",
+            body: "Four: Claude Code, Copilot CLI, OpenCode and Pi, through the hook, plugin or extension each vendor documents. Codex and Cursor show running and your turn only, and say they do not report waiting. A session that started before Pulse shows as process only until its next step.",
           },
           {
             title: "What does installing the hooks change?",
@@ -107,7 +107,7 @@ export default defineProduct({
           },
           {
             title: "Why is an agent not turning red?",
-            body: "Open Settings → Hooks. Each agent on this Mac has a row: whether its hook is installed (or why it failed) and how long ago its last event arrived; Install all and Remove all sit above the rows. Copy report gives the same as plain text, without paths, prompts, sessions or projects.",
+            body: "Open Settings → Hooks. Each agent on this Mac has a row: installed, needs update, failed with its reason, or not installed; the last event Pulse heard from it and when; the last event it ignored and why; and whether the agent reports waiting. Install all brings every row that needs an update up to date. Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
           },
           {
             title: "Does Ignore answer the agent?",
@@ -116,6 +116,10 @@ export default defineProduct({
           {
             title: "Why does macOS block the first open?",
             body: "Current builds are ad-hoc signed and not notarized. Click Open Anyway in System Settings → Privacy & Security, or clear quarantine with `xattr -dr com.apple.quarantine /Applications/Pulse.app`. Since macOS 15, Control-click Open no longer lets it through.",
+          },
+          {
+            title: "What happens when I upgrade?",
+            body: "Quit Pulse, drag the new Pulse.app into Applications and choose Replace, then allow the first open again, as every unnotarized build needs. Agents' hooks need no reinstall: they call a launcher in `~/Library/Application Support/Pulse`, not the app. If Settings → Hooks says an agent needs an update, Install all fixes it. Coming from 29 or earlier, Pulse 30 starts its event log over and has a new bundle id, so settings and notification permission reset once. Pulse 30 also drops Gemini CLI; its old hooks now record nothing.",
           },
           {
             title: "How do I remove Pulse?",
@@ -132,7 +136,7 @@ export default defineProduct({
   zh: {
     title: "Pulse",
     description:
-      "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持七个 Agent，走它们自己的 hook。",
+      "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "看看哪个 Agent 需要你",
     lead: "红灯只给阻塞。轮到你只安静计数。每盏灯都说出原因。",
@@ -194,8 +198,8 @@ export default defineProduct({
           { title: "轮到你不报警", body: "做完的回合只在头部计数，不弹通知、不响。" },
           { title: "上一步与本回合", body: "运行中的行写出最近一步工具，和这一回合跑了多久。" },
           { title: "橙色表示停滞", body: "二十分钟没有新动静，行上点名上一步。" },
-          { title: "七个 Agent", body: "五个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
-          { title: "点一下就去", body: "能精确落点就去终端，否则打开应用；点“›”看详情。" },
+          { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
+          { title: "点一下就去", body: "能精确落点就去终端，否则打开应用；点“›”看详情和时间线。" },
         ],
       },
       {
@@ -215,7 +219,7 @@ export default defineProduct({
         items: [
           {
             title: "哪些 Agent 能显示等待？",
-            body: "五个：Claude Code、Gemini CLI、Copilot CLI、OpenCode 和 Pi，走各家文档里的 hook、插件或扩展。Codex 与 Cursor 只显示运行中和轮到你，并注明不会报告它在等你。Pulse 启动前就在跑的会话，在它的下一步之前只显示为“仅进程”。",
+            body: "四个：Claude Code、Copilot CLI、OpenCode 和 Pi，走各家文档里的 hook、插件或扩展。Codex 与 Cursor 只显示运行中和轮到你，并注明不会报告它在等你。Pulse 启动前就在跑的会话，在它的下一步之前只显示为“仅进程”。",
           },
           {
             title: "安装 hook 会改动什么？",
@@ -223,7 +227,7 @@ export default defineProduct({
           },
           {
             title: "Agent 为什么没亮红灯？",
-            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：hook 装没装（装失败会写原因）、最近一次事件是多久前；列表上方是“全部安装”和“全部移除”。“复制报告”给出同样内容的纯文本，不含路径、提示、会话或项目。",
+            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：已安装、需要更新、安装失败及原因，或未安装；最近听到它的哪个事件、多久前；最近未采用的事件及原因；它会不会报告在等你。“全部安装”会更新所有需要更新的 Agent。“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
           },
           {
             title: "横幅上的“忽略”会替我回答吗？",
@@ -232,6 +236,10 @@ export default defineProduct({
           {
             title: "为什么首次打开被 macOS 拦下？",
             body: "当前构建是 ad-hoc 签名、未公证。在“系统设置 → 隐私与安全性”里点“仍要打开”，或用 `xattr -dr com.apple.quarantine /Applications/Pulse.app` 清掉隔离属性。macOS 15 起，右键选“打开”已不能放行。",
+          },
+          {
+            title: "升级时会怎样？",
+            body: "退出 Pulse，把新的 Pulse.app 拖进“应用程序”并选“替换”，再放行一次首次打开，每个未公证的新版本都要这样做。各 Agent 的 hook 不用重装：它们调用的是 `~/Library/Application Support/Pulse` 里的启动器，不是 App 本身。“设置 → Hooks”说某个 Agent 需要更新时，点“全部安装”即可。从 29 或更早版本升级时，Pulse 30 的事件日志从头开始，Bundle ID 也换了，设置和通知授权会重置一次。Pulse 30 不再支持 Gemini CLI，它留下的 hook 不再记录任何事件。",
           },
           {
             title: "怎样卸载 Pulse？",

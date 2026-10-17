@@ -75,6 +75,17 @@ for (const { file, html } of pages) {
   }
   if (/target="_blank"/.test(html) && !/rel="[^"]*noopener/.test(html)) fail(`${file}: target=_blank lacks noopener`);
 
+  // Every local file a page loads exists in the build (a missing one ships as a broken image).
+  for (const match of html.matchAll(/\b(?:src|href|poster|srcset|content)="([^"]+)"/g)) {
+    for (const candidate of match[1].split(",")) {
+      const url = candidate.trim().split(/\s+/)[0];
+      const local = url.replace(/^https:\/\/titpea\.com(?=\/)/, "");
+      if (!/^\/(?:assets|_astro|scripts)\//.test(local)) continue;
+      const target = path.join("dist", decodeURIComponent(local.replace(/[?#].*$/, "")));
+      if (!fs.existsSync(target)) fail(`${file}: ${local.replace(/[?#].*$/, "")} is missing from the build`);
+    }
+  }
+
   // Copy never shows raw Markdown code markers: `x` renders as <code>.
   const visible = text(
     html
@@ -92,6 +103,15 @@ for (const { file, html } of pages) {
       for (const issue of headingIssues(text(match[2]), match[1].toLowerCase())) fail(`${file}: ${issue}`);
     }
   }
+}
+
+/* ---------- SVG assets ---------- */
+
+// style-src 'self' also blocks inline styles inside SVGs served as files.
+for (const file of fs.readdirSync("dist", { recursive: true })) {
+  if (typeof file !== "string" || !file.endsWith(".svg")) continue;
+  const svg = fs.readFileSync(path.join("dist", file), "utf8");
+  if (/\sstyle="|<style[\s>]/.test(svg)) fail(`dist/${file}: inline style conflicts with the CSP`);
 }
 
 /* ---------- Sitemap ---------- */

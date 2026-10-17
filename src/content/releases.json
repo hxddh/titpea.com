@@ -21,18 +21,18 @@
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v16.0.0",
-    "published": "2026-09-30"
+    "version": "v23.0.0",
+    "published": "2026-10-15"
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v29.0.1",
-    "published": "2026-10-07"
+    "version": "v30.0.0",
+    "published": "2026-10-14"
   },
   "readout": {
     "repo": "hxddh/readout",
-    "version": "v3.3.0",
-    "published": "2026-10-12"
+    "version": "v3.6.0",
+    "published": "2026-10-15"
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
@@ -41,17 +41,17 @@
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v2.1.0",
-    "published": "2026-10-10"
+    "version": "v3.1.0",
+    "published": "2026-10-17"
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v11.0.0",
-    "published": "2026-10-11"
+    "version": "v14.0.0",
+    "published": "2026-10-17"
   },
   "world-machine": {
     "repo": "hxddh/world-machine",
-    "version": "v0.29.0",
-    "published": "2026-10-10"
+    "version": "v0.30.0",
+    "published": "2026-10-16"
   }
 }

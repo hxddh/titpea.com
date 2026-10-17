@@ -37,7 +37,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-game-board-en.webp",
-        alt: "Goban wood board after a two-player game: Black's five in a row, Black's seat marked Won in the top bar, and the timeline under the board",
+        alt: "Goban wood board after a two-player game: Black's five in a row, each stone ringed, Black's seat marked Won in the top bar, and the timeline under the board",
         width: 2446,
         height: 1536,
       },
@@ -70,7 +70,7 @@ export default defineProduct({
         items: [
           { title: "Three rule sets", body: "Freestyle, swap2, or Renju, picked on the New game card." },
           { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
-          { title: "Two seats on top", body: "The side to move lights up; the computer's seat shows it thinking." },
+          { title: "One-click rematch", body: "Play again keeps your settings; on Alt, colours swap." },
           { title: "Replay the key move", body: "Start again from that move; the original game stays." },
           { title: "Practise positions", body: "134 built-in puzzles, plus ones made from your own mistakes." },
           { title: "Every game listed", body: "A summary line on top; open any game to review it." },
@@ -96,8 +96,8 @@ export default defineProduct({
             body: "macOS on Apple Silicon and Windows x64. There is no Intel Mac build. On Windows it needs the WebView2 runtime, which Windows 10 and 11 usually include.",
           },
           {
-            title: "Will my games from 1.x still be there after upgrading to 2.x?",
-            body: "Yes. Versions 2.0 and 2.1 keep the storage format, so saved games, the game library, results, practice progress, and settings from 1.x open as before. The old Think setting (fast, standard, deep) is gone, and a saved value for it is ignored.",
+            title: "Will my games still be there after upgrading to 3.x?",
+            body: "Yes. Versions 3.0 and 3.1 keep the storage format of 2.x, which kept the format of 1.x, so saved games, the game library, results, practice progress, and settings open as before. The Think setting from 1.x (fast, standard, deep) is gone, and a saved value for it is ignored.",
           },
           {
             title: "What happens when I import an SGF?",
@@ -105,7 +105,7 @@ export default defineProduct({
           },
           {
             title: "How strong is the computer?",
-            body: "All four levels use one engine. Beginner blocks your fours but often misses open threes; Normal takes about 0.4 seconds a move, Hard about 2 seconds, and Extreme runs Hard's search for about 5. By default you alternate colours on Hard and Extreme. The rule set is chosen on the New game card and applies when you press Start.",
+            body: "All four levels use one engine. Beginner blocks your fours but often misses open threes; Normal thinks for 0.55 seconds a move, Hard for up to about 2 seconds, and Extreme runs Hard's search for the full 5 seconds. The computer always waits at least 0.6 seconds before it plays. Under Renju, its search leaves out the points where Black may not play. By default you alternate colours on Hard and Extreme. The rule set is chosen on the New game card and applies when you press Start.",
           },
         ],
       },
@@ -136,7 +136,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-game-board-zh.webp",
-        alt: "Goban 木质棋盘上下完的一局双人对局：黑棋五连，顶栏黑方座位写着“胜”，棋盘下方是时间线",
+        alt: "Goban 木质棋盘上下完的一局双人对局：黑棋五连、每颗套一圈细环，顶栏黑方座位写着“胜”，棋盘下方是时间线",
         width: 2446,
         height: 1536,
       },
@@ -144,7 +144,7 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/goban-review-zh.webp",
-        alt: "Goban 在棋盘上复盘一局：下方是评分曲线，旁边卡片列出失着手数，解释第 10 手，并有“从第 10 手重下”和“推演”",
+        alt: "Goban 在棋盘上复盘一局：下方是评分曲线，旁边卡片列出失着手数，解释第 3 手，并有“从第 3 手重下”和“推演”",
         width: 1222,
         height: 768,
         video: { mp4: "/assets/goban-review-zh.mp4", webm: "/assets/goban-review-zh.webm" },
@@ -168,7 +168,7 @@ export default defineProduct({
         items: [
           { title: "三套规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
           { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
-          { title: "顶栏两个座位", body: "轮到谁谁亮；电脑思考时，它的座位里三个点在动。" },
+          { title: "一键再来", body: "“再来一局”沿用设置；选“轮流”时自动换色。" },
           { title: "重下关键一手", body: "从那一手重下，原局一手不改。" },
           { title: "做题练习", body: "134 道内置题，另有从你的失着生成的题。" },
           { title: "对局一览", body: "最上面一行汇总，点任意一局以复盘打开。" },
@@ -194,8 +194,8 @@ export default defineProduct({
             body: "Apple Silicon 的 macOS 和 x64 的 Windows，目前没有 Intel Mac 构建。Windows 需要 WebView2 运行时，Win10 / 11 一般已预装。",
           },
           {
-            title: "从 1.x 升级到 2.x，以前的对局还在吗？",
-            body: "在。2.0 和 2.1 没有改存储格式，1.x 的存档、对局库、战绩、练习进度和设置都照常读取。旧的“思考”设置（快、标、深）已经去掉，存过的值会被忽略。",
+            title: "升级到 3.x，以前的对局还在吗？",
+            body: "在。3.0 和 3.1 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快、标、深）已经去掉，存过的值会被忽略。",
           },
           {
             title: "导入 SGF 之后会怎样？",
@@ -203,7 +203,7 @@ export default defineProduct({
           },
           {
             title: "电脑有多强？",
-            body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手约 0.4 秒，困难约 2 秒，极限用困难的搜索、每手约 5 秒。困难与极限默认每局轮流执子。规则在“新局”卡片里选，按开始时生效。",
+            body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手算 0.55 秒，困难至多约 2 秒，极限用困难的搜索、把 5 秒用满。电脑至少等 0.6 秒才落子。禁手规则下，它的搜索不再考虑黑棋的禁手点。困难与极限默认每局轮流执子。规则在“新局”卡片里选，按开始时生效。",
           },
         ],
       },
