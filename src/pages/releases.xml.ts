@@ -35,7 +35,7 @@ export function GET() {
   <updated>${updated}T00:00:00Z</updated>
   <author><name>hxddh</name><uri>${site.github}</uri></author>
   <link rel="self" href="${site.baseUrl}/releases.xml"/>
-  <link rel="alternate" href="${site.baseUrl}/about/"/>
+  <link rel="alternate" href="${site.baseUrl}/releases/"/>
 ${body}
 </feed>
 `;

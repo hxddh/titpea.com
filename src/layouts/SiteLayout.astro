@@ -2,7 +2,7 @@
 import SiteHeader from "../components/SiteHeader.astro";
 import { site, ui } from "../content/site";
 import type { Locale } from "../content/schema";
-import { navGroups } from "../lib/pages";
+import { navGroups, pathFor } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
 
@@ -34,6 +34,7 @@ const footerGroups: Array<{
     label: site.brand,
     items: [
       ...main.items,
+      { label: copy.privacy, href: pathFor(locale, "privacy") },
       { label: copy.footerFeed, href: "/releases.xml" },
       { label: "GitHub", href: site.github, external: true },
       { label: language.label, href: language.href, hreflang: language.hreflang },

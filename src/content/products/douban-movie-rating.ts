@@ -30,6 +30,15 @@ export default defineProduct({
       label: "Privacy policy",
       href: "/douban-movie-rating/privacy/",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "On Douban film pages, the title, year and IMDb ID go only to OMDb.",
+      stays: "Settings and your optional key in Chrome sync storage; ratings cached locally for up to 7 days.",
+      policy: {
+        label: "Privacy policy",
+        href: "/douban-movie-rating/privacy/",
+      },
+    },
     meta: "Chrome Web Store · 1.7 · Ratings from OMDb",
     visual: {
       kind: "screenshot",
@@ -107,6 +116,15 @@ export default defineProduct({
     secondaryCta: {
       label: "隐私政策",
       href: "/zh/douban-movie-rating/privacy/",
+    },
+    privacy: {
+      network: "automatic",
+      networkNote: "在豆瓣影片页，片名、年份和 IMDb 编号只发送给 OMDb。",
+      stays: "设置和你填写的密钥在 Chrome 同步存储；评分在本机缓存，最长 7 天。",
+      policy: {
+        label: "隐私政策",
+        href: "/zh/douban-movie-rating/privacy/",
+      },
     },
     meta: "Chrome 网上应用店 · 1.7 · 评分来自 OMDb",
     visual: {

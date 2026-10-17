@@ -49,6 +49,16 @@
   letter-spacing: 0;
 }
 
+/* A trust detail under the primary action, from the product's own docs. */
+.install-note {
+  max-width: 44em;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
 /* Only the release tag is set in mono; the rest reads as text. */
 .meta-tag {
   font-family: var(--mono);

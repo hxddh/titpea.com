@@ -28,12 +28,13 @@ Every page uses the same few parts. Build new content from them before inventing
 - **Where your data goes.** `Where your data goes.` / `数据的去向`: two or three plain sentences on hairlines at `--text-sub`, before the FAQ. Every sentence is checkable against the product's README or privacy policy: where keys live, where files and history stay, what is sent and to whom. Products that keep data local carry it (Storage Agent, PageWise, Easier Bookmarks); once it exists, those facts leave the feature cards and the FAQ.
 - **FAQ.** A disclosure list (`details.faq-item`) on hairlines, first answer open. Only adoption blockers not already on the page.
 - **Primary action.** One of three labels: `Download` / `下载` for an app, `Install` / `安装` for an extension or installer, `View on GitHub` / `查看 GitHub` for source-only tools. A product whose store listing is still in review sets `primaryCta.soon`: the label (`Coming to Chrome` / `即将上架`) renders as a muted, unlinked button in the hero, local nav and closing band, and the secondary action carries the page.
+- **Install note.** A product may set `installNote` (both languages): one muted line under the hero actions with a trust detail its own FAQ or README states, such as a macOS build that is not notarized and the one step that opens it. Never a claim the docs do not make.
 - **Release tag.** When the primary action downloads a GitHub release, the button carries the current tag (`Download v1.17.3`). The hero meta line then gives only the release date in the tag's place (`Sep 4, 2026` / `2026年9月4日`), since the button already names the tag; catalog cards show tag and date. Tags and publish dates come from `releases.json`, which CI refreshes before every build and checks daily, redeploying only when one changed; nobody edits a version or date by hand. Dates are absolute, never "3 days ago", because the site does not rebuild every day.
 - **What's new.** When a release's notes yield a summary or highlights, the page shows `What’s new in v1.17.3.` / `v1.17.3 更新了什么` before the commands and FAQ: the release date, up to three items quoted from the notes (bold leads or first clauses, never rewritten), and a link to the full notes. Only lines in the page's language are quoted; with none left, the section is one line: `v12.0.0 · 2026年9月5日 · 发布说明 ›`. `scripts/sync-releases.mjs` refreshes them with the tag and lists every quoted line in the CI run summary for the owner to read. The release title is never shown: it is the author's shorthand, not a sentence for visitors. A product may set `releaseHighlights` (per language, pinned to one tag) to replace the quoted lines with hand-written ones, a one-line summary included; it applies only while that tag is the latest release.
 - **Terminal objects.** A CLI hero that shows a terminal uses real captured output from a named version, said in its kicker (`httpmon v1.2.1 · captured output`); otherwise it is labeled illustrative.
 - **Closing action.** Every product page ends on it: the app icon when there is one, the product name, and the hero's two actions again, under the same labels (the download keeps its release tag).
 - **Where next.** After the closing action, one quiet row: `More in {line}` / `更多{line}工具` in small type, three products as icon and name (no cards, one-liners, or tags), taken from the rest of the product's line in site order after it, then from the other lines (the label becomes `More tools` / `更多工具`), and an `All tools` link. A product page never dead-ends, and its ending stays one band.
-- **Footer.** On desktop (except 404, whose page already lists every product), a map of the site: one column per product line with every product, then a Titpea column (Home, About, the releases feed, GitHub, the other language). Phones skip the map (the menu already lists every product). Then copyright on the left and email on the right.
+- **Footer.** On desktop (except 404, whose page already lists every product), a map of the site: one column per product line with every product, then a Titpea column (Home, About, Releases, Privacy, the releases feed, GitHub, the other language). Phones skip the map (the menu already lists every product). Then copyright on the left and email on the right.
 - **Code in copy.** Product copy writes code as `` `code` ``; `Prose.astro` renders it as an inline code chip and structured data drops the backticks. `check:dist` fails if a raw backtick reaches page text.
 
 ## Home
@@ -41,23 +42,32 @@ Every page uses the same few parts. Build new content from them before inventing
 **Settled direction — the owner decided this in October 2026 (the studio home, replacing the stacked Omni rows of PR #150 and #153).** Home says who makes this and what the tools have in common, shows that they are alive, then lets a visitor find the right one. Propose a change to this direction in a pull request for the owner to decide; never push it straight to `main`.
 
 - The hero keeps the shelf of app icons (two centred rows, at most eight wide, every product), each a link whose name appears in a small glass label when pointed at or focused. Then the person (`One developer, hxddh` / `hxddh，一个人开发`), the title (`Small software, made with care.` / `认真做的小软件`; a `|` in the copy marks where a title may wrap, so a phone never strands a character), and a plain lede that says what kinds of software are here (`Tools for object storage and coding agents, everyday browser extensions, and a few games.` / `对象存储和编码 Agent 工具，日常用的浏览器扩展，还有几款游戏。`). No riddles: each phrase names a kind of product a visitor would recognise. Two actions: `Browse all {count} tools` jumps to the catalog; `About hxddh ›` is the text link.
-- `Just shipped` / `最近发布`: the three newest releases from `releases.json` (icon, name, tag, date, and one highlight in the page's language when the release has one), with `All releases ›` to About. Release cadence shows the tools are alive.
-- `Selected work` / `主要作品`: three tall cards side by side, in `featured.order` (World Machine, Chessboard, Bilingual — the owner's picks). Each card is the screenshot (16:11, top-anchored), role kicker, name, one line, `Learn more ›`; the whole card is one link and its image is decorative (`alt=""`; the card's text names it). An image that is not a plain capture keeps its `featured.caption`. Three is the ceiling. Phones stack the cards.
-- `Every tool` / `全部工具`: a segmented filter (All, Storage, Agents, Everyday, Games; hidden without JavaScript, when every line shows), then each line with who it is for (`groupNotes`) and a grid of cards (icon, name, `catalog.text`; three columns, two on tablets, one on phones). Featured products appear in their line too, so a filtered line is complete. No kicker, tag, or date: those live on the product page.
+- `Just shipped` / `最近发布`: the three newest releases from `releases.json` (icon, name, tag, date, and one highlight in the page's language when the release has one), with `All releases ›` to the Releases page. Release cadence shows the tools are alive.
+- `Selected work` / `主要作品`: three tall cards side by side, in `featured.order` (World Machine, Chessboard, Bilingual — the owner's picks). Each card is the screenshot (16:11, top-anchored), role kicker, name, one line, `Learn more ›`; the whole card is one link and its image is decorative (`alt=""`; the card's text names it). An image that is not a plain capture keeps its `featured.caption`, under the card's line so every title starts at the same height. Three is the ceiling. Phones stack the cards.
+- `Every tool` / `全部工具`: a segmented filter (All, Storage, Agents, Everyday, Games; hidden without JavaScript, when every line shows; on phones one row that scrolls sideways), then each line with who it is for (`groupNotes`) and a grid of cards (icon, name, `catalog.text`; three columns, two on tablets, one on phones). Featured products appear in their line too, so a filtered line is complete. No kicker, tag, or date: those live on the product page.
 
 ## About
 
 The page answers, in order: what Titpea is, where its tools help, what shipped lately, and how to reach the person behind it. Home lists the products; About groups them by the work they help with.
 
-- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and a lede that only names the four lines: `Storage, agents, everyday, games.` / `存储、Agent、日常、游戏。` No actions in the hero.
+- Hero: `About Titpea` / `关于 Titpea`, the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count, and a lede that only names the four lines: `Storage, agents, everyday, games.` / `存储、Agent、日常、游戏。` Under it, one line computed from the data (how many tools have GitHub releases, the newest release date) and the GitHub profile. No actions in the hero.
+- The person: `about.person` in `site.ts`, per language, holds a first-person paragraph and an optional portrait. The owner writes both; About renders the block only when it is filled, and it stays empty until then.
 - `Where they help.` / `用在哪里`: one card per product line, two short sentences each (when you reach for it; what it changes), then that line's products as small icon links, taken from the catalog so a new product appears on its own. Every claim is one its product page already makes. No list of principles: a habit that only some products share is not claimed for all.
 - `Latest releases.`, with no sub: the six newest, with icon, tag, date (on phones too), and the first quoted highlight in the page's language, or none; the rest fold under `All releases (n)`.
 - Closing band: `Say hello.` with GitHub, Email, and the Atom feed.
 - No personal details beyond what the owner has published; nothing about the person is inferred.
 
+## Releases
+
+- `/releases/` / `/zh/releases/`: `What shipped, and when.` / `最近发布了什么`, then every product's latest release, newest first: icon and name (to the product page), tag, date, `Release notes ›`, and, when the notes yield them, a `releaseHighlights` summary or up to three lines quoted from the notes, under a hairline. The rules of What's new apply: only lines in the page's language, never rewritten, never the release title; without notes an entry is one row. Then `Without GitHub releases.`: the Chrome extensions and source-only tools, each with the version its own meta line gives, if any, and no date. The menu (Main) and the footer link it, and so does the feed's `alternate` link.
+
+## Privacy
+
+- `/privacy/` / `/zh/privacy/`: `Which tools go online.` / `哪些工具会联网`, one table with a row per product: when it touches the network (`None` / `Only when you ask` / `Automatically`, with a short phrase), where its data stays, and links to its `Where your data goes` section and its own privacy policy. Each row comes from the product's `privacy` field, which only repeats what its data section or policy already says; a product without a data section reads `Not written up on its page yet.` Phones read each row as a block. The footer links it.
+
 ## Releases Feed
 
-- `sitemap.xml` gives each product page a `lastmod` of its latest release date, and Home and About the newest release anywhere; pages without such a date carry none (never the build date).
+- `sitemap.xml` gives each product page a `lastmod` of its latest release date, and Home, About and Releases the newest release anywhere; pages without such a date carry none (never the build date).
 - `/releases.xml` is an Atom feed of every product's latest release, newest first, built from `releases.json`. Every page links it in `<head>`; About links it under `Latest releases.`
 
 ## 404
@@ -110,7 +120,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 ## Type
 
 - System face first (`-apple-system`, SF Pro), then Inter for Latin elsewhere, then the system CJK face. Do not load a CJK webfont.
-- Display weight is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.005em` on headings and no tracking at all on reading text, which is 16px (`--text-card-body` steps up) at line-height `1.75` and wraps with `text-wrap: pretty` so no character is stranded on a last line. At the same pixel size CJK reads smaller than Latin.
+- Display weight is 700 with tight tracking (`-0.035em` on the hero, `-0.03em` on section heads). Chinese (`:lang(zh)`) uses `-0.005em` on headings and no tracking at all on reading text, which is 16px (`--text-card-body` steps up) at line-height `1.75` and wraps with `text-wrap: pretty` so no character is stranded on a last line. A Chinese lede wraps only between phrases (`word-break: keep-all`) in balanced lines, so it never leaves one word alone either (`a11y:check` holds it). At the same pixel size CJK reads smaller than Latin.
 - Sizes come from tokens: `--title-hero`, `--title-display`, `--title-section`, `--title-show`, `--text-lede`, `--text-sub`, `--text-kicker`, `--text-card-title`, `--text-card-body`, `--text-list-body`, `--text-catalog-name`, and the floor `--text-small` (14px) / `--text-meta` (13px). Nothing outside a hero product mock is smaller than 13px; mocks keep at least 12px. Reading text is at least 15px on phones too; FAQ answers are `--text-list-body` (16px).
 - Reading text (card bodies, FAQ answers, catalog one-liners, panel copy) is `--ink-2`, at least 7:1. `--muted` is for labels, dates, chips, captions, the lede and subs. Headings, names, and About body are `--ink`.
 - `mono` is for release tags, commands, terminals, evidence labels, and data. The hero meta line is `sans` at 14px with only its tag in mono.
@@ -135,7 +145,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
 - Utility sections (get started, data, what's new, FAQ) set their headings at `--title-show`; the section size is for the two or three sections that argue the case.
 - Depth is a token decision: shadows, blur, and gradients in page stylesheets come only from `tokens.css`. `npm run check` enforces this.
 - Glass is for chrome. Content never floats. Menu panels use `--menu-bg`, because a glass panel nested in a glass bar cannot blur the page behind it.
-- Dark mode is a first-class theme (OS preference or the header toggle), with pure black canvas and a `#161617` raised tone.
+- Dark mode is a first-class theme (OS preference or the header toggle), with pure black canvas and a `#161617` raised tone. Captures, mostly light, are dimmed a little there (`--shot-dim`): the hero object, Home's cards and showcases.
 
 ## Interaction
 
@@ -170,7 +180,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - `check:dist` (build output): CSP and headers, one h1, landmarks, image sizes and alt text, valid structured data, Chinese headings, sitemap.
   - `qa:pages`: overflow, headline and lede lines, CTAs, sticky local nav, anchors, mobile menu.
   - `a11y:check`: axe-core (WCAG 2.1 A/AA and best practices) on every page, light and dark, desktop and phone; any violation fails.
-  - `visual:check`: seven screens compared loosely: the page tops, the zh menu, an FAQ, About's scenes (desktop and zh phone), and 404. Section targets crop to their own section so release data synced at build never moves them.
+  - `visual:check`: nine screens compared loosely: the page tops, the zh menu, an FAQ, About's scenes (desktop and zh phone), 404, the Releases page's undated list, and the zh privacy index on a phone. Section targets crop to their own section so release data synced at build never moves them.
   - Browser QA and the visual check run on pull requests and on every push to `main`; a push that fails them does not deploy.
 - Still review by eye, in this order:
   1. First read: from the first viewport alone, does the reader know what the product changes?

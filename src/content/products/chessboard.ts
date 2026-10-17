@@ -62,6 +62,13 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/chessboard",
     },
+    installNote: "The macOS build is not notarized yet: allow its first open by hand, once.",
+    privacy: {
+      network: "onRequest",
+      networkNote:
+        "Sync goes online only after you allow it, sending only your user name; update checks only when you press them.",
+      stays: "Games, puzzles, lessons and progress stay on this computer.",
+    },
     meta: "macOS + Windows · GPLv3 · {version} · Local app",
     stats: {
       title: "Lessons, puzzles, openings",
@@ -215,6 +222,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看源码",
       href: "https://github.com/hxddh/chessboard",
+    },
+    installNote: "macOS 版尚未公证：首次打开需要手动放行一次。",
+    privacy: {
+      network: "onRequest",
+      networkNote: "要先在设置里允许联网才会同步，只发送用户名；“检查更新”只在你点它时查询。",
+      stays: "对局、谜题、课程与进度都留在这台电脑上。",
     },
     meta: "macOS + Windows · GPLv3 · {version} · 本地应用",
     stats: {

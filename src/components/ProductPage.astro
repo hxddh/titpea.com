@@ -11,6 +11,7 @@ import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
 import PanelSection from "./product/PanelSection.astro";
+import Prose from "./product/Prose.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
 import StatsBand from "./product/StatsBand.astro";
 import Visual from "./product/Visual.astro";
@@ -75,6 +76,13 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
         }
         <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
       </div>
+      {
+        copy.installNote && (
+          <p class="install-note">
+            <Prose text={copy.installNote} />
+          </p>
+        )
+      }
       <p class="meta-line">
         {
           metaParts.map((part) =>

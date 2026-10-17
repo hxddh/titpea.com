@@ -30,6 +30,12 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/readout",
     },
+    installNote: "Not notarized: for each release, click Open Anyway once in System Settings → Privacy & Security.",
+    privacy: {
+      network: "automatic",
+      networkNote: "A weekly update check against GitHub Releases, which you can turn off.",
+      stays: "On your Mac: rendering a document sends no network request.",
+    },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
     visual: {
       kind: "screenshot",
@@ -142,6 +148,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看源码",
       href: "https://github.com/hxddh/readout",
+    },
+    installNote: "未经公证：每个新版本首次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    privacy: {
+      network: "automatic",
+      networkNote: "每周一次 GitHub Releases 更新检查，可在设置中关闭。",
+      stays: "在本机：渲染文档时不发出任何网络请求。",
     },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
     visual: {

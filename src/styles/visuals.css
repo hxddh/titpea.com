@@ -13,16 +13,12 @@
   border: 1px solid var(--line);
 }
 
-:root[data-theme="dark"] .product-screenshot-visual img,
-:root[data-theme="dark"] .home-featured-card img {
-  filter: brightness(0.78) saturate(0.88);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .product-screenshot-visual img,
-  :root:not([data-theme="light"]) .home-featured-card img {
-    filter: brightness(0.78) saturate(0.88);
-  }
+/* Captures are mostly light: dark mode dims them a little (--shot-dim is
+   none in light mode), the hero object, Home's cards and every showcase alike. */
+.product-screenshot-visual img,
+.home-featured-card img,
+.shot :is(img, video) {
+  filter: var(--shot-dim);
 }
 
 .benchmark-visual,

@@ -56,6 +56,8 @@
   --icon-ring: 0 0 0 1px rgba(0, 0, 0, 0.04);
   --icon-radius: 22.5%;
   --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  /* Light screenshots on a dark canvas: dimmed a little in dark mode only. */
+  --shot-dim: none;
 
   /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
@@ -219,6 +221,7 @@ html:lang(zh) {
   --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
   --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
   --zoom-backdrop: rgba(0, 0, 0, 0.82);
+  --shot-dim: brightness(0.78) saturate(0.88);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -287,6 +290,7 @@ html:lang(zh) {
     --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
     --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
     --zoom-backdrop: rgba(0, 0, 0, 0.82);
+    --shot-dim: brightness(0.78) saturate(0.88);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;

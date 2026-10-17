@@ -42,6 +42,12 @@ export default defineProduct({
       label: "View on GitHub",
       href: "https://github.com/hxddh/world-machine",
     },
+    installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
+    privacy: {
+      network: "automatic",
+      networkNote: "Once per launch it asks `api.github.com` for the latest release; World voice is off by default.",
+      stays: "Worlds are files on your Mac; no account, no telemetry, nothing uploaded.",
+    },
     meta: "Experimental · pre-alpha · macOS 14+ · {version} · Apache-2.0",
     visual: {
       kind: "screenshot",
@@ -162,6 +168,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/world-machine",
+    },
+    installNote: "尚未公证：首次启动需要一次“仍要打开”。",
+    privacy: {
+      network: "automatic",
+      networkNote: "每次启动向 `api.github.com` 查询一次最新版本；世界之声默认关闭。",
+      stays: "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
     },
     meta: "实验 · 早期预览 · macOS 14+ · {version} · Apache-2.0",
     visual: {

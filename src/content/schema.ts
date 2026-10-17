@@ -293,6 +293,20 @@ export type Commands = {
  */
 export type ReleaseHighlights = { version: string; summary?: string; items: string[] };
 
+/**
+ * How a product touches the network, for the site's privacy index. Filled only
+ * from what the product's own "Where your data goes" section or privacy policy
+ * says: `network` is the level (none, only when you ask, or on its own),
+ * `networkNote` the short phrase beside it, `stays` where the data stays.
+ */
+export type PrivacySummary = {
+  network: "none" | "onRequest" | "automatic";
+  networkNote: string;
+  stays: string;
+  /** The product's full privacy policy, when it has one. */
+  policy?: Link;
+};
+
 export type ProductCopy = {
   /** Name as shown in the catalog, nav, and eyebrow. */
   title: string;
@@ -316,6 +330,12 @@ export type ProductCopy = {
   showcases?: Showcase[];
   sections: Section[];
   releaseHighlights?: ReleaseHighlights;
+  /**
+   * One line under the primary action: a trust detail the product's own docs
+   * state (for example a macOS build that is not notarized).
+   */
+  installNote?: string;
+  privacy?: PrivacySummary;
 };
 
 export const featuredSrc = (featured: NonNullable<Product["featured"]>, locale: Locale) =>

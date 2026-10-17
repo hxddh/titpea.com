@@ -30,6 +30,12 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/Pulse",
     },
+    installNote: "Not notarized: allow each new build once with Open Anyway in System Settings → Privacy & Security.",
+    privacy: {
+      network: "none",
+      networkNote: "No network connection: no update check, nothing reported.",
+      stays: "The event log stays on this Mac, readable only by you.",
+    },
     meta: "macOS 14+ · MIT · {version} · Menu bar",
     visual: {
       kind: "menuBar",
@@ -151,6 +157,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看源码",
       href: "https://github.com/hxddh/Pulse",
+    },
+    installNote: "未公证：每个新版本都要在“系统设置 → 隐私与安全性”里点一次“仍要打开”。",
+    privacy: {
+      network: "none",
+      networkNote: "不连网络：不检查更新，不上报任何东西。",
+      stays: "事件日志只在本机，只有你能读。",
     },
     meta: "macOS 14+ · MIT · {version} · 菜单栏",
     visual: {

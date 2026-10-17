@@ -1,0 +1,92 @@
+---
+// Every product's latest release, newest first. Lines are quoted from the
+// release's own notes (scripts/sync-releases.mjs), only in the page's
+// language and never rewritten; the release title is never shown.
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Prose from "./product/Prose.astro";
+import type { ReleasesPageModel } from "../lib/pages";
+
+interface Props {
+  model: ReleasesPageModel;
+}
+
+const { model } = Astro.props;
+---
+
+<SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
+  <section class="about-hero releases-hero">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="shell narrow about-copy">
+      <p class="eyebrow">{model.hero.eyebrow}</p>
+      <h1>{model.hero.title}</h1>
+      <p class="lead">{model.hero.lead}</p>
+    </div>
+  </section>
+
+  <section class="releases-timeline" aria-label={model.hero.title}>
+    <div class="shell narrow">
+      <ol class="release-feed" data-visual-live>
+        {
+          model.items.map((item) => (
+            <li class="release-entry">
+              <a class="release-entry-product" href={item.href}>
+                <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
+                <strong>{item.name}</strong>
+              </a>
+              <div class="release-entry-meta">
+                <p class="release-entry-tag">
+                  <span class="release-version">{item.version}</span>
+                  {item.released && <time datetime={item.published}>{item.released}</time>}
+                </p>
+                <a class="release-entry-notes" href={item.notesUrl} rel="noreferrer">
+                  {model.notesLabel}
+                </a>
+              </div>
+              {item.summary && (
+                <p class="release-entry-summary">
+                  <Prose text={item.summary} />
+                </p>
+              )}
+              {item.items.length > 0 && (
+                <ul class="release-entry-items">
+                  {item.items.map((line) => (
+                    <li>
+                      <Prose text={line} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+      <p class="releases-feed">
+        <a class="button ghost" href={model.feed.href}>{model.feed.label}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="releases-undated" aria-labelledby="undated-title">
+    <div class="shell narrow">
+      <header class="section-head">
+        <h2 id="undated-title">{model.undated.title}</h2>
+        <p class="sub">{model.undated.sub}</p>
+      </header>
+      <ul class="release-list">
+        {
+          model.undated.items.map((item) => (
+            <li>
+              <a href={item.href}>
+                <img src={item.icon} alt="" width="36" height="36" loading="lazy" />
+                <span class="release-main">
+                  <strong>{item.name}</strong>
+                </span>
+                <span class="release-meta">{item.version && <span class="release-version">{item.version}</span>}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</SiteLayout>

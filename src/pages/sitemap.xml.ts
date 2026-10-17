@@ -1,16 +1,14 @@
-import { allPages } from "../lib/pages";
+import { allPages, newestReleaseDate } from "../lib/pages";
 import releases from "../content/releases.json";
 
 // lastmod is the day a page's content last changed on its own: a product page
-// on its latest release, Home and About on the newest release anywhere. Pages
-// with no such date carry none rather than a build date that moves daily.
+// on its latest release, Home, About and Releases on the newest release
+// anywhere. Pages with no such date (the privacy index) carry none rather
+// than a build date that moves daily.
 const published = releases as Record<string, { published?: string }>;
-const newest = Object.values(published)
-  .map((entry) => entry.published ?? "")
-  .sort()
-  .at(-1);
+const newest = newestReleaseDate();
 const lastmodFor = (model: (typeof allPages)[number]) =>
-  model.kind === "product" ? published[model.slug]?.published : newest;
+  model.kind === "product" ? published[model.slug]?.published : model.kind === "privacy" ? undefined : newest;
 
 const escapeXml = (value: string) =>
   value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");

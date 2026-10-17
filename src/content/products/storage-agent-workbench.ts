@@ -30,6 +30,11 @@ export default defineProduct({
       label: "View on GitHub",
       href: "https://github.com/hxddh/storage-agent-workbench",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote: "Requests go to the model and storage endpoints you configure.",
+      stays: "Credentials in an encrypted vault on this machine; task history in the app’s local data directory.",
+    },
     meta: "macOS / Windows / Linux · {version} · S3-compatible · Apache-2.0",
     visual: {
       kind: "screenshot",
@@ -116,6 +121,11 @@ export default defineProduct({
     secondaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/storage-agent-workbench",
+    },
+    privacy: {
+      network: "onRequest",
+      networkNote: "请求发往你配置的模型和存储端点。",
+      stays: "凭证在本机加密保险库；任务记录在本机应用数据目录。",
     },
     meta: "macOS / Windows / Linux · {version} · S3 兼容 · Apache-2.0",
     visual: {

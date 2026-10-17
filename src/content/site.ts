@@ -1,5 +1,5 @@
 // Site-wide facts and interface copy. Product copy lives in ./products.
-import type { Line, Locale } from "./schema";
+import type { Image, Line, Locale, PrivacySummary } from "./schema";
 
 export const site = {
   brand: "Titpea",
@@ -19,6 +19,23 @@ export const site = {
 } as const;
 
 export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;
+
+/** The person behind Titpea, in their own words, on About. */
+export type AboutPerson = {
+  /** First person, written by the owner. */
+  paragraph: string;
+  /** Optional portrait the owner supplies (public/assets/...). */
+  portrait?: Image;
+};
+
+/**
+ * About's person slot, per locale. The owner writes it and supplies the
+ * photo; until then it stays empty and About shows nothing in its place.
+ * Never invent personal details here. Fill both locales or neither.
+ */
+export const about: { person: Partial<Record<Locale, AboutPerson>> } = {
+  person: {},
+};
 
 type Ui = {
   // Chrome
@@ -46,6 +63,8 @@ type Ui = {
   playVideo: string;
   home: string;
   about: string;
+  releases: string;
+  privacy: string;
   groups: { main: string; external: string } & Record<Line, string>;
   // Home
   productIndex: string;
@@ -89,6 +108,27 @@ type Ui = {
   aboutContactTitle: string;
   aboutContactSub: string;
   aboutAnalytics: string;
+  /** Under the headline (which carries the count): `{released}` products with GitHub releases, `{date}` the newest release. Segments split at " · ". */
+  aboutFacts: string;
+  // Releases
+  releasesMetaTitle: string;
+  releasesDescription: string;
+  releasesHeadline: string;
+  releasesLead: string;
+  /** Products without GitHub releases: the Chrome extensions, and source-only tools. */
+  releasesUndatedTitle: string;
+  releasesUndatedSub: string;
+  // Privacy index
+  privacyMetaTitle: string;
+  privacyDescription: string;
+  privacyHeadline: string;
+  privacyLead: string;
+  privacyColumns: { tool: string; network: string; stays: string; details: string };
+  privacyLevels: Record<PrivacySummary["network"], string>;
+  privacyDataLink: string;
+  /** A product whose page has no data section yet. */
+  privacyUnstated: string;
+  privacyProductPage: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -115,6 +155,8 @@ export const ui: Record<Locale, Ui> = {
     playVideo: "Play",
     home: "Home",
     about: "About",
+    releases: "Releases",
+    privacy: "Privacy",
     groups: {
       main: "Main",
       storage: "Storage",
@@ -181,6 +223,24 @@ export const ui: Record<Locale, Ui> = {
     aboutContactTitle: "Say hello.",
     aboutContactSub: "The code is on GitHub. Everything else, by email.",
     aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
+    aboutFacts: "{released} with GitHub releases · last release {date}",
+    releasesMetaTitle: "Releases — Titpea",
+    releasesDescription:
+      "The latest release of every Titpea tool, newest first: the tag, the date, what changed, and a link to the full notes.",
+    releasesHeadline: "What shipped, and when.",
+    releasesLead: "The latest version of each tool, newest first.",
+    releasesUndatedTitle: "Without GitHub releases.",
+    releasesUndatedSub: "Chrome extensions update through the Chrome Web Store; the version is the one on their page.",
+    privacyMetaTitle: "Privacy — Titpea",
+    privacyDescription:
+      "Which Titpea tools go online, when, and where each keeps your data, with links to every product’s own data section and privacy policy.",
+    privacyHeadline: "Which tools go online.",
+    privacyLead: "The short version. Each product’s page says it in full.",
+    privacyColumns: { tool: "Tool", network: "Network", stays: "Where data stays", details: "Details" },
+    privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatically" },
+    privacyDataLink: "Where your data goes",
+    privacyUnstated: "Not written up on its page yet.",
+    privacyProductPage: "Product page",
   },
   zh: {
     primaryLabel: "主导航",
@@ -205,6 +265,8 @@ export const ui: Record<Locale, Ui> = {
     playVideo: "播放",
     home: "首页",
     about: "关于",
+    releases: "发布记录",
+    privacy: "隐私",
     groups: {
       main: "主要",
       storage: "存储",
@@ -269,5 +331,21 @@ export const ui: Record<Locale, Ui> = {
     aboutContactTitle: "打个招呼",
     aboutContactSub: "代码在 GitHub，其他事情发邮件。",
     aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
+    aboutFacts: "{released} 个有 GitHub 发布 · 最近一次发布 {date}",
+    releasesMetaTitle: "发布记录 — Titpea",
+    releasesDescription: "Titpea 每个工具的最新发布，最新的在前：版本、日期、更新了什么，以及完整发布说明的链接。",
+    releasesHeadline: "最近发布了什么",
+    releasesLead: "每个工具的最新版本，最新的在前。",
+    releasesUndatedTitle: "没有 GitHub 发布的工具",
+    releasesUndatedSub: "Chrome 扩展通过 Chrome 网上应用店更新，版本号是其页面上写的。",
+    privacyMetaTitle: "隐私 — Titpea",
+    privacyDescription: "Titpea 的各个工具什么时候联网、数据留在哪里，并链接到每个产品自己的数据说明和隐私政策。",
+    privacyHeadline: "哪些工具会联网",
+    privacyLead: "这里是简表，完整说明在每个产品自己的页面上。",
+    privacyColumns: { tool: "工具", network: "联网", stays: "数据留在哪里", details: "详情" },
+    privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "会自动联网" },
+    privacyDataLink: "数据的去向",
+    privacyUnstated: "页面上还没写。",
+    privacyProductPage: "产品页",
   },
 };

@@ -30,6 +30,13 @@ export default defineProduct({
       label: "View on GitHub",
       href: "https://github.com/hxddh/pagewise",
     },
+    installNote:
+      "The macOS build is not notarized: after each install, click Open Anyway in System Settings → Privacy & Security.",
+    privacy: {
+      network: "onRequest",
+      networkNote: "When you ask a question, extracted text goes to the model you configure, or Ollama.",
+      stays: "Files, chats, marks and scan text on your machine; API keys in the system keychain; no telemetry.",
+    },
     meta: "macOS / Windows / Linux · {version} · PDF + images · MIT",
     visual: {
       kind: "screenshot",
@@ -142,6 +149,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/pagewise",
+    },
+    installNote: "macOS 版尚未公证：每装一个新版本，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    privacy: {
+      network: "onRequest",
+      networkNote: "提问时，提取的文本发给你配置的模型或本机 Ollama。",
+      stays: "文件、会话、批注和识别出的文字都在本机；API 密钥在系统钥匙串；没有遥测。",
     },
     meta: "macOS / Windows / Linux · {version} · PDF 与图片 · MIT",
     visual: {

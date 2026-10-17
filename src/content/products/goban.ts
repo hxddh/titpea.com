@@ -30,6 +30,13 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/goban",
     },
+    installNote:
+      "The macOS build is not notarized: the first time, click Open Anyway in System Settings → Privacy & Security.",
+    privacy: {
+      network: "onRequest",
+      networkNote: "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+      stays: "Games, practice progress and settings in the app’s storage on this computer.",
+    },
     meta: "macOS + Windows · MIT · {version} · Local app",
     visual: {
       kind: "screenshot",
@@ -128,6 +135,12 @@ export default defineProduct({
     secondaryCta: {
       label: "查看源码",
       href: "https://github.com/hxddh/goban",
+    },
+    installNote: "macOS 版未经公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    privacy: {
+      network: "onRequest",
+      networkNote: "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+      stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
     },
     meta: "macOS + Windows · MIT · {version} · 本地应用",
     visual: {

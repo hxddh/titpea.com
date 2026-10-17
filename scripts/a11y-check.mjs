@@ -104,7 +104,23 @@ const failures = (
         }
         // A Chinese heading has no spaces to break at, so one that does not fit
         // strands its last character; keep such headings short enough to fit.
+        // A lede must not leave one word on its last line either (about three
+        // characters, "游戏。").
         if (document.documentElement.lang.startsWith("zh")) {
+          for (const lede of document.querySelectorAll(".lead")) {
+            if (!visible(lede)) continue;
+            const range = document.createRange();
+            range.selectNodeContents(lede);
+            const lines = new Map();
+            for (const rect of range.getClientRects()) {
+              const top = Math.round(rect.top);
+              lines.set(top, (lines.get(top) ?? 0) + rect.width);
+            }
+            const widths = [...lines.values()];
+            const size = Number.parseFloat(getComputedStyle(lede).fontSize);
+            if (widths.length > 1 && widths.at(-1) < size * 3.6)
+              problems.push(`lede strands its last word: "${lede.textContent.trim().slice(0, 40)}"`);
+          }
           for (const heading of document.querySelectorAll("h1, h2, h3")) {
             if (!visible(heading)) continue;
             const range = document.createRange();

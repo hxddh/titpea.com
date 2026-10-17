@@ -45,6 +45,16 @@ export default defineProduct({
       label: "Privacy policy",
       href: "https://hxddh.github.io/bilingual-site/",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote:
+        "On-device translation by default; Precise translation sends paragraphs to your chosen provider only when you ask.",
+      stays: "Page text stays on your computer; your own key stays in the extension’s IndexedDB.",
+      policy: {
+        label: "Privacy policy",
+        href: "https://hxddh.github.io/bilingual-site/",
+      },
+    },
     meta: "Chrome extension · Chrome 138+ · 2.0.2 · On-device translation",
     visual: {
       kind: "screenshot",
@@ -126,6 +136,15 @@ export default defineProduct({
     secondaryCta: {
       label: "隐私政策",
       href: "https://hxddh.github.io/bilingual-site/",
+    },
+    privacy: {
+      network: "onRequest",
+      networkNote: "默认本地翻译；只有你要看精译时，段落才发给你选择的服务商。",
+      stays: "网页文字不离开你的电脑；你的密钥存在扩展的 IndexedDB 中。",
+      policy: {
+        label: "隐私政策",
+        href: "https://hxddh.github.io/bilingual-site/",
+      },
     },
     meta: "Chrome 扩展 · Chrome 138+ · 2.0.2 · 本地翻译",
     visual: {

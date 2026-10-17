@@ -6,6 +6,8 @@
     { "path": "/zh/httpmon/", "viewport": "mobile", "state": "faq" },
     { "path": "/about/", "viewport": "desktop", "state": "section", "section": "scenes-title" },
     { "path": "/zh/about/", "viewport": "mobile", "state": "section", "section": "scenes-title" },
-    { "path": "/404.html", "viewport": "mobile", "state": "top" }
+    { "path": "/404.html", "viewport": "mobile", "state": "top" },
+    { "path": "/releases/", "viewport": "desktop", "state": "section", "section": "undated-title" },
+    { "path": "/zh/privacy/", "viewport": "mobile", "state": "top" }
   ]
 }

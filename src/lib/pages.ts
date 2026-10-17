@@ -2,19 +2,33 @@
 // site copy, and the synced release tags. Components only render these.
 import releases from "../content/releases.json";
 import { products } from "../content/products";
-import { absoluteUrl, site, ui } from "../content/site";
+import { about, absoluteUrl, site, ui, type AboutPerson } from "../content/site";
 import {
   featuredSrc,
   lines,
   locales,
   type Line,
   type Locale,
+  type PrivacySummary,
   type Product,
   type ProductCopy,
   type ReleaseHighlights,
 } from "../content/schema";
 
-export type CurrentPage = "home" | "about" | (string & {});
+export type CurrentPage = "home" | "about" | "releases" | "privacy" | (string & {});
+
+// A field that one language has must exist in the other: the two pages
+// differ in words, never in what they show.
+for (const product of products) {
+  for (const field of ["installNote", "privacy"] as const) {
+    if (Boolean(product.en[field]) !== Boolean(product.zh[field]))
+      throw new Error(`${product.slug}: ${field} is set in one language only`);
+  }
+  if (product.en.privacy && product.en.privacy.network !== product.zh.privacy?.network)
+    throw new Error(`${product.slug}: privacy.network differs between languages`);
+}
+if (Boolean(about.person.en) !== Boolean(about.person.zh))
+  throw new Error("site.ts: about.person is set in one language only");
 
 type ReleaseNotes = { summary: string; items: string[]; url: string };
 const releaseTags = releases as Record<
@@ -28,10 +42,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 /** The latest release's publish date, written out for the locale ("Sep 4, 2026" / "2026年9月4日"). */
 export function releasedOf(slug: string, locale: Locale): string | undefined {
-  const match = releaseTags[slug]?.published?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) return undefined;
-  const [, year, month, day] = match.map(Number);
-  return locale === "zh" ? `${year}年${month}月${day}日` : `${months[month - 1]} ${day}, ${year}`;
+  return formatDate(releaseTags[slug]?.published, locale);
 }
 
 export function pathFor(locale: Locale, slug?: string) {
@@ -115,6 +126,7 @@ export function navGroups(locale: Locale): NavGroup[] {
       items: [
         { label: copy.home, href: pathFor(locale), current: "home" },
         { label: copy.about, href: pathFor(locale, "about"), current: "about" },
+        { label: copy.releases, href: pathFor(locale, "releases"), current: "releases" },
       ],
     },
     ...lines.map((line) => ({
@@ -436,7 +448,7 @@ export function homePage(locale: Locale): HomePageModel {
     // What shipped last: release cadence is the plainest evidence the tools are alive.
     shipping: {
       title: copy.shippingTitle,
-      more: { label: copy.shippingMore, href: `${pathFor(locale, "about")}#releases-title` },
+      more: { label: copy.shippingMore, href: pathFor(locale, "releases") },
       items: releaseItems(locale).slice(0, 3),
     },
     // Every product, featured ones included, so a filtered line is complete.
@@ -462,7 +474,15 @@ export type ReleaseItem = {
   icon: string;
   version: string;
   released?: string;
+  /** Machine-readable publish date (YYYY-MM-DD). */
+  published?: string;
   highlight?: string;
+  /** A hand-written one-line summary (releaseHighlights) for this tag, or none. */
+  summary?: string;
+  /** Up to three lines quoted from the notes, in the page's language only. */
+  items: string[];
+  /** The release's full notes on GitHub. */
+  notesUrl: string;
 };
 
 /** Every product with a release, newest first, each with one highlight in the page's language or none. */
@@ -471,22 +491,60 @@ function releaseItems(locale: Locale): ReleaseItem[] {
     .filter((product) => versionOf(product.slug))
     .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
     .map((product) => {
-      const notes = releaseTags[product.slug]?.notes;
+      const release = releaseTags[product.slug];
+      const notes = release?.notes;
       const override = product[locale].releaseHighlights;
       const current = override?.version === versionOf(product.slug) ? override : undefined;
+      // Never the release title: the synced summary comes from it, so only a
+      // curated override carries a summary.
+      const items = (current ? current.items : (notes?.items ?? []))
+        .filter((line) => inPageLanguage(line, locale))
+        .slice(0, 3);
+      const summary = current?.summary && inPageLanguage(current.summary, locale) ? current.summary : undefined;
       return {
         name: product[locale].title,
         href: pathFor(locale, product.slug),
         icon: product.icon,
-        version: versionOf(product.slug)!,
+        version: release.version,
         released: releasedOf(product.slug, locale),
-        // Never the release title.
-        highlight: (current ? [...current.items, current.summary] : (notes?.items ?? [])).find((line) =>
-          inPageLanguage(line, locale),
-        ),
+        published: release.published,
+        highlight: [...items, ...(summary ? [summary] : [])][0],
+        summary,
+        items,
+        notesUrl: notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
       };
     });
 }
+
+/** A product without GitHub releases: the version its own page lists, if any, and no date. */
+export type UndatedReleaseItem = { name: string; href: string; icon: string; version?: string };
+
+const plainVersion = /^v?\d+(?:\.\d+)+$/;
+
+function undatedReleaseItems(locale: Locale): UndatedReleaseItem[] {
+  return products
+    .filter((product) => !versionOf(product.slug))
+    .map((product) => ({
+      name: product[locale].title,
+      href: pathFor(locale, product.slug),
+      icon: product.icon,
+      version: product[locale].meta.split(" · ").find((part) => plainVersion.test(part.trim())),
+    }));
+}
+
+/** "Oct 17, 2026" / "2026年10月17日" from a YYYY-MM-DD date. */
+function formatDate(date: string | undefined, locale: Locale) {
+  const match = date?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return undefined;
+  const [, year, month, day] = match.map(Number);
+  return locale === "zh" ? `${year}年${month}月${day}日` : `${months[month - 1]} ${day}, ${year}`;
+}
+
+const newestRelease = () =>
+  Object.values(releaseTags)
+    .map((entry) => entry.published ?? "")
+    .sort()
+    .at(-1);
 
 /* ---------- About ---------- */
 
@@ -499,6 +557,10 @@ export type AboutPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
+  /** The owner's own paragraph and portrait; absent until they supply it. */
+  person?: AboutPerson;
+  /** Computed from the catalog and releases.json, with the GitHub profile. */
+  facts: { parts: string[]; github: { label: string; href: string } };
   scenes: {
     title: string;
     items: Array<{
@@ -570,6 +632,14 @@ export function aboutPage(locale: Locale): AboutPageModel {
     }),
     language: languageLink(locale, alternatePath),
     hero: { eyebrow: copy.aboutEyebrow, title: headline, lead },
+    person: about.person[locale],
+    facts: {
+      parts: copy.aboutFacts
+        .replace("{released}", String(products.filter((product) => versionOf(product.slug)).length))
+        .replace("{date}", formatDate(newestRelease(), locale) ?? "")
+        .split(" · "),
+      github: { label: site.github.replace(/^https:\/\//, ""), href: site.github },
+    },
     scenes: {
       title: copy.aboutScenesTitle,
       items: lines.map((line) => ({
@@ -608,15 +678,144 @@ export function aboutPage(locale: Locale): AboutPageModel {
   };
 }
 
+/* ---------- Releases ---------- */
+
+export type ReleasesPageModel = {
+  kind: "releases";
+  locale: Locale;
+  current: "releases";
+  path: string;
+  alternatePath: string;
+  seo: PageSeo;
+  language: PageLanguageLink;
+  hero: { eyebrow: string; title: string; lead: string };
+  notesLabel: string;
+  /** Every product with a GitHub release, newest first. */
+  items: ReleaseItem[];
+  undated: { title: string; sub: string; items: UndatedReleaseItem[] };
+  feed: { label: string; href: string };
+  expectedText: string[];
+};
+
+export function releasesPage(locale: Locale): ReleasesPageModel {
+  const copy = ui[locale];
+  const path = pathFor(locale, "releases");
+  const alternatePath = pathFor(otherLocale(locale), "releases");
+  return {
+    kind: "releases",
+    locale,
+    current: "releases",
+    path,
+    alternatePath,
+    seo: buildSeo({
+      title: copy.releasesMetaTitle,
+      description: copy.releasesDescription,
+      path,
+      alternatePath,
+      locale,
+      ogImage: site.og.home,
+      structuredData: {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: copy.releasesMetaTitle,
+        url: absoluteUrl(path),
+        inLanguage: locale === "zh" ? "zh-CN" : "en",
+        description: copy.releasesDescription,
+      },
+    }),
+    language: languageLink(locale, alternatePath),
+    hero: { eyebrow: site.brand, title: copy.releasesHeadline, lead: copy.releasesLead },
+    notesLabel: copy.releaseNotes,
+    items: releaseItems(locale),
+    undated: { title: copy.releasesUndatedTitle, sub: copy.releasesUndatedSub, items: undatedReleaseItems(locale) },
+    feed: { label: copy.aboutFeed, href: "/releases.xml" },
+    expectedText: [copy.releasesHeadline, copy.releasesLead, copy.releasesUndatedTitle],
+  };
+}
+
+/* ---------- Privacy index ---------- */
+
+export type PrivacyPageModel = {
+  kind: "privacy";
+  locale: Locale;
+  current: "privacy";
+  path: string;
+  alternatePath: string;
+  seo: PageSeo;
+  language: PageLanguageLink;
+  hero: { eyebrow: string; title: string; lead: string };
+  columns: { tool: string; network: string; stays: string; details: string };
+  rows: Array<{
+    name: string;
+    href: string;
+    icon: string;
+    /** Absent when the product's page has no data section yet. */
+    privacy?: PrivacySummary & { level: string };
+    /** Its "Where your data goes" section, when the page has one. */
+    dataHref?: string;
+  }>;
+  dataLabel: string;
+  unstated: string;
+  productPage: string;
+  /** Shown only while Web Analytics is on, as on About. */
+  analytics?: string;
+  expectedText: string[];
+};
+
+export function privacyPage(locale: Locale): PrivacyPageModel {
+  const copy = ui[locale];
+  const path = pathFor(locale, "privacy");
+  const alternatePath = pathFor(otherLocale(locale), "privacy");
+  return {
+    kind: "privacy",
+    locale,
+    current: "privacy",
+    path,
+    alternatePath,
+    seo: buildSeo({
+      title: copy.privacyMetaTitle,
+      description: copy.privacyDescription,
+      path,
+      alternatePath,
+      locale,
+      ogImage: site.og.home,
+    }),
+    language: languageLink(locale, alternatePath),
+    hero: { eyebrow: site.brand, title: copy.privacyHeadline, lead: copy.privacyLead },
+    columns: copy.privacyColumns,
+    rows: products.map((product) => {
+      const privacy = product[locale].privacy;
+      const hasData = product[locale].sections.some((section) => section.kind === "data");
+      return {
+        name: product[locale].title,
+        href: pathFor(locale, product.slug),
+        icon: product.icon,
+        privacy: privacy && { ...privacy, level: copy.privacyLevels[privacy.network] },
+        dataHref: hasData ? `${pathFor(locale, product.slug)}#data` : undefined,
+      };
+    }),
+    dataLabel: copy.privacyDataLink,
+    unstated: copy.privacyUnstated,
+    productPage: copy.privacyProductPage,
+    analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
+    expectedText: [copy.privacyHeadline, copy.privacyColumns.network],
+  };
+}
+
 /* ---------- Routes ---------- */
 
-export type SitePageModel = HomePageModel | AboutPageModel | ProductPageModel;
+export type SitePageModel = HomePageModel | AboutPageModel | ReleasesPageModel | PrivacyPageModel | ProductPageModel;
 
 export const allPages: SitePageModel[] = locales.flatMap((locale) => [
   homePage(locale),
   aboutPage(locale),
+  releasesPage(locale),
+  privacyPage(locale),
   ...products.map((product) => productPage(product, locale)),
 ]);
+
+/** The newest release date anywhere, for pages that change with every release. */
+export const newestReleaseDate = newestRelease;
 
 export const productBySlug = (slug: string) => {
   const product = products.find((item) => item.slug === slug);
@@ -654,7 +853,7 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   alternatePath: page.alternatePath,
   ogImage: page.seo.ogImage,
   expectedText: page.expectedText,
-  primaryCta: page.kind === "about" ? undefined : page.primaryCta,
+  primaryCta: page.kind === "home" || page.kind === "product" ? page.primaryCta : undefined,
   sectionIndex: page.kind === "product" ? page.sectionIndex : undefined,
   sectionLinks: page.kind === "product" ? (page.sectionIndex ? page.navItems.length : 0) : undefined,
   browserVisual:

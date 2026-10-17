@@ -284,7 +284,6 @@ html:lang(zh) {
   line-height: 1.16;
 }
 
-:lang(zh) .lead,
 :lang(zh) .sub,
 :lang(zh) .prose,
 :lang(zh) .about-body,
@@ -297,6 +296,16 @@ html:lang(zh) {
   letter-spacing: 0;
   /* No single character stranded on a last line. */
   text-wrap: pretty;
+}
+
+/* A Chinese lede wraps between its phrases (at punctuation and spaces), in
+   balanced lines, so neither a word nor a character is left alone. */
+:lang(zh) .lead {
+  line-height: 1.75;
+  letter-spacing: 0;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 /* Utilities */

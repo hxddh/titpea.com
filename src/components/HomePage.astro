@@ -99,12 +99,13 @@ const { model } = Astro.props;
                     loading="lazy"
                     decoding="async"
                   />
-                  {item.caption && <figcaption class="home-featured-caption">{item.caption}</figcaption>}
                 </figure>
                 <span class="home-featured-copy">
                   <span class="section-kicker">{item.role}</span>
                   <strong class="home-featured-name">{item.name}</strong>
                   <span class="home-featured-text">{item.text}</span>
+                  {/* Under the text, so every card's title starts at the same height. */}
+                  {item.caption && <span class="home-featured-caption">{item.caption}</span>}
                   <span class="home-featured-more">{model.featured.learnMore}</span>
                 </span>
               </a>

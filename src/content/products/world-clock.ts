@@ -29,6 +29,16 @@ export default defineProduct({
       label: "Privacy details",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
     },
+    privacy: {
+      network: "none",
+      networkNote: "No network requests, and no web pages read.",
+      stays:
+        "Cities, theme and time format sync through Chrome storage between your own browsers, never to the developer.",
+      policy: {
+        label: "Privacy details",
+        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+      },
+    },
     meta: "Chrome extension · Chrome 110+ · 8.2.0 · One permission",
     visual: {
       kind: "screenshot",
@@ -161,6 +171,15 @@ export default defineProduct({
     secondaryCta: {
       label: "隐私说明",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+    },
+    privacy: {
+      network: "none",
+      networkNote: "不联网，也不读取网页。",
+      stays: "城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不发给开发者。",
+      policy: {
+        label: "隐私说明",
+        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+      },
     },
     meta: "Chrome 扩展 · Chrome 110+ · 8.2.0 · 仅一项权限",
     visual: {
