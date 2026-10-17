@@ -1,13 +1,13 @@
 import fs from "node:fs";
 import { baseUrl, outDir, screenshotName } from "./config.mjs";
 import { visit } from "./browser.mjs";
-import { zhForbiddenTerms } from "../copy-rules.mjs";
+import { forbiddenTermQuotes, zhForbiddenTerms } from "../copy-rules.mjs";
 
 export async function checkRoute(page, viewport, route) {
   const path = route.path;
   await visit(page, new URL(path, baseUrl), `${viewport.name} route`, { images: true });
   const metrics = await page.evaluate(
-    ({ route, zhForbiddenTerms }) => {
+    ({ route, zhForbiddenTerms, forbiddenTermQuotes }) => {
       const nav = document.querySelector(".nav");
       const mobile = document.querySelector(".mobile-menu");
       const h1 = document.querySelector("h1");
@@ -49,7 +49,12 @@ export async function checkRoute(page, viewport, route) {
             ? (() => {
                 const prose = document.body.cloneNode(true);
                 prose.querySelectorAll("pre, code, script").forEach((node) => node.remove());
-                const text = (prose.textContent ?? "").toLowerCase();
+                // A product's own UI label, quoted as it appears, is allowed (copy-rules.mjs).
+                const quoted = forbiddenTermQuotes.reduce(
+                  (rest, quote) => rest.split(quote).join(""),
+                  prose.textContent ?? "",
+                );
+                const text = quoted.toLowerCase();
                 return zhForbiddenTerms.filter((term) => text.includes(term.trim().toLowerCase()));
               })()
             : [],
@@ -119,7 +124,7 @@ export async function checkRoute(page, viewport, route) {
         text: document.body.innerText,
       };
     },
-    { route, zhForbiddenTerms },
+    { route, zhForbiddenTerms, forbiddenTermQuotes },
   );
 
   const filename = screenshotName(viewport.name, path);
