@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "storage-agent-workbench",
   line: "storage",
+  type: "desktop",
+  runsOn: ["mac", "windows", "linux"],
+  purposes: ["storage"],
   repo: "hxddh/storage-agent-workbench",
   icon: "/assets/icons/storage-agent-workbench.webp",
   og: "/assets/og-storage-agent-workbench.png",

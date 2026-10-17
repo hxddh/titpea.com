@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "easier-bookmarks",
   line: "everyday",
+  type: "extension",
+  runsOn: ["chrome"],
+  purposes: ["browser"],
   icon: "/assets/icons/easier-bookmarks.webp",
   og: "/assets/og-easier-bookmarks.png",
   schema: {

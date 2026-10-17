@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "bilingual",
   line: "everyday",
+  type: "extension",
+  runsOn: ["chrome"],
+  purposes: ["reading", "browser"],
   featured: {
     order: 3,
     image: {

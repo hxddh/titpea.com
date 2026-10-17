@@ -1,5 +1,5 @@
 // Site-wide facts and interface copy. Product copy lives in ./products.
-import type { Image, Line, Locale, PrivacySummary } from "./schema";
+import type { FamilyId, Image, Line, Locale, Platform, PrivacySummary, ProductType, Purpose } from "./schema";
 
 export const site = {
   brand: "Titpea",
@@ -17,6 +17,18 @@ export const site = {
   /** Site token for the JS-snippet method, only if automatic setup is off. */
   analyticsToken: "",
 } as const;
+
+/**
+ * Products that work together, in the order a visitor would reach for them.
+ * Home shows each family as a strip; each member's page shows the band.
+ */
+export const familyMembers: Record<FamilyId, string[]> = {
+  s3: ["s3-turbo-list", "storage-agent-workbench", "storageops", "httpmon"],
+  agents: ["pulse", "readout", "celagent", "agent-radar"],
+};
+
+export const familyOf = (slug: string) =>
+  (Object.keys(familyMembers) as FamilyId[]).find((id) => familyMembers[id].includes(slug));
 
 export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;
 
@@ -86,6 +98,18 @@ type Ui = {
   groupNotes: Record<Line, string>;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
+  /** Catalog facets and chips. */
+  filterFor: string;
+  filterRunsOn: string;
+  /** `{count}` is the number of products shown. */
+  filterCount: string;
+  filterNone: string;
+  types: Record<ProductType, string>;
+  platforms: Record<Platform, string>;
+  purposes: Record<Purpose, string>;
+  statusPreview: string;
+  /** A family's title and one line; `roles` is each member's step, by slug. */
+  families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
   browseAllTools: string;
   learnMore: string;
   browseTools: string;
@@ -185,6 +209,58 @@ export const ui: Record<Locale, Ui> = {
       games: "Board games, and a small world.",
     },
     relatedInLine: "More in {line}",
+    filterFor: "For",
+    filterRunsOn: "Runs on",
+    filterCount: "{count} products",
+    filterNone: "Nothing matches both. Clear one filter.",
+    types: {
+      cli: "Command line",
+      pi: "Pi extension",
+      actions: "GitHub Actions",
+      desktop: "Desktop app",
+      mac: "Mac app",
+      extension: "Chrome extension",
+      game: "Game",
+      experiment: "Experiment",
+    },
+    platforms: {
+      mac: "Mac",
+      windows: "Windows",
+      linux: "Linux",
+      chrome: "Chrome",
+      terminal: "Terminal",
+      actions: "GitHub Actions",
+    },
+    purposes: {
+      storage: "Object storage",
+      agents: "Coding agents",
+      reading: "Reading",
+      browser: "Browser",
+      games: "Games",
+    },
+    statusPreview: "Pre-alpha",
+    families: {
+      s3: {
+        title: "The S3 kit",
+        sub: "For migrating and troubleshooting object storage, in this order.",
+        roles: {
+          "s3-turbo-list": "List the bucket",
+          "storage-agent-workbench": "Find what needs attention",
+          storageops: "Diagnose in Pi",
+          httpmon: "See the real requests",
+        },
+      },
+      agents: {
+        title: "Working with agents",
+        sub: "Once a coding agent is running.",
+        roles: {
+          pulse: "Which one needs you",
+          readout: "Read what it writes",
+          celagent: "Resume on another machine",
+          "agent-radar": "Scheduled research",
+        },
+      },
+    },
     browseAllTools: "All tools",
     learnMore: "Learn more",
     browseTools: "Browse all {count} tools",
@@ -296,6 +372,58 @@ export const ui: Record<Locale, Ui> = {
       games: "棋盘游戏，和一个小世界。",
     },
     relatedInLine: "更多{line}工具",
+    filterFor: "用途",
+    filterRunsOn: "运行在",
+    filterCount: "{count} 件作品",
+    filterNone: "没有同时符合两项的作品，取消一个筛选试试。",
+    types: {
+      cli: "命令行",
+      pi: "Pi 扩展",
+      actions: "GitHub Actions",
+      desktop: "桌面应用",
+      mac: "Mac 应用",
+      extension: "Chrome 扩展",
+      game: "游戏",
+      experiment: "实验项目",
+    },
+    platforms: {
+      mac: "Mac",
+      windows: "Windows",
+      linux: "Linux",
+      chrome: "Chrome",
+      terminal: "终端",
+      actions: "GitHub Actions",
+    },
+    purposes: {
+      storage: "对象存储",
+      agents: "编码 Agent",
+      reading: "阅读",
+      browser: "浏览器",
+      games: "游戏",
+    },
+    statusPreview: "早期预览",
+    families: {
+      s3: {
+        title: "S3 工具组",
+        sub: "迁移和排查对象存储时，依次用到。",
+        roles: {
+          "s3-turbo-list": "列清单",
+          "storage-agent-workbench": "找问题",
+          storageops: "在 Pi 里排查",
+          httpmon: "看实际请求",
+        },
+      },
+      agents: {
+        title: "和 Agent 一起工作",
+        sub: "编码 Agent 跑起来以后。",
+        roles: {
+          pulse: "谁需要你",
+          readout: "读它写的",
+          celagent: "换机器继续",
+          "agent-radar": "定时调研",
+        },
+      },
+    },
     browseAllTools: "全部工具",
     learnMore: "了解更多",
     browseTools: "浏览全部 {count} 个工具",

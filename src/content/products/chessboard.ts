@@ -20,6 +20,9 @@ const puzzle = {
 export default defineProduct({
   slug: "chessboard",
   line: "games",
+  type: "game",
+  runsOn: ["mac", "windows"],
+  purposes: ["games"],
   featured: {
     order: 2,
     image: {

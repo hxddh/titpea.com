@@ -419,10 +419,35 @@ export type ProductCopy = {
 export const featuredSrc = (featured: NonNullable<Product["featured"]>, locale: Locale) =>
   typeof featured.image.src === "string" ? featured.image.src : featured.image.src[locale];
 
+/** What the product is. Picks the page template (`templateOf`) and the catalog type chip. */
+export type ProductType = "cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game" | "experiment";
+/** Where it runs: the catalog's "Runs on" facet and platform chips. */
+export type Platform = "mac" | "windows" | "linux" | "chrome" | "terminal" | "actions";
+/** What it is for: the catalog's "For" facet. A product can serve more than one. */
+export type Purpose = "storage" | "agents" | "reading" | "browser" | "games";
+/** Products that work together; members are listed in site.ts (`familyMembers`), roles in `ui.families`. */
+export type FamilyId = "s3" | "agents";
+/** One body composition per kind of product (DESIGN.md, "Templates"). */
+export type Template = "tool" | "app" | "extension" | "game";
+
+export const templateOf = (type: ProductType): Template =>
+  type === "cli" || type === "pi" || type === "actions"
+    ? "tool"
+    : type === "extension"
+      ? "extension"
+      : type === "game"
+        ? "game"
+        : "app";
+
 export type Product = {
   slug: string;
   /** Catalog group and header dropdown. */
   line: Line;
+  type: ProductType;
+  runsOn: Platform[];
+  purposes: Purpose[];
+  /** Maturity chip in the catalog; omitted for stable releases. */
+  status?: "preview";
   /** The featured products (at most three) lead Home with this photograph. */
   featured?: {
     /** Row order on Home, from 1. */

@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "pulse",
   line: "agents",
+  type: "mac",
+  runsOn: ["mac"],
+  purposes: ["agents"],
   repo: "hxddh/Pulse",
   icon: "/assets/icons/pulse.webp",
   og: "/assets/og-pulse.png",

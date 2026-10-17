@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "readout",
   line: "agents",
+  type: "mac",
+  runsOn: ["mac"],
+  purposes: ["agents", "reading"],
   repo: "hxddh/readout",
   icon: "/assets/icons/readout.webp",
   og: "/assets/og-readout.png",

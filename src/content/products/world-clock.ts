@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "world-clock",
   line: "everyday",
+  type: "extension",
+  runsOn: ["chrome"],
+  purposes: ["browser"],
   icon: "/assets/icons/world-clock.webp",
   og: "/assets/og-world-clock.png",
   schema: {
