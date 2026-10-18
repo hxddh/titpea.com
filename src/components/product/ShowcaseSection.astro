@@ -7,12 +7,19 @@ interface Props {
   showcase: Showcase;
   pauseLabel: string;
   playLabel: string;
+  /** App and extension pages: text beside the picture, alternating sides with `flip`. */
+  row?: boolean;
+  flip?: boolean;
 }
 
-const { showcase, pauseLabel, playLabel } = Astro.props;
+const { showcase, pauseLabel, playLabel, row = false, flip = false } = Astro.props;
 ---
 
-<section class="product-section product-screenshot-showcase">
+<section
+  class="product-section product-screenshot-showcase"
+  data-layout={row ? "row" : undefined}
+  data-flip={row && flip ? "" : undefined}
+>
   <div class="shell">
     <header class="section-head compact">
       <h2>{showcase.title}</h2>

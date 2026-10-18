@@ -1,4 +1,5 @@
 ---
+import CommandReplay from "./CommandReplay.astro";
 import Prose from "./Prose.astro";
 import type { Commands } from "../../content/schema";
 
@@ -7,13 +8,18 @@ interface Props {
   copyLabel: string;
   copiedLabel: string;
   outputLabel: string;
+  controls: { pause: string; play: string };
+  /** Tool pages: the commands side by side as numbered steps. */
+  steps?: boolean;
+  /** The command whose replay already plays in the hero; it is not repeated here. */
+  replayInHero?: string;
 }
 
-const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
+const { commands, copyLabel, copiedLabel, outputLabel, controls, steps = false, replayInHero } = Astro.props;
 ---
 
-<section id="start" class="product-section commands-section">
-  <div class="shell narrow">
+<section id="start" class="product-section commands-section" data-layout={steps ? "steps" : undefined}>
+  <div class:list={["shell", !steps && "narrow"]}>
     <header class="section-head">
       <h2>{commands.title}</h2>
       {
@@ -24,10 +30,11 @@ const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
         )
       }
     </header>
-    <ol class="command-list">
+    <ol class="command-list" data-count={commands.items.length}>
       {
-        commands.items.map((item) => (
+        commands.items.map((item, index) => (
           <li class="command">
+            {steps && <span class="command-step">{index + 1}</span>}
             <p class="command-comment">
               <Prose text={item.comment} />
             </p>
@@ -44,7 +51,13 @@ const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
                 {copyLabel}
               </button>
             </div>
-            {item.capturedOutput && (
+            {item.capturedOutput && item.replay && item.command !== replayInHero && (
+              <CommandReplay
+                item={{ ...item, capturedOutput: item.capturedOutput, replay: item.replay }}
+                controls={controls}
+              />
+            )}
+            {item.capturedOutput && !item.replay && (
               <details class="command-output">
                 <summary>{outputLabel}</summary>
                 <pre tabindex="0" set:text={item.capturedOutput} />
@@ -58,3 +71,4 @@ const { commands, copyLabel, copiedLabel, outputLabel } = Astro.props;
 </section>
 
 <script is:inline src="/scripts/copy.js" defer></script>
+<script is:inline src="/scripts/demo-replay.js" defer></script>

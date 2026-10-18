@@ -14,7 +14,10 @@ function privacyFiles(dir) {
     const full = path.join(dir, entry.name);
     if (!entry.isDirectory()) return [];
     const page = path.join(full, "index.astro");
-    return [...(entry.name === "privacy" && fs.existsSync(page) ? [page] : []), ...privacyFiles(full)];
+    // A product's policy lives at <product>/privacy/. The site-wide /privacy/
+    // and /zh/privacy/ index pages are ordinary site routes, listed by siteRoutes.
+    const isProductPolicy = entry.name === "privacy" && dir !== pagesDir && dir !== path.join(pagesDir, "zh");
+    return [...(isProductPolicy && fs.existsSync(page) ? [page] : []), ...privacyFiles(full)];
   });
 }
 

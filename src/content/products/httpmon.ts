@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "httpmon",
   line: "storage",
+  type: "cli",
+  runsOn: ["terminal"],
+  purposes: ["storage"],
   repo: "hxddh/https-traffic-inspector",
   icon: "/assets/icons/httpmon.webp",
   og: "/assets/og-httpmon.png",
@@ -28,6 +31,12 @@ export default defineProduct({
     secondaryCta: {
       label: "Usage",
       href: "https://github.com/hxddh/https-traffic-inspector#usage",
+    },
+    privacy: {
+      network: "onRequest",
+      networkNote:
+        "Relays only the wrapped command’s own requests, and replays only when you ask; no update check, no telemetry.",
+      stays: "Traffic shows in your terminal, saved only to a file you name; the temporary CA key never touches disk.",
     },
     meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
@@ -65,10 +74,10 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "The traffic, beside the command.",
+        label: "No browser, no GUI, no setup.",
         items: [
           { title: "Request and response", body: "Method, URL, headers, status, timing; decoded for display only." },
-          { title: "Original stream", body: "The command gets its response unchanged." },
+          { title: "WebSocket too", body: "`wss://` and `ws://` frames, spliced in both directions." },
           { title: "HTTP/2 and gRPC", body: "Trailers carried through; gRPC status decoded." },
         ],
       },
@@ -86,6 +95,17 @@ export default defineProduct({
           },
           { label: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
           { label: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "httpmon sends nothing of its own: it relays the wrapped command’s traffic, and `--replay` re-sends recordings only when you ask.",
+          "The CA lives for one run: its private key never touches disk, and the temporary CA bundle is deleted on exit.",
+          "Captures stay in your terminal unless you pass `--record` or `--har`; those files can hold credentials, so treat them as sensitive.",
         ],
       },
       {
@@ -136,6 +156,11 @@ export default defineProduct({
       label: "使用方法",
       href: "https://github.com/hxddh/https-traffic-inspector#usage",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote: "只转发被包裹命令自己的请求，只在你要求时重放；不检查更新，没有遥测。",
+      stays: "流量只显示在终端，只有你指定文件时才保存；临时 CA 私钥从不写入磁盘。",
+    },
     meta: "Go · MIT · {version} · 本地代理 · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "开始使用",
@@ -172,10 +197,10 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "流量就在命令旁边",
+        label: "不用浏览器和 GUI，也不用配置",
         items: [
           { title: "请求和响应", body: "方法、URL、头、状态码、耗时；解压只为显示。" },
-          { title: "原始响应流", body: "命令收到的响应原样不动。" },
+          { title: "也看 WebSocket", body: "`wss://` 和 `ws://` 的帧双向转发。" },
           { title: "HTTP/2 与 gRPC", body: "透传 trailers，解出 gRPC 状态。" },
         ],
       },
@@ -190,6 +215,17 @@ export default defineProduct({
           { label: "本地启动", body: "在支持代理的命令前加 `httpmon`。只监听 `127.0.0.1`，系统代理不变。" },
           { label: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
           { label: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "httpmon 自己不发请求：它只转发被包裹命令的流量；`--replay` 只在你运行时重发录制的请求。",
+          "CA 只在一次运行中存在：私钥从不写入磁盘，临时 CA 证书包在退出时删除。",
+          "抓到的流量只显示在终端，除非你加 `--record` 或 `--har`；这些文件可能含凭据，请当作敏感日志保管。",
         ],
       },
       {

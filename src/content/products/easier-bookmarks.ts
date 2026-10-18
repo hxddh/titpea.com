@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "easier-bookmarks",
   line: "everyday",
+  type: "extension",
+  runsOn: ["chrome"],
+  purposes: ["browser"],
   icon: "/assets/icons/easier-bookmarks.webp",
   og: "/assets/og-easier-bookmarks.png",
   schema: {
@@ -27,6 +30,15 @@ export default defineProduct({
     secondaryCta: {
       label: "Privacy policy",
       href: "/easier-bookmarks/privacy/",
+    },
+    privacy: {
+      network: "none",
+      networkNote: "Nothing is sent: no servers, analytics or ads. Chrome Sync, if on, syncs bookmarks.",
+      stays: "Open folders, recent opens and the last-picked folder in the extension’s local storage.",
+      policy: {
+        label: "Privacy policy",
+        href: "/easier-bookmarks/privacy/",
+      },
     },
     meta: "Chrome Web Store · Productivity · 2.0.0 · No external servers",
     visual: {
@@ -106,6 +118,15 @@ export default defineProduct({
     secondaryCta: {
       label: "隐私政策",
       href: "/zh/easier-bookmarks/privacy/",
+    },
+    privacy: {
+      network: "none",
+      networkNote: "不发送任何数据：无服务器、分析服务或广告；开启 Chrome 同步时书签随之同步。",
+      stays: "展开的文件夹、最近打开的书签和上次选的文件夹存在扩展的本地存储里。",
+      policy: {
+        label: "隐私政策",
+        href: "/zh/easier-bookmarks/privacy/",
+      },
     },
     meta: "Chrome 网上应用店 · 效率 · 2.0.0 · 无外部服务器",
     visual: {

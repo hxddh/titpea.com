@@ -3,6 +3,10 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "world-machine",
   line: "games",
+  type: "experiment",
+  runsOn: ["mac"],
+  purposes: ["games"],
+  status: "preview",
   featured: {
     order: 1,
     image: {
@@ -41,6 +45,12 @@ export default defineProduct({
     secondaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/world-machine",
+    },
+    installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
+    privacy: {
+      network: "automatic",
+      networkNote: "Once per launch it asks `api.github.com` for the latest release; World voice is off by default.",
+      stays: "Worlds are files on your Mac; no account, no telemetry, nothing uploaded.",
     },
     meta: "Experimental · pre-alpha · macOS 14+ · {version} · Apache-2.0",
     visual: {
@@ -85,9 +95,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "The world grows with you.",
+        label: "Its people act on their own.",
         items: [
-          { title: "A morning each day", body: "A letter, today's choice, something looked after, a find." },
+          { title: "What a morning brings", body: "A letter, today's choice, something looked after, a find." },
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
           { title: "Build, paint, name", body: "Scaffolding at once; paint a flag; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
@@ -163,6 +173,12 @@ export default defineProduct({
       label: "查看 GitHub",
       href: "https://github.com/hxddh/world-machine",
     },
+    installNote: "尚未公证：首次启动需要一次“仍要打开”。",
+    privacy: {
+      network: "automatic",
+      networkNote: "每次启动向 `api.github.com` 查询一次最新版本；世界之声默认关闭。",
+      stays: "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
+    },
     meta: "实验 · 早期预览 · macOS 14+ · {version} · Apache-2.0",
     visual: {
       kind: "screenshot",
@@ -206,9 +222,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "世界和你一起长大",
+        label: "居民自己过日子",
         items: [
-          { title: "每天一个早晨", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
+          { title: "早晨带来什么", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
           { title: "建造、绘制、命名", body: "一开工就搭起脚手架；画一面旗，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },

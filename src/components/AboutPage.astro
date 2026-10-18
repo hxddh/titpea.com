@@ -18,8 +18,31 @@ const folded = model.releases.items.slice(model.releasesShown);
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
       <p class="lead">{model.hero.lead}</p>
+      <p class="about-facts">
+        {model.facts.parts.map((part) => <span>{part}</span>)}
+        <a href={model.facts.github.href} rel="noreferrer">{model.facts.github.label}</a>
+      </p>
     </div>
   </section>
+
+  {
+    model.person && (
+      <section class="about-person" aria-label={model.hero.eyebrow}>
+        <div class="shell narrow about-person-body">
+          {model.person.portrait && (
+            <img
+              class="about-portrait"
+              src={model.person.portrait.src}
+              alt={model.person.portrait.alt}
+              width={model.person.portrait.width}
+              height={model.person.portrait.height}
+            />
+          )}
+          <p class="about-body">{model.person.paragraph}</p>
+        </div>
+      </section>
+    )
+  }
 
   <section class="about-scenes" aria-labelledby="scenes-title">
     <div class="shell">

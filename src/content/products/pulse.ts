@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "pulse",
   line: "agents",
+  type: "mac",
+  runsOn: ["mac"],
+  purposes: ["agents"],
   repo: "hxddh/Pulse",
   icon: "/assets/icons/pulse.webp",
   og: "/assets/og-pulse.png",
@@ -29,6 +32,12 @@ export default defineProduct({
     secondaryCta: {
       label: "View source",
       href: "https://github.com/hxddh/Pulse",
+    },
+    installNote: "Not notarized: allow each new build once with Open Anyway in System Settings → Privacy & Security.",
+    privacy: {
+      network: "none",
+      networkNote: "No network connection: no update check, nothing reported.",
+      stays: "The event log stays on this Mac, readable only by you.",
     },
     meta: "macOS 14+ · MIT · {version} · Menu bar",
     visual: {
@@ -67,15 +76,88 @@ export default defineProduct({
         },
       ],
       footnotes: ["hook events · processes", "Click a row to go · › for details"],
+      // The still above is the third scene. Strings and rules from Pulse 30:
+      // L10n.swift (counts, lamp sentences, "now"), TrayState.swift (the title
+      // only while something waits; the count alone under a minute) and
+      // EXPERIENCE.md §3–4 (one lamp, frozen row order, second lines).
+      lampSentence: "Red: an agent is waiting on you.",
+      scenes: [
+        {
+          lamp: "running",
+          headerStatus: "2 running · 1 your turn",
+          lampSentence: "Green: agents are working and nothing needs you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Read · package.json · now", state: "running", chip: "1m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1",
+          headerStatus: "1 needs you · 1 running · 1 your turn",
+          lampSentence: "Red: an agent is waiting on you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "now" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1 · 4m",
+          headerStatus: "1 needs you · 1 running · 1 your turn",
+          lampSentence: "Red: an agent is waiting on you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "4m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "running",
+          headerStatus: "2 running · 1 your turn",
+          lampSentence: "Green: agents are working and nothing needs you.",
+          rows: [
+            { title: "Add a package · Claude", meta: "Bash · npm install · now", state: "running", chip: "5m" },
+            {
+              title: "Fix the flaky test · Claude",
+              meta: "Bash · swift test · 12m ago",
+              state: "running",
+              chip: "14m",
+            },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
+            { title: "Terminal session running · Pi", state: "process" },
+          ],
+        },
+      ],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "Know which session needs you.",
+        label: "Four lamp colours, in the menu bar.",
         items: [
-          { title: "Red means blocked", body: "A permission or question waits; its banner leaves once answered." },
-          { title: "Your turn, quietly", body: "Finished turns are counted in the header; no banner, no sound." },
+          { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
+          { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
           { title: "Last step, turn time", body: "Running rows show the latest tool step and the turn's length." },
           { title: "Orange means stalled", body: "Twenty minutes without news; the row names the last step." },
           { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
@@ -152,6 +234,12 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/Pulse",
     },
+    installNote: "未公证：每个新版本都要在“系统设置 → 隐私与安全性”里点一次“仍要打开”。",
+    privacy: {
+      network: "none",
+      networkNote: "不连网络：不检查更新，不上报任何东西。",
+      stays: "事件日志只在本机，只有你能读。",
+    },
     meta: "macOS 14+ · MIT · {version} · 菜单栏",
     visual: {
       kind: "menuBar",
@@ -187,15 +275,84 @@ export default defineProduct({
         },
       ],
       footnotes: ["hook 事件 · 进程", "点一行前往 · 点“›”看详情"],
+      lampSentence: "红：有 Agent 在等你。",
+      scenes: [
+        {
+          lamp: "running",
+          headerStatus: "2 运行中 · 1 轮到你",
+          lampSentence: "绿：Agent 在工作，没有需要你的事。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Read · package.json · 刚刚", state: "running", chip: "1分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1",
+          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          lampSentence: "红：有 Agent 在等你。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "刚刚" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "waiting",
+          glanceTitle: "1·4分钟",
+          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          lampSentence: "红：有 Agent 在等你。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "4分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+        {
+          lamp: "running",
+          headerStatus: "2 运行中 · 1 轮到你",
+          lampSentence: "绿：Agent 在工作，没有需要你的事。",
+          rows: [
+            { title: "添加依赖 · Claude", meta: "Bash · npm install · 刚刚", state: "running", chip: "5分钟" },
+            {
+              title: "修好不稳定的测试 · Claude",
+              meta: "Bash · swift test · 12分钟前",
+              state: "running",
+              chip: "14分钟",
+            },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
+            { title: "终端会话正在运行 · Pi", state: "process" },
+          ],
+        },
+      ],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "哪个会话需要你，一眼可见",
+        label: "菜单栏里的四种灯色",
         items: [
-          { title: "红灯只给阻塞", body: "授权或提问在等你；回答后横幅自动撤回。" },
-          { title: "轮到你不报警", body: "做完的回合只在头部计数，不弹通知、不响。" },
+          { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
+          { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
           { title: "上一步与本回合", body: "运行中的行写出最近一步工具，和这一回合跑了多久。" },
           { title: "橙色表示停滞", body: "二十分钟没有新动静，行上点名上一步。" },
           { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },

@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "agent-radar",
   line: "agents",
+  type: "actions",
+  runsOn: ["actions"],
+  purposes: ["agents"],
   repo: "hxddh/agent-radar",
   icon: "/assets/icons/agent-radar.webp",
   og: "/assets/og-agent-radar.png",
@@ -28,6 +31,11 @@ export default defineProduct({
     secondaryCta: {
       label: "Quick start",
       href: "https://github.com/hxddh/agent-radar#cli-usage",
+    },
+    privacy: {
+      network: "automatic",
+      networkNote: "Scheduled GitHub Actions runs fetch public sources and send them to the model route you configure.",
+      stays: "Reports, telemetry and run logs are committed to your own repository; model keys are repository secrets.",
     },
     meta: "Python · Markdown-first · GitHub Actions · MIT · {version}",
     commands: {
@@ -58,8 +66,8 @@ export default defineProduct({
         id: "inside",
         nav: "Research loop",
         kicker: "One research loop",
-        title: "Research you can review in Git.",
-        body: "Markdown files hold the research. One model screens sources, then drafts; checks run before each commit, and gaps are labeled.",
+        title: "One model screens, then drafts.",
+        body: "Markdown files hold the research. Checks run before each commit, and gaps are labeled.",
         panel: {
           kind: "excerpt",
           label: "radar.md excerpt",
@@ -90,13 +98,24 @@ export default defineProduct({
         ordered: false,
         nav: "What it keeps",
         kicker: "Auditable state",
-        title: "Every change stays in Git.",
-        body: "The runner updates four files within fixed write bounds, and each change stays reviewable in history.",
+        title: "Four files, fixed write bounds.",
+        body: "The runner updates only these, and each change stays reviewable in Git history.",
         steps: [
           { label: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
-          { label: "Watchlist", body: "Mainstream and emerging agents, with evidence labels." },
+          { label: "Watchlist", body: "Mainstream and emerging agents, sourcing graded Strong to None." },
           { label: "Field notes", body: "Real workflows and reusable patterns." },
           { label: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "Scheduled runs on GitHub Actions read free public sources; the X and Reddit OAuth lanes stay off unless you add their secrets.",
+          "Collected text goes to the model route you configure: GitHub Models with the built-in token, or Vercel AI Gateway with your key.",
+          "Reports, telemetry and run logs are committed to your own repository; local commands other than `source-refresh` and `trigger` stay offline.",
         ],
       },
       {
@@ -139,6 +158,11 @@ export default defineProduct({
       label: "快速开始",
       href: "https://github.com/hxddh/agent-radar#cli-usage",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "GitHub Actions 定时运行，抓取公开来源，交给你配置的模型线路。",
+      stays: "报告、遥测和运行日志提交到你自己的仓库；模型密钥存为仓库 secret。",
+    },
     meta: "Python · Markdown 优先 · GitHub Actions · MIT · {version}",
     commands: {
       title: "开始使用",
@@ -168,8 +192,8 @@ export default defineProduct({
         id: "inside",
         nav: "研究循环",
         kicker: "一条研究循环",
-        title: "在 Git 里查看研究记录",
-        body: "Markdown 文件保存研究内容。同一模型先筛来源再起草；提交前运行校验，未通过的部分在报告里标明。",
+        title: "同一模型先筛来源，再起草",
+        body: "Markdown 文件保存研究内容。提交前运行校验，未通过的部分在报告里标明。",
         panel: {
           kind: "excerpt",
           label: "radar.md 摘录",
@@ -200,13 +224,24 @@ export default defineProduct({
         ordered: false,
         nav: "留存内容",
         kicker: "可审计状态",
-        title: "每次变化都留在 Git 里",
-        body: "Runner 在固定写入边界内更新四类文件，每次变化都能在仓库历史里核对。",
+        title: "四类文件，写入有边界",
+        body: "Runner 只更新这四类文件，每次变化都能在 Git 历史里核对。",
         steps: [
           { label: "每周论点", body: "当前判断、已变化点和开放问题。" },
-          { label: "观察名单", body: "主流与新兴 Agent，标注证据强度。" },
+          { label: "观察名单", body: "主流与新兴 Agent，来源强度分 Strong 到 None。" },
           { label: "现场笔记", body: "真实工作流和可复用模式。" },
           { label: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
+        ],
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "GitHub Actions 定时运行，只读免费公开来源；X 和 Reddit OAuth 线路要你添加对应 secret 才开启。",
+          "收集到的文本交给你配置的模型线路：GitHub Models 用内置令牌，Vercel AI Gateway 用你的密钥。",
+          "报告、遥测和运行日志提交到你自己的仓库；除 `source-refresh` 和 `trigger` 外，本地命令都不联网。",
         ],
       },
       {

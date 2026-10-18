@@ -1,17 +1,46 @@
 ---
-import type { CatalogItem } from "../lib/pages";
+import type { CatalogCardItem } from "../lib/pages";
+import { srcsetFor } from "../lib/images";
 
 interface Props {
-  item: CatalogItem;
+  item: CatalogCardItem;
 }
 
 const { item } = Astro.props;
+const { thumb } = item;
 ---
 
 <a class="catalog-card" href={item.href}>
-  <img class="catalog-icon" src={item.icon} alt="" width="48" height="48" loading="lazy" />
+  <span class:list={["catalog-thumb", `is-${thumb.kind}`]} aria-hidden="true">
+    {
+      thumb.kind === "image" && (
+        <img
+          src={thumb.src}
+          srcset={srcsetFor(thumb.src, thumb.width)}
+          sizes="(max-width: 640px) calc(50vw - 22px), (max-width: 960px) calc(50vw - 28px), 250px"
+          alt=""
+          width={thumb.width}
+          height={thumb.height}
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
+    {thumb.kind === "command" && <code>{thumb.command}</code>}
+    {thumb.kind === "icon" && <img src={item.icon} alt="" width="64" height="64" loading="lazy" />}
+  </span>
   <span class="catalog-card-copy">
-    <strong class="home-catalog-name">{item.name}</strong>
+    <span class="catalog-card-name">
+      <img class="catalog-icon" src={item.icon} alt="" width="24" height="24" loading="lazy" />
+      <strong class="home-catalog-name">{item.name}</strong>
+    </span>
     <span class="home-catalog-text">{item.text}</span>
+    <span class="catalog-chips">
+      {
+        item.chips.map((chip) => (
+          <span class:list={["catalog-chip", chip.tone && `is-${chip.tone}`]}>{chip.label}</span>
+        ))
+      }
+    </span>
   </span>
 </a>

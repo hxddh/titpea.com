@@ -55,7 +55,24 @@
   /* Hairline around app icons, so dark tiles keep their edge on a black canvas. */
   --icon-ring: 0 0 0 1px rgba(0, 0, 0, 0.04);
   --icon-radius: 22.5%;
+  /* Icon plate: every rendered app icon sits in the same ring of plate,
+     one light and one shadow, so official artwork and site-drawn tiles read
+     as one family. Three ring widths by icon size (large ≥ 60px, medium
+     44–59px, small below); the ring sits outside the icon box. */
+  --plate-ring: #ffffff;
+  --plate-edge: rgba(0, 0, 0, 0.07);
+  --plate-drop: rgba(20, 30, 60, 0.32);
+  --plate-l: 0 0 0 7px var(--plate-ring), 0 0 0 8px var(--plate-edge), 0 18px 28px -10px var(--plate-drop);
+  --plate-m: 0 0 0 5px var(--plate-ring), 0 0 0 6px var(--plate-edge), 0 12px 20px -8px var(--plate-drop);
+  --plate-s: 0 0 0 3px var(--plate-ring), 0 0 0 4px var(--plate-edge), 0 6px 12px -5px var(--plate-drop);
   --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  /* Display face for English display lines and the wordmark; Chinese pages
+     reset it to the system faces below. --display-accent is the Home title's
+     italic line (large text, 5.9:1 on paper). */
+  --display-face: Fraunces, ui-serif, Georgia, serif;
+  --display-accent: #5b4bd6;
+  /* Light screenshots on a dark canvas: dimmed a little in dark mode only. */
+  --shot-dim: none;
 
   /* Semantic data colors: reference (baseline) and caution (outlier). */
   --data-ref: #16805c;
@@ -146,6 +163,25 @@
   --ink-world-clock: #127b41;
   --tint-world-machine: #e8a858;
   --ink-world-machine: #9a5f15;
+
+  /* Filled product buttons: the light-theme ink in both themes, so the white
+     label keeps at least 4.5:1 on dark pages too (dark inks are light). */
+  --fill-agent-radar: #1b7b46;
+  --fill-bilingual: #a05911;
+  --fill-celagent: #7d41f6;
+  --fill-chessboard: #9b5d1f;
+  --fill-douban-movie-rating: #2d7a47;
+  --fill-easier-bookmarks: #3858d8;
+  --fill-goban: #945f2b;
+  --fill-httpmon: #127499;
+  --fill-pagewise: #5061d6;
+  --fill-pulse: #207936;
+  --fill-readout: #2a64cc;
+  --fill-s3-turbo-list: #ad5207;
+  --fill-storage-agent-workbench: #3b60e4;
+  --fill-storageops: #13796c;
+  --fill-world-clock: #127b41;
+  --fill-world-machine: #9a5f15;
 }
 
 /* Chinese pages: the same stack, but Latin text takes "Inter Latin", which
@@ -154,6 +190,9 @@ html:lang(zh) {
   --sans:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Latin", "Segoe UI", "Helvetica Neue",
     "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  /* A Latin serif beside CJK sans reads as two voices in one line; Chinese
+     display lines stay on the system faces. */
+  --display-face: var(--sans);
 }
 
 /* Dark theme. Applied when the OS prefers dark (unless the visitor forced
@@ -218,7 +257,12 @@ html:lang(zh) {
   --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
   --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
   --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
+  --plate-ring: #2c2c2e;
+  --plate-edge: rgba(255, 255, 255, 0.1);
+  --plate-drop: rgba(0, 0, 0, 0.85);
+  --display-accent: #a99cff;
   --zoom-backdrop: rgba(0, 0, 0, 0.82);
+  --shot-dim: brightness(0.78) saturate(0.88);
   --data-ref: #36b386;
   --data-ref-ink: #5fd0a6;
   --data-caution: #e3a44f;
@@ -286,7 +330,12 @@ html:lang(zh) {
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --shadow-card-hover: 0 22px 44px -26px rgba(0, 0, 0, 0.9);
     --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
+    --plate-ring: #2c2c2e;
+    --plate-edge: rgba(255, 255, 255, 0.1);
+    --plate-drop: rgba(0, 0, 0, 0.85);
+    --display-accent: #a99cff;
     --zoom-backdrop: rgba(0, 0, 0, 0.82);
+    --shot-dim: brightness(0.78) saturate(0.88);
     --data-ref: #36b386;
     --data-ref-ink: #5fd0a6;
     --data-caution: #e3a44f;
@@ -296,71 +345,88 @@ html:lang(zh) {
 }
 
 /* Each product page wears its own color pair (body[data-product], set by
-   SiteLayout). The hero wash leans to the product tint; figures, step numbers
-   and kickers take its ink. Buttons and links keep the one site blue. */
+   SiteLayout). The hero glow and the section band take the product tint;
+   figures, step numbers and kickers take its ink; the primary button is
+   filled with --product-fill. Links keep the one site blue. */
 body[data-product="agent-radar"] {
   --product-tint: var(--tint-agent-radar);
   --product-ink: var(--ink-agent-radar);
+  --product-fill: var(--fill-agent-radar);
 }
 body[data-product="bilingual"] {
   --product-tint: var(--tint-bilingual);
   --product-ink: var(--ink-bilingual);
+  --product-fill: var(--fill-bilingual);
 }
 body[data-product="celagent"] {
   --product-tint: var(--tint-celagent);
   --product-ink: var(--ink-celagent);
+  --product-fill: var(--fill-celagent);
 }
 body[data-product="chessboard"] {
   --product-tint: var(--tint-chessboard);
   --product-ink: var(--ink-chessboard);
+  --product-fill: var(--fill-chessboard);
 }
 body[data-product="douban-movie-rating"] {
   --product-tint: var(--tint-douban-movie-rating);
   --product-ink: var(--ink-douban-movie-rating);
+  --product-fill: var(--fill-douban-movie-rating);
 }
 body[data-product="easier-bookmarks"] {
   --product-tint: var(--tint-easier-bookmarks);
   --product-ink: var(--ink-easier-bookmarks);
+  --product-fill: var(--fill-easier-bookmarks);
 }
 body[data-product="goban"] {
   --product-tint: var(--tint-goban);
   --product-ink: var(--ink-goban);
+  --product-fill: var(--fill-goban);
 }
 body[data-product="httpmon"] {
   --product-tint: var(--tint-httpmon);
   --product-ink: var(--ink-httpmon);
+  --product-fill: var(--fill-httpmon);
 }
 body[data-product="pagewise"] {
   --product-tint: var(--tint-pagewise);
   --product-ink: var(--ink-pagewise);
+  --product-fill: var(--fill-pagewise);
 }
 body[data-product="pulse"] {
   --product-tint: var(--tint-pulse);
   --product-ink: var(--ink-pulse);
+  --product-fill: var(--fill-pulse);
 }
 body[data-product="readout"] {
   --product-tint: var(--tint-readout);
   --product-ink: var(--ink-readout);
+  --product-fill: var(--fill-readout);
 }
 body[data-product="s3-turbo-list"] {
   --product-tint: var(--tint-s3-turbo-list);
   --product-ink: var(--ink-s3-turbo-list);
+  --product-fill: var(--fill-s3-turbo-list);
 }
 body[data-product="storage-agent-workbench"] {
   --product-tint: var(--tint-storage-agent-workbench);
   --product-ink: var(--ink-storage-agent-workbench);
+  --product-fill: var(--fill-storage-agent-workbench);
 }
 body[data-product="storageops"] {
   --product-tint: var(--tint-storageops);
   --product-ink: var(--ink-storageops);
+  --product-fill: var(--fill-storageops);
 }
 body[data-product="world-clock"] {
   --product-tint: var(--tint-world-clock);
   --product-ink: var(--ink-world-clock);
+  --product-fill: var(--fill-world-clock);
 }
 body[data-product="world-machine"] {
   --product-tint: var(--tint-world-machine);
   --product-ink: var(--ink-world-machine);
+  --product-fill: var(--fill-world-machine);
 }
 
 body[data-product] {
@@ -368,13 +434,41 @@ body[data-product] {
   --wash-2: color-mix(in srgb, var(--product-tint) 14%, transparent);
   --wash-3: color-mix(in srgb, var(--product-tint) 18%, transparent);
   --product-band: color-mix(in srgb, var(--product-tint) 9%, var(--paper));
+  /* The hero glow: the product colour, clearly there, fading into paper. */
+  --hero-glow:
+    radial-gradient(64% 52% at 50% 18%, color-mix(in srgb, var(--product-tint) 30%, transparent), transparent 72%),
+    radial-gradient(34% 30% at 18% 46%, color-mix(in srgb, var(--product-tint) 16%, transparent), transparent 70%),
+    radial-gradient(34% 30% at 84% 40%, color-mix(in srgb, var(--product-tint) 14%, transparent), transparent 70%);
+  --product-fill-hover: color-mix(in srgb, var(--product-fill) 88%, #000000);
+}
+
+/* Dark pages: a low-percentage mix of a warm tint into black turns brown.
+   The glow keeps more colour in a smaller core, and the section band sits on
+   the raised paper instead of black. */
+:root[data-theme="dark"] body[data-product] {
+  --product-band: color-mix(in srgb, var(--product-tint) 8%, var(--paper-raised));
+  --hero-glow:
+    radial-gradient(52% 44% at 50% 14%, color-mix(in srgb, var(--product-tint) 34%, transparent), transparent 70%),
+    radial-gradient(30% 26% at 20% 44%, color-mix(in srgb, var(--product-tint) 12%, transparent), transparent 70%),
+    radial-gradient(30% 26% at 82% 38%, color-mix(in srgb, var(--product-tint) 10%, transparent), transparent 70%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body[data-product] {
+    --product-band: color-mix(in srgb, var(--product-tint) 8%, var(--paper-raised));
+    --hero-glow:
+      radial-gradient(52% 44% at 50% 14%, color-mix(in srgb, var(--product-tint) 34%, transparent), transparent 70%),
+      radial-gradient(30% 26% at 20% 44%, color-mix(in srgb, var(--product-tint) 12%, transparent), transparent 70%),
+      radial-gradient(30% 26% at 82% 38%, color-mix(in srgb, var(--product-tint) 10%, transparent), transparent 70%);
+  }
 }
 
 /* Games sit on warmer paper with a book face for display type. */
 body[data-line="games"] {
   --paper: #fbf8f2;
   --paper-raised: #f4efe5;
-  --display: ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+  --display:
+    Fraunces, ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Songti SC", "Noto Serif CJK SC", serif;
 }
 
 :root[data-theme="dark"] body[data-line="games"] {

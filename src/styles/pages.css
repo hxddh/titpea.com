@@ -175,10 +175,12 @@
   object-position: center top;
 }
 
+/* Under the card's text, so every title starts at the same height. */
 .home-featured-caption {
-  padding: 8px 20px 0;
+  margin-top: 10px;
   color: var(--muted);
   font-size: var(--text-small);
+  line-height: 1.4;
 }
 
 .home-featured-copy {
@@ -222,103 +224,216 @@
   text-decoration: underline;
 }
 
-/* Every tool: filter by line, then cards in a grid, each line with who it is for. */
+/* Every tool: the families first, then two facet rows and one grid of cards. */
 .home-more-tools {
   padding-top: var(--section-y);
 }
 
-.home-filter {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
-  width: fit-content;
-  max-width: 100%;
-  margin: 32px auto 0;
-  padding: 4px;
-  border-radius: var(--radius-pill);
+.home-families {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1040px;
+  margin: 36px auto 0;
+}
+
+/* A family: products that work together, in the order you reach for them.
+   Home shows each one as a card; a member's page shows its own, marked. */
+.family-band {
+  padding: 20px 22px 22px;
+  border-radius: var(--radius-card);
   background: var(--paper-raised);
 }
 
-.home-filter[hidden] {
-  display: none;
-}
-
-.home-filter button {
-  min-height: 36px;
-  padding: 0 16px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  color: var(--ink-2);
-  background: transparent;
-  font: inherit;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.home-filter button[aria-pressed="true"] {
-  color: var(--ink);
-  background: var(--paper);
-  box-shadow: var(--shadow-glass);
-  font-weight: 600;
-}
-
-.home-catalog {
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
-.home-catalog[data-filter="storage"] .home-catalog-group:not([data-line="storage"]),
-.home-catalog[data-filter="agents"] .home-catalog-group:not([data-line="agents"]),
-.home-catalog[data-filter="everyday"] .home-catalog-group:not([data-line="everyday"]),
-.home-catalog[data-filter="games"] .home-catalog-group:not([data-line="games"]) {
-  display: none;
-}
-
-.home-catalog-group {
-  margin-top: 48px;
-}
-
-.home-catalog-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 12px;
-  margin-bottom: 14px;
-}
-
-.home-catalog-label {
+.family-title {
   margin: 0;
-  font-size: 19px;
+  font-size: var(--text-catalog-name);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.home-catalog-note {
-  margin: 0;
+.family-sub {
+  margin: 2px 0 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--text-small);
 }
 
-.home-catalog-list {
+.family-members {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 8px;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
 }
 
-/* A card per tool: icon, name, one line. Versions live on product pages. */
-.catalog-card {
+.family-member {
+  position: relative;
+}
+
+/* The arrow between steps sits in the gap, centred on the icons. */
+.family-member + .family-member::before {
+  content: "→";
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  color: var(--faint);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.family-link {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
+  justify-items: center;
+  gap: 2px;
+  padding: 0 2px;
+  color: var(--ink);
+  text-align: center;
+}
+
+.family-link img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  border-radius: var(--icon-radius);
+}
+
+.family-link strong {
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.family-role {
+  color: var(--muted);
+  font-size: var(--text-meta);
+  line-height: 1.35;
+}
+
+a.family-link:hover {
+  text-decoration: none;
+}
+
+a.family-link:hover strong {
+  color: var(--link);
+}
+
+.family-link[aria-current="page"] strong {
+  color: var(--ink);
+}
+
+.family-link[aria-current="page"] img {
+  outline: 2px solid var(--accent);
+  /* Outside the plate ring (--plate-s is 4px wide). */
+  outline-offset: 6px;
+}
+
+/* Product page: the family in place of the related row, after the closing band. */
+.product-family {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  max-width: 720px;
+  margin-top: var(--section-y);
+}
+
+.product-family .family-band {
+  width: 100%;
+}
+
+.product-family .family-head {
+  text-align: center;
+}
+
+.product-related[hidden] {
+  display: none;
+}
+
+/* Facets: what it is for, and where it runs. One value per row; both apply. */
+.home-facets {
+  display: grid;
+  gap: 10px;
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-facets[hidden] {
+  display: none;
+}
+
+.home-facet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-facet-label {
+  flex: none;
+  width: 72px;
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.home-facet button {
+  flex: none;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+
+.home-facet button:hover {
+  color: var(--ink);
+  border-color: var(--soft-line);
+}
+
+.home-facet button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+  font-weight: 600;
+}
+
+.home-facet-count {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+}
+
+.home-catalog-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1040px;
+  margin: 20px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-catalog-list > li[hidden] {
+  display: none;
+}
+
+/* A card per tool: a picture of the real thing, then icon, name, one line,
+   and chips for what it is and where it runs. Versions live on product pages. */
+.catalog-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  background: var(--paper-raised);
+  background: var(--paper);
   color: var(--ink);
   transition:
     transform 0.25s ease,
@@ -335,15 +450,64 @@
   color: var(--link);
 }
 
-.catalog-icon {
-  width: 48px;
-  height: 48px;
-  filter: drop-shadow(var(--shadow-icon-small));
+.catalog-thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+
+.catalog-thumb.is-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  filter: var(--shot-dim);
+}
+
+.catalog-thumb.is-icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--icon-radius);
+}
+
+/* A tool without a picture shows the first command from its page. */
+.catalog-thumb.is-command {
+  place-items: start;
+  padding: 16px;
+  background: var(--code-bg);
+}
+
+.catalog-thumb.is-command code {
+  color: var(--ink-2);
+  font: var(--text-meta)/1.55 var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.catalog-thumb.is-command code::before {
+  content: "$ ";
+  color: var(--faint);
 }
 
 .catalog-card-copy {
   display: grid;
-  gap: 4px;
+  align-content: start;
+  gap: 8px;
+  flex: 1;
+  padding: 14px 16px 16px;
+}
+
+.catalog-card-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.catalog-card-name .catalog-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
 }
 
 .home-catalog-name {
@@ -355,9 +519,32 @@
 
 .home-catalog-text {
   color: var(--ink-2);
-  font-size: var(--text-card-body);
+  font-size: var(--text-small);
   line-height: 1.45;
   letter-spacing: -0.01em;
+}
+
+.catalog-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.catalog-chip {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+  background: var(--paper-raised);
+  font-size: var(--text-meta);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.catalog-chip.is-status {
+  color: var(--data-caution-ink);
+  border-color: var(--data-caution);
 }
 
 @media (max-width: 960px) {
@@ -366,15 +553,77 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .home-families {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .shipping-list {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .home-featured-grid,
-  .home-catalog-list {
+  .home-featured-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-catalog-list {
+    gap: 12px;
+  }
+
+  /* Two cards a row: the picture, name and chips; the line waits for the page. */
+  .catalog-card .home-catalog-text {
+    display: none;
+  }
+
+  .catalog-card-copy {
+    padding: 10px 12px 12px;
+  }
+
+  .family-band {
+    padding: 18px 16px;
+  }
+
+  /* Four steps do not fit in a row: two columns, icon beside its words, in reading order. */
+  .family-members {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+
+  .family-member + .family-member::before {
+    content: none;
+  }
+
+  .family-link {
+    grid-template-columns: 36px minmax(0, 1fr);
+    justify-items: start;
+    column-gap: 10px;
+    text-align: left;
+  }
+
+  .family-link img {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+
+  /* Each facet row scrolls sideways instead of wrapping. */
+  .home-facet {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .home-facet::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-facet-label {
+    width: auto;
+    margin-right: 4px;
   }
 }
 
@@ -645,6 +894,406 @@
   margin: 8px auto 0;
   color: var(--muted);
   font-size: var(--text-sub);
+}
+
+/* About: a line computed from the catalog and releases, then the person. */
+.about-facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 0;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-facts > * {
+  white-space: nowrap;
+}
+
+.about-facts > :not(:last-child)::after {
+  content: "·";
+  margin: 0 0.7em;
+  color: var(--faint);
+}
+
+.about-facts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.about-person {
+  padding-top: var(--section-y-short);
+}
+
+.about-person-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.about-portrait {
+  flex: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about-body {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-sub);
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .about-person-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Releases: every product's latest release, newest first. */
+.releases-timeline {
+  padding-top: var(--section-y-short);
+}
+
+.release-feed {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.release-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.release-entry-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  color: var(--ink);
+}
+
+.release-entry-product:hover {
+  text-decoration: none;
+}
+
+.release-entry-product:hover strong {
+  color: var(--link);
+}
+
+.release-entry-product img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(var(--shadow-icon-small));
+}
+
+.release-entry-product strong {
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Tag and date, then the link to the full notes, on the row's right. */
+.release-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0 18px;
+}
+
+.release-entry-tag {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.release-entry-tag > :not(:last-child)::after {
+  content: "·";
+  margin: 0 0.6em;
+  color: var(--faint);
+  font-family: var(--sans);
+}
+
+.release-entry-summary,
+.release-entry-items {
+  grid-column: 1 / -1;
+  margin-left: 54px;
+}
+
+.release-entry-summary {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: var(--ink-2);
+  font-size: var(--text-list-body);
+  line-height: 1.5;
+}
+
+/* Quoted from the notes: a hairline marks them as the release's own words. */
+.release-entry-items {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--soft-line);
+  list-style: none;
+}
+
+.release-entry-items li {
+  color: var(--ink-2);
+  font-size: var(--text-list-body);
+  line-height: 1.5;
+}
+
+.release-entry-notes {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-small);
+}
+
+.release-entry-notes::after {
+  content: " ›";
+  white-space: pre;
+}
+
+.releases-feed {
+  margin: 20px 0 0;
+  text-align: center;
+}
+
+.releases-undated {
+  padding-top: var(--section-y-short);
+}
+
+.releases-undated .section-head h2 {
+  font-size: var(--title-show);
+  line-height: 1.12;
+}
+
+:lang(zh) .release-entry-items li,
+:lang(zh) .release-entry-summary {
+  line-height: 1.75;
+}
+
+@media (max-width: 640px) {
+  .release-entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .release-entry-meta {
+    justify-content: flex-start;
+    margin-left: 46px;
+  }
+
+  .release-entry-summary,
+  .release-entry-items {
+    margin-left: 0;
+  }
+
+  .release-entry-product img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Privacy index: one row per product. Phones read each row as a block. */
+.privacy-index {
+  padding-top: var(--section-y-short);
+}
+
+.privacy-table {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: var(--text-card-body);
+  text-align: left;
+}
+
+.privacy-table thead th {
+  padding: 0 16px 12px 0;
+  color: var(--muted);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.privacy-table tbody tr {
+  border-top: 1px solid var(--line);
+}
+
+.privacy-table tbody tr:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-table tbody th,
+.privacy-table td {
+  padding: 16px 16px 16px 0;
+  color: var(--ink-2);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.privacy-table tbody th {
+  width: 22%;
+  font-weight: 600;
+}
+
+.privacy-table td:nth-child(2) {
+  width: 30%;
+}
+
+/* Text cells start on the line of the product name and the first link. */
+.privacy-table td:nth-child(2),
+.privacy-table td:nth-child(3) {
+  padding-top: 26px;
+}
+
+.privacy-table td:last-child {
+  width: 18%;
+  padding-right: 0;
+}
+
+.privacy-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: var(--text-list-body);
+}
+
+.privacy-tool img {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+.privacy-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* A dot beside the level, so the column reads at a glance. */
+.privacy-level::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--faint);
+}
+
+.privacy-level[data-level="none"]::before {
+  background: var(--data-ref);
+}
+
+.privacy-level[data-level="automatic"]::before {
+  background: var(--data-caution);
+}
+
+.privacy-note {
+  display: block;
+  margin-top: 2px;
+}
+
+.privacy-unstated {
+  color: var(--muted);
+}
+
+.privacy-links {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.privacy-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.privacy-site-note {
+  max-width: 60ch;
+  margin: 28px auto 0;
+  color: var(--muted);
+  font-size: var(--text-meta);
+  text-align: center;
+  text-wrap: balance;
+}
+
+:lang(zh) .privacy-table tbody th,
+:lang(zh) .privacy-table td {
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .privacy-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .privacy-table,
+  .privacy-table tbody,
+  .privacy-table tr,
+  .privacy-table tbody th,
+  .privacy-table td {
+    display: block;
+    width: auto;
+  }
+
+  .privacy-table tbody tr {
+    padding: 16px 0;
+  }
+
+  .privacy-table tbody th,
+  .privacy-table td,
+  .privacy-table td:nth-child(2),
+  .privacy-table td:nth-child(3),
+  .privacy-table td:last-child {
+    width: auto;
+    padding: 4px 0;
+  }
+
+  .privacy-table td::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-weight: 600;
+  }
+
+  .privacy-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 18px;
+  }
 }
 
 /* Privacy and 404 */

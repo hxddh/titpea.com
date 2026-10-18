@@ -1,16 +1,22 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { ui } from "../content/site";
+import { products } from "../content/products";
+import { templateOf } from "../content/schema";
 import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
 import CasesSection from "./product/CasesSection.astro";
+import CommandReplay from "./product/CommandReplay.astro";
 import CommandsSection from "./product/CommandsSection.astro";
 import DataSection from "./product/DataSection.astro";
 import DemoSection from "./product/DemoSection.astro";
+import FamilyBand from "./product/FamilyBand.astro";
 import FaqSection from "./product/FaqSection.astro";
 import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
 import PanelSection from "./product/PanelSection.astro";
+import PermissionBox from "./product/PermissionBox.astro";
+import Prose from "./product/Prose.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
 import StatsBand from "./product/StatsBand.astro";
 import Visual from "./product/Visual.astro";
@@ -35,6 +41,31 @@ const closing = copy.primaryCta.label;
 // or only the date when the download button already shows the version.
 const metaParts = copy.meta.split(" · ");
 const releasedNote = model.released ? copyUi.released.replace("{date}", model.released) : "";
+// One body composition per kind of product (DESIGN.md, "Templates").
+const product = products.find((entry) => entry.slug === model.slug)!;
+const template = templateOf(product.type);
+// Tools and extensions put the claim beside the object; apps and games keep the centered stack.
+const split = template === "tool" || template === "extension";
+// Tools: the first command sits under the lead, ready to copy; a captured replay takes the hero's right side.
+const heroCommand = template === "tool" ? copy.commands?.items[0] : undefined;
+const heroReplay =
+  template === "tool"
+    ? copy.commands?.items.find((item): item is typeof item & { capturedOutput: string; replay: { label: string } } =>
+        Boolean(item.capturedOutput && item.replay),
+      )
+    : undefined;
+const commandSteps = template === "tool" && (copy.commands?.items.length ?? 0) >= 2;
+const plainCards = template !== "game";
+const showcaseRows = template === "app" || template === "extension";
+const dataSection = copy.sections.find((section) => section.kind === "data");
+const commandsProps = {
+  copyLabel: copyUi.copy,
+  copiedLabel: copyUi.copied,
+  outputLabel: copyUi.commandOutput,
+  controls: { pause: copyUi.pauseVideo, play: copyUi.playVideo },
+  steps: commandSteps,
+  replayInHero: heroReplay?.command,
+};
 ---
 
 <SiteLayout
@@ -53,58 +84,124 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
     cta={copy.primaryCta}
   />
 
-  <section class="product-hero" data-frame={model.frame}>
+  <section
+    class="product-hero"
+    data-frame={model.frame}
+    data-template={template}
+    data-layout={split ? "split" : undefined}
+  >
     <div class="wash" aria-hidden="true"></div>
-    <div class="shell product-copy">
-      <img class="app-icon" src={model.icon} alt="" width="104" height="104" />
-      <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>
-      <h1>{copy.headline}</h1>
-      <p class="lead">{copy.lead}</p>
-      <div class="actions">
+    <div class:list={[split && "shell hero-split"]}>
+      <div class:list={["product-copy", !split && "shell"]}>
+        <img class="app-icon" src={model.icon} alt="" width="104" height="104" />
+        <p class="eyebrow"><strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}</p>
+        <h1>{copy.headline}</h1>
+        <p class="lead">{copy.lead}</p>
         {
-          copy.primaryCta.soon ? (
-            <span class="button primary large is-soon" aria-disabled="true">
-              {copy.primaryCta.label}
-            </span>
-          ) : (
-            <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-              {copy.primaryCta.label}
-              {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-            </a>
+          heroCommand && (
+            <div class="hero-command command-line">
+              <code class="command-code" tabindex="0" set:text={heroCommand.command} />
+              <button
+                class="copy-button"
+                type="button"
+                data-copy={heroCommand.command}
+                data-copy-label={copyUi.copy}
+                data-copied-label={copyUi.copied}
+                hidden
+              >
+                {copyUi.copy}
+              </button>
+            </div>
           )
         }
-        <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
-      </div>
-      <p class="meta-line">
-        {
-          metaParts.map((part) =>
-            // The download button already names the version; the meta line then gives only its date.
-            part === model.version && model.downloadsRelease && model.released ? (
-              <span>{model.released}</span>
-            ) : part === model.version ? (
-              <span>
-                <span class="meta-tag">{part}</span>
-                {releasedNote}
+        <div class="actions">
+          {
+            copy.primaryCta.soon ? (
+              <span class="button primary large is-soon" aria-disabled="true">
+                {copy.primaryCta.label}
               </span>
             ) : (
-              <span>{part}</span>
-            ),
+              <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+                {copy.primaryCta.label}
+                {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+              </a>
+            )
+          }
+          <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">{copy.secondaryCta.label}</a>
+        </div>
+        {
+          copy.installNote && (
+            <p class="install-note">
+              <Prose text={copy.installNote} />
+            </p>
           )
         }
-      </p>
-    </div>
-    <div class="shell hero-visual-frame">
-      <Visual visual={copy.visual} />
+        <p class="meta-line">
+          {
+            metaParts.map((part) =>
+              // The download button already names the version; the meta line then gives only its date.
+              part === model.version && model.downloadsRelease && model.released ? (
+                <span>{model.released}</span>
+              ) : part === model.version ? (
+                <span>
+                  <span class="meta-tag">{part}</span>
+                  {releasedNote}
+                </span>
+              ) : (
+                <span>{part}</span>
+              ),
+            )
+          }
+        </p>
+        {
+          template === "extension" && copy.privacy && (
+            <PermissionBox
+              privacy={copy.privacy}
+              locale={model.locale}
+              dataHref={dataSection ? `#${dataSection.id}` : undefined}
+            />
+          )
+        }
+      </div>
+      <div class:list={["hero-visual-frame", !split && "shell"]}>
+        {
+          heroReplay ? (
+            <CommandReplay item={heroReplay} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+          ) : (
+            <Visual visual={copy.visual} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+          )
+        }
+      </div>
     </div>
   </section>
 
+  {
+    heroReplay && (
+      <section class="product-section hero-visual-section">
+        <div class="shell hero-visual-frame">
+          <Visual visual={copy.visual} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+        </div>
+      </section>
+    )
+  }
+
   {copy.stats && <StatsBand stats={copy.stats} />}
 
-  {demos.map((section) => <DemoSection section={section} />)}
+  {
+    demos.map((section) => (
+      <DemoSection section={section} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+    ))
+  }
 
   {
     opening.map((showcase) => (
-      <ShowcaseSection showcase={showcase} pauseLabel={copyUi.pauseVideo} playLabel={copyUi.playVideo} />
+      <ShowcaseSection
+        showcase={showcase}
+        pauseLabel={copyUi.pauseVideo}
+        playLabel={copyUi.playVideo}
+        row={showcaseRows}
+        flip={opening.indexOf(showcase) % 2 === 1}
+      />
     ))
   }
 
@@ -114,22 +211,16 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
         section.kind === "faq" ? (
           <>
             {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
-            {copy.commands && (
-              <CommandsSection
-                commands={copy.commands}
-                copyLabel={copyUi.copy}
-                copiedLabel={copyUi.copied}
-                outputLabel={copyUi.commandOutput}
-              />
-            )}
+            {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
           </>
         ) : null;
-      if (section.kind === "cards") return <CardsSection section={section} figure={besideSection(section.id)} />;
+      if (section.kind === "cards")
+        return <CardsSection section={section} figure={besideSection(section.id)} plain={plainCards} />;
       if (section.kind === "faq")
         return (
           <>
             {start}
-            <FaqSection section={section} />
+            <FaqSection section={section} grid={template === "extension"} />
           </>
         );
       if (section.kind === "cases") return <CasesSection section={section} />;
@@ -142,16 +233,7 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
 
   {!hasFaq && model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
 
-  {
-    copy.commands && !hasFaq && (
-      <CommandsSection
-        commands={copy.commands}
-        copyLabel={copyUi.copy}
-        copiedLabel={copyUi.copied}
-        outputLabel={copyUi.commandOutput}
-      />
-    )
-  }
+  {copy.commands && !hasFaq && <CommandsSection commands={copy.commands} {...commandsProps} />}
 
   <section class="shell final-cta" aria-label={closing}>
     <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />
@@ -173,7 +255,18 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
     </div>
   </section>
 
-  <nav class="shell product-related" aria-labelledby="related-title">
+  {/* A family member shows its family in place of the related row. */}
+  {
+    model.family && (
+      <div class="shell product-family">
+        <FamilyBand family={model.family} />
+        <a class="button ghost" href={model.related.all.href}>
+          {model.related.all.label}
+        </a>
+      </div>
+    )
+  }
+  <nav class="shell product-related" aria-labelledby="related-title" hidden={Boolean(model.family)}>
     <h2 id="related-title" class="product-related-title">{model.related.title}</h2>
     <ul class="product-related-list">
       {

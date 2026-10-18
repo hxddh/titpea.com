@@ -49,6 +49,16 @@
   letter-spacing: 0;
 }
 
+/* A trust detail under the primary action, from the product's own docs. */
+.install-note {
+  max-width: 44em;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: var(--text-small);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
 /* Only the release tag is set in mono; the rest reads as text. */
 .meta-tag {
   font-family: var(--mono);
@@ -94,7 +104,7 @@
   height: auto;
 }
 
-.hero-visual-frame > :not(.product-screenshot-visual, .clock-scene) {
+.hero-visual-frame > :not(.product-screenshot-visual, .clock-scene, .hero-demo) {
   box-shadow: var(--shadow-shot);
 }
 
@@ -798,4 +808,360 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
   font-family: var(--display);
   font-weight: 600;
   letter-spacing: -0.012em;
+}
+
+/* Templates (DESIGN.md): one body composition per kind of product.
+   tool and extension put the claim beside the object; app and game keep the
+   centered stack. Every template but game drops the raised cards for plain
+   titled lines, and their section heads sit left, over left-aligned text. */
+
+/* Split hero: claim on the left, the object on the right. */
+.product-hero[data-layout="split"] {
+  text-align: left;
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-split .app-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 0 18px;
+  filter: drop-shadow(var(--shadow-icon-small));
+}
+
+.hero-split h1 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(2.5rem, 4.6vw, 3.75rem);
+}
+
+.hero-split .lead {
+  max-width: 30em;
+  margin-inline: 0;
+  font-size: var(--text-sub);
+  text-wrap: pretty;
+}
+
+.hero-split :is(.actions, .meta-line) {
+  justify-content: flex-start;
+}
+
+.hero-split .actions {
+  margin-top: 24px;
+}
+
+.hero-split :is(.meta-line, .install-note) {
+  margin-inline: 0;
+}
+
+.hero-split .hero-visual-frame {
+  max-width: none;
+  margin: 0;
+}
+
+/* Tools: the first command under the lead, ready to copy. */
+.hero-command {
+  max-width: 34em;
+  margin-top: 26px;
+}
+
+/* Long install commands wrap at spaces rather than scrolling under the button. */
+.hero-command .command-code {
+  overflow-x: visible;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* A captured replay takes the hero; the product's own object follows it. */
+.hero-visual-section .hero-visual-frame {
+  margin-top: 0;
+}
+
+/* Apps: the trust note (not notarized) as an amber pill beside the download. */
+.product-hero[data-template="app"] .install-note {
+  width: fit-content;
+  margin-top: 18px;
+  padding: 7px 14px;
+  border: 1px solid color-mix(in srgb, var(--data-caution) 34%, transparent);
+  border-radius: 14px;
+  color: var(--data-caution-ink);
+  background: color-mix(in srgb, var(--data-caution) 11%, transparent);
+}
+
+/* Extensions: what it touches, from the same facts as the privacy index. */
+.permission-box {
+  max-width: 34em;
+  margin-top: 26px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--paper-raised);
+  text-align: left;
+}
+
+.permission-box dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.permission-box dt {
+  color: var(--muted);
+  font-size: var(--text-meta);
+  font-weight: 600;
+}
+
+.permission-box dd {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.permission-box dd strong {
+  margin-right: 0.5em;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.permission-box dd strong[data-network="none"] {
+  color: var(--data-ref-ink);
+}
+
+.permission-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: var(--text-small);
+}
+
+/* Left-aligned section heads on every template but game. */
+.product-hero:not([data-template="game"]) ~ .product-section .section-head {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+}
+
+.product-hero:not([data-template="game"]) ~ .product-section .section-head .sub,
+.product-hero:not([data-template="game"]) ~ .cases-section .sub {
+  max-width: 40em;
+  margin-inline: 0;
+  text-align: left;
+}
+
+/* Narrow sections (data, FAQ, get started) share the shell's left edge. */
+.product-hero:not([data-template="game"]) ~ .product-section .shell.narrow {
+  margin-right: auto;
+  margin-left: max(0px, calc((100% - var(--shell) - 2 * var(--gutter)) / 2));
+}
+
+.product-hero:not([data-template="game"]) ~ .cases-section .provider-list {
+  justify-content: flex-start;
+}
+
+/* Plain cards: a titled line under a hairline, no raised box. */
+.feature-grid[data-variant="plain"] {
+  gap: 36px 48px;
+}
+
+.feature-grid[data-variant="plain"] .feature-card {
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+}
+
+/* App and extension showcases: text beside the picture, alternating sides. */
+.product-screenshot-showcase[data-layout="row"] .shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.product-screenshot-showcase[data-layout="row"][data-flip] .shell {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+
+.product-screenshot-showcase[data-layout="row"][data-flip] .section-head {
+  order: 2;
+}
+
+.product-screenshot-showcase[data-layout="row"] :is(.show-shot, .show-figure) {
+  max-width: none;
+  margin: 0;
+}
+
+/* Tool commands as numbered steps, side by side. */
+.commands-section[data-layout="steps"] .command-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.commands-section[data-layout="steps"] .command-list[data-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.commands-section[data-layout="steps"] .command {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border-radius: var(--radius-card);
+  background: var(--paper-raised);
+}
+
+.command-step {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  color: var(--paper);
+  background: var(--product-ink, var(--accent-fill));
+  font-size: var(--text-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.commands-section[data-layout="steps"] .command-comment {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.commands-section[data-layout="steps"] .command-code {
+  padding-right: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.commands-section[data-layout="steps"] .copy-button {
+  position: static;
+  margin-top: 10px;
+  transform: none;
+}
+
+.commands-section[data-layout="steps"] :is(.command-replay, .command-output) {
+  margin-top: 14px;
+}
+
+/* Cases as a table when each item names its status ("Verified: AWS S3"). */
+.cases-table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-list-body);
+}
+
+.cases-table th,
+.cases-table td {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.cases-table th {
+  width: 28%;
+  padding-right: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cases-table th::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--data-caution);
+}
+
+.cases-table tr[data-state="reference"] th::before {
+  background: var(--data-ref);
+}
+
+.cases-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-2);
+}
+
+/* Extension FAQ: two columns, every answer open. */
+.faq-list[data-layout="grid"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+  border-top: 0;
+}
+
+.faq-list[data-layout="grid"] .faq-item {
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.faq-list[data-layout="grid"] .faq-item summary {
+  padding-right: 0;
+  cursor: default;
+}
+
+.faq-list[data-layout="grid"] .faq-item summary::after {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hero-split,
+  .product-screenshot-showcase[data-layout="row"] .shell,
+  .product-screenshot-showcase[data-layout="row"][data-flip] .shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .product-screenshot-showcase[data-layout="row"][data-flip] .section-head {
+    order: 0;
+  }
+
+  .hero-split .hero-visual-frame {
+    margin-top: 8px;
+  }
+
+  .commands-section[data-layout="steps"] .command-list,
+  .commands-section[data-layout="steps"] .command-list[data-count="2"],
+  .faq-list[data-layout="grid"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-split h1,
+  :lang(zh) .hero-split h1 {
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+  }
+
+  .hero-split .app-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature-grid[data-variant="plain"] {
+    gap: 24px;
+  }
+
+  .feature-grid[data-variant="plain"] .feature-card {
+    padding: 16px 0 0;
+  }
+
+  .cases-table th {
+    width: auto;
+    white-space: normal;
+  }
 }

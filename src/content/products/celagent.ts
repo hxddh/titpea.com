@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "celagent",
   line: "agents",
+  type: "pi",
+  runsOn: ["terminal"],
+  purposes: ["agents"],
   repo: "hxddh/celagent",
   icon: "/assets/icons/celagent.webp",
   og: "/assets/og-celagent.png",
@@ -29,6 +32,12 @@ export default defineProduct({
     secondaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/celagent",
+    },
+    privacy: {
+      network: "automatic",
+      networkNote: "Each prompt goes to the model you configure; each completed turn is written to your BOS bucket.",
+      stays:
+        "Sessions in your own BOS bucket, cached by local Celld nodes; storage keys from your environment or ~/.aws/credentials.",
     },
     meta: "Pi Coding Agent TUI · Baidu BOS · MIT · {version}",
     commands: {
@@ -66,7 +75,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Every turn is saved to BOS.",
+        label: "The full Pi session, not a summary.",
         items: [
           { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
           { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
@@ -93,6 +102,17 @@ export default defineProduct({
         title: "Tasks recover from checkpoints.",
         items: ["celagent task submit", "celagent task status", "celagent task ledger"],
         body: "Celld tasks have checkpoint recovery and an idempotent task ledger; see the repository for setup.",
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "Each completed turn is written to your own BOS bucket as Pi JSONL; a local Celld node keeps a cached copy.",
+          "Prompts and tool results go to the model you configure, DeepSeek by default; without a key, replies are mocked locally.",
+          "Storage keys come from environment variables or the `[bos]` profile in `~/.aws/credentials`; `celagent rm <id>` deletes a session.",
+        ],
       },
       {
         kind: "faq",
@@ -138,6 +158,11 @@ export default defineProduct({
       label: "查看 GitHub",
       href: "https://github.com/hxddh/celagent",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "每次提问发往你配置的模型，每个完成的轮次写入你自己的 BOS 存储桶。",
+      stays: "会话在你自己的 BOS 存储桶里，本机 Celld 节点留有缓存；存储凭证来自环境变量或 ~/.aws/credentials。",
+    },
     meta: "Pi 编码 Agent 终端界面 · 百度 BOS · MIT · {version}",
     commands: {
       title: "开始使用",
@@ -174,7 +199,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "每一轮都存进 BOS",
+        label: "完整的 Pi 会话，不是摘要",
         items: [
           { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
           { title: "每轮保存", body: "完成的回合进入 BOS 写入队列；条件写入检测冲突。" },
@@ -201,6 +226,17 @@ export default defineProduct({
         title: "任务可从断点恢复",
         items: ["celagent task submit", "celagent task status", "celagent task ledger"],
         body: "Celld 任务支持断点恢复和幂等任务记录。配置细节见仓库文档。",
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "每个完成的轮次以 Pi JSONL 写入你自己的 BOS 存储桶，本机 Celld 节点另存一份缓存。",
+          "提问和工具结果发往你配置的模型，默认 DeepSeek；没有密钥时在本机生成模拟回复。",
+          "存储凭证来自环境变量或 `~/.aws/credentials` 里的 `[bos]` profile；`celagent rm <id>` 删除会话。",
+        ],
       },
       {
         kind: "faq",

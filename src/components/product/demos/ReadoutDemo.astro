@@ -1,0 +1,59 @@
+---
+import type { ReadoutBlock, ReadoutDemo } from "../../../content/schema";
+
+interface Props {
+  demo: ReadoutDemo;
+  caption: string;
+  controls: { pause: string; play: string };
+}
+
+const { demo, caption, controls } = Astro.props;
+
+// The HTML holds the document after the last write, its new blocks marked:
+// what shows without JS and under reduced motion. demo-readout.js takes the
+// writes back out and plays them in order.
+const doc: Array<ReadoutBlock & { write?: number }> = [...demo.blocks];
+demo.writes.forEach((write, index) => doc.splice(write.after + 1, 0, { ...write.block, write: index }));
+---
+
+<figure
+  class="demo-figure demo-readout"
+  data-demo-readout
+  data-writes={JSON.stringify(demo.writes)}
+  data-written={demo.written}
+>
+  <div class="readout-window" role="group" aria-label={demo.label}>
+    <div class="readout-titlebar">
+      <span class="readout-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="readout-file">{demo.file}</span>
+    </div>
+    <div class="readout-doc" data-doc>
+      {
+        doc.map((block) => (
+          <p
+            class:list={["ro-blk", `ro-${block.kind}`, block.write !== undefined && "m-inserted"]}
+            data-write={block.write}
+          >
+            {(block.kind === "task" || block.kind === "done") && <span class="ro-box" aria-hidden="true" />}
+            {block.text}
+          </p>
+        ))
+      }
+    </div>
+  </div>
+  <div class="demo-controls">
+    <button
+      class="demo-toggle"
+      type="button"
+      data-readout-toggle
+      data-pause-label={controls.pause}
+      data-play-label={controls.play}
+    >
+      {controls.pause}
+    </button>
+  </div>
+  <figcaption class="shot-caption">{caption}</figcaption>
+  <p class="sr-only" aria-live="polite" data-status></p>
+</figure>
+
+<script is:inline src="/scripts/demo-readout.js" defer></script>

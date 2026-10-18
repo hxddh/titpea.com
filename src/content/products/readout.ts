@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "readout",
   line: "agents",
+  type: "mac",
+  runsOn: ["mac"],
+  purposes: ["agents", "reading"],
   repo: "hxddh/readout",
   icon: "/assets/icons/readout.webp",
   og: "/assets/og-readout.png",
@@ -30,6 +33,12 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/readout",
     },
+    installNote: "Not notarized: for each release, click Open Anyway once in System Settings → Privacy & Security.",
+    privacy: {
+      network: "automatic",
+      networkNote: "A weekly update check against GitHub Releases, which you can turn off.",
+      stays: "On your Mac: rendering a document sends no network request.",
+    },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
     visual: {
       kind: "screenshot",
@@ -56,13 +65,43 @@ export default defineProduct({
     ],
     sections: [
       {
+        kind: "demo",
+        id: "changes",
+        nav: "Changes",
+        title: "Marked until you read it.",
+        body: "Each new block gets a thin bar in the margin. Once it has been on screen for a moment, the bar fades.",
+        caption: "Sample document, written for this page. Three lines arrive as an agent would write them.",
+        // Readout 3.6: README “Shows what changed”, docs/design.md (read = half
+        // visible for 800 ms), web/src/reader/marks.js and reader.css.
+        demo: {
+          kind: "readout",
+          label: "Readout reading view, working copy",
+          file: "plan.md",
+          blocks: [
+            { kind: "h1", text: "Plan: CSV export" },
+            { kind: "p", text: "Add a CSV option next to the JSON export." },
+            { kind: "h2", text: "Steps" },
+            { kind: "done", text: "Read the current export code" },
+            { kind: "task", text: "Write each row as CSV" },
+            { kind: "h2", text: "Risks" },
+            { kind: "p", text: "Large tables may need streaming." },
+          ],
+          writes: [
+            { after: 4, block: { kind: "task", text: "Quote fields that contain commas" } },
+            { after: 5, block: { kind: "task", text: "Test with an empty table" } },
+            { after: 8, block: { kind: "p", text: "Check memory use on a 1 GB table." } },
+          ],
+          written: "New line: {text}",
+        },
+      },
+      {
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Read as the agent writes.",
+        label: "Built for files agents keep rewriting.",
         items: [
-          { title: "Follows the file", body: "Updates land block by block; the paragraph you are reading stays put." },
-          { title: "Marks what changed", body: "New and edited blocks get a bar; click it for the words." },
+          { title: "Your place holds", body: "Block-by-block updates; at the end, it follows like a terminal." },
+          { title: "Which words changed", body: "Click an edited block’s bar; N jumps to the next change." },
           { title: "Remembers what you read", body: "Marks fade once read, and survive a relaunch." },
           {
             title: "Outline with progress",
@@ -143,6 +182,12 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/readout",
     },
+    installNote: "未经公证：每个新版本首次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    privacy: {
+      network: "automatic",
+      networkNote: "每周一次 GitHub Releases 更新检查，可在设置中关闭。",
+      stays: "在本机：渲染文档时不发出任何网络请求。",
+    },
     meta: "macOS 26+ · MIT · {version} · Quick Look",
     visual: {
       kind: "screenshot",
@@ -169,13 +214,41 @@ export default defineProduct({
     ],
     sections: [
       {
+        kind: "demo",
+        id: "changes",
+        nav: "改动",
+        title: "改动标着，读过才消",
+        body: "新的段落在页边多一条细线。在屏幕上停留片刻后，细线自动消退。",
+        caption: "示例文档，为本页撰写。三行内容像 Agent 写入时那样陆续出现。",
+        demo: {
+          kind: "readout",
+          label: "Readout 阅读视图的可用副本",
+          file: "plan.md",
+          blocks: [
+            { kind: "h1", text: "计划：导出 CSV" },
+            { kind: "p", text: "在 JSON 导出旁边加一个 CSV 选项。" },
+            { kind: "h2", text: "步骤" },
+            { kind: "done", text: "读懂现有的导出代码" },
+            { kind: "task", text: "把每一行写成 CSV" },
+            { kind: "h2", text: "风险" },
+            { kind: "p", text: "大表可能需要流式写出。" },
+          ],
+          writes: [
+            { after: 4, block: { kind: "task", text: "含逗号的字段加上引号" } },
+            { after: 5, block: { kind: "task", text: "用空表测试一遍" } },
+            { after: 8, block: { kind: "p", text: "在 1 GB 的表上检查内存占用。" } },
+          ],
+          written: "新的一行：{text}",
+        },
+      },
+      {
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Agent 边写，你边读",
+        label: "为 Agent 反复改写的文件而做",
         items: [
-          { title: "跟随写入", body: "按段落增量更新，你正在读的段落不会跳动。" },
-          { title: "标出变更", body: "新增和修改的段落旁有一条细线，点开看改了哪些词。" },
+          { title: "读到哪停在哪", body: "按段落增量更新；读到末尾时，像终端一样跟着走。" },
+          { title: "改了哪些词", body: "点修改段落旁的细线查看；按 N 跳到下一处。" },
           { title: "记得读过哪里", body: "读过后标记自动消退，重启后仍然保留。" },
           { title: "带进度的大纲", body: "标题旁显示任务完成数，有未读变更的章节标出圆点。" },
           { title: "完整 GFM", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },

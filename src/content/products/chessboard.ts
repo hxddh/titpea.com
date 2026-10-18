@@ -20,6 +20,9 @@ const puzzle = {
 export default defineProduct({
   slug: "chessboard",
   line: "games",
+  type: "game",
+  runsOn: ["mac", "windows"],
+  purposes: ["games"],
   featured: {
     order: 2,
     image: {
@@ -61,6 +64,13 @@ export default defineProduct({
     secondaryCta: {
       label: "View source",
       href: "https://github.com/hxddh/chessboard",
+    },
+    installNote: "The macOS build is not notarized yet: allow its first open by hand, once.",
+    privacy: {
+      network: "onRequest",
+      networkNote:
+        "Sync goes online only after you allow it, sending only your user name; update checks only when you press them.",
+      stays: "Games, puzzles, lessons and progress stay on this computer.",
     },
     meta: "macOS + Windows · GPLv3 · {version} · Local app",
     stats: {
@@ -138,7 +148,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Five places, one Settings page.",
+        label: "Practice built from your games.",
         items: [
           { title: "Five places", body: "Today, Play, Train, Games and Me, plus one Settings page." },
           { title: "What to do next", body: "Today lists up to three tasks, each saying where it came from." },
@@ -216,6 +226,12 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/chessboard",
     },
+    installNote: "macOS 版尚未公证：首次打开需要手动放行一次。",
+    privacy: {
+      network: "onRequest",
+      networkNote: "要先在设置里允许联网才会同步，只发送用户名；“检查更新”只在你点它时查询。",
+      stays: "对局、谜题、课程与进度都留在这台电脑上。",
+    },
     meta: "macOS + Windows · GPLv3 · {version} · 本地应用",
     stats: {
       title: "课程、题库、开局",
@@ -291,7 +307,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "五个去处，一处设置",
+        label: "练习从你的对局里来",
         items: [
           { title: "五个去处", body: "今天、下棋、训练、棋谱、我的，外加一个设置页。" },
           { title: "接下来练什么", body: "今天页最多列三项，每项写明从哪来。" },

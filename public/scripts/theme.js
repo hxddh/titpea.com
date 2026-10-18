@@ -25,6 +25,10 @@
   // Apply a saved choice as early as possible so it paints correctly.
   apply(stored());
 
+  // Scripts run: hero demos swap their no-JS stand-in for the live copy in
+  // CSS, before the first paint, so the hero never changes height.
+  root.classList.add("js");
+
   // The two media-based <meta name="theme-color"> tags follow the OS when no
   // manual choice is stored. When a choice IS stored, append an override tag
   // (no media query, last in <head>) so the browser chrome matches the chosen

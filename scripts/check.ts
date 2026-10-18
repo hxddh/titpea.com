@@ -6,10 +6,10 @@ import sharp from "sharp";
 import releases from "../src/content/releases.json" with { type: "json" };
 import { products } from "../src/content/products/index.ts";
 import { locales, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
-import { site, ui } from "../src/content/site.ts";
+import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
-import { copyIssues } from "./copy-rules.mjs";
+import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
 
 const failures: string[] = [];
 const fail = (message: string) => failures.push(message);
@@ -32,6 +32,36 @@ const featuredCount = products.filter((product) => product.featured).length;
 if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Home as featured");
 const featuredOrder = products.flatMap((product) => (product.featured ? [product.featured.order] : [])).sort();
 if (featuredOrder.some((order, index) => order !== index + 1)) fail("featured rows are ordered 1, 2, 3 without gaps");
+
+/* ---------- Catalog facets and families ---------- */
+
+for (const product of products) {
+  if (product.runsOn.length === 0) fail(`${product.slug}: runsOn names at least one platform`);
+  if (product.purposes.length === 0) fail(`${product.slug}: purposes names at least one purpose`);
+  if (new Set(product.runsOn).size !== product.runsOn.length) fail(`${product.slug}: runsOn lists a platform twice`);
+  if (new Set(product.purposes).size !== product.purposes.length) fail(`${product.slug}: purposes lists one twice`);
+  for (const locale of locales) {
+    const copy = ui[locale];
+    if (!copy.types[product.type]) fail(`site.ts ${locale}: no label for type ${product.type}`);
+    for (const platform of product.runsOn)
+      if (!copy.platforms[platform]) fail(`site.ts ${locale}: no label for platform ${platform}`);
+    for (const purpose of product.purposes)
+      if (!copy.purposes[purpose]) fail(`site.ts ${locale}: no label for purpose ${purpose}`);
+  }
+}
+const familySlugs = Object.values(familyMembers).flat();
+if (new Set(familySlugs).size !== familySlugs.length) fail("site.ts familyMembers: a product belongs to one family");
+for (const [id, members] of Object.entries(familyMembers)) {
+  if (members.length < 2) fail(`site.ts familyMembers.${id}: a family has at least two products`);
+  for (const slug of members) {
+    if (!slugs.includes(slug)) fail(`site.ts familyMembers.${id}: ${slug} is not a product`);
+    for (const locale of locales) {
+      const family = ui[locale].families[id as keyof typeof familyMembers];
+      if (!family?.title || !family.sub) fail(`site.ts ${locale}: family ${id} needs a title and a line`);
+      if (!family?.roles[slug]) fail(`site.ts ${locale}: family ${id} has no role for ${slug}`);
+    }
+  }
+}
 
 /* ---------- Releases ---------- */
 
@@ -191,6 +221,7 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
     if (!privacy.test(visibleStrings(copy).join("\n"))) fail(`${at}: browser extension must state its data posture`);
   }
   if (locale === "zh") for (const issue of copyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);
+  for (const issue of enCopyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);
 }
 
 const shape = (copy: ProductCopy) =>
@@ -202,7 +233,14 @@ const shape = (copy: ProductCopy) =>
         ? []
         : section.demo.kind === "worldClock"
           ? [[section.demo.kind, ...section.demo.cities.map((city) => city.zone)]]
-          : [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]],
+          : section.demo.kind === "chessPuzzle"
+            ? [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]]
+            : [
+                [
+                  section.demo.kind,
+                  ...[section.demo.blocks.length, ...section.demo.writes.map((write) => write.after)].map(String),
+                ],
+              ],
     ),
     showcases: copy.showcases?.length ?? 0,
     stats: copy.stats?.items.length ?? 0,
@@ -216,6 +254,8 @@ for (const product of products) {
 }
 
 for (const issue of copyIssues(visibleStrings(ui.zh))) fail(`site copy (zh): ${issue}`);
+for (const locale of locales)
+  for (const issue of enCopyIssues(visibleStrings(ui[locale]))) fail(`site copy (${locale}): ${issue}`);
 for (const key of Object.keys(ui.en)) if (!(key in ui.zh)) fail(`site copy: "${key}" is missing in zh`);
 
 /* ---------- Pages and routes ---------- */
@@ -362,6 +402,15 @@ for (const product of products) {
 
 const tokens = read("src/styles/tokens.css");
 
+function contrastOnWhite(hex: string): number {
+  const channel = (offset: number) => {
+    const value = Number.parseInt(hex.slice(offset, offset + 2), 16) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+  return 1.05 / (luminance + 0.05);
+}
+
 // Each product page wears its own color pair (DESIGN.md): --tint-<slug> and
 // --ink-<slug> in the light :root, in both dark blocks (the toggle and the OS
 // preference), and the body[data-product] rule that maps them.
@@ -395,6 +444,14 @@ for (const product of products) {
     !mapping.includes(`--product-ink: var(--ink-${product.slug})`)
   ) {
     fail(`tokens.css: body[data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
+  }
+  // The filled primary action: one colour in both themes, under a white label.
+  const fill = colorBlocks[0][1]?.match(new RegExp(`--fill-${product.slug}:\\s*(#[0-9a-f]{6});`))?.[1];
+  if (!fill) fail(`tokens.css: --fill-${product.slug} (a #rrggbb) is missing in the light :root block`);
+  else if (contrastOnWhite(fill) < 4.5)
+    fail(`tokens.css: white on --fill-${product.slug} is ${contrastOnWhite(fill).toFixed(2)}:1, below 4.5:1`);
+  if (!mapping?.includes(`--product-fill: var(--fill-${product.slug})`)) {
+    fail(`tokens.css: body[data-product="${product.slug}"] must map --product-fill to --fill-${product.slug}`);
   }
 }
 const defined = new Set([...tokens.matchAll(/(--[a-z0-9-]+):/g)].map((match) => match[1]));

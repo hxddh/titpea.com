@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "goban",
   line: "games",
+  type: "game",
+  runsOn: ["mac", "windows"],
+  purposes: ["games"],
   repo: "hxddh/goban",
   icon: "/assets/icons/goban.webp",
   og: "/assets/og-goban.png",
@@ -29,6 +32,13 @@ export default defineProduct({
     secondaryCta: {
       label: "View source",
       href: "https://github.com/hxddh/goban",
+    },
+    installNote:
+      "The macOS build is not notarized: the first time, click Open Anyway in System Settings → Privacy & Security.",
+    privacy: {
+      network: "onRequest",
+      networkNote: "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+      stays: "Games, practice progress and settings in the app’s storage on this computer.",
     },
     meta: "macOS + Windows · MIT · {version} · Local app",
     visual: {
@@ -66,9 +76,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Set up a game, then learn from it.",
+        label: "Import an SGF and play on.",
         items: [
-          { title: "Three rule sets", body: "Freestyle, swap2, or Renju, picked on the New game card." },
+          { title: "Pick the rules", body: "Freestyle, swap2, or Renju, on the New game card." },
           { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
           { title: "One-click rematch", body: "Play again keeps your settings; on Alt, colours swap." },
           { title: "Replay the key move", body: "Start again from that move; the original game stays." },
@@ -129,6 +139,12 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/goban",
     },
+    installNote: "macOS 版未经公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    privacy: {
+      network: "onRequest",
+      networkNote: "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+      stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
+    },
     meta: "macOS + Windows · MIT · {version} · 本地应用",
     visual: {
       kind: "screenshot",
@@ -164,9 +180,9 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "开一局，再从中学",
+        label: "导入 SGF，接着下",
         items: [
-          { title: "三套规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
+          { title: "选规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
           { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
           { title: "一键再来", body: "“再来一局”沿用设置；选“轮流”时自动换色。" },
           { title: "重下关键一手", body: "从那一手重下，原局一手不改。" },

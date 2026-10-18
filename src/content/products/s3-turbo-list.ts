@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "s3-turbo-list",
   line: "storage",
+  type: "cli",
+  runsOn: ["terminal"],
+  purposes: ["storage"],
   repo: "hxddh/s3-turbo-list",
   icon: "/assets/icons/s3-turbo-list.webp",
   og: "/assets/og-s3-turbo-list.png",
@@ -29,6 +32,12 @@ export default defineProduct({
       label: "Quick start",
       href: "https://github.com/hxddh/s3-turbo-list#quick-start",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote: "Only the S3 endpoints you list or diff; no update check, no telemetry.",
+      stays:
+        "Listings, checkpoints and logs in your output directory; credentials from your AWS profile or environment.",
+    },
     meta: "Rust · Apache-2.0 · {version} · S3-compatible · Parquet · Agent-safe JSON",
     commands: {
       title: "Get started",
@@ -48,6 +57,7 @@ SKIP  proxy: the request host depends on the bucket and region (virtual-hosted o
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
 Doctor status: ok`,
+          replay: { label: "s3-turbo-list v0.39.0 · captured output" },
         },
         {
           comment: "Full recursive inventory → Parquet in out/",
@@ -84,8 +94,8 @@ Doctor status: ok`,
         id: "inside",
         nav: "List and diff",
         kicker: "List and diff",
-        title: "List one bucket, or diff two.",
-        body: "The two questions before a migration or an investigation.",
+        title: "Two questions before a migration.",
+        body: "List one bucket, or diff a source against its target.",
         panel: {
           kind: "purpose",
           label: "List and diff outputs",
@@ -137,6 +147,17 @@ Doctor status: ok`,
         body: "AWS S3, MinIO, and Baidu BOS are on the project’s verified compatibility path; R2, OSS, and B2 have presets. Run `compat-probe` before trusting a long job on any endpoint.",
       },
       {
+        kind: "data",
+        id: "data",
+        nav: "Your data",
+        title: "Where your data goes.",
+        items: [
+          "S3 requests go only to the endpoint you set or a provider preset fills in; there is no update check or telemetry.",
+          "Credentials come from the standard AWS chain: your profile, environment variables or instance role. Presets never touch them.",
+          "Listings, checkpoints, logs and run manifests are files in your output directory; `doctor` and `--dry-run` contact no S3 endpoint.",
+        ],
+      },
+      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -180,6 +201,11 @@ Doctor status: ok`,
       label: "快速开始",
       href: "https://github.com/hxddh/s3-turbo-list#quick-start",
     },
+    privacy: {
+      network: "onRequest",
+      networkNote: "只访问你要列举或对比的 S3 端点；不检查更新，没有遥测。",
+      stays: "对象清单、checkpoint 和日志写在你的输出目录；凭证来自你的 AWS profile 或环境变量。",
+    },
     meta: "Rust · Apache-2.0 · {version} · S3 兼容 · Parquet · 机器可读 JSON",
     commands: {
       title: "开始使用",
@@ -199,6 +225,7 @@ SKIP  proxy: the request host depends on the bucket and region (virtual-hosted o
 SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
 Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
 Doctor status: ok`,
+          replay: { label: "s3-turbo-list v0.39.0 · 实际输出" },
         },
         {
           comment: "完整递归清单 → out/ 里的 Parquet",
@@ -234,8 +261,8 @@ Doctor status: ok`,
         id: "inside",
         nav: "列举与对比",
         kicker: "list 与 diff",
-        title: "列一个桶，或对比两个",
-        body: "迁移、排查或盘点之前，先回答这两个问题。",
+        title: "迁移前先问两件事",
+        body: "列一个桶，或把源桶和目标桶对比。",
         panel: {
           kind: "purpose",
           label: "s3-turbo-list 的用途",
@@ -277,6 +304,17 @@ Doctor status: ok`,
         title: "扩大扫描前，先确认端点行为",
         items: ["已验证：AWS S3", "已验证：MinIO", "已验证：百度 BOS", "预设：Cloudflare R2", "预设：OSS", "预设：B2"],
         body: "AWS S3、MinIO 和百度 BOS 走过项目的兼容性验证；R2、OSS、B2 提供预设。无论哪种端点，长任务前都先运行 `compat-probe`。",
+      },
+      {
+        kind: "data",
+        id: "data",
+        nav: "数据去向",
+        title: "数据的去向",
+        items: [
+          "S3 请求只发往你设置的端点或预设填入的端点；不检查更新，没有遥测。",
+          "凭证来自标准 AWS 凭证链：profile、环境变量或实例角色；预设从不碰凭证。",
+          "对象清单、checkpoint、日志和运行记录都写在输出目录；`doctor` 与 `--dry-run` 不访问任何 S3 端点。",
+        ],
       },
       {
         kind: "faq",

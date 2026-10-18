@@ -3,6 +3,9 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "douban-movie-rating",
   line: "everyday",
+  type: "extension",
+  runsOn: ["chrome"],
+  purposes: ["browser"],
   icon: "/assets/icons/douban-movie-rating.webp",
   og: "/assets/og-douban-movie-rating.png",
   schema: {
@@ -30,6 +33,15 @@ export default defineProduct({
       label: "Privacy policy",
       href: "/douban-movie-rating/privacy/",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "On Douban film pages, the title, year and IMDb ID go only to OMDb.",
+      stays: "Settings and your optional key in Chrome sync storage; ratings cached locally for up to 7 days.",
+      policy: {
+        label: "Privacy policy",
+        href: "/douban-movie-rating/privacy/",
+      },
+    },
     meta: "Chrome Web Store · 1.7 · Ratings from OMDb",
     visual: {
       kind: "screenshot",
@@ -46,11 +58,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Context on the Douban page.",
+        label: "Only on movie.douban.com.",
         items: [
           { title: "In Douban’s own style", body: "IMDb with its vote count; click a score to open its site." },
-          { title: "Hover a film link", body: "Top 250, charts, recommendations: its ratings appear under the link." },
-          { title: "Says how it matched", body: "By the page’s IMDb ID; otherwise by title, and marked so." },
+          { title: "Top 250 and charts", body: "Rest on a film link about 0.3 s; ratings appear under it." },
+          { title: "IMDb ID first", body: "Title search only without one; hover the mark to see the match." },
           { title: "Your own free key", body: "When the shared daily quota runs out, add an OMDb key." },
         ],
       },
@@ -108,6 +120,15 @@ export default defineProduct({
       label: "隐私政策",
       href: "/zh/douban-movie-rating/privacy/",
     },
+    privacy: {
+      network: "automatic",
+      networkNote: "在豆瓣影片页，片名、年份和 IMDb 编号只发送给 OMDb。",
+      stays: "设置和你填写的密钥在 Chrome 同步存储；评分在本机缓存，最长 7 天。",
+      policy: {
+        label: "隐私政策",
+        href: "/zh/douban-movie-rating/privacy/",
+      },
+    },
     meta: "Chrome 网上应用店 · 1.7 · 评分来自 OMDb",
     visual: {
       kind: "screenshot",
@@ -124,11 +145,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "补充对照，不另开站点",
+        label: "只在豆瓣电影上运行",
         items: [
           { title: "豆瓣原有写法", body: "IMDb 附评分人数；点任一评分即可打开原站。" },
-          { title: "悬停即看", body: "Top 250、排行榜和推荐里，鼠标停在影片链接上即显示评分。" },
-          { title: "写明匹配方式", body: "优先用页面上的 IMDb 编号；没有时按片名匹配并标注。" },
+          { title: "Top 250 与排行榜", body: "鼠标在影片链接上停约 0.3 秒，评分显示在链接下方。" },
+          { title: "优先 IMDb 编号", body: "没有编号才按片名搜；悬停标记看匹配结果。" },
           { title: "自己的免费密钥", body: "公共密钥每日额度用完时，填入你的 OMDb 密钥。" },
         ],
       },

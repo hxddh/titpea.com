@@ -5,9 +5,11 @@ import { screenshotSizes, srcsetFor } from "../../../lib/images";
 interface Props {
   demo: WorldClockDemo;
   caption: string;
+  /** As the hero object: the live copy shows from the first paint (html.js), never swapped in later. */
+  hero?: boolean;
 }
 
-const { demo, caption } = Astro.props;
+const { demo, caption, hero = false } = Astro.props;
 const { fallback } = demo;
 ---
 
@@ -37,7 +39,7 @@ const { fallback } = demo;
     <figcaption class="shot-caption">{fallback.caption}</figcaption>
   </figure>
 
-  <figure class="demo-figure" data-demo-live hidden>
+  <figure class="demo-figure demo-live" data-demo-live hidden={!hero}>
     <div class="clock-popup" role="group" aria-label={demo.label}>
       <div class="clock-popup-top">
         <p class="clock-popup-title">{demo.appTitle}</p>

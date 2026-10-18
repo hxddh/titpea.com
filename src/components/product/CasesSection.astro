@@ -7,6 +7,18 @@ interface Props {
 }
 
 const { section } = Astro.props;
+// "Verified: AWS S3" / "已验证：AWS S3": when every item names a status, the
+// list reads as a table, one row per status with its endpoints.
+const pairs = section.items.map((item) => item.match(/^(.+?)[:：]\s*(.+)$/));
+const rows = pairs.every(Boolean)
+  ? pairs.reduce<Array<{ status: string; names: string[] }>>((acc, match) => {
+      const [, status, name] = match!;
+      const row = acc.find((entry) => entry.status === status);
+      if (row) row.names.push(name);
+      else acc.push({ status, names: [name] });
+      return acc;
+    }, [])
+  : undefined;
 ---
 
 <section id={section.id} class="product-section cases-section">
@@ -14,9 +26,33 @@ const { section } = Astro.props;
     <header class="section-head">
       <h2>{section.title}</h2>
     </header>
-    <div class="provider-list" aria-label={section.label}>
-      {section.items.map((item) => <span>{item}</span>)}
-    </div>
+    {
+      rows ? (
+        <table class="cases-table">
+          <caption class="sr-only">{section.label}</caption>
+          <tbody>
+            {rows.map((row, index) => (
+              <tr data-state={index === 0 ? "reference" : undefined}>
+                <th scope="row">{row.status}</th>
+                <td>
+                  <ul class="cases-names">
+                    {row.names.map((name) => (
+                      <li>{name}</li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div class="provider-list" aria-label={section.label}>
+          {section.items.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
+      )
+    }
     {
       section.body && (
         <p class="sub">

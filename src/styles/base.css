@@ -284,7 +284,6 @@ html:lang(zh) {
   line-height: 1.16;
 }
 
-:lang(zh) .lead,
 :lang(zh) .sub,
 :lang(zh) .prose,
 :lang(zh) .about-body,
@@ -297,6 +296,16 @@ html:lang(zh) {
   letter-spacing: 0;
   /* No single character stranded on a last line. */
   text-wrap: pretty;
+}
+
+/* A Chinese lede wraps between its phrases (at punctuation and spaces), in
+   balanced lines, so neither a word nor a character is left alone. */
+:lang(zh) .lead {
+  line-height: 1.75;
+  letter-spacing: 0;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 /* Utilities */
@@ -435,17 +444,88 @@ html:lang(zh) {
   }
 }
 
-/* Every rendered app icon: one radius and one ring, so a dark tile never
-   dissolves into the dark canvas. */
-.app-icon,
-.home-icons img,
-.catalog-icon,
-.final-cta-icon,
-.release-list img,
-.notfound-products img,
-.product-section-index-name img {
+/* Every rendered app icon sits in one plate (tokens.css, --plate-*): the
+   icon keeps its own radius, the plate ring and shadow replace the old drop
+   shadow. Ring width follows the icon's size. */
+html
+  :is(
+    .app-icon,
+    .home-icons img,
+    .catalog-icon,
+    .final-cta-icon,
+    .release-list img,
+    .release-entry-product img,
+    .shipping-card img,
+    .product-related-list img,
+    .notfound-products img,
+    .product-section-index-name img,
+    .scene-products img,
+    .privacy-tool img,
+    .family-link img,
+    .icon-plate
+  ) {
   border-radius: var(--icon-radius);
-  box-shadow: var(--icon-ring);
+  box-shadow: var(--plate-s);
+  filter: none;
+}
+
+html .app-icon {
+  box-shadow: var(--plate-l);
+}
+
+html :is(.catalog-icon, .final-cta-icon, .catalog-thumb.is-icon img) {
+  box-shadow: var(--plate-m);
+}
+
+/* Display lines: the hero titles and section headings, in the display face.
+   Fraunces is drawn heavier than the system sans, so the weight steps down;
+   on Chinese pages --display-face is the system sans and these resolve to
+   the same face as before. */
+:is(.home-hero, .about-hero, .product-hero) h1,
+main h2:not(#shipping-title, .product-related-title) {
+  font-family: var(--display-face);
+  font-optical-sizing: auto;
+}
+
+html:lang(en) :is(.home-hero, .about-hero, .product-hero) h1 {
+  font-weight: 560;
+  letter-spacing: -0.018em;
+}
+
+html:lang(en) main h2:not(#shipping-title, .product-related-title) {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Home: the title's last line in the accent italic. ::first-line keeps the
+   one-string title (no markup) and wraps honestly at any width. */
+html:lang(en) .home-hero h1 {
+  /* Two lines on wide screens, so the italic line exists there too. */
+  max-width: 9.5em;
+  color: var(--display-accent);
+  font-style: italic;
+  font-weight: 440;
+}
+
+html:lang(en) .home-hero h1::first-line {
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 560;
+}
+
+/* Product pages: the hero glow in the product colour, and the primary
+   action filled with it (white label, 4.5:1 or better in both themes). */
+body[data-product] .wash {
+  background: var(--hero-glow);
+  filter: none;
+}
+
+body[data-product] .button.primary:not(.is-soon) {
+  background: var(--product-fill);
+}
+
+body[data-product] .button.primary:not(.is-soon):hover {
+  background: var(--product-fill-hover);
 }
 
 /* A primary action that is not available yet (a store listing in review):

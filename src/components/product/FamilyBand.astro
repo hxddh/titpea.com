@@ -1,0 +1,41 @@
+---
+import type { Family } from "../../lib/pages";
+
+interface Props {
+  family: Family;
+  /** Heading level: h3 inside Home's family section, h2 on a product page. */
+  level?: "h2" | "h3";
+}
+
+const { family, level = "h2" } = Astro.props;
+const Heading = level;
+const titleId = `family-${family.id}-title`;
+---
+
+<section class="family-band" aria-labelledby={titleId}>
+  <header class="family-head">
+    <Heading class="family-title" id={titleId}>{family.title}</Heading>
+    <p class="family-sub">{family.sub}</p>
+  </header>
+  <ol class="family-members">
+    {
+      family.members.map((member) => (
+        <li class:list={["family-member", { "is-current": member.current }]}>
+          {member.current ? (
+            <span class="family-link" aria-current="page">
+              <img src={member.icon} alt="" width="40" height="40" loading="lazy" />
+              <strong>{member.name}</strong>
+              <span class="family-role">{member.role}</span>
+            </span>
+          ) : (
+            <a class="family-link" href={member.href}>
+              <img src={member.icon} alt="" width="40" height="40" loading="lazy" />
+              <strong>{member.name}</strong>
+              <span class="family-role">{member.role}</span>
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</section>
