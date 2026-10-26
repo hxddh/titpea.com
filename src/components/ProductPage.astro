@@ -163,6 +163,7 @@ const commandsProps = {
             privacy={permissionBox}
             locale={model.locale}
             facts={dataSection?.kind === "data" ? dataSection.items : undefined}
+            id={dataSection?.kind === "data" ? dataSection.id : undefined}
           />
         )}
       </div>

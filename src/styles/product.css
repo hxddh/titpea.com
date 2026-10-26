@@ -930,6 +930,8 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
 
 /* Extensions: what it touches, from the same facts as the privacy index. */
 .permission-box {
+  /* The privacy index links here (#data) when the data section folds into the box. */
+  scroll-margin-top: var(--section-index-desktop-scroll-margin);
   max-width: 34em;
   margin-top: 26px;
   padding: 16px 18px;

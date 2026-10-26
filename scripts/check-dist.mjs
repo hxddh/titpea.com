@@ -90,6 +90,16 @@ for (const { file, html } of pages) {
     }
   }
 
+  // Every in-site link to a #fragment lands on an element with that id.
+  for (const match of html.matchAll(/\bhref="((?:https:\/\/titpea\.com)?\/[^"#?]*|)#([^"]+)"/g)) {
+    const page = match[1].replace(/^https:\/\/titpea\.com/, "");
+    const targetFile = page === "" ? file : path.join("dist", page, page.endsWith("/") ? "index.html" : "");
+    if (!fs.existsSync(targetFile) || fs.statSync(targetFile).isDirectory()) continue;
+    const target = page === "" ? html : fs.readFileSync(targetFile, "utf8");
+    const id = decodeURIComponent(match[2]);
+    if (!target.includes(`id="${id}"`)) fail(`${file}: link to ${page || ""}#${id} has no matching id on that page`);
+  }
+
   // Copy never shows raw Markdown code markers: `x` renders as <code>.
   const visible = text(
     html
