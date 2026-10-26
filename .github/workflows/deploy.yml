@@ -25,7 +25,9 @@ jobs:
   # Scheduled runs only: did any product publish a new release?
   releases:
     if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest: the visual baselines depend on the runner's
+    # fonts and rasterization, so the image changes only on purpose.
+    runs-on: ubuntu-24.04
     outputs:
       changed: ${{ steps.sync.outputs.changed }}
     steps:
@@ -65,7 +67,7 @@ jobs:
     needs: releases
     # Every push and pull request; on the schedule, only when a tag changed.
     if: always() && (github.event_name != 'schedule' || (needs.releases.result == 'success' && needs.releases.outputs.changed == 'true'))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6.0.3
       - uses: actions/setup-node@v6.4.0
@@ -149,7 +151,7 @@ jobs:
   deploy:
     needs: validate
     if: always() && needs.validate.result == 'success' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       deployments: write
