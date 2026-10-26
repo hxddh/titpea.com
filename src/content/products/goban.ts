@@ -108,6 +108,7 @@ export default defineProduct({
           {
             title: "Will my games still be there after upgrading to 3.x?",
             body: "Yes. Versions 3.0 to 3.2 keep the storage format of 2.x, which kept the format of 1.x, so saved games, the game library, results, practice progress, and settings open as before. The Think setting from 1.x (fast, standard, deep) is gone, and a saved value for it is ignored.",
+            asOf: "v3.2.0",
           },
           {
             title: "What happens when I import an SGF?",
@@ -116,6 +117,7 @@ export default defineProduct({
           {
             title: "How strong is the computer?",
             body: "All four levels use one engine. Beginner blocks your fours but often misses open threes; Normal thinks for 0.55 seconds a move, Hard for up to about 2 seconds, and Extreme runs Hard's search for the full 2.5 seconds. Since 3.2, the pattern scores come from self-play, and Normal and Hard play clearly stronger. The computer always waits at least 0.6 seconds before it plays. Under Renju, its search leaves out the points where Black may not play. By default you alternate colours on Hard and Extreme. The rule set is chosen on the New game card and applies when you press Start.",
+            asOf: "v3.2.0",
           },
         ],
       },
@@ -212,6 +214,7 @@ export default defineProduct({
           {
             title: "升级到 3.x，以前的对局还在吗？",
             body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快、标、深）已经去掉，存过的值会被忽略。",
+            asOf: "v3.2.0",
           },
           {
             title: "导入 SGF 之后会怎样？",
@@ -220,6 +223,7 @@ export default defineProduct({
           {
             title: "电脑有多强？",
             body: "四档用同一个引擎。入门会挡住你的冲四，但常漏活三；普通每手算 0.55 秒，困难至多约 2 秒，极限用困难的搜索、把 2.5 秒用满。3.2 起棋型分值从自对弈中拟合，普通和困难明显更强。电脑至少等 0.6 秒才落子。禁手规则下，它的搜索不再考虑黑棋的禁手点。困难与极限默认每局轮流执子。规则在“新局”卡片里选，按开始时生效。",
+            asOf: "v3.2.0",
           },
         ],
       },

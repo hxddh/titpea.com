@@ -202,6 +202,7 @@ export default defineProduct({
           {
             title: "What happens when I upgrade?",
             body: "Quit Pulse, drag the new Pulse.app into Applications and choose Replace, then allow the first open again, as every unnotarized build needs. Agents' hooks need no reinstall: they call a launcher in `~/Library/Application Support/Pulse`, not the app. If Settings → Hooks says an agent needs an update, Install all fixes it. Coming from 32 or earlier, Pulse 33 starts its event log over, so only the old timelines are lost. Coming from 29 or earlier, Pulse 30 also has a new bundle id, so settings and notification permission reset once, and Gemini CLI is no longer supported; its old hooks record nothing.",
+            asOf: "v33.0.0",
           },
           {
             title: "How do I remove Pulse?",
@@ -397,6 +398,7 @@ export default defineProduct({
           {
             title: "升级时会怎样？",
             body: "退出 Pulse，把新的 Pulse.app 拖进“应用程序”并选“替换”，再放行一次首次打开，每个未公证的新版本都要这样做。各 Agent 的 hook 不用重装：它们调用的是 `~/Library/Application Support/Pulse` 里的启动器，不是 App 本身。“设置 → Hooks”说某个 Agent 需要更新时，点“全部安装”即可。从 32 或更早版本升级时，Pulse 33 的事件日志从头开始，只丢以前的时间线。从 29 或更早版本升级时，Pulse 30 的 Bundle ID 也换了，设置和通知授权会重置一次。Pulse 30 不再支持 Gemini CLI，它留下的 hook 不再记录任何事件。",
+            asOf: "v33.0.0",
           },
           {
             title: "怎样卸载 Pulse？",

@@ -106,6 +106,7 @@ export default defineProduct({
           {
             title: "Do I need an API key?",
             body: "Not to read. Reading, search, and recognising scanned pages work on your computer without one. Questions need a model: a key for OpenAI, DeepSeek, OpenRouter, or another OpenAI-compatible service, or Ollama on your machine. A question typed before you connect one is kept and sent once you do.",
+            asOf: "v24.0.0",
           },
           {
             title: "Can it miss something?",
@@ -230,6 +231,7 @@ export default defineProduct({
           {
             title: "需要 API 密钥吗？",
             body: "阅读不需要。阅读、搜索和扫描页识别都在本机完成，不用密钥。提问需要模型：OpenAI、DeepSeek、OpenRouter 或其他兼容 OpenAI 的服务需要密钥，也可以用本机的 Ollama。连接之前输入的问题会保留，连接后自动发出。",
+            asOf: "v24.0.0",
           },
           {
             title: "会漏掉内容吗？",
