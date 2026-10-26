@@ -1022,6 +1022,29 @@ a.family-link:hover strong {
   line-height: 1.5;
 }
 
+/* Earlier releases: one muted line of tags and dates under the latest. */
+.release-entry-earlier {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  grid-column: 1 / -1;
+  margin: 8px 0 0 54px;
+  color: var(--muted);
+  font-size: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.release-entry-earlier-label {
+  font-weight: 600;
+}
+
+.release-entry-earlier-item time::before {
+  content: "·";
+  margin: 0 0.5em;
+  color: var(--faint);
+}
+
 .release-entry-notes {
   display: inline-flex;
   align-items: center;
@@ -1064,8 +1087,14 @@ a.family-link:hover strong {
   }
 
   .release-entry-summary,
-  .release-entry-items {
+  .release-entry-items,
+  .release-entry-earlier {
     margin-left: 0;
+  }
+
+  /* Phones keep the two most recent earlier releases. */
+  .release-entry-earlier-item:nth-of-type(n + 4) {
+    display: none;
   }
 
   .release-entry-product img {

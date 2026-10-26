@@ -1,7 +1,8 @@
 ---
 // Every product's latest release, newest first. Lines are quoted from the
 // release's own notes (scripts/sync-releases.mjs), only in the page's
-// language and never rewritten; the release title is never shown.
+// language and never rewritten; the release title is never shown. Under each,
+// up to four earlier releases, tag and date only.
 import SiteLayout from "../layouts/SiteLayout.astro";
 import Prose from "./product/Prose.astro";
 import type { ReleasesPageModel } from "../lib/pages";
@@ -54,6 +55,17 @@ const { model } = Astro.props;
                   </li>
                 ))}
               </ul>
+            )}
+            {item.earlier.length > 0 && (
+              <p class="release-entry-earlier">
+                <span class="release-entry-earlier-label">{model.earlierLabel}</span>
+                {item.earlier.map((entry) => (
+                  <span class="release-entry-earlier-item">
+                    <span class="release-version">{entry.version}</span>
+                    {entry.released && <time datetime={entry.published}>{entry.released}</time>}
+                  </span>
+                ))}
+              </p>
             )}
           </li>
         ))}

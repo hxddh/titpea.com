@@ -34,9 +34,11 @@ if (Boolean(about.person.en) !== Boolean(about.person.zh))
   throw new Error("site.ts: about.person is set in one language only");
 
 type ReleaseNotes = { summary: string; items: string[]; url: string };
+/** One of a repository's last releases (scripts/sync-releases.mjs); the title is stored, never shown. */
+type ReleaseHistoryEntry = { version: string; published: string; title: string };
 const releaseTags = releases as Record<
   string,
-  { repo: string; version: string; published?: string; notes?: ReleaseNotes }
+  { repo: string; version: string; published?: string; notes?: ReleaseNotes; history?: ReleaseHistoryEntry[] }
 >;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
@@ -592,6 +594,8 @@ export type ReleaseItem = {
   items: string[];
   /** The release's full notes on GitHub. */
   notesUrl: string;
+  /** Up to four releases before this one, newest first: tag and date only. */
+  earlier: Array<{ version: string; published: string; released?: string }>;
 };
 
 /** Every product with a release, newest first, each with one highlight in the page's language or none. */
@@ -621,6 +625,14 @@ function releaseItems(locale: Locale): ReleaseItem[] {
         summary,
         items,
         notesUrl: notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
+        earlier: (release.history ?? [])
+          .filter((entry) => entry.version !== release.version)
+          .slice(0, 4)
+          .map((entry) => ({
+            version: entry.version,
+            published: entry.published,
+            released: formatDate(entry.published, locale),
+          })),
       };
     });
 }
@@ -799,6 +811,7 @@ export type ReleasesPageModel = {
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
   notesLabel: string;
+  earlierLabel: string;
   /** Every product with a GitHub release, newest first. */
   items: ReleaseItem[];
   undated: { title: string; sub: string; items: UndatedReleaseItem[] };
@@ -810,6 +823,7 @@ export function releasesPage(locale: Locale): ReleasesPageModel {
   const copy = ui[locale];
   const path = pathFor(locale, "releases");
   const alternatePath = pathFor(otherLocale(locale), "releases");
+  const items = releaseItems(locale);
   return {
     kind: "releases",
     locale,
@@ -835,10 +849,16 @@ export function releasesPage(locale: Locale): ReleasesPageModel {
     language: languageLink(locale, alternatePath),
     hero: { eyebrow: site.brand, title: copy.releasesHeadline, lead: copy.releasesLead },
     notesLabel: copy.releaseNotes,
-    items: releaseItems(locale),
+    earlierLabel: copy.releasesEarlier,
+    items,
     undated: { title: copy.releasesUndatedTitle, sub: copy.releasesUndatedSub, items: undatedReleaseItems(locale) },
     feed: { label: copy.aboutFeed, href: "/releases.xml" },
-    expectedText: [copy.releasesHeadline, copy.releasesLead, copy.releasesUndatedTitle],
+    expectedText: [
+      copy.releasesHeadline,
+      copy.releasesLead,
+      copy.releasesUndatedTitle,
+      ...(items.some((item) => item.earlier.length > 0) ? [copy.releasesEarlier] : []),
+    ],
   };
 }
 

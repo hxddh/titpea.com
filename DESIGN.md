@@ -75,7 +75,7 @@ The page answers, in order: what Titpea is, where its tools help, what shipped l
 
 ## Releases
 
-- `/releases/` / `/zh/releases/`: `What shipped, and when.` / `最近发布了什么`, then every product's latest release, newest first: icon and name (to the product page), tag, date, `Release notes ›`, and, when the notes yield them, a `releaseHighlights` summary or up to three lines quoted from the notes, under a hairline. The rules of What's new apply: only lines in the page's language, never rewritten, never the release title; without notes an entry is one row. Then `Without GitHub releases.`: the Chrome extensions and source-only tools, each with the version its own meta line gives, if any, and no date. The menu (Main) and the footer link it, and so does the feed's `alternate` link.
+- `/releases/` / `/zh/releases/`: `What shipped, and when.` / `最近发布了什么`, then every product's latest release, newest first: icon and name (to the product page), tag, date, `Release notes ›`, and, when the notes yield them, a `releaseHighlights` summary or up to three lines quoted from the notes, under a hairline. The rules of What's new apply: only lines in the page's language, never rewritten, never the release title; without notes an entry is one row. Under each entry, one muted line, `Earlier` / `更早`, lists up to four earlier releases by tag and date (two on phones), from the `history` that `releases:sync` keeps; the titles it stores are never shown. Then `Without GitHub releases.`: the Chrome extensions and source-only tools, each with the version its own meta line gives, if any, and no date. The menu (Main) and the footer link it, and so does the feed's `alternate` link.
 
 ## Privacy
 

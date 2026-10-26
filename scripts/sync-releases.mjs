@@ -1,6 +1,8 @@
 // Refresh src/content/releases.json from each repository's latest GitHub
 // release (tag and publish date), so download buttons, meta lines, catalog
-// cards, and About carry the current tag and date without hand edits. CI runs this before every build and on a daily
+// cards, and About carry the current tag and date without hand edits. Each
+// entry also keeps `history`: its last five published releases (tag, date,
+// title), newest first, for the releases page. CI runs this before every build and on a daily
 // schedule. If GitHub cannot be reached, the committed tags stay and the
 // build continues; `--strict` turns that into a failure.
 import fs from "node:fs";
@@ -20,6 +22,23 @@ const headers = {
 
 const changes = [];
 const problems = [];
+const historyLength = 5;
+
+/** The repository's last published releases, newest first; drafts and prereleases left out. */
+async function historyOf(repo) {
+  const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=20`, { headers });
+  if (!response.ok) throw new Error(`HTTP ${response.status} listing releases`);
+  return (await response.json())
+    .filter((release) => !release.draft && !release.prerelease && /^v?\d+\.\d+/.test(release.tag_name ?? ""))
+    .filter((release) => /^\d{4}-\d{2}-\d{2}/.test(release.published_at ?? ""))
+    .sort((a, b) => b.published_at.localeCompare(a.published_at))
+    .slice(0, historyLength)
+    .map((release) => ({
+      version: release.tag_name,
+      published: release.published_at.slice(0, 10),
+      title: (release.name ?? "").trim(),
+    }));
+}
 
 for (const [slug, entry] of Object.entries(releases)) {
   try {
@@ -35,6 +54,16 @@ for (const [slug, entry] of Object.entries(releases)) {
     };
     // Keep the committed highlights when a release body yields nothing new.
     const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
+    // A failed listing keeps the committed history; the latest tag still updates.
+    const history = await historyOf(entry.repo).catch((error) => {
+      problems.push(`${slug} (${entry.repo}): ${error.message}`);
+      return entry.history ?? [];
+    });
+    if (JSON.stringify(history) !== JSON.stringify(entry.history ?? [])) {
+      if (history.length > 0) entry.history = history;
+      else delete entry.history;
+      changes.push(`${slug}: history ${history.map((release) => release.version).join(", ") || "(none)"}`);
+    }
     if (
       tag !== entry.version ||
       published !== entry.published ||

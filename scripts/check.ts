@@ -67,12 +67,31 @@ for (const [id, members] of Object.entries(familyMembers)) {
 
 /* ---------- Releases ---------- */
 
-const releaseTags = releases as Record<string, { repo: string; version: string }>;
+const releaseTags = releases as Record<
+  string,
+  { repo: string; version: string; history?: Array<{ version: string; published: string; title: string }> }
+>;
 for (const [slug, entry] of Object.entries(releaseTags)) {
   const product = products.find((item) => item.slug === slug);
   if (!product) fail(`releases.json: ${slug} is not a product`);
   else if (product.repo !== entry.repo)
     fail(`releases.json: ${slug} repo ${entry.repo} differs from product ${product.repo}`);
+  // History (sync-releases.mjs): at most five releases, newest first, the latest among them.
+  const history = entry.history ?? [];
+  if (history.length > 5) fail(`releases.json: ${slug} history has ${history.length} releases (max 5)`);
+  for (const [index, item] of history.entries()) {
+    if (!/^v?\d+\.\d+/.test(item.version)) fail(`releases.json: ${slug} history tag "${item.version}" is not a tag`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.published))
+      fail(`releases.json: ${slug} history ${item.version} date "${item.published}" is not YYYY-MM-DD`);
+    if (typeof item.title !== "string") fail(`releases.json: ${slug} history ${item.version} has no title string`);
+    const newer = history[index - 1];
+    if (newer && newer.published < item.published)
+      fail(`releases.json: ${slug} history is not newest first (${newer.version} before ${item.version})`);
+  }
+  if (new Set(history.map((item) => item.version)).size !== history.length)
+    fail(`releases.json: ${slug} history lists a tag twice`);
+  if (history.length > 0 && !history.some((item) => item.version === entry.version))
+    fail(`releases.json: ${slug} history does not include the latest release ${entry.version}`);
 }
 for (const product of products) {
   const usesVersion = JSON.stringify(product).includes("{version}");
