@@ -4,9 +4,6 @@ export default defineProduct({
   slug: "world-machine",
   line: "games",
   type: "experiment",
-  runsOn: ["mac"],
-  purposes: ["games"],
-  status: "preview",
   featured: {
     order: 1,
     image: {

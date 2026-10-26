@@ -44,15 +44,6 @@ export type SiteRoute = {
   /** Section links the local nav shows: the nav items when `sectionIndex`, otherwise none. */
   sectionLinks?: number;
   browserVisual?: boolean;
-  /** Home: how many cards the catalog shows unfiltered, for "Coding agents", and for that on Mac (QA). */
-  catalogCounts?: { all: number; agents: number; agentsOnMac: number };
-};
-
-const agentProducts = products.filter((product) => product.purposes.includes("agents"));
-const catalogCounts = {
-  all: products.length,
-  agents: agentProducts.length,
-  agentsOnMac: agentProducts.filter((product) => product.runsOn.includes("mac")).length,
 };
 
 export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
@@ -71,5 +62,4 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   sectionLinks: page.kind === "product" ? (page.sectionIndex ? page.navItems.length : 0) : undefined,
   browserVisual:
     page.kind === "product" ? productBySlug(page.slug).schema.category === "BrowserApplication" : undefined,
-  catalogCounts: page.kind === "home" ? catalogCounts : undefined,
 }));

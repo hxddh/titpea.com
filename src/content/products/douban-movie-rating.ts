@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "douban-movie-rating",
   line: "everyday",
   type: "extension",
-  runsOn: ["chrome"],
-  purposes: ["browser"],
   icon: "/assets/icons/douban-movie-rating.webp",
   og: "/assets/og-douban-movie-rating.png",
   schema: {

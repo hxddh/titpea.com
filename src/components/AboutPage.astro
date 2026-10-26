@@ -1,6 +1,5 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import "../styles/release-list.css";
 import "../styles/about.css";
 import type { AboutPageModel } from "../lib/pages";
 
@@ -9,135 +8,33 @@ interface Props {
 }
 
 const { model } = Astro.props;
-const shown = model.releases.items.slice(0, model.releasesShown);
-const folded = model.releases.items.slice(model.releasesShown);
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
+  {/* One calm column: the claim, the owner's paragraph, then how to reach them. */}
   <section class="about-hero">
     <div class="wash" aria-hidden="true"></div>
     <div class="shell narrow about-copy">
+      {model.person?.portrait && (
+        <img
+          class="about-portrait"
+          src={model.person.portrait.src}
+          alt={model.person.portrait.alt}
+          width={model.person.portrait.width}
+          height={model.person.portrait.height}
+        />
+      )}
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
-      <p class="lead">{model.hero.lead}</p>
-      <p class="about-facts">
-        {model.facts.parts.map((part) => (
-          <span>{part}</span>
+      {model.person && <p class="about-body">{model.person.paragraph}</p>}
+      <p class="about-links">
+        {model.links.map((link) => (
+          <a href={link.href} rel="noreferrer">
+            {link.label}
+          </a>
         ))}
-        <a href={model.facts.github.href} rel="noreferrer">
-          {model.facts.github.label}
-        </a>
       </p>
-    </div>
-  </section>
-
-  {model.person && (
-    <section class="about-person" aria-label={model.hero.eyebrow}>
-      <div class="shell narrow about-person-body">
-        {model.person.portrait && (
-          <img
-            class="about-portrait"
-            src={model.person.portrait.src}
-            alt={model.person.portrait.alt}
-            width={model.person.portrait.width}
-            height={model.person.portrait.height}
-          />
-        )}
-        <p class="about-body">{model.person.paragraph}</p>
-      </div>
-    </section>
-  )}
-
-  <section class="about-scenes" aria-labelledby="scenes-title">
-    <div class="shell">
-      <header class="section-head">
-        <h2 id="scenes-title">{model.scenes.title}</h2>
-      </header>
-      <div class="scene-grid">
-        {model.scenes.items.map((scene) => (
-          <article class="scene-card">
-            <h3>{scene.label}</h3>
-            <p class="scene-when">{scene.when}</p>
-            <p class="scene-value">{scene.value}</p>
-            <ul class="scene-products">
-              {scene.products.map((product) => (
-                <li>
-                  <a href={product.href}>
-                    <img src={product.icon} alt="" width="28" height="28" loading="lazy" />
-                    <span>{product.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="about-releases" aria-labelledby="releases-title">
-    <div class="shell narrow">
-      <header class="section-head">
-        <h2 id="releases-title">{model.releases.title}</h2>
-      </header>
-      <ol class="release-list">
-        {shown.map((item) => (
-          <li>
-            <a href={item.href}>
-              <img src={item.icon} alt="" width="36" height="36" />
-              <span class="release-main">
-                <strong>{item.name}</strong>
-                {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
-              </span>
-              <span class="release-meta">
-                <span class="release-version">{item.version}</span>
-                {item.released && <span class="release-date">{item.released}</span>}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ol>
-      {folded.length > 0 && (
-        <details class="release-more">
-          <summary>
-            {model.releases.moreLabel} ({model.releases.items.length})
-          </summary>
-          <ol class="release-list">
-            {folded.map((item) => (
-              <li>
-                <a href={item.href}>
-                  <img src={item.icon} alt="" width="36" height="36" />
-                  <span class="release-main">
-                    <strong>{item.name}</strong>
-                    {item.highlight && <span class="release-highlight">{item.highlight.replaceAll("`", "")}</span>}
-                  </span>
-                  <span class="release-meta">
-                    <span class="release-version">{item.version}</span>
-                    {item.released && <span class="release-date">{item.released}</span>}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </details>
-      )}
-    </div>
-  </section>
-
-  <section class="shell final-cta about-contact" aria-label={model.contact.label}>
-    <p class="final-cta-name">{model.contact.title}</p>
-    <p class="about-contact-sub">{model.contact.sub}</p>
-    {model.contact.analytics && <p class="about-analytics">{model.contact.analytics}</p>}
-    <div class="actions">
-      {model.contact.actions.map((action) => (
-        <a
-          class:list={["button", action.style, action.style === "primary" && "large"]}
-          href={action.href}
-          rel="noreferrer"
-        >
-          {action.label}
-        </a>
-      ))}
+      {model.analytics && <p class="about-analytics">{model.analytics}</p>}
     </div>
   </section>
 </SiteLayout>

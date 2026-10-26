@@ -15,30 +15,13 @@ export const lines = ["storage", "agents", "everyday", "games"];
 
 export const camelCase = (slug) => slug.replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
 
-/** Facets and schema.org fields a type implies; the author checks them. */
-export function defaultsFor(type, line) {
-  const purpose = { storage: "storage", agents: "agents", everyday: "reading", games: "games" }[line];
-  if (type === "extension")
-    return { runsOn: ["chrome"], purposes: ["browser"], category: "BrowserApplication", os: "Chrome" };
-  if (type === "game" || type === "experiment")
-    return { runsOn: ["mac"], purposes: ["games"], category: "GameApplication", os: "macOS" };
-  if (type === "mac") return { runsOn: ["mac"], purposes: [purpose], category: "DeveloperApplication", os: "macOS" };
-  if (type === "desktop")
-    return {
-      runsOn: ["mac", "windows", "linux"],
-      purposes: [purpose],
-      category: "DeveloperApplication",
-      os: "Cross-platform",
-    };
-  return {
-    runsOn: [type === "actions" ? "actions" : "terminal"],
-    purposes: [purpose],
-    category: "DeveloperApplication",
-    os: "Cross-platform",
-  };
+/** The schema.org fields a type implies; the author checks them. */
+export function defaultsFor(type) {
+  if (type === "extension") return { category: "BrowserApplication", os: "Chrome" };
+  if (type === "game" || type === "experiment") return { category: "GameApplication", os: "macOS" };
+  if (type === "mac") return { category: "DeveloperApplication", os: "macOS" };
+  return { category: "DeveloperApplication", os: "Cross-platform" };
 }
-
-const list = (values) => `[${values.map((value) => JSON.stringify(value)).join(", ")}]`;
 
 function copyBlock(locale, slug) {
   const t = (text) => JSON.stringify(`${MARKER}: ${text}`);
@@ -69,7 +52,7 @@ function copyBlock(locale, slug) {
 }
 
 export function productSource({ slug, type, line }) {
-  const facts = defaultsFor(type, line);
+  const facts = defaultsFor(type);
   return `import { defineProduct } from "../schema";
 
 // Scaffolded by npm run new:product. Replace every ${MARKER}; npm run check lists what is left.
@@ -77,8 +60,6 @@ export default defineProduct({
   slug: "${slug}",
   line: "${line}",
   type: "${type}",
-  runsOn: ${list(facts.runsOn)},
-  purposes: ${list(facts.purposes)},
   icon: "/assets/icons/${slug}.webp",
   og: "/assets/og-${slug}.png",
   schema: {

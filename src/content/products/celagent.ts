@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "celagent",
   line: "agents",
   type: "pi",
-  runsOn: ["terminal"],
-  purposes: ["agents"],
   repo: "hxddh/celagent",
   icon: "/assets/icons/celagent.webp",
   og: "/assets/og-celagent.png",

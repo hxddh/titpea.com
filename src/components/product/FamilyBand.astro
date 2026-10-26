@@ -4,20 +4,17 @@ import "../../styles/family.css";
 
 interface Props {
   family: Family;
-  /** Heading level: h3 inside Home's family section, h2 on a product page. */
-  level?: "h2" | "h3";
 }
 
-const { family, level = "h2" } = Astro.props;
-const Heading = level;
+const { family } = Astro.props;
 const titleId = `family-${family.id}-title`;
 ---
 
 <section class="family-band" aria-labelledby={titleId}>
   <header class="family-head">
-    <Heading class="family-title" id={titleId}>
+    <h2 class="family-title" id={titleId}>
       {family.title}
-    </Heading>
+    </h2>
     <p class="family-sub">{family.sub}</p>
   </header>
   <ol class="family-members">

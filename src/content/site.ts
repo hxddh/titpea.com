@@ -1,5 +1,5 @@
 // Site-wide facts and interface copy. Product copy lives in ./products.
-import type { FamilyId, Image, Line, Locale, Platform, PrivacySummary, ProductType, Purpose } from "./schema";
+import type { FamilyId, Image, Line, Locale, PrivacySummary } from "./schema";
 
 export const site = {
   brand: "Titpea",
@@ -20,7 +20,7 @@ export const site = {
 
 /**
  * Products that work together, in the order a visitor would reach for them.
- * Home shows each family as a strip; each member's page shows the band.
+ * Each member's page ends on its family.
  */
 export const familyMembers: Record<FamilyId, string[]> = {
   s3: ["s3-turbo-list", "storage-agent-workbench", "storageops", "httpmon"],
@@ -97,24 +97,8 @@ type Ui = {
   moreToolsTitle: string;
   /** Product pages: the row of other products before the footer. */
   relatedTitle: string;
-  /** Home: the latest releases strip. */
-  shippingTitle: string;
-  shippingMore: string;
-  /** Home catalog filter. */
-  filterLabel: string;
-  filterAll: string;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
-  /** Catalog facets and chips. */
-  filterFor: string;
-  filterRunsOn: string;
-  /** `{count}` is the number of products shown. */
-  filterCount: string;
-  filterNone: string;
-  types: Record<ProductType, string>;
-  platforms: Record<Platform, string>;
-  purposes: Record<Purpose, string>;
-  statusPreview: string;
   /** A family's title and one line; `roles` is each member's step, by slug. */
   families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
   browseAllTools: string;
@@ -128,19 +112,10 @@ type Ui = {
   aboutEyebrow: string;
   /** `{count}` is the number of products. */
   aboutHeadline: string;
+  /** The About share image's line (scripts/og-cards.ts); the page itself has no lede. */
   aboutLead: string;
-  contactLabel: string;
-  /** One block per product line: when you reach for it, and what it changes. The products are listed from the catalog. */
-  aboutScenesTitle: string;
-  aboutScenes: Record<Line, { when: string; value: string }>;
-  aboutReleasesTitle: string;
-  aboutReleasesMore: string;
   aboutFeed: string;
-  aboutContactTitle: string;
-  aboutContactSub: string;
   aboutAnalytics: string;
-  /** Under the headline (which carries the count): `{released}` products with GitHub releases, `{date}` the newest release. Segments split at " · ". */
-  aboutFacts: string;
   // Releases
   releasesMetaTitle: string;
   releasesDescription: string;
@@ -207,42 +182,7 @@ export const ui: Record<Locale, Ui> = {
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
     relatedTitle: "More tools",
-    shippingTitle: "Just shipped",
-    shippingMore: "All releases",
-    filterLabel: "Filter tools",
-    filterAll: "All",
     relatedInLine: "More in {line}",
-    filterFor: "For",
-    filterRunsOn: "Runs on",
-    filterCount: "{count} products",
-    filterNone: "Nothing matches both. Clear one filter.",
-    types: {
-      cli: "Command line",
-      pi: "Pi extension",
-      actions: "GitHub Actions",
-      desktop: "Desktop app",
-      mac: "Mac app",
-      extension: "Chrome extension",
-      game: "Game",
-      experiment: "Experiment",
-    },
-    platforms: {
-      mac: "Mac",
-      windows: "Windows",
-      linux: "Linux",
-      chrome: "Chrome",
-      terminal: "Terminal",
-      actions: "GitHub Actions",
-      android: "Android",
-    },
-    purposes: {
-      storage: "Object storage",
-      agents: "Coding agents",
-      reading: "Reading",
-      browser: "Browser",
-      games: "Games",
-    },
-    statusPreview: "Pre-alpha",
     families: {
       s3: {
         title: "The S3 kit",
@@ -276,34 +216,8 @@ export const ui: Record<Locale, Ui> = {
     aboutEyebrow: "About Titpea",
     aboutHeadline: "One person. {count} tools.",
     aboutLead: "Storage, agents, everyday, games.",
-    contactLabel: "Contact links",
-    aboutScenesTitle: "Where they help.",
-    aboutScenes: {
-      storage: {
-        when: "A bucket misbehaves, or a million objects need counting.",
-        value: "Find the cause with read-only tools; list large buckets fast.",
-      },
-      agents: {
-        when: "Several agents are running, or you want to keep up with the field.",
-        value:
-          "See which one is waiting for you, read what it writes as it changes, carry a session to another machine, read sourced weekly briefs.",
-      },
-      everyday: {
-        when: "Reading PDFs and foreign pages, tidying bookmarks, checking times and ratings.",
-        value: "Answers you can check against the page; a translation only when you ask for it.",
-      },
-      games: {
-        when: "Chess, Gomoku, or a small world of your own.",
-        value: "Review the game when it ends; a small world grows a day at a time.",
-      },
-    },
-    aboutReleasesTitle: "Latest releases.",
-    aboutReleasesMore: "All releases",
     aboutFeed: "Follow releases (Atom)",
-    aboutContactTitle: "Say hello.",
-    aboutContactSub: "The code is on GitHub. Everything else, by email.",
     aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
-    aboutFacts: "{released} with GitHub releases · last release {date}",
     releasesMetaTitle: "Releases — Titpea",
     releasesDescription:
       "The latest release of every Titpea tool, newest first: the tag, the date, what changed, and a link to the full notes.",
@@ -366,42 +280,7 @@ export const ui: Record<Locale, Ui> = {
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
-    shippingTitle: "最近发布",
-    shippingMore: "全部发布",
-    filterLabel: "筛选工具",
-    filterAll: "全部",
     relatedInLine: "更多{line}工具",
-    filterFor: "用途",
-    filterRunsOn: "运行在",
-    filterCount: "{count} 件作品",
-    filterNone: "没有同时符合两项的作品，取消一个筛选试试。",
-    types: {
-      cli: "命令行",
-      pi: "Pi 扩展",
-      actions: "GitHub Actions",
-      desktop: "桌面应用",
-      mac: "Mac 应用",
-      extension: "Chrome 扩展",
-      game: "游戏",
-      experiment: "实验项目",
-    },
-    platforms: {
-      mac: "Mac",
-      windows: "Windows",
-      linux: "Linux",
-      chrome: "Chrome",
-      terminal: "终端",
-      actions: "GitHub Actions",
-      android: "Android",
-    },
-    purposes: {
-      storage: "对象存储",
-      agents: "编码 Agent",
-      reading: "阅读",
-      browser: "浏览器",
-      games: "游戏",
-    },
-    statusPreview: "早期预览",
     families: {
       s3: {
         title: "S3 工具组",
@@ -434,33 +313,8 @@ export const ui: Record<Locale, Ui> = {
     aboutEyebrow: "关于 Titpea",
     aboutHeadline: "一个人，{count} 个工具",
     aboutLead: "存储、Agent、日常、游戏。",
-    contactLabel: "联系方式",
-    aboutScenesTitle: "用在哪里",
-    aboutScenes: {
-      storage: {
-        when: "桶出了问题，或要盘点上百万个对象。",
-        value: "只读查清原因；大桶也能很快列清。",
-      },
-      agents: {
-        when: "同时跑着几个 Agent，或想跟上这个领域。",
-        value: "一眼看出哪个在等你；它写的文档边写边读；会话换台机器接着用；每周动态附来源。",
-      },
-      everyday: {
-        when: "读 PDF 和外文网页，整理书签，看时间和评分。",
-        value: "回答能回到原页核对；译文只在需要时出现。",
-      },
-      games: {
-        when: "下国际象棋、五子棋，或者养一个小世界。",
-        value: "下完能复盘；小世界一天一天地长大。",
-      },
-    },
-    aboutReleasesTitle: "最近的发布",
-    aboutReleasesMore: "全部发布",
     aboutFeed: "订阅发布（Atom）",
-    aboutContactTitle: "打个招呼",
-    aboutContactSub: "代码在 GitHub，其他事情发邮件。",
     aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
-    aboutFacts: "{released} 个有 GitHub 发布 · 最近一次发布 {date}",
     releasesMetaTitle: "发布记录 — Titpea",
     releasesDescription: "Titpea 每个工具的最新发布，最新的在前：版本、日期、更新了什么，以及完整发布说明的链接。",
     releasesHeadline: "最近发布了什么",

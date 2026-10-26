@@ -4,7 +4,7 @@
 export { type CurrentPage, versionOf, releasedOf, pathFor, pageTitle, plainText } from "./pages/shared";
 export { type PageSeo, type PageLanguageLink, buildSeo, languageLink } from "./pages/seo";
 export { type NavItem, type NavGroup, maxNavLinks, navGroups } from "./pages/nav";
-export { type CatalogItem, type CatalogCardItem, type Family } from "./pages/catalog";
+export { type CatalogItem, type Family } from "./pages/catalog";
 export { type ProductPageModel, productPage } from "./pages/product";
 export { type HomePageModel, homePage } from "./pages/home";
 export {

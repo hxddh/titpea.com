@@ -51,7 +51,7 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && isHome && result.heroCtaCount !== 2) {
     reasons.push(`home hero should have 2 CTAs, got ${result.heroCtaCount}`);
   }
-  // About keeps its actions in the closing band; its hero has none, and nor
+  // About's hero has no actions (its links are one line of text), and nor
   // do the Releases and Privacy index pages, whose hero only names the list.
   const isAbout = ["about", "releases", "privacy"].includes(route?.kind);
   if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount !== 0) {

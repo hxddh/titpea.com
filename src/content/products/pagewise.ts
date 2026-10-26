@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "pagewise",
   line: "everyday",
   type: "desktop",
-  runsOn: ["mac", "windows", "linux"],
-  purposes: ["reading"],
   repo: "hxddh/pagewise",
   icon: "/assets/icons/pagewise.webp",
   og: "/assets/og-pagewise.png",

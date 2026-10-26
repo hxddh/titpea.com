@@ -35,22 +35,8 @@ if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Hom
 const featuredOrder = products.flatMap((product) => (product.featured ? [product.featured.order] : [])).sort();
 if (featuredOrder.some((order, index) => order !== index + 1)) fail("featured rows are ordered 1, 2, 3 without gaps");
 
-/* ---------- Catalog facets and families ---------- */
+/* ---------- Families ---------- */
 
-for (const product of products) {
-  if (product.runsOn.length === 0) fail(`${product.slug}: runsOn names at least one platform`);
-  if (product.purposes.length === 0) fail(`${product.slug}: purposes names at least one purpose`);
-  if (new Set(product.runsOn).size !== product.runsOn.length) fail(`${product.slug}: runsOn lists a platform twice`);
-  if (new Set(product.purposes).size !== product.purposes.length) fail(`${product.slug}: purposes lists one twice`);
-  for (const locale of locales) {
-    const copy = ui[locale];
-    if (!copy.types[product.type]) fail(`site.ts ${locale}: no label for type ${product.type}`);
-    for (const platform of product.runsOn)
-      if (!copy.platforms[platform]) fail(`site.ts ${locale}: no label for platform ${platform}`);
-    for (const purpose of product.purposes)
-      if (!copy.purposes[purpose]) fail(`site.ts ${locale}: no label for purpose ${purpose}`);
-  }
-}
 const familySlugs = Object.values(familyMembers).flat();
 if (new Set(familySlugs).size !== familySlugs.length) fail("site.ts familyMembers: a product belongs to one family");
 for (const [id, members] of Object.entries(familyMembers)) {
