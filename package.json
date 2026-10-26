@@ -16,7 +16,7 @@
     "format:check": "prettier --check .",
     "releases:sync": "node scripts/sync-releases.mjs",
     "assets:og": "tsx scripts/generate-og-images.ts",
-    "assets:fonts": "node scripts/subset-zh-display-font.mjs",
+    "assets:fonts": "tsx scripts/subset-zh-display-font.mjs",
     "assets:images": "tsx scripts/generate-image-variants.ts",
     "assets:favicon": "tsx scripts/generate-favicons.ts",
     "assets:icons": "tsx scripts/generate-icons.ts",

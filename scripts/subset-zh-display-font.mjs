@@ -9,7 +9,8 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import subsetFont from "subset-font";
-import { zhDisplayChars } from "./zh-display-text.mjs";
+import { ui } from "../src/content/site.ts";
+import { needsSerifSc, zhDisplayChars } from "./zh-display-text.mjs";
 
 const commit = "f8d157532fbfaeda587e826d4cd5b21a49186f7c";
 const sourceUrl = `https://raw.githubusercontent.com/notofonts/noto-cjk/${commit}/Serif/SubsetOTF/SC/NotoSerifSC-SemiBold.otf`;
@@ -35,7 +36,11 @@ const source = fs.readFileSync(cache);
 const digest = crypto.createHash("sha256").update(source).digest("hex");
 if (digest !== sourceSha256) throw new Error(`${cache}: sha256 ${digest}, expected ${sourceSha256}`);
 
-const chars = zhDisplayChars();
+// Headings that only appear with synced release data (the "What's new" h2
+// needs release notes, which only CI's sync fetches), so a local build may not
+// contain them. Their fixed words are added explicitly.
+const conditionalLines = [ui.zh.whatsNew.replace("{version}", "")];
+const chars = [...new Set([...zhDisplayChars(), ...conditionalLines.join("").split("").filter(needsSerifSc)])].sort();
 const subset = await subsetFont(source, chars.join(""), {
   targetFormat: "woff2",
   // Display sizes need no hinting; vertical and other alternate glyphs that
