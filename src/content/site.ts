@@ -46,7 +46,16 @@ export type AboutPerson = {
  * Never invent personal details here. Fill both locales or neither.
  */
 export const about: { person: Partial<Record<Locale, AboutPerson>> } = {
-  person: {},
+  person: {
+    en: {
+      paragraph:
+        "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, two board games, a Sudoku notebook for Android, and a small world that is still in pre-alpha. Most of the code is on GitHub. Each tool’s page says plainly what it touches on your machine and on the network. They update often; the releases page shows each tool’s latest version and when it came out.",
+    },
+    zh: {
+      paragraph:
+        "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，两款棋类游戏，一本 Android 上的数独本，还有一个仍在早期预览的小世界。大部分代码放在 GitHub 上。每个工具的页面都写清楚它在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每个工具的最新版本和发布日期。",
+    },
+  },
 };
 
 type Ui = {
