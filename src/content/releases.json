@@ -6,8 +6,8 @@
   },
   "storage-agent-workbench": {
     "repo": "hxddh/storage-agent-workbench",
-    "version": "v10.0.0",
-    "published": "2026-09-30"
+    "version": "v25.0.0",
+    "published": "2026-10-25"
   },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
@@ -21,18 +21,18 @@
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v23.0.0",
-    "published": "2026-10-15"
+    "version": "v24.0.0",
+    "published": "2026-10-18"
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v30.0.0",
-    "published": "2026-10-14"
+    "version": "v33.0.0",
+    "published": "2026-10-21"
   },
   "readout": {
     "repo": "hxddh/readout",
-    "version": "v3.6.0",
-    "published": "2026-10-15"
+    "version": "v3.9.1",
+    "published": "2026-10-23"
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
@@ -41,8 +41,8 @@
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v3.1.0",
-    "published": "2026-10-17"
+    "version": "v3.2.0",
+    "published": "2026-10-18"
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
