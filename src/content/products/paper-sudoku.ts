@@ -63,6 +63,7 @@ export default defineProduct({
         height: 608,
       },
       caption: "Drawn by the app’s own screenshot test at Google Play’s tablet size (13.0)",
+      asOf: "v13.0.0-sideload",
     },
     showcases: [
       {
@@ -73,6 +74,7 @@ export default defineProduct({
         title: "The Coach writes in the margin.",
         body: "Look, then Why, and the answer only if you ask. Its marks stay on the board until you write in the cell it means.",
         caption: "Screenshot test, 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-notebook.webp",
@@ -82,6 +84,7 @@ export default defineProduct({
         title: "Every day stays in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend. Turn back and every earlier day is there, stamped when it was done.",
         caption: "Screenshot test, 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-handbook.webp",
@@ -91,6 +94,7 @@ export default defineProduct({
         title: "A handbook that teaches.",
         body: "Every technique with a worked example from a real page, drawn the way the Coach draws it, and how well you know it: seen, practised, known.",
         caption: "Screenshot test, 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-solved.webp",
@@ -100,6 +104,7 @@ export default defineProduct({
         title: "A stamp, not a score.",
         body: "A solved page says what you found. No streak. Share a result without the answers, or print a blank copy of any page.",
         caption: "Screenshot test, 13.0",
+        asOf: "v13.0.0-sideload",
       },
     ],
     sections: [
@@ -134,6 +139,7 @@ export default defineProduct({
           {
             title: "What does it need?",
             body: "Android 8.0 or later, on a phone, a tablet or a foldable. On a wide screen the notebook and the open page sit side by side. It works offline.",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "Where can I get it?",
@@ -142,14 +148,17 @@ export default defineProduct({
           {
             title: "Will a new build update the one I have?",
             body: "From 9.0, sideload builds can be signed with one fixed key, so later builds update in place. Moving from an earlier build needs one last uninstall.",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "Which languages does it speak?",
             body: "English, Simplified Chinese and Traditional Chinese. On Android 13 and later, the app’s language can be set in its Settings.",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "Does it work with TalkBack and a keyboard?",
             body: "Yes. With TalkBack each cell can be written or erased from the cell itself, and the keys come straight after the board; a hardware keyboard writes digits too.",
+            asOf: "v13.0.0-sideload",
           },
         ],
       },
@@ -195,6 +204,7 @@ export default defineProduct({
         height: 608,
       },
       caption: "由应用自带的截图测试按 Google Play 平板尺寸绘制（13.0，英文界面）",
+      asOf: "v13.0.0-sideload",
     },
     showcases: [
       {
@@ -205,6 +215,7 @@ export default defineProduct({
         title: "教练在页边写字",
         body: "先说看哪里，再说为什么，你要了才给答案。它的标记留在棋盘上，直到你写下它说的那一格。",
         caption: "截图测试 · 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-notebook-zh.webp",
@@ -214,6 +225,7 @@ export default defineProduct({
         title: "每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。往回翻是过去的每一天，做完的页面盖着印章。",
         caption: "截图测试 · 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-handbook-zh.webp",
@@ -223,6 +235,7 @@ export default defineProduct({
         title: "一本会教的手册",
         body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过、掌握。",
         caption: "截图测试 · 13.0",
+        asOf: "v13.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-solved.webp",
@@ -232,6 +245,7 @@ export default defineProduct({
         title: "盖印章，不打分",
         body: "做完的一页只写你找到了什么，也没有连续打卡。可以分享不含答案的结果，或把任意一页空白打印出来。",
         caption: "截图测试 · 13.0 · 英文界面",
+        asOf: "v13.0.0-sideload",
       },
     ],
     sections: [
@@ -266,6 +280,7 @@ export default defineProduct({
           {
             title: "需要什么设备？",
             body: "Android 8.0 或更高版本的手机、平板或折叠屏。宽屏上，数独本和打开的那一页并排显示。离线也能用。",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "在哪里下载？",
@@ -274,14 +289,17 @@ export default defineProduct({
           {
             title: "新版本能直接覆盖安装吗？",
             body: "从 9.0 起，侧载版可以用同一把固定密钥签名，之后的版本能直接覆盖安装。从更早的版本升级，需要最后卸载一次。",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "支持哪些语言？",
             body: "英文、简体中文和繁体中文。Android 13 及以上可以在应用的设置里单独选择语言。",
+            asOf: "v13.0.0-sideload",
           },
           {
             title: "能用 TalkBack 和键盘吗？",
             body: "能。开启 TalkBack 时，每一格都可以在格子上直接写入或擦除，数字键紧跟在棋盘之后；实体键盘也可以输入数字。",
+            asOf: "v13.0.0-sideload",
           },
         ],
       },

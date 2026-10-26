@@ -364,8 +364,9 @@ for (const product of products) {
 /* ---------- Provenance ---------- */
 
 // `asOf` names the release a screenshot, showcase, captured output or FAQ
-// answer describes. A product whose synced release is a whole major version
-// ahead gets a warning (not a failure), listing every such item to recheck.
+// answer describes. A product whose current version (synced release, or the
+// version in its meta line) is a whole major version ahead gets a warning
+// (not a failure), listing every such item to recheck.
 const tagPattern = /^v?(\d+)\.\d+(\.\d+)?([-+][\w.]+)?$/;
 const majorOf = (tag: string) => Number(tagPattern.exec(tag)?.[1]);
 const staleClaims: string[] = [];
@@ -381,8 +382,13 @@ function asOfRefs(value: unknown, at: string): Array<{ at: string; asOf: string 
   ];
 }
 
+// A product without GitHub releases (a Chrome extension, an app not yet in a
+// store) writes its version in the meta line; that version stands in.
+const metaVersion = (meta: string) => meta.split(" · ").find((segment) => /^v?\d+\.\d+(\.\d+)?$/.test(segment.trim()));
+
 for (const product of products) {
-  const release = (releases as Record<string, { version?: string }>)[product.slug]?.version;
+  const release =
+    (releases as Record<string, { version?: string }>)[product.slug]?.version ?? metaVersion(product.en.meta);
   for (const locale of locales) {
     for (const ref of asOfRefs(product[locale], `${product.slug}.${locale}`)) {
       if (!tagPattern.test(ref.asOf)) {
@@ -390,7 +396,7 @@ for (const product of products) {
         continue;
       }
       if (!release) {
-        fail(`${ref.at}: asOf ${ref.asOf}, but ${product.slug} has no releases.json entry`);
+        fail(`${ref.at}: asOf ${ref.asOf}, but ${product.slug} has no releases.json entry or version in its meta line`);
         continue;
       }
       if (majorOf(release) > majorOf(ref.asOf)) staleClaims.push(`${ref.at}: as of ${ref.asOf}, release is ${release}`);
