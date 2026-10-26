@@ -10,6 +10,7 @@ import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
 import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
+import { cards as ogCards, ogFingerprint, readOgManifest } from "./og-cards.ts";
 
 const failures: string[] = [];
 const fail = (message: string) => failures.push(message);
@@ -359,6 +360,16 @@ for (const product of products) {
       fail(`${ref.at}: ${ref.src} is declared ${ref.width}×${ref.height} but the file is ${meta.width}×${meta.height}`);
     }
   }
+}
+
+/* ---------- Share images ---------- */
+
+// Every share image was drawn from the inputs it shows now (og-cards.ts):
+// a changed headline, catalog line, icon or hero screenshot needs a redraw.
+const ogManifest = readOgManifest();
+for (const card of ogCards) {
+  if (ogManifest[card.file] !== ogFingerprint(card))
+    fail(`${card.file}: share image is stale or unrecorded; run npm run assets:og ${card.name}`);
 }
 
 /* ---------- Provenance ---------- */
