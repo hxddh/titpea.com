@@ -188,6 +188,7 @@ Omni says each thing once, in as few words as the fact allows. The figures and t
   - Every `<img>` declares intrinsic `width` and `height`. Heroes use `fetchpriority="high"`; later photographs lazy-load.
   - Screenshots are WebP. Every screenshot gets `-900w.webp` and `-1200w.webp` siblings where narrower than the original (`npm run assets:images`), offered through `srcset`, so phones and tablets fetch a smaller file. Inter is not preloaded: Apple devices use the system font first and would download it for nothing. Zoom always opens the original.
   - CSS stays in external stylesheets so the strict CSP never blocks an inlined `<style>`.
+  - A page loads only the CSS it renders: the shared sheet, its own page's, and on a product page the stylesheet of each live demo it plays. Home, About, releases, privacy and the hand-written pages stay at or under 40 KB of CSS, uncompressed. `npm run check:dist` enforces this and the cascade-layer order.
 - Responsive
   - Breakpoints are 1000px (feature grids go to two columns), 900px (header nav → menu; local nav links → disclosure), and 640px (16px gutter; everything one column).
   - Chinese headings break at punctuation and spaces, never inside a word (`word-break: keep-all`).

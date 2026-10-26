@@ -41,6 +41,12 @@ const pages = fs
   .filter((file) => typeof file === "string" && file.endsWith(".html"))
   .map((file) => ({ file: path.join("dist", file), html: fs.readFileSync(path.join("dist", file), "utf8") }));
 
+const layerOrder = fs
+  .readFileSync("src/styles/global.css", "utf8")
+  .match(/^@layer ([\w\s,-]+);/m)[1]
+  .split(",")
+  .map((name) => name.trim());
+
 const text = (html) =>
   html
     .replace(/<[^>]+>/g, " ")
@@ -65,6 +71,27 @@ for (const { file, html } of pages) {
     fail(`${file}: inline executable script conflicts with the CSP`);
   }
   if (/<style[\s>]/i.test(html)) fail(`${file}: inline <style> conflicts with the CSP`);
+
+  // Cascade layers: the page's stylesheets, read in the order they load, must
+  // set up the layers in global.css's order, whichever file comes first. A
+  // page off the product pages loads at most 40 KB of CSS (DESIGN.md).
+  const established = [];
+  let cssBytes = 0;
+  for (const [, href] of html.matchAll(/<link rel="stylesheet" href="([^"?]+)/g)) {
+    const css = fs.readFileSync(path.join("dist", href), "utf8");
+    cssBytes += Buffer.byteLength(css);
+    for (const [, names] of css.matchAll(/@layer\s+([\w\s,-]+?)\s*[;{]/g)) {
+      for (const name of names.split(",").map((part) => part.trim())) {
+        if (!established.includes(name)) established.push(name);
+      }
+    }
+  }
+  if (established.join() !== layerOrder.join()) {
+    fail(`${file}: stylesheets set up layers as ${established.join(", ")}, not ${layerOrder.join(", ")}`);
+  }
+  if (!/<body[^>]*\sdata-product=/.test(html) && cssBytes > 40 * 1024) {
+    fail(`${file}: ${(cssBytes / 1024).toFixed(1)} KB of CSS; a page off the product pages loads at most 40 KB`);
+  }
 
   // Accessibility landmarks.
   if (!/<html lang="(?:en|zh-CN)">/.test(html)) fail(`${file}: missing document language`);

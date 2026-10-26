@@ -1,0 +1,75 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer demos {
+  /* Pulse (public/scripts/demo-pulse.js), loaded where its menu bar plays. */
+
+  .pulse-tooltip {
+    justify-self: end;
+    max-width: calc(100% - 28px);
+    margin: 10px 14px 0;
+    overflow: hidden;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: var(--ink-2);
+    background: var(--paper-raised);
+    box-shadow: 0 0 0 1px var(--line);
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* A wait's length is red, as in the tray. */
+  .pulse-row-waiting em {
+    color: var(--data-alert);
+  }
+
+  .pulse-menubar-glance .pulse-lamp {
+    margin-top: 0;
+  }
+
+  .pulse-menubar-header strong.is-running {
+    color: var(--data-ref-ink);
+  }
+
+  /* Every scene keeps each row to its lines: long text truncates, as the tray does. */
+  .pulse-menubar-visual.is-animated .pulse-menubar-header strong,
+  .pulse-menubar-visual.is-animated .pulse-row strong,
+  .pulse-menubar-visual.is-animated .pulse-row p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .pulse-menubar-visual.is-animated .pulse-lamp {
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .pulse-menubar-visual.is-animated .pulse-menubar-foot {
+    flex-wrap: wrap;
+  }
+
+  /* A new wait dims the lamp once; Pulse has no running animation. */
+  .pulse-lamp.is-new {
+    animation: pulse-dim 0.7s ease-out 1;
+  }
+
+  @keyframes pulse-dim {
+    35% {
+      opacity: 0.25;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-menubar-visual.is-animated .pulse-lamp {
+      transition: none;
+    }
+
+    .pulse-lamp.is-new {
+      animation: none;
+    }
+  }
+}

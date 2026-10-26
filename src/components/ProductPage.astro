@@ -1,5 +1,8 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import "../styles/visuals.css";
+import "../styles/demo.css";
+import "../styles/product.css";
 import { ui } from "../content/site";
 import { products } from "../content/products";
 import { templateOf } from "../content/schema";
@@ -21,6 +24,7 @@ import ShowcaseSection from "./product/ShowcaseSection.astro";
 import StatsBand from "./product/StatsBand.astro";
 import Visual from "./product/Visual.astro";
 import WhatsNewSection from "./product/WhatsNewSection.astro";
+import { demoStyles } from "./product/demo-styles";
 
 interface Props {
   model: ProductPageModel;
@@ -84,6 +88,7 @@ const commandsProps = {
   language={model.language}
   localNav
   product={{ slug: model.slug, line: model.line }}
+  styles={demoStyles(copy)}
 >
   <LocalNav
     label={copy.title}

@@ -1,0 +1,174 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer demos {
+  /* Readout (public/scripts/demo-readout.js), loaded where it plays. */
+
+  .demo-readout {
+    max-width: 600px;
+  }
+
+  .readout-window {
+    overflow: hidden;
+    border-radius: var(--radius-window);
+    background: var(--paper);
+    box-shadow:
+      var(--shadow-panel),
+      0 0 0 1px var(--line);
+    text-align: left;
+  }
+
+  .readout-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    background: var(--paper-raised);
+    font-size: var(--text-meta);
+  }
+
+  .readout-lights {
+    display: flex;
+    gap: 7px;
+  }
+
+  .readout-lights span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--soft-line);
+  }
+
+  .readout-file {
+    flex: 1;
+    margin-right: 46px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .readout-doc {
+    padding: 20px 28px 14px 40px;
+  }
+
+  .ro-blk {
+    position: relative;
+    margin: 0 0 10px;
+    border-radius: 4px;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* The change bar, in the margin beside the block (reader.css .blk::before). */
+  .ro-blk::before {
+    content: "";
+    position: absolute;
+    top: 0.2em;
+    bottom: 0.2em;
+    left: -22px;
+    width: 3px;
+    border-radius: 2px;
+    background: transparent;
+    transition:
+      background-color 0.6s ease,
+      opacity 0.6s ease,
+      width 0.6s ease;
+  }
+
+  .ro-blk.m-inserted::before {
+    background: var(--accent);
+  }
+
+  /* Read: a hairline, until it goes. */
+  .ro-blk.m-read::before {
+    width: 1px;
+    background: var(--faint);
+    opacity: 0.6;
+  }
+
+  .ro-blk.is-arriving {
+    animation: ro-arrive 1.2s ease-out;
+  }
+
+  @keyframes ro-arrive {
+    from {
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+  }
+
+  .ro-h1 {
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .ro-h2 {
+    margin-top: 16px;
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .ro-task,
+  .ro-done {
+    padding-left: 26px;
+  }
+
+  .ro-box {
+    position: absolute;
+    top: 0.32em;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1.5px var(--muted);
+  }
+
+  .ro-done .ro-box {
+    background: var(--accent-fill);
+    box-shadow: none;
+  }
+
+  /* The tick of a done task. */
+  .ro-done .ro-box::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--on-ink);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 640px) {
+    .readout-doc {
+      padding: 16px 18px 10px 30px;
+    }
+
+    .ro-blk::before {
+      left: -18px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ro-blk::before {
+      transition: none;
+    }
+
+    .ro-blk.is-arriving {
+      animation: none;
+    }
+
+    /* A demo that would play by itself shows its last state instead. */
+    .demo-readout .demo-controls {
+      display: none;
+    }
+  }
+}

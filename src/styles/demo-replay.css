@@ -1,0 +1,57 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer demos {
+  /* Terminal replay (public/scripts/demo-replay.js), loaded where a captured command plays. */
+
+  .command-replay {
+    margin: 10px 0 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--code-bg);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .replay-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 48px;
+    padding: 6px 10px 6px 20px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+  }
+
+  .replay-screen {
+    margin: 0;
+    padding: 16px 20px;
+    overflow-x: auto;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    line-height: 1.6;
+  }
+
+  .replay-screen::before {
+    content: "$ ";
+    color: var(--muted);
+  }
+
+  .replay-command {
+    font-weight: 600;
+  }
+
+  .replay-screen .is-pending {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* The replay shows its last state instead. */
+    .command-replay .demo-toggle {
+      display: none;
+    }
+  }
+}

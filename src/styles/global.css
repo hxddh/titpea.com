@@ -1,8 +1,20 @@
+/* Cascade layers, lowest first. Order, not specificity, settles which layer
+   wins: components (hero objects, the demo frame) and each live demo's own
+   sheet sit under the page templates that place them, Chinese optics adjust
+   a template's text, and identity
+   outranks everything. Every stylesheet that is loaded on its own repeats
+   this statement, so the order holds whichever file a page loads first.
+
+   This file is on every page. Each page adds its own: HomePage, AboutPage,
+   ReleasesPage, PrivacyPage and ProductPage import theirs, FamilyBand its
+   band, the hand-written pages document.css, and a product page links the
+   stylesheet of each live demo it renders (product/demo-styles.ts). */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
 @import "./fonts.css";
 @import "./tokens.css";
 @import "./base.css";
 @import "./chrome.css";
-@import "./visuals.css";
-@import "./pages.css";
-@import "./product.css";
-@import "./demos.css";
+@import "./shared.css";
+@import "./locale.css";
+@import "./identity.css";

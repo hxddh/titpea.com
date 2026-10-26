@@ -1,0 +1,127 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* A family: products that work together, in the order you reach for them.
+   Home shows each one as a card; a member's page shows its own, marked. */
+  .family-band {
+    padding: 20px 22px 22px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+  }
+
+  .family-title {
+    margin: 0;
+    font-size: var(--text-catalog-name);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .family-sub {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .family-members {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .family-member {
+    position: relative;
+  }
+
+  /* The arrow between steps sits in the gap, centred on the icons. */
+  .family-member + .family-member::before {
+    content: "→";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    color: var(--faint);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .family-link {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 0 2px;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .family-link img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    border-radius: var(--icon-radius);
+  }
+
+  .family-link strong {
+    font-size: var(--text-small);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .family-role {
+    color: var(--muted);
+    font-size: var(--text-meta);
+    line-height: 1.35;
+  }
+
+  a.family-link:hover {
+    text-decoration: none;
+  }
+
+  a.family-link:hover strong {
+    color: var(--link);
+  }
+
+  .family-link[aria-current="page"] strong {
+    color: var(--ink);
+  }
+
+  .family-link[aria-current="page"] img {
+    outline: 2px solid var(--accent);
+    /* Outside the plate ring (--plate-s is 4px wide). */
+    outline-offset: 6px;
+  }
+
+  @media (max-width: 640px) {
+    .family-band {
+      padding: 18px 16px;
+    }
+
+    /* Four steps do not fit in a row: two columns, icon beside its words, in reading order. */
+    .family-members {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 12px;
+    }
+
+    .family-member + .family-member::before {
+      content: none;
+    }
+
+    .family-link {
+      grid-template-columns: 36px minmax(0, 1fr);
+      justify-items: start;
+      column-gap: 10px;
+      text-align: left;
+    }
+
+    .family-link img {
+      grid-row: span 2;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 0;
+    }
+  }
+}

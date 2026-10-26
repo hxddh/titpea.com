@@ -1,0 +1,170 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* About (AboutPage.astro). */
+
+  .about-hero {
+    padding-bottom: 0;
+  }
+
+  .about-scenes,
+  .about-releases {
+    padding-top: var(--section-y);
+  }
+
+  /* Where they help: one card per product line, its products as small links. */
+  .scene-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .scene-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+  }
+
+  .scene-card h3 {
+    margin: 0;
+    font-size: var(--text-card-title);
+    letter-spacing: -0.02em;
+  }
+
+  .scene-when {
+    margin: 10px 0 0;
+    color: var(--ink);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  .scene-value {
+    margin: 6px 0 0;
+    color: var(--ink-2);
+    font-size: var(--text-card-body);
+    line-height: 1.55;
+  }
+
+  .scene-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: auto 0 0;
+    padding: 20px 0 0;
+    list-style: none;
+  }
+
+  .scene-products a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px 0 8px;
+    border-radius: var(--radius-pill);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: var(--text-small);
+    font-weight: 500;
+  }
+
+  .scene-products a:hover {
+    text-decoration: none;
+    box-shadow: 0 0 0 1px var(--soft-line);
+  }
+
+  .scene-products img {
+    width: 28px;
+    height: 28px;
+    border-radius: 22.5%;
+  }
+
+  @media (max-width: 720px) {
+    .scene-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scene-card {
+      padding: 22px;
+    }
+  }
+
+  .about-analytics {
+    max-width: 60ch;
+    margin: 6px auto 0;
+    text-wrap: balance;
+    color: var(--muted);
+    font-size: var(--text-meta);
+  }
+
+  .about-contact-sub {
+    margin: 8px auto 0;
+    color: var(--muted);
+    font-size: var(--text-sub);
+  }
+
+  /* About: a line computed from the catalog and releases, then the person. */
+  .about-facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 0;
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .about-facts > * {
+    white-space: nowrap;
+  }
+
+  .about-facts > :not(:last-child)::after {
+    content: "·";
+    margin: 0 0.7em;
+    color: var(--faint);
+  }
+
+  .about-facts a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .about-person {
+    padding-top: var(--section-y-short);
+  }
+
+  .about-person-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .about-portrait {
+    flex: none;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .about-body {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-sub);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px) {
+    .about-person-body {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
