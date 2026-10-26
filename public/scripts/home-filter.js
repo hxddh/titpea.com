@@ -3,10 +3,13 @@
 // every card shows.
 (function () {
   var facets = document.querySelector("[data-home-filter]");
-  var catalog = document.querySelector("[data-home-catalog]");
-  if (!facets || !catalog) return;
+  // The featured cards and the rest are two lists of one catalog.
+  var catalogs = Array.prototype.slice.call(document.querySelectorAll("[data-home-catalog]"));
+  if (!facets || !catalogs.length) return;
   var buttons = Array.prototype.slice.call(facets.querySelectorAll("button[data-facet]"));
-  var cards = Array.prototype.slice.call(catalog.children);
+  var cards = catalogs.reduce(function (all, list) {
+    return all.concat(Array.prototype.slice.call(list.children));
+  }, []);
   var count = facets.querySelector("[data-count-template]");
   var chosen = { purpose: "all", platform: "all" };
   function matches(list, value) {
