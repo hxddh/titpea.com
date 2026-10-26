@@ -23,29 +23,32 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
 
 <header class="site-header" data-static={scrollsAway ? "" : undefined}>
   <div class="site-header-bar glass">
-    <a class="brand" href={pathFor(locale)} aria-label={copy.homeLabel}
-      ><img src="/favicon.svg" alt="" width="22" height="22" />Titpea</a
-    >
+    <a class="brand" href={pathFor(locale)} aria-label={copy.homeLabel}>
+      <img src="/favicon.svg" alt="" width="22" height="22" />
+      Titpea
+    </a>
 
     <nav class="nav" aria-label={copy.primaryLabel}>
-      <a href={pathFor(locale, "about")} aria-current={current === "about" ? "page" : undefined}>{copy.about}</a>
-      {
-        lineGroups.map((group) => (
-          <details class="nav-dropdown">
-            <summary aria-current={group.items.some((item) => item.current === current) ? "page" : undefined}>
-              {group.label}
-            </summary>
-            <div class="nav-dropdown-panel">
-              {group.items.map((item) => (
-                <a href={item.href} aria-current={isCurrent(item)}>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </details>
-        ))
-      }
-      <a href={github.href} rel="noreferrer">{github.label}</a>
+      <a href={pathFor(locale, "about")} aria-current={current === "about" ? "page" : undefined}>
+        {copy.about}
+      </a>
+      {lineGroups.map((group) => (
+        <details class="nav-dropdown">
+          <summary aria-current={group.items.some((item) => item.current === current) ? "page" : undefined}>
+            {group.label}
+          </summary>
+          <div class="nav-dropdown-panel">
+            {group.items.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item)}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </details>
+      ))}
+      <a href={github.href} rel="noreferrer">
+        {github.label}
+      </a>
     </nav>
 
     <a class="language-switch" href={alternateHref} hreflang={alternateLocale === "zh" ? "zh-CN" : "en"}>
@@ -69,23 +72,21 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
     <details class="mobile-menu">
       <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>
       <div class="mobile-menu-panel">
-        {
-          groups.map((group) => (
-            <div
-              class="mobile-menu-group"
-              role="group"
-              aria-label={group.label}
-              data-current={group.items.some((item) => item.current === current) ? "true" : undefined}
-            >
-              <p>{group.label}</p>
-              {group.items.map((item) => (
-                <a href={item.href} aria-current={isCurrent(item)} rel={item.external ? "noreferrer" : undefined}>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          ))
-        }
+        {groups.map((group) => (
+          <div
+            class="mobile-menu-group"
+            role="group"
+            aria-label={group.label}
+            data-current={group.items.some((item) => item.current === current) ? "true" : undefined}
+          >
+            <p>{group.label}</p>
+            {group.items.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item)} rel={item.external ? "noreferrer" : undefined}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        ))}
       </div>
     </details>
   </div>

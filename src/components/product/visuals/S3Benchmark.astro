@@ -25,20 +25,18 @@ const bars = visual.points.map((point) => ({
   <figure class="benchmark-bars" aria-labelledby="benchmark-chart-title">
     <figcaption id="benchmark-chart-title">{visual.chartLabel}</figcaption>
     <dl>
-      {
-        bars.map((bar) => (
-          <div class:list={["benchmark-bar", bar.state && `is-${bar.state}`]}>
-            <dt>{bar.label}</dt>
-            <dd>
-              <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                <rect class="benchmark-track" x="0" y="0" width="100" height="10" />
-                <rect class="benchmark-fill" x="0" y="0" width={bar.share} height="10" />
-              </svg>
-              <span>{bar.text}</span>
-            </dd>
-          </div>
-        ))
-      }
+      {bars.map((bar) => (
+        <div class:list={["benchmark-bar", bar.state && `is-${bar.state}`]}>
+          <dt>{bar.label}</dt>
+          <dd>
+            <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="benchmark-track" x="0" y="0" width="100" height="10" />
+              <rect class="benchmark-fill" x="0" y="0" width={bar.share} height="10" />
+            </svg>
+            <span>{bar.text}</span>
+          </dd>
+        </div>
+      ))}
     </dl>
     <p>{visual.chartCaption}</p>
   </figure>

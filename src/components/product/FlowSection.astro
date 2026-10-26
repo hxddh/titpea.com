@@ -15,7 +15,9 @@ const List = ordered ? "ol" : "ul";
   <div class="shell">
     <header class="section-head">
       <h2>{section.title}</h2>
-      <p class="sub"><Prose text={section.body} /></p>
+      <p class="sub">
+        <Prose text={section.body} />
+      </p>
     </header>
     <List
       class="feature-grid product-flow"
@@ -23,17 +25,15 @@ const List = ordered ? "ol" : "ul";
       data-count={section.steps.length}
       data-numbered={ordered ? "" : undefined}
     >
-      {
-        section.steps.map((step, index) => (
-          <li class="feature-card">
-            {ordered && <span class="feature-step">{index + 1}</span>}
-            <h3>{step.label}</h3>
-            <p>
-              <Prose text={step.body} />
-            </p>
-          </li>
-        ))
-      }
+      {section.steps.map((step, index) => (
+        <li class="feature-card">
+          {ordered && <span class="feature-step">{index + 1}</span>}
+          <h3>{step.label}</h3>
+          <p>
+            <Prose text={step.body} />
+          </p>
+        </li>
+      ))}
     </List>
   </div>
 </section>

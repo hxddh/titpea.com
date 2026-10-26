@@ -50,20 +50,20 @@ const seo = buildSeo({
             <code>favicon</code>: showing each site's icon from Chrome's local icon cache. No network requests are made.
           </li>
           <li>
-            <code>tabs</code> (optional): requested only the first time you save the current page (the ☆ button or ⌘/Ctrl+D)
-            or save all open tabs (⌘/Ctrl+Shift+D or “Save all tabs here” in a folder’s ⋯ menu). Once granted, while the panel
-            is open, it reads the active tab's title and address to save the page and to show whether that page is already
-            bookmarked; when you choose to save all tabs, it reads the titles and addresses of the tabs in that window to
-            save them as bookmarks in a new folder. The extension compares those addresses with your bookmarks in memory,
-            keeps no separate copy, and does not send them anywhere itself. If you save pages, their addresses are stored
-            in those Chrome bookmarks, which Chrome Sync syncs if you have it on. You can decline; the page is then saved
-            through an empty form and nothing is marked. After a decline, the extension asks again only when you explicitly
-            choose to save all tabs.
+            <code>tabs</code> (optional): requested only the first time you save the current page (the ☆ button or
+            ⌘/Ctrl+D) or save all open tabs (⌘/Ctrl+Shift+D or “Save all tabs here” in a folder’s ⋯ menu). Once granted,
+            while the panel is open, it reads the active tab's title and address to save the page and to show whether
+            that page is already bookmarked; when you choose to save all tabs, it reads the titles and addresses of the
+            tabs in that window to save them as bookmarks in a new folder. The extension compares those addresses with
+            your bookmarks in memory, keeps no separate copy, and does not send them anywhere itself. If you save pages,
+            their addresses are stored in those Chrome bookmarks, which Chrome Sync syncs if you have it on. You can
+            decline; the page is then saved through an empty form and nothing is marked. After a decline, the extension
+            asks again only when you explicitly choose to save all tabs.
           </li>
         </ul>
         <p>
-          The address-bar search (type <code>b</code> and a space) needs no permission. What you type after it is matched
-          against your bookmarks inside the extension and is not stored or sent.
+          The address-bar search (type <code>b</code> and a space) needs no permission. What you type after it is
+          matched against your bookmarks inside the extension and is not stored or sent.
         </p>
         <p>
           When you drag a link into the panel or paste addresses into it, the extension reads what you dropped or
@@ -73,12 +73,12 @@ const seo = buildSeo({
       <section>
         <h2>What stays on your device</h2>
         <p>
-          Only the items listed under <code>storage</code> above: which folders are open, the IDs and last-opened times of
-          up to 500 bookmarks, the folder last chosen by hand, and whether the optional permission was requested; plus a copy
-          of the part of your bookmark list that was last on screen (at most a few hundred rows, in the extension's own local
-          storage) so the panel can show it the instant it opens. They are never sent anywhere and are removed when you uninstall
-          the extension. Your bookmarks themselves are Chrome's own data; if you use Chrome Sync, Chrome syncs them exactly
-          as it does without this extension.
+          Only the items listed under <code>storage</code> above: which folders are open, the IDs and last-opened times
+          of up to 500 bookmarks, the folder last chosen by hand, and whether the optional permission was requested;
+          plus a copy of the part of your bookmark list that was last on screen (at most a few hundred rows, in the
+          extension's own local storage) so the panel can show it the instant it opens. They are never sent anywhere and
+          are removed when you uninstall the extension. Your bookmarks themselves are Chrome's own data; if you use
+          Chrome Sync, Chrome syncs them exactly as it does without this extension.
         </p>
       </section>
       <section>

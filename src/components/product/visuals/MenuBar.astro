@@ -34,53 +34,51 @@ const stillLamp = visual.scenes?.[start]?.lamp ?? "waiting";
       <span data-glance-title>{visual.glanceTitle}</span>
     </strong>
   </div>
-  {
-    visual.lampSentence && (
-      <p class="pulse-tooltip" data-sentence>
-        {visual.lampSentence}
-      </p>
-    )
-  }
+  {visual.lampSentence && (
+    <p class="pulse-tooltip" data-sentence>
+      {visual.lampSentence}
+    </p>
+  )}
   <div class="pulse-menubar-panel">
     <div class="pulse-menubar-header">
-      <strong class={`is-${stillLamp}`} data-header>{visual.headerStatus}</strong>
+      <strong class={`is-${stillLamp}`} data-header>
+        {visual.headerStatus}
+      </strong>
       {visual.headerAgents ? <span>{visual.headerAgents}</span> : null}
     </div>
-    {
-      visual.sections.map((section) => (
-        <section class="pulse-menubar-section">
-          {section.title ? <p class="pulse-menubar-title">{section.title}</p> : null}
-          <ul>
-            {section.rows.map((row) => (
-              <li class={`pulse-row pulse-row-${row.state}`} data-row>
-                <span class={`pulse-lamp pulse-lamp-${row.state}`} aria-hidden="true" data-lamp />
-                <div>
-                  <strong data-title>{row.title}</strong>
-                  {row.meta && <p data-meta>{row.meta}</p>}
-                </div>
-                {row.chip ? <em data-chip>{row.chip}</em> : null}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))
-    }
+    {visual.sections.map((section) => (
+      <section class="pulse-menubar-section">
+        {section.title ? <p class="pulse-menubar-title">{section.title}</p> : null}
+        <ul>
+          {section.rows.map((row) => (
+            <li class={`pulse-row pulse-row-${row.state}`} data-row>
+              <span class={`pulse-lamp pulse-lamp-${row.state}`} aria-hidden="true" data-lamp />
+              <div>
+                <strong data-title>{row.title}</strong>
+                {row.meta && <p data-meta>{row.meta}</p>}
+              </div>
+              {row.chip ? <em data-chip>{row.chip}</em> : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
   <div class="pulse-menubar-foot">
-    {visual.footnotes.map((item) => <span>{item}</span>)}
-    {
-      visual.scenes && (
-        <button
-          class="pulse-toggle"
-          type="button"
-          data-pulse-toggle
-          data-pause-label={controls.pause}
-          data-play-label={controls.play}
-        >
-          {controls.pause}
-        </button>
-      )
-    }
+    {visual.footnotes.map((item) => (
+      <span>{item}</span>
+    ))}
+    {visual.scenes && (
+      <button
+        class="pulse-toggle"
+        type="button"
+        data-pulse-toggle
+        data-pause-label={controls.pause}
+        data-play-label={controls.play}
+      >
+        {controls.pause}
+      </button>
+    )}
   </div>
 </div>
 

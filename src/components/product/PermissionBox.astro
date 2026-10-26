@@ -21,19 +21,21 @@ const copy = ui[locale];
       <dt>{copy.privacyColumns.network}</dt>
       <dd>
         <strong data-network={privacy.network}>{copy.privacyLevels[privacy.network]}</strong>
-        <span><Prose text={privacy.networkNote} /></span>
+        <span>
+          <Prose text={privacy.networkNote} />
+        </span>
       </dd>
     </div>
     <div>
       <dt>{copy.privacyColumns.stays}</dt>
-      <dd><Prose text={privacy.stays} /></dd>
+      <dd>
+        <Prose text={privacy.stays} />
+      </dd>
     </div>
   </dl>
-  {
-    dataHref && (
-      <a class="permission-link" href={dataHref}>
-        {copy.privacyDataLink}
-      </a>
-    )
-  }
+  {dataHref && (
+    <a class="permission-link" href={dataHref}>
+      {copy.privacyDataLink}
+    </a>
+  )}
 </div>

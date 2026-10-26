@@ -18,7 +18,9 @@ const { demo } = section;
   <div class="shell">
     <header class="section-head compact">
       <h2>{section.title}</h2>
-      <p class="sub"><Prose text={section.body} /></p>
+      <p class="sub">
+        <Prose text={section.body} />
+      </p>
     </header>
     {demo.kind === "worldClock" && <WorldClockDemo demo={demo} caption={section.caption} />}
     {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}

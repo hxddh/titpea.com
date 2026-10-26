@@ -6,6 +6,9 @@ import assetVersions from "./src/integrations/asset-versions.mjs";
 export default defineConfig({
   site: "https://titpea.com",
   trailingSlash: "always",
+  // Astro 7 defaults to JSX-style whitespace stripping ("jsx"), which removes
+  // spaces between inline elements; keep Astro 6's HTML-aware compression.
+  compressHTML: true,
   integrations: [assetVersions()],
   vite: {
     build: {

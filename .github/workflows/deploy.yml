@@ -31,8 +31,8 @@ jobs:
     outputs:
       changed: ${{ steps.sync.outputs.changed }}
     steps:
-      - uses: actions/checkout@v6.0.3
-      - uses: actions/setup-node@v6.4.0
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 22
           cache: npm
@@ -55,7 +55,7 @@ jobs:
           echo "A release tag changed, but some repositories could not be read; not deploying."
           exit 1
       # validate builds from this exact sync instead of asking GitHub again.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: steps.sync.outputs.changed == 'true'
         with:
           name: releases-${{ github.run_id }}
@@ -72,8 +72,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6.0.3
-      - uses: actions/setup-node@v6.4.0
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 22
           cache: npm
@@ -89,7 +89,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Use the scheduled sync
         if: github.event_name == 'schedule'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8.0.2
         with:
           name: releases-${{ github.run_id }}
           path: src/content
@@ -105,7 +105,7 @@ jobs:
       - name: Cache Playwright browser
         if: github.event_name != 'schedule'
         id: playwright-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6.1.0
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -136,7 +136,7 @@ jobs:
           npm run a11y:check
           npm run visual:check
       # The deploy job ships exactly this build, the one QA just checked.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
           name: site-${{ github.sha }}
@@ -144,7 +144,7 @@ jobs:
           retention-days: 7
           if-no-files-found: error
       # Keep the rendered screenshots only when QA fails.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: failure() && github.event_name != 'schedule'
         with:
           name: visual-baseline-${{ github.sha }}
@@ -174,13 +174,13 @@ jobs:
       contents: read
       deployments: write
     steps:
-      - uses: actions/checkout@v6.0.3
-      - uses: actions/setup-node@v6.4.0
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8.0.2
         with:
           name: site-${{ github.sha }}
           path: dist

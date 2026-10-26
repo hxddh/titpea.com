@@ -27,54 +27,41 @@ const row = Astro.props.row || portrait;
   <div class="shell">
     <header class="section-head compact">
       <h2>{showcase.title}</h2>
-      <p class="sub"><Prose text={showcase.body} /></p>
+      <p class="sub">
+        <Prose text={showcase.body} />
+      </p>
     </header>
-    {
-      showcase.video ? (
-        <figure class="shot show-shot show-video">
-          <video
-            muted
-            loop
-            playsinline
-            preload="none"
-            poster={showcase.src}
-            width={showcase.width}
-            height={showcase.height}
-            aria-label={showcase.alt}
-            data-autoplay
-          >
-            {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
-            <source src={showcase.video.mp4} type="video/mp4" />
-            {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
-          </video>
-          <button
-            class="video-toggle"
-            type="button"
-            hidden
-            data-video-toggle
-            data-pause-label={pauseLabel}
-            data-play-label={playLabel}
-          >
-            {pauseLabel}
-          </button>
-        </figure>
-      ) : showcase.caption ? (
-        <figure class="show-figure">
-          <div class="shot">
-            <img
-              src={showcase.src}
-              srcset={srcsetFor(showcase.src, showcase.width)}
-              sizes={screenshotSizes}
-              alt={showcase.alt}
-              width={showcase.width}
-              height={showcase.height}
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="shot-caption">{showcase.caption}</figcaption>
-        </figure>
-      ) : (
-        <figure class="shot show-shot">
+    {showcase.video ? (
+      <figure class="shot show-shot show-video">
+        <video
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster={showcase.src}
+          width={showcase.width}
+          height={showcase.height}
+          aria-label={showcase.alt}
+          data-autoplay
+        >
+          {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
+          <source src={showcase.video.mp4} type="video/mp4" />
+          {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
+        </video>
+        <button
+          class="video-toggle"
+          type="button"
+          hidden
+          data-video-toggle
+          data-pause-label={pauseLabel}
+          data-play-label={playLabel}
+        >
+          {pauseLabel}
+        </button>
+      </figure>
+    ) : showcase.caption ? (
+      <figure class="show-figure">
+        <div class="shot">
           <img
             src={showcase.src}
             srcset={srcsetFor(showcase.src, showcase.width)}
@@ -84,8 +71,21 @@ const row = Astro.props.row || portrait;
             height={showcase.height}
             loading="lazy"
           />
-        </figure>
-      )
-    }
+        </div>
+        <figcaption class="shot-caption">{showcase.caption}</figcaption>
+      </figure>
+    ) : (
+      <figure class="shot show-shot">
+        <img
+          src={showcase.src}
+          srcset={srcsetFor(showcase.src, showcase.width)}
+          sizes={screenshotSizes}
+          alt={showcase.alt}
+          width={showcase.width}
+          height={showcase.height}
+          loading="lazy"
+        />
+      </figure>
+    )}
   </div>
 </section>

@@ -20,7 +20,9 @@ const [hintBefore, hintAfter] = demo.hint.split("{key}");
   data-touch-hint={demo.touchHint}
 >
   <div class="bilingual-page" role="group" aria-label={demo.label}>
-    <p class="bilingual-source" lang={demo.sourceLang}>{demo.source}</p>
+    <p class="bilingual-source" lang={demo.sourceLang}>
+      {demo.source}
+    </p>
     {/* The margin note: always laid out, so showing it never moves the page. */}
     <p class="bilingual-note" lang={demo.targetLang} data-note>
       <span class="sr-only">{demo.translationLabel}</span>
@@ -29,9 +31,13 @@ const [hintBefore, hintAfter] = demo.hint.split("{key}");
   </div>
   <div class="bilingual-controls">
     <p class="bilingual-hint" data-hint>
-      {hintBefore}<kbd data-key>Shift</kbd>{hintAfter}
+      {hintBefore}
+      <kbd data-key>Shift</kbd>
+      {hintAfter}
     </p>
-    <button class="bilingual-toggle" type="button" aria-pressed="false" data-toggle>{demo.show}</button>
+    <button class="bilingual-toggle" type="button" aria-pressed="false" data-toggle>
+      {demo.show}
+    </button>
   </div>
   <figcaption class="shot-caption">{caption}</figcaption>
   <p class="sr-only" aria-live="polite" data-status></p>

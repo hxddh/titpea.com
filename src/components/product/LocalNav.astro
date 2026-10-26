@@ -21,42 +21,38 @@ const directoryId = `section-directory-${locale}`;
       <img src={icon} alt="" width="26" height="26" />
       {label}
     </span>
-    {
-      items.length > 0 && (
-        <>
-          <button
-            class="product-section-index-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls={directoryId}
-            data-section-index-toggle
-          >
-            <span>{directoryLabel}</span>
-            <span aria-hidden="true" data-section-index-symbol>
-              +
-            </span>
-          </button>
-          <div class="product-section-index-links" id={directoryId}>
-            {items.map((item) => (
-              <a href={`#${item.id}`} data-section-link={item.id}>
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </>
-      )
-    }
-    {
-      cta.soon ? (
-        <span class="button primary local-nav-cta is-soon" aria-disabled="true">
-          {cta.label}
-        </span>
-      ) : (
-        <a class="button primary local-nav-cta" href={cta.href} rel="noreferrer">
-          {cta.label}
-        </a>
-      )
-    }
+    {items.length > 0 && (
+      <>
+        <button
+          class="product-section-index-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls={directoryId}
+          data-section-index-toggle
+        >
+          <span>{directoryLabel}</span>
+          <span aria-hidden="true" data-section-index-symbol>
+            +
+          </span>
+        </button>
+        <div class="product-section-index-links" id={directoryId}>
+          {items.map((item) => (
+            <a href={`#${item.id}`} data-section-link={item.id}>
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+    {cta.soon ? (
+      <span class="button primary local-nav-cta is-soon" aria-disabled="true">
+        {cta.label}
+      </span>
+    ) : (
+      <a class="button primary local-nav-cta" href={cta.href} rel="noreferrer">
+        {cta.label}
+      </a>
+    )}
   </div>
 </nav>
 

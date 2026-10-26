@@ -26,42 +26,42 @@ const { model } = Astro.props;
   <section class="releases-timeline" aria-label={model.hero.title}>
     <div class="shell narrow">
       <ol class="release-feed" data-visual-live>
-        {
-          model.items.map((item) => (
-            <li class="release-entry">
-              <a class="release-entry-product" href={item.href}>
-                <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
-                <strong>{item.name}</strong>
+        {model.items.map((item) => (
+          <li class="release-entry">
+            <a class="release-entry-product" href={item.href}>
+              <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
+              <strong>{item.name}</strong>
+            </a>
+            <div class="release-entry-meta">
+              <p class="release-entry-tag">
+                <span class="release-version">{item.version}</span>
+                {item.released && <time datetime={item.published}>{item.released}</time>}
+              </p>
+              <a class="release-entry-notes" href={item.notesUrl} rel="noreferrer">
+                {model.notesLabel}
               </a>
-              <div class="release-entry-meta">
-                <p class="release-entry-tag">
-                  <span class="release-version">{item.version}</span>
-                  {item.released && <time datetime={item.published}>{item.released}</time>}
-                </p>
-                <a class="release-entry-notes" href={item.notesUrl} rel="noreferrer">
-                  {model.notesLabel}
-                </a>
-              </div>
-              {item.summary && (
-                <p class="release-entry-summary">
-                  <Prose text={item.summary} />
-                </p>
-              )}
-              {item.items.length > 0 && (
-                <ul class="release-entry-items">
-                  {item.items.map((line) => (
-                    <li>
-                      <Prose text={line} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))
-        }
+            </div>
+            {item.summary && (
+              <p class="release-entry-summary">
+                <Prose text={item.summary} />
+              </p>
+            )}
+            {item.items.length > 0 && (
+              <ul class="release-entry-items">
+                {item.items.map((line) => (
+                  <li>
+                    <Prose text={line} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
       </ol>
       <p class="releases-feed">
-        <a class="button ghost" href={model.feed.href}>{model.feed.label}</a>
+        <a class="button ghost" href={model.feed.href}>
+          {model.feed.label}
+        </a>
       </p>
     </div>
   </section>
@@ -73,19 +73,17 @@ const { model } = Astro.props;
         <p class="sub">{model.undated.sub}</p>
       </header>
       <ul class="release-list">
-        {
-          model.undated.items.map((item) => (
-            <li>
-              <a href={item.href}>
-                <img src={item.icon} alt="" width="36" height="36" loading="lazy" />
-                <span class="release-main">
-                  <strong>{item.name}</strong>
-                </span>
-                <span class="release-meta">{item.version && <span class="release-version">{item.version}</span>}</span>
-              </a>
-            </li>
-          ))
-        }
+        {model.undated.items.map((item) => (
+          <li>
+            <a href={item.href}>
+              <img src={item.icon} alt="" width="36" height="36" loading="lazy" />
+              <span class="release-main">
+                <strong>{item.name}</strong>
+              </span>
+              <span class="release-meta">{item.version && <span class="release-version">{item.version}</span>}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </section>

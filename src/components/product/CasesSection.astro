@@ -26,39 +26,35 @@ const rows = pairs.every(Boolean)
     <header class="section-head">
       <h2>{section.title}</h2>
     </header>
-    {
-      rows ? (
-        <table class="cases-table">
-          <caption class="sr-only">{section.label}</caption>
-          <tbody>
-            {rows.map((row, index) => (
-              <tr data-state={index === 0 ? "reference" : undefined}>
-                <th scope="row">{row.status}</th>
-                <td>
-                  <ul class="cases-names">
-                    {row.names.map((name) => (
-                      <li>{name}</li>
-                    ))}
-                  </ul>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <div class="provider-list" aria-label={section.label}>
-          {section.items.map((item) => (
-            <span>{item}</span>
+    {rows ? (
+      <table class="cases-table">
+        <caption class="sr-only">{section.label}</caption>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr data-state={index === 0 ? "reference" : undefined}>
+              <th scope="row">{row.status}</th>
+              <td>
+                <ul class="cases-names">
+                  {row.names.map((name) => (
+                    <li>{name}</li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
           ))}
-        </div>
-      )
-    }
-    {
-      section.body && (
-        <p class="sub">
-          <Prose text={section.body} />
-        </p>
-      )
-    }
+        </tbody>
+      </table>
+    ) : (
+      <div class="provider-list" aria-label={section.label}>
+        {section.items.map((item) => (
+          <span>{item}</span>
+        ))}
+      </div>
+    )}
+    {section.body && (
+      <p class="sub">
+        <Prose text={section.body} />
+      </p>
+    )}
   </div>
 </section>
