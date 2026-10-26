@@ -158,8 +158,8 @@ export default defineProduct({
         items: [
           { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
           { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
-          { title: "Last step, turn time", body: "Running rows show the latest tool step and the turn's length." },
-          { title: "Orange means stalled", body: "Twenty minutes without news; the row names the last step." },
+          { title: "This turn, in details", body: "› lists the turn's tools, changed files, plan and subagents." },
+          { title: "Orange means stalled", body: "Pi and OpenCode only: twenty minutes without news." },
           { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
           { title: "Click to go", body: "Its terminal when known, else the app; › opens details and timeline." },
         ],
@@ -201,7 +201,7 @@ export default defineProduct({
           },
           {
             title: "What happens when I upgrade?",
-            body: "Quit Pulse, drag the new Pulse.app into Applications and choose Replace, then allow the first open again, as every unnotarized build needs. Agents' hooks need no reinstall: they call a launcher in `~/Library/Application Support/Pulse`, not the app. If Settings → Hooks says an agent needs an update, Install all fixes it. Coming from 29 or earlier, Pulse 30 starts its event log over and has a new bundle id, so settings and notification permission reset once. Pulse 30 also drops Gemini CLI; its old hooks now record nothing.",
+            body: "Quit Pulse, drag the new Pulse.app into Applications and choose Replace, then allow the first open again, as every unnotarized build needs. Agents' hooks need no reinstall: they call a launcher in `~/Library/Application Support/Pulse`, not the app. If Settings → Hooks says an agent needs an update, Install all fixes it. Coming from 32 or earlier, Pulse 33 starts its event log over, so only the old timelines are lost. Coming from 29 or earlier, Pulse 30 also has a new bundle id, so settings and notification permission reset once, and Gemini CLI is no longer supported; its old hooks record nothing.",
           },
           {
             title: "How do I remove Pulse?",
@@ -353,8 +353,8 @@ export default defineProduct({
         items: [
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
-          { title: "上一步与本回合", body: "运行中的行写出最近一步工具，和这一回合跑了多久。" },
-          { title: "橙色表示停滞", body: "二十分钟没有新动静，行上点名上一步。" },
+          { title: "详情里的本轮", body: "点“›”看这一轮用的工具、改过的文件、计划和子代理。" },
+          { title: "橙色表示停滞", body: "只用于 Pi 与 OpenCode：二十分钟没有新动静。" },
           { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
           { title: "点一下就去", body: "能精确落点就去终端，否则打开应用；点“›”看详情和时间线。" },
         ],
@@ -396,7 +396,7 @@ export default defineProduct({
           },
           {
             title: "升级时会怎样？",
-            body: "退出 Pulse，把新的 Pulse.app 拖进“应用程序”并选“替换”，再放行一次首次打开，每个未公证的新版本都要这样做。各 Agent 的 hook 不用重装：它们调用的是 `~/Library/Application Support/Pulse` 里的启动器，不是 App 本身。“设置 → Hooks”说某个 Agent 需要更新时，点“全部安装”即可。从 29 或更早版本升级时，Pulse 30 的事件日志从头开始，Bundle ID 也换了，设置和通知授权会重置一次。Pulse 30 不再支持 Gemini CLI，它留下的 hook 不再记录任何事件。",
+            body: "退出 Pulse，把新的 Pulse.app 拖进“应用程序”并选“替换”，再放行一次首次打开，每个未公证的新版本都要这样做。各 Agent 的 hook 不用重装：它们调用的是 `~/Library/Application Support/Pulse` 里的启动器，不是 App 本身。“设置 → Hooks”说某个 Agent 需要更新时，点“全部安装”即可。从 32 或更早版本升级时，Pulse 33 的事件日志从头开始，只丢以前的时间线。从 29 或更早版本升级时，Pulse 30 的 Bundle ID 也换了，设置和通知授权会重置一次。Pulse 30 不再支持 Gemini CLI，它留下的 hook 不再记录任何事件。",
           },
           {
             title: "怎样卸载 Pulse？",
