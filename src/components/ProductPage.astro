@@ -54,10 +54,18 @@ const heroReplay =
         Boolean(item.capturedOutput && item.replay),
       )
     : undefined;
-const commandSteps = template === "tool" && (copy.commands?.items.length ?? 0) >= 2;
+// The hero already shows the first command; Get started goes on from the next one,
+// unless that first command carries output the hero does not play.
+const skipFirstCommand = Boolean(
+  heroCommand && (!heroCommand.capturedOutput || heroCommand.command === heroReplay?.command),
+);
+const bodyCommands = (copy.commands?.items.length ?? 0) - (skipFirstCommand ? 1 : 0);
+const commandSteps = template === "tool" && bodyCommands >= 2;
 const plainCards = template !== "game";
 const showcaseRows = template === "app" || template === "extension";
 const dataSection = copy.sections.find((section) => section.kind === "data");
+// Extensions: the hero box carries the data section's facts, so the section is not repeated.
+const permissionBox = template === "extension" && copy.privacy ? copy.privacy : undefined;
 const commandsProps = {
   copyLabel: copyUi.copy,
   copiedLabel: copyUi.copied,
@@ -65,6 +73,7 @@ const commandsProps = {
   controls: { pause: copyUi.pauseVideo, play: copyUi.playVideo },
   steps: commandSteps,
   replayInHero: heroReplay?.command,
+  skipFirst: skipFirstCommand,
 };
 ---
 
@@ -149,11 +158,11 @@ const commandsProps = {
             ),
           )}
         </p>
-        {template === "extension" && copy.privacy && (
+        {permissionBox && (
           <PermissionBox
-            privacy={copy.privacy}
+            privacy={permissionBox}
             locale={model.locale}
-            dataHref={dataSection ? `#${dataSection.id}` : undefined}
+            facts={dataSection?.kind === "data" ? dataSection.items : undefined}
           />
         )}
       </div>
@@ -210,7 +219,7 @@ const commandsProps = {
       );
     if (section.kind === "cases") return <CasesSection section={section} />;
     if (section.kind === "flow") return <FlowSection section={section} />;
-    if (section.kind === "data") return <DataSection section={section} />;
+    if (section.kind === "data") return permissionBox ? null : <DataSection section={section} />;
     if (section.kind === "demo") return null;
     return <PanelSection section={section} />;
   })}
@@ -219,6 +228,7 @@ const commandsProps = {
 
   {copy.commands && !hasFaq && <CommandsSection commands={copy.commands} {...commandsProps} />}
 
+  {/* One closing block: the main action once more, then where to go next (the family, or related tools). */}
   <section class="shell final-cta" aria-label={closing}>
     <img class="final-cta-icon" src={model.icon} alt="" width="64" height="64" />
     <p class="final-cta-name">{copy.title}</p>
@@ -237,37 +247,34 @@ const commandsProps = {
         {copy.secondaryCta.label}
       </a>
     </div>
-  </section>
-
-  {/* A family member shows its family in place of the related row. */}
-  {model.family && (
-    <div class="shell product-family">
-      <FamilyBand family={model.family} />
-      <a class="button ghost" href={model.related.all.href}>
+    <div class="closing-next">
+      {model.family ? (
+        <FamilyBand family={model.family} />
+      ) : (
+        <nav class="product-related" aria-labelledby="related-title">
+          <h2 id="related-title" class="product-related-title">
+            {model.related.title}
+          </h2>
+          <ul class="product-related-list">
+            {model.related.items.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <img src={item.icon} alt="" width="40" height="40" />
+                  <span>{item.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+      <a class="closing-all" href={model.related.all.href}>
         {model.related.all.label}
       </a>
     </div>
-  )}
-  <nav class="shell product-related" aria-labelledby="related-title" hidden={Boolean(model.family)}>
-    <h2 id="related-title" class="product-related-title">
-      {model.related.title}
-    </h2>
-    <ul class="product-related-list">
-      {model.related.items.map((item) => (
-        <li>
-          <a href={item.href}>
-            <img src={item.icon} alt="" width="40" height="40" />
-            <span>{item.name}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-    <a class="button ghost" href={model.related.all.href}>
-      {model.related.all.label}
-    </a>
-  </nav>
+  </section>
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>
     <script is:inline src="/scripts/video.js" defer></script>
+    <script is:inline src="/scripts/faq.js" defer></script>
   </Fragment>
 </SiteLayout>

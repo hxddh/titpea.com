@@ -330,27 +330,6 @@ a.family-link:hover strong {
   outline-offset: 6px;
 }
 
-/* Product page: the family in place of the related row, after the closing band. */
-.product-family {
-  display: grid;
-  justify-items: center;
-  gap: 18px;
-  max-width: 720px;
-  margin-top: var(--section-y);
-}
-
-.product-family .family-band {
-  width: 100%;
-}
-
-.product-family .family-head {
-  text-align: center;
-}
-
-.product-related[hidden] {
-  display: none;
-}
-
 /* Facets: what it is for, and where it runs. One value per row; both apply. */
 .home-facets {
   display: grid;
