@@ -181,7 +181,7 @@
 
   .home-catalog-text {
     color: var(--ink-2);
-    font-size: var(--text-small);
+    font-size: var(--text-card-body);
     line-height: 1.45;
     letter-spacing: -0.01em;
   }
