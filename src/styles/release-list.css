@@ -1,0 +1,105 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* Release list: newest first, one hairline row per product. */
+  .release-list {
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .release-list li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .release-list a {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    padding: 10px 0;
+    color: var(--ink);
+  }
+
+  .release-list a:hover {
+    text-decoration: none;
+  }
+
+  .release-list a:hover strong {
+    color: var(--link);
+  }
+
+  .release-list img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .release-main {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .release-list strong {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .release-highlight {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: var(--text-small);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .release-meta {
+    display: grid;
+    justify-items: end;
+    gap: 2px;
+  }
+
+  .release-version {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+  }
+
+  .release-date {
+    color: var(--muted);
+    font-size: var(--text-meta);
+  }
+
+  .release-more {
+    margin-top: 8px;
+  }
+
+  .release-more summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--link);
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .release-more .release-list {
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  @media (max-width: 640px) {
+    .release-list a {
+      grid-template-columns: 28px minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .release-list img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}

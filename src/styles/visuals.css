@@ -1,3 +1,6 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
 @layer components {
   .product-screenshot-visual {
     overflow: hidden;
@@ -12,14 +15,6 @@
     width: 100%;
     height: auto;
     border: 1px solid var(--line);
-  }
-
-  /* Captures are mostly light: dark mode dims them a little (--shot-dim is
-   none in light mode), the hero object, Home's cards and every showcase alike. */
-  .product-screenshot-visual img,
-  .home-featured-card img,
-  .shot :is(img, video) {
-    filter: var(--shot-dim);
   }
 
   .benchmark-visual,

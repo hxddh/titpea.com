@@ -1,0 +1,188 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* Releases: every product's latest release, newest first. */
+  .releases-timeline {
+    padding-top: var(--section-y-short);
+  }
+
+  .release-feed {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .release-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .release-entry-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 44px;
+    color: var(--ink);
+  }
+
+  .release-entry-product:hover {
+    text-decoration: none;
+  }
+
+  .release-entry-product:hover strong {
+    color: var(--link);
+  }
+
+  .release-entry-product img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .release-entry-product strong {
+    font-size: var(--text-card-title);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Tag and date, then the link to the full notes, on the row's right. */
+  .release-entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0 18px;
+  }
+
+  .release-entry-tag {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .release-entry-tag > :not(:last-child)::after {
+    content: "·";
+    margin: 0 0.6em;
+    color: var(--faint);
+    font-family: var(--sans);
+  }
+
+  .release-entry-summary,
+  .release-entry-items {
+    grid-column: 1 / -1;
+    margin-left: 54px;
+  }
+
+  .release-entry-summary {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: var(--ink-2);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  /* Quoted from the notes: a hairline marks them as the release's own words. */
+  .release-entry-items {
+    display: grid;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding: 2px 0 2px 14px;
+    border-left: 2px solid var(--soft-line);
+    list-style: none;
+  }
+
+  .release-entry-items li {
+    color: var(--ink-2);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  /* Earlier releases: one muted line of tags and dates under the latest. */
+  .release-entry-earlier {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+    grid-column: 1 / -1;
+    margin: 8px 0 0 54px;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+  }
+
+  .release-entry-earlier-label {
+    font-weight: 600;
+  }
+
+  .release-entry-earlier-item time::before {
+    content: "·";
+    margin: 0 0.5em;
+    color: var(--faint);
+  }
+
+  .release-entry-notes {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: var(--text-small);
+  }
+
+  .release-entry-notes::after {
+    content: " ›";
+    white-space: pre;
+  }
+
+  .releases-feed {
+    margin: 20px 0 0;
+    text-align: center;
+  }
+
+  .releases-undated {
+    padding-top: var(--section-y-short);
+  }
+
+  .releases-undated .section-head h2 {
+    font-size: var(--title-show);
+    line-height: 1.12;
+  }
+
+  :lang(zh) .release-entry-items li,
+  :lang(zh) .release-entry-summary {
+    line-height: 1.75;
+  }
+
+  @media (max-width: 640px) {
+    .release-entry {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .release-entry-meta {
+      justify-content: flex-start;
+      margin-left: 46px;
+    }
+
+    .release-entry-summary,
+    .release-entry-items,
+    .release-entry-earlier {
+      margin-left: 0;
+    }
+
+    /* Phones keep the two most recent earlier releases. */
+    .release-entry-earlier-item:nth-of-type(n + 4) {
+      display: none;
+    }
+
+    .release-entry-product img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

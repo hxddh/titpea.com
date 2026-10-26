@@ -1,0 +1,85 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer components {
+  /* Live demos: a product's core mechanic, working on the page
+   (public/scripts/demo-*.js). Each sits in the narrow frame like a mock, under
+   a compact section head, with its caption saying what it is. */
+
+  .demo-figure {
+    max-width: 560px;
+    margin: 48px auto 0;
+  }
+
+  .demo-figure[hidden],
+  .demo-fallback[hidden] {
+    display: none;
+  }
+
+  .demo-figure .shot-caption {
+    margin-top: 22px;
+  }
+
+  /* ---------- Demos as the hero object ---------- */
+
+  .hero-demo .demo-figure {
+    margin-top: 0;
+  }
+
+  /* With scripts (html.js, set in <head>), the live copy holds the hero from the
+   first paint; without them the stand-in image does. Nothing swaps later. */
+  html.js .hero-demo .demo-fallback,
+  html:not(.js) .hero-demo .demo-live {
+    display: none;
+  }
+
+  /* Room for the visitor's own row and the four default cities before the
+   rows are filled in. */
+  .hero-demo .clock-rows:empty {
+    min-height: 320px;
+  }
+
+  /* Play / Pause for the looping demos, like the showcase recordings. */
+  .demo-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .demo-toggle,
+  .pulse-toggle {
+    position: relative;
+    min-height: 32px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    color: var(--link);
+    background: var(--code-bg);
+    font: inherit;
+    font-family: var(--sans);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    letter-spacing: 0;
+    cursor: pointer;
+  }
+
+  /* 44px to touch, 32px to see. */
+  .demo-toggle::before,
+  .pulse-toggle::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+  }
+
+  html:not(.js) .demo-toggle,
+  html:not(.js) .pulse-toggle,
+  html:not(.js) .demo-controls {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .demo-figure {
+      margin-top: 32px;
+    }
+  }
+}

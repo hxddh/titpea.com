@@ -1,0 +1,188 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer demos {
+  /* Chess puzzle (public/scripts/demo-chess.js), loaded where it plays. */
+
+  .chess-frame {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    overflow: hidden;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    box-shadow:
+      var(--shadow-panel),
+      0 0 0 1px var(--line);
+  }
+
+  .chess-square {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--board-dark);
+    background: var(--board-light);
+    font: inherit;
+    cursor: default;
+  }
+
+  .chess-square.is-dark {
+    color: var(--board-light);
+    background: var(--board-dark);
+  }
+
+  .demo-chess.is-live .chess-square {
+    cursor: pointer;
+  }
+
+  .demo-chess.is-live .chess-board.is-done .chess-square {
+    cursor: default;
+  }
+
+  .chess-square:focus-visible {
+    z-index: 2;
+    outline: 3px solid var(--accent);
+    outline-offset: -3px;
+    border-radius: 0;
+  }
+
+  /* Marks are inset tints, so the square keeps its colour underneath. */
+  .chess-square.is-last {
+    box-shadow: inset 0 0 0 100px var(--board-last);
+  }
+
+  .chess-square.is-selected {
+    box-shadow: inset 0 0 0 100px var(--board-select);
+  }
+
+  .chess-square.is-wrong {
+    box-shadow: inset 0 0 0 100px var(--board-wrong);
+  }
+
+  .chess-square.is-check {
+    box-shadow: inset 0 0 0 100px var(--board-check);
+  }
+
+  /* Coordinates on the edge squares, as the app draws them. */
+  .chess-square[data-rank]::before,
+  .chess-square[data-file]::after {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .chess-square[data-rank]::before {
+    content: attr(data-rank);
+    top: 4px;
+    left: 4px;
+  }
+
+  .chess-square[data-file]::after {
+    content: attr(data-file);
+    right: 4px;
+    bottom: 3px;
+  }
+
+  .chess-piece {
+    position: relative;
+    z-index: 1;
+    width: 88%;
+    height: 88%;
+    pointer-events: none;
+    transform: translate(0, 0);
+    transition: transform 0.22s ease;
+  }
+
+  .chess-piece.is-moving {
+    transform: translate(var(--piece-dx), var(--piece-dy));
+    transition: none;
+  }
+
+  .chess-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    margin-top: 16px;
+  }
+
+  /* Side to move: its king on a light disc, so a black king reads on a black canvas too. */
+  .chess-turn {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border-radius: 50%;
+    background: var(--board-light);
+  }
+
+  .chess-message {
+    flex: 1;
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-list-body);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .chess-message[data-tone="wrong"] {
+    color: var(--data-alert);
+  }
+
+  .chess-message[data-tone="good"],
+  .chess-message[data-tone="solved"] {
+    color: var(--data-ref-ink);
+  }
+
+  .chess-reset {
+    flex: none;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--code-bg);
+    color: var(--link);
+    font: inherit;
+    font-size: var(--text-small);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .chess-reset[hidden] {
+    display: none;
+  }
+
+  .chess-reset:active {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 640px) {
+    .chess-board {
+      border-radius: 4px;
+    }
+
+    .chess-square[data-rank]::before,
+    .chess-square[data-file]::after {
+      font-size: 11px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chess-piece,
+    .chess-reset {
+      transition: none;
+    }
+  }
+}

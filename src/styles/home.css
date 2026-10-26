@@ -1,0 +1,543 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* Home (HomePage.astro). */
+
+  .home-hero {
+    padding-bottom: 8px;
+  }
+
+  .home-hero .lead {
+    max-width: 30em;
+  }
+
+  /* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
+  .title-part {
+    display: inline-block;
+  }
+
+  /* Just shipped: the three latest releases, a quiet strip under the hero. */
+  .home-shipping {
+    padding-top: 72px;
+  }
+
+  .home-strip-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 1040px;
+    margin: 0 auto 14px;
+  }
+
+  .home-strip-head h2 {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-kicker);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .home-strip-more {
+    font-size: var(--text-kicker);
+  }
+
+  .home-strip-more::after {
+    content: " ›";
+  }
+
+  .shipping-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .shipping-card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    height: 100%;
+    padding: 16px 18px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+    color: var(--ink);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .shipping-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shipping-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shipping-copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .shipping-copy strong {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  .shipping-meta {
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .shipping-note {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 4px;
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* The featured products: the catalog's first row, three larger cards with a
+   picture and a line each. They filter with the rest. */
+  .home-catalog-featured {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1040px;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-catalog-featured > li[hidden] {
+    display: none;
+  }
+
+  .home-featured-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+    color: var(--ink);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .home-featured-card:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .home-featured-shot {
+    position: relative;
+    margin: 0;
+  }
+
+  .home-featured-shot img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Under the card's text, so every title starts at the same height. */
+  .home-featured-caption {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: var(--text-small);
+    line-height: 1.4;
+  }
+
+  .home-featured-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 18px 22px 22px;
+  }
+
+  .home-featured-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+  }
+
+  .home-featured-text {
+    margin-top: 6px;
+    color: var(--ink-2);
+    font-size: var(--text-card-body);
+    line-height: 1.45;
+  }
+
+  .home-featured-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 14px;
+    color: var(--link);
+    font-size: 16px;
+  }
+
+  .home-featured-more::after {
+    content: "›";
+    font-size: 1.15em;
+    line-height: 1;
+  }
+
+  .home-featured-card:hover .home-featured-more {
+    text-decoration: underline;
+  }
+
+  /* Every tool: the families first, then two facet rows and one grid of cards. */
+  .home-more-tools {
+    padding-top: var(--section-y);
+  }
+
+  .home-families {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1040px;
+    margin: 36px auto 0;
+  }
+
+  /* Facets: what it is for, and where it runs. One value per row; both apply. */
+  .home-facets {
+    display: grid;
+    gap: 10px;
+    max-width: 1040px;
+    margin: 40px auto 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .home-facets[hidden] {
+    display: none;
+  }
+
+  .home-facet {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .home-facet-label {
+    flex: none;
+    width: 72px;
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-weight: 600;
+  }
+
+  .home-facet button {
+    flex: none;
+    min-height: 34px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--ink-2);
+    background: transparent;
+    font: inherit;
+    font-size: var(--text-small);
+    cursor: pointer;
+  }
+
+  .home-facet button:hover {
+    color: var(--ink);
+    border-color: var(--soft-line);
+  }
+
+  .home-facet button[aria-pressed="true"] {
+    color: var(--paper);
+    background: var(--ink);
+    border-color: var(--ink);
+    font-weight: 600;
+  }
+
+  .home-facet-count {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .home-catalog-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1040px;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-catalog-list > li[hidden] {
+    display: none;
+  }
+
+  /* A card per tool: a picture of the real thing, then icon, name, one line,
+   and chips for what it is and where it runs. Versions live on product pages. */
+  .catalog-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--paper);
+    color: var(--ink);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .catalog-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .catalog-card:hover .home-catalog-name {
+    color: var(--link);
+  }
+
+  .catalog-thumb {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--paper-raised);
+  }
+
+  .catalog-thumb.is-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    filter: var(--shot-dim);
+  }
+
+  .catalog-thumb.is-icon img {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--icon-radius);
+  }
+
+  /* A tool without a picture shows the first command from its page. */
+  .catalog-thumb.is-command {
+    place-items: start;
+    padding: 16px;
+    background: var(--code-bg);
+  }
+
+  .catalog-thumb.is-command code {
+    color: var(--ink-2);
+    font: var(--text-meta)/1.55 var(--mono);
+    overflow-wrap: anywhere;
+  }
+
+  .catalog-thumb.is-command code::before {
+    content: "$ ";
+    color: var(--faint);
+  }
+
+  .catalog-card-copy {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    flex: 1;
+    padding: 14px 16px 16px;
+  }
+
+  .catalog-card-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .catalog-card-name .catalog-icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .home-catalog-name {
+    font-size: var(--text-catalog-name);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .home-catalog-text {
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  .catalog-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .catalog-chip {
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--ink-2);
+    background: var(--paper-raised);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .catalog-chip.is-status {
+    color: var(--data-caution-ink);
+    border-color: var(--data-caution);
+  }
+
+  @media (max-width: 960px) {
+    .home-catalog-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Three featured cards do not split into two columns: one row that scrolls sideways. */
+    .home-catalog-featured {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .home-catalog-featured::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-catalog-featured > li {
+      flex: 0 0 min(340px, 80%);
+      scroll-snap-align: start;
+    }
+
+    .home-families {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .shipping-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .home-featured-shot img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .home-featured-copy {
+      padding: 14px 16px 16px;
+    }
+
+    /* The latest releases: one row that scrolls sideways, not three stacked cards. */
+    .shipping-list {
+      display: flex;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .shipping-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .shipping-list > li {
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+    }
+
+    .shipping-note {
+      display: none;
+    }
+
+    /* The rest of the catalog: one line per tool, icon, name and chips; the
+     picture and the line wait for the product page. */
+    .home-catalog-list {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .catalog-thumb,
+    .catalog-card .home-catalog-text {
+      display: none;
+    }
+
+    /* Name on the left, chips on the right; they wrap under a long name. */
+    .catalog-card-copy {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 12px;
+      padding: 12px 14px;
+    }
+
+    .catalog-card-copy .catalog-chips {
+      margin-top: 0;
+    }
+
+    /* Each facet row scrolls sideways instead of wrapping. */
+    .home-facet {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+
+    .home-facet::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-facet-label {
+      width: auto;
+      margin-right: 4px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shipping-card,
+    .home-featured-card,
+    .catalog-card {
+      transition: none;
+    }
+
+    .shipping-card:hover,
+    .home-featured-card:hover,
+    .catalog-card:hover {
+      transform: none;
+    }
+  }
+}

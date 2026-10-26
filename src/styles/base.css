@@ -243,6 +243,14 @@
     width: 100%;
   }
 
+  /* Captures are mostly light: dark mode dims them a little (--shot-dim is
+   none in light mode), the hero object, Home's cards and every showcase alike. */
+  .product-screenshot-visual img,
+  .home-featured-card img,
+  .shot :is(img, video) {
+    filter: var(--shot-dim);
+  }
+
   .shot-caption {
     max-width: 60ch;
     margin: 18px auto 0;

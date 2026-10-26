@@ -497,4 +497,12 @@
       --paper-raised: #1b1813;
     }
   }
+
+  /* Phones: sections sit closer together. */
+  @media (max-width: 640px) {
+    :root {
+      --section-y: 88px;
+      --section-y-short: 72px;
+    }
+  }
 }

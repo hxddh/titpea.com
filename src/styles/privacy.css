@@ -1,0 +1,186 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+@layer templates {
+  /* Privacy index: one row per product. Phones read each row as a block. */
+  .privacy-index {
+    padding-top: var(--section-y-short);
+  }
+
+  .privacy-table {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: var(--text-card-body);
+    text-align: left;
+  }
+
+  .privacy-table thead th {
+    padding: 0 16px 12px 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    vertical-align: bottom;
+  }
+
+  .privacy-table tbody tr {
+    border-top: 1px solid var(--line);
+  }
+
+  .privacy-table tbody tr:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-table tbody th,
+  .privacy-table td {
+    padding: 16px 16px 16px 0;
+    color: var(--ink-2);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .privacy-table tbody th {
+    width: 22%;
+    font-weight: 600;
+  }
+
+  .privacy-table td:nth-child(2) {
+    width: 30%;
+  }
+
+  /* Text cells start on the line of the product name and the first link. */
+  .privacy-table td:nth-child(2),
+  .privacy-table td:nth-child(3) {
+    padding-top: 26px;
+  }
+
+  .privacy-table td:last-child {
+    width: 18%;
+    padding-right: 0;
+  }
+
+  .privacy-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: var(--ink);
+    font-size: var(--text-list-body);
+  }
+
+  .privacy-tool img {
+    flex: none;
+    width: 32px;
+    height: 32px;
+  }
+
+  .privacy-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* A dot beside the level, so the column reads at a glance. */
+  .privacy-level::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--faint);
+  }
+
+  .privacy-level[data-level="none"]::before {
+    background: var(--data-ref);
+  }
+
+  .privacy-level[data-level="automatic"]::before {
+    background: var(--data-caution);
+  }
+
+  .privacy-note {
+    display: block;
+    margin-top: 2px;
+  }
+
+  .privacy-unstated {
+    color: var(--muted);
+  }
+
+  .privacy-links {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .privacy-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .privacy-site-note {
+    max-width: 60ch;
+    margin: 28px auto 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  :lang(zh) .privacy-table tbody th,
+  :lang(zh) .privacy-table td {
+    line-height: 1.7;
+  }
+
+  @media (max-width: 760px) {
+    .privacy-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .privacy-table,
+    .privacy-table tbody,
+    .privacy-table tr,
+    .privacy-table tbody th,
+    .privacy-table td {
+      display: block;
+      width: auto;
+    }
+
+    .privacy-table tbody tr {
+      padding: 16px 0;
+    }
+
+    .privacy-table tbody th,
+    .privacy-table td,
+    .privacy-table td:nth-child(2),
+    .privacy-table td:nth-child(3),
+    .privacy-table td:last-child {
+      width: auto;
+      padding: 4px 0;
+    }
+
+    .privacy-table td::before {
+      content: attr(data-label);
+      display: block;
+      color: var(--muted);
+      font-size: var(--text-meta);
+      font-weight: 600;
+    }
+
+    .privacy-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 18px;
+    }
+  }
+}
