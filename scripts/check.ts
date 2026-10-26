@@ -11,6 +11,7 @@ import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
 import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
 import { cards as ogCards, ogFingerprint, readOgManifest } from "./og-cards.ts";
+import { MARKER as scaffoldMarker } from "./new-product.mjs";
 
 const failures: string[] = [];
 const fail = (message: string) => failures.push(message);
@@ -291,6 +292,17 @@ for (const product of products) {
   if (meta.width !== meta.height || (meta.width ?? 0) < 160) {
     fail(`${product.icon}: must be square and at least 160px, got ${meta.width}×${meta.height}`);
   }
+}
+
+/* ---------- Scaffold placeholders ---------- */
+
+// npm run new:product marks every placeholder; none may ship.
+for (const file of [
+  ...fs.readdirSync("src/content/products").map((name) => `src/content/products/${name}`),
+  "src/styles/tokens.css",
+]) {
+  const count = read(file).split(scaffoldMarker).length - 1;
+  if (count > 0) fail(`${file}: ${count} ${scaffoldMarker} placeholder(s) left from npm run new:product`);
 }
 
 /* ---------- Share images ---------- */

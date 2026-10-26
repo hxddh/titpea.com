@@ -64,10 +64,11 @@ const sha256 = (data: string | Buffer) => crypto.createHash("sha256").update(dat
 
 /** The card's text, the bytes of every image it draws, and the generator version. */
 export function ogFingerprint(card: Card): string {
-  const images = [...(card.icons ?? []), ...(card.screenshot ? [card.screenshot] : [])].map((file) => [
-    file,
-    sha256(fs.readFileSync(new URL(`../public${file}`, import.meta.url))),
-  ]);
+  // A missing file fingerprints as "missing"; npm run check reports the file itself.
+  const images = [...(card.icons ?? []), ...(card.screenshot ? [card.screenshot] : [])].map((file) => {
+    const url = new URL(`../public${file}`, import.meta.url);
+    return [file, fs.existsSync(url) ? sha256(fs.readFileSync(url)) : "missing"];
+  });
   const { name, ...drawn } = card;
   return sha256(JSON.stringify({ version: OG_GENERATOR_VERSION, card: drawn, images }));
 }
