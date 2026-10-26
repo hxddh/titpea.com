@@ -448,6 +448,11 @@ export type Product = {
   purposes: Purpose[];
   /** Maturity chip in the catalog; omitted for stable releases. */
   status?: "preview";
+  /**
+   * Structured data's Offer. Omitted means free (price 0); "unannounced"
+   * leaves the Offer out until a price is set, so search engines are not told it is free.
+   */
+  price?: "unannounced";
   /** The featured products (at most three) lead Home with this photograph. */
   featured?: {
     /** Row order on Home, from 1. */

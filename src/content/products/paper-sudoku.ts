@@ -13,6 +13,8 @@ export default defineProduct({
   type: "game",
   runsOn: ["android"],
   purposes: ["games"],
+  // The store listing plans a paid app; no price is set yet.
+  price: "unannounced",
   icon: "/assets/icons/paper-sudoku.webp",
   og: "/assets/og-paper-sudoku.png",
   schema: {
