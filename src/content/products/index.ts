@@ -14,6 +14,7 @@ import doubanMovieRating from "./douban-movie-rating";
 import agentRadar from "./agent-radar";
 import goban from "./goban";
 import chessboard from "./chessboard";
+import paperSudoku from "./paper-sudoku";
 import easierBookmarks from "./easier-bookmarks";
 import bilingual from "./bilingual";
 
@@ -32,6 +33,7 @@ export const products: Product[] = [
   agentRadar,
   goban,
   chessboard,
+  paperSudoku,
   easierBookmarks,
   bilingual,
 ];

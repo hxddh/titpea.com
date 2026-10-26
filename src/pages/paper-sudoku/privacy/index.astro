@@ -1,0 +1,98 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { buildSeo, languageLink } from "../../../lib/pages";
+
+// From the app repository's PRIVACY.md (last updated 2026-10-24, version 8.0).
+const path = "/paper-sudoku/privacy/";
+const alternatePath = "/zh/paper-sudoku/privacy/";
+const seo = buildSeo({
+  title: "Paper Sudoku Privacy Policy - Titpea",
+  description:
+    "How Paper Sudoku keeps your games on your device: no network permission, no account, no ads or analytics.",
+  path,
+  alternatePath,
+  locale: "en",
+  ogImage: "/assets/og-paper-sudoku.png",
+});
+---
+
+<SiteLayout seo={seo} current="paper-sudoku" locale="en" language={languageLink("en", alternatePath)}>
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow">
+        <a href="/paper-sudoku/">Paper Sudoku</a>
+      </p>
+      <h1>Privacy Policy</h1>
+      <p class="privacy-updated">Last updated: October 24, 2026 (version 8.0)</p>
+      <p class="lead">
+        Paper Sudoku is an offline puzzle game. It does not require an account, does not contain ads or analytics, and
+        does not request the <code>INTERNET</code> permission.
+      </p>
+    </header>
+
+    <div class="privacy-content prose">
+      <section>
+        <h2>Data stored on your device</h2>
+        <p>The app stores only the data needed to run the game locally:</p>
+        <ul>
+          <li>
+            your games (board, notes, undo history, the digits written in order, time, how much the Coach helped),
+            including puzzles you type in, in a local Room database;
+          </li>
+          <li>finished-puzzle results (mode, difficulty, time, Coach use, date) for the notebook;</li>
+          <li>
+            settings (theme, note tidying, techniques you have met, and per technique how many pages you wrote with it
+            yourself and when, whether you have written your first digit) in Android DataStore.
+          </li>
+        </ul>
+        <p>The home-screen widget reads today's page from the same local database.</p>
+        <p>
+          The app has no network access and no server, analytics SDK, advertising SDK, or third-party tracking. If you
+          use Android's own backup or device-to-device transfer, the system may include the database and settings above
+          in your backup, under your Google account and Android's backup encryption; the developer cannot access it. You
+          can turn this off in Android settings.
+        </p>
+        <p>
+          Sharing a result sends only the text you see in the share sheet to the app you choose. Printing uses Android's
+          print service and the printer or “Save as PDF” target you pick.
+        </p>
+      </section>
+      <section>
+        <h2>Permissions and sharing</h2>
+        <p>
+          The app does not request network, location, contacts, camera, microphone, notification or advertising
+          permissions. It asks Android for exactly one, added by AndroidX:
+        </p>
+        <ul>
+          <li>
+            <code>com.titpea.papersudoku.<wbr />DYNAMIC_RECEIVER_<wbr />NOT_EXPORTED_<wbr />PERMISSION</code>: a
+            permission the app defines for itself (androidx.core adds it) so that only the app can message its own
+            internal receivers.
+          </li>
+        </ul>
+        <p>The widget's redraw just after midnight is an ordinary alarm and needs no permission.</p>
+        <p>
+          It gives access to no data. The app does not run foreground services. A build check fails if the app ever asks
+          for anything else. The app does not share data with third parties.
+        </p>
+      </section>
+      <section>
+        <h2>Children</h2>
+        <p>The app does not knowingly collect personal information from anyone, including children.</p>
+      </section>
+      <section>
+        <h2>Changes</h2>
+        <p>
+          If a future version adds a feature that changes this policy, the policy and the Play Store Data Safety
+          declaration will be updated before that version is published.
+        </p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, email <a href="mailto:info@titpea.com">info@titpea.com</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</SiteLayout>

@@ -628,13 +628,13 @@ a.family-link:hover strong {
 }
 
 /* Home hero: the app icons, a row of doors into the products. */
-/* Two centred rows: at most eight icons wide, so fifteen read as 8 + 7. */
+/* Two centred rows: at most nine icons wide, so seventeen read as 9 + 8. */
 .home-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  max-width: calc(8 * 60px + 7 * 14px);
+  max-width: calc(9 * 60px + 8 * 14px);
   margin: 0 auto 28px;
   padding: 0;
   list-style: none;
@@ -670,18 +670,18 @@ a.family-link:hover strong {
 }
 
 /* The top row labels above, so a name never covers the icon beneath. */
-.home-icons li:nth-child(-n + 8) .home-icon-name {
+.home-icons li:nth-child(-n + 9) .home-icon-name {
   top: auto;
   bottom: calc(100% + 8px);
 }
 
 /* Edge columns anchor to their inner side. */
-.home-icons li:nth-child(8n + 1) .home-icon-name {
+.home-icons li:nth-child(9n + 1) .home-icon-name {
   left: 0;
   transform: none;
 }
 
-.home-icons li:nth-child(8n) .home-icon-name,
+.home-icons li:nth-child(9n) .home-icon-name,
 .home-icons li:last-child .home-icon-name {
   right: 0;
   left: auto;
@@ -1410,7 +1410,7 @@ a.family-link:hover strong {
 
   .home-icons {
     gap: 6px;
-    max-width: calc(8 * 34px + 7 * 6px);
+    max-width: calc(9 * 34px + 8 * 6px);
   }
 
   .home-icons img {
@@ -1426,6 +1426,19 @@ a.family-link:hover strong {
   .release-list img {
     width: 28px;
     height: 28px;
+  }
+}
+
+/* The narrowest phones keep nine icons a row, so seventeen still read as 9 + 8. */
+@media (max-width: 380px) {
+  .home-icons {
+    gap: 5px;
+    max-width: calc(9 * 30px + 8 * 5px);
+  }
+
+  .home-icons img {
+    width: 30px;
+    height: 30px;
   }
 }
 

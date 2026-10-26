@@ -69,9 +69,9 @@ export default defineProduct({
         id: "changes",
         nav: "Changes",
         title: "Marked until you read it.",
-        body: "Each new block gets a thin bar in the margin. Once it has been on screen for a moment, the bar fades.",
+        body: "Each new block gets a thin bar in the margin. Once it has been on screen for a moment, the bar fades, and what you have read stays read after a relaunch.",
         caption: "Sample document, written for this page. Three lines arrive as an agent would write them.",
-        // Readout 3.6: README “Shows what changed”, docs/design.md (read = half
+        // Readout 3.9.1: README “Shows what changed”, docs/design.md (read = half
         // visible for 800 ms), web/src/reader/marks.js and reader.css.
         demo: {
           kind: "readout",
@@ -101,8 +101,11 @@ export default defineProduct({
         label: "Built for files agents keep rewriting.",
         items: [
           { title: "Your place holds", body: "Block-by-block updates; at the end, it follows like a terminal." },
-          { title: "Which words changed", body: "Click an edited block’s bar; N jumps to the next change." },
-          { title: "Remembers what you read", body: "Marks fade once read, and survive a relaunch." },
+          {
+            title: "Which words changed",
+            body: "N opens an edited block’s changed words; so does its bar.",
+          },
+          { title: "Copy keeps the Markdown", body: "⌘C copies it as written; ⇧⌘C quotes it with file and lines." },
           {
             title: "Outline with progress",
             body: "Headings with tasks done; a dot marks sections with unread changes.",
@@ -145,11 +148,13 @@ export default defineProduct({
           },
           {
             title: "Can a Claude Code hook open what it writes?",
-            body: "Yes, instead of a watched folder and without the `readout` link. In `~/.claude/settings.json`, add `/Applications/Readout.app/Contents/Resources/readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit`. Every Markdown file Claude Code writes or edits then opens in the background. The hook also passes the folder Claude Code works in, so file paths in a plan kept in `~/.claude/plans` link to the files in that project.",
+            body: "Yes, instead of a watched folder and without the `readout` link. In `~/.claude/settings.json`, add `/Applications/Readout.app/Contents/Resources/readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit`. Every Markdown file Claude Code writes or edits then opens in the background. The hook also passes the folder Claude Code works in, so file paths in a plan kept in `~/.claude/plans` link to the files in that project. The same command works as a Cursor hook (`afterFileEdit`) or a Gemini CLI hook (`AfterTool`); the README shows both.",
+            asOf: "v3.9.1",
           },
           {
             title: "Which folders does Readout watch?",
-            body: "The Agent folders you add in Settings, and Claude Code’s `~/.claude/plans`, which is watched from the start, even before it exists. Using Codex? Add your project folder. A new Markdown document there opens as a tab behind the one you are reading, and your terminal keeps focus. Edits to files that were already there open nothing, and when more than three new documents appear at once, only the newest opens. ⌃⌥⌘R opens the newest one from anywhere; the shortcut can be changed or turned off in Settings.",
+            body: "The Agent folders you add in Settings, and Claude Code’s `~/.claude/plans`, which is watched from the start, even before it exists. Using Codex? Add your project folder. A new Markdown document there opens as a tab behind the one you are reading, and your terminal keeps focus. Edits to files that were already there open nothing, and when more than three new documents appear at once, only the newest opens. ⌃⌥⌘R opens the newest one from anywhere; Settings can turn that global shortcut off, and it still works inside Readout.",
+            asOf: "v3.9.1",
           },
           {
             title: "Does it work in Quick Look?",
@@ -218,7 +223,7 @@ export default defineProduct({
         id: "changes",
         nav: "改动",
         title: "改动标着，读过才消",
-        body: "新的段落在页边多一条细线。在屏幕上停留片刻后，细线自动消退。",
+        body: "新的段落在页边多一条细线。在屏幕上停留片刻后，细线自动消退；读过的部分重启后仍算已读。",
         caption: "示例文档，为本页撰写。三行内容像 Agent 写入时那样陆续出现。",
         demo: {
           kind: "readout",
@@ -248,8 +253,8 @@ export default defineProduct({
         label: "为 Agent 反复改写的文件而做",
         items: [
           { title: "读到哪停在哪", body: "按段落增量更新；读到末尾时，像终端一样跟着走。" },
-          { title: "改了哪些词", body: "点修改段落旁的细线查看；按 N 跳到下一处。" },
-          { title: "记得读过哪里", body: "读过后标记自动消退，重启后仍然保留。" },
+          { title: "改了哪些词", body: "按 N 停在修改过的段落，直接显示改动的词；点细线也行。" },
+          { title: "拷贝保留 Markdown", body: "⌘C 按原文拷贝；⇧⌘C 引用并附上文件和行号。" },
           { title: "带进度的大纲", body: "标题旁显示任务完成数，有未读变更的章节标出圆点。" },
           { title: "完整 GFM", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
           { title: "自动打开新文档", body: "Agent 文件夹里新建的 Markdown 在后台打开，不抢焦点。" },
@@ -286,11 +291,13 @@ export default defineProduct({
           },
           {
             title: "能用 Claude Code hook 打开它写的文件吗？",
-            body: "能，可以代替文件夹监视，也不需要链接 `readout`。在 `~/.claude/settings.json` 里添加 `PostToolUse` hook，matcher 设为 `Write|Edit|MultiEdit`。命令填 `/Applications/Readout.app/Contents/Resources/readout --hook`。之后 Claude Code 写入或修改的每个 Markdown 文件都会在后台打开。hook 还会传入 Claude Code 的工作目录，因此保存在 `~/.claude/plans` 中的计划里的文件路径会链接到该项目中的文件。",
+            body: "能，可以代替文件夹监视，也不需要链接 `readout`。在 `~/.claude/settings.json` 里添加 `PostToolUse` hook，matcher 设为 `Write|Edit|MultiEdit`。命令填 `/Applications/Readout.app/Contents/Resources/readout --hook`。之后 Claude Code 写入或修改的每个 Markdown 文件都会在后台打开。hook 还会传入 Claude Code 的工作目录，因此保存在 `~/.claude/plans` 中的计划里的文件路径会链接到该项目中的文件。同一条命令也可以作为 Cursor hook（`afterFileEdit`）或 Gemini CLI hook（`AfterTool`）使用，README 里有两者的写法。",
+            asOf: "v3.9.1",
           },
           {
             title: "Readout 会监视哪些文件夹？",
-            body: "在设置里添加的“Agent 文件夹”，以及 Claude Code 的 `~/.claude/plans`：它从一开始就被监视，即使还不存在。用 Codex 的话，在设置里添加项目文件夹即可。Agent 在这里新建的 Markdown 文档会作为标签页排在正在阅读的文档之后打开，终端保持焦点。修改已有文件不会打开任何文档；同时出现超过三个新文档时，只打开最新的一个。在任何地方按 ⌃⌥⌘R 可打开最新的一个，这个全局快捷键可以在设置里更换或关闭。",
+            body: "在设置里添加的“Agent 文件夹”，以及 Claude Code 的 `~/.claude/plans`：它从一开始就被监视，即使还不存在。用 Codex 的话，在设置里添加项目文件夹即可。Agent 在这里新建的 Markdown 文档会作为标签页排在正在阅读的文档之后打开，终端保持焦点。修改已有文件不会打开任何文档；同时出现超过三个新文档时，只打开最新的一个。在任何地方按 ⌃⌥⌘R 可打开最新的一个；全局快捷键可以在设置里关闭，在 Readout 里仍然可用。",
+            asOf: "v3.9.1",
           },
           {
             title: "支持 Quick Look 吗？",

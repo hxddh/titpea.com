@@ -422,7 +422,7 @@ export const featuredSrc = (featured: NonNullable<Product["featured"]>, locale: 
 /** What the product is. Picks the page template (`templateOf`) and the catalog type chip. */
 export type ProductType = "cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game" | "experiment";
 /** Where it runs: the catalog's "Runs on" facet and platform chips. */
-export type Platform = "mac" | "windows" | "linux" | "chrome" | "terminal" | "actions";
+export type Platform = "mac" | "windows" | "linux" | "chrome" | "terminal" | "actions" | "android";
 /** What it is for: the catalog's "For" facet. A product can serve more than one. */
 export type Purpose = "storage" | "agents" | "reading" | "browser" | "games";
 /** Products that work together; members are listed in site.ts (`familyMembers`), roles in `ui.families`. */
@@ -448,6 +448,11 @@ export type Product = {
   purposes: Purpose[];
   /** Maturity chip in the catalog; omitted for stable releases. */
   status?: "preview";
+  /**
+   * Structured data's Offer. Omitted means free (price 0); "unannounced"
+   * leaves the Offer out until a price is set, so search engines are not told it is free.
+   */
+  price?: "unannounced";
   /** The featured products (at most three) lead Home with this photograph. */
   featured?: {
     /** Row order on Home, from 1. */
@@ -467,7 +472,7 @@ export type Product = {
   og: string;
   schema: {
     category: "DeveloperApplication" | "BrowserApplication" | "GameApplication" | "BusinessApplication";
-    os: "Cross-platform" | "Chrome" | "macOS" | "macOS, Windows";
+    os: "Cross-platform" | "Chrome" | "macOS" | "macOS, Windows" | "Android";
   };
   /** Long pages pin their own section links in the local nav. */
   sectionIndex: boolean;

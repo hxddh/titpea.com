@@ -17,7 +17,7 @@ export default defineProduct({
   en: {
     title: "Storage Agent",
     description:
-      "Local-first desktop Agent for S3-compatible storage: read-only tools, keys in a local vault, and Issues it remembers between tasks.",
+      "Local, read-only desktop Agent for S3-compatible storage: an account check that needs no model, answers grounded in what it read, and Issues it remembers between tasks.",
     eyebrow: "Looks after object storage",
     headline: "Find what’s wrong in S3.",
     lead: "Read-only checks. Issues ranked by severity. Fixes you run.",
@@ -34,9 +34,11 @@ export default defineProduct({
       href: "https://github.com/hxddh/storage-agent-workbench",
     },
     privacy: {
-      network: "onRequest",
-      networkNote: "Requests go to the model and storage endpoints you configure.",
-      stays: "Credentials in an encrypted vault on this machine; task history in the app’s local data directory.",
+      network: "automatic",
+      networkNote:
+        "Requests go to the model and storage endpoints you configure; packaged builds check GitHub Releases for updates.",
+      stays:
+        "Keys in the system keychain, or an encrypted local file; tasks in one SQLite database on this machine; no telemetry.",
     },
     meta: "macOS / Windows / Linux · {version} · S3-compatible · Apache-2.0",
     visual: {
@@ -44,11 +46,13 @@ export default defineProduct({
       label: "Storage Agent",
       frame: "wide",
       image: {
-        src: "/assets/storage-agent-investigation.webp",
-        alt: "Storage Agent comparing an object’s metadata, ETag, and size to explain a storage-class mismatch",
-        width: 1800,
-        height: 1290,
+        src: "/assets/storage-agent-brief.webp",
+        alt: "A Storage Agent brief on demo storage: the scope line “Reads complete · 2/2 buckets checked · 8 findings”, a two-sentence verdict on which bucket is public, and findings grouped by bucket with severity and Security Hub control.",
+        width: 1180,
+        height: 773,
       },
+      caption: "Storage Agent 25 with demo storage, from its repository.",
+      asOf: "v25.0.0",
     },
     sections: [
       {
@@ -56,12 +60,12 @@ export default defineProduct({
         id: "features",
         label: "Findings outlast the task.",
         items: [
-          { title: "Remembers your storage", body: "Accounts, buckets, and open Issues, kept between tasks." },
-          { title: "Fix packs", body: "An AWS CLI command, a Terraform resource, or the API document." },
-          { title: "Stop and steer", body: "Add to a request mid-run, or stop it and keep its findings." },
-          { title: "Verify closes the Issue", body: "A re-check closes it; if the problem returns, it reopens." },
-          { title: "Opt-in watch", body: "Re-checks an account on a schedule you set." },
-          { title: "Quick Ask", body: "⌘⇧Space opens a small window for one question." },
+          { title: "Check without a model", body: "Check account surveys and reads access with no key at all." },
+          { title: "Names what it missed", body: "“Reads complete”, or the blind and failed reads, named." },
+          { title: "Who changed it", body: "On AWS, CloudTrail names who changed a bucket, over 90 days." },
+          { title: "Remembers your storage", body: "Buckets, open Issues and their history, kept between tasks." },
+          { title: "Open questions as code", body: "Largest prefixes, data untouched for years: a sandboxed script." },
+          { title: "Fixes as text", body: "AWS CLI, Terraform or the API document, with an impact preview." },
         ],
       },
       {
@@ -69,9 +73,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Storage credentials stay in an encrypted vault on this machine and are masked from tool output.",
-          "Task history, access logs, and inventories stay on this machine; their rows are analyzed locally and never reach the model.",
-          "Requests go to the model and S3-compatible endpoints you configure.",
+          "Keys stay in the system keychain, or an encrypted local file; an AWS profile account stores only its name.",
+          "Tasks, logs and inventories are analyzed on this machine; their rows never reach the model.",
+          "Requests go to the model and S3-compatible endpoints you configure. Packaged builds check this project’s GitHub Releases for updates.",
         ],
       },
       {
@@ -81,15 +85,18 @@ export default defineProduct({
         items: [
           {
             title: "Does it need a model key?",
-            body: "Not for a local model: Ollama, LM Studio, vLLM, and llama.cpp run without one. Hosted providers such as OpenAI, Anthropic, DeepSeek, and OpenRouter need their key. A local model with no context window set is treated as 16,384 tokens; set a larger value in Settings if your server runs one.",
+            body: "Not for Check account: it surveys an account and reads access without a model. Questions need one: OpenAI, Anthropic, or any OpenAI-compatible endpoint; models already running in Ollama or LM Studio are one click away. Paste a key and the provider’s models are listed.",
+            asOf: "v25.0.0",
           },
           {
             title: "Will a small local model work?",
-            body: "Yes. A local model with a 16k window can finish a first survey, and its first request fits in 8k. With Ollama, the app sends the planned window as `num_ctx`. Test in Settings makes one real tool call and warns when Ollama’s context is smaller than planned.",
+            body: "Yes. The context window is inferred from the model; below 64k it counts as small and gets shorter method cards and fewer rounds. The answer format stays the same.",
+            asOf: "v25.0.0",
           },
           {
-            title: "What does the watch do?",
-            body: "Nothing until you turn it on for an account; it is off by default. On its schedule it runs a bounded, read-only sweep and opens one task only when something new turns up and a model is configured.",
+            title: "Does it watch my account?",
+            body: "No. There is no background watch or schedule. A check is a snapshot; Check again starts a new one, and Re-verify re-reads the buckets a task touched without a model.",
+            asOf: "v25.0.0",
           },
           {
             title: "What will a fix change?",
@@ -100,8 +107,9 @@ export default defineProduct({
             body: "StorageOps adds storage skills to Pi, the open-source terminal coding agent. Storage Agent is the full desktop app: tasks, read-only tools, local analysis, and the Issues it remembers.",
           },
           {
-            title: "What happens when I upgrade from v4?",
-            body: "Upgrading from v4 imports your model and storage settings, known buckets and Issues, and past results on first start. The v4 database is left untouched.",
+            title: "Can it change my storage?",
+            body: "No. It has no put, delete or other write call, and it never applies a fix: fixes are text for you to run. A bucket list in an account’s settings limits which buckets it may read.",
+            asOf: "v25.0.0",
           },
         ],
       },
@@ -109,7 +117,8 @@ export default defineProduct({
   },
   zh: {
     title: "Storage Agent",
-    description: "面向 S3 兼容存储的本地优先桌面 Agent：只读工具，密钥在本机，发现的问题跨任务保留。",
+    description:
+      "面向 S3 兼容存储的本地只读桌面 Agent：账户检查不需要模型，回答以读到的内容为准，发现的问题跨任务保留。",
     eyebrow: "照看对象存储",
     headline: "找出 S3 里的隐患",
     lead: "只读检查。问题按严重度排好。修复由你执行。",
@@ -126,9 +135,9 @@ export default defineProduct({
       href: "https://github.com/hxddh/storage-agent-workbench",
     },
     privacy: {
-      network: "onRequest",
-      networkNote: "请求发往你配置的模型和存储端点。",
-      stays: "凭证在本机加密保险库；任务记录在本机应用数据目录。",
+      network: "automatic",
+      networkNote: "请求发往你配置的模型和存储端点；安装版会向 GitHub Releases 检查更新。",
+      stays: "密钥在系统钥匙串或本机加密文件里；任务在本机一个 SQLite 数据库中；不收集遥测。",
     },
     meta: "macOS / Windows / Linux · {version} · S3 兼容 · Apache-2.0",
     visual: {
@@ -136,11 +145,13 @@ export default defineProduct({
       label: "Storage Agent",
       frame: "wide",
       image: {
-        src: "/assets/storage-agent-investigation.webp",
-        alt: "Storage Agent 对比对象的元数据、ETag 和大小，解释存储类型差异",
-        width: 1800,
-        height: 1290,
+        src: "/assets/storage-agent-brief.webp",
+        alt: "Storage Agent 在演示存储上的报告：范围行显示全部读完、2 个桶都已检查、8 个问题。下面两句话说明哪个桶公开，再按桶分组列出问题。",
+        width: 1180,
+        height: 773,
       },
+      caption: "Storage Agent 25 使用演示存储，截图来自项目仓库，界面为英文。",
+      asOf: "v25.0.0",
     },
     sections: [
       {
@@ -148,12 +159,12 @@ export default defineProduct({
         id: "features",
         label: "发现不随任务结束",
         items: [
-          { title: "记住你的存储", body: "账户、桶和未解决的问题，跨任务保留。" },
-          { title: "三种修复格式", body: "AWS CLI 命令、Terraform 资源或 API 文档。" },
-          { title: "随时补充或叫停", body: "Agent 工作时可补充要求，也可叫停并保留已有发现。" },
-          { title: "验证后关闭问题", body: "重新检查通过即关闭；问题复发会重新打开。" },
-          { title: "可选巡检", body: "按你设定的周期重查账户。" },
-          { title: "快速提问", body: "⌘⇧Space 打开一个小窗，问一个问题。" },
+          { title: "不用模型也能检查", body: "“检查账户”不需要任何密钥，就能盘点并读取访问权限。" },
+          { title: "说清没读到什么", body: "全部读完会写明；读不到、读失败的逐一列出。" },
+          { title: "谁改的", body: "在 AWS 上用 CloudTrail 查出 90 天内是谁改了桶。" },
+          { title: "记住你的存储", body: "桶、未解决的问题和它们的变化记录，跨任务保留。" },
+          { title: "开放问题写成代码", body: "最大的前缀、多年没动的数据：在沙箱里跑一段脚本。" },
+          { title: "修复只给文本", body: "AWS CLI、Terraform 或 API 文档，附影响预估。" },
         ],
       },
       {
@@ -161,9 +172,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "存储凭证保存在本机加密保险库，并在工具输出中遮蔽。",
-          "任务记录、访问日志和清单保存在本机，在本地分析，原始行不会发给模型。",
-          "请求发往你配置的模型和 S3 兼容存储端点。",
+          "密钥在系统钥匙串或本机加密文件里；AWS profile 账户只存它的名称。",
+          "任务、访问日志和清单在本机分析，原始行不会发给模型。",
+          "请求发往你配置的模型和 S3 兼容存储端点。安装版会向本项目的 GitHub Releases 检查更新。",
         ],
       },
       {
@@ -173,15 +184,18 @@ export default defineProduct({
         items: [
           {
             title: "没有模型密钥能用吗？",
-            body: "用本地模型就不需要：Ollama、LM Studio、vLLM 和 llama.cpp 无需密钥。OpenAI、Anthropic、DeepSeek、OpenRouter 等托管服务需要各自的密钥。未设置上下文窗口的本地模型按 16,384 个 token 处理；服务端支持更大窗口时，请在设置里调高。",
+            body: "“检查账户”不需要：不用模型就能盘点账户、读取访问权限。提问需要模型：OpenAI、Anthropic 或任何兼容 OpenAI 的端点；已在 Ollama 或 LM Studio 里运行的模型一键可选。粘贴密钥后会列出该服务的模型。",
+            asOf: "v25.0.0",
           },
           {
             title: "小的本地模型够用吗？",
-            body: "够用。16k 窗口的本地模型能完成首次盘点，首个请求在 8k 内就放得下。使用 Ollama 时，应用会以 `num_ctx` 把规划好的窗口发给它。设置里的“测试”会真实调用一次工具，并在 Ollama 的上下文小于规划值时提醒你。",
+            body: "够用。上下文窗口按模型推断；小于 64k 算小模型，会用更短的方法说明和更少的轮次，回答格式不变。",
+            asOf: "v25.0.0",
           },
           {
-            title: "巡检会做什么？",
-            body: "默认关闭，需要你为某个账户开启。开启后按周期做一次受限的只读检查，只有发现新情况且已配置模型时，才会新开一个任务。",
+            title: "它会在后台巡检吗？",
+            body: "不会。没有后台巡检，也没有定时任务。每次检查是一个快照；“再检查一次”会新开一个，“重新验证”不用模型，重读任务涉及的桶。",
+            asOf: "v25.0.0",
           },
           {
             title: "修复会改变什么？",
@@ -192,8 +206,9 @@ export default defineProduct({
             body: "StorageOps 给开源终端编码 Agent Pi 加对象存储技能包。Storage Agent 是完整桌面应用：任务、只读工具、本地分析，以及它记住的问题。",
           },
           {
-            title: "从 v4 升级会怎样？",
-            body: "从 v4 升级后首次启动，会导入模型与存储设置、已知的桶和问题，以及过往结果。v4 的数据库保持原样。",
+            title: "它会改动我的存储吗？",
+            body: "不会。它没有写入、删除或任何修改操作，也从不执行修复：修复只是给你运行的文本。在账户设置里填写桶列表，可以限定它能读哪些桶。",
+            asOf: "v25.0.0",
           },
         ],
       },

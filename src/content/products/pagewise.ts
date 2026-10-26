@@ -105,7 +105,8 @@ export default defineProduct({
         items: [
           {
             title: "Do I need an API key?",
-            body: "Not to read. Reading, search, and recognising scanned pages work on your computer without one. Questions need a model: a key for OpenAI, DeepSeek, OpenRouter, or another OpenAI-compatible service, or Ollama on your machine.",
+            body: "Not to read. Reading, search, and recognising scanned pages work on your computer without one. Questions need a model: a key for OpenAI, DeepSeek, OpenRouter, or another OpenAI-compatible service, or Ollama on your machine. A question typed before you connect one is kept and sent once you do.",
+            asOf: "v24.0.0",
           },
           {
             title: "Can it miss something?",
@@ -118,6 +119,11 @@ export default defineProduct({
           {
             title: "Which scans can it read?",
             body: "English and Simplified Chinese, whatever the interface language: a page that reads poorly in English is read again with both. Other languages, and pages local recognition reads poorly, go to the vision model, if you set one that reads images. A quote not found on a scan shows “check the page”, not “not found”; in scanned tables and two-column pages that is common.",
+          },
+          {
+            title: "What if a file will not open?",
+            body: "PageWise says why and what to do next. A PDF that needs a password to open is not supported yet: print it to a new PDF without the password. One protected only against editing opens. Files over 256 MiB are refused before they are read, so split them; a damaged file needs downloading again, and other types need converting to PDF or JPEG.",
+            asOf: "v24.0.0",
           },
           {
             title: "Does the PDF export change my original?",
@@ -224,7 +230,8 @@ export default defineProduct({
         items: [
           {
             title: "需要 API 密钥吗？",
-            body: "阅读不需要。阅读、搜索和扫描页识别都在本机完成，不用密钥。提问需要模型：OpenAI、DeepSeek、OpenRouter 或其他兼容 OpenAI 的服务需要密钥，也可以用本机的 Ollama。",
+            body: "阅读不需要。阅读、搜索和扫描页识别都在本机完成，不用密钥。提问需要模型：OpenAI、DeepSeek、OpenRouter 或其他兼容 OpenAI 的服务需要密钥，也可以用本机的 Ollama。连接之前输入的问题会保留，连接后自动发出。",
+            asOf: "v24.0.0",
           },
           {
             title: "会漏掉内容吗？",
@@ -237,6 +244,11 @@ export default defineProduct({
           {
             title: "哪些扫描件能识别？",
             body: "英文和简体中文，与界面语言无关：英文识别效果差的页，会再用中英文一起识别一遍。其他语言和本机识别效果差的页交给视觉模型（需配置能读图的模型）。在扫描页上找不到的引用显示“请看原页”，而不是“未找到”；扫描的表格和双栏页面常会这样。",
+          },
+          {
+            title: "文件打不开怎么办？",
+            body: "PageWise 会说明原因和下一步。需要密码才能打开的 PDF 暂不支持，可以先打印成不带密码的新 PDF；只限制编辑的 PDF 能正常打开。超过 256 MiB 的文件在读取前就会被拒绝，需要先拆分；损坏的文件需要重新下载，其他格式需要先转成 PDF 或 JPEG。",
+            asOf: "v24.0.0",
           },
           {
             title: "导出的 PDF 会改动原文件吗？",

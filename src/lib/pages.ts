@@ -203,7 +203,7 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     url: absoluteUrl(path),
     // Every product is free. A store listing installs and a release downloads;
     // a source-only product's repository is only its sameAs, never a download.
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    ...(product.price === "unannounced" ? {} : { offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }),
     author: { "@type": "Person", name: "hxddh", url: site.github },
     ...(version ? { softwareVersion: version.replace(/^v/, "") } : {}),
     ...(action?.includes("chromewebstore.google.com") ? { installUrl: action } : {}),

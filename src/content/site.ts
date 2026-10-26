@@ -222,6 +222,7 @@ export const ui: Record<Locale, Ui> = {
       chrome: "Chrome",
       terminal: "Terminal",
       actions: "GitHub Actions",
+      android: "Android",
     },
     purposes: {
       storage: "Object storage",
@@ -299,7 +300,7 @@ export const ui: Record<Locale, Ui> = {
     releasesLead: "The latest version of each tool, newest first.",
     releasesUndatedTitle: "Without GitHub releases.",
     releasesUndatedSub:
-      "Chrome extensions update through the Chrome Web Store, and StorageOps installs from PyPI. Versions are the ones on their pages.",
+      "Chrome extensions update through the Chrome Web Store, StorageOps installs from PyPI, and Paper Sudoku is not in a store yet. Versions are the ones on their pages.",
     privacyMetaTitle: "Privacy — Titpea",
     privacyDescription:
       "Which Titpea tools go online, when, and where each keeps your data, with links to every product’s own data section and privacy policy.",
@@ -379,6 +380,7 @@ export const ui: Record<Locale, Ui> = {
       chrome: "Chrome",
       terminal: "终端",
       actions: "GitHub Actions",
+      android: "Android",
     },
     purposes: {
       storage: "对象存储",
@@ -452,7 +454,8 @@ export const ui: Record<Locale, Ui> = {
     releasesHeadline: "最近发布了什么",
     releasesLead: "每个工具的最新版本，最新的在前。",
     releasesUndatedTitle: "没有 GitHub 发布的工具",
-    releasesUndatedSub: "Chrome 扩展通过 Chrome 网上应用店更新，StorageOps 从 PyPI 安装。版本号以各自页面为准。",
+    releasesUndatedSub:
+      "Chrome 扩展通过 Chrome 网上应用店更新，StorageOps 从 PyPI 安装，纸上数独还未上架应用商店。版本号以各自页面为准。",
     privacyMetaTitle: "隐私 — Titpea",
     privacyDescription: "Titpea 的各个工具什么时候联网、数据留在哪里，并链接到每个产品自己的数据说明和隐私政策。",
     privacyHeadline: "哪些工具会联网",
