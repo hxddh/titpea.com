@@ -51,7 +51,7 @@ npm run check:dist   # built output rules
 
 For layout or rendered copy, also run `npm run preview` and `npm run qa:pages`.
 
-After an intentional visual change to one of the baseline screens (`scripts/visual-targets.json`), refresh them with `VISUAL_BASELINE_PLATFORM=linux npm run visual:approve` on Linux with `fonts-noto-cjk` installed (as CI does). If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact.
+After an intentional visual change to one of the baseline screens (`scripts/visual-targets.json`), refresh them with `VISUAL_BASELINE_PLATFORM=linux npm run visual:approve` on Linux with `fonts-noto-cjk` installed (as CI does). If visual CI fails on font rasterization, replace only the failed files from the `visual-baseline-<sha>` artifact; on a pull request the same screenshots are also pushed to the `captures/pr-<number>` branch, so `git fetch origin captures/pr-<number>` and `git show FETCH_HEAD:<file>.png` work where the artifact cannot be downloaded. CI runs on a pinned `ubuntu-24.04`, so the baselines change only when the image is changed on purpose.
 
 ## Ship
 
