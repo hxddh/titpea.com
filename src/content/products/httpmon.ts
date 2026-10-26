@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "httpmon",
   line: "storage",
   type: "cli",
-  runsOn: ["terminal"],
-  purposes: ["storage"],
   repo: "hxddh/https-traffic-inspector",
   icon: "/assets/icons/httpmon.webp",
   og: "/assets/og-httpmon.png",

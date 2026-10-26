@@ -96,7 +96,6 @@ test("tokens: a slug that sorts last follows the last entry of each run", () => 
 test("the product template marks every field to write, in both locales", () => {
   const source = productSource({ slug: "beta-tool", type: "extension", line: "everyday" });
   assert.match(source, /slug: "beta-tool"/);
-  assert.match(source, /runsOn: \["chrome"\]/);
   assert.match(source, /category: "BrowserApplication"/);
   assert.match(source, /^ {2}en: \{/m);
   assert.match(source, /^ {2}zh: \{/m);

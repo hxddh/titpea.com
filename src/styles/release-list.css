@@ -48,14 +48,6 @@
     font-weight: 600;
   }
 
-  .release-highlight {
-    overflow: hidden;
-    color: var(--muted);
-    font-size: var(--text-small);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   .release-meta {
     display: grid;
     justify-items: end;
@@ -66,29 +58,6 @@
     color: var(--muted);
     font-family: var(--mono);
     font-size: var(--text-meta);
-  }
-
-  .release-date {
-    color: var(--muted);
-    font-size: var(--text-meta);
-  }
-
-  .release-more {
-    margin-top: 8px;
-  }
-
-  .release-more summary {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--link);
-    font-size: 15px;
-    cursor: pointer;
-  }
-
-  .release-more .release-list {
-    margin-top: 0;
-    border-top: 0;
   }
 
   @media (max-width: 640px) {

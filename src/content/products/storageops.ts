@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "storageops",
   line: "storage",
   type: "pi",
-  runsOn: ["terminal"],
-  purposes: ["storage", "agents"],
   icon: "/assets/icons/storageops.webp",
   og: "/assets/og-storageops.png",
   schema: {

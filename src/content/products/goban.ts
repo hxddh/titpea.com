@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "goban",
   line: "games",
   type: "game",
-  runsOn: ["mac", "windows"],
-  purposes: ["games"],
   repo: "hxddh/goban",
   icon: "/assets/icons/goban.webp",
   og: "/assets/og-goban.png",

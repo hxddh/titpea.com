@@ -1,11 +1,10 @@
-// Home: hero, featured work, the shipping strip, families and the faceted catalog.
+// Home: hero, then the catalog: featured work, then every other product by line.
 import { products } from "../../content/products";
-import { absoluteUrl, familyMembers, site, ui } from "../../content/site";
-import { featuredSrc, type FamilyId, type Locale, type Platform, type Purpose } from "../../content/schema";
+import { absoluteUrl, site, ui } from "../../content/site";
+import { featuredSrc, lines, type Line, type Locale } from "../../content/schema";
 import { otherLocale, pathFor } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
-import { type CatalogCardItem, type CatalogItem, type Family, catalogCard, catalogItem, familyModel } from "./catalog";
-import { type ReleaseItem, releaseItems } from "./releases";
+import { type CatalogItem, catalogItem } from "./catalog";
 
 export type HomePageModel = {
   kind: "home";
@@ -33,27 +32,13 @@ export type HomePageModel = {
       CatalogItem & {
         image: { src: string; alt: string; width: number; height: number };
         caption?: string;
-        purposes: Purpose[];
-        runsOn: Platform[];
       }
     >;
   };
-  shipping: { title: string; more: { label: string; href: string }; items: ReleaseItem[] };
-  families: Family[];
+  /** Every tool: after the featured row, every other product by line, in site order. */
   more: {
     title: string;
-    filter: {
-      label: string;
-      all: string;
-      forLabel: string;
-      runsOnLabel: string;
-      purposes: Array<{ value: Purpose; label: string }>;
-      platforms: Array<{ value: Platform; label: string }>;
-      /** `{count}` is replaced in the page as filters change. */
-      count: string;
-      none: string;
-    };
-    items: CatalogCardItem[];
+    groups: Array<{ line: Line; label: string; items: CatalogItem[] }>;
   };
   primaryCta: string;
   expectedText: string[];
@@ -105,38 +90,21 @@ export function homePage(locale: Locale): HomePageModel {
           ...catalogItem(product, locale),
           image: { ...image, src: featuredSrc(product.featured!, locale), alt: image.alt[locale] },
           caption: product.featured!.caption?.[locale],
-          purposes: product.purposes,
-          runsOn: product.runsOn,
         };
       }),
     },
-    // What shipped last: release cadence is the plainest evidence the tools are alive.
-    shipping: {
-      title: copy.shippingTitle,
-      more: { label: copy.shippingMore, href: pathFor(locale, "releases") },
-      items: releaseItems(locale).slice(0, 3),
-    },
-    families: (Object.keys(familyMembers) as FamilyId[]).map((id) => familyModel(id, locale)),
-    // Every other product; the featured ones lead the same catalog as larger
-    // cards, so a filtered view is still complete.
+    // Every other product, under its line (the header menu's names and order).
     more: {
       title: copy.moreToolsTitle,
-      filter: {
-        label: copy.filterLabel,
-        all: copy.filterAll,
-        forLabel: copy.filterFor,
-        runsOnLabel: copy.filterRunsOn,
-        // Only values some product answers to, in schema order.
-        purposes: (Object.keys(copy.purposes) as Purpose[])
-          .filter((value) => products.some((product) => product.purposes.includes(value)))
-          .map((value) => ({ value, label: copy.purposes[value] })),
-        platforms: (Object.keys(copy.platforms) as Platform[])
-          .filter((value) => products.some((product) => product.runsOn.includes(value)))
-          .map((value) => ({ value, label: copy.platforms[value] })),
-        count: copy.filterCount,
-        none: copy.filterNone,
-      },
-      items: products.filter((product) => !product.featured).map((product) => catalogCard(product, locale)),
+      groups: lines
+        .map((line) => ({
+          line,
+          label: copy.groups[line],
+          items: products
+            .filter((product) => product.line === line && !product.featured)
+            .map((product) => catalogItem(product, locale)),
+        }))
+        .filter((group) => group.items.length > 0),
     },
     // The hero's primary button jumps to the full catalog.
     primaryCta: `${path}#more-title`,

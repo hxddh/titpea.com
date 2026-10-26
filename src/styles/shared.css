@@ -1,6 +1,6 @@
 @layer templates {
   /* Template parts more than one kind of page renders: the centered hero, the
-   closing band (product pages and About), and code spans in quoted notes. */
+   closing band (product pages), and code spans in quoted notes. */
 
   /* Centered heroes share one shape: a wash, a large title, a balanced lede. */
   .home-hero,

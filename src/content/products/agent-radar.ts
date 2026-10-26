@@ -4,8 +4,6 @@ export default defineProduct({
   slug: "agent-radar",
   line: "agents",
   type: "actions",
-  runsOn: ["actions"],
-  purposes: ["agents"],
   repo: "hxddh/agent-radar",
   icon: "/assets/icons/agent-radar.webp",
   og: "/assets/og-agent-radar.png",

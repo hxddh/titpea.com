@@ -3,7 +3,7 @@
 
 @layer templates {
   /* A family: products that work together, in the order you reach for them.
-   Home shows each one as a card; a member's page shows its own, marked. */
+   A member's page ends on its own, itself marked. */
   .family-band {
     padding: 20px 22px 22px;
     border-radius: var(--radius-card);

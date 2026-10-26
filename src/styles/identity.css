@@ -14,11 +14,9 @@
     .final-cta-icon,
     .release-list img,
     .release-entry-product img,
-    .shipping-card img,
     .product-related-list img,
     .notfound-products img,
     .product-section-index-name img,
-    .scene-products img,
     .privacy-tool img,
     .family-link img,
     .icon-plate
@@ -27,14 +25,16 @@
     box-shadow: var(--plate-s);
   }
 
-  :is(.catalog-icon, .final-cta-icon, .catalog-thumb.is-icon img) {
+  :is(.catalog-icon, .final-cta-icon) {
     box-shadow: var(--plate-m);
   }
 
   /* Display lines: the hero titles and section headings, in the display face.
    Fraunces is drawn heavier than the system sans, so the weight steps down;
    on Chinese pages --display-face is the system sans and these resolve to
-   the same face as before. */
+   the same face as before. The id in :not() matches nothing now (Home's
+   old release strip); it keeps these rules' specificity above the games
+   rule at the end of this file, so game pages keep this tracking. */
   :is(.home-hero, .about-hero, .product-hero) h1,
   main h2:not(#shipping-title, .product-related-title) {
     font-family: var(--display-face);

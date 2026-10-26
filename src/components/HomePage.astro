@@ -1,6 +1,4 @@
 ---
-import CatalogCard from "./CatalogCard.astro";
-import FamilyBand from "./product/FamilyBand.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import "../styles/home.css";
 import type { HomePageModel } from "../lib/pages";
@@ -35,90 +33,15 @@ const { model } = Astro.props;
     </div>
   </section>
 
-  <section class="home-shipping" aria-labelledby="shipping-title" data-visual-live>
-    <div class="shell">
-      <header class="home-strip-head">
-        <h2 id="shipping-title">{model.shipping.title}</h2>
-        <a class="home-strip-more" href={model.shipping.more.href}>
-          {model.shipping.more.label}
-        </a>
-      </header>
-      <ul class="shipping-list">
-        {model.shipping.items.map((item) => (
-          <li>
-            <a class="shipping-card" href={item.href}>
-              <img src={item.icon} alt="" width="40" height="40" />
-              <span class="shipping-copy">
-                <strong>{item.name}</strong>
-                <span class="shipping-meta">
-                  {item.version}
-                  {item.released && (
-                    <>
-                      {" "}
-                      · <time>{item.released}</time>
-                    </>
-                  )}
-                </span>
-                {item.highlight && <span class="shipping-note">{item.highlight}</span>}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
   <section class="home-more-tools" aria-labelledby="more-title">
     <div class="shell">
       <header class="section-head">
         <h2 id="more-title">{model.more.title}</h2>
       </header>
-      <div class="home-families">
-        {model.families.map((family) => (
-          <FamilyBand family={family} level="h3" />
-        ))}
-      </div>
-      {/* Hidden until the script runs: without it every card shows. */}
-      <div class="home-facets" role="group" aria-label={model.more.filter.label} data-home-filter hidden>
-        <div class="home-facet" role="group" aria-labelledby="facet-for">
-          <span class="home-facet-label" id="facet-for">
-            {model.more.filter.forLabel}
-          </span>
-          <button type="button" aria-pressed="true" data-facet="purpose" data-value="all">
-            {model.more.filter.all}
-          </button>
-          {model.more.filter.purposes.map((option) => (
-            <button type="button" aria-pressed="false" data-facet="purpose" data-value={option.value}>
-              {option.label}
-            </button>
-          ))}
-        </div>
-        <div class="home-facet" role="group" aria-labelledby="facet-runs-on">
-          <span class="home-facet-label" id="facet-runs-on">
-            {model.more.filter.runsOnLabel}
-          </span>
-          <button type="button" aria-pressed="true" data-facet="platform" data-value="all">
-            {model.more.filter.all}
-          </button>
-          {model.more.filter.platforms.map((option) => (
-            <button type="button" aria-pressed="false" data-facet="platform" data-value={option.value}>
-              {option.label}
-            </button>
-          ))}
-        </div>
-        <p
-          class="home-facet-count"
-          aria-live="polite"
-          data-count-template={model.more.filter.count}
-          data-none={model.more.filter.none}
-        >
-          {model.more.filter.count.replace("{count}", String(model.featured.items.length + model.more.items.length))}
-        </p>
-      </div>
-      {/* The featured products lead the catalog as larger cards; they filter with the rest. */}
-      <ul class="home-catalog-featured" aria-label={model.featured.title} data-home-catalog>
+      {/* The featured products lead the catalog as larger cards. */}
+      <ul class="home-catalog-featured" aria-label={model.featured.title}>
         {model.featured.items.map((item) => (
-          <li data-purposes={item.purposes.join(" ")} data-platforms={item.runsOn.join(" ")}>
+          <li>
             <a class="home-featured-card" href={item.href}>
               <figure class="home-featured-shot">
                 <img
@@ -144,14 +67,27 @@ const { model } = Astro.props;
           </li>
         ))}
       </ul>
-      <ul class="home-catalog-list" data-home-catalog>
-        {model.more.items.map((item) => (
-          <li data-purposes={item.purposes.join(" ")} data-platforms={item.runsOn.join(" ")}>
-            <CatalogCard item={item} />
-          </li>
-        ))}
-      </ul>
+      {/* Then every other product, under its line. */}
+      {model.more.groups.map((group) => (
+        <div class="home-line">
+          <h3 class="home-line-title" id={`line-${group.line}-title`}>
+            {group.label}
+          </h3>
+          <ul class="home-catalog-list" aria-labelledby={`line-${group.line}-title`}>
+            {group.items.map((item) => (
+              <li>
+                <a class="catalog-card" href={item.href}>
+                  <img class="catalog-icon" src={item.icon} alt="" width="40" height="40" loading="lazy" />
+                  <span class="catalog-card-copy">
+                    <strong class="home-catalog-name">{item.name}</strong>
+                    <span class="home-catalog-text">{item.text}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </section>
-  <script is:inline slot="scripts" src="/scripts/home-filter.js" defer></script>
 </SiteLayout>
