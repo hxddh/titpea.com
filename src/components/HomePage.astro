@@ -16,18 +16,6 @@ const { model } = Astro.props;
   <section class="home-hero">
     <div class="wash" aria-hidden="true"></div>
     <div class="shell home-copy">
-      <ul class="home-icons" aria-label={model.hero.eyebrow}>
-        {model.hero.icons.map((icon) => (
-          <li>
-            <a href={icon.href}>
-              <img src={icon.src} alt={icon.name} width="72" height="72" />
-              <span class="home-icon-name" aria-hidden="true">
-                {icon.name}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>
         {model.hero.titleParts.length > 1
@@ -71,42 +59,6 @@ const { model } = Astro.props;
                   )}
                 </span>
                 {item.highlight && <span class="shipping-note">{item.highlight}</span>}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <section class="home-evidence" aria-labelledby="featured-title">
-    <div class="shell">
-      <header class="section-head">
-        <h2 id="featured-title">{model.featured.title}</h2>
-      </header>
-      <ul class="home-featured-grid">
-        {model.featured.items.map((item) => (
-          <li>
-            <a class="home-featured-card" href={item.href}>
-              <figure class="home-featured-shot">
-                <img
-                  src={item.image.src}
-                  srcset={srcsetFor(item.image.src, item.image.width)}
-                  sizes="(max-width: 760px) calc(100vw - 44px), 340px"
-                  alt=""
-                  width={item.image.width}
-                  height={item.image.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-              <span class="home-featured-copy">
-                <span class="section-kicker">{item.role}</span>
-                <strong class="home-featured-name">{item.name}</strong>
-                <span class="home-featured-text">{item.text}</span>
-                {/* Under the text, so every card's title starts at the same height. */}
-                {item.caption && <span class="home-featured-caption">{item.caption}</span>}
-                <span class="home-featured-more">{model.featured.learnMore}</span>
               </span>
             </a>
           </li>
@@ -159,9 +111,38 @@ const { model } = Astro.props;
           data-count-template={model.more.filter.count}
           data-none={model.more.filter.none}
         >
-          {model.more.filter.count.replace("{count}", String(model.more.items.length))}
+          {model.more.filter.count.replace("{count}", String(model.featured.items.length + model.more.items.length))}
         </p>
       </div>
+      {/* The featured products lead the catalog as larger cards; they filter with the rest. */}
+      <ul class="home-catalog-featured" aria-label={model.featured.title} data-home-catalog>
+        {model.featured.items.map((item) => (
+          <li data-purposes={item.purposes.join(" ")} data-platforms={item.runsOn.join(" ")}>
+            <a class="home-featured-card" href={item.href}>
+              <figure class="home-featured-shot">
+                <img
+                  src={item.image.src}
+                  srcset={srcsetFor(item.image.src, item.image.width)}
+                  sizes="(max-width: 640px) 80vw, (max-width: 960px) calc(50vw - 28px), 340px"
+                  alt=""
+                  width={item.image.width}
+                  height={item.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <span class="home-featured-copy">
+                <span class="section-kicker">{item.role}</span>
+                <strong class="home-featured-name">{item.name}</strong>
+                <span class="home-featured-text">{item.text}</span>
+                {/* Under the text, so every card's title starts at the same height. */}
+                {item.caption && <span class="home-featured-caption">{item.caption}</span>}
+                <span class="home-featured-more">{model.featured.learnMore}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
       <ul class="home-catalog-list" data-home-catalog>
         {model.more.items.map((item) => (
           <li data-purposes={item.purposes.join(" ")} data-platforms={item.runsOn.join(" ")}>

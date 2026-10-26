@@ -128,19 +128,20 @@
   -webkit-line-clamp: 2;
 }
 
-/* Selected work: three tall cards side by side, a picture and a line each. */
-.home-evidence {
-  padding-top: var(--section-y);
-}
-
-.home-featured-grid {
+/* The featured products: the catalog's first row, three larger cards with a
+   picture and a line each. They filter with the rest. */
+.home-catalog-featured {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
   max-width: 1040px;
-  margin: 48px auto 0;
+  margin: 20px auto 0;
   padding: 0;
   list-style: none;
+}
+
+.home-catalog-featured > li[hidden] {
+  display: none;
 }
 
 .home-featured-card {
@@ -327,27 +328,6 @@ a.family-link:hover strong {
   outline: 2px solid var(--accent);
   /* Outside the plate ring (--plate-s is 4px wide). */
   outline-offset: 6px;
-}
-
-/* Product page: the family in place of the related row, after the closing band. */
-.product-family {
-  display: grid;
-  justify-items: center;
-  gap: 18px;
-  max-width: 720px;
-  margin-top: var(--section-y);
-}
-
-.product-family .family-band {
-  width: 100%;
-}
-
-.product-family .family-head {
-  text-align: center;
-}
-
-.product-related[hidden] {
-  display: none;
 }
 
 /* Facets: what it is for, and where it runs. One value per row; both apply. */
@@ -548,9 +528,27 @@ a.family-link:hover strong {
 }
 
 @media (max-width: 960px) {
-  .home-featured-grid,
   .home-catalog-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Three featured cards do not split into two columns: one row that scrolls sideways. */
+  .home-catalog-featured {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .home-catalog-featured::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-catalog-featured > li {
+    flex: 0 0 min(340px, 80%);
+    scroll-snap-align: start;
   }
 
   .home-families {
@@ -563,21 +561,60 @@ a.family-link:hover strong {
 }
 
 @media (max-width: 640px) {
-  .home-featured-grid {
-    grid-template-columns: minmax(0, 1fr);
+  .home-featured-shot img {
+    aspect-ratio: 16 / 10;
   }
 
+  .home-featured-copy {
+    padding: 14px 16px 16px;
+  }
+
+  /* The latest releases: one row that scrolls sideways, not three stacked cards. */
+  .shipping-list {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .shipping-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shipping-list > li {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+
+  .shipping-note {
+    display: none;
+  }
+
+  /* The rest of the catalog: one line per tool, icon, name and chips; the
+     picture and the line wait for the product page. */
   .home-catalog-list {
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
 
-  /* Two cards a row: the picture, name and chips; the line waits for the page. */
+  .catalog-thumb,
   .catalog-card .home-catalog-text {
     display: none;
   }
 
+  /* Name on the left, chips on the right; they wrap under a long name. */
   .catalog-card-copy {
-    padding: 10px 12px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    padding: 12px 14px;
+  }
+
+  .catalog-card-copy .catalog-chips {
+    margin-top: 0;
   }
 
   .family-band {
@@ -625,83 +662,6 @@ a.family-link:hover strong {
     width: auto;
     margin-right: 4px;
   }
-}
-
-/* Home hero: the app icons, a row of doors into the products. */
-/* Two centred rows: at most nine icons wide, so seventeen read as 9 + 8. */
-.home-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-  max-width: calc(9 * 60px + 8 * 14px);
-  margin: 0 auto 28px;
-  padding: 0;
-  list-style: none;
-}
-
-.home-icons a {
-  position: relative;
-  display: block;
-  border-radius: 18px;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-/* The product's name, under its icon while pointed at or focused. Hidden
-   labels take no space, so the edge columns never widen the page. */
-.home-icon-name {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  z-index: 2;
-  display: none;
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-  color: var(--ink);
-  background: var(--glass-strong);
-  box-shadow: var(--shadow-glass);
-  font-size: var(--text-meta);
-  font-weight: 500;
-  white-space: nowrap;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-/* The top row labels above, so a name never covers the icon beneath. */
-.home-icons li:nth-child(-n + 9) .home-icon-name {
-  top: auto;
-  bottom: calc(100% + 8px);
-}
-
-/* Edge columns anchor to their inner side. */
-.home-icons li:nth-child(9n + 1) .home-icon-name {
-  left: 0;
-  transform: none;
-}
-
-.home-icons li:nth-child(9n) .home-icon-name,
-.home-icons li:last-child .home-icon-name {
-  right: 0;
-  left: auto;
-  transform: none;
-}
-
-.home-icons a:hover .home-icon-name,
-.home-icons a:focus-visible .home-icon-name {
-  display: block;
-}
-
-.home-icons a:hover {
-  transform: translateY(-4px) scale(1.04);
-}
-
-.home-icons img {
-  display: block;
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(var(--shadow-icon-small));
 }
 
 /* About */
@@ -1408,16 +1368,6 @@ a.family-link:hover strong {
     padding-top: 48px;
   }
 
-  .home-icons {
-    gap: 6px;
-    max-width: calc(9 * 34px + 8 * 6px);
-  }
-
-  .home-icons img {
-    width: 34px;
-    height: 34px;
-  }
-
   .release-list a {
     grid-template-columns: 28px minmax(0, 1fr) auto;
     gap: 10px;
@@ -1429,28 +1379,13 @@ a.family-link:hover strong {
   }
 }
 
-/* The narrowest phones keep nine icons a row, so seventeen still read as 9 + 8. */
-@media (max-width: 380px) {
-  .home-icons {
-    gap: 5px;
-    max-width: calc(9 * 30px + 8 * 5px);
-  }
-
-  .home-icons img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .home-icons a,
   .shipping-card,
   .home-featured-card,
   .catalog-card {
     transition: none;
   }
 
-  .home-icons a:hover,
   .shipping-card:hover,
   .home-featured-card:hover,
   .catalog-card:hover {

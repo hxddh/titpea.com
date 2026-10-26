@@ -193,9 +193,10 @@ html:lang(zh) {
   --sans:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Latin", "Segoe UI", "Helvetica Neue",
     "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
-  /* A Latin serif beside CJK sans reads as two voices in one line; Chinese
-     display lines stay on the system faces. */
-  --display-face: var(--sans);
+  /* Chinese display lines: Noto Serif SC (cut to the headings' characters)
+     with Fraunces for their Latin letters, so one heading has one voice and
+     reads as kin to the English pages. */
+  --display-face: "Fraunces Latin", "Noto Serif SC Display", var(--sans);
 }
 
 /* Dark theme. Applied when the OS prefers dark (unless the visitor forced
@@ -480,7 +481,8 @@ body[data-line="games"] {
   --paper: #fbf8f2;
   --paper-raised: #f4efe5;
   --display:
-    Fraunces, ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+    Fraunces, ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Noto Serif SC Display", "Songti SC",
+    "Noto Serif CJK SC", serif;
 }
 
 :root[data-theme="dark"] body[data-line="games"] {

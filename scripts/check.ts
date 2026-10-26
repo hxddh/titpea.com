@@ -508,6 +508,19 @@ if (tokenPx("--section-index-mobile-scroll-margin") !== sectionIndexPolicy.mobil
   fail("--section-index-mobile-scroll-margin must match sectionIndexPolicy.mobileScrollMarginPx");
 }
 
+/* ---------- Chinese display font ---------- */
+
+// The "What's new" h2 only renders with synced release notes (CI), so a local
+// build cannot prove the subset covers it; check its fixed words here.
+{
+  const subsetChars = new Set(fs.readFileSync("design/fonts/zh-display-chars.txt", "utf8").trim());
+  const missing = [...new Set(ui.zh.whatsNew.replace("{version}", ""))].filter(
+    (char) => char.codePointAt(0)! > 0x2000 && !/\s/.test(char) && !subsetChars.has(char),
+  );
+  if (missing.length > 0)
+    fail(`ui.zh.whatsNew uses ${missing.join("")}, missing from the font subset (npm run assets:fonts)`);
+}
+
 /* ---------- Report ---------- */
 
 if (staleClaims.length > 0) {

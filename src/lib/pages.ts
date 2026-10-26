@@ -359,17 +359,20 @@ export type HomePageModel = {
     /** The title in pieces that never wrap inside ("|" in the copy). */
     titleParts: string[];
     lead: string;
-    icons: Array<{ src: string; href: string; name: string }>;
     browse: string;
     about: { label: string; href: string };
   };
+  /** The first, larger cards of the catalog (not a section of their own). */
   featured: {
+    /** Names the featured row for assistive tech. */
     title: string;
     learnMore: string;
     items: Array<
       CatalogItem & {
         image: { src: string; alt: string; width: number; height: number };
         caption?: string;
+        purposes: Purpose[];
+        runsOn: Platform[];
       }
     >;
   };
@@ -523,11 +526,6 @@ export function homePage(locale: Locale): HomePageModel {
       title: copy.homeTitle.replaceAll("|", ""),
       titleParts: copy.homeTitle.split("|"),
       lead: copy.homeLead,
-      icons: products.map((product) => ({
-        src: product.icon,
-        href: pathFor(locale, product.slug),
-        name: product[locale].title,
-      })),
       browse: copy.browseTools.replace("{count}", String(products.length)),
       about: { label: copy.aboutMore, href: pathFor(locale, "about") },
     },
@@ -540,6 +538,8 @@ export function homePage(locale: Locale): HomePageModel {
           ...catalogItem(product, locale),
           image: { ...image, src: featuredSrc(product.featured!, locale), alt: image.alt[locale] },
           caption: product.featured!.caption?.[locale],
+          purposes: product.purposes,
+          runsOn: product.runsOn,
         };
       }),
     },
@@ -550,7 +550,8 @@ export function homePage(locale: Locale): HomePageModel {
       items: releaseItems(locale).slice(0, 3),
     },
     families: (Object.keys(familyMembers) as FamilyId[]).map((id) => familyModel(id, locale)),
-    // Every product, featured ones included, so a filtered view is complete.
+    // Every other product; the featured ones lead the same catalog as larger
+    // cards, so a filtered view is still complete.
     more: {
       title: copy.moreToolsTitle,
       filter: {
@@ -568,11 +569,11 @@ export function homePage(locale: Locale): HomePageModel {
         count: copy.filterCount,
         none: copy.filterNone,
       },
-      items: products.map((product) => catalogCard(product, locale)),
+      items: products.filter((product) => !product.featured).map((product) => catalogCard(product, locale)),
     },
     // The hero's primary button jumps to the full catalog.
     primaryCta: `${path}#more-title`,
-    expectedText: [copy.homeTitle.replaceAll("|", ""), copy.homeLead, copy.featuredTitle, copy.moreToolsTitle],
+    expectedText: [copy.homeTitle.replaceAll("|", ""), copy.homeLead, copy.moreToolsTitle],
   };
 }
 

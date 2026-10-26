@@ -16,6 +16,7 @@
     "format:check": "prettier --check .",
     "releases:sync": "node scripts/sync-releases.mjs",
     "assets:og": "tsx scripts/generate-og-images.ts",
+    "assets:fonts": "tsx scripts/subset-zh-display-font.mjs",
     "assets:images": "tsx scripts/generate-image-variants.ts",
     "assets:favicon": "tsx scripts/generate-favicons.ts",
     "assets:icons": "tsx scripts/generate-icons.ts",
@@ -38,6 +39,7 @@
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.1",
     "sharp": "^0.34.5",
+    "subset-font": "^2.9.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   }

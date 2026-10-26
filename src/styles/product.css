@@ -517,13 +517,48 @@
   margin-top: 28px;
 }
 
-/* After the closing band: a quiet row of the next products to read. */
+/* Inside the closing band, under a hairline: where to go next — the product's
+   family, or a quiet row of related tools — and the way back to every tool. */
+.closing-next {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.closing-next .family-band {
+  width: 100%;
+  padding: 0;
+  background: none;
+}
+
+.closing-next .family-head {
+  text-align: center;
+}
+
+.closing-all {
+  font-size: var(--text-card-body);
+}
+
+/* On the tinted band the muted grey falls under 4.5:1; the reading grey holds. */
+.closing-next .product-related-title,
+.closing-next .family-sub,
+.closing-next .family-role {
+  color: var(--ink-2);
+}
+
+.closing-all::after {
+  content: " ›";
+}
+
 .product-related {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  margin-top: var(--section-y);
   text-align: center;
 }
 
@@ -797,8 +832,8 @@
 
 .final-cta {
   margin-top: var(--section-y);
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: 64px;
+  padding-bottom: 36px;
   border-radius: var(--radius-card);
   background: var(--product-band, transparent);
 }
@@ -895,6 +930,8 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
 
 /* Extensions: what it touches, from the same facts as the privacy index. */
 .permission-box {
+  /* The privacy index links here (#data) when the data section folds into the box. */
+  scroll-margin-top: var(--section-index-desktop-scroll-margin);
   max-width: 34em;
   margin-top: 26px;
   padding: 16px 18px;
@@ -932,10 +969,17 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
   color: var(--data-ref-ink);
 }
 
-.permission-link {
-  display: inline-block;
-  margin-top: 12px;
-  font-size: var(--text-small);
+/* The data section's facts, listed in the box instead of a section further down. */
+.permission-facts {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+/* Inline code at the box's small size would fall under the text-size floor. */
+.permission-facts code {
+  font-size: 1em;
 }
 
 /* Left-aligned section heads on every template but game. */
@@ -1173,12 +1217,63 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
     height: 56px;
   }
 
+  /* Short titled lines: two a row, so six features take three rows, not six. */
   .feature-grid[data-variant="plain"] {
-    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
   }
 
   .feature-grid[data-variant="plain"] .feature-card {
-    padding: 16px 0 0;
+    padding: 14px 0 0;
+  }
+
+  /* Games keep their raised cards, two a row as well. */
+  .product-hero[data-template="game"] ~ .product-section .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-hero[data-template="game"] ~ .product-section .feature-card {
+    padding: 16px 14px;
+  }
+
+  /* Phone captures stay beside their text on phones too, at a third of the width. */
+  .product-screenshot-showcase[data-portrait] .shell,
+  .product-screenshot-showcase[data-portrait][data-flip] .shell {
+    grid-template-columns: minmax(0, 1fr) 132px;
+    gap: 20px;
+  }
+
+  .product-screenshot-showcase[data-portrait][data-flip] .shell {
+    grid-template-columns: 132px minmax(0, 1fr);
+  }
+
+  .product-screenshot-showcase[data-portrait][data-flip] .section-head {
+    order: 2;
+  }
+
+  .product-screenshot-showcase[data-portrait] :is(.show-shot, .show-figure) {
+    max-width: 132px;
+    margin: 0;
+  }
+
+  /* A narrow column: balanced lines, so no heading strands one character. */
+  .product-screenshot-showcase[data-portrait] .section-head h2 {
+    font-size: 1.375rem;
+    text-wrap: balance;
+  }
+
+  /* The closing block: the header already carries the icon and name. */
+  .final-cta {
+    padding-top: 40px;
+  }
+
+  .final-cta-icon {
+    display: none;
+  }
+
+  .closing-next {
+    margin-top: 28px;
   }
 
   .cases-table th {
