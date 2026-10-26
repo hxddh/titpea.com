@@ -17,22 +17,20 @@ const { section, grid = false } = Astro.props;
       <h2>{section.label}</h2>
     </header>
     <div class="faq-list" data-layout={grid ? "grid" : undefined}>
-      {
-        section.items.map((item, index) => (
-          <details class="faq-item" open={grid || index === 0}>
-            <summary>{item.title}</summary>
-            <p class="faq-answer">
-              <Prose text={item.body} />
-              {item.link && (
-                <>
-                  {" "}
-                  <a href={item.link.href}>{item.link.label}</a>
-                </>
-              )}
-            </p>
-          </details>
-        ))
-      }
+      {section.items.map((item, index) => (
+        <details class="faq-item" open={grid || index === 0}>
+          <summary>{item.title}</summary>
+          <p class="faq-answer">
+            <Prose text={item.body} />
+            {item.link && (
+              <>
+                {" "}
+                <a href={item.link.href}>{item.link.label}</a>
+              </>
+            )}
+          </p>
+        </details>
+      ))}
     </div>
   </div>
 </section>

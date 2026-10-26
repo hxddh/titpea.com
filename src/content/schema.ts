@@ -205,13 +205,7 @@ export type DemoSection = {
 };
 
 export type Section = (
-  | CardsSection
-  | FaqSection
-  | CasesSection
-  | FlowSection
-  | PanelSection
-  | DataSection
-  | DemoSection
+  CardsSection | FaqSection | CasesSection | FlowSection | PanelSection | DataSection | DemoSection
 ) &
   SectionNav;
 

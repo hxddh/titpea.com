@@ -10,17 +10,15 @@ const { visual } = Astro.props;
 
 <div class="product-scene clock-scene" aria-label={visual.label}>
   <div class="clock-shot-stack">
-    {
-      visual.images.map((image) => (
-        <img
-          class={image.className}
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          loading="eager"
-        />
-      ))
-    }
+    {visual.images.map((image) => (
+      <img
+        class={image.className}
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="eager"
+      />
+    ))}
   </div>
 </div>

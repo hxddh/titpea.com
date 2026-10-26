@@ -19,7 +19,9 @@ const { visual } = Astro.props;
   </div>
   <div class="httpmon-terminal-request">
     <span>{visual.requestLabel}</span>
-    <strong>{visual.method} {visual.url}</strong>
+    <strong>
+      {visual.method} {visual.url}
+    </strong>
     <p>{visual.requestMeta}</p>
   </div>
   <div class="httpmon-terminal-response">
@@ -29,6 +31,8 @@ const { visual } = Astro.props;
     <code>{visual.body}</code>
   </div>
   <div class="httpmon-terminal-foot">
-    {visual.footnotes.map((item) => <span>{item}</span>)}
+    {visual.footnotes.map((item) => (
+      <span>{item}</span>
+    ))}
   </div>
 </div>

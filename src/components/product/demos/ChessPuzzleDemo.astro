@@ -66,35 +66,37 @@ const squares = ranks.flatMap((rank, row) =>
 >
   <div class="chess-frame">
     <div class="chess-board" role="group" aria-label={demo.label} aria-describedby="chess-demo-message" data-board>
-      {
-        squares.map((square) => (
-          <button
-            class:list={["chess-square", square.dark ? "is-dark" : "is-light"]}
-            type="button"
-            tabindex="-1"
-            data-sq={square.name}
-            data-file={square.file}
-            data-rank={square.rank}
-            aria-label={square.label}
-          >
-            {square.code && (
-              <img
-                class="chess-piece"
-                src={`/assets/pieces/${square.code}.svg`}
-                alt=""
-                width="45"
-                height="45"
-                data-piece-code={square.code}
-              />
-            )}
-          </button>
-        ))
-      }
+      {squares.map((square) => (
+        <button
+          class:list={["chess-square", square.dark ? "is-dark" : "is-light"]}
+          type="button"
+          tabindex="-1"
+          data-sq={square.name}
+          data-file={square.file}
+          data-rank={square.rank}
+          aria-label={square.label}
+        >
+          {square.code && (
+            <img
+              class="chess-piece"
+              src={`/assets/pieces/${square.code}.svg`}
+              alt=""
+              width="45"
+              height="45"
+              data-piece-code={square.code}
+            />
+          )}
+        </button>
+      ))}
     </div>
     <div class="chess-status">
       <img class="chess-turn" src={`/assets/pieces/${turn}k.svg`} alt="" width="28" height="28" />
-      <p class="chess-message" id="chess-demo-message" aria-live="polite" data-message>{demo.prompt}</p>
-      <button class="chess-reset" type="button" data-reset hidden>{demo.reset}</button>
+      <p class="chess-message" id="chess-demo-message" aria-live="polite" data-message>
+        {demo.prompt}
+      </p>
+      <button class="chess-reset" type="button" data-reset hidden>
+        {demo.reset}
+      </button>
     </div>
   </div>
   <figcaption class="shot-caption">{caption}</figcaption>

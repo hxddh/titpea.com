@@ -24,44 +24,40 @@ const { section, figure, plain = false } = Astro.props;
       data-numbered={section.numbered ? "" : undefined}
       data-variant={plain ? "plain" : undefined}
     >
-      {
-        section.items.map((item, index) => (
-          <article class:list={["feature-card", item.priority === "primary" && "primary"]}>
-            {section.numbered && <span class="feature-step">{index + 1}</span>}
-            {item.evidence && <small class="feature-evidence">{item.evidence}</small>}
-            <h3>{item.title}</h3>
-            <p>
-              <Prose text={item.body} />
-              {item.link && (
-                <>
-                  {" "}
-                  <a href={item.link.href}>{item.link.label}</a>
-                </>
-              )}
-            </p>
-          </article>
-        ))
-      }
+      {section.items.map((item, index) => (
+        <article class:list={["feature-card", item.priority === "primary" && "primary"]}>
+          {section.numbered && <span class="feature-step">{index + 1}</span>}
+          {item.evidence && <small class="feature-evidence">{item.evidence}</small>}
+          <h3>{item.title}</h3>
+          <p>
+            <Prose text={item.body} />
+            {item.link && (
+              <>
+                {" "}
+                <a href={item.link.href}>{item.link.label}</a>
+              </>
+            )}
+          </p>
+        </article>
+      ))}
     </div>
-    {
-      figure && (
-        <figure class="show-figure">
-          <div class="shot">
-            <img
-              src={figure.src}
-              srcset={srcsetFor(figure.src, figure.width)}
-              sizes="(max-width: 1000px) calc(100vw - 44px), 560px"
-              alt={figure.alt}
-              width={figure.width}
-              height={figure.height}
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="shot-caption">
-            <Prose text={figure.body} />
-          </figcaption>
-        </figure>
-      )
-    }
+    {figure && (
+      <figure class="show-figure">
+        <div class="shot">
+          <img
+            src={figure.src}
+            srcset={srcsetFor(figure.src, figure.width)}
+            sizes="(max-width: 1000px) calc(100vw - 44px), 560px"
+            alt={figure.alt}
+            width={figure.width}
+            height={figure.height}
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="shot-caption">
+          <Prose text={figure.body} />
+        </figcaption>
+      </figure>
+    )}
   </div>
 </section>

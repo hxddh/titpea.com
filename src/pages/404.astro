@@ -24,23 +24,25 @@ const seo = buildSeo({
       <p class="lead">Try the home index, or switch language below.</p>
       <p class="lead">回首页，或切换到另一语言。</p>
       <div class="actions">
-        <a class="button primary" href="/">Home</a>
-        <a class="button ghost" href="/zh/">中文首页</a>
+        <a class="button primary" href="/">
+          Home
+        </a>
+        <a class="button ghost" href="/zh/">
+          中文首页
+        </a>
       </div>
     </header>
     <nav class="notfound-products" aria-label="Products · 产品">
       <p class="section-kicker">Products · 产品</p>
       <ul>
-        {
-          products.map((product) => (
-            <li>
-              <a href={pathFor("en", product.slug)}>
-                <img src={product.icon} alt="" width="28" height="28" />
-                <span>{product.en.title}</span>
-              </a>
-            </li>
-          ))
-        }
+        {products.map((product) => (
+          <li>
+            <a href={pathFor("en", product.slug)}>
+              <img src={product.icon} alt="" width="28" height="28" />
+              <span>{product.en.title}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </article>

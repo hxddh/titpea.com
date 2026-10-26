@@ -83,19 +83,19 @@ const footerGroups: Array<{
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    {
-      seo.structuredData && (
-        <script
-          is:inline
-          type="application/ld+json"
-          set:html={JSON.stringify(seo.structuredData).replace(/</g, "\\u003c")}
-        />
-      )
-    }
+    {seo.structuredData && (
+      <script
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(seo.structuredData).replace(/</g, "\\u003c")}
+      />
+    )}
     <title>{seo.title}</title>
   </head>
   <body class:list={[pageClass]} data-product={product?.slug} data-line={product?.line}>
-    <a class="skip-link" href="#main-content">{copy.skipLink}</a>
+    <a class="skip-link" href="#main-content">
+      {copy.skipLink}
+    </a>
     <SiteHeader
       current={current}
       locale={locale}
@@ -109,41 +109,39 @@ const footerGroups: Array<{
     </main>
     <footer class="site-footer">
       <nav class="shell foot-map" aria-label={copy.footerLabel}>
-        {
-          footerGroups.map((group) => (
-            <div class="foot-group">
-              <p class="foot-group-label">{group.label}</p>
-              <ul>
-                {group.items.map((item) => (
-                  <li>
-                    <a href={item.href} rel={item.external ? "noreferrer" : undefined} hreflang={item.hreflang}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        {footerGroups.map((group) => (
+          <div class="foot-group">
+            <p class="foot-group-label">{group.label}</p>
+            <ul>
+              {group.items.map((item) => (
+                <li>
+                  <a href={item.href} rel={item.external ? "noreferrer" : undefined} hreflang={item.hreflang}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </nav>
       <div class="shell">
         <div class="foot">
-          <span>© {year} {site.brand}</span>
+          <span>
+            © {year} {site.brand}
+          </span>
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </div>
       </div>
     </footer>
     <slot name="scripts" />
     <script is:inline src="/scripts/reveal.js" defer></script>
-    {
-      site.analyticsToken && (
-        <script
-          is:inline
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={JSON.stringify({ token: site.analyticsToken })}
-        />
-      )
-    }
+    {site.analyticsToken && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: site.analyticsToken })}
+      />
+    )}
   </body>
 </html>

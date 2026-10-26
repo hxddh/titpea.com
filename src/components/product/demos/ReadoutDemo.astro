@@ -24,21 +24,23 @@ demo.writes.forEach((write, index) => doc.splice(write.after + 1, 0, { ...write.
 >
   <div class="readout-window" role="group" aria-label={demo.label}>
     <div class="readout-titlebar">
-      <span class="readout-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="readout-lights" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
       <span class="readout-file">{demo.file}</span>
     </div>
     <div class="readout-doc" data-doc>
-      {
-        doc.map((block) => (
-          <p
-            class:list={["ro-blk", `ro-${block.kind}`, block.write !== undefined && "m-inserted"]}
-            data-write={block.write}
-          >
-            {(block.kind === "task" || block.kind === "done") && <span class="ro-box" aria-hidden="true" />}
-            {block.text}
-          </p>
-        ))
-      }
+      {doc.map((block) => (
+        <p
+          class:list={["ro-blk", `ro-${block.kind}`, block.write !== undefined && "m-inserted"]}
+          data-write={block.write}
+        >
+          {(block.kind === "task" || block.kind === "done") && <span class="ro-box" aria-hidden="true" />}
+          {block.text}
+        </p>
+      ))}
     </div>
   </div>
   <div class="demo-controls">

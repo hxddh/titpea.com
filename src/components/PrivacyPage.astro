@@ -37,60 +37,58 @@ const { columns } = model;
           </tr>
         </thead>
         <tbody>
-          {
-            model.rows.map((row) => (
-              <tr>
-                <th scope="row">
-                  <a class="privacy-tool" href={row.href}>
-                    <img src={row.icon} alt="" width="32" height="32" loading="lazy" />
-                    <span>{row.name}</span>
-                  </a>
-                </th>
-                {row.privacy ? (
-                  <>
-                    <td data-label={columns.network}>
-                      <span class="privacy-level" data-level={row.privacy.network}>
-                        {row.privacy.level}
-                      </span>
-                      <span class="privacy-note">
-                        <Prose text={row.privacy.networkNote} />
-                      </span>
-                    </td>
-                    <td data-label={columns.stays}>
-                      <Prose text={row.privacy.stays} />
-                    </td>
-                  </>
-                ) : (
-                  <td class="privacy-unstated" colspan="2" data-label={columns.network}>
-                    {model.unstated}
+          {model.rows.map((row) => (
+            <tr>
+              <th scope="row">
+                <a class="privacy-tool" href={row.href}>
+                  <img src={row.icon} alt="" width="32" height="32" loading="lazy" />
+                  <span>{row.name}</span>
+                </a>
+              </th>
+              {row.privacy ? (
+                <>
+                  <td data-label={columns.network}>
+                    <span class="privacy-level" data-level={row.privacy.network}>
+                      {row.privacy.level}
+                    </span>
+                    <span class="privacy-note">
+                      <Prose text={row.privacy.networkNote} />
+                    </span>
                   </td>
-                )}
-                <td data-label={columns.details}>
-                  <ul class="privacy-links">
-                    {row.dataHref ? (
-                      <li>
-                        <a href={row.dataHref}>{model.dataLabel}</a>
-                      </li>
-                    ) : (
-                      <li>
-                        <a href={row.href}>{model.productPage}</a>
-                      </li>
-                    )}
-                    {row.privacy?.policy && (
-                      <li>
-                        <a
-                          href={row.privacy.policy.href}
-                          rel={/^https?:/.test(row.privacy.policy.href) ? "noreferrer" : undefined}
-                        >
-                          {row.privacy.policy.label}
-                        </a>
-                      </li>
-                    )}
-                  </ul>
+                  <td data-label={columns.stays}>
+                    <Prose text={row.privacy.stays} />
+                  </td>
+                </>
+              ) : (
+                <td class="privacy-unstated" colspan="2" data-label={columns.network}>
+                  {model.unstated}
                 </td>
-              </tr>
-            ))
-          }
+              )}
+              <td data-label={columns.details}>
+                <ul class="privacy-links">
+                  {row.dataHref ? (
+                    <li>
+                      <a href={row.dataHref}>{model.dataLabel}</a>
+                    </li>
+                  ) : (
+                    <li>
+                      <a href={row.href}>{model.productPage}</a>
+                    </li>
+                  )}
+                  {row.privacy?.policy && (
+                    <li>
+                      <a
+                        href={row.privacy.policy.href}
+                        rel={/^https?:/.test(row.privacy.policy.href) ? "noreferrer" : undefined}
+                      >
+                        {row.privacy.policy.label}
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       {model.analytics && <p class="privacy-site-note">{model.analytics}</p>}

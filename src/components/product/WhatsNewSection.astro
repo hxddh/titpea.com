@@ -13,44 +13,42 @@ const { notes } = Astro.props;
 const quoted = Boolean(notes.summary) || notes.items.length > 0;
 ---
 
-{
-  quoted ? (
-    <section id="whats-new" class="product-section whats-new">
-      <div class="shell narrow">
-        <header class="section-head">
-          {notes.released && <p class="section-kicker">{notes.released}</p>}
-          <h2>{notes.title}</h2>
-          {notes.summary && (
-            <p class="sub">
-              <Prose text={notes.summary} />
-            </p>
-          )}
-        </header>
-        {notes.items.length > 0 && (
-          <ul class="whats-new-list">
-            {notes.items.map((item) => (
-              <li>
-                <Prose text={item} />
-              </li>
-            ))}
-          </ul>
+{quoted ? (
+  <section id="whats-new" class="product-section whats-new">
+    <div class="shell narrow">
+      <header class="section-head">
+        {notes.released && <p class="section-kicker">{notes.released}</p>}
+        <h2>{notes.title}</h2>
+        {notes.summary && (
+          <p class="sub">
+            <Prose text={notes.summary} />
+          </p>
         )}
-        <p class="whats-new-link">
-          <a class="button ghost" href={notes.url} rel="noreferrer">
-            {notes.linkLabel}
-          </a>
-        </p>
-      </div>
-    </section>
-  ) : (
-    <section id="whats-new" class="product-section whats-new is-compact" aria-label={notes.title}>
-      <p class="shell whats-new-line">
-        <span>{notes.version}</span>
-        {notes.released && <span>{notes.released}</span>}
-        <a href={notes.url} rel="noreferrer">
-          {notes.linkLabel} ›
+      </header>
+      {notes.items.length > 0 && (
+        <ul class="whats-new-list">
+          {notes.items.map((item) => (
+            <li>
+              <Prose text={item} />
+            </li>
+          ))}
+        </ul>
+      )}
+      <p class="whats-new-link">
+        <a class="button ghost" href={notes.url} rel="noreferrer">
+          {notes.linkLabel}
         </a>
       </p>
-    </section>
-  )
-}
+    </div>
+  </section>
+) : (
+  <section id="whats-new" class="product-section whats-new is-compact" aria-label={notes.title}>
+    <p class="shell whats-new-line">
+      <span>{notes.version}</span>
+      {notes.released && <span>{notes.released}</span>}
+      <a href={notes.url} rel="noreferrer">
+        {notes.linkLabel} ›
+      </a>
+    </p>
+  </section>
+)}

@@ -15,13 +15,11 @@ const { section } = Astro.props;
       <h2>{section.title}</h2>
     </header>
     <ul class="data-list">
-      {
-        section.items.map((item) => (
-          <li>
-            <Prose text={item} />
-          </li>
-        ))
-      }
+      {section.items.map((item) => (
+        <li>
+          <Prose text={item} />
+        </li>
+      ))}
     </ul>
   </div>
 </section>

@@ -12,14 +12,12 @@ const { stats } = Astro.props;
   <div class="shell">
     <h2 id="stats-title">{stats.title}</h2>
     <dl class="stats" data-count={stats.items.length}>
-      {
-        stats.items.map((stat) => (
-          <div class="stat">
-            <dt>{stat.label}</dt>
-            <dd>{stat.value}</dd>
-          </div>
-        ))
-      }
+      {stats.items.map((stat) => (
+        <div class="stat">
+          <dt>{stat.label}</dt>
+          <dd>{stat.value}</dd>
+        </div>
+      ))}
     </dl>
   </div>
 </section>

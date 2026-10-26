@@ -22,50 +22,46 @@ const { commands, copyLabel, copiedLabel, outputLabel, controls, steps = false, 
   <div class:list={["shell", !steps && "narrow"]}>
     <header class="section-head">
       <h2>{commands.title}</h2>
-      {
-        commands.sub && (
-          <p class="sub">
-            <Prose text={commands.sub} />
-          </p>
-        )
-      }
+      {commands.sub && (
+        <p class="sub">
+          <Prose text={commands.sub} />
+        </p>
+      )}
     </header>
     <ol class="command-list" data-count={commands.items.length}>
-      {
-        commands.items.map((item, index) => (
-          <li class="command">
-            {steps && <span class="command-step">{index + 1}</span>}
-            <p class="command-comment">
-              <Prose text={item.comment} />
-            </p>
-            <div class="command-line">
-              <code class="command-code" tabindex="0" set:text={item.command} />
-              <button
-                class="copy-button"
-                type="button"
-                data-copy={item.command}
-                data-copy-label={copyLabel}
-                data-copied-label={copiedLabel}
-                hidden
-              >
-                {copyLabel}
-              </button>
-            </div>
-            {item.capturedOutput && item.replay && item.command !== replayInHero && (
-              <CommandReplay
-                item={{ ...item, capturedOutput: item.capturedOutput, replay: item.replay }}
-                controls={controls}
-              />
-            )}
-            {item.capturedOutput && !item.replay && (
-              <details class="command-output">
-                <summary>{outputLabel}</summary>
-                <pre tabindex="0" set:text={item.capturedOutput} />
-              </details>
-            )}
-          </li>
-        ))
-      }
+      {commands.items.map((item, index) => (
+        <li class="command">
+          {steps && <span class="command-step">{index + 1}</span>}
+          <p class="command-comment">
+            <Prose text={item.comment} />
+          </p>
+          <div class="command-line">
+            <code class="command-code" tabindex="0" set:text={item.command} />
+            <button
+              class="copy-button"
+              type="button"
+              data-copy={item.command}
+              data-copy-label={copyLabel}
+              data-copied-label={copiedLabel}
+              hidden
+            >
+              {copyLabel}
+            </button>
+          </div>
+          {item.capturedOutput && item.replay && item.command !== replayInHero && (
+            <CommandReplay
+              item={{ ...item, capturedOutput: item.capturedOutput, replay: item.replay }}
+              controls={controls}
+            />
+          )}
+          {item.capturedOutput && !item.replay && (
+            <details class="command-output">
+              <summary>{outputLabel}</summary>
+              <pre tabindex="0" set:text={item.capturedOutput} />
+            </details>
+          )}
+        </li>
+      ))}
     </ol>
   </div>
 </section>

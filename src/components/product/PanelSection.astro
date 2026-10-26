@@ -14,49 +14,47 @@ const { panel } = section;
   <div class="shell">
     <header class="section-head">
       <h2>{section.title}</h2>
-      <p class="sub"><Prose text={section.body} /></p>
+      <p class="sub">
+        <Prose text={section.body} />
+      </p>
     </header>
-    {
-      panel.kind === "purpose" && (
-        <div class="s3-purpose-panel" aria-label={panel.label}>
-          <div class="feature-grid s3-purpose-grid" data-count={panel.items.length}>
-            {panel.items.map((item) => (
-              <article class="feature-card">
-                <small class="feature-evidence">{item.label}</small>
-                <h3>{item.title}</h3>
-                <p>
-                  <Prose text={item.body} />
-                </p>
-              </article>
-            ))}
-          </div>
-          <p class="s3-purpose-boundary">
-            <strong>{panel.boundaryLabel}</strong>
-            <span>{panel.boundary}</span>
-          </p>
+    {panel.kind === "purpose" && (
+      <div class="s3-purpose-panel" aria-label={panel.label}>
+        <div class="feature-grid s3-purpose-grid" data-count={panel.items.length}>
+          {panel.items.map((item) => (
+            <article class="feature-card">
+              <small class="feature-evidence">{item.label}</small>
+              <h3>{item.title}</h3>
+              <p>
+                <Prose text={item.body} />
+              </p>
+            </article>
+          ))}
         </div>
-      )
-    }
-    {
-      panel.kind === "excerpt" && (
-        <div class="panel agent-evidence-panel" aria-label={panel.label}>
-          <div class="panel-top">
-            <span>{panel.eyebrow}</span>
-            <strong>{panel.title}</strong>
-          </div>
-          <div class="feature-grid agent-evidence-grid" data-count={panel.items.length}>
-            {panel.items.map((item) => (
-              <article class="feature-card">
-                <small class="feature-evidence">{item.label}</small>
-                <h3>{item.value}</h3>
-                <p>
-                  <Prose text={item.body} />
-                </p>
-              </article>
-            ))}
-          </div>
+        <p class="s3-purpose-boundary">
+          <strong>{panel.boundaryLabel}</strong>
+          <span>{panel.boundary}</span>
+        </p>
+      </div>
+    )}
+    {panel.kind === "excerpt" && (
+      <div class="panel agent-evidence-panel" aria-label={panel.label}>
+        <div class="panel-top">
+          <span>{panel.eyebrow}</span>
+          <strong>{panel.title}</strong>
         </div>
-      )
-    }
+        <div class="feature-grid agent-evidence-grid" data-count={panel.items.length}>
+          {panel.items.map((item) => (
+            <article class="feature-card">
+              <small class="feature-evidence">{item.label}</small>
+              <h3>{item.value}</h3>
+              <p>
+                <Prose text={item.body} />
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 </section>
