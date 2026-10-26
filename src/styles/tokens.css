@@ -149,6 +149,8 @@
   --ink-httpmon: #127499;
   --tint-pagewise: #5868d8;
   --ink-pagewise: #5061d6;
+  --tint-paper-sudoku: #d97a5e;
+  --ink-paper-sudoku: #a8442f;
   --tint-pulse: #34c759;
   --ink-pulse: #207936;
   --tint-readout: #6fa4ff;
@@ -175,6 +177,7 @@
   --fill-goban: #945f2b;
   --fill-httpmon: #127499;
   --fill-pagewise: #5061d6;
+  --fill-paper-sudoku: #a8442f;
   --fill-pulse: #207936;
   --fill-readout: #2a64cc;
   --fill-s3-turbo-list: #ad5207;
@@ -220,6 +223,8 @@ html:lang(zh) {
   --ink-httpmon: #38b8e8;
   --tint-pagewise: #5868d8;
   --ink-pagewise: #7582df;
+  --tint-paper-sudoku: #d98a6e;
+  --ink-paper-sudoku: #d98a6e;
   --tint-pulse: #34c759;
   --ink-pulse: #34c759;
   --tint-readout: #6fa4ff;
@@ -293,6 +298,8 @@ html:lang(zh) {
     --ink-httpmon: #38b8e8;
     --tint-pagewise: #5868d8;
     --ink-pagewise: #7582df;
+    --tint-paper-sudoku: #d98a6e;
+    --ink-paper-sudoku: #d98a6e;
     --tint-pulse: #34c759;
     --ink-pulse: #34c759;
     --tint-readout: #6fa4ff;
@@ -392,6 +399,11 @@ body[data-product="pagewise"] {
   --product-tint: var(--tint-pagewise);
   --product-ink: var(--ink-pagewise);
   --product-fill: var(--fill-pagewise);
+}
+body[data-product="paper-sudoku"] {
+  --product-tint: var(--tint-paper-sudoku);
+  --product-ink: var(--ink-paper-sudoku);
+  --product-fill: var(--fill-paper-sudoku);
 }
 body[data-product="pulse"] {
   --product-tint: var(--tint-pulse);

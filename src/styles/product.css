@@ -995,6 +995,22 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
   margin: 0;
 }
 
+/* Phone captures: the picture at phone size beside the text. */
+.product-screenshot-showcase[data-portrait] .shell,
+.product-screenshot-showcase[data-portrait][data-flip] .shell {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  justify-content: center;
+}
+
+.product-screenshot-showcase[data-portrait][data-flip] .shell {
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+}
+
+.product-screenshot-showcase[data-portrait] :is(.show-shot, .show-figure) {
+  width: 100%;
+  max-width: 320px;
+}
+
 /* Tool commands as numbered steps, side by side. */
 .commands-section[data-layout="steps"] .command-list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1128,6 +1144,11 @@ body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .f
 
   .product-screenshot-showcase[data-layout="row"][data-flip] .section-head {
     order: 0;
+  }
+
+  .product-screenshot-showcase[data-portrait] :is(.show-shot, .show-figure) {
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   .hero-split .hero-visual-frame {

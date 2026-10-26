@@ -1,0 +1,90 @@
+---
+import SiteLayout from "../../../../layouts/SiteLayout.astro";
+import { buildSeo, languageLink } from "../../../../lib/pages";
+
+// 译自应用仓库的 PRIVACY.md（更新于 2026-10-24，版本 8.0）。
+const path = "/zh/paper-sudoku/privacy/";
+const alternatePath = "/paper-sudoku/privacy/";
+const seo = buildSeo({
+  title: "纸上数独隐私政策 - Titpea",
+  description: "纸上数独隐私政策。对局只存在你的设备上：不申请联网权限，没有账号、广告或统计分析。",
+  path,
+  alternatePath,
+  locale: "zh",
+  ogImage: "/assets/og-paper-sudoku.png",
+});
+---
+
+<SiteLayout seo={seo} current="paper-sudoku" locale="zh" language={languageLink("zh", alternatePath)}>
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow">
+        <a href="/zh/paper-sudoku/">纸上数独</a>
+      </p>
+      <h1>隐私政策</h1>
+      <p class="privacy-updated">更新日期：2026 年 10 月 24 日（版本 8.0）</p>
+      <p class="lead">
+        纸上数独是一款离线益智游戏。它不需要账号，不含广告和统计分析，也不申请 <code>INTERNET</code> 联网权限。
+      </p>
+    </header>
+
+    <div class="privacy-content prose">
+      <section>
+        <h2>存在你设备上的数据</h2>
+        <p>应用只保存在本地运行游戏所需的数据：</p>
+        <ul>
+          <li>
+            你的对局（盘面、笔记、撤销记录、按顺序写下的数字、用时、教练帮了多少），包括你输入的题目，存在本地 Room
+            数据库里；
+          </li>
+          <li>做完的题目的结果（模式、难度、用时、是否用了教练、日期），供数独本显示；</li>
+          <li>
+            设置（主题、整理笔记、你遇到过的技巧、每种技巧你自己用它做了几页及时间、是否已写下第一个数字），存在 Android
+            DataStore 里。
+          </li>
+        </ul>
+        <p>桌面小组件从同一个本地数据库读取今天这一页。</p>
+        <p>
+          应用不能访问网络，没有服务器、统计分析 SDK、广告 SDK 或第三方追踪。如果你使用 Android
+          自带的备份或设备间迁移，系统可能会把上述数据库和设置放进你的备份，存于你的 Google 账号下并由 Android
+          备份加密；开发者无法访问。你可以在 Android 设置里关闭。
+        </p>
+        <p>
+          分享结果时，只把分享面板里你看到的文字发给你选的应用。打印使用 Android 的打印服务，以及你选的打印机或“另存为
+          PDF”。
+        </p>
+      </section>
+      <section>
+        <h2>权限与共享</h2>
+        <p>
+          应用不申请网络、位置、通讯录、相机、麦克风、通知或广告相关权限。它只向 Android 申请一项权限，由 AndroidX
+          添加：
+        </p>
+        <ul>
+          <li>
+            <code>com.titpea.papersudoku.<wbr />DYNAMIC_RECEIVER_<wbr />NOT_EXPORTED_<wbr />PERMISSION</code
+            >：应用为自己定义的权限（由 androidx.core 添加），确保只有应用自己能向其内部接收器发消息。
+          </li>
+        </ul>
+        <p>小组件在午夜刚过时的重绘是普通闹钟，不需要权限。</p>
+        <p>
+          这项权限不能访问任何数据。应用不运行前台服务。应用一旦申请其他权限，构建检查就会失败。应用不与第三方共享数据。
+        </p>
+      </section>
+      <section>
+        <h2>儿童</h2>
+        <p>应用不会有意收集任何人的个人信息，包括儿童。</p>
+      </section>
+      <section>
+        <h2>变更</h2>
+        <p>如果将来的版本加入会改变本政策的功能，本政策和 Play 商店的数据安全声明会在该版本发布前更新。</p>
+      </section>
+      <section>
+        <h2>联系方式</h2>
+        <p>
+          隐私相关问题，请发邮件至 <a href="mailto:info@titpea.com">info@titpea.com</a>。
+        </p>
+      </section>
+    </div>
+  </article>
+</SiteLayout>

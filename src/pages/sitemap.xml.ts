@@ -47,6 +47,22 @@ export function GET() {
         xDefault: "https://titpea.com/douban-movie-rating/privacy/",
       },
     },
+    {
+      canonicalUrl: "https://titpea.com/paper-sudoku/privacy/",
+      alternates: {
+        en: "https://titpea.com/paper-sudoku/privacy/",
+        zh: "https://titpea.com/zh/paper-sudoku/privacy/",
+        xDefault: "https://titpea.com/paper-sudoku/privacy/",
+      },
+    },
+    {
+      canonicalUrl: "https://titpea.com/zh/paper-sudoku/privacy/",
+      alternates: {
+        en: "https://titpea.com/paper-sudoku/privacy/",
+        zh: "https://titpea.com/zh/paper-sudoku/privacy/",
+        xDefault: "https://titpea.com/paper-sudoku/privacy/",
+      },
+    },
   ];
   const urls = [
     ...allPages.map((model) => ({ ...model.seo, lastmod: lastmodFor(model) })),

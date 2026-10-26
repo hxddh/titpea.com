@@ -12,13 +12,17 @@ interface Props {
   flip?: boolean;
 }
 
-const { showcase, pauseLabel, playLabel, row = false, flip = false } = Astro.props;
+const { showcase, pauseLabel, playLabel, flip = false } = Astro.props;
+// A phone capture (taller than wide) always sits beside its text, at phone size.
+const portrait = showcase.height > showcase.width;
+const row = Astro.props.row || portrait;
 ---
 
 <section
   class="product-section product-screenshot-showcase"
   data-layout={row ? "row" : undefined}
   data-flip={row && flip ? "" : undefined}
+  data-portrait={portrait ? "" : undefined}
 >
   <div class="shell">
     <header class="section-head compact">
