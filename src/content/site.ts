@@ -137,6 +137,8 @@ type Ui = {
   releasesDescription: string;
   releasesHeadline: string;
   releasesLead: string;
+  /** Before a product's earlier releases (tag and date) under its latest one. */
+  releasesEarlier: string;
   /** Products without GitHub releases: the Chrome extensions, and source-only tools. */
   releasesUndatedTitle: string;
   releasesUndatedSub: string;
@@ -298,6 +300,7 @@ export const ui: Record<Locale, Ui> = {
       "The latest release of every Titpea tool, newest first: the tag, the date, what changed, and a link to the full notes.",
     releasesHeadline: "What shipped, and when.",
     releasesLead: "The latest version of each tool, newest first.",
+    releasesEarlier: "Earlier",
     releasesUndatedTitle: "Without GitHub releases.",
     releasesUndatedSub:
       "Chrome extensions update through the Chrome Web Store, StorageOps installs from PyPI, and Paper Sudoku is not in a store yet. Versions are the ones on their pages.",
@@ -453,6 +456,7 @@ export const ui: Record<Locale, Ui> = {
     releasesDescription: "Titpea 每个工具的最新发布，最新的在前：版本、日期、更新了什么，以及完整发布说明的链接。",
     releasesHeadline: "最近发布了什么",
     releasesLead: "每个工具的最新版本，最新的在前。",
+    releasesEarlier: "更早",
     releasesUndatedTitle: "没有 GitHub 发布的工具",
     releasesUndatedSub:
       "Chrome 扩展通过 Chrome 网上应用店更新，StorageOps 从 PyPI 安装，纸上数独还未上架应用商店。版本号以各自页面为准。",

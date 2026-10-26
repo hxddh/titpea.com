@@ -2,53 +2,11 @@
 // use. A product with a screenshot gets a split card: icon, name, headline,
 // and catalog line on the left, the screenshot bleeding off the right edge.
 // Other products get a centered card with their icon when they have one;
-// Home shows the row of app icons. `npm run assets:og [slug ...]` rewrites them.
+// Home shows the row of app icons. `npm run assets:og [slug ...]` rewrites them
+// and records their input fingerprints in design/og-manifest.json (og-cards.ts).
 import fs from "node:fs/promises";
 import sharp from "sharp";
-import { products } from "../src/content/products/index.ts";
-import { site, ui } from "../src/content/site.ts";
-import { featuredSrc, type Product } from "../src/content/schema.ts";
-
-type Card = {
-  file: string;
-  eyebrow: string;
-  title: string;
-  body: string;
-  icons?: string[];
-  screenshot?: string;
-};
-
-const heroScreenshot = (product: Product) => {
-  const visual = product.en.visual;
-  if (visual.kind === "screenshot") return visual.image.src;
-  if (visual.kind === "clockScreenshots") return visual.images[0]?.src;
-  return (product.featured && featuredSrc(product.featured, "en")) ?? product.en.showcases?.[0]?.src;
-};
-
-export const cards: Card[] = [
-  {
-    file: site.og.home,
-    eyebrow: site.brand,
-    title: ui.en.homeTitle,
-    body: ui.en.homeLead,
-    icons: products.flatMap((product) => (product.icon ? [product.icon] : [])),
-  },
-  {
-    file: site.og.about,
-    eyebrow: ui.en.aboutEyebrow,
-    title: ui.en.aboutHeadline.replace("{count}", String(products.length)),
-    body: ui.en.aboutLead,
-    icons: products.flatMap((product) => (product.icon ? [product.icon] : [])),
-  },
-  ...products.map((product) => ({
-    file: product.og,
-    eyebrow: product.en.title,
-    title: product.en.headline,
-    body: product.en.catalog.text,
-    icons: product.icon ? [product.icon] : undefined,
-    screenshot: heroScreenshot(product),
-  })),
-];
+import { cards, ogFingerprint, ogManifestPath, readOgManifest, type Card } from "./og-cards.ts";
 
 const escape = (value: string) =>
   value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
@@ -173,11 +131,20 @@ export const renderOg = (card: Card) => (card.screenshot ? splitCard(card) : cen
 
 const requested = new Set(process.argv.slice(2));
 const selected =
-  requested.size > 0 ? cards.filter((card) => [...requested].some((name) => card.file.includes(name))) : cards;
+  requested.size > 0
+    ? cards.filter((card) => [...requested].some((name) => card.name === name || card.file.includes(name)))
+    : cards;
+const manifest = readOgManifest();
 for (const card of selected) {
   const png = await sharp(await renderOg(card))
     .png({ compressionLevel: 9 })
     .toBuffer();
   await fs.writeFile(new URL(`../public${card.file}`, import.meta.url), png);
+  manifest[card.file] = ogFingerprint(card);
   console.log(`generated ${card.file}`);
 }
+// Keyed by image file, in site order; npm run check compares it with the cards.
+const ordered = Object.fromEntries(
+  cards.filter((card) => manifest[card.file]).map((card) => [card.file, manifest[card.file]]),
+);
+await fs.writeFile(ogManifestPath, `${JSON.stringify(ordered, null, 2)}\n`);

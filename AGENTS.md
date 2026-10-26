@@ -24,11 +24,11 @@ Settled design decisions in DESIGN.md (for example the studio home) are the owne
 
 ### Add a product
 
-1. Copy the closest `src/content/products/<slug>.ts` and rewrite both locales. Keep the section ids identical across locales.
-2. Import it in `src/content/products/index.ts` where it belongs in site order.
+1. `npm run new:product <slug> -- --type <cli|pi|actions|desktop|mac|extension|game|experiment> --line <storage|agents|everyday|games>` writes `src/content/products/<slug>.ts` from a template, adds it to `src/content/products/index.ts` after the last product of its line, and adds placeholder colours to `tokens.css`. Every placeholder is marked `TODO(new-product)`, and `npm run check` fails while one is left.
+2. Write both locales (the closest existing product is the best model; keep the section ids identical across locales) and sample the colours from the icon.
 3. If it ships GitHub releases, set `repo` and add an entry to `releases.json` (`npm run releases:sync` fills the tag), and write `{version}` in its meta line.
 4. Give it an icon: official artwork as `design/icons/<slug>-official.png`, or a site-designed `design/icons/<slug>.svg` (see `design/icons/README.md`), then `npm run assets:icons`.
-5. `npm run assets:og <slug>` renders its share image.
+5. `npm run assets:og <slug>` renders its share image and records its inputs in `design/og-manifest.json`; `npm run check` fails when a product's title, headline, catalog line, icon or hero screenshot changes without a redraw.
 6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
 
 New or changed Chinese headings may need characters the Chinese display font lacks: `npm run build && npm run assets:fonts && npm run build` recuts it (`check:dist` names any missing character).

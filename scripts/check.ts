@@ -10,6 +10,8 @@ import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
 import { copyIssues, enCopyIssues } from "./copy-rules.mjs";
+import { cards as ogCards, ogFingerprint, readOgManifest } from "./og-cards.ts";
+import { MARKER as scaffoldMarker } from "./new-product.mjs";
 
 const failures: string[] = [];
 const fail = (message: string) => failures.push(message);
@@ -65,12 +67,31 @@ for (const [id, members] of Object.entries(familyMembers)) {
 
 /* ---------- Releases ---------- */
 
-const releaseTags = releases as Record<string, { repo: string; version: string }>;
+const releaseTags = releases as Record<
+  string,
+  { repo: string; version: string; history?: Array<{ version: string; published: string; title: string }> }
+>;
 for (const [slug, entry] of Object.entries(releaseTags)) {
   const product = products.find((item) => item.slug === slug);
   if (!product) fail(`releases.json: ${slug} is not a product`);
   else if (product.repo !== entry.repo)
     fail(`releases.json: ${slug} repo ${entry.repo} differs from product ${product.repo}`);
+  // History (sync-releases.mjs): at most five releases, newest first, the latest among them.
+  const history = entry.history ?? [];
+  if (history.length > 5) fail(`releases.json: ${slug} history has ${history.length} releases (max 5)`);
+  for (const [index, item] of history.entries()) {
+    if (!/^v?\d+\.\d+/.test(item.version)) fail(`releases.json: ${slug} history tag "${item.version}" is not a tag`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.published))
+      fail(`releases.json: ${slug} history ${item.version} date "${item.published}" is not YYYY-MM-DD`);
+    if (typeof item.title !== "string") fail(`releases.json: ${slug} history ${item.version} has no title string`);
+    const newer = history[index - 1];
+    if (newer && newer.published < item.published)
+      fail(`releases.json: ${slug} history is not newest first (${newer.version} before ${item.version})`);
+  }
+  if (new Set(history.map((item) => item.version)).size !== history.length)
+    fail(`releases.json: ${slug} history lists a tag twice`);
+  if (history.length > 0 && !history.some((item) => item.version === entry.version))
+    fail(`releases.json: ${slug} history does not include the latest release ${entry.version}`);
 }
 for (const product of products) {
   const usesVersion = JSON.stringify(product).includes("{version}");
@@ -292,6 +313,17 @@ for (const product of products) {
   }
 }
 
+/* ---------- Scaffold placeholders ---------- */
+
+// npm run new:product marks every placeholder; none may ship.
+for (const file of [
+  ...fs.readdirSync("src/content/products").map((name) => `src/content/products/${name}`),
+  "src/styles/tokens.css",
+]) {
+  const count = read(file).split(scaffoldMarker).length - 1;
+  if (count > 0) fail(`${file}: ${count} ${scaffoldMarker} placeholder(s) left from npm run new:product`);
+}
+
 /* ---------- Share images ---------- */
 
 for (const image of new Set(siteRoutes.map((route) => route.ogImage))) {
@@ -359,6 +391,16 @@ for (const product of products) {
       fail(`${ref.at}: ${ref.src} is declared ${ref.width}×${ref.height} but the file is ${meta.width}×${meta.height}`);
     }
   }
+}
+
+/* ---------- Share images ---------- */
+
+// Every share image was drawn from the inputs it shows now (og-cards.ts):
+// a changed headline, catalog line, icon or hero screenshot needs a redraw.
+const ogManifest = readOgManifest();
+for (const card of ogCards) {
+  if (ogManifest[card.file] !== ogFingerprint(card))
+    fail(`${card.file}: share image is stale or unrecorded; run npm run assets:og ${card.name}`);
 }
 
 /* ---------- Provenance ---------- */

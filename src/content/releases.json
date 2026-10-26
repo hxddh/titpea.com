@@ -2,56 +2,353 @@
   "s3-turbo-list": {
     "repo": "hxddh/s3-turbo-list",
     "version": "v0.39.0",
-    "published": "2026-09-30"
+    "published": "2026-09-30",
+    "history": [
+      {
+        "version": "v0.39.0",
+        "published": "2026-09-30",
+        "title": ""
+      },
+      {
+        "version": "v0.38.0",
+        "published": "2026-09-30",
+        "title": ""
+      },
+      {
+        "version": "v0.37.0",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v0.36.0",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v0.35.1",
+        "published": "2026-09-29",
+        "title": ""
+      }
+    ]
   },
   "storage-agent-workbench": {
     "repo": "hxddh/storage-agent-workbench",
     "version": "v25.0.0",
-    "published": "2026-10-25"
+    "published": "2026-10-25",
+    "history": [
+      {
+        "version": "v25.0.0",
+        "published": "2026-10-25",
+        "title": ""
+      },
+      {
+        "version": "v24.0.0",
+        "published": "2026-10-25",
+        "title": ""
+      },
+      {
+        "version": "v23.0.1",
+        "published": "2026-10-25",
+        "title": ""
+      },
+      {
+        "version": "v23.0.0",
+        "published": "2026-10-25",
+        "title": ""
+      },
+      {
+        "version": "v22.0.0",
+        "published": "2026-10-24",
+        "title": ""
+      }
+    ]
   },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
     "version": "v1.4.1",
-    "published": "2026-09-29"
+    "published": "2026-09-29",
+    "history": [
+      {
+        "version": "v1.4.1",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v1.4.0",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v1.3.0",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v1.2.2",
+        "published": "2026-09-29",
+        "title": ""
+      },
+      {
+        "version": "v1.2.1",
+        "published": "2026-08-04",
+        "title": ""
+      }
+    ]
   },
   "celagent": {
     "repo": "hxddh/celagent",
     "version": "v0.4.3",
-    "published": "2026-08-26"
+    "published": "2026-08-26",
+    "history": [
+      {
+        "version": "v0.4.3",
+        "published": "2026-08-26",
+        "title": ""
+      },
+      {
+        "version": "v0.4.2",
+        "published": "2026-08-21",
+        "title": ""
+      },
+      {
+        "version": "v0.4.1",
+        "published": "2026-08-19",
+        "title": ""
+      },
+      {
+        "version": "v0.4.0",
+        "published": "2026-08-19",
+        "title": ""
+      },
+      {
+        "version": "v0.3.7",
+        "published": "2026-08-19",
+        "title": ""
+      }
+    ]
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
     "version": "v24.0.0",
-    "published": "2026-10-18"
+    "published": "2026-10-18",
+    "history": [
+      {
+        "version": "v24.0.0",
+        "published": "2026-10-18",
+        "title": ""
+      },
+      {
+        "version": "v23.0.0",
+        "published": "2026-10-15",
+        "title": ""
+      },
+      {
+        "version": "v21.1.2",
+        "published": "2026-10-15",
+        "title": ""
+      },
+      {
+        "version": "v21.1.1",
+        "published": "2026-10-15",
+        "title": ""
+      },
+      {
+        "version": "v21.1.0",
+        "published": "2026-10-15",
+        "title": ""
+      }
+    ]
   },
   "pulse": {
     "repo": "hxddh/Pulse",
     "version": "v33.0.0",
-    "published": "2026-10-21"
+    "published": "2026-10-21",
+    "history": [
+      {
+        "version": "v33.0.0",
+        "published": "2026-10-21",
+        "title": ""
+      },
+      {
+        "version": "v32.0.0",
+        "published": "2026-10-18",
+        "title": ""
+      },
+      {
+        "version": "v31.0.0",
+        "published": "2026-10-17",
+        "title": ""
+      },
+      {
+        "version": "v30.0.0",
+        "published": "2026-10-14",
+        "title": ""
+      },
+      {
+        "version": "v29.0.1",
+        "published": "2026-10-07",
+        "title": ""
+      }
+    ]
   },
   "readout": {
     "repo": "hxddh/readout",
     "version": "v3.9.1",
-    "published": "2026-10-23"
+    "published": "2026-10-23",
+    "history": [
+      {
+        "version": "v3.9.1",
+        "published": "2026-10-23",
+        "title": ""
+      },
+      {
+        "version": "v3.9.0",
+        "published": "2026-10-21",
+        "title": ""
+      },
+      {
+        "version": "v3.8.0",
+        "published": "2026-10-19",
+        "title": ""
+      },
+      {
+        "version": "v3.7.0",
+        "published": "2026-10-18",
+        "title": ""
+      },
+      {
+        "version": "v3.6.0",
+        "published": "2026-10-15",
+        "title": ""
+      }
+    ]
   },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
     "version": "v0.26.3",
-    "published": "2026-10-07"
+    "published": "2026-10-07",
+    "history": [
+      {
+        "version": "v0.26.3",
+        "published": "2026-10-07",
+        "title": ""
+      },
+      {
+        "version": "v0.26.2",
+        "published": "2026-10-07",
+        "title": ""
+      },
+      {
+        "version": "v0.26.1",
+        "published": "2026-10-02",
+        "title": ""
+      },
+      {
+        "version": "v0.26.0",
+        "published": "2026-09-30",
+        "title": ""
+      },
+      {
+        "version": "v0.25.1",
+        "published": "2026-09-30",
+        "title": ""
+      }
+    ]
   },
   "goban": {
     "repo": "hxddh/goban",
     "version": "v3.2.0",
-    "published": "2026-10-18"
+    "published": "2026-10-18",
+    "history": [
+      {
+        "version": "v3.2.0",
+        "published": "2026-10-18",
+        "title": ""
+      },
+      {
+        "version": "v3.1.0",
+        "published": "2026-10-17",
+        "title": ""
+      },
+      {
+        "version": "v3.0.0",
+        "published": "2026-10-14",
+        "title": ""
+      },
+      {
+        "version": "v2.1.0",
+        "published": "2026-10-10",
+        "title": ""
+      },
+      {
+        "version": "v2.0.0",
+        "published": "2026-10-10",
+        "title": ""
+      }
+    ]
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
     "version": "v14.0.0",
-    "published": "2026-10-17"
+    "published": "2026-10-17",
+    "history": [
+      {
+        "version": "v14.0.0",
+        "published": "2026-10-17",
+        "title": ""
+      },
+      {
+        "version": "v13.0.0",
+        "published": "2026-10-16",
+        "title": ""
+      },
+      {
+        "version": "v12.0.0",
+        "published": "2026-10-14",
+        "title": ""
+      },
+      {
+        "version": "v11.0.0",
+        "published": "2026-10-11",
+        "title": ""
+      },
+      {
+        "version": "v10.1.0",
+        "published": "2026-10-10",
+        "title": ""
+      }
+    ]
   },
   "world-machine": {
     "repo": "hxddh/world-machine",
     "version": "v0.30.0",
-    "published": "2026-10-16"
+    "published": "2026-10-16",
+    "history": [
+      {
+        "version": "v0.30.0",
+        "published": "2026-10-16",
+        "title": ""
+      },
+      {
+        "version": "v0.29.0",
+        "published": "2026-10-10",
+        "title": ""
+      },
+      {
+        "version": "v0.28.0",
+        "published": "2026-10-08",
+        "title": ""
+      },
+      {
+        "version": "v0.27.0",
+        "published": "2026-10-07",
+        "title": ""
+      },
+      {
+        "version": "v0.26.1",
+        "published": "2026-10-01",
+        "title": ""
+      }
+    ]
   }
 }
