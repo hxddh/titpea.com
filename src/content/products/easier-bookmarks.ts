@@ -40,7 +40,7 @@ export default defineProduct({
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome Web Store · Productivity · 2.0.0 · No external servers",
+    meta: "Chrome Web Store · Productivity · 3.0.0 · No external servers",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -60,7 +60,10 @@ export default defineProduct({
         label: "Your folders stay as they are.",
         items: [
           { title: "In the address bar", body: "Type `b`, a space, a few letters; Enter opens the best match." },
-          { title: "Search as you type", body: "Titles, links, folders, even pinyin initials. Recent ones first." },
+          {
+            title: "Search as you type",
+            body: "Titles, links, folders; accents, full pinyin, even one typo.",
+          },
           {
             title: "Save in one click",
             body: "Filed with that site’s other bookmarks, or the folder you last picked.",
@@ -128,7 +131,7 @@ export default defineProduct({
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome 网上应用店 · 效率 · 2.0.0 · 无外部服务器",
+    meta: "Chrome 网上应用店 · 效率 · 3.0.0 · 无外部服务器",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -148,7 +151,10 @@ export default defineProduct({
         label: "文件夹保持原样",
         items: [
           { title: "地址栏直接搜", body: "输入 `b` 加空格再打几个字，回车打开最匹配的书签。" },
-          { title: "边输入边找到", body: "标题、网址、文件夹一起搜，支持拼音首字母，最近打开的在前。" },
+          {
+            title: "边输入边找到",
+            body: "搜标题、网址、文件夹，认全拼、简繁和一处错字。",
+          },
           { title: "一键收藏", body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。" },
           { title: "认得当前页", body: "已收藏时星标变实心，点它编辑，不会重复添加。" },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
