@@ -9,6 +9,7 @@ import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import * as prettier from "prettier";
 import { highlightsFrom, summaryFrom } from "./release-notes.mjs";
+import { withLatest } from "./release-history.mjs";
 
 const file = new URL("../src/content/releases.json", import.meta.url);
 const releases = JSON.parse(fs.readFileSync(file, "utf8"));
@@ -54,11 +55,13 @@ for (const [slug, entry] of Object.entries(releases)) {
     };
     // Keep the committed highlights when a release body yields nothing new.
     const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
-    // A failed listing keeps the committed history; the latest tag still updates.
-    const history = await historyOf(entry.repo).catch((error) => {
+    // A failed listing keeps the committed history; the latest tag still updates,
+    // so it is merged in: the history always contains the latest release.
+    const listed = await historyOf(entry.repo).catch((error) => {
       problems.push(`${slug} (${entry.repo}): ${error.message}`);
       return entry.history ?? [];
     });
+    const history = withLatest(listed, { version: tag, published, title: (name ?? "").trim() }, historyLength);
     if (JSON.stringify(history) !== JSON.stringify(entry.history ?? [])) {
       if (history.length > 0) entry.history = history;
       else delete entry.history;
