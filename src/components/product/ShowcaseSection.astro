@@ -4,24 +4,23 @@ import type { Showcase } from "../../content/schema";
 import { screenshotSizes, srcsetFor } from "../../lib/images";
 
 interface Props {
+  /** Put the picture on the left (showcases alternate sides). */
+  flip?: boolean;
   showcase: Showcase;
   pauseLabel: string;
   playLabel: string;
-  /** App and extension pages: text beside the picture, alternating sides with `flip`. */
-  row?: boolean;
-  flip?: boolean;
 }
 
 const { showcase, pauseLabel, playLabel, flip = false } = Astro.props;
-// A phone capture (taller than wide) always sits beside its text, at phone size.
+// The text sits beside the picture on desktop; a phone capture (taller than
+// wide) stays beside its text on phones too, at phone size.
 const portrait = showcase.height > showcase.width;
-const row = Astro.props.row || portrait;
 ---
 
 <section
   class="product-section product-screenshot-showcase"
-  data-layout={row ? "row" : undefined}
-  data-flip={row && flip ? "" : undefined}
+  data-layout="row"
+  data-flip={flip ? "" : undefined}
   data-portrait={portrait ? "" : undefined}
 >
   <div class="shell">

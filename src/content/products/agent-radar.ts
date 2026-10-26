@@ -60,49 +60,16 @@ export default defineProduct({
     },
     sections: [
       {
-        kind: "panel",
-        id: "inside",
+        kind: "cards",
+        id: "features",
         nav: "Research loop",
-        kicker: "One research loop",
-        title: "One model screens, then drafts.",
-        body: "Markdown files hold the research. Checks run before each commit, and gaps are labeled.",
-        panel: {
-          kind: "excerpt",
-          label: "radar.md excerpt",
-          eyebrow: "Quoted from radar.md · 2026-09-23",
-          title: "radar.md · main",
-          items: [
-            {
-              label: "Current thesis",
-              value: "Thesis 2",
-              body: "Coding agents are becoming the first high-frequency adoption path.",
-            },
-            {
-              label: "Changed",
-              value: "2026-08-21",
-              body: "Added signal: Cloudflare — MCP security updates (network detection, WriteGuard). … Evidence: Strong (official blog).",
-            },
-            {
-              label: "Open questions",
-              value: "MCP",
-              body: "Will MCP become the default tool integration layer? …",
-            },
-          ],
-        },
-      },
-      {
-        kind: "flow",
-        id: "evidence",
-        ordered: false,
-        nav: "What it keeps",
-        kicker: "Auditable state",
-        title: "Four files, fixed write bounds.",
-        body: "The runner updates only these, and each change stays reviewable in Git history.",
-        steps: [
-          { label: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
-          { label: "Watchlist", body: "Mainstream and emerging agents, sourcing graded Strong to None." },
-          { label: "Field notes", body: "Real workflows and reusable patterns." },
-          { label: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
+        label: "One model screens, then drafts.",
+        items: [
+          { title: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
+          { title: "Watchlist", body: "Mainstream and emerging agents, sourcing graded Strong to None." },
+          { title: "Field notes", body: "Real workflows and reusable patterns." },
+          { title: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
+          { title: "Checks before commit", body: "Gaps are labeled; every change is reviewable in Git history." },
         ],
       },
       {
@@ -186,49 +153,16 @@ export default defineProduct({
     },
     sections: [
       {
-        kind: "panel",
-        id: "inside",
+        kind: "cards",
+        id: "features",
         nav: "研究循环",
-        kicker: "一条研究循环",
-        title: "同一模型先筛来源，再起草",
-        body: "Markdown 文件保存研究内容。提交前运行校验，未通过的部分在报告里标明。",
-        panel: {
-          kind: "excerpt",
-          label: "radar.md 摘录",
-          eyebrow: "radar.md 原文摘录（英文）· 2026-09-23",
-          title: "radar.md · main",
-          items: [
-            {
-              label: "当前判断",
-              value: "Thesis 2",
-              body: "Coding agents are becoming the first high-frequency adoption path.",
-            },
-            {
-              label: "已变化",
-              value: "2026-08-21",
-              body: "Added signal: Cloudflare — MCP security updates (network detection, WriteGuard). … Evidence: Strong (official blog).",
-            },
-            {
-              label: "开放问题",
-              value: "MCP",
-              body: "Will MCP become the default tool integration layer? …",
-            },
-          ],
-        },
-      },
-      {
-        kind: "flow",
-        id: "evidence",
-        ordered: false,
-        nav: "留存内容",
-        kicker: "可审计状态",
-        title: "四类文件，写入有边界",
-        body: "Runner 只更新这四类文件，每次变化都能在 Git 历史里核对。",
-        steps: [
-          { label: "每周论点", body: "当前判断、已变化点和开放问题。" },
-          { label: "观察名单", body: "主流与新兴 Agent，来源强度分 Strong 到 None。" },
-          { label: "现场笔记", body: "真实工作流和可复用模式。" },
-          { label: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
+        label: "同一模型先筛来源，再起草",
+        items: [
+          { title: "每周论点", body: "当前判断、已变化点和开放问题。" },
+          { title: "观察名单", body: "主流与新兴 Agent，来源强度分 Strong 到 None。" },
+          { title: "现场笔记", body: "真实工作流和可复用模式。" },
+          { title: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
+          { title: "提交前校验", body: "缺口在报告里标明；每次变化都能在 Git 历史里核对。" },
         ],
       },
       {

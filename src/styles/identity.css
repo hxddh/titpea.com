@@ -102,7 +102,7 @@
   }
 
   /* Games: a book face for the display lines. */
-  body[data-line="games"] :is(.product-hero h1, .section-head h2, #stats-title, .final-cta-name) {
+  body[data-line="games"] :is(.product-hero h1, .section-head h2, .final-cta-name) {
     font-family: var(--display);
     font-weight: 600;
     letter-spacing: -0.012em;

@@ -77,22 +77,9 @@ export default defineProduct({
           { title: "Request and response", body: "Method, URL, headers, status, timing; decoded for display only." },
           { title: "WebSocket too", body: "`wss://` and `ws://` frames, spliced in both directions." },
           { title: "HTTP/2 and gRPC", body: "Trailers carried through; gRPC status decoded." },
-        ],
-      },
-      {
-        kind: "flow",
-        id: "how",
-        nav: "How it works",
-        kicker: "One command, one local layer",
-        title: "Only the wrapped process is configured.",
-        body: "A local MITM proxy gives its address and a temporary CA to one child process.",
-        steps: [
-          {
-            label: "Start locally",
-            body: "Put `httpmon` before a proxy-aware command. It listens on `127.0.0.1` only; no system proxy changes.",
-          },
-          { label: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
-          { label: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
+          { title: "Start locally", body: "Listens on `127.0.0.1` only; no system proxy changes." },
+          { title: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
+          { title: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
         ],
       },
       {
@@ -200,19 +187,9 @@ export default defineProduct({
           { title: "请求和响应", body: "方法、URL、头、状态码、耗时；解压只为显示。" },
           { title: "也看 WebSocket", body: "`wss://` 和 `ws://` 的帧双向转发。" },
           { title: "HTTP/2 与 gRPC", body: "透传 trailers，解出 gRPC 状态。" },
-        ],
-      },
-      {
-        kind: "flow",
-        id: "how",
-        nav: "工作方式",
-        kicker: "一条命令，一层本地观察",
-        title: "只配置被包住的进程",
-        body: "本地 MITM 代理把地址和临时 CA 交给一个子进程。",
-        steps: [
-          { label: "本地启动", body: "在支持代理的命令前加 `httpmon`。只监听 `127.0.0.1`，系统代理不变。" },
-          { label: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
-          { label: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
+          { title: "本地启动", body: "只监听 `127.0.0.1`，系统代理不变。" },
+          { title: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
+          { title: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
         ],
       },
       {

@@ -8,20 +8,16 @@ import { products } from "../content/products";
 import { templateOf } from "../content/schema";
 import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
-import CasesSection from "./product/CasesSection.astro";
 import CommandReplay from "./product/CommandReplay.astro";
 import CommandsSection from "./product/CommandsSection.astro";
 import DataSection from "./product/DataSection.astro";
 import DemoSection from "./product/DemoSection.astro";
 import FamilyBand from "./product/FamilyBand.astro";
 import FaqSection from "./product/FaqSection.astro";
-import FlowSection from "./product/FlowSection.astro";
 import LocalNav from "./product/LocalNav.astro";
-import PanelSection from "./product/PanelSection.astro";
 import PermissionBox from "./product/PermissionBox.astro";
 import Prose from "./product/Prose.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
-import StatsBand from "./product/StatsBand.astro";
 import Visual from "./product/Visual.astro";
 import WhatsNewSection from "./product/WhatsNewSection.astro";
 import { demoStyles } from "./product/demo-styles";
@@ -33,11 +29,9 @@ interface Props {
 const { model } = Astro.props;
 const { copy } = model;
 const copyUi = ui[model.locale];
+// After the hero the product is shown up to three more times (DESIGN.md,
+// "Product Pages"): at most one live demo, then showcase photographs.
 const showcases = copy.showcases ?? [];
-const opening = showcases.filter((figure) => !figure.beside);
-const besideSection = (id: string) => showcases.find((figure) => figure.beside === id);
-const hasFaq = copy.sections.some((section) => section.kind === "faq");
-// A live demo opens the page, right after the hero and stats, before any photograph.
 const demos = copy.sections.flatMap((section) => (section.kind === "demo" ? [section] : []));
 // Every page closes on its main action, under the same label as the hero.
 const closing = copy.primaryCta.label;
@@ -63,10 +57,7 @@ const heroReplay =
 const skipFirstCommand = Boolean(
   heroCommand && (!heroCommand.capturedOutput || heroCommand.command === heroReplay?.command),
 );
-const bodyCommands = (copy.commands?.items.length ?? 0) - (skipFirstCommand ? 1 : 0);
-const commandSteps = template === "tool" && bodyCommands >= 2;
 const plainCards = template !== "game";
-const showcaseRows = template === "app" || template === "extension";
 const dataSection = copy.sections.find((section) => section.kind === "data");
 // Extensions: the hero box carries the data section's facts, so the section is not repeated.
 const permissionBox = template === "extension" && copy.privacy ? copy.privacy : undefined;
@@ -75,7 +66,6 @@ const commandsProps = {
   copiedLabel: copyUi.copied,
   outputLabel: copyUi.commandOutput,
   controls: { pause: copyUi.pauseVideo, play: copyUi.playVideo },
-  steps: commandSteps,
   replayInHero: heroReplay?.command,
   skipFirst: skipFirstCommand,
 };
@@ -190,49 +180,38 @@ const commandsProps = {
     </section>
   )}
 
-  {copy.stats && <StatsBand stats={copy.stats} />}
-
   {demos.map((section) => (
     <DemoSection section={section} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
   ))}
 
-  {opening.map((showcase) => (
+  {/* Text beside each picture, alternating sides after the demo. */}
+  {showcases.map((showcase, index) => (
     <ShowcaseSection
       showcase={showcase}
       pauseLabel={copyUi.pauseVideo}
       playLabel={copyUi.playVideo}
-      row={showcaseRows}
-      flip={opening.indexOf(showcase) % 2 === 1}
+      flip={(index + demos.length) % 2 === 1}
     />
   ))}
 
-  {copy.sections.map((section) => {
-    const start =
-      section.kind === "faq" ? (
-        <>
-          {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
-          {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
-        </>
-      ) : null;
-    if (section.kind === "cards")
-      return <CardsSection section={section} figure={besideSection(section.id)} plain={plainCards} />;
-    if (section.kind === "faq")
-      return (
-        <>
-          {start}
-          <FaqSection section={section} grid={template === "extension"} />
-        </>
-      );
-    if (section.kind === "cases") return <CasesSection section={section} />;
-    if (section.kind === "flow") return <FlowSection section={section} />;
-    if (section.kind === "data") return permissionBox ? null : <DataSection section={section} />;
-    if (section.kind === "demo") return null;
-    return <PanelSection section={section} />;
-  })}
+  {/* What it does; then what's new and Get started; then where the data goes and the FAQ. */}
+  {copy.sections.map((section) =>
+    section.kind === "cards" ? <CardsSection section={section} plain={plainCards} /> : null,
+  )}
 
-  {!hasFaq && model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
+  {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
 
-  {copy.commands && !hasFaq && <CommandsSection commands={copy.commands} {...commandsProps} />}
+  {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
+
+  {copy.sections.map((section) =>
+    section.kind === "data" ? (
+      permissionBox ? null : (
+        <DataSection section={section} />
+      )
+    ) : section.kind === "faq" ? (
+      <FaqSection section={section} grid={template === "extension"} />
+    ) : null,
+  )}
 
   {/* One closing block: the main action once more, then where to go next (the family, or related tools). */}
   <section class="shell final-cta" aria-label={closing}>

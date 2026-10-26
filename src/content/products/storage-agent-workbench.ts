@@ -101,10 +101,6 @@ export default defineProduct({
             body: "Each fix comes with a preview of what applying it would change, drawn from what the app has already read, such as anonymous requests in the bucket’s access logs or existing lifecycle rules. When those cannot tell, it says so.",
           },
           {
-            title: "How is it different from StorageOps?",
-            body: "StorageOps adds storage skills to Pi, the open-source terminal coding agent. Storage Agent is the full desktop app: tasks, read-only tools, local analysis, and the Issues it remembers.",
-          },
-          {
             title: "Can it change my storage?",
             body: "No. It has no put, delete or other write call, and it never applies a fix: fixes are text for you to run. A bucket list in an account’s settings limits which buckets it may read.",
             asOf: "v25.0.0",
@@ -198,10 +194,6 @@ export default defineProduct({
           {
             title: "修复会改变什么？",
             body: "每个修复都附带影响预估，来自应用已经读到的内容，例如桶访问日志里的匿名请求或现有的生命周期规则。判断不了时，它会直说。",
-          },
-          {
-            title: "和 StorageOps 有什么不同？",
-            body: "StorageOps 给开源终端编码 Agent Pi 加对象存储技能包。Storage Agent 是完整桌面应用：任务、只读工具、本地分析，以及它记住的问题。",
           },
           {
             title: "它会改动我的存储吗？",

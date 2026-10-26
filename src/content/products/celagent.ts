@@ -50,10 +50,6 @@ export default defineProduct({
           comment: "Check configuration, credentials, and BOS access",
           command: "celagent doctor",
         },
-        {
-          comment: "Start the TUI",
-          command: "celagent",
-        },
       ],
     },
     visual: {
@@ -78,28 +74,10 @@ export default defineProduct({
           { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
           { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
           { title: "BOS first", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
-        ],
-      },
-      {
-        kind: "cards",
-        id: "workflow",
-        nav: "How it works",
-        label: "Configure, save, resume.",
-        items: [
           { title: "Configure storage", body: "Set up BOS, then run `celagent doctor` and `celagent cas-probe`." },
           { title: "Wait for the write", body: "Recovery needs a successful BOS write." },
           { title: "Resume by ID", body: "`celagent list`, then `celagent <id>` on a configured machine." },
         ],
-        numbered: true,
-      },
-      {
-        kind: "cases",
-        id: "cases",
-        nav: "Tasks",
-        label: "Beyond chat",
-        title: "Tasks recover from checkpoints.",
-        items: ["celagent task submit", "celagent task status", "celagent task ledger"],
-        body: "Celld tasks have checkpoint recovery and an idempotent task ledger; see the repository for setup.",
       },
       {
         kind: "data",
@@ -174,10 +152,6 @@ export default defineProduct({
           comment: "自检：配置、凭证、节点、BOS 连通",
           command: "celagent doctor",
         },
-        {
-          comment: "启动 TUI",
-          command: "celagent",
-        },
       ],
     },
     visual: {
@@ -202,28 +176,10 @@ export default defineProduct({
           { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
           { title: "每轮保存", body: "完成的回合进入 BOS 写入队列；条件写入检测冲突。" },
           { title: "先读 BOS", body: "写入失败留在队列；不静默退回截断缓存。" },
-        ],
-      },
-      {
-        kind: "cards",
-        id: "workflow",
-        nav: "用法",
-        label: "配置、保存、恢复",
-        items: [
           { title: "先配置存储", body: "配好 BOS，运行 doctor 和 cas-probe。" },
           { title: "等写入成功", body: "BOS 写入成功后才能跨机恢复。" },
           { title: "按 ID 恢复", body: "在已配置的机器上 list，再按 ID 打开。" },
         ],
-        numbered: true,
-      },
-      {
-        kind: "cases",
-        id: "cases",
-        nav: "任务",
-        label: "对话之外",
-        title: "任务可从断点恢复",
-        items: ["celagent task submit", "celagent task status", "celagent task ledger"],
-        body: "Celld 任务支持断点恢复和幂等任务记录。配置细节见仓库文档。",
       },
       {
         kind: "data",

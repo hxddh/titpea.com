@@ -67,7 +67,7 @@ export default defineProduct({
         id: "changes",
         nav: "Changes",
         title: "Marked until you read it.",
-        body: "Each new block gets a thin bar in the margin. Once it has been on screen for a moment, the bar fades, and what you have read stays read after a relaunch.",
+        body: "Each new block gets a thin bar in the margin; once it has been on screen for a moment, the bar fades.",
         caption: "Sample document, written for this page. Three lines arrive as an agent would write them.",
         // Readout 3.9.1: README “Shows what changed”, docs/design.md (read = half
         // visible for 800 ms), web/src/reader/marks.js and reader.css.
@@ -137,10 +137,6 @@ export default defineProduct({
             body: "Download `Readout-x.y.z.dmg` from GitHub Releases, open it and drag Readout to Applications. Readout → Check for Updates… looks for newer releases.",
           },
           {
-            title: "Why does macOS refuse to open it the first time?",
-            body: "Builds are ad-hoc signed and not notarized. Open System Settings → Privacy & Security, find the message about Readout and click Open Anyway. You do this once for each release.",
-          },
-          {
             title: "Can I open files from the terminal?",
             body: "Agents need no setup: the folders in Settings are enough. For a `readout` command, link the script inside the app with `mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, `readout plan.md#risks` opens it at a section, and `readout ~/.claude/plans` opens the newest Markdown file in a folder. `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps, and `readout --version` prints the version.",
           },
@@ -157,10 +153,6 @@ export default defineProduct({
           {
             title: "Does it work in Quick Look?",
             body: "Yes, once Readout has been opened from Applications: select a Markdown file in Finder and press Space. Quick Look never loads remote images; it shows the placeholders only.",
-          },
-          {
-            title: "Can code references open in my editor?",
-            body: "Yes. References such as `src/app.ts:42`, `src/app.ts#L42` or `src/app.ts#L42-L50` open at that line in the editor chosen in Settings: the default app, Visual Studio Code, Cursor, Zed, Xcode or Sublime Text. ⌘E opens the document itself there, at the line you are reading.",
           },
         ],
       },
@@ -221,7 +213,7 @@ export default defineProduct({
         id: "changes",
         nav: "改动",
         title: "改动标着，读过才消",
-        body: "新的段落在页边多一条细线。在屏幕上停留片刻后，细线自动消退；读过的部分重启后仍算已读。",
+        body: "新的段落在页边多一条细线，在屏幕上停留片刻后自动消退。",
         caption: "示例文档，为本页撰写。三行内容像 Agent 写入时那样陆续出现。",
         demo: {
           kind: "readout",
@@ -280,10 +272,6 @@ export default defineProduct({
             body: "从 GitHub Releases 下载 `Readout-x.y.z.dmg`，打开后把 Readout 拖进“应用程序”。之后可用“Readout → 检查更新…”查找新版本。",
           },
           {
-            title: "为什么首次打开被 macOS 拦下？",
-            body: "构建是 ad-hoc 签名、未经公证。打开“系统设置 → 隐私与安全性”，找到关于 Readout 的提示，点击“仍要打开”。每个新版本需要这样做一次。",
-          },
-          {
             title: "能从终端打开文件吗？",
             body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想要 `readout` 命令，可以把 App 里自带的脚本链接出来，`~/.local/bin` 需要在 `PATH` 中。先建目录：`mkdir -p ~/.local/bin`。再链接：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件，`readout plan.md#风险` 打开并跳到对应章节。`readout ~/.claude/plans` 打开文件夹中最新的 Markdown 文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。`readout --version` 显示版本号。",
           },
@@ -300,10 +288,6 @@ export default defineProduct({
           {
             title: "支持 Quick Look 吗？",
             body: "支持，但需先从“应用程序”文件夹打开过一次 Readout。之后在访达中选中 Markdown 文件，按空格即可预览。Quick Look 从不加载远程图片，只显示注明来源的占位框。",
-          },
-          {
-            title: "代码引用能在编辑器中打开吗？",
-            body: "能。`src/app.ts:42`、`src/app.ts#L42` 或 `src/app.ts#L42-L50` 这样的引用，会在设置里选定的编辑器中打开并定位到该行。可选默认应用、Visual Studio Code、Cursor、Zed、Xcode 或 Sublime Text。按 ⌘E 则在这个编辑器中打开当前文档，定位到正在阅读的行。",
           },
         ],
       },

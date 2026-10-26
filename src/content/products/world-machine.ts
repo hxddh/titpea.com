@@ -139,14 +139,6 @@ export default defineProduct({
             title: "What does World voice do?",
             body: "When you turn it on in Settings, a model words what the World tells you when you come back and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Crisis and sexual topics are never sent to a model, and each model answer is marked “Written by AI” with a Report button. What talk does, such as warmth or a favour done, is decided only by the World's own reading of your words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools or extensions and keeps no session on disk, and every verdict is recorded, so replaying a World never asks a model again.",
           },
-          {
-            title: "Do people understand everything I type?",
-            body: "Not everything. Without World voice, people hear 28 kinds of everyday talk in English, Chinese and Japanese; some new phrasing is missed.",
-          },
-          {
-            title: "Can I add other World Packs?",
-            body: "Yes. The app activates its included Packs on first launch; any other `.worldpack` runs only after you review its executable identity and SHA-256.",
-          },
         ],
       },
     ],
@@ -265,14 +257,6 @@ export default defineProduct({
           {
             title: "世界之声能做什么？",
             body: "在设置里打开后，由模型讲述你回来时世界告诉你的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。涉及危机和性的话题从不发给模型；模型写的每句回答都标有“AI 撰写”，并带“举报”按钮。对话带来的结果，比如好感或帮成的忙，只由世界自己对你原话的理解决定。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具和扩展，也不在磁盘上保留会话；每个裁定都会记录下来，回放世界时不会再问模型。",
-          },
-          {
-            title: "我打的每句话都能听懂吗？",
-            body: "不是每句。不开世界之声时，居民能听懂中文、英文和日文里 28 类日常话题；部分新说法会听不懂。",
-          },
-          {
-            title: "能添加其他 World Pack 吗？",
-            body: "可以。应用首次启动时启用自带的 Pack；其他 `.worldpack` 要先审阅其可执行身份与 SHA-256 才会运行。",
           },
         ],
       },

@@ -30,56 +30,16 @@ export type Card = {
   title: string;
   body: string;
   link?: Link;
-  evidence?: string;
-  priority?: "primary" | "secondary";
 };
 
-/** Equal-weight cards: fit, limits, features. `numbered` makes them a step flow. */
-export type CardsSection = { kind: "cards"; id: string; label: string; items: Card[]; numbered?: boolean };
+/** What the product does: one plain list of at most six equal-weight features. */
+export type CardsSection = { kind: "cards"; id: string; label: string; items: Card[] };
 
 /** One adoption question. `asOf` names the release its answer describes. */
 export type FaqItem = Card & AsOf;
 
 /** Adoption questions, rendered as a disclosure list and as FAQPage structured data. */
 export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: FaqItem[] };
-
-/** Named compatibility targets. */
-export type CasesSection = { kind: "cases"; id: string; label: string; title: string; items: string[]; body?: string };
-
-/** A run with a centered head. Numbered unless `ordered: false`: only a real sequence gets numbers. */
-export type FlowSection = {
-  kind: "flow";
-  ordered?: false;
-  id: string;
-  kicker: string;
-  title: string;
-  body: string;
-  steps: Array<{ label: string; body: string }>;
-};
-
-/** A product-specific object: a purpose split or a document excerpt. */
-export type PanelSection = {
-  kind: "panel";
-  id: string;
-  kicker: string;
-  title: string;
-  body: string;
-  panel:
-    | {
-        kind: "purpose";
-        label: string;
-        items: Array<{ label: string; title: string; body: string }>;
-        boundaryLabel: string;
-        boundary: string;
-      }
-    | {
-        kind: "excerpt";
-        label: string;
-        eyebrow: string;
-        title: string;
-        items: Array<{ label: string; value: string; body: string }>;
-      };
-};
 
 /** Where the product's data goes: two or three plain, checkable sentences. */
 export type DataSection = { kind: "data"; id: "data"; title: string; items: string[] };
@@ -201,13 +161,10 @@ export type DemoSection = {
   body: string;
   /** Says what the demo is, for example a working copy, or where its data comes from. */
   caption: string;
-  demo: WorldClockDemo | ChessPuzzleDemo | ReadoutDemo;
+  demo: ChessPuzzleDemo | ReadoutDemo;
 };
 
-export type Section = (
-  CardsSection | FaqSection | CasesSection | FlowSection | PanelSection | DataSection | DemoSection
-) &
-  SectionNav;
+export type Section = (CardsSection | FaqSection | DataSection | DemoSection) & SectionNav;
 
 /* ---------- The product object ---------- */
 
@@ -324,7 +281,11 @@ export type MenuBarRow = {
 
 export type VisualKind = Visual["kind"];
 
-/** A photograph after the hero: a compact head over the full captured frame. `asOf` names the release it shows. */
+/**
+ * The one photograph after the hero (a product page carries at most one, and
+ * none beside a demo section): a compact head over the full captured frame.
+ * `asOf` names the release it shows.
+ */
 export type Showcase = Image &
   AsOf & {
     title: string;
@@ -337,12 +298,7 @@ export type Showcase = Image &
     video?: { mp4: string; webm?: string };
     /** Shown under the image; required wording for anything that is not a plain capture. */
     caption?: string;
-    /** Sit under the section with this id instead of opening the page. */
-    beside?: string;
   };
-
-/** One figure in the stats band. Every figure must be traceable to the product's docs or tests. */
-export type Stat = { value: string; label: string };
 
 /** Commands a reader can copy. Only commands that appear verbatim in the product's README. */
 export type Commands = {
@@ -396,7 +352,6 @@ export type ProductCopy = {
   secondaryCta: Link;
   /** Mono meta line, segments joined by " · ". `{version}` is replaced by the synced release tag. */
   meta: string;
-  stats?: { title: string; items: Stat[] };
   commands?: Commands;
   visual: Visual;
   showcases?: Showcase[];

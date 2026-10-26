@@ -3,7 +3,7 @@
 
 @layer templates {
   /* Product pages: centered hero, product object, then a short run of
-   sections — feature cards, showcase photographs, numbered flows, FAQ. */
+   sections — one product object, one feature list, get started, data, FAQ. */
 
   /* Hero */
   .product-hero {
@@ -116,57 +116,6 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Stats band: the figures carry the claim, a few words each. */
-  .stats-band h2 {
-    margin: 0;
-    font-size: var(--title-section);
-    line-height: 1.07;
-    text-align: center;
-  }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(var(--stat-columns, 4), minmax(0, 1fr));
-    gap: 16px;
-    max-width: 1040px;
-    margin: 48px auto 0;
-  }
-
-  .stats[data-count="2"] {
-    --stat-columns: 2;
-    max-width: 640px;
-  }
-
-  .stats[data-count="3"] {
-    --stat-columns: 3;
-    max-width: 860px;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    padding: 8px 6px;
-    text-align: center;
-  }
-
-  .stat dd {
-    margin: 0;
-    font-size: var(--title-stat);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.035em;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .stat dt {
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 15px;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-  }
-
   /* Commands: what a reader types first, each with a copy button. */
   .command-list {
     display: grid;
@@ -277,10 +226,6 @@
     background: var(--paper-raised);
   }
 
-  .feature-card.primary {
-    grid-column: 1 / -1;
-  }
-
   .feature-card h3 {
     margin: 0 0 8px;
     font-size: var(--text-card-title);
@@ -301,30 +246,6 @@
     color: var(--link);
   }
 
-  .feature-step {
-    display: inline-grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 16px;
-    border-radius: 50%;
-    color: var(--on-ink);
-    background: var(--accent-fill);
-    font-size: var(--text-small);
-    font-weight: 600;
-    letter-spacing: 0;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .feature-evidence {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: var(--text-meta);
-    letter-spacing: 0;
-  }
-
   /* Showcase photographs */
   .show-shot,
   .show-figure {
@@ -334,95 +255,6 @@
 
   .show-figure .shot-caption {
     margin-top: 20px;
-  }
-
-  /* A panel groups a product-specific object (an excerpt, a purpose split). */
-  .panel {
-    padding: 28px;
-    border-radius: var(--radius-card);
-    background: var(--paper-raised);
-  }
-
-  .panel h3 {
-    margin: 0 0 8px;
-    font-size: var(--text-card-title);
-    line-height: 1.25;
-  }
-
-  .panel p {
-    margin: 0;
-    color: var(--ink-2);
-    font-size: var(--text-card-body);
-    line-height: 1.5;
-  }
-
-  .agent-evidence-panel {
-    max-width: 1040px;
-    margin: 56px auto 0;
-    padding: 0;
-    background: transparent;
-  }
-
-  .panel-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
-    gap: 4px 12px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: var(--text-meta);
-  }
-
-  .panel-top strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .agent-evidence-panel .feature-grid {
-    margin-top: 20px;
-  }
-
-  .s3-purpose-panel {
-    margin: 0 auto;
-  }
-
-  .s3-purpose-boundary {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px 10px;
-    max-width: 60ch;
-    margin: 24px auto 0;
-    color: var(--ink-2);
-    font-size: 15px;
-    text-align: center;
-    text-wrap: balance;
-  }
-
-  .s3-purpose-boundary strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* Cases */
-  .provider-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 36px;
-  }
-
-  .provider-list span {
-    padding: 8px 16px;
-    border-radius: var(--radius-pill);
-    background: var(--paper-raised);
-    font-size: 15px;
-  }
-
-  .cases-section .sub {
-    text-align: center;
   }
 
   /* Where the data goes: a few plain sentences, read like a statement. */
@@ -581,12 +413,6 @@
   @media (max-width: 900px) {
     .product-section {
       scroll-margin-top: var(--section-index-mobile-scroll-margin);
-    }
-
-    .stats,
-    .stats[data-count="3"] {
-      --stat-columns: 2;
-      gap: 32px 12px;
     }
   }
 
@@ -773,15 +599,6 @@
     color: var(--product-ink, var(--muted));
   }
 
-  .stat dd {
-    color: var(--product-ink, var(--ink));
-  }
-
-  .feature-step {
-    color: var(--paper);
-    background: var(--product-ink, var(--accent-fill));
-  }
-
   /* Templates (DESIGN.md): one body composition per kind of product.
    tool and extension put the claim beside the object; app and game keep the
    centered stack. Every template but game drops the raised cards for plain
@@ -926,8 +743,7 @@
     text-align: left;
   }
 
-  .product-hero:not([data-template="game"]) ~ .product-section .section-head .sub,
-  .product-hero:not([data-template="game"]) ~ .cases-section .sub {
+  .product-hero:not([data-template="game"]) ~ .product-section .section-head .sub {
     max-width: 40em;
     margin-inline: 0;
     text-align: left;
@@ -937,10 +753,6 @@
   .product-hero:not([data-template="game"]) ~ .product-section .shell.narrow {
     margin-right: auto;
     margin-left: max(0px, calc((100% - var(--shell) - 2 * var(--gutter)) / 2));
-  }
-
-  .product-hero:not([data-template="game"]) ~ .cases-section .provider-list {
-    justify-content: flex-start;
   }
 
   /* Plain cards: a titled line under a hairline, no raised box. */
@@ -955,30 +767,40 @@
     background: none;
   }
 
-  /* App and extension showcases: text beside the picture, alternating sides. */
-  .product-screenshot-showcase[data-layout="row"] .shell {
+  /* Sections that show the product (showcases and a live demo): text beside
+   the object on desktop, on every template, alternating sides. */
+  .product-section[data-layout="row"] .shell {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     gap: 64px;
     align-items: center;
   }
 
-  .product-screenshot-showcase[data-layout="row"][data-flip] .shell {
+  .product-section[data-layout="row"][data-flip] .shell {
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   }
 
-  .product-screenshot-showcase[data-layout="row"][data-flip] .section-head {
+  .product-section[data-layout="row"][data-flip] .section-head {
     order: 2;
   }
 
-  .product-screenshot-showcase[data-layout="row"] :is(.show-shot, .show-figure) {
+  .product-section[data-layout="row"] .section-head {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+  }
+
+  .product-section[data-layout="row"] .section-head .sub {
+    margin-inline: 0;
+  }
+
+  .product-section[data-layout="row"] :is(.show-shot, .show-figure, .demo-figure) {
     max-width: none;
     margin: 0;
   }
 
   /* Phone captures: the picture at phone size beside the text. */
-  .product-screenshot-showcase[data-portrait] .shell,
-  .product-screenshot-showcase[data-portrait][data-flip] .shell {
+  .product-screenshot-showcase[data-portrait] .shell {
     grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
     justify-content: center;
   }
@@ -990,107 +812,6 @@
   .product-screenshot-showcase[data-portrait] :is(.show-shot, .show-figure) {
     width: 100%;
     max-width: 320px;
-  }
-
-  /* Tool commands as numbered steps, side by side. */
-  .commands-section[data-layout="steps"] .command-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .commands-section[data-layout="steps"] .command-list[data-count="2"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .commands-section[data-layout="steps"] .command {
-    display: flex;
-    flex-direction: column;
-    padding: 22px;
-    border-radius: var(--radius-card);
-    background: var(--paper-raised);
-  }
-
-  .command-step {
-    display: inline-grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 14px;
-    border-radius: 50%;
-    color: var(--paper);
-    background: var(--product-ink, var(--accent-fill));
-    font-size: var(--text-small);
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .commands-section[data-layout="steps"] .command-comment {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .commands-section[data-layout="steps"] .command-code {
-    padding-right: 20px;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-
-  .commands-section[data-layout="steps"] .copy-button {
-    position: static;
-    margin-top: 10px;
-    transform: none;
-  }
-
-  .commands-section[data-layout="steps"] :is(.command-replay, .command-output) {
-    margin-top: 14px;
-  }
-
-  /* Cases as a table when each item names its status ("Verified: AWS S3"). */
-  .cases-table {
-    width: 100%;
-    margin-top: 40px;
-    border-collapse: collapse;
-    border-top: 1px solid var(--line);
-    font-size: var(--text-list-body);
-  }
-
-  .cases-table th,
-  .cases-table td {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-    vertical-align: baseline;
-  }
-
-  .cases-table th {
-    width: 28%;
-    padding-right: 24px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .cases-table th::before {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 10px;
-    border-radius: 50%;
-    background: var(--data-caution);
-  }
-
-  .cases-table tr[data-state="reference"] th::before {
-    background: var(--data-ref);
-  }
-
-  .cases-names {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 22px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: var(--ink-2);
   }
 
   /* Extension FAQ: two columns, every answer open. */
@@ -1117,13 +838,13 @@
 
   @media (max-width: 900px) {
     .hero-split,
-    .product-screenshot-showcase[data-layout="row"] .shell,
-    .product-screenshot-showcase[data-layout="row"][data-flip] .shell {
+    .product-section[data-layout="row"] .shell,
+    .product-section[data-layout="row"][data-flip] .shell {
       grid-template-columns: minmax(0, 1fr);
       gap: 32px;
     }
 
-    .product-screenshot-showcase[data-layout="row"][data-flip] .section-head {
+    .product-section[data-layout="row"][data-flip] .section-head {
       order: 0;
     }
 
@@ -1136,8 +857,6 @@
       margin-top: 8px;
     }
 
-    .commands-section[data-layout="steps"] .command-list,
-    .commands-section[data-layout="steps"] .command-list[data-count="2"],
     .faq-list[data-layout="grid"] {
       grid-template-columns: minmax(0, 1fr);
     }
@@ -1175,8 +894,7 @@
     }
 
     /* Phone captures stay beside their text on phones too, at a third of the width. */
-    .product-screenshot-showcase[data-portrait] .shell,
-    .product-screenshot-showcase[data-portrait][data-flip] .shell {
+    .product-screenshot-showcase[data-portrait] .shell {
       grid-template-columns: minmax(0, 1fr) 132px;
       gap: 20px;
     }
@@ -1200,13 +918,14 @@
       text-wrap: balance;
     }
 
-    .closing-next {
-      margin-top: 28px;
+    /* Chinese headings break only at punctuation and spaces, so a nine-character
+       heading must fit the 194px column on one line. */
+    .product-screenshot-showcase[data-portrait] .section-head h2:lang(zh) {
+      font-size: 1.25rem;
     }
 
-    .cases-table th {
-      width: auto;
-      white-space: normal;
+    .closing-next {
+      margin-top: 28px;
     }
   }
 }

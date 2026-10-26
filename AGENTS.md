@@ -4,7 +4,7 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (glass chrome, centered hero, stats, feature cards, showcase, commands, FAQ), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — the page shape (glass chrome, centered hero, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
