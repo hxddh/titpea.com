@@ -516,9 +516,7 @@ for (const file of styleFiles) {
 
 // Depth is a token decision: page styles may use shadow, blur, and the wash
 // only through tokens, so light and dark stay in step.
-for (const file of ["base.css", "chrome.css", "pages.css", "product.css", "demos.css"].map(
-  (name) => `src/styles/${name}`,
-)) {
+for (const file of styleFiles.filter((file) => file !== "src/styles/tokens.css")) {
   const lines = read(file).split("\n");
   lines.forEach((line, index) => {
     const declaration = /^\s*(box-shadow|text-shadow|backdrop-filter|-webkit-backdrop-filter|filter)\s*:/.exec(line);
@@ -533,9 +531,9 @@ for (const file of ["base.css", "chrome.css", "pages.css", "product.css", "demos
   });
 }
 
-const base = read("src/styles/base.css");
+const locale = read("src/styles/locale.css");
 for (const selector of [".about-hero h1", ".home-hero h1", ".product-hero h1", ".lead"]) {
-  if (!base.includes(`:lang(zh) ${selector}`)) fail(`base.css: missing :lang(zh) rule for ${selector}`);
+  if (!locale.includes(`:lang(zh) ${selector}`)) fail(`locale.css: missing :lang(zh) rule for ${selector}`);
 }
 if (!/font-family:\s*Inter;/.test(read("src/styles/fonts.css"))) fail("fonts.css must declare Inter for Latin text");
 

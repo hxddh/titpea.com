@@ -1,547 +1,418 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  background: var(--paper);
-}
-
-@media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background: var(--paper);
   }
-}
 
-body {
-  margin: 0;
-  overflow-x: hidden;
-  color: var(--ink);
-  background-color: var(--paper);
-  font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.47;
-  letter-spacing: -0.022em;
-  -webkit-font-smoothing: antialiased;
-}
-
-a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-code,
-pre,
-kbd {
-  font-family: var(--mono);
-  letter-spacing: 0;
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1,
-h2,
-h3 {
-  color: var(--ink);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-}
-
-/* Chinese headings break at punctuation and spaces, not inside a word;
-   overflow-wrap still breaks a line that would not fit. */
-:lang(zh) :is(h1, h2, h3) {
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-
-h3 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-p {
-  overflow-wrap: break-word;
-  text-wrap: pretty;
-}
-
-::selection {
-  color: var(--on-ink);
-  background: var(--accent-fill);
-}
-
-/* Layout wrappers */
-.shell {
-  width: 100%;
-  max-width: calc(var(--shell) + 2 * var(--gutter));
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-.shell.narrow,
-.narrow {
-  max-width: calc(var(--narrow) + 2 * var(--gutter));
-}
-
-/* Type roles */
-.eyebrow,
-.section-kicker {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: var(--text-kicker);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.lead {
-  max-width: 36em;
-  margin: 20px auto 0;
-  color: var(--muted);
-  font-size: var(--text-lede);
-  line-height: 1.38;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-
-.sub {
-  max-width: 46ch;
-  margin: 16px auto 0;
-  color: var(--muted);
-  font-size: var(--text-sub);
-  line-height: 1.42;
-  text-wrap: pretty;
-}
-
-.prose {
-  color: var(--ink);
-  font-size: var(--text-list-body);
-  line-height: 1.6;
-}
-
-.prose p {
-  margin-bottom: 1em;
-}
-
-.section-head {
-  max-width: var(--narrow);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.section-head h2 {
-  margin: 0;
-  font-size: var(--title-section);
-  line-height: 1.07;
-}
-
-.section-head.compact h2 {
-  font-size: var(--title-show);
-  line-height: 1.12;
-}
-
-/* Capsule buttons. .button.primary is the filled accent control; .ghost is
-   a text control with a chevron. Both keep a 44px hit area. */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px 16px;
-  margin-top: 32px;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 22px;
-  border-radius: var(--radius-pill);
-  font-size: 17px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.button:hover {
-  text-decoration: none;
-}
-
-.button:active {
-  transform: scale(0.98);
-}
-
-.button.primary {
-  color: var(--on-ink);
-  background: var(--accent-fill);
-  box-shadow: var(--button-highlight);
-}
-
-.button.primary:hover {
-  background: var(--accent-fill-hover);
-}
-
-.button.large {
-  min-height: 50px;
-  padding: 0 28px;
-}
-
-.button.ghost {
-  padding: 0 8px;
-  color: var(--link);
-}
-
-.button.ghost::after {
-  content: "›";
-  font-size: 1.15em;
-  line-height: 1;
-}
-
-.button.ghost:hover {
-  text-decoration: underline;
-}
-
-/* Photographs of the product: rounded, lifted, full captured frame. */
-.shot {
-  overflow: hidden;
-  margin: 0;
-  border-radius: var(--radius-shot);
-  background: var(--paper-raised);
-  box-shadow:
-    var(--shadow-shot),
-    0 0 0 1px var(--line);
-}
-
-.shot img {
-  width: 100%;
-}
-
-.shot-caption {
-  max-width: 60ch;
-  margin: 18px auto 0;
-  color: var(--muted);
-  font-size: 15px;
-  text-align: center;
-}
-
-/* Soft color wash behind a centered hero. */
-.wash {
-  position: absolute;
-  inset: -160px 0 auto;
-  z-index: -1;
-  height: max(calc(100% + 160px), 760px);
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(#000 60%, transparent);
-  mask-image: linear-gradient(#000 60%, transparent);
-  background:
-    radial-gradient(40% 36% at 22% 42%, var(--wash-1), transparent 70%),
-    radial-gradient(38% 34% at 80% 36%, var(--wash-2), transparent 70%),
-    radial-gradient(44% 38% at 55% 78%, var(--wash-3), transparent 72%);
-  filter: blur(8px);
-}
-
-/* Chinese optics: Latin tracking must not crush CJK, and at the same pixel
-   size CJK reads smaller than Latin, so reading text steps up to 16px. */
-html:lang(zh) {
-  --text-card-body: 16px;
-}
-
-:lang(zh) body {
-  letter-spacing: 0;
-}
-
-:lang(zh) .about-hero h1,
-:lang(zh) .home-hero h1,
-:lang(zh) .product-hero h1,
-:lang(zh) h2 {
-  letter-spacing: -0.005em;
-  line-height: 1.16;
-}
-
-:lang(zh) .sub,
-:lang(zh) .prose,
-:lang(zh) .about-body,
-:lang(zh) .feature-card p,
-:lang(zh) .home-catalog-text,
-:lang(zh) .faq-answer,
-:lang(zh) .panel p,
-:lang(zh) .whats-new-list li {
-  line-height: 1.75;
-  letter-spacing: 0;
-  /* No single character stranded on a last line. */
-  text-wrap: pretty;
-}
-
-/* A Chinese lede wraps between its phrases (at punctuation and spaces), in
-   balanced lines, so neither a word nor a character is left alone. */
-:lang(zh) .lead {
-  line-height: 1.75;
-  letter-spacing: 0;
-  text-wrap: balance;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-
-/* Utilities */
-.skip-link {
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 100;
-  padding: 0.6rem 0.9rem;
-  border-radius: var(--radius-pill);
-  color: var(--ink);
-  background: var(--glass-strong);
-  box-shadow: var(--shadow-glass);
-  transform: translateY(-200%);
-  transition: transform 160ms ease;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .button,
-  .skip-link {
-    transition: none;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
-}
 
-/* Screenshot zoom (public/scripts/zoom.js). */
-.zoom-trigger {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: zoom-in;
-}
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--ink);
+    background-color: var(--paper);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.zoom-trigger img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
 
-.zoom-dialog {
-  width: 100vw;
-  max-width: none;
-  height: 100dvh;
-  max-height: none;
-  margin: 0;
-  padding: 56px var(--gutter) var(--gutter);
-  border: 0;
-  background: transparent;
-  cursor: zoom-out;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-.zoom-dialog::backdrop {
-  background: var(--zoom-backdrop);
-  backdrop-filter: var(--glass-blur);
-}
-
-.zoom-dialog[open] {
-  display: grid;
-  place-items: center;
-}
-
-.zoom-dialog img {
-  display: block;
-  max-width: 100%;
-  max-height: calc(100dvh - 80px);
-  width: auto;
-  height: auto;
-  border-radius: var(--radius-shot);
-  box-shadow: var(--shadow-shot);
-}
-
-.zoom-close {
-  position: fixed;
-  top: 14px;
-  right: 16px;
-  min-height: 36px;
-  padding: 0 16px;
-  border: 0;
-  border-radius: var(--radius-pill);
-  color: var(--ink);
-  background: var(--glass-strong);
-  box-shadow: var(--shadow-glass);
-  font: inherit;
-  font-size: var(--text-small);
-  cursor: pointer;
-}
-
-.zoom-open {
-  overflow: hidden;
-}
-
-/* Scroll reveal (public/scripts/reveal.js adds .reveal only below the fold). */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-}
-
-/* Two classes outrank a card's own hover transition; the script drops both
-   once the rise ends, so hover goes back to the card's timing. */
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.7s ease var(--reveal-delay),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay);
-}
-
-/* On phones the zoomed screenshot keeps a readable width and pans sideways. */
-@media (max-width: 640px) {
-  .zoom-dialog[open] {
+  img {
     display: block;
-    place-items: normal;
-    overflow: auto;
-    padding-top: 64px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  code,
+  pre,
+  kbd {
+    font-family: var(--mono);
+    letter-spacing: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  /* Chinese headings break at punctuation and spaces, not inside a word;
+   overflow-wrap still breaks a line that would not fit. */
+  :lang(zh) :is(h1, h2, h3) {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    color: var(--on-ink);
+    background: var(--accent-fill);
+  }
+
+  /* Layout wrappers */
+  .shell {
+    width: 100%;
+    max-width: calc(var(--shell) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .shell.narrow,
+  .narrow {
+    max-width: calc(var(--narrow) + 2 * var(--gutter));
+  }
+
+  /* Type roles */
+  .eyebrow,
+  .section-kicker {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: var(--text-kicker);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .lead {
+    max-width: 36em;
+    margin: 20px auto 0;
+    color: var(--muted);
+    font-size: var(--text-lede);
+    line-height: 1.38;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .sub {
+    max-width: 46ch;
+    margin: 16px auto 0;
+    color: var(--muted);
+    font-size: var(--text-sub);
+    line-height: 1.42;
+    text-wrap: pretty;
+  }
+
+  .prose {
+    color: var(--ink);
+    font-size: var(--text-list-body);
+    line-height: 1.6;
+  }
+
+  .prose p {
+    margin-bottom: 1em;
+  }
+
+  .section-head {
+    max-width: var(--narrow);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: var(--title-section);
+    line-height: 1.07;
+  }
+
+  .section-head.compact h2 {
+    font-size: var(--title-show);
+    line-height: 1.12;
+  }
+
+  /* Capsule buttons. .button.primary is the filled accent control; .ghost is
+   a text control with a chevron. Both keep a 44px hit area. */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 16px;
+    margin-top: 32px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: var(--radius-pill);
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .button:hover {
+    text-decoration: none;
+  }
+
+  .button:active {
+    transform: scale(0.98);
+  }
+
+  .button.primary {
+    color: var(--on-ink);
+    background: var(--accent-fill);
+    box-shadow: var(--button-highlight);
+  }
+
+  .button.primary:hover {
+    background: var(--accent-fill-hover);
+  }
+
+  .button.large {
+    min-height: 50px;
+    padding: 0 28px;
+  }
+
+  .button.ghost {
+    padding: 0 8px;
+    color: var(--link);
+  }
+
+  .button.ghost::after {
+    content: "›";
+    font-size: 1.15em;
+    line-height: 1;
+  }
+
+  .button.ghost:hover {
+    text-decoration: underline;
+  }
+
+  /* Photographs of the product: rounded, lifted, full captured frame. */
+  .shot {
+    overflow: hidden;
+    margin: 0;
+    border-radius: var(--radius-shot);
+    background: var(--paper-raised);
+    box-shadow:
+      var(--shadow-shot),
+      0 0 0 1px var(--line);
+  }
+
+  .shot img {
+    width: 100%;
+  }
+
+  .shot-caption {
+    max-width: 60ch;
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* Soft color wash behind a centered hero. */
+  .wash {
+    position: absolute;
+    inset: -160px 0 auto;
+    z-index: -1;
+    height: max(calc(100% + 160px), 760px);
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(#000 60%, transparent);
+    mask-image: linear-gradient(#000 60%, transparent);
+    background:
+      radial-gradient(40% 36% at 22% 42%, var(--wash-1), transparent 70%),
+      radial-gradient(38% 34% at 80% 36%, var(--wash-2), transparent 70%),
+      radial-gradient(44% 38% at 55% 78%, var(--wash-3), transparent 72%);
+    filter: blur(8px);
+  }
+
+  /* Chinese section headings: tracking that does not crowd CJK. A section's
+   own heading rule (a template's h2) still sets its size and line height. */
+  :lang(zh) h2 {
+    letter-spacing: -0.005em;
+    line-height: 1.16;
+  }
+
+  /* At the same pixel size CJK reads smaller than Latin, so Chinese card text
+   steps up to 16px; the rest of the Chinese optics are in locale.css. */
+  html:lang(zh) {
+    --text-card-body: 16px;
+  }
+
+  /* Utilities */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    background: var(--glass-strong);
+    box-shadow: var(--shadow-glass);
+    transform: translateY(-200%);
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button,
+    .skip-link {
+      transition: none;
+    }
+  }
+
+  /* Screenshot zoom (public/scripts/zoom.js). */
+  .zoom-trigger {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+  }
+
+  .zoom-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .zoom-dialog {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 56px var(--gutter) var(--gutter);
+    border: 0;
+    background: transparent;
+    cursor: zoom-out;
+  }
+
+  .zoom-dialog::backdrop {
+    background: var(--zoom-backdrop);
+    backdrop-filter: var(--glass-blur);
+  }
+
+  .zoom-dialog[open] {
+    display: grid;
+    place-items: center;
   }
 
   .zoom-dialog img {
-    width: 960px;
-    max-width: none;
-    max-height: none;
+    display: block;
+    max-width: 100%;
+    max-height: calc(100dvh - 80px);
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-shot);
+    box-shadow: var(--shadow-shot);
   }
-}
 
-/* Every rendered app icon sits in one plate (tokens.css, --plate-*): the
-   icon keeps its own radius, the plate ring and shadow replace the old drop
-   shadow. Ring width follows the icon's size. */
-html
-  :is(
-    .app-icon,
-    .catalog-icon,
-    .final-cta-icon,
-    .release-list img,
-    .release-entry-product img,
-    .shipping-card img,
-    .product-related-list img,
-    .notfound-products img,
-    .product-section-index-name img,
-    .scene-products img,
-    .privacy-tool img,
-    .family-link img,
-    .icon-plate
-  ) {
-  border-radius: var(--icon-radius);
-  box-shadow: var(--plate-s);
-  filter: none;
-}
+  .zoom-close {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    min-height: 36px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    background: var(--glass-strong);
+    box-shadow: var(--shadow-glass);
+    font: inherit;
+    font-size: var(--text-small);
+    cursor: pointer;
+  }
 
-html .app-icon {
-  box-shadow: var(--plate-l);
-}
+  .zoom-open {
+    overflow: hidden;
+  }
 
-html :is(.catalog-icon, .final-cta-icon, .catalog-thumb.is-icon img) {
-  box-shadow: var(--plate-m);
-}
+  /* Scroll reveal (public/scripts/reveal.js adds .reveal only below the fold). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
 
-/* Display lines: the hero titles and section headings, in the display face.
-   Fraunces is drawn heavier than the system sans, so the weight steps down;
-   on Chinese pages --display-face is the system sans and these resolve to
-   the same face as before. */
-:is(.home-hero, .about-hero, .product-hero) h1,
-main h2:not(#shipping-title, .product-related-title) {
-  font-family: var(--display-face);
-  font-optical-sizing: auto;
-}
+  /* Two classes outrank a card's own hover transition; the script drops both
+   once the rise ends, so hover goes back to the card's timing. */
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.7s ease var(--reveal-delay),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay);
+  }
 
-html:lang(en) :is(.home-hero, .about-hero, .product-hero) h1 {
-  font-weight: 560;
-  letter-spacing: -0.018em;
-}
+  /* On phones the zoomed screenshot keeps a readable width and pans sideways. */
+  @media (max-width: 640px) {
+    .zoom-dialog[open] {
+      display: block;
+      place-items: normal;
+      overflow: auto;
+      padding-top: 64px;
+    }
 
-html:lang(en) main h2:not(#shipping-title, .product-related-title) {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-/* Chinese display lines: the serif's one weight (SemiBold), never a synthesised
-   bold, and no negative tracking, which crowds CJK. */
-html:lang(zh) :is(.home-hero, .about-hero, .product-hero) h1,
-html:lang(zh) main h2:not(#shipping-title, .product-related-title) {
-  font-weight: 600;
-  font-synthesis: none;
-  letter-spacing: 0;
-}
-
-/* Home: the title's last line in the accent italic. ::first-line keeps the
-   one-string title (no markup) and wraps honestly at any width. */
-html:lang(en) .home-hero h1 {
-  /* Two lines on wide screens, so the italic line exists there too. */
-  max-width: 9.5em;
-  color: var(--display-accent);
-  font-style: italic;
-  font-weight: 440;
-}
-
-html:lang(en) .home-hero h1::first-line {
-  color: var(--ink);
-  font-style: normal;
-  font-weight: 560;
-}
-
-/* Product pages: the hero glow in the product colour, and the primary
-   action filled with it (white label, 4.5:1 or better in both themes). */
-body[data-product] .wash {
-  background: var(--hero-glow);
-  filter: none;
-}
-
-body[data-product] .button.primary:not(.is-soon) {
-  background: var(--product-fill);
-}
-
-body[data-product] .button.primary:not(.is-soon):hover {
-  background: var(--product-fill-hover);
-}
-
-/* A primary action that is not available yet (a store listing in review):
-   same shape, no fill, not a link. */
-.button.primary.is-soon,
-.button.primary.is-soon:hover {
-  color: var(--ink-2);
-  background: var(--paper-raised);
-  box-shadow: none;
-  cursor: default;
+    .zoom-dialog img {
+      width: 960px;
+      max-width: none;
+      max-height: none;
+    }
+  }
 }

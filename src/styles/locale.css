@@ -1,0 +1,52 @@
+@layer locale {
+  /* Chinese optics: Latin tracking must not crush CJK, and at the same pixel
+   size CJK reads smaller than Latin, so reading text steps up (base.css sets
+   --text-card-body). This layer follows the page templates, so these hold
+   over a template's own line height and tracking. */
+  :lang(zh) body {
+    letter-spacing: 0;
+  }
+
+  :lang(zh) .about-hero h1,
+  :lang(zh) .home-hero h1,
+  :lang(zh) .product-hero h1 {
+    letter-spacing: -0.005em;
+    line-height: 1.16;
+  }
+
+  /* The related-products kicker is an h2 in the kicker size: Chinese
+   tracking, as for every h2 (base.css). */
+  :lang(zh) .product-related-title {
+    letter-spacing: -0.005em;
+  }
+
+  :lang(zh) .sub,
+  :lang(zh) .prose,
+  :lang(zh) .about-body,
+  :lang(zh) .feature-card p,
+  :lang(zh) .home-catalog-text,
+  :lang(zh) .faq-answer,
+  :lang(zh) .panel p,
+  :lang(zh) .whats-new-list li {
+    line-height: 1.75;
+    letter-spacing: 0;
+    /* No single character stranded on a last line. */
+    text-wrap: pretty;
+  }
+
+  /* A Chinese lede wraps between its phrases (at punctuation and spaces), in
+   balanced lines, so neither a word nor a character is left alone. */
+  :lang(zh) .lead {
+    line-height: 1.75;
+    letter-spacing: 0;
+    text-wrap: balance;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  /* The split hero's lede is left-aligned beside the object: it keeps the
+   template's pretty wrapping (product.css). */
+  :lang(zh) .hero-split .lead {
+    text-wrap: pretty;
+  }
+}

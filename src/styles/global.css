@@ -1,8 +1,17 @@
+/* Cascade layers, lowest first. Order, not specificity, settles which layer
+   wins: components (hero objects, demos) sit under the page templates that
+   place them, Chinese optics adjust a template's text, and identity
+   outranks everything. Every stylesheet that is loaded on its own repeats
+   this statement, so the order holds whichever file a page loads first. */
+@layer tokens, base, chrome, components, templates, locale, identity;
+
 @import "./fonts.css";
 @import "./tokens.css";
 @import "./base.css";
 @import "./chrome.css";
 @import "./visuals.css";
+@import "./demos.css";
 @import "./pages.css";
 @import "./product.css";
-@import "./demos.css";
+@import "./locale.css";
+@import "./identity.css";

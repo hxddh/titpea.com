@@ -1,1423 +1,1423 @@
-/* Home, About, privacy, and 404. Product pages live in product.css. */
-
-/* Centered heroes share one shape: a wash, a large title, a balanced lede. */
-.home-hero,
-.about-hero,
-.product-hero {
-  position: relative;
-  isolation: isolate;
-  padding-top: 72px;
-  text-align: center;
-}
-
-.home-hero h1,
-.about-hero h1 {
-  margin: 0 auto;
-  font-size: var(--title-hero);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-}
-
-/* Home */
-.home-hero {
-  padding-bottom: 8px;
-}
-
-.home-hero .lead {
-  max-width: 30em;
-}
-
-/* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
-.title-part {
-  display: inline-block;
-}
-
-/* Just shipped: the three latest releases, a quiet strip under the hero. */
-.home-shipping {
-  padding-top: 72px;
-}
-
-.home-strip-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 1040px;
-  margin: 0 auto 14px;
-}
-
-.home-strip-head h2 {
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--text-kicker);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.home-strip-more {
-  font-size: var(--text-kicker);
-}
-
-.home-strip-more::after {
-  content: " ›";
-}
-
-.shipping-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-}
-
-.shipping-card {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
-  height: 100%;
-  padding: 16px 18px;
-  border-radius: var(--radius-card);
-  background: var(--paper-raised);
-  color: var(--ink);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.shipping-card:hover {
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.shipping-card img {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(var(--shadow-icon-small));
-}
-
-.shipping-copy {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.shipping-copy strong {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-}
-
-.shipping-meta {
-  color: var(--muted);
-  font-size: var(--text-small);
-  font-variant-numeric: tabular-nums;
-}
-
-.shipping-note {
-  display: -webkit-box;
-  overflow: hidden;
-  margin-top: 4px;
-  color: var(--ink-2);
-  font-size: var(--text-small);
-  line-height: 1.4;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-/* The featured products: the catalog's first row, three larger cards with a
-   picture and a line each. They filter with the rest. */
-.home-catalog-featured {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-  margin: 20px auto 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-catalog-featured > li[hidden] {
-  display: none;
-}
-
-.home-featured-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  border-radius: var(--radius-card);
-  background: var(--paper-raised);
-  color: var(--ink);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.home-featured-card:hover {
-  text-decoration: none;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.home-featured-shot {
-  position: relative;
-  margin: 0;
-}
-
-.home-featured-shot img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
-  object-position: center top;
-}
-
-/* Under the card's text, so every title starts at the same height. */
-.home-featured-caption {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: var(--text-small);
-  line-height: 1.4;
-}
-
-.home-featured-copy {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 18px 22px 22px;
-}
-
-.home-featured-name {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.022em;
-}
-
-.home-featured-text {
-  margin-top: 6px;
-  color: var(--ink-2);
-  font-size: var(--text-card-body);
-  line-height: 1.45;
-}
-
-.home-featured-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: auto;
-  padding-top: 14px;
-  color: var(--link);
-  font-size: 16px;
-}
-
-.home-featured-more::after {
-  content: "›";
-  font-size: 1.15em;
-  line-height: 1;
-}
-
-.home-featured-card:hover .home-featured-more {
-  text-decoration: underline;
-}
-
-/* Every tool: the families first, then two facet rows and one grid of cards. */
-.home-more-tools {
-  padding-top: var(--section-y);
-}
-
-.home-families {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-  margin: 36px auto 0;
-}
-
-/* A family: products that work together, in the order you reach for them.
-   Home shows each one as a card; a member's page shows its own, marked. */
-.family-band {
-  padding: 20px 22px 22px;
-  border-radius: var(--radius-card);
-  background: var(--paper-raised);
-}
-
-.family-title {
-  margin: 0;
-  font-size: var(--text-catalog-name);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.family-sub {
-  margin: 2px 0 0;
-  color: var(--muted);
-  font-size: var(--text-small);
-}
-
-.family-members {
-  display: grid;
-  grid-auto-columns: minmax(0, 1fr);
-  grid-auto-flow: column;
-  gap: 8px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.family-member {
-  position: relative;
-}
-
-/* The arrow between steps sits in the gap, centred on the icons. */
-.family-member + .family-member::before {
-  content: "→";
-  position: absolute;
-  top: 10px;
-  left: -10px;
-  color: var(--faint);
-  font-size: 14px;
-  line-height: 1;
-}
-
-.family-link {
-  display: grid;
-  justify-items: center;
-  gap: 2px;
-  padding: 0 2px;
-  color: var(--ink);
-  text-align: center;
-}
-
-.family-link img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 6px;
-  border-radius: var(--icon-radius);
-}
-
-.family-link strong {
-  font-size: var(--text-small);
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.family-role {
-  color: var(--muted);
-  font-size: var(--text-meta);
-  line-height: 1.35;
-}
-
-a.family-link:hover {
-  text-decoration: none;
-}
-
-a.family-link:hover strong {
-  color: var(--link);
-}
-
-.family-link[aria-current="page"] strong {
-  color: var(--ink);
-}
-
-.family-link[aria-current="page"] img {
-  outline: 2px solid var(--accent);
-  /* Outside the plate ring (--plate-s is 4px wide). */
-  outline-offset: 6px;
-}
-
-/* Facets: what it is for, and where it runs. One value per row; both apply. */
-.home-facets {
-  display: grid;
-  gap: 10px;
-  max-width: 1040px;
-  margin: 40px auto 0;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
-}
-
-.home-facets[hidden] {
-  display: none;
-}
-
-.home-facet {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-}
-
-.home-facet-label {
-  flex: none;
-  width: 72px;
-  color: var(--muted);
-  font-size: var(--text-small);
-  font-weight: 600;
-}
-
-.home-facet button {
-  flex: none;
-  min-height: 34px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  color: var(--ink-2);
-  background: transparent;
-  font: inherit;
-  font-size: var(--text-small);
-  cursor: pointer;
-}
-
-.home-facet button:hover {
-  color: var(--ink);
-  border-color: var(--soft-line);
-}
-
-.home-facet button[aria-pressed="true"] {
-  color: var(--paper);
-  background: var(--ink);
-  border-color: var(--ink);
-  font-weight: 600;
-}
-
-.home-facet-count {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: var(--text-small);
-}
-
-.home-catalog-list {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-  margin: 20px auto 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-catalog-list > li[hidden] {
-  display: none;
-}
-
-/* A card per tool: a picture of the real thing, then icon, name, one line,
-   and chips for what it is and where it runs. Versions live on product pages. */
-.catalog-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--paper);
-  color: var(--ink);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.catalog-card:hover {
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.catalog-card:hover .home-catalog-name {
-  color: var(--link);
-}
-
-.catalog-thumb {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--paper-raised);
-}
-
-.catalog-thumb.is-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-  filter: var(--shot-dim);
-}
-
-.catalog-thumb.is-icon img {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--icon-radius);
-}
-
-/* A tool without a picture shows the first command from its page. */
-.catalog-thumb.is-command {
-  place-items: start;
-  padding: 16px;
-  background: var(--code-bg);
-}
-
-.catalog-thumb.is-command code {
-  color: var(--ink-2);
-  font: var(--text-meta)/1.55 var(--mono);
-  overflow-wrap: anywhere;
-}
-
-.catalog-thumb.is-command code::before {
-  content: "$ ";
-  color: var(--faint);
-}
-
-.catalog-card-copy {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  flex: 1;
-  padding: 14px 16px 16px;
-}
-
-.catalog-card-name {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.catalog-card-name .catalog-icon {
-  flex: none;
-  width: 24px;
-  height: 24px;
-}
-
-.home-catalog-name {
-  font-size: var(--text-catalog-name);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-
-.home-catalog-text {
-  color: var(--ink-2);
-  font-size: var(--text-small);
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-}
-
-.catalog-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: auto;
-}
-
-.catalog-chip {
-  padding: 3px 8px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  color: var(--ink-2);
-  background: var(--paper-raised);
-  font-size: var(--text-meta);
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
-.catalog-chip.is-status {
-  color: var(--data-caution-ink);
-  border-color: var(--data-caution);
-}
-
-@media (max-width: 960px) {
-  .home-catalog-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@layer templates {
+  /* Home, About, privacy, and 404. Product pages live in product.css. */
+
+  /* Centered heroes share one shape: a wash, a large title, a balanced lede. */
+  .home-hero,
+  .about-hero,
+  .product-hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: 72px;
+    text-align: center;
   }
 
-  /* Three featured cards do not split into two columns: one row that scrolls sideways. */
-  .home-catalog-featured {
+  .home-hero h1,
+  .about-hero h1 {
+    margin: 0 auto;
+    font-size: var(--title-hero);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  /* Home */
+  .home-hero {
+    padding-bottom: 8px;
+  }
+
+  .home-hero .lead {
+    max-width: 30em;
+  }
+
+  /* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
+  .title-part {
+    display: inline-block;
+  }
+
+  /* Just shipped: the three latest releases, a quiet strip under the hero. */
+  .home-shipping {
+    padding-top: 72px;
+  }
+
+  .home-strip-head {
     display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 1040px;
+    margin: 0 auto 14px;
+  }
+
+  .home-strip-head h2 {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-kicker);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .home-strip-more {
+    font-size: var(--text-kicker);
+  }
+
+  .home-strip-more::after {
+    content: " ›";
+  }
+
+  .shipping-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
   }
 
-  .home-catalog-featured::-webkit-scrollbar {
-    display: none;
+  .shipping-card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    height: 100%;
+    padding: 16px 18px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+    color: var(--ink);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
-  .home-catalog-featured > li {
-    flex: 0 0 min(340px, 80%);
-    scroll-snap-align: start;
+  .shipping-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
   }
 
-  .home-families {
-    grid-template-columns: minmax(0, 1fr);
+  .shipping-card img {
+    width: 40px;
+    height: 40px;
   }
 
-  .shipping-list {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .home-featured-shot img {
-    aspect-ratio: 16 / 10;
+  .shipping-copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
   }
 
-  .home-featured-copy {
-    padding: 14px 16px 16px;
+  .shipping-copy strong {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
 
-  /* The latest releases: one row that scrolls sideways, not three stacked cards. */
-  .shipping-list {
-    display: flex;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .shipping-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  .shipping-list > li {
-    flex: 0 0 78%;
-    scroll-snap-align: start;
+  .shipping-meta {
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
   }
 
   .shipping-note {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 4px;
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* The featured products: the catalog's first row, three larger cards with a
+   picture and a line each. They filter with the rest. */
+  .home-catalog-featured {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1040px;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-catalog-featured > li[hidden] {
     display: none;
   }
 
-  /* The rest of the catalog: one line per tool, icon, name and chips; the
-     picture and the line wait for the product page. */
-  .home-catalog-list {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
-  }
-
-  .catalog-thumb,
-  .catalog-card .home-catalog-text {
-    display: none;
-  }
-
-  /* Name on the left, chips on the right; they wrap under a long name. */
-  .catalog-card-copy {
+  .home-featured-card {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+    color: var(--ink);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .home-featured-card:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .home-featured-shot {
+    position: relative;
+    margin: 0;
+  }
+
+  .home-featured-shot img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Under the card's text, so every title starts at the same height. */
+  .home-featured-caption {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: var(--text-small);
+    line-height: 1.4;
+  }
+
+  .home-featured-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 18px 22px 22px;
+  }
+
+  .home-featured-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+  }
+
+  .home-featured-text {
+    margin-top: 6px;
+    color: var(--ink-2);
+    font-size: var(--text-card-body);
+    line-height: 1.45;
+  }
+
+  .home-featured-more {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px 12px;
-    padding: 12px 14px;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 14px;
+    color: var(--link);
+    font-size: 16px;
   }
 
-  .catalog-card-copy .catalog-chips {
-    margin-top: 0;
+  .home-featured-more::after {
+    content: "›";
+    font-size: 1.15em;
+    line-height: 1;
   }
 
-  .family-band {
-    padding: 18px 16px;
+  .home-featured-card:hover .home-featured-more {
+    text-decoration: underline;
   }
 
-  /* Four steps do not fit in a row: two columns, icon beside its words, in reading order. */
-  .family-members {
-    grid-auto-flow: row;
+  /* Every tool: the families first, then two facet rows and one grid of cards. */
+  .home-more-tools {
+    padding-top: var(--section-y);
+  }
+
+  .home-families {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 12px;
+    gap: 16px;
+    max-width: 1040px;
+    margin: 36px auto 0;
   }
 
+  /* A family: products that work together, in the order you reach for them.
+   Home shows each one as a card; a member's page shows its own, marked. */
+  .family-band {
+    padding: 20px 22px 22px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+  }
+
+  .family-title {
+    margin: 0;
+    font-size: var(--text-catalog-name);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .family-sub {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .family-members {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .family-member {
+    position: relative;
+  }
+
+  /* The arrow between steps sits in the gap, centred on the icons. */
   .family-member + .family-member::before {
-    content: none;
+    content: "→";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    color: var(--faint);
+    font-size: 14px;
+    line-height: 1;
   }
 
   .family-link {
-    grid-template-columns: 36px minmax(0, 1fr);
-    justify-items: start;
-    column-gap: 10px;
-    text-align: left;
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 0 2px;
+    color: var(--ink);
+    text-align: center;
   }
 
   .family-link img {
-    grid-row: span 2;
-    width: 36px;
-    height: 36px;
-    margin-bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+    border-radius: var(--icon-radius);
   }
 
-  /* Each facet row scrolls sideways instead of wrapping. */
-  .home-facet {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
+  .family-link strong {
+    font-size: var(--text-small);
+    font-weight: 600;
+    line-height: 1.3;
   }
 
-  .home-facet::-webkit-scrollbar {
+  .family-role {
+    color: var(--muted);
+    font-size: var(--text-meta);
+    line-height: 1.35;
+  }
+
+  a.family-link:hover {
+    text-decoration: none;
+  }
+
+  a.family-link:hover strong {
+    color: var(--link);
+  }
+
+  .family-link[aria-current="page"] strong {
+    color: var(--ink);
+  }
+
+  .family-link[aria-current="page"] img {
+    outline: 2px solid var(--accent);
+    /* Outside the plate ring (--plate-s is 4px wide). */
+    outline-offset: 6px;
+  }
+
+  /* Facets: what it is for, and where it runs. One value per row; both apply. */
+  .home-facets {
+    display: grid;
+    gap: 10px;
+    max-width: 1040px;
+    margin: 40px auto 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .home-facets[hidden] {
     display: none;
+  }
+
+  .home-facet {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
   }
 
   .home-facet-label {
-    width: auto;
-    margin-right: 4px;
-  }
-}
-
-/* About */
-.about-hero {
-  padding-bottom: 0;
-}
-
-.about-scenes,
-.about-releases {
-  padding-top: var(--section-y);
-}
-
-/* Where they help: one card per product line, its products as small links. */
-.scene-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 48px;
-}
-
-.scene-card {
-  display: flex;
-  flex-direction: column;
-  padding: 28px;
-  border-radius: var(--radius-card);
-  background: var(--paper-raised);
-}
-
-.scene-card h3 {
-  margin: 0;
-  font-size: var(--text-card-title);
-  letter-spacing: -0.02em;
-}
-
-.scene-when {
-  margin: 10px 0 0;
-  color: var(--ink);
-  font-size: var(--text-list-body);
-  line-height: 1.5;
-}
-
-.scene-value {
-  margin: 6px 0 0;
-  color: var(--ink-2);
-  font-size: var(--text-card-body);
-  line-height: 1.55;
-}
-
-.scene-products {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: auto 0 0;
-  padding: 20px 0 0;
-  list-style: none;
-}
-
-.scene-products a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 14px 0 8px;
-  border-radius: var(--radius-pill);
-  background: var(--paper);
-  color: var(--ink);
-  font-size: var(--text-small);
-  font-weight: 500;
-}
-
-.scene-products a:hover {
-  text-decoration: none;
-  box-shadow: 0 0 0 1px var(--soft-line);
-}
-
-.scene-products img {
-  width: 28px;
-  height: 28px;
-  border-radius: 22.5%;
-}
-
-@media (max-width: 720px) {
-  .scene-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .scene-card {
-    padding: 22px;
-  }
-}
-
-/* Release list: newest first, one hairline row per product. */
-.release-list {
-  margin: 40px 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-
-.release-list li {
-  border-bottom: 1px solid var(--line);
-}
-
-.release-list a {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 14px;
-  min-height: 64px;
-  padding: 10px 0;
-  color: var(--ink);
-}
-
-.release-list a:hover {
-  text-decoration: none;
-}
-
-.release-list a:hover strong {
-  color: var(--link);
-}
-
-.release-list img {
-  width: 36px;
-  height: 36px;
-}
-
-.release-main {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.release-list strong {
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.release-highlight {
-  overflow: hidden;
-  color: var(--muted);
-  font-size: var(--text-small);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.release-meta {
-  display: grid;
-  justify-items: end;
-  gap: 2px;
-}
-
-.release-version {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: var(--text-meta);
-}
-
-.release-date {
-  color: var(--muted);
-  font-size: var(--text-meta);
-}
-
-.release-more {
-  margin-top: 8px;
-}
-
-.release-more summary {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--link);
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.release-more .release-list {
-  margin-top: 0;
-  border-top: 0;
-}
-
-.about-analytics {
-  max-width: 60ch;
-  margin: 6px auto 0;
-  text-wrap: balance;
-  color: var(--muted);
-  font-size: var(--text-meta);
-}
-
-.about-contact-sub {
-  margin: 8px auto 0;
-  color: var(--muted);
-  font-size: var(--text-sub);
-}
-
-/* About: a line computed from the catalog and releases, then the person. */
-.about-facts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 4px 0;
-  margin: 18px auto 0;
-  color: var(--muted);
-  font-size: var(--text-small);
-  font-variant-numeric: tabular-nums;
-}
-
-.about-facts > * {
-  white-space: nowrap;
-}
-
-.about-facts > :not(:last-child)::after {
-  content: "·";
-  margin: 0 0.7em;
-  color: var(--faint);
-}
-
-.about-facts a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.about-person {
-  padding-top: var(--section-y-short);
-}
-
-.about-person-body {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-}
-
-.about-portrait {
-  flex: none;
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.about-body {
-  margin: 0;
-  color: var(--ink);
-  font-size: var(--text-sub);
-  line-height: 1.55;
-}
-
-@media (max-width: 640px) {
-  .about-person-body {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-
-/* Releases: every product's latest release, newest first. */
-.releases-timeline {
-  padding-top: var(--section-y-short);
-}
-
-.release-feed {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-
-.release-entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 4px 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.release-entry-product {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 44px;
-  color: var(--ink);
-}
-
-.release-entry-product:hover {
-  text-decoration: none;
-}
-
-.release-entry-product:hover strong {
-  color: var(--link);
-}
-
-.release-entry-product img {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(var(--shadow-icon-small));
-}
-
-.release-entry-product strong {
-  font-size: var(--text-card-title);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-/* Tag and date, then the link to the full notes, on the row's right. */
-.release-entry-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0 18px;
-}
-
-.release-entry-tag {
-  display: flex;
-  gap: 0;
-  margin: 0;
-  color: var(--muted);
-  font-size: var(--text-meta);
-  font-variant-numeric: tabular-nums;
-}
-
-.release-entry-tag > :not(:last-child)::after {
-  content: "·";
-  margin: 0 0.6em;
-  color: var(--faint);
-  font-family: var(--sans);
-}
-
-.release-entry-summary,
-.release-entry-items {
-  grid-column: 1 / -1;
-  margin-left: 54px;
-}
-
-.release-entry-summary {
-  margin-top: 6px;
-  margin-bottom: 0;
-  color: var(--ink-2);
-  font-size: var(--text-list-body);
-  line-height: 1.5;
-}
-
-/* Quoted from the notes: a hairline marks them as the release's own words. */
-.release-entry-items {
-  display: grid;
-  gap: 6px;
-  margin-top: 8px;
-  margin-bottom: 0;
-  padding: 2px 0 2px 14px;
-  border-left: 2px solid var(--soft-line);
-  list-style: none;
-}
-
-.release-entry-items li {
-  color: var(--ink-2);
-  font-size: var(--text-list-body);
-  line-height: 1.5;
-}
-
-/* Earlier releases: one muted line of tags and dates under the latest. */
-.release-entry-earlier {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 14px;
-  grid-column: 1 / -1;
-  margin: 8px 0 0 54px;
-  color: var(--muted);
-  font-size: var(--text-meta);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.5;
-}
-
-.release-entry-earlier-label {
-  font-weight: 600;
-}
-
-.release-entry-earlier-item time::before {
-  content: "·";
-  margin: 0 0.5em;
-  color: var(--faint);
-}
-
-.release-entry-notes {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: var(--text-small);
-}
-
-.release-entry-notes::after {
-  content: " ›";
-  white-space: pre;
-}
-
-.releases-feed {
-  margin: 20px 0 0;
-  text-align: center;
-}
-
-.releases-undated {
-  padding-top: var(--section-y-short);
-}
-
-.releases-undated .section-head h2 {
-  font-size: var(--title-show);
-  line-height: 1.12;
-}
-
-:lang(zh) .release-entry-items li,
-:lang(zh) .release-entry-summary {
-  line-height: 1.75;
-}
-
-@media (max-width: 640px) {
-  .release-entry {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .release-entry-meta {
-    justify-content: flex-start;
-    margin-left: 46px;
-  }
-
-  .release-entry-summary,
-  .release-entry-items,
-  .release-entry-earlier {
-    margin-left: 0;
-  }
-
-  /* Phones keep the two most recent earlier releases. */
-  .release-entry-earlier-item:nth-of-type(n + 4) {
-    display: none;
-  }
-
-  .release-entry-product img {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-/* Privacy index: one row per product. Phones read each row as a block. */
-.privacy-index {
-  padding-top: var(--section-y-short);
-}
-
-.privacy-table {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  font-size: var(--text-card-body);
-  text-align: left;
-}
-
-.privacy-table thead th {
-  padding: 0 16px 12px 0;
-  color: var(--muted);
-  font-size: var(--text-meta);
-  font-weight: 600;
-  vertical-align: bottom;
-}
-
-.privacy-table tbody tr {
-  border-top: 1px solid var(--line);
-}
-
-.privacy-table tbody tr:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.privacy-table tbody th,
-.privacy-table td {
-  padding: 16px 16px 16px 0;
-  color: var(--ink-2);
-  line-height: 1.5;
-  vertical-align: top;
-}
-
-.privacy-table tbody th {
-  width: 22%;
-  font-weight: 600;
-}
-
-.privacy-table td:nth-child(2) {
-  width: 30%;
-}
-
-/* Text cells start on the line of the product name and the first link. */
-.privacy-table td:nth-child(2),
-.privacy-table td:nth-child(3) {
-  padding-top: 26px;
-}
-
-.privacy-table td:last-child {
-  width: 18%;
-  padding-right: 0;
-}
-
-.privacy-tool {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  color: var(--ink);
-  font-size: var(--text-list-body);
-}
-
-.privacy-tool img {
-  flex: none;
-  width: 32px;
-  height: 32px;
-}
-
-.privacy-level {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink);
-  font-weight: 600;
-}
-
-/* A dot beside the level, so the column reads at a glance. */
-.privacy-level::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--faint);
-}
-
-.privacy-level[data-level="none"]::before {
-  background: var(--data-ref);
-}
-
-.privacy-level[data-level="automatic"]::before {
-  background: var(--data-caution);
-}
-
-.privacy-note {
-  display: block;
-  margin-top: 2px;
-}
-
-.privacy-unstated {
-  color: var(--muted);
-}
-
-.privacy-links {
-  display: grid;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.privacy-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.privacy-site-note {
-  max-width: 60ch;
-  margin: 28px auto 0;
-  color: var(--muted);
-  font-size: var(--text-meta);
-  text-align: center;
-  text-wrap: balance;
-}
-
-:lang(zh) .privacy-table tbody th,
-:lang(zh) .privacy-table td {
-  line-height: 1.7;
-}
-
-@media (max-width: 760px) {
-  .privacy-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  .privacy-table,
-  .privacy-table tbody,
-  .privacy-table tr,
-  .privacy-table tbody th,
-  .privacy-table td {
-    display: block;
-    width: auto;
-  }
-
-  .privacy-table tbody tr {
-    padding: 16px 0;
-  }
-
-  .privacy-table tbody th,
-  .privacy-table td,
-  .privacy-table td:nth-child(2),
-  .privacy-table td:nth-child(3),
-  .privacy-table td:last-child {
-    width: auto;
-    padding: 4px 0;
-  }
-
-  .privacy-table td::before {
-    content: attr(data-label);
-    display: block;
+    flex: none;
+    width: 72px;
     color: var(--muted);
-    font-size: var(--text-meta);
+    font-size: var(--text-small);
     font-weight: 600;
   }
 
-  .privacy-links {
+  .home-facet button {
+    flex: none;
+    min-height: 34px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--ink-2);
+    background: transparent;
+    font: inherit;
+    font-size: var(--text-small);
+    cursor: pointer;
+  }
+
+  .home-facet button:hover {
+    color: var(--ink);
+    border-color: var(--soft-line);
+  }
+
+  .home-facet button[aria-pressed="true"] {
+    color: var(--paper);
+    background: var(--ink);
+    border-color: var(--ink);
+    font-weight: 600;
+  }
+
+  .home-facet-count {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  .home-catalog-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1040px;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-catalog-list > li[hidden] {
+    display: none;
+  }
+
+  /* A card per tool: a picture of the real thing, then icon, name, one line,
+   and chips for what it is and where it runs. Versions live on product pages. */
+  .catalog-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--paper);
+    color: var(--ink);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .catalog-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .catalog-card:hover .home-catalog-name {
+    color: var(--link);
+  }
+
+  .catalog-thumb {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--paper-raised);
+  }
+
+  .catalog-thumb.is-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    filter: var(--shot-dim);
+  }
+
+  .catalog-thumb.is-icon img {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--icon-radius);
+  }
+
+  /* A tool without a picture shows the first command from its page. */
+  .catalog-thumb.is-command {
+    place-items: start;
+    padding: 16px;
+    background: var(--code-bg);
+  }
+
+  .catalog-thumb.is-command code {
+    color: var(--ink-2);
+    font: var(--text-meta)/1.55 var(--mono);
+    overflow-wrap: anywhere;
+  }
+
+  .catalog-thumb.is-command code::before {
+    content: "$ ";
+    color: var(--faint);
+  }
+
+  .catalog-card-copy {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    flex: 1;
+    padding: 14px 16px 16px;
+  }
+
+  .catalog-card-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .catalog-card-name .catalog-icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .home-catalog-name {
+    font-size: var(--text-catalog-name);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .home-catalog-text {
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  .catalog-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 18px;
+    gap: 6px;
+    margin-top: auto;
   }
-}
 
-/* Privacy and 404 */
-.notfound-products {
-  max-width: var(--narrow);
-  margin: 56px auto 0;
-  text-align: center;
-}
+  .catalog-chip {
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--ink-2);
+    background: var(--paper-raised);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    white-space: nowrap;
+  }
 
-.notfound-products ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-  text-align: left;
-}
+  .catalog-chip.is-status {
+    color: var(--data-caution-ink);
+    border-color: var(--data-caution);
+  }
 
-.notfound-products a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 48px;
-  padding: 8px 14px;
-  border-radius: 14px;
-  color: var(--ink);
-  background: var(--paper-raised);
-  font-size: 15px;
-  line-height: 1.3;
-}
+  @media (max-width: 960px) {
+    .home-catalog-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-.notfound-products a:hover {
-  text-decoration: none;
-  box-shadow: var(--shadow-card-hover);
-}
+    /* Three featured cards do not split into two columns: one row that scrolls sideways. */
+    .home-catalog-featured {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
 
-.notfound-products img {
-  width: 28px;
-  height: 28px;
-}
+    .home-catalog-featured::-webkit-scrollbar {
+      display: none;
+    }
 
-/* Privacy and 404 open at the same height as the other heroes. */
-.privacy-page {
-  padding-top: 72px;
-}
+    .home-catalog-featured > li {
+      flex: 0 0 min(340px, 80%);
+      scroll-snap-align: start;
+    }
 
-.privacy-header {
-  text-align: center;
-}
+    .home-families {
+      grid-template-columns: minmax(0, 1fr);
+    }
 
-.privacy-header h1 {
-  margin: 0;
-  font-size: var(--title-display);
-  line-height: 1.06;
-}
+    .shipping-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 
-.privacy-header .lead {
-  margin-top: 18px;
-}
+  @media (max-width: 640px) {
+    .home-featured-shot img {
+      aspect-ratio: 16 / 10;
+    }
 
-.privacy-header .eyebrow a {
-  color: inherit;
-}
+    .home-featured-copy {
+      padding: 14px 16px 16px;
+    }
 
-.privacy-updated {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: var(--text-meta);
-}
+    /* The latest releases: one row that scrolls sideways, not three stacked cards. */
+    .shipping-list {
+      display: flex;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
 
-.privacy-content {
-  max-width: var(--narrow);
-  margin: 56px auto 0;
-}
+    .shipping-list::-webkit-scrollbar {
+      display: none;
+    }
 
-.privacy-content section {
-  padding: 28px 0;
-  border-top: 1px solid var(--line);
-}
+    .shipping-list > li {
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+    }
 
-.privacy-content p a,
-.privacy-content li a {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
+    .shipping-note {
+      display: none;
+    }
 
-.privacy-content h2 {
-  margin: 0 0 12px;
-  font-size: var(--text-card-title);
-  font-weight: 600;
-  line-height: 1.25;
-}
+    /* The rest of the catalog: one line per tool, icon, name and chips; the
+     picture and the line wait for the product page. */
+    .home-catalog-list {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
 
-.privacy-content p:last-child {
-  margin-bottom: 0;
-}
+    .catalog-thumb,
+    .catalog-card .home-catalog-text {
+      display: none;
+    }
 
-.privacy-content code {
-  padding: 1px 5px;
-  border-radius: 6px;
-  background: var(--code-bg);
-  font-size: 0.88em;
-}
+    /* Name on the left, chips on the right; they wrap under a long name. */
+    .catalog-card-copy {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 12px;
+      padding: 12px 14px;
+    }
 
-@media (max-width: 640px) {
-  .home-hero,
-  .about-hero,
-  .product-hero,
-  .privacy-page {
-    padding-top: 48px;
+    .catalog-card-copy .catalog-chips {
+      margin-top: 0;
+    }
+
+    .family-band {
+      padding: 18px 16px;
+    }
+
+    /* Four steps do not fit in a row: two columns, icon beside its words, in reading order. */
+    .family-members {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 12px;
+    }
+
+    .family-member + .family-member::before {
+      content: none;
+    }
+
+    .family-link {
+      grid-template-columns: 36px minmax(0, 1fr);
+      justify-items: start;
+      column-gap: 10px;
+      text-align: left;
+    }
+
+    .family-link img {
+      grid-row: span 2;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 0;
+    }
+
+    /* Each facet row scrolls sideways instead of wrapping. */
+    .home-facet {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+
+    .home-facet::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-facet-label {
+      width: auto;
+      margin-right: 4px;
+    }
+  }
+
+  /* About */
+  .about-hero {
+    padding-bottom: 0;
+  }
+
+  .about-scenes,
+  .about-releases {
+    padding-top: var(--section-y);
+  }
+
+  /* Where they help: one card per product line, its products as small links. */
+  .scene-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .scene-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+  }
+
+  .scene-card h3 {
+    margin: 0;
+    font-size: var(--text-card-title);
+    letter-spacing: -0.02em;
+  }
+
+  .scene-when {
+    margin: 10px 0 0;
+    color: var(--ink);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  .scene-value {
+    margin: 6px 0 0;
+    color: var(--ink-2);
+    font-size: var(--text-card-body);
+    line-height: 1.55;
+  }
+
+  .scene-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: auto 0 0;
+    padding: 20px 0 0;
+    list-style: none;
+  }
+
+  .scene-products a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px 0 8px;
+    border-radius: var(--radius-pill);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: var(--text-small);
+    font-weight: 500;
+  }
+
+  .scene-products a:hover {
+    text-decoration: none;
+    box-shadow: 0 0 0 1px var(--soft-line);
+  }
+
+  .scene-products img {
+    width: 28px;
+    height: 28px;
+    border-radius: 22.5%;
+  }
+
+  @media (max-width: 720px) {
+    .scene-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scene-card {
+      padding: 22px;
+    }
+  }
+
+  /* Release list: newest first, one hairline row per product. */
+  .release-list {
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .release-list li {
+    border-bottom: 1px solid var(--line);
   }
 
   .release-list a {
-    grid-template-columns: 28px minmax(0, 1fr) auto;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    padding: 10px 0;
+    color: var(--ink);
+  }
+
+  .release-list a:hover {
+    text-decoration: none;
+  }
+
+  .release-list a:hover strong {
+    color: var(--link);
   }
 
   .release-list img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .release-main {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .release-list strong {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .release-highlight {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: var(--text-small);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .release-meta {
+    display: grid;
+    justify-items: end;
+    gap: 2px;
+  }
+
+  .release-version {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+  }
+
+  .release-date {
+    color: var(--muted);
+    font-size: var(--text-meta);
+  }
+
+  .release-more {
+    margin-top: 8px;
+  }
+
+  .release-more summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--link);
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .release-more .release-list {
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .about-analytics {
+    max-width: 60ch;
+    margin: 6px auto 0;
+    text-wrap: balance;
+    color: var(--muted);
+    font-size: var(--text-meta);
+  }
+
+  .about-contact-sub {
+    margin: 8px auto 0;
+    color: var(--muted);
+    font-size: var(--text-sub);
+  }
+
+  /* About: a line computed from the catalog and releases, then the person. */
+  .about-facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 0;
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .about-facts > * {
+    white-space: nowrap;
+  }
+
+  .about-facts > :not(:last-child)::after {
+    content: "·";
+    margin: 0 0.7em;
+    color: var(--faint);
+  }
+
+  .about-facts a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .about-person {
+    padding-top: var(--section-y-short);
+  }
+
+  .about-person-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .about-portrait {
+    flex: none;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .about-body {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-sub);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px) {
+    .about-person-body {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  /* Releases: every product's latest release, newest first. */
+  .releases-timeline {
+    padding-top: var(--section-y-short);
+  }
+
+  .release-feed {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .release-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .release-entry-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 44px;
+    color: var(--ink);
+  }
+
+  .release-entry-product:hover {
+    text-decoration: none;
+  }
+
+  .release-entry-product:hover strong {
+    color: var(--link);
+  }
+
+  .release-entry-product img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .release-entry-product strong {
+    font-size: var(--text-card-title);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Tag and date, then the link to the full notes, on the row's right. */
+  .release-entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0 18px;
+  }
+
+  .release-entry-tag {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .release-entry-tag > :not(:last-child)::after {
+    content: "·";
+    margin: 0 0.6em;
+    color: var(--faint);
+    font-family: var(--sans);
+  }
+
+  .release-entry-summary,
+  .release-entry-items {
+    grid-column: 1 / -1;
+    margin-left: 54px;
+  }
+
+  .release-entry-summary {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: var(--ink-2);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  /* Quoted from the notes: a hairline marks them as the release's own words. */
+  .release-entry-items {
+    display: grid;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding: 2px 0 2px 14px;
+    border-left: 2px solid var(--soft-line);
+    list-style: none;
+  }
+
+  .release-entry-items li {
+    color: var(--ink-2);
+    font-size: var(--text-list-body);
+    line-height: 1.5;
+  }
+
+  /* Earlier releases: one muted line of tags and dates under the latest. */
+  .release-entry-earlier {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+    grid-column: 1 / -1;
+    margin: 8px 0 0 54px;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+  }
+
+  .release-entry-earlier-label {
+    font-weight: 600;
+  }
+
+  .release-entry-earlier-item time::before {
+    content: "·";
+    margin: 0 0.5em;
+    color: var(--faint);
+  }
+
+  .release-entry-notes {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: var(--text-small);
+  }
+
+  .release-entry-notes::after {
+    content: " ›";
+    white-space: pre;
+  }
+
+  .releases-feed {
+    margin: 20px 0 0;
+    text-align: center;
+  }
+
+  .releases-undated {
+    padding-top: var(--section-y-short);
+  }
+
+  .releases-undated .section-head h2 {
+    font-size: var(--title-show);
+    line-height: 1.12;
+  }
+
+  :lang(zh) .release-entry-items li,
+  :lang(zh) .release-entry-summary {
+    line-height: 1.75;
+  }
+
+  @media (max-width: 640px) {
+    .release-entry {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .release-entry-meta {
+      justify-content: flex-start;
+      margin-left: 46px;
+    }
+
+    .release-entry-summary,
+    .release-entry-items,
+    .release-entry-earlier {
+      margin-left: 0;
+    }
+
+    /* Phones keep the two most recent earlier releases. */
+    .release-entry-earlier-item:nth-of-type(n + 4) {
+      display: none;
+    }
+
+    .release-entry-product img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  /* Privacy index: one row per product. Phones read each row as a block. */
+  .privacy-index {
+    padding-top: var(--section-y-short);
+  }
+
+  .privacy-table {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: var(--text-card-body);
+    text-align: left;
+  }
+
+  .privacy-table thead th {
+    padding: 0 16px 12px 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    vertical-align: bottom;
+  }
+
+  .privacy-table tbody tr {
+    border-top: 1px solid var(--line);
+  }
+
+  .privacy-table tbody tr:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-table tbody th,
+  .privacy-table td {
+    padding: 16px 16px 16px 0;
+    color: var(--ink-2);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .privacy-table tbody th {
+    width: 22%;
+    font-weight: 600;
+  }
+
+  .privacy-table td:nth-child(2) {
+    width: 30%;
+  }
+
+  /* Text cells start on the line of the product name and the first link. */
+  .privacy-table td:nth-child(2),
+  .privacy-table td:nth-child(3) {
+    padding-top: 26px;
+  }
+
+  .privacy-table td:last-child {
+    width: 18%;
+    padding-right: 0;
+  }
+
+  .privacy-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: var(--ink);
+    font-size: var(--text-list-body);
+  }
+
+  .privacy-tool img {
+    flex: none;
+    width: 32px;
+    height: 32px;
+  }
+
+  .privacy-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* A dot beside the level, so the column reads at a glance. */
+  .privacy-level::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--faint);
+  }
+
+  .privacy-level[data-level="none"]::before {
+    background: var(--data-ref);
+  }
+
+  .privacy-level[data-level="automatic"]::before {
+    background: var(--data-caution);
+  }
+
+  .privacy-note {
+    display: block;
+    margin-top: 2px;
+  }
+
+  .privacy-unstated {
+    color: var(--muted);
+  }
+
+  .privacy-links {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .privacy-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .privacy-site-note {
+    max-width: 60ch;
+    margin: 28px auto 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  :lang(zh) .privacy-table tbody th,
+  :lang(zh) .privacy-table td {
+    line-height: 1.7;
+  }
+
+  @media (max-width: 760px) {
+    .privacy-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .privacy-table,
+    .privacy-table tbody,
+    .privacy-table tr,
+    .privacy-table tbody th,
+    .privacy-table td {
+      display: block;
+      width: auto;
+    }
+
+    .privacy-table tbody tr {
+      padding: 16px 0;
+    }
+
+    .privacy-table tbody th,
+    .privacy-table td,
+    .privacy-table td:nth-child(2),
+    .privacy-table td:nth-child(3),
+    .privacy-table td:last-child {
+      width: auto;
+      padding: 4px 0;
+    }
+
+    .privacy-table td::before {
+      content: attr(data-label);
+      display: block;
+      color: var(--muted);
+      font-size: var(--text-meta);
+      font-weight: 600;
+    }
+
+    .privacy-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 18px;
+    }
+  }
+
+  /* Privacy and 404 */
+  .notfound-products {
+    max-width: var(--narrow);
+    margin: 56px auto 0;
+    text-align: center;
+  }
+
+  .notfound-products ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  .notfound-products a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    color: var(--ink);
+    background: var(--paper-raised);
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .notfound-products a:hover {
+    text-decoration: none;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .notfound-products img {
     width: 28px;
     height: 28px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .shipping-card,
-  .home-featured-card,
-  .catalog-card {
-    transition: none;
+  /* Privacy and 404 open at the same height as the other heroes. */
+  .privacy-page {
+    padding-top: 72px;
   }
 
-  .shipping-card:hover,
-  .home-featured-card:hover,
-  .catalog-card:hover {
-    transform: none;
+  .privacy-header {
+    text-align: center;
+  }
+
+  .privacy-header h1 {
+    margin: 0;
+    font-size: var(--title-display);
+    line-height: 1.06;
+  }
+
+  .privacy-header .lead {
+    margin-top: 18px;
+  }
+
+  .privacy-header .eyebrow a {
+    color: inherit;
+  }
+
+  .privacy-updated {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+  }
+
+  .privacy-content {
+    max-width: var(--narrow);
+    margin: 56px auto 0;
+  }
+
+  .privacy-content section {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .privacy-content p a,
+  .privacy-content li a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .privacy-content h2 {
+    margin: 0 0 12px;
+    font-size: var(--text-card-title);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .privacy-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .privacy-content code {
+    padding: 1px 5px;
+    border-radius: 6px;
+    background: var(--code-bg);
+    font-size: 0.88em;
+  }
+
+  @media (max-width: 640px) {
+    .home-hero,
+    .about-hero,
+    .product-hero,
+    .privacy-page {
+      padding-top: 48px;
+    }
+
+    .release-list a {
+      grid-template-columns: 28px minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .release-list img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shipping-card,
+    .home-featured-card,
+    .catalog-card {
+      transition: none;
+    }
+
+    .shipping-card:hover,
+    .home-featured-card:hover,
+    .catalog-card:hover {
+      transform: none;
+    }
   }
 }
