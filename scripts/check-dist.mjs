@@ -4,6 +4,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { headingIssues } from "./copy-rules.mjs";
+import { needsSerifSc, zhDisplayText } from "./zh-display-text.mjs";
+
+// The characters the Chinese display font carries (npm run assets:fonts writes it).
+const displayChars = new Set(fs.readFileSync("design/fonts/zh-display-chars.txt", "utf8").trim());
 
 const failures = [];
 const fail = (message) => failures.push(message);
@@ -102,6 +106,14 @@ for (const { file, html } of pages) {
     for (const match of html.matchAll(/<(h[1-3])\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
       for (const issue of headingIssues(text(match[2]), match[1].toLowerCase())) fail(`${file}: ${issue}`);
     }
+  }
+
+  // Every character of a Chinese display line is in the display font subset.
+  const missing = [
+    ...new Set([...zhDisplayText(html)].filter((char) => needsSerifSc(char) && !displayChars.has(char))),
+  ];
+  if (missing.length) {
+    fail(`${file}: Chinese display lines use ${missing.join("")}, missing from the font subset (npm run assets:fonts)`);
   }
 }
 

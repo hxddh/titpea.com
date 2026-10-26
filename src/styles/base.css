@@ -496,6 +496,15 @@ html:lang(en) main h2:not(#shipping-title, .product-related-title) {
   letter-spacing: -0.02em;
 }
 
+/* Chinese display lines: the serif's one weight (SemiBold), never a synthesised
+   bold, and no negative tracking, which crowds CJK. */
+html:lang(zh) :is(.home-hero, .about-hero, .product-hero) h1,
+html:lang(zh) main h2:not(#shipping-title, .product-related-title) {
+  font-weight: 600;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+
 /* Home: the title's last line in the accent italic. ::first-line keeps the
    one-string title (no markup) and wraps honestly at any width. */
 html:lang(en) .home-hero h1 {
