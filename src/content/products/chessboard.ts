@@ -71,23 +71,6 @@ export default defineProduct({
       stays: "Games, puzzles, lessons and progress stay on this computer.",
     },
     meta: "macOS + Windows · GPLv3 · {version} · Local app",
-    stats: {
-      title: "Lessons, puzzles, openings",
-      items: [
-        {
-          value: "120",
-          label: "lessons from zero to advanced",
-        },
-        {
-          value: "40,000",
-          label: "Lichess puzzles, rated 600–2799",
-        },
-        {
-          value: "3,815",
-          label: "named opening positions",
-        },
-      ],
-    },
     visual: {
       kind: "screenshot",
       label: "Chessboard",
@@ -108,7 +91,7 @@ export default defineProduct({
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Key moments first.",
-        body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again; in a game against the engine, your own mistakes come first. From the result bar, Review this game stops at your first ?? move, or at your first ? if there is none. Under the engine line, Human moves lists what players at your rating most often play there. Accuracy and every graded move wait in the full report.",
+        body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again.",
       },
       {
         src: "/assets/chessboard-theme-en.webp",
@@ -194,14 +177,6 @@ export default defineProduct({
             title: "Does it track my progress?",
             body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and both ratings; the Me page adds the rating curve, a practice calendar, and your strengths and weaknesses.",
           },
-          {
-            title: "How do Look ahead and Blind mate work?",
-            body: "Both are under Train, Puzzles, More ways to practise, Focus. Look ahead stops the board at a puzzle and writes the next 2–6 half-moves as text; play them in your head, then say which piece can capture or give check, or whether there is a mate. Once the puzzle’s own line runs out, Stockfish plays on. Blind mate shows a mate in one or two for 3 seconds, then hides the pieces. Both pick puzzles from the built-in Lichess set at your rating in that mode.",
-          },
-          {
-            title: "How many games can the library hold?",
-            body: "Up to 10,000. Filter them, find every game that reached a position, and explore their openings. Once twenty games are analysed, the library’s diagnosis picks two or three things to practise each week. Games are stored in the app's database with a mirror in its data folder; after a restart, a 10,000-game library lists again in about 0.2 seconds.",
-          },
         ],
       },
     ],
@@ -231,23 +206,6 @@ export default defineProduct({
       stays: "对局、谜题、课程与进度都留在这台电脑上。",
     },
     meta: "macOS + Windows · GPLv3 · {version} · 本地应用",
-    stats: {
-      title: "课程、题库、开局",
-      items: [
-        {
-          value: "120",
-          label: "课，从零基础到进阶",
-        },
-        {
-          value: "40,000",
-          label: "道 Lichess 谜题，600–2799 分",
-        },
-        {
-          value: "3,815",
-          label: "个开局局面可识别",
-        },
-      ],
-    },
     visual: {
       kind: "screenshot",
       label: "国际象棋 Chessboard",
@@ -267,7 +225,7 @@ export default defineProduct({
         height: 768,
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",
-        body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次；和引擎下的棋，先列你自己的失误。从结果条点“复盘这局”，分析完停在你的第一个 ??，没有就停在第一个 ?。引擎线下面的“人会怎么走”，列出你这个等级分的人在这里最常走的几步。精准度和每一手的分级收在完整报告里。",
+        body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。",
       },
       {
         src: "/assets/chessboard-theme-zh.webp",
@@ -349,14 +307,6 @@ export default defineProduct({
           {
             title: "能看到自己的进步吗？",
             body: "能。与引擎对局有自己的对局等级分，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和两个等级分；“我的”页还有等级分曲线、练习日历，以及强项与弱项。",
-          },
-          {
-            title: "“看 N 步”和“盲走”怎么练？",
-            body: "两种都在“训练 · 谜题 · 更多练法 · 专项”里。“看 N 步”让棋盘停在题面，接下来的 2–6 个半回合只写成文字，你在脑子里走完，再回答哪个子能吃子、哪个子能将军、有没有一步杀；题目自带的线走完后，由 Stockfish 接着走。“盲走”把一步杀或两步杀的局面亮 3 秒，然后藏起棋子，凭记忆走出杀着。两种都从内置的 Lichess 题库里按你在这个模式的评级出题。",
-          },
-          {
-            title: "棋谱库能存多少局？",
-            body: "最多一万局。可以按条件筛选、找出经过某个局面的所有对局，并浏览它们的开局。攒够二十局分析后，每周从诊断里排出两三项重点练习。对局存在应用的数据库里，并在本机数据文件夹中另存一份镜像。重启后，一万局的棋谱库约 0.2 秒就能列出来。",
           },
         ],
       },

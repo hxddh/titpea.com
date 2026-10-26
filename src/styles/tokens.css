@@ -103,7 +103,6 @@
     --title-display: clamp(2.5rem, 5.6vw, 4.5rem);
     --title-section: clamp(2.125rem, 4.6vw, 3.5rem);
     --title-show: clamp(1.625rem, 3.2vw, 2.25rem);
-    --title-stat: clamp(2.5rem, 5.4vw, 4rem);
     --text-lede: clamp(1.1875rem, 2vw, 1.5rem);
     --text-sub: clamp(1.0625rem, 1.6vw, 1.3125rem);
     --text-kicker: 14px;

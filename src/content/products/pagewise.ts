@@ -63,22 +63,13 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "how",
-        nav: "How it works",
+        id: "features",
+        nav: "Features",
         label: "Every answer lists the pages it read.",
         items: [
           { title: "Ask or select", body: "Ask a question, or select a passage first." },
           { title: "PageWise reads", body: "It searches the document and reads relevant pages." },
           { title: "Follow a citation", body: "Click one to see its quoted words lit on the page." },
-        ],
-        numbered: true,
-      },
-      {
-        kind: "cards",
-        id: "features",
-        nav: "Features",
-        label: "Answers sit beside the page and travel with it.",
-        items: [
           { title: "In the page margin", body: "With the panel closed, cited sentences show their state there." },
           { title: "Cited tables", body: "Every cell cited; export as CSV with its sources." },
           { title: "A highlighted PDF copy", body: "Findings and your marks as highlights, from Export…" },
@@ -122,18 +113,6 @@ export default defineProduct({
             title: "What if a file will not open?",
             body: "PageWise says why and what to do next. A PDF that needs a password to open is not supported yet: print it to a new PDF without the password. One protected only against editing opens. Files over 256 MiB are refused before they are read, so split them; a damaged file needs downloading again, and other types need converting to PDF or JPEG.",
             asOf: "v24.0.0",
-          },
-          {
-            title: "Does the PDF export change my original?",
-            body: "No. The “PDF with evidence” export writes a copy to a new file you choose, with located findings and your marks as highlights. A signed PDF's signature does not survive in the copy, and encrypted PDFs cannot be annotated.",
-          },
-          {
-            title: "Does it search the web?",
-            body: "Not by default. With OpenRouter as the provider, you can turn on web search for the next message.",
-          },
-          {
-            title: "How do I open it on macOS?",
-            body: "The build runs on Apple Silicon and Intel Macs and is not notarized. After installing each version, run `xattr -dr com.apple.quarantine /Applications/PageWise.app` once, or try to open it and then click Open Anyway in System Settings → Privacy & Security.",
           },
         ],
       },
@@ -188,22 +167,13 @@ export default defineProduct({
     sections: [
       {
         kind: "cards",
-        id: "how",
-        nav: "用法",
+        id: "features",
+        nav: "功能",
         label: "每个回答都写明读了哪几页",
         items: [
           { title: "提问或选中", body: "直接提问，或选中一段再问。" },
           { title: "PageWise 读取", body: "搜索文档，读取相关页面。" },
           { title: "顺着引用看", body: "点开引用，原页高亮被引用的原文。" },
-        ],
-        numbered: true,
-      },
-      {
-        kind: "cards",
-        id: "features",
-        nav: "功能",
-        label: "回答在页边，也能带走",
-        items: [
           { title: "写在页边", body: "关闭侧栏时，引用本页的句子连同核对状态显示在页边。" },
           { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
           { title: "带高亮的 PDF 副本", body: "结论和你的批注写成高亮，在“导出…”里选。" },
@@ -247,18 +217,6 @@ export default defineProduct({
             title: "文件打不开怎么办？",
             body: "PageWise 会说明原因和下一步。需要密码才能打开的 PDF 暂不支持，可以先打印成不带密码的新 PDF；只限制编辑的 PDF 能正常打开。超过 256 MiB 的文件在读取前就会被拒绝，需要先拆分；损坏的文件需要重新下载，其他格式需要先转成 PDF 或 JPEG。",
             asOf: "v24.0.0",
-          },
-          {
-            title: "导出的 PDF 会改动原文件吗？",
-            body: "不会。“带证据的 PDF”写到你另选的新文件里，把找到原文的结论和你的批注写成高亮。带数字签名的 PDF，副本里的签名会失效；加密的 PDF 无法写入批注。",
-          },
-          {
-            title: "会联网搜索吗？",
-            body: "默认不会。使用 OpenRouter 时，可以为下一条消息开启网页搜索。",
-          },
-          {
-            title: "在 macOS 上怎么首次打开？",
-            body: "安装包同时支持 Apple 芯片和 Intel 芯片的 Mac，尚未公证。每装一个新版本，运行一次 `xattr -dr com.apple.quarantine /Applications/PageWise.app`；或先尝试打开，再到“系统设置 → 隐私与安全性”里点“仍要打开”。",
           },
         ],
       },

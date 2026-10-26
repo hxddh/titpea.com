@@ -84,7 +84,7 @@ const failures = (
         };
         const problems = [];
         for (const element of document.querySelectorAll(
-          ".feature-card p, .faq-answer, .home-catalog-text, .panel p, .whats-new-list li",
+          ".feature-card p, .faq-answer, .home-catalog-text, .whats-new-list li",
         )) {
           if (!visible(element)) continue;
           const [a, b] = [luminance(getComputedStyle(element).color), luminance(background(element))];

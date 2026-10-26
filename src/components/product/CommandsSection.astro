@@ -9,29 +9,18 @@ interface Props {
   copiedLabel: string;
   outputLabel: string;
   controls: { pause: string; play: string };
-  /** Tool pages: the commands side by side as numbered steps. */
-  steps?: boolean;
   /** The command whose replay already plays in the hero; it is not repeated here. */
   replayInHero?: string;
   /** The hero already shows the first command: start from the second. */
   skipFirst?: boolean;
 }
 
-const {
-  commands,
-  copyLabel,
-  copiedLabel,
-  outputLabel,
-  controls,
-  steps = false,
-  replayInHero,
-  skipFirst = false,
-} = Astro.props;
+const { commands, copyLabel, copiedLabel, outputLabel, controls, replayInHero, skipFirst = false } = Astro.props;
 const items = skipFirst ? commands.items.slice(1) : commands.items;
 ---
 
-<section id="start" class="product-section commands-section" data-layout={steps ? "steps" : undefined}>
-  <div class:list={["shell", !steps && "narrow"]}>
+<section id="start" class="product-section commands-section">
+  <div class="shell narrow">
     <header class="section-head">
       <h2>{commands.title}</h2>
       {commands.sub && (
@@ -42,9 +31,8 @@ const items = skipFirst ? commands.items.slice(1) : commands.items;
     </header>
     {items.length > 0 && (
       <ol class="command-list" data-count={items.length}>
-        {items.map((item, index) => (
+        {items.map((item) => (
           <li class="command">
-            {steps && <span class="command-step">{index + 1}</span>}
             <p class="command-comment">
               <Prose text={item.comment} />
             </p>

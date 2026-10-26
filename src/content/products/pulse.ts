@@ -194,21 +194,8 @@ export default defineProduct({
             body: "No. Ignore on the banner, like ⌘D in the tray, only stops Pulse reminding you of that wait and withdraws its banner. The prompt still waits in the agent's own window, and Pulse stays in the background.",
           },
           {
-            title: "Why does macOS block the first open?",
-            body: "Current builds are ad-hoc signed and not notarized. Click Open Anyway in System Settings → Privacy & Security, or clear quarantine with `xattr -dr com.apple.quarantine /Applications/Pulse.app`. Since macOS 15, Control-click Open no longer lets it through.",
-          },
-          {
-            title: "What happens when I upgrade?",
-            body: "Quit Pulse, drag the new Pulse.app into Applications and choose Replace, then allow the first open again, as every unnotarized build needs. Agents' hooks need no reinstall: they call a launcher in `~/Library/Application Support/Pulse`, not the app. If Settings → Hooks says an agent needs an update, Install all fixes it. Coming from 32 or earlier, Pulse 33 starts its event log over, so only the old timelines are lost. Coming from 29 or earlier, Pulse 30 also has a new bundle id, so settings and notification permission reset once, and Gemini CLI is no longer supported; its old hooks record nothing.",
-            asOf: "v33.0.0",
-          },
-          {
             title: "How do I remove Pulse?",
             body: "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
-          },
-          {
-            title: "Is there a keyboard shortcut?",
-            body: "Pulse has no global shortcut of its own. Open Pulse again from Spotlight, Raycast or the Finder and the tray opens with the oldest wait selected; ↩ takes you to its prompt. For a key, give Pulse a shortcut in your launcher.",
           },
         ],
       },
@@ -390,21 +377,8 @@ export default defineProduct({
             body: "不会。横幅上的“忽略”和托盘里的 ⌘D 一样，只让 Pulse 不再提醒这个等待，并撤回横幅。提示仍在 Agent 自己的窗口里等着，Pulse 也不会跳到前台。",
           },
           {
-            title: "为什么首次打开被 macOS 拦下？",
-            body: "当前构建是 ad-hoc 签名、未公证。在“系统设置 → 隐私与安全性”里点“仍要打开”，或用 `xattr -dr com.apple.quarantine /Applications/Pulse.app` 清掉隔离属性。macOS 15 起，右键选“打开”已不能放行。",
-          },
-          {
-            title: "升级时会怎样？",
-            body: "退出 Pulse，把新的 Pulse.app 拖进“应用程序”并选“替换”，再放行一次首次打开，每个未公证的新版本都要这样做。各 Agent 的 hook 不用重装：它们调用的是 `~/Library/Application Support/Pulse` 里的启动器，不是 App 本身。“设置 → Hooks”说某个 Agent 需要更新时，点“全部安装”即可。从 32 或更早版本升级时，Pulse 33 的事件日志从头开始，只丢以前的时间线。从 29 或更早版本升级时，Pulse 30 的 Bundle ID 也换了，设置和通知授权会重置一次。Pulse 30 不再支持 Gemini CLI，它留下的 hook 不再记录任何事件。",
-            asOf: "v33.0.0",
-          },
-          {
             title: "怎样卸载 Pulse？",
             body: "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
-          },
-          {
-            title: "有快捷键吗？",
-            body: "Pulse 没有自己的全局快捷键。在 Spotlight、Raycast 或访达里再打开 Pulse，托盘就会打开并选中最久的等待，按 ↩ 就到提示。想要按键，就在启动器里给 Pulse 设一个快捷方式。",
           },
         ],
       },

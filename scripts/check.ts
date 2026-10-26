@@ -5,7 +5,7 @@ import fs from "node:fs";
 import sharp from "sharp";
 import releases from "../src/content/releases.json" with { type: "json" };
 import { products } from "../src/content/products/index.ts";
-import { locales, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
+import { locales, templateOf, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
 import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
@@ -116,7 +116,13 @@ const genericHeadings = new Set(
     "它不是什么",
   ].map(norm),
 );
+// The product page shape (DESIGN.md, "Product Pages"; simplified at the owner's
+// request, October 2026): the product shown large up to three times after the
+// hero (showcases and at most one live demo), one feature list of at most six
+// items, at most one command block under Get started, at most five FAQ questions.
 const maxCards = 6;
+const maxFaq = 5;
+const maxShown = 3;
 const headlineLimit: Record<Locale, number> = { en: 24, zh: 18 };
 const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
 
@@ -188,14 +194,24 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
       }
     }
   }
-  // Simplicity: one page carries at most six cards, feature cards and numbered
-  // steps together, and a card body adds to its title instead of repeating it.
-  const cards = copy.sections.reduce(
-    (count, section) =>
-      count + (section.kind === "cards" ? section.items.length : section.kind === "flow" ? section.steps.length : 0),
-    0,
-  );
-  if (cards > maxCards) fail(`${at}: ${cards} cards on one page (max ${maxCards})`);
+  // Simplicity: one feature list of at most six items, and a card body adds to
+  // its title instead of repeating it.
+  const lists = copy.sections.filter((section) => section.kind === "cards");
+  if (lists.length !== 1) fail(`${at}: ${lists.length} feature lists (one per page)`);
+  const cards = lists.reduce((count, section) => count + section.items.length, 0);
+  if (cards > maxCards) fail(`${at}: ${cards} features on one page (max ${maxCards})`);
+  for (const section of copy.sections) {
+    if (section.kind === "faq" && section.items.length > maxFaq)
+      fail(`${at}: ${section.items.length} FAQ questions (max ${maxFaq})`);
+  }
+  // Up to three sections show the product after the hero: showcases and at most one live demo.
+  const demoCount = copy.sections.filter((section) => section.kind === "demo").length;
+  if (demoCount > 1) fail(`${at}: ${demoCount} live demo sections (max 1)`);
+  const shown = (copy.showcases?.length ?? 0) + demoCount;
+  if (shown > maxShown) fail(`${at}: ${shown} showcase and demo sections (max ${maxShown})`);
+  // Get started holds at most one command block. A tool's hero already shows its first command.
+  const commandBlocks = Math.max(0, (copy.commands?.items.length ?? 0) - (templateOf(product.type) === "tool" ? 1 : 0));
+  if (commandBlocks > 1) fail(`${at}: ${commandBlocks} command blocks under Get started (max 1)`);
   for (const section of copy.sections) {
     if (section.kind !== "cards") continue;
     for (const item of section.items) {
@@ -214,7 +230,7 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
     const heading = "title" in section ? section.title : section.label;
     if (genericHeadings.has(norm(heading))) fail(`${at}: generic section heading "${heading}"`);
     if (norm(heading) === norm(copy.headline)) fail(`${at}: section "${section.id}" restates the headline`);
-    if ("items" in section && section.kind !== "cases") {
+    if ("items" in section) {
       for (const item of section.items) {
         if (typeof item === "object" && "title" in item && genericHeadings.has(norm(item.title))) {
           fail(`${at}: generic card title "${item.title}"`);
@@ -234,23 +250,20 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
 const shape = (copy: ProductCopy) =>
   JSON.stringify({
     sections: copy.sections.map((section) => [section.kind, section.id, "items" in section ? section.items.length : 0]),
-    // A demo runs the same thing in both languages: the same zones, or the same position and line.
+    // A demo runs the same thing in both languages: the same position and line, or the same blocks and writes.
     demos: copy.sections.flatMap((section) =>
       section.kind !== "demo"
         ? []
-        : section.demo.kind === "worldClock"
-          ? [[section.demo.kind, ...section.demo.cities.map((city) => city.zone)]]
-          : section.demo.kind === "chessPuzzle"
-            ? [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]]
-            : [
-                [
-                  section.demo.kind,
-                  ...[section.demo.blocks.length, ...section.demo.writes.map((write) => write.after)].map(String),
-                ],
+        : section.demo.kind === "chessPuzzle"
+          ? [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]]
+          : [
+              [
+                section.demo.kind,
+                ...[section.demo.blocks.length, ...section.demo.writes.map((write) => write.after)].map(String),
               ],
+            ],
     ),
     showcases: copy.showcases?.length ?? 0,
-    stats: copy.stats?.items.length ?? 0,
     commands: copy.commands?.items.map((item) => item.command) ?? [],
     visual: copy.visual.kind,
   });

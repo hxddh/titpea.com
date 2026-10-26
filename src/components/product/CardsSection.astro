@@ -1,16 +1,14 @@
 ---
 import Prose from "./Prose.astro";
-import { srcsetFor } from "../../lib/images";
-import type { CardsSection, Showcase } from "../../content/schema";
+import type { CardsSection } from "../../content/schema";
 
 interface Props {
   section: CardsSection;
-  figure?: Showcase;
   /** Plain: titled lines on the canvas, no raised card (every template but games). */
   plain?: boolean;
 }
 
-const { section, figure, plain = false } = Astro.props;
+const { section, plain = false } = Astro.props;
 ---
 
 <section id={section.id} class={`product-section content-section ${section.id}-section`}>
@@ -21,13 +19,10 @@ const { section, figure, plain = false } = Astro.props;
     <div
       class={`${section.id}-grid feature-grid`}
       data-count={section.items.length}
-      data-numbered={section.numbered ? "" : undefined}
       data-variant={plain ? "plain" : undefined}
     >
-      {section.items.map((item, index) => (
-        <article class:list={["feature-card", item.priority === "primary" && "primary"]}>
-          {section.numbered && <span class="feature-step">{index + 1}</span>}
-          {item.evidence && <small class="feature-evidence">{item.evidence}</small>}
+      {section.items.map((item) => (
+        <article class="feature-card">
           <h3>{item.title}</h3>
           <p>
             <Prose text={item.body} />
@@ -41,23 +36,5 @@ const { section, figure, plain = false } = Astro.props;
         </article>
       ))}
     </div>
-    {figure && (
-      <figure class="show-figure">
-        <div class="shot">
-          <img
-            src={figure.src}
-            srcset={srcsetFor(figure.src, figure.width)}
-            sizes="(max-width: 1000px) calc(100vw - 44px), 560px"
-            alt={figure.alt}
-            width={figure.width}
-            height={figure.height}
-            loading="lazy"
-          />
-        </div>
-        <figcaption class="shot-caption">
-          <Prose text={figure.body} />
-        </figcaption>
-      </figure>
-    )}
   </div>
 </section>
