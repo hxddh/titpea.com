@@ -918,6 +918,12 @@
       text-wrap: balance;
     }
 
+    /* Chinese headings break only at punctuation and spaces, so a nine-character
+       heading must fit the 194px column on one line. */
+    .product-screenshot-showcase[data-portrait] .section-head h2:lang(zh) {
+      font-size: 1.25rem;
+    }
+
     .closing-next {
       margin-top: 28px;
     }
