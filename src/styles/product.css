@@ -838,7 +838,8 @@
 
   @media (max-width: 900px) {
     .hero-split,
-    .product-section[data-layout="row"] .shell {
+    .product-section[data-layout="row"] .shell,
+    .product-section[data-layout="row"][data-flip] .shell {
       grid-template-columns: minmax(0, 1fr);
       gap: 32px;
     }
