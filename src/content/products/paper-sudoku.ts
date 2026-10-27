@@ -3,10 +3,13 @@ import { defineProduct } from "../schema";
 // The app's repository is private and it is not on Google Play yet, so there is
 // no download link and no `repo` for releases:sync: the version is written in
 // the meta line, and the primary action stays an unlinked "coming" label until
-// the Play listing exists. Facts: the app's README, CHANGELOG (13.0.0), PRIVACY.md
-// and docs/store-listing.md. Pictures: the app's own StoreScreenshotsTest at Play's
-// sizes, from the 13.0 captures (English UI only). No `asOf`: check ties it to a
-// releases.json entry, which a product without `repo` does not have.
+// the Play listing exists. Facts: the app's README, CHANGELOG (14.0.0), PRIVACY.md
+// and docs/store-listing.md. Pictures: the 14.0 captures of the app's own
+// StoreScreenshotsTest at Play's sizes (docs/store/, English UI), and for the
+// Chinese showcases its screenshot-matrix captures (app/src/androidTest/screenshots/
+// zh-*.png, 540×1200). The tablet hero stays the 13.0 capture: 14.0 did not redraw
+// docs/store/7-tablet.png (older than 13.0) and has no tablet capture at Play's size. `asOf`
+// names the tag a capture or answer describes; check compares it with the meta line.
 export default defineProduct({
   slug: "paper-sudoku",
   line: "games",
@@ -49,14 +52,14 @@ export default defineProduct({
         href: "/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 13.0 · Phones and tablets · No network permission",
+    meta: "Android 8.0+ · 14.0 · Phones and tablets · No network permission",
     visual: {
       kind: "screenshot",
       label: "Paper Sudoku",
       frame: "wide",
       image: {
         src: "/assets/paper-sudoku-tablet.webp",
-        alt: "Paper Sudoku on a tablet: a 9×9 practice page on the left with printed digits, blue ink and pencil marks; on the right the page title, the line “Tap cells to write 4. Tap 4 again to put it down.”, Undo, Pencil and Coach, and the digit keys with 4 picked up",
+        alt: "Paper Sudoku on a tablet: a 9×9 practice page on the left with printed digits, digits written in blue and pencil marks; on the right the page title, the line “Tap cells to write 4. Tap 4 again to put it down.”, Undo, Pencil and Coach, and the digit keys with 4 picked up",
         width: 1080,
         height: 608,
       },
@@ -66,40 +69,40 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/paper-sudoku-coach.webp",
-        alt: "A 6×6 daily page for Wednesday, October 21: the Coach has outlined the top-right box in terracotta, and its note above the tools reads “Hidden single. Look at the top-right box.”",
+        alt: "A 6×6 daily page for Wednesday, October 21: the Coach has outlined the top-right box in oxblood, and its note above the tools reads “Hidden single. Look at the top-right box.”",
         width: 1080,
         height: 1920,
         title: "The Coach writes in the margin.",
         body: "Look, then Why, and the answer only if you ask.",
-        caption: "Screenshot test, 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "Screenshot test, 14.0",
+        asOf: "v14.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-notebook.webp",
-        alt: "The notebook: Today, the 21st, in progress; a 6×6 page from October 15 to continue; and Practice, “Learning: Naked pair · Known: 4 of 11”, each card with a thumbnail of its page",
+        alt: "The notebook: today’s date, 21, set large beside a thumbnail of its page and “Continue today’s page”; then rows for Continue (a 6×6 from October 15), Practice (“Learning: Naked pair · Known: 4 of 11”) and Type in a page, divided by hairlines; below, the October 2026 calendar, 5 pages solved",
         width: 1080,
         height: 1920,
         title: "Every day stays in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
-        caption: "Screenshot test, 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "Screenshot test, 14.0",
+        asOf: "v14.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-handbook.webp",
-        alt: "The handbook’s X-Wing page, 7 of 11: a 9×9 example with two rows and two columns outlined in terracotta, crossed-out candidates, and “Seen” under the board",
+        alt: "The handbook’s X-Wing page, 7 of 11: a 9×9 example with two rows and two columns outlined in oxblood, crossed-out candidates, and “Seen” under the board",
         width: 1080,
         height: 1920,
         title: "A handbook that teaches.",
         body: "Every technique with a worked example from a real page, drawn the way the Coach draws it, and how well you know it: seen, practised, known.",
-        caption: "Screenshot test, 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "Screenshot test, 14.0",
+        asOf: "v14.0.0-sideload",
       },
     ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "Printed digits, your ink, pencil notes.",
+        label: "Printed digits, your own digits, pencil notes.",
         items: [
           { title: "A path that knows you", body: "9×9 pages that get harder after three solved unaided." },
           { title: "Pages of your own", body: "Type in a puzzle from a book; it is checked and coached." },
@@ -127,7 +130,7 @@ export default defineProduct({
           {
             title: "What does it need?",
             body: "Android 8.0 or later, on a phone, a tablet or a foldable. On a wide screen the notebook and the open page sit side by side. It works offline.",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "Where can I get it?",
@@ -136,17 +139,17 @@ export default defineProduct({
           {
             title: "Will a new build update the one I have?",
             body: "From 9.0, sideload builds can be signed with one fixed key, so later builds update in place. Moving from an earlier build needs one last uninstall.",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "Which languages does it speak?",
             body: "English, Simplified Chinese and Traditional Chinese. On Android 13 and later, the app’s language can be set in its Settings.",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "Does it work with TalkBack and a keyboard?",
             body: "Yes. With TalkBack each cell can be written or erased from the cell itself, and the keys come straight after the board; a hardware keyboard writes digits too.",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
         ],
       },
@@ -180,14 +183,14 @@ export default defineProduct({
         href: "/zh/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 13.0 · 手机与平板 · 不申请联网权限",
+    meta: "Android 8.0+ · 14.0 · 手机与平板 · 不申请联网权限",
     visual: {
       kind: "screenshot",
       label: "纸上数独",
       frame: "wide",
       image: {
         src: "/assets/paper-sudoku-tablet.webp",
-        alt: "纸上数独在平板上（英文界面）：左边是一页 9×9 练习，有印刷数字、蓝色笔迹和铅笔标记；右边是页面标题、提示“点格子写 4，再点 4 放下”、撤销、铅笔和教练按钮，以及选中 4 的数字键",
+        alt: "纸上数独在平板上（英文界面）：左边是一页 9×9 练习，有印刷数字、用蓝色写下的数字和铅笔标记；右边是页面标题、提示“点格子写 4，再点 4 放下”、撤销、铅笔和教练按钮，以及选中 4 的数字键",
         width: 1080,
         height: 608,
       },
@@ -197,40 +200,40 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/paper-sudoku-coach-zh.webp",
-        alt: "10 月 21 日星期三的 6×6 每日一页：教练用赭红色框出右上宫，工具上方的提示写着“隐性唯一 · 看看右上宫”，说明 3 在右上宫只能放在一格，旁边是“看答案”",
+        alt: "10 月 21 日星期三的 6×6 每日一页：教练用暗红色框出右上宫，工具上方的提示写着“隐性唯一 · 看看右上宫”，说明 3 在右上宫只能放在一格，下面是“看答案”",
         width: 540,
         height: 1200,
         title: "教练在页边写字",
         body: "先说看哪里，再说为什么，你要了才给答案。",
-        caption: "截图测试 · 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "截图测试 · 14.0",
+        asOf: "v14.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-notebook-zh.webp",
-        alt: "数独本首页：今天 21 日，进行中；接着做 10 月 15 日的 6×6；练习卡写着“正在学：显性数对，已掌握 4 个，共 11 个”；下面是“抄一页题目”和 2026 年 10 月的日历，已盖章 5 页",
+        alt: "数独本首页：大字的今天 21 日，旁边是这一页的缩略图和“接着做今天这一页”；细线隔开的几行：接着做 10 月 15 日的 6×6，练习“正在学：显性数对 · 已掌握 4 个，共 11 个”，抄一页题目；下面是 2026 年 10 月的日历，已完成 5 页",
         width: 540,
         height: 1200,
         title: "每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
-        caption: "截图测试 · 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "截图测试 · 14.0",
+        asOf: "v14.0.0-sideload",
       },
       {
         src: "/assets/paper-sudoku-handbook-zh.webp",
-        alt: "技巧手册第 7 页（共 11 页）“X 翼”：一道 9×9 例题，第 3、7 列和第 2、8 行用赭红色框出，划掉了两行上多余的 2，盘下标着“见过”和例题讲解",
+        alt: "技巧手册第 7 页（共 11 页）“X 翼”：一道 9×9 例题，第 3、7 列和第 2、8 行用暗红色框出，划掉了两行上多余的 2，盘下标着“见过”和例题讲解",
         width: 540,
         height: 1200,
         title: "一本会教的手册",
         body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过、掌握。",
-        caption: "截图测试 · 13.0",
-        asOf: "v13.0.0-sideload",
+        caption: "截图测试 · 14.0",
+        asOf: "v14.0.0-sideload",
       },
     ],
     sections: [
       {
         kind: "cards",
         id: "features",
-        label: "印刷数字、你的笔迹和铅笔标记",
+        label: "印刷数字、你写的数字和铅笔标记",
         items: [
           { title: "认得你的练习", body: "一叠 9×9 练习页，不看答案连做三页之后就变难一些。" },
           { title: "自己的题", body: "把书报上的题输进来，检查、评级，教练照常帮忙。" },
@@ -258,7 +261,7 @@ export default defineProduct({
           {
             title: "需要什么设备？",
             body: "Android 8.0 或更高版本的手机、平板或折叠屏。宽屏上，数独本和打开的那一页并排显示。离线也能用。",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "在哪里下载？",
@@ -267,17 +270,17 @@ export default defineProduct({
           {
             title: "新版本能直接覆盖安装吗？",
             body: "从 9.0 起，侧载版可以用同一把固定密钥签名，之后的版本能直接覆盖安装。从更早的版本升级，需要最后卸载一次。",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "支持哪些语言？",
             body: "英文、简体中文和繁体中文。Android 13 及以上可以在应用的设置里单独选择语言。",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
           {
             title: "能用 TalkBack 和键盘吗？",
             body: "能。开启 TalkBack 时，每一格都可以在格子上直接写入或擦除，数字键紧跟在棋盘之后；实体键盘也可以输入数字。",
-            asOf: "v13.0.0-sideload",
+            asOf: "v14.0.0-sideload",
           },
         ],
       },
