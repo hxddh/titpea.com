@@ -178,7 +178,7 @@ export const ui: Record<Locale, Ui> = {
     homeTitle: "Small software, made with care.",
     homeDescription:
       "Software by one developer, hxddh: tools for object storage and coding agents, browser extensions for everyday reading, desktop board games, and a small world.",
-    homeLead: "Tools for object storage and coding agents, everyday browser extensions, and a few games.",
+    homeLead: "Object storage, coding agents, Chrome extensions, games.",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
     relatedTitle: "More tools",
@@ -276,7 +276,7 @@ export const ui: Record<Locale, Ui> = {
     homeTitle: "认真做的小软件",
     homeDescription:
       "hxddh 一个人开发的软件：对象存储和编码 Agent 工具、日常用的浏览器扩展、桌面棋类游戏，以及一个小世界。",
-    homeLead: "对象存储和编码 Agent 工具，日常用的浏览器扩展，还有几款游戏。",
+    homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
