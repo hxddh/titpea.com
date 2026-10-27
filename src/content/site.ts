@@ -99,6 +99,8 @@ type Ui = {
   relatedTitle: string;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
+  /** A line whose products are not "tools" in this language: its own title (zh: games). */
+  relatedInLineFor?: Partial<Record<Line, string>>;
   /** A family's title and one line; `roles` is each member's step, by slug. */
   families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
   browseAllTools: string;
@@ -176,9 +178,8 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "One developer, hxddh",
     homeMetaTitle: "Titpea — Small software by hxddh",
     homeTitle: "Small software, made with care.",
-    homeDescription:
-      "Software by one developer, hxddh: tools for object storage and coding agents, browser extensions for everyday reading, desktop board games, and a small world.",
-    homeLead: "Tools for object storage and coding agents, everyday browser extensions, and a few games.",
+    homeDescription: "Small software by one developer, hxddh: object storage, coding agents, Chrome extensions, games.",
+    homeLead: "Object storage, coding agents, Chrome extensions, games.",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
     relatedTitle: "More tools",
@@ -274,13 +275,13 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "hxddh，一个人开发",
     homeMetaTitle: "Titpea — hxddh 的小软件",
     homeTitle: "认真做的小软件",
-    homeDescription:
-      "hxddh 一个人开发的软件：对象存储和编码 Agent 工具、日常用的浏览器扩展、桌面棋类游戏，以及一个小世界。",
-    homeLead: "对象存储和编码 Agent 工具，日常用的浏览器扩展，还有几款游戏。",
+    homeDescription: "hxddh 一个人开发的小软件：对象存储、编码 Agent、Chrome 扩展、游戏。",
+    homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
     relatedInLine: "更多{line}工具",
+    relatedInLineFor: { games: "更多游戏" },
     families: {
       s3: {
         title: "S3 工具组",

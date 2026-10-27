@@ -246,7 +246,7 @@ export default defineProduct({
           { title: "改了哪些词", body: "按 N 停在修改过的段落，直接显示改动的词；点细线也行。" },
           { title: "拷贝保留 Markdown", body: "⌘C 按原文拷贝；⇧⌘C 引用并附上文件和行号。" },
           { title: "带进度的大纲", body: "标题旁显示任务完成数，有未读变更的章节标出圆点。" },
-          { title: "完整 GFM", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
+          { title: "GitHub 风格 Markdown", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
           { title: "自动打开新文档", body: "Agent 文件夹里新建的 Markdown 在后台打开，不抢焦点。" },
         ],
       },

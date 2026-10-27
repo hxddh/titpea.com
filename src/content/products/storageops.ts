@@ -16,7 +16,7 @@ export default defineProduct({
     description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
     eyebrow: "Pi Coding Agent extension",
     headline: "S3 diagnosis for Pi.",
-    lead: "Skills and tools for Pi, the open-source terminal coding agent. No cloud account.",
+    lead: "Skills and tools for Pi. Your logs and traces. No cloud account.",
     catalog: {
       role: "Pi extension",
       text: "Storage diagnosis for Pi, from logs and traces already in the chat.",
@@ -150,7 +150,7 @@ export default defineProduct({
     description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与技能包。",
     eyebrow: "Pi Coding Agent 扩展",
     headline: "在 Pi 里排查对象存储",
-    lead: "给开源终端编码 Agent Pi 的技能包和工具。用你的日志和 trace 排查。不接云账号。",
+    lead: "给 Pi 的技能包和工具。用你的日志和 trace。不接云账号。",
     catalog: {
       role: "Pi 扩展",
       text: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
@@ -251,7 +251,7 @@ export default defineProduct({
           },
           {
             title: "需要接入云账号吗？",
-            body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不收取云凭证，也不自建云账号会话。",
+            body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不接收云凭据，也不会自己登录云账号。",
           },
           {
             title: "会改动我的存储吗？",

@@ -73,9 +73,8 @@ export default defineProduct({
         items: [
           { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
           { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
-          { title: "BOS first", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
+          { title: "No silent fallback", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
           { title: "Configure storage", body: "Set up BOS, then run `celagent doctor` and `celagent cas-probe`." },
-          { title: "Wait for the write", body: "Recovery needs a successful BOS write." },
           { title: "Resume by ID", body: "`celagent list`, then `celagent <id>` on a configured machine." },
         ],
       },
@@ -137,7 +136,7 @@ export default defineProduct({
     privacy: {
       network: "automatic",
       networkNote: "每次提问发往你配置的模型，每个完成的轮次写入你自己的 BOS 存储桶。",
-      stays: "会话在你自己的 BOS 存储桶里，本机 Celld 节点留有缓存；存储凭证来自环境变量或 ~/.aws/credentials。",
+      stays: "会话在你自己的 BOS 存储桶里，本机 Celld 节点留有缓存；存储凭据来自环境变量或 ~/.aws/credentials。",
     },
     meta: "Pi 编码 Agent 终端界面 · 百度 BOS · MIT · {version}",
     commands: {
@@ -149,7 +148,7 @@ export default defineProduct({
           command: "curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh",
         },
         {
-          comment: "自检：配置、凭证、节点、BOS 连通",
+          comment: "自检：配置、凭据、节点、BOS 连通",
           command: "celagent doctor",
         },
       ],
@@ -163,7 +162,7 @@ export default defineProduct({
       filesLabel: "命令",
       files: ["celagent", "celagent list", "celagent <id>  # 从 BOS 恢复", "celagent task ledger"],
       briefLabel: "持久化",
-      brief: "完成回合 → BOS 写入队列 → 写入成功后按会话 ID 恢复",
+      brief: "完成的轮次 → BOS 写入队列 → 写入成功后按会话 ID 恢复",
       footnotes: ["两台机器均需配置", "条件写入检测冲突"],
     },
     sections: [
@@ -174,10 +173,9 @@ export default defineProduct({
         label: "完整的 Pi 会话，不是摘要",
         items: [
           { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
-          { title: "每轮保存", body: "完成的回合进入 BOS 写入队列；条件写入检测冲突。" },
-          { title: "先读 BOS", body: "写入失败留在队列；不静默退回截断缓存。" },
+          { title: "每轮保存", body: "完成的轮次进入 BOS 写入队列；条件写入检测冲突。" },
+          { title: "不静默回退", body: "写入失败留在队列；不静默退回截断缓存。" },
           { title: "先配置存储", body: "配好 BOS，运行 doctor 和 cas-probe。" },
-          { title: "等写入成功", body: "BOS 写入成功后才能跨机恢复。" },
           { title: "按 ID 恢复", body: "在已配置的机器上 list，再按 ID 打开。" },
         ],
       },
@@ -189,7 +187,7 @@ export default defineProduct({
         items: [
           "每个完成的轮次以 Pi JSONL 写入你自己的 BOS 存储桶，本机 Celld 节点另存一份缓存。",
           "提问和工具结果发往你配置的模型，默认 DeepSeek；没有密钥时在本机生成模拟回复。",
-          "存储凭证来自环境变量或 `~/.aws/credentials` 里的 `[bos]` profile；`celagent rm <id>` 删除会话。",
+          "存储凭据来自环境变量或 `~/.aws/credentials` 里的 `[bos]` profile；`celagent rm <id>` 删除会话。",
         ],
       },
       {

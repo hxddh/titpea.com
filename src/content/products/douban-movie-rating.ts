@@ -59,7 +59,10 @@ export default defineProduct({
         label: "Only on movie.douban.com.",
         items: [
           { title: "In Douban’s own style", body: "IMDb with its vote count; click a score to open its site." },
-          { title: "Top 250 and charts", body: "Rest on a film link about 0.3 s; ratings appear under it." },
+          {
+            title: "Top 250 and charts",
+            body: "Hover over a film link about 0.3 s; ratings appear under it.",
+          },
           { title: "IMDb ID first", body: "Title search only without one; hover the mark to see the match." },
           { title: "Your own free key", body: "When the shared daily quota runs out, add an OMDb key." },
         ],
@@ -158,7 +161,7 @@ export default defineProduct({
         items: [
           "在影片详情页读取片名、年份和 IMDb 编号；鼠标停在其他影片链接上时，会向豆瓣请求该片页面取得同样信息。",
           "这些信息连同 API 密钥只发送给 OMDb。设置和你填写的 OMDb 密钥存在 Chrome 同步存储中。",
-          "评分缓存在本机，最长 7 天。没有服务器，无分析服务，没有广告或追踪代码；卸载即删除全部设置与缓存。",
+          "评分缓存在本机，最长 7 天。没有服务器，没有分析服务、广告或追踪代码；卸载即删除全部设置与缓存。",
         ],
       },
       {

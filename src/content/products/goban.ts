@@ -15,13 +15,13 @@ export default defineProduct({
   en: {
     title: "Goban",
     description:
-      "A desktop Gomoku board for macOS and Windows: free, swap2, or Renju, with review, drills, and a daily streak.",
+      "A desktop Gomoku board for macOS and Windows: freestyle, swap2, or Renju, with review and practice puzzles.",
     eyebrow: "Desktop Gomoku game",
     headline: "Play Gomoku, then review.",
     lead: "A 15×15 board. Three rule sets. Games stay local.",
     catalog: {
       role: "",
-      text: "Freestyle, swap2, or Renju. Review an SGF when you want.",
+      text: "Freestyle, swap2, or Renju. Review a game when you want.",
     },
     primaryCta: {
       label: "Download",
@@ -35,7 +35,8 @@ export default defineProduct({
       "The macOS build is not notarized: the first time, click Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "onRequest",
-      networkNote: "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+      networkNote:
+        "No account; nothing goes online except Check for Updates on macOS, which contacts GitHub only when you click it.",
       stays: "Games, practice progress and settings in the app’s storage on this computer.",
     },
     meta: "macOS + Windows · MIT · {version} · Local app",
@@ -74,11 +75,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Import an SGF and play on.",
+        label: "Pick the rules, then practise.",
         items: [
           { title: "Pick the rules", body: "Freestyle, swap2, or Renju, on the New game card." },
           { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
-          { title: "One-click rematch", body: "Play again keeps your settings; on Alt, colours swap." },
+          { title: "One-click rematch", body: "Play again keeps your settings; with “Play as” on Alt, colours swap." },
           { title: "Practise positions", body: "134 built-in puzzles, plus ones made from your own mistakes." },
           { title: "Every game listed", body: "A summary line on top; open any game to review it." },
         ],
@@ -89,8 +90,8 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Your unfinished game, the last 100 finished games, practice progress, and settings stay in the app's storage on this computer.",
-          "Back up in Settings · Data saves games, results, and practice progress to one file; Restore replaces current data with it.",
-          "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+          "In Settings · Data, Back up saves games, results, and practice progress to one file; Restore replaces current data with it.",
+          "No account; nothing goes online except Check for Updates on macOS, which contacts GitHub only when you click it.",
         ],
       },
       {
@@ -141,7 +142,7 @@ export default defineProduct({
     installNote: "macOS 版未经公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     privacy: {
       network: "onRequest",
-      networkNote: "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+      networkNote: "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
       stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
     },
     meta: "macOS + Windows · MIT · {version} · 本地应用",
@@ -179,11 +180,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "导入 SGF，接着下",
+        label: "选好规则，再练",
         items: [
           { title: "选规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
           { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
-          { title: "一键再来", body: "“再来一局”沿用设置；选“轮流”时自动换色。" },
+          { title: "一键再来", body: "“再来一局”沿用设置；执子选“轮流”时自动换色。" },
           { title: "做题练习", body: "134 道内置题，另有从你的失着生成的题。" },
           { title: "对局一览", body: "最上面一行汇总，点任意一局以复盘打开。" },
         ],
@@ -195,7 +196,7 @@ export default defineProduct({
         items: [
           "没下完的一局、最近 100 局、练习进度和设置，都存在这台电脑上应用自己的存储里。",
           "“设置 · 数据”里的“备份”把对局、战绩和练习进度存成一个文件；“恢复”用它替换现有数据。",
-          "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+          "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
         ],
       },
       {
@@ -209,7 +210,7 @@ export default defineProduct({
           },
           {
             title: "升级到 3.x，以前的对局还在吗？",
-            body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快、标、深）已经去掉，存过的值会被忽略。",
+            body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快 · 标 · 深）已经去掉，存过的值会被忽略。",
             asOf: "v3.2.0",
           },
           {
