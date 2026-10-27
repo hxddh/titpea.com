@@ -15,7 +15,7 @@ export default defineProduct({
   en: {
     title: "Storage Agent",
     description:
-      "Local, read-only desktop Agent for S3-compatible storage: an account check that needs no model, answers grounded in what it read, and Issues it remembers between tasks.",
+      "Local, read-only desktop agent for S3-compatible storage: an account check that needs no model, answers grounded in what it read, and Issues it remembers between tasks.",
     eyebrow: "Looks after object storage",
     headline: "Find what’s wrong in S3.",
     lead: "Read-only checks. Issues ranked by severity. Fixes you run.",
@@ -58,8 +58,8 @@ export default defineProduct({
         id: "features",
         label: "Findings outlast the task.",
         items: [
-          { title: "Check without a model", body: "Check account surveys and reads access with no key at all." },
-          { title: "Names what it missed", body: "“Reads complete”, or the blind and failed reads, named." },
+          { title: "Check without a model", body: "“Check account” surveys and reads access with no key at all." },
+          { title: "Names what it missed", body: "Says “Reads complete”, or names each blind or failed read." },
           { title: "Who changed it", body: "On AWS, CloudTrail names who changed a bucket, over 90 days." },
           { title: "Remembers your storage", body: "Buckets, open Issues and their history, kept between tasks." },
           { title: "Open questions as code", body: "Largest prefixes, data untouched for years: a sandboxed script." },
@@ -83,7 +83,7 @@ export default defineProduct({
         items: [
           {
             title: "Does it need a model key?",
-            body: "Not for Check account: it surveys an account and reads access without a model. Questions need one: OpenAI, Anthropic, or any OpenAI-compatible endpoint; models already running in Ollama or LM Studio are one click away. Paste a key and the provider’s models are listed.",
+            body: "Not for “Check account”: it surveys an account and reads access without a model. Questions need one: OpenAI, Anthropic, or any OpenAI-compatible endpoint; models already running in Ollama or LM Studio are one click away. Paste a key and the provider’s models are listed.",
             asOf: "v25.0.0",
           },
           {
@@ -93,7 +93,7 @@ export default defineProduct({
           },
           {
             title: "Does it watch my account?",
-            body: "No. There is no background watch or schedule. A check is a snapshot; Check again starts a new one, and Re-verify re-reads the buckets a task touched without a model.",
+            body: "No. There is no background watch or schedule. A check is a snapshot; “Check again” starts a new one, and “Re-verify” re-reads the buckets a task touched without a model.",
             asOf: "v25.0.0",
           },
           {

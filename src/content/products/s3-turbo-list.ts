@@ -161,7 +161,7 @@ Doctor status: ok`,
     privacy: {
       network: "onRequest",
       networkNote: "只访问你要列举或对比的 S3 端点；不检查更新，没有遥测。",
-      stays: "对象清单、checkpoint 和日志写在你的输出目录；凭证来自你的 AWS profile 或环境变量。",
+      stays: "对象清单、checkpoint 和日志写在你的输出目录；凭据来自你的 AWS profile 或环境变量。",
     },
     meta: "Rust · Apache-2.0 · {version} · S3 兼容 · Parquet · 机器可读 JSON",
     commands: {
@@ -234,7 +234,7 @@ Doctor status: ok`,
         title: "数据的去向",
         items: [
           "S3 请求只发往你设置的端点或预设填入的端点；不检查更新，没有遥测。",
-          "凭证来自标准 AWS 凭证链：profile、环境变量或实例角色；预设从不碰凭证。",
+          "凭据来自标准 AWS 凭据链：profile、环境变量或实例角色；预设从不碰凭据。",
           "对象清单、checkpoint、日志和运行记录都写在输出目录；`doctor` 与 `--dry-run` 不访问任何 S3 端点。",
         ],
       },

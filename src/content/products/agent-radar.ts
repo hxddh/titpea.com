@@ -108,7 +108,7 @@ export default defineProduct({
   zh: {
     title: "Agent Radar",
     description: "定时整理 Agent 产业动态，把带来源的 Markdown 周报与观察名单保存在 Git 中。",
-    eyebrow: "Markdown 优先 · GitHub Actions",
+    eyebrow: "定时 Markdown 调研",
     headline: "Agent 动态，附来源",
     lead: "公开来源。引用校验。Markdown 周报存进 Git。",
     catalog: {
@@ -184,7 +184,7 @@ export default defineProduct({
         items: [
           {
             title: "需要付费搜索吗？",
-            body: "不需要。采集走免费公开源。模型路线由你配置；固定路线用 GPT-5 Mini 筛选和起草，每月约 2.6 美元，预算为 4 美元；备用模型也固定在工作流里。",
+            body: "不需要。采集走免费公开源。模型线路由你配置；固定线路用 GPT-5 Mini 筛选和起草，每月约 2.6 美元，预算为 4 美元；备用模型也固定在工作流里。",
           },
           {
             title: "在哪里运行？",

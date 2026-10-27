@@ -83,7 +83,7 @@ export default defineProduct({
         items: [
           "Files, chats, marks, the record, and recognised scan text stay on your machine; there is no telemetry.",
           "Extracted text goes to the model you configure, or Ollama; scans are read locally, with a vision model only as fallback.",
-          "API keys stay in the system keychain; a key it refuses waits in a local settings file until it accepts it.",
+          "API keys stay in the system keychain; a key the keychain refuses waits in a local settings file until accepted.",
         ],
       },
       {
@@ -99,7 +99,7 @@ export default defineProduct({
           },
           {
             title: "Can it miss something?",
-            body: "Yes. Each answer reads within a token and step budget, so a search miss does not mean the document contains no relevant information. In the background, PageWise reads at most 50 pages that have no text; the rest are read when needed, or all at once with Read pages with no text.",
+            body: "Yes. Each answer reads within a token and step budget, so a search miss does not mean the document contains no relevant information. In the background, PageWise reads at most 50 pages that have no text; the rest are read when needed, or all at once with “Read pages with no text”.",
           },
           {
             title: "Can a found citation still be wrong?",
@@ -126,7 +126,7 @@ export default defineProduct({
     lead: "直接提问。每条引用标为已核对、请看原页或未找到。扫描件在本机识别。",
     catalog: {
       role: "PDF 助手",
-      text: "向 PDF 提问。顺着页引用回到原文。",
+      text: "向 PDF 提问。顺着引用回到原页。",
     },
     primaryCta: {
       label: "下载",

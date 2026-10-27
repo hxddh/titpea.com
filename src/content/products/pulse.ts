@@ -339,7 +339,7 @@ export default defineProduct({
         items: [
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
-          { title: "详情里的本轮", body: "点“›”看这一轮用的工具、改过的文件、计划和子代理。" },
+          { title: "详情里的本轮", body: "点“›”看这一轮用的工具、改过的文件、计划和子 Agent。" },
           { title: "橙色表示停滞", body: "只用于 Pi 与 OpenCode：二十分钟没有新动静。" },
           { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
           { title: "点一下就去", body: "能精确落点就去终端，否则打开应用；点“›”看详情和时间线。" },
@@ -351,7 +351,7 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "状态只来自各 Agent 自己的 hook；Pulse 不读取会话文件、transcript 或受 macOS 保护的应用数据。",
-          "事件日志里的提示至多 200 字、凭据已抹掉，文件只有你能读，只在本机。",
+          "事件日志只在本机，只有你能读；其中的提示最多保留 200 字，凭据已抹掉。",
           "Pulse 不连网络：不检查更新，不上报任何东西。设置里的“版本发布…”只在浏览器里打开发布页。",
         ],
       },

@@ -99,7 +99,7 @@ export default defineProduct({
         id: "features",
         label: "Up to 10 cities, in your order.",
         items: [
-          { title: "Local weekends", body: "9 to 18 stay lit; weekends follow each city’s country." },
+          { title: "Local weekends", body: "9:00–18:00 stay lit; weekends follow each city’s country." },
           { title: "Offsets from you", body: "+7h or −5h from your local time, plus Tomorrow or Yesterday." },
           { title: "Clock changes ahead", body: "Daylight-saving shifts flagged two weeks early, like −7h → −8h." },
           { title: "Copy the times", body: "Click one time, or ⌘C / Ctrl+C for every city." },
@@ -228,7 +228,7 @@ export default defineProduct({
         items: [
           { title: "各地周末", body: "9 点到 18 点常亮；周末按各城市所在国家。" },
           { title: "相对你的时差", body: "显示 +7h、−5h 这样的时差，以及明天或昨天。" },
-          { title: "提前提示换时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
+          { title: "提前提示夏令时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
           { title: "复制时间", body: "点击复制一个，或按 ⌘C / Ctrl+C 复制全部城市。" },
           { title: "自定快捷键", body: "在 `chrome://extensions/shortcuts` 设置打开弹窗的按键。" },
           { title: "三种主题", body: "默认、终端、杂志，都跟随系统浅色或深色。" },

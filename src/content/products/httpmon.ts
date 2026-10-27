@@ -39,7 +39,7 @@ export default defineProduct({
     meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "Get started",
-      sub: "Requires Go 1.24+. Pre-built binaries are on the Releases page.",
+      sub: "Requires Go 1.24+. Pre-built binaries are on GitHub Releases.",
       items: [
         {
           comment: "Install",
@@ -78,7 +78,7 @@ export default defineProduct({
           { title: "WebSocket too", body: "`wss://` and `ws://` frames, spliced in both directions." },
           { title: "HTTP/2 and gRPC", body: "Trailers carried through; gRPC status decoded." },
           { title: "Start locally", body: "Listens on `127.0.0.1` only; no system proxy changes." },
-          { title: "Configure one child", body: "Proxy address and ephemeral CA live in that command’s environment." },
+          { title: "Only that command", body: "Proxy address and ephemeral CA live in that command’s environment." },
           { title: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
         ],
       },
@@ -149,7 +149,7 @@ export default defineProduct({
     meta: "Go · MIT · {version} · 本地代理 · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
     commands: {
       title: "开始使用",
-      sub: "需要 Go 1.24+。Releases 页面也有预编译二进制。",
+      sub: "需要 Go 1.24+。GitHub Releases 上也有预编译二进制。",
       items: [
         {
           comment: "安装",

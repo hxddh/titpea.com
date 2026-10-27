@@ -99,7 +99,7 @@ export default defineProduct({
           { title: "Build, paint, name", body: "Scaffolding at once; paint a flag; name boats and babies." },
           { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
           { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
-          { title: "Agent-ready", body: "Pi, a local agent, or your own API key can voice it." },
+          { title: "Agent-ready", body: "A local agent like Pi, or your API key, can voice it." },
         ],
       },
       {
@@ -125,11 +125,11 @@ export default defineProduct({
           },
           {
             title: "How do I open it the first time?",
-            body: "Download the DMG from the Releases page and drag World Machine onto Applications; it runs on Apple Silicon or Intel. Builds are not notarized, so the first launch needs a one-time Open Anyway step, described in the install guide.",
+            body: "Download the DMG from GitHub Releases and drag World Machine onto Applications; it runs on Apple Silicon or Intel. Builds are not notarized, so the first launch needs a one-time Open Anyway step, described in the install guide.",
           },
           {
             title: "Is there a free demo?",
-            body: "Yes. World Machine Demo, on the same Releases page, is 20 to 30 minutes of Tiny Society, up to day 8. Your harbour stays in My Worlds, and the full app opens it and carries on.",
+            body: "Yes. World Machine Demo, also on GitHub Releases, is 20 to 30 minutes of Tiny Society, up to day 8. Your harbour stays in My Worlds, and the full app opens it and carries on.",
           },
           {
             title: "Does a World move while I am away?",
@@ -224,7 +224,7 @@ export default defineProduct({
       {
         kind: "data",
         id: "data",
-        nav: "数据",
+        nav: "数据去向",
         title: "数据的去向",
         items: [
           "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
@@ -244,11 +244,11 @@ export default defineProduct({
           },
           {
             title: "第一次怎么打开？",
-            body: "从 Releases 页面下载 DMG，把 World Machine 拖进“应用程序”，Apple 芯片与 Intel 都能运行。构建尚未公证，首次启动需要一次“仍要打开”，步骤见安装指南。",
+            body: "从 GitHub Releases 下载 DMG，把 World Machine 拖进“应用程序”，Apple 芯片与 Intel 都能运行。构建尚未公证，首次启动需要一次“仍要打开”，步骤见安装指南。",
           },
           {
             title: "有免费试玩版吗？",
-            body: "有。同一个 Releases 页面上的 World Machine Demo 是 Tiny Society 的 20 到 30 分钟，玩到第 8 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
+            body: "有。同样在 GitHub Releases 上的 World Machine Demo 是 Tiny Society 的 20 到 30 分钟，玩到第 8 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
           },
           {
             title: "我不在时世界还会走吗？",

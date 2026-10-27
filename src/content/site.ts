@@ -176,8 +176,7 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "One developer, hxddh",
     homeMetaTitle: "Titpea — Small software by hxddh",
     homeTitle: "Small software, made with care.",
-    homeDescription:
-      "Software by one developer, hxddh: tools for object storage and coding agents, browser extensions for everyday reading, desktop board games, and a small world.",
+    homeDescription: "Small software by one developer, hxddh: object storage, coding agents, Chrome extensions, games.",
     homeLead: "Object storage, coding agents, Chrome extensions, games.",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
@@ -274,8 +273,7 @@ export const ui: Record<Locale, Ui> = {
     productIndex: "hxddh，一个人开发",
     homeMetaTitle: "Titpea — hxddh 的小软件",
     homeTitle: "认真做的小软件",
-    homeDescription:
-      "hxddh 一个人开发的软件：对象存储和编码 Agent 工具、日常用的浏览器扩展、桌面棋类游戏，以及一个小世界。",
+    homeDescription: "hxddh 一个人开发的小软件：对象存储、编码 Agent、Chrome 扩展、游戏。",
     homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",

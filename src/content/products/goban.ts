@@ -15,13 +15,13 @@ export default defineProduct({
   en: {
     title: "Goban",
     description:
-      "A desktop Gomoku board for macOS and Windows: free, swap2, or Renju, with review, drills, and a daily streak.",
+      "A desktop Gomoku board for macOS and Windows: freestyle, swap2, or Renju, with review and practice puzzles.",
     eyebrow: "Desktop Gomoku game",
     headline: "Play Gomoku, then review.",
     lead: "A 15×15 board. Three rule sets. Games stay local.",
     catalog: {
       role: "",
-      text: "Freestyle, swap2, or Renju. Review an SGF when you want.",
+      text: "Freestyle, swap2, or Renju. Review a game when you want.",
     },
     primaryCta: {
       label: "Download",
@@ -35,7 +35,8 @@ export default defineProduct({
       "The macOS build is not notarized: the first time, click Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "onRequest",
-      networkNote: "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+      networkNote:
+        "No account; nothing goes online except Check for Updates on macOS, which contacts GitHub only when you click it.",
       stays: "Games, practice progress and settings in the app’s storage on this computer.",
     },
     meta: "macOS + Windows · MIT · {version} · Local app",
@@ -89,8 +90,8 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Your unfinished game, the last 100 finished games, practice progress, and settings stay in the app's storage on this computer.",
-          "Back up in Settings · Data saves games, results, and practice progress to one file; Restore replaces current data with it.",
-          "No account and no network; on macOS, Check for Updates contacts GitHub only when you click it.",
+          "In Settings · Data, Back up saves games, results, and practice progress to one file; Restore replaces current data with it.",
+          "No account; nothing goes online except Check for Updates on macOS, which contacts GitHub only when you click it.",
         ],
       },
       {
@@ -141,7 +142,7 @@ export default defineProduct({
     installNote: "macOS 版未经公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     privacy: {
       network: "onRequest",
-      networkNote: "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+      networkNote: "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
       stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
     },
     meta: "macOS + Windows · MIT · {version} · 本地应用",
@@ -195,7 +196,7 @@ export default defineProduct({
         items: [
           "没下完的一局、最近 100 局、练习进度和设置，都存在这台电脑上应用自己的存储里。",
           "“设置 · 数据”里的“备份”把对局、战绩和练习进度存成一个文件；“恢复”用它替换现有数据。",
-          "不要账号，也不联网；macOS 上的“检查更新”只在你点它时向 GitHub 查询。",
+          "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
         ],
       },
       {

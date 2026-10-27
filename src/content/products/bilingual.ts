@@ -30,7 +30,7 @@ export default defineProduct({
   en: {
     title: "Bilingual",
     description:
-      "Chrome extension that shows the original page, and a paragraph's translation only while you hold a key, or both languages together.",
+      "Chrome extension that shows the original by default, a paragraph’s translation while you hold a key, or both languages together.",
     eyebrow: "Chrome extension",
     headline: "Hold a key to translate.",
     lead: "The original by default. Hold a key for a paragraph’s translation. Double-tap for both.",
@@ -112,7 +112,7 @@ export default defineProduct({
         items: [
           {
             title: "What do I need to run it?",
-            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own offscreen document. Local files work too, once you turn on “Allow access to file URLs” for it in `chrome://extensions`.",
+            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own hidden document. Local files work too, once you turn on “Allow access to file URLs” for it in `chrome://extensions`.",
           },
           {
             title: "Which key do I hold?",
@@ -220,7 +220,7 @@ export default defineProduct({
           },
           {
             title: "能译成哪些语言？",
-            body: "简体中文、繁體中文、日语、韩语、英语、法语、德语、西班牙语、葡萄牙语、俄语、意大利语，以及另外 27 种。默认译成浏览器界面语言，不在列表里就译成英文。",
+            body: "简体中文、繁体中文、日语、韩语、英语、法语、德语、西班牙语、葡萄牙语、俄语、意大利语，以及另外 27 种。默认译成浏览器界面语言，不在列表里就译成英文。",
           },
           {
             title: "免费吗？",
