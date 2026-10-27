@@ -73,9 +73,8 @@ export default defineProduct({
         items: [
           { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
           { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
-          { title: "BOS first", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
+          { title: "No silent fallback", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
           { title: "Configure storage", body: "Set up BOS, then run `celagent doctor` and `celagent cas-probe`." },
-          { title: "Wait for the write", body: "Recovery needs a successful BOS write." },
           { title: "Resume by ID", body: "`celagent list`, then `celagent <id>` on a configured machine." },
         ],
       },
@@ -175,9 +174,8 @@ export default defineProduct({
         items: [
           { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
           { title: "每轮保存", body: "完成的轮次进入 BOS 写入队列；条件写入检测冲突。" },
-          { title: "先读 BOS", body: "写入失败留在队列；不静默退回截断缓存。" },
+          { title: "不静默回退", body: "写入失败留在队列；不静默退回截断缓存。" },
           { title: "先配置存储", body: "配好 BOS，运行 doctor 和 cas-probe。" },
-          { title: "等写入成功", body: "BOS 写入成功后才能跨机恢复。" },
           { title: "按 ID 恢复", body: "在已配置的机器上 list，再按 ID 打开。" },
         ],
       },

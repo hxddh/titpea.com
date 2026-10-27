@@ -18,7 +18,7 @@ export default defineProduct({
       "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
     eyebrow: "PDF reading and questions",
     headline: "Ask. Check the page.",
-    lead: "Each citation: verified, “check the page”, or not found. Scans read locally.",
+    lead: "Ask a question. Citations: “verified”, “check the page” or “not found”. Scans read locally.",
     catalog: {
       role: "PDF assistant",
       text: "Ask a PDF. Follow the citation to the page.",
@@ -123,7 +123,7 @@ export default defineProduct({
     description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
     eyebrow: "PDF 阅读与问答",
     headline: "问过之后，回到原文",
-    lead: "直接提问。每条引用标为已核对、请看原页或未找到。扫描件在本机识别。",
+    lead: "直接提问。每条引用标为“已核对”“请看原页”或“未找到”。扫描件在本机识别。",
     catalog: {
       role: "PDF 助手",
       text: "向 PDF 提问。顺着引用回到原页。",

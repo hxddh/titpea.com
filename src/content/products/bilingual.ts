@@ -164,7 +164,7 @@ export default defineProduct({
       caption: "试一试：为本页撰写的示例文字，英文原文配中文译文。这里的译文是预先写好的；扩展翻译的是你正在读的网页。",
       demo: {
         kind: "bilingual",
-        label: "对读浮现的可用副本",
+        label: "对读按键查看的可用副本",
         sourceLang: "en",
         targetLang: "zh-CN",
         source:

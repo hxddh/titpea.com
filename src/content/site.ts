@@ -99,6 +99,8 @@ type Ui = {
   relatedTitle: string;
   /** Product page, before the closing band: "More in {line}". */
   relatedInLine: string;
+  /** A line whose products are not "tools" in this language: its own title (zh: games). */
+  relatedInLineFor?: Partial<Record<Line, string>>;
   /** A family's title and one line; `roles` is each member's step, by slug. */
   families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
   browseAllTools: string;
@@ -279,6 +281,7 @@ export const ui: Record<Locale, Ui> = {
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
     relatedInLine: "更多{line}工具",
+    relatedInLineFor: { games: "更多游戏" },
     families: {
       s3: {
         title: "S3 工具组",

@@ -73,7 +73,9 @@ export function relatedFor(product: Product, locale: Locale) {
   const line = copy.groups[product.line];
   const lineLabel = locale === "zh" && /[A-Za-z]/.test(line) ? ` ${line} ` : line;
   return {
-    title: sameLine ? copy.relatedInLine.replace("{line}", lineLabel) : copy.relatedTitle,
+    title: sameLine
+      ? (copy.relatedInLineFor?.[product.line] ?? copy.relatedInLine.replace("{line}", lineLabel))
+      : copy.relatedTitle,
     items: items.map((other) => catalogItem(other, locale)),
     all: { label: copy.browseAllTools, href: `${pathFor(locale)}#more-title` },
   };

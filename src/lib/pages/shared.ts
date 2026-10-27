@@ -43,7 +43,7 @@ export function pathFor(locale: Locale, slug?: string) {
 }
 
 export const otherLocale = (locale: Locale): Locale => (locale === "zh" ? "en" : "zh");
-export const pageTitle = (title: string) => (title === site.brand ? title : `${title} - ${site.brand}`);
+export const pageTitle = (title: string) => (title === site.brand ? title : `${title} — ${site.brand}`);
 
 /** Copy without its `code` markers, for structured data and meta text. */
 export const plainText = (text: string) => text.replaceAll("`", "");

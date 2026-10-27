@@ -75,11 +75,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Import an SGF and play on.",
+        label: "Pick the rules, then practise.",
         items: [
           { title: "Pick the rules", body: "Freestyle, swap2, or Renju, on the New game card." },
           { title: "Four computer levels", body: "Beginner to Extreme; Hard and Extreme alternate colours." },
-          { title: "One-click rematch", body: "Play again keeps your settings; on Alt, colours swap." },
+          { title: "One-click rematch", body: "Play again keeps your settings; with “Play as” on Alt, colours swap." },
           { title: "Practise positions", body: "134 built-in puzzles, plus ones made from your own mistakes." },
           { title: "Every game listed", body: "A summary line on top; open any game to review it." },
         ],
@@ -180,11 +180,11 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "导入 SGF，接着下",
+        label: "选好规则，再练",
         items: [
           { title: "选规则", body: "自由式、swap2 或连珠，在“新局”卡片里选。" },
           { title: "四档电脑", body: "入门到极限，困难与极限每局轮流执子。" },
-          { title: "一键再来", body: "“再来一局”沿用设置；选“轮流”时自动换色。" },
+          { title: "一键再来", body: "“再来一局”沿用设置；执子选“轮流”时自动换色。" },
           { title: "做题练习", body: "134 道内置题，另有从你的失着生成的题。" },
           { title: "对局一览", body: "最上面一行汇总，点任意一局以复盘打开。" },
         ],
@@ -210,7 +210,7 @@ export default defineProduct({
           },
           {
             title: "升级到 3.x，以前的对局还在吗？",
-            body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快、标、深）已经去掉，存过的值会被忽略。",
+            body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快 · 标 · 深）已经去掉，存过的值会被忽略。",
             asOf: "v3.2.0",
           },
           {
