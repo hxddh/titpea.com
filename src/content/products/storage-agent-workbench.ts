@@ -15,10 +15,10 @@ export default defineProduct({
   en: {
     title: "Storage Agent",
     description:
-      "Local, read-only desktop agent for S3-compatible storage: an account check that needs no model, answers grounded in what it read, and Issues it remembers between tasks.",
+      "Local, read-only desktop agent for S3-compatible storage: an account check that needs no model, answers that cite what it read, and risks it remembers between tasks.",
     eyebrow: "Looks after object storage",
     headline: "Find what’s wrong in S3.",
-    lead: "Read-only checks. Issues ranked by severity. Fixes you run.",
+    lead: "Read-only checks. Risks ranked by severity. Fixes you run.",
     catalog: {
       role: "S3 investigation",
       text: "Read-only S3 checks. What needs attention, remembered between tasks.",
@@ -44,13 +44,13 @@ export default defineProduct({
       label: "Storage Agent",
       frame: "wide",
       image: {
-        src: "/assets/storage-agent-brief.webp",
-        alt: "A Storage Agent brief on demo storage: the scope line “Reads complete · 2/2 buckets checked · 8 findings”, a two-sentence verdict on which bucket is public, and findings grouped by bucket with severity and Security Hub control.",
+        src: "/assets/storage-agent-run.webp",
+        alt: "A Storage Agent run on demo storage: the scope line “All 2 buckets checked”, the question “Which buckets are public?”, a one-sentence answer with a citation, a folded Work row “Worked for 4.7s · 2 calls”, the bucket table it read, and Sources with 8 risks.",
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 25 with demo storage, from its repository.",
-      asOf: "v25.0.0",
+      caption: "Storage Agent 32 with demo storage, from its repository.",
+      asOf: "v32.0.0",
     },
     sections: [
       {
@@ -59,7 +59,7 @@ export default defineProduct({
         label: "Findings outlast the task.",
         items: [
           { title: "Check without a model", body: "“Check account” surveys and reads access with no key at all." },
-          { title: "Names what it missed", body: "Says “Reads complete”, or names each blind or failed read." },
+          { title: "Names what it missed", body: "Says “All 2 buckets checked”, or names each blind or failed read." },
           { title: "Who changed it", body: "On AWS, CloudTrail names who changed a bucket, over 90 days." },
           { title: "Remembers your storage", body: "Buckets, open Issues and their history, kept between tasks." },
           { title: "Open questions as code", body: "Largest prefixes, data untouched for years: a sandboxed script." },
@@ -84,17 +84,17 @@ export default defineProduct({
           {
             title: "Does it need a model key?",
             body: "Not for “Check account”: it surveys an account and reads access without a model. Questions need one: OpenAI, Anthropic, or any OpenAI-compatible endpoint; models already running in Ollama or LM Studio are one click away. Paste a key and the provider’s models are listed.",
-            asOf: "v25.0.0",
+            asOf: "v32.0.0",
           },
           {
             title: "Will a small local model work?",
-            body: "Yes. The context window is inferred from the model; below 64k it counts as small and gets shorter method cards and fewer rounds. The answer format stays the same.",
-            asOf: "v25.0.0",
+            body: "Yes. The context window is inferred from the model; below 64k it counts as small and gets fewer rounds. The answer format stays the same.",
+            asOf: "v32.0.0",
           },
           {
             title: "Does it watch my account?",
-            body: "No. There is no background watch or schedule. A check is a snapshot; “Check again” starts a new one, and “Re-verify” re-reads the buckets a task touched without a model.",
-            asOf: "v25.0.0",
+            body: "Not in the background. An account can opt into a daily or weekly read-only check, which runs only while the app is open and never uses a model. A check is a snapshot; “Check again” starts a new one, and “Re-verify” re-reads the buckets a task touched.",
+            asOf: "v32.0.0",
           },
           {
             title: "What will a fix change?",
@@ -103,7 +103,7 @@ export default defineProduct({
           {
             title: "Can it change my storage?",
             body: "No. It has no put, delete or other write call, and it never applies a fix: fixes are text for you to run. A bucket list in an account’s settings limits which buckets it may read.",
-            asOf: "v25.0.0",
+            asOf: "v32.0.0",
           },
         ],
       },
@@ -112,10 +112,10 @@ export default defineProduct({
   zh: {
     title: "Storage Agent",
     description:
-      "面向 S3 兼容存储的本地只读桌面 Agent：账户检查不需要模型，回答以读到的内容为准，发现的问题跨任务保留。",
+      "面向 S3 兼容存储的本地只读桌面 Agent：账户检查不需要模型，回答引用它读到的内容，发现的风险跨任务保留。",
     eyebrow: "照看对象存储",
     headline: "找出 S3 里的隐患",
-    lead: "只读检查。问题按严重度排好。修复由你执行。",
+    lead: "只读检查。风险按严重度排好。修复由你执行。",
     catalog: {
       role: "S3 排查",
       text: "只读 S3 排查。需要关注的问题跨任务保留。",
@@ -139,13 +139,13 @@ export default defineProduct({
       label: "Storage Agent",
       frame: "wide",
       image: {
-        src: "/assets/storage-agent-brief.webp",
-        alt: "Storage Agent 在演示存储上的报告：范围行显示全部读完、2 个桶都已检查、8 个问题。下面两句话说明哪个桶公开，再按桶分组列出问题。",
+        src: "/assets/storage-agent-run.webp",
+        alt: "Storage Agent 在演示存储上的一次运行：范围行显示 2 个桶都已检查，问题是“哪些桶是公开的？”，一句带引用的回答，折叠的 Work 行显示用时 4.7 秒、2 次调用，下面是读到的桶表格和含 8 个风险的 Sources。",
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 25 使用演示存储，截图来自项目仓库，界面为英文。",
-      asOf: "v25.0.0",
+      caption: "Storage Agent 32 使用演示存储，截图来自项目仓库，界面为英文。",
+      asOf: "v32.0.0",
     },
     sections: [
       {
@@ -154,7 +154,7 @@ export default defineProduct({
         label: "发现不随任务结束",
         items: [
           { title: "不用模型也能检查", body: "“检查账户”不需要任何密钥，就能盘点并读取访问权限。" },
-          { title: "说清没读到什么", body: "全部读完会写明；读不到、读失败的逐一列出。" },
+          { title: "说清没读到什么", body: "全部检查完会写明；读不到、读失败的逐一列出。" },
           { title: "谁改的", body: "在 AWS 上用 CloudTrail 查出 90 天内是谁改了桶。" },
           { title: "记住你的存储", body: "桶、未解决的问题和它们的变化记录，跨任务保留。" },
           { title: "开放问题写成代码", body: "最大的前缀、多年没动的数据：在沙箱里跑一段脚本。" },
@@ -179,17 +179,17 @@ export default defineProduct({
           {
             title: "没有模型密钥能用吗？",
             body: "“检查账户”不需要：不用模型就能盘点账户、读取访问权限。提问需要模型：OpenAI、Anthropic 或任何兼容 OpenAI 的端点；已在 Ollama 或 LM Studio 里运行的模型一键可选。粘贴密钥后会列出该服务的模型。",
-            asOf: "v25.0.0",
+            asOf: "v32.0.0",
           },
           {
             title: "小的本地模型够用吗？",
-            body: "够用。上下文窗口按模型推断；小于 64k 算小模型，会用更短的方法说明和更少的轮次，回答格式不变。",
-            asOf: "v25.0.0",
+            body: "够用。上下文窗口按模型推断；小于 64k 算小模型，会用更少的轮次，回答格式不变。",
+            asOf: "v32.0.0",
           },
           {
             title: "它会在后台巡检吗？",
-            body: "不会。没有后台巡检，也没有定时任务。每次检查是一个快照；“再检查一次”会新开一个，“重新验证”不用模型，重读任务涉及的桶。",
-            asOf: "v25.0.0",
+            body: "不会在后台巡检。每个账户可以选择每天或每周做一次只读检查，只在应用打开时运行，不用模型。每次检查是一个快照；“再检查一次”会新开一个，“重新验证”会重读任务涉及的桶。",
+            asOf: "v32.0.0",
           },
           {
             title: "修复会改变什么？",
@@ -198,7 +198,7 @@ export default defineProduct({
           {
             title: "它会改动我的存储吗？",
             body: "不会。它没有写入、删除或任何修改操作，也从不执行修复：修复只是给你运行的文本。在账户设置里填写桶列表，可以限定它能读哪些桶。",
-            asOf: "v25.0.0",
+            asOf: "v32.0.0",
           },
         ],
       },
