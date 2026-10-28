@@ -87,7 +87,7 @@ Simplified at the owner's request, October 2026. One calm column that fits about
 ## App Icons
 
 - Every product has an icon, and every list of products shows them (Home's catalog, families, the release lists, 404, share images). `npm run check` fails without one.
-- Every rendered icon sits in one plate: a ring of plate colour, a hairline edge and one drop shadow (`--plate-l/m/s` by icon size, light and dark), so official artwork and site-drawn tiles read as one family. The plate replaces per-list drop shadows.
+- Every rendered icon gets the same plate: a hairline edge and one soft drop shadow (`--plate-l/m/s` by icon size, light and dark), with no ring of its own, so the artwork meets the page directly (the owner dropped the white ring in October 2026). Official artwork and site-drawn tiles still read as one family, and dark tiles keep their edge on the dark canvas. The plate replaces per-list drop shadows.
 - Official artwork is used where it exists, clipped to the site tile (radius 22.5%). Otherwise the icon is site-designed from `design/icons/<slug>.svg`: a 1024 tile with a top sheen and one image that says what the product does — a card-catalog drawer for s3-turbo-list, a stethoscope for StorageOps, a radar dish for Agent Radar. Each has its own colour so no two read alike, the mark survives 28 px, and no third-party logo appears.
 - `npm run assets:icons` renders `public/assets/icons/<slug>.webp`. `design/icons/README.md` records which icons are official and which are site-designed.
 

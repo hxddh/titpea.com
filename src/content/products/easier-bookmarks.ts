@@ -38,7 +38,7 @@ export default defineProduct({
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome Web Store · Productivity · 3.0.0 · No external servers",
+    meta: "Chrome Web Store · Productivity · 4.0.0 · No external servers",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -68,7 +68,7 @@ export default defineProduct({
           },
           { title: "Knows the page you’re on", body: "The star fills if it’s saved; click it to edit instead." },
           { title: "Pick several", body: "Tick a few to drag, move, or delete; one Undo restores all." },
-          { title: "Drag links in", body: "Drop a page link or the address bar’s URL onto a folder." },
+          { title: "Sort by name", body: "Folders first, numbers by value, in your language’s order." },
         ],
       },
       {
@@ -88,7 +88,7 @@ export default defineProduct({
         items: [
           {
             title: "How do I pick several bookmarks?",
-            body: "Point at an icon and it becomes a checkbox: tick it, or press Space. A click on a bookmark always opens it. Shift-click a checkbox, or press Shift + ↑ / ↓, to pick a run; ⌘/Ctrl + A picks everything in the folder or every search result. Alt + M, or Move to… in the ⋯ menu, opens the folder list: type a name, then Enter. One Undo puts everything back where it was.",
+            body: "Point at an icon and it becomes a checkbox: tick it, or press Space. A click on a bookmark always opens it. Shift-click a checkbox, or press Shift + ↑ / ↓, to pick a run; ⌘/Ctrl + A picks everything in the folder or every search result. Alt + ↑ / ↓ (Option on Mac) moves every ticked bookmark together; Alt + M, or Move to… in the ⋯ menu, opens the folder list: type a name, then Enter. One Undo puts everything back where it was.",
           },
           {
             title: "Can I add a link without opening it?",
@@ -97,6 +97,10 @@ export default defineProduct({
           {
             title: "How do I save a whole window?",
             body: "Press ⌘/Ctrl + Shift + D. Every tab goes into a new folder in Other bookmarks, named with the date and the number of tabs. Pages that can’t be bookmarked, such as `chrome://` pages, and repeated addresses are skipped. Change edits the new folder; Undo removes it. To save them somewhere else, choose “Save all tabs here” from that folder’s ⋯ menu; the same menu can open all of a folder’s bookmarks in a new window.",
+          },
+          {
+            title: "Which languages does the panel speak?",
+            body: "English, Simplified Chinese, Japanese and Traditional Chinese, in the panel, its menus and the address-bar hints. Chrome’s language decides; there is no switch.",
           },
         ],
       },
@@ -129,7 +133,7 @@ export default defineProduct({
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome 网上应用店 · 效率 · 3.0.0 · 无外部服务器",
+    meta: "Chrome 网上应用店 · 效率 · 4.0.0 · 无外部服务器",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -156,7 +160,7 @@ export default defineProduct({
           { title: "一键收藏", body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。" },
           { title: "认得当前页", body: "已收藏时星标变实心，点它编辑，不会重复添加。" },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
-          { title: "拖入链接", body: "把网页上的链接或地址栏网址拖到文件夹上，就存在那里。" },
+          { title: "按名称排序", body: "文件夹在前，数字按大小，按你的语言排序。" },
         ],
       },
       {
@@ -176,7 +180,7 @@ export default defineProduct({
         items: [
           {
             title: "怎么一次选中多个书签？",
-            body: "鼠标移到图标上，它会变成复选框，勾选即可；也可以按空格。单击书签总是打开它。Shift + 单击复选框或 Shift + ↑ / ↓ 连续选择，⌘/Ctrl + A 选中文件夹内全部或全部搜索结果。按 Alt + M（或 ⋯ 菜单里的“移动到…”）会打开文件夹列表，输入名称后回车即可。撤销一次，全部回到原处。",
+            body: "鼠标移到图标上，它会变成复选框，勾选即可；也可以按空格。单击书签总是打开它。Shift + 单击复选框或 Shift + ↑ / ↓ 连续选择，⌘/Ctrl + A 选中文件夹内全部或全部搜索结果。按 Alt + ↑ / ↓（Mac 上是 Option）把勾选的书签一起上下移动；按 Alt + M（或 ⋯ 菜单里的“移动到…”）会打开文件夹列表，输入名称后回车即可。撤销一次，全部回到原处。",
           },
           {
             title: "不打开网页也能收藏链接吗？",
@@ -185,6 +189,10 @@ export default defineProduct({
           {
             title: "怎样收藏整个窗口？",
             body: "按 ⌘/Ctrl + Shift + D，每个标签页都存进“其他书签”里的一个新文件夹，名称是日期和标签页数量。`chrome://` 之类无法收藏的页面和重复的网址会跳过。点“更改”可以编辑这个文件夹，点“撤销”则删除它。想存到别处，就在那个文件夹的 ⋯ 菜单里选“把所有标签页存到这里”；同一个菜单也能在新窗口里打开文件夹内的全部书签。",
+          },
+          {
+            title: "面板支持哪些语言？",
+            body: "英文、简体中文、日文和繁体中文，面板、菜单和地址栏提示都有。由 Chrome 的语言决定，没有切换开关。",
           },
         ],
       },
