@@ -45,12 +45,25 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-en.webp",
-        alt: "Store image: Easier Bookmarks in Chrome’s side panel beside a web page, a search box and star button at the top, the Work folder open with site icons, and a count of 14 bookmarks at the foot",
-        width: 1280,
-        height: 800,
+        alt: "The Easier Bookmarks side panel: a search box and star button at the top, the Bookmarks bar with the Work folder open on five bookmarks with site icons, Reading and Travel folded, three bookmarks on the bar itself, and a count of 14 bookmarks at the foot",
+        width: 1140,
+        height: 1980,
       },
-      caption: "Illustration: store image with sample bookmarks",
+      caption: "Easier Bookmarks 4.0.0 side panel; bookmarks and site icons are examples.",
+      asOf: "v4.0.0",
     },
+    showcases: [
+      {
+        src: "/assets/easier-bookmarks-search-en.webp",
+        alt: "The side panel searching “plan”: Q4 Product Plan, Kyoto Trip Plan and Weekly Meal Plan, each with “Plan” highlighted and its folder path under it",
+        width: 1140,
+        height: 855,
+        title: "Results as you type.",
+        body: "Each match shows the folder it lives in; Enter opens the first.",
+        caption: "Easier Bookmarks 4.0.0, searching “plan”; bookmarks are examples.",
+        asOf: "v4.0.0",
+      },
+    ],
     sections: [
       {
         kind: "cards",
@@ -140,12 +153,25 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/easier-bookmarks-zh.webp",
-        alt: "商店图片：网页旁的 Chrome 侧边栏里是 Easier Bookmarks，顶部是搜索框和星标按钮，“工作”文件夹已展开，带网站图标，底部显示 14 个书签",
-        width: 1280,
-        height: 800,
+        alt: "Easier Bookmarks 侧边栏：顶部是搜索框和星标按钮，书签栏下“工作”文件夹已展开，五个书签带网站图标，“阅读”和“旅行”收起，书签栏上另有三个书签，底部显示 14 个书签",
+        width: 1140,
+        height: 1980,
       },
-      caption: "示意图：商店图片，书签为示例",
+      caption: "Easier Bookmarks 4.0.0 侧边栏；书签和网站图标为示例。",
+      asOf: "v4.0.0",
     },
+    showcases: [
+      {
+        src: "/assets/easier-bookmarks-search-zh.webp",
+        alt: "侧边栏用全拼“jingdu”搜索，找到“京都行程规划”和“京都赏枫地图”，下面写着所在文件夹：书签栏 › 旅行",
+        width: 1140,
+        height: 855,
+        title: "打拼音也能搜到",
+        body: "每个结果都写明所在文件夹；回车打开第一个。",
+        caption: "Easier Bookmarks 4.0.0，用拼音“jingdu”搜索；书签为示例。",
+        asOf: "v4.0.0",
+      },
+    ],
     sections: [
       {
         kind: "cards",

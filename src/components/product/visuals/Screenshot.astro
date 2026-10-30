@@ -1,19 +1,22 @@
 ---
 import type { Visual } from "../../../content/schema";
-import { screenshotSizes, srcsetFor } from "../../../lib/images";
+import { portraitShotSizes, screenshotSizes, srcsetFor } from "../../../lib/images";
 
 interface Props {
   visual: Extract<Visual, { kind: "screenshot" }>;
 }
 
 const { image, caption } = Astro.props.visual;
+// A tall capture (an extension's side panel) is shown near its real width,
+// not stretched across the wide frame.
+const portrait = image.height > image.width;
 ---
 
-<figure class="product-scene product-screenshot-visual">
+<figure class="product-scene product-screenshot-visual" data-portrait={portrait ? "" : undefined}>
   <img
     src={image.src}
     srcset={srcsetFor(image.src, image.width)}
-    sizes={screenshotSizes}
+    sizes={portrait ? portraitShotSizes : screenshotSizes}
     alt={image.alt}
     width={image.width}
     height={image.height}
