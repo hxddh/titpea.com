@@ -18,14 +18,22 @@
     object-fit: cover;
   }
 
-  /* The paragraph reads as text, left over left, under the centered claim. */
+  /* The owner's words read as text, left over left, under the centered claim. */
   .about-body {
     max-width: 34em;
     margin: 40px auto 0;
     color: var(--ink);
     font-size: var(--text-sub);
-    line-height: 1.55;
+    line-height: 1.6;
     text-align: left;
+  }
+
+  .about-body p {
+    margin: 0;
+  }
+
+  .about-body p + p {
+    margin-top: 1em;
   }
 
   .about-links {
@@ -36,10 +44,17 @@
     font-size: var(--text-list-body);
   }
 
+  /* A line of links on its own, not links inside running text: no standing
+   underline (it also ran under the separator), only on hover. */
   .about-links a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+    text-decoration: none;
+  }
+
+  .about-links a:hover {
+    text-decoration: underline;
   }
 
   .about-links a:not(:last-child)::after {

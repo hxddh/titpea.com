@@ -11,7 +11,7 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  {/* One calm column: the claim, the owner's paragraph, then how to reach them. */}
+  {/* One calm column: the claim, the owner's own words, then how to reach them. */}
   <section class="about-hero">
     <div class="wash" aria-hidden="true"></div>
     <div class="shell narrow about-copy">
@@ -26,7 +26,13 @@ const { model } = Astro.props;
       )}
       <p class="eyebrow">{model.hero.eyebrow}</p>
       <h1>{model.hero.title}</h1>
-      {model.person && <p class="about-body">{model.person.paragraph}</p>}
+      {model.person && (
+        <div class="about-body">
+          {model.person.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      )}
       <p class="about-links">
         {model.links.map((link) => (
           <a href={link.href} rel="noreferrer">
