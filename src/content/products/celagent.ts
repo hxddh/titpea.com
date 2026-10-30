@@ -18,10 +18,10 @@ export default defineProduct({
       "Pi, the open-source terminal coding agent, with sessions saved to Baidu Object Storage (BOS) and restored by ID on another configured machine.",
     eyebrow: "Built on Pi, the open-source terminal coding agent",
     headline: "Resume on another device.",
-    lead: "Pi sessions, saved to Baidu Object Storage (BOS). Resume on another configured machine.",
+    lead: "Saves each Pi coding-agent session to Baidu Object Storage (BOS), turn by turn. Resume it on another machine you have set up.",
     catalog: {
       role: "Session recovery",
-      text: "Park the Pi session on BOS, resume it on another machine.",
+      text: "Save a Pi coding-agent session to Baidu Object Storage, then resume it on another machine.",
     },
     primaryCta: {
       label: "Install",
@@ -123,7 +123,7 @@ export default defineProduct({
     lead: "Pi 编码会话存进百度对象存储（BOS）。在已配置的另一台机器上，按 ID 接着用。",
     catalog: {
       role: "会话恢复",
-      text: "把 Pi 会话停在 BOS，换一台机器继续。",
+      text: "把 Pi 编码会话存进百度对象存储（BOS），换一台机器接着用。",
     },
     primaryCta: {
       label: "安装",

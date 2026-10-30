@@ -17,7 +17,7 @@ export default defineProduct({
     description: "Scheduled research on the agent industry, with sourced Markdown briefs and watchlists saved in Git.",
     eyebrow: "Scheduled Markdown research",
     headline: "Agent news, with sources.",
-    lead: "Public sources. Citation checks. Markdown briefs in Git.",
+    lead: "Markdown briefs on AI agents, built from public sources on a GitHub Actions schedule. Citations are checked; every change stays in Git.",
     catalog: {
       role: "Weekly briefs",
       text: "Sourced Markdown briefs, on a GitHub Actions timer.",
@@ -63,7 +63,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Research loop",
-        label: "One model screens, then drafts.",
+        label: "One model screens the sources, then drafts.",
         items: [
           { title: "Weekly thesis", body: "Current judgment, what changed, and open questions." },
           { title: "Watchlist", body: "Mainstream and emerging agents, sourcing graded Strong to None." },
@@ -110,7 +110,7 @@ export default defineProduct({
     description: "定时整理 Agent 产业动态，把带来源的 Markdown 周报与观察名单保存在 Git 中。",
     eyebrow: "定时 Markdown 调研",
     headline: "Agent 动态，附来源",
-    lead: "公开来源。引用校验。Markdown 周报存进 Git。",
+    lead: "用公开来源定时生成 AI Agent 调研周报（Markdown）。引用会被校验，每次改动都留在 Git 里。",
     catalog: {
       role: "每周简报",
       text: "GitHub Actions 定时跑，生成带来源的 Markdown 周报。",
