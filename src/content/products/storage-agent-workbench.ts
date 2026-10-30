@@ -49,7 +49,7 @@ export default defineProduct({
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 32 with demo storage, from its repository.",
+      caption: "Storage Agent 32 in its own visual test: a scripted test model answering over a test S3 server.",
       asOf: "v32.0.0",
     },
     sections: [
@@ -144,7 +144,7 @@ export default defineProduct({
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 32 使用演示存储，截图来自项目仓库，界面为英文。",
+      caption: "Storage Agent 32 自带的界面测试：脚本化的测试模型，连接测试用 S3 服务，界面为英文。",
       asOf: "v32.0.0",
     },
     sections: [

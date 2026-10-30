@@ -14,3 +14,6 @@ export function srcsetFor(src: string, width: number): string | undefined {
 
 /** Screenshots never render wider than the 1040px wide frame. */
 export const screenshotSizes = "(max-width: 1084px) calc(100vw - 44px), 1040px";
+
+/** A tall hero capture (a side panel) renders at most 380px wide (product.css). */
+export const portraitShotSizes = "380px";

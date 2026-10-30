@@ -53,12 +53,13 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/readout-dark-en.webp",
-        width: 900,
-        height: 665,
+        width: 1800,
+        height: 1330,
+        asOf: "v4.2.0",
         alt: "Readout’s reading view in dark mode: an architecture plan from rexleimo/aios with a heading, its Date, Status and Scope lines one under another, short paragraphs and a bulleted list with inline code paths.",
         title: "Dark when your Mac is.",
         body: "The page follows the system appearance, Mermaid diagrams included.",
-        caption: "Rendered in WebKit by Readout’s test suite; the window around it is not shown.",
+        caption: "Rendered by Readout 4.2’s own reader code in a browser; the window around it is not shown.",
       },
     ],
     sections: [
@@ -199,12 +200,13 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/readout-dark-zh.webp",
-        width: 900,
-        height: 632,
+        width: 1800,
+        height: 1264,
+        asOf: "v4.2.0",
         alt: "深色模式下 Readout 的阅读视图：一份中文功能设计文档（来自 zhukunpenglinyutong/jetbrains-cc-gui），有标题、段落、编号列表和项目符号列表。",
         title: "Mac 用深色，它也用深色",
         body: "页面跟随系统外观切换，Mermaid 图表也一样。",
-        caption: "由 Readout 的测试在 WebKit 中渲染，未包含窗口外框。",
+        caption: "由 Readout 4.2 自身的阅读器代码在浏览器中渲染，未包含窗口外框。",
       },
     ],
     sections: [

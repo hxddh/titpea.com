@@ -52,12 +52,14 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/pagewise-welcome.webp",
-        width: 1800,
-        height: 1200,
-        alt: "PageWise welcome screen with open-document action and recent files",
-        title: "Start from a file on disk.",
-        body: "Open or drag in a PDF; recent files stay local.",
+        src: "/assets/pagewise-search-en.webp",
+        width: 2048,
+        height: 1536,
+        alt: "PageWise searching a PDF for “byte miss ratio”: “This document, 4 matches”, each snippet labelled with its page, p. 1, p. 1 and p. 2, over the dimmed page",
+        title: "Search the whole document.",
+        body: "Every match names its page; search runs on your computer, with no model.",
+        caption: "PageWise 24, searching a sample PDF from its evaluation corpus (the paper is fictional).",
+        asOf: "v24.0.0",
       },
     ],
     sections: [
@@ -156,12 +158,14 @@ export default defineProduct({
     },
     showcases: [
       {
-        src: "/assets/pagewise-welcome.webp",
-        width: 1800,
-        height: 1200,
-        alt: "PageWise 欢迎页，包含打开文档与最近文件",
-        title: "从磁盘上的文件开始",
-        body: "打开或拖入 PDF，最近文档留在本机。",
+        src: "/assets/pagewise-search-zh.webp",
+        width: 2048,
+        height: 1536,
+        alt: "PageWise 在 PDF 中搜索“违约金”：显示“本文档 9 处匹配”，每段摘录都标明页码（第 2 页、第 3 页），背后是调暗的页面",
+        title: "整份文档都能搜",
+        body: "每处匹配都标明页码；搜索在本机进行，不需要模型。",
+        caption: "PageWise 24，搜索评测语料里的示例 PDF（合同内容为虚构）。",
+        asOf: "v24.0.0",
       },
     ],
     sections: [
