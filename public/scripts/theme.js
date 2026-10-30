@@ -44,7 +44,7 @@
         override.setAttribute(ATTR, "");
         document.head.appendChild(override);
       }
-      override.setAttribute("content", pref === "dark" ? "#000000" : "#fbfbfd");
+      override.setAttribute("content", pref === "dark" ? "#0b0b0c" : "#fafaf9");
     } else if (override) {
       override.parentNode.removeChild(override);
     }
@@ -54,7 +54,7 @@
     paintMeta();
     var dark = resolved() === "dark";
     button.setAttribute("aria-label", dark ? button.dataset.labelLight : button.dataset.labelDark);
-    button.textContent = dark ? button.dataset.textLight : button.dataset.textDark;
+    // The button is a glyph (chrome.css); its name is the aria-label above.
     button.hidden = false;
   }
 

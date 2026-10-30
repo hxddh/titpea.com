@@ -25,9 +25,6 @@ const tokens = `:root {
   --ink-alpha: #222222;
   --tint-world-clock: #333333;
   --ink-world-clock: #444444;
-
-  --fill-alpha: #222222;
-  --fill-world-clock: #444444;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -73,20 +70,18 @@ test("an existing slug is refused", () => {
   assert.throws(() => insertIntoIndex(index, order, "gamma", "agents"), /already/);
 });
 
-test("tokens: pairs, fill and mapping land in alphabetical order, in every block", () => {
+test("tokens: pairs and mapping land in alphabetical order, in every block", () => {
   const css = insertTokens(tokens, "beta");
   assert.equal(css.split("--tint-beta:").length - 1, 2);
   assert.match(css, /--ink-alpha: #222222;\n {2}--tint-beta: [^\n]*\n {2}--ink-beta: [^\n]*\n {2}--tint-world-clock/);
   assert.match(css, /--ink-alpha: #666666;\n {4}--tint-beta: [^\n]*\n {4}--ink-beta: [^\n]*\n {4}--tint-world-clock/);
-  assert.match(css, /--fill-alpha: #222222;\n {2}--fill-beta: [^\n]*\n {2}--fill-world-clock/);
   assert.match(css, /\}\nbody\[data-product="beta"\] \{\n[\s\S]*?\n\}\nbody\[data-product="world-clock"\]/);
-  assert.equal(css.split(MARKER).length - 1, 5);
+  assert.equal(css.split(MARKER).length - 1, 4);
 });
 
 test("tokens: a slug that sorts last follows the last entry of each run", () => {
   const css = insertTokens(tokens, "zulu");
-  assert.match(css, /--ink-world-clock: #444444;\n {2}--tint-zulu: [^\n]*\n {2}--ink-zulu: [^\n]*\n\n {2}--fill-alpha/);
-  assert.match(css, /--fill-world-clock: #444444;\n {2}--fill-zulu: [^\n]*\n\}/);
+  assert.match(css, /--ink-world-clock: #444444;\n {2}--tint-zulu: [^\n]*\n {2}--ink-zulu: [^\n]*\n\}/);
   assert.match(
     css,
     /--tint-world-clock\);\n\}\nbody\[data-product="zulu"\] \{\n[\s\S]*?\n\}\n\nbody\[data-product\] \{/,

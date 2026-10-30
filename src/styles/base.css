@@ -23,9 +23,13 @@
     background-color: var(--paper);
     font-family: var(--sans);
     font-size: 17px;
-    line-height: 1.47;
-    letter-spacing: -0.022em;
+    line-height: 1.5;
+    /* No tracking on the body: a length in em set here is inherited as a
+     fixed pixel value, which would crush every smaller size. Display roles
+     tighten themselves. */
+    letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
+    font-kerning: normal;
   }
 
   a {
@@ -35,6 +39,23 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  /* Links inside running text carry a quiet underline: colour alone does not
+   mark them, now that links are ink. */
+  main :is(p, dd, td) > a:not(.button),
+  main :is(.data-list, .whats-new-list) li > a,
+  .prose a {
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  main :is(p, dd, td) > a:not(.button):hover,
+  main :is(.data-list, .whats-new-list) li > a:hover,
+  .prose a:hover {
+    text-decoration-color: currentColor;
   }
 
   img {
@@ -67,8 +88,8 @@
   h2,
   h3 {
     color: var(--ink);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 650;
+    letter-spacing: -0.022em;
     text-wrap: balance;
   }
 
@@ -81,7 +102,7 @@
 
   h3 {
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.012em;
   }
 
   p {
@@ -90,7 +111,7 @@
   }
 
   ::selection {
-    color: var(--on-ink);
+    color: var(--on-accent);
     background: var(--accent-fill);
   }
 
@@ -113,27 +134,28 @@
     margin: 0 0 10px;
     color: var(--muted);
     font-size: var(--text-kicker);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    letter-spacing: 0;
   }
 
+  /* The lede is the page's first explanation: reading ink, not label grey. */
   .lead {
-    max-width: 36em;
+    max-width: 34em;
     margin: 20px auto 0;
-    color: var(--muted);
+    color: var(--ink-2);
     font-size: var(--text-lede);
-    line-height: 1.38;
-    letter-spacing: -0.02em;
+    line-height: 1.45;
+    letter-spacing: -0.008em;
     text-wrap: balance;
   }
 
   .sub {
     max-width: 46ch;
-    margin: 16px auto 0;
+    margin: 14px auto 0;
     color: var(--muted);
     font-size: var(--text-sub);
-    line-height: 1.42;
-    text-wrap: pretty;
+    line-height: 1.5;
+    text-wrap: balance;
   }
 
   .prose {
@@ -155,12 +177,12 @@
   .section-head h2 {
     margin: 0;
     font-size: var(--title-section);
-    line-height: 1.07;
+    line-height: 1.15;
   }
 
   .section-head.compact h2 {
     font-size: var(--title-show);
-    line-height: 1.12;
+    line-height: 1.2;
   }
 
   /* Capsule buttons. .button.primary is the filled accent control; .ghost is
@@ -199,7 +221,7 @@
   }
 
   .button.primary {
-    color: var(--on-ink);
+    color: var(--on-accent);
     background: var(--accent-fill);
     box-shadow: var(--button-highlight);
   }
@@ -229,11 +251,14 @@
   }
 
   /* Photographs of the product: rounded, lifted, full captured frame. */
+  /* In dark mode the photograph sits on a grey stage (--stage, --stage-pad),
+   so a light window does not glare against the near-black page. */
   .shot {
     overflow: hidden;
     margin: 0;
+    padding: var(--stage-pad);
     border-radius: var(--radius-shot);
-    background: var(--paper-raised);
+    background: var(--stage, var(--paper-raised));
     box-shadow:
       var(--shadow-shot),
       0 0 0 1px var(--line);
@@ -241,6 +266,7 @@
 
   .shot img {
     width: 100%;
+    border-radius: calc(var(--radius-shot) - var(--stage-pad) / 2);
   }
 
   /* Captures are mostly light: dark mode dims them a little (--shot-dim is
@@ -253,10 +279,12 @@
 
   .shot-caption {
     max-width: 60ch;
-    margin: 18px auto 0;
+    margin: 16px auto 0;
     color: var(--muted);
     font-size: 15px;
+    line-height: 1.45;
     text-align: center;
+    text-wrap: balance;
   }
 
   /* Soft color wash behind a centered hero. */
@@ -285,7 +313,8 @@
   /* At the same pixel size CJK reads smaller than Latin, so Chinese card text
    steps up to 16px; the rest of the Chinese optics are in locale.css. */
   html:lang(zh) {
-    --text-card-body: 16px;
+    --text-card-body: 17px;
+    --measure: 34em;
   }
 
   /* Utilities */

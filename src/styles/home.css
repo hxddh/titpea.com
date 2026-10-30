@@ -77,17 +77,17 @@
   }
 
   .home-featured-name {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.022em;
+    font-size: 21px;
+    font-weight: 650;
+    line-height: 1.25;
+    letter-spacing: -0.018em;
   }
 
   .home-featured-text {
     margin-top: 6px;
     color: var(--ink-2);
-    font-size: var(--text-card-body);
-    line-height: 1.45;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   .home-featured-more {
@@ -157,7 +157,9 @@
   }
 
   .catalog-card:hover .home-catalog-name {
-    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
   }
 
   .catalog-card .catalog-icon {
@@ -175,15 +177,13 @@
   .home-catalog-name {
     font-size: var(--text-catalog-name);
     font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
+    line-height: 1.3;
   }
 
   .home-catalog-text {
     color: var(--ink-2);
-    font-size: var(--text-card-body);
-    line-height: 1.45;
-    letter-spacing: -0.01em;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   @media (max-width: 960px) {

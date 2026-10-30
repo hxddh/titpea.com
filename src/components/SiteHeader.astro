@@ -39,8 +39,12 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
           </summary>
           <div class="nav-dropdown-panel">
             {group.items.map((item) => (
-              <a href={item.href} aria-current={isCurrent(item)}>
-                {item.label}
+              <a class="nav-product" href={item.href} aria-current={isCurrent(item)}>
+                {item.icon && <img class="icon-plate" src={item.icon} alt="" width="32" height="32" />}
+                <span class="nav-product-copy">
+                  <span class="nav-product-name">{item.label}</span>
+                  {item.text && <span class="nav-product-text">{item.text}</span>}
+                </span>
               </a>
             ))}
           </div>
@@ -61,13 +65,9 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
       data-theme-toggle
       data-label-dark={copy.themeToDark}
       data-label-light={copy.themeToLight}
-      data-text-dark={copy.themeDarkText}
-      data-text-light={copy.themeLightText}
       aria-label={copy.themeToDark}
       hidden
-    >
-      {copy.themeDarkText}
-    </button>
+    ></button>
 
     <details class="mobile-menu">
       <summary aria-label={copy.menuLabel}>{copy.menuText}</summary>

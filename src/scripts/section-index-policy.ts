@@ -1,7 +1,7 @@
 export const sectionIndexPolicy = {
-  stickyTopPx: 10,
-  desktopScrollMarginPx: 84,
-  mobileScrollMarginPx: 76,
+  stickyTopPx: 0,
+  desktopScrollMarginPx: 56,
+  mobileScrollMarginPx: 56,
   activationViewportRatio: 0.18,
   minimumActivationOffsetPx: 44,
   /** After a click, the index re-reads the active section this much later; QA waits past it, then for a steady state. */

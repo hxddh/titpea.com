@@ -4,7 +4,15 @@ import { site, ui } from "../../content/site";
 import { lines, type Line, type Locale, type Product } from "../../content/schema";
 import { type CurrentPage, pathFor } from "./shared";
 
-export type NavItem = { label: string; href: string; current?: CurrentPage; external?: boolean };
+export type NavItem = {
+  label: string;
+  href: string;
+  current?: CurrentPage;
+  external?: boolean;
+  /** Product entries: the app icon and the catalog line, so a menu says what each tool is. */
+  icon?: string;
+  text?: string;
+};
 export type NavGroup = { label: string; line?: Line; items: NavItem[] };
 
 /** Local nav links on a product page, Get started and FAQ included. */
@@ -33,6 +41,8 @@ export function navGroups(locale: Locale): NavGroup[] {
           label: navLabel(product, locale),
           href: pathFor(locale, product.slug),
           current: product.slug,
+          icon: product.icon,
+          text: product[locale].catalog.text,
         })),
     })),
     { label: copy.groups.external, items: [{ label: "GitHub", href: site.github, external: true }] },

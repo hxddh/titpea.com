@@ -3,8 +3,16 @@
    size CJK reads smaller than Latin, so reading text steps up (base.css sets
    --text-card-body). This layer follows the page templates, so these hold
    over a template's own line height and tracking. */
-  :lang(zh) body {
+  /* Chinese: no tracking anywhere. Latin tracking set by a template (card
+   titles, FAQ questions, eyebrows) would squeeze the square CJK glyphs. */
+  :lang(zh) body,
+  :lang(zh) body * {
     letter-spacing: 0;
+  }
+
+  /* Reading measure for Chinese: about 34 characters a line. */
+  :lang(zh) :is(.faq-answer, .data-list li, .prose, .about-body) {
+    max-width: var(--measure);
   }
 
   :lang(zh) .about-hero h1,
@@ -21,6 +29,9 @@
   }
 
   :lang(zh) .sub,
+  :lang(zh) .lead,
+  :lang(zh) .data-list li,
+  :lang(zh) .shot-caption,
   :lang(zh) .prose,
   :lang(zh) .about-body,
   :lang(zh) .feature-card p,
@@ -31,6 +42,12 @@
     letter-spacing: 0;
     /* No single character stranded on a last line. */
     text-wrap: pretty;
+  }
+
+  /* Short Chinese text (two or three lines): balanced lines, so a card never
+   ends on a two-character tail like 「列出。」. */
+  :lang(zh) :is(.feature-card p, .home-catalog-text, .sub, .shot-caption, .home-featured-text) {
+    text-wrap: balance;
   }
 
   /* A Chinese lede wraps between its phrases (at punctuation and spaces), in

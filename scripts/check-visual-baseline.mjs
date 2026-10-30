@@ -73,6 +73,13 @@ for (const target of baseline.targets) {
     await page.waitForTimeout(150);
   }
   if (target.state === "faq") {
+    // The local nav appears once the site header has scrolled away (chrome.css).
+    await page.evaluate(() => {
+      const header = document.querySelector(".site-header");
+      window.scrollTo(0, Math.round((header?.getBoundingClientRect().height ?? 0) + 400));
+    });
+    await page.locator(".product-section-index[data-pinned]").waitFor({ state: "attached" });
+    await page.waitForTimeout(250);
     if (target.viewport === "mobile") await page.locator("[data-section-index-toggle]").click();
     const faqLink = page.locator('.product-section-index a[href="#faq"]');
     const count = await faqLink.count();

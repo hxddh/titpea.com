@@ -70,8 +70,6 @@ type Ui = {
   sectionDirectory: string;
   themeToDark: string;
   themeToLight: string;
-  themeDarkText: string;
-  themeLightText: string;
   copy: string;
   copied: string;
   /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
@@ -153,8 +151,6 @@ export const ui: Record<Locale, Ui> = {
     sectionDirectory: "Sections",
     themeToDark: "Switch to dark theme",
     themeToLight: "Switch to light theme",
-    themeDarkText: "Dark",
-    themeLightText: "Light",
     copy: "Copy",
     copied: "Copied",
     released: " ({date})",
@@ -250,8 +246,6 @@ export const ui: Record<Locale, Ui> = {
     sectionDirectory: "目录",
     themeToDark: "切换到深色主题",
     themeToLight: "切换到浅色主题",
-    themeDarkText: "深色",
-    themeLightText: "浅色",
     copy: "复制",
     copied: "已复制",
     released: "（{date}）",
