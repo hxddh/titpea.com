@@ -15,7 +15,6 @@ import DemoSection from "./product/DemoSection.astro";
 import FamilyBand from "./product/FamilyBand.astro";
 import FaqSection from "./product/FaqSection.astro";
 import LocalNav from "./product/LocalNav.astro";
-import PermissionBox from "./product/PermissionBox.astro";
 import Prose from "./product/Prose.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
 import Visual from "./product/Visual.astro";
@@ -42,10 +41,9 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
 // One body composition per kind of product (DESIGN.md, "Templates").
 const product = products.find((entry) => entry.slug === model.slug)!;
 const template = templateOf(product.type);
-// One skeleton for every kind of product: the claim centered, the product
-// object under it. The template still picks what the hero carries (a tool's
-// first command), not where it sits.
-const split = false;
+// One skeleton for every kind of product (DESIGN.md, "Product Pages"): the
+// claim centered, the product object under it. The template picks only what
+// the hero carries (a tool's first command and captured replay).
 // Tools: the first command sits under the lead, ready to copy; a captured replay takes the hero's right side.
 const heroCommand = template === "tool" ? copy.commands?.items[0] : undefined;
 const heroReplay =
@@ -59,10 +57,6 @@ const heroReplay =
 const skipFirstCommand = Boolean(
   heroCommand && (!heroCommand.capturedOutput || heroCommand.command === heroReplay?.command),
 );
-const plainCards = true;
-const dataSection = copy.sections.find((section) => section.kind === "data");
-// The data facts are their own section on every page; the hero stays short.
-const permissionBox: typeof copy.privacy | undefined = undefined;
 const commandsProps = {
   copyLabel: copyUi.copy,
   copiedLabel: copyUi.copied,
@@ -90,87 +84,72 @@ const commandsProps = {
     cta={copy.primaryCta}
   />
 
-  <section
-    class="product-hero"
-    data-frame={model.frame}
-    data-template={template}
-    data-layout={split ? "split" : undefined}
-  >
+  <section class="product-hero" data-frame={model.frame} data-template={template}>
     <div class="wash" aria-hidden="true"></div>
-    <div class:list={[split && "shell hero-split"]}>
-      <div class:list={["product-copy", !split && "shell"]}>
-        <img class="app-icon" src={model.icon} alt="" width="104" height="104" />
-        <p class="eyebrow">
-          <strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}
-        </p>
-        <h1>{copy.headline}</h1>
-        <p class="lead">{copy.lead}</p>
-        {heroCommand && (
-          <div class="hero-command command-line">
-            <code class="command-code" tabindex="0" set:text={heroCommand.command} />
-            <button
-              class="copy-button"
-              type="button"
-              data-copy={heroCommand.command}
-              data-copy-label={copyUi.copy}
-              data-copied-label={copyUi.copied}
-              hidden
-            >
-              {copyUi.copy}
-            </button>
-          </div>
+    <div class="product-copy shell">
+      <img class="app-icon" src={model.icon} alt="" width="104" height="104" />
+      <p class="eyebrow">
+        <strong class="eyebrow-name">{copy.title}</strong> · {copy.eyebrow}
+      </p>
+      <h1>{copy.headline}</h1>
+      <p class="lead">{copy.lead}</p>
+      {heroCommand && (
+        <div class="hero-command command-line">
+          <code class="command-code" tabindex="0" set:text={heroCommand.command} />
+          <button
+            class="copy-button"
+            type="button"
+            data-copy={heroCommand.command}
+            data-copy-label={copyUi.copy}
+            data-copied-label={copyUi.copied}
+            hidden
+          >
+            {copyUi.copy}
+          </button>
+        </div>
+      )}
+      <div class="actions">
+        {copy.primaryCta.soon ? (
+          <span class="button primary large is-soon" aria-disabled="true">
+            {copy.primaryCta.label}
+          </span>
+        ) : (
+          <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+            {copy.primaryCta.label}
+            {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+          </a>
         )}
-        <div class="actions">
-          {copy.primaryCta.soon ? (
-            <span class="button primary large is-soon" aria-disabled="true">
-              {copy.primaryCta.label}
+        <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">
+          {copy.secondaryCta.label}
+        </a>
+      </div>
+      {copy.installNote && (
+        <p class="install-note">
+          <Prose text={copy.installNote} />
+        </p>
+      )}
+      <p class="meta-line">
+        {metaParts.map((part) =>
+          // The download button already names the version; the meta line then gives only its date.
+          part === model.version && model.downloadsRelease && model.released ? (
+            <span>{model.released}</span>
+          ) : part === model.version ? (
+            <span>
+              <span class="meta-tag">{part}</span>
+              {releasedNote}
             </span>
           ) : (
-            <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-              {copy.primaryCta.label}
-              {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-            </a>
-          )}
-          <a class="button ghost" href={copy.secondaryCta.href} rel="noreferrer">
-            {copy.secondaryCta.label}
-          </a>
-        </div>
-        {copy.installNote && (
-          <p class="install-note">
-            <Prose text={copy.installNote} />
-          </p>
+            <span>{part}</span>
+          ),
         )}
-        <p class="meta-line">
-          {metaParts.map((part) =>
-            // The download button already names the version; the meta line then gives only its date.
-            part === model.version && model.downloadsRelease && model.released ? (
-              <span>{model.released}</span>
-            ) : part === model.version ? (
-              <span>
-                <span class="meta-tag">{part}</span>
-                {releasedNote}
-              </span>
-            ) : (
-              <span>{part}</span>
-            ),
-          )}
-        </p>
-        {permissionBox && (
-          <PermissionBox
-            privacy={permissionBox}
-            locale={model.locale}
-            facts={dataSection?.kind === "data" ? dataSection.items : undefined}
-            id={dataSection?.kind === "data" ? dataSection.id : undefined}
-          />
-        )}
-      </div>
-      <div class:list={["hero-visual-frame", !split && "shell"]}>
-        {heroReplay ? (
-          <CommandReplay item={heroReplay} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
-        ) : (
-          <Visual visual={copy.visual} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
-        )}
-      </div>
+      </p>
+    </div>
+    <div class="hero-visual-frame shell">
+      {heroReplay ? (
+        <CommandReplay item={heroReplay} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+      ) : (
+        <Visual visual={copy.visual} controls={{ pause: copyUi.pauseVideo, play: copyUi.playVideo }} />
+      )}
     </div>
   </section>
 
@@ -197,9 +176,7 @@ const commandsProps = {
   ))}
 
   {/* What it does; then what's new and Get started; then where the data goes and the FAQ. */}
-  {copy.sections.map((section) =>
-    section.kind === "cards" ? <CardsSection section={section} plain={plainCards} /> : null,
-  )}
+  {copy.sections.map((section) => (section.kind === "cards" ? <CardsSection section={section} /> : null))}
 
   {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
 
@@ -207,11 +184,9 @@ const commandsProps = {
 
   {copy.sections.map((section) =>
     section.kind === "data" ? (
-      permissionBox ? null : (
-        <DataSection section={section} />
-      )
+      <DataSection section={section} />
     ) : section.kind === "faq" ? (
-      <FaqSection section={section} grid={false} />
+      <FaqSection section={section} />
     ) : null,
   )}
 

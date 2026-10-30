@@ -44,7 +44,7 @@
   /* Links inside running text carry a quiet underline: colour alone does not
    mark them, now that links are ink. */
   main :is(p, dd, td) > a:not(.button),
-  main :is(.data-list, .whats-new-list, .permission-facts) li > a,
+  main :is(.data-list, .whats-new-list) li > a,
   .prose a {
     text-decoration: underline;
     text-decoration-color: var(--link-underline);
@@ -53,7 +53,7 @@
   }
 
   main :is(p, dd, td) > a:not(.button):hover,
-  main :is(.data-list, .whats-new-list, .permission-facts) li > a:hover,
+  main :is(.data-list, .whats-new-list) li > a:hover,
   .prose a:hover {
     text-decoration-color: currentColor;
   }

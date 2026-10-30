@@ -4,11 +4,9 @@ import type { CardsSection } from "../../content/schema";
 
 interface Props {
   section: CardsSection;
-  /** Plain: titled lines on the canvas, no raised card (every template but games). */
-  plain?: boolean;
 }
 
-const { section, plain = false } = Astro.props;
+const { section } = Astro.props;
 ---
 
 <section id={section.id} class={`product-section content-section ${section.id}-section`}>
@@ -16,11 +14,7 @@ const { section, plain = false } = Astro.props;
     <header class="section-head">
       <h2>{section.label}</h2>
     </header>
-    <div
-      class={`${section.id}-grid feature-grid`}
-      data-count={section.items.length}
-      data-variant={plain ? "plain" : undefined}
-    >
+    <div class={`${section.id}-grid feature-grid`} data-count={section.items.length}>
       {section.items.map((item) => (
         <article class="feature-card">
           <h3>{item.title}</h3>

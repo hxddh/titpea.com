@@ -194,11 +194,11 @@
     margin-top: 16px;
   }
 
-  /* Feature cards: raised tone, generous radius, no border. */
+  /* The feature list: titled lines under a hairline, no boxes. */
   .feature-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    gap: 40px 48px;
     margin: var(--head-gap) 0 0;
     padding: 0;
     list-style: none;
@@ -221,9 +221,8 @@
   }
 
   .feature-card {
-    padding: 26px 26px 28px;
-    border-radius: var(--radius-card);
-    background: var(--paper-raised);
+    padding: 20px 0 0;
+    border-top: 1px solid var(--line);
   }
 
   /* Title and body at one size: weight and ink carry the hierarchy. */
@@ -442,17 +441,13 @@
       margin-top: 32px;
     }
 
+    /* One feature a row: two columns left about 20 characters a line. */
     .feature-grid,
     .feature-grid[data-count="2"],
     .feature-grid[data-count="4"] {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 36px;
-    }
-
-    .feature-card {
-      padding: 20px 20px 22px;
-      border-radius: 18px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 32px;
     }
 
     .show-shot,
@@ -601,64 +596,11 @@
     line-height: 1.2;
   }
 
-  /* Templates (DESIGN.md): one body composition per kind of product.
-   tool and extension put the claim beside the object; app and game keep the
-   centered stack. Every template but game drops the raised cards for plain
-   titled lines, and their section heads sit left, over left-aligned text. */
-
-  /* Split hero: claim on the left, the object on the right. */
-  .product-hero[data-layout="split"] {
-    text-align: left;
-  }
-
-  .hero-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
-    gap: 56px;
-    align-items: center;
-  }
-
-  .hero-split .app-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 0 18px;
-    filter: drop-shadow(var(--shadow-icon-small));
-  }
-
-  .hero-split h1 {
-    max-width: none;
-    margin: 0;
-    font-size: clamp(2.5rem, 4.6vw, 3.75rem);
-  }
-
-  .hero-split .lead {
-    max-width: 30em;
-    margin-inline: 0;
-    font-size: var(--text-sub);
-    text-wrap: pretty;
-  }
-
-  .hero-split :is(.actions, .meta-line) {
-    justify-content: flex-start;
-  }
-
-  .hero-split .actions {
-    margin-top: 24px;
-  }
-
-  .hero-split :is(.meta-line, .install-note) {
-    margin-inline: 0;
-  }
-
-  .hero-split .hero-visual-frame {
-    max-width: none;
-    margin: 0;
-  }
-
   /* Tools: the first command under the lead, ready to copy. */
   .hero-command {
     max-width: 34em;
-    margin-top: 26px;
+    margin: 26px auto 0;
+    text-align: left;
   }
 
   /* Long install commands wrap at spaces rather than scrolling under the button. */
@@ -673,65 +615,7 @@
     margin-top: 0;
   }
 
-  /* Apps: the trust note (not notarized) as an amber pill beside the download. */
-  /* The trust note (not notarized) is a plain muted line: a caution colour in
-   the hero, under the download, read as a warning about the product. */
-
-  /* Extensions: what it touches, from the same facts as the privacy index. */
-  .permission-box {
-    /* The privacy index links here (#data) when the data section folds into the box. */
-    scroll-margin-top: var(--section-index-desktop-scroll-margin);
-    max-width: 34em;
-    margin-top: 26px;
-    padding: 16px 18px;
-    border-radius: 16px;
-    background: var(--paper-raised);
-    text-align: left;
-  }
-
-  .permission-box dl {
-    display: grid;
-    gap: 12px;
-    margin: 0;
-  }
-
-  .permission-box dt {
-    color: var(--muted);
-    font-size: var(--text-meta);
-    font-weight: 600;
-  }
-
-  .permission-box dd {
-    margin: 4px 0 0;
-    color: var(--ink-2);
-    font-size: var(--text-small);
-    line-height: 1.5;
-  }
-
-  .permission-box dd strong {
-    margin-right: 0.5em;
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .permission-box dd strong[data-network="none"] {
-    color: var(--data-ref-ink);
-  }
-
-  /* The data section's facts, listed in the box instead of a section further down. */
-  .permission-facts {
-    display: grid;
-    gap: 6px;
-    margin: 0;
-    padding-left: 1.1em;
-  }
-
-  /* Inline code at the box's small size would fall under the text-size floor. */
-  .permission-facts code {
-    font-size: 1em;
-  }
-
-  /* Left-aligned section heads on every template but game. */
+  /* Section heads sit left, over left-aligned text. */
   .product-hero ~ .product-section .section-head {
     max-width: none;
     margin: 0;
@@ -748,18 +632,6 @@
   .product-hero ~ .product-section .shell.narrow {
     margin-right: auto;
     margin-left: max(0px, calc((100% - var(--shell) - 2 * var(--gutter)) / 2));
-  }
-
-  /* Plain cards: a titled line under a hairline, no raised box. */
-  .feature-grid[data-variant="plain"] {
-    gap: 40px 48px;
-  }
-
-  .feature-grid[data-variant="plain"] .feature-card {
-    padding: 20px 0 0;
-    border-top: 1px solid var(--line);
-    border-radius: 0;
-    background: none;
   }
 
   /* Sections that show the product (showcases and a live demo): text beside
@@ -809,30 +681,7 @@
     max-width: 320px;
   }
 
-  /* Extension FAQ: two columns, every answer open. */
-  .faq-list[data-layout="grid"] {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 48px;
-    border-top: 0;
-  }
-
-  .faq-list[data-layout="grid"] .faq-item {
-    border-top: 1px solid var(--line);
-    border-bottom: 0;
-  }
-
-  .faq-list[data-layout="grid"] .faq-item summary {
-    padding-right: 0;
-    cursor: default;
-  }
-
-  .faq-list[data-layout="grid"] .faq-item summary::after {
-    display: none;
-  }
-
   @media (max-width: 900px) {
-    .hero-split,
     .product-section[data-layout="row"] .shell,
     .product-section[data-layout="row"][data-flip] .shell {
       grid-template-columns: minmax(0, 1fr);
@@ -847,35 +696,11 @@
       max-width: 260px;
       margin: 0 auto;
     }
-
-    .hero-split .hero-visual-frame {
-      margin-top: 8px;
-    }
-
-    .faq-list[data-layout="grid"] {
-      grid-template-columns: minmax(0, 1fr);
-    }
   }
 
   @media (max-width: 640px) {
-    .hero-split h1,
-    :lang(zh) .hero-split h1 {
-      font-size: clamp(2.25rem, 10vw, 2.75rem);
-    }
-
-    .hero-split .app-icon {
-      width: 56px;
-      height: 56px;
-    }
-
-    /* One feature a row: two columns left about 20 characters a line. */
-    .feature-grid[data-variant="plain"] {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 24px;
-    }
-
-    .feature-grid[data-variant="plain"] .feature-card {
-      padding: 16px 0 0;
+    .feature-card {
+      padding-top: 16px;
     }
 
     /* Phone captures stay beside their text on phones too, at a third of the width. */

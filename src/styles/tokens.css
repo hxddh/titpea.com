@@ -178,26 +178,6 @@
     --ink-world-clock: #127b41;
     --tint-world-machine: #e8a858;
     --ink-world-machine: #9a5f15;
-
-    /* Filled product buttons: the light-theme ink in both themes, so the white
-     label keeps at least 4.5:1 on dark pages too (dark inks are light). */
-    --fill-agent-radar: #1b7b46;
-    --fill-bilingual: #a05911;
-    --fill-celagent: #7d41f6;
-    --fill-chessboard: #9b5d1f;
-    --fill-douban-movie-rating: #2d7a47;
-    --fill-easier-bookmarks: #3858d8;
-    --fill-goban: #945f2b;
-    --fill-httpmon: #127499;
-    --fill-pagewise: #5061d6;
-    --fill-paper-sudoku: #a8442f;
-    --fill-pulse: #207936;
-    --fill-readout: #2a64cc;
-    --fill-s3-turbo-list: #ad5207;
-    --fill-storage-agent-workbench: #3b60e4;
-    --fill-storageops: #13796c;
-    --fill-world-clock: #127b41;
-    --fill-world-machine: #9a5f15;
   }
 
   /* Chinese pages: the same stack, but Latin text takes "Inter Latin", which
@@ -382,87 +362,70 @@
   body[data-product="agent-radar"] {
     --product-tint: var(--tint-agent-radar);
     --product-ink: var(--ink-agent-radar);
-    --product-fill: var(--fill-agent-radar);
   }
   body[data-product="bilingual"] {
     --product-tint: var(--tint-bilingual);
     --product-ink: var(--ink-bilingual);
-    --product-fill: var(--fill-bilingual);
   }
   body[data-product="celagent"] {
     --product-tint: var(--tint-celagent);
     --product-ink: var(--ink-celagent);
-    --product-fill: var(--fill-celagent);
   }
   body[data-product="chessboard"] {
     --product-tint: var(--tint-chessboard);
     --product-ink: var(--ink-chessboard);
-    --product-fill: var(--fill-chessboard);
   }
   body[data-product="douban-movie-rating"] {
     --product-tint: var(--tint-douban-movie-rating);
     --product-ink: var(--ink-douban-movie-rating);
-    --product-fill: var(--fill-douban-movie-rating);
   }
   body[data-product="easier-bookmarks"] {
     --product-tint: var(--tint-easier-bookmarks);
     --product-ink: var(--ink-easier-bookmarks);
-    --product-fill: var(--fill-easier-bookmarks);
   }
   body[data-product="goban"] {
     --product-tint: var(--tint-goban);
     --product-ink: var(--ink-goban);
-    --product-fill: var(--fill-goban);
   }
   body[data-product="httpmon"] {
     --product-tint: var(--tint-httpmon);
     --product-ink: var(--ink-httpmon);
-    --product-fill: var(--fill-httpmon);
   }
   body[data-product="pagewise"] {
     --product-tint: var(--tint-pagewise);
     --product-ink: var(--ink-pagewise);
-    --product-fill: var(--fill-pagewise);
   }
   body[data-product="paper-sudoku"] {
     --product-tint: var(--tint-paper-sudoku);
     --product-ink: var(--ink-paper-sudoku);
-    --product-fill: var(--fill-paper-sudoku);
   }
   body[data-product="pulse"] {
     --product-tint: var(--tint-pulse);
     --product-ink: var(--ink-pulse);
-    --product-fill: var(--fill-pulse);
   }
   body[data-product="readout"] {
     --product-tint: var(--tint-readout);
     --product-ink: var(--ink-readout);
-    --product-fill: var(--fill-readout);
   }
   body[data-product="s3-turbo-list"] {
     --product-tint: var(--tint-s3-turbo-list);
     --product-ink: var(--ink-s3-turbo-list);
-    --product-fill: var(--fill-s3-turbo-list);
   }
   body[data-product="storage-agent-workbench"] {
     --product-tint: var(--tint-storage-agent-workbench);
     --product-ink: var(--ink-storage-agent-workbench);
-    --product-fill: var(--fill-storage-agent-workbench);
   }
   body[data-product="storageops"] {
     --product-tint: var(--tint-storageops);
     --product-ink: var(--ink-storageops);
-    --product-fill: var(--fill-storageops);
   }
   body[data-product="world-clock"] {
     --product-tint: var(--tint-world-clock);
     --product-ink: var(--ink-world-clock);
-    --product-fill: var(--fill-world-clock);
   }
   body[data-product="world-machine"] {
     --product-tint: var(--tint-world-machine);
     --product-ink: var(--ink-world-machine);
-    --product-fill: var(--fill-world-machine);
   }
 
   body[data-product] {
@@ -477,7 +440,6 @@
       color-mix(in srgb, var(--product-tint) 12%, transparent),
       transparent 72%
     );
-    --product-fill-hover: color-mix(in srgb, var(--product-fill) 88%, #000000);
   }
 
   /* Dark pages: a low-percentage mix of a warm tint into black turns brown.

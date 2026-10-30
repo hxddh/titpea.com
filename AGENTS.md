@@ -4,7 +4,7 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (glass chrome, centered hero, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — the page shape (hairline chrome, one centered product skeleton, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
@@ -47,7 +47,7 @@ A new hero object is the only case that needs a component: add a `kind` to `Visu
 
 Screenshot visuals, showcases, `commands.items` (for their `capturedOutput`) and FAQ items take an optional `asOf: "v14.0.0"`: the release tag the capture or answer describes. Set it when you capture a screenshot or output, or write an answer that depends on a version. `npm run check` fails on a value that is not a tag, and warns (without failing) when the product's release in `releases.json` is a major version ahead, listing each item so it can be recaptured or rechecked.
 
-`npm run check` also fails when a product names an image or recording under `public/` that does not exist, when an image's declared `width`/`height` differ from the file's own size, and when `tokens.css` lacks the product's `--tint-<slug>`/`--ink-<slug>` (light and both dark blocks), its `--fill-<slug>` (light block only; white on it must reach 4.5:1), or its `body[data-product]` mapping.
+`npm run check` also fails when a product names an image or recording under `public/` that does not exist, when an image's declared `width`/`height` differ from the file's own size, and when `tokens.css` lacks the product's `--tint-<slug>`/`--ink-<slug>` (light and both dark blocks), or its `body[data-product]` mapping.
 
 ## After copy, layout, or style changes
 

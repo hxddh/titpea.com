@@ -140,14 +140,10 @@ export function insertTokens(tokensSource, slug) {
     ],
     2,
   );
-  css = insertSorted(css, /^(\s*)--fill-([\w-]+):/, slug, (indent) => [
-    `${indent}--fill-${slug}: #636366; /* ${MARKER}: the light ink; white on it at least 4.5:1 */`,
-  ]);
   const block = [
     `body[data-product="${slug}"] {`,
     `  --product-tint: var(--tint-${slug});`,
     `  --product-ink: var(--ink-${slug});`,
-    `  --product-fill: var(--fill-${slug});`,
     `}`,
   ];
   const rows = css.split("\n");
