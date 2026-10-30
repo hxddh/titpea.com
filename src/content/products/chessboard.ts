@@ -50,7 +50,7 @@ export default defineProduct({
       "A desktop chess app for macOS and Windows, with Stockfish 19 and Maia opponents, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
     headline: "Chess you can review.",
-    lead: "A Stockfish review marks the mistakes. Lessons. 40,000 puzzles.",
+    lead: "A Stockfish review marks your mistakes. Lessons and 40,000 puzzles to practise with.",
     catalog: {
       role: "Stockfish + lessons",
       text: "Learn, solve puzzles, then play the computer or a friend on the same board.",
@@ -186,7 +186,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19 与 Maia 对手、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
     headline: "下完一局，复盘失着",
-    lead: "Stockfish 复盘标出失着。课程。四万道谜题。",
+    lead: "Stockfish 复盘标出你的失着，还有课程和四万道谜题可以练。",
     catalog: {
       role: "Stockfish 与课程",
       text: "学棋、解谜题，再与电脑或同屏好友下一局。",

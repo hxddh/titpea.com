@@ -30,7 +30,7 @@ export default defineProduct({
       "A small persistent world that grows a day at a time: each day you sit down with it, a morning brings a letter, a choice and a find. An experimental macOS app in pre-alpha.",
     eyebrow: "Experimental macOS project",
     headline: "It grows a day at a time.",
-    lead: "Come back each day. A morning waits. macOS pre-alpha.",
+    lead: "A small world on your Mac that grows one day at a time. Come back each day; a morning waits. Pre-alpha.",
     catalog: {
       role: "Pre-alpha",
       text: "A small world with a morning for every day you visit. macOS, pre-alpha.",
@@ -152,7 +152,7 @@ export default defineProduct({
       "一个一天一天长大的小世界：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。面向 macOS 的实验性应用，当前为早期预览版。",
     eyebrow: "macOS 实验项目",
     headline: "世界一天一天地长大",
-    lead: "每天回来看看。早晨在等你。macOS 早期预览版。",
+    lead: "Mac 上一个一天天长大的小世界。每天回来看看，早晨在等你。早期预览版。",
     catalog: {
       role: "早期预览",
       text: "每天来，都有早晨等你的小世界。macOS，早期预览版。",

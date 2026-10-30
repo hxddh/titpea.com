@@ -30,7 +30,7 @@ export default defineProduct({
       "A native, read-only Markdown reader for macOS, made for what AI agents write: it opens their new documents, follows them live and marks what changed since you last read.",
     eyebrow: "Markdown reader for macOS",
     headline: "Read what agents write.",
-    lead: "Follows the file live. Marks what changed. Read-only.",
+    lead: "A Mac reader for the Markdown that coding agents write. It follows the file live, marks what changed, and never edits it.",
     catalog: {
       role: "",
       text: "Read an agent’s Markdown as it changes, with edits marked.",
@@ -177,7 +177,7 @@ export default defineProduct({
       "为 AI Agent 写的文档打造的 macOS 原生只读 Markdown 阅读器：自动打开 Agent 新建的文档，跟随写入实时更新，标出自你上次阅读以来哪里变了。",
     eyebrow: "macOS Markdown 阅读器",
     headline: "读 Agent 写的文档",
-    lead: "实时跟随写入。标出改动。始终只读。",
+    lead: "Mac 上的 Markdown 阅读器，读编码 Agent 写的文档。实时跟随写入，标出改动，从不修改文件。",
     catalog: {
       role: "",
       text: "边写边读 Agent 的 Markdown，改动处一目了然。",
