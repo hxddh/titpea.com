@@ -34,8 +34,8 @@ export const absoluteUrl = (path: string) => `${site.baseUrl}${path}`;
 
 /** The person behind Titpea, in their own words, on About. */
 export type AboutPerson = {
-  /** First person, written by the owner. */
-  paragraph: string;
+  /** First person, in the owner's words: short paragraphs, read in order. */
+  paragraphs: string[];
   /** Optional portrait the owner supplies (public/assets/...). */
   portrait?: Image;
 };
@@ -48,12 +48,18 @@ export type AboutPerson = {
 export const about: { person: Partial<Record<Locale, AboutPerson>> } = {
   person: {
     en: {
-      paragraph:
-        "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, two board games, a Sudoku notebook for Android, and a small world that is still in pre-alpha. Most of the code is on GitHub. Each tool’s page says plainly what it touches on your machine and on the network. They update often; the releases page shows each tool’s latest version and when it came out.",
+      paragraphs: [
+        "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, two board games, a Sudoku notebook for Android, and a small world that is still in pre-alpha.",
+        "I like reading, good food and digital gadgets. What I love most is making interesting things, and this site is where they live.",
+        "Most of the code is on GitHub. Each tool’s page says plainly what it touches on your machine and on the network; they update often, and the releases page shows what shipped and when.",
+      ],
     },
     zh: {
-      paragraph:
-        "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，两款棋类游戏，一本 Android 上的数独本，还有一个仍在早期预览的小世界。大部分代码放在 GitHub 上。每个工具的页面都写清楚它在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每个工具的最新版本和发布日期。",
+      paragraphs: [
+        "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，两款棋类游戏，一本 Android 上的数独本，还有一个仍在早期预览的小世界。",
+        "我喜欢读书，喜欢美食，也喜欢数码产品。最热爱的，是做出有趣的东西；这个网站就是它们待的地方。",
+        "大部分代码放在 GitHub 上。每个工具的页面都写清楚它在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每次发布的版本和日期。",
+      ],
     },
   },
 };

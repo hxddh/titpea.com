@@ -61,7 +61,7 @@ On phones: the feature list is one column; phone-shaped captures stay beside the
 Simplified at the owner's request, October 2026. One calm column that fits about one desktop screen: who makes Titpea, and how to reach them. Home lists the products; Releases lists what shipped.
 
 - `About Titpea` / `关于 Titpea`, then the claim `One person. {count} tools.` / `一个人，{count} 个工具` with the live product count. No lede and no actions.
-- Directly under it, the person: `about.person` in `site.ts`, per language, holds a first-person paragraph and an optional portrait (above the eyebrow). The owner writes both; About renders them only when they are filled. The paragraph reads left-aligned at about 34em under the centred claim.
+- Directly under it, the person: `about.person` in `site.ts`, per language, holds the owner's own words as a few short first-person paragraphs (who makes the tools and what they are; what the owner likes, in their words: reading, good food, digital gadgets, making interesting things; where the code and releases are) and an optional portrait (above the eyebrow). Only what the owner has said goes here; About renders it only when it is filled. The text reads left-aligned at about 34em under the centred claim.
 - One quiet line of text links (not buttons): `GitHub · Email`. Then the analytics disclosure line (see Analytics). No closing band.
 - No personal details beyond what the owner has published; nothing about the person is inferred.
 

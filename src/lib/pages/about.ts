@@ -14,7 +14,7 @@ export type AboutPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string };
-  /** The owner's own paragraph and portrait; absent until they supply it. */
+  /** The owner's own words and portrait; absent until they supply them. */
   person?: AboutPerson;
   /** One quiet line of text links under the paragraph. */
   links: Array<{ label: string; href: string }>;
