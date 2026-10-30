@@ -29,35 +29,39 @@
     box-shadow: var(--plate-m);
   }
 
-  /* Display lines: the hero titles and section headings, in the display face.
-   Fraunces is drawn heavier than the system sans, so the weight steps down;
-   on Chinese pages --display-face is the system sans and these resolve to
-   the same face as before. The id in :not() matches nothing now (Home's
-   old release strip); it keeps these rules' specificity above the games
-   rule at the end of this file, so game pages keep this tracking. */
+  /* Display lines: the serif is kept for the few lines that name the page —
+   hero titles and the product name in the closing band. Section headings are
+   set in the system sans (base.css), so the serif stays a signature, not a
+   texture. On Chinese pages --display-face is Noto Serif SC for the same lines. */
   :is(.home-hero, .about-hero, .product-hero) h1,
-  main h2:not(#shipping-title, .product-related-title) {
+  .final-cta-name {
     font-family: var(--display-face);
     font-optical-sizing: auto;
   }
 
   html:lang(en) :is(.home-hero, .about-hero, .product-hero) h1 {
-    font-weight: 560;
-    letter-spacing: -0.018em;
+    font-weight: 540;
+    letter-spacing: -0.02em;
   }
 
-  html:lang(en) main h2:not(#shipping-title, .product-related-title) {
-    font-weight: 600;
-    letter-spacing: -0.02em;
+  html:lang(en) .final-cta-name {
+    font-weight: 560;
+    letter-spacing: -0.012em;
   }
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a synthesised
    bold, and no negative tracking, which crowds CJK. */
   html:lang(zh) :is(.home-hero, .about-hero, .product-hero) h1,
-  html:lang(zh) main h2:not(#shipping-title, .product-related-title) {
+  html:lang(zh) .final-cta-name {
     font-weight: 600;
     font-synthesis: none;
     letter-spacing: 0;
+  }
+
+  /* Section headings: system sans, semibold, tight but not crushed. */
+  html:lang(en) main h2 {
+    font-weight: 650;
+    letter-spacing: -0.024em;
   }
 
   /* Home: the title's last line in the accent italic. ::first-line keeps the
@@ -76,19 +80,11 @@
     font-weight: 560;
   }
 
-  /* Product pages: the hero glow in the product colour, and the primary
-   action filled with it (white label, 4.5:1 or better in both themes). */
+  /* Product pages: one faint glow of the product colour behind the icon.
+   Every control keeps the site's single ink voice. */
   body[data-product] .wash {
     background: var(--hero-glow);
     filter: none;
-  }
-
-  body[data-product] .button.primary:not(.is-soon) {
-    background: var(--product-fill);
-  }
-
-  body[data-product] .button.primary:not(.is-soon):hover {
-    background: var(--product-fill-hover);
   }
 
   /* A primary action that is not available yet (a store listing in review):
@@ -99,12 +95,5 @@
     background: var(--paper-raised);
     box-shadow: none;
     cursor: default;
-  }
-
-  /* Games: a book face for the display lines. */
-  body[data-line="games"] :is(.product-hero h1, .section-head h2, .final-cta-name) {
-    font-family: var(--display);
-    font-weight: 600;
-    letter-spacing: -0.012em;
   }
 }

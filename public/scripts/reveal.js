@@ -1,9 +1,9 @@
-// Scroll reveal: cards and screenshots below the fold rise into place once as
-// they enter the viewport. Skipped entirely when the reader prefers less motion.
+// Scroll reveal: photographs below the fold rise into place once as they enter
+// the viewport. Text never waits for an animation: it is there when you read. Skipped entirely when the reader prefers less motion.
 (function () {
   if (!("IntersectionObserver" in window)) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var targets = document.querySelectorAll(".feature-card, .show-shot, .show-figure, .home-featured-card, .stat");
+  var targets = document.querySelectorAll(".show-shot, .show-figure");
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {

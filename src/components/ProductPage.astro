@@ -42,8 +42,10 @@ const releasedNote = model.released ? copyUi.released.replace("{date}", model.re
 // One body composition per kind of product (DESIGN.md, "Templates").
 const product = products.find((entry) => entry.slug === model.slug)!;
 const template = templateOf(product.type);
-// Tools and extensions put the claim beside the object; apps and games keep the centered stack.
-const split = template === "tool" || template === "extension";
+// One skeleton for every kind of product: the claim centered, the product
+// object under it. The template still picks what the hero carries (a tool's
+// first command), not where it sits.
+const split = false;
 // Tools: the first command sits under the lead, ready to copy; a captured replay takes the hero's right side.
 const heroCommand = template === "tool" ? copy.commands?.items[0] : undefined;
 const heroReplay =
@@ -57,10 +59,10 @@ const heroReplay =
 const skipFirstCommand = Boolean(
   heroCommand && (!heroCommand.capturedOutput || heroCommand.command === heroReplay?.command),
 );
-const plainCards = template !== "game";
+const plainCards = true;
 const dataSection = copy.sections.find((section) => section.kind === "data");
-// Extensions: the hero box carries the data section's facts, so the section is not repeated.
-const permissionBox = template === "extension" && copy.privacy ? copy.privacy : undefined;
+// The data facts are their own section on every page; the hero stays short.
+const permissionBox: typeof copy.privacy | undefined = undefined;
 const commandsProps = {
   copyLabel: copyUi.copy,
   copiedLabel: copyUi.copied,
@@ -209,7 +211,7 @@ const commandsProps = {
         <DataSection section={section} />
       )
     ) : section.kind === "faq" ? (
-      <FaqSection section={section} grid={template === "extension"} />
+      <FaqSection section={section} grid={false} />
     ) : null,
   )}
 

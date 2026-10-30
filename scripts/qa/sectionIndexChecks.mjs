@@ -101,6 +101,14 @@ export async function runSectionIndexTask(page, task) {
       link.click();
     });
   } else {
+    // The local nav appears once the site header has scrolled away (chrome.css),
+    // so a reader reaches its menu after scrolling, not at the top of the page.
+    await page.evaluate(() => {
+      const header = document.querySelector(".site-header");
+      window.scrollTo({ top: (header?.getBoundingClientRect().height ?? 0) + 400, left: 0, behavior: "instant" });
+    });
+    await page.locator(".product-section-index[data-pinned]").waitFor({ state: "attached" });
+    await settle(page, 250);
     await page.locator("[data-section-index-toggle]").click();
     await link.evaluate((link) => {
       link.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });

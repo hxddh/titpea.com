@@ -5,6 +5,7 @@ import type { Locale } from "../content/schema";
 import { navGroups, pathFor } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
+import fontFaces from "../styles/fonts.css?raw";
 
 interface Props {
   current?: CurrentPage;
@@ -31,6 +32,12 @@ const {
   styles = [],
 } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
+// The display face sets the hero title, the first line a reader sees: fetch it
+// with the HTML instead of after the CSS, so the title does not reflow from
+// the fallback serif. English pages need the Latin roman, Chinese pages the
+// heading subset; the URLs come from fonts.css, so a recut never goes stale.
+const fontUrl = (name: string) => fontFaces.match(new RegExp(`/fonts/${name}\\.[0-9a-f]+\\.woff2`))?.[0];
+const preloadFont = fontUrl(locale === "zh" ? "noto-serif-sc-display" : "fraunces-latin-normal");
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();
@@ -77,8 +84,8 @@ const footerGroups: Array<{
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
     {seo.robots && <meta name="robots" content={seo.robots} />}
-    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)" />
     {
       /* A noindex page (the 404) has no canonical address and no translations. */
       !seo.robots?.includes("noindex") && (
@@ -102,6 +109,7 @@ const footerGroups: Array<{
       />
     )}
     <title>{seo.title}</title>
+    {preloadFont && <link rel="preload" href={preloadFont} as="font" type="font/woff2" crossorigin />}
     {styles.map((href) => (
       <link rel="stylesheet" href={href} />
     ))}

@@ -90,9 +90,11 @@
       border-radius: 10px;
     }
 
-    .actions .button.large {
-      width: 100%;
-      max-width: 360px;
+    /* The two actions sit side by side: stacking a full-width button and a
+     text link pushed the product below the first screen. */
+    .actions {
+      gap: 8px 12px;
+      margin-top: 24px;
     }
 
     /* The closing block: the header already carries the icon and name. */

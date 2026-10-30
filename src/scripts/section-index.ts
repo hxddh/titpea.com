@@ -116,4 +116,20 @@ function mountSectionIndex(index: HTMLElement) {
   scheduleUpdate();
 }
 
-document.querySelectorAll<HTMLElement>("[data-section-index]").forEach(mountSectionIndex);
+/** The local nav shows only once the site header has scrolled out of view,
+ * so a product page never stacks two bars (chrome.css hides it until then). */
+function mountPin(index: HTMLElement) {
+  const header = document.querySelector(".site-header");
+  if (!header || !("IntersectionObserver" in window)) {
+    index.setAttribute("data-pinned", "");
+    return;
+  }
+  new IntersectionObserver(([entry]) => {
+    index.toggleAttribute("data-pinned", !entry.isIntersecting);
+  }).observe(header);
+}
+
+document.querySelectorAll<HTMLElement>("[data-section-index]").forEach((index) => {
+  mountPin(index);
+  mountSectionIndex(index);
+});

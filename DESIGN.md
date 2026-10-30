@@ -1,5 +1,13 @@
 # Titpea Design Principles
 
+> **Design v2 prototype (pull request, awaiting the owner's decision).** This branch changes several settled rules below; where they disagree, this note describes the branch. If the direction is accepted, the rest of this file is rewritten to match.
+>
+> - **One voice for controls.** Primary actions are filled with ink (light text on dark in dark mode); links are ink, underlined inside running text. Blue is kept for focus rings only. Product colour stays in the icon and one faint glow behind it; product buttons, kickers, the tinted closing band and the amber install pill are gone.
+> - **One product skeleton.** Every kind of product uses the centered hero with the product object under it; the split hero, the extension permission box (its facts return to the data section), the two-column FAQ and the games' warm paper and book face are dropped. Feature lists are plain titled lines everywhere, one column on phones.
+> - **Type.** The serif is kept for hero titles and product names; section headings are the system sans, semibold. Reading text is 17px (titles and bodies alike), at most 65ch (34em in Chinese). No tracking is inherited from `body`; Chinese text has none at all. Short Chinese text wraps balanced. The lede is reading ink, not label grey. The display face is preloaded.
+> - **Chrome.** A full-width bar under a hairline replaces the glass pill; on product pages the local nav appears only once the site header has scrolled away, so two bars never stack. Header menus show each product's icon and catalog line. The theme toggle is a glyph.
+> - **Depth and motion.** Two shadow depths. In dark mode (`#0b0b0c`, not pure black) screenshots sit on a grey stage. Scroll reveal is kept for photographs only; text never waits for an animation.
+
 Titpea is a personal product site. Each product page reads like a product launch page: one clear claim, the product itself shown large, then a short run of what it does. The home page is a directory built from the same pieces. The reference is the Omni page (hanxiao.io/omni): centered heroes, glass chrome, large photographs, feature cards, and a FAQ you can open.
 
 ## When Rules Compete
