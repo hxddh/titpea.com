@@ -50,6 +50,7 @@ export default defineProduct({
         height: 1980,
       },
       caption: "Easier Bookmarks 4.0.0 side panel; bookmarks and site icons are examples.",
+      asOf: "v4.0.0",
     },
     showcases: [
       {
@@ -60,6 +61,7 @@ export default defineProduct({
         title: "Results as you type.",
         body: "Each match shows the folder it lives in; Enter opens the first.",
         caption: "Easier Bookmarks 4.0.0, searching “plan”; bookmarks are examples.",
+        asOf: "v4.0.0",
       },
     ],
     sections: [
@@ -156,6 +158,7 @@ export default defineProduct({
         height: 1980,
       },
       caption: "Easier Bookmarks 4.0.0 侧边栏；书签和网站图标为示例。",
+      asOf: "v4.0.0",
     },
     showcases: [
       {
@@ -166,6 +169,7 @@ export default defineProduct({
         title: "打拼音也能搜到",
         body: "每个结果都写明所在文件夹；回车打开第一个。",
         caption: "Easier Bookmarks 4.0.0，用拼音“jingdu”搜索；书签为示例。",
+        asOf: "v4.0.0",
       },
     ],
     sections: [

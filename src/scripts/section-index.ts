@@ -124,10 +124,15 @@ function mountPin(index: HTMLElement) {
     index.setAttribute("data-pinned", "");
     return;
   }
-  // An open section menu keeps the bar in place, so it never vanishes under the pointer.
+  // An open section menu keeps the bar in place, so it never vanishes under the
+  // pointer; closing the menu settles the bar against the header again.
+  let headerInView = true;
+  const update = () => index.toggleAttribute("data-pinned", !headerInView || index.hasAttribute("data-menu-open"));
   new IntersectionObserver(([entry]) => {
-    index.toggleAttribute("data-pinned", !entry.isIntersecting || index.hasAttribute("data-menu-open"));
+    headerInView = entry.isIntersecting;
+    update();
   }).observe(header);
+  new MutationObserver(update).observe(index, { attributes: true, attributeFilter: ["data-menu-open"] });
 }
 
 document.querySelectorAll<HTMLElement>("[data-section-index]").forEach((index) => {

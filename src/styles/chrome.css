@@ -241,7 +241,7 @@
     height: 14px;
     border: 1.5px solid currentColor;
     border-radius: 50%;
-    box-shadow: inset 5.5px 0 currentColor;
+    box-shadow: var(--glyph-half-fill);
   }
 
   .mobile-menu {
