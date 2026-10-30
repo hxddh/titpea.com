@@ -18,7 +18,7 @@ export default defineProduct({
       "Local, read-only desktop agent for S3-compatible storage: an account check that needs no model, answers that cite what it read, and risks it remembers between tasks.",
     eyebrow: "Looks after object storage",
     headline: "Find what’s wrong in S3.",
-    lead: "Read-only checks. Risks ranked by severity. Fixes you run.",
+    lead: "It checks your S3 storage without changing anything, ranks what it finds by severity, and writes fixes for you to run.",
     catalog: {
       role: "S3 investigation",
       text: "Read-only S3 checks. What needs attention, remembered between tasks.",
@@ -56,7 +56,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Findings outlast the task.",
+        label: "It remembers what it found.",
         items: [
           { title: "Check without a model", body: "“Check account” surveys and reads access with no key at all." },
           { title: "Names what it missed", body: "Says “All 2 buckets checked”, or names each blind or failed read." },
@@ -115,7 +115,7 @@ export default defineProduct({
       "面向 S3 兼容存储的本地只读桌面 Agent：账户检查不需要模型，回答引用它读到的内容，发现的风险跨任务保留。",
     eyebrow: "照看对象存储",
     headline: "找出 S3 里的隐患",
-    lead: "只读检查。风险按严重度排好。修复由你执行。",
+    lead: "只读检查你的 S3 存储，不做任何改动。发现的风险按严重度排好，修复写好由你执行。",
     catalog: {
       role: "S3 排查",
       text: "只读 S3 排查。需要关注的问题跨任务保留。",
@@ -151,7 +151,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "发现不随任务结束",
+        label: "查到的问题会记下来",
         items: [
           { title: "不用模型也能检查", body: "“检查账户”不需要任何密钥，就能盘点并读取访问权限。" },
           { title: "说清没读到什么", body: "全部检查完会写明；读不到、读失败的逐一列出。" },

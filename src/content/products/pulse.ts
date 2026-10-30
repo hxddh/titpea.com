@@ -18,7 +18,7 @@ export default defineProduct({
       "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
     headline: "Which agent needs you.",
-    lead: "Red means blocked. Your turn stays quiet. Every lamp says why.",
+    lead: "A lamp in the menu bar for your coding agents. Red means one is blocked; your turn stays quiet; every lamp says why.",
     catalog: {
       role: "",
       text: "The menu-bar lamp for coding agents that need you.",
@@ -207,7 +207,7 @@ export default defineProduct({
       "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "看看哪个 Agent 需要你",
-    lead: "红灯只给阻塞。轮到你只安静计数。每盏灯都说出原因。",
+    lead: "菜单栏里的一盏灯，看着你的编码 Agent。红灯表示有 Agent 卡住了；轮到你时只安静计数；每盏灯都说出原因。",
     catalog: {
       role: "",
       text: "菜单栏上看哪个编码 Agent 需要你。",

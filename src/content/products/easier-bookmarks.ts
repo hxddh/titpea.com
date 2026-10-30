@@ -16,7 +16,7 @@ export default defineProduct({
     description: "Chrome side panel and address-bar search for the bookmark tree already in this browser.",
     eyebrow: "Chrome extension",
     headline: "Bookmarks at your side.",
-    lead: "Your bookmark tree. In the side panel and the address bar. No external servers.",
+    lead: "Search and file the bookmarks Chrome already has, from the side panel or the address bar. No external servers.",
     catalog: {
       role: "Side panel",
       text: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
@@ -111,7 +111,7 @@ export default defineProduct({
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
     eyebrow: "Chrome 扩展",
     headline: "书签在侧边，随手整理",
-    lead: "已有的书签树。在侧边栏，也在地址栏。无外部服务器。",
+    lead: "在侧边栏或地址栏，搜索和整理 Chrome 里已有的书签。不经过任何外部服务器。",
     catalog: {
       role: "侧边栏",
       text: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",

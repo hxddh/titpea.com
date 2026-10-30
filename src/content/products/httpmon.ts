@@ -17,7 +17,7 @@ export default defineProduct({
     description: "A terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
     eyebrow: "Go CLI",
     headline: "See the HTTP traffic.",
-    lead: "Wrap a proxy-aware command. Read its traffic live. Response unchanged.",
+    lead: "Run a command that honours proxy settings through httpmon and watch its HTTP traffic live. Its responses are unchanged.",
     catalog: {
       role: "",
       text: "See what a command actually sent.",
@@ -128,7 +128,7 @@ export default defineProduct({
     description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
     eyebrow: "Go CLI",
     headline: "看清命令的 HTTP 流量",
-    lead: "包住支持代理的命令。实时看请求和响应。原始响应不变。",
+    lead: "让一条支持代理的命令经过 httpmon，实时查看它的请求和响应。命令收到的响应保持原样。",
     catalog: {
       role: "",
       text: "看这条命令实际发出的请求。",

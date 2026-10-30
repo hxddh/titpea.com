@@ -17,10 +17,10 @@ export default defineProduct({
     description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
     eyebrow: "Rust CLI",
     headline: "Know what’s in a bucket.",
-    lead: "Lists and diffs large buckets in parallel. No tuning first. Parquet out.",
+    lead: "Lists a large S3 bucket, or compares two, in parallel. No tuning first: the result is a Parquet file you can query.",
     catalog: {
       role: "List / Diff",
-      text: "List and diff S3 objects in parallel. Parquet out, ready to analyze.",
+      text: "Lists a large S3 bucket, or compares two, into a Parquet file you can query.",
     },
     primaryCta: {
       label: "View on GitHub",
@@ -145,7 +145,7 @@ Doctor status: ok`,
     description: "自动分段的 S3 兼容 list / diff，输出可直接分析的 Parquet 结果。",
     eyebrow: "Rust CLI",
     headline: "桶里有什么，一次列清",
-    lead: "大规模桶并行 list 与 diff。不必先调参。输出 Parquet。",
+    lead: "并行列出一个大桶，或对比两个桶。不必先调参，结果是可以直接查询的 Parquet 文件。",
     catalog: {
       role: "列举 / 对比",
       text: "并行列举和对比 S3 对象，输出可继续分析的 Parquet。",

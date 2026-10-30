@@ -125,11 +125,11 @@ Simplified at the owner's request, October 2026. One calm column that fits about
 
 - **No 依据 framing (owner rule, October 2026).** Site and product copy never sells the work as "evidence", "依据" or "shows its work"; that framing is too narrow. Say what the product does. A feature that is literally called evidence in the product (PageWise exporting evidence highlights) keeps its name. `依据` is in `zhForbiddenTerms`.
 
-Say each thing once, in as few words as the fact allows. The figures and the photographs carry the claim; the words label them.
+Say each thing once, in as few words as the fact allows, but never so few that a first-time reader is lost. The figures and the photographs carry the claim; the words label them. **Write for someone who has not used this kind of tool (design v2):** the lede's first sentence says what the product does in plain words, and a tool, service or format is named in full where it first appears (Pi, the open-source coding agent; Baidu Object Storage (BOS)). Telegraph style ("Parquet out.") is out.
 
-- **Lead**: 2–3 fragments, each ending in a period ("Lessons. 40,000 puzzles. Stockfish or a friend."). Chinese uses 2–3 短句 with 。.
-- **Section headings** are one declarative sentence ("Every city moves together."). English ends with a period; Chinese has no closing punctuation. On pages with a local nav, each section also sets a 1–4 word `nav` label.
-- **Cards**: a 2–4 word title and a 3–12 word fragment. One idea per card. One list of at most six per page, ideally 3 or 6 equal-weight items.
+- **Lead**: one or two plain sentences, at most 24 words ("Lists a large S3 bucket, or compares two, in parallel. No tuning first: the result is a Parquet file you can query."). Chinese uses one or two 句子 with 。, at most about 56 characters.
+- **Section headings** are one declarative sentence that says what the section holds ("It remembers what it found.", not a riddle like "Findings outlast the task."). English ends with a period; Chinese has no closing punctuation. On pages with a local nav, each section also sets a 1–4 word `nav` label.
+- **Cards**: a 2–4 word title and a line of 3–16 words. One idea per card. One list of at most six per page, ideally 3 or 6 equal-weight items.
 - **Showcases**: a short heading and one sentence beside the photograph ("Scans become Markdown.").
 - **FAQ**: headed `FAQ` / `常见问题`. Questions are questions. Answers are full sentences and carry the conditions that do not fit a card.
 - Shortening never drops a qualifier: support that depends on the agent, pre-alpha status, "after a successful write", "only when the match is reliable", data posture. A condition that does not fit a card moves to the FAQ.
