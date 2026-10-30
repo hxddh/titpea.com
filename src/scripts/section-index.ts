@@ -124,8 +124,9 @@ function mountPin(index: HTMLElement) {
     index.setAttribute("data-pinned", "");
     return;
   }
+  // An open section menu keeps the bar in place, so it never vanishes under the pointer.
   new IntersectionObserver(([entry]) => {
-    index.toggleAttribute("data-pinned", !entry.isIntersecting);
+    index.toggleAttribute("data-pinned", !entry.isIntersecting || index.hasAttribute("data-menu-open"));
   }).observe(header);
 }
 
