@@ -5,6 +5,18 @@ export default defineProduct({
   line: "agents",
   type: "mac",
   repo: "hxddh/readout",
+  featured: {
+    order: 3,
+    image: {
+      src: "/assets/readout-window.webp",
+      width: 1024,
+      height: 674,
+      alt: {
+        en: "A Readout window: an agent’s plan with its outline and task counts in the sidebar, and unread changes marked in the margin.",
+        zh: "Readout 窗口：一份 Agent 写的计划，侧栏是大纲和各节任务进度，页边标出未读的改动。",
+      },
+    },
+  },
   icon: "/assets/icons/readout.webp",
   og: "/assets/og-readout.png",
   schema: {
