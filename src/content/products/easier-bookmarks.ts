@@ -38,7 +38,7 @@ export default defineProduct({
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome Web Store · Productivity · 4.0.0 · No external servers",
+    meta: "Chrome Web Store · Productivity · 5.0.0 · No external servers",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -49,8 +49,8 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 4.0.0 side panel; bookmarks and site icons are examples.",
-      asOf: "v4.0.0",
+      caption: "Easier Bookmarks 5.0.0 side panel; bookmarks and site icons are examples.",
+      asOf: "v5.0.0",
     },
     showcases: [
       {
@@ -60,8 +60,8 @@ export default defineProduct({
         height: 855,
         title: "Results as you type.",
         body: "Each match shows the folder it lives in; Enter opens the first.",
-        caption: "Easier Bookmarks 4.0.0, searching “plan”; bookmarks are examples.",
-        asOf: "v4.0.0",
+        caption: "Easier Bookmarks 5.0.0, searching “plan”; bookmarks are examples.",
+        asOf: "v5.0.0",
       },
     ],
     sections: [
@@ -81,7 +81,7 @@ export default defineProduct({
           },
           { title: "Knows the page you’re on", body: "The star fills if it’s saved; click it to edit instead." },
           { title: "Pick several", body: "Tick a few to drag, move, or delete; one Undo restores all." },
-          { title: "Sort by name", body: "Folders first, numbers by value, in your language’s order." },
+          { title: "Tidy up", body: "Extra copies of an address and empty folders, gone in one step." },
         ],
       },
       {
@@ -146,7 +146,7 @@ export default defineProduct({
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome 网上应用店 · 效率 · 4.0.0 · 无外部服务器",
+    meta: "Chrome 网上应用店 · 效率 · 5.0.0 · 无外部服务器",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -157,8 +157,8 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 4.0.0 侧边栏；书签和网站图标为示例。",
-      asOf: "v4.0.0",
+      caption: "Easier Bookmarks 5.0.0 侧边栏；书签和网站图标为示例。",
+      asOf: "v5.0.0",
     },
     showcases: [
       {
@@ -168,8 +168,8 @@ export default defineProduct({
         height: 855,
         title: "打拼音也能搜到",
         body: "每个结果都写明所在文件夹；回车打开第一个。",
-        caption: "Easier Bookmarks 4.0.0，用拼音“jingdu”搜索；书签为示例。",
-        asOf: "v4.0.0",
+        caption: "Easier Bookmarks 5.0.0，用拼音“jingdu”搜索；书签为示例。",
+        asOf: "v5.0.0",
       },
     ],
     sections: [
@@ -186,7 +186,7 @@ export default defineProduct({
           { title: "一键收藏", body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。" },
           { title: "认得当前页", body: "已收藏时星标变实心，点它编辑，不会重复添加。" },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
-          { title: "按名称排序", body: "文件夹在前，数字按大小，按你的语言排序。" },
+          { title: "一键清理", body: "重复保存的网址和空文件夹，一步删掉。" },
         ],
       },
       {
