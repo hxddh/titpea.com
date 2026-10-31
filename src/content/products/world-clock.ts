@@ -40,7 +40,7 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome extension · Chrome 110+ · 8.2.0 · One permission",
+    meta: "Chrome extension · Chrome 123+ · 9.0.0 · One permission",
     visual: {
       kind: "demo",
       label: "World Clock",
@@ -75,23 +75,33 @@ export default defineProduct({
         ],
         fallback: {
           src: "/assets/world-clock-scroll-en.webp",
-          alt: "The popup shifted three hours ahead, a +3h chip in its header: London at 3:00 PM and New York at 11:00 AM stay bright inside working hours, while Tokyo, Sydney and San Francisco fade; New York and San Francisco show their clock change on 11/1",
+          alt: "The popup shifted three hours ahead, a +3h chip in its header: London 3:00 PM, Paris and Berlin 4:00 PM, New York and Toronto 10:00 AM, all in working hours; under each city a strip shows its own working hours and, brighter, the hours they all share",
           width: 680,
           height: 738,
-          caption: "World Clock 8.2.0 popup shifted +3h; cities are examples.",
+          caption: "World Clock 9.0.0 popup shifted +3h; cities are examples.",
         },
       },
     },
     showcases: [
       {
+        src: "/assets/world-clock-names-en.webp",
+        alt: "World Clock settings with the New York entry renamed “Alice”, its editor open: Name “Alice” and Working hours 8:00 AM to 4:00 PM, between London (Local), Tokyo and Sydney in the city list",
+        width: 680,
+        height: 1200,
+        asOf: "v9.0.0",
+        title: "People, not just cities.",
+        body: "Name an entry and set its own working hours; the strips use them.",
+        caption: "World Clock 9.0.0 settings, editing an entry; names and cities are examples.",
+      },
+      {
         src: "/assets/world-clock-search-en.webp",
-        alt: "World Clock settings with “san” typed in search, listing San Francisco (already added, ticked), Santiago, San Juan, San Luis and Santarem with their local times and an add button, above the Theme and Time format switches",
-        width: 1360,
-        height: 1680,
-        asOf: "v8.2.0",
+        alt: "World Clock settings with “san” typed in search, listing San Francisco (already added, ticked), Santiago, San Juan, San Luis, Santarem, Santo Domingo and San Marino with their local times and an add button, above previews of the five themes and the Appearance and Time format switches",
+        width: 680,
+        height: 1194,
+        asOf: "v9.0.0",
         title: "Find any time zone.",
         body: "Search 400+ time zones in 9 languages; Enter adds the top result.",
-        caption: "World Clock 8.2.0 settings, searching “san”; cities are examples.",
+        caption: "World Clock 9.0.0 settings, searching “san”; cities are examples.",
       },
     ],
     sections: [
@@ -100,12 +110,15 @@ export default defineProduct({
         id: "features",
         label: "Up to 10 cities, in your order.",
         items: [
-          { title: "Local weekends", body: "9:00–18:00 stay lit; weekends follow each city’s country." },
+          {
+            title: "Local weekends",
+            body: "Working hours lit, 9:00–18:00 unless you set others; weekends follow each city’s country.",
+          },
           { title: "Offsets from you", body: "+7h or −5h from your local time, plus Tomorrow or Yesterday." },
           { title: "Clock changes ahead", body: "Daylight-saving shifts flagged two weeks early, like −7h → −8h." },
           { title: "Copy the times", body: "Click one time, or ⌘C / Ctrl+C for every city." },
-          { title: "Your own shortcut", body: "Set a key to open it at `chrome://extensions/shortcuts`." },
-          { title: "Three themes", body: "Default, Terminal, Magazine; each follows system light or dark." },
+          { title: "Names and hours", body: "Name an entry “Alice” and give it its own hours, overnight shifts too." },
+          { title: "Five themes", body: "Default, Terminal, Magazine, Paper, Contrast; each Auto, Light or Dark." },
         ],
       },
       {
@@ -125,7 +138,7 @@ export default defineProduct({
         items: [
           {
             title: "What do I need to run it?",
-            body: "Chrome 110 or later. It works offline.",
+            body: "Chrome 123 or later. It works offline.",
           },
           {
             title: "How many cities can I keep?",
@@ -133,7 +146,7 @@ export default defineProduct({
           },
           {
             title: "I used an earlier version. Do I lose my cities?",
-            body: "No. Version 8 moves your version 7 settings over automatically.",
+            body: "No. Version 9 keeps your cities and settings, and they still sync with browsers on version 8, where a new theme shows as Default.",
           },
           {
             title: "Is it free?",
@@ -170,7 +183,7 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 扩展 · Chrome 110+ · 8.2.0 · 仅一项权限",
+    meta: "Chrome 扩展 · Chrome 123+ · 9.0.0 · 仅一项权限",
     visual: {
       kind: "demo",
       label: "世界时钟",
@@ -203,23 +216,33 @@ export default defineProduct({
         ],
         fallback: {
           src: "/assets/world-clock-scroll-zh.webp",
-          alt: "弹窗时间向后拨了三小时，顶部显示 +3h：纽约 11:00 和伦敦 15:00 在工作时间内保持高亮，北京、东京、悉尼和新加坡淡出；纽约显示 11/1 的时制切换",
+          alt: "弹窗时间向后拨了三小时，顶部显示 +3h：北京 12:00，东京和首尔 13:00，新加坡 12:00，悉尼 15:00，都在工作时间内；每个城市下方的细条标出它自己的工作时间，大家都在上班的那几小时更亮",
           width: 680,
-          height: 850,
-          caption: "世界时钟 8.2.0 弹窗，时间后拨 3 小时；城市为示例。",
+          height: 738,
+          caption: "世界时钟 9.0.0 弹窗，时间后拨 3 小时；城市为示例。",
         },
       },
     },
     showcases: [
       {
+        src: "/assets/world-clock-names-zh.webp",
+        alt: "世界时钟设置页，伦敦这一项改名为“Alice”，编辑栏展开：名称“Alice”，工作时间 10:00 到 19:00；列表里还有北京（本地）、纽约和东京",
+        width: 680,
+        height: 1200,
+        asOf: "v9.0.0",
+        title: "记的是人，不只是城市",
+        body: "给一项起名、单独设工作时间，细条按它来标。",
+        caption: "世界时钟 9.0.0 设置页，编辑一项；名字和城市为示例。",
+      },
+      {
         src: "/assets/world-clock-search-zh.webp",
-        alt: "世界时钟设置页，搜索框输入“新”，匹配新德里和已添加（打勾）的新加坡，并显示当地时间，下方是主题和时间格式切换",
-        width: 1360,
-        height: 1680,
-        asOf: "v8.2.0",
+        alt: "世界时钟设置页，搜索框输入“新”，匹配新德里和已添加（打勾）的新加坡，并显示当地时间，下方是五种主题的预览、外观和时间格式切换",
+        width: 680,
+        height: 1040,
+        asOf: "v9.0.0",
         title: "任意时区，一搜即得",
         body: "400+ 时区，9 种语言可搜索；回车添加第一个结果。",
-        caption: "世界时钟 8.2.0 设置页，搜索“新”；城市为示例。",
+        caption: "世界时钟 9.0.0 设置页，搜索“新”；城市为示例。",
       },
     ],
     sections: [
@@ -228,12 +251,12 @@ export default defineProduct({
         id: "features",
         label: "最多 10 个城市，顺序由你定",
         items: [
-          { title: "各地周末", body: "9 点到 18 点常亮；周末按各城市所在国家。" },
+          { title: "各地周末", body: "工作时间常亮，默认 9 点到 18 点；周末按各城市所在国家。" },
           { title: "相对你的时差", body: "显示 +7h、−5h 这样的时差，以及明天或昨天。" },
           { title: "提前提示夏令时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
           { title: "复制时间", body: "点击复制一个，或按 ⌘C / Ctrl+C 复制全部城市。" },
-          { title: "自定快捷键", body: "在 `chrome://extensions/shortcuts` 设置打开弹窗的按键。" },
-          { title: "三种主题", body: "默认、终端、杂志，都跟随系统浅色或深色。" },
+          { title: "名字和工作时间", body: "给一项起名，比如“Alice”，单独设工作时间，夜班也行。" },
+          { title: "五种主题", body: "默认、终端、杂志、纸张、高对比；外观可选自动、浅色或深色。" },
         ],
       },
       {
@@ -253,7 +276,7 @@ export default defineProduct({
         items: [
           {
             title: "需要什么环境？",
-            body: "Chrome 110 或更高版本。离线也能用。",
+            body: "Chrome 123 或更高版本。离线也能用。",
           },
           {
             title: "最多能放几个城市？",
@@ -261,7 +284,7 @@ export default defineProduct({
           },
           {
             title: "用过旧版本，城市会丢吗？",
-            body: "不会。第 8 版会自动迁移第 7 版的设置。",
+            body: "不会。第 9 版保留你的城市和设置，也仍能和装着第 8 版的浏览器同步；在那里，新主题显示为默认主题。",
           },
           {
             title: "收费吗？",

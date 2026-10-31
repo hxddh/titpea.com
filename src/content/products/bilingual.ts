@@ -40,7 +40,7 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome extension · Chrome 138+ · 2.2.0 · On-device translation",
+    meta: "Chrome extension · Chrome 138+ · 2.5.0 · On-device translation",
     visual: {
       kind: "demo",
       label: "Bilingual",
@@ -63,6 +63,28 @@ export default defineProduct({
         translationLabel: "English translation: ",
       },
     },
+    showcases: [
+      {
+        src: "/assets/bilingual-align-en.webp",
+        alt: "A French article on night trains in Chrome with its English translation in the margin; the pointer rests on the second English sentence of a paragraph, and that sentence and its French counterpart are both highlighted",
+        width: 2560,
+        height: 1448,
+        asOf: "v2.5.0",
+        title: "One sentence, both sides.",
+        body: "Point at a sentence and its counterpart lights up in the other language.",
+        caption: "Bilingual 2.5.0 in Chrome on a sample page; the translation was written for this image.",
+      },
+      {
+        src: "/assets/bilingual-lookup-en.webp",
+        alt: "The same French article with Shift held over the word “attrait”: a small card reads “attrait · In this sentence”, “appeal, draw”, “here: what makes it attractive”, and that paragraph’s English translation sits in the margin",
+        width: 2560,
+        height: 1448,
+        asOf: "v2.5.0",
+        title: "A word, in this sentence.",
+        body: "Hold the key over a word; Precise gives its meaning here, not a dictionary list.",
+        caption: "Bilingual 2.5.0 in Chrome on a sample page; the note was written for this image.",
+      },
+    ],
     sections: [
       {
         kind: "cards",
@@ -141,7 +163,7 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 扩展 · Chrome 138+ · 2.2.0 · 本地翻译",
+    meta: "Chrome 扩展 · Chrome 138+ · 2.5.0 · 本地翻译",
     visual: {
       kind: "demo",
       label: "对读",
@@ -163,6 +185,28 @@ export default defineProduct({
         translationLabel: "中文译文：",
       },
     },
+    showcases: [
+      {
+        src: "/assets/bilingual-align-zh.webp",
+        alt: "Chrome 里一篇讲夜行列车的英文文章，右侧边注是中文译文；指针停在一段译文的第二句末尾，这句中文和对应的英文原句同时高亮",
+        width: 2560,
+        height: 1448,
+        asOf: "v2.5.0",
+        title: "一句对一句",
+        body: "指向任意一句，原文和译文里对应的那句同时高亮。",
+        caption: "对读 2.5.0，Chrome 中的示例页面；译文为这张图预先写好。",
+      },
+      {
+        src: "/assets/bilingual-lookup-zh.webp",
+        alt: "同一篇英文文章，按住键停在单词 draw 上：小卡片写着“draw · 在这句里”“吸引力，魅力”“名词，指吸引人的地方”，旁边是这一段的中文边注",
+        width: 2560,
+        height: 1448,
+        asOf: "v2.5.0",
+        title: "查词，看它在这句里的意思",
+        body: "按住键停在词上；用精译时，给出它在这句话里的意思。",
+        caption: "对读 2.5.0，Chrome 中的示例页面；释义为这张图预先写好。",
+      },
+    ],
     sections: [
       {
         kind: "cards",
