@@ -94,6 +94,17 @@ export default defineProduct({
         caption: "World Clock 9.0.0 settings, editing an entry; names and cities are examples.",
       },
       {
+        src: "/assets/world-clock-themes-en.webp",
+        alt: "The same five cities in each of the five themes, Default, Terminal, Magazine, Paper and Contrast, with the light version of each on the top row and the dark version below",
+        width: 2480,
+        height: 1120,
+        asOf: "v9.0.0",
+        title: "Five themes, light or dark.",
+        body: "Each follows your system, or stays Light or Dark.",
+        caption:
+          "World Clock 9.0.0 popup in every theme, rendered by the repo’s store-image script; cities are examples.",
+      },
+      {
         src: "/assets/world-clock-search-en.webp",
         alt: "World Clock settings with “san” typed in search, listing San Francisco (already added, ticked), Santiago, San Juan, San Luis, Santarem, Santo Domingo and San Marino with their local times and an add button, above previews of the five themes and the Appearance and Time format switches",
         width: 680,
@@ -233,6 +244,16 @@ export default defineProduct({
         title: "记的是人，不只是城市",
         body: "给一项起名、单独设工作时间，细条按它来标。",
         caption: "世界时钟 9.0.0 设置页，编辑一项；名字和城市为示例。",
+      },
+      {
+        src: "/assets/world-clock-themes-zh.webp",
+        alt: "同样五个城市，分别用默认、终端、杂志、纸张、高对比五种主题显示，上一行是浅色，下一行是深色",
+        width: 2480,
+        height: 1120,
+        asOf: "v9.0.0",
+        title: "五种主题，浅色深色都有",
+        body: "跟随系统，或固定浅色、深色。",
+        caption: "世界时钟 9.0.0 弹窗的五种主题，由仓库的商店截图脚本渲染；城市为示例。",
       },
       {
         src: "/assets/world-clock-search-zh.webp",
