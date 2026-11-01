@@ -45,12 +45,13 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/storage-agent-run.webp",
-        alt: "A Storage Agent run on demo storage: the scope line “All 2 buckets checked”, the question “Which buckets are public?”, a one-sentence answer with a citation, a folded Work row “Worked for 4.7s · 2 calls”, the bucket table it read, and Sources with 8 risks.",
+        alt: "A Storage Agent task on its Prod profile: the question “Which buckets are public?”, then each read listed with its time (S3 ListBuckets, then GetBucketPolicyStatus and GetBucketAcl for web-assets and data-lake, one failing with NoSuchBucketPolicy, HTTP 404) and the answer “web-assets is public” with a citation.",
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 32 in its own visual test: a scripted test model answering over a test S3 server.",
-      asOf: "v32.0.0",
+      caption:
+        "Storage Agent 40 from its README: the repository’s scripted test model (shown as fake-model) answering over the test S3 server it ships with.",
+      asOf: "v40.0.0",
     },
     sections: [
       {
@@ -150,12 +151,13 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/storage-agent-run.webp",
-        alt: "Storage Agent 在演示存储上的一次运行：范围行显示 2 个桶都已检查，问题是“哪些桶是公开的？”，一句带引用的回答，折叠的 Work 行显示用时 4.7 秒、2 次调用，下面是读到的桶表格和含 8 个风险的 Sources。",
+        alt: "Storage Agent 在 Prod 配置下的一次任务：问“哪些桶是公开的？”，下面逐条列出每次读取的 S3 操作和用时，其中一次返回 404；回答是 web-assets 公开，带引用。",
         width: 1180,
         height: 773,
       },
-      caption: "Storage Agent 32 自带的界面测试：脚本化的测试模型，连接测试用 S3 服务，界面为英文。",
-      asOf: "v32.0.0",
+      caption:
+        "Storage Agent 40，取自其 README：仓库自带的脚本化测试模型（显示为 fake-model）连接仓库自带的测试 S3 服务作答，界面为英文。",
+      asOf: "v40.0.0",
     },
     sections: [
       {

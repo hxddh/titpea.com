@@ -132,7 +132,7 @@ export default defineProduct({
         label: "Practice built from your games.",
         items: [
           { title: "Five places", body: "Today, Play, Train, Games and Me, plus one Settings page." },
-          { title: "What to do next", body: "Today lists up to three tasks, each saying where it came from." },
+          { title: "What to do next", body: "Today shows the one thing to do next; Something else swaps it." },
           { title: "Your own mistakes", body: "Your ? and ?? moves come back on a 1-3-7-21-day schedule." },
           {
             title: "Endgames and classics",
@@ -167,11 +167,11 @@ export default defineProduct({
           },
           {
             title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: versions 9.0 to 14.0 share one save format, and each release reads the saves of the one before it, so 14.0 reads 13.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            body: "From 9.0 or later, yes: versions 9.0 to 17.0 share one save format, and each release reads the saves of the one before it, so 17.0 reads 16.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
           },
           {
             title: "What can I do with a PGN?",
-            body: "Use Analyse a game on Today or Games: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Games. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
+            body: "Choose Review a game from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Games. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
           },
           {
             title: "Does it track my progress?",
@@ -266,7 +266,7 @@ export default defineProduct({
         label: "练习从你的对局里来",
         items: [
           { title: "五个去处", body: "今天、下棋、训练、棋谱、我的，外加一个设置页。" },
-          { title: "接下来练什么", body: "今天页最多列三项，每项写明从哪来。" },
+          { title: "接下来练什么", body: "今天页最上面是接下来最该做的一件事；“换一件事”换下一件。" },
           { title: "自己的失着", body: "你走出的 ? 和 ?? 进复习，按 1、3、7、21 天再问。" },
           { title: "残局与名局", body: "90 个残局对满强度 Stockfish；40 局名局猜着。" },
           { title: "你的开局书", body: "每方最多 5,000 条线，可从内置开局生成。" },
@@ -298,11 +298,11 @@ export default defineProduct({
           },
           {
             title: "旧版本的存档能带过来吗？",
-            body: "9.0 及以后的可以：9.0 到 14.0 用同一种存档格式，每一版都读得了上一版的存档，14.0 读得了 13.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
+            body: "9.0 及以后的可以：9.0 到 17.0 用同一种存档格式，每一版都读得了上一版的存档，17.0 读得了 16.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
           },
           {
             title: "PGN 能做什么？",
-            body: "在今天页或棋谱页点“分析一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用棋谱页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用棋谱页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
           },
           {
             title: "能看到自己的进步吗？",
