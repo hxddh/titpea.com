@@ -77,7 +77,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-en.webp",
-        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Games, Me and Settings, a finished game, and the move list in the side panel",
+        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Games, Me and Settings, a game at move 17, the full move list from 1. e4 in the side panel, and Offer draw and Resign below it",
         width: 2446,
         height: 1536,
       },
@@ -212,7 +212,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
-        alt: "Chessboard 浅色外观、木色棋盘上的终局：左侧是今天、下棋、训练、棋谱、我的与设置，侧栏显示着法列表",
+        alt: "Chessboard 浅色外观、木色棋盘：左侧是今天、下棋、训练、棋谱、我的与设置，棋盘停在第 17 回合，侧栏列出从 1. e4 起的全部着法，下方是提和与认输",
         width: 2446,
         height: 1536,
       },
