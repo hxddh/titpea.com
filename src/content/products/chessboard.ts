@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v14.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v17.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate

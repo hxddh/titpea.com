@@ -7,7 +7,7 @@
  *   git clone https://github.com/hxddh/goban /tmp/board-apps/goban
  *   git clone https://github.com/hxddh/chessboard /tmp/board-apps/chessboard
  *   git -C /tmp/board-apps/goban checkout v3.1.0
- *   git -C /tmp/board-apps/chessboard checkout v14.0.0
+ *   git -C /tmp/board-apps/chessboard checkout v17.0.0
  *   (chessboard) npm ci && node scripts/gen-engine-src.mjs && node scripts/gen-maia-src.mjs && node scripts/bundle.mjs
  *   (gen-maia-src writes the Maia nets the app ships since 13.0, as its own scripts/sync-dist.mjs does)
  */
@@ -19,7 +19,7 @@ import path from "node:path";
 export const appsRoot = process.env.BOARD_APPS ?? "/tmp/board-apps";
 
 /** Bump these, re-check out, and re-run both scripts when a new release ships. */
-export const pinned = { goban: "v3.1.0", chessboard: "v14.0.0" };
+export const pinned = { goban: "v3.1.0", chessboard: "v17.0.0" };
 
 export function assertPinned(app) {
   const dir = path.join(appsRoot, app);
@@ -83,6 +83,12 @@ export function chessboardInit({ pgn, langId, look }) {
 
 /** Run Chessboard's Stockfish review; the accuracy line fills in only once every ply is evaluated. */
 export async function analyseChessboard(page) {
+  // From 17.0 the saved game counts as unfinished (its PGN's "17. Qxe7#" is not mate),
+  // so the review button waits behind the tool row's Review key.
+  if (!(await page.locator("#an-run").isVisible())) {
+    await page.click("#review-open");
+    await page.waitForTimeout(300);
+  }
   await page.click("#an-run");
   await page.waitForSelector("#acc-line:not([hidden])", { state: "attached", timeout: 300000 });
   await page.waitForTimeout(800);
