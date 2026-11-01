@@ -131,28 +131,6 @@ export type BilingualDemo = {
   translationLabel: string;
 };
 
-/**
- * Readout's change marks: a small Markdown pane that receives a few writes in
- * order (public/scripts/demo-readout.js). Each new block gets the thin bar and
- * keeps it until at least half of it has been in view for 800 ms; then it
- * thins and fades, as in Readout. The reader's place stays put. Under reduced
- * motion the pane shows the last write at once, its new blocks still marked.
- */
-export type ReadoutDemo = {
-  kind: "readout";
-  label: string;
-  /** Window title: the file name. */
-  file: string;
-  /** The document before the first write: Markdown-like blocks. */
-  blocks: ReadoutBlock[];
-  /** Each write inserts one block after the block at `after` (an index into the document as it then stands). */
-  writes: Array<{ after: number; block: ReadoutBlock }>;
-  /** Announced for each write: `{text}` is the new block's text. */
-  written: string;
-};
-
-export type ReadoutBlock = { kind: "h1" | "h2" | "p" | "task" | "done"; text: string };
-
 /** A live demo of the product's core mechanic, captioned with what it is. */
 export type DemoSection = {
   kind: "demo";
@@ -161,7 +139,7 @@ export type DemoSection = {
   body: string;
   /** Says what the demo is, for example a working copy, or where its data comes from. */
   caption: string;
-  demo: ChessPuzzleDemo | ReadoutDemo;
+  demo: ChessPuzzleDemo;
 };
 
 export type Section = (CardsSection | FaqSection | DataSection | DemoSection) & SectionNav;

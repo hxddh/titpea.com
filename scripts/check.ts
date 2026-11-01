@@ -251,18 +251,11 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
 const shape = (copy: ProductCopy) =>
   JSON.stringify({
     sections: copy.sections.map((section) => [section.kind, section.id, "items" in section ? section.items.length : 0]),
-    // A demo runs the same thing in both languages: the same position and line, or the same blocks and writes.
+    // A demo runs the same thing in both languages: the same position and line.
     demos: copy.sections.flatMap((section) =>
       section.kind !== "demo"
         ? []
-        : section.demo.kind === "chessPuzzle"
-          ? [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]]
-          : [
-              [
-                section.demo.kind,
-                ...[section.demo.blocks.length, ...section.demo.writes.map((write) => write.after)].map(String),
-              ],
-            ],
+        : [[section.demo.kind, section.demo.fen, ...section.demo.line.map((move) => move.from + move.to)]],
     ),
     showcases: copy.showcases?.length ?? 0,
     commands: copy.commands?.items.map((item) => item.command) ?? [],

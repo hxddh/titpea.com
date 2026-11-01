@@ -65,6 +65,16 @@ export default defineProduct({
     },
     showcases: [
       {
+        src: "/assets/readout-changed-en.webp",
+        width: 2760,
+        height: 1840,
+        asOf: "v5.0.0",
+        alt: "An edited front matter block with “in progress” struck through and “ready to ship” added, under a notice saying what changed since when.",
+        title: "Marked until you read it.",
+        body: "New and edited blocks get a bar in the margin; on an edited block, the changed words show.",
+        caption: "Readout 5.0, from its repository’s screenshot gallery.",
+      },
+      {
         src: "/assets/readout-history-en.webp",
         width: 2920,
         height: 1960,
@@ -86,36 +96,6 @@ export default defineProduct({
       },
     ],
     sections: [
-      {
-        kind: "demo",
-        id: "changes",
-        nav: "Changes",
-        title: "Marked until you read it.",
-        body: "Each new block gets a thin bar in the margin; once it has been on screen for a moment, the bar fades.",
-        caption: "Sample document, written for this page. Three lines arrive as an agent would write them.",
-        // Readout 3.9.1: README “Shows what changed”, docs/design.md (read = half
-        // visible for 800 ms), web/src/reader/marks.js and reader.css.
-        demo: {
-          kind: "readout",
-          label: "Readout reading view, working copy",
-          file: "plan.md",
-          blocks: [
-            { kind: "h1", text: "Plan: CSV export" },
-            { kind: "p", text: "Add a CSV option next to the JSON export." },
-            { kind: "h2", text: "Steps" },
-            { kind: "done", text: "Read the current export code" },
-            { kind: "task", text: "Write each row as CSV" },
-            { kind: "h2", text: "Risks" },
-            { kind: "p", text: "Large tables may need streaming." },
-          ],
-          writes: [
-            { after: 4, block: { kind: "task", text: "Quote fields that contain commas" } },
-            { after: 5, block: { kind: "task", text: "Test with an empty table" } },
-            { after: 8, block: { kind: "p", text: "Check memory use on a 1 GB table." } },
-          ],
-          written: "New line: {text}",
-        },
-      },
       {
         kind: "cards",
         id: "features",
@@ -223,6 +203,16 @@ export default defineProduct({
     },
     showcases: [
       {
+        src: "/assets/readout-changed-en.webp",
+        width: 2760,
+        height: 1840,
+        asOf: "v5.0.0",
+        alt: "被修改的 front matter：in progress 被划掉，改为 ready to ship，上方说明这是与哪个时刻相比的改动。",
+        title: "改动标着，读过才消",
+        body: "新增和修改的段落在页边有细线；修改过的段落直接标出改了哪几个词。",
+        caption: "Readout 5.0 英文界面，取自仓库的截图集。",
+      },
+      {
         src: "/assets/readout-history-en.webp",
         width: 2920,
         height: 1960,
@@ -244,34 +234,6 @@ export default defineProduct({
       },
     ],
     sections: [
-      {
-        kind: "demo",
-        id: "changes",
-        nav: "改动",
-        title: "改动标着，读过才消",
-        body: "新的段落在页边多一条细线，在屏幕上停留片刻后自动消退。",
-        caption: "示例文档，为本页撰写。三行内容像 Agent 写入时那样陆续出现。",
-        demo: {
-          kind: "readout",
-          label: "Readout 阅读视图的可用副本",
-          file: "plan.md",
-          blocks: [
-            { kind: "h1", text: "计划：导出 CSV" },
-            { kind: "p", text: "在 JSON 导出旁边加一个 CSV 选项。" },
-            { kind: "h2", text: "步骤" },
-            { kind: "done", text: "读懂现有的导出代码" },
-            { kind: "task", text: "把每一行写成 CSV" },
-            { kind: "h2", text: "风险" },
-            { kind: "p", text: "大表可能需要流式写出。" },
-          ],
-          writes: [
-            { after: 4, block: { kind: "task", text: "含逗号的字段加上引号" } },
-            { after: 5, block: { kind: "task", text: "用空表测试一遍" } },
-            { after: 8, block: { kind: "p", text: "在 1 GB 的表上检查内存占用。" } },
-          ],
-          written: "新的一行：{text}",
-        },
-      },
       {
         kind: "cards",
         id: "features",
