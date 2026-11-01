@@ -4,12 +4,11 @@
 import bilingual from "../../styles/demo-bilingual.css?url";
 import chess from "../../styles/demo-chess.css?url";
 import pulse from "../../styles/demo-pulse.css?url";
-import readout from "../../styles/demo-readout.css?url";
 import replay from "../../styles/demo-replay.css?url";
 import worldClock from "../../styles/demo-world-clock.css?url";
 import type { ProductCopy } from "../../content/schema";
 
-const byDemo = { bilingual, chessPuzzle: chess, readout, worldClock } as const;
+const byDemo = { bilingual, chessPuzzle: chess, worldClock } as const;
 
 /** The demo stylesheets a product page needs: its hero object, its demo sections, and captured replays. */
 export function demoStyles(copy: ProductCopy): string[] {

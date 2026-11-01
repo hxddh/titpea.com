@@ -1,7 +1,6 @@
 ---
 import Prose from "./Prose.astro";
 import ChessPuzzleDemo from "./demos/ChessPuzzleDemo.astro";
-import ReadoutDemo from "./demos/ReadoutDemo.astro";
 import type { DemoSection } from "../../content/schema";
 
 interface Props {
@@ -22,6 +21,5 @@ const { demo } = section;
       </p>
     </header>
     {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
-    {demo.kind === "readout" && <ReadoutDemo demo={demo} caption={section.caption} controls={controls} />}
   </div>
 </section>
