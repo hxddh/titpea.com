@@ -8,12 +8,15 @@ export default defineProduct({
   featured: {
     order: 3,
     image: {
-      src: "/assets/readout-live-en.webp",
-      width: 2760,
-      height: 1840,
+      src: {
+        en: "/assets/readout-featured-en.webp",
+        zh: "/assets/readout-featured-zh.webp",
+      },
+      width: 2090,
+      height: 1437,
       alt: {
-        en: "A plan open in Readout, with the outline on the left, task progress under the title, and unread changes marked in the right margin.",
-        zh: "Readout 中打开的计划：左侧是标题目录，标题下方是任务进度，右侧页边是未读改动。",
+        en: "A plan open in Readout, with the outline on the left, its sections with unread changes dotted in blue, and task progress under the title.",
+        zh: "Readout 中打开的计划：左侧是标题目录，有未读改动的章节标着蓝点，标题下方是任务进度。",
       },
     },
   },
@@ -57,8 +60,8 @@ export default defineProduct({
       image: {
         src: "/assets/readout-live-en.webp",
         alt: "A plan open in Readout, with the outline on the left, task progress under the title, and unread changes marked in the right margin.",
-        width: 2760,
-        height: 1840,
+        width: 2358,
+        height: 1437,
       },
       caption: "Readout 5.0 on macOS 26, from its repository’s screenshot gallery.",
       asOf: "v5.0.0",
@@ -66,8 +69,8 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/readout-changed-en.webp",
-        width: 2760,
-        height: 1840,
+        width: 2358,
+        height: 1437,
         asOf: "v5.0.0",
         alt: "An edited front matter block with “in progress” struck through and “ready to ship” added, under a notice saying what changed since when.",
         title: "Marked until you read it.",
@@ -76,8 +79,8 @@ export default defineProduct({
       },
       {
         src: "/assets/readout-history-en.webp",
-        width: 2920,
-        height: 1960,
+        width: 2560,
+        height: 1600,
         asOf: "v5.0.0",
         alt: "The View menu’s Compare with Earlier Version submenu listing two earlier versions with their times and block differences.",
         title: "Any earlier version.",
@@ -86,8 +89,8 @@ export default defineProduct({
       },
       {
         src: "/assets/readout-unread-en.webp",
-        width: 2920,
-        height: 1960,
+        width: 2560,
+        height: 1600,
         asOf: "v5.0.0",
         alt: "The Unread Changes menu listing a changed report, a plan with 11 unread changes, and a notes file not looked at yet.",
         title: "Everything waiting, in one place.",
@@ -195,8 +198,8 @@ export default defineProduct({
       image: {
         src: "/assets/readout-live-zh.webp",
         alt: "中文界面的中文计划，中英混排，包含提示、任务列表和表格。",
-        width: 2760,
-        height: 1840,
+        width: 2358,
+        height: 1437,
       },
       caption: "Readout 5.0，macOS 26，取自仓库的截图集。",
       asOf: "v5.0.0",
@@ -204,8 +207,8 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/readout-changed-en.webp",
-        width: 2760,
-        height: 1840,
+        width: 2358,
+        height: 1437,
         asOf: "v5.0.0",
         alt: "被修改的 front matter：in progress 被划掉，改为 ready to ship，上方说明这是与哪个时刻相比的改动。",
         title: "改动标着，读过才消",
@@ -214,8 +217,8 @@ export default defineProduct({
       },
       {
         src: "/assets/readout-history-en.webp",
-        width: 2920,
-        height: 1960,
+        width: 2560,
+        height: 1600,
         asOf: "v5.0.0",
         alt: "“显示”菜单中的“与较早版本比较”子菜单，列出两个较早版本及各自的时间和块差异。",
         title: "和任意历史版本对照",
@@ -224,8 +227,8 @@ export default defineProduct({
       },
       {
         src: "/assets/readout-unread-en.webp",
-        width: 2920,
-        height: 1960,
+        width: 2560,
+        height: 1600,
         asOf: "v5.0.0",
         alt: "“未读改动”菜单：一份阅读后有改动的报告、一份有 11 处未读的计划，以及一份尚未查看的笔记。",
         title: "所有待读文档，归到一处",
