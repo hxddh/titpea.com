@@ -7,8 +7,8 @@ import { defineProduct } from "../schema";
 // and docs/store-listing.md. Pictures: the 14.0 captures of the app's own
 // StoreScreenshotsTest at Play's sizes (docs/store/, English UI), and for the
 // Chinese showcases its screenshot-matrix captures (app/src/androidTest/screenshots/
-// zh-*.png, 540×1200). The tablet hero stays the 13.0 capture: 14.0 did not redraw
-// docs/store/7-tablet.png (older than 13.0) and has no tablet capture at Play's size. `asOf`
+// zh-*.png, 540×1200). The hero is the 14.0 phone page (docs/store/1-page.png): 14.0 did
+// not redraw docs/store/7-tablet.png (older than 13.0), so the tablet capture is retired. `asOf`
 // names the tag a capture or answer describes; check compares it with the meta line.
 export default defineProduct({
   slug: "paper-sudoku",
@@ -58,13 +58,13 @@ export default defineProduct({
       label: "Paper Sudoku",
       frame: "wide",
       image: {
-        src: "/assets/paper-sudoku-tablet.webp",
-        alt: "Paper Sudoku on a tablet: a 9×9 practice page on the left with printed digits, digits written in blue and pencil marks; on the right the page title, the line “Tap cells to write 4. Tap 4 again to put it down.”, Undo, Pencil and Coach, and the digit keys with 4 picked up",
+        src: "/assets/paper-sudoku-page.webp",
+        alt: "A 9×9 practice page, Page 1: printed digits in black, your own digits in oxblood and small pencil marks; under the grid “Tap cells to write 4. Tap 4 again to put it down.”, “4 in hand · tap to put down”, Undo, Pencil and Coach, and the bare digit keys with 4 underlined",
         width: 1080,
-        height: 608,
+        height: 1920,
       },
-      caption: "Drawn by the app’s own screenshot test at Google Play’s tablet size (13.0)",
-      asOf: "v13.0.0-sideload",
+      caption: "Drawn by the app’s own screenshot test at Google Play’s phone size (14.0)",
+      asOf: "v14.0.0-sideload",
     },
     showcases: [
       {
@@ -189,13 +189,13 @@ export default defineProduct({
       label: "纸上数独",
       frame: "wide",
       image: {
-        src: "/assets/paper-sudoku-tablet.webp",
-        alt: "纸上数独在平板上（英文界面）：左边是一页 9×9 练习，有印刷数字、用蓝色写下的数字和铅笔标记；右边是页面标题、提示“点格子写 4，再点 4 放下”、撤销、铅笔和教练按钮，以及选中 4 的数字键",
+        src: "/assets/paper-sudoku-page.webp",
+        alt: "纸上数独的 9×9 练习页（英文界面）“Page 1”：印刷数字为黑色，自己写的数字为暗红色，还有小号铅笔标记；棋盘下方提示“点格子写 4，再点 4 放下”，“手里拿着 4”，撤销、铅笔和教练按钮，以及选中 4 的数字键",
         width: 1080,
-        height: 608,
+        height: 1920,
       },
-      caption: "由应用自带的截图测试按 Google Play 平板尺寸绘制（13.0，英文界面）",
-      asOf: "v13.0.0-sideload",
+      caption: "由应用自带的截图测试按 Google Play 手机尺寸绘制（14.0，英文界面）",
+      asOf: "v14.0.0-sideload",
     },
     showcases: [
       {
