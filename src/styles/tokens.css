@@ -160,6 +160,8 @@
     --ink-easier-bookmarks: #3858d8;
     --tint-goban: #d8a878;
     --ink-goban: #945f2b;
+    --tint-goban-studio: #e6b971;
+    --ink-goban-studio: #8a5a12;
     --tint-httpmon: #38b8e8;
     --ink-httpmon: #127499;
     --tint-pagewise: #5868d8;
@@ -215,6 +217,8 @@
     --ink-easier-bookmarks: #6b83e2;
     --tint-goban: #d8a878;
     --ink-goban: #d8a878;
+    --tint-goban-studio: #e6b971;
+    --ink-goban-studio: #e6b971;
     --tint-httpmon: #38b8e8;
     --ink-httpmon: #38b8e8;
     --tint-pagewise: #5868d8;
@@ -295,6 +299,8 @@
       --ink-easier-bookmarks: #6b83e2;
       --tint-goban: #d8a878;
       --ink-goban: #d8a878;
+      --tint-goban-studio: #e6b971;
+      --ink-goban-studio: #e6b971;
       --tint-httpmon: #38b8e8;
       --ink-httpmon: #38b8e8;
       --tint-pagewise: #5868d8;
@@ -388,6 +394,10 @@
   body[data-product="goban"] {
     --product-tint: var(--tint-goban);
     --product-ink: var(--ink-goban);
+  }
+  body[data-product="goban-studio"] {
+    --product-tint: var(--tint-goban-studio);
+    --product-ink: var(--ink-goban-studio);
   }
   body[data-product="httpmon"] {
     --product-tint: var(--tint-httpmon);

@@ -13,6 +13,7 @@ import worldClock from "./world-clock";
 import doubanMovieRating from "./douban-movie-rating";
 import agentRadar from "./agent-radar";
 import goban from "./goban";
+import gobanStudio from "./goban-studio";
 import chessboard from "./chessboard";
 import paperSudoku from "./paper-sudoku";
 import easierBookmarks from "./easier-bookmarks";
@@ -32,6 +33,7 @@ export const products: Product[] = [
   doubanMovieRating,
   agentRadar,
   goban,
+  gobanStudio,
   chessboard,
   paperSudoku,
   easierBookmarks,
