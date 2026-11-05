@@ -287,6 +287,18 @@
       }
     ]
   },
+  "goban-studio": {
+    "repo": "hxddh/goban-studio",
+    "version": "v7.0.0",
+    "published": "2026-11-05",
+    "history": [
+      {
+        "version": "v7.0.0",
+        "published": "2026-11-05",
+        "title": ""
+      }
+    ]
+  },
   "chessboard": {
     "repo": "hxddh/chessboard",
     "version": "v14.0.0",

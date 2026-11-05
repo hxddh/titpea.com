@@ -40,7 +40,7 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome extension · Chrome 138+ · 2.5.0 · On-device translation",
+    meta: "Chrome extension · Chrome 138+ · 3.2.0 · On-device translation",
     visual: {
       kind: "demo",
       label: "Bilingual",
@@ -163,7 +163,7 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 扩展 · Chrome 138+ · 2.5.0 · 本地翻译",
+    meta: "Chrome 扩展 · Chrome 138+ · 3.2.0 · 本地翻译",
     visual: {
       kind: "demo",
       label: "对读",
