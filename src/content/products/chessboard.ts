@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v17.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v18.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
@@ -167,7 +167,7 @@ export default defineProduct({
           },
           {
             title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: versions 9.0 to 17.0 share one save format, and each release reads the saves of the one before it, so 17.0 reads 16.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            body: "From 9.0 or later, yes: versions 9.0 to 18.0 share one save format, and each release reads the saves of the one before it, so 18.0 reads 17.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
           },
           {
             title: "What can I do with a PGN?",
@@ -298,7 +298,7 @@ export default defineProduct({
           },
           {
             title: "旧版本的存档能带过来吗？",
-            body: "9.0 及以后的可以：9.0 到 17.0 用同一种存档格式，每一版都读得了上一版的存档，17.0 读得了 16.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
+            body: "9.0 及以后的可以：9.0 到 18.0 用同一种存档格式，每一版都读得了上一版的存档，18.0 读得了 17.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
           },
           {
             title: "PGN 能做什么？",
