@@ -289,9 +289,14 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v7.0.0",
+    "version": "v8.0.0",
     "published": "2026-11-05",
     "history": [
+      {
+        "version": "v8.0.0",
+        "published": "2026-11-05",
+        "title": ""
+      },
       {
         "version": "v7.0.0",
         "published": "2026-11-05",
