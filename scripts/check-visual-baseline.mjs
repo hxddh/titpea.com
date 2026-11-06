@@ -72,6 +72,17 @@ for (const target of baseline.targets) {
     }, target.section);
     await page.waitForTimeout(150);
   }
+  if (target.state === "showcase") {
+    // The first showcase just under the top: the layout that varies most by
+    // template (wide window captures, phone captures, text beside a picture).
+    await page.evaluate(() => {
+      const showcase = document.querySelector(".product-screenshot-showcase");
+      if (showcase)
+        window.scrollTo(0, Math.max(0, Math.round(showcase.getBoundingClientRect().top + window.scrollY - 24)));
+    });
+    await page.locator(".product-screenshot-showcase img").first().waitFor({ state: "visible" });
+    await page.waitForTimeout(250);
+  }
   if (target.state === "faq") {
     // The local nav appears once the site header has scrolled away (chrome.css).
     await page.evaluate(() => {

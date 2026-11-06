@@ -182,8 +182,7 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
       }
     }
     if (section.kind === "data") {
-      if (section.items.length < 2 || section.items.length > 3)
-        fail(`${at}: the data section says two or three things`);
+      if (section.items.length < 2 || section.items.length > 4) fail(`${at}: the data section says two to four things`);
       for (const item of section.items) {
         if (tooLong(item, 22, 48)) fail(`${at}: data sentence is long: "${item}"`);
       }

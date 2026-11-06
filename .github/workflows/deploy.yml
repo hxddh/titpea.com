@@ -143,6 +143,14 @@ jobs:
           path: dist
           retention-days: 7
           if-no-files-found: error
+      # The tags this build shipped, for the commit-back job after deploy.
+      - uses: actions/upload-artifact@v7.0.2
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          name: releases-shipped-${{ github.sha }}
+          path: src/content/releases.json
+          retention-days: 1
+          if-no-files-found: error
       # Keep the rendered screenshots only when QA fails.
       - uses: actions/upload-artifact@v7.0.2
         if: failure() && github.event_name != 'schedule'
@@ -190,3 +198,34 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: 21324681fd1a0a66906e582c7894e9e5
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       - run: npm run smoke:production
+
+  # After a deploy, commit the tags it shipped, so the repository's
+  # releases.json (what pull requests and local builds start from) never
+  # falls months behind the live site. A push made with the workflow token
+  # starts no new run.
+  commit-releases:
+    needs: deploy
+    if: always() && needs.deploy.result == 'success'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: releases-shipped-${{ github.sha }}
+          path: src/content
+      - name: Commit synced release tags
+        run: |
+          if git diff --quiet -- src/content/releases.json; then
+            echo "releases.json already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/releases.json
+          git commit -q -m "Releases: the tags the site shipped"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main

@@ -109,6 +109,7 @@ export default defineProduct({
           "Translation runs on Chrome’s built-in on-device model by default, inside the extension’s own hidden document; page text stays on your computer.",
           "Only when you ask, Precise translation sends paragraphs straight to your chosen provider; your own key stays in the extension’s IndexedDB.",
           "No account, no analytics, no data collection; site access only where you switch it on, or everywhere after Available on every site.",
+          "Incognito keeps no translations, terms, or layouts.",
         ],
       },
       {
@@ -231,6 +232,7 @@ export default defineProduct({
           "默认使用 Chrome 内置的本地翻译模型，在扩展自己的隐藏页面里运行，网页文字不离开你的电脑。",
           "精译用你自己的密钥，存在扩展的 IndexedDB 中；只有你要看时，段落文字才从浏览器直接发给你选择的服务商。",
           "没有账号，无分析服务，不收集任何数据；只在你打开的网站上运行，允许“所有网站都能用”后才用于全部网站。",
+          "无痕窗口里不存译文、术语和各站排版。",
         ],
       },
       {

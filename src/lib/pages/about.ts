@@ -3,6 +3,7 @@ import { products } from "../../content/products";
 import { about, absoluteUrl, site, ui, type AboutPerson } from "../../content/site";
 import { type Locale } from "../../content/schema";
 import { otherLocale, pathFor } from "./shared";
+import { type CatalogItem, catalogItem } from "./catalog";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 
 export type AboutPageModel = {
@@ -18,6 +19,8 @@ export type AboutPageModel = {
   person?: AboutPerson;
   /** One quiet line of text links under the paragraph. */
   links: Array<{ label: string; href: string }>;
+  /** Every tool as icon and name, in site order: what the paragraph describes. */
+  tools: { label: string; items: CatalogItem[] };
   /** Shown only while Web Analytics is on (edge-injected or by token). */
   analytics?: string;
   expectedText: string[];
@@ -62,6 +65,7 @@ export function aboutPage(locale: Locale): AboutPageModel {
       { label: "GitHub", href: site.github },
       { label: "Email", href: `mailto:${site.email}` },
     ],
+    tools: { label: copy.aboutToolsLabel, items: products.map((product) => catalogItem(product, locale)) },
     analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
     expectedText: [headline],
   };

@@ -13,8 +13,10 @@ interface Props {
 
 const { showcase, pauseLabel, playLabel, flip = false } = Astro.props;
 // The text sits beside the picture on desktop; a phone capture (taller than
-// wide) stays beside its text on phones too, at phone size.
+// wide) stays at phone size; a wide window capture (3:2 or wider) takes the
+// whole frame under its head.
 const portrait = showcase.height > showcase.width;
+const wide = showcase.width >= showcase.height * 1.5;
 ---
 
 <section
@@ -22,6 +24,7 @@ const portrait = showcase.height > showcase.width;
   data-layout="row"
   data-flip={flip ? "" : undefined}
   data-portrait={portrait ? "" : undefined}
+  data-wide={wide ? "" : undefined}
 >
   <div class="shell">
     <header class="section-head compact">
@@ -69,7 +72,20 @@ const portrait = showcase.height > showcase.width;
             width={showcase.width}
             height={showcase.height}
             loading="lazy"
+            data-appearance={showcase.dark ? "light" : undefined}
           />
+          {showcase.dark && (
+            <img
+              src={showcase.dark.src}
+              srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
+              sizes={screenshotSizes}
+              alt={showcase.alt}
+              width={showcase.dark.width}
+              height={showcase.dark.height}
+              loading="lazy"
+              data-appearance="dark"
+            />
+          )}
         </div>
         <figcaption class="shot-caption">{showcase.caption}</figcaption>
       </figure>
@@ -83,7 +99,20 @@ const portrait = showcase.height > showcase.width;
           width={showcase.width}
           height={showcase.height}
           loading="lazy"
+          data-appearance={showcase.dark ? "light" : undefined}
         />
+        {showcase.dark && (
+          <img
+            src={showcase.dark.src}
+            srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
+            sizes={screenshotSizes}
+            alt={showcase.alt}
+            width={showcase.dark.width}
+            height={showcase.dark.height}
+            loading="lazy"
+            data-appearance="dark"
+          />
+        )}
       </figure>
     )}
   </div>

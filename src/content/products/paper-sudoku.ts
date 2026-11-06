@@ -74,7 +74,6 @@ export default defineProduct({
         height: 1920,
         title: "The Coach writes in the margin.",
         body: "Look, then Why, and the answer only if you ask.",
-        caption: "Screenshot test, 14.0",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -84,7 +83,6 @@ export default defineProduct({
         height: 1920,
         title: "Every day stays in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
-        caption: "Screenshot test, 14.0",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -94,7 +92,6 @@ export default defineProduct({
         height: 1920,
         title: "A handbook that teaches.",
         body: "Every technique with a worked example from a real page, drawn the way the Coach draws it, and how well you know it: seen, practised, known.",
-        caption: "Screenshot test, 14.0",
         asOf: "v14.0.0-sideload",
       },
     ],
@@ -205,7 +202,6 @@ export default defineProduct({
         height: 1200,
         title: "教练在页边写字",
         body: "先说看哪里，再说为什么，你要了才给答案。",
-        caption: "截图测试 · 14.0",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -215,7 +211,6 @@ export default defineProduct({
         height: 1200,
         title: "每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
-        caption: "截图测试 · 14.0",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -225,7 +220,6 @@ export default defineProduct({
         height: 1200,
         title: "一本会教的手册",
         body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过、掌握。",
-        caption: "截图测试 · 14.0",
         asOf: "v14.0.0-sideload",
       },
     ],

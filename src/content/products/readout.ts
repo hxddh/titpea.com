@@ -75,7 +75,6 @@ export default defineProduct({
         alt: "An edited front matter block in a “Changes since you last read” box, with “in progress” struck through and “ready to ship” added.",
         title: "Marked until you read it.",
         body: "New and edited blocks get a bar in the margin; on an edited block, the changed words show.",
-        caption: "Readout 5, from its repository’s screenshot gallery.",
       },
       {
         src: "/assets/readout-tabs-en.webp",
@@ -85,7 +84,6 @@ export default defineProduct({
         alt: "Three document tabs, two with a blue unread dot, above a plan.",
         title: "Everything waiting, in one place.",
         body: "A blue dot marks each tab with something new; N walks the changes, then on to the next.",
-        caption: "Readout 5, from its repository’s screenshot gallery.",
       },
       {
         src: "/assets/readout-dark-en.webp",
@@ -95,7 +93,6 @@ export default defineProduct({
         alt: "A dark-mode design note showing a Swift code block, a Mermaid flowchart and a KaTeX formula.",
         title: "Dark when your Mac is.",
         body: "Code, Mermaid diagrams and math follow the system appearance.",
-        caption: "Readout 5, from its repository’s screenshot gallery.",
       },
     ],
     sections: [
@@ -213,7 +210,6 @@ export default defineProduct({
         alt: "“Changes since you last read”框里被修改的 front matter：in progress 被划掉，改为 ready to ship。",
         title: "改动标着，读过才消",
         body: "新增和修改的段落在页边有细线；修改过的段落直接标出改了哪几个词。",
-        caption: "Readout 5 英文界面，取自仓库的截图集。",
       },
       {
         src: "/assets/readout-tabs-en.webp",
@@ -223,7 +219,6 @@ export default defineProduct({
         alt: "三个文档标签页，其中两个带蓝色未读圆点，下面是计划正文。",
         title: "所有待读文档，一眼可见",
         body: "有新内容的标签页带蓝点；按 N 逐处看改动，看完跳到下一份。",
-        caption: "Readout 5 英文界面，取自仓库的截图集。",
       },
       {
         src: "/assets/readout-dark-en.webp",
@@ -233,7 +228,6 @@ export default defineProduct({
         alt: "暗色模式下的设计笔记，包含 Swift 代码块、Mermaid 流程图和 KaTeX 公式。",
         title: "跟随系统深色",
         body: "代码、Mermaid 图表和公式都跟着系统外观走。",
-        caption: "Readout 5 英文界面，取自仓库的截图集。",
       },
     ],
     sections: [

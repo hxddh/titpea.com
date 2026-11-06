@@ -37,7 +37,7 @@ Everything else is imported by the component that renders it: `home` (HomePage),
 5. `npm run assets:og <slug>` renders its share image and records its inputs in `design/og-manifest.json`; `npm run check` fails when a product's title, headline, catalog line, icon or hero screenshot changes without a redraw.
 6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
 
-New or changed Chinese headings may need characters the Chinese display font lacks: `npm run build && npm run assets:fonts && npm run build` recuts it (`check:dist` names any missing character).
+New or changed Chinese headings may need characters the Chinese display font lacks: `npm run build` recuts it and builds again when the set changed (`scripts/build.mjs`); commit the new font file and `design/fonts/zh-display-chars.txt` it writes (`check:dist` names any missing character).
 
 Replacing an image under the same file name is fine: the build appends `?v=<content hash>` to every `/assets/` URL (`src/integrations/asset-versions.mjs`), so browsers and the CDN fetch the new bytes.
 

@@ -276,6 +276,11 @@ export type Showcase = Image &
     video?: { mp4: string; webm?: string };
     /** Shown under the image; required wording for anything that is not a plain capture. */
     caption?: string;
+    /**
+     * The same screen captured in dark appearance, same aspect ratio: shown
+     * instead of `src` when the page is dark (system or the header toggle).
+     */
+    dark?: { src: string; width: number; height: number };
   };
 
 /** Commands a reader can copy. Only commands that appear verbatim in the product's README. */

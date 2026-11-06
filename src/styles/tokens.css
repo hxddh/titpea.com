@@ -75,7 +75,7 @@
     --glyph-half-fill: inset 5.5px 0 currentColor;
     /* Display face for English display lines and the wordmark; Chinese pages
      reset it to the system faces below. --display-accent is the Home title's
-     italic line (large text, 5.9:1 on paper). */
+     second line (large text, 5.9:1 on paper). */
     --display-face: Fraunces, ui-serif, Georgia, serif;
     --display-accent: #6b6b6f;
     /* Light screenshots on a dark canvas: dimmed a little in dark mode only,
