@@ -1,4 +1,5 @@
 // node --test scripts/new-product.test.mjs
+import fs from "node:fs";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { MARKER, camelCase, insertIntoIndex, insertTokens, productSource, siteOrder } from "./new-product.mjs";
@@ -96,4 +97,11 @@ test("the product template marks every field to write, in both locales", () => {
   assert.match(source, /^ {2}zh: \{/m);
   assert.ok(source.split(MARKER).length - 1 >= 20);
   assert.equal(camelCase("beta-tool"), "betaTool");
+});
+
+test("tokens: the real tokens.css, whose rules sit indented inside @layer", () => {
+  const real = fs.readFileSync(new URL("../src/styles/tokens.css", import.meta.url), "utf8");
+  const css = insertTokens(real, "zz-sample");
+  assert.match(css, /\n {2}body\[data-product="zz-sample"\] \{\n {4}--product-tint: var\(--tint-zz-sample\);/);
+  assert.equal(css.split("--tint-zz-sample:").length - 1, 3);
 });

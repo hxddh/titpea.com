@@ -27,3 +27,4 @@ pnpm-debug.log*
 .shoot-tmp.mjs
 .tmp/
 .claude/worktrees/
+captures-out/
