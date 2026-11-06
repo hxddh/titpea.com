@@ -1,8 +1,8 @@
 import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
-// Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md,
-// docs/plan.md and docs/strength.md at v7.0.0; macOS 11 from build.zig. The
+// Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
+// and v8.0.0.md, docs/plan.md and docs/strength.md at v8.0.0; macOS 11 from build.zig. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
 // with the four analysed sample games its v7 plan test seeds. The browser
@@ -54,12 +54,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-en.webp",
-        alt: "Goban Studio’s Today screen: a suggested 19×19 game, today’s five problems, the next lesson, and this week’s focus on cutting, chosen because about 20 points were lost there in the last four games.",
+        alt: "Goban Studio’s Today screen: a suggested 19×19 game, today’s five problems, and this week’s focus on cutting, chosen because about 20 points were lost there in the last four games.",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 7.0’s own interface, rendered by its UI tests with their four sample games.",
-      asOf: "v7.0.0",
+      caption: "Goban Studio 8.0’s own interface, rendered by its UI tests with their four sample games.",
+      asOf: "v8.0.0",
     },
     showcases: [
       {
@@ -67,10 +67,10 @@ export default defineProduct({
         alt: "A Goban Studio problem from today’s five: Black to play and capture the marked stones, with Hint, Show answer, and the problem’s difficulty and theme beside the board.",
         width: 2880,
         height: 1800,
-        asOf: "v7.0.0",
+        asOf: "v8.0.0",
         title: "Problems with proved answers.",
         body: "543 built-in problems, each answer proved by the app’s solver; import your own SGF collections too.",
-        caption: "Goban Studio 7.0’s own interface, rendered by its UI tests.",
+        caption: "Goban Studio 8.0’s own interface, rendered by its UI tests.",
       },
     ],
     sections: [
@@ -161,12 +161,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-zh.webp",
-        alt: "Goban Studio 的“今天”页面：推荐一盘 19 路对局、今天的五道题、下一课，以及本周重点“切断”：最近 4 局在这里损失约 20 目。",
+        alt: "Goban Studio 的“今天”页面：推荐一盘 19 路对局、今天的五道题，以及本周重点“切断”：最近 4 局在这里损失约 20 目。",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 7.0 自己的界面，由它的界面测试用四盘示例对局渲染。",
-      asOf: "v7.0.0",
+      caption: "Goban Studio 8.0 自己的界面，由它的界面测试用四盘示例对局渲染。",
+      asOf: "v8.0.0",
     },
     showcases: [
       {
@@ -174,10 +174,10 @@ export default defineProduct({
         alt: "Goban Studio 每日五题中的一道：黑先，吃掉标记的白子，棋盘旁有提示、看答案，以及难度和题型。",
         width: 2880,
         height: 1800,
-        asOf: "v7.0.0",
+        asOf: "v8.0.0",
         title: "每道题的答案都经过证明",
         body: "内置 543 道题，答案都由应用的求解器证明；也能导入自己的 SGF 题集。",
-        caption: "Goban Studio 7.0 自己的界面，由它的界面测试渲染。",
+        caption: "Goban Studio 8.0 自己的界面，由它的界面测试渲染。",
       },
     ],
     sections: [

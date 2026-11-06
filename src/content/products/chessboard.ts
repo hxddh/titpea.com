@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v18.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v19.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
@@ -31,8 +31,8 @@ export default defineProduct({
       width: 1800,
       height: 1200,
       alt: {
-        en: "Chessboard after a full-game Stockfish review: the final position, a one-line summary, the win-chance curve with marked mistakes, and the key moments",
-        zh: "Chessboard 用 Stockfish 复盘完整局：终局局面、一句总结、标出失着的胜率曲线，以及关键时刻",
+        en: "Chessboard after a full-game Stockfish review: the final position, a one-line summary, the win-chance curve with marked mistakes, and the one thing to practise, with a link to its lesson",
+        zh: "Chessboard 用 Stockfish 复盘完整局：终局局面、一句总结、标出失着的胜率曲线，以及该练的一件事和它的课程链接",
       },
     },
   },
@@ -77,7 +77,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-en.webp",
-        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Games, Me and Settings, a game at move 17, the full move list from 1. e4 in the side panel, and Offer draw and Resign below it",
+        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Me and Settings, a game at move 17, the full move list from 1. e4 in the side panel, and Offer draw, Resign, Review and More below it",
         width: 2446,
         height: 1536,
       },
@@ -98,8 +98,8 @@ export default defineProduct({
         alt: "Chessboard in dark appearance with the green board on the final position of the reviewed game",
         width: 2446,
         height: 1536,
-        title: "Five boards, light or dark.",
-        body: "Wood, green, blue, paper, or marble, and seven piece sets, all on one Settings page.",
+        title: "Three boards, light or dark.",
+        body: "Wood, green or blue, and three piece sets (Merida, Burnett, Classic), all on one Settings page.",
       },
     ],
     sections: [
@@ -131,7 +131,7 @@ export default defineProduct({
         id: "features",
         label: "Practice built from your games.",
         items: [
-          { title: "Five places", body: "Today, Play, Train, Games and Me, plus one Settings page." },
+          { title: "Four places", body: "Today, Play, Train and Me, plus one Settings page." },
           { title: "What to do next", body: "Today shows the one thing to do next; Something else swaps it." },
           { title: "Your own mistakes", body: "Your ? and ?? moves come back on a 1-3-7-21-day schedule." },
           {
@@ -139,7 +139,10 @@ export default defineProduct({
             body: "90 endgames against full-strength Stockfish; 40 master games to guess.",
           },
           { title: "Your opening book", body: "Up to 5,000 lines a side; start from the built-in openings." },
-          { title: "Opponents like people", body: "Seven middle levels are Maia, trained on human Lichess games." },
+          {
+            title: "Opponents like people",
+            body: "The bottom twelve levels are Maia, trained on human Lichess games.",
+          },
         ],
       },
       {
@@ -163,15 +166,15 @@ export default defineProduct({
           },
           {
             title: "Who plays the other side?",
-            body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The seven from Solid (1191) to Advanced− (1908) are Maia, networks trained on human games from Lichess, so they pick moves the way players at that level do. The rest are Stockfish 19, weakened at the bottom of the ladder and at full strength at the top. Maia runs on this computer from networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
+            body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The twelve from Gentle (532) to Advanced− (1909) are Maia, networks trained on human games from Lichess, so they pick moves the way players at that level do. The other nine are Stockfish 19, strength-limited, and at full strength at the top. Maia runs on this computer from networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
           },
           {
             title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: versions 9.0 to 18.0 share one save format, and each release reads the saves of the one before it, so 18.0 reads 17.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            body: "From 9.0 or later, yes: versions 9.0 to 19.0 share one save format, and each release reads the saves of the one before it, so 19.0 reads 18.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
           },
           {
             title: "What can I do with a PGN?",
-            body: "Choose Review a game from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Games. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
+            body: "Choose Review a game from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Me. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
           },
           {
             title: "Does it track my progress?",
@@ -212,7 +215,7 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
-        alt: "Chessboard 浅色外观、木色棋盘：左侧是今天、下棋、训练、棋谱、我的与设置，棋盘停在第 17 回合，侧栏列出从 1. e4 起的全部着法，下方是提和与认输",
+        alt: "Chessboard 浅色外观、木色棋盘：左侧是今天、下棋、训练、我的与设置，棋盘停在第 17 回合，侧栏列出从 1. e4 起的全部着法，下方是提和、认输、复盘与更多",
         width: 2446,
         height: 1536,
       },
@@ -232,8 +235,8 @@ export default defineProduct({
         alt: "Chessboard 深色外观、绿色棋盘，复盘后的终局局面",
         width: 2446,
         height: 1536,
-        title: "五种棋盘，浅色或深色",
-        body: "木、绿、蓝、纸墨、大理石，另有七套棋子，都在同一个设置页里。",
+        title: "三种棋盘，浅色或深色",
+        body: "木、绿、蓝，另有三套棋子（Merida、伯内特、经典），都在同一个设置页里。",
       },
     ],
     sections: [
@@ -265,12 +268,12 @@ export default defineProduct({
         id: "features",
         label: "练习从你的对局里来",
         items: [
-          { title: "五个去处", body: "今天、下棋、训练、棋谱、我的，外加一个设置页。" },
+          { title: "四个去处", body: "今天、下棋、训练、我的，外加一个设置页。" },
           { title: "接下来练什么", body: "今天页最上面是接下来最该做的一件事；“换一件事”换下一件。" },
           { title: "自己的失着", body: "你走出的 ? 和 ?? 进复习，按 1、3、7、21 天再问。" },
           { title: "残局与名局", body: "90 个残局对满强度 Stockfish；40 局名局猜着。" },
           { title: "你的开局书", body: "每方最多 5,000 条线，可从内置开局生成。" },
-          { title: "像人的对手", body: "中间七档是 Maia，用 Lichess 真人对局训练。" },
+          { title: "像人的对手", body: "下面十二档是 Maia，用 Lichess 真人对局训练。" },
         ],
       },
       {
@@ -294,15 +297,15 @@ export default defineProduct({
           },
           {
             title: "对面是谁在下？",
-            body: "一条 21 档的阶梯，每档有名字、头像和等级分。扎实（1191）到高级−（1908）这七档是 Maia：用 Lichess 真人对局训练的网络，按这个分段的人会怎么走来选着。其余各档是 Stockfish 19，阶梯下端故意削弱，上端满强度。Maia 在这台电脑上运行，网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
+            body: "一条 21 档的阶梯，每档有名字、头像和等级分。新手（532）到高级−（1909）这十二档是 Maia：用 Lichess 真人对局训练的网络，按这个分段的人会怎么走来选着。其余九档是 Stockfish 19，限制强度，最上面满强度。Maia 在这台电脑上运行，网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
           },
           {
             title: "旧版本的存档能带过来吗？",
-            body: "9.0 及以后的可以：9.0 到 18.0 用同一种存档格式，每一版都读得了上一版的存档，18.0 读得了 17.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
+            body: "9.0 及以后的可以：9.0 到 19.0 用同一种存档格式，每一版都读得了上一版的存档，19.0 读得了 18.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
           },
           {
             title: "PGN 能做什么？",
-            body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用棋谱页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
           },
           {
             title: "能看到自己的进步吗？",
