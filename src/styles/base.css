@@ -277,6 +277,32 @@
     filter: var(--shot-dim);
   }
 
+  /* A showcase with a dark capture (Showcase.dark) shows the one that matches
+   the page; the other stays undisplayed, and lazy, so it is never fetched. */
+  .shot img[data-appearance="dark"] {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .shot img[data-appearance="light"] {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .shot img[data-appearance="dark"] {
+    display: block;
+    filter: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .shot img[data-appearance="light"] {
+      display: none;
+    }
+
+    :root:not([data-theme="light"]) .shot img[data-appearance="dark"] {
+      display: block;
+      filter: none;
+    }
+  }
+
   .shot-caption {
     max-width: 60ch;
     margin: 16px auto 0;

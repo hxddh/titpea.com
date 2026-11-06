@@ -58,7 +58,7 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 8.0’s own interface, rendered by its UI tests with their four sample games.",
+      caption: "Goban Studio 8.0; the games and progress shown are samples.",
       asOf: "v8.0.0",
     },
     showcases: [
@@ -70,7 +70,6 @@ export default defineProduct({
         asOf: "v8.0.0",
         title: "Problems with proved answers.",
         body: "543 built-in problems, each answer proved by the app’s solver; import your own SGF collections too.",
-        caption: "Goban Studio 8.0’s own interface, rendered by its UI tests.",
       },
     ],
     sections: [
@@ -165,7 +164,7 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 8.0 自己的界面，由它的界面测试用四盘示例对局渲染。",
+      caption: "Goban Studio 8.0；图中的对局和进度为示例。",
       asOf: "v8.0.0",
     },
     showcases: [
@@ -177,7 +176,6 @@ export default defineProduct({
         asOf: "v8.0.0",
         title: "每道题的答案都经过证明",
         body: "内置 543 道题，答案都由应用的求解器证明；也能导入自己的 SGF 题集。",
-        caption: "Goban Studio 8.0 自己的界面，由它的界面测试渲染。",
       },
     ],
     sections: [

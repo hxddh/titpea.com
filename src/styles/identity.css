@@ -64,19 +64,18 @@
     letter-spacing: -0.024em;
   }
 
-  /* Home: the title's last line in the accent italic. ::first-line keeps the
-   one-string title (no markup) and wraps honestly at any width. */
+  /* Home: the title's last line, lighter and in the accent ink. ::first-line
+   keeps the one-string title (no markup) and wraps honestly at any width.
+   Upright, so the page needs no italic font file. */
   html:lang(en) .home-hero h1 {
-    /* Two lines on wide screens, so the italic line exists there too. */
+    /* Two lines on wide screens, so the second line exists there too. */
     max-width: 9.5em;
     color: var(--display-accent);
-    font-style: italic;
-    font-weight: 440;
+    font-weight: 380;
   }
 
   html:lang(en) .home-hero h1::first-line {
     color: var(--ink);
-    font-style: normal;
     font-weight: 560;
   }
 

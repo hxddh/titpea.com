@@ -2,7 +2,7 @@
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
 import { featuredSrc, lines, type Line, type Locale } from "../../content/schema";
-import { otherLocale, pathFor } from "./shared";
+import { otherLocale, pathFor, releaseTags } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { type CatalogItem, catalogItem } from "./catalog";
 
@@ -22,6 +22,12 @@ export type HomePageModel = {
     lead: string;
     browse: string;
     about: { label: string; href: string };
+    /** The three newest GitHub releases, newest first, and a link to all of them. */
+    latest: {
+      label: string;
+      items: Array<{ name: string; version: string; href: string }>;
+      all: { label: string; href: string };
+    };
   };
   /** The first, larger cards of the catalog (not a section of their own). */
   featured: {
@@ -80,6 +86,19 @@ export function homePage(locale: Locale): HomePageModel {
       lead: copy.homeLead,
       browse: copy.browseTools.replace("{count}", String(products.length)),
       about: { label: copy.aboutMore, href: pathFor(locale, "about") },
+      latest: {
+        label: copy.homeLatest,
+        items: products
+          .filter((product) => releaseTags[product.slug]?.published)
+          .sort((a, b) => releaseTags[b.slug].published!.localeCompare(releaseTags[a.slug].published!))
+          .slice(0, 3)
+          .map((product) => ({
+            name: product[locale].title,
+            version: releaseTags[product.slug].version,
+            href: pathFor(locale, product.slug),
+          })),
+        all: { label: copy.homeAllReleases, href: pathFor(locale, "releases") },
+      },
     },
     featured: {
       title: copy.featuredTitle,

@@ -11,7 +11,7 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  {/* One calm column: the claim, the owner's own words, then how to reach them. */}
+  {/* One calm column: the claim, the owner's own words, how to reach them, then the tools themselves. */}
   <section class="about-hero">
     <div class="wash" aria-hidden="true"></div>
     <div class="shell narrow about-copy">
@@ -40,6 +40,16 @@ const { model } = Astro.props;
           </a>
         ))}
       </p>
+      <ul class="about-tools" aria-label={model.tools.label}>
+        {model.tools.items.map((item) => (
+          <li>
+            <a href={item.href}>
+              <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
+              <span>{item.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
       {model.analytics && <p class="about-analytics">{model.analytics}</p>}
     </div>
   </section>

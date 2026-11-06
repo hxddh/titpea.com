@@ -30,6 +30,19 @@ const { model } = Astro.props;
           {model.hero.about.label}
         </a>
       </div>
+      {model.hero.latest.items.length > 0 && (
+        <p class="home-latest" data-visual-live>
+          <span class="home-latest-label">{model.hero.latest.label}</span>
+          {model.hero.latest.items.map((item) => (
+            <a href={item.href}>
+              {item.name} <span class="home-latest-version">{item.version}</span>
+            </a>
+          ))}
+          <a class="home-latest-all" href={model.hero.latest.all.href}>
+            {model.hero.latest.all.label} ›
+          </a>
+        </p>
+      )}
     </div>
   </section>
 

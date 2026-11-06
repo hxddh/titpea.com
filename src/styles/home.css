@@ -12,6 +12,38 @@
     max-width: 30em;
   }
 
+  /* Under the actions: the newest releases, one quiet line, so a visitor
+   sees the shelf is alive. */
+  .home-latest {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px 18px;
+    margin: 28px auto 0;
+    color: var(--muted);
+    font-size: var(--text-meta);
+  }
+
+  .home-latest a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    gap: 6px;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+
+  .home-latest a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .home-latest-version {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
   /* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
   .title-part {
     display: inline-block;
