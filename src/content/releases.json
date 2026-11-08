@@ -165,40 +165,44 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v12.0.0",
-    "published": "2026-11-07",
+    "version": "v13.0.0",
+    "published": "2026-11-08",
     "history": [
+      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
       { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" },
       { "version": "v11.0.0", "published": "2026-11-07", "title": "Goban Studio v11.0.0" },
       { "version": "v10.0.0", "published": "2026-11-07", "title": "Goban Studio v10.0.0" },
-      { "version": "v9.0.0", "published": "2026-11-06", "title": "Goban Studio v9.0.0" },
-      { "version": "v8.0.0", "published": "2026-11-05", "title": "Goban Studio v8.0.0" }
+      { "version": "v9.0.0", "published": "2026-11-06", "title": "Goban Studio v9.0.0" }
     ],
     "notes": {
-      "summary": "v12 undoes a step backwards",
+      "summary": "v13 keeps the four spaces of v12 and makes the app something you can rely",
       "items": [
-        "The 81 problems added in v11",
-        "The classics' engine rows",
-        "The builds are not code-signed (no certificates yet)"
+        "A game in progress is never thrown away",
+        "A file that can't be read is never written over",
+        "Restoring a backup"
       ],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v12.0.0"
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v13.0.0"
     }
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v19.0.0",
-    "published": "2026-11-06",
+    "version": "v19.1.0",
+    "published": "2026-11-08",
     "history": [
+      { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
       { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" },
       { "version": "v18.0.0", "published": "2026-11-05", "title": "v18.0.0" },
       { "version": "v17.0.0", "published": "2026-10-31", "title": "v17.0.0" },
-      { "version": "v16.0.0", "published": "2026-10-31", "title": "v16.0.0" },
-      { "version": "v15.0.0", "published": "2026-10-30", "title": "v15.0.0" }
+      { "version": "v16.0.0", "published": "2026-10-31", "title": "v16.0.0" }
     ],
     "notes": {
-      "summary": "这一版读 18.0 的存档，装上就接着用",
-      "items": ["再试一次", "低档对手像人", "棋子与棋盘"],
-      "url": "https://github.com/hxddh/chessboard/releases/tag/v19.0.0"
+      "summary": "这一版读 19.0 的存档，装上就接着用",
+      "items": [
+        "出错留痕",
+        "macOS 安装包仍然只有临时签名",
+        "下一个大版本是 21.0（GitHub 上的 v20.0.0 已回退，号不再用）"
+      ],
+      "url": "https://github.com/hxddh/chessboard/releases/tag/v19.1.0"
     }
   },
   "world-machine": {
