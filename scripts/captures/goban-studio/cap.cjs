@@ -61,7 +61,11 @@ module.exports = async function run(steps) {
   await page.keyboard.press("Control+3");
   await page.click(".placement-offer .link");
   await page.waitForSelector(".learn-path .path-row");
-  await page.waitForFunction(() => JSON.parse(localStorage.getItem("goban9:settings.json") || "{}").onboarded === true && JSON.parse(localStorage.getItem("goban9:profile.json") || "{}").placement?.skipped === true);
+  await page.waitForFunction(
+    () =>
+      JSON.parse(localStorage.getItem("goban9:settings.json") || "{}").onboarded === true &&
+      JSON.parse(localStorage.getItem("goban9:profile.json") || "{}").placement?.skipped === true,
+  );
   await page.evaluate(() => document.fonts.ready);
   try {
     await steps({
