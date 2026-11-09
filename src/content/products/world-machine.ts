@@ -4,18 +4,6 @@ export default defineProduct({
   slug: "world-machine",
   line: "games",
   type: "experiment",
-  featured: {
-    order: 1,
-    image: {
-      src: "/assets/world-machine-town.webp",
-      width: 2200,
-      height: 1696,
-      alt: {
-        en: "World Machine on day 1,080 of a Tiny Society town at dusk: the whole town up the hill, lit windows, a lighthouse, beach huts and an orchard, and Sofia asking how to open the new tea rooms on the pier. Captured from the app running in its Linux preview.",
-        zh: "World Machine 里 Tiny Society 小镇的第 1080 天黄昏：整座小镇沿山坡排开，窗里亮着灯，有灯塔、海滩小屋和果园，Sofia 在问码头上新茶室怎么开张。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-      },
-    },
-  },
   repo: "hxddh/world-machine",
   icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",

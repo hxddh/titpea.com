@@ -2,10 +2,10 @@ import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
-// and v8.0.0.md, docs/plan.md and docs/strength.md at v8.0.0; macOS 11 from build.zig. The
+// to v13.0.0.md, docs/plan.md and docs/strength.md at v13.0.0; macOS 11 from build.zig. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
-// with the four analysed sample games its v7 plan test seeds. The browser
+// with four analysed sample games seeded as its learn-focus test does. The browser
 // harness has no KataGo, so no game or review is shown until a capture of the
 // packaged app exists.
 export default defineProduct({
@@ -54,22 +54,22 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-en.webp",
-        alt: "Goban Studio’s Today screen: a suggested 19×19 game, today’s five problems, and this week’s focus on cutting, chosen because about 20 points were lost there in the last four games.",
+        alt: "Goban Studio’s Today screen: a suggested 9×9 even game against about 23 kyu that works on this week’s focus, cutting, and today’s practice, 0 of 6, starting with The board and the stones.",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 8.0; the games and progress shown are samples.",
-      asOf: "v8.0.0",
+      caption: "Goban Studio 13.0; the games and progress shown are samples.",
+      asOf: "v13.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-en.webp",
-        alt: "A Goban Studio problem from today’s five: Black to play and capture the marked stones, with Hint, Show answer, and the problem’s difficulty and theme beside the board.",
+        alt: "A Goban Studio problem, the second of today’s six practice items, chosen for this week’s focus, cutting: Black to play and capture the marked stone, with Hint, Show answer, the difficulty and the theme beside the board.",
         width: 2880,
         height: 1800,
-        asOf: "v8.0.0",
+        asOf: "v13.0.0",
         title: "Problems with proved answers.",
-        body: "543 built-in problems, each answer proved by the app’s solver; import your own SGF collections too.",
+        body: "543 built-in problems, each answer proved by the app’s solver; old ones come back turned, mirrored or recoloured.",
       },
     ],
     sections: [
@@ -81,10 +81,10 @@ export default defineProduct({
           { title: "A KataGo opponent", body: "About 30 kyu to 7 dan; handicap suggested from your level." },
           {
             title: "A review of every game",
-            body: "Win rate, score lead, and your three costliest moves with better lines.",
+            body: "Up to three key moments, each one to try again from the position.",
           },
           { title: "This week’s focus", body: "One or two themes from your games and problems, with the reason." },
-          { title: "Lessons from the first stone", body: "18 units and 82 lessons, from beginner to about 1 dan." },
+          { title: "Lessons from the first stone", body: "23 units and 104 lessons, from beginner to about 1 dan." },
           {
             title: "Boards and rules",
             body: "9×9, 13×13, 19×19; Japanese, Chinese or Korean rules; up to nine handicap stones.",
@@ -98,7 +98,7 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "KataGo and its network ship with the app and run on your computer; two larger networks download only if you choose them.",
-          "Games, progress, level and settings stay in the app’s storage on this computer; Back up saves them all to one file.",
+          "Games, progress and settings stay on this computer; Export backup saves them to one file, and a restore can be undone.",
           "No account or telemetry. Check for updates contacts GitHub when you ask; the weekly check is off until you turn it on.",
         ],
       },
@@ -117,8 +117,8 @@ export default defineProduct({
           },
           {
             title: "How strong is the computer?",
-            body: "From about 30 kyu to about 7 dan, on a standard or a human-style ladder. The labels are approximate: they are calibrated against a model, not against people.",
-            asOf: "v7.0.0",
+            body: "From about 30 kyu to about 7 dan: you pick a rank and the app picks the closest KataGo setting; without the optional networks it stops at about 4 dan. The ranks are approximate: they are calibrated against a model, not against people.",
+            asOf: "v13.0.0",
           },
           {
             title: "I imported SGF games before 7.0. Are they right?",
@@ -160,22 +160,22 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-zh.webp",
-        alt: "Goban Studio 的“今天”页面：推荐一盘 19 路对局、今天的五道题，以及本周重点“切断”：最近 4 局在这里损失约 20 目。",
+        alt: "Goban Studio 的“今天”页面：推荐一盘 9 路分先、对约 23 级的对局，练本周重点“切断”；今天的练习 0/6，第一项是“棋盘和棋子”。",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 8.0；图中的对局和进度为示例。",
-      asOf: "v8.0.0",
+      caption: "Goban Studio 13.0；图中的对局和进度为示例。",
+      asOf: "v13.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-zh.webp",
-        alt: "Goban Studio 每日五题中的一道：黑先，吃掉标记的白子，棋盘旁有提示、看答案，以及难度和题型。",
+        alt: "Goban Studio 今天练习 6 项中的第 2 项，来自本周重点“切断”：黑先，吃掉标记的棋子，棋盘旁有提示、看答案、难度和题型。",
         width: 2880,
         height: 1800,
-        asOf: "v8.0.0",
+        asOf: "v13.0.0",
         title: "每道题的答案都经过证明",
-        body: "内置 543 道题，答案都由应用的求解器证明；也能导入自己的 SGF 题集。",
+        body: "内置 543 道题，答案都由应用的求解器证明；旧题会旋转、镜像或换色再出现。",
       },
     ],
     sections: [
@@ -185,9 +185,9 @@ export default defineProduct({
         label: "从第一颗子到复盘",
         items: [
           { title: "KataGo 陪你下", body: "约 30 级到 7 段；让子数按你的棋力建议。" },
-          { title: "每一局都复盘", body: "胜率、目差，以及代价最大的三手和更好的下法。" },
+          { title: "每一局都复盘", body: "最多三个关键时刻，每个都能从那个局面再试一次。" },
           { title: "本周重点", body: "从你的对局和做题里挑一两个主题，并说明原因。" },
-          { title: "从第一颗子学起", body: "18 个单元、82 课，从入门到约 1 段。" },
+          { title: "从第一颗子学起", body: "23 个单元、104 课，从入门到约 1 段。" },
           { title: "棋盘和规则", body: "9、13、19 路；日本、中国或韩国规则；最多让九子。" },
           { title: "定式和布局库", body: "3,874 个局面由 KataGo 评估，离线可用。" },
         ],
@@ -198,7 +198,7 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "KataGo 和它的网络随应用一起安装，在你的电脑上运行；两个更大的网络只在你选择时下载。",
-          "对局、进度、棋力和设置都存在这台电脑上应用自己的存储里；“备份”把它们存成一个文件。",
+          "对局、进度、棋力和设置都存在这台电脑上应用自己的存储里；“导出备份”把它们存成一个文件，恢复后也能撤销。",
           "不要账号，没有遥测。“检查更新”只在你点它时访问 GitHub；每周自动检查默认关闭。",
         ],
       },
@@ -217,8 +217,8 @@ export default defineProduct({
           },
           {
             title: "电脑有多强？",
-            body: "约 30 级到约 7 段，可选标准或仿人棋风的阶梯。棋力标签是近似值：是对照模型校准的，不是对照真人。",
-            asOf: "v7.0.0",
+            body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置；不装可选网络时最高约 4 段。段位是近似值：是对照模型校准的，不是对照真人。",
+            asOf: "v13.0.0",
           },
           {
             title: "7.0 之前导入的 SGF 对吗？",

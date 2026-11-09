@@ -170,7 +170,7 @@ export default defineProduct({
           },
           {
             title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: versions 9.0 to 19.0 share one save format, and each release reads the saves of the one before it, so 19.0 reads 18.0 saves. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            body: "From 9.0 or later, yes: every version since keeps one save format and reads the saves of the release before it. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
           },
           {
             title: "What can I do with a PGN?",
@@ -301,7 +301,7 @@ export default defineProduct({
           },
           {
             title: "旧版本的存档能带过来吗？",
-            body: "9.0 及以后的可以：9.0 到 19.0 用同一种存档格式，每一版都读得了上一版的存档，19.0 读得了 18.0 的。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
+            body: "9.0 及以后的可以：此后每一版都沿用同一种存档格式，都读得了上一版的存档。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
           },
           {
             title: "PGN 能做什么？",
