@@ -30,7 +30,7 @@ export default defineProduct({
   og: "/assets/og-sonde.png",
   schema: {
     category: "DeveloperApplication",
-    os: "macOS, Linux, Windows",
+    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
