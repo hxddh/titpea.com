@@ -57,6 +57,11 @@ module.exports = async function run(steps) {
   await page.click(".ob-card .btn.primary");
   await page.click(".choice >> nth=1");
   await page.waitForSelector("canvas.board, .page");
+  // v10+: "Not now" on the placement offer, as scripts/ui-test.mjs onboard() does.
+  await page.keyboard.press("Control+3");
+  await page.click(".placement-offer .link");
+  await page.waitForSelector(".learn-path .path-row");
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem("goban9:settings.json") || "{}").onboarded === true && JSON.parse(localStorage.getItem("goban9:profile.json") || "{}").placement?.skipped === true);
   await page.evaluate(() => document.fonts.ready);
   try {
     await steps({

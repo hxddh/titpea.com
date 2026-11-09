@@ -4,11 +4,31 @@
     "version": "v0.39.0",
     "published": "2026-09-30",
     "history": [
-      { "version": "v0.39.0", "published": "2026-09-30", "title": "v0.39.0" },
-      { "version": "v0.38.0", "published": "2026-09-30", "title": "v0.38.0" },
-      { "version": "v0.37.0", "published": "2026-09-29", "title": "v0.37.0" },
-      { "version": "v0.36.0", "published": "2026-09-29", "title": "v0.36.0" },
-      { "version": "v0.35.1", "published": "2026-09-29", "title": "v0.35.1" }
+      {
+        "version": "v0.39.0",
+        "published": "2026-09-30",
+        "title": "v0.39.0"
+      },
+      {
+        "version": "v0.38.0",
+        "published": "2026-09-30",
+        "title": "v0.38.0"
+      },
+      {
+        "version": "v0.37.0",
+        "published": "2026-09-29",
+        "title": "v0.37.0"
+      },
+      {
+        "version": "v0.36.0",
+        "published": "2026-09-29",
+        "title": "v0.36.0"
+      },
+      {
+        "version": "v0.35.1",
+        "published": "2026-09-29",
+        "title": "v0.35.1"
+      }
     ],
     "notes": {
       "summary": "This release removes what 0.38 deprecated, makes the `--agent` / JSON",
@@ -25,11 +45,31 @@
     "version": "v40.0.0",
     "published": "2026-10-30",
     "history": [
-      { "version": "v40.0.0", "published": "2026-10-30", "title": "v40.0.0" },
-      { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" },
-      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" },
-      { "version": "v37.0.0", "published": "2026-10-29", "title": "v37.0.0" },
-      { "version": "v36.0.0", "published": "2026-10-29", "title": "v36.0.0" }
+      {
+        "version": "v40.0.0",
+        "published": "2026-10-30",
+        "title": "v40.0.0"
+      },
+      {
+        "version": "v39.0.0",
+        "published": "2026-10-29",
+        "title": "v39.0.0"
+      },
+      {
+        "version": "v38.0.0",
+        "published": "2026-10-29",
+        "title": "v38.0.0"
+      },
+      {
+        "version": "v37.0.0",
+        "published": "2026-10-29",
+        "title": "v37.0.0"
+      },
+      {
+        "version": "v36.0.0",
+        "published": "2026-10-29",
+        "title": "v36.0.0"
+      }
     ],
     "notes": {
       "summary": "No model credentials were available; this report proves the harness runs, not answer qual…",
@@ -37,16 +77,48 @@
       "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v40.0.0"
     }
   },
+  "sonde": {
+    "repo": "hxddh/sonde",
+    "version": "v12.0.0",
+    "published": "2026-11-09",
+    "history": [
+      {
+        "version": "v12.0.0",
+        "published": "2026-11-09",
+        "title": ""
+      }
+    ]
+  },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
     "version": "v1.4.1",
     "published": "2026-09-29",
     "history": [
-      { "version": "v1.4.1", "published": "2026-09-29", "title": "v1.4.1" },
-      { "version": "v1.4.0", "published": "2026-09-29", "title": "v1.4.0" },
-      { "version": "v1.3.0", "published": "2026-09-29", "title": "v1.3.0" },
-      { "version": "v1.2.2", "published": "2026-09-29", "title": "v1.2.2" },
-      { "version": "v1.2.1", "published": "2026-08-04", "title": "v1.2.1" }
+      {
+        "version": "v1.4.1",
+        "published": "2026-09-29",
+        "title": "v1.4.1"
+      },
+      {
+        "version": "v1.4.0",
+        "published": "2026-09-29",
+        "title": "v1.4.0"
+      },
+      {
+        "version": "v1.3.0",
+        "published": "2026-09-29",
+        "title": "v1.3.0"
+      },
+      {
+        "version": "v1.2.2",
+        "published": "2026-09-29",
+        "title": "v1.2.2"
+      },
+      {
+        "version": "v1.2.1",
+        "published": "2026-08-04",
+        "title": "v1.2.1"
+      }
     ]
   },
   "celagent": {
@@ -54,11 +126,31 @@
     "version": "v0.4.3",
     "published": "2026-08-26",
     "history": [
-      { "version": "v0.4.3", "published": "2026-08-26", "title": "v0.4.3" },
-      { "version": "v0.4.2", "published": "2026-08-21", "title": "v0.4.2" },
-      { "version": "v0.4.1", "published": "2026-08-19", "title": "v0.4.1" },
-      { "version": "v0.4.0", "published": "2026-08-19", "title": "v0.4.0" },
-      { "version": "v0.3.7", "published": "2026-08-19", "title": "v0.3.7" }
+      {
+        "version": "v0.4.3",
+        "published": "2026-08-26",
+        "title": "v0.4.3"
+      },
+      {
+        "version": "v0.4.2",
+        "published": "2026-08-21",
+        "title": "v0.4.2"
+      },
+      {
+        "version": "v0.4.1",
+        "published": "2026-08-19",
+        "title": "v0.4.1"
+      },
+      {
+        "version": "v0.4.0",
+        "published": "2026-08-19",
+        "title": "v0.4.0"
+      },
+      {
+        "version": "v0.3.7",
+        "published": "2026-08-19",
+        "title": "v0.3.7"
+      }
     ],
     "notes": {
       "summary": "Full Changelog: https://github.com/hxddh/celagent/compare/v0.4.2...v0.4.3",
@@ -71,11 +163,31 @@
     "version": "v24.0.0",
     "published": "2026-10-18",
     "history": [
-      { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
-      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" },
-      { "version": "v21.1.2", "published": "2026-10-15", "title": "v21.1.2" },
-      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" },
-      { "version": "v21.1.0", "published": "2026-10-15", "title": "v21.1.0" }
+      {
+        "version": "v24.0.0",
+        "published": "2026-10-18",
+        "title": "v24.0.0"
+      },
+      {
+        "version": "v23.0.0",
+        "published": "2026-10-15",
+        "title": "v23.0.0"
+      },
+      {
+        "version": "v21.1.2",
+        "published": "2026-10-15",
+        "title": "v21.1.2"
+      },
+      {
+        "version": "v21.1.1",
+        "published": "2026-10-15",
+        "title": "v21.1.1"
+      },
+      {
+        "version": "v21.1.0",
+        "published": "2026-10-15",
+        "title": "v21.1.0"
+      }
     ],
     "notes": {
       "summary": "v24, \"answers that hold, a first run that does not break\" (…",
@@ -92,11 +204,31 @@
     "version": "v33.0.0",
     "published": "2026-10-21",
     "history": [
-      { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
-      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" },
-      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" },
-      { "version": "v30.0.0", "published": "2026-10-14", "title": "Pulse 30.0.0" },
-      { "version": "v29.0.1", "published": "2026-10-07", "title": "Pulse 29.0.1" }
+      {
+        "version": "v33.0.0",
+        "published": "2026-10-21",
+        "title": "Pulse 33.0.0"
+      },
+      {
+        "version": "v32.0.0",
+        "published": "2026-10-18",
+        "title": "Pulse 32.0.0"
+      },
+      {
+        "version": "v31.0.0",
+        "published": "2026-10-17",
+        "title": "Pulse 31.0.0"
+      },
+      {
+        "version": "v30.0.0",
+        "published": "2026-10-14",
+        "title": "Pulse 30.0.0"
+      },
+      {
+        "version": "v29.0.1",
+        "published": "2026-10-07",
+        "title": "Pulse 29.0.1"
+      }
     ],
     "notes": {
       "summary": "一次把「会话里发生了什么」讲清楚的版本：工具、Skill、MCP、子代理、改过的文件、计划进度，Agent 报了的都看得见",
@@ -109,11 +241,31 @@
     "version": "v5.2.0",
     "published": "2026-11-05",
     "history": [
-      { "version": "v5.2.0", "published": "2026-11-05", "title": "Readout 5.2.0" },
-      { "version": "v5.1.0", "published": "2026-11-04", "title": "Readout 5.1.0" },
-      { "version": "v5.0.0", "published": "2026-10-31", "title": "Readout 5.0.0" },
-      { "version": "v4.2.0", "published": "2026-10-30", "title": "Readout 4.2.0" },
-      { "version": "v4.1.0", "published": "2026-10-30", "title": "Readout 4.1.0" }
+      {
+        "version": "v5.2.0",
+        "published": "2026-11-05",
+        "title": "Readout 5.2.0"
+      },
+      {
+        "version": "v5.1.0",
+        "published": "2026-11-04",
+        "title": "Readout 5.1.0"
+      },
+      {
+        "version": "v5.0.0",
+        "published": "2026-10-31",
+        "title": "Readout 5.0.0"
+      },
+      {
+        "version": "v4.2.0",
+        "published": "2026-10-30",
+        "title": "Readout 4.2.0"
+      },
+      {
+        "version": "v4.1.0",
+        "published": "2026-10-30",
+        "title": "Readout 4.1.0"
+      }
     ],
     "notes": {
       "summary": "Readout 5.2 takes away the one setup step you never needed",
@@ -126,11 +278,31 @@
     "version": "v0.26.3",
     "published": "2026-10-07",
     "history": [
-      { "version": "v0.26.3", "published": "2026-10-07", "title": "Agent Radar v0.26.3" },
-      { "version": "v0.26.2", "published": "2026-10-07", "title": "Agent Radar v0.26.2" },
-      { "version": "v0.26.1", "published": "2026-10-02", "title": "Agent Radar v0.26.1" },
-      { "version": "v0.26.0", "published": "2026-09-30", "title": "Agent Radar v0.26.0" },
-      { "version": "v0.25.1", "published": "2026-09-30", "title": "Agent Radar v0.25.1" }
+      {
+        "version": "v0.26.3",
+        "published": "2026-10-07",
+        "title": "Agent Radar v0.26.3"
+      },
+      {
+        "version": "v0.26.2",
+        "published": "2026-10-07",
+        "title": "Agent Radar v0.26.2"
+      },
+      {
+        "version": "v0.26.1",
+        "published": "2026-10-02",
+        "title": "Agent Radar v0.26.1"
+      },
+      {
+        "version": "v0.26.0",
+        "published": "2026-09-30",
+        "title": "Agent Radar v0.26.0"
+      },
+      {
+        "version": "v0.25.1",
+        "published": "2026-09-30",
+        "title": "Agent Radar v0.25.1"
+      }
     ],
     "notes": {
       "summary": "Release date: 2026-10-07",
@@ -147,11 +319,31 @@
     "version": "v3.2.0",
     "published": "2026-10-18",
     "history": [
-      { "version": "v3.2.0", "published": "2026-10-18", "title": "v3.2.0" },
-      { "version": "v3.1.0", "published": "2026-10-17", "title": "v3.1.0" },
-      { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" },
-      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" },
-      { "version": "v2.0.0", "published": "2026-10-10", "title": "v2.0.0" }
+      {
+        "version": "v3.2.0",
+        "published": "2026-10-18",
+        "title": "v3.2.0"
+      },
+      {
+        "version": "v3.1.0",
+        "published": "2026-10-17",
+        "title": "v3.1.0"
+      },
+      {
+        "version": "v3.0.0",
+        "published": "2026-10-14",
+        "title": "v3.0.0"
+      },
+      {
+        "version": "v2.1.0",
+        "published": "2026-10-10",
+        "title": "v2.1.0"
+      },
+      {
+        "version": "v2.0.0",
+        "published": "2026-10-10",
+        "title": "v2.0.0"
+      }
     ],
     "notes": {
       "summary": "照 `docs/REVIEW-v3.1.md` 做，只动对弈本身",
@@ -168,11 +360,31 @@
     "version": "v13.0.0",
     "published": "2026-11-08",
     "history": [
-      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
-      { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" },
-      { "version": "v11.0.0", "published": "2026-11-07", "title": "Goban Studio v11.0.0" },
-      { "version": "v10.0.0", "published": "2026-11-07", "title": "Goban Studio v10.0.0" },
-      { "version": "v9.0.0", "published": "2026-11-06", "title": "Goban Studio v9.0.0" }
+      {
+        "version": "v13.0.0",
+        "published": "2026-11-08",
+        "title": "Goban Studio v13.0.0"
+      },
+      {
+        "version": "v12.0.0",
+        "published": "2026-11-07",
+        "title": "Goban Studio v12.0.0"
+      },
+      {
+        "version": "v11.0.0",
+        "published": "2026-11-07",
+        "title": "Goban Studio v11.0.0"
+      },
+      {
+        "version": "v10.0.0",
+        "published": "2026-11-07",
+        "title": "Goban Studio v10.0.0"
+      },
+      {
+        "version": "v9.0.0",
+        "published": "2026-11-06",
+        "title": "Goban Studio v9.0.0"
+      }
     ],
     "notes": {
       "summary": "v13 keeps the four spaces of v12 and makes the app something you can rely",
@@ -189,11 +401,31 @@
     "version": "v19.1.0",
     "published": "2026-11-08",
     "history": [
-      { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
-      { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" },
-      { "version": "v18.0.0", "published": "2026-11-05", "title": "v18.0.0" },
-      { "version": "v17.0.0", "published": "2026-10-31", "title": "v17.0.0" },
-      { "version": "v16.0.0", "published": "2026-10-31", "title": "v16.0.0" }
+      {
+        "version": "v19.1.0",
+        "published": "2026-11-08",
+        "title": "v19.1.0"
+      },
+      {
+        "version": "v19.0.0",
+        "published": "2026-11-06",
+        "title": "v19.0.0"
+      },
+      {
+        "version": "v18.0.0",
+        "published": "2026-11-05",
+        "title": "v18.0.0"
+      },
+      {
+        "version": "v17.0.0",
+        "published": "2026-10-31",
+        "title": "v17.0.0"
+      },
+      {
+        "version": "v16.0.0",
+        "published": "2026-10-31",
+        "title": "v16.0.0"
+      }
     ],
     "notes": {
       "summary": "这一版读 19.0 的存档，装上就接着用",
@@ -210,12 +442,36 @@
     "version": "v0.30.0",
     "published": "2026-10-16",
     "history": [
-      { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
-      { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
-      { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
-      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" },
-      { "version": "v0.26.1", "published": "2026-10-01", "title": "World Machine v0.26.1" }
+      {
+        "version": "v0.30.0",
+        "published": "2026-10-16",
+        "title": "World Machine v0.30.0"
+      },
+      {
+        "version": "v0.29.0",
+        "published": "2026-10-10",
+        "title": "World Machine v0.29.0"
+      },
+      {
+        "version": "v0.28.0",
+        "published": "2026-10-08",
+        "title": "World Machine v0.28.0"
+      },
+      {
+        "version": "v0.27.0",
+        "published": "2026-10-07",
+        "title": "World Machine v0.27.0"
+      },
+      {
+        "version": "v0.26.1",
+        "published": "2026-10-01",
+        "title": "World Machine v0.26.1"
+      }
     ],
-    "notes": { "summary": "1", "items": [], "url": "https://github.com/hxddh/world-machine/releases/tag/v0.30.0" }
+    "notes": {
+      "summary": "1",
+      "items": [],
+      "url": "https://github.com/hxddh/world-machine/releases/tag/v0.30.0"
+    }
   }
 }

@@ -2,6 +2,7 @@
 import type { Product } from "../schema";
 import s3TurboList from "./s3-turbo-list";
 import storageAgentWorkbench from "./storage-agent-workbench";
+import sonde from "./sonde";
 import storageops from "./storageops";
 import httpmon from "./httpmon";
 import celagent from "./celagent";
@@ -22,6 +23,7 @@ import bilingual from "./bilingual";
 export const products: Product[] = [
   s3TurboList,
   storageAgentWorkbench,
+  sonde,
   storageops,
   httpmon,
   celagent,

@@ -174,6 +174,8 @@
     --ink-readout: #2a64cc;
     --tint-s3-turbo-list: #f89848;
     --ink-s3-turbo-list: #ad5207;
+    --tint-sonde: #2357be;
+    --ink-sonde: #1e54b0;
     --tint-storage-agent-workbench: #5878e8;
     --ink-storage-agent-workbench: #3b60e4;
     --tint-storageops: #189888;
@@ -231,6 +233,8 @@
     --ink-readout: #6fa4ff;
     --tint-s3-turbo-list: #f5984b;
     --ink-s3-turbo-list: #f89848;
+    --tint-sonde: #2357be;
+    --ink-sonde: #6f9cf2;
     --tint-storage-agent-workbench: #5878e8;
     --ink-storage-agent-workbench: #6583ea;
     --tint-storageops: #39e0cb;
@@ -313,6 +317,8 @@
       --ink-readout: #6fa4ff;
       --tint-s3-turbo-list: #f5984b;
       --ink-s3-turbo-list: #f89848;
+      --tint-sonde: #2357be;
+      --ink-sonde: #6f9cf2;
       --tint-storage-agent-workbench: #5878e8;
       --ink-storage-agent-workbench: #6583ea;
       --tint-storageops: #39e0cb;
@@ -422,6 +428,10 @@
   body[data-product="s3-turbo-list"] {
     --product-tint: var(--tint-s3-turbo-list);
     --product-ink: var(--ink-s3-turbo-list);
+  }
+  body[data-product="sonde"] {
+    --product-tint: var(--tint-sonde);
+    --product-ink: var(--ink-sonde);
   }
   body[data-product="storage-agent-workbench"] {
     --product-tint: var(--tint-storage-agent-workbench);
