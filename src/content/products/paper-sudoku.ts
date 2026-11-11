@@ -29,7 +29,7 @@ export default defineProduct({
       "A Sudoku notebook for Android: one page a day, a practice stack that grows harder as you learn, and a Coach in the margin. No network.",
     eyebrow: "Sudoku notebook for Android",
     headline: "One page a day.",
-    lead: "Today’s page on top. A Coach in the margin. No network.",
+    lead: "A Sudoku notebook that opens on today’s page. If you get stuck, a Coach writes hints in the margin. It has no network access.",
     catalog: {
       role: "",
       text: "A Sudoku notebook for Android: one page a day, a Coach in the margin.",
@@ -45,7 +45,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "No INTERNET permission: no ads, accounts, analytics or server.",
+      networkNote: "It does not ask Android for internet access: no ads, accounts, analytics or server.",
       stays: "Games, results and settings in the app’s local database on your phone.",
       policy: {
         label: "Privacy policy",
@@ -73,7 +73,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
         title: "The Coach writes in the margin.",
-        body: "Look, then Why, and the answer only if you ask.",
+        body: "First where to look, then why, and the answer only if you ask for it.",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -91,7 +91,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
         title: "A handbook that teaches.",
-        body: "Every technique with a worked example from a real page, drawn the way the Coach draws it, and how well you know it: seen, practised, known.",
+        body: "Each technique has a worked example from a real page, drawn the way the Coach draws it, and shows how well you know it: seen, practised or known.",
         asOf: "v14.0.0-sideload",
       },
     ],
@@ -99,14 +99,23 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Printed digits, your own digits, pencil notes.",
+        label: "Also in the notebook.",
         items: [
-          { title: "A path that knows you", body: "9×9 pages that get harder after three solved unaided." },
-          { title: "Pages of your own", body: "Type in a puzzle from a book; it is checked and coached." },
-          { title: "Read a page back", body: "Every digit in order, with the technique behind it." },
-          { title: "Press and slide", body: "A loupe shows the cell you aim at; lift to write." },
-          { title: "Today on your home screen", body: "A widget with today’s page." },
-          { title: "A quiet clock", body: "Hidden while you play, and paused when you leave." },
+          {
+            title: "A path that knows you",
+            body: "A stack of 9×9 practice pages gets harder after you solve three without help.",
+          },
+          {
+            title: "Pages of your own",
+            body: "Type in a puzzle from a book; it is checked and graded, and the Coach helps.",
+          },
+          {
+            title: "Read a page back",
+            body: "Replay every digit in order, with the technique behind it and where the Coach helped.",
+          },
+          { title: "Press and slide", body: "Slide your finger and a loupe shows the cell you aim at; lift to write." },
+          { title: "Today on your home screen", body: "A home-screen widget shows today’s page." },
+          { title: "A quiet clock", body: "The timer is hidden while you play, and pauses when you leave." },
         ],
       },
       {
@@ -114,8 +123,8 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "No INTERNET permission, and no ads, accounts, analytics or server; a build check fails if the app asks for more.",
-          "Games, results and settings stay in the app’s local database; Android’s own backup may include them, and you can turn it off.",
+          "Paper Sudoku does not ask Android for internet access, and has no ads, accounts, analytics or server.",
+          "Games, results and settings stay on your phone. Android’s backup may copy them to your Google account; you can turn that off.",
           "Sharing sends only the text you see in the share sheet; printing uses Android’s print service.",
         ],
       },
@@ -131,11 +140,11 @@ export default defineProduct({
           },
           {
             title: "Where can I get it?",
-            body: "It is not on Google Play yet. A Play build is being prepared; until then the builds are sideload builds for testing outside Play.",
+            body: "It is not on Google Play yet. A Play build is being prepared; until then the builds are sideload builds, installed by hand for testing outside Play.",
           },
           {
             title: "Will a new build update the one I have?",
-            body: "From 9.0, sideload builds can be signed with one fixed key, so later builds update in place. Moving from an earlier build needs one last uninstall.",
+            body: "From 9.0, sideload builds can be signed with one fixed key, so a later build installs over the one you have. Moving from an earlier build needs one last uninstall.",
             asOf: "v14.0.0-sideload",
           },
           {
@@ -157,7 +166,7 @@ export default defineProduct({
     description: "Android 上的数独本：每天一页，练习本越做越难，卡住时教练在页边提示。不联网。",
     eyebrow: "Android 数独本",
     headline: "每天一页数独",
-    lead: "打开就是今天这一页。教练在页边。不联网。",
+    lead: "一本打开就是今天这一页的数独本。卡住时，教练会在页边提示。应用不联网。",
     catalog: {
       role: "",
       text: "Android 上的数独本：每天一页，卡住时教练在页边提示。",
@@ -191,7 +200,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
       },
-      caption: "由应用自带的截图测试按 Google Play 手机尺寸绘制（14.0，英文界面）",
+      caption: "由应用自带的截图测试按 Google Play 手机尺寸绘制（14.0，界面为英文）",
       asOf: "v14.0.0-sideload",
     },
     showcases: [
@@ -219,7 +228,7 @@ export default defineProduct({
         width: 540,
         height: 1200,
         title: "一本会教的手册",
-        body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过、掌握。",
+        body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过或掌握。",
         asOf: "v14.0.0-sideload",
       },
     ],
@@ -227,14 +236,14 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "印刷数字、你写的数字和铅笔标记",
+        label: "本子里还有",
         items: [
           { title: "认得你的练习", body: "一叠 9×9 练习页，不看答案连做三页之后就变难一些。" },
-          { title: "自己的题", body: "把书报上的题输进来，检查、评级，教练照常帮忙。" },
-          { title: "回看一页", body: "按顺序看每个数字，以及当时用的技巧和教练帮过的地方。" },
-          { title: "按住滑动", body: "放大镜显示你瞄准的格子，松手就写。" },
-          { title: "桌面上的今天", body: "一个显示今天这一页的小组件。" },
-          { title: "安静的计时", body: "做题时不显示，离开时自动暂停。" },
+          { title: "自己的题", body: "把书报上的题输进来，应用会检查、评级，教练照常帮忙。" },
+          { title: "回看一页", body: "按顺序重看每个数字，以及当时用的技巧和教练帮过的地方。" },
+          { title: "按住滑动", body: "手指滑动时，放大镜显示你瞄准的格子，松手就写。" },
+          { title: "桌面上的今天", body: "桌面小组件显示今天这一页。" },
+          { title: "安静的计时", body: "做题时不显示计时，离开时自动暂停。" },
         ],
       },
       {
@@ -242,7 +251,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "纸上数独不申请联网权限，没有广告、账号、统计分析，也没有服务器。应用一旦申请别的权限，构建检查就会失败。",
+          "纸上数独不向 Android 申请联网权限，没有广告、账号、统计分析，也没有服务器。",
           "对局、成绩和设置存在应用的本地数据库里。Android 自带的备份可能会把它们存进你的 Google 账号，可以在 Android 设置里关闭。",
           "分享只发送分享面板里你看到的文字；打印使用 Android 的打印服务。",
         ],
@@ -259,7 +268,7 @@ export default defineProduct({
           },
           {
             title: "在哪里下载？",
-            body: "还没有上架 Google Play，上架版本正在准备中；在那之前的版本都是用于 Play 之外测试的侧载版。",
+            body: "还没有上架 Google Play，上架版本正在准备中；在那之前的版本都是侧载版，即在 Play 之外手动安装、用于测试的版本。",
           },
           {
             title: "新版本能直接覆盖安装吗？",
