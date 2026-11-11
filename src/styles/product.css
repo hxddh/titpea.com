@@ -362,7 +362,7 @@
     line-height: 1.6;
   }
 
-  /* Inside the closing band, under a hairline: where to go next — the product's
+  /* The FAQ on its panel: rows parted by inset hairlines, text inset from the edge. */
 
   .faq-item + .faq-item {
     box-shadow: inset 0 1px 0 var(--line);
