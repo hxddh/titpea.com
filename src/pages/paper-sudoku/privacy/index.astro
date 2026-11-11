@@ -66,16 +66,8 @@ const seo = buildSeo({
         </p>
         <ul>
           <li>
-            <code>
-              com.titpea.papersudoku.
-              <wbr />
-              DYNAMIC_RECEIVER_
-              <wbr />
-              NOT_EXPORTED_
-              <wbr />
-              PERMISSION
-            </code>
-            : a permission the app defines for itself (androidx.core adds it) so that only the app can message its own
+            <code set:html="com.titpea.papersudoku.<wbr />DYNAMIC_RECEIVER_<wbr />NOT_EXPORTED_<wbr />PERMISSION" />: a
+            permission the app defines for itself (androidx.core adds it) so that only the app can message its own
             internal receivers.
           </li>
         </ul>

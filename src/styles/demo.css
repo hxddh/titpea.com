@@ -17,7 +17,8 @@
   }
 
   .demo-figure .shot-caption {
-    margin-top: 22px;
+    margin: 22px auto 0;
+    text-align: center;
   }
 
   /* ---------- Demos as the hero object ---------- */
