@@ -116,7 +116,7 @@ jobs:
       # boxes. Keep this font in sync with local baseline refreshes.
       - name: Install CJK fonts
         if: github.event_name != 'schedule'
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+        run: sudo apt-get -o Acquire::Retries=5 update && sudo apt-get -o Acquire::Retries=5 install -y --no-install-recommends fonts-noto-cjk
       - name: Page QA
         if: github.event_name != 'schedule'
         # QA and a11y run on a pool of pages sized to the runner's cores; 16
