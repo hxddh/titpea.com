@@ -39,6 +39,14 @@ export default defineProduct({
       stays: "Files, chats, marks and scan text on your machine; API keys in the system keychain; no telemetry.",
     },
     meta: "macOS / Windows / Linux · {version} · PDF + images · MIT",
+    releaseHighlights: {
+      version: "v24.0.0",
+      items: [
+        "In a long answer, pages that had been cut to a one-line summary are read again in full when needed, so citations from the first pages are found again.",
+        "More quotes are found on the page: one that copies the page’s Markdown, such as bold text or a heading, and one shortened with “…”.",
+        "A file that won’t open now says why, in your language, and what to do next: remove the password by printing to PDF, download it again, split it, or convert it.",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "PageWise",
@@ -73,8 +81,8 @@ export default defineProduct({
           { title: "PageWise reads", body: "It searches the document and reads relevant pages." },
           { title: "Follow a citation", body: "Click one to see its quoted words lit on the page." },
           { title: "In the page margin", body: "With the panel closed, cited sentences show their state there." },
-          { title: "Cited tables", body: "Every cell cited; export as CSV with its sources." },
-          { title: "A highlighted PDF copy", body: "Findings and your marks as highlights, from Export…" },
+          { title: "Cited tables", body: "Each cell has a checked citation; export the table as CSV with its sources." },
+          { title: "A highlighted PDF copy", body: "Export a copy with findings and your marks written in as highlights." },
         ],
       },
       {
@@ -83,8 +91,9 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Files, chats, marks, the record, and recognised scan text stay on your machine; there is no telemetry.",
-          "Extracted text goes to the model you configure, or Ollama; scans are read locally, with a vision model only as fallback.",
+          "Files, chats, marks, the findings recorded from answers, and recognised scan text stay on your machine; there is no telemetry.",
+          "When you ask, extracted text goes to the AI model you set up, or to Ollama on your computer.",
+          "Scans are read locally; a vision model you set is only a fallback.",
           "API keys stay in the system keychain; a key the keychain refuses waits in a local settings file until accepted.",
         ],
       },
@@ -125,7 +134,7 @@ export default defineProduct({
     description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
     eyebrow: "PDF 阅读与问答",
     headline: "问过之后，回到原文",
-    lead: "向 PDF 提问。每条引用都标为“已核对”“请看原页”或“未找到”。扫描件在本机识别。",
+    lead: "向 PDF 提问。每条引用都标为“已核对”、“请看原页”或“未找到”。扫描件在本机识别。",
     catalog: {
       role: "PDF 助手",
       text: "向 PDF 提问。顺着引用回到原页。",
@@ -145,6 +154,14 @@ export default defineProduct({
       stays: "文件、会话、批注和识别出的文字都在本机；API 密钥在系统钥匙串；没有遥测。",
     },
     meta: "macOS / Windows / Linux · {version} · PDF 与图片 · MIT",
+    releaseHighlights: {
+      version: "v24.0.0",
+      items: [
+        "回答很长时，前面被压缩成一行摘要的页面，需要时会重新完整读取，开头几页的引用又能找到了。",
+        "更多引文能在原页找到：带着页面 Markdown 格式（如粗体或标题）的引文，以及用“…”省略过的引文。",
+        "文件打不开时，会用你的语言说明原因和下一步：打印成 PDF 去掉密码、重新下载、拆分文件，或转换格式。",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "PageWise",
@@ -180,7 +197,7 @@ export default defineProduct({
           { title: "顺着引用看", body: "点开引用，原页高亮被引用的原文。" },
           { title: "写在页边", body: "关闭侧栏时，引用本页的句子连同核对状态显示在页边。" },
           { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
-          { title: "带高亮的 PDF 副本", body: "结论和你的批注写成高亮，在“导出…”里选。" },
+          { title: "带高亮的 PDF 副本", body: "从“导出…”生成一份副本，结论和你的批注都写成高亮。" },
         ],
       },
       {
@@ -189,8 +206,9 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "文件、会话、批注、记录和扫描页识别出的文字都保存在本机；没有遥测。",
-          "提取的文本发给你配置的模型或本机 Ollama；扫描页在本机识别，视觉模型只作后备。",
+          "文件、会话、批注、从回答里记下的结论，以及扫描页识别出的文字，都保存在本机；没有遥测。",
+          "提问时，提取的文本发给你设置的 AI 模型，或本机的 Ollama。",
+          "扫描页在本机识别；你设置的视觉模型只作后备。",
           "API 密钥保存在系统钥匙串；钥匙串拒绝写入时，密钥暂存在本机设置文件，等钥匙串接受后再移入。",
         ],
       },
