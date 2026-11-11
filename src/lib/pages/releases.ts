@@ -1,4 +1,5 @@
 // Releases: the latest release per product with earlier ones, the undated list, and the Atom feed.
+import { headingText } from "../heading";
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
 import { type Locale } from "../../content/schema";
@@ -134,7 +135,8 @@ export function releasesPage(locale: Locale): ReleasesPageModel {
     expectedText: [
       copy.releasesHeadline,
       copy.releasesLead,
-      copy.releasesUndatedTitle,
+      // The heading as the page sets it: a label, without its closing period.
+      headingText(copy.releasesUndatedTitle),
       ...(items.some((item) => item.earlier.length > 0) ? [copy.releasesEarlier] : []),
     ],
   };

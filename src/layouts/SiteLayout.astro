@@ -32,12 +32,12 @@ const {
   styles = [],
 } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
-// The display face sets the hero title, the first line a reader sees: fetch it
-// with the HTML instead of after the CSS, so the title does not reflow from
-// the fallback serif. English pages need the Latin roman, Chinese pages the
-// heading subset; the URLs come from fonts.css, so a recut never goes stale.
+// Chinese pages set their title in the heading subset of Noto Serif SC: fetch
+// it with the HTML instead of after the CSS, so the title does not reflow from
+// a fallback face. English titles are the sans (design v4) and need nothing.
+// The URL comes from fonts.css, so a recut never goes stale.
 const fontUrl = (name: string) => fontFaces.match(new RegExp(`/fonts/${name}\\.[0-9a-f]+\\.woff2`))?.[0];
-const preloadFont = fontUrl(locale === "zh" ? "noto-serif-sc-display" : "fraunces-latin-normal");
+const preloadFont = locale === "zh" ? fontUrl("noto-serif-sc-display") : undefined;
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();

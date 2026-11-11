@@ -2,9 +2,9 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Product pages (ProductPage.astro): the claim, the spec sheet beside the
-   lede, the capture on the product's colour, then sections in two columns —
-   the heading in the margin, the content in the main column. */
+  /* Product pages (ProductPage.astro), design v4: the claim, the lede and the
+   actions in one column, the facts as a strip under them, the capture on the
+   product's colour, then sections that each open on their heading. */
 
   /* Who it is, above the claim. */
   .ident {
@@ -26,32 +26,34 @@
     height: 40px;
   }
 
-  /* The spec sheet: what the product runs on, in a line, then label and
-   value on a hairline each. Small and quiet, in the reading face. */
+  .product-copy {
+    max-width: var(--narrow);
+  }
+
+  /* The spec sheet, as a strip under the actions: the meta line's own words
+   first, then each fact as a small label over its value, on one hairline. */
   .specs {
-    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
+    margin: 48px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
     font-size: var(--text-small);
-    line-height: 1.5;
+    line-height: 1.45;
     font-variant-numeric: tabular-nums;
   }
 
   .specs > div {
     display: grid;
-    grid-template-columns: 6em minmax(0, 1fr);
-    gap: 16px;
-    padding: 11px 18px;
-  }
-
-  html:lang(zh) .specs > div {
-    grid-template-columns: 4em minmax(0, 1fr);
-  }
-
-  .specs > div + div {
-    box-shadow: inset 0 1px 0 var(--line);
+    align-content: start;
+    gap: 2px;
+    min-width: 0;
   }
 
   .specs dt {
     color: var(--muted);
+    font-size: var(--text-meta);
   }
 
   .specs dd {
@@ -60,10 +62,13 @@
     overflow-wrap: anywhere;
   }
 
-  /* The first row has no label: the meta line's own words, as a sentence. */
-  .specs > div[data-plain],
-  html:lang(zh) .specs > div[data-plain] {
-    grid-template-columns: minmax(0, 1fr);
+  /* The meta line has no label: its own words take the first place, set as
+   a value, so the strip reads left to right from what the product is. */
+  .specs > div[data-plain] {
+    flex: 0 1 auto;
+    max-width: 20em;
+    margin-right: 16px;
+    padding-top: calc(var(--text-meta) * 1.45 + 2px);
   }
 
   .specs > div[data-plain] dd {
@@ -83,7 +88,7 @@
   /* The hero object. A photograph lies on the product's colour; a terminal,
    chart, mock or working demo on the raised paper. */
   .hero-figure {
-    padding-top: 64px;
+    padding-top: 40px;
   }
 
   .hero-figure figure {
@@ -190,9 +195,9 @@
     scroll-margin-top: var(--section-index-desktop-scroll-margin);
   }
 
-  /* A showcase: the heading and its line in the margin, the picture in the
-   main column. A wide window capture is read, not glanced at: it takes the
-   whole width under its head. A phone capture stays at phone size. */
+  /* A showcase: the heading and its line above the picture. A wide window
+   capture is read, not glanced at: it takes the whole width. A phone capture
+   stays at phone size. */
   .showcase-figure {
     margin: 0;
   }
@@ -215,7 +220,7 @@
   .crop {
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--radius-media);
     box-shadow: var(--icon-ring), var(--shadow-shot);
   }
 
@@ -284,18 +289,27 @@
     }
   }
 
-  /* The feature list: a table of titled lines. Title and body share one
-   size; weight and ink carry the hierarchy. */
+  /* The feature list: titled items three across the whole width, each under
+   a hairline. Title and body share one size; weight and ink carry the
+   hierarchy. */
   .feature-grid {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px var(--col-gap);
+  }
+
+  /* Two or four items read as pairs, not as a row with a hole in it. */
+  .feature-grid:is([data-count="2"], [data-count="4"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px var(--col-gap);
+    max-width: var(--narrow);
   }
 
   .feature-card {
     display: grid;
     align-content: start;
     gap: 6px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
   }
 
   .feature-card h3 {
@@ -314,15 +328,20 @@
     line-height: 1.55;
   }
 
-  /* FAQ: questions on hairlines, every answer open on desktop; phones fold
-   all but the first (faq.js). */
+  /* FAQ: questions on hairlines, the first answer open; phones fold all but
+   the first (faq.js). */
   .faq-item {
-    box-shadow: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--line);
   }
 
   .faq-item summary {
     position: relative;
-    padding: 18px 36px 18px 0;
+    min-height: 44px;
+    padding: 20px 40px 20px 0;
     font-size: 17px;
     font-weight: 600;
     line-height: 1.4;
@@ -355,44 +374,44 @@
 
   .faq-answer {
     max-width: var(--measure);
-    margin: 0;
-    padding: 0 0 22px;
+    margin: -4px 0 0;
+    padding: 0 0 24px;
     color: var(--ink-2);
     font-size: var(--text-list-body);
     line-height: 1.6;
   }
 
-  /* Inside the closing band, under a hairline: where to go next — the product's
-
-  .faq-item + .faq-item {
-    box-shadow: inset 0 1px 0 var(--line);
-  }
-
-  .faq-item summary {
-    padding: 18px 52px 18px 22px;
-    transition: background-color 0.15s ease;
-  }
-
-  .faq-item summary:hover {
-    background: var(--row-hover);
-  }
-
-  .faq-item summary::after {
-    right: 24px;
-  }
-
-  .faq-answer {
-    padding: 0 22px 22px;
-  }
-
-  /* The closing: where next in the margin, the name and the action once more. */
+  /* The closing: the name and the action once more, then where to go next
+   on one hairline: the line's tools side by side. */
   .final-cta-name {
     margin: 0;
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.05;
+    font-size: var(--title-display);
+    line-height: 1.04;
+  }
+
+  .final-cta .actions {
+    margin-top: 28px;
+  }
+
+  .closing-next {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 32px;
+    margin-top: 72px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .closing-next .tool-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 28px;
+    margin: 0;
   }
 
   .closing-label {
+    flex-basis: 100%;
     margin: 0;
     color: var(--muted);
     font-family: var(--sans);
@@ -496,6 +515,10 @@
       height: auto;
       object-fit: contain;
     }
+
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 640px) {
@@ -503,9 +526,23 @@
       padding-top: 48px;
     }
 
-    .feature-grid {
+    .feature-grid,
+    .feature-grid:is([data-count="2"], [data-count="4"]) {
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
+    }
+
+    .specs {
+      gap: 14px 32px;
+      margin-top: 36px;
+    }
+
+    /* The meta line takes its own row, so the labels below line up. */
+    .specs > div[data-plain] {
+      flex-basis: 100%;
+      max-width: none;
+      margin-right: 0;
+      padding-top: 0;
     }
 
     /* The button under the command, never over it. */

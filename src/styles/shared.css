@@ -1,8 +1,9 @@
 @layer templates {
-  /* The page language every page shares (DESIGN.md, "Page Shape"): a margin
-   column for labels and facts, a main column for content, an ink rule over
-   each section; the serif for headings, mono for facts; the capture on a
-   block of the product's own colour. */
+  /* The page language every page shares (DESIGN.md, "Page Shape", design v4):
+   one left edge; a section's heading and its line above its content; lists on
+   hairlines, not panels; the capture on a block of the product's own colour.
+   The two columns remain for pages whose rows pair a label with content
+   (About, Releases, Privacy). */
 
   /* The two columns. */
   .cols {
@@ -60,9 +61,10 @@
 
   /* The title. */
   .display {
-    margin: 0 0 28px;
-    font-size: clamp(2.5rem, 5.6vw, 4.75rem);
-    line-height: 1.05;
+    max-width: 15em;
+    margin: 0 0 24px;
+    font-size: var(--title-display);
+    line-height: 1.04;
     text-wrap: balance;
   }
 
@@ -73,10 +75,30 @@
   /* Every section heading. */
   .heading {
     margin: 0;
-    font-size: clamp(1.375rem, 2vw, 1.625rem);
+    font-size: var(--text-heading);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.2;
     text-wrap: balance;
+  }
+
+  /* A section opens on its heading and one line, above its content. */
+  .section-head {
+    max-width: var(--narrow);
+    margin-bottom: 36px;
+  }
+
+  .section-head .sub {
+    margin-top: 10px;
+  }
+
+  .section-head > .heading + .fact {
+    margin-top: 8px;
+  }
+
+  /* Text content (lists, answers, commands) holds one width under its
+   heading, so every right edge on the page lines up. */
+  .section-body {
+    max-width: var(--narrow);
   }
 
   /* A fact: a version, a date, a licence, a count, a figure's label. Small,
@@ -151,12 +173,11 @@
     padding: 0 24px;
   }
 
-  /* A panel: a white surface that holds a list. */
+  /* A panel holds a list: since design v4 it is the list on hairlines, a
+   rule above and below, with no surface of its own. */
   .panel {
-    overflow: hidden;
-    border-radius: var(--radius-panel);
-    background: var(--surface);
-    box-shadow: var(--shadow-surface);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
   .button-version {
@@ -173,19 +194,14 @@
   }
 
   .line-list > li {
-    max-width: var(--measure);
     padding: 16px 0;
     border-bottom: 1px solid var(--line);
     color: var(--ink-2);
     line-height: 1.55;
   }
 
-  .line-list > li:last-child {
-    border-bottom: 0;
-  }
-
   .line-list > li:first-child {
-    padding-top: 0;
+    border-top: 1px solid var(--line);
   }
 
   .line-list + .textlink {
@@ -217,7 +233,7 @@
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: var(--radius-media);
     box-shadow: var(--shadow-shot);
   }
 
@@ -226,8 +242,8 @@
   .figure-note {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 4px 24px;
+    gap: 4px 20px;
+    max-width: var(--narrow);
     margin-top: 14px;
     color: var(--muted);
     font-size: var(--text-meta);

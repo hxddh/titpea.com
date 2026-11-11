@@ -1,4 +1,5 @@
 ---
+import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import ChessPuzzleDemo from "./demos/ChessPuzzleDemo.astro";
 import type { DemoSection } from "../../content/schema";
@@ -13,15 +14,13 @@ const { demo } = section;
 ---
 
 <section id={section.id} class="shell page-section product-section demo-section">
-  <div class="cols">
-    <header class="cols-margin">
-      <h2 class="heading">{section.title}</h2>
-      <p class="sub">
-        <Prose text={section.body} />
-      </p>
-    </header>
-    <div class="cols-main">
-      {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
-    </div>
+  <header class="section-head">
+    <h2 class="heading">{headingText(section.title)}</h2>
+    <p class="sub">
+      <Prose text={section.body} />
+    </p>
+  </header>
+  <div class="section-body">
+    {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
   </div>
 </section>

@@ -23,9 +23,8 @@
     box-shadow: var(--plate-s);
   }
 
-  /* Display lines: the serif sets every heading (the page title, each
-   section's heading, the product name in the closing), so headings are one
-   voice; the sans is for reading and mono for facts. On Chinese pages
+  /* Display lines (the page title, the product name in the closing): in
+   English the sans, heavy and tight (design v4); on Chinese pages
    --display-face is Noto Serif SC, cut to the headings' characters. */
   .display,
   main h1,
@@ -35,13 +34,13 @@
   }
 
   html:lang(en) :is(.display, main h1, .final-cta-name) {
-    font-weight: 460;
-    letter-spacing: -0.022em;
+    font-weight: 650;
+    letter-spacing: -0.038em;
   }
 
   /* Section headings: the sans, semibold and tight. */
   html:lang(en) :is(.heading, main h2) {
-    letter-spacing: -0.02em;
+    letter-spacing: -0.024em;
   }
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a

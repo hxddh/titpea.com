@@ -1,4 +1,5 @@
 ---
+import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import type { DataSection } from "../../content/schema";
 
@@ -10,16 +11,14 @@ const { section } = Astro.props;
 ---
 
 <section id={section.id} class="shell page-section product-section data-section">
-  <div class="cols rule">
-    <header class="cols-margin">
-      <h2 class="heading">{section.title}</h2>
-    </header>
-    <ul class="cols-main line-list data-list">
-      {section.items.map((item) => (
-        <li>
-          <Prose text={item} />
-        </li>
-      ))}
-    </ul>
-  </div>
+  <header class="section-head">
+    <h2 class="heading">{headingText(section.title)}</h2>
+  </header>
+  <ul class="section-body line-list data-list">
+    {section.items.map((item) => (
+      <li>
+        <Prose text={item} />
+      </li>
+    ))}
+  </ul>
 </section>

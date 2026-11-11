@@ -1,4 +1,5 @@
 ---
+import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import type { FaqSection } from "../../content/schema";
 
@@ -10,26 +11,24 @@ const { section } = Astro.props;
 ---
 
 <section id={section.id} class="shell page-section product-section faq-section">
-  <div class="cols rule">
-    <header class="cols-margin">
-      <h2 class="heading">{section.label}</h2>
-    </header>
-    <div class="cols-main faq-list panel">
-      {/* A disclosure list: the first answer open. */}
-      {section.items.map((item, index) => (
-        <details class="faq-item" open={index === 0}>
-          <summary>{item.title}</summary>
-          <p class="faq-answer">
-            <Prose text={item.body} />
-            {item.link && (
-              <>
-                {" "}
-                <a href={item.link.href}>{item.link.label}</a>
-              </>
-            )}
-          </p>
-        </details>
-      ))}
-    </div>
+  <header class="section-head">
+    <h2 class="heading">{headingText(section.label)}</h2>
+  </header>
+  <div class="section-body faq-list">
+    {/* A disclosure list on hairlines: the first answer open. */}
+    {section.items.map((item, index) => (
+      <details class="faq-item" open={index === 0}>
+        <summary>{item.title}</summary>
+        <p class="faq-answer">
+          <Prose text={item.body} />
+          {item.link && (
+            <>
+              {" "}
+              <a href={item.link.href}>{item.link.label}</a>
+            </>
+          )}
+        </p>
+      </details>
+    ))}
   </div>
 </section>

@@ -84,9 +84,9 @@ type Ui = {
   toolCount: string;
   /** Labels of the product page's spec sheet. */
   spec: { license: string; version: string; released: string; network: string; source: string };
-  /** A figure's label: "Fig. 2 · captured at v15.0.0". `{n}` and `{version}` are filled in. */
-  figure: string;
-  figureAsOf: string;
+  /** The release a capture shows: "Captured at v15.0.0". Said once under the
+   hero, and under a showcase only when its release differs. `{version}` is filled in. */
+  capturedAt: string;
   /** Link from a showcase that shows a detail to the whole capture. */
   wholeCapture: string;
   pauseVideo: string;
@@ -171,8 +171,7 @@ export const ui: Record<Locale, Ui> = {
     released: " ({date})",
     toolCount: "{count} tools",
     spec: { license: "License", version: "Version", released: "Released", network: "Network", source: "Source" },
-    figure: "Fig. {n}",
-    figureAsOf: "Fig. {n} · captured at {version}",
+    capturedAt: "Captured at {version}",
     wholeCapture: "Whole window",
     pauseVideo: "Pause",
     whatsNew: "What’s new in {version}.",
@@ -270,8 +269,7 @@ export const ui: Record<Locale, Ui> = {
     released: "（{date}）",
     toolCount: "{count} 个",
     spec: { license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
-    figure: "图 {n}",
-    figureAsOf: "图 {n} · 截自 {version}",
+    capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
     whatsNew: "{version} 更新了什么",
