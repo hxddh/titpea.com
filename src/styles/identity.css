@@ -28,8 +28,7 @@
    voice; the sans is for reading and mono for facts. On Chinese pages
    --display-face is Noto Serif SC, cut to the headings' characters. */
   .display,
-  .heading,
-  main :is(h1, h2),
+  main h1,
   .final-cta-name {
     font-family: var(--display-face);
     font-optical-sizing: auto;
@@ -40,16 +39,21 @@
     letter-spacing: -0.022em;
   }
 
+  /* Section headings: the sans, semibold and tight. */
   html:lang(en) :is(.heading, main h2) {
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a
    synthesised bold, and no negative tracking, which crowds CJK. */
-  html:lang(zh) :is(.display, .heading, main h1, main h2, .final-cta-name) {
+  html:lang(zh) :is(.display, main h1, .final-cta-name) {
     font-weight: 600;
     font-synthesis: none;
+    letter-spacing: 0;
+    word-break: keep-all;
+  }
+
+  html:lang(zh) :is(.heading, main h2) {
     letter-spacing: 0;
     word-break: keep-all;
   }

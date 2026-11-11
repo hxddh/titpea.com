@@ -27,10 +27,9 @@
     min-width: 0;
   }
 
-  /* An ink rule opens a section; hairlines separate the rows inside it. */
+  /* Sections are parted by space alone; .rule only marks where one starts. */
   .rule {
-    padding-top: 24px;
-    border-top: 1px solid var(--ink);
+    padding-top: 0;
   }
 
   /* A section's heading stays beside its content while that content is read,
@@ -61,7 +60,7 @@
 
   /* The title. */
   .display {
-    margin: 0 0 36px;
+    margin: 0 0 28px;
     font-size: clamp(2.5rem, 5.6vw, 4.75rem);
     line-height: 1.05;
     text-wrap: balance;
@@ -75,7 +74,8 @@
   .heading {
     margin: 0;
     font-size: clamp(1.375rem, 2vw, 1.625rem);
-    line-height: 1.22;
+    font-weight: 600;
+    line-height: 1.25;
     text-wrap: balance;
   }
 
@@ -106,17 +106,57 @@
   .textlink {
     display: inline-flex;
     align-items: center;
+    gap: 6px;
     min-height: 44px;
     color: var(--ink);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .textlink:hover {
     text-decoration: underline;
-    text-decoration-color: var(--link-underline);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.22em;
   }
 
-  .textlink:hover {
-    text-decoration-color: var(--site);
-    text-decoration-thickness: 2px;
+  .textlink::after {
+    content: "→";
+    color: var(--muted);
+    transition: transform 0.2s ease;
+  }
+
+  .textlink:hover::after {
+    transform: translateX(2px);
+  }
+
+  /* Beside the primary action, the second one is an outlined button. */
+  .actions .textlink {
+    padding: 0 20px;
+    border-radius: var(--radius-pill);
+    box-shadow: inset 0 0 0 1px var(--soft-line);
+    transition: background-color 0.2s ease;
+  }
+
+  .actions .textlink:hover {
+    background: var(--row-hover);
+    text-decoration: none;
+  }
+
+  .actions .textlink::after {
+    content: none;
+  }
+
+  .actions .button.large + .textlink {
+    min-height: 50px;
+    padding: 0 24px;
+  }
+
+  /* A panel: a white surface that holds a list. */
+  .panel {
+    overflow: hidden;
+    border-radius: var(--radius-panel);
+    background: var(--surface);
+    box-shadow: var(--shadow-surface);
   }
 
   .button-version {
@@ -138,6 +178,10 @@
     border-bottom: 1px solid var(--line);
     color: var(--ink-2);
     line-height: 1.55;
+  }
+
+  .line-list > li:last-child {
+    border-bottom: 0;
   }
 
   .line-list > li:first-child {

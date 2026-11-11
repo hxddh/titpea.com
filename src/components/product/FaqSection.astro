@@ -14,10 +14,10 @@ const { section } = Astro.props;
     <header class="cols-margin">
       <h2 class="heading">{section.label}</h2>
     </header>
-    <div class="cols-main faq-list">
-      {/* Every answer is open; phones fold all but the first (faq.js). */}
-      {section.items.map((item) => (
-        <details class="faq-item" open>
+    <div class="cols-main faq-list panel">
+      {/* A disclosure list: the first answer open. */}
+      {section.items.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
           <summary>{item.title}</summary>
           <p class="faq-answer">
             <Prose text={item.body} />

@@ -76,7 +76,7 @@ const { model } = Astro.props;
           </h2>
           <p class="fact">{group.count}</p>
         </div>
-        <ul class="cols-main index-list" aria-labelledby={`line-${group.line}-title`}>
+        <ul class="cols-main index-list panel" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
             <li>
               <a class="index-row" href={item.href}>

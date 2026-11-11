@@ -55,7 +55,7 @@
 
   .release-version {
     color: var(--muted);
-    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
     font-size: var(--text-meta);
   }
 
