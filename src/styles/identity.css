@@ -36,13 +36,13 @@
   }
 
   html:lang(en) :is(.display, main h1, .final-cta-name) {
-    font-weight: 480;
-    letter-spacing: -0.028em;
+    font-weight: 460;
+    letter-spacing: -0.022em;
   }
 
   html:lang(en) :is(.heading, main h2) {
-    font-weight: 520;
-    letter-spacing: -0.012em;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a

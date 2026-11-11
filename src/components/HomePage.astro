@@ -30,15 +30,13 @@ const { model } = Astro.props;
     </div>
   </section>
 
-  {/* The picks: three products, each capture on its own colour. */}
-  <section class="shell page-section" aria-labelledby="picks-title">
-    <div class="cols">
-      <div class="cols-margin">
-        <h2 class="heading" id="picks-title">
-          {model.featured.title}
-        </h2>
-      </div>
-      <ul class="cols-main picks">
+  {/* The picks: three products across the whole width, each window whole on its own paper. */}
+  <section class="shell page-section picks-section" aria-labelledby="picks-title">
+    <div class="rule">
+      <h2 class="heading" id="picks-title">
+        {model.featured.title}
+      </h2>
+      <ul class="picks">
         {model.featured.items.map((item, index) => (
           <li class:list={["pick", index === 0 && "pick-lead"]}>
             <a href={item.href}>
@@ -82,7 +80,7 @@ const { model } = Astro.props;
           {group.items.map((item) => (
             <li>
               <a class="index-row" href={item.href}>
-                <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
+                <img class="icon-plate" src={item.icon} alt="" width="32" height="32" loading="lazy" />
                 <strong class="index-name">{item.name}</strong>
                 <span class="index-text home-catalog-text">{item.text}</span>
                 <span class="fact index-fact" data-visual-live>

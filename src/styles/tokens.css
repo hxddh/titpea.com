@@ -140,8 +140,11 @@
     --col-gap: 32px;
     /* The site's own colour (the pea mark's green): hover rules only. */
     --site: #2f6b2e;
-    /* How much of a product's colour the paper under its capture keeps. */
-    --paper-mix: 100%;
+    /* The paper under a capture: the page's paper with this much of the
+     product's colour in it, and a hairline of the colour at its edge. */
+    --paper-mix: 20%;
+    --paper-edge: 16%;
+    --radius-stage: 16px;
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
@@ -281,7 +284,8 @@
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
     --site: #a9d65c;
-    --paper-mix: 60%;
+    --paper-mix: 26%;
+    --paper-edge: 30%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -363,7 +367,8 @@
       --data-caution-ink: #edb472;
       --data-alert: #ff7b72;
       --site: #a9d65c;
-      --paper-mix: 60%;
+      --paper-mix: 26%;
+      --paper-edge: 30%;
     }
   }
 

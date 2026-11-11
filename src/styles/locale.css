@@ -18,8 +18,8 @@
   /* Chinese display lines: taller lines than Latin capitals need, and breaks
    only between phrases (identity.css sets their one weight). */
   :lang(zh) .display {
-    font-size: clamp(2.5rem, 6.6vw, 5.25rem);
-    line-height: 1.14;
+    font-size: clamp(2.25rem, 5vw, 4.25rem);
+    line-height: 1.16;
   }
 
   :lang(zh) .heading {

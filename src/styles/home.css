@@ -17,21 +17,31 @@
     --product-tint: var(--tint-readout);
   }
 
+  /* One large pick beside two smaller ones, bottoms aligned. */
   .picks {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px var(--col-gap);
-    margin: 0;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 32px var(--col-gap);
+    margin: 28px 0 0;
     padding: 0;
     list-style: none;
   }
 
+  .pick {
+    grid-column: span 4;
+    min-width: 0;
+  }
+
   .pick-lead {
-    grid-column: 1 / -1;
+    grid-column: span 8;
+    grid-row: span 2;
   }
 
   .pick a {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     color: var(--ink);
   }
 
@@ -39,38 +49,34 @@
     text-decoration: none;
   }
 
-  /* The window's top-left corner at reading scale, running off the paper. */
+  /* The whole window, centred on its paper. */
   .pick .stage {
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    padding: 9% 0 0 9%;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: clamp(16px, 7%, 40px);
   }
 
   .pick .stage img {
-    width: 128%;
-    max-width: none;
-    border-radius: 8px 0 0;
-  }
-
-  .pick-lead .stage {
-    aspect-ratio: 2 / 1;
-    padding: 6% 0 0 6%;
+    border-radius: 6px;
   }
 
   .pick-lead .stage img {
-    width: 106.5%;
+    border-radius: 10px;
   }
 
   .pick-copy {
     display: grid;
-    gap: 4px;
-    margin-top: 16px;
+    gap: 2px;
+    margin-top: 14px;
   }
 
   .pick-name {
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.35;
   }
 
   .pick a:hover .pick-name,
@@ -83,7 +89,12 @@
 
   .pick-text {
     color: var(--ink-2);
+    font-size: 15px;
     line-height: 1.5;
+  }
+
+  .pick-copy .fact {
+    margin-top: 4px;
   }
 
   /* Said under a picture that is not a plain capture. */
@@ -94,7 +105,7 @@
   }
 
   .index-group + .index-group {
-    margin-top: 56px;
+    margin-top: 64px;
   }
 
   .index-list {
@@ -106,11 +117,11 @@
   /* One tool: icon, name, its catalog line, its latest tag and date. */
   .index-row {
     display: grid;
-    grid-template-columns: 36px minmax(0, 11em) minmax(0, 1fr) auto;
+    grid-template-columns: 32px minmax(0, 11.5em) minmax(0, 1fr) auto;
     align-items: center;
     gap: 4px 16px;
-    min-height: 64px;
-    padding: 12px 0;
+    min-height: 60px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--line);
     color: var(--ink);
   }
@@ -144,18 +155,18 @@
 
   @media (max-width: 900px) {
     .index-row {
-      grid-template-columns: 36px minmax(0, 1fr) auto;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+    }
+
+    .pick,
+    .pick-lead {
+      grid-column: 1 / -1;
+      grid-row: auto;
     }
 
     .index-text {
       grid-column: 2 / -1;
       grid-row: 2;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .picks {
-      grid-template-columns: minmax(0, 1fr);
     }
   }
 }

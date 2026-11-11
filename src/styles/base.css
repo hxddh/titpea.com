@@ -140,11 +140,11 @@
 
   /* The lede is the page's first explanation: reading ink, not label grey. */
   .lead {
-    max-width: 30em;
+    max-width: 32em;
     margin: 0;
     color: var(--ink);
     font-size: var(--text-lede);
-    line-height: 1.4;
+    line-height: 1.45;
     text-wrap: pretty;
   }
 
