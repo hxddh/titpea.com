@@ -45,9 +45,6 @@
     /* Shadows */
     /* Two depths only: a photograph resting on the page, and a panel above it. */
     --shadow-shot: 0 1px 2px rgba(20, 20, 30, 0.04), 0 24px 56px -28px rgba(20, 20, 30, 0.26);
-    /* The same depth as a drop-shadow filter, for a window shown whole inside a
-     fixed frame (Home's picks), where box-shadow would trace the frame. */
-    --drop-shot: 0 14px 22px rgba(20, 20, 30, 0.14);
     --shadow-panel: 0 18px 50px -24px rgba(20, 30, 60, 0.28);
     --shadow-glass: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--line), 0 8px 24px -12px var(--glass-shade);
     --shadow-icon: 0 14px 22px rgba(0, 0, 0, 0.18);
@@ -286,7 +283,6 @@
     --glass-edge: rgba(255, 255, 255, 0.14);
     --glass-shade: rgba(0, 0, 0, 0.4);
     --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
-    --drop-shot: 0 14px 22px rgba(0, 0, 0, 0.55);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --shadow-card-hover: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
     --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
@@ -373,7 +369,6 @@
       --glass-edge: rgba(255, 255, 255, 0.14);
       --glass-shade: rgba(0, 0, 0, 0.4);
       --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
-      --drop-shot: 0 14px 22px rgba(0, 0, 0, 0.55);
       --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
       --shadow-card-hover: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
       --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);

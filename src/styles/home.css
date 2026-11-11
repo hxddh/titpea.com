@@ -2,11 +2,19 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Home (HomePage.astro): the title and lede, three picks, then the index.
-   One left edge; no panels. */
+  /* Home (HomePage.astro): the title and lede centred, three picks, then the
+   index across the shell. No panels. */
+  .home-hero {
+    text-align: center;
+  }
+
+  .home-hero .display {
+    margin-inline: auto;
+  }
 
   .home-hero .lead {
     max-width: 30em;
+    margin-inline: auto;
   }
 
   /* Who makes it, and where to read more, in one quiet line. */
@@ -14,8 +22,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 0 20px;
     margin: 20px 0 0;
+  }
+
+  /* Home's section heads sit on the shell's edge, over the grids they name. */
+  .picks-section .section-head {
+    max-width: none;
+    margin-inline: 0;
   }
 
   /* Three picks of equal weight, each window whole on the same raised paper,
@@ -45,23 +60,27 @@
     text-decoration: none;
   }
 
+  /* The window enters from the frame's top left and runs off its other two
+   edges, so it is shown at a size its interface can be read at. */
   .pick-stage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 3 / 2;
-    padding: 6%;
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: var(--radius-stage);
     background: var(--paper-raised);
   }
 
   .pick-stage img {
+    position: absolute;
+    top: 12%;
+    left: 10%;
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(var(--drop-shot));
+    width: 135%;
+    max-width: none;
+    height: auto;
+    border-radius: var(--radius-media);
+    box-shadow: var(--shadow-shot);
     transition: transform 0.35s ease;
   }
 
