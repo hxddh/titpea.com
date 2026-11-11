@@ -39,19 +39,19 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v14.0.0",
-    "published": "2026-11-10",
+    "version": "v15.0.0",
+    "published": "2026-11-11",
     "history": [
+      { "version": "v15.0.0", "published": "2026-11-11", "title": "sonde 15.0.0" },
       { "version": "v14.0.0", "published": "2026-11-10", "title": "sonde 14.0.0" },
       { "version": "v13.0.0", "published": "2026-11-10", "title": "sonde 13.0.0" },
       { "version": "v12.0.0", "published": "2026-11-09", "title": "sonde 12.0.0" },
-      { "version": "v11.0.0", "published": "2026-11-09", "title": "sonde 11.0.0" },
-      { "version": "v9.1.0", "published": "2026-11-09", "title": "sonde 9.1.0" }
+      { "version": "v11.0.0", "published": "2026-11-09", "title": "sonde 11.0.0" }
     ],
     "notes": {
-      "summary": "Run your program against an S3 that misbehaves, and sonde says whether it survived",
-      "items": ["Faults in the proxy", "Lance is read as versions", "The app's own downloads were still cut at 60 s"],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v14.0.0"
+      "summary": "One reading of a run: four signals, one chart system, one way to draw each thing — and a…",
+      "items": ["What could not be seen", "Trials in the app", "A program has a name"],
+      "url": "https://github.com/hxddh/sonde/releases/tag/v15.0.0"
     }
   },
   "httpmon": {
@@ -123,19 +123,23 @@
   },
   "readout": {
     "repo": "hxddh/readout",
-    "version": "v5.2.0",
-    "published": "2026-11-05",
+    "version": "v6.0.0",
+    "published": "2026-11-11",
     "history": [
+      { "version": "v6.0.0", "published": "2026-11-11", "title": "Readout 6.0.0" },
       { "version": "v5.2.0", "published": "2026-11-05", "title": "Readout 5.2.0" },
       { "version": "v5.1.0", "published": "2026-11-04", "title": "Readout 5.1.0" },
       { "version": "v5.0.0", "published": "2026-10-31", "title": "Readout 5.0.0" },
-      { "version": "v4.2.0", "published": "2026-10-30", "title": "Readout 4.2.0" },
-      { "version": "v4.1.0", "published": "2026-10-30", "title": "Readout 4.1.0" }
+      { "version": "v4.2.0", "published": "2026-10-30", "title": "Readout 4.2.0" }
     ],
     "notes": {
-      "summary": "Readout 5.2 takes away the one setup step you never needed",
-      "items": ["Nothing to set up but your agent folders"],
-      "url": "https://github.com/hxddh/readout/releases/tag/v5.2.0"
+      "summary": "Readout 6 does less: a file opens without waiting for anything, opening one never runs an…",
+      "items": [
+        "Files in a git repository open sooner the first time",
+        "A document an agent writes again from the top marks only what changed",
+        "A build or a package install in an agent folder no longer wakes Readout"
+      ],
+      "url": "https://github.com/hxddh/readout/releases/tag/v6.0.0"
     }
   },
   "agent-radar": {
@@ -182,44 +186,36 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v13.0.0",
-    "published": "2026-11-08",
+    "version": "v14.0.0",
+    "published": "2026-11-11",
     "history": [
+      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" },
       { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
       { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" },
       { "version": "v11.0.0", "published": "2026-11-07", "title": "Goban Studio v11.0.0" },
-      { "version": "v10.0.0", "published": "2026-11-07", "title": "Goban Studio v10.0.0" },
-      { "version": "v9.0.0", "published": "2026-11-06", "title": "Goban Studio v9.0.0" }
+      { "version": "v10.0.0", "published": "2026-11-07", "title": "Goban Studio v10.0.0" }
     ],
     "notes": {
-      "summary": "v13 keeps the four spaces of v12 and makes the app something you can rely",
-      "items": [
-        "A game in progress is never thrown away",
-        "A file that can't be read is never written over",
-        "Restoring a backup"
-      ],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v13.0.0"
+      "summary": "v14 keeps the four spaces and makes the app refined: easy to start,",
+      "items": ["The first launch lands on Today", "Rules follow your language", "The placement quiz stops early"],
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v14.0.0"
     }
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v21.0.0",
-    "published": "2026-11-09",
+    "version": "v22.0.0",
+    "published": "2026-11-11",
     "history": [
+      { "version": "v22.0.0", "published": "2026-11-11", "title": "v22.0.0" },
       { "version": "v21.0.0", "published": "2026-11-09", "title": "v21.0.0" },
       { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
       { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" },
-      { "version": "v18.0.0", "published": "2026-11-05", "title": "v18.0.0" },
-      { "version": "v17.0.0", "published": "2026-10-31", "title": "v17.0.0" }
+      { "version": "v18.0.0", "published": "2026-11-05", "title": "v18.0.0" }
     ],
     "notes": {
-      "summary": "这一版读 19.x 的存档，装上就接着用，不加页面",
-      "items": [
-        "每一页都检查真的画出来了",
-        "静态检查守住打包目标，不让代码用上 macOS 11 自带 WebKit 不认识的写法",
-        "复盘先让你试"
-      ],
-      "url": "https://github.com/hxddh/chessboard/releases/tag/v21.0.0"
+      "summary": "这一版读 21.0 的存档，装上就接着用",
+      "items": ["一打开就是第一处关键时刻", "开局名不再夹英文", "失着提醒不再过期"],
+      "url": "https://github.com/hxddh/chessboard/releases/tag/v22.0.0"
     }
   },
   "world-machine": {
