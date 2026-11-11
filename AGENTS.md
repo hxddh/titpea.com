@@ -4,11 +4,11 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (hairline chrome, one centered product skeleton, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — the page shape (design v3: a catalogue in two columns, a margin for labels and facts and a main column for content; the spec sheet, the capture on the product's colour, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
-Settled design decisions in DESIGN.md (for example the studio home) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
+Settled design decisions in DESIGN.md (for example the index home and the two columns) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
 
 ## Where things live
 
@@ -24,9 +24,9 @@ Settled design decisions in DESIGN.md (for example the studio home) are the owne
 
 ### Styles
 
-`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (template parts more than one kind of page renders: the centered hero, the closing band, code spans), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
+`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (the page language every page uses: the two columns, the rule, the title and heading roles, facts, text links, the stage under a capture, code spans), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
 
-Everything else is imported by the component that renders it: `home` (HomePage), `about` (AboutPage), `release-list` and `releases` (ReleasesPage), `privacy` (PrivacyPage), `family` (FamilyBand), `document` (the hand-written privacy policies and the 404), and `visuals`, `demo` and `product` (ProductPage). One route renders every product, so a live demo's sheet (`demo-<name>.css`) is linked by `src/components/product/demo-styles.ts` only on the pages that play it. A stylesheet that is not imported by `global.css` starts with the same `@layer` statement; `npm run check:dist` fails when a page's sheets set the layers up in another order, or when a page off the product pages loads more than 40 KB of CSS.
+Everything else is imported by the component that renders it: `home` (HomePage), `about` (AboutPage), `release-list` and `releases` (ReleasesPage), `privacy` (PrivacyPage), `document` (the hand-written privacy policies and the 404), and `visuals`, `demo` and `product` (ProductPage). One route renders every product, so a live demo's sheet (`demo-<name>.css`) is linked by `src/components/product/demo-styles.ts` only on the pages that play it. A stylesheet that is not imported by `global.css` starts with the same `@layer` statement; `npm run check:dist` fails when a page's sheets set the layers up in another order, or when a page off the product pages loads more than 40 KB of CSS.
 
 ### Add a product
 

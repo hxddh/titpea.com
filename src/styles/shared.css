@@ -1,72 +1,214 @@
 @layer templates {
-  /* Template parts more than one kind of page renders: the centered hero, the
-   closing band (product pages), and code spans in quoted notes. */
+  /* The page language every page shares (DESIGN.md, "Page Shape"): a margin
+   column for labels and facts, a main column for content, an ink rule over
+   each section; the serif for headings, mono for facts; the capture on a
+   block of the product's own colour. */
 
-  /* Centered heroes share one shape: a wash, a large title, a balanced lede. */
+  /* The two columns. */
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    row-gap: 24px;
+  }
+
+  .cols-margin {
+    grid-column: span 4;
+    min-width: 0;
+  }
+
+  .cols-main {
+    grid-column: span 8;
+    min-width: 0;
+  }
+
+  .cols-full {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  /* An ink rule opens a section; hairlines separate the rows inside it. */
+  .rule {
+    padding-top: 20px;
+    border-top: 1px solid var(--ink);
+  }
+
+  /* A page opens on its title, left-aligned, then the rule. */
   .home-hero,
   .about-hero,
-  .product-hero {
-    position: relative;
-    isolation: isolate;
-    padding-top: 72px;
-    text-align: center;
-  }
-
-  .home-hero h1,
-  .about-hero h1 {
-    margin: 0 auto;
-    font-size: var(--title-hero);
-    line-height: 1.04;
-    letter-spacing: -0.035em;
-  }
-
-  /* Privacy and 404 open at the same height as the other heroes. */
-  .privacy-page {
+  .product-hero,
+  .page-hero {
     padding-top: 72px;
   }
 
-  @media (max-width: 640px) {
-    .home-hero,
-    .about-hero,
-    .product-hero,
-    .privacy-page {
-      padding-top: 48px;
-    }
+  .page-section {
+    padding-top: 112px;
   }
 
-  /* Closing action */
-  .final-cta {
-    padding-top: var(--section-y);
-    text-align: center;
+  .page-end {
+    padding-bottom: 96px;
   }
 
-  /* The closing band: icon, name, and the hero actions once more. */
-  .final-cta-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 18px;
+  /* The title. */
+  .display {
+    margin: 0 0 40px;
+    font-size: clamp(2.75rem, 7.6vw, 6.25rem);
+    line-height: 1.02;
+    text-wrap: balance;
   }
 
-  .final-cta-name {
+  .display-line {
+    display: block;
+  }
+
+  /* Every section heading. */
+  .heading {
     margin: 0;
-    font-size: var(--title-show);
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.028em;
+    font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    text-wrap: balance;
   }
 
-  .final-cta .actions {
-    margin-top: 28px;
+  /* A fact: a version, a date, a licence, a count, a figure's label. */
+  .fact {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
   }
 
-  /* The band takes the product's faint tint (--product-band), transparent off
-   product pages. */
-  .final-cta {
-    margin-top: var(--section-y);
-    padding-top: 64px;
-    padding-bottom: 36px;
-    border-radius: var(--radius-card);
-    background: var(--product-band, transparent);
+  .cols-margin > .heading + .fact {
+    margin-top: 8px;
+  }
+
+  .body-text {
+    max-width: var(--measure);
+    margin: 0 0 20px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  /* A link that stands alone: underlined ink, the site colour on hover. */
+  .textlink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .textlink:hover {
+    text-decoration-color: var(--site);
+    text-decoration-thickness: 2px;
+  }
+
+  .button-version {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+  }
+
+  /* Rows on hairlines: data sentences, quoted release notes. */
+  .line-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .line-list > li {
+    max-width: var(--measure);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  .line-list > li:first-child {
+    padding-top: 0;
+  }
+
+  .line-list + .textlink {
+    margin-top: 8px;
+  }
+
+  /* The paper under a capture: the product's own colour, flat. */
+  .stage {
+    display: block;
+    background: color-mix(in oklab, var(--product-tint, var(--paper-raised)) var(--paper-mix), #000);
+  }
+
+  /* An object that is not a photograph (a terminal, a chart, a working demo)
+   lies on the raised paper, which its own colours were set for. */
+  .stage[data-plain] {
+    background: var(--paper-raised);
+  }
+
+  /* A terminal replay keeps the page's paper under its own tint, as its
+   label colour was set for. */
+  .stage[data-plain] .command-replay {
+    background: var(--paper);
+  }
+
+  .stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-shot);
+  }
+
+  /* Under a figure: its number and the release it was captured at, then what
+   the reader cannot see in it. */
+  .figure-note {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 24px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: var(--text-small);
+    line-height: 1.5;
+  }
+
+  .figure-note a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: -12px;
+    color: var(--ink-2);
+  }
+
+  /* A name with its icon, in a list of tools. */
+  .tool-links {
+    display: grid;
+    gap: 2px;
+    margin: 12px 0 4px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tool-links :is(a, span.tool-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: var(--ink);
+  }
+
+  .tool-links [aria-current] {
+    font-weight: 600;
+  }
+
+  .tool-links small {
+    color: var(--muted);
+    font-size: var(--text-meta);
   }
 
   /* `code` spans in product copy and quoted release notes (Prose.astro). */
@@ -80,30 +222,37 @@
     overflow-wrap: anywhere;
   }
 
+  @media (max-width: 900px) {
+    .cols-margin,
+    .cols-main {
+      grid-column: 1 / -1;
+    }
+
+    /* A page's first explanation comes before its facts on a narrow screen. */
+    :is(.home-hero, .about-hero, .product-hero) .cols-main {
+      order: -1;
+    }
+
+    .page-section {
+      padding-top: 80px;
+    }
+  }
+
   @media (max-width: 640px) {
-    .home-hero h1,
-    .about-hero h1 {
+    .home-hero,
+    .about-hero,
+    .product-hero,
+    .page-hero {
+      padding-top: 48px;
+    }
+
+    .display {
+      margin-bottom: 28px;
       font-size: clamp(2.5rem, 11.5vw, 3rem);
     }
 
     .shot {
       border-radius: 10px;
-    }
-
-    /* The two actions sit side by side: stacking a full-width button and a
-     text link pushed the product below the first screen. */
-    .actions {
-      gap: 8px 12px;
-      margin-top: 24px;
-    }
-
-    /* The closing block: the header already carries the icon and name. */
-    .final-cta {
-      padding-top: 40px;
-    }
-
-    .final-cta-icon {
-      display: none;
     }
   }
 }

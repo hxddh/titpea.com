@@ -9,14 +9,15 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="product-section faq-section">
-  <div class="shell narrow">
-    <header class="section-head">
-      <h2>{section.label}</h2>
+<section id={section.id} class="shell page-section product-section faq-section">
+  <div class="cols rule">
+    <header class="cols-margin">
+      <h2 class="heading">{section.label}</h2>
     </header>
-    <div class="faq-list">
-      {section.items.map((item, index) => (
-        <details class="faq-item" open={index === 0}>
+    <div class="cols-main faq-list">
+      {/* Every answer is open; phones fold all but the first (faq.js). */}
+      {section.items.map((item) => (
+        <details class="faq-item" open>
           <summary>{item.title}</summary>
           <p class="faq-answer">
             <Prose text={item.body} />

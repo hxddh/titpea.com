@@ -4,10 +4,9 @@
 @layer templates {
   /* Release list: newest first, one hairline row per product. */
   .release-list {
-    margin: 40px 0 0;
+    margin: 0;
     padding: 0;
     list-style: none;
-    border-top: 1px solid var(--line);
   }
 
   .release-list li {

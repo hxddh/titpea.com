@@ -11,19 +11,9 @@ interface Props {
   alternateLocale: Locale;
   /** Product pages pin their own local nav, so the site header scrolls away. */
   scrollsAway?: boolean;
-  /** Another site mark, for a page that tries one (the v3 sample). */
-  mark?: string;
 }
 
-const {
-  current,
-  locale,
-  alternateHref,
-  alternateLabel,
-  alternateLocale,
-  scrollsAway = false,
-  mark = "/favicon.svg",
-} = Astro.props;
+const { current, locale, alternateHref, alternateLabel, alternateLocale, scrollsAway = false } = Astro.props;
 const copy = ui[locale];
 const groups = navGroups(locale);
 const lineGroups = groups.filter((group) => group.line);
@@ -34,7 +24,7 @@ const isCurrent = (item: { current?: CurrentPage }) => (item.current === current
 <header class="site-header" data-static={scrollsAway ? "" : undefined}>
   <div class="site-header-bar glass">
     <a class="brand" href={pathFor(locale)} aria-label={copy.homeLabel}>
-      <img src={mark} alt="" width="22" height="22" />
+      <img src="/favicon.svg" alt="" width="22" height="22" />
       Titpea
     </a>
 

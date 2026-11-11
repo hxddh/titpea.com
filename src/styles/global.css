@@ -6,8 +6,8 @@
    this statement, so the order holds whichever file a page loads first.
 
    This file is on every page. Each page adds its own: HomePage, AboutPage,
-   ReleasesPage, PrivacyPage and ProductPage import theirs, FamilyBand its
-   band, the hand-written pages document.css, and a product page links the
+   ReleasesPage, PrivacyPage and ProductPage import theirs, the hand-written
+   pages document.css, and a product page links the
    stylesheet of each live demo it renders (product/demo-styles.ts). */
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 

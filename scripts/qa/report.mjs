@@ -48,12 +48,9 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && !isPrivacy && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
-  if (!isAsset && !isAuxCheck && isHome && result.heroCtaCount !== 2) {
-    reasons.push(`home hero should have 2 CTAs, got ${result.heroCtaCount}`);
-  }
-  // About's hero has no actions (its links are one line of text), and nor
+  // Home's and About's heroes have no actions (their links are text), and nor
   // do the Releases and Privacy index pages, whose hero only names the list.
-  const isAbout = ["about", "releases", "privacy"].includes(route?.kind);
+  const isAbout = ["home", "about", "releases", "privacy"].includes(route?.kind);
   if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount !== 0) {
     reasons.push(`about hero should have no CTAs, got ${result.heroCtaCount}`);
   }

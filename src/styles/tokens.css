@@ -1,7 +1,7 @@
 @layer tokens {
-  /* Design tokens. One product-page language shared by every page:
-   a quiet canvas, a raised card tone, one blue accent, glass chrome,
-   and deep shadows reserved for product photographs. */
+  /* Design tokens. One language shared by every page: a quiet canvas, ink
+   for every control, glass chrome, the product's own colour as the paper
+   under its capture, and shadows reserved for product photographs. */
   :root {
     color-scheme: light;
     --section-index-sticky-top: 0px;
@@ -42,11 +42,6 @@
     --glass-shade: rgba(0, 0, 0, 0.06);
     --glass-blur: saturate(140%) blur(16px);
 
-    /* Hero wash */
-    --wash-1: rgba(90, 160, 255, 0.1);
-    --wash-2: rgba(255, 150, 190, 0.08);
-    --wash-3: rgba(120, 220, 200, 0.08);
-
     /* Shadows */
     /* Two depths only: a photograph resting on the page, and a panel above it. */
     --shadow-shot: 0 1px 2px rgba(20, 20, 30, 0.04), 0 24px 56px -28px rgba(20, 20, 30, 0.26);
@@ -78,9 +73,8 @@
      second line (large text, 5.9:1 on paper). */
     --display-face: Fraunces, ui-serif, Georgia, serif;
     --display-accent: #6b6b6f;
-    /* Light screenshots on a dark canvas: dimmed a little in dark mode only,
-     and set on a mid-grey stage there so a white window does not glare. */
-    --shot-dim: none;
+    /* A light showcase capture on a dark canvas sits on a mid-grey stage, so a
+     white window does not glare. Captures are never dimmed. */
     --stage: transparent;
     --stage-pad: 0px;
 
@@ -141,12 +135,13 @@
     /* A section heading sits closer to its content than to the section above. */
     --head-gap: 40px;
 
-    /* Design v3 sample (v3.css, the /v3/ pages only): the gap between its two
-     columns, the site's own colour (the pea mark's green, on hover rules),
-     and how much of a product's colour the paper under its capture keeps. */
-    --v3-gap: 32px;
-    --v3-site: #2f6b2e;
-    --v3-stage-mix: 100%;
+    /* The two columns: twelve tracks with this gap; the margin column takes
+     four of them, the main column eight. */
+    --col-gap: 32px;
+    /* The site's own colour (the pea mark's green): hover rules only. */
+    --site: #2f6b2e;
+    /* How much of a product's colour the paper under its capture keeps. */
+    --paper-mix: 100%;
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
@@ -270,9 +265,6 @@
     --menu-bg: rgba(28, 28, 30, 0.98);
     --glass-edge: rgba(255, 255, 255, 0.14);
     --glass-shade: rgba(0, 0, 0, 0.4);
-    --wash-1: rgba(40, 110, 255, 0.1);
-    --wash-2: rgba(200, 70, 150, 0.07);
-    --wash-3: rgba(40, 170, 150, 0.06);
     --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --shadow-card-hover: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
@@ -281,7 +273,6 @@
     --plate-drop: rgba(0, 0, 0, 0.85);
     --display-accent: #9d9da3;
     --zoom-backdrop: rgba(0, 0, 0, 0.82);
-    --shot-dim: brightness(0.86) saturate(0.92);
     --stage: #1f1f22;
     --stage-pad: 10px;
     --data-ref: #36b386;
@@ -289,8 +280,8 @@
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
-    --v3-site: #a9d65c;
-    --v3-stage-mix: 60%;
+    --site: #a9d65c;
+    --paper-mix: 60%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -356,9 +347,6 @@
       --menu-bg: rgba(28, 28, 30, 0.98);
       --glass-edge: rgba(255, 255, 255, 0.14);
       --glass-shade: rgba(0, 0, 0, 0.4);
-      --wash-1: rgba(40, 110, 255, 0.1);
-      --wash-2: rgba(200, 70, 150, 0.07);
-      --wash-3: rgba(40, 170, 150, 0.06);
       --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
       --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
       --shadow-card-hover: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
@@ -367,7 +355,6 @@
       --plate-drop: rgba(0, 0, 0, 0.85);
       --display-accent: #9d9da3;
       --zoom-backdrop: rgba(0, 0, 0, 0.82);
-      --shot-dim: brightness(0.86) saturate(0.92);
       --stage: #1f1f22;
       --stage-pad: 10px;
       --data-ref: #36b386;
@@ -375,15 +362,14 @@
       --data-caution: #e3a44f;
       --data-caution-ink: #edb472;
       --data-alert: #ff7b72;
-      --v3-site: #a9d65c;
-      --v3-stage-mix: 60%;
+      --site: #a9d65c;
+      --paper-mix: 60%;
     }
   }
 
-  /* Each product page wears its own color pair (body[data-product], set by
-   SiteLayout). The hero glow and the section band take the product tint;
-   figures, step numbers and kickers take its ink; the primary button is
-   filled with --product-fill. Links keep the one site blue. */
+  /* Each product page wears its own colour pair (body[data-product], set by
+   SiteLayout): the tint is the paper under its hero capture (.stage), the
+   ink is for figures in its mocks. Every control stays ink. */
   body[data-product="agent-radar"] {
     --product-tint: var(--tint-agent-radar);
     --product-ink: var(--ink-agent-radar);
@@ -459,43 +445,6 @@
   body[data-product="world-machine"] {
     --product-tint: var(--tint-world-machine);
     --product-ink: var(--ink-world-machine);
-  }
-
-  body[data-product] {
-    --wash-1: color-mix(in srgb, var(--product-tint) 30%, transparent);
-    --wash-2: color-mix(in srgb, var(--product-tint) 14%, transparent);
-    --wash-3: color-mix(in srgb, var(--product-tint) 18%, transparent);
-    --product-band: var(--paper-raised);
-    /* One faint breath of the product colour behind the icon. The rest of the
-     page stays neutral: the colour lives in the icon and the screenshots. */
-    --hero-glow: radial-gradient(
-      48% 40% at 50% 8%,
-      color-mix(in srgb, var(--product-tint) 12%, transparent),
-      transparent 72%
-    );
-  }
-
-  /* Dark pages: a low-percentage mix of a warm tint into black turns brown.
-   The glow keeps more colour in a smaller core, and the section band sits on
-   the raised paper instead of black. */
-  :root[data-theme="dark"] body[data-product] {
-    --product-band: var(--paper-raised);
-    --hero-glow: radial-gradient(
-      44% 36% at 50% 6%,
-      color-mix(in srgb, var(--product-tint) 16%, transparent),
-      transparent 70%
-    );
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) body[data-product] {
-      --product-band: var(--paper-raised);
-      --hero-glow: radial-gradient(
-        44% 36% at 50% 6%,
-        color-mix(in srgb, var(--product-tint) 16%, transparent),
-        transparent 70%
-      );
-    }
   }
 
   /* Phones: sections sit closer together. */

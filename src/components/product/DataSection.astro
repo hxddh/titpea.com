@@ -9,12 +9,12 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class="product-section data-section">
-  <div class="shell narrow">
-    <header class="section-head">
-      <h2>{section.title}</h2>
+<section id={section.id} class="shell page-section product-section data-section">
+  <div class="cols rule">
+    <header class="cols-margin">
+      <h2 class="heading">{section.title}</h2>
     </header>
-    <ul class="data-list">
+    <ul class="cols-main line-list data-list">
       {section.items.map((item) => (
         <li>
           <Prose text={item} />

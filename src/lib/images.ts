@@ -12,8 +12,11 @@ export function srcsetFor(src: string, width: number): string | undefined {
   return [...variants.map(({ path, variantWidth }) => `${path} ${variantWidth}w`), `${src} ${width}w`].join(", ");
 }
 
-/** Screenshots never render wider than the 1040px wide frame. */
-export const screenshotSizes = "(max-width: 1084px) calc(100vw - 44px), 1040px";
+/** A capture across the whole width never renders wider than the 1120px shell. */
+export const screenshotSizes = "(max-width: 1164px) calc(100vw - 44px), 1120px";
+
+/** A capture in the main column: two thirds of the shell on desktop, the whole width below 900px. */
+export const columnShotSizes = "(max-width: 900px) calc(100vw - 44px), (max-width: 1164px) 64vw, 736px";
 
 /** A tall hero capture (a side panel) renders at most 380px wide (product.css). */
 export const portraitShotSizes = "380px";

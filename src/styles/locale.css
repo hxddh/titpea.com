@@ -11,21 +11,26 @@
   }
 
   /* Reading measure for Chinese: about 34 characters a line. */
-  :lang(zh) :is(.faq-answer, .data-list li, .prose, .about-body) {
+  :lang(zh) :is(.faq-answer, .line-list > li, .body-text, .prose, .about-body) {
     max-width: var(--measure);
   }
 
-  :lang(zh) .about-hero h1,
-  :lang(zh) .home-hero h1,
-  :lang(zh) .product-hero h1 {
-    letter-spacing: -0.005em;
-    line-height: 1.16;
+  /* Chinese display lines: taller lines than Latin capitals need, and breaks
+   only between phrases (identity.css sets their one weight). */
+  :lang(zh) .display {
+    font-size: clamp(2.5rem, 6.6vw, 5.25rem);
+    line-height: 1.14;
   }
 
-  /* The related-products kicker is an h2 in the kicker size: Chinese
-   tracking, as for every h2 (base.css). */
-  :lang(zh) .product-related-title {
-    letter-spacing: -0.005em;
+  :lang(zh) .heading {
+    line-height: 1.3;
+  }
+
+  /* Nine characters fit a phone line at this size; ten wrap as two phrases. */
+  @media (max-width: 640px) {
+    :lang(zh) .display {
+      font-size: clamp(2.125rem, 9.6vw, 2.5rem);
+    }
   }
 
   :lang(zh) .sub,
@@ -36,6 +41,8 @@
   :lang(zh) .about-body,
   :lang(zh) .feature-card p,
   :lang(zh) .home-catalog-text,
+  :lang(zh) .body-text,
+  :lang(zh) .line-list > li,
   :lang(zh) .faq-answer,
   :lang(zh) .whats-new-list li {
     line-height: 1.75;
@@ -46,7 +53,7 @@
 
   /* Short Chinese text (two or three lines): balanced lines, so a card never
    ends on a two-character tail like 「列出。」. */
-  :lang(zh) :is(.feature-card p, .home-catalog-text, .sub, .shot-caption, .home-featured-text) {
+  :lang(zh) :is(.feature-card p, .home-catalog-text, .sub, .shot-caption, .pick-text) {
     text-wrap: balance;
   }
 
@@ -58,11 +65,5 @@
     text-wrap: balance;
     word-break: keep-all;
     overflow-wrap: anywhere;
-  }
-
-  /* The split hero's lede is left-aligned beside the object: it keeps the
-   template's pretty wrapping (product.css). */
-  :lang(zh) .hero-split .lead {
-    text-wrap: pretty;
   }
 }

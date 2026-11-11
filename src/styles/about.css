@@ -2,30 +2,23 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* About (AboutPage.astro): one calm column — eyebrow, the claim, the
-   owner's paragraph, one line of links, the analytics disclosure. */
-
-  .about-hero {
-    padding-bottom: 24px;
-  }
-
+  /* About (AboutPage.astro): the claim, the owner's words beside how to reach
+   them, then every tool as its icon and name. */
   .about-portrait {
     display: block;
     width: 112px;
     height: 112px;
-    margin: 0 auto 24px;
+    margin: 0 0 20px;
     border-radius: 50%;
     object-fit: cover;
   }
 
-  /* The owner's words read as text, left over left, under the centered claim. */
+  /* The owner's words read as text, at the reading measure. */
   .about-body {
     max-width: 34em;
-    margin: 40px auto 0;
     color: var(--ink);
     font-size: var(--text-sub);
     line-height: 1.6;
-    text-align: left;
   }
 
   .about-body p {
@@ -39,30 +32,8 @@
   .about-links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 28px auto 0;
-    font-size: var(--text-list-body);
-  }
-
-  /* A line of links on its own, not links inside running text: no standing
-   underline (it also ran under the separator), only on hover. */
-  .about-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    text-decoration: none;
-  }
-
-  .about-links a:hover {
-    text-decoration: underline;
-  }
-
-  .about-links a:not(:last-child)::after {
-    content: "·";
-    /* Inline-block, so a hovered link's underline stops before the dot. */
-    display: inline-block;
-    margin: 0 0.8em;
-    color: var(--faint);
+    gap: 0 24px;
+    margin: 4px 0 0;
   }
 
   /* Every tool, as its icon and name: the shelf the paragraph talks about. */
@@ -70,8 +41,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
     gap: 8px 12px;
-    max-width: 44rem;
-    margin: 48px auto 32px;
+    margin: 0 0 32px -4px;
     padding: 0;
     list-style: none;
   }
@@ -103,8 +73,8 @@
 
   .about-analytics {
     max-width: 60ch;
-    margin: 4px auto 0;
-    text-wrap: balance;
+    margin: 0;
+    text-wrap: pretty;
     color: var(--muted);
     font-size: var(--text-meta);
   }

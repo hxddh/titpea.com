@@ -2,7 +2,7 @@
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
 import { featuredSrc, lines, type Line, type Locale } from "../../content/schema";
-import { otherLocale, pathFor, releaseTags } from "./shared";
+import { formatDate, otherLocale, pathFor, releaseTags } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { type CatalogItem, catalogItem } from "./catalog";
 
@@ -20,35 +20,36 @@ export type HomePageModel = {
     /** The title in pieces that never wrap inside ("|" in the copy). */
     titleParts: string[];
     lead: string;
-    browse: string;
     about: { label: string; href: string };
-    /** The three newest GitHub releases, newest first, and a link to all of them. */
-    latest: {
-      label: string;
-      items: Array<{ name: string; version: string; href: string }>;
-      all: { label: string; href: string };
-    };
   };
-  /** The first, larger cards of the catalog (not a section of their own). */
+  /** The picks: up to three products, each with a capture and its latest tag. */
   featured: {
-    /** Names the featured row for assistive tech. */
     title: string;
-    learnMore: string;
     items: Array<
-      CatalogItem & {
-        image: { src: string; alt: string; width: number; height: number };
+      IndexItem & {
+        /** The whole window where the page has one: the stage shows its top-left corner at reading scale. */
+        image: { src: string; width: number; height: number };
         caption?: string;
       }
     >;
   };
-  /** Every tool: after the featured row, every other product by line, in site order. */
+  /** The index: every product by line, in site order, the picks included. */
   more: {
+    /** Names the index for assistive tech. */
     title: string;
-    groups: Array<{ line: Line; label: string; items: CatalogItem[] }>;
+    groups: Array<{ line: Line; label: string; count: string; items: IndexItem[] }>;
   };
-  primaryCta: string;
   expectedText: string[];
 };
+
+/** A product in Home's index: its catalog item, and its latest release tag and date when it has one. */
+export type IndexItem = CatalogItem & { version?: string; released?: string };
+
+const indexItem = (product: (typeof products)[number], locale: Locale): IndexItem => ({
+  ...catalogItem(product, locale),
+  version: releaseTags[product.slug]?.version,
+  released: formatDate(releaseTags[product.slug]?.published, locale),
+});
 
 export function homePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
@@ -84,49 +85,33 @@ export function homePage(locale: Locale): HomePageModel {
       title: copy.homeTitle.replaceAll("|", ""),
       titleParts: copy.homeTitle.split("|"),
       lead: copy.homeLead,
-      browse: copy.browseTools.replace("{count}", String(products.length)),
       about: { label: copy.aboutMore, href: pathFor(locale, "about") },
-      latest: {
-        label: copy.homeLatest,
-        items: products
-          .filter((product) => releaseTags[product.slug]?.published)
-          .sort((a, b) => releaseTags[b.slug].published!.localeCompare(releaseTags[a.slug].published!))
-          .slice(0, 3)
-          .map((product) => ({
-            name: product[locale].title,
-            version: releaseTags[product.slug].version,
-            href: pathFor(locale, product.slug),
-          })),
-        all: { label: copy.homeAllReleases, href: pathFor(locale, "releases") },
-      },
     },
     featured: {
       title: copy.featuredTitle,
-      learnMore: copy.learnMore,
       items: featured.map((product) => {
         const { image } = product.featured!;
+        const visual = product[locale].visual;
         return {
-          ...catalogItem(product, locale),
-          image: { ...image, src: featuredSrc(product.featured!, locale), alt: image.alt[locale] },
+          ...indexItem(product, locale),
+          image:
+            visual.kind === "screenshot" ? visual.image : { ...image, src: featuredSrc(product.featured!, locale) },
           caption: product.featured!.caption?.[locale],
         };
       }),
     },
-    // Every other product, under its line (the header menu's names and order).
     more: {
       title: copy.moreToolsTitle,
-      groups: lines
-        .map((line) => ({
+      groups: lines.map((line) => {
+        const items = products.filter((product) => product.line === line).map((product) => indexItem(product, locale));
+        return {
           line,
           label: copy.groups[line],
-          items: products
-            .filter((product) => product.line === line && !product.featured)
-            .map((product) => catalogItem(product, locale)),
-        }))
-        .filter((group) => group.items.length > 0),
+          count: copy.toolCount.replace("{count}", String(items.length)),
+          items,
+        };
+      }),
     },
-    // The hero's primary button jumps to the full catalog.
-    primaryCta: `${path}#more-title`,
-    expectedText: [copy.homeTitle.replaceAll("|", ""), copy.homeLead, copy.moreToolsTitle],
+    expectedText: [copy.homeLead, copy.featuredTitle, copy.groups.storage],
   };
 }
