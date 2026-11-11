@@ -109,13 +109,8 @@
     margin: 0;
   }
 
-  .stage-hero,
-  .stage-show {
-    padding: clamp(16px, 4.4vw, 56px);
-  }
-
-  /* A showcase lies on the same block as the hero's picture. A capture
-   narrower than 3:2 keeps product scale; a phone capture, phone size. */
+  /* A showcase stands like the hero's picture. A capture narrower than 3:2
+   keeps product scale; a phone capture, phone size. */
   .stage-show > * {
     margin-inline: auto;
   }
@@ -124,7 +119,7 @@
     max-width: 820px;
   }
 
-  /* Inside a block the frame (.shot) carries the edge and depth, not the image. */
+  /* In a frame (.shot) the frame carries the edge and depth, not the image. */
   .stage .shot img {
     border-radius: 0;
     box-shadow: none;
