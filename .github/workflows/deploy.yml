@@ -114,9 +114,20 @@ jobs:
         run: npx playwright install chromium
       # zh pages need real CJK glyphs, or the visual baselines compare tofu
       # boxes. Keep this font in sync with local baseline refreshes.
+      # The runner's own Ubuntu mirror (azure.archive.ubuntu.com) is sometimes
+      # unresolvable for longer than apt retries; the same package, at the
+      # version ubuntu-24.04 ships, then comes straight from the main archive.
       - name: Install CJK fonts
         if: github.event_name != 'schedule'
-        run: sudo apt-get -o Acquire::Retries=5 update && sudo apt-get -o Acquire::Retries=5 install -y --no-install-recommends fonts-noto-cjk
+        run: |
+          if sudo apt-get -o Acquire::Retries=3 update && sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends fonts-noto-cjk; then
+            exit 0
+          fi
+          curl -fsSL --retry 5 --retry-all-errors -o /tmp/fonts-noto-cjk.deb \
+            "http://archive.ubuntu.com/ubuntu/pool/main/f/fonts-noto-cjk/fonts-noto-cjk_20230817+repack1-3_all.deb"
+          sudo dpkg -i /tmp/fonts-noto-cjk.deb
+          fc-cache -f
+          fc-list | grep -qi "Noto Sans CJK"
       - name: Page QA
         if: github.event_name != 'schedule'
         # QA and a11y run on a pool of pages sized to the runner's cores; 16
