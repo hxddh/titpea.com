@@ -1,4 +1,5 @@
 ---
+import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import type { CardsSection } from "../../content/schema";
 
@@ -10,25 +11,23 @@ const { section } = Astro.props;
 ---
 
 <section id={section.id} class={`shell page-section product-section ${section.id}-section`}>
-  <div class="cols rule">
-    <header class="cols-margin">
-      <h2 class="heading">{section.label}</h2>
-    </header>
-    <div class={`cols-main ${section.id}-grid feature-grid`} data-count={section.items.length}>
-      {section.items.map((item) => (
-        <article class="feature-card">
-          <h3>{item.title}</h3>
-          <p>
-            <Prose text={item.body} />
-            {item.link && (
-              <>
-                {" "}
-                <a href={item.link.href}>{item.link.label}</a>
-              </>
-            )}
-          </p>
-        </article>
-      ))}
-    </div>
+  <header class="section-head">
+    <h2 class="heading">{headingText(section.label)}</h2>
+  </header>
+  <div class={`${section.id}-grid feature-grid`} data-count={section.items.length}>
+    {section.items.map((item) => (
+      <article class="feature-card">
+        <h3>{item.title}</h3>
+        <p>
+          <Prose text={item.body} />
+          {item.link && (
+            <>
+              {" "}
+              <a href={item.link.href}>{item.link.label}</a>
+            </>
+          )}
+        </p>
+      </article>
+    ))}
   </div>
 </section>

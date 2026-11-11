@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import "../styles/home.css";
+import { headingText } from "../lib/heading";
 import type { HomePageModel } from "../lib/pages";
 
 interface Props {
@@ -17,75 +18,69 @@ const { model } = Astro.props;
         <span class="display-line">{part}</span>
       ))}
     </h1>
-    <div class="cols rule">
-      <div class="cols-margin">
-        <p class="fact">{model.hero.eyebrow}</p>
-        <a class="textlink" href={model.hero.about.href}>
-          {model.hero.about.label}
-        </a>
-      </div>
-      <div class="cols-main home-copy">
-        <p class="lead">{model.hero.lead}</p>
-      </div>
-    </div>
+    <p class="lead">{model.hero.lead}</p>
+    <p class="home-byline">
+      <span class="fact">{model.hero.eyebrow}</span>
+      <a class="textlink" href={model.hero.about.href}>
+        {model.hero.about.label}
+      </a>
+    </p>
   </section>
 
-  {/* The picks: three products across the whole width, each window whole on its own paper. */}
+  {/* The picks: three products side by side, each window whole on the same raised paper. */}
   <section class="shell page-section picks-section" aria-labelledby="picks-title">
-    <div class="rule">
+    <header class="section-head">
       <h2 class="heading" id="picks-title">
-        {model.featured.title}
+        {headingText(model.featured.title)}
       </h2>
-      <ul class="picks">
-        {model.featured.items.map((item, index) => (
-          <li class:list={["pick", index === 0 && "pick-lead"]}>
-            <a href={item.href}>
-              <span class="stage" data-tint={item.slug}>
-                <img
-                  src={item.image.src}
-                  alt=""
-                  width={item.image.width}
-                  height={item.image.height}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
+    </header>
+    <ul class="picks">
+      {model.featured.items.map((item, index) => (
+        <li class="pick">
+          <a href={item.href}>
+            <span class="pick-stage">
+              <img
+                src={item.image.src}
+                alt=""
+                width={item.image.width}
+                height={item.image.height}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+            </span>
+            <span class="pick-copy">
+              <strong class="pick-name">{item.name}</strong>
+              <span class="pick-text">{item.text}</span>
+              {item.caption && <span class="pick-caption">{item.caption}</span>}
+              <span class="fact">
+                {item.role}
+                {item.version && <span data-visual-live> · {item.version}</span>}
               </span>
-              <span class="pick-copy">
-                <strong class="pick-name">{item.name}</strong>
-                <span class="pick-text">{item.text}</span>
-                {item.caption && <span class="pick-caption">{item.caption}</span>}
-                <span class="fact">
-                  {item.role}
-                  {item.version && <span data-visual-live> · {item.version}</span>}
-                </span>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
-  {/* The index: every product a row, under its line. */}
+  {/* The index: every product under its line, as icon, name and one line. */}
   <section class="shell page-section page-end" id="tools" aria-label={model.more.title}>
     {model.more.groups.map((group) => (
-      <div class="cols rule index-group">
-        <div class="cols-margin">
-          <h2 class="heading" id={`line-${group.line}-title`}>
+      <div class="index-group">
+        <header class="index-head">
+          <h2 class="index-title" id={`line-${group.line}-title`}>
             {group.label}
           </h2>
           <p class="fact">{group.count}</p>
-        </div>
-        <ul class="cols-main index-list panel" aria-labelledby={`line-${group.line}-title`}>
+        </header>
+        <ul class="index-grid" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
             <li>
-              <a class="index-row" href={item.href}>
-                <img class="icon-plate" src={item.icon} alt="" width="32" height="32" loading="lazy" />
-                <strong class="index-name">{item.name}</strong>
-                <span class="index-text home-catalog-text">{item.text}</span>
-                <span class="fact index-fact" data-visual-live>
-                  {item.version && <span>{item.version}</span>}
-                  {item.released && <span>{item.released}</span>}
+              <a class="index-item" href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="40" height="40" loading="lazy" />
+                <span class="index-copy">
+                  <strong class="index-name">{item.name}</strong>
+                  <span class="index-text home-catalog-text">{item.text}</span>
                 </span>
               </a>
             </li>

@@ -79,11 +79,11 @@ const specs: Array<{ label?: string; value: string; href?: string }> = [
     ? [{ label: copyUi.spec.source, value: product.repo, href: `https://github.com/${product.repo}` }]
     : []),
 ];
-// Figures are numbered down the page; each says the release it was captured at.
-const figureLabel = (n: number, asOf?: string) =>
-  (asOf ? copyUi.figureAsOf : copyUi.figure).replace("{n}", String(n)).replace("{version}", asOf ?? "");
+// Provenance is said once: under the hero capture, the release it shows; under
+// a showcase only when its release differs from the hero's.
+const capturedAt = (asOf?: string) => (asOf ? copyUi.capturedAt.replace("{version}", asOf) : undefined);
 const screenshot = copy.visual.kind === "screenshot" && !heroReplay ? copy.visual : undefined;
-const firstShowcaseFigure = 2;
+const heroAsOf = screenshot?.asOf;
 ---
 
 <SiteLayout
@@ -110,62 +110,61 @@ const firstShowcaseFigure = 2;
       <span>{copy.eyebrow}</span>
     </p>
     <h1 class="display">{copy.headline}</h1>
-    <div class="cols rule">
-      <dl class="cols-margin specs panel">
-        {specs.map((spec) => (
-          <div data-plain={spec.label ? undefined : ""}>
-            {spec.label && <dt>{spec.label}</dt>}
-            <dd>
-              {spec.href ? (
-                <a href={spec.href} rel="noreferrer">
-                  {spec.value}
-                </a>
-              ) : (
-                spec.value
-              )}
-            </dd>
-          </div>
-        ))}
-      </dl>
-      <div class="cols-main product-copy">
-        <p class="lead">{copy.lead}</p>
-        {heroCommand && (
-          <div class="hero-command command-line">
-            <code class="command-code" tabindex="0" set:text={heroCommand.command} />
-            <button
-              class="copy-button"
-              type="button"
-              data-copy={heroCommand.command}
-              data-copy-label={copyUi.copy}
-              data-copied-label={copyUi.copied}
-              hidden
-            >
-              {copyUi.copy}
-            </button>
-          </div>
-        )}
-        <div class="actions">
-          {copy.primaryCta.soon ? (
-            <span class="button primary large is-soon" aria-disabled="true">
-              {copy.primaryCta.label}
-            </span>
-          ) : (
-            <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-              {copy.primaryCta.label}
-              {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-            </a>
-          )}
-          <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
-            {copy.secondaryCta.label}
-          </a>
+    <div class="product-copy">
+      <p class="lead">{copy.lead}</p>
+      {heroCommand && (
+        <div class="hero-command command-line">
+          <code class="command-code" tabindex="0" set:text={heroCommand.command} />
+          <button
+            class="copy-button"
+            type="button"
+            data-copy={heroCommand.command}
+            data-copy-label={copyUi.copy}
+            data-copied-label={copyUi.copied}
+            hidden
+          >
+            {copyUi.copy}
+          </button>
         </div>
-        {copy.installNote && (
-          <p class="install-note">
-            <Prose text={copy.installNote} />
-          </p>
+      )}
+      <div class="actions">
+        {copy.primaryCta.soon ? (
+          <span class="button primary large is-soon" aria-disabled="true">
+            {copy.primaryCta.label}
+          </span>
+        ) : (
+          <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+            {copy.primaryCta.label}
+            {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+          </a>
         )}
+        <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
+          {copy.secondaryCta.label}
+        </a>
       </div>
+      {copy.installNote && (
+        <p class="install-note">
+          <Prose text={copy.installNote} />
+        </p>
+      )}
     </div>
+    {/* The facts, as one strip under the actions: no panel. */}
+    <dl class="specs">
+      {specs.map((spec) => (
+        <div data-plain={spec.label ? undefined : ""}>
+          {spec.label && <dt>{spec.label}</dt>}
+          <dd>
+            {spec.href ? (
+              <a href={spec.href} rel="noreferrer">
+                {spec.value}
+              </a>
+            ) : (
+              spec.value
+            )}
+          </dd>
+        </div>
+      ))}
+    </dl>
   </section>
 
   <section class="shell hero-figure">
@@ -182,10 +181,12 @@ const firstShowcaseFigure = 2;
             fetchpriority="high"
           />
         </div>
-        <figcaption class="figure-note">
-          <span class="fact">{figureLabel(1, screenshot.asOf)}</span>
-          {screenshot.caption && <span>{screenshot.caption}</span>}
-        </figcaption>
+        {(screenshot.asOf || screenshot.caption) && (
+          <figcaption class="figure-note">
+            {screenshot.caption && <span>{screenshot.caption}</span>}
+            {screenshot.asOf && <span class="fact">{capturedAt(screenshot.asOf)}</span>}
+          </figcaption>
+        )}
       </figure>
     ) : (
       <div class="stage stage-hero" data-plain>
@@ -215,10 +216,10 @@ const firstShowcaseFigure = 2;
     <DemoSection section={section} controls={controls} />
   ))}
 
-  {showcases.map((showcase, index) => (
+  {showcases.map((showcase) => (
     <ShowcaseSection
       showcase={showcase}
-      label={figureLabel(index + firstShowcaseFigure, showcase.asOf)}
+      label={showcase.asOf !== heroAsOf ? capturedAt(showcase.asOf) : undefined}
       wholeLabel={copyUi.wholeCapture}
       pauseLabel={copyUi.pauseVideo}
       playLabel={copyUi.playVideo}
@@ -240,64 +241,60 @@ const firstShowcaseFigure = 2;
     ) : null,
   )}
 
-  {/* The closing: where to go next in the margin (the family, or related tools), the main action once more. */}
+  {/* The closing: the name and the main action once more, then where to go next (the family, or related tools). */}
   <section class="shell page-section page-end final-cta" aria-label={closing}>
-    <div class="cols rule">
-      <nav class="cols-margin closing-next" aria-labelledby="related-title">
-        <h2 id="related-title" class="closing-label product-related-title">
-          {model.family ? model.family.title : model.related.title}
-        </h2>
-        <ul class="tool-links">
-          {model.family
-            ? model.family.members.map((member) => (
-                <li>
-                  {member.current ? (
-                    <span class="tool-link" aria-current="page">
-                      <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
-                      <span>{member.name}</span>
-                      <small>{member.role}</small>
-                    </span>
-                  ) : (
-                    <a href={member.href}>
-                      <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
-                      <span>{member.name}</span>
-                      <small>{member.role}</small>
-                    </a>
-                  )}
-                </li>
-              ))
-            : model.related.items.map((item) => (
-                <li>
-                  <a href={item.href}>
-                    <img class="icon-plate" src={item.icon} alt="" width="28" height="28" loading="lazy" />
-                    <span>{item.name}</span>
-                  </a>
-                </li>
-              ))}
-        </ul>
-        <a class="textlink closing-all" href={model.related.all.href}>
-          {model.related.all.label}
+    <p class="final-cta-name">{copy.title}</p>
+    <div class="actions">
+      {copy.primaryCta.soon ? (
+        <span class="button primary large is-soon" aria-disabled="true">
+          {closing}
+        </span>
+      ) : (
+        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+          {closing}
+          {model.downloadsRelease && <span class="button-version">{model.version}</span>}
         </a>
-      </nav>
-      <div class="cols-main">
-        <p class="final-cta-name">{copy.title}</p>
-        <div class="actions">
-          {copy.primaryCta.soon ? (
-            <span class="button primary large is-soon" aria-disabled="true">
-              {closing}
-            </span>
-          ) : (
-            <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-              {closing}
-              {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-            </a>
-          )}
-          <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
-            {copy.secondaryCta.label}
-          </a>
-        </div>
-      </div>
+      )}
+      <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
+        {copy.secondaryCta.label}
+      </a>
     </div>
+    <nav class="closing-next" aria-labelledby="related-title">
+      <h2 id="related-title" class="closing-label product-related-title">
+        {model.family ? model.family.title : model.related.title}
+      </h2>
+      <ul class="tool-links">
+        {model.family
+          ? model.family.members.map((member) => (
+              <li>
+                {member.current ? (
+                  <span class="tool-link" aria-current="page">
+                    <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
+                    <span>{member.name}</span>
+                    <small>{member.role}</small>
+                  </span>
+                ) : (
+                  <a href={member.href}>
+                    <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
+                    <span>{member.name}</span>
+                    <small>{member.role}</small>
+                  </a>
+                )}
+              </li>
+            ))
+          : model.related.items.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <img class="icon-plate" src={item.icon} alt="" width="28" height="28" loading="lazy" />
+                  <span>{item.name}</span>
+                </a>
+              </li>
+            ))}
+      </ul>
+      <a class="textlink closing-all" href={model.related.all.href}>
+        {model.related.all.label}
+      </a>
+    </nav>
   </section>
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>

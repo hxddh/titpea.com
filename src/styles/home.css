@@ -2,186 +2,210 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Home (HomePage.astro): the title, the picks, then the index. */
+  /* Home (HomePage.astro): the title and lede, three picks, then the index.
+   One left edge; no panels. */
 
-  /* Each pick's capture lies on its own product's colour. */
-  .stage[data-tint="sonde"] {
-    --product-tint: var(--tint-sonde);
+  .home-hero .lead {
+    max-width: 30em;
   }
 
-  .stage[data-tint="chessboard"] {
-    --product-tint: var(--tint-chessboard);
+  /* Who makes it, and where to read more, in one quiet line. */
+  .home-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 20px;
+    margin: 20px 0 0;
   }
 
-  .stage[data-tint="readout"] {
-    --product-tint: var(--tint-readout);
-  }
-
-  /* One large pick beside two smaller ones, bottoms aligned. */
+  /* Three picks of equal weight, each window whole on the same raised paper,
+   so three products never fight in three colours. */
   .picks {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: auto auto;
-    gap: 32px var(--col-gap);
-    margin: 28px 0 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--col-gap);
+    margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .pick {
-    grid-column: span 4;
     min-width: 0;
-  }
-
-  .pick-lead {
-    grid-column: span 8;
-    grid-row: span 2;
   }
 
   .pick a {
     display: flex;
     flex-direction: column;
+    gap: 18px;
     height: 100%;
-    padding: 8px;
-    border-radius: 24px;
     color: var(--ink);
-    background: var(--surface);
-    box-shadow: var(--shadow-surface);
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
   }
 
   .pick a:hover {
     text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-surface-hover);
   }
 
-  /* The whole window, centred on its paper. */
-  .pick .stage {
+  .pick-stage {
     display: flex;
-    flex: 1;
     align-items: center;
     justify-content: center;
-    min-height: 0;
-    padding: clamp(16px, 7%, 40px);
-    border-radius: 16px;
+    aspect-ratio: 3 / 2;
+    padding: 6%;
+    overflow: hidden;
+    border-radius: var(--radius-stage);
+    background: var(--paper-raised);
   }
 
-  .pick .stage img {
-    border-radius: 6px;
+  .pick-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(var(--drop-shot));
+    transition: transform 0.35s ease;
   }
 
-  .pick-lead .stage img {
-    border-radius: 10px;
+  .pick a:hover .pick-stage img {
+    transform: translateY(-3px);
   }
 
   .pick-copy {
     display: grid;
-    gap: 2px;
-    padding: 16px 14px 14px;
+    gap: 4px;
   }
 
   .pick-name {
-    font-size: 17px;
+    font-size: var(--text-card-title);
     font-weight: 600;
     line-height: 1.35;
+  }
+
+  .pick a:hover .pick-name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
   }
 
   .pick-text {
     color: var(--ink-2);
     font-size: 15px;
     line-height: 1.5;
+    text-wrap: pretty;
   }
 
   .pick-copy .fact {
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   /* Said under a picture that is not a plain capture. */
   .pick-caption {
     color: var(--muted);
-    font-size: var(--text-small);
-    line-height: 1.4;
+    font-size: var(--text-meta);
+    line-height: 1.45;
+  }
+
+  /* The index: each line of products opens on a hairline, its name and count
+   on one line, then its tools as icon, name and one line, three across. */
+  .index-group {
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
   }
 
   .index-group + .index-group {
-    margin-top: 64px;
+    margin-top: 56px;
   }
 
-  .index-list {
+  .index-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .index-title {
+    margin: 0;
+    font-size: var(--text-heading-s);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px var(--col-gap);
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  /* One tool: icon, name, its catalog line, its latest tag and date. */
-  .index-row {
+  .index-item {
     display: grid;
-    grid-template-columns: 32px minmax(0, 11.5em) minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 4px 16px;
-    min-height: 64px;
-    padding: 12px 20px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+    margin-inline: -12px;
+    padding: 14px 12px;
+    border-radius: var(--radius-media);
     color: var(--ink);
     transition: background-color 0.15s ease;
   }
 
-  /* Rows part on a hairline that starts at the name, as a system list does. */
-  .index-list > li + li {
-    box-shadow: inset 0 1px 0 var(--line);
-  }
-
-  .index-row:hover {
+  .index-item:hover {
     text-decoration: none;
     background: var(--row-hover);
   }
 
+  .index-copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
   .index-name {
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.35;
   }
 
   .index-text {
     color: var(--ink-2);
     font-size: 15px;
     line-height: 1.5;
-  }
-
-  .index-fact {
-    display: grid;
-    justify-items: end;
-    min-width: 7.5em;
-    text-align: right;
-    white-space: nowrap;
+    text-wrap: pretty;
   }
 
   @media (max-width: 900px) {
-    .index-row {
-      grid-template-columns: 32px minmax(0, 1fr) auto;
-      padding: 12px 16px;
+    .picks,
+    .index-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .pick,
-    .pick-lead {
+    .pick:first-child {
       grid-column: 1 / -1;
-      grid-row: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .picks,
+    .index-grid {
+      grid-template-columns: minmax(0, 1fr);
     }
 
-    .index-text {
-      grid-column: 2 / -1;
-      grid-row: 2;
+    .picks {
+      gap: 40px;
+    }
+
+    .index-grid {
+      gap: 0;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pick a,
-    .index-row {
+    .pick-stage img,
+    .index-item {
       transition: none;
     }
 
-    .pick a:hover {
+    .pick a:hover .pick-stage img {
       transform: none;
     }
   }
