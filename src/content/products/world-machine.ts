@@ -18,7 +18,7 @@ export default defineProduct({
       "A small persistent world that grows a day at a time: each day you sit down with it, a morning brings a letter, a choice and a find. An experimental macOS app in pre-alpha.",
     eyebrow: "Experimental macOS project",
     headline: "It grows a day at a time.",
-    lead: "A small world on your Mac that grows one day at a time. Come back each day; a morning waits. Pre-alpha.",
+    lead: "A small harbour town on your Mac whose people work, marry and grow old. Each morning brings a letter, a choice and a find.",
     catalog: {
       role: "Pre-alpha",
       text: "A small world with a morning for every day you visit. macOS, pre-alpha.",
@@ -32,6 +32,14 @@ export default defineProduct({
       href: "https://github.com/hxddh/world-machine",
     },
     installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
+    releaseHighlights: {
+      version: "v0.30.0",
+      items: [
+        "A World no longer moves while you are away: each sitting on a new day passes one World day, or three on a World’s very first.",
+        "Each new day starts with a morning: a letter, today’s choice, something looked after overnight, and a find for a new Finds shelf.",
+        "The town is drawn closer, with residents doing what the record says, and every recorded story, such as a festival, a birth or a storm, can play as a scene.",
+      ],
+    },
     privacy: {
       network: "automatic",
       networkNote: "Once per launch it asks `api.github.com` for the latest release; World voice is off by default.",
@@ -48,6 +56,7 @@ export default defineProduct({
         width: 2200,
         height: 1696,
       },
+      caption: "Captured from the app running in its Linux preview.",
     },
     showcases: [
       {
@@ -58,6 +67,7 @@ export default defineProduct({
         alt: "Pocket Universe on Ares, sol 35: domes, habitat modules and a greenhouse on red regolith, gauges for trust, tension and stores, and Nia asking whether the grow lights can run an hour longer because the beans are sulking. Captured from the app running in its Linux preview.",
         title: "Not only a harbour town.",
         body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
+        caption: "Captured from the app running in its Linux preview.",
       },
       {
         src: "/assets/world-machine-moment.webp",
@@ -67,6 +77,7 @@ export default defineProduct({
         alt: "A moment in Tiny Society on day 360: a three-panel strip titled Rosa settles for good, captioned before, during and after, over the harbour. Captured from the app running in its Linux preview.",
         title: "Big moments, in three panels.",
         body: "Weddings, births and farewells, drawn before, during and after.",
+        caption: "Captured from the app running in its Linux preview.",
       },
       {
         src: "/assets/world-machine-night.webp",
@@ -75,7 +86,8 @@ export default defineProduct({
         asOf: "v0.30.0",
         alt: "Tiny Society at night in spring: lit windows along the harbour, the gauges and zoom buttons dark to match, while the drawer, listing the new pier and a lamp on the point under way, and Mia's card with today's choice are warm paper. Captured from the app running in its Linux preview.",
         title: "At night, the windows light up.",
-        body: "In the light appearance, the drawer and cards stay readable; gauges and buttons go as dark as the sky.",
+        body: "Even in the light appearance, gauges and buttons darken with the sky, while the drawer and cards stay light and readable.",
+        caption: "Captured from the app running in its Linux preview.",
       },
     ],
     sections: [
@@ -85,12 +97,21 @@ export default defineProduct({
         nav: "Features",
         label: "Its people act on their own.",
         items: [
-          { title: "What a morning brings", body: "A letter, today's choice, something looked after, a find." },
+          {
+            title: "What a morning brings",
+            body: "A letter, today's choice, word of what was looked after overnight, and a find.",
+          },
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
-          { title: "Build, paint, name", body: "Scaffolding at once; paint a flag; name boats and babies." },
-          { title: "Talk with a goal", body: "Someone asks a favour; you do it by talking." },
-          { title: "Three languages", body: "Interface, stories and talk in English, Chinese or Japanese." },
-          { title: "Agent-ready", body: "A local agent like Pi, or your API key, can voice it." },
+          {
+            title: "Build, paint, name",
+            body: "Scaffolding goes up at once; paint a flag, and name boats and babies.",
+          },
+          { title: "Talk with a goal", body: "When someone asks a favour, you do it by talking with them." },
+          { title: "Three languages", body: "The interface, stories and talk come in English, Chinese or Japanese." },
+          {
+            title: "Optional World voice",
+            body: "Off by default: an AI model can word the World’s news and people’s replies.",
+          },
         ],
       },
       {
@@ -112,7 +133,7 @@ export default defineProduct({
         items: [
           {
             title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. The app opens and plays on Worlds saved by v0.20 or later, up to its own version; Worlds saved by v0.28 and v0.29 open too, though no test holds one of their files. Each World Pack has its own version, and a World saved by a Pack version the app does not ship does not open; nothing is deleted, and the file keeps its whole history. Each save keeps the previous one as `<name>.world.bak`, and a file written by a newer app opens read-only and is never saved over.",
+            body: "No. World Machine is an experimental pre-alpha. It opens Worlds saved by v0.20 or later and carries on with them; Worlds from v0.28 and v0.29 should open too, but no test covers them yet. A World made with a version of its World Pack (the place it is built from, such as Tiny Society) that this app does not include will not open, but the file is left untouched with its whole history. Each save keeps the previous one as a backup, `<name>.world.bak`, and a file from a newer version of the app opens read-only and is never saved over.",
           },
           {
             title: "How do I open it the first time?",
@@ -128,7 +149,7 @@ export default defineProduct({
           },
           {
             title: "What does World voice do?",
-            body: "When you turn it on in Settings, a model words what the World tells you when you come back and answers for the people you talk to. It can be a local program such as Pi, your own API key, or this Mac's own model, which has not yet been run on a Mac. The model only proposes: checks refuse some answers outright, and a judge (Claude Haiku 4.5 by default, this Mac's model, or off) gives a second opinion on the rest. Some bad answers still get through, and a declined one is replaced by the World's own words. Crisis and sexual topics are never sent to a model, and each model answer is marked “Written by AI” with a Report button. What talk does, such as warmth or a favour done, is decided only by the World's own reading of your words. Your API key stays in your login keychain and is never handed to a Pack, Pi runs with no tools or extensions and keeps no session on disk, and every verdict is recorded, so replaying a World never asks a model again.",
+            body: "It is off by default. Turned on in Settings, an AI model words what the World tells you when you return and answers for the people you talk to; that model can be Pi (an open-source coding agent you install), your own API key, or this Mac’s built-in model, which has not yet been tried on a real Mac. Automatic checks and a second model screen its answers, though some bad ones still get through; each answer is marked “Written by AI” with a Report button, and crisis and sexual topics are never sent. What talk changes, such as warmth or a favour done, is decided by the World itself, and your API key stays in your login keychain.",
           },
         ],
       },
@@ -140,7 +161,7 @@ export default defineProduct({
       "一个一天一天长大的小世界：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。面向 macOS 的实验性应用，当前为早期预览版。",
     eyebrow: "macOS 实验项目",
     headline: "世界一天一天地长大",
-    lead: "Mac 上一个一天天长大的小世界。每天回来看看，早晨在等你。早期预览版。",
+    lead: "Mac 上的一座海港小镇，居民工作、成家、变老。每天早晨，都有一封信、一个选择和一件新发现等着你。",
     catalog: {
       role: "早期预览",
       text: "每天来，都有早晨等你的小世界。macOS，早期预览版。",
@@ -154,6 +175,14 @@ export default defineProduct({
       href: "https://github.com/hxddh/world-machine",
     },
     installNote: "尚未公证：首次启动需要一次“仍要打开”。",
+    releaseHighlights: {
+      version: "v0.30.0",
+      items: [
+        "你不在时，世界不再自己往前走：在新的一天打开，世界走一天，全新世界的第一次走三天。",
+        "每个新的一天都从早晨开始：一封信、今天的选择、昨夜照料了些什么，还有一件放进新“发现”书架的东西。",
+        "小镇画得更近，居民按记录做事；每个记下的故事，比如节庆、出生或暴风雨，都能作为一幕播放。",
+      ],
+    },
     privacy: {
       network: "automatic",
       networkNote: "每次启动向 `api.github.com` 查询一次最新版本；世界之声默认关闭。",
@@ -170,6 +199,7 @@ export default defineProduct({
         width: 2200,
         height: 1696,
       },
+      caption: "截自应用在 Linux 预览环境中的运行画面，界面为英文。",
     },
     showcases: [
       {
@@ -180,6 +210,7 @@ export default defineProduct({
         alt: "Pocket Universe 的 Ares 第 35 个火星日：红色风化层上的穹顶、居住舱和温室，信任、紧张与储备三个指标，Nia 问能不能让补光灯多开一小时，因为豆子在闹脾气。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "不只是港口",
         body: "Pocket Universe 可以落在 Ares、1987 年的 Maple Street 或 Icebridge，各有各的样子。",
+        caption: "截自应用在 Linux 预览环境中的运行画面，界面为英文。",
       },
       {
         src: "/assets/world-machine-moment.webp",
@@ -189,6 +220,7 @@ export default defineProduct({
         alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题“Rosa settles for good”，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "大事画成三格",
         body: "婚礼、出生、告别，画成之前、当时、之后。",
+        caption: "截自应用在 Linux 预览环境中的运行画面，界面为英文。",
       },
       {
         src: "/assets/world-machine-night.webp",
@@ -197,7 +229,8 @@ export default defineProduct({
         asOf: "v0.30.0",
         alt: "春天夜里的 Tiny Society：港口沿岸窗里亮着灯，指标和缩放按钮随之变暗；右侧抽屉列着在建的新码头和岬角上的灯，Mia 的今日选择卡片，二者都是暖色的纸。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "夜里，窗户亮起灯",
-        body: "浅色外观下，抽屉和卡片仍然清楚易读；指标和按钮随夜空一起变暗。",
+        body: "即使用浅色外观，指标和按钮也会随夜空变暗；抽屉和卡片仍是浅色，清楚易读。",
+        caption: "截自应用在 Linux 预览环境中的运行画面，界面为英文。",
       },
     ],
     sections: [
@@ -207,12 +240,12 @@ export default defineProduct({
         nav: "功能",
         label: "居民自己过日子",
         items: [
-          { title: "早晨带来什么", body: "一封信、今天的选择、有人照看的东西、一件新发现。" },
+          { title: "早晨带来什么", body: "一封信、今天的选择、昨夜照料了些什么，还有一件新发现。" },
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
           { title: "建造、绘制、命名", body: "一开工就搭起脚手架；画一面旗，给船和新生儿起名。" },
           { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
-          { title: "可接 Agent", body: "本机 Agent Pi 或你自己的 API 密钥，都能为世界发声。" },
+          { title: "可选的世界之声", body: "默认关闭；打开后，可由 AI 模型讲述世界的消息、替居民回答。" },
         ],
       },
       {
@@ -234,7 +267,7 @@ export default defineProduct({
         items: [
           {
             title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。应用能打开 v0.20 起、不晚于自身版本所保存的世界，并继续运行；v0.28 与 v0.29 保存的世界也能打开，只是没有测试用到它们的文件。每个 World Pack 有自己的版本号，由应用未内置的 Pack 版本保存的世界打不开；文件不会被删除，完整历史仍在其中。每次保存都会把上一份留作 `<name>.world.bak`；由更新版本应用写入的文件会以只读方式打开，绝不会被覆盖。",
+            body: "不稳定。World Machine 是实验性的早期预览版。它能打开 v0.20 及以后保存的世界并接着玩；v0.28 和 v0.29 的世界应该也能打开，只是还没有测试覆盖。如果世界所用的 World Pack（构成这个世界的地方，比如 Tiny Society）版本不在这个应用里，它就打不开，但文件原样保留，完整历史都在。每次保存都会把上一份留作备份 `<name>.world.bak`；更新版本应用写的文件会以只读方式打开，绝不会被覆盖。",
           },
           {
             title: "第一次怎么打开？",
@@ -250,7 +283,7 @@ export default defineProduct({
           },
           {
             title: "世界之声能做什么？",
-            body: "在设置里打开后，由模型讲述你回来时世界告诉你的事，并替你搭话的居民回答。模型可以是本机程序（如 Pi）、你自己的 API 密钥，或 Mac 自带的模型，后者还没在 Mac 上实际运行过。模型只提出建议：检查会直接拒掉一部分回答，其余的交给评审（默认 Claude Haiku 4.5，也可用 Mac 自带模型或关闭）再看一遍。仍有一些不合适的回答会漏过；被拒的回答会换成世界自己写好的句子。涉及危机和性的话题从不发给模型；模型写的每句回答都标有“AI 撰写”，并带“举报”按钮。对话带来的结果，比如好感或帮成的忙，只由世界自己对你原话的理解决定。你的 API 密钥保存在登录钥匙串中，从不交给任何 Pack；Pi 运行时不带工具和扩展，也不在磁盘上保留会话；每个裁定都会记录下来，回放世界时不会再问模型。",
+            body: "默认关闭。在设置里打开后，由 AI 模型讲述你回来时世界告诉你的事，并替你搭话的居民回答；模型可以是 Pi（一个需自行安装的开源编码 Agent）、你自己的 API 密钥，或这台 Mac 自带的模型，后者还没在真正的 Mac 上试过。自动检查和第二个模型会筛查它的回答，但仍有一些不合适的会漏过；每句回答都标有“AI 撰写”并带“举报”按钮，涉及危机和性的话题从不发给模型。对话带来的结果，比如好感或帮成的忙，由世界自己决定；你的 API 密钥保存在登录钥匙串中。",
           },
         ],
       },
