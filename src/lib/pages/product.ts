@@ -163,13 +163,17 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
   }
   const notes = synced;
   if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
-  // Lines in another language are left to the release page: with none left,
-  // the section is one line (tag, date, link). The release title is the
-  // author's shorthand ("context economy and Codex chrome"), so only a
-  // curated override carries a summary.
+  // Lines in another language are left to the release page, and so are test
+  // checklists quoted from the notes ("✓ uses Read"). With no line left the
+  // section is left out: the spec strip already gives the tag and its date,
+  // and a bare tag between two sections read as an accident. The release
+  // title is the author's shorthand ("context economy and Codex chrome"), so
+  // only a curated override carries a summary.
+  const items = notes.items.filter((item) => inPageLanguage(item, locale) && !/^[✓✔☑✅]/u.test(item.trim()));
+  if (items.length === 0) return undefined;
   return {
     summary: "",
-    items: notes.items.filter((item) => inPageLanguage(item, locale)),
+    items,
     url,
     version,
     title: copy.whatsNew.replace("{version}", version),

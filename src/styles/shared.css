@@ -218,7 +218,9 @@
     display: block;
   }
 
-  .stage img {
+  /* The hero's picture only: a showcase's images sit in a frame (.shot), whose
+   own rules switch the light and dark captures. */
+  .stage > img {
     display: block;
     width: 100%;
     height: auto;
@@ -236,7 +238,7 @@
     justify-content: center;
     gap: 4px 20px;
     max-width: var(--narrow);
-    margin: 14px auto 0;
+    margin: 22px auto 0;
     text-align: center;
     color: var(--muted);
     font-size: var(--text-meta);

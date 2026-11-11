@@ -1,7 +1,7 @@
 // About: one column — the claim, the owner's paragraph, and how to reach them.
 import { products } from "../../content/products";
 import { about, absoluteUrl, site, ui, type AboutPerson } from "../../content/site";
-import { type Locale } from "../../content/schema";
+import { lines, type Locale } from "../../content/schema";
 import { otherLocale, pathFor } from "./shared";
 import { type CatalogItem, catalogItem } from "./catalog";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
@@ -63,9 +63,15 @@ export function aboutPage(locale: Locale): AboutPageModel {
     person: about.person[locale],
     links: [
       { label: "GitHub", href: site.github },
-      { label: "Email", href: `mailto:${site.email}` },
+      { label: locale === "zh" ? "邮件" : "Email", href: `mailto:${site.email}` },
     ],
-    tools: { label: copy.aboutToolsLabel, items: products.map((product) => catalogItem(product, locale)) },
+    // The shelf follows Home's index: line by line, in site order within each.
+    tools: {
+      label: copy.aboutToolsLabel,
+      items: lines.flatMap((line) =>
+        products.filter((product) => product.line === line).map((product) => catalogItem(product, locale)),
+      ),
+    },
     analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
     expectedText: [headline],
   };

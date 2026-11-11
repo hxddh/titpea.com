@@ -25,6 +25,17 @@
     font-size: 15px;
   }
 
+  @media (max-width: 640px) {
+    .ident {
+      flex-wrap: wrap;
+      row-gap: 2px;
+    }
+
+    .ident > span {
+      flex-basis: 100%;
+    }
+  }
+
   .ident strong {
     color: var(--ink);
     font-weight: 600;
@@ -94,6 +105,7 @@
   .install-note {
     max-width: var(--measure);
     margin: 16px auto 0;
+    text-wrap: balance;
     color: var(--muted);
     font-size: var(--text-small);
     line-height: 1.45;
@@ -239,7 +251,7 @@
 
   .show-shot,
   .show-figure {
-    margin: 0;
+    margin-block: 0;
   }
 
   /* A detail of a capture at its own pixel size (Showcase.focus): the app's

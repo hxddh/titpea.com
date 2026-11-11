@@ -52,6 +52,21 @@
     word-break: keep-all;
   }
 
+  /* A full-width comma inside a title leaves a hole a character wide
+   (「换台机器， 接着聊」): titles set their punctuation half-width. */
+  html:lang(zh) :is(.display, main h1) {
+    font-feature-settings: "halt";
+  }
+
+  /* The closing names the product, and names are mostly Latin
+   (s3-turbo-list, Easier Bookmarks): the sans, as on the English page,
+   so one name never looks like two brands. */
+  html:lang(zh) .final-cta-name {
+    font-family: var(--sans);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+
   html:lang(zh) :is(.heading, main h2) {
     letter-spacing: 0;
     word-break: keep-all;
