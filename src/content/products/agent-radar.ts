@@ -32,7 +32,8 @@ export default defineProduct({
     },
     privacy: {
       network: "automatic",
-      networkNote: "Scheduled GitHub Actions runs fetch public sources and send them to the AI model service you configure.",
+      networkNote:
+        "Scheduled GitHub Actions runs fetch public sources and send them to the AI model service you configure.",
       stays: "Reports, telemetry and run logs are committed to your own repository; model keys are repository secrets.",
     },
     meta: "Python · Markdown-first · GitHub Actions · MIT · {version}",
@@ -79,9 +80,15 @@ export default defineProduct({
         items: [
           { title: "Current thesis", body: "In `radar.md`: the current view, how it changed, and open questions." },
           { title: "Watchlist", body: "Mainstream and emerging agents, each source graded from Strong to None." },
-          { title: "Field notes", body: "Real user workflows, complaints, tricks and failures, plus a playbook of reusable patterns." },
+          {
+            title: "Field notes",
+            body: "Real user workflows, complaints, tricks and failures, plus a playbook of reusable patterns.",
+          },
           { title: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
-          { title: "Checks before commit", body: "Missing material is labeled as a gap; every change can be reviewed in Git." },
+          {
+            title: "Checks before commit",
+            body: "Missing material is labeled as a gap; every change can be reviewed in Git.",
+          },
         ],
       },
       {

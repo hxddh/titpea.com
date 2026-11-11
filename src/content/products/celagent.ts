@@ -71,14 +71,26 @@ export default defineProduct({
         nav: "Features",
         label: "The full Pi session, not a summary.",
         items: [
-          { title: "Pi, unchanged", body: "Pi's own terminal interface, engine and tools. History stays in Pi's JSONL files." },
-          { title: "Saved per turn", body: "Each finished turn is queued and written to BOS; conflicting writes are caught." },
-          { title: "No silent fallback", body: "A failed write stays queued to retry; a truncated cached copy never replaces history." },
+          {
+            title: "Pi, unchanged",
+            body: "Pi's own terminal interface, engine and tools. History stays in Pi's JSONL files.",
+          },
+          {
+            title: "Saved per turn",
+            body: "Each finished turn is queued and written to BOS; conflicting writes are caught.",
+          },
+          {
+            title: "No silent fallback",
+            body: "A failed write stays queued to retry; a truncated cached copy never replaces history.",
+          },
           {
             title: "Configure storage",
             body: "Set up BOS; `celagent doctor` checks access, `celagent cas-probe` checks conflict detection.",
           },
-          { title: "Resume by ID", body: "On a configured machine, `celagent list` shows sessions; `celagent <id>` opens one." },
+          {
+            title: "Resume by ID",
+            body: "On a configured machine, `celagent list` shows sessions; `celagent <id>` opens one.",
+          },
         ],
       },
       {

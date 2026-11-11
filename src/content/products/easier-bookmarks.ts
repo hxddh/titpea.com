@@ -101,7 +101,7 @@ export default defineProduct({
         items: [
           "On your computer, it remembers open folders, your last-picked folder, recently opened bookmarks to rank results, and the list last shown.",
           "With tab access, asked at your first save, it reads the current tab’s title and address, or every tab’s when saving all.",
-          "Those addresses, and what you type after `b`, are never stored or sent. There are no servers, analytics or ads.",
+          "Those addresses, and what you type after `b`, are never stored or sent. No servers, no analytics, no ads.",
           "Your bookmarks remain Chrome’s own; if Chrome Sync is on, it syncs them as usual.",
         ],
       },

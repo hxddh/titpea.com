@@ -81,8 +81,14 @@ export default defineProduct({
           { title: "PageWise reads", body: "It searches the document and reads relevant pages." },
           { title: "Follow a citation", body: "Click one to see its quoted words lit on the page." },
           { title: "In the page margin", body: "With the panel closed, cited sentences show their state there." },
-          { title: "Cited tables", body: "Each cell has a checked citation; export the table as CSV with its sources." },
-          { title: "A highlighted PDF copy", body: "Export a copy with findings and your marks written in as highlights." },
+          {
+            title: "Cited tables",
+            body: "Each cell has a checked citation; export the table as CSV with its sources.",
+          },
+          {
+            title: "A highlighted PDF copy",
+            body: "Export a copy with findings and your marks written in as highlights.",
+          },
         ],
       },
       {

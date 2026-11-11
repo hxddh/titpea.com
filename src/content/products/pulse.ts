@@ -166,10 +166,19 @@ export default defineProduct({
         items: [
           { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
           { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
-          { title: "This turn, in details", body: "The › button on a row lists this turn's tools, changed files, plan and subagents." },
-          { title: "Orange means stalled", body: "Pi and OpenCode only: twenty minutes with no new events and no tool running." },
+          {
+            title: "This turn, in details",
+            body: "The › button on a row lists this turn's tools, changed files, plan and subagents.",
+          },
+          {
+            title: "Orange means stalled",
+            body: "Pi and OpenCode only: twenty minutes with no new events and no tool running.",
+          },
           { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
-          { title: "Click to go", body: "A click opens the session's terminal when Pulse can find it, else its app or details." },
+          {
+            title: "Click to go",
+            body: "A click opens the session's terminal when Pulse can find it, else its app or details.",
+          },
         ],
       },
       {

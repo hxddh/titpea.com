@@ -115,7 +115,7 @@ export default defineProduct({
           "By default, translation runs on Chrome’s built-in on-device model, so page text stays on your computer.",
           "Precise translation sends paragraphs straight to your chosen provider, only when you ask; your key stays in the extension’s IndexedDB.",
           "It runs only on sites where you turn it on, or on every site once you turn on “Available on every site”.",
-          "There is no account, analytics or data collection. In Incognito windows it saves no translations, terminology or per-site layouts.",
+          "No account, no analytics, no data collection. In Incognito windows it saves no translations, terminology or per-site layouts.",
         ],
       },
       {

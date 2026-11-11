@@ -77,7 +77,7 @@ export default defineProduct({
         items: [
           "It reads the title, year, and IMDb ID from the open film page, or fetches a hovered film’s page from Douban.",
           "It sends them, with an API key, only to OMDb. Your settings and optional key stay in Chrome sync storage.",
-          "Ratings stay on your computer for up to 7 days. There is no server, analytics or tracking; uninstalling removes it all.",
+          "Ratings stay on your computer for up to 7 days. No server, no analytics, no tracking; uninstalling removes it all.",
         ],
       },
       {
