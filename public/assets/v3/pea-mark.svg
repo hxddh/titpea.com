@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Titpea v3 sample mark: one pod, three peas: one developer, a set of tools. -->
+  <g transform="rotate(-24 32 32)">
+    <path d="M3 32C12 15 52 15 61 32C52 49 12 49 3 32Z" fill="#2f6b2e"/>
+    <circle cx="17.5" cy="32" r="6.5" fill="#a9d65c"/>
+    <circle cx="32" cy="32" r="8" fill="#a9d65c"/>
+    <circle cx="46.5" cy="32" r="6.5" fill="#a9d65c"/>
+  </g>
+</svg>

@@ -19,6 +19,8 @@ interface Props {
   product?: { slug: string; line: string };
   /** Stylesheets only this page needs, beyond the bundled ones (a product page's live demos). */
   styles?: string[];
+  /** The header's site mark, when a page tries another one (the v3 sample). */
+  mark?: string;
 }
 
 const {
@@ -30,6 +32,7 @@ const {
   localNav = false,
   product,
   styles = [],
+  mark,
 } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
 // The display face sets the hero title, the first line a reader sees: fetch it
@@ -125,6 +128,7 @@ const footerGroups: Array<{
       alternateLabel={language.label}
       alternateLocale={language.locale}
       scrollsAway={localNav}
+      mark={mark}
     />
     <main id="main-content" tabindex="-1">
       <slot />

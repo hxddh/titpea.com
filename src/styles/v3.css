@@ -1,0 +1,644 @@
+/* The layer order of global.css, repeated: this file loads on its own. */
+@layer tokens, base, chrome, components, demos, templates, locale, identity;
+
+/* Design v3 sample (the /v3/ pages only; nothing on the live site loads this).
+   One idea: the site reads as a catalogue of tools. A margin column carries
+   labels and facts, a main column the content; every heading is the display
+   serif, every fact is mono; an ink rule opens each section; the product
+   colour is the paper its capture lies on. No wash, no cards, no boxes. */
+@layer templates {
+  .v3 [data-tint="sonde"] {
+    --product-tint: var(--tint-sonde);
+  }
+
+  .v3 [data-tint="chessboard"] {
+    --product-tint: var(--tint-chessboard);
+  }
+
+  .v3 [data-tint="readout"] {
+    --product-tint: var(--tint-readout);
+  }
+
+  /* The two columns. */
+  .v3-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--v3-gap);
+    row-gap: 24px;
+  }
+
+  .v3-margin {
+    grid-column: span 4;
+  }
+
+  .v3-main {
+    grid-column: span 8;
+    min-width: 0;
+  }
+
+  /* An ink rule opens a section; hairlines separate rows inside it. */
+  .v3-rule {
+    padding-top: 20px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .v3-top {
+    padding-top: 72px;
+  }
+
+  .v3-section {
+    padding-top: 112px;
+  }
+
+  /* Type: the serif for every heading, mono for every fact. */
+  .v3-display {
+    margin: 0 0 40px;
+    font-family: var(--display-face);
+    font-size: clamp(2.75rem, 7.6vw, 6.25rem);
+    font-optical-sizing: auto;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  html:lang(en) .v3-display {
+    font-weight: 480;
+    letter-spacing: -0.028em;
+  }
+
+  html:lang(zh) :is(.v3-display, .v3-h2) {
+    font-weight: 600;
+    font-synthesis: none;
+    letter-spacing: 0;
+    word-break: keep-all;
+  }
+
+  html:lang(zh) .v3-display {
+    font-size: clamp(2.5rem, 6.6vw, 5.25rem);
+    line-height: 1.14;
+  }
+
+  .v3-line {
+    display: block;
+  }
+
+  .v3-h2 {
+    margin: 0;
+    font-family: var(--display-face);
+    font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+    font-optical-sizing: auto;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  html:lang(en) .v3-h2 {
+    font-weight: 520;
+    letter-spacing: -0.012em;
+  }
+
+  .v3-lede {
+    max-width: 30em;
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  html:lang(zh) .v3-lede {
+    line-height: 1.6;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  /* Short Chinese lines never end on a one- or two-character tail. */
+  html:lang(zh) :is(.v3-sub, .v3-pick-text, .v3-row-text) {
+    text-wrap: balance;
+  }
+
+  .v3-sub,
+  .v3-body {
+    max-width: var(--measure);
+    margin: 12px 0 0;
+    color: var(--ink-2);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .v3-body {
+    margin: 0 0 20px;
+  }
+
+  .v3-label,
+  .v3-fact {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .v3-margin > .v3-fact {
+    margin-top: 8px;
+  }
+
+  .v3-textlink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-underline);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .v3-textlink:hover {
+    text-decoration-color: var(--v3-site);
+    text-decoration-thickness: 2px;
+  }
+
+  .v3 .button {
+    border-radius: 10px;
+  }
+
+  .v3-button-version {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    opacity: 0.8;
+  }
+
+  .v3-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+    margin-top: 32px;
+  }
+
+  .v3-note {
+    max-width: var(--measure);
+    margin: 16px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+  }
+
+  /* Product page: who it is, above the claim. */
+  .v3-ident {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 28px;
+    color: var(--muted);
+  }
+
+  .v3-ident strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* The spec sheet: label and value on a hairline each. */
+  .v3-specs {
+    margin: 0;
+  }
+
+  .v3-specs > div {
+    display: grid;
+    grid-template-columns: 6.5em minmax(0, 1fr);
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    line-height: 1.5;
+  }
+
+  .v3-specs > div:first-child {
+    padding-top: 0;
+  }
+
+  .v3-specs dt {
+    color: var(--muted);
+  }
+
+  .v3-specs dd {
+    margin: 0;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  html:lang(zh) .v3-specs > div {
+    grid-template-columns: 4em minmax(0, 1fr);
+  }
+
+  /* The capture on its coloured paper. */
+  .v3-hero-figure {
+    padding-top: 72px;
+  }
+
+  .v3-hero-figure figure,
+  .v3-detail {
+    margin: 0;
+  }
+
+  .v3-stage {
+    display: block;
+    background: color-mix(in oklab, var(--product-tint, var(--paper-raised)) var(--v3-stage-mix), #000);
+  }
+
+  .v3-stage-hero {
+    padding: clamp(16px, 5vw, 64px);
+  }
+
+  .v3-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-shot);
+  }
+
+  .v3-caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 24px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: var(--text-small);
+    line-height: 1.5;
+  }
+
+  .v3-caption a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: -12px;
+    color: var(--ink-2);
+  }
+
+  /* A detail of a capture at its own scale: the app's text stays readable. */
+  .v3-crop {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: var(--icon-ring), var(--shadow-shot);
+  }
+
+  .v3-crop img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    object-position: 100% 0%;
+  }
+
+  .v3-crop[data-crop="sonde-0"] img {
+    object-position: 100% 11%;
+  }
+
+  .v3-crop[data-crop="sonde-1"] img {
+    object-position: 52% 38%;
+  }
+
+  .v3-crop[data-crop="sonde-2"] img {
+    object-position: 52% 82%;
+  }
+
+  .v3-crop [data-appearance="dark"] {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .v3-crop [data-appearance="dark"] {
+    display: block;
+  }
+
+  :root[data-theme="dark"] .v3-crop [data-appearance="light"] {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .v3-crop [data-appearance="dark"] {
+      display: block;
+    }
+
+    :root:not([data-theme="light"]) .v3-crop [data-appearance="light"] {
+      display: none;
+    }
+  }
+
+  /* Rows on hairlines: the feature table, lists, the FAQ. */
+  .v3-table,
+  .v3-faq,
+  .v3-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-table > div {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
+    gap: 4px var(--v3-gap);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .v3-table > div:first-child,
+  .v3-list > li:first-child,
+  .v3-faq > div:first-child {
+    padding-top: 0;
+  }
+
+  .v3-table dt,
+  .v3-faq dt {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .v3-table dd,
+  .v3-faq dd {
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  .v3-list > li {
+    max-width: var(--measure);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  .v3-list + .v3-textlink {
+    margin-top: 8px;
+  }
+
+  .v3-faq > div {
+    max-width: var(--measure);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .v3-faq dd {
+    margin-top: 6px;
+  }
+
+  /* The command. */
+  .v3-command .v3-fact {
+    margin-bottom: 8px;
+  }
+
+  .v3-command-line {
+    position: relative;
+  }
+
+  .v3-command-line code {
+    display: block;
+    padding: 16px 96px 16px 18px;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: var(--code-bg);
+    font-family: var(--mono);
+    font-size: var(--text-small);
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  .v3-copy {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    min-width: 64px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .v3-copy[hidden] {
+    display: none;
+  }
+
+  /* The closing: the name and the action once more, and where next. */
+  .v3-close {
+    padding-bottom: 96px;
+  }
+
+  .v3-close-name {
+    margin-bottom: 0;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+  }
+
+  .v3-related {
+    display: grid;
+    gap: 2px;
+    margin: 12px 0 4px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-related a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: var(--ink);
+  }
+
+  /* Home: the picks, then the index. */
+  .v3-picks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px var(--v3-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-pick-lead {
+    grid-column: 1 / -1;
+  }
+
+  .v3-pick a {
+    display: block;
+    color: var(--ink);
+  }
+
+  .v3-pick a:hover {
+    text-decoration: none;
+  }
+
+  .v3-pick .v3-stage {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    padding: 9% 0 0 9%;
+  }
+
+  .v3-pick .v3-stage img {
+    width: 128%;
+    max-width: none;
+    border-radius: 8px 0 0;
+  }
+
+  .v3-pick-lead .v3-stage {
+    aspect-ratio: 2 / 1;
+    padding: 6% 0 0 6%;
+  }
+
+  .v3-pick-lead .v3-stage img {
+    width: 106.5%;
+  }
+
+  .v3-pick-copy {
+    display: grid;
+    gap: 4px;
+    margin-top: 16px;
+  }
+
+  .v3-pick-name {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .v3-pick a:hover .v3-pick-name,
+  .v3-row:hover .v3-row-name {
+    text-decoration: underline;
+    text-decoration-color: var(--v3-site);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.22em;
+  }
+
+  .v3-pick-text {
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .v3-group {
+    margin-top: 56px;
+  }
+
+  .v3-group:first-child {
+    margin-top: 0;
+  }
+
+  .v3-group:last-child {
+    padding-bottom: 96px;
+  }
+
+  .v3-index {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .v3-row {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 11em) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4px 16px;
+    min-height: 64px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .v3-index > li:first-child .v3-row {
+    padding-top: 0;
+  }
+
+  .v3-row:hover {
+    text-decoration: none;
+  }
+
+  .v3-row-name {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .v3-row-text {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .v3-row-fact {
+    display: grid;
+    justify-items: end;
+    min-width: 7.5em;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .v3-margin,
+    .v3-main {
+      grid-column: 1 / -1;
+    }
+
+    .v3-section {
+      padding-top: 80px;
+    }
+
+    .v3-row {
+      grid-template-columns: 36px minmax(0, 1fr) auto;
+    }
+
+    /* A narrow column would show a sliver: the whole capture instead. */
+    .v3-crop {
+      aspect-ratio: auto;
+    }
+
+    .v3-crop img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .v3-row-text {
+      grid-column: 2 / -1;
+      grid-row: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .v3-top {
+      padding-top: 48px;
+    }
+
+    .v3-display {
+      margin-bottom: 28px;
+    }
+
+    .v3-picks {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .v3-table > div {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .v3-hero-figure {
+      padding-top: 48px;
+    }
+
+    /* The button under the command, never over it. */
+    .v3-command-line code {
+      padding-right: 18px;
+    }
+
+    .v3-copy {
+      position: static;
+      margin-top: 8px;
+      background: var(--code-bg);
+      transform: none;
+    }
+  }
+}

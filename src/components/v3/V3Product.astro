@@ -1,0 +1,340 @@
+---
+// Design v3 sample (not linked, noindex): a product page as a spec sheet. The
+// margin column carries labels and facts, the main column the content; the
+// product colour is the paper under the hero capture; showcases are details
+// of the capture at its own scale, so the app's text stays readable.
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import "../../styles/v3.css";
+import Prose from "../product/Prose.astro";
+import { ui } from "../../content/site";
+import type { Locale } from "../../content/schema";
+import { productBySlug } from "../../lib/pages/routes";
+import { productPage } from "../../lib/pages";
+
+interface Props {
+  slug: string;
+  locale: Locale;
+}
+
+const { slug, locale } = Astro.props;
+const product = productBySlug(slug);
+const model = productPage(product, locale);
+const { copy } = model;
+const copyUi = ui[locale];
+const zh = locale === "zh";
+const words = zh
+  ? {
+      platform: "平台",
+      license: "许可",
+      version: "版本",
+      released: "发布",
+      network: "联网",
+      source: "源码",
+      fig: "图",
+      whole: "看整窗截图",
+      asOf: "截自",
+    }
+  : {
+      platform: "Platform",
+      license: "License",
+      version: "Version",
+      released: "Released",
+      network: "Network",
+      source: "Source",
+      fig: "Fig.",
+      whole: "Whole window",
+      asOf: "captured at",
+    };
+// The meta line's first two segments are the platforms and the licence on this
+// product; a rollout would give the schema named fields for them.
+const [platform, license] = copy.meta.split(" · ");
+const specs = [
+  { label: words.platform, value: platform },
+  { label: words.license, value: license },
+  model.version && { label: words.version, value: model.version },
+  model.released && { label: words.released, value: model.released },
+  copy.privacy && { label: words.network, value: copyUi.privacyLevels[copy.privacy.network] },
+  product.repo && { label: words.source, value: product.repo, href: `https://github.com/${product.repo}` },
+].filter(Boolean) as Array<{ label: string; value: string; href?: string }>;
+const hero = copy.visual.kind === "screenshot" ? copy.visual : undefined;
+const showcases = copy.showcases ?? [];
+const cards = copy.sections.find((section) => section.kind === "cards");
+const data = copy.sections.find((section) => section.kind === "data");
+const faq = copy.sections.find((section) => section.kind === "faq");
+const figure = (index: number, asOf?: string) => `${words.fig} ${index}${asOf ? ` · ${words.asOf} ${asOf}` : ""}`;
+const seo = { ...model.seo, robots: "noindex, nofollow", structuredData: undefined };
+const sampleHome = `${zh ? "/zh" : ""}/v3/`;
+---
+
+<SiteLayout
+  seo={seo}
+  current={model.current}
+  locale={locale}
+  language={{ ...model.language, href: `${zh ? "" : "/zh"}/v3/${slug}/` }}
+  pageClass="v3"
+  product={{ slug: model.slug, line: model.line }}
+  mark="/assets/v3/pea-mark.svg"
+>
+  <section class="shell v3-top">
+    <p class="v3-ident">
+      <img class="icon-plate" src={model.icon} alt="" width="40" height="40" />
+      <strong>{copy.title}</strong>
+      <span>{copy.eyebrow}</span>
+    </p>
+    <h1 class="v3-display">{copy.headline}</h1>
+    <div class="v3-grid v3-rule">
+      <dl class="v3-margin v3-specs">
+        {specs.map((spec) => (
+          <div>
+            <dt>{spec.label}</dt>
+            <dd>
+              {spec.href ? (
+                <a href={spec.href} rel="noreferrer">
+                  {spec.value}
+                </a>
+              ) : (
+                spec.value
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div class="v3-main">
+        <p class="v3-lede">{copy.lead}</p>
+        <div class="v3-actions">
+          <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+            {copy.primaryCta.label}
+            {model.downloadsRelease && <span class="v3-button-version">{model.version}</span>}
+          </a>
+          <a class="v3-textlink" href={copy.secondaryCta.href} rel="noreferrer">
+            {copy.secondaryCta.label}
+          </a>
+        </div>
+        {copy.installNote && (
+          <p class="v3-note">
+            <Prose text={copy.installNote} />
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {hero && (
+    <section class="shell v3-hero-figure">
+      <figure>
+        <div class="v3-stage v3-stage-hero">
+          <img
+            src={hero.image.src}
+            alt={hero.image.alt}
+            width={hero.image.width}
+            height={hero.image.height}
+            fetchpriority="high"
+          />
+        </div>
+        <figcaption class="v3-caption">
+          <span class="v3-fact">{figure(1, hero.asOf)}</span>
+          {hero.caption && <span>{hero.caption}</span>}
+        </figcaption>
+      </figure>
+    </section>
+  )}
+
+  {showcases.map((showcase, index) => (
+    <section class="shell v3-section">
+      <div class="v3-grid">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{showcase.title}</h2>
+          <p class="v3-sub">
+            <Prose text={showcase.body} />
+          </p>
+        </header>
+        <figure class="v3-main v3-detail">
+          <div class="v3-crop" data-crop={`${slug}-${index}`}>
+            <img
+              src={showcase.src}
+              alt={showcase.alt}
+              width={showcase.width}
+              height={showcase.height}
+              loading="lazy"
+              data-appearance={showcase.dark ? "light" : undefined}
+            />
+            {showcase.dark && (
+              <img
+                src={showcase.dark.src}
+                alt={showcase.alt}
+                width={showcase.dark.width}
+                height={showcase.dark.height}
+                loading="lazy"
+                data-appearance="dark"
+              />
+            )}
+          </div>
+          <figcaption class="v3-caption">
+            <span class="v3-fact">{figure(index + 2, showcase.asOf)}</span>
+            <a class="v3-fact" href={showcase.src}>
+              {words.whole} ›
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  ))}
+
+  {cards && cards.kind === "cards" && (
+    <section class="shell v3-section" id={cards.id}>
+      <div class="v3-grid v3-rule">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{cards.label}</h2>
+        </header>
+        <dl class="v3-main v3-table">
+          {cards.items.map((item) => (
+            <div>
+              <dt>{item.title}</dt>
+              <dd>
+                <Prose text={item.body} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )}
+
+  {model.whatsNew && (
+    <section class="shell v3-section" id="whats-new">
+      <div class="v3-grid v3-rule">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{model.whatsNew.title}</h2>
+          {model.whatsNew.released && <p class="v3-fact">{model.whatsNew.released}</p>}
+        </header>
+        <div class="v3-main">
+          {model.whatsNew.summary && (
+            <p class="v3-body">
+              <Prose text={model.whatsNew.summary} />
+            </p>
+          )}
+          {model.whatsNew.items.length > 0 && (
+            <ul class="v3-list">
+              {model.whatsNew.items.map((item) => (
+                <li>
+                  <Prose text={item} />
+                </li>
+              ))}
+            </ul>
+          )}
+          <a class="v3-textlink" href={model.whatsNew.url} rel="noreferrer">
+            {model.whatsNew.linkLabel}
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {copy.commands && (
+    <section class="shell v3-section" id="start">
+      <div class="v3-grid v3-rule">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{copy.commands.title}</h2>
+        </header>
+        <div class="v3-main">
+          {copy.commands.sub && (
+            <p class="v3-body">
+              <Prose text={copy.commands.sub} />
+            </p>
+          )}
+          {copy.commands.items.slice(0, 1).map((item) => (
+            <div class="v3-command">
+              <p class="v3-fact">
+                <Prose text={item.comment} />
+              </p>
+              <div class="v3-command-line">
+                <code tabindex="0" set:text={item.command} />
+                <button
+                  class="v3-copy"
+                  type="button"
+                  data-copy={item.command}
+                  data-copy-label={copyUi.copy}
+                  data-copied-label={copyUi.copied}
+                  hidden
+                >
+                  {copyUi.copy}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data && data.kind === "data" && (
+    <section class="shell v3-section" id={data.id}>
+      <div class="v3-grid v3-rule">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{data.title}</h2>
+        </header>
+        <ul class="v3-main v3-list">
+          {data.items.map((item) => (
+            <li>
+              <Prose text={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {faq && faq.kind === "faq" && (
+    <section class="shell v3-section" id={faq.id}>
+      <div class="v3-grid v3-rule">
+        <header class="v3-margin">
+          <h2 class="v3-h2">{faq.label}</h2>
+        </header>
+        <dl class="v3-main v3-faq">
+          {faq.items.map((item) => (
+            <div>
+              <dt>{item.title}</dt>
+              <dd>
+                <Prose text={item.body} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )}
+
+  <section class="shell v3-section v3-close" aria-label={copy.primaryCta.label}>
+    <div class="v3-grid v3-rule">
+      <div class="v3-margin">
+        <p class="v3-label">{model.related.title}</p>
+        <ul class="v3-related">
+          {model.related.items.map((item) => (
+            <li>
+              <a href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="28" height="28" loading="lazy" />
+                <span>{item.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a class="v3-textlink" href={sampleHome}>
+          {model.related.all.label}
+        </a>
+      </div>
+      <div class="v3-main">
+        <p class="v3-display v3-close-name">{copy.title}</p>
+        <div class="v3-actions">
+          <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
+            {copy.primaryCta.label}
+            {model.downloadsRelease && <span class="v3-button-version">{model.version}</span>}
+          </a>
+          <a class="v3-textlink" href={copy.secondaryCta.href} rel="noreferrer">
+            {copy.secondaryCta.label}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script is:inline slot="scripts" src="/scripts/copy.js" defer></script>
+</SiteLayout>

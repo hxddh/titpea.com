@@ -169,6 +169,11 @@ const sitemap = fs.readFileSync("dist/sitemap.xml", "utf8");
 for (const { file } of pages) {
   const route = `/${path.relative("dist", file)}`.replace(/index\.html$/, "");
   if (route === "/404.html") continue;
+  // A noindex page (the unlinked design samples under /v3/) stays out of the sitemap.
+  if (/<meta name="robots" content="[^"]*noindex/.test(fs.readFileSync(file, "utf8"))) {
+    if (sitemap.includes(`<loc>https://titpea.com${route}</loc>`)) fail(`sitemap.xml: lists noindex page ${route}`);
+    continue;
+  }
   if (!sitemap.includes(`<loc>https://titpea.com${route}</loc>`)) fail(`sitemap.xml: missing ${route}`);
 }
 

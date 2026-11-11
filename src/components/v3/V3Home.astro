@@ -1,0 +1,144 @@
+---
+// Design v3 sample (not linked, noindex): Home as an index. One margin column
+// for labels and facts, one main column for content; no hero wash, no cards.
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import "../../styles/v3.css";
+import { products } from "../../content/products";
+import { ui } from "../../content/site";
+import { featuredSrc, lines, type Locale } from "../../content/schema";
+import { homePage, pathFor } from "../../lib/pages";
+import { formatDate, releaseTags } from "../../lib/pages/shared";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const model = homePage(locale);
+const copy = ui[locale];
+const sample = (slug?: string) => `${locale === "zh" ? "/zh" : ""}/v3/${slug ? `${slug}/` : ""}`;
+// Only sonde has a v3 page in this sample; every other row goes to the live page.
+const hrefOf = (slug: string) => (slug === "sonde" ? sample("sonde") : pathFor(locale, slug));
+const words =
+  locale === "zh"
+    ? { tools: (n: number) => `${n} 个`, latest: "最近发布", index: "全部工具", sampleNote: "v3 样稿" }
+    : { tools: (n: number) => `${n} tools`, latest: "Latest", index: "Every tool", sampleNote: "v3 sample" };
+const shortDate = (slug: string) => formatDate(releaseTags[slug]?.published, locale);
+const row = (product: (typeof products)[number]) => ({
+  slug: product.slug,
+  name: product[locale].title,
+  text: product[locale].catalog.text,
+  icon: product.icon,
+  href: hrefOf(product.slug),
+  version: releaseTags[product.slug]?.version,
+  date: shortDate(product.slug),
+});
+const groups = lines.map((line) => ({
+  line,
+  label: copy.groups[line],
+  items: products.filter((product) => product.line === line).map(row),
+}));
+const featured = products
+  .filter((product) => product.featured)
+  .sort((a, b) => a.featured!.order - b.featured!.order)
+  .map((product) => ({
+    ...row(product),
+    role: product[locale].catalog.role || product[locale].eyebrow,
+    // The whole window where the page has one: the stage shows its top-left corner at reading scale.
+    image:
+      product[locale].visual.kind === "screenshot"
+        ? product[locale].visual.image
+        : { ...product.featured!.image, src: featuredSrc(product.featured!, locale) },
+  }));
+const seo = { ...model.seo, robots: "noindex, nofollow" };
+---
+
+<SiteLayout
+  seo={seo}
+  current="home"
+  locale={locale}
+  language={{ ...model.language, href: `${locale === "zh" ? "" : "/zh"}/v3/` }}
+  pageClass="v3"
+  mark="/assets/v3/pea-mark.svg"
+>
+  <section class="shell v3-top">
+    <h1 class="v3-display">
+      {model.hero.titleParts.map((part) => (
+        <span class="v3-line">{part}</span>
+      ))}
+    </h1>
+    <div class="v3-grid v3-rule">
+      <div class="v3-margin">
+        <p class="v3-label">{model.hero.eyebrow}</p>
+        <a class="v3-textlink" href={model.hero.about.href}>
+          {model.hero.about.label}
+        </a>
+      </div>
+      <div class="v3-main">
+        <p class="v3-lede">{model.hero.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell v3-section" aria-label={model.featured.title}>
+    <div class="v3-grid">
+      <div class="v3-margin">
+        <h2 class="v3-h2">{model.featured.title}</h2>
+      </div>
+      <ul class="v3-main v3-picks">
+        {featured.map((item, index) => (
+          <li class:list={["v3-pick", index === 0 && "v3-pick-lead"]}>
+            <a href={item.href}>
+              <span class="v3-stage" data-tint={item.slug}>
+                <img
+                  src={item.image.src}
+                  alt=""
+                  width={item.image.width}
+                  height={item.image.height}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              </span>
+              <span class="v3-pick-copy">
+                <strong class="v3-pick-name">{item.name}</strong>
+                <span class="v3-pick-text">{item.text}</span>
+                <span class="v3-fact">
+                  {item.role}
+                  {item.version && ` · ${item.version}`}
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="shell v3-section" aria-label={words.index}>
+    {groups.map((group) => (
+      <div class="v3-grid v3-rule v3-group">
+        <div class="v3-margin">
+          <h2 class="v3-h2" id={`v3-line-${group.line}`}>
+            {group.label}
+          </h2>
+          <p class="v3-fact">{words.tools(group.items.length)}</p>
+        </div>
+        <ul class="v3-main v3-index" aria-labelledby={`v3-line-${group.line}`}>
+          {group.items.map((item) => (
+            <li>
+              <a class="v3-row" href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
+                <strong class="v3-row-name">{item.name}</strong>
+                <span class="v3-row-text">{item.text}</span>
+                <span class="v3-fact v3-row-fact">
+                  {item.version && <span>{item.version}</span>}
+                  {item.date && <span>{item.date}</span>}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</SiteLayout>

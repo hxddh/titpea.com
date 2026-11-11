@@ -141,6 +141,13 @@
     /* A section heading sits closer to its content than to the section above. */
     --head-gap: 40px;
 
+    /* Design v3 sample (v3.css, the /v3/ pages only): the gap between its two
+     columns, the site's own colour (the pea mark's green, on hover rules),
+     and how much of a product's colour the paper under its capture keeps. */
+    --v3-gap: 32px;
+    --v3-site: #2f6b2e;
+    --v3-stage-mix: 100%;
+
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
      decoration only (washes, rules, dots); ink is the readable variant,
@@ -282,6 +289,8 @@
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
+    --v3-site: #a9d65c;
+    --v3-stage-mix: 60%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -366,6 +375,8 @@
       --data-caution: #e3a44f;
       --data-caution-ink: #edb472;
       --data-alert: #ff7b72;
+      --v3-site: #a9d65c;
+      --v3-stage-mix: 60%;
     }
   }
 

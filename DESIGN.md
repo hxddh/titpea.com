@@ -223,3 +223,18 @@ Say each thing once, in as few words as the fact allows, but never so few that a
 - Storage Agent leads with the existing investigation result screenshot. The welcome image is a secondary starting-point illustration.
 - Product copy starts with an action and result. Preserve conditions on model data, waiting signals, and successfully persisted sessions. Do not promise zero data loss from a recovery feature.
 - Keep each metadata segment together when wrapping, including license names.
+
+## Design v3 sample (November 2026, a proposal: not adopted)
+
+`/v3/`, `/v3/sonde/` and their `/zh/` twins are a sample of a next direction for the owner to compare with the live Home and sonde pages. They are `noindex`, out of the sitemap, linked from nowhere, and nothing above this section changes because of them. `src/components/v3/`, `src/styles/v3.css`, the three `--v3-*` tokens and `public/assets/v3/pea-mark.svg` are the whole sample; deleting them and the four routes removes it.
+
+What it tries, each a reversal of a v2 decision that only the owner can make:
+
+- **A catalogue, not a launch page.** Left-aligned, two columns: a margin column for labels and facts (the spec sheet, section headings, release dates), a main column for content. An ink rule opens each section. No centered hero, no wash, no cards, no closing box, no folded FAQ.
+- **Type by role.** The display serif sets every heading, the sans sets reading text, mono sets every fact (versions, dates, licence, figure labels).
+- **The product colour is paper.** The hero capture lies on a flat block of the product's own colour; Home's three picks each lie on theirs. Light captures are not dimmed in dark mode; the block darkens instead.
+- **Details at reading scale.** A showcase is a detail of the capture at its own pixel size, so the app's text is readable, with a link to the whole window; phones show the whole capture. Every figure is numbered and says the release it was captured at (`asOf`).
+- **Home is the index.** Every product is a row: icon, name, catalog line, latest tag and date. The owner's title and lede are unchanged.
+- **A site mark and colour of its own.** One pod, three peas, in the sample header only.
+
+Left for a rollout, if the owner takes it: named `platform` / `license` fields in the schema (the sample reads the meta line's first two segments), a `focus` per showcase in place of the three hand-set crop positions in `v3.css`, the local nav, live demos and terminal heroes, share images, and the visual baselines.
