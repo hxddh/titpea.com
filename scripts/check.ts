@@ -500,14 +500,14 @@ for (const file of styleFiles.filter((file) => file !== "src/styles/tokens.css")
       for (let next = index + 1; !value.includes(";") && next < lines.length; next += 1) value += lines[next];
       if (/rgba?\(|#[0-9a-f]{3,8}\b/i.test(value)) fail(`${file}:${index + 1}: raw color in ${declaration[1]}`);
     }
-    if (/(linear|radial|conic)-gradient/.test(line) && !/var\(--wash-|mask-image|#000/.test(line)) {
-      fail(`${file}:${index + 1}: gradient outside the hero wash`);
+    if (/(linear|radial|conic)-gradient/.test(line) && !/mask-image|#000/.test(line)) {
+      fail(`${file}:${index + 1}: gradient in a page stylesheet (colour is flat; see DESIGN.md)`);
     }
   });
 }
 
 const locale = read("src/styles/locale.css");
-for (const selector of [".about-hero h1", ".home-hero h1", ".product-hero h1", ".lead"]) {
+for (const selector of [".display", ".heading", ".lead"]) {
   if (!locale.includes(`:lang(zh) ${selector}`)) fail(`locale.css: missing :lang(zh) rule for ${selector}`);
 }
 if (!/font-family:\s*Inter;/.test(read("src/styles/fonts.css"))) fail("fonts.css must declare Inter for Latin text");

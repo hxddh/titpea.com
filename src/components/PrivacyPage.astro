@@ -17,17 +17,18 @@ const { columns } = model;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="about-hero privacy-index-hero">
-    <div class="wash" aria-hidden="true"></div>
-    <div class="shell narrow about-copy">
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.title}</h1>
-      <p class="lead">{model.hero.lead}</p>
+  <section class="shell about-hero privacy-index-hero">
+    <h1 class="display">{model.hero.title}</h1>
+    <div class="cols rule">
+      <div class="cols-margin">{model.analytics && <p class="privacy-site-note">{model.analytics}</p>}</div>
+      <div class="cols-main about-copy">
+        <p class="lead">{model.hero.lead}</p>
+      </div>
     </div>
   </section>
 
-  <section class="privacy-index" aria-label={model.hero.title}>
-    <div class="shell">
+  <section class="shell page-section page-end privacy-index" aria-label={model.hero.title}>
+    <div class="rule">
       <table class="privacy-table">
         <thead>
           <tr>
@@ -92,7 +93,6 @@ const { columns } = model;
           ))}
         </tbody>
       </table>
-      {model.analytics && <p class="privacy-site-note">{model.analytics}</p>}
     </div>
   </section>
 </SiteLayout>

@@ -80,6 +80,15 @@ type Ui = {
   copied: string;
   /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
   released: string;
+  /** Under a line's name in Home's index: how many tools it holds. */
+  toolCount: string;
+  /** Labels of the product page's spec sheet. */
+  spec: { license: string; version: string; released: string; network: string; source: string };
+  /** A figure's label: "Fig. 2 · captured at v15.0.0". `{n}` and `{version}` are filled in. */
+  figure: string;
+  figureAsOf: string;
+  /** Link from a showcase that shows a detail to the whole capture. */
+  wholeCapture: string;
   pauseVideo: string;
   /** `{version}` is the latest release tag. */
   whatsNew: string;
@@ -97,9 +106,6 @@ type Ui = {
   homeTitle: string;
   homeDescription: string;
   homeLead: string;
-  /** Home hero: the line naming the newest releases, and its link to Releases. */
-  homeLatest: string;
-  homeAllReleases: string;
   featuredTitle: string;
   moreToolsTitle: string;
   /** Product pages: the row of other products before the footer. */
@@ -111,8 +117,6 @@ type Ui = {
   /** A family's title and one line; `roles` is each member's step, by slug. */
   families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
   browseAllTools: string;
-  learnMore: string;
-  browseTools: string;
   aboutMore: string;
   // About
   aboutTitle: string;
@@ -165,6 +169,11 @@ export const ui: Record<Locale, Ui> = {
     copy: "Copy",
     copied: "Copied",
     released: " ({date})",
+    toolCount: "{count} tools",
+    spec: { license: "License", version: "Version", released: "Released", network: "Network", source: "Source" },
+    figure: "Fig. {n}",
+    figureAsOf: "Fig. {n} · captured at {version}",
+    wholeCapture: "Whole window",
     pauseVideo: "Pause",
     whatsNew: "What’s new in {version}.",
     commandOutput: "Show real output",
@@ -187,8 +196,6 @@ export const ui: Record<Locale, Ui> = {
     homeTitle: "Small software, made with care.",
     homeDescription: "Small software by one developer, hxddh: object storage, coding agents, Chrome extensions, games.",
     homeLead: "Object storage, coding agents, Chrome extensions, games.",
-    homeLatest: "Latest",
-    homeAllReleases: "All releases",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
     relatedTitle: "More tools",
@@ -216,8 +223,6 @@ export const ui: Record<Locale, Ui> = {
       },
     },
     browseAllTools: "All tools",
-    learnMore: "Learn more",
-    browseTools: "Browse all {count} tools",
     aboutMore: "About hxddh",
     aboutTitle: "About",
     aboutMetaTitle: "About Titpea — hxddh",
@@ -263,6 +268,11 @@ export const ui: Record<Locale, Ui> = {
     copy: "复制",
     copied: "已复制",
     released: "（{date}）",
+    toolCount: "{count} 个",
+    spec: { license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
+    figure: "图 {n}",
+    figureAsOf: "图 {n} · 截自 {version}",
+    wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
     whatsNew: "{version} 更新了什么",
     commandOutput: "查看实际输出",
@@ -285,8 +295,6 @@ export const ui: Record<Locale, Ui> = {
     homeTitle: "认真做的小软件",
     homeDescription: "hxddh 一个人开发的小软件：对象存储、编码 Agent、Chrome 扩展、游戏。",
     homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
-    homeLatest: "最近发布",
-    homeAllReleases: "全部发布",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
     relatedTitle: "更多工具",
@@ -315,8 +323,6 @@ export const ui: Record<Locale, Ui> = {
       },
     },
     browseAllTools: "全部工具",
-    learnMore: "了解更多",
-    browseTools: "浏览全部 {count} 个工具",
     aboutMore: "关于 hxddh",
     aboutTitle: "关于",
     aboutMetaTitle: "关于 Titpea — hxddh",

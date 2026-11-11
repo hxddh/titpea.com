@@ -9,12 +9,12 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<section id={section.id} class={`product-section content-section ${section.id}-section`}>
-  <div class="shell">
-    <header class="section-head">
-      <h2>{section.label}</h2>
+<section id={section.id} class={`shell page-section product-section ${section.id}-section`}>
+  <div class="cols rule">
+    <header class="cols-margin">
+      <h2 class="heading">{section.label}</h2>
     </header>
-    <div class={`${section.id}-grid feature-grid`} data-count={section.items.length}>
+    <div class={`cols-main ${section.id}-grid feature-grid`} data-count={section.items.length}>
       {section.items.map((item) => (
         <article class="feature-card">
           <h3>{item.title}</h3>

@@ -1,73 +1,98 @@
 ---
 import Prose from "./Prose.astro";
 import type { Showcase } from "../../content/schema";
-import { screenshotSizes, srcsetFor } from "../../lib/images";
+import { columnShotSizes, screenshotSizes, srcsetFor } from "../../lib/images";
 
 interface Props {
-  /** Put the picture on the left (showcases alternate sides). */
-  flip?: boolean;
   showcase: Showcase;
+  /** The figure's label: its number and the release it was captured at. */
+  label: string;
+  /** Link text to the whole capture, for a showcase that shows a detail. */
+  wholeLabel: string;
   pauseLabel: string;
   playLabel: string;
 }
 
-const { showcase, pauseLabel, playLabel, flip = false } = Astro.props;
-// The text sits beside the picture on desktop; a phone capture (taller than
-// wide) stays at phone size; a wide window capture (3:2 or wider) takes the
-// whole frame under its head.
+const { showcase, label, wholeLabel, pauseLabel, playLabel } = Astro.props;
+// The heading and its line sit in the margin column, the picture in the main
+// column. A wide window capture (3:2 or wider) is read, not glanced at: it
+// takes the whole width under its head. A phone capture (taller than wide)
+// stays at phone size. A capture with `focus` shows a detail at its own scale.
 const portrait = showcase.height > showcase.width;
-const wide = showcase.width >= showcase.height * 1.5;
+const detail = Boolean(showcase.focus) && !showcase.video;
+const wide = !detail && showcase.width >= showcase.height * 1.5;
+const sizes = wide ? screenshotSizes : portrait ? "280px" : columnShotSizes;
 ---
 
 <section
-  class="product-section product-screenshot-showcase"
-  data-layout="row"
-  data-flip={flip ? "" : undefined}
+  class="shell page-section product-section product-screenshot-showcase"
   data-portrait={portrait ? "" : undefined}
   data-wide={wide ? "" : undefined}
 >
-  <div class="shell">
-    <header class="section-head compact">
-      <h2>{showcase.title}</h2>
+  <div class="cols">
+    <header class="cols-margin">
+      <h2 class="heading">{showcase.title}</h2>
       <p class="sub">
         <Prose text={showcase.body} />
       </p>
     </header>
-    {showcase.video ? (
-      <figure class="shot show-shot show-video">
-        <video
-          muted
-          loop
-          playsinline
-          preload="none"
-          poster={showcase.src}
-          width={showcase.width}
-          height={showcase.height}
-          aria-label={showcase.alt}
-          data-autoplay
-        >
-          {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
-          <source src={showcase.video.mp4} type="video/mp4" />
-          {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
-        </video>
-        <button
-          class="video-toggle"
-          type="button"
-          hidden
-          data-video-toggle
-          data-pause-label={pauseLabel}
-          data-play-label={playLabel}
-        >
-          {pauseLabel}
-        </button>
-      </figure>
-    ) : showcase.caption ? (
-      <figure class="show-figure">
-        <div class="shot">
+    <figure class:list={["showcase-figure", wide ? "cols-full" : "cols-main"]}>
+      {showcase.video ? (
+        <div class="shot show-shot show-video">
+          <video
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster={showcase.src}
+            width={showcase.width}
+            height={showcase.height}
+            aria-label={showcase.alt}
+            data-autoplay
+          >
+            {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
+            <source src={showcase.video.mp4} type="video/mp4" />
+            {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
+          </video>
+          <button
+            class="video-toggle"
+            type="button"
+            hidden
+            data-video-toggle
+            data-pause-label={pauseLabel}
+            data-play-label={playLabel}
+          >
+            {pauseLabel}
+          </button>
+        </div>
+      ) : detail ? (
+        <div class="crop" data-focus={showcase.focus}>
+          {/* No srcset: the detail is the capture at its own pixel size. */}
+          <img
+            src={showcase.src}
+            alt={showcase.alt}
+            width={showcase.width}
+            height={showcase.height}
+            loading="lazy"
+            data-appearance={showcase.dark ? "light" : undefined}
+          />
+          {showcase.dark && (
+            <img
+              src={showcase.dark.src}
+              alt={showcase.alt}
+              width={showcase.dark.width}
+              height={showcase.dark.height}
+              loading="lazy"
+              data-appearance="dark"
+            />
+          )}
+        </div>
+      ) : (
+        <div class="shot show-shot">
           <img
             src={showcase.src}
             srcset={srcsetFor(showcase.src, showcase.width)}
-            sizes={screenshotSizes}
+            sizes={sizes}
             alt={showcase.alt}
             width={showcase.width}
             height={showcase.height}
@@ -78,7 +103,7 @@ const wide = showcase.width >= showcase.height * 1.5;
             <img
               src={showcase.dark.src}
               srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
-              sizes={screenshotSizes}
+              sizes={sizes}
               alt={showcase.alt}
               width={showcase.dark.width}
               height={showcase.dark.height}
@@ -87,33 +112,16 @@ const wide = showcase.width >= showcase.height * 1.5;
             />
           )}
         </div>
-        <figcaption class="shot-caption">{showcase.caption}</figcaption>
-      </figure>
-    ) : (
-      <figure class="shot show-shot">
-        <img
-          src={showcase.src}
-          srcset={srcsetFor(showcase.src, showcase.width)}
-          sizes={screenshotSizes}
-          alt={showcase.alt}
-          width={showcase.width}
-          height={showcase.height}
-          loading="lazy"
-          data-appearance={showcase.dark ? "light" : undefined}
-        />
-        {showcase.dark && (
-          <img
-            src={showcase.dark.src}
-            srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
-            sizes={screenshotSizes}
-            alt={showcase.alt}
-            width={showcase.dark.width}
-            height={showcase.dark.height}
-            loading="lazy"
-            data-appearance="dark"
-          />
+      )}
+      <figcaption class="figure-note">
+        <span class="fact">{label}</span>
+        {showcase.caption && <span>{showcase.caption}</span>}
+        {detail && (
+          <a class="fact" href={showcase.src}>
+            {wholeLabel} ›
+          </a>
         )}
-      </figure>
-    )}
+      </figcaption>
+    </figure>
   </div>
 </section>

@@ -281,7 +281,16 @@ export type Showcase = Image &
      * instead of `src` when the page is dark (system or the header toggle).
      */
     dark?: { src: string; width: number; height: number };
+    /**
+     * Show a detail of the capture at its own pixel size, anchored here, so the
+     * app's text stays readable (phones show the whole capture). Only for a
+     * capture taken at 1x; the whole window is one link away.
+     */
+    focus?: ShowcaseFocus;
   };
+
+export type ShowcaseFocus =
+  "top-left" | "top" | "top-right" | "left" | "center" | "right" | "bottom-left" | "bottom" | "bottom-right";
 
 /** Commands a reader can copy. Only commands that appear verbatim in the product's README. */
 export type Commands = {

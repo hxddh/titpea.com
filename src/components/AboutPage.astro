@@ -11,46 +11,56 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  {/* One calm column: the claim, the owner's own words, how to reach them, then the tools themselves. */}
-  <section class="about-hero">
-    <div class="wash" aria-hidden="true"></div>
-    <div class="shell narrow about-copy">
-      {model.person?.portrait && (
-        <img
-          class="about-portrait"
-          src={model.person.portrait.src}
-          alt={model.person.portrait.alt}
-          width={model.person.portrait.width}
-          height={model.person.portrait.height}
-        />
-      )}
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.title}</h1>
+  {/* The claim, then the owner's own words beside how to reach them, then the tools themselves. */}
+  <section class="shell about-hero">
+    <h1 class="display">{model.hero.title}</h1>
+    <div class="cols rule">
+      <div class="cols-margin">
+        {model.person?.portrait && (
+          <img
+            class="about-portrait"
+            src={model.person.portrait.src}
+            alt={model.person.portrait.alt}
+            width={model.person.portrait.width}
+            height={model.person.portrait.height}
+          />
+        )}
+        <p class="fact">{model.hero.eyebrow}</p>
+        <p class="about-links">
+          {model.links.map((link) => (
+            <a class="textlink" href={link.href} rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </p>
+      </div>
       {model.person && (
-        <div class="about-body">
+        <div class="cols-main about-body">
           {model.person.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>
           ))}
         </div>
       )}
-      <p class="about-links">
-        {model.links.map((link) => (
-          <a href={link.href} rel="noreferrer">
-            {link.label}
-          </a>
-        ))}
-      </p>
-      <ul class="about-tools" aria-label={model.tools.label}>
-        {model.tools.items.map((item) => (
-          <li>
-            <a href={item.href}>
-              <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
-              <span>{item.name}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      {model.analytics && <p class="about-analytics">{model.analytics}</p>}
+    </div>
+  </section>
+  <section class="shell page-section page-end">
+    <div class="cols rule">
+      <div class="cols-margin">
+        <h2 class="heading">{model.tools.label}</h2>
+      </div>
+      <div class="cols-main">
+        <ul class="about-tools">
+          {model.tools.items.map((item) => (
+            <li>
+              <a href={item.href}>
+                <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
+                <span>{item.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {model.analytics && <p class="about-analytics">{model.analytics}</p>}
+      </div>
     </div>
   </section>
 </SiteLayout>

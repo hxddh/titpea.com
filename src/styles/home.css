@@ -2,282 +2,160 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Home (HomePage.astro). */
+  /* Home (HomePage.astro): the title, the picks, then the index. */
 
-  .home-hero {
-    padding-bottom: 8px;
+  /* Each pick's capture lies on its own product's colour. */
+  .stage[data-tint="sonde"] {
+    --product-tint: var(--tint-sonde);
   }
 
-  .home-hero .lead {
-    max-width: 30em;
+  .stage[data-tint="chessboard"] {
+    --product-tint: var(--tint-chessboard);
   }
 
-  /* Under the actions: the newest releases, one quiet line, so a visitor
-   sees the shelf is alive. */
-  .home-latest {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2px 18px;
-    margin: 28px auto 0;
-    color: var(--muted);
-    font-size: var(--text-meta);
+  .stage[data-tint="readout"] {
+    --product-tint: var(--tint-readout);
   }
 
-  .home-latest a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    gap: 6px;
-    color: var(--ink-2);
-    text-decoration: none;
-  }
-
-  .home-latest a:hover {
-    color: var(--ink);
-    text-decoration: underline;
-  }
-
-  .home-latest-version {
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* A title piece that wraps as a whole ("把依据摆出来的 / 小软件"). */
-  .title-part {
-    display: inline-block;
-  }
-
-  /* The featured products: the catalog's first row, three larger cards with a
-   picture and a line each. */
-  .home-catalog-featured {
+  .picks {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    max-width: 1040px;
-    margin: 40px auto 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px var(--col-gap);
+    margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .home-featured-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-    border-radius: var(--radius-card);
-    background: var(--paper-raised);
-    color: var(--ink);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+  .pick-lead {
+    grid-column: 1 / -1;
   }
 
-  .home-featured-card:hover {
-    text-decoration: none;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-card-hover);
-  }
-
-  .home-featured-shot {
-    position: relative;
-    margin: 0;
-  }
-
-  .home-featured-shot img {
+  .pick a {
     display: block;
-    width: 100%;
-    aspect-ratio: 16 / 11;
-    object-fit: cover;
-    object-position: center top;
+    color: var(--ink);
   }
 
-  /* Under the card's text, so every title starts at the same height. */
-  .home-featured-caption {
-    margin-top: 10px;
+  .pick a:hover {
+    text-decoration: none;
+  }
+
+  /* The window's top-left corner at reading scale, running off the paper. */
+  .pick .stage {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    padding: 9% 0 0 9%;
+  }
+
+  .pick .stage img {
+    width: 128%;
+    max-width: none;
+    border-radius: 8px 0 0;
+  }
+
+  .pick-lead .stage {
+    aspect-ratio: 2 / 1;
+    padding: 6% 0 0 6%;
+  }
+
+  .pick-lead .stage img {
+    width: 106.5%;
+  }
+
+  .pick-copy {
+    display: grid;
+    gap: 4px;
+    margin-top: 16px;
+  }
+
+  .pick-name {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .pick a:hover .pick-name,
+  .index-row:hover .index-name {
+    text-decoration: underline;
+    text-decoration-color: var(--site);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.22em;
+  }
+
+  .pick-text {
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  /* Said under a picture that is not a plain capture. */
+  .pick-caption {
     color: var(--muted);
     font-size: var(--text-small);
     line-height: 1.4;
   }
 
-  .home-featured-copy {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 18px 22px 22px;
+  .index-group + .index-group {
+    margin-top: 56px;
   }
 
-  .home-featured-name {
-    font-size: 21px;
-    font-weight: 650;
-    line-height: 1.25;
-    letter-spacing: -0.018em;
-  }
-
-  .home-featured-text {
-    margin-top: 6px;
-    color: var(--ink-2);
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .home-featured-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: auto;
-    padding-top: 14px;
-    color: var(--link);
-    font-size: 16px;
-  }
-
-  .home-featured-more::after {
-    content: "›";
-    font-size: 1.15em;
-    line-height: 1;
-  }
-
-  .home-featured-card:hover .home-featured-more {
-    text-decoration: underline;
-  }
-
-  /* Every tool: the featured row, then every other product under its line. */
-  .home-more-tools {
-    padding-top: var(--section-y);
-  }
-
-  /* A line: a quiet label over a hairline, then its tools as open cells. */
-  .home-line {
-    max-width: 1040px;
-    margin: 56px auto 0;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-  }
-
-  .home-line-title {
+  .index-list {
     margin: 0;
-    color: var(--muted);
-    font-size: var(--text-kicker);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .home-catalog-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px 32px;
-    margin: 20px 0 0;
     padding: 0;
     list-style: none;
   }
 
-  /* One tool: its icon in the plate, name and one line, all one link. No
-   fill, no border: the whitespace separates them. */
-  .catalog-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    height: 100%;
-    padding: 12px 0 20px;
+  /* One tool: icon, name, its catalog line, its latest tag and date. */
+  .index-row {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 11em) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4px 16px;
+    min-height: 64px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
     color: var(--ink);
   }
 
-  .catalog-card:hover {
+  .index-list > li:first-child .index-row {
+    padding-top: 0;
+  }
+
+  .index-row:hover {
     text-decoration: none;
   }
 
-  .catalog-card:hover .home-catalog-name {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-  }
-
-  .catalog-card .catalog-icon {
-    flex: none;
-    width: 48px;
-    height: 48px;
-  }
-
-  .catalog-card-copy {
-    display: grid;
-    gap: 4px;
-    min-width: 0;
-  }
-
-  .home-catalog-name {
-    font-size: var(--text-catalog-name);
+  .index-name {
     font-weight: 600;
     line-height: 1.3;
   }
 
-  .home-catalog-text {
+  .index-text {
     color: var(--ink-2);
     font-size: 15px;
     line-height: 1.5;
   }
 
-  @media (max-width: 960px) {
-    .home-catalog-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  .index-fact {
+    display: grid;
+    justify-items: end;
+    min-width: 7.5em;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .index-row {
+      grid-template-columns: 36px minmax(0, 1fr) auto;
     }
 
-    /* Three featured cards do not split into two columns: one row that scrolls sideways. */
-    .home-catalog-featured {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-    }
-
-    .home-catalog-featured::-webkit-scrollbar {
-      display: none;
-    }
-
-    .home-catalog-featured > li {
-      flex: 0 0 min(340px, 80%);
-      scroll-snap-align: start;
+    .index-text {
+      grid-column: 2 / -1;
+      grid-row: 2;
     }
   }
 
   @media (max-width: 640px) {
-    .home-featured-shot img {
-      aspect-ratio: 16 / 10;
-    }
-
-    .home-featured-copy {
-      padding: 14px 16px 16px;
-    }
-
-    /* One tool a row: the icon beside its name and line. */
-    .home-line {
-      margin-top: 44px;
-    }
-
-    .home-catalog-list {
+    .picks {
       grid-template-columns: minmax(0, 1fr);
-      gap: 0;
-      margin-top: 8px;
-    }
-
-    .catalog-card {
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .home-featured-card {
-      transition: none;
-    }
-
-    .home-featured-card:hover {
-      transform: none;
     }
   }
 }

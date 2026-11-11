@@ -3,14 +3,9 @@
 
 @layer templates {
   /* Privacy index: one row per product. Phones read each row as a block. */
-  .privacy-index {
-    padding-top: var(--section-y-short);
-  }
-
   .privacy-table {
     width: 100%;
-    max-width: 1040px;
-    margin: 0 auto;
+    margin: 0;
     border-collapse: collapse;
     font-size: var(--text-card-body);
     text-align: left;
@@ -125,11 +120,10 @@
 
   .privacy-site-note {
     max-width: 60ch;
-    margin: 28px auto 0;
+    margin: 0;
     color: var(--muted);
     font-size: var(--text-meta);
-    text-align: center;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   :lang(zh) .privacy-table tbody th,

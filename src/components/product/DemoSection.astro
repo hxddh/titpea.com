@@ -8,18 +8,20 @@ interface Props {
   controls: { pause: string; play: string };
 }
 
-const { section, controls } = Astro.props;
+const { section } = Astro.props;
 const { demo } = section;
 ---
 
-<section id={section.id} class="product-section demo-section" data-layout="row">
-  <div class="shell">
-    <header class="section-head compact">
-      <h2>{section.title}</h2>
+<section id={section.id} class="shell page-section product-section demo-section">
+  <div class="cols">
+    <header class="cols-margin">
+      <h2 class="heading">{section.title}</h2>
       <p class="sub">
         <Prose text={section.body} />
       </p>
     </header>
-    {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
+    <div class="cols-main">
+      {demo.kind === "chessPuzzle" && <ChessPuzzleDemo demo={demo} caption={section.caption} />}
+    </div>
   </div>
 </section>

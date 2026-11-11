@@ -77,6 +77,6 @@ export function relatedFor(product: Product, locale: Locale) {
       ? (copy.relatedInLineFor?.[product.line] ?? copy.relatedInLine.replace("{line}", lineLabel))
       : copy.relatedTitle,
     items: items.map((other) => catalogItem(other, locale)),
-    all: { label: copy.browseAllTools, href: `${pathFor(locale)}#more-title` },
+    all: { label: copy.browseAllTools, href: `${pathFor(locale)}#tools` },
   };
 }

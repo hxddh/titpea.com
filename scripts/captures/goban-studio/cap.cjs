@@ -27,7 +27,7 @@ async function pointOf(page, x, y) {
 module.exports = async function run(steps) {
   const { serve } = await import("./serve.mjs");
   const { server, origin } = await serve();
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {});
   const ctx = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     locale: LANG === "zh" ? "zh-CN" : "en-US",
@@ -56,11 +56,13 @@ module.exports = async function run(steps) {
   await page.waitForSelector(".ob-card");
   await page.click(".ob-card .btn.primary");
   await page.click(".choice >> nth=1");
-  await page.waitForSelector("canvas.board, .page");
-  // v10+: "Not now" on the placement offer, as scripts/ui-test.mjs onboard() does.
+  // v14: every first run lands on Today, with nothing started.
+  await page.waitForSelector(".page.today .hero .btn.primary");
+  await page.waitForSelector(".ob-card", { state: "detached" });
+  // "Not now" on the placement offer (v10+), as scripts/ui-test.mjs onboard() does.
   await page.keyboard.press("Control+3");
   await page.click(".placement-offer .link");
-  await page.waitForSelector(".learn-path .path-row");
+  await page.waitForSelector(".practice-path .path-row");
   await page.waitForFunction(
     () =>
       JSON.parse(localStorage.getItem("goban9:settings.json") || "{}").onboarded === true &&

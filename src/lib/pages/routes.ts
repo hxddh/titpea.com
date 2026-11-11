@@ -57,7 +57,7 @@ export const siteRoutes: SiteRoute[] = allPages.map((page) => ({
   alternatePath: page.alternatePath,
   ogImage: page.seo.ogImage,
   expectedText: page.expectedText,
-  primaryCta: page.kind === "home" || page.kind === "product" ? page.primaryCta : undefined,
+  primaryCta: page.kind === "product" ? page.primaryCta : undefined,
   sectionIndex: page.kind === "product" ? page.sectionIndex : undefined,
   sectionLinks: page.kind === "product" ? (page.sectionIndex ? page.navItems.length : 0) : undefined,
   browserVisual:

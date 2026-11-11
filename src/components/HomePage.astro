@@ -2,7 +2,6 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import "../styles/home.css";
 import type { HomePageModel } from "../lib/pages";
-import { srcsetFor } from "../lib/images";
 
 interface Props {
   model: HomePageModel;
@@ -12,95 +11,89 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="home-hero">
-    <div class="wash" aria-hidden="true"></div>
-    <div class="shell home-copy">
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>
-        {model.hero.titleParts.length > 1
-          ? model.hero.titleParts.map((part) => <span class="title-part">{part}</span>)
-          : model.hero.title}
-      </h1>
-      <p class="lead">{model.hero.lead}</p>
-      <div class="actions">
-        <a class="button primary large" href="#more-title">
-          {model.hero.browse}
-        </a>
-        <a class="button ghost" href={model.hero.about.href}>
+  <section class="shell home-hero">
+    <h1 class="display">
+      {model.hero.titleParts.map((part) => (
+        <span class="display-line">{part}</span>
+      ))}
+    </h1>
+    <div class="cols rule">
+      <div class="cols-margin">
+        <p class="fact">{model.hero.eyebrow}</p>
+        <a class="textlink" href={model.hero.about.href}>
           {model.hero.about.label}
         </a>
       </div>
-      {model.hero.latest.items.length > 0 && (
-        <p class="home-latest" data-visual-live>
-          <span class="home-latest-label">{model.hero.latest.label}</span>
-          {model.hero.latest.items.map((item) => (
-            <a href={item.href}>
-              {item.name} <span class="home-latest-version">{item.version}</span>
-            </a>
-          ))}
-          <a class="home-latest-all" href={model.hero.latest.all.href}>
-            {model.hero.latest.all.label} ›
-          </a>
-        </p>
-      )}
+      <div class="cols-main home-copy">
+        <p class="lead">{model.hero.lead}</p>
+      </div>
     </div>
   </section>
 
-  <section class="home-more-tools" aria-labelledby="more-title">
-    <div class="shell">
-      <header class="section-head">
-        <h2 id="more-title">{model.more.title}</h2>
-      </header>
-      {/* The featured products lead the catalog as larger cards. */}
-      <ul class="home-catalog-featured" aria-label={model.featured.title}>
-        {model.featured.items.map((item) => (
-          <li>
-            <a class="home-featured-card" href={item.href}>
-              <figure class="home-featured-shot">
+  {/* The picks: three products, each capture on its own colour. */}
+  <section class="shell page-section" aria-labelledby="picks-title">
+    <div class="cols">
+      <div class="cols-margin">
+        <h2 class="heading" id="picks-title">
+          {model.featured.title}
+        </h2>
+      </div>
+      <ul class="cols-main picks">
+        {model.featured.items.map((item, index) => (
+          <li class:list={["pick", index === 0 && "pick-lead"]}>
+            <a href={item.href}>
+              <span class="stage" data-tint={item.slug}>
                 <img
                   src={item.image.src}
-                  srcset={srcsetFor(item.image.src, item.image.width)}
-                  sizes="(max-width: 640px) 80vw, (max-width: 960px) calc(50vw - 28px), 340px"
                   alt=""
                   width={item.image.width}
                   height={item.image.height}
-                  loading="lazy"
+                  loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />
-              </figure>
-              <span class="home-featured-copy">
-                <span class="section-kicker">{item.role}</span>
-                <strong class="home-featured-name">{item.name}</strong>
-                <span class="home-featured-text">{item.text}</span>
-                {/* Under the text, so every card's title starts at the same height. */}
-                {item.caption && <span class="home-featured-caption">{item.caption}</span>}
-                <span class="home-featured-more">{model.featured.learnMore}</span>
+              </span>
+              <span class="pick-copy">
+                <strong class="pick-name">{item.name}</strong>
+                <span class="pick-text">{item.text}</span>
+                {item.caption && <span class="pick-caption">{item.caption}</span>}
+                <span class="fact">
+                  {item.role}
+                  {item.version && <span data-visual-live> · {item.version}</span>}
+                </span>
               </span>
             </a>
           </li>
         ))}
       </ul>
-      {/* Then every other product, under its line. */}
-      {model.more.groups.map((group) => (
-        <div class="home-line">
-          <h3 class="home-line-title" id={`line-${group.line}-title`}>
-            {group.label}
-          </h3>
-          <ul class="home-catalog-list" aria-labelledby={`line-${group.line}-title`}>
-            {group.items.map((item) => (
-              <li>
-                <a class="catalog-card" href={item.href}>
-                  <img class="catalog-icon" src={item.icon} alt="" width="40" height="40" loading="lazy" />
-                  <span class="catalog-card-copy">
-                    <strong class="home-catalog-name">{item.name}</strong>
-                    <span class="home-catalog-text">{item.text}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
     </div>
+  </section>
+
+  {/* The index: every product a row, under its line. */}
+  <section class="shell page-section page-end" id="tools" aria-label={model.more.title}>
+    {model.more.groups.map((group) => (
+      <div class="cols rule index-group">
+        <div class="cols-margin">
+          <h2 class="heading" id={`line-${group.line}-title`}>
+            {group.label}
+          </h2>
+          <p class="fact">{group.count}</p>
+        </div>
+        <ul class="cols-main index-list" aria-labelledby={`line-${group.line}-title`}>
+          {group.items.map((item) => (
+            <li>
+              <a class="index-row" href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
+                <strong class="index-name">{item.name}</strong>
+                <span class="index-text home-catalog-text">{item.text}</span>
+                <span class="fact index-fact" data-visual-live>
+                  {item.version && <span>{item.version}</span>}
+                  {item.released && <span>{item.released}</span>}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
   </section>
 </SiteLayout>

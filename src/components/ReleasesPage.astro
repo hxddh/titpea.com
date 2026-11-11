@@ -17,18 +17,23 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="about-hero releases-hero">
-    <div class="wash" aria-hidden="true"></div>
-    <div class="shell narrow about-copy">
-      <p class="eyebrow">{model.hero.eyebrow}</p>
-      <h1>{model.hero.title}</h1>
-      <p class="lead">{model.hero.lead}</p>
+  <section class="shell about-hero releases-hero">
+    <h1 class="display">{model.hero.title}</h1>
+    <div class="cols rule">
+      <div class="cols-margin">
+        <a class="textlink" href={model.feed.href}>
+          {model.feed.label}
+        </a>
+      </div>
+      <div class="cols-main about-copy">
+        <p class="lead">{model.hero.lead}</p>
+      </div>
     </div>
   </section>
 
-  <section class="releases-timeline" aria-label={model.hero.title}>
-    <div class="shell narrow">
-      <ol class="release-feed" data-visual-live>
+  <section class="shell page-section releases-timeline" aria-label={model.hero.title}>
+    <div class="cols">
+      <ol class="cols-main release-feed" data-visual-live>
         {model.items.map((item) => (
           <li class="release-entry">
             <a class="release-entry-product" href={item.href}>
@@ -72,21 +77,18 @@ const { model } = Astro.props;
           </li>
         ))}
       </ol>
-      <p class="releases-feed">
-        <a class="button ghost" href={model.feed.href}>
-          {model.feed.label}
-        </a>
-      </p>
     </div>
   </section>
 
-  <section class="releases-undated" aria-labelledby="undated-title">
-    <div class="shell narrow">
-      <header class="section-head">
-        <h2 id="undated-title">{model.undated.title}</h2>
+  <section class="shell page-section page-end releases-undated" aria-labelledby="undated-title">
+    <div class="cols rule">
+      <header class="cols-margin">
+        <h2 class="heading" id="undated-title">
+          {model.undated.title}
+        </h2>
         <p class="sub">{model.undated.sub}</p>
       </header>
-      <ul class="release-list">
+      <ul class="cols-main release-list">
         {model.undated.items.map((item) => (
           <li>
             <a href={item.href}>

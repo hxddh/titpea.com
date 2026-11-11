@@ -140,22 +140,21 @@
 
   /* The lede is the page's first explanation: reading ink, not label grey. */
   .lead {
-    max-width: 34em;
-    margin: 20px auto 0;
-    color: var(--ink-2);
+    max-width: 30em;
+    margin: 0;
+    color: var(--ink);
     font-size: var(--text-lede);
-    line-height: 1.45;
-    letter-spacing: -0.008em;
-    text-wrap: balance;
+    line-height: 1.4;
+    text-wrap: pretty;
   }
 
+  /* The line under a section heading, in the margin column. */
   .sub {
-    max-width: 46ch;
-    margin: 14px auto 0;
-    color: var(--muted);
-    font-size: var(--text-sub);
-    line-height: 1.5;
-    text-wrap: balance;
+    max-width: var(--measure);
+    margin: 12px 0 0;
+    color: var(--ink-2);
+    line-height: 1.55;
+    text-wrap: pretty;
   }
 
   .prose {
@@ -168,31 +167,13 @@
     margin-bottom: 1em;
   }
 
-  .section-head {
-    max-width: var(--narrow);
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .section-head h2 {
-    margin: 0;
-    font-size: var(--title-section);
-    line-height: 1.15;
-  }
-
-  .section-head.compact h2 {
-    font-size: var(--title-show);
-    line-height: 1.2;
-  }
-
-  /* Capsule buttons. .button.primary is the filled accent control; .ghost is
-   a text control with a chevron. Both keep a 44px hit area. */
+  /* Buttons. .button.primary is the filled ink control; a second action is a
+   text link (.textlink). Both keep a 44px hit area. */
   .actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 12px 16px;
+    gap: 8px 24px;
     margin-top: 32px;
   }
 
@@ -203,7 +184,7 @@
     gap: 8px;
     min-height: 44px;
     padding: 0 22px;
-    border-radius: var(--radius-pill);
+    border-radius: 10px;
     font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
@@ -269,14 +250,6 @@
     border-radius: calc(var(--radius-shot) - var(--stage-pad) / 2);
   }
 
-  /* Captures are mostly light: dark mode dims them a little (--shot-dim is
-   none in light mode), the hero object, Home's cards and every showcase alike. */
-  .product-screenshot-visual img,
-  .home-featured-card img,
-  .shot :is(img, video) {
-    filter: var(--shot-dim);
-  }
-
   /* A showcase with a dark capture (Showcase.dark) shows the one that matches
    the page; the other stays undisplayed, and lazy, so it is never fetched. */
   .shot img[data-appearance="dark"] {
@@ -289,7 +262,6 @@
 
   :root[data-theme="dark"] .shot img[data-appearance="dark"] {
     display: block;
-    filter: none;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -299,34 +271,16 @@
 
     :root:not([data-theme="light"]) .shot img[data-appearance="dark"] {
       display: block;
-      filter: none;
     }
   }
 
   .shot-caption {
     max-width: 60ch;
-    margin: 16px auto 0;
+    margin: 12px 0 0;
     color: var(--muted);
     font-size: 15px;
     line-height: 1.45;
-    text-align: center;
-    text-wrap: balance;
-  }
-
-  /* Soft color wash behind a centered hero. */
-  .wash {
-    position: absolute;
-    inset: -160px 0 auto;
-    z-index: -1;
-    height: max(calc(100% + 160px), 760px);
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(#000 60%, transparent);
-    mask-image: linear-gradient(#000 60%, transparent);
-    background:
-      radial-gradient(40% 36% at 22% 42%, var(--wash-1), transparent 70%),
-      radial-gradient(38% 34% at 80% 36%, var(--wash-2), transparent 70%),
-      radial-gradient(44% 38% at 55% 78%, var(--wash-3), transparent 72%);
-    filter: blur(8px);
+    text-wrap: pretty;
   }
 
   /* Chinese section headings: tracking that does not crowd CJK. A section's

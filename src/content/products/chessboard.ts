@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v19.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v22.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
@@ -81,6 +81,7 @@ export default defineProduct({
         width: 2446,
         height: 1536,
       },
+      asOf: "v22.0.0",
     },
     showcases: [
       {
@@ -88,6 +89,7 @@ export default defineProduct({
         alt: "Chessboard after a Stockfish review of a 17-move game: a one-line summary and the win-chance curve, stepping through six key moments with the moves 1500-rated players choose under the engine line, then the full report with each side's accuracy",
         width: 1222,
         height: 768,
+        asOf: "v22.0.0",
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Key moments first.",
@@ -98,6 +100,7 @@ export default defineProduct({
         alt: "Chessboard in dark appearance with the green board on the final position of the reviewed game",
         width: 2446,
         height: 1536,
+        asOf: "v22.0.0",
         title: "Three boards, light or dark.",
         body: "Wood, green or blue, and three piece sets (Merida, Burnett, Classic), all on one Settings page.",
       },
@@ -163,22 +166,27 @@ export default defineProduct({
           {
             title: "Can I play online?",
             body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings · Data, imports your games from Lichess or Chess.com into the library.",
+            asOf: "v22.0.0",
           },
           {
             title: "Who plays the other side?",
             body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The twelve from Gentle (532) to Advanced− (1909) are Maia, networks trained on human games from Lichess, so they pick moves the way players at that level do. The other nine are Stockfish 19, strength-limited, and at full strength at the top. Maia runs on this computer from networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
+            asOf: "v22.0.0",
           },
           {
             title: "Will my saves from an older version carry over?",
             body: "From 9.0 or later, yes: every version since keeps one save format and reads the saves of the release before it. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            asOf: "v22.0.0",
           },
           {
             title: "What can I do with a PGN?",
             body: "Choose Review a game from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Me. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
+            asOf: "v22.0.0",
           },
           {
             title: "Does it track my progress?",
-            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and both ratings; the Me page adds the rating curve, a practice calendar, and your strengths and weaknesses.",
+            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, Your level; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
+            asOf: "v22.0.0",
           },
         ],
       },
@@ -219,6 +227,7 @@ export default defineProduct({
         width: 2446,
         height: 1536,
       },
+      asOf: "v22.0.0",
     },
     showcases: [
       {
@@ -226,6 +235,7 @@ export default defineProduct({
         alt: "Chessboard 用 Stockfish 复盘完一局 17 回合的棋：一句总结和胜率曲线，逐个翻看六个关键时刻，引擎线下列着 1500 分棋手常走的几步，再展开写着双方精准度的完整报告",
         width: 1222,
         height: 768,
+        asOf: "v22.0.0",
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",
         body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。",
@@ -235,6 +245,7 @@ export default defineProduct({
         alt: "Chessboard 深色外观、绿色棋盘，复盘后的终局局面",
         width: 2446,
         height: 1536,
+        asOf: "v22.0.0",
         title: "三种棋盘，浅色或深色",
         body: "木、绿、蓝，另有三套棋子（Merida、伯内特、经典），都在同一个设置页里。",
       },
@@ -294,22 +305,27 @@ export default defineProduct({
           {
             title: "能在线对战吗？",
             body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 · 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
+            asOf: "v22.0.0",
           },
           {
             title: "对面是谁在下？",
             body: "一条 21 档的阶梯，每档有名字、头像和等级分。新手（532）到高级−（1909）这十二档是 Maia：用 Lichess 真人对局训练的网络，按这个分段的人会怎么走来选着。其余九档是 Stockfish 19，限制强度，最上面满强度。Maia 在这台电脑上运行，网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
+            asOf: "v22.0.0",
           },
           {
             title: "旧版本的存档能带过来吗？",
             body: "9.0 及以后的可以：此后每一版都沿用同一种存档格式，都读得了上一版的存档。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
+            asOf: "v22.0.0",
           },
           {
             title: "PGN 能做什么？",
             body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            asOf: "v22.0.0",
           },
           {
             title: "能看到自己的进步吗？",
-            body: "能。与引擎对局有自己的对局等级分，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和两个等级分；“我的”页还有等级分曲线、练习日历，以及强项与弱项。",
+            body: "能。与引擎对局有自己的对局等级分，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和一个数：“你的水平”；“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
+            asOf: "v22.0.0",
           },
         ],
       },
