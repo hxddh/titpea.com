@@ -114,9 +114,32 @@ jobs:
         run: npx playwright install chromium
       # zh pages need real CJK glyphs, or the visual baselines compare tofu
       # boxes. Keep this font in sync with local baseline refreshes.
+      # The runner sometimes cannot resolve any ubuntu.com host for longer than
+      # apt retries. The same package, at the version ubuntu-24.04 ships, then
+      # comes from another host that mirrors the archive, checked against its
+      # checksum, so the baselines are still compared with the same glyphs.
       - name: Install CJK fonts
         if: github.event_name != 'schedule'
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+        run: |
+          if sudo apt-get -o Acquire::Retries=2 update && sudo apt-get -o Acquire::Retries=2 install -y --no-install-recommends fonts-noto-cjk; then
+            exit 0
+          fi
+          deb="fonts-noto-cjk_20230817+repack1-3_all.deb"
+          sha="7d64b985f6fe128c99eae5610d5c047338e572bdcfb2bb09736be01b824a7f6c"
+          for base in \
+            "https://mirrors.kernel.org/ubuntu/pool/main/f/fonts-noto-cjk" \
+            "https://mirrors.edge.kernel.org/ubuntu/pool/main/f/fonts-noto-cjk" \
+            "https://launchpad.net/ubuntu/+archive/primary/+files" \
+            "http://archive.ubuntu.com/ubuntu/pool/main/f/fonts-noto-cjk"; do
+            if curl -fsSL --retry 2 -o "/tmp/$deb" "$base/$deb" && echo "$sha  /tmp/$deb" | sha256sum -c -; then
+              sudo dpkg -i "/tmp/$deb"
+              fc-cache -f
+              fc-list | grep -qi "Noto Sans CJK"
+              exit 0
+            fi
+          done
+          echo "fonts-noto-cjk could not be fetched from any host" >&2
+          exit 1
       - name: Page QA
         if: github.event_name != 'schedule'
         # QA and a11y run on a pool of pages sized to the runner's cores; 16

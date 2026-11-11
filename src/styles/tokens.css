@@ -138,10 +138,20 @@
     /* The two columns: twelve tracks with this gap; the margin column takes
      four of them, the main column eight. */
     --col-gap: 32px;
-    /* The site's own colour (the pea mark's green): hover rules only. */
-    --site: #2f6b2e;
-    /* How much of a product's colour the paper under its capture keeps. */
-    --paper-mix: 100%;
+    /* A surface above the paper: panels that hold a list (the index, the spec
+     sheet, the FAQ) and Home's picks. */
+    --surface: #ffffff;
+    --shadow-surface:
+      0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(20, 20, 30, 0.04), 0 12px 32px -20px rgba(20, 20, 30, 0.16);
+    --shadow-surface-hover:
+      0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(20, 20, 30, 0.05), 0 24px 48px -24px rgba(20, 20, 30, 0.28);
+    --row-hover: rgba(0, 0, 0, 0.03);
+    --radius-panel: 16px;
+    /* The paper under a capture: the page's paper with this much of the
+     product's colour in it, and a hairline of the colour at its edge. */
+    --paper-mix: 20%;
+    --paper-edge: 16%;
+    --radius-stage: 20px;
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
@@ -280,8 +290,12 @@
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
-    --site: #a9d65c;
-    --paper-mix: 60%;
+    --surface: #151517;
+    --shadow-surface: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 32px -20px rgba(0, 0, 0, 0.8);
+    --shadow-surface-hover: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 24px 48px -24px rgba(0, 0, 0, 0.9);
+    --row-hover: rgba(255, 255, 255, 0.04);
+    --paper-mix: 26%;
+    --paper-edge: 30%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -362,8 +376,12 @@
       --data-caution: #e3a44f;
       --data-caution-ink: #edb472;
       --data-alert: #ff7b72;
-      --site: #a9d65c;
-      --paper-mix: 60%;
+      --surface: #151517;
+      --shadow-surface: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 12px 32px -20px rgba(0, 0, 0, 0.8);
+      --shadow-surface-hover: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 24px 48px -24px rgba(0, 0, 0, 0.9);
+      --row-hover: rgba(255, 255, 255, 0.04);
+      --paper-mix: 26%;
+      --paper-edge: 30%;
     }
   }
 

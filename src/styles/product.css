@@ -11,8 +11,9 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 0 0 28px;
+    margin: 0 0 24px;
     color: var(--muted);
+    font-size: 15px;
   }
 
   .ident strong {
@@ -25,29 +26,28 @@
     height: 40px;
   }
 
-  /* The spec sheet: what the meta line says, then label and value on a
-   hairline each. Mono, because every row is a fact. */
+  /* The spec sheet: what the product runs on, in a line, then label and
+   value on a hairline each. Small and quiet, in the reading face. */
   .specs {
     margin: 0;
+    font-size: var(--text-small);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
   }
 
   .specs > div {
     display: grid;
-    grid-template-columns: 6.5em minmax(0, 1fr);
-    gap: 12px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--line);
-    font-family: var(--mono);
-    font-size: var(--text-meta);
-    line-height: 1.5;
+    grid-template-columns: 6em minmax(0, 1fr);
+    gap: 16px;
+    padding: 11px 18px;
   }
 
   html:lang(zh) .specs > div {
     grid-template-columns: 4em minmax(0, 1fr);
   }
 
-  .specs > div:first-child {
-    padding-top: 0;
+  .specs > div + div {
+    box-shadow: inset 0 1px 0 var(--line);
   }
 
   .specs dt {
@@ -60,10 +60,15 @@
     overflow-wrap: anywhere;
   }
 
-  /* A row without a label: one segment of the product's meta line. */
+  /* The first row has no label: the meta line's own words, as a sentence. */
   .specs > div[data-plain],
   html:lang(zh) .specs > div[data-plain] {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .specs > div[data-plain] dd {
+    color: var(--ink-2);
+    text-wrap: pretty;
   }
 
   /* A trust detail under the primary action, from the product's own docs. */
@@ -78,7 +83,7 @@
   /* The hero object. A photograph lies on the product's colour; a terminal,
    chart, mock or working demo on the raised paper. */
   .hero-figure {
-    padding-top: 72px;
+    padding-top: 64px;
   }
 
   .hero-figure figure {
@@ -86,7 +91,7 @@
   }
 
   .stage-hero {
-    padding: clamp(16px, 5vw, 64px);
+    padding: clamp(16px, 4.4vw, 56px);
   }
 
   /* A tall capture (an extension's popup) at about its real width. */
@@ -210,7 +215,7 @@
   .crop {
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: var(--icon-ring), var(--shadow-shot);
   }
 
@@ -283,18 +288,14 @@
    size; weight and ink carry the hierarchy. */
   .feature-grid {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px var(--col-gap);
   }
 
   .feature-card {
     display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
-    gap: 4px var(--col-gap);
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .feature-card:first-child {
-    padding-top: 0;
+    align-content: start;
+    gap: 6px;
   }
 
   .feature-card h3 {
@@ -316,7 +317,7 @@
   /* FAQ: questions on hairlines, every answer open on desktop; phones fold
    all but the first (faq.js). */
   .faq-item {
-    border-bottom: 1px solid var(--line);
+    box-shadow: none;
   }
 
   .faq-item summary {
@@ -363,20 +364,25 @@
 
   /* Inside the closing band, under a hairline: where to go next — the product's
 
-  .faq-item:first-child summary {
-    padding-top: 0;
-  }
-
-  .faq-item:first-child summary::after {
-    margin-top: -15px;
-  }
-
-  .faq-item:first-child[open] summary::after {
-    margin-top: -11px;
+  .faq-item + .faq-item {
+    box-shadow: inset 0 1px 0 var(--line);
   }
 
   .faq-item summary {
-    max-width: var(--measure);
+    padding: 18px 52px 18px 22px;
+    transition: background-color 0.15s ease;
+  }
+
+  .faq-item summary:hover {
+    background: var(--row-hover);
+  }
+
+  .faq-item summary::after {
+    right: 24px;
+  }
+
+  .faq-answer {
+    padding: 0 22px 22px;
   }
 
   /* The closing: where next in the margin, the name and the action once more. */
@@ -389,7 +395,7 @@
   .closing-label {
     margin: 0;
     color: var(--muted);
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: var(--text-meta);
     font-weight: 400;
     line-height: 1.5;
@@ -462,8 +468,8 @@
     gap: 4px 0;
     margin: 0;
     color: var(--muted);
-    font-family: var(--mono);
     font-size: var(--text-meta);
+    font-variant-numeric: tabular-nums;
   }
 
   .whats-new-line > :not(:last-child)::after {
@@ -497,8 +503,9 @@
       padding-top: 48px;
     }
 
-    .feature-card {
+    .feature-grid {
       grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
     }
 
     /* The button under the command, never over it. */

@@ -60,8 +60,8 @@ const commandsProps = {
   replayInHero: heroReplay?.command,
   skipFirst: skipFirstCommand,
 };
-// The spec sheet (DESIGN.md, "Spec sheet"): what the meta line says, a
-// segment a row, then the facts the site knows by name. The version and its
+// The spec sheet (DESIGN.md, "Spec sheet"): what the meta line says, as one
+// line, then the facts the site knows by name. The version and its
 // date come from releases.json, so the meta line's own version segment is
 // left out when the release gives one.
 const isVersion = (part: string) => part === model.version || /^v?\d+(\.\d+)+$/.test(part);
@@ -70,7 +70,7 @@ const metaParts = copy.meta.split(" · ");
 const license = metaParts.find(isLicense);
 const metaVersion = metaParts.find(isVersion);
 const specs: Array<{ label?: string; value: string; href?: string }> = [
-  ...metaParts.filter((part) => !isVersion(part) && !isLicense(part)).map((value) => ({ value })),
+  { value: metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ") },
   ...(license ? [{ label: copyUi.spec.license, value: license }] : []),
   ...(model.version || metaVersion ? [{ label: copyUi.spec.version, value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ label: copyUi.spec.released, value: model.released }] : []),
@@ -111,7 +111,7 @@ const firstShowcaseFigure = 2;
     </p>
     <h1 class="display">{copy.headline}</h1>
     <div class="cols rule">
-      <dl class="cols-margin specs">
+      <dl class="cols-margin specs panel">
         {specs.map((spec) => (
           <div data-plain={spec.label ? undefined : ""}>
             {spec.label && <dt>{spec.label}</dt>}
