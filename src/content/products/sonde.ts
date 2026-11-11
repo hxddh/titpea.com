@@ -76,7 +76,6 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        focus: "top-right",
         alt: "The Run screen: a shell command’s output on the left, and beside it the nine requests it made to the demo store, listed as operations with their time, two of them failed.",
         width: 1270,
         height: 810,
@@ -86,7 +85,6 @@ export default defineProduct({
       },
       {
         src: "/assets/sonde-compare-en.webp",
-        focus: "center",
         alt: "Comparing two runs: 172 requests down to 9, waiting down 62%, request cost down 99%, errors up from 0 to 2, and each kind of request before and after; a notice says the two are different programs.",
         width: 1270,
         height: 810,
@@ -96,7 +94,6 @@ export default defineProduct({
       },
       {
         src: "/assets/sonde-time-en.webp",
-        focus: "bottom",
         dark: { src: "/assets/sonde-time-en-dark.webp", width: 1270, height: 810 },
         alt: "A session’s Time tab: tiles for rate, errors, latency and bytes, then the requests over the session with how many were in flight, what ran at once, and bytes sent and received.",
         width: 1270,
@@ -226,7 +223,6 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        focus: "top-right",
         alt: "“运行”页面（英文界面）：左边是一条 shell 命令的输出，右边把它对演示存储发出的 9 个请求列成操作，带用时，其中两个失败。",
         width: 1270,
         height: 810,
@@ -236,7 +232,6 @@ export default defineProduct({
       },
       {
         src: "/assets/sonde-compare-en.webp",
-        focus: "center",
         alt: "两次运行的对比（英文界面）：请求从 172 降到 9，等待减少 62%，请求费用减少 99%，错误从 0 变成 2，下面是每类请求前后的数量；一条提示说明这是两个不同的程序。",
         width: 1270,
         height: 810,
@@ -246,7 +241,6 @@ export default defineProduct({
       },
       {
         src: "/assets/sonde-time-en.webp",
-        focus: "bottom",
         dark: { src: "/assets/sonde-time-en-dark.webp", width: 1270, height: 810 },
         alt: "会话的“时间”页（英文界面）：速率、错误、延迟和字节四块数字，下面是整个会话里的请求和同时在途的数量、哪些请求同时在跑，以及收发的字节。",
         width: 1270,

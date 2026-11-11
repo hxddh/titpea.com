@@ -4,11 +4,11 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (design v4: one left edge, each section under its heading, lists on hairlines; the spec sheet as a strip, the capture on the product's colour, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — the page shape (design v4.1: text in one centred reading column, pictures across the shell on the product's colour, each section under its heading, lists on hairlines; the spec sheet as a strip, the capture on the product's colour, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
-Settled design decisions in DESIGN.md (for example the index home and the one left edge) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
+Settled design decisions in DESIGN.md (for example the index home and the centred reading column) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
 
 ## Where things live
 

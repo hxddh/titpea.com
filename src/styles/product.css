@@ -2,14 +2,23 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Product pages (ProductPage.astro), design v4: the claim, the lede and the
-   actions in one column, the facts as a strip under them, the capture on the
-   product's colour, then sections that each open on their heading. */
+  /* Product pages (ProductPage.astro), design v4.1: the hero centred (who it
+   is, the claim, the lede, the actions, the facts), the capture on the
+   product's colour, then sections whose text keeps the reading column and
+   whose pictures take the whole shell on the same colour. */
+  .product-hero {
+    text-align: center;
+  }
+
+  .product-hero .display {
+    margin-inline: auto;
+  }
 
   /* Who it is, above the claim. */
   .ident {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     margin: 0 0 24px;
     color: var(--muted);
@@ -28,15 +37,34 @@
 
   .product-copy {
     max-width: var(--narrow);
+    margin-inline: auto;
   }
 
-  /* The spec sheet, as a strip under the actions: the meta line's own words
-   first, then each fact as a small label over its value, on one hairline. */
+  .product-copy .lead {
+    margin-inline: auto;
+  }
+
+  .product-copy .actions {
+    justify-content: center;
+  }
+
+  /* What the product runs on and works with, in one quiet line. */
+  .hero-platform {
+    margin: 20px 0 0;
+    color: var(--muted);
+    font-size: var(--text-small);
+    line-height: 1.45;
+  }
+
+  /* The spec sheet, as a strip under the actions: each fact a small label
+   over its value, centred on one hairline as wide as the reading column. */
   .specs {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 16px 48px;
-    margin: 48px 0 0;
+    max-width: var(--narrow);
+    margin: 40px auto 0;
     padding-top: 20px;
     border-top: 1px solid var(--line);
     font-size: var(--text-small);
@@ -62,24 +90,10 @@
     overflow-wrap: anywhere;
   }
 
-  /* The meta line has no label: its own words take the first place, set as
-   a value, so the strip reads left to right from what the product is. */
-  .specs > div[data-plain] {
-    flex: 0 1 auto;
-    max-width: 20em;
-    margin-right: 16px;
-    padding-top: calc(var(--text-meta) * 1.45 + 2px);
-  }
-
-  .specs > div[data-plain] dd {
-    color: var(--ink-2);
-    text-wrap: pretty;
-  }
-
   /* A trust detail under the primary action, from the product's own docs. */
   .install-note {
     max-width: var(--measure);
-    margin: 16px 0 0;
+    margin: 16px auto 0;
     color: var(--muted);
     font-size: var(--text-small);
     line-height: 1.45;
@@ -95,8 +109,25 @@
     margin: 0;
   }
 
-  .stage-hero {
+  .stage-hero,
+  .stage-show {
     padding: clamp(16px, 4.4vw, 56px);
+  }
+
+  /* A showcase lies on the same block as the hero's picture. A capture
+   narrower than 3:2 keeps product scale; a phone capture, phone size. */
+  .stage-show > * {
+    margin-inline: auto;
+  }
+
+  .product-screenshot-showcase:not([data-wide], [data-portrait]) .stage-show > * {
+    max-width: 820px;
+  }
+
+  /* Inside a block the frame (.shot) carries the edge and depth, not the image. */
+  .stage .shot img {
+    border-radius: 0;
+    box-shadow: none;
   }
 
   /* A tall capture (an extension's popup) at about its real width. */
@@ -181,7 +212,8 @@
    commands wrap at spaces rather than scrolling under the button. */
   .hero-command {
     max-width: 36em;
-    margin-top: 28px;
+    margin: 28px auto 0;
+    text-align: left;
   }
 
   .hero-command .command-code {
@@ -289,19 +321,25 @@
     }
   }
 
-  /* The feature list: titled items three across the whole width, each under
+  /* The feature list: titled items two across the reading column, each under
    a hairline. Title and body share one size; weight and ink carry the
    hierarchy. */
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 40px var(--col-gap);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px var(--col-gap);
+    max-width: var(--narrow);
+    margin-inline: auto;
   }
 
-  /* Two or four items read as pairs, not as a row with a hole in it. */
-  .feature-grid:is([data-count="2"], [data-count="4"]) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: var(--narrow);
+  /* Sections a reader consults rather than reads (what's new, commands, data,
+   questions) take the smaller heading, so the showcases lead the page. */
+  :is(.whats-new, .commands-section, .data-section, .faq-section) .heading {
+    font-size: var(--text-heading-s);
+  }
+
+  :is(.whats-new, .commands-section, .data-section, .faq-section) .section-head {
+    margin-bottom: 20px;
   }
 
   .feature-card {
@@ -383,6 +421,10 @@
 
   /* The closing: the name and the action once more, then where to go next
    on one hairline: the line's tools side by side. */
+  .final-cta {
+    text-align: center;
+  }
+
   .final-cta-name {
     margin: 0;
     font-size: var(--title-display);
@@ -390,6 +432,7 @@
   }
 
   .final-cta .actions {
+    justify-content: center;
     margin-top: 28px;
   }
 
@@ -397,8 +440,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 4px 32px;
-    margin-top: 72px;
+    max-width: var(--narrow);
+    margin: 72px auto 0;
     padding-top: 20px;
     border-top: 1px solid var(--line);
   }
@@ -406,6 +451,7 @@
   .closing-next .tool-links {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0 28px;
     margin: 0;
   }
@@ -515,10 +561,6 @@
       height: auto;
       object-fit: contain;
     }
-
-    .feature-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
 
   @media (max-width: 640px) {
@@ -533,16 +575,8 @@
     }
 
     .specs {
-      gap: 14px 32px;
-      margin-top: 36px;
-    }
-
-    /* The meta line takes its own row, so the labels below line up. */
-    .specs > div[data-plain] {
-      flex-basis: 100%;
-      max-width: none;
-      margin-right: 0;
-      padding-top: 0;
+      gap: 14px 28px;
+      margin-top: 32px;
     }
 
     /* The button under the command, never over it. */

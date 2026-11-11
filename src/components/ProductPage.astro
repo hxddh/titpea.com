@@ -69,8 +69,10 @@ const isLicense = (part: string) => /^(MIT|Apache-|GPL|LGPL|AGPL|BSD|MPL|ISC)/.t
 const metaParts = copy.meta.split(" · ");
 const license = metaParts.find(isLicense);
 const metaVersion = metaParts.find(isVersion);
-const specs: Array<{ label?: string; value: string; href?: string }> = [
-  { value: metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ") },
+// What the product runs on and works with: the meta line's own words, said
+// once under the actions; the strip holds only named facts, so it lines up.
+const platformLine = metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ");
+const specs: Array<{ label: string; value: string; href?: string }> = [
   ...(license ? [{ label: copyUi.spec.license, value: license }] : []),
   ...(model.version || metaVersion ? [{ label: copyUi.spec.version, value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ label: copyUi.spec.released, value: model.released }] : []),
@@ -147,12 +149,13 @@ const heroAsOf = screenshot?.asOf;
           <Prose text={copy.installNote} />
         </p>
       )}
+      {platformLine && <p class="hero-platform">{platformLine}</p>}
     </div>
     {/* The facts, as one strip under the actions: no panel. */}
     <dl class="specs">
       {specs.map((spec) => (
-        <div data-plain={spec.label ? undefined : ""}>
-          {spec.label && <dt>{spec.label}</dt>}
+        <div>
+          <dt>{spec.label}</dt>
           <dd>
             {spec.href ? (
               <a href={spec.href} rel="noreferrer">

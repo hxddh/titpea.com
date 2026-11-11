@@ -15,10 +15,11 @@ interface Props {
 }
 
 const { showcase, label, wholeLabel, pauseLabel, playLabel } = Astro.props;
-// The heading and its line sit above the picture, on the page's one left
-// edge. A wide window capture (3:2 or wider) is read, not glanced at: it
-// takes the whole width. A phone capture (taller than wide) stays at phone
-// size. A capture with `focus` shows a detail at its own scale.
+// The heading and its line sit in the reading column; the picture lies on the
+// product's colour across the whole shell, as the hero's does. A wide window
+// capture (3:2 or wider) fills the block; a narrower one keeps product scale;
+// a phone capture (taller than wide) stays at phone size. A capture with
+// `focus` shows a detail at its own scale.
 const portrait = showcase.height > showcase.width;
 const detail = Boolean(showcase.focus) && !showcase.video;
 const wide = !detail && showcase.width >= showcase.height * 1.5;
@@ -36,83 +37,85 @@ const sizes = wide ? screenshotSizes : portrait ? "280px" : columnShotSizes;
       <Prose text={showcase.body} />
     </p>
   </header>
-  <figure class:list={["showcase-figure", !wide && "section-body"]}>
-    {showcase.video ? (
-      <div class="shot show-shot show-video">
-        <video
-          muted
-          loop
-          playsinline
-          preload="none"
-          poster={showcase.src}
-          width={showcase.width}
-          height={showcase.height}
-          aria-label={showcase.alt}
-          data-autoplay
-        >
-          {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
-          <source src={showcase.video.mp4} type="video/mp4" />
-          {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
-        </video>
-        <button
-          class="video-toggle"
-          type="button"
-          hidden
-          data-video-toggle
-          data-pause-label={pauseLabel}
-          data-play-label={playLabel}
-        >
-          {pauseLabel}
-        </button>
-      </div>
-    ) : detail ? (
-      <div class="crop" data-focus={showcase.focus}>
-        {/* No srcset: the detail is the capture at its own pixel size. */}
-        <img
-          src={showcase.src}
-          alt={showcase.alt}
-          width={showcase.width}
-          height={showcase.height}
-          loading="lazy"
-          data-appearance={showcase.dark ? "light" : undefined}
-        />
-        {showcase.dark && (
+  <figure class="showcase-figure">
+    <div class="stage stage-show">
+      {showcase.video ? (
+        <div class="shot show-shot show-video">
+          <video
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster={showcase.src}
+            width={showcase.width}
+            height={showcase.height}
+            aria-label={showcase.alt}
+            data-autoplay
+          >
+            {/* MP4 first: every browser plays it, and these encodes are the smaller file. */}
+            <source src={showcase.video.mp4} type="video/mp4" />
+            {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
+          </video>
+          <button
+            class="video-toggle"
+            type="button"
+            hidden
+            data-video-toggle
+            data-pause-label={pauseLabel}
+            data-play-label={playLabel}
+          >
+            {pauseLabel}
+          </button>
+        </div>
+      ) : detail ? (
+        <div class="crop" data-focus={showcase.focus}>
+          {/* No srcset: the detail is the capture at its own pixel size. */}
           <img
-            src={showcase.dark.src}
+            src={showcase.src}
             alt={showcase.alt}
-            width={showcase.dark.width}
-            height={showcase.dark.height}
+            width={showcase.width}
+            height={showcase.height}
             loading="lazy"
-            data-appearance="dark"
+            data-appearance={showcase.dark ? "light" : undefined}
           />
-        )}
-      </div>
-    ) : (
-      <div class="shot show-shot">
-        <img
-          src={showcase.src}
-          srcset={srcsetFor(showcase.src, showcase.width)}
-          sizes={sizes}
-          alt={showcase.alt}
-          width={showcase.width}
-          height={showcase.height}
-          loading="lazy"
-          data-appearance={showcase.dark ? "light" : undefined}
-        />
-        {showcase.dark && (
+          {showcase.dark && (
+            <img
+              src={showcase.dark.src}
+              alt={showcase.alt}
+              width={showcase.dark.width}
+              height={showcase.dark.height}
+              loading="lazy"
+              data-appearance="dark"
+            />
+          )}
+        </div>
+      ) : (
+        <div class="shot show-shot">
           <img
-            src={showcase.dark.src}
-            srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
+            src={showcase.src}
+            srcset={srcsetFor(showcase.src, showcase.width)}
             sizes={sizes}
             alt={showcase.alt}
-            width={showcase.dark.width}
-            height={showcase.dark.height}
+            width={showcase.width}
+            height={showcase.height}
             loading="lazy"
-            data-appearance="dark"
+            data-appearance={showcase.dark ? "light" : undefined}
           />
-        )}
-      </div>
-    )}
+          {showcase.dark && (
+            <img
+              src={showcase.dark.src}
+              srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
+              sizes={sizes}
+              alt={showcase.alt}
+              width={showcase.dark.width}
+              height={showcase.dark.height}
+              loading="lazy"
+              data-appearance="dark"
+            />
+          )}
+        </div>
+      )}
+    </div>
     {(label || showcase.caption || detail) && (
       <figcaption class="figure-note">
         {showcase.caption && <span>{showcase.caption}</span>}
