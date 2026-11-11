@@ -2,10 +2,10 @@ import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
-// to v13.0.0.md, docs/plan.md and docs/strength.md at v13.0.0; macOS 11 from build.zig. The
+// to v14.0.0.md, docs/plan.md and docs/strength.md at v14.0.0; macOS 11 from build.zig. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
-// with four analysed sample games seeded as its learn-focus test does. The browser
+// with four analysed sample games seeded as its practice-focus test does. The browser
 // harness has no KataGo, so no game or review is shown until a capture of the
 // packaged app exists.
 export default defineProduct({
@@ -40,7 +40,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/goban-studio",
     },
     installNote:
-      "Not notarized yet: on macOS, right-click the app and choose Open the first time; on Windows, choose More info, then Run anyway.",
+      "Not notarized yet: on macOS 15 or later, choose Open Anyway in System Settings → Privacy & Security (earlier: right-click the app → Open); on Windows, choose More info, then Run anyway.",
     privacy: {
       network: "onRequest",
       networkNote:
@@ -54,20 +54,20 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-en.webp",
-        alt: "Goban Studio’s Today screen: a suggested 9×9 even game against about 23 kyu that works on this week’s focus, cutting, and today’s practice, 0 of 6, starting with The board and the stones.",
+        alt: "Goban Studio’s Today screen: a suggested 9×9 even game against about 23 kyu that works on this week’s focus, cutting, today’s practice, 0 of 6, starting with The board and the stones, and your progress: the last four weeks as dots and recent milestones.",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 13.0; the games and progress shown are samples.",
-      asOf: "v13.0.0",
+      caption: "Goban Studio 14.0; the games and progress shown are samples.",
+      asOf: "v14.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-en.webp",
-        alt: "A Goban Studio problem, the second of today’s six practice items, chosen for this week’s focus, cutting: Black to play and capture the marked stone, with Hint, Show answer, the difficulty and the theme beside the board.",
+        alt: "A Goban Studio problem, the second of today’s six practice items, chosen for this week’s focus, cutting: Black to play and capture the marked stones, with Hint, Show answer, the difficulty and your record beside the board.",
         width: 2880,
         height: 1800,
-        asOf: "v13.0.0",
+        asOf: "v14.0.0",
         title: "Problems with proved answers.",
         body: "543 built-in problems, each answer proved by the app’s solver; old ones come back turned, mirrored or recoloured.",
       },
@@ -110,20 +110,17 @@ export default defineProduct({
           {
             title: "Can it sit beside Goban, the Gomoku app?",
             body: "Yes. Goban Studio is a separate app with its own name, bundle ID and repository, so the two install and update independently.",
+            asOf: "v14.0.0",
           },
           {
             title: "Which computers does it run on?",
             body: "macOS 11 or later on Apple Silicon or Intel, and Windows 10 or 11 on x64 with WebView2, which they usually include. Windows on ARM runs the x64 build under emulation; analysis is slower there.",
+            asOf: "v14.0.0",
           },
           {
             title: "How strong is the computer?",
             body: "From about 30 kyu to about 7 dan: you pick a rank and the app picks the closest KataGo setting; without the optional networks it stops at about 4 dan. The ranks are approximate: they are calibrated against a model, not against people.",
-            asOf: "v13.0.0",
-          },
-          {
-            title: "I imported SGF games before 7.0. Are they right?",
-            body: "Records from other programs that use the letter i in their coordinates were misread before 7.0; import them again. Records the app saved itself read as before.",
-            asOf: "v7.0.0",
+            asOf: "v14.0.0",
           },
         ],
       },
@@ -147,7 +144,8 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/goban-studio",
     },
-    installNote: "目前未经公证：macOS 第一次打开时右键点应用选“打开”；Windows 出现提示时点“更多信息”，再点“仍要运行”。",
+    installNote:
+      "目前未经公证：macOS 15 及以上到“系统设置 → 隐私与安全性”点“仍要打开”，更早的版本右键点应用选“打开”；Windows 出现提示时点“更多信息”，再点“仍要运行”。",
     privacy: {
       network: "onRequest",
       networkNote: "不要账号，没有遥测；只在检查更新或下载你选的网络时联网。",
@@ -160,20 +158,20 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/goban-studio-today-zh.webp",
-        alt: "Goban Studio 的“今天”页面：推荐一盘 9 路分先、对约 23 级的对局，练本周重点“切断”；今天的练习 0/6，第一项是“棋盘和棋子”。",
+        alt: "Goban Studio 的“今天”页面：推荐一盘 9 路分先、对约 23 级的对局，练本周重点“切断”；今天的练习 0/6，第一项是“棋盘和棋子”；下面是你的进步：最近四周的圆点和最近的里程碑。",
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 13.0；图中的对局和进度为示例。",
-      asOf: "v13.0.0",
+      caption: "Goban Studio 14.0；图中的对局和进度为示例。",
+      asOf: "v14.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-zh.webp",
-        alt: "Goban Studio 今天练习 6 项中的第 2 项，来自本周重点“切断”：黑先，吃掉标记的棋子，棋盘旁有提示、看答案、难度和题型。",
+        alt: "Goban Studio 今天练习 6 项中的第 2 项，来自本周重点“切断”：黑先，吃掉标记的棋子，棋盘旁有提示、看答案、难度和记录。",
         width: 2880,
         height: 1800,
-        asOf: "v13.0.0",
+        asOf: "v14.0.0",
         title: "每道题的答案都经过证明",
         body: "内置 543 道题，答案都由应用的求解器证明；旧题会旋转、镜像或换色再出现。",
       },
@@ -210,20 +208,17 @@ export default defineProduct({
           {
             title: "能和五子棋 Goban 一起装吗？",
             body: "能。Goban Studio 是另一个应用，名字、包标识和仓库都不同，两个应用各自安装、各自更新。",
+            asOf: "v14.0.0",
           },
           {
             title: "能在哪些电脑上运行？",
             body: "macOS 11 或更高版本，Apple Silicon 和 Intel 都行；Windows 10 或 11 的 x64，需要 WebView2，一般已预装。Windows on ARM 通过系统的 x64 模拟运行 x64 版，分析会慢一些。",
+            asOf: "v14.0.0",
           },
           {
             title: "电脑有多强？",
             body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置；不装可选网络时最高约 4 段。段位是近似值：是对照模型校准的，不是对照真人。",
-            asOf: "v13.0.0",
-          },
-          {
-            title: "7.0 之前导入的 SGF 对吗？",
-            body: "其他软件存的棋谱，坐标里用到字母 i 的，在 7.0 之前会读错，请重新导入。应用自己存的棋谱照常读取。",
-            asOf: "v7.0.0",
+            asOf: "v14.0.0",
           },
         ],
       },

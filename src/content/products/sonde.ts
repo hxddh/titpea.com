@@ -2,7 +2,8 @@ import { defineProduct } from "../schema";
 
 // sonde: records a program's S3 traffic and reads it as operations. Facts:
 // the repo's README.md, docs/security.md, docs/recording.md,
-// docs/configuration.md, docs/credentials.md and docs/packaging.md at v12.0.0.
+// docs/configuration.md, docs/credentials.md, docs/trials.md and docs/packaging.md at
+// v15.0.0.
 // The name is not translated (the app says "sonde" in both languages; its
 // Chinese tagline is 对象存储诊断). Pictures: the README's own screenshots
 // (docs/images/, plain captures of the desktop app on Windows, Nov 2026).
@@ -65,41 +66,41 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/sonde-session-en.webp",
-        alt: "A sonde session of a SlateDB program: 172 requests in 34 operations, three findings with the requests fixing them would save, and the operations list with each one’s requests and time.",
+        alt: "A sonde session of a SlateDB program: 172 requests in 467 ms, with tiles for rate, errors, latency and bytes, three findings with the requests fixing them would save, and the operations list with each one’s requests and time.",
         width: 1270,
         height: 810,
       },
       caption: "sonde’s desktop app, from its README; the session is its built-in demo.",
-      asOf: "v12.0.0",
+      asOf: "v15.0.0",
     },
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        alt: "The Run screen: a shell command’s output on the left, and its four GetObject requests to the demo store listed beside it with time and size.",
+        alt: "The Run screen: a shell command’s output on the left, and beside it the nine requests it made to the demo store, listed as operations with their time, two of them failed.",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "Run it, watch its requests.",
         body: "Type a command; its terminal and its S3 requests appear side by side. Your real keys never reach it.",
       },
       {
         src: "/assets/sonde-compare-en.webp",
-        alt: "Comparing two runs of the same program: 172 requests down to 4, waiting down 97%, request cost down 99%, and all three findings gone.",
+        alt: "Comparing two runs: 172 requests down to 9, waiting down 62%, request cost down 99%, errors up from 0 to 2, and each kind of request before and after; a notice says the two are different programs.",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "What a change did.",
         body: "Compare two runs: requests, waiting, cost and findings, before and after.",
       },
       {
         src: "/assets/sonde-time-en.webp",
         dark: { src: "/assets/sonde-time-en-dark.webp", width: 1270, height: 810 },
-        alt: "A session’s Time tab: time spent waiting, requests in flight, the request cost, and a bar for each kind of request showing where the time went.",
+        alt: "A session’s Time tab: tiles for rate, errors, latency and bytes, then the requests over the session with how many were in flight, what ran at once, and bytes sent and received.",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "Where the time went.",
-        body: "Waiting by kind of request, requests in flight, and what the run cost.",
+        body: "One timeline for the run: requests in flight, what ran at once, and bytes each way.",
       },
     ],
     commands: {
@@ -121,7 +122,7 @@ export default defineProduct({
         items: [
           {
             title: "Operations, not requests",
-            body: "Multipart uploads, retries, listings, and SlateDB, Iceberg and Delta Lake steps.",
+            body: "Multipart uploads, retries, listings, and SlateDB, Iceberg, Delta Lake and Lance steps.",
           },
           {
             title: "Findings with a fix",
@@ -157,16 +158,22 @@ export default defineProduct({
           {
             title: "Do I need to change my code?",
             body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and throwaway keys, and re-signs each request with your real credentials. It is checked with boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, and object_store; a client that ignores these variables needs the endpoint set by hand.",
-            asOf: "v12.0.0",
+            asOf: "v15.0.0",
           },
           {
             title: "Which stores does it work with?",
             body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. Its 40 compatibility probes show where a store differs, as one matrix across endpoints.",
+            asOf: "v15.0.0",
           },
           {
             title: "What does replay do to the other store?",
             body: "It writes the same requests under a fresh `replay-<time>/` prefix, so nothing that already exists is touched; bucket-level changes are skipped. It asks first and deletes what it wrote afterwards unless you pass `--keep`.",
-            asOf: "v12.0.0",
+            asOf: "v15.0.0",
+          },
+          {
+            title: "Can it test how my program handles S3 failures?",
+            body: "Yes. `sonde run --trial` runs the command again while sonde answers in the store’s place (a 503 on each request’s first attempt, a write whose answer is lost, a failed CompleteMultipartUpload) and says whether the program survived, was degraded or broke. The command runs several times, so it must be safe to run again.",
+            asOf: "v15.0.0",
           },
           {
             title: "Can I try it without an account?",
@@ -211,36 +218,36 @@ export default defineProduct({
         height: 810,
       },
       caption: "sonde 桌面应用，取自它的 README；会话来自内置演示。",
-      asOf: "v12.0.0",
+      asOf: "v15.0.0",
     },
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        alt: "“运行”页面（英文界面）：左边是一条 shell 命令的输出，右边列出它对演示存储发出的四个 GetObject 请求，以及用时和大小。",
+        alt: "“运行”页面（英文界面）：左边是一条 shell 命令的输出，右边把它对演示存储发出的 9 个请求列成操作，带用时，其中两个失败。",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "运行它，看它发出的请求",
         body: "输入一条命令，它的终端和它的 S3 请求并排出现。你的真实密钥不会交给它。",
       },
       {
         src: "/assets/sonde-compare-en.webp",
-        alt: "同一个程序两次运行的对比（英文界面）：请求从 172 降到 4，等待减少 97%，请求费用减少 99%，三条发现全部消失。",
+        alt: "两次运行的对比（英文界面）：请求从 172 降到 9，等待减少 62%，请求费用减少 99%，错误从 0 变成 2，下面是每类请求前后的数量；一条提示说明这是两个不同的程序。",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "改动带来了什么",
         body: "对比两次运行：请求、等待、费用和发现，前后一目了然。",
       },
       {
         src: "/assets/sonde-time-en.webp",
         dark: { src: "/assets/sonde-time-en-dark.webp", width: 1270, height: 810 },
-        alt: "会话的“时间”页（英文界面）：等待时间、同时在途的请求、请求费用，以及每类请求花掉多少时间的条形图。",
+        alt: "会话的“时间”页（英文界面）：速率、错误、延迟和字节四块数字，下面是整个会话里的请求和同时在途的数量、哪些请求同时在跑，以及收发的字节。",
         width: 1270,
         height: 810,
-        asOf: "v12.0.0",
+        asOf: "v15.0.0",
         title: "时间花在了哪里",
-        body: "按请求类型看等待、同时在途的请求，以及这次运行花了多少钱。",
+        body: "整次运行排在一条时间线上：同时在途的请求、哪些请求同时在跑，以及收发的字节。",
       },
     ],
     commands: {
@@ -260,7 +267,10 @@ export default defineProduct({
         nav: "功能",
         label: "把请求读成它们做了什么",
         items: [
-          { title: "按操作看，而不是按请求", body: "分段上传、重试、列举，以及 SlateDB、Iceberg、Delta Lake 的步骤。" },
+          {
+            title: "按操作看，而不是按请求",
+            body: "分段上传、重试、列举，以及 SlateDB、Iceberg、Delta Lake 和 Lance 的步骤。",
+          },
           { title: "发现，附带修法", body: "热点键、先 HEAD 再 GET、孤立文件：修好各能省多少。" },
           { title: "在 CI 里守住预算", body: "运行超出预算或基线时，`sonde check` 让任务失败。" },
           { title: "在另一个存储上重放", body: "把一次会话在别的端点上重演，逐条比较应答。" },
@@ -289,16 +299,22 @@ export default defineProduct({
           {
             title: "需要改代码吗？",
             body: "一般不用。`sonde run` 用环境变量和一次性密钥把程序指向本地端点，再用你的真实凭证给每个请求重新签名。已用 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK 和 object_store 验证过；不读这些环境变量的客户端，需要手动设置端点。",
-            asOf: "v12.0.0",
+            asOf: "v15.0.0",
           },
           {
             title: "支持哪些存储？",
             body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS、Tigris 和 Wasabi。它的 40 项兼容性探测会把各端点的差异排成一张表。",
+            asOf: "v15.0.0",
           },
           {
             title: "重放会对另一个存储做什么？",
             body: "它把同样的请求写到新的 `replay-<时间>/` 前缀下，已有的东西一概不碰；存储桶级别的改动会跳过。它会先征得同意，结束后删掉自己写的内容，除非你加 `--keep`。",
-            asOf: "v12.0.0",
+            asOf: "v15.0.0",
+          },
+          {
+            title: "能测试程序遇到 S3 故障时的表现吗？",
+            body: "可以。`sonde run --trial` 会再运行这条命令，由 sonde 代替存储作答。比如每个请求的第一次尝试返回 503，写入成功但应答丢失，或者 CompleteMultipartUpload 失败。跑完后它告诉你程序是挺住了、受了影响，还是出了错。命令会运行多次，所以必须能安全地重复运行。",
+            asOf: "v15.0.0",
           },
           {
             title: "没有账号能先试试吗？",

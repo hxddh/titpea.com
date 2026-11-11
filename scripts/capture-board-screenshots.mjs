@@ -147,6 +147,11 @@ async function captureChessboardFeatured(browser, lang) {
   await page.click("#rep-start");
   await page.waitForTimeout(300);
   await page.click("#rep-end");
+  // 22.0 puts the summary and key moments above the move list, and stepping
+  // scrolls the panel down to the list: bring the panel back to its top.
+  await page.evaluate(() => {
+    for (let el = document.getElementById("rv-summary"); el; el = el.parentElement) el.scrollTop = 0;
+  });
   await page.mouse.move(0, 0);
   await page.waitForTimeout(600);
   await dismissToasts(page);

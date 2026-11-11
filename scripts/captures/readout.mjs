@@ -2,8 +2,9 @@
 // (docs/screenshots/, real 2x captures on macOS). The gallery places each
 // window on a cream backdrop with a drop shadow; the site shows the window
 // only, cut 12 px inside its edge, clear of the rounded corners.
-//   node scripts/captures/readout.mjs ../readout   (a checkout at the release, e.g. v5.2.0)
-// Bounds were measured on the v5.2.0 gallery; a new gallery may place the
+//   node scripts/captures/readout.mjs ../readout   (a checkout at the release, e.g. v6.0.0)
+// Bounds were measured on the v5.2.0 gallery and still fit at v6.0.0 (same
+// pictures, byte for byte); a new gallery may place the
 // window elsewhere: check the corners of the written files before committing.
 import path from "node:path";
 import sharp from "sharp";

@@ -1,6 +1,6 @@
 const fs = require("fs");
 require("./cap.cjs")(async ({ page, sleep, OUT, LANG }) => {
-  // The four analysed games of the v13 learn-focus test (scripts/ui-tests/learn-focus.mjs).
+  // The four analysed games of the practice-focus test (scripts/ui-tests/practice-focus.mjs).
   await page.evaluate(() => {
     const key = "goban9:profile.json";
     const p = JSON.parse(localStorage.getItem(key) || '{"v":9}');
@@ -24,7 +24,7 @@ require("./cap.cjs")(async ({ page, sleep, OUT, LANG }) => {
   await page.reload();
   await page.waitForSelector(".page");
   await page.keyboard.press("Control+3");
-  await page.waitForSelector(".learn-path .path-focus");
+  await page.waitForSelector(".practice-path .path-focus");
   await page.waitForLoadState("networkidle").catch(() => {});
   await sleep(800);
   await page.screenshot({ path: OUT + `/goban-studio-practice-${LANG}.png` });
@@ -36,13 +36,15 @@ require("./cap.cjs")(async ({ page, sleep, OUT, LANG }) => {
   await page.screenshot({ path: OUT + `/goban-studio-today-${LANG}.png` });
   fs.writeFileSync(`./today-${LANG}.txt`, await page.locator("body").innerText());
   await page.click(".today-row[data-row=path]");
-  await page.waitForFunction(() => window.__state.learn?.view === "problem" || window.__state.learn?.view === "lesson");
-  console.log("first:", await page.evaluate(() => window.__state.learn.view));
+  await page.waitForFunction(
+    () => window.__state.practice?.view === "problem" || window.__state.practice?.view === "lesson",
+  );
+  console.log("first:", await page.evaluate(() => window.__state.practice.view));
   // Go to the first problem of today's path.
-  for (let i = 0; i < 10 && (await page.evaluate(() => window.__state.learn.view)) !== "problem"; i++) {
+  for (let i = 0; i < 10 && (await page.evaluate(() => window.__state.practice.view)) !== "problem"; i++) {
     await page.keyboard.press("Control+3");
-    await page.waitForSelector(".learn-path .path-row");
-    const rows = page.locator(".learn-path .path-row");
+    await page.waitForSelector(".practice-path .path-row");
+    const rows = page.locator(".practice-path .path-row");
     const n = await rows.count();
     for (let j = 0; j < n; j++) {
       if (await rows.nth(j).locator(".thumb, canvas").count()) {
@@ -59,7 +61,10 @@ require("./cap.cjs")(async ({ page, sleep, OUT, LANG }) => {
   fs.writeFileSync(`./problem-${LANG}.txt`, await page.locator("body").innerText());
   console.log(
     JSON.stringify(
-      await page.evaluate(() => ({ id: window.__state.learn.problem?.def?.id, daily: !!window.__state.learn.daily })),
+      await page.evaluate(() => ({
+        id: window.__state.practice.problem?.def?.id,
+        daily: !!window.__state.practice.daily,
+      })),
     ),
   );
 });
