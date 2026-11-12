@@ -84,7 +84,7 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        alt: "The Run screen: a shell command’s output on the left, and beside it the nine requests it made to the demo store, listed as operations with their time, two of them failed.",
+        alt: "The Run screen: a shell command’s output on the left, and beside it the seven requests it made to the demo store, listed as operations with their time, two of them failed.",
         width: 2560,
         height: 1476,
         asOf: "v16.0.0",
@@ -239,7 +239,7 @@ export default defineProduct({
     showcases: [
       {
         src: "/assets/sonde-run-en.webp",
-        alt: "“运行”页面（英文界面）：左边是一条 shell 命令的输出，右边把它对演示存储发出的 9 个请求列成操作，带用时，其中两个失败。",
+        alt: "“运行”页面（英文界面）：左边是一条 shell 命令的输出，右边把它对演示存储发出的 7 个请求列成操作，带用时，其中两个失败。",
         width: 2560,
         height: 1476,
         asOf: "v16.0.0",
