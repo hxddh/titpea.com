@@ -53,10 +53,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/pagewise-analysis.webp",
-        alt: "PageWise analyzing a financial table beside page 14 of its source PDF",
-        width: 1800,
-        height: 1200,
+        alt: "PageWise with a sample PDF open and the question “What does this page say?” answered from page 1, with a Read page 1 step and a citation",
+        width: 2880,
+        height: 1800,
       },
+      caption: "Illustration: the app's UI harness, with a sample document and a scripted answer.",
+      asOf: "v24.0.0",
     },
     showcases: [
       {
@@ -174,10 +176,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/pagewise-analysis.webp",
-        alt: "PageWise 在 PDF 第 14 页旁分析财务表格",
-        width: 1800,
-        height: 1200,
+        alt: "PageWise 打开示例 PDF，回答“What does this page say?”，写明读了第 1 页并给出引用（界面为英文）",
+        width: 2880,
+        height: 1800,
       },
+      caption: "示意图：应用界面测试工具中的示例文档与脚本回答（界面为英文）。",
+      asOf: "v24.0.0",
     },
     showcases: [
       {

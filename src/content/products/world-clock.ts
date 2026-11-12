@@ -76,8 +76,8 @@ export default defineProduct({
         fallback: {
           src: "/assets/world-clock-scroll-en.webp",
           alt: "The popup shifted three hours ahead, a +3h chip in its header: London 3:00 PM, Paris and Berlin 4:00 PM, New York and Toronto 10:00 AM, all in working hours; under each city a strip shows its own working hours and, brighter, the hours they all share",
-          width: 680,
-          height: 738,
+          width: 1020,
+          height: 1107,
           caption: "World Clock 9.0.0 popup shifted +3h; cities are examples.",
         },
       },
@@ -241,8 +241,8 @@ export default defineProduct({
         fallback: {
           src: "/assets/world-clock-scroll-zh.webp",
           alt: "弹窗时间向后拨了三小时，顶部显示 +3h：北京 12:00，东京和首尔 13:00，新加坡 12:00，悉尼 15:00，都在工作时间内；每个城市下方的细条标出它自己的工作时间，大家都在上班的那几小时更亮",
-          width: 680,
-          height: 738,
+          width: 1020,
+          height: 1107,
           caption: "世界时钟 9.0.0 弹窗，时间后拨 3 小时；城市为示例。",
         },
       },

@@ -96,8 +96,8 @@ export default defineProduct({
       {
         src: "/assets/chessboard-review-en.webp",
         alt: "Chessboard after a Stockfish review of a 17-move game: a one-line summary and the win-chance curve, stepping through six key moments with the moves 1500-rated players choose under the engine line, then the full report with each side's accuracy",
-        width: 1222,
-        height: 768,
+        width: 2446,
+        height: 1536,
         asOf: "v22.0.0",
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
@@ -259,8 +259,8 @@ export default defineProduct({
       {
         src: "/assets/chessboard-review-zh.webp",
         alt: "Chessboard 用 Stockfish 复盘完一局 17 回合的棋：一句总结和胜率曲线，逐个翻看六个关键时刻，引擎线下列着 1500 分棋手常走的几步，再展开写着双方精准度的完整报告",
-        width: 1222,
-        height: 768,
+        width: 2446,
+        height: 1536,
         asOf: "v22.0.0",
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",

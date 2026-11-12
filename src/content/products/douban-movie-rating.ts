@@ -47,9 +47,10 @@ export default defineProduct({
       image: {
         src: "/assets/douban-movie-rating-ratings.webp",
         alt: "Store image: a Douban film info panel for The Shawshank Redemption ending in an Other ratings line written like the director and cast lines, as blue links split by slashes: IMDb 9.3 (3.01 million votes) / Rotten Tomatoes 89% / Metacritic 82",
-        width: 1280,
-        height: 800,
+        width: 2560,
+        height: 1600,
       },
+      asOf: "v1.7",
       caption: "Illustration: the store image, made on a test page with sample ratings.",
     },
     sections: [
@@ -140,9 +141,10 @@ export default defineProduct({
       image: {
         src: "/assets/douban-movie-rating-ratings.webp",
         alt: "商店图片：《肖申克的救赎》的豆瓣影片信息末尾多出一行“其他评分”，与导演、主演行写法相同，蓝色链接以斜杠分隔：IMDb 9.3（301万人）/ 烂番茄 89% / Metacritic 82",
-        width: 1280,
-        height: 800,
+        width: 2560,
+        height: 1600,
       },
+      asOf: "v1.7",
       caption: "示意图：商店宣传图，在测试页面上制作，评分为示例。",
     },
     sections: [
