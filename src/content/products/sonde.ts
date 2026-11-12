@@ -61,11 +61,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · S3-compatible",
     releaseHighlights: {
-      version: "v15.0.0",
+      version: "v16.0.0",
       items: [
-        "A run now opens on four signals, request rate, errors, latency and bytes, each with its line over the session; `sonde show` prints the same.",
-        "Trials, which rerun your program while sonde answers with failures in the store’s place, now open in the app with the requests sonde answered marked.",
-        "A program that never retries is no longer reported as having survived a trial.",
+        "Two new trial scenarios: a download cut half way, and a conditional write that loses its race. The verdict says how the program coped.",
+        "When a program breaks under a trial, the verdict names the request, the line of code and the SDK setting to change.",
+        "Sessions of any size: `sonde show` reads a million requests in 7 seconds instead of 45, and the app loads a long session as you scroll.",
       ],
     },
     visual: {
@@ -166,22 +166,22 @@ export default defineProduct({
           {
             title: "Do I need to change my code?",
             body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and throwaway keys, and re-signs each request with your real credentials. It is checked with boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, and object_store; a client that ignores these variables needs the endpoint set by hand.",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "Which stores does it work with?",
             body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. Its 40 compatibility probes show where a store differs, as one matrix across endpoints.",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "What does replay do to the other store?",
             body: "It writes the same requests under a fresh `replay-<time>/` prefix, so nothing that already exists is touched; bucket-level changes are skipped. It asks first and deletes what it wrote afterwards unless you pass `--keep`.",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "Can it test how my program handles S3 failures?",
-            body: "Yes. `sonde run --trial` runs the command again while sonde answers in the store’s place (a 503 on each request’s first attempt, a write whose answer is lost, a failed CompleteMultipartUpload) and says whether the program survived, was degraded or broke. The command runs several times, so it must be safe to run again.",
-            asOf: "v15.0.0",
+            body: "Yes. `sonde run --trial` runs the command again while sonde answers in the store’s place: a 503 on each request’s first attempt, a write whose answer is lost, a failed CompleteMultipartUpload, a download cut half way, or a conditional write that loses its race. It says whether the program survived, was degraded or broke; when it broke, it names the request, the line of code and the SDK setting to change. The command runs several times, so it must be safe to run again.",
+            asOf: "v16.0.0",
           },
           {
             title: "Can I try it without an account?",
@@ -216,11 +216,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · 兼容 S3",
     releaseHighlights: {
-      version: "v15.0.0",
+      version: "v16.0.0",
       items: [
-        "每次运行的开头是四个信号：请求速率、错误、延迟和字节，各带一条贯穿会话的曲线；`sonde show` 打印的也一样。",
-        "试验会再跑一遍你的程序，由 sonde 代替存储返回故障；现在试验可以在应用里打开，sonde 自己作答的请求都有标记。",
-        "从不重试的程序，不会再被判为在试验中挺住了。",
+        "新增两种试验场景：下载到一半被切断，以及条件写入在竞争中落败。结论会说明程序是怎么应对的。",
+        "程序在试验中出错时，结论会指出是哪个请求、哪一行代码，以及该改 SDK 的哪项设置。",
+        "会话多大都能打开：一百万个请求，`sonde show` 现在 7 秒读完，以前要 45 秒；应用里的长会话随滚动按需载入。",
       ],
     },
     visual: {
@@ -318,22 +318,22 @@ export default defineProduct({
           {
             title: "需要改代码吗？",
             body: "一般不用。`sonde run` 用环境变量和一次性密钥把程序指向本地端点，再用你的真实凭证给每个请求重新签名。已用 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK 和 object_store 验证过；不读这些环境变量的客户端，需要手动设置端点。",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "支持哪些存储？",
             body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。它的 40 项兼容性探测会把各端点的差异排成一张表。",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "重放会对另一个存储做什么？",
             body: "它把同样的请求写到新的 `replay-<时间>/` 前缀下，已有的东西一概不碰；存储桶级别的改动会跳过。它会先征得同意，结束后删掉自己写的内容，除非你加 `--keep`。",
-            asOf: "v15.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "能测试程序遇到 S3 故障时的表现吗？",
-            body: "可以。`sonde run --trial` 会再运行这条命令，由 sonde 代替存储作答。比如每个请求的第一次尝试返回 503，写入成功但应答丢失，或者 CompleteMultipartUpload 失败。跑完后它告诉你程序是挺住了、受了影响，还是出了错。命令会运行多次，所以必须能安全地重复运行。",
-            asOf: "v15.0.0",
+            body: "可以。`sonde run --trial` 会再运行这条命令，由 sonde 代替存储作答。比如每个请求的第一次尝试返回 503，写入成功但应答丢失，CompleteMultipartUpload 失败，下载到一半被切断，或者条件写入在竞争中落败。跑完后它告诉你程序是挺住了、受了影响，还是出了错；出错时会指出是哪个请求、哪一行代码，以及该改 SDK 的哪项设置。命令会运行多次，所以必须能安全地重复运行。",
+            asOf: "v16.0.0",
           },
           {
             title: "没有账号能先试试吗？",
