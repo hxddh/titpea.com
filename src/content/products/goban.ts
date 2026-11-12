@@ -52,6 +52,7 @@ export default defineProduct({
       kind: "screenshot",
       label: "Goban",
       frame: "wide",
+      asOf: "v3.2.0",
       image: {
         src: "/assets/goban-game-board-en.webp",
         alt: "Goban wood board after a two-player game: Black’s five in a row, each stone ringed, Black’s seat marked Won in the top bar, and the timeline under the board",
@@ -63,8 +64,9 @@ export default defineProduct({
       {
         src: "/assets/goban-review-en.webp",
         alt: "Goban reviewing a finished game: the score curve under the board, and on the card beside it the numbered mistakes, move 3 explained, and Replay from move 3",
-        width: 1222,
-        height: 768,
+        width: 2446,
+        height: 1536,
+        asOf: "v3.2.0",
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/goban-review-en.mp4", webm: "/assets/goban-review-en.webm" },
         title: "Review names the mistakes.",
@@ -75,6 +77,7 @@ export default defineProduct({
         alt: "Goban notebook theme at the same finished game: triangle and circle pieces on ruled paper, the five-in-a-row highlight, and Black’s seat marked Won",
         width: 2446,
         height: 1536,
+        asOf: "v3.2.0",
         title: "A notebook board, too.",
         body: "One of four board themes draws triangles and circles on ruled paper; the game stays the same.",
       },
@@ -178,6 +181,7 @@ export default defineProduct({
       kind: "screenshot",
       label: "五子棋 Goban",
       frame: "wide",
+      asOf: "v3.2.0",
       image: {
         src: "/assets/goban-game-board-zh.webp",
         alt: "Goban 木质棋盘上下完的一局双人对局：黑棋五连、每颗套一圈细环，顶栏黑方座位写着“胜”，棋盘下方是时间线",
@@ -189,8 +193,9 @@ export default defineProduct({
       {
         src: "/assets/goban-review-zh.webp",
         alt: "Goban 在棋盘上复盘一局：下方是评分曲线，旁边卡片列出失着手数，解释第 3 手，并有“从第 3 手重下”和“推演”",
-        width: 1222,
-        height: 768,
+        width: 2446,
+        height: 1536,
+        asOf: "v3.2.0",
         video: { mp4: "/assets/goban-review-zh.mp4", webm: "/assets/goban-review-zh.webm" },
         title: "复盘点出失着",
         body: "复盘就在棋盘上：时间线变成评分曲线，旁边的卡片讲清每个失着，并可从那一手重下。",
@@ -200,6 +205,7 @@ export default defineProduct({
         alt: "Goban 练习本棋盘上的同一局：横线纸上的三角与圆圈棋子、五连高亮，顶栏黑方座位写着“胜”",
         width: 2446,
         height: 1536,
+        asOf: "v3.2.0",
         title: "还有练习本棋盘",
         body: "四套棋盘之一，在横线纸上画三角和圆圈；棋局不变。",
       },

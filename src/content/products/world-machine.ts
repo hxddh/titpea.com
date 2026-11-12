@@ -51,12 +51,13 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-noon.webp",
-        alt: "Tiny Society on day 21 at noon, drawn with hand-inked outlines: gauges for work, money in town and spirits, a bakery, a shop and houses above the quay, scaffolding going up, and Mia's card with today's choice: her books are older than Emma's. Captured from the app running in its Linux preview.",
-        width: 2200,
-        height: 1696,
+        src: "/assets/world-machine-morning.webp",
+        alt: "Tiny Society's morning on day 21, the harbour still dark: the letter from Noah, today's choice about money in town, what Mia looked after overnight, and the gull's feather found by Island School. Captured from the app on macOS.",
+        width: 2560,
+        height: 1430,
       },
-      caption: "Captured from the app running in its Linux preview.",
+      caption: "Captured from the app on macOS.",
+      asOf: "v0.30.0",
     },
     showcases: [
       {
@@ -194,12 +195,13 @@ export default defineProduct({
       label: "World Machine",
       frame: "wide",
       image: {
-        src: "/assets/world-machine-noon.webp",
-        alt: "Tiny Society 第 21 天正午，线条像手绘墨线：工作、镇上的钱与心气三个指标，码头上方的面包店、商店和房子，还有一处正在搭的脚手架。Mia 的卡片写着今天的选择：她的书比 Emma 的旧。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-        width: 2200,
-        height: 1696,
+        src: "/assets/world-machine-morning.webp",
+        alt: "Tiny Society 第 21 天的早晨，港口还未天亮：Noah 的信、今天的选择（镇上的钱紧）、Mia 夜里照看过的门，以及在学校岛捡到的海鸥羽毛。截自 macOS 应用，界面为英文。",
+        width: 2560,
+        height: 1430,
       },
-      caption: "截自应用在 Linux 预览环境中的运行画面，界面为英文。",
+      caption: "截自 macOS 应用，界面为英文。",
+      asOf: "v0.30.0",
     },
     showcases: [
       {

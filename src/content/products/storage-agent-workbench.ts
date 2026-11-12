@@ -54,11 +54,11 @@ export default defineProduct({
       image: {
         src: "/assets/storage-agent-run.webp",
         alt: "A Storage Agent task on its Prod profile: the question “Which buckets are public?”, then each read listed with its time (S3 ListBuckets, then GetBucketPolicyStatus and GetBucketAcl for web-assets and data-lake, one failing with NoSuchBucketPolicy, HTTP 404) and the answer “web-assets is public” with a citation.",
-        width: 1180,
-        height: 773,
+        width: 2360,
+        height: 1396,
       },
       caption:
-        "Storage Agent 40, from its README: a task run against the test S3 server in the project’s repository, answered by its scripted demo model (fake-model).",
+        "Storage Agent 40, captured from its visual test: a task run against the test S3 server in the project’s repository, answered by its scripted demo model (fake-model).",
       asOf: "v40.0.0",
     },
     sections: [
@@ -171,11 +171,11 @@ export default defineProduct({
       image: {
         src: "/assets/storage-agent-run.webp",
         alt: "Storage Agent 在 Prod 配置下的一次任务：问“哪些桶是公开的？”，下面逐条列出每次读取的 S3 操作和用时，其中一次返回 404；回答是 web-assets 公开，带引用。",
-        width: 1180,
-        height: 773,
+        width: 2360,
+        height: 1396,
       },
       caption:
-        "Storage Agent 40，取自其 README：任务连的是项目仓库里的测试 S3 服务，由脚本写好的演示模型（fake-model）作答。界面为英文。",
+        "Storage Agent 40，取自其视觉测试：任务连的是项目仓库里的测试 S3 服务，由脚本写好的演示模型（fake-model）作答。界面为英文。",
       asOf: "v40.0.0",
     },
     sections: [
