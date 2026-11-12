@@ -39,19 +39,19 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v16.0.0",
-    "published": "2026-11-11",
+    "version": "v18.0.0",
+    "published": "2026-11-12",
     "history": [
+      { "version": "v18.0.0", "published": "2026-11-12", "title": "sonde 18.0.0" },
+      { "version": "v17.0.0", "published": "2026-11-12", "title": "sonde 17.0.0" },
       { "version": "v16.0.0", "published": "2026-11-11", "title": "sonde 16.0.0" },
       { "version": "v15.0.0", "published": "2026-11-11", "title": "sonde 15.0.0" },
-      { "version": "v14.0.0", "published": "2026-11-10", "title": "sonde 14.0.0" },
-      { "version": "v13.0.0", "published": "2026-11-10", "title": "sonde 13.0.0" },
-      { "version": "v12.0.0", "published": "2026-11-09", "title": "sonde 12.0.0" }
+      { "version": "v14.0.0", "published": "2026-11-10", "title": "sonde 14.0.0" }
     ],
     "notes": {
-      "summary": "A verdict to trust, sessions of any size, charts that can be read",
-      "items": ["Two trial scenarios", "A broke verdict says where", "A table per operation"],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v16.0.0"
+      "summary": "Fewer things, each finished: three loops closed, \"why slow\" answered, and what a user nev…",
+      "items": ["The fix loop", "The trial loop", "The CI loop"],
+      "url": "https://github.com/hxddh/sonde/releases/tag/v18.0.0"
     }
   },
   "httpmon": {
