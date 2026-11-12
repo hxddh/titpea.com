@@ -82,6 +82,8 @@ type Ui = {
   released: string;
   /** Under a line's name in Home's index: how many tools it holds. */
   toolCount: string;
+  /** The count under the Games group: games are not tools. */
+  gameCount: string;
   /** Labels of the product page's spec sheet. */
   spec: { license: string; version: string; released: string; network: string; source: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
@@ -170,6 +172,7 @@ export const ui: Record<Locale, Ui> = {
     copied: "Copied",
     released: " ({date})",
     toolCount: "{count} tools",
+    gameCount: "{count} games",
     spec: { license: "License", version: "Version", released: "Released", network: "Network", source: "Source" },
     capturedAt: "Captured at {version}",
     wholeCapture: "Whole window",
@@ -190,7 +193,7 @@ export const ui: Record<Locale, Ui> = {
       games: "Games",
       external: "External",
     },
-    productIndex: "One developer, hxddh",
+    productIndex: "One developer",
     homeMetaTitle: "Titpea — Small software by hxddh",
     homeTitle: "Small software, made with care.",
     homeDescription: "Small software by one developer, hxddh: object storage, coding agents, Chrome extensions, games.",
@@ -268,6 +271,7 @@ export const ui: Record<Locale, Ui> = {
     copied: "已复制",
     released: "（{date}）",
     toolCount: "{count} 个",
+    gameCount: "{count} 款",
     spec: { license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
@@ -288,7 +292,7 @@ export const ui: Record<Locale, Ui> = {
       games: "游戏",
       external: "外部链接",
     },
-    productIndex: "hxddh，一个人开发",
+    productIndex: "一个人开发",
     homeMetaTitle: "Titpea — hxddh 的小软件",
     homeTitle: "认真做的小软件",
     homeDescription: "hxddh 一个人开发的小软件：对象存储、编码 Agent、Chrome 扩展、游戏。",

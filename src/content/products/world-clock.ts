@@ -17,7 +17,7 @@ export default defineProduct({
       "Chrome extension that shows the time in the cities you choose: working hours bright, the rest faded, and a scroll to any hour.",
     eyebrow: "Chrome extension",
     headline: "Your cities, right now.",
-    lead: "Your cities in one popup, with working hours lit. Scroll to see any hour.",
+    lead: "Shows the time in the cities you choose, in one popup, with working hours lit. Scroll to see any hour.",
     catalog: {
       role: "",
       text: "The time in your cities; scroll to any hour.",
@@ -40,12 +40,12 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome extension · Chrome 123+ · 9.0.0 · One permission",
+    meta: "Chrome 123+ · 9.0.0 · One permission",
     visual: {
       kind: "demo",
       label: "World Clock",
       caption:
-        "Try it: a working copy of the popup’s time scroll, on your own clock. Scroll, drag or use the arrow keys; Esc returns to now.",
+        "Try it: a working copy of the popup’s time scroll, using your computer’s clock. Scroll, drag or use the arrow keys to shift the time; Esc returns to now.",
       demo: {
         kind: "worldClock",
         appTitle: "World Clock",
@@ -119,17 +119,29 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Up to 10 cities, in your order.",
+        label: "It shows more than the time.",
         items: [
           {
-            title: "Local weekends",
-            body: "Working hours lit, 9:00–18:00 unless you set others; weekends follow each city’s country.",
+            title: "Who is at work",
+            body: "Working hours are lit, 9:00–18:00 unless you change them; weekends follow each city’s country.",
           },
-          { title: "Offsets from you", body: "+7h or −5h from your local time, plus Tomorrow or Yesterday." },
-          { title: "Clock changes ahead", body: "Daylight-saving shifts flagged two weeks early, like −7h → −8h." },
-          { title: "Copy the times", body: "Click one time, or ⌘C / Ctrl+C for every city." },
-          { title: "Names and hours", body: "Name an entry “Alice” and give it its own hours, overnight shifts too." },
-          { title: "Five themes", body: "Default, Terminal, Magazine, Paper, Contrast; each Auto, Light or Dark." },
+          {
+            title: "Offsets from you",
+            body: "Each city shows its offset from you, like +7h or −5h, and Tomorrow or Yesterday.",
+          },
+          {
+            title: "Clock changes ahead",
+            body: "A daylight-saving change is flagged two weeks early, like −7h → −8h.",
+          },
+          { title: "Copy the times", body: "Click a time to copy it, or press ⌘C / Ctrl+C to copy every city." },
+          {
+            title: "Names and hours",
+            body: "Rename an entry, say “Alice”, and give it its own hours, even overnight.",
+          },
+          {
+            title: "Five themes",
+            body: "Default, Terminal, Magazine, Paper and Contrast, each in Auto, Light or Dark.",
+          },
         ],
       },
       {
@@ -194,15 +206,16 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 扩展 · Chrome 123+ · 9.0.0 · 仅一项权限",
+    meta: "Chrome 123+ · 9.0.0 · 仅一项权限",
     visual: {
       kind: "demo",
       label: "世界时钟",
-      caption: "试一试：弹窗时间滚动的可用副本，用的是你自己的时钟。滚动、拖动或按方向键调整，按 Esc 回到现在。",
+      caption:
+        "试一试：这是弹窗时间滚动的可操作演示，用的是你电脑上的时间。滚动、拖动或按方向键调整，按 Esc 回到现在。",
       demo: {
         kind: "worldClock",
         appTitle: "世界时钟",
-        label: "世界时钟弹窗的可用副本",
+        label: "世界时钟弹窗演示，可直接操作",
         local: "本地",
         tomorrow: "明天",
         yesterday: "昨天",
@@ -270,13 +283,13 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "最多 10 个城市，顺序由你定",
+        label: "不只告诉你几点",
         items: [
-          { title: "各地周末", body: "工作时间常亮，默认 9 点到 18 点；周末按各城市所在国家。" },
-          { title: "相对你的时差", body: "显示 +7h、−5h 这样的时差，以及明天或昨天。" },
+          { title: "谁在上班", body: "工作时间高亮，默认 9 点到 18 点，可以自己改；周末按各城市所在国家算。" },
+          { title: "相对你的时差", body: "每个城市标出和你相差几小时，如 +7h、−5h，以及是明天还是昨天。" },
           { title: "提前提示夏令时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
-          { title: "复制时间", body: "点击复制一个，或按 ⌘C / Ctrl+C 复制全部城市。" },
-          { title: "名字和工作时间", body: "给一项起名，比如“Alice”，单独设工作时间，夜班也行。" },
+          { title: "复制时间", body: "点一下复制一个时间，或按 ⌘C / Ctrl+C 复制全部城市。" },
+          { title: "名字和工作时间", body: "给一项改名，比如“Alice”，再单独设工作时间，夜班也行。" },
           { title: "五种主题", body: "默认、终端、杂志、纸张、高对比；外观可选自动、浅色或深色。" },
         ],
       },

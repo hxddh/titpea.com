@@ -50,7 +50,7 @@ export default defineProduct({
       "A desktop chess app for macOS and Windows, with Stockfish 19 and Maia opponents, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
     headline: "Chess you can review.",
-    lead: "A Stockfish review marks your mistakes. Lessons and 40,000 puzzles to practise with.",
+    lead: "Play chess on your computer; the Stockfish engine reviews your games and marks your mistakes. Lessons and 40,000 puzzles help you practise.",
     catalog: {
       role: "Stockfish + lessons",
       text: "Learn, solve puzzles, then play the computer or a friend on the same board.",
@@ -63,11 +63,20 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/chessboard",
     },
-    installNote: "The macOS build is not notarized yet: allow its first open by hand, once.",
+    installNote:
+      "The macOS build is not notarized yet: the first time, click “Open Anyway” in System Settings → Privacy & Security.",
+    releaseHighlights: {
+      version: "v22.0.0",
+      items: [
+        "A game review now opens on its first key moment, and “Try again” is on screen without scrolling.",
+        "Translated opening names no longer mix in English: a variation without a translated name shows only up to the part that has one.",
+        "The blunder warning no longer goes stale: it clears as soon as your opponent replies, you take back your move, or the game ends or restarts.",
+      ],
+    },
     privacy: {
       network: "onRequest",
       networkNote:
-        "Sync goes online only after you allow it, sending only your user name; update checks only when you press them.",
+        "Sync goes online only after you allow it, and sends only your user name; updates are checked only when you ask.",
       stays: "Games, puzzles, lessons and progress stay on this computer.",
     },
     meta: "macOS + Windows · GPLv3 · {version} · Local app",
@@ -101,8 +110,8 @@ export default defineProduct({
         width: 2446,
         height: 1536,
         asOf: "v22.0.0",
-        title: "Three boards, light or dark.",
-        body: "Wood, green or blue, and three piece sets (Merida, Burnett, Classic), all on one Settings page.",
+        title: "Light or dark, three boards to choose.",
+        body: "A wood, green or blue board and three piece sets (Merida, Burnett and Classic), all in Settings.",
       },
     ],
     sections: [
@@ -110,7 +119,7 @@ export default defineProduct({
         kind: "demo",
         id: "try",
         title: "Solve one here.",
-        body: "Tap a piece, then its square, or use the arrow keys and Enter.",
+        body: "Tap a piece, then the square to move it to, or use the arrow keys and Enter.",
         caption: "A position from Chessboard’s built-in Lichess puzzle set (puzzle GJsTC).",
         demo: {
           kind: "chessPuzzle",
@@ -134,17 +143,26 @@ export default defineProduct({
         id: "features",
         label: "Practice built from your games.",
         items: [
-          { title: "Four places", body: "Today, Play, Train and Me, plus one Settings page." },
-          { title: "What to do next", body: "Today shows the one thing to do next; Something else swaps it." },
-          { title: "Your own mistakes", body: "Your ? and ?? moves come back on a 1-3-7-21-day schedule." },
+          {
+            title: "Hints in two steps",
+            body: "The first press circles the piece to move; the second shows the move.",
+          },
+          {
+            title: "What to do next",
+            body: "Today shows the one thing to do next; the “Something else” button swaps it.",
+          },
+          { title: "Your own mistakes", body: "Your mistakes (? and ??) come back after 1, 3, 7 and 21 days." },
           {
             title: "Endgames and classics",
-            body: "90 endgames against full-strength Stockfish; 40 master games to guess.",
+            body: "Play out 90 endgames against full-strength Stockfish, or guess the moves of 40 master games.",
           },
-          { title: "Your opening book", body: "Up to 5,000 lines a side; start from the built-in openings." },
+          {
+            title: "Your opening book",
+            body: "Keep up to 5,000 lines a side, or build it from the built-in openings.",
+          },
           {
             title: "Opponents like people",
-            body: "The bottom twelve levels are Maia, trained on human Lichess games.",
+            body: "The twelve easiest levels use Maia, a neural network that learned from human Lichess games.",
           },
         ],
       },
@@ -153,9 +171,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Games, puzzles, lessons, and progress stay on this computer, in the app's storage and its data folder.",
-          "Sync goes online only after you allow it in Settings · Data, and sends Lichess or Chess.com only your user name.",
-          "A pasted Lichess link fetches that one game by its ID; Check for updates asks GitHub only when you press it.",
+          "Games, puzzles, lessons, and progress stay on this computer, in the app’s storage and its data folder.",
+          "Sync goes online only after you allow it in Settings › Data, and sends Lichess or Chess.com only your user name.",
+          "A pasted Lichess link fetches that one game by its ID; “Check for updates” asks GitHub only when you press it.",
         ],
       },
       {
@@ -165,27 +183,27 @@ export default defineProduct({
         items: [
           {
             title: "Can I play online?",
-            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings · Data, imports your games from Lichess or Chess.com into the library.",
+            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings › Data, imports your games from Lichess or Chess.com into the library.",
             asOf: "v22.0.0",
           },
           {
             title: "Who plays the other side?",
-            body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The twelve from Gentle (532) to Advanced− (1909) are Maia, networks trained on human games from Lichess, so they pick moves the way players at that level do. The other nine are Stockfish 19, strength-limited, and at full strength at the top. Maia runs on this computer from networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
+            body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The twelve from Gentle (532) to Advanced− (1909) are Maia, neural networks trained on human games from Lichess, so they pick moves the way players at that level do. The other nine are Stockfish 19, strength-limited, and at full strength at the top. Maia runs on this computer from neural networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
             asOf: "v22.0.0",
           },
           {
             title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: every version since keeps one save format and reads the saves of the release before it. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x Export all data. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
+            body: "From 9.0 or later, yes: every version since keeps one save format and reads the saves of the release before it. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x “Export all data”. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
             asOf: "v22.0.0",
           },
           {
-            title: "What can I do with a PGN?",
-            body: "Choose Review a game from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. Play on from here continues from any move. To keep a whole PGN, use Import to library or Paste PGN on Me. Chess.com has no single-game link to fetch, so copy the PGN from its Share menu.",
+            title: "What can I do with a PGN game file?",
+            body: "Choose “Review a game” from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. “Play on from here” continues from any move. To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page. Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
             asOf: "v22.0.0",
           },
           {
             title: "Does it track my progress?",
-            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, Your level; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
+            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, “Your level”; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
             asOf: "v22.0.0",
           },
         ],
@@ -197,7 +215,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19 与 Maia 对手、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
     headline: "下完一局，复盘失着",
-    lead: "Stockfish 复盘标出你的失着，还有课程和四万道谜题可以练。",
+    lead: "在电脑上下国际象棋，Stockfish 引擎复盘你的对局、标出失着；还有课程和四万道谜题供你练习。",
     catalog: {
       role: "Stockfish 与课程",
       text: "学棋、解谜题，再与电脑或同屏好友下一局。",
@@ -210,7 +228,15 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/chessboard",
     },
-    installNote: "macOS 版尚未公证：首次打开需要手动放行一次。",
+    installNote: "macOS 版尚未公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+    releaseHighlights: {
+      version: "v22.0.0",
+      items: [
+        "复盘一打开就是第一处关键时刻，“再试一次”不用滚动就看得到。",
+        "开局名不再夹英文：没有译名的变例只显示到有译名的那一段。",
+        "失着提醒不再过期：对手应着、你悔棋、开新局或终局时，提醒立刻收起。",
+      ],
+    },
     privacy: {
       network: "onRequest",
       networkNote: "要先在设置里允许联网才会同步，只发送用户名；“检查更新”只在你点它时查询。",
@@ -246,8 +272,8 @@ export default defineProduct({
         width: 2446,
         height: 1536,
         asOf: "v22.0.0",
-        title: "三种棋盘，浅色或深色",
-        body: "木、绿、蓝，另有三套棋子（Merida、伯内特、经典），都在同一个设置页里。",
+        title: "浅色或深色，三种棋盘可选",
+        body: "木、绿、蓝三种棋盘，另有三套棋子（Merida、伯内特、经典），都在设置里。",
       },
     ],
     sections: [
@@ -255,7 +281,7 @@ export default defineProduct({
         kind: "demo",
         id: "try",
         title: "在这里解一道",
-        body: "先点棋子，再点目标格；也可以用方向键和回车。",
+        body: "先点棋子，再点要走到的格子；也可以用方向键和回车。",
         caption: "取自 Chessboard 内置的 Lichess 题库（谜题 GJsTC）。",
         demo: {
           kind: "chessPuzzle",
@@ -279,12 +305,12 @@ export default defineProduct({
         id: "features",
         label: "练习从你的对局里来",
         items: [
-          { title: "四个去处", body: "今天、下棋、训练、我的，外加一个设置页。" },
-          { title: "接下来练什么", body: "今天页最上面是接下来最该做的一件事；“换一件事”换下一件。" },
-          { title: "自己的失着", body: "你走出的 ? 和 ?? 进复习，按 1、3、7、21 天再问。" },
-          { title: "残局与名局", body: "90 个残局对满强度 Stockfish；40 局名局猜着。" },
-          { title: "你的开局书", body: "每方最多 5,000 条线，可从内置开局生成。" },
-          { title: "像人的对手", body: "下面十二档是 Maia，用 Lichess 真人对局训练。" },
+          { title: "提示分两步", body: "第一下圈出要动的子，第二下给出着法。" },
+          { title: "接下来练什么", body: "今天页最上面是接下来最该做的一件事；点“换一件事”换下一件。" },
+          { title: "自己的失着", body: "你的失着（? 和 ??）会在 1、3、7、21 天后再出现。" },
+          { title: "残局与名局", body: "90 个残局和满强度的 Stockfish 下到出结果；40 局名局可以猜着。" },
+          { title: "你的开局书", body: "每方最多 5,000 条线，也可以从内置开局生成。" },
+          { title: "像人的对手", body: "最低的十二档用 Maia：一种从 Lichess 真人对局学来的神经网络。" },
         ],
       },
       {
@@ -293,7 +319,7 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "对局、谜题、课程与进度都留在这台电脑上，存在应用自己的存储和本机数据文件夹里。",
-          "要先在“设置 · 数据”里允许联网，才能从 Lichess 或 Chess.com 同步，只发送用户名。",
+          "要先在“设置 › 数据”里允许联网，才能从 Lichess 或 Chess.com 同步，只发送用户名。",
           "粘贴的 Lichess 链接只按编号取那一局；“检查更新”只在你点它时向 GitHub 查询。",
         ],
       },
@@ -304,12 +330,12 @@ export default defineProduct({
         items: [
           {
             title: "能在线对战吗？",
-            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 · 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
+            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
             asOf: "v22.0.0",
           },
           {
             title: "对面是谁在下？",
-            body: "一条 21 档的阶梯，每档有名字、头像和等级分。新手（532）到高级−（1909）这十二档是 Maia：用 Lichess 真人对局训练的网络，按这个分段的人会怎么走来选着。其余九档是 Stockfish 19，限制强度，最上面满强度。Maia 在这台电脑上运行，网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
+            body: "一条 21 档的阶梯，每档有名字、头像和等级分。新手（532）到高级−（1909）这十二档是 Maia：用 Lichess 真人对局训练的神经网络，按这个分段的人会怎么走来选着。其余九档是 Stockfish 19，限制强度，最上面满强度。Maia 在这台电脑上运行，神经网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
             asOf: "v22.0.0",
           },
           {
@@ -318,7 +344,7 @@ export default defineProduct({
             asOf: "v22.0.0",
           },
           {
-            title: "PGN 能做什么？",
+            title: "PGN 棋谱文件能做什么？",
             body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
             asOf: "v22.0.0",
           },

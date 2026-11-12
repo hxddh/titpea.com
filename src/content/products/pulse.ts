@@ -18,7 +18,7 @@ export default defineProduct({
       "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
     headline: "Which agent needs you.",
-    lead: "A lamp in the menu bar for your coding agents. Red means one is blocked; your turn stays quiet; every lamp says why.",
+    lead: "A lamp in the menu bar for your coding agents. It turns red when one is blocked on you, and tells you why.",
     catalog: {
       role: "",
       text: "The menu-bar lamp for coding agents that need you.",
@@ -38,6 +38,16 @@ export default defineProduct({
       stays: "The event log stays on this Mac, readable only by you.",
     },
     meta: "macOS 14+ · MIT · {version} · Menu bar",
+    releaseHighlights: {
+      version: "v33.0.0",
+      summary:
+        "This release shows what happened in a session. Upgrading clears the old event log, so earlier timelines are lost; hooks are unaffected.",
+      items: [
+        "A new “Now” part of the details lists each tool still running, with its own time, and any subagents still alive.",
+        "A new “This turn” part sums up the turn: your prompt, time and steps, tools, changed files, Skills, MCP servers, subagents and plan progress, whenever the agent reports them.",
+        "“Copy this turn's summary” puts the turn into plain text, prompt and file paths included, to paste into a pull request or a chat.",
+      ],
+    },
     visual: {
       kind: "menuBar",
       label: "Pulse",
@@ -152,14 +162,23 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Four lamp colours, in the menu bar.",
+        label: "One lamp: red, green, orange or grey.",
         items: [
           { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
           { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
-          { title: "This turn, in details", body: "› lists the turn's tools, changed files, plan and subagents." },
-          { title: "Orange means stalled", body: "Pi and OpenCode only: twenty minutes without news." },
+          {
+            title: "This turn, in details",
+            body: "The › button on a row lists this turn's tools, changed files, plan and subagents.",
+          },
+          {
+            title: "Orange means stalled",
+            body: "Pi and OpenCode only: twenty minutes with no new events and no tool running.",
+          },
           { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
-          { title: "Click to go", body: "Its terminal when known, else the app; › opens details and timeline." },
+          {
+            title: "Click to go",
+            body: "A click opens the session's terminal when Pulse can find it, else its app or details.",
+          },
         ],
       },
       {
@@ -169,7 +188,7 @@ export default defineProduct({
         items: [
           "State comes only from each agent's own hooks; Pulse reads no session files, transcripts or protected app data.",
           "The event log, readable only by you, keeps prompts cut to 200 characters with credentials redacted, on this Mac.",
-          "Pulse makes no network connection: no update check, nothing reported. Releases… in Settings only opens the releases page in your browser.",
+          "Pulse never goes online: no update check, nothing reported. The Releases… link in Settings just opens the releases page in your browser.",
         ],
       },
       {
@@ -207,7 +226,7 @@ export default defineProduct({
       "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "看看哪个 Agent 需要你",
-    lead: "菜单栏里的一盏灯，看着你的编码 Agent。红灯表示有 Agent 卡住了；轮到你时只安静计数；每盏灯都说出原因。",
+    lead: "菜单栏里的一盏灯，看着你的编码 Agent。有 Agent 卡住等你时亮红灯，并说明原因。",
     catalog: {
       role: "",
       text: "菜单栏上看哪个编码 Agent 需要你。",
@@ -227,6 +246,15 @@ export default defineProduct({
       stays: "事件日志只在本机，只有你能读。",
     },
     meta: "macOS 14+ · MIT · {version} · 菜单栏",
+    releaseHighlights: {
+      version: "v33.0.0",
+      summary: "这一版把会话里发生了什么讲清楚。升级后旧的事件日志会清空，以前的时间线随之丢失，hook 不受影响。",
+      items: [
+        "详情页新增“正在进行”：列出每个还在跑的工具和各自的用时，以及还在运行的子 Agent。",
+        "详情页新增“本轮”：你的提示、用时和步数、用到的工具、改过的文件、Skill、MCP 服务、子 Agent 和计划进度，Agent 报了才显示。",
+        "新增“复制本轮摘要”：把这一轮整理成一段纯文本，带上提示和文件路径，方便贴进 PR 或聊天。",
+      ],
+    },
     visual: {
       kind: "menuBar",
       label: "Pulse",
@@ -335,14 +363,14 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "菜单栏里的四种灯色",
+        label: "一盏灯：红、绿、橙、灰",
         items: [
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
-          { title: "详情里的本轮", body: "点“›”看这一轮用的工具、改过的文件、计划和子 Agent。" },
-          { title: "橙色表示停滞", body: "只用于 Pi 与 OpenCode：二十分钟没有新动静。" },
+          { title: "详情里的本轮", body: "点每行末尾的“›”，看这一轮用的工具、改过的文件、计划和子 Agent。" },
+          { title: "橙色表示停滞", body: "只用于 Pi 与 OpenCode：没有工具在跑，却二十分钟没有新事件。" },
           { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
-          { title: "点一下就去", body: "能精确落点就去终端，否则打开应用；点“›”看详情和时间线。" },
+          { title: "点一下就去", body: "点一行就打开会话所在的终端；找不到终端时，打开它的应用或详情。" },
         ],
       },
       {
@@ -352,7 +380,7 @@ export default defineProduct({
         items: [
           "状态只来自各 Agent 自己的 hook；Pulse 不读取会话文件、transcript 或受 macOS 保护的应用数据。",
           "事件日志只在本机，只有你能读；其中的提示最多保留 200 字，凭据已抹掉。",
-          "Pulse 不连网络：不检查更新，不上报任何东西。设置里的“版本发布…”只在浏览器里打开发布页。",
+          "Pulse 不连网络：不检查更新，不上报任何东西。设置里的“版本发布…”只是在浏览器里打开 GitHub 上的发布页。",
         ],
       },
       {

@@ -107,7 +107,7 @@ export function homePage(locale: Locale): HomePageModel {
         return {
           line,
           label: copy.groups[line],
-          count: copy.toolCount.replace("{count}", String(items.length)),
+          count: (line === "games" ? copy.gameCount : copy.toolCount).replace("{count}", String(items.length)),
           items,
         };
       }),

@@ -40,7 +40,7 @@ export default defineProduct({
       "Desktop app, terminal UI and CLI that records what a program does to S3, reads it as operations and findings, and replays it on another store.",
     eyebrow: "S3 traffic recorder",
     headline: "Your S3 traffic, read.",
-    lead: "Run a program through sonde and read its object-storage traffic as operations, with what stands out. Then replay it on another store.",
+    lead: "Run a program through sonde to see its S3 requests as operations, with findings on what deserves a look. Replay them on another store.",
     catalog: {
       role: "",
       text: "Run a program through it and read its S3 traffic as operations.",
@@ -60,6 +60,14 @@ export default defineProduct({
       stays: "Sessions, the request log and the audit log in sonde’s data folder on this computer.",
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · S3-compatible",
+    releaseHighlights: {
+      version: "v15.0.0",
+      items: [
+        "A run now opens on four signals, request rate, errors, latency and bytes, each with its line over the session; `sonde show` prints the same.",
+        "Trials, which rerun your program while sonde answers with failures in the store’s place, now open in the app with the requests sonde answered marked.",
+        "A program that never retries is no longer reported as having survived a trial.",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "sonde",
@@ -105,7 +113,7 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "The terminal binary for Linux and macOS; the desktop app is on Releases, or `brew install --cask hxddh/sonde/sonde-app`.",
+      sub: "This installs the terminal binary on Linux or macOS. The desktop app is on the GitHub Releases page; on macOS, `brew install --cask hxddh/sonde/sonde-app` also installs it.",
       items: [
         {
           comment: "Install the terminal binary",
@@ -118,7 +126,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Requests, read as what they did.",
+        label: "It reads requests as what they did.",
         items: [
           {
             title: "Operations, not requests",
@@ -126,7 +134,7 @@ export default defineProduct({
           },
           {
             title: "Findings with a fix",
-            body: "Hot keys, HEAD before GET, orphaned files: what fixing each saves.",
+            body: "Hot keys, HEAD before GET, orphaned files, each with what fixing it would save.",
           },
           { title: "A budget in CI", body: "`sonde check` fails a job when a run goes past its budget or baseline." },
           {
@@ -188,7 +196,7 @@ export default defineProduct({
     description: "桌面应用、终端界面和命令行：录下程序对 S3 做了什么，读成操作和发现，还能在另一个存储上重放。",
     eyebrow: "对象存储诊断",
     headline: "看清你的程序对 S3 做了什么",
-    lead: "让程序经过 sonde 运行，把它的对象存储流量读成一个个操作，并标出值得注意的地方；还能在另一个存储上重放。",
+    lead: "让程序经过 sonde 运行，把它发给 S3 的请求读成一个个操作，并用“发现”指出值得一看的地方；还能在另一个存储上重放。",
     catalog: {
       role: "",
       text: "让程序经过它运行，把 S3 流量读成操作。",
@@ -207,6 +215,14 @@ export default defineProduct({
       stays: "会话、请求日志和审计日志都存在这台电脑上 sonde 的数据目录里。",
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · 兼容 S3",
+    releaseHighlights: {
+      version: "v15.0.0",
+      items: [
+        "每次运行的开头是四个信号：请求速率、错误、延迟和字节，各带一条贯穿会话的曲线；`sonde show` 打印的也一样。",
+        "试验会再跑一遍你的程序，由 sonde 代替存储返回故障；现在试验可以在应用里打开，sonde 自己作答的请求都有标记。",
+        "从不重试的程序，不会再被判为在试验中挺住了。",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "sonde",
@@ -229,6 +245,7 @@ export default defineProduct({
         asOf: "v15.0.0",
         title: "运行它，看它发出的请求",
         body: "输入一条命令，它的终端和它的 S3 请求并排出现。你的真实密钥不会交给它。",
+        caption: "界面为英文。",
       },
       {
         src: "/assets/sonde-compare-en.webp",
@@ -238,6 +255,7 @@ export default defineProduct({
         asOf: "v15.0.0",
         title: "改动带来了什么",
         body: "对比两次运行：请求、等待、费用和发现，前后一目了然。",
+        caption: "界面为英文。",
       },
       {
         src: "/assets/sonde-time-en.webp",
@@ -248,11 +266,12 @@ export default defineProduct({
         asOf: "v15.0.0",
         title: "时间花在了哪里",
         body: "整次运行排在一条时间线上：同时在途的请求、哪些请求同时在跑，以及收发的字节。",
+        caption: "界面为英文。",
       },
     ],
     commands: {
       title: "开始使用",
-      sub: "Linux 和 macOS 的终端版；桌面应用在 Releases 下载，或 `brew install --cask hxddh/sonde/sonde-app`。",
+      sub: "这条命令在 Linux 或 macOS 上安装终端版。桌面应用在 GitHub Releases 页面下载；macOS 上也可以用 `brew install --cask hxddh/sonde/sonde-app` 安装。",
       items: [
         {
           comment: "安装终端版",
@@ -271,7 +290,7 @@ export default defineProduct({
             title: "按操作看，而不是按请求",
             body: "分段上传、重试、列举，以及 SlateDB、Iceberg、Delta Lake 和 Lance 的步骤。",
           },
-          { title: "发现，附带修法", body: "热点键、先 HEAD 再 GET、孤立文件：修好各能省多少。" },
+          { title: "发现，附带修法", body: "热点键、先 HEAD 再 GET、孤立文件，并算出修好各能省多少。" },
           { title: "在 CI 里守住预算", body: "运行超出预算或基线时，`sonde check` 让任务失败。" },
           { title: "在另一个存储上重放", body: "把一次会话在别的端点上重演，逐条比较应答。" },
           { title: "生产日志也能读", body: "S3 访问日志、CloudTrail 和 HAR 文件，用同样方式解读。" },
@@ -303,7 +322,7 @@ export default defineProduct({
           },
           {
             title: "支持哪些存储？",
-            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS、Tigris 和 Wasabi。它的 40 项兼容性探测会把各端点的差异排成一张表。",
+            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。它的 40 项兼容性探测会把各端点的差异排成一张表。",
             asOf: "v15.0.0",
           },
           {

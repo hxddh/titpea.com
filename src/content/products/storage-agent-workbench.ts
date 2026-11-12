@@ -39,6 +39,14 @@ export default defineProduct({
         "Keys sealed in the system keychain, or an encrypted local file; tasks, datasets and memory in SQLite files on this machine; no telemetry.",
     },
     meta: "macOS / Windows / Linux · {version} · S3-compatible · Apache-2.0",
+    releaseHighlights: {
+      version: "v40.0.0",
+      items: [
+        "Imported data keeps every column: a CSV, JSON or Parquet file, or an S3 access log, becomes a local table with nothing dropped, masked or cut.",
+        "Scripts can read whole object contents, up to 1 MiB by default, instead of a 64 KiB preview.",
+        "The agent can read any part of a file you attach, and a model that accepts images sees an attached image.",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "Storage Agent",
@@ -50,7 +58,7 @@ export default defineProduct({
         height: 773,
       },
       caption:
-        "Storage Agent 40 from its README: the repository’s scripted test model (shown as fake-model) answering over the test S3 server it ships with.",
+        "Storage Agent 40, from its README: a task run against the test S3 server in the project’s repository, answered by its scripted demo model (fake-model).",
       asOf: "v40.0.0",
     },
     sections: [
@@ -72,7 +80,10 @@ export default defineProduct({
             title: "Logs and inventories as tables",
             body: "Access logs, CSV, JSON or Parquet become local SQLite tables, every column kept.",
           },
-          { title: "Remembers between tasks", body: "JSON memory the agent recalls itself; it outlives app updates." },
+          {
+            title: "Remembers between tasks",
+            body: "It saves notes as JSON and looks them up when needed; they survive app updates.",
+          },
           { title: "Fixes as text", body: "It may write a change for you to apply; the app never runs it." },
         ],
       },
@@ -82,8 +93,8 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Keys are sealed in the system keychain, or an encrypted local file; an AWS profile account stores only its name.",
-          "Tasks, datasets and memory stay in SQLite files on this machine; account IDs are scrubbed before the model sees anything.",
-          "Requests go only to the model and endpoints you configure, and to GitHub Releases for updates. No telemetry.",
+          "Tasks, datasets and memory stay in SQLite files on this machine. Account IDs never reach the model, the window or a log.",
+          "Requests go only to the model and endpoints you configure; packaged builds also check GitHub Releases for updates. No telemetry.",
         ],
       },
       {
@@ -126,7 +137,7 @@ export default defineProduct({
       "面向 S3 兼容存储及其所在 AWS 账号的本地只读桌面 Agent：用平常的话提问，它读取各服务返回的内容，从不写入你的存储。",
     eyebrow: "照看对象存储",
     headline: "找出 S3 里的隐患",
-    lead: "用平常的话问你的 S3 存储。Agent 只读取各服务返回的内容，不做任何改动；修复由你来执行。",
+    lead: "用平常的话问你的 S3 存储。它只读取各服务返回的内容，不做任何改动；修复由你来执行。",
     catalog: {
       role: "S3 排查",
       text: "只读的 S3 排查 Agent，覆盖存储所在的整个账号；修复它来写，你来执行。",
@@ -145,6 +156,14 @@ export default defineProduct({
       stays: "密钥封存在系统钥匙串或本机加密文件里；任务、数据集和记忆存在本机的 SQLite 文件中；不收集遥测。",
     },
     meta: "macOS / Windows / Linux · {version} · S3 兼容 · Apache-2.0",
+    releaseHighlights: {
+      version: "v40.0.0",
+      items: [
+        "导入的数据保留每一列：CSV、JSON、Parquet 文件或 S3 访问日志都变成本地表格，什么都不丢、不遮、不截断。",
+        "脚本可以读取完整的对象内容，默认最多 1 MiB，不再只有 64 KiB 的预览。",
+        "Agent 能读取你附上的文件的任意部分；支持图片的模型能看到附上的图片。",
+      ],
+    },
     visual: {
       kind: "screenshot",
       label: "Storage Agent",
@@ -156,7 +175,7 @@ export default defineProduct({
         height: 773,
       },
       caption:
-        "Storage Agent 40，取自其 README：仓库自带的脚本化测试模型（显示为 fake-model）连接仓库自带的测试 S3 服务作答，界面为英文。",
+        "Storage Agent 40，取自其 README：任务连的是项目仓库里的测试 S3 服务，由脚本写好的演示模型（fake-model）作答。界面为英文。",
       asOf: "v40.0.0",
     },
     sections: [
@@ -169,7 +188,7 @@ export default defineProduct({
           { title: "每一步都能打开", body: "打开任何一次调用，看 Agent 实际收到了什么。" },
           { title: "多对象问题用脚本", body: "沙箱脚本列举、统计、读取对象内容，不能联网。" },
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },
-          { title: "跨任务记住", body: "Agent 自己调取的 JSON 记忆，应用升级后仍在。" },
+          { title: "跨任务记住", body: "它把要记的内容存成 JSON，需要时自己查；应用升级后仍在。" },
           { title: "修复是文本", body: "它可以写出变更供你执行，应用从不运行。" },
         ],
       },
@@ -179,8 +198,8 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "密钥封存在系统钥匙串或本机加密文件里；AWS profile 账号只存它的名称。",
-          "任务、数据集和记忆存在本机的 SQLite 文件里；模型、窗口和日志看到的内容都会抹去账号 ID。",
-          "请求只发往你配置的模型、存储和 AWS 端点。安装版会向本项目的 GitHub Releases 检查更新；不收集遥测。",
+          "任务、数据集和记忆存在本机的 SQLite 文件里。账号 ID 不会出现在模型、窗口或日志里。",
+          "请求只发往你配置的模型和端点；安装版还会向 GitHub Releases 检查更新。不收集遥测。",
         ],
       },
       {

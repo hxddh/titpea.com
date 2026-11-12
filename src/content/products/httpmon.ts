@@ -17,7 +17,7 @@ export default defineProduct({
     description: "A terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
     eyebrow: "Go CLI",
     headline: "See the HTTP traffic.",
-    lead: "Run a command that honours proxy settings through httpmon and watch its HTTP traffic live. Its responses are unchanged.",
+    lead: "Put httpmon in front of a command that can use a proxy, like curl, to watch its HTTP traffic live. Responses reach it unchanged.",
     catalog: {
       role: "",
       text: "See what a command actually sent.",
@@ -37,12 +37,20 @@ export default defineProduct({
       stays: "Traffic shows in your terminal, saved only to a file you name; the temporary CA key never touches disk.",
     },
     meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
+    releaseHighlights: {
+      version: "v1.4.1",
+      items: [
+        "Fixed a bug that could make a request go missing from the output, the `--record` file and the HAR file.",
+        "On exit, httpmon waits up to 3 seconds for requests still in flight, so the command’s last request is logged before the HAR file is written.",
+        "Traffic that is not HTTP, such as SSH, MySQL or Redis, now passes through a proxy tunnel uninspected instead of breaking.",
+      ],
+    },
     commands: {
       title: "Get started",
-      sub: "Requires Go 1.24+. Pre-built binaries are on GitHub Releases.",
+      sub: "`go install` needs Go 1.24+ and names the program `https-traffic-inspector`; rename it to `httpmon` to run the examples. Or download a ready-built `httpmon` binary from GitHub Releases.",
       items: [
         {
-          comment: "Install",
+          comment: "Install with Go",
           command: "go install github.com/hxddh/https-traffic-inspector@latest",
         },
         {
@@ -72,14 +80,32 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "No browser, no GUI, no setup.",
+        label: "It shows each request and response in your terminal.",
         items: [
-          { title: "Request and response", body: "Method, URL, headers, status, timing; decoded for display only." },
-          { title: "WebSocket too", body: "`wss://` and `ws://` frames, spliced in both directions." },
-          { title: "HTTP/2 and gRPC", body: "Trailers carried through; gRPC status decoded." },
-          { title: "Start locally", body: "Listens on `127.0.0.1` only; no system proxy changes." },
-          { title: "Only that command", body: "Proxy address and ephemeral CA live in that command’s environment." },
-          { title: "Save when needed", body: "NDJSON, HAR 1.2, or a recording, to replay or share." },
+          {
+            title: "Request and response",
+            body: "Method, URL, headers, status and timing; compressed bodies are unpacked for display only.",
+          },
+          {
+            title: "WebSocket too",
+            body: "For `wss://` and `ws://`, the handshake is logged and frames pass through both ways.",
+          },
+          {
+            title: "HTTP/2 and gRPC",
+            body: "Trailers, the headers sent after a body, pass through; gRPC calls show their status.",
+          },
+          {
+            title: "Start locally",
+            body: "By default it listens only on `127.0.0.1`; your system proxy is never changed.",
+          },
+          {
+            title: "Only that command",
+            body: "The proxy address and a temporary certificate authority (CA) are set for that command alone.",
+          },
+          {
+            title: "Save when needed",
+            body: "NDJSON output, a HAR (HTTP Archive) 1.2 file or a recording, to replay or share.",
+          },
         ],
       },
       {
@@ -128,7 +154,7 @@ export default defineProduct({
     description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
     eyebrow: "Go CLI",
     headline: "看清命令的 HTTP 流量",
-    lead: "让一条支持代理的命令经过 httpmon，实时查看它的请求和响应。命令收到的响应保持原样。",
+    lead: "把 httpmon 放在一条能走代理的命令前面（比如 curl），实时查看它的 HTTP 流量。命令收到的响应保持原样。",
     catalog: {
       role: "",
       text: "看这条命令实际发出的请求。",
@@ -147,12 +173,20 @@ export default defineProduct({
       stays: "流量只显示在终端，只有你指定文件时才保存；临时 CA 私钥从不写入磁盘。",
     },
     meta: "Go · MIT · {version} · 本地代理 · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
+    releaseHighlights: {
+      version: "v1.4.1",
+      items: [
+        "修复了一个问题：某个请求可能从输出、`--record` 文件和 HAR 文件里漏掉。",
+        "退出时，httpmon 会等待仍在传输的请求最多 3 秒，确保命令的最后一个请求在写 HAR 文件前记录下来。",
+        "不是 HTTP 的流量，比如 SSH、MySQL 或 Redis，现在经代理隧道原样转发，不再中断。",
+      ],
+    },
     commands: {
       title: "开始使用",
-      sub: "需要 Go 1.24+。GitHub Releases 上也有预编译二进制。",
+      sub: "`go install` 需要 Go 1.24+，装好的程序名为 `https-traffic-inspector`，改名为 `httpmon` 才能照下面的示例运行。也可以从 GitHub Releases 下载预编译的 `httpmon` 二进制文件。",
       items: [
         {
-          comment: "安装",
+          comment: "用 Go 安装",
           command: "go install github.com/hxddh/https-traffic-inspector@latest",
         },
         {
@@ -182,14 +216,14 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "不用浏览器和 GUI，也不用配置",
+        label: "在终端里看每个请求和响应",
         items: [
-          { title: "请求和响应", body: "方法、URL、头、状态码、耗时；解压只为显示。" },
-          { title: "也看 WebSocket", body: "`wss://` 和 `ws://` 的帧双向转发。" },
-          { title: "HTTP/2 与 gRPC", body: "透传 trailers，解出 gRPC 状态。" },
-          { title: "本地启动", body: "只监听 `127.0.0.1`，系统代理不变。" },
-          { title: "只配子进程", body: "代理地址和临时 CA 只在这条命令的环境变量里。" },
-          { title: "按需留存", body: "导出 NDJSON、HAR 1.2 或录制文件，用来回放或分享。" },
+          { title: "请求和响应", body: "方法、URL、请求头与响应头、状态码和耗时；压缩内容解压仅用于显示。" },
+          { title: "也看 WebSocket", body: "`wss://` 和 `ws://` 会记录握手，之后的帧双向照常转发。" },
+          { title: "HTTP/2 与 gRPC", body: "响应末尾的头字段（trailers）原样转发，gRPC 调用会显示状态。" },
+          { title: "本地启动", body: "默认只监听 `127.0.0.1`，系统代理设置不会改动。" },
+          { title: "只影响这条命令", body: "代理地址和临时 CA（证书颁发机构）只设在这条命令的环境变量里。" },
+          { title: "按需留存", body: "NDJSON 输出、HAR（HTTP 存档）1.2 文件或录制文件，用来回放或分享。" },
         ],
       },
       {

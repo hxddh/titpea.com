@@ -16,7 +16,7 @@ export default defineProduct({
     description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
     eyebrow: "Pi Coding Agent extension",
     headline: "S3 diagnosis for Pi.",
-    lead: "Storage troubleshooting inside Pi, the open-source coding agent, from the logs and traces you bring. No cloud account needed.",
+    lead: "Troubleshoot object storage inside Pi, the open-source coding agent, using the logs and traces you bring. No cloud account is needed.",
     catalog: {
       role: "Pi extension",
       text: "S3 troubleshooting in the Pi coding agent, from logs and traces you already have.",
@@ -38,10 +38,10 @@ export default defineProduct({
     meta: "Python · Pi Coding Agent · S3-compatible · MIT",
     commands: {
       title: "Get started",
-      sub: "Needs Node.js 22.19+ and Python 3.11+. storageops install adds Pi Coding Agent when it is missing. Configure a model key before the first diagnosis.",
+      sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip` (the command at the top of this page). Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
       items: [
         {
-          comment: "Install StorageOps",
+          comment: "Install the StorageOps package",
           command: "python3 -m pip install storageops -i https://pypi.org/simple",
         },
         {
@@ -55,27 +55,27 @@ export default defineProduct({
       label: "StorageOps",
       kicker: "Pi Agent",
       title: "A Pi diagnosis uses skills, then tools",
-      body: "StorageOps gives Pi a storage-specific route: a skill chooses the method, then an extension tool redacts secrets or traces one command.",
+      body: "StorageOps gives Pi a way through storage problems: a skill picks the method, then a tool removes credentials or traces one command.",
       cards: [
         {
           number: "SKILL",
           title: "16 skill packs",
-          body: "Pi can load a focused method for access, protocol compatibility, performance, lifecycle, migration, consistency, or another storage domain.",
+          body: "Pi loads a focused method for access, protocol compatibility, performance, lifecycle, migration, consistency or another storage area.",
         },
         {
           number: "ROUTE",
           title: "detect_domain",
-          body: "Rank likely domains and suggest which skill Pi should read next.",
+          body: "Ranks the likely problem areas and suggests which skill Pi should read next.",
         },
         {
           number: "SAFE",
           title: "scan_secrets",
-          body: "Redact credential values before material is returned to the agent context.",
+          body: "Removes credential values before anything reaches the model.",
         },
         {
           number: "TRACE",
           title: "capture_http_trace",
-          body: "Observe one bounded storage command through the managed httpmon helper.",
+          body: "Runs one bounded storage command through httpmon, which StorageOps manages, and records its HTTP traffic.",
         },
       ],
       flow: ["input: error, command, config, redacted log", "Pi: skills + tools + deterministic helpers"],
@@ -85,23 +85,29 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Skills set the method. Tools read logs and traces.",
+        label: "Skills set the method; tools read the logs and traces.",
         items: [
-          { title: "Bring the material", body: "An exact error, `@log` file, config excerpt, or debug output." },
           {
-            title: "Load a skill",
-            body: "SigV4, IAM, lifecycle, replication, Spark S3A; helper scripts parse logs and policies.",
+            title: "Bring the material",
+            body: "The exact error, a log file attached with `@`, a config excerpt or debug output.",
           },
           {
-            title: "Failure classes",
-            body: "AccessDenied, SignatureDoesNotMatch, SlowDown, checksum mismatches, stale reads.",
+            title: "Load a skill",
+            body: "Methods for SigV4 signing, IAM, lifecycle, replication and Spark S3A; scripts parse logs and policies.",
+          },
+          {
+            title: "Failures it covers",
+            body: "AccessDenied, SignatureDoesNotMatch, SlowDown, checksum mismatches and stale reads.",
           },
           {
             title: "Past sessions, searchable",
-            body: "`search_memory` returns scored, redacted snippets from earlier Pi sessions.",
+            body: "`search_memory` finds matching passages in earlier Pi sessions, ranked and redacted.",
           },
-          { title: "Secrets redacted", body: "Before material reaches the agent context." },
-          { title: "Storage untouched", body: "At most one bounded, traced command; you make the change." },
+          { title: "Secrets redacted", body: "Credential values are removed before anything reaches the model." },
+          {
+            title: "Storage untouched",
+            body: "It traces at most one bounded command you give it; changes are yours to make.",
+          },
         ],
       },
       {
@@ -123,19 +129,19 @@ export default defineProduct({
         items: [
           {
             title: "Is it a second agent?",
-            body: "No. StorageOps is object-storage skills, a Pi extension, and helpers. Pi stays the runtime; StorageOps does not add a second agent or a cloud console.",
+            body: "No. StorageOps adds storage skills, tools and helper scripts to Pi; Pi is still the agent. It is not a cloud console either.",
           },
           {
             title: "Does it need my cloud account?",
-            body: "No. It diagnoses from the logs, errors, config, and traces you bring. It does not take cloud credentials or open its own cloud session.",
+            body: "No. It works from the logs, errors, config and traces you bring. It does not take cloud credentials or open its own cloud session.",
           },
           {
             title: "Can it change my storage?",
-            body: "StorageOps does not mutate storage. Trace capture runs the one command you provide through httpmon: known storage commands must be read-only, but an unknown command still runs, so give it only side-effect-free commands.",
+            body: "StorageOps does not change storage. To capture a trace, it runs the one command you give it through httpmon: known storage commands must be read-only, but an unknown command still runs, so give it only commands that change nothing.",
           },
           {
             title: "When should I open Storage Agent?",
-            body: "Choose StorageOps when you already use Pi and want storage-specific diagnosis. Choose Storage Agent when you want a complete desktop app with built-in read-only tools, local analysis, and Issues it remembers between tasks.",
+            body: "Choose StorageOps when you already use Pi and want help with storage problems there. Choose Storage Agent when you want a complete desktop app with built-in read-only tools, local analysis, and memory it keeps between tasks.",
             link: {
               label: "Open Storage Agent",
               href: "/storage-agent-workbench/",
@@ -150,7 +156,7 @@ export default defineProduct({
     description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与技能包。",
     eyebrow: "Pi Coding Agent 扩展",
     headline: "在 Pi 里排查对象存储",
-    lead: "在开源编码 Agent Pi 里排查对象存储问题，用的是你提供的日志和 trace。不接云账号。",
+    lead: "在开源编码 Agent Pi 里，用你提供的日志和 trace 排查对象存储问题，不需要云账号。",
     catalog: {
       role: "Pi 扩展",
       text: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
@@ -171,10 +177,10 @@ export default defineProduct({
     meta: "Python · Pi Coding Agent · S3 兼容 · MIT",
     commands: {
       title: "开始使用",
-      sub: "需要 Node.js 22.19+ 和 Python 3.11+。缺少 Pi Coding Agent 时，storageops install 会一并安装。第一次诊断前先配置模型密钥。",
+      sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用 `pip` 安装 StorageOps（命令见页面顶部），再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",
       items: [
         {
-          comment: "安装 StorageOps",
+          comment: "安装 StorageOps 软件包",
           command: "python3 -m pip install storageops -i https://pypi.org/simple",
         },
         {
@@ -188,7 +194,7 @@ export default defineProduct({
       label: "StorageOps",
       kicker: "Pi Agent",
       title: "Pi 先加载技能包，再调用工具",
-      body: "StorageOps 给 Pi 一条对象存储排查路径：技能包决定方法，扩展工具再脱敏凭据，或 trace 一条命令。",
+      body: "StorageOps 给 Pi 一条排查对象存储问题的路径：先由技能包选定方法，再由工具去掉凭据，或 trace 一条命令。",
       cards: [
         {
           number: "SKILL",
@@ -198,17 +204,17 @@ export default defineProduct({
         {
           number: "ROUTE",
           title: "detect_domain",
-          body: "判断优先排查方向，并提示 Pi 接下来该读取哪个技能包。",
+          body: "给可能出问题的方向排序，并提示 Pi 接下来该读哪个技能包。",
         },
         {
           number: "SAFE",
           title: "scan_secrets",
-          body: "在材料进入 Agent 上下文前，先脱敏凭据值。",
+          body: "任何内容交给模型之前，先去掉其中的凭据值。",
         },
         {
           number: "TRACE",
           title: "capture_http_trace",
-          body: "通过受管的 httpmon helper 观察一条受限的存储命令。",
+          body: "经由 StorageOps 管理的 httpmon 运行一条受限的存储命令，记下它的 HTTP 流量。",
         },
       ],
       flow: ["输入：报错、命令、配置、脱敏日志", "Pi：技能包、工具与确定性辅助脚本"],
@@ -220,12 +226,18 @@ export default defineProduct({
         nav: "功能",
         label: "技能包定方法，工具读日志和 trace",
         items: [
-          { title: "带上材料", body: "原始报错、`@日志文件`、配置片段或 debug 输出。" },
-          { title: "加载技能包", body: "SigV4、IAM、生命周期、复制、Spark S3A；辅助脚本解析日志和策略。" },
-          { title: "故障类型", body: "AccessDenied、SignatureDoesNotMatch、SlowDown、校验和不匹配、读取结果过期。" },
-          { title: "旧会话可检索", body: "`search_memory` 检索以往的 Pi 会话，返回打分并脱敏的片段。" },
-          { title: "先脱敏", body: "凭据值在进入 Agent 上下文前脱敏。" },
-          { title: "不改存储", body: "最多受限 trace 一条命令；改动由你来做。" },
+          { title: "带上材料", body: "原始报错、用 `@` 附上的日志文件、配置片段或 debug 输出。" },
+          {
+            title: "加载技能包",
+            body: "SigV4 签名、IAM、生命周期、复制和 Spark S3A 的排查方法；脚本负责解析日志和策略。",
+          },
+          {
+            title: "覆盖的故障",
+            body: "AccessDenied、SignatureDoesNotMatch、SlowDown、校验和不匹配，以及读到过期数据。",
+          },
+          { title: "旧会话可检索", body: "`search_memory` 在以往的 Pi 会话里找出相关片段，按相关度排序并脱敏。" },
+          { title: "先脱敏", body: "任何内容交给模型之前，凭据值都会先被去掉。" },
+          { title: "不改存储", body: "它最多 trace 一条你给的受限命令；改动由你自己来做。" },
         ],
       },
       {
@@ -247,19 +259,19 @@ export default defineProduct({
         items: [
           {
             title: "它是另一个 Agent 吗？",
-            body: "不是。StorageOps 是对象存储技能包、一份 Pi 扩展和辅助脚本。Pi 仍是运行时；StorageOps 不会再加一个 Agent，也不是云控制台。",
+            body: "不是。StorageOps 给 Pi 加上对象存储技能包、工具和辅助脚本，干活的仍然是 Pi。它也不是云控制台。",
           },
           {
             title: "需要接入云账号吗？",
-            body: "不需要。它根据你提供的日志、报错、配置和 trace 排查，不接收云凭据，也不会自己登录云账号。",
+            body: "不需要。它用你提供的日志、报错、配置和 trace 排查，不接收云凭据，也不会自己登录云账号。",
           },
           {
             title: "会改动我的存储吗？",
-            body: "StorageOps 不修改存储资源。trace 会经 httpmon 运行你提供的那一条命令：已知的存储命令必须只读，但未知命令同样会被执行，所以只交给它没有副作用的命令。",
+            body: "StorageOps 不修改存储。采集 trace 时，它经 httpmon 运行你给的那一条命令：已知的存储命令必须只读，但未知命令同样会被执行，所以只交给它不会改动任何东西的命令。",
           },
           {
             title: "什么时候改用 Storage Agent？",
-            body: "已经使用 Pi、只想增加对象存储排查能力时，选择 StorageOps；需要完整桌面应用、内置只读工具、本地分析，并跨任务记住发现的问题时，选择 Storage Agent。",
+            body: "已经在用 Pi、想在里面排查对象存储问题时，选 StorageOps；想要完整的桌面应用、内置只读工具和本地分析，并能跨任务记住内容时，选 Storage Agent。",
             link: {
               label: "打开 Storage Agent",
               href: "/zh/storage-agent-workbench/",

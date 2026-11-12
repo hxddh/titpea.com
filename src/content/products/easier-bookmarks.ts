@@ -16,7 +16,7 @@ export default defineProduct({
     description: "Chrome side panel and address-bar search for the bookmark tree already in this browser.",
     eyebrow: "Chrome extension",
     headline: "Bookmarks at your side.",
-    lead: "Search and file the bookmarks Chrome already has, from the side panel or the address bar. No external servers.",
+    lead: "Search, save and tidy the bookmarks Chrome already has, from a side panel or the address bar. Nothing is sent to outside servers.",
     catalog: {
       role: "Side panel",
       text: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
@@ -69,20 +69,29 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Your folders stay as they are.",
+        label: "It works with the bookmarks you have.",
         items: [
-          { title: "In the address bar", body: "Type `b`, a space, a few letters; Enter opens the best match." },
+          {
+            title: "In the address bar",
+            body: "Type `b` and a space, then a few letters; Enter opens the best match.",
+          },
           {
             title: "Search as you type",
-            body: "Titles, links, folders; accents, full pinyin, even one typo.",
+            body: "Finds titles, links and folders, despite accents or one typo, and by full pinyin.",
           },
           {
             title: "Save in one click",
-            body: "Filed with that site’s other bookmarks, or the folder you last picked.",
+            body: "It goes in with that site’s other bookmarks, or the folder you last picked.",
           },
-          { title: "Knows the page you’re on", body: "The star fills if it’s saved; click it to edit instead." },
-          { title: "Pick several", body: "Tick a few to drag, move, or delete; one Undo restores all." },
-          { title: "Tidy up", body: "Extra copies of an address and empty folders, gone in one step." },
+          {
+            title: "Knows the page you’re on",
+            body: "A filled star means the page is saved; clicking edits it rather than adding a copy.",
+          },
+          {
+            title: "Pick several",
+            body: "Tick a few to drag, move or delete them together; one Undo restores them all.",
+          },
+          { title: "Tidy up", body: "Removes extra copies of an address, and empty folders, in one step." },
         ],
       },
       {
@@ -90,9 +99,10 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Local storage keeps open folders, recent opens for ranking, your last-picked folder, and a copy of the rows last on screen.",
-          "Optional tabs access, asked at your first save, reads the active tab’s title and address, or every tab’s when you save all.",
-          "Those addresses and your `b` searches are never stored or sent. No analytics, ads, or servers; Chrome Sync, if on, syncs bookmarks.",
+          "On your computer, it remembers open folders, your last-picked folder, recently opened bookmarks to rank results, and the list last shown.",
+          "With tab access, asked at your first save, it reads the current tab’s title and address, or every tab’s when saving all.",
+          "Those addresses, and what you type after `b`, are never stored or sent. No servers, no analytics, no ads.",
+          "Your bookmarks remain Chrome’s own; if Chrome Sync is on, it syncs them as usual.",
         ],
       },
       {
@@ -102,7 +112,7 @@ export default defineProduct({
         items: [
           {
             title: "How do I pick several bookmarks?",
-            body: "Point at an icon and it becomes a checkbox: tick it, or press Space. A click on a bookmark always opens it. Shift-click a checkbox, or press Shift + ↑ / ↓, to pick a run; ⌘/Ctrl + A picks everything in the folder or every search result. Alt + ↑ / ↓ (Option on Mac) moves every ticked bookmark together; Alt + M, or Move to… in the ⋯ menu, opens the folder list: type a name, then Enter. One Undo puts everything back where it was.",
+            body: "Point at a bookmark’s icon and it turns into a checkbox. Tick it, or press Space. Clicking the bookmark itself still opens it. To pick a run, Shift-click a checkbox or press Shift + ↑ / ↓. ⌘/Ctrl + A picks everything in the folder, or every search result. Alt + ↑ / ↓ (Option on Mac) moves all ticked bookmarks together. To move them to another folder, press Alt + M or choose Move to… in the ⋯ menu, type the folder’s name and press Enter. One Undo puts everything back.",
           },
           {
             title: "Can I add a link without opening it?",
@@ -125,7 +135,7 @@ export default defineProduct({
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
     eyebrow: "Chrome 扩展",
     headline: "书签在侧边，随手整理",
-    lead: "在侧边栏或地址栏，搜索和整理 Chrome 里已有的书签。不经过任何外部服务器。",
+    lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
     catalog: {
       role: "侧边栏",
       text: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
@@ -178,7 +188,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "文件夹保持原样",
+        label: "直接用你已有的书签",
         items: [
           { title: "地址栏直接搜", body: "输入 `b` 加空格再打几个字，回车打开最匹配的书签。" },
           {
@@ -186,9 +196,9 @@ export default defineProduct({
             body: "搜标题、网址、文件夹，认全拼、简繁和一处错字。",
           },
           { title: "一键收藏", body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。" },
-          { title: "认得当前页", body: "已收藏时星标变实心，点它编辑，不会重复添加。" },
+          { title: "认得当前页", body: "已收藏的页面星标是实心的；这时点它是编辑原书签，不会重复添加。" },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
-          { title: "一键清理", body: "重复保存的网址和空文件夹，一步删掉。" },
+          { title: "一键清理", body: "重复保存的网址和空文件夹，一步就能删掉。" },
         ],
       },
       {
@@ -196,9 +206,10 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "本地只存展开的文件夹、最近打开的书签（用于搜索排序）、上次选的文件夹，以及上次屏幕上那部分列表的副本。",
-          "标签页权限可选，第一次收藏时才申请：读取当前标签页的标题和网址；收藏所有标签页时，读取该窗口所有标签页的。",
-          "这些网址和你在 `b` 后输入的内容不保存、不发送。无分析服务、广告或服务器；开启 Chrome 同步时书签随之同步。",
+          "本机只记下展开的文件夹、上次选的文件夹、最近打开的书签（用于搜索排序），以及上次显示的列表。",
+          "第一次收藏时，如果你允许访问标签页，它会读取当前页的标题和网址；收藏全部标签页时则读取每一个。",
+          "这些网址和你在 `b` 后输入的内容都不保存、不发送。没有服务器，没有分析服务，也没有广告。",
+          "书签仍是 Chrome 自己的数据；开启 Chrome 同步时，照常同步。",
         ],
       },
       {
@@ -208,7 +219,7 @@ export default defineProduct({
         items: [
           {
             title: "怎么一次选中多个书签？",
-            body: "鼠标移到图标上，它会变成复选框，勾选即可；也可以按空格。单击书签总是打开它。Shift + 单击复选框或 Shift + ↑ / ↓ 连续选择，⌘/Ctrl + A 选中文件夹内全部或全部搜索结果。按 Alt + ↑ / ↓（Mac 上是 Option）把勾选的书签一起上下移动；按 Alt + M（或 ⋯ 菜单里的“移动到…”）会打开文件夹列表，输入名称后回车即可。撤销一次，全部回到原处。",
+            body: "鼠标移到书签图标上，它会变成复选框，勾选或按空格即可。单击书签本身仍是打开它。要连续选择，按住 Shift 单击复选框，或按 Shift + ↑ / ↓。⌘/Ctrl + A 选中文件夹里的全部书签或全部搜索结果。按 Alt + ↑ / ↓（Mac 上是 Option）把勾选的书签一起上下移动。要移到别的文件夹，按 Alt + M 或在 ⋯ 菜单里选“移动到…”，输入文件夹名后回车。撤销一次，全部回到原处。",
           },
           {
             title: "不打开网页也能收藏链接吗？",

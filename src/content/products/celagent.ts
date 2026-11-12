@@ -17,7 +17,7 @@ export default defineProduct({
     description:
       "Pi, the open-source terminal coding agent, with sessions saved to Baidu Object Storage (BOS) and restored by ID on another configured machine.",
     eyebrow: "Built on Pi, the open-source terminal coding agent",
-    headline: "Resume on another device.",
+    headline: "Resume on a new machine.",
     lead: "Saves each Pi coding-agent session to Baidu Object Storage (BOS), turn by turn. Resume it on another machine you have set up.",
     catalog: {
       role: "Session recovery",
@@ -40,7 +40,7 @@ export default defineProduct({
     meta: "Pi Coding Agent TUI · Baidu BOS · MIT · {version}",
     commands: {
       title: "Get started",
-      sub: "The installer fetches the GitHub Release binary with the celld runtime.",
+      sub: "After installing, check that celagent can reach your BOS bucket.",
       items: [
         {
           comment: "Install",
@@ -62,7 +62,7 @@ export default defineProduct({
       files: ["celagent", "celagent list", "celagent <id>  # restore from BOS", "celagent task ledger"],
       briefLabel: "persistence",
       brief: "Completed turns → BOS write queue → restore by session ID after a successful write",
-      footnotes: ["Configure both machines", "Conditional writes detect conflicts"],
+      footnotes: ["Configure both machines", "Conflicting writes from two machines are caught"],
     },
     sections: [
       {
@@ -71,11 +71,26 @@ export default defineProduct({
         nav: "Features",
         label: "The full Pi session, not a summary.",
         items: [
-          { title: "Pi, unchanged", body: "Its terminal interface, engine, and tools; history stays native JSONL." },
-          { title: "Saved per turn", body: "Completed turns queue for BOS; conditional writes catch conflicts." },
-          { title: "No silent fallback", body: "Failed writes stay queued; no silent fallback to a truncated cache." },
-          { title: "Configure storage", body: "Set up BOS, then run `celagent doctor` and `celagent cas-probe`." },
-          { title: "Resume by ID", body: "`celagent list`, then `celagent <id>` on a configured machine." },
+          {
+            title: "Pi, unchanged",
+            body: "Pi's own terminal interface, engine and tools. History stays in Pi's JSONL files.",
+          },
+          {
+            title: "Saved per turn",
+            body: "Each finished turn is queued and written to BOS; conflicting writes are caught.",
+          },
+          {
+            title: "No silent fallback",
+            body: "A failed write stays queued to retry; a truncated cached copy never replaces history.",
+          },
+          {
+            title: "Configure storage",
+            body: "Set up BOS; `celagent doctor` checks access, `celagent cas-probe` checks conflict detection.",
+          },
+          {
+            title: "Resume by ID",
+            body: "On a configured machine, `celagent list` shows sessions; `celagent <id>` opens one.",
+          },
         ],
       },
       {
@@ -84,8 +99,9 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Each completed turn is written to your own BOS bucket as Pi JSONL; a local Celld node keeps a cached copy.",
-          "Prompts and tool results go to the model you configure, DeepSeek by default; without a key, replies are mocked locally.",
+          "Each completed turn is written to your BOS bucket as Pi JSONL; Celld, a local runtime that celagent starts, caches it.",
+          "Prompts and tool results go to the model you configure, DeepSeek by default.",
+          "Without a model API key, celagent answers with placeholder replies so you can test storage.",
           "Storage keys come from environment variables or the `[bos]` profile in `~/.aws/credentials`; `celagent rm <id>` deletes a session.",
         ],
       },
@@ -101,15 +117,15 @@ export default defineProduct({
           },
           {
             title: "What if a BOS write fails?",
-            body: "Retryable failures stay queued, and cross-machine recovery waits for a successful write. Recovery reads BOS first; only a missing object falls back to the worker cache. A BOS timeout or permission error does not fall back to truncated cache.",
+            body: "Retryable failures stay queued, and recovery on another machine waits for a successful write. Recovery reads BOS first and uses the local Celld cache only when the session is not in BOS at all. A BOS timeout or permission error never falls back to that cache, which may be truncated.",
           },
           {
             title: "How is history stored?",
-            body: "sessions/<id>.jsonl stores Pi history, including tool calls and branches. Older JSON sessions use a legacy text recovery path.",
+            body: "Each session is saved in your bucket as `sessions/<id>.jsonl`, Pi's own history format, with tool calls and branches. Older `.json` sessions can still be read and are restored as text.",
           },
           {
             title: "How do I install it?",
-            body: "celagent reuses the Pi engine and its tools. Install from the GitHub release with install.sh, or install.ps1 on Windows; upstream Celld has no Windows package.",
+            body: "Run the install script at the top of this page. On Windows, run the README’s `install.ps1` command in PowerShell; it installs celagent without Celld, which has no Windows package upstream. Then run `celagent doctor`.",
           },
         ],
       },
@@ -119,8 +135,8 @@ export default defineProduct({
     title: "celagent",
     description: "基于开源终端编码 Agent Pi，把会话保存在百度对象存储（BOS），按 ID 在另一台已配置的机器上恢复。",
     eyebrow: "基于开源终端编码 Agent Pi",
-    headline: "换台机器，接着聊",
-    lead: "Pi 编码会话存进百度对象存储（BOS）。在已配置的另一台机器上，按 ID 接着用。",
+    headline: "换台机器，接着写",
+    lead: "把 Pi 编码 Agent 的会话逐轮存进百度对象存储（BOS），在另一台配置好的机器上按 ID 接着用。",
     catalog: {
       role: "会话恢复",
       text: "把 Pi 编码会话存进百度对象存储（BOS），换一台机器接着用。",
@@ -141,14 +157,14 @@ export default defineProduct({
     meta: "Pi 编码 Agent 终端界面 · 百度 BOS · MIT · {version}",
     commands: {
       title: "开始使用",
-      sub: "安装脚本从 GitHub Release 下载二进制，含 celld 运行时。",
+      sub: "装好后，检查 celagent 能否连上你的 BOS 存储桶。",
       items: [
         {
           comment: "一键安装",
           command: "curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh",
         },
         {
-          comment: "自检：配置、凭据、节点、BOS 连通",
+          comment: "检查配置、凭据和 BOS 连接",
           command: "celagent doctor",
         },
       ],
@@ -163,7 +179,7 @@ export default defineProduct({
       files: ["celagent", "celagent list", "celagent <id>  # 从 BOS 恢复", "celagent task ledger"],
       briefLabel: "持久化",
       brief: "完成的轮次 → BOS 写入队列 → 写入成功后按会话 ID 恢复",
-      footnotes: ["两台机器均需配置", "条件写入检测冲突"],
+      footnotes: ["两台机器均需配置", "两台机器的写入冲突会被发现"],
     },
     sections: [
       {
@@ -172,11 +188,14 @@ export default defineProduct({
         nav: "功能",
         label: "完整的 Pi 会话，不是摘要",
         items: [
-          { title: "原样的 Pi", body: "终端界面、引擎和工具不变；历史仍是原生 JSONL。" },
-          { title: "每轮保存", body: "完成的轮次进入 BOS 写入队列；条件写入检测冲突。" },
-          { title: "不静默回退", body: "写入失败留在队列；不静默退回截断缓存。" },
-          { title: "先配置存储", body: "配好 BOS，运行 doctor 和 cas-probe。" },
-          { title: "按 ID 恢复", body: "在已配置的机器上 list，再按 ID 打开。" },
+          { title: "原样的 Pi", body: "终端界面、引擎和工具都是 Pi 自己的，历史仍存为 Pi 的 JSONL 文件。" },
+          { title: "每轮保存", body: "每完成一轮就排队写入 BOS，冲突的写入会被发现。" },
+          { title: "不静默回退", body: "写入失败就留在队列里重试，不拿截断的缓存冒充完整历史。" },
+          {
+            title: "先配置存储",
+            body: "配好 BOS 后，`celagent doctor` 检查连接，`celagent cas-probe` 确认能发现写入冲突。",
+          },
+          { title: "按 ID 恢复", body: "在已配置的机器上，`celagent list` 列出会话，`celagent <id>` 打开其中一个。" },
         ],
       },
       {
@@ -185,8 +204,9 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "每个完成的轮次以 Pi JSONL 写入你自己的 BOS 存储桶，本机 Celld 节点另存一份缓存。",
-          "提问和工具结果发往你配置的模型，默认 DeepSeek；没有密钥时在本机生成模拟回复。",
+          "每个完成的轮次以 Pi JSONL 写入你自己的 BOS 存储桶；celagent 在本机启动的 Celld 另存一份缓存。",
+          "提问和工具结果发往你配置的模型，默认是 DeepSeek。",
+          "没有模型 API 密钥时，celagent 用占位回复作答，方便先测试存储。",
           "存储凭据来自环境变量或 `~/.aws/credentials` 里的 `[bos]` profile；`celagent rm <id>` 删除会话。",
         ],
       },
@@ -202,15 +222,15 @@ export default defineProduct({
           },
           {
             title: "BOS 写入失败会怎样？",
-            body: "可重试的失败会留队，跨机恢复要等写入成功。恢复先读 BOS，仅对象不存在时才回退到 worker 缓存；BOS 超时或权限失败时，不会静默退回截断缓存。",
+            body: "可重试的失败会留在队列里，换机恢复要等写入成功。恢复时先读 BOS，只有 BOS 里根本没有这个会话，才改用本机 Celld 的缓存；BOS 超时或权限出错时不会改用缓存，因为缓存可能被截断。",
           },
           {
             title: "历史怎么保存？",
-            body: "sessions/<id>.jsonl 保存 Pi 历史，包含工具调用和分支。旧 JSON 会话使用兼容的文本恢复路径。",
+            body: "每个会话以 `sessions/<id>.jsonl` 存在存储桶里，这是 Pi 自己的历史格式，含工具调用和分支。旧的 `.json` 会话仍能读取，按文本恢复。",
           },
           {
             title: "怎么安装？",
-            body: "celagent 复用 Pi 引擎及其工具。从 GitHub Release 用 install.sh 安装，Windows 使用 install.ps1；上游 Celld 没有 Windows 包。",
+            body: "运行本页顶部的安装脚本。Windows 上在 PowerShell 里运行 README 中的 `install.ps1` 安装命令；它只装 celagent，不含 Celld，因为上游 Celld 没有 Windows 包。装好后运行 `celagent doctor`。",
           },
         ],
       },
