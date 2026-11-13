@@ -79,7 +79,7 @@ export default defineProduct({
         "Sync goes online only after you allow it, and sends only your user name; updates are checked only when you ask.",
       stays: "Games, puzzles, lessons and progress stay on this computer.",
     },
-    meta: "macOS + Windows · GPLv3 · {version} · Local app",
+    meta: "macOS + Windows · GPLv3 · {version}",
     visual: {
       kind: "screenshot",
       label: "Chessboard",
@@ -103,15 +103,6 @@ export default defineProduct({
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Key moments first.",
         body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again.",
-      },
-      {
-        src: "/assets/chessboard-theme-en.webp",
-        alt: "Chessboard in dark appearance with the green board on the final position of the reviewed game",
-        width: 2446,
-        height: 1536,
-        asOf: "v22.0.0",
-        title: "Light or dark, three boards to choose.",
-        body: "A wood, green or blue board and three piece sets (Merida, Burnett and Classic), all in Settings.",
       },
     ],
     sections: [
@@ -187,16 +178,6 @@ export default defineProduct({
             asOf: "v22.0.0",
           },
           {
-            title: "Who plays the other side?",
-            body: "A ladder of 21 opponents, each with a name, a portrait, and a rating. The twelve from Gentle (532) to Advanced− (1909) are Maia, neural networks trained on human games from Lichess, so they pick moves the way players at that level do. The other nine are Stockfish 19, strength-limited, and at full strength at the top. Maia runs on this computer from neural networks that ship with the app; if one cannot answer, that level plays its Stockfish settings instead.",
-            asOf: "v22.0.0",
-          },
-          {
-            title: "Will my saves from an older version carry over?",
-            body: "From 9.0 or later, yes: every version since keeps one save format and reads the saves of the release before it. From 8.x, no: version 9.0 changed the save format and where saves are kept, and it does not read 8.x data or a file saved with 8.x “Export all data”. After upgrading from 8.x, your ratings and records, puzzle and lesson progress, game library, opening book, and review queue start from zero.",
-            asOf: "v22.0.0",
-          },
-          {
             title: "What can I do with a PGN game file?",
             body: "Choose “Review a game” from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. “Play on from here” continues from any move. To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page. Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
             asOf: "v22.0.0",
@@ -242,7 +223,7 @@ export default defineProduct({
       networkNote: "要先在设置里允许联网才会同步，只发送用户名；“检查更新”只在你点它时查询。",
       stays: "对局、谜题、课程与进度都留在这台电脑上。",
     },
-    meta: "macOS + Windows · GPLv3 · {version} · 本地应用",
+    meta: "macOS + Windows · GPLv3 · {version}",
     visual: {
       kind: "screenshot",
       label: "国际象棋 Chessboard",
@@ -265,15 +246,6 @@ export default defineProduct({
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",
         body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。",
-      },
-      {
-        src: "/assets/chessboard-theme-zh.webp",
-        alt: "Chessboard 深色外观、绿色棋盘，复盘后的终局局面",
-        width: 2446,
-        height: 1536,
-        asOf: "v22.0.0",
-        title: "浅色或深色，三种棋盘可选",
-        body: "木、绿、蓝三种棋盘，另有三套棋子（Merida、伯内特、经典），都在设置里。",
       },
     ],
     sections: [
@@ -331,16 +303,6 @@ export default defineProduct({
           {
             title: "能在线对战吗？",
             body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
-            asOf: "v22.0.0",
-          },
-          {
-            title: "对面是谁在下？",
-            body: "一条 21 档的阶梯，每档有名字、头像和等级分。新手（532）到高级−（1909）这十二档是 Maia：用 Lichess 真人对局训练的神经网络，按这个分段的人会怎么走来选着。其余九档是 Stockfish 19，限制强度，最上面满强度。Maia 在这台电脑上运行，神经网络随应用附带；它答不上来时，这一档改用原来的 Stockfish 设置。",
-            asOf: "v22.0.0",
-          },
-          {
-            title: "旧版本的存档能带过来吗？",
-            body: "9.0 及以后的可以：此后每一版都沿用同一种存档格式，都读得了上一版的存档。8.x 的不能：9.0 换了存档格式和存储位置，不读 8.x 的档案，也不认 8.x“导出全部数据”存下的文件。从 8.x 升级后，战绩、谜题与课程进度、棋谱库、开局书、复习队列都从零开始。",
             asOf: "v22.0.0",
           },
           {

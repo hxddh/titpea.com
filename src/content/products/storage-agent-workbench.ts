@@ -38,7 +38,7 @@ export default defineProduct({
       stays:
         "Keys sealed in the system keychain, or an encrypted local file; tasks, datasets and memory in SQLite files on this machine; no telemetry.",
     },
-    meta: "macOS / Windows / Linux · {version} · S3-compatible · Apache-2.0",
+    meta: "macOS / Windows / Linux · S3-compatible · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v40.0.0",
       items: [
@@ -57,8 +57,7 @@ export default defineProduct({
         width: 2360,
         height: 1396,
       },
-      caption:
-        "Storage Agent 40, captured from its visual test: a task run against the test S3 server in the project’s repository, answered by its scripted demo model (fake-model).",
+      caption: "Storage Agent 40 on a test S3 server, answered by a demo model.",
       asOf: "v40.0.0",
     },
     sections: [
@@ -84,7 +83,6 @@ export default defineProduct({
             title: "Remembers between tasks",
             body: "It saves notes as JSON and looks them up when needed; they survive app updates.",
           },
-          { title: "Fixes as text", body: "It may write a change for you to apply; the app never runs it." },
         ],
       },
       {
@@ -117,16 +115,6 @@ export default defineProduct({
             body: "No. It reads only while you ask in a task; there is no background or scheduled run.",
             asOf: "v40.0.0",
           },
-          {
-            title: "What happens when a read is denied?",
-            body: "The service’s error comes back as it is, and the call stays in the conversation; saying what could not be read is the agent’s job.",
-            asOf: "v40.0.0",
-          },
-          {
-            title: "Can it change my storage?",
-            body: "No. No put, delete or other write call exists: only operations whose names say they read will run, and reads that hand out credentials are refused. A bucket list in an account’s settings limits which buckets it may read.",
-            asOf: "v40.0.0",
-          },
         ],
       },
     ],
@@ -155,7 +143,7 @@ export default defineProduct({
       networkNote: "请求发往你配置的模型和存储端点；安装版会向 GitHub Releases 检查更新。",
       stays: "密钥封存在系统钥匙串或本机加密文件里；任务、数据集和记忆存在本机的 SQLite 文件中；不收集遥测。",
     },
-    meta: "macOS / Windows / Linux · {version} · S3 兼容 · Apache-2.0",
+    meta: "macOS / Windows / Linux · S3 兼容 · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v40.0.0",
       items: [
@@ -174,8 +162,7 @@ export default defineProduct({
         width: 2360,
         height: 1396,
       },
-      caption:
-        "Storage Agent 40，取自其视觉测试：任务连的是项目仓库里的测试 S3 服务，由脚本写好的演示模型（fake-model）作答。界面为英文。",
+      caption: "Storage Agent 40，连接测试用 S3 服务，由演示模型作答；界面为英文。",
       asOf: "v40.0.0",
     },
     sections: [
@@ -189,7 +176,6 @@ export default defineProduct({
           { title: "多对象问题用脚本", body: "沙箱脚本列举、统计、读取对象内容，不能联网。" },
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },
           { title: "跨任务记住", body: "它把要记的内容存成 JSON，需要时自己查；应用升级后仍在。" },
-          { title: "修复是文本", body: "它可以写出变更供你执行，应用从不运行。" },
         ],
       },
       {
@@ -220,16 +206,6 @@ export default defineProduct({
           {
             title: "它会在后台巡检吗？",
             body: "不会。只有你在任务里提问时它才读取，没有后台或定时运行。",
-            asOf: "v40.0.0",
-          },
-          {
-            title: "读取被拒绝时会怎样？",
-            body: "服务返回的错误原样带回，这次调用留在对话里；哪些没能读到，由 Agent 来说明。",
-            asOf: "v40.0.0",
-          },
-          {
-            title: "它会改动我的存储吗？",
-            body: "不会。它没有任何写入或删除调用：只运行名字表明是读取的操作，会交出凭证的读取也会被拒绝。在账号设置里填写桶列表，可以限定它能读哪些桶。",
             asOf: "v40.0.0",
           },
         ],

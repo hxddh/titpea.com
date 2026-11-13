@@ -40,7 +40,7 @@ export default defineProduct({
         href: "/douban-movie-rating/privacy/",
       },
     },
-    meta: "Chrome Web Store · 1.7 · Ratings from OMDb",
+    meta: "Chrome · 1.7",
     visual: {
       kind: "screenshot",
       label: "Douban Movie Rating Assistant",
@@ -95,10 +95,6 @@ export default defineProduct({
             body: "Only on movie.douban.com. Film detail pages get the ratings line; elsewhere, such as Top 250, charts, and a detail page’s recommendations, it looks a film up only when you rest the pointer on its link for about 0.3 seconds. You can switch it off in the toolbar popup.",
           },
           {
-            title: "How reliable is a title match?",
-            body: "When the Douban page lists no IMDb ID, the extension searches OMDb by title and may accept a year one off. The result is marked as a title match; hover over the mark to see the film and year it matched.",
-          },
-          {
             title: "Why are ratings sometimes missing?",
             body: "Either OMDb has no rating for that film, or the built-in shared key has used up its daily limit. In that case the page offers a link to enter your own free OMDb key, which is checked before it is saved. A lookup that fails or takes longer than 8 seconds can be retried with a click; on hover, a failed lookup simply shows nothing.",
           },
@@ -134,7 +130,7 @@ export default defineProduct({
         href: "/zh/douban-movie-rating/privacy/",
       },
     },
-    meta: "Chrome 网上应用店 · 1.7 · 评分来自 OMDb",
+    meta: "Chrome · 1.7",
     visual: {
       kind: "screenshot",
       label: "豆瓣电影评分助手",
@@ -181,10 +177,6 @@ export default defineProduct({
           {
             title: "在哪些页面上运行？",
             body: "只在 movie.douban.com 上运行。电影详情页的影片信息末尾多一行其他评分；在 Top 250、排行榜、详情页的推荐等处，只有鼠标在影片链接上停留约 0.3 秒时才查询该片。可以在工具栏弹窗里关闭。",
-          },
-          {
-            title: "按片名匹配可靠吗？",
-            body: "豆瓣页面没有 IMDb 编号时，扩展按片名向 OMDb 查询，年份允许相差一年。结果旁会标注“按片名匹配”，鼠标悬停可查看匹配到的影片和年份。",
           },
           {
             title: "为什么有时看不到评分？",

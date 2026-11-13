@@ -78,7 +78,7 @@ export default defineProduct({
         width: 2560,
         height: 1476,
       },
-      caption: "sonde’s desktop app, captured from its own shots test; the session is its built-in demo.",
+      caption: "sonde’s desktop app, showing its built-in demo session.",
       asOf: "v16.0.0",
     },
     showcases: [
@@ -89,7 +89,7 @@ export default defineProduct({
         height: 1476,
         asOf: "v16.0.0",
         title: "Run it, watch its requests.",
-        body: "Type a command; its terminal and its S3 requests appear side by side. Your real keys never reach it.",
+        body: "Type a command; its terminal and its S3 requests appear side by side.",
       },
       {
         src: "/assets/sonde-compare-en.webp",
@@ -99,16 +99,6 @@ export default defineProduct({
         asOf: "v16.0.0",
         title: "What a change did.",
         body: "Compare two runs: requests, waiting, cost and findings, before and after.",
-      },
-      {
-        src: "/assets/sonde-time-en.webp",
-        dark: { src: "/assets/sonde-time-en-dark.webp", width: 2560, height: 1476 },
-        alt: "A session’s Time tab: tiles for requests, errors, latency, bytes and requests in flight, then a table of each operation’s requests, errors, median, p95 and p99, over the start of the traffic chart.",
-        width: 2560,
-        height: 1476,
-        asOf: "v16.0.0",
-        title: "Where the time went.",
-        body: "One timeline for the run: requests in flight, what ran at once, and bytes each way.",
       },
     ],
     commands: {
@@ -191,16 +181,6 @@ export default defineProduct({
             asOf: "v18.0.0",
           },
           {
-            title: "What does replay do to the other store?",
-            body: "`sonde compare <session> --replay <endpoint>` sends the session’s requests again, one at a time, with every key under a fresh `replay-<time>/` prefix that must be empty. A session holds no object data, so the bodies are stand-in bytes of the recorded length. Bucket-level changes and requests naming a version are left out. It asks first, and deletes what it wrote afterwards unless you pass `--keep`. Only `--in-place` keeps the recorded keys, and it is for scratch buckets only.",
-            asOf: "v18.0.0",
-          },
-          {
-            title: "Can it test how my program handles S3 failures?",
-            body: "Yes. `sonde run --trial` runs the command once normally, then once per fault scenario, while sonde answers chosen requests in the store’s place. The scenarios are picked from what the program did: a 503 on each request’s first attempt, a write whose answer is lost, a download cut half way, a slow first byte, clock skew, a completion answered 500, or a listing that misses a key just written, among others. Each one reads survived, degraded or broke, or refused when the recording policy, not the program, stopped it. A verdict other than survived names the request, its line of code and what to change, such as the SDK’s retry setting. After a fix, `sonde run --trial --again` runs only the scenarios that did not survive. Since the command runs once per scenario, point it at scratch paths with `{trial}` in a key.",
-            asOf: "v18.0.0",
-          },
-          {
             title: "Can I try it without an account?",
             body: "Yes: `sonde demo` gives a tour on a built-in store, with no account needed.",
             asOf: "v18.0.0",
@@ -252,7 +232,7 @@ export default defineProduct({
         width: 2560,
         height: 1476,
       },
-      caption: "sonde 桌面应用，取自它自己的截图测试；会话来自内置演示，本页截图界面均为英文。",
+      caption: "sonde 桌面应用，显示内置演示会话；本页截图界面均为英文。",
       asOf: "v16.0.0",
     },
     showcases: [
@@ -263,7 +243,7 @@ export default defineProduct({
         height: 1476,
         asOf: "v16.0.0",
         title: "运行它，看它发出的请求",
-        body: "输入一条命令，它的终端和它的 S3 请求并排出现。你的真实密钥不会交给它。",
+        body: "输入一条命令，它的终端和它的 S3 请求并排出现。",
       },
       {
         src: "/assets/sonde-compare-en.webp",
@@ -273,16 +253,6 @@ export default defineProduct({
         asOf: "v16.0.0",
         title: "改动带来了什么",
         body: "对比两次运行：请求、等待、费用和发现，前后一目了然。",
-      },
-      {
-        src: "/assets/sonde-time-en.webp",
-        dark: { src: "/assets/sonde-time-en-dark.webp", width: 2560, height: 1476 },
-        alt: "会话的“时间”页（英文界面）：请求、错误、延迟、字节和同时在途几块数字，下面是每类操作的请求数、错误、中位数、p95 和 p99，以及流量图的开头。",
-        width: 2560,
-        height: 1476,
-        asOf: "v16.0.0",
-        title: "时间花在了哪里",
-        body: "整次运行排在一条时间线上：同时在途的请求、哪些请求同时在跑，以及收发的字节。",
       },
     ],
     commands: {
@@ -356,16 +326,6 @@ export default defineProduct({
           {
             title: "支持哪些存储？",
             body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。它的 40 项兼容性探测会把各端点的差异排成一张表。不理会 `If-None-Match` 的存储（比如较旧的 MinIO 和 Ceph）仍会让程序覆盖对象，在那里请用 `--policy read-only`。",
-            asOf: "v18.0.0",
-          },
-          {
-            title: "重放会对另一个存储做什么？",
-            body: "`sonde compare <会话> --replay <端点>` 把会话里的请求按顺序逐个重发，所有键都放在新的 `replay-<时间>/` 前缀下，这个前缀必须是空的。会话不保存对象数据，所以请求体是与录制时等长的替代字节。存储桶级别的改动和指定版本的请求不会重发。它会先征得同意，结束后删掉自己写的内容，除非你加 `--keep`。只有 `--in-place` 沿用录制时的键，而且只用于临时存储桶。",
-            asOf: "v18.0.0",
-          },
-          {
-            title: "能测试程序遇到 S3 故障时的表现吗？",
-            body: "可以。`sonde run --trial` 先正常运行一次命令，再按每个故障场景各运行一次，由 sonde 代替存储回答其中一些请求。场景按程序做过的事挑选，比如每个请求的第一次尝试返回 503、写入的应答丢失、下载到一半被切断、首字节迟迟不到、时钟偏差、分段上传已完成却回答 500，或者列举漏掉刚写入的键。每个场景的结论是扛住、降级或未通过；如果拦下它的是录制策略而不是程序，结论是被策略拒绝。结论不是扛住时，会指出是哪个请求、哪一行代码，以及该改什么，比如 SDK 的重试设置。修好之后，`sonde run --trial --again` 只重跑没有扛住的场景。命令每个场景都要运行一次，所以让它写到临时路径，并在键里带上 `{trial}`。",
             asOf: "v18.0.0",
           },
           {

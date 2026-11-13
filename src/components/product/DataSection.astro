@@ -14,7 +14,7 @@ const { section } = Astro.props;
   <header class="section-head">
     <h2 class="heading">{headingText(section.title)}</h2>
   </header>
-  <ul class="section-body line-list data-list">
+  <ul class="section-body data-list">
     {section.items.map((item) => (
       <li>
         <Prose text={item} />

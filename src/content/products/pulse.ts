@@ -37,7 +37,7 @@ export default defineProduct({
       networkNote: "No network connection: no update check, nothing reported.",
       stays: "The event log stays on this Mac, readable only by you.",
     },
-    meta: "macOS 14+ · MIT · {version} · Menu bar",
+    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v33.0.0",
       summary:
@@ -197,20 +197,12 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "Which agents show waiting?",
-            body: "Four: Claude Code, Copilot CLI, OpenCode and Pi, through the hook, plugin or extension each vendor documents. Codex and Cursor show running and your turn only, and say they do not report waiting. A session that started before Pulse shows as process only until its next step.",
-          },
-          {
             title: "What does installing the hooks change?",
             body: "Install them from the setup card on first open or with Install all in Settings → Hooks; for Codex, Pulse writes only `~/.codex/hooks.json`, then you run `/hooks` in Codex to trust it. Only observe-only events are added, and removing them restores each file byte for byte; a file changed since then loses only Pulse's entries.",
           },
           {
             title: "Why is an agent not turning red?",
             body: "Open Settings → Hooks. Each agent on this Mac has a row: installed, needs update, failed with its reason, or not installed; the last event Pulse heard from it and when; the last event it ignored and why; and whether the agent reports waiting. Install all brings every row that needs an update up to date. Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
-          },
-          {
-            title: "Does Ignore answer the agent?",
-            body: "No. Ignore on the banner, like ⌘D in the tray, only stops Pulse reminding you of that wait and withdraws its banner. The prompt still waits in the agent's own window, and Pulse stays in the background.",
           },
           {
             title: "How do I remove Pulse?",
@@ -245,7 +237,7 @@ export default defineProduct({
       networkNote: "不连网络：不检查更新，不上报任何东西。",
       stays: "事件日志只在本机，只有你能读。",
     },
-    meta: "macOS 14+ · MIT · {version} · 菜单栏",
+    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v33.0.0",
       summary: "这一版把会话里发生了什么讲清楚。升级后旧的事件日志会清空，以前的时间线随之丢失，hook 不受影响。",
@@ -389,20 +381,12 @@ export default defineProduct({
         label: "常见问题",
         items: [
           {
-            title: "哪些 Agent 能显示等待？",
-            body: "四个：Claude Code、Copilot CLI、OpenCode 和 Pi，走各家文档里的 hook、插件或扩展。Codex 与 Cursor 只显示运行中和轮到你，并注明不会报告它在等你。Pulse 启动前就在跑的会话，在它的下一步之前只显示为“仅进程”。",
-          },
-          {
             title: "安装 hook 会改动什么？",
             body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”点“全部安装”；Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。只装观察型事件，移除时逐字节还原每个文件；之后改过的文件只删掉 Pulse 的条目。",
           },
           {
             title: "Agent 为什么没亮红灯？",
             body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：已安装、需要更新、安装失败及原因，或未安装；最近听到它的哪个事件、多久前；最近未采用的事件及原因；它会不会报告在等你。“全部安装”会更新所有需要更新的 Agent。“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
-          },
-          {
-            title: "横幅上的“忽略”会替我回答吗？",
-            body: "不会。横幅上的“忽略”和托盘里的 ⌘D 一样，只让 Pulse 不再提醒这个等待，并撤回横幅。提示仍在 Agent 自己的窗口里等着，Pulse 也不会跳到前台。",
           },
           {
             title: "怎样卸载 Pulse？",

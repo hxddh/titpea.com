@@ -1,18 +1,7 @@
-// Product pages: copy with its synced version, structured data, local nav, what's new.
+// Product pages: copy with its synced version, structured data, local nav.
 import { absoluteUrl, site, ui } from "../../content/site";
-import { type Line, type Locale, type Product, type ProductCopy, type ReleaseHighlights } from "../../content/schema";
-import {
-  type ReleaseNotes,
-  inPageLanguage,
-  otherLocale,
-  pageTitle,
-  pathFor,
-  plainText,
-  releaseTags,
-  releasedOf,
-  versionOf,
-  readableLine,
-} from "./shared";
+import { type Line, type Locale, type Product, type ProductCopy } from "../../content/schema";
+import { otherLocale, pageTitle, pathFor, plainText, releasedOf, versionOf } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
 import { type Family, familyFor } from "./catalog";
@@ -38,8 +27,6 @@ export type ProductPageModel = {
   version?: string;
   /** Publish date of that release, already formatted for the locale. */
   released?: string;
-  /** Summary and highlights quoted from the release's own notes. */
-  whatsNew?: ReleaseNotes & { version: string; title: string; linkLabel: string; released?: string };
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -133,7 +120,6 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     icon: product.icon,
     version,
     released: releasedOf(product.slug, locale),
-    whatsNew: whatsNewFor(product.slug, locale, version, product[locale].releaseHighlights),
     downloadsRelease: !copy.primaryCta.soon && Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
@@ -141,41 +127,5 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     family: familyFor(product.slug, locale),
     primaryCta: copy.primaryCta.soon ? undefined : copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
-  };
-}
-
-function whatsNewFor(slug: string, locale: Locale, version?: string, override?: ReleaseHighlights) {
-  const copy = ui[locale];
-  const synced = releaseTags[slug]?.notes;
-  const url = synced?.url ?? `https://github.com/${releaseTags[slug]?.repo}/releases/tag/${version}`;
-  if (version && override?.version === version) {
-    return {
-      summary: override.summary ?? "",
-      items: override.items,
-      url,
-      version,
-      title: copy.whatsNew.replace("{version}", version),
-      linkLabel: copy.releaseNotes,
-      released: releasedOf(slug, locale),
-    };
-  }
-  const notes = synced;
-  if (!version || !notes || (!notes.summary && notes.items.length === 0)) return undefined;
-  // Lines in another language are left to the release page, and so are test
-  // checklists quoted from the notes ("✓ uses Read"). With no line left the
-  // section is left out: the spec strip already gives the tag and its date,
-  // and a bare tag between two sections read as an accident. The release
-  // title is the author's shorthand ("context economy and Codex chrome"), so
-  // only a curated override carries a summary.
-  const items = notes.items.filter((item) => inPageLanguage(item, locale) && readableLine(item));
-  if (items.length === 0) return undefined;
-  return {
-    summary: "",
-    items,
-    url,
-    version,
-    title: copy.whatsNew.replace("{version}", version),
-    linkLabel: copy.releaseNotes,
-    released: releasedOf(slug, locale),
   };
 }

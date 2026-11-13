@@ -37,7 +37,7 @@ export default defineProduct({
       stays:
         "Sessions in your own BOS bucket, cached by local Celld nodes; storage keys from your environment or ~/.aws/credentials.",
     },
-    meta: "Pi Coding Agent TUI · Baidu BOS · MIT · {version}",
+    meta: "Pi · Baidu BOS · MIT · {version}",
     commands: {
       title: "Get started",
       sub: "After installing, check that celagent can reach your BOS bucket.",
@@ -120,10 +120,6 @@ export default defineProduct({
             body: "Retryable failures stay queued, and recovery on another machine waits for a successful write. Recovery reads BOS first and uses the local Celld cache only when the session is not in BOS at all. A BOS timeout or permission error never falls back to that cache, which may be truncated.",
           },
           {
-            title: "How is history stored?",
-            body: "Each session is saved in your bucket as `sessions/<id>.jsonl`, Pi's own history format, with tool calls and branches. Older `.json` sessions can still be read and are restored as text.",
-          },
-          {
             title: "How do I install it?",
             body: "Run the install script under Get started. On Windows, run the README’s `install.ps1` command in PowerShell; it installs celagent without Celld, which has no Windows package upstream. Then run `celagent doctor`.",
           },
@@ -154,7 +150,7 @@ export default defineProduct({
       networkNote: "每次提问发往你配置的模型，每个完成的轮次写入你自己的 BOS 存储桶。",
       stays: "会话在你自己的 BOS 存储桶里，本机 Celld 节点留有缓存；存储凭据来自环境变量或 ~/.aws/credentials。",
     },
-    meta: "Pi 编码 Agent 终端界面 · 百度 BOS · MIT · {version}",
+    meta: "Pi · 百度 BOS · MIT · {version}",
     commands: {
       title: "开始使用",
       sub: "装好后，检查 celagent 能否连上你的 BOS 存储桶。",
@@ -223,10 +219,6 @@ export default defineProduct({
           {
             title: "BOS 写入失败会怎样？",
             body: "可重试的失败会留在队列里，换机恢复要等写入成功。恢复时先读 BOS，只有 BOS 里根本没有这个会话，才改用本机 Celld 的缓存；BOS 超时或权限出错时不会改用缓存，因为缓存可能被截断。",
-          },
-          {
-            title: "历史怎么保存？",
-            body: "每个会话以 `sessions/<id>.jsonl` 存在存储桶里，这是 Pi 自己的历史格式，含工具调用和分支。旧的 `.json` 会话仍能读取，按文本恢复。",
           },
           {
             title: "怎么安装？",

@@ -52,7 +52,7 @@ export default defineProduct({
       networkNote: "A weekly update check against GitHub Releases, which you can turn off.",
       stays: "On your Mac: rendering a document sends no network request.",
     },
-    meta: "macOS 26+ · MIT · {version} · Quick Look",
+    meta: "macOS 26+ · MIT · {version}",
     releaseHighlights: {
       version: "v6.0.0",
       summary:
@@ -94,15 +94,6 @@ export default defineProduct({
         alt: "Three document tabs, two with a blue unread dot, above a plan.",
         title: "Everything waiting, in one place.",
         body: "A blue dot marks each tab with something new; N walks the changes, then on to the next.",
-      },
-      {
-        src: "/assets/readout-dark-en.webp",
-        width: 2487,
-        height: 1469,
-        asOf: "v6.0.0",
-        alt: "A dark-mode design note showing a Swift code block, a Mermaid flowchart and a KaTeX formula.",
-        title: "Dark when your Mac is.",
-        body: "Code, Mermaid diagrams and math follow the system appearance.",
       },
     ],
     sections: [
@@ -154,17 +145,8 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "How do I install it?",
-            body: "Download `Readout-x.y.z.dmg` from GitHub Releases, open it and drag Readout to Applications. Readout → Check for Updates… looks for newer releases.",
-          },
-          {
             title: "Can I open files from the terminal?",
             body: "Agents need no setup: the folders in Settings are enough. For a `readout` command in Terminal, link the script inside the app once: `mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, `readout plan.md#risks` opens it at a section, and `readout ~/.claude/plans` opens the newest Markdown file in a folder. `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps, and `readout --version` prints the version.",
-          },
-          {
-            title: "Can a Claude Code hook open what it writes?",
-            body: "Yes, instead of a watched folder and without the `readout` link. In `~/.claude/settings.json`, add `/Applications/Readout.app/Contents/Resources/readout --hook` as a `PostToolUse` command for `Write|Edit|MultiEdit`. Every Markdown file Claude Code writes or edits then opens in the background. The hook also passes the folder Claude Code works in, so file paths in a plan kept in `~/.claude/plans` link to the files in that project. The same command works as a Cursor hook (`afterFileEdit`) or a Gemini CLI hook (`AfterTool`); the README shows both.",
-            asOf: "v6.0.0",
           },
           {
             title: "Which folders does Readout watch?",
@@ -204,7 +186,7 @@ export default defineProduct({
       networkNote: "每周一次 GitHub Releases 更新检查，可在设置中关闭。",
       stays: "在本机：渲染文档时不发出任何网络请求。",
     },
-    meta: "macOS 26+ · MIT · {version} · Quick Look",
+    meta: "macOS 26+ · MIT · {version}",
     releaseHighlights: {
       version: "v6.0.0",
       summary: "Readout 6 做得更少：打开文件不用等，打开时从不运行任何命令，只标出真正改过的地方。",
@@ -246,15 +228,6 @@ export default defineProduct({
         title: "所有待读文档，一眼可见",
         body: "有新内容的标签页带蓝点；按 N 逐处看改动，看完跳到下一份。",
       },
-      {
-        src: "/assets/readout-dark-en.webp",
-        width: 2487,
-        height: 1469,
-        asOf: "v6.0.0",
-        alt: "暗色模式下的设计笔记，包含 Swift 代码块、Mermaid 流程图和 KaTeX 公式。",
-        title: "跟随系统深色",
-        body: "代码、Mermaid 图表和公式都跟着系统外观走。",
-      },
     ],
     sections: [
       {
@@ -290,17 +263,8 @@ export default defineProduct({
         label: "常见问题",
         items: [
           {
-            title: "怎样安装？",
-            body: "从 GitHub Releases 下载 `Readout-x.y.z.dmg`，打开后把 Readout 拖进“应用程序”。之后可用“Readout → 检查更新…”查找新版本。",
-          },
-          {
             title: "能从终端打开文件吗？",
             body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想在终端里用 `readout` 命令，把 App 里自带的脚本链接出来一次即可，`~/.local/bin` 需要在 `PATH` 中。先建目录：`mkdir -p ~/.local/bin`。再链接：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件，`readout plan.md#风险` 打开并跳到对应章节。`readout ~/.claude/plans` 打开文件夹中最新的 Markdown 文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。`readout --version` 显示版本号。",
-          },
-          {
-            title: "能用 Claude Code hook 打开它写的文件吗？",
-            body: "能，可以代替文件夹监视，也不需要链接 `readout`。在 `~/.claude/settings.json` 里添加 `PostToolUse` hook，matcher 设为 `Write|Edit|MultiEdit`。命令填 `/Applications/Readout.app/Contents/Resources/readout --hook`。之后 Claude Code 写入或修改的每个 Markdown 文件都会在后台打开。hook 还会传入 Claude Code 的工作目录，因此保存在 `~/.claude/plans` 中的计划里的文件路径会链接到该项目中的文件。同一条命令也可以作为 Cursor hook（`afterFileEdit`）或 Gemini CLI hook（`AfterTool`）使用，README 里有两者的写法。",
-            asOf: "v6.0.0",
           },
           {
             title: "Readout 会监视哪些文件夹？",

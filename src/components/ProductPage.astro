@@ -18,7 +18,6 @@ import LocalNav from "./product/LocalNav.astro";
 import Prose from "./product/Prose.astro";
 import ShowcaseSection from "./product/ShowcaseSection.astro";
 import Visual from "./product/Visual.astro";
-import WhatsNewSection from "./product/WhatsNewSection.astro";
 import { demoStyles } from "./product/demo-styles";
 
 interface Props {
@@ -79,15 +78,6 @@ const facts: Array<{ value: string; href?: string }> = [
   // The version is said once: not here when the primary action already carries it.
   ...((model.version || metaVersion) && !model.downloadsRelease ? [{ value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ value: model.released }] : []),
-  // The network level keeps its label, joined in one string so no space
-  // follows a full-width colon.
-  ...(copy.privacy
-    ? [
-        {
-          value: `${copyUi.spec.network}${model.locale === "zh" ? "：" : ": "}${copyUi.privacyLevels[copy.privacy.network]}`,
-        },
-      ]
-    : []),
   ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
 ];
 // Provenance is said once: under the hero capture, the release it shows; under
@@ -228,10 +218,9 @@ const showcaseLabels = showcases.map((showcase) => {
     />
   ))}
 
-  {/* What it does; then what's new and Get started; then where the data goes and the FAQ. */}
+  {/* What it does; then Get started; then where the data goes and the FAQ. The
+      latest release's notes are on Releases (design v6). */}
   {copy.sections.map((section) => (section.kind === "cards" ? <CardsSection section={section} /> : null))}
-
-  {model.whatsNew && <WhatsNewSection notes={model.whatsNew} />}
 
   {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
 

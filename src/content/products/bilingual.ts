@@ -40,12 +40,11 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0 · On-device translation",
+    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "Bilingual",
-      caption:
-        "Try it: sample text written for this page, in French with an English translation. Here the translation is fixed; the extension translates the pages you read.",
+      caption: "Try it: sample French text, with a translation written for this page.",
       demo: {
         kind: "bilingual",
         label: "Bilingual peek, working copy",
@@ -72,7 +71,7 @@ export default defineProduct({
         asOf: "v4.0.0",
         title: "One sentence, both sides.",
         body: "Point at a sentence and its counterpart lights up in the other language.",
-        caption: "Bilingual 4.0.0 in Chrome on a sample page; the translation was written for this image.",
+        caption: "A sample page; the translation was written for this image.",
       },
       {
         src: "/assets/bilingual-lookup-en.webp",
@@ -82,7 +81,7 @@ export default defineProduct({
         asOf: "v4.0.0",
         title: "A word, in this sentence.",
         body: "Hold the key over a word. With Precise translation, you get its meaning in this sentence, not a dictionary list.",
-        caption: "Bilingual 4.0.0 in Chrome on a sample page; the note was written for this image.",
+        caption: "A sample page; the note was written for this image.",
       },
     ],
     sections: [
@@ -132,14 +131,6 @@ export default defineProduct({
             body: "⌥ on Mac, Shift on other systems. You can also assign a shortcut for switching modes at `chrome://extensions/shortcuts`.",
           },
           {
-            title: "What is Precise translation?",
-            body: "An optional mode that uses a provider you choose, with your own API key. It sends paragraphs to that provider only when you ask, and covers language pairs that on-device translation lacks.",
-          },
-          {
-            title: "Which languages does it translate into?",
-            body: "Chinese (Simplified and Traditional), Japanese, Korean, English, French, German, Spanish, Portuguese, Russian, Italian, and 27 more. It defaults to your browser’s language, or English when that is not on the list.",
-          },
-          {
             title: "Is it free?",
             body: "Yes. On-device translation is free, with no account or subscription. Precise translation uses your own API key, so the provider bills you for it.",
           },
@@ -174,11 +165,11 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0 · 本地翻译",
+    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "对读",
-      caption: "试一试：为本页撰写的示例文字，英文原文配中文译文。这里的译文是预先写好的；扩展翻译的是你正在读的网页。",
+      caption: "试一试：示例英文原文，译文为本页预先写好。",
       demo: {
         kind: "bilingual",
         label: "对读按键查看的可操作演示",
@@ -205,7 +196,7 @@ export default defineProduct({
         asOf: "v4.0.0",
         title: "一句对一句",
         body: "指向任意一句，原文和译文里对应的那句同时高亮。",
-        caption: "对读 4.0.0，Chrome 中的示例页面；译文为这张图预先写好。",
+        caption: "示例页面；译文为这张图预先写好。",
       },
       {
         src: "/assets/bilingual-lookup-zh.webp",
@@ -215,7 +206,7 @@ export default defineProduct({
         asOf: "v4.0.0",
         title: "查词，看它在这句里的意思",
         body: "按住键停在词上。用精译时，给出的是它在这句话里的意思，而不是一串词典释义。",
-        caption: "对读 4.0.0，Chrome 中的示例页面；释义为这张图预先写好。",
+        caption: "示例页面；释义为这张图预先写好。",
       },
     ],
     sections: [
@@ -257,14 +248,6 @@ export default defineProduct({
           {
             title: "按哪个键？",
             body: "Mac 上是 ⌥，其他系统是 Shift。也可以在 `chrome://extensions/shortcuts` 给切换指定一个快捷键。",
-          },
-          {
-            title: "什么是精译？",
-            body: "一种可选的翻译方式：用你自己的 API 密钥，调用你选择的服务商。只有你要看时，段落才会发给它；本地翻译不支持的语言组合，也可以用精译。",
-          },
-          {
-            title: "能译成哪些语言？",
-            body: "简体中文、繁体中文、日语、韩语、英语、法语、德语、西班牙语、葡萄牙语、俄语、意大利语，以及另外 27 种。默认译成浏览器界面语言，不在列表里就译成英文。",
           },
           {
             title: "免费吗？",

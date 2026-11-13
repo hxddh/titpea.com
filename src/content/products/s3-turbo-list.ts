@@ -36,7 +36,7 @@ export default defineProduct({
       stays:
         "Listings, checkpoints and logs in your output directory; credentials from your AWS profile or environment.",
     },
-    meta: "Rust · Apache-2.0 · {version} · S3-compatible · Parquet · Machine-readable JSON",
+    meta: "Rust · S3-compatible · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v0.39.0",
       items: [
@@ -149,10 +149,6 @@ Doctor status: ok`,
             body: "For a quick look at a small bucket, `aws s3 ls` from the AWS command-line tool is often enough. s3-turbo-list is for large inventories and repeatable comparisons, where the output file and resuming after an interruption matter.",
           },
           {
-            title: "How does a run start in parallel?",
-            body: "Every run starts with a few listing requests that find the bucket’s real folder boundaries (`CommonPrefixes`) and splits the work there; nothing is cached in the working directory. A bucket with no folders, or one large folder (like `data/part-…` under `data/`), is split by probing single keys instead, so the run starts in parallel either way.",
-          },
-          {
             title: "Can an interrupted run pick up where it stopped?",
             body: "Yes. Every interrupted `list` run saves a checkpoint on Ctrl-C or SIGTERM. Run it again with `--resume` and the same `--output-dir`, and it lists only the key ranges not yet written; that output covers only those ranges, so combine it with the interrupted run’s. A crash leaves the previous checkpoint unchanged, and `diff` and `--start-after` runs do not checkpoint.",
           },
@@ -183,7 +179,7 @@ Doctor status: ok`,
       networkNote: "只访问你要列举或对比的 S3 端点；不检查更新，没有遥测。",
       stays: "对象清单、checkpoint 和日志写在你的输出目录；凭据来自你的 AWS profile 或环境变量。",
     },
-    meta: "Rust · Apache-2.0 · {version} · S3 兼容 · Parquet · 机器可读 JSON",
+    meta: "Rust · S3 兼容 · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v0.39.0",
       items: [
@@ -278,10 +274,6 @@ Doctor status: ok`,
           {
             title: "aws s3 ls 不够用吗？",
             body: "临时看一眼小桶时，AWS 命令行工具的 `aws s3 ls` 通常就够了。s3-turbo-list 面向大规模盘点和可重复的对比，这时输出文件和中断后接着跑更重要。",
-          },
-          {
-            title: "怎样一开始就并行？",
-            body: "每次运行都先发几次列举请求，找到桶里真实的文件夹边界（`CommonPrefixes`），在那里拆分工作；工作目录里不留缓存。没有文件夹的桶，或者一个很大的文件夹（如 `data/` 下的 `data/part-…`），改为逐个探测单个 key 来拆分，所以都能一开始就并行。",
           },
           {
             title: "中断的任务能接着跑吗？",

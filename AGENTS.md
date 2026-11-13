@@ -4,7 +4,7 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (design v5: text in one centred reading column on every page, pictures across the shell, each section under its heading, lists on hairlines; the facts as one line under the actions so the product starts on the first screen, up to three showcases or a demo, one feature list, commands, data, FAQ), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — the page shape (design v6: text in one centred reading column on every page, pictures across the shell, each section under its heading; the facts as one short line under the actions so the product starts on the first screen, up to two showcases or a demo, one feature list three across the shell, commands, data, at most three FAQ; each claim said once), measurable floors, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 

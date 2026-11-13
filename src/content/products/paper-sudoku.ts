@@ -52,7 +52,7 @@ export default defineProduct({
         href: "/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0 · Phones and tablets · No network permission",
+    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "Paper Sudoku",
@@ -63,7 +63,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
       },
-      caption: "Drawn by the app’s own screenshot test at Google Play’s phone size (14.0)",
+      caption: "Drawn by the app’s screenshot test at phone size (14.0)",
       asOf: "v14.0.0-sideload",
     },
     showcases: [
@@ -83,15 +83,6 @@ export default defineProduct({
         height: 1920,
         title: "Every day stays in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
-        asOf: "v14.0.0-sideload",
-      },
-      {
-        src: "/assets/paper-sudoku-handbook.webp",
-        alt: "The handbook’s X-Wing page, 7 of 11: a 9×9 example with two rows and two columns outlined in oxblood, crossed-out candidates, and “Seen” under the board",
-        width: 1080,
-        height: 1920,
-        title: "A handbook that teaches.",
-        body: "Each technique has a worked example from a real page, drawn the way the Coach draws it, and shows how well you know it: seen, practised or known.",
         asOf: "v14.0.0-sideload",
       },
     ],
@@ -143,16 +134,6 @@ export default defineProduct({
             body: "It is not on Google Play yet. A Play build is being prepared; until then the builds are sideload builds, installed by hand for testing outside Play.",
           },
           {
-            title: "Will a new build update the one I have?",
-            body: "From 9.0, sideload builds can be signed with one fixed key, so a later build installs over the one you have. Moving from an earlier build needs one last uninstall.",
-            asOf: "v14.0.0-sideload",
-          },
-          {
-            title: "Which languages does it speak?",
-            body: "English, Simplified Chinese and Traditional Chinese. On Android 13 and later, the app’s language can be set in its Settings.",
-            asOf: "v14.0.0-sideload",
-          },
-          {
             title: "Does it work with TalkBack and a keyboard?",
             body: "Yes. With TalkBack each cell can be written or erased from the cell itself, and the keys come straight after the board; a hardware keyboard writes digits too.",
             asOf: "v14.0.0-sideload",
@@ -189,7 +170,7 @@ export default defineProduct({
         href: "/zh/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0 · 手机与平板 · 不申请联网权限",
+    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "纸上数独",
@@ -200,7 +181,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
       },
-      caption: "由应用自带的截图测试按 Google Play 手机尺寸绘制（14.0，界面为英文）",
+      caption: "由应用的截图测试按手机尺寸绘制（14.0，界面为英文）",
       asOf: "v14.0.0-sideload",
     },
     showcases: [
@@ -220,15 +201,6 @@ export default defineProduct({
         height: 1200,
         title: "每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
-        asOf: "v14.0.0-sideload",
-      },
-      {
-        src: "/assets/paper-sudoku-handbook-zh.webp",
-        alt: "技巧手册第 7 页（共 11 页）“X 翼”：一道 9×9 例题，第 3、7 列和第 2、8 行用暗红色框出，划掉了两行上多余的 2，盘下标着“见过”和例题讲解",
-        width: 540,
-        height: 1200,
-        title: "一本会教的手册",
-        body: "每种技巧配一道真实例题，画法和教练一样，并标出你对它的掌握：见过、练过或掌握。",
         asOf: "v14.0.0-sideload",
       },
     ],
@@ -269,16 +241,6 @@ export default defineProduct({
           {
             title: "在哪里下载？",
             body: "还没有上架 Google Play，上架版本正在准备中；在那之前的版本都是侧载版，即在 Play 之外手动安装、用于测试的版本。",
-          },
-          {
-            title: "新版本能直接覆盖安装吗？",
-            body: "从 9.0 起，侧载版可以用同一把固定密钥签名，之后的版本能直接覆盖安装。从更早的版本升级，需要最后卸载一次。",
-            asOf: "v14.0.0-sideload",
-          },
-          {
-            title: "支持哪些语言？",
-            body: "英文、简体中文和繁体中文。Android 13 及以上可以在应用的设置里单独选择语言。",
-            asOf: "v14.0.0-sideload",
           },
           {
             title: "能用 TalkBack 和键盘吗？",

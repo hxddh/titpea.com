@@ -36,7 +36,7 @@ export default defineProduct({
         "Scheduled GitHub Actions runs fetch public sources and send them to the AI model service you configure.",
       stays: "Reports, telemetry and run logs are committed to your own repository; model keys are repository secrets.",
     },
-    meta: "Python · Markdown-first · GitHub Actions · MIT · {version}",
+    meta: "Python · GitHub Actions · MIT · {version}",
     releaseHighlights: {
       version: "v0.26.3",
       items: [
@@ -148,7 +148,7 @@ export default defineProduct({
       networkNote: "GitHub Actions 定时运行，抓取公开来源，交给你配置的 AI 模型服务。",
       stays: "报告、遥测和运行日志提交到你自己的仓库；模型密钥存为仓库 secret。",
     },
-    meta: "Python · Markdown 优先 · GitHub Actions · MIT · {version}",
+    meta: "Python · GitHub Actions · MIT · {version}",
     releaseHighlights: {
       version: "v0.26.3",
       items: [
