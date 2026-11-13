@@ -15,7 +15,7 @@ export default defineProduct({
   en: {
     title: "httpmon",
     description: "A terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
-    eyebrow: "Go CLI",
+    eyebrow: "HTTP traffic CLI",
     headline: "See the HTTP traffic.",
     lead: "Put httpmon in front of a command that can use a proxy, like curl, to watch its HTTP traffic live. Responses reach it unchanged.",
     catalog: {
@@ -152,7 +152,7 @@ export default defineProduct({
   zh: {
     title: "httpmon",
     description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
-    eyebrow: "Go CLI",
+    eyebrow: "HTTP 流量命令行工具",
     headline: "看清命令的 HTTP 流量",
     lead: "把 httpmon 放在一条能走代理的命令前面（比如 curl），实时查看它的 HTTP 流量。命令收到的响应保持原样。",
     catalog: {

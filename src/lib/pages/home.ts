@@ -94,6 +94,9 @@ export function homePage(locale: Locale): HomePageModel {
         const visual = product[locale].visual;
         return {
           ...indexItem(product, locale),
+          // A pick says the product's claim; the index below keeps its catalog
+          // line, so Home never says the same sentence twice.
+          text: product[locale].headline,
           image:
             visual.kind === "screenshot" ? visual.image : { ...image, src: featuredSrc(product.featured!, locale) },
           caption: product.featured!.caption?.[locale],

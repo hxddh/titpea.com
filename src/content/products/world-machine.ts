@@ -28,7 +28,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/world-machine/releases",
     },
     secondaryCta: {
-      label: "View on GitHub",
+      label: "View source",
       href: "https://github.com/hxddh/world-machine",
     },
     installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
@@ -68,7 +68,7 @@ export default defineProduct({
         alt: "Pocket Universe on Ares, sol 35: domes, habitat modules and a greenhouse on red regolith, gauges for trust, tension and stores, and Nia asking whether the grow lights can run an hour longer because the beans are sulking. Captured from the app running in its Linux preview.",
         title: "Not only a harbour town.",
         body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
-        caption: "Captured from the app running in its Linux preview.",
+        caption: "Captured from the app running in its Linux preview, as are the pictures below.",
       },
       {
         src: "/assets/world-machine-moment.webp",
@@ -78,7 +78,6 @@ export default defineProduct({
         alt: "A moment in Tiny Society on day 360: a three-panel strip titled Rosa settles for good, captioned before, during and after, over the harbour. Captured from the app running in its Linux preview.",
         title: "Big moments, in three panels.",
         body: "Weddings, births and farewells, drawn before, during and after.",
-        caption: "Captured from the app running in its Linux preview.",
       },
       {
         src: "/assets/world-machine-night.webp",
@@ -88,7 +87,6 @@ export default defineProduct({
         alt: "Tiny Society at night in spring: lit windows along the harbour, the gauges and zoom buttons dark to match, while the drawer, listing the new pier and a lamp on the point under way, and Mia's card with today's choice are warm paper. Captured from the app running in its Linux preview.",
         title: "At night, the windows light up.",
         body: "Even in the light appearance, gauges and buttons darken with the sky, while the drawer and cards stay light and readable.",
-        caption: "Captured from the app running in its Linux preview.",
       },
     ],
     sections: [
@@ -172,7 +170,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/world-machine/releases",
     },
     secondaryCta: {
-      label: "查看 GitHub",
+      label: "查看源码",
       href: "https://github.com/hxddh/world-machine",
     },
     installNote: "尚未公证：首次启动需要一次“仍要打开”。",
@@ -212,7 +210,7 @@ export default defineProduct({
         alt: "Pocket Universe 的 Ares 第 35 个火星日：红色风化层上的穹顶、居住舱和温室，信任、紧张与储备三个指标，Nia 问能不能让补光灯多开一小时，因为豆子在闹脾气。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "不只是港口",
         body: "Pocket Universe 可以落在 Ares、1987 年的 Maple Street 或 Icebridge，各有各的样子。",
-        caption: "截自应用在 Linux 预览环境中的运行画面。",
+        caption: "此图及下面几张截自应用在 Linux 预览环境中的运行画面。",
       },
       {
         src: "/assets/world-machine-moment.webp",
@@ -222,7 +220,6 @@ export default defineProduct({
         alt: "Tiny Society 第 360 天的一个时刻：港口上方一组三格画，标题“Rosa settles for good”，分别配着之前、当时、之后的说明。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "大事画成三格",
         body: "婚礼、出生、告别，画成之前、当时、之后。",
-        caption: "截自应用在 Linux 预览环境中的运行画面。",
       },
       {
         src: "/assets/world-machine-night.webp",
@@ -232,7 +229,6 @@ export default defineProduct({
         alt: "春天夜里的 Tiny Society：港口沿岸窗里亮着灯，指标和缩放按钮随之变暗；右侧抽屉列着在建的新码头和岬角上的灯，Mia 的今日选择卡片，二者都是暖色的纸。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "夜里，窗户亮起灯",
         body: "即使用浅色外观，指标和按钮也会随夜空变暗；抽屉和卡片仍是浅色，清楚易读。",
-        caption: "截自应用在 Linux 预览环境中的运行画面。",
       },
     ],
     sections: [

@@ -422,23 +422,8 @@
     line-height: 1.6;
   }
 
-  /* The closing: the name and the action once more, then where to go next
-   on one hairline: the line's tools side by side. */
-  .final-cta {
-    text-align: center;
-  }
-
-  .final-cta-name {
-    margin: 0;
-    font-size: var(--title-display);
-    line-height: 1.04;
-  }
-
-  .final-cta .actions {
-    justify-content: center;
-    margin-top: 28px;
-  }
-
+  /* A family, when the product belongs to one: its tools side by side with
+   their steps, on one hairline. */
   .closing-next {
     display: flex;
     flex-wrap: wrap;
@@ -446,9 +431,10 @@
     justify-content: center;
     gap: 4px 32px;
     max-width: var(--narrow);
-    margin: 72px auto 0;
+    margin: 0 auto;
     padding-top: 20px;
     border-top: 1px solid var(--line);
+    text-align: center;
   }
 
   .closing-next .tool-links {

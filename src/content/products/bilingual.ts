@@ -15,7 +15,7 @@ export default defineProduct({
     title: "Bilingual",
     description:
       "Chrome extension that shows the original by default, a paragraph’s translation while you hold a key, or both languages together.",
-    eyebrow: "Chrome extension",
+    eyebrow: "Translation extension for Chrome",
     headline: "Hold a key to translate.",
     lead: "Leaves pages in their original language. Hold a key to see a paragraph’s translation, or tap it twice to keep both showing.",
     catalog: {
@@ -150,7 +150,7 @@ export default defineProduct({
   zh: {
     title: "对读",
     description: "Chrome 扩展：默认只显示原文，按住一个键看这一段的译文，也能切到双语对照。",
-    eyebrow: "Chrome 扩展",
+    eyebrow: "Chrome 翻译扩展",
     headline: "按住一个键，看译文",
     lead: "网页默认保持原文。按住一个键，看这一段的译文；连按两下，原文和译文一起保留。",
     catalog: {

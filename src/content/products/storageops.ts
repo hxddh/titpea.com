@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "StorageOps",
     description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
-    eyebrow: "Pi Coding Agent extension",
+    eyebrow: "Storage troubleshooting for Pi",
     headline: "S3 diagnosis for Pi.",
     lead: "Troubleshoot object storage inside Pi, the open-source coding agent, using the logs and traces you bring. No cloud account is needed.",
     catalog: {
@@ -154,7 +154,7 @@ export default defineProduct({
   zh: {
     title: "StorageOps",
     description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与技能包。",
-    eyebrow: "Pi Coding Agent 扩展",
+    eyebrow: "Pi 存储排障扩展",
     headline: "在 Pi 里排查对象存储",
     lead: "在开源编码 Agent Pi 里，用你提供的日志和 trace 排查对象存储问题，不需要云账号。",
     catalog: {

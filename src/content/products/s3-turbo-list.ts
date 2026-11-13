@@ -15,7 +15,7 @@ export default defineProduct({
   en: {
     title: "s3-turbo-list",
     description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
-    eyebrow: "Rust CLI",
+    eyebrow: "S3 inventory CLI",
     headline: "Know what’s in a bucket.",
     lead: "Lists a large S3 bucket, or compares two, in parallel with no tuning. The result is a Parquet file, ready to query in DuckDB.",
     catalog: {
@@ -163,7 +163,7 @@ Doctor status: ok`,
   zh: {
     title: "s3-turbo-list",
     description: "自动分段的 S3 兼容 list / diff，输出可直接分析的 Parquet 结果。",
-    eyebrow: "Rust CLI",
+    eyebrow: "S3 清单命令行工具",
     headline: "存储桶里有什么，一次列清",
     lead: "并行列出一个大的 S3 存储桶，或对比两个桶，无需调参。结果是 Parquet 文件，可以直接用 DuckDB 查询。",
     catalog: {

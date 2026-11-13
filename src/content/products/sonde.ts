@@ -212,7 +212,7 @@ export default defineProduct({
   zh: {
     title: "sonde",
     description: "桌面应用、终端界面和命令行：录下程序对 S3 做了什么，读成操作和发现，还能在另一个存储上重放。",
-    eyebrow: "对象存储诊断",
+    eyebrow: "S3 流量记录器",
     headline: "看清你的程序对 S3 做了什么",
     lead: "让程序经过 sonde 运行，把它发给 S3 的请求读成一个个操作，指出值得一看的地方，并看出存储出故障时它能否扛住。",
     catalog: {

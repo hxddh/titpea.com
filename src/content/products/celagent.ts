@@ -16,7 +16,7 @@ export default defineProduct({
     title: "celagent",
     description:
       "Pi, the open-source terminal coding agent, with sessions saved to Baidu Object Storage (BOS) and restored by ID on another configured machine.",
-    eyebrow: "Built on Pi, the open-source terminal coding agent",
+    eyebrow: "Session sync for Pi",
     headline: "Resume on a new machine.",
     lead: "Saves each Pi coding-agent session to Baidu Object Storage (BOS), turn by turn. Resume it on another machine you have set up.",
     catalog: {
@@ -28,7 +28,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/celagent/releases/latest",
     },
     secondaryCta: {
-      label: "View on GitHub",
+      label: "View source",
       href: "https://github.com/hxddh/celagent",
     },
     privacy: {
@@ -134,7 +134,7 @@ export default defineProduct({
   zh: {
     title: "celagent",
     description: "基于开源终端编码 Agent Pi，把会话保存在百度对象存储（BOS），按 ID 在另一台已配置的机器上恢复。",
-    eyebrow: "基于开源终端编码 Agent Pi",
+    eyebrow: "Pi 会话同步",
     headline: "换台机器，接着写",
     lead: "把 Pi 编码 Agent 的会话逐轮存进百度对象存储（BOS），在另一台配置好的机器上按 ID 接着用。",
     catalog: {
@@ -146,7 +146,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/celagent/releases/latest",
     },
     secondaryCta: {
-      label: "查看 GitHub",
+      label: "查看源码",
       href: "https://github.com/hxddh/celagent",
     },
     privacy: {

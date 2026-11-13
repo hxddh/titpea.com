@@ -1,5 +1,5 @@
-// The Chinese display lines in the built site: every h1, h2 and closing-band
-// name on a Chinese page. The display font subset (npm run assets:fonts) is
+// The Chinese display lines in the built site: every h1 and h2 on a Chinese
+// page. The display font subset (npm run assets:fonts) is
 // cut to these characters, and check:dist fails when one is missing from it.
 import fs from "node:fs";
 import path from "node:path";
@@ -14,10 +14,7 @@ const decode = (value) =>
 /** Text of the display lines in one page, or "" for a page that is not Chinese. */
 export function zhDisplayText(html) {
   if (!/<html[^>]*\blang="zh/.test(html)) return "";
-  const lines = [
-    ...html.matchAll(/<h([12])\b[^>]*>([\s\S]*?)<\/h\1>/g),
-    ...html.matchAll(/<p class="final-cta-name"[^>]*>([\s\S]*?)<\/p>/g),
-  ];
+  const lines = [...html.matchAll(/<h([12])\b[^>]*>([\s\S]*?)<\/h\1>/g)];
   return lines.map((match) => decode(match[match.length - 1].replace(/<[^>]+>/g, ""))).join("\n");
 }
 

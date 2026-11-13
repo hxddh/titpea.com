@@ -110,15 +110,8 @@ type Ui = {
   homeLead: string;
   featuredTitle: string;
   moreToolsTitle: string;
-  /** Product pages: the row of other products before the footer. */
-  relatedTitle: string;
-  /** Product page, before the closing band: "More in {line}". */
-  relatedInLine: string;
-  /** A line whose products are not "tools" in this language: its own title (zh: games). */
-  relatedInLineFor?: Partial<Record<Line, string>>;
   /** A family's title and one line; `roles` is each member's step, by slug. */
   families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
-  browseAllTools: string;
   aboutMore: string;
   // About
   aboutTitle: string;
@@ -131,8 +124,6 @@ type Ui = {
   aboutLead: string;
   aboutFeed: string;
   aboutAnalytics: string;
-  /** Names the icon row of every tool on About, for assistive tech. */
-  aboutToolsLabel: string;
   // Releases
   releasesMetaTitle: string;
   releasesDescription: string;
@@ -200,8 +191,6 @@ export const ui: Record<Locale, Ui> = {
     homeLead: "Object storage, coding agents, Chrome extensions, games.",
     featuredTitle: "Selected work",
     moreToolsTitle: "Every tool",
-    relatedTitle: "More tools",
-    relatedInLine: "More in {line}",
     families: {
       s3: {
         title: "The S3 kit",
@@ -224,7 +213,6 @@ export const ui: Record<Locale, Ui> = {
         },
       },
     },
-    browseAllTools: "All tools",
     aboutMore: "About hxddh",
     aboutTitle: "About",
     aboutMetaTitle: "About Titpea — hxddh",
@@ -234,7 +222,6 @@ export const ui: Record<Locale, Ui> = {
     aboutHeadline: "One person. {count} tools.",
     aboutLead: "Storage, agents, everyday, games.",
     aboutFeed: "Follow releases (Atom)",
-    aboutToolsLabel: "Every tool",
     aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
     releasesMetaTitle: "Releases — Titpea",
     releasesDescription:
@@ -299,9 +286,6 @@ export const ui: Record<Locale, Ui> = {
     homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
     featuredTitle: "主要作品",
     moreToolsTitle: "全部工具",
-    relatedTitle: "更多工具",
-    relatedInLine: "更多{line}工具",
-    relatedInLineFor: { games: "更多游戏" },
     families: {
       s3: {
         title: "S3 工具组",
@@ -324,7 +308,6 @@ export const ui: Record<Locale, Ui> = {
         },
       },
     },
-    browseAllTools: "全部工具",
     aboutMore: "关于 hxddh",
     aboutTitle: "关于",
     aboutMetaTitle: "关于 Titpea — hxddh",
@@ -333,7 +316,6 @@ export const ui: Record<Locale, Ui> = {
     aboutHeadline: "一个人，{count} 个工具",
     aboutLead: "存储、Agent、日常、游戏。",
     aboutFeed: "订阅发布（Atom）",
-    aboutToolsLabel: "全部工具",
     aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
     releasesMetaTitle: "发布记录 — Titpea",
     releasesDescription: "Titpea 每个工具的最新发布，最新的在前：版本、日期、更新了什么，以及完整发布说明的链接。",

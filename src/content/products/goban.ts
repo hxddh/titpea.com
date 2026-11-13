@@ -147,7 +147,7 @@ export default defineProduct({
   zh: {
     title: "五子棋 Goban",
     description: "面向 macOS 与 Windows 的桌面五子棋：自由式、swap2 或连珠，需要时再复盘与做题。",
-    eyebrow: "桌面棋类游戏",
+    eyebrow: "桌面五子棋",
     headline: "下一局，再复盘",
     lead: "在 15×15 的棋盘上下五子棋，对手可以是电脑，也可以是朋友。对局都存在你自己的电脑上。",
     catalog: {

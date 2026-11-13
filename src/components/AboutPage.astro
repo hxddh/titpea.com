@@ -11,8 +11,9 @@ const { model } = Astro.props;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  {/* The claim, then the owner's own words beside how to reach them, then the tools themselves. */}
-  <section class="shell about-hero">
+  {/* The claim, the owner's own words, how to reach them. The tools are in the
+      header and the footer already (design v5.2). */}
+  <section class="shell about-hero page-end">
     <h1 class="display">{model.hero.title}</h1>
     <div class="cols rule">
       <div class="cols-margin">
@@ -41,26 +42,7 @@ const { model } = Astro.props;
           ))}
         </div>
       )}
-    </div>
-  </section>
-  <section class="shell page-section page-end">
-    <div class="cols rule">
-      <div class="cols-margin">
-        <h2 class="heading">{model.tools.label}</h2>
-      </div>
-      <div class="cols-main">
-        <ul class="about-tools">
-          {model.tools.items.map((item) => (
-            <li>
-              <a href={item.href}>
-                <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
-                <span>{item.name}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        {model.analytics && <p class="about-analytics">{model.analytics}</p>}
-      </div>
+      {model.analytics && <p class="cols-full about-analytics">{model.analytics}</p>}
     </div>
   </section>
 </SiteLayout>

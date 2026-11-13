@@ -12,7 +12,6 @@
     .app-icon,
     .release-list img,
     .release-entry-product img,
-    .product-related-list img,
     .notfound-products img,
     .product-section-index-name img,
     .privacy-tool img,
@@ -23,17 +22,16 @@
     box-shadow: var(--plate-s);
   }
 
-  /* Display lines (the page title, the product name in the closing): in
+  /* Display lines (the page title): in
    English the sans, heavy and tight (design v4); on Chinese pages
    --display-face is Noto Serif SC, cut to the headings' characters. */
   .display,
-  main h1,
-  .final-cta-name {
+  main h1 {
     font-family: var(--display-face);
     font-optical-sizing: auto;
   }
 
-  html:lang(en) :is(.display, main h1, .final-cta-name) {
+  html:lang(en) :is(.display, main h1) {
     font-weight: 650;
     letter-spacing: -0.038em;
   }
@@ -45,7 +43,7 @@
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a
    synthesised bold, and no negative tracking, which crowds CJK. */
-  html:lang(zh) :is(.display, main h1, .final-cta-name) {
+  html:lang(zh) :is(.display, main h1) {
     font-weight: 600;
     font-synthesis: none;
     letter-spacing: 0;
@@ -56,15 +54,6 @@
    (「换台机器， 接着聊」): titles set their punctuation half-width. */
   html:lang(zh) :is(.display, main h1) {
     font-feature-settings: "halt";
-  }
-
-  /* The closing names the product, and names are mostly Latin
-   (s3-turbo-list, Easier Bookmarks): the sans, as on the English page,
-   so one name never looks like two brands. */
-  html:lang(zh) .final-cta-name {
-    font-family: var(--sans);
-    font-weight: 650;
-    letter-spacing: -0.02em;
   }
 
   html:lang(zh) :is(.heading, main h2) {
