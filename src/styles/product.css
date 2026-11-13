@@ -69,9 +69,13 @@
   /* Inline items in balanced lines, so a wrap never leaves one item alone. */
   .hero-facts {
     display: block;
+    /* The shell's width, not the reading column's, so one line usually holds
+       every fact on a desktop. */
+    width: min(calc(100vw - 2 * var(--gutter)), var(--shell));
+    margin: 20px 0 0 50%;
+    translate: -50% 0;
     text-align: center;
     text-wrap: balance;
-    margin: 20px auto 0;
     padding: 0;
     list-style: none;
     color: var(--muted);
