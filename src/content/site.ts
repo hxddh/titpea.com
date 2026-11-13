@@ -92,8 +92,6 @@ type Ui = {
   /** Link from a showcase that shows a detail to the whole capture. */
   wholeCapture: string;
   pauseVideo: string;
-  /** `{version}` is the latest release tag. */
-  whatsNew: string;
   commandOutput: string;
   releaseNotes: string;
   playVideo: string;
@@ -168,7 +166,6 @@ export const ui: Record<Locale, Ui> = {
     capturedAt: "Captured at {version}",
     wholeCapture: "Whole window",
     pauseVideo: "Pause",
-    whatsNew: "What’s new in {version}.",
     commandOutput: "Show real output",
     releaseNotes: "Release notes",
     playVideo: "Play",
@@ -263,7 +260,6 @@ export const ui: Record<Locale, Ui> = {
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
-    whatsNew: "{version} 更新了什么",
     commandOutput: "查看实际输出",
     releaseNotes: "发布说明",
     playVideo: "播放",

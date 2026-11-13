@@ -40,12 +40,11 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0 · One permission",
+    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "World Clock",
-      caption:
-        "Try it: a working copy of the popup’s time scroll, using your computer’s clock. Scroll, drag or use the arrow keys to shift the time; Esc returns to now.",
+      caption: "Try it, on your clock: scroll, drag or press arrows; Esc returns to now.",
       demo: {
         kind: "worldClock",
         appTitle: "World Clock",
@@ -91,18 +90,7 @@ export default defineProduct({
         asOf: "v9.0.0",
         title: "People, not just cities.",
         body: "Name an entry and set its own working hours; the strips use them.",
-        caption: "World Clock 9.0.0 settings, editing an entry; names and cities are examples.",
-      },
-      {
-        src: "/assets/world-clock-themes-en.webp",
-        alt: "The same five cities in each of the five themes, Default, Terminal, Magazine, Paper and Contrast, with the light version of each on the top row and the dark version below",
-        width: 2480,
-        height: 1120,
-        asOf: "v9.0.0",
-        title: "Five themes, light or dark.",
-        body: "Each follows your system, or stays Light or Dark.",
-        caption:
-          "World Clock 9.0.0 popup in every theme, rendered by the repo’s store-image script; cities are examples.",
+        caption: "Settings, editing an entry; names and cities are examples.",
       },
       {
         src: "/assets/world-clock-search-en.webp",
@@ -112,7 +100,7 @@ export default defineProduct({
         asOf: "v9.0.0",
         title: "Find any time zone.",
         body: "Search 400+ time zones in 9 languages; Enter adds the top result.",
-        caption: "World Clock 9.0.0 settings, searching “san”; cities are examples.",
+        caption: "Settings, searching “san”; cities are examples.",
       },
     ],
     sections: [
@@ -168,10 +156,6 @@ export default defineProduct({
             body: "Up to 10. In Settings, drag them into any order, or use Alt with the arrow keys; switch between 12-hour and 24-hour time there too.",
           },
           {
-            title: "I used an earlier version. Do I lose my cities?",
-            body: "No. Version 9 keeps your cities and settings, and they still sync with browsers on version 8, where a new theme shows as Default.",
-          },
-          {
             title: "Is it free?",
             body: "Yes. It is free on the Chrome Web Store, with no account.",
           },
@@ -206,12 +190,11 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0 · 仅一项权限",
+    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "世界时钟",
-      caption:
-        "试一试：这是弹窗时间滚动的可操作演示，用的是你电脑上的时间。滚动、拖动或按方向键调整，按 Esc 回到现在。",
+      caption: "试一试，用你电脑的时间：滚动、拖动或按方向键，Esc 回到现在。",
       demo: {
         kind: "worldClock",
         appTitle: "世界时钟",
@@ -256,17 +239,7 @@ export default defineProduct({
         asOf: "v9.0.0",
         title: "记的是人，不只是城市",
         body: "给一项起名、单独设工作时间，细条按它来标。",
-        caption: "世界时钟 9.0.0 设置页，编辑一项；名字和城市为示例。",
-      },
-      {
-        src: "/assets/world-clock-themes-zh.webp",
-        alt: "同样五个城市，分别用默认、终端、杂志、纸张、高对比五种主题显示，上一行是浅色，下一行是深色",
-        width: 2480,
-        height: 1120,
-        asOf: "v9.0.0",
-        title: "五种主题，浅色深色都有",
-        body: "跟随系统，或固定浅色、深色。",
-        caption: "世界时钟 9.0.0 弹窗的五种主题，由仓库的商店截图脚本渲染；城市为示例。",
+        caption: "设置页，编辑一项；名字和城市为示例。",
       },
       {
         src: "/assets/world-clock-search-zh.webp",
@@ -276,7 +249,7 @@ export default defineProduct({
         asOf: "v9.0.0",
         title: "任意时区，一搜即得",
         body: "400+ 时区，9 种语言可搜索；回车添加第一个结果。",
-        caption: "世界时钟 9.0.0 设置页，搜索“新”；城市为示例。",
+        caption: "设置页，搜索“新”；城市为示例。",
       },
     ],
     sections: [
@@ -315,10 +288,6 @@ export default defineProduct({
           {
             title: "最多能放几个城市？",
             body: "最多 10 个。在设置里拖动调整顺序，或按住 Alt 用方向键移动；12 小时制和 24 小时制也在那里切换。",
-          },
-          {
-            title: "用过旧版本，城市会丢吗？",
-            body: "不会。第 9 版保留你的城市和设置，也仍能和装着第 8 版的浏览器同步；在那里，新主题显示为默认主题。",
           },
           {
             title: "收费吗？",

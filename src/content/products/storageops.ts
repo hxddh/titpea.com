@@ -35,7 +35,7 @@ export default defineProduct({
         "What you give Pi goes to the model you configure; install, doctor and --version check PyPI and npm for updates.",
       stays: "Pi sessions under ~/.storageops on this machine; no object storage access keys needed.",
     },
-    meta: "Python · Pi Coding Agent · S3-compatible · MIT",
+    meta: "Python · Pi · S3-compatible · MIT",
     commands: {
       title: "Get started",
       sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip`, the first command below. Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
@@ -136,10 +136,6 @@ export default defineProduct({
             body: "No. It works from the logs, errors, config and traces you bring. It does not take cloud credentials or open its own cloud session.",
           },
           {
-            title: "Can it change my storage?",
-            body: "StorageOps does not change storage. To capture a trace, it runs the one command you give it through httpmon: known storage commands must be read-only, but an unknown command still runs, so give it only commands that change nothing.",
-          },
-          {
             title: "When should I open Storage Agent?",
             body: "Choose StorageOps when you already use Pi and want help with storage problems there. Choose Storage Agent when you want a complete desktop app with built-in read-only tools, local analysis, and memory it keeps between tasks.",
             link: {
@@ -174,7 +170,7 @@ export default defineProduct({
       networkNote: "你交给 Pi 的内容发往你配置的模型；install、doctor 和 --version 会向 PyPI 与 npm 查询新版本。",
       stays: "Pi 会话留在本机 ~/.storageops 下；不需要对象存储的访问密钥。",
     },
-    meta: "Python · Pi Coding Agent · S3 兼容 · MIT",
+    meta: "Python · Pi · S3 兼容 · MIT",
     commands: {
       title: "开始使用",
       sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用下面第一条 `pip` 命令安装 StorageOps，再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",
@@ -264,10 +260,6 @@ export default defineProduct({
           {
             title: "需要接入云账号吗？",
             body: "不需要。它用你提供的日志、报错、配置和 trace 排查，不接收云凭据，也不会自己登录云账号。",
-          },
-          {
-            title: "会改动我的存储吗？",
-            body: "StorageOps 不修改存储。采集 trace 时，它经 httpmon 运行你给的那一条命令：已知的存储命令必须只读，但未知命令同样会被执行，所以只交给它不会改动任何东西的命令。",
           },
           {
             title: "什么时候改用 Storage Agent？",

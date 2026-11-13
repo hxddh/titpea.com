@@ -47,7 +47,7 @@ export default defineProduct({
         "No account; nothing goes online except “Check for Updates” on macOS, which contacts GitHub only when you click it.",
       stays: "Games, practice progress and settings in the app’s storage on this computer.",
     },
-    meta: "macOS + Windows · MIT · {version} · Local app",
+    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban",
@@ -127,11 +127,6 @@ export default defineProduct({
             body: "macOS on Apple Silicon and Windows x64. There is no Intel Mac build. On Windows it needs the WebView2 runtime, which Windows 10 and 11 usually include.",
           },
           {
-            title: "Will my games still be there after upgrading to 3.x?",
-            body: "Yes. Versions 3.0 to 3.2 keep the storage format of 2.x, which kept the format of 1.x, so saved games, the game library, results, practice progress, and settings open as before. The “Think” setting from 1.x (fast, standard, deep) is gone, and a saved value for it is ignored.",
-            asOf: "v3.2.0",
-          },
-          {
             title: "What happens when I import an SGF game record?",
             body: "It opens at the last move, and the timeline under the board steps through it. If the game is unfinished, press “Continue” to play on, against the computer too. “Import game…” and “Paste” are at the bottom of “Games” in the ⋯ menu, or you can drag a .sgf file onto the window. “Export” is on the review card.",
           },
@@ -176,7 +171,7 @@ export default defineProduct({
       networkNote: "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
       stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
     },
-    meta: "macOS + Windows · MIT · {version} · 本地应用",
+    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "五子棋 Goban",
@@ -241,11 +236,6 @@ export default defineProduct({
           {
             title: "能在哪些电脑上运行？",
             body: "Apple Silicon 的 macOS 和 x64 的 Windows，目前没有 Intel Mac 构建。Windows 需要 WebView2 运行时，Win10 / 11 一般已预装。",
-          },
-          {
-            title: "升级到 3.x，以前的对局还在吗？",
-            body: "在。3.0 到 3.2 沿用 2.x 的存储格式，2.x 又沿用 1.x 的，存档、对局库、战绩、练习进度和设置都照常读取。1.x 的“思考”设置（快 · 标 · 深）已经去掉，存过的值会被忽略。",
-            asOf: "v3.2.0",
           },
           {
             title: "导入 SGF 棋谱之后会怎样？",

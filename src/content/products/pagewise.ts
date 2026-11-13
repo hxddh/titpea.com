@@ -38,7 +38,7 @@ export default defineProduct({
       networkNote: "When you ask a question, extracted text goes to the model you configure, or Ollama.",
       stays: "Files, chats, marks and scan text on your machine; API keys in the system keychain; no telemetry.",
     },
-    meta: "macOS / Windows / Linux · {version} · PDF + images · MIT",
+    meta: "macOS / Windows / Linux · MIT · {version}",
     releaseHighlights: {
       version: "v24.0.0",
       items: [
@@ -68,7 +68,7 @@ export default defineProduct({
         alt: "PageWise searching a PDF for “byte miss ratio”: “This document, 4 matches”, each snippet labelled with its page, p. 1, p. 1 and p. 2, over the dimmed page",
         title: "Search the whole document.",
         body: "Every match names its page; search runs on your computer, with no model.",
-        caption: "PageWise 24, searching a sample PDF from its evaluation corpus (the paper is fictional).",
+        caption: "PageWise 24, searching a sample PDF; the paper is fictional.",
         asOf: "v24.0.0",
       },
     ],
@@ -124,15 +124,6 @@ export default defineProduct({
             title: "Can a found citation still be wrong?",
             body: "Yes. PageWise checks the quoted words and the numbers in the sentence. Other mistakes, such as who owes what, are checked only when you ask your model to review the passages (More, under the answer), up to eight citations per call, and the model can misread too. A review that disagrees lowers the chip to not found; one that agrees never makes it verified. A number the model rounded may show “check the page” even when the answer is right.",
           },
-          {
-            title: "Which scans can it read?",
-            body: "English and Simplified Chinese, whatever the interface language: a page that reads poorly in English is read again with both. Other languages, and pages local recognition reads poorly, go to the vision model, if you set one that reads images. A quote not found on a scan shows “check the page”, not “not found”; in scanned tables and two-column pages that is common.",
-          },
-          {
-            title: "What if a file will not open?",
-            body: "PageWise says why and what to do next. A PDF that needs a password to open is not supported yet: print it to a new PDF without the password. One protected only against editing opens. Files over 256 MiB are refused before they are read, so split them; a damaged file needs downloading again, and other types need converting to PDF or JPEG.",
-            asOf: "v24.0.0",
-          },
         ],
       },
     ],
@@ -161,7 +152,7 @@ export default defineProduct({
       networkNote: "提问时，提取的文本发给你配置的模型或本机 Ollama。",
       stays: "文件、会话、批注和识别出的文字都在本机；API 密钥在系统钥匙串；没有遥测。",
     },
-    meta: "macOS / Windows / Linux · {version} · PDF 与图片 · MIT",
+    meta: "macOS / Windows / Linux · MIT · {version}",
     releaseHighlights: {
       version: "v24.0.0",
       items: [
@@ -191,7 +182,7 @@ export default defineProduct({
         alt: "PageWise 在 PDF 中搜索“违约金”：显示“本文档 9 处匹配”，每段摘录都标明页码（第 2 页、第 3 页），背后是调暗的页面",
         title: "整份文档都能搜",
         body: "每处匹配都标明页码；搜索在本机进行，不需要模型。",
-        caption: "PageWise 24，搜索评测语料里的示例 PDF（合同内容为虚构）。",
+        caption: "PageWise 24，搜索示例 PDF；内容为虚构。",
         asOf: "v24.0.0",
       },
     ],
@@ -240,15 +231,6 @@ export default defineProduct({
           {
             title: "找到原文的引用还会错吗？",
             body: "会。PageWise 核对引文原话和句中的数字。其他错误（比如谁承担什么义务）只有在你从回答下的“更多操作”里让模型复核时才检查，每次调用最多复核八条引用，模型也可能读错。复核认为原文说法不同时，引用降为“未找到”；复核认同也不会把引用升为“已核对”。模型把数字取整或换算时，即使回答正确也可能显示“请看原页”。",
-          },
-          {
-            title: "哪些扫描件能识别？",
-            body: "英文和简体中文，与界面语言无关：英文识别效果差的页，会再用中英文一起识别一遍。其他语言和本机识别效果差的页交给视觉模型（需配置能读图的模型）。在扫描页上找不到的引用显示“请看原页”，而不是“未找到”；扫描的表格和双栏页面常会这样。",
-          },
-          {
-            title: "文件打不开怎么办？",
-            body: "PageWise 会说明原因和下一步。需要密码才能打开的 PDF 暂不支持，可以先打印成不带密码的新 PDF；只限制编辑的 PDF 能正常打开。超过 256 MiB 的文件在读取前就会被拒绝，需要先拆分；损坏的文件需要重新下载，其他格式需要先转成 PDF 或 JPEG。",
-            asOf: "v24.0.0",
           },
         ],
       },

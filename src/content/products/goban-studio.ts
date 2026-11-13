@@ -55,7 +55,7 @@ export default defineProduct({
         "No account or telemetry; it goes online only when you ask, for updates or to download a neural network you choose.",
       stays: "Games, progress, level and settings in the app’s storage on this computer.",
     },
-    meta: "macOS + Windows · MIT · {version} · KataGo built in",
+    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban Studio",
@@ -173,7 +173,7 @@ export default defineProduct({
       networkNote: "不要账号，没有遥测；只在你要求时联网：检查更新，或下载你选的神经网络（权重）。",
       stays: "对局、进度、棋力和设置都存在这台电脑上应用自己的存储里。",
     },
-    meta: "macOS + Windows · MIT · {version} · 内置 KataGo",
+    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban Studio",

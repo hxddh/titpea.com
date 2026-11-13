@@ -121,8 +121,8 @@ const genericHeadings = new Set(
 // hero (showcases and at most one live demo), one feature list of at most six
 // items, at most one command block under Get started, at most five FAQ questions.
 const maxCards = 6;
-const maxFaq = 5;
-const maxShown = 3;
+const maxFaq = 3;
+const maxShown = 2;
 const headlineLimit: Record<Locale, number> = { en: 24, zh: 18 };
 const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
 
@@ -428,6 +428,26 @@ for (const product of products) {
   }
 }
 
+// A caption says what a picture is (a sample, a demo, real), not how it was
+// made (design v6): one short line, at most 14 English words or 44 characters.
+const captions = (value: unknown, at: string): Array<{ at: string; text: string }> => {
+  if (!value || typeof value !== "object") return [];
+  return Object.entries(value as Record<string, unknown>).flatMap(([key, child]) =>
+    key === "caption" && typeof child === "string" ? [{ at, text: child }] : captions(child, `${at}.${key}`),
+  );
+};
+for (const product of products) {
+  for (const locale of locales) {
+    for (const caption of captions(product[locale], `${product.slug}.${locale}`)) {
+      const size = locale === "zh" ? [...caption.text].length : caption.text.split(/\s+/).length;
+      if (size > (locale === "zh" ? 44 : 14))
+        fail(
+          `${caption.at}: caption too long (${size} ${locale === "zh" ? "characters" : "words"}): say what it shows`,
+        );
+    }
+  }
+}
+
 // A product without GitHub releases (a Chrome extension, an app not yet in a
 // store) writes its version in the meta line; that version stands in.
 const metaVersion = (meta: string) => meta.split(" · ").find((segment) => /^v?\d+\.\d+(\.\d+)?$/.test(segment.trim()));
@@ -565,19 +585,6 @@ if (tokenPx("--section-index-desktop-scroll-margin") !== sectionIndexPolicy.desk
 }
 if (tokenPx("--section-index-mobile-scroll-margin") !== sectionIndexPolicy.mobileScrollMarginPx) {
   fail("--section-index-mobile-scroll-margin must match sectionIndexPolicy.mobileScrollMarginPx");
-}
-
-/* ---------- Chinese display font ---------- */
-
-// The "What's new" h2 only renders with synced release notes (CI), so a local
-// build cannot prove the subset covers it; check its fixed words here.
-{
-  const subsetChars = new Set(fs.readFileSync("design/fonts/zh-display-chars.txt", "utf8").trim());
-  const missing = [...new Set(ui.zh.whatsNew.replace("{version}", ""))].filter(
-    (char) => char.codePointAt(0)! > 0x2000 && !/\s/.test(char) && !subsetChars.has(char),
-  );
-  if (missing.length > 0)
-    fail(`ui.zh.whatsNew uses ${missing.join("")}, missing from the font subset (npm run assets:fonts)`);
 }
 
 /* ---------- Report ---------- */

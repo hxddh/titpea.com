@@ -324,33 +324,28 @@
     }
   }
 
-  /* The feature list: titled items two across the reading column, each under
-   a hairline. Title and body share one size; weight and ink carry the
-   hierarchy. */
+  /* The feature list (design v6): the page's one wide moment, three across
+   the shell with no rules, its heading on the shell's edge as on Home. Four
+   items go two by two, so no row is left with one. */
+  .features-section .section-head {
+    max-width: none;
+    margin-inline: 0;
+  }
+
   .feature-grid {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px var(--col-gap);
+  }
+
+  .feature-grid:is([data-count="2"], [data-count="4"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 36px var(--col-gap);
-    max-width: var(--narrow);
-    margin-inline: auto;
-  }
-
-  /* Sections a reader consults rather than reads (what's new, commands, data,
-   questions) take the smaller heading, so the showcases lead the page. */
-  :is(.whats-new, .commands-section, .data-section, .faq-section) .heading {
-    font-size: var(--text-heading-s);
-  }
-
-  :is(.whats-new, .commands-section, .data-section, .faq-section) .section-head {
-    margin-bottom: 20px;
   }
 
   .feature-card {
     display: grid;
     align-content: start;
     gap: 6px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
   }
 
   .feature-card h3 {
@@ -366,6 +361,22 @@
     margin: 0;
     color: var(--ink-2);
     font-size: var(--text-body);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  /* Where the data goes: short statements in the reading column, parted by
+   space, not rules; only the FAQ keeps its hairlines. */
+  .data-list {
+    display: grid;
+    gap: 16px;
+    margin-block: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .data-list > li {
+    color: var(--ink-2);
     line-height: 1.55;
   }
 
@@ -515,28 +526,11 @@
     line-height: 1.6;
   }
 
-  /* A release whose notes quote nothing in the page's language: one line. */
-  .whats-new-line {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 0;
-    margin: 0;
-    color: var(--muted);
-    font-size: var(--text-meta);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .whats-new-line > :not(:last-child)::after {
-    content: "·";
-    margin: 0 0.7em;
-    color: var(--faint);
-  }
-
-  .whats-new-line a {
-    color: var(--ink);
-  }
-
   @media (max-width: 900px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .product-section {
       scroll-margin-top: var(--section-index-mobile-scroll-margin);
     }

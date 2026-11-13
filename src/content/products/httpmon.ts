@@ -36,7 +36,7 @@ export default defineProduct({
         "Relays only the wrapped command’s own requests, and replays only when you ask; no update check, no telemetry.",
       stays: "Traffic shows in your terminal, saved only to a file you name; the temporary CA key never touches disk.",
     },
-    meta: "Go · MIT · {version} · local proxy · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
+    meta: "Go · MIT · {version}",
     releaseHighlights: {
       version: "v1.4.1",
       items: [
@@ -130,10 +130,6 @@ export default defineProduct({
             body: "curl, aws, Python, Node, or any other proxy-aware command. Only that child process gets the proxy address and temporary CA; your system proxy and global network settings stay as they are. Go programs skip the proxy for loopback targets, Node’s built-in `fetch` needs Node 22.21 or 24, and JVM tools are not configured automatically.",
           },
           {
-            title: "Does it handle HTTPS, HTTP/2, and WebSocket?",
-            body: "Yes. HTTPS is decrypted locally. HTTP/2 is negotiated with the command and the upstream separately; gRPC calls show their status from the trailers, and their bodies are summarised, not decoded. For `wss://` and `ws://` the upgrade handshake is logged, then frames are spliced in both directions.",
-          },
-          {
             title: "Can recordings hold secrets?",
             body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
           },
@@ -172,7 +168,7 @@ export default defineProduct({
       networkNote: "只转发被包裹命令自己的请求，只在你要求时重放；不检查更新，没有遥测。",
       stays: "流量只显示在终端，只有你指定文件时才保存；临时 CA 私钥从不写入磁盘。",
     },
-    meta: "Go · MIT · {version} · 本地代理 · HTTP / HTTPS / HTTP/2 / gRPC / WebSocket · NDJSON / HAR",
+    meta: "Go · MIT · {version}",
     releaseHighlights: {
       version: "v1.4.1",
       items: [
@@ -246,10 +242,6 @@ export default defineProduct({
           {
             title: "能包住哪些命令？",
             body: "curl、aws、Python、Node 或其他支持代理的命令。只有这个子进程拿到代理地址和临时 CA，系统代理和全局网络设置保持不变。Go 程序访问本机回环地址时不走代理；Node 内置的 `fetch` 需要 Node 22.21 或 24；JVM 工具不会自动配置。",
-          },
-          {
-            title: "支持 HTTPS、HTTP/2 和 WebSocket 吗？",
-            body: "支持。HTTPS 在本地解密查看。HTTP/2 与命令和上游分别协商；gRPC 调用会从 trailers 解出状态，消息体只做摘要，不解码。`wss://` 和 `ws://` 会记录升级握手，之后帧在两端之间直接转发。",
           },
           {
             title: "录制会含敏感信息吗？",

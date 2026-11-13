@@ -11,7 +11,7 @@
   }
 
   /* Reading measure for Chinese: about 34 characters a line. */
-  :lang(zh) :is(.faq-answer, .body-text, .prose) {
+  :lang(zh) :is(.faq-answer, .body-text, .prose, .data-list > li) {
     max-width: var(--measure);
   }
 
@@ -41,8 +41,7 @@
   :lang(zh) .home-catalog-text,
   :lang(zh) .body-text,
   :lang(zh) .line-list > li,
-  :lang(zh) .faq-answer,
-  :lang(zh) .whats-new-list li {
+  :lang(zh) .faq-answer {
     line-height: 1.75;
     letter-spacing: 0;
     /* No single character stranded on a last line. */

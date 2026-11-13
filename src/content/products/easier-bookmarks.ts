@@ -38,7 +38,7 @@ export default defineProduct({
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome Web Store · Productivity · 5.0.0 · No external servers",
+    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -111,10 +111,6 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "How do I pick several bookmarks?",
-            body: "Point at a bookmark’s icon and it turns into a checkbox. Tick it, or press Space. Clicking the bookmark itself still opens it. To pick a run, Shift-click a checkbox or press Shift + ↑ / ↓. ⌘/Ctrl + A picks everything in the folder, or every search result. Alt + ↑ / ↓ (Option on Mac) moves all ticked bookmarks together. To move them to another folder, press Alt + M or choose Move to… in the ⋯ menu, type the folder’s name and press Enter. One Undo puts everything back.",
-          },
-          {
             title: "Can I add a link without opening it?",
             body: "Yes. Drag a link from any page, or the address from the address bar, onto a folder or between bookmarks, and it is saved there with its link text. ⌘/Ctrl + V with addresses on the clipboard saves them into the selected folder. Links you already have aren’t added twice.",
           },
@@ -157,7 +153,7 @@ export default defineProduct({
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome 网上应用店 · 效率 · 5.0.0 · 无外部服务器",
+    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -217,10 +213,6 @@ export default defineProduct({
         id: "faq",
         label: "常见问题",
         items: [
-          {
-            title: "怎么一次选中多个书签？",
-            body: "鼠标移到书签图标上，它会变成复选框，勾选或按空格即可。单击书签本身仍是打开它。要连续选择，按住 Shift 单击复选框，或按 Shift + ↑ / ↓。⌘/Ctrl + A 选中文件夹里的全部书签或全部搜索结果。按 Alt + ↑ / ↓（Mac 上是 Option）把勾选的书签一起上下移动。要移到别的文件夹，按 Alt + M 或在 ⋯ 菜单里选“移动到…”，输入文件夹名后回车。撤销一次，全部回到原处。",
-          },
           {
             title: "不打开网页也能收藏链接吗？",
             body: "能。把网页上的任意链接、或地址栏里的网址拖到文件夹上或两个书签之间，就会连同链接文字存在那里。剪贴板里有网址时，按 ⌘/Ctrl + V 会存进选中的文件夹。已经收藏过的链接不会重复添加。",
