@@ -3,7 +3,16 @@ import { headingText } from "../heading";
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
 import { type Locale } from "../../content/schema";
-import { formatDate, inPageLanguage, otherLocale, pathFor, releaseTags, releasedOf, versionOf } from "./shared";
+import {
+  formatDate,
+  inPageLanguage,
+  otherLocale,
+  pathFor,
+  releaseTags,
+  releasedOf,
+  versionOf,
+  readableLine,
+} from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 
 export type ReleaseItem = {
@@ -37,7 +46,8 @@ export function releaseItems(locale: Locale): ReleaseItem[] {
       const current = override?.version === versionOf(product.slug) ? override : undefined;
       // Never the release title: the synced summary comes from it, so only a
       // curated override carries a summary.
-      const items = (current ? current.items : (notes?.items ?? []))
+      // Lines quoted from the notes stay only when they read alone; curated ones always do.
+      const items = (current ? current.items : (notes?.items ?? []).filter(readableLine))
         .filter((line) => inPageLanguage(line, locale))
         .slice(0, 3);
       const summary = current?.summary && inPageLanguage(current.summary, locale) ? current.summary : undefined;

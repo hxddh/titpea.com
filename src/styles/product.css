@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin: 0 0 24px;
+    margin: 0 0 16px;
     color: var(--muted);
     font-size: 15px;
   }
@@ -57,54 +57,59 @@
 
   .product-copy .actions {
     justify-content: center;
+    margin-top: 26px;
   }
 
-  /* What the product runs on and works with, in one quiet line. */
-  .hero-platform {
-    margin: 20px 0 0;
-    color: var(--muted);
-    font-size: var(--text-small);
-    line-height: 1.45;
+  .product-hero .display {
+    margin-bottom: 18px;
   }
 
-  /* The spec sheet, as a strip under the actions: each fact a small label
-   over its value, centred on one hairline as wide as the reading column. */
-  .specs {
+  /* The facts, one quiet line under the actions (design v5): what it runs on,
+   its licence, version and date, how it goes online, and its source. */
+  .hero-facts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px 48px;
-    max-width: var(--narrow);
-    margin: 40px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
+    gap: 2px 0;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
     font-size: var(--text-small);
-    line-height: 1.45;
+    line-height: 1.5;
     font-variant-numeric: tabular-nums;
   }
 
-  .specs > div {
-    display: grid;
-    align-content: start;
-    gap: 2px;
-    min-width: 0;
+  /* An item stays whole on a wide screen; on a phone a long one (a platform
+   list) wraps rather than pushing the page sideways. */
+  .hero-facts li {
+    white-space: nowrap;
   }
 
-  .specs dt {
-    color: var(--muted);
-    font-size: var(--text-meta);
+  @media (max-width: 640px) {
+    .hero-facts li {
+      white-space: normal;
+    }
   }
 
-  .specs dd {
-    margin: 0;
-    color: var(--ink);
-    overflow-wrap: anywhere;
+  /* The separator ends an item, so a wrapped line never starts with one. */
+  .hero-facts li:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.6em;
+    color: var(--faint);
+  }
+
+  .hero-facts a {
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 0.2em;
   }
 
   /* A trust detail under the primary action, from the product's own docs. */
   .install-note {
-    max-width: var(--measure);
-    margin: 16px auto 0;
+    max-width: var(--narrow);
+    margin: 12px auto 0;
     text-wrap: balance;
     color: var(--muted);
     font-size: var(--text-small);
@@ -114,7 +119,7 @@
   /* The hero object. A photograph lies on the product's colour; a terminal,
    chart, mock or working demo on the raised paper. */
   .hero-figure {
-    padding-top: 40px;
+    padding-top: 28px;
   }
 
   .hero-figure figure {
@@ -579,11 +584,6 @@
     .feature-grid:is([data-count="2"], [data-count="4"]) {
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
-    }
-
-    .specs {
-      gap: 14px 28px;
-      margin-top: 32px;
     }
 
     /* The button under the command, never over it. */

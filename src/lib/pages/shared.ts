@@ -66,3 +66,16 @@ export const newestRelease = () =>
     .map((entry) => entry.published ?? "")
     .sort()
     .at(-1);
+
+/**
+ * A line quoted from a release's own notes that a first-time reader can take
+ * alone: a sentence, not a heading ("The fix loop") or a test checklist line
+ * ("✓ uses Read"). At least five words in English, eight CJK characters in
+ * Chinese. Curated highlights are not filtered.
+ */
+export const readableLine = (line: string): boolean => {
+  const text = line.trim();
+  if (/^[✓✔☑✅]/u.test(text)) return false;
+  const cjk = text.match(/[\u3400-\u9fff]/g)?.length ?? 0;
+  return cjk > 0 ? cjk >= 8 : text.split(/\s+/).length >= 5;
+};
