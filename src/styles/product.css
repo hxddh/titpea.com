@@ -93,9 +93,11 @@
 
   /* The separator ends an item, so a wrapped line never starts with one. */
   .hero-facts li:not(:last-child)::after {
-    /* No-break spaces before the dot; the template puts an ordinary space
-       between items, so a line wraps after a separator, never before one. */
-    content: "\00a0\00a0·\00a0";
+    /* The item's own trailing space comes before the dot and the template's
+       space between items after it, so the dot sits evenly between them; a
+       line wraps only after a separator, never before one. */
+    content: "·";
+    margin-inline: 0.45em;
     color: var(--faint);
   }
 
