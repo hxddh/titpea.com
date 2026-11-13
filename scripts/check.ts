@@ -489,6 +489,38 @@ for (const file of styleFiles) {
   }
 }
 
+// Type is a token decision (design v5): a page stylesheet sets a font size
+// only from the seven steps in tokens.css, or relative to its parent (em).
+// Product mocks (visuals.css, demo-*.css) draw an app's own interface and
+// keep its sizes.
+const typeTokens = new Set([
+  "--text-meta",
+  "--text-small",
+  "--text-body",
+  "--text-lede",
+  "--text-heading-s",
+  "--text-heading",
+  "--title-display",
+]);
+for (const file of styleFiles.filter((file) => !/\/(tokens|visuals|demo(-[a-z-]+)?)\.css$/.test(file))) {
+  read(file)
+    .split("\n")
+    .forEach((line, index) => {
+      const size = /^\s*font-size:\s*([^;]+);/.exec(line)?.[1].trim();
+      if (!size || /^[\d.]+em$|^inherit$/.test(size)) return;
+      const token = /^var\((--[a-z0-9-]+)\)$/.exec(size)?.[1];
+      if (!token || !typeTokens.has(token)) {
+        fail(`${file}:${index + 1}: font-size ${size} is not one of the type scale's steps (tokens.css)`);
+      }
+    });
+}
+for (const token of typeTokens) {
+  if (!new RegExp(`${token}:`).test(tokens)) fail(`tokens.css: the type step ${token} is not defined`);
+}
+
+// DESIGN.md is read before every change: it stays short enough to be read.
+if (fs.statSync("DESIGN.md").size > 15 * 1024) fail("DESIGN.md is over 15 KB: say less, or move detail to a check");
+
 // Depth is a token decision: page styles may use shadow, blur, and the wash
 // only through tokens, so light and dark stay in step.
 for (const file of styleFiles.filter((file) => file !== "src/styles/tokens.css")) {

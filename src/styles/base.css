@@ -22,7 +22,7 @@
     color: var(--ink);
     background-color: var(--paper);
     font-family: var(--sans);
-    font-size: 17px;
+    font-size: var(--text-body);
     line-height: 1.5;
     /* No tracking on the body: a length in em set here is inherited as a
      fixed pixel value, which would crush every smaller size. Display roles
@@ -133,7 +133,7 @@
   .section-kicker {
     margin: 0 0 10px;
     color: var(--muted);
-    font-size: var(--text-kicker);
+    font-size: var(--text-meta);
     font-weight: 500;
     letter-spacing: 0;
   }
@@ -159,7 +159,7 @@
 
   .prose {
     color: var(--ink);
-    font-size: var(--text-list-body);
+    font-size: var(--text-body);
     line-height: 1.6;
   }
 
@@ -185,7 +185,7 @@
     min-height: 44px;
     padding: 0 22px;
     border-radius: var(--radius-pill);
-    font-size: 17px;
+    font-size: var(--text-body);
     font-weight: 500;
     white-space: nowrap;
     transition:
@@ -278,7 +278,7 @@
     max-width: 60ch;
     margin: 12px 0 0;
     color: var(--muted);
-    font-size: 15px;
+    font-size: var(--text-small);
     line-height: 1.45;
     text-wrap: pretty;
   }
@@ -293,7 +293,7 @@
   /* At the same pixel size CJK reads smaller than Latin, so Chinese card text
    steps up to 16px; the rest of the Chinese optics are in locale.css. */
   html:lang(zh) {
-    --text-card-body: 17px;
+    --text-body: 17px;
     --measure: 34em;
   }
 

@@ -17,7 +17,7 @@
   .about-body {
     max-width: 34em;
     color: var(--ink);
-    font-size: var(--text-sub);
+    font-size: var(--text-body);
     line-height: 1.6;
   }
 
