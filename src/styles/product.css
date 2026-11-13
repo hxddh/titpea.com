@@ -66,12 +66,16 @@
 
   /* The facts, one quiet line under the actions (design v5): what it runs on,
    its licence, version and date, how it goes online, and its source. */
+  /* Inline items in balanced lines, so a wrap never leaves one item alone. */
   .hero-facts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px 0;
-    margin: 20px auto 0;
+    display: block;
+    /* The shell's width, not the reading column's, so one line usually holds
+       every fact on a desktop. */
+    width: min(calc(100vw - 2 * var(--gutter)), var(--shell));
+    margin: 20px 0 0 50%;
+    translate: -50% 0;
+    text-align: center;
+    text-wrap: balance;
     padding: 0;
     list-style: none;
     color: var(--muted);
@@ -80,23 +84,24 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* An item stays whole on a wide screen; on a phone a long one (a platform
-   list) wraps rather than pushing the page sideways. */
+  /* Short facts stay whole; the platform list, which can be long, wraps
+   rather than pushing the page sideways. */
   .hero-facts li {
+    display: inline;
     white-space: nowrap;
   }
 
-  @media (max-width: 640px) {
-    .hero-facts li {
-      white-space: normal;
-    }
+  .hero-facts li:first-child {
+    white-space: normal;
   }
 
   /* The separator ends an item, so a wrapped line never starts with one. */
   .hero-facts li:not(:last-child)::after {
-    content: "·";
-    margin: 0 0.6em;
+    /* A no-break space before the dot, a breaking one after: a line may wrap
+       after a separator, never before one. */
+    content: "\00a0\00a0·  ";
     color: var(--faint);
+    white-space: pre-wrap;
   }
 
   .hero-facts a {

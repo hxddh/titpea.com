@@ -57,32 +57,31 @@ const commandsProps = {
   replayInHero: heroReplay?.command,
   skipFirst: skipFirstCommand,
 };
-// The spec sheet (DESIGN.md, "Spec sheet"): what the meta line says, as one
-// line, then the facts the site knows by name. The version and its
-// date come from releases.json, so the meta line's own version segment is
-// left out when the release gives one.
+// The facts line (DESIGN.md, "Facts line"): the meta line's own words, then
+// the facts the site knows. The version and its date come from releases.json,
+// so the meta line's own version segment is left out when the release gives one.
 const isVersion = (part: string) => part === model.version || /^v?\d+(\.\d+)+$/.test(part);
 const isLicense = (part: string) => /^(MIT|Apache-|GPL|LGPL|AGPL|BSD|MPL|ISC)/.test(part);
 const metaParts = copy.meta.split(" · ");
 const license = metaParts.find(isLicense);
 const metaVersion = metaParts.find(isVersion);
-// What the product runs on and works with: the meta line's own words, said
-// once under the actions; the strip holds only named facts, so it lines up.
+// What the product runs on and works with: the meta line's own words.
 const platformLine = metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ");
 // Design v5: the facts are one quiet line under the actions, so the product
 // itself starts within the first screen. A value that explains itself (a
 // platform, a licence, a version, a date) goes bare; the network level keeps
 // its label, and the source is a link named by its label.
-const facts: Array<{ label?: string; value: string; href?: string }> = [
+const facts: Array<{ value: string; href?: string }> = [
   ...(platformLine ? [{ value: platformLine }] : []),
   ...(license ? [{ value: license }] : []),
   ...(model.version || metaVersion ? [{ value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ value: model.released }] : []),
+  // The network level keeps its label, joined in one string so no space
+  // follows a full-width colon.
   ...(copy.privacy
     ? [
         {
-          label: `${copyUi.spec.network}${model.locale === "zh" ? "：" : ": "}`,
-          value: copyUi.privacyLevels[copy.privacy.network],
+          value: `${copyUi.spec.network}${model.locale === "zh" ? "：" : ": "}${copyUi.privacyLevels[copy.privacy.network]}`,
         },
       ]
     : []),
@@ -144,7 +143,6 @@ const heroAsOf = screenshot?.asOf;
       <ul class="hero-facts">
         {facts.map((fact) => (
           <li>
-            {fact.label && <span class="hero-facts-label">{fact.label}</span>}
             {fact.href ? (
               <a href={fact.href} rel="noreferrer">
                 {fact.value}
