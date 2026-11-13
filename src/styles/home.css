@@ -92,7 +92,7 @@
   }
 
   .pick-name {
-    font-size: var(--text-card-title);
+    font-size: var(--text-body);
     font-weight: 600;
     line-height: 1.35;
   }
@@ -105,7 +105,7 @@
 
   .pick-text {
     color: var(--ink-2);
-    font-size: 15px;
+    font-size: var(--text-small);
     line-height: 1.5;
     text-wrap: pretty;
   }
@@ -185,7 +185,7 @@
 
   .index-text {
     color: var(--ink-2);
-    font-size: 15px;
+    font-size: var(--text-small);
     line-height: 1.5;
     text-wrap: pretty;
   }

@@ -43,7 +43,7 @@
   }
 
   .release-list strong {
-    font-size: 17px;
+    font-size: var(--text-body);
     font-weight: 600;
   }
 

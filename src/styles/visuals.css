@@ -32,7 +32,7 @@
   .benchmark-head h2,
   .agent-manifest-head h2 {
     margin: 0;
-    font-size: var(--title-show);
+    font-size: clamp(1.5rem, 2.4vw, 1.75rem);
     line-height: 1.08;
   }
 

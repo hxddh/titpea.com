@@ -328,7 +328,6 @@
 
     .display {
       margin-bottom: 28px;
-      font-size: clamp(2.5rem, 11.5vw, 3rem);
     }
 
     .shot {

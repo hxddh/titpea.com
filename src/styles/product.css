@@ -22,7 +22,7 @@
     gap: 12px;
     margin: 0 0 16px;
     color: var(--muted);
-    font-size: 15px;
+    font-size: var(--text-small);
   }
 
   @media (max-width: 640px) {
@@ -79,7 +79,7 @@
     padding: 0;
     list-style: none;
     color: var(--muted);
-    font-size: var(--text-small);
+    font-size: var(--text-meta);
     line-height: 1.5;
     font-variant-numeric: tabular-nums;
   }
@@ -117,7 +117,7 @@
     margin: 12px auto 0;
     text-wrap: balance;
     color: var(--muted);
-    font-size: var(--text-small);
+    font-size: var(--text-meta);
     line-height: 1.45;
   }
 
@@ -180,7 +180,7 @@
   .command-comment {
     margin: 0 0 8px;
     color: var(--muted);
-    font-size: 15px;
+    font-size: var(--text-small);
   }
 
   .command-line {
@@ -370,7 +370,7 @@
   .feature-card h3 {
     margin: 0;
     color: var(--ink);
-    font-size: var(--text-card-title);
+    font-size: var(--text-body);
     font-weight: 600;
     line-height: 1.55;
     letter-spacing: 0;
@@ -379,7 +379,7 @@
   .feature-card p {
     margin: 0;
     color: var(--ink-2);
-    font-size: var(--text-card-body);
+    font-size: var(--text-body);
     line-height: 1.55;
   }
 
@@ -397,7 +397,7 @@
     position: relative;
     min-height: 44px;
     padding: 20px 40px 20px 0;
-    font-size: 17px;
+    font-size: var(--text-body);
     font-weight: 600;
     line-height: 1.4;
     list-style: none;
@@ -432,7 +432,7 @@
     margin: -4px 0 0;
     padding: 0 0 24px;
     color: var(--ink-2);
-    font-size: var(--text-list-body);
+    font-size: var(--text-body);
     line-height: 1.6;
   }
 
@@ -526,7 +526,7 @@
     align-items: center;
     min-height: 44px;
     color: var(--link);
-    font-size: 15px;
+    font-size: var(--text-small);
     cursor: pointer;
   }
 
