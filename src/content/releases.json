@@ -39,19 +39,23 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v18.0.0",
-    "published": "2026-11-12",
+    "version": "v19.0.0",
+    "published": "2026-11-13",
     "history": [
+      { "version": "v19.0.0", "published": "2026-11-13", "title": "sonde 19.0.0" },
       { "version": "v18.0.0", "published": "2026-11-12", "title": "sonde 18.0.0" },
       { "version": "v17.0.0", "published": "2026-11-12", "title": "sonde 17.0.0" },
       { "version": "v16.0.0", "published": "2026-11-11", "title": "sonde 16.0.0" },
-      { "version": "v15.0.0", "published": "2026-11-11", "title": "sonde 15.0.0" },
-      { "version": "v14.0.0", "published": "2026-11-10", "title": "sonde 14.0.0" }
+      { "version": "v15.0.0", "published": "2026-11-11", "title": "sonde 15.0.0" }
     ],
     "notes": {
-      "summary": "Fewer things, each finished: three loops closed, \"why slow\" answered, and what a user nev…",
-      "items": ["The fix loop", "The trial loop", "The CI loop"],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v18.0.0"
+      "summary": "19.0 drops compatibility with every earlier version: no aliases, shims, migrations or old…",
+      "items": [
+        "One failure is one colour everywhere; tiles never cut a figure; compare keeps five tiles abreast when wide",
+        "CI runs once per change and reuses its builds at release; macOS and Windows pictures run nightly",
+        "A replay always writes under a prefix of its own and removes what it wrote"
+      ],
+      "url": "https://github.com/hxddh/sonde/releases/tag/v19.0.0"
     }
   },
   "httpmon": {
@@ -165,23 +169,19 @@
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v3.2.0",
-    "published": "2026-10-18",
+    "version": "v3.2.1",
+    "published": "2026-11-13",
     "history": [
+      { "version": "v3.2.1", "published": "2026-11-13", "title": "v3.2.1" },
       { "version": "v3.2.0", "published": "2026-10-18", "title": "v3.2.0" },
       { "version": "v3.1.0", "published": "2026-10-17", "title": "v3.1.0" },
       { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" },
-      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" },
-      { "version": "v2.0.0", "published": "2026-10-10", "title": "v2.0.0" }
+      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" }
     ],
     "notes": {
-      "summary": "照 `docs/REVIEW-v3.1.md` 做，只动对弈本身",
-      "items": [
-        "评估权重改用自对弈拟合值",
-        "极限每手 5 → 2.5 秒",
-        "极限 2.5 秒对极限 5 秒，22 : 24（和 2），量不出差别"
-      ],
-      "url": "https://github.com/hxddh/goban/releases/tag/v3.2.0"
+      "summary": "照 `docs/REVIEW-v3.2.md` 修",
+      "items": ["第六节第 1 项", "第 2 项", "第 3 项"],
+      "url": "https://github.com/hxddh/goban/releases/tag/v3.2.1"
     }
   },
   "goban-studio": {
