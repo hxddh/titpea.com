@@ -113,11 +113,19 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "This installs the terminal binary on Linux or macOS; with Homebrew, `brew install hxddh/sonde/sonde` does the same. The GitHub Releases page has the terminal binary for Windows and the desktop app for macOS, Linux and Windows; on macOS, `brew install --cask hxddh/sonde/sonde-app` also installs the app.",
+      sub: "The terminal binary installs on Linux or macOS with either command. The GitHub Releases page has the terminal binary for Windows and the desktop app for macOS, Linux and Windows.",
       items: [
         {
           comment: "Install the terminal binary",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
+        },
+        {
+          comment: "Or with Homebrew",
+          command: "brew install hxddh/sonde/sonde",
+        },
+        {
+          comment: "The desktop app on macOS",
+          command: "brew install --cask hxddh/sonde/sonde-app",
         },
       ],
     },
@@ -244,7 +252,7 @@ export default defineProduct({
         width: 2560,
         height: 1476,
       },
-      caption: "sonde 桌面应用，取自它自己的截图测试；会话来自内置演示。",
+      caption: "sonde 桌面应用，取自它自己的截图测试；会话来自内置演示，本页截图界面均为英文。",
       asOf: "v16.0.0",
     },
     showcases: [
@@ -256,7 +264,6 @@ export default defineProduct({
         asOf: "v16.0.0",
         title: "运行它，看它发出的请求",
         body: "输入一条命令，它的终端和它的 S3 请求并排出现。你的真实密钥不会交给它。",
-        caption: "界面为英文。",
       },
       {
         src: "/assets/sonde-compare-en.webp",
@@ -266,7 +273,6 @@ export default defineProduct({
         asOf: "v16.0.0",
         title: "改动带来了什么",
         body: "对比两次运行：请求、等待、费用和发现，前后一目了然。",
-        caption: "界面为英文。",
       },
       {
         src: "/assets/sonde-time-en.webp",
@@ -277,16 +283,23 @@ export default defineProduct({
         asOf: "v16.0.0",
         title: "时间花在了哪里",
         body: "整次运行排在一条时间线上：同时在途的请求、哪些请求同时在跑，以及收发的字节。",
-        caption: "界面为英文。",
       },
     ],
     commands: {
       title: "开始使用",
-      sub: "这条命令在 Linux 或 macOS 上安装终端版；用 Homebrew 的话，`brew install hxddh/sonde/sonde` 也一样。GitHub Releases 页面有 Windows 终端版，以及 macOS、Linux 和 Windows 的桌面应用；macOS 上也可以用 `brew install --cask hxddh/sonde/sonde-app` 安装应用。",
+      sub: "在 Linux 或 macOS 上，用下面任一条命令安装终端版。GitHub Releases 页面有 Windows 终端版，以及 macOS、Linux 和 Windows 的桌面应用。",
       items: [
         {
           comment: "安装终端版",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
+        },
+        {
+          comment: "或者用 Homebrew",
+          command: "brew install hxddh/sonde/sonde",
+        },
+        {
+          comment: "macOS 上的桌面应用",
+          command: "brew install --cask hxddh/sonde/sonde-app",
         },
       ],
     },

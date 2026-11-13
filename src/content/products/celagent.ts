@@ -125,7 +125,7 @@ export default defineProduct({
           },
           {
             title: "How do I install it?",
-            body: "Run the install script at the top of this page. On Windows, run the README’s `install.ps1` command in PowerShell; it installs celagent without Celld, which has no Windows package upstream. Then run `celagent doctor`.",
+            body: "Run the install script under Get started. On Windows, run the README’s `install.ps1` command in PowerShell; it installs celagent without Celld, which has no Windows package upstream. Then run `celagent doctor`.",
           },
         ],
       },
@@ -230,7 +230,7 @@ export default defineProduct({
           },
           {
             title: "怎么安装？",
-            body: "运行本页顶部的安装脚本。Windows 上在 PowerShell 里运行 README 中的 `install.ps1` 安装命令；它只装 celagent，不含 Celld，因为上游 Celld 没有 Windows 包。装好后运行 `celagent doctor`。",
+            body: "运行“开始使用”里的安装脚本。Windows 上在 PowerShell 里运行 README 中的 `install.ps1` 安装命令；它只装 celagent，不含 Celld，因为上游 Celld 没有 Windows 包。装好后运行 `celagent doctor`。",
           },
         ],
       },
