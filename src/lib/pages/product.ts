@@ -11,6 +11,7 @@ import {
   releaseTags,
   releasedOf,
   versionOf,
+  readableLine,
 } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
@@ -169,7 +170,7 @@ function whatsNewFor(slug: string, locale: Locale, version?: string, override?: 
   // and a bare tag between two sections read as an accident. The release
   // title is the author's shorthand ("context economy and Codex chrome"), so
   // only a curated override carries a summary.
-  const items = notes.items.filter((item) => inPageLanguage(item, locale) && !/^[✓✔☑✅]/u.test(item.trim()));
+  const items = notes.items.filter((item) => inPageLanguage(item, locale) && readableLine(item));
   if (items.length === 0) return undefined;
   return {
     summary: "",

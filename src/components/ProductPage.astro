@@ -39,18 +39,15 @@ const template = templateOf(product.type);
 // One skeleton for every kind of product (DESIGN.md, "Product Pages"). The
 // template picks only what the hero carries: a tool's first command sits
 // under the lede, and a captured replay is its hero object.
-const heroCommand = template === "tool" ? copy.commands?.items[0] : undefined;
 const heroReplay =
   template === "tool"
     ? copy.commands?.items.find((item): item is typeof item & { capturedOutput: string; replay: { label: string } } =>
         Boolean(item.capturedOutput && item.replay),
       )
     : undefined;
-// The hero already shows the first command; Get started goes on from the next one,
-// unless that first command carries output the hero does not play.
-const skipFirstCommand = Boolean(
-  heroCommand && (!heroCommand.capturedOutput || heroCommand.command === heroReplay?.command),
-);
+// Design v5: every command is under Get started; the hero keeps to the claim
+// and the actions, so the product starts within the first screen.
+const skipFirstCommand = false;
 const controls = { pause: copyUi.pauseVideo, play: copyUi.playVideo };
 const commandsProps = {
   copyLabel: copyUi.copy,
@@ -72,14 +69,24 @@ const metaVersion = metaParts.find(isVersion);
 // What the product runs on and works with: the meta line's own words, said
 // once under the actions; the strip holds only named facts, so it lines up.
 const platformLine = metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ");
-const specs: Array<{ label: string; value: string; href?: string }> = [
-  ...(license ? [{ label: copyUi.spec.license, value: license }] : []),
-  ...(model.version || metaVersion ? [{ label: copyUi.spec.version, value: (model.version ?? metaVersion)! }] : []),
-  ...(model.released ? [{ label: copyUi.spec.released, value: model.released }] : []),
-  ...(copy.privacy ? [{ label: copyUi.spec.network, value: copyUi.privacyLevels[copy.privacy.network] }] : []),
-  ...(product.repo
-    ? [{ label: copyUi.spec.source, value: product.repo, href: `https://github.com/${product.repo}` }]
+// Design v5: the facts are one quiet line under the actions, so the product
+// itself starts within the first screen. A value that explains itself (a
+// platform, a licence, a version, a date) goes bare; the network level keeps
+// its label, and the source is a link named by its label.
+const facts: Array<{ label?: string; value: string; href?: string }> = [
+  ...(platformLine ? [{ value: platformLine }] : []),
+  ...(license ? [{ value: license }] : []),
+  ...(model.version || metaVersion ? [{ value: (model.version ?? metaVersion)! }] : []),
+  ...(model.released ? [{ value: model.released }] : []),
+  ...(copy.privacy
+    ? [
+        {
+          label: `${copyUi.spec.network}${model.locale === "zh" ? "：" : ": "}`,
+          value: copyUi.privacyLevels[copy.privacy.network],
+        },
+      ]
     : []),
+  ...(product.repo ? [{ value: copyUi.spec.source, href: `https://github.com/${product.repo}` }] : []),
 ];
 // Provenance is said once: under the hero capture, the release it shows; under
 // a showcase only when its release differs from the hero's.
@@ -114,21 +121,6 @@ const heroAsOf = screenshot?.asOf;
     <h1 class="display">{copy.headline}</h1>
     <div class="product-copy">
       <p class="lead">{copy.lead}</p>
-      {heroCommand && (
-        <div class="hero-command command-line">
-          <code class="command-code" tabindex="0" set:text={heroCommand.command} />
-          <button
-            class="copy-button"
-            type="button"
-            data-copy={heroCommand.command}
-            data-copy-label={copyUi.copy}
-            data-copied-label={copyUi.copied}
-            hidden
-          >
-            {copyUi.copy}
-          </button>
-        </div>
-      )}
       <div class="actions">
         {copy.primaryCta.soon ? (
           <span class="button primary large is-soon" aria-disabled="true">
@@ -149,25 +141,21 @@ const heroAsOf = screenshot?.asOf;
           <Prose text={copy.installNote} />
         </p>
       )}
-      {platformLine && <p class="hero-platform">{platformLine}</p>}
-    </div>
-    {/* The facts, as one strip under the actions: no panel. */}
-    <dl class="specs">
-      {specs.map((spec) => (
-        <div>
-          <dt>{spec.label}</dt>
-          <dd>
-            {spec.href ? (
-              <a href={spec.href} rel="noreferrer">
-                {spec.value}
+      <ul class="hero-facts">
+        {facts.map((fact) => (
+          <li>
+            {fact.label && <span class="hero-facts-label">{fact.label}</span>}
+            {fact.href ? (
+              <a href={fact.href} rel="noreferrer">
+                {fact.value}
               </a>
             ) : (
-              spec.value
+              fact.value
             )}
-          </dd>
-        </div>
-      ))}
-    </dl>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <section class="shell hero-figure">

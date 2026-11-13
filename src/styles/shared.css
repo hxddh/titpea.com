@@ -5,27 +5,50 @@
    lists on hairlines, not panels. The two columns remain for pages whose rows
    pair a label with content (About, Releases, Privacy). */
 
-  /* The two columns. */
+  /* Design v5: no page keeps two columns. What was the margin (a label, a
+   link, a fact) stacks above its content in the one centred reading column,
+   so About, Releases and Privacy share the product pages' axis. */
   .cols {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--col-gap);
-    row-gap: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+    max-width: var(--narrow);
+    margin-inline: auto;
   }
 
-  .cols-margin {
-    grid-column: span 4;
-    min-width: 0;
-  }
-
-  .cols-main {
-    grid-column: span 8;
-    min-width: 0;
-  }
-
+  .cols-margin,
+  .cols-main,
   .cols-full {
     grid-column: 1 / -1;
     min-width: 0;
+  }
+
+  /* A page's first explanation comes before its facts. */
+  :is(.home-hero, .about-hero, .product-hero) .cols-main {
+    order: -1;
+  }
+
+  /* Their titles open centred, as on Home and the product pages; the reading
+   column below keeps its text left-aligned. */
+  .about-hero {
+    text-align: center;
+  }
+
+  .about-hero .display {
+    margin-inline: auto;
+  }
+
+  .about-hero .lead {
+    margin-inline: auto;
+  }
+
+  .about-hero :is(.about-body, .cols-margin:has(.about-links)) {
+    text-align: left;
+  }
+
+  /* On About, the label over the links only repeated the title. */
+  .about-hero .cols-margin:has(.about-links) > .fact {
+    display: none;
   }
 
   /* Sections are parted by space alone; .rule only marks where one starts. */
@@ -33,22 +56,13 @@
     padding-top: 0;
   }
 
-  /* A section's heading stays beside its content while that content is read,
-   so the margin column is never an empty third of the screen. */
-  @media (min-width: 901px) {
-    .page-section .cols-margin {
-      position: sticky;
-      top: 88px;
-      align-self: start;
-    }
-  }
-
-  /* A page opens on its title, left-aligned, then the rule. */
+  /* A page opens on its title (design v5: closer to the header, so the first
+   screen reaches the product). */
   .home-hero,
   .about-hero,
   .product-hero,
   .page-hero {
-    padding-top: 72px;
+    padding-top: 56px;
   }
 
   .page-section {
@@ -297,11 +311,6 @@
     .cols-margin,
     .cols-main {
       grid-column: 1 / -1;
-    }
-
-    /* A page's first explanation comes before its facts on a narrow screen. */
-    :is(.home-hero, .about-hero, .product-hero) .cols-main {
-      order: -1;
     }
 
     .page-section {
