@@ -113,7 +113,7 @@
   .release-entry-earlier {
     display: flex;
     flex-wrap: wrap;
-    gap: 2px 14px;
+    gap: 2px 10px;
     grid-column: 1 / -1;
     margin: 8px 0 0 54px;
     color: var(--muted);
@@ -126,9 +126,24 @@
     font-weight: 600;
   }
 
-  .release-entry-earlier-item time::before {
+  /* Each earlier release is one unit, its tag and then its date; a dot parts
+   one release from the next, never a tag from its own date. */
+  .release-entry-earlier-item {
+    white-space: nowrap;
+  }
+
+  .release-entry-earlier-item .release-version {
+    color: var(--ink-2);
+  }
+
+  .release-entry-earlier-item time {
+    margin-left: 0.45em;
+  }
+
+  /* The dot ends a release, so a wrapped line never starts with one. */
+  .release-entry-earlier-item:not(:last-child)::after {
     content: "·";
-    margin: 0 0.5em;
+    margin: 0 4px 0 14px;
     color: var(--faint);
   }
 
@@ -140,7 +155,7 @@
   }
 
   .release-entry-notes::after {
-    content: " ›";
+    content: " →";
     white-space: pre;
   }
 
@@ -168,6 +183,10 @@
     /* Phones keep the two most recent earlier releases. */
     .release-entry-earlier-item:nth-of-type(n + 4) {
       display: none;
+    }
+
+    .release-entry-earlier-item:nth-of-type(3)::after {
+      content: none;
     }
 
     .release-entry-product img {

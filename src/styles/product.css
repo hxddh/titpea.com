@@ -84,24 +84,19 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Short facts stay whole; the platform list, which can be long, wraps
-   rather than pushing the page sideways. */
+  /* Every fact stays whole (check.ts keeps each short enough for a phone);
+   the line breaks only between facts. */
   .hero-facts li {
     display: inline;
     white-space: nowrap;
   }
 
-  .hero-facts li:first-child {
-    white-space: normal;
-  }
-
   /* The separator ends an item, so a wrapped line never starts with one. */
   .hero-facts li:not(:last-child)::after {
-    /* A no-break space before the dot, a breaking one after: a line may wrap
-       after a separator, never before one. */
-    content: "\00a0\00a0·  ";
+    /* No-break spaces before the dot; the template puts an ordinary space
+       between items, so a line wraps after a separator, never before one. */
+    content: "\00a0\00a0·\00a0";
     color: var(--faint);
-    white-space: pre-wrap;
   }
 
   .hero-facts a {
@@ -113,7 +108,8 @@
 
   /* A trust detail under the primary action, from the product's own docs. */
   .install-note {
-    max-width: var(--narrow);
+    /* About 70 characters at the label size, like the reading text. */
+    max-width: 36em;
     margin: 12px auto 0;
     text-wrap: balance;
     color: var(--muted);
@@ -187,12 +183,14 @@
     position: relative;
   }
 
+  /* A long install command wraps rather than scrolling under the copy
+   button, so the reader sees all of what they will run. */
   .command-code {
     display: block;
-    white-space: pre;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     margin: 0;
     padding: 16px 92px 16px 20px;
-    overflow-x: auto;
     border-radius: 8px;
     background: var(--code-bg);
     font-family: var(--mono);
@@ -223,20 +221,6 @@
 
   .copy-button[data-state="copied"] {
     color: var(--link);
-  }
-
-  /* Tools: the first command under the lede, ready to copy. Long install
-   commands wrap at spaces rather than scrolling under the button. */
-  .hero-command {
-    max-width: 36em;
-    margin: 28px auto 0;
-    text-align: left;
-  }
-
-  .hero-command .command-code {
-    overflow-x: visible;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
   }
 
   /* Sections */

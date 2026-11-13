@@ -290,8 +290,8 @@
     line-height: 1.16;
   }
 
-  /* At the same pixel size CJK reads smaller than Latin, so Chinese card text
-   steps up to 16px; the rest of the Chinese optics are in locale.css. */
+  /* Chinese reading text stays at 17px with taller lines, about 34 characters
+   a line; the rest of the Chinese optics are in locale.css. */
   html:lang(zh) {
     --text-body: 17px;
     --measure: 34em;

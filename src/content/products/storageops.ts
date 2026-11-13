@@ -38,7 +38,7 @@ export default defineProduct({
     meta: "Python · Pi Coding Agent · S3-compatible · MIT",
     commands: {
       title: "Get started",
-      sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip` (the command at the top of this page). Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
+      sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip`, the first command below. Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
       items: [
         {
           comment: "Install the StorageOps package",
@@ -177,7 +177,7 @@ export default defineProduct({
     meta: "Python · Pi Coding Agent · S3 兼容 · MIT",
     commands: {
       title: "开始使用",
-      sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用 `pip` 安装 StorageOps（命令见页面顶部），再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",
+      sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用下面第一条 `pip` 命令安装 StorageOps，再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",
       items: [
         {
           comment: "安装 StorageOps 软件包",

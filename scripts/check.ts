@@ -5,7 +5,7 @@ import fs from "node:fs";
 import sharp from "sharp";
 import releases from "../src/content/releases.json" with { type: "json" };
 import { products } from "../src/content/products/index.ts";
-import { locales, templateOf, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
+import { locales, type Locale, type Product, type ProductCopy } from "../src/content/schema.ts";
 import { familyMembers, site, ui } from "../src/content/site.ts";
 import { allPages, siteRoutes } from "../src/lib/pages.ts";
 import { sectionIndexPolicy } from "../src/scripts/section-index-policy.ts";
@@ -209,9 +209,10 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
   if (demoCount > 1) fail(`${at}: ${demoCount} live demo sections (max 1)`);
   const shown = (copy.showcases?.length ?? 0) + demoCount;
   if (shown > maxShown) fail(`${at}: ${shown} showcase and demo sections (max ${maxShown})`);
-  // Get started holds at most one command block. A tool's hero already shows its first command.
-  const commandBlocks = Math.max(0, (copy.commands?.items.length ?? 0) - (templateOf(product.type) === "tool" ? 1 : 0));
-  if (commandBlocks > 1) fail(`${at}: ${commandBlocks} command blocks under Get started (max 1)`);
+  // Get started holds every command (design v5), each its own copyable row; three
+  // is enough to install a product, so more belongs in its README.
+  const commandBlocks = copy.commands?.items.length ?? 0;
+  if (commandBlocks > 3) fail(`${at}: ${commandBlocks} command blocks under Get started (max 3)`);
   for (const section of copy.sections) {
     if (section.kind !== "cards") continue;
     for (const item of section.items) {
@@ -414,6 +415,17 @@ function asOfRefs(value: unknown, at: string): Array<{ at: string; asOf: string 
     ...(typeof record.asOf === "string" ? [{ at: `${at}${label}`, asOf: record.asOf }] : []),
     ...Object.entries(record).flatMap(([key, child]) => asOfRefs(child, `${at}.${key}`)),
   ];
+}
+
+// The facts line (DESIGN.md, "Facts line") never breaks inside a fact, so
+// each segment of the meta line must fit a phone's line at the label size.
+for (const product of products) {
+  for (const locale of locales) {
+    for (const segment of product[locale].meta.split(" · ")) {
+      const width = [...segment].reduce((sum, char) => sum + (/[\u3400-\u9fff\uff00-\uffef]/u.test(char) ? 2 : 1), 0);
+      if (width > 44) fail(`${product.slug}.${locale}.meta: "${segment}" is too long for one fact; split it at " · "`);
+    }
+  }
 }
 
 // A product without GitHub releases (a Chrome extension, an app not yet in a

@@ -13,9 +13,10 @@
     object-fit: cover;
   }
 
-  /* The owner's words read as text, at the reading measure. */
+  /* The owner's words fill the reading column, so they sit centred under
+   the centred title (design v5.1). */
   .about-body {
-    max-width: 34em;
+    max-width: none;
     color: var(--ink);
     font-size: var(--text-body);
     line-height: 1.6;

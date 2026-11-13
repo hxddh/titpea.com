@@ -65,14 +65,18 @@ const isLicense = (part: string) => /^(MIT|Apache-|GPL|LGPL|AGPL|BSD|MPL|ISC)/.t
 const metaParts = copy.meta.split(" · ");
 const license = metaParts.find(isLicense);
 const metaVersion = metaParts.find(isVersion);
-// What the product runs on and works with: the meta line's own words.
-const platformLine = metaParts.filter((part) => !isVersion(part) && !isLicense(part)).join(" · ");
+// What the product runs on and works with: the meta line's own words, one
+// fact each, so a line breaks between facts and never inside one.
+const platformParts = metaParts.filter((part) => !isVersion(part) && !isLicense(part));
+// The source link is said once: not again when the second action already opens it.
+const repoUrl = product.repo ? `https://github.com/${product.repo}` : undefined;
+const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(/\/$/, "") === repoUrl;
 // Design v5: the facts are one quiet line under the actions, so the product
 // itself starts within the first screen. A value that explains itself (a
 // platform, a licence, a version, a date) goes bare; the network level keeps
 // its label, and the source is a link named by its label.
 const facts: Array<{ value: string; href?: string }> = [
-  ...(platformLine ? [{ value: platformLine }] : []),
+  ...platformParts.map((value) => ({ value })),
   ...(license ? [{ value: license }] : []),
   ...(model.version || metaVersion ? [{ value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ value: model.released }] : []),
@@ -85,7 +89,7 @@ const facts: Array<{ value: string; href?: string }> = [
         },
       ]
     : []),
-  ...(product.repo ? [{ value: copyUi.spec.source, href: `https://github.com/${product.repo}` }] : []),
+  ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
 ];
 // Provenance is said once: under the hero capture, the release it shows; under
 // a showcase only when its release differs from the hero's.
@@ -142,15 +146,17 @@ const heroAsOf = screenshot?.asOf;
       )}
       <ul class="hero-facts">
         {facts.map((fact) => (
-          <li>
-            {fact.href ? (
-              <a href={fact.href} rel="noreferrer">
-                {fact.value}
-              </a>
-            ) : (
-              fact.value
-            )}
-          </li>
+          <>
+            <li>
+              {fact.href ? (
+                <a href={fact.href} rel="noreferrer">
+                  {fact.value}
+                </a>
+              ) : (
+                fact.value
+              )}
+            </li>{" "}
+          </>
         ))}
       </ul>
     </div>

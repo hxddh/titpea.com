@@ -5,6 +5,17 @@ interface Props {
 }
 
 const parts = Astro.props.text.split(/`([^`]+)`/);
+// A short span (a flag, a command name) stays on one line, so `--allow-writes`
+// never breaks after its dashes; a long one (a path, a URL) may wrap.
+const short = (code: string) => code.length <= 28;
 ---
 
-{parts.map((part, index) => (index % 2 === 1 ? <code class="inline-code">{part}</code> : part))}
+{parts.map((part, index) =>
+  index % 2 === 1 ? (
+    <code class="inline-code" data-short={short(part) ? "" : undefined}>
+      {part}
+    </code>
+  ) : (
+    part
+  ),
+)}

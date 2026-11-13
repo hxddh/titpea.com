@@ -307,6 +307,10 @@
     overflow-wrap: anywhere;
   }
 
+  .inline-code[data-short] {
+    white-space: nowrap;
+  }
+
   @media (max-width: 900px) {
     .cols-margin,
     .cols-main {
