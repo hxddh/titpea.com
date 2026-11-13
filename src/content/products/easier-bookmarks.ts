@@ -14,7 +14,7 @@ export default defineProduct({
   en: {
     title: "Easier Bookmarks",
     description: "Chrome side panel and address-bar search for the bookmark tree already in this browser.",
-    eyebrow: "Chrome extension",
+    eyebrow: "Bookmark search for Chrome",
     headline: "Bookmarks at your side.",
     lead: "Search, save and tidy the bookmarks Chrome already has, from a side panel or the address bar. Nothing is sent to outside servers.",
     catalog: {
@@ -133,7 +133,7 @@ export default defineProduct({
   zh: {
     title: "Easier Bookmarks",
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
-    eyebrow: "Chrome 扩展",
+    eyebrow: "Chrome 书签搜索",
     headline: "书签在侧边，随手整理",
     lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
     catalog: {

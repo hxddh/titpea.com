@@ -16,7 +16,7 @@ export default defineProduct({
     title: "Storage Agent",
     description:
       "A local, read-only desktop agent for S3 storage and the AWS account around it: ask in plain words; it reads, and never writes to your storage.",
-    eyebrow: "Looks after object storage",
+    eyebrow: "Object storage agent",
     headline: "Find what’s wrong in S3.",
     lead: "Ask about your S3 storage in plain words. The agent reads what the services return and never changes anything; fixes are yours to run.",
     catalog: {
@@ -28,7 +28,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
     },
     secondaryCta: {
-      label: "View on GitHub",
+      label: "View source",
       href: "https://github.com/hxddh/storage-agent-workbench",
     },
     privacy: {
@@ -135,7 +135,7 @@ export default defineProduct({
     title: "Storage Agent",
     description:
       "面向 S3 兼容存储及其所在 AWS 账号的本地只读桌面 Agent：用平常的话提问，它读取各服务返回的内容，从不写入你的存储。",
-    eyebrow: "照看对象存储",
+    eyebrow: "对象存储 Agent",
     headline: "找出 S3 里的隐患",
     lead: "用平常的话问你的 S3 存储。它只读取各服务返回的内容，不做任何改动；修复由你来执行。",
     catalog: {
@@ -147,7 +147,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
     },
     secondaryCta: {
-      label: "查看 GitHub",
+      label: "查看源码",
       href: "https://github.com/hxddh/storage-agent-workbench",
     },
     privacy: {

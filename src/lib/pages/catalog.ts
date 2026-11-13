@@ -1,4 +1,4 @@
-// Catalog items (Home), families and the related row (product pages).
+// Catalog items (Home) and families (product pages).
 import { products } from "../../content/products";
 import { familyMembers, familyOf, ui } from "../../content/site";
 import { type FamilyId, type Locale, type Product } from "../../content/schema";
@@ -53,30 +53,5 @@ function familyModel(id: FamilyId, locale: Locale, current?: string): Family {
         current: member === current,
       };
     }),
-  };
-}
-
-/**
- * Up to three other products to read next: the rest of this product's line
- * in site order after it, then the other lines, so the list never runs dry.
- */
-export function relatedFor(product: Product, locale: Locale) {
-  const copy = ui[locale];
-  const index = products.indexOf(product);
-  const after = [...products.slice(index + 1), ...products.slice(0, index)];
-  const items = [
-    ...after.filter((other) => other.line === product.line),
-    ...after.filter((other) => other.line !== product.line),
-  ].slice(0, 3);
-  const sameLine = items.every((other) => other.line === product.line);
-  // "更多 Agent 工具": Latin words inside Chinese take spaces.
-  const line = copy.groups[product.line];
-  const lineLabel = locale === "zh" && /[A-Za-z]/.test(line) ? ` ${line} ` : line;
-  return {
-    title: sameLine
-      ? (copy.relatedInLineFor?.[product.line] ?? copy.relatedInLine.replace("{line}", lineLabel))
-      : copy.relatedTitle,
-    items: items.map((other) => catalogItem(other, locale)),
-    all: { label: copy.browseAllTools, href: `${pathFor(locale)}#tools` },
   };
 }

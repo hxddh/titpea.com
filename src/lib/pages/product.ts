@@ -15,7 +15,7 @@ import {
 } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
-import { type CatalogItem, type Family, familyFor, relatedFor } from "./catalog";
+import { type Family, familyFor } from "./catalog";
 
 /** Replace `{version}` everywhere in a product's copy with its synced release tag. */
 function withVersion(copy: ProductCopy, version: string | undefined): ProductCopy {
@@ -45,9 +45,7 @@ export type ProductPageModel = {
   frame: "wide" | "narrow";
   sectionIndex: boolean;
   navItems: Array<{ id: string; label: string }>;
-  /** Before the closing band: where to go next. */
-  related: { title: string; items: CatalogItem[]; all: { label: string; href: string } };
-  /** Members of a family see the whole family, with this page marked, above the related row. */
+  /** Members of a family see the whole family, with this page marked, at the page's end. */
   family?: Family;
   primaryCta?: string;
   expectedText: string[];
@@ -140,7 +138,6 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
     navItems,
-    related: relatedFor(product, locale),
     family: familyFor(product.slug, locale),
     primaryCta: copy.primaryCta.soon ? undefined : copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],

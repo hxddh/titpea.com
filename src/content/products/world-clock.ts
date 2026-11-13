@@ -15,7 +15,7 @@ export default defineProduct({
     title: "World Clock",
     description:
       "Chrome extension that shows the time in the cities you choose: working hours bright, the rest faded, and a scroll to any hour.",
-    eyebrow: "Chrome extension",
+    eyebrow: "Time zone extension for Chrome",
     headline: "Your cities, right now.",
     lead: "Shows the time in the cities you choose, in one popup, with working hours lit. Scroll to see any hour.",
     catalog: {
@@ -182,7 +182,7 @@ export default defineProduct({
   zh: {
     title: "世界时钟",
     description: "Chrome 扩展：显示你所选城市的时间，工作时间常亮、其余淡出，滚动查看任意时刻。",
-    eyebrow: "Chrome 扩展",
+    eyebrow: "Chrome 时区扩展",
     headline: "几个城市，此刻几点",
     lead: "一个弹窗看你的几个城市，工作时间高亮。滚动就能查看任意时刻。",
     catalog: {

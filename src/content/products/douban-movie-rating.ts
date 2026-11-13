@@ -16,7 +16,7 @@ export default defineProduct({
     navLabel: "Douban Ratings",
     description:
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
-    eyebrow: "Chrome extension",
+    eyebrow: "Ratings extension for Douban",
     headline: "Other ratings on Douban.",
     lead: "Adds IMDb, Rotten Tomatoes and Metacritic scores to Douban film pages, and under film links you hover. Scores matched by title alone are marked.",
     catalog: {
@@ -110,7 +110,7 @@ export default defineProduct({
     title: "豆瓣电影评分助手",
     navLabel: "豆瓣电影评分",
     description: "在豆瓣电影页面补充 IMDb、烂番茄和 Metacritic 评分的 Chrome 扩展（非豆瓣官方）。",
-    eyebrow: "Chrome 扩展",
+    eyebrow: "豆瓣评分扩展",
     headline: "豆瓣页上的其他评分",
     lead: "在豆瓣影片页补上 IMDb、烂番茄和 Metacritic 评分，鼠标停在影片链接上也能看。只按片名匹配到的评分会标注出来。",
     catalog: {

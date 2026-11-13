@@ -32,8 +32,6 @@ const copyUi = ui[model.locale];
 // "Product Pages"): at most one live demo, then showcase photographs.
 const showcases = copy.showcases ?? [];
 const demos = copy.sections.flatMap((section) => (section.kind === "demo" ? [section] : []));
-// Every page closes on its main action, under the same label as the hero.
-const closing = copy.primaryCta.label;
 const product = products.find((entry) => entry.slug === model.slug)!;
 const template = templateOf(product.type);
 // One skeleton for every kind of product (DESIGN.md, "Product Pages"). The
@@ -78,7 +76,8 @@ const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(
 const facts: Array<{ value: string; href?: string }> = [
   ...platformParts.map((value) => ({ value })),
   ...(license ? [{ value: license }] : []),
-  ...(model.version || metaVersion ? [{ value: (model.version ?? metaVersion)! }] : []),
+  // The version is said once: not here when the primary action already carries it.
+  ...((model.version || metaVersion) && !model.downloadsRelease ? [{ value: (model.version ?? metaVersion)! }] : []),
   ...(model.released ? [{ value: model.released }] : []),
   // The network level keeps its label, joined in one string so no space
   // follows a full-width colon.
@@ -96,6 +95,14 @@ const facts: Array<{ value: string; href?: string }> = [
 const capturedAt = (asOf?: string) => (asOf ? copyUi.capturedAt.replace("{version}", asOf) : undefined);
 const screenshot = copy.visual.kind === "screenshot" && !heroReplay ? copy.visual : undefined;
 const heroAsOf = screenshot?.asOf;
+// Each showcase says its release only when it differs from the last one said,
+// so a page whose hero is not a capture still says it once.
+let lastAsOf = heroAsOf;
+const showcaseLabels = showcases.map((showcase) => {
+  if (!showcase.asOf || showcase.asOf === lastAsOf) return undefined;
+  lastAsOf = showcase.asOf;
+  return capturedAt(showcase.asOf);
+});
 ---
 
 <SiteLayout
@@ -211,10 +218,10 @@ const heroAsOf = screenshot?.asOf;
     <DemoSection section={section} controls={controls} />
   ))}
 
-  {showcases.map((showcase) => (
+  {showcases.map((showcase, index) => (
     <ShowcaseSection
       showcase={showcase}
-      label={showcase.asOf !== heroAsOf ? capturedAt(showcase.asOf) : undefined}
+      label={showcaseLabels[index]}
       wholeLabel={copyUi.wholeCapture}
       pauseLabel={copyUi.pauseVideo}
       playLabel={copyUi.playVideo}
@@ -236,61 +243,37 @@ const heroAsOf = screenshot?.asOf;
     ) : null,
   )}
 
-  {/* The closing: the name and the main action once more, then where to go next (the family, or related tools). */}
-  <section class="shell page-section page-end final-cta" aria-label={closing}>
-    <p class="final-cta-name">{copy.title}</p>
-    <div class="actions">
-      {copy.primaryCta.soon ? (
-        <span class="button primary large is-soon" aria-disabled="true">
-          {closing}
-        </span>
-      ) : (
-        <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
-          {closing}
-          {model.downloadsRelease && <span class="button-version">{model.version}</span>}
-        </a>
-      )}
-      <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
-        {copy.secondaryCta.label}
-      </a>
-    </div>
-    <nav class="closing-next" aria-labelledby="related-title">
-      <h2 id="related-title" class="closing-label product-related-title">
-        {model.family ? model.family.title : model.related.title}
-      </h2>
-      <ul class="tool-links">
-        {model.family
-          ? model.family.members.map((member) => (
-              <li>
-                {member.current ? (
-                  <span class="tool-link" aria-current="page">
-                    <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
-                    <span>{member.name}</span>
-                    <small>{member.role}</small>
-                  </span>
-                ) : (
-                  <a href={member.href}>
-                    <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
-                    <span>{member.name}</span>
-                    <small>{member.role}</small>
-                  </a>
-                )}
-              </li>
-            ))
-          : model.related.items.map((item) => (
-              <li>
-                <a href={item.href}>
-                  <img class="icon-plate" src={item.icon} alt="" width="28" height="28" loading="lazy" />
-                  <span>{item.name}</span>
+  {/* Design v5.2: the page ends on its FAQ; the hero and the pinned local nav
+      carry the actions, the footer every product. A member of a family shows
+      the family, each tool with its step, because that is said nowhere else. */}
+  {model.family && (
+    <section class="shell page-section page-end family-section" aria-labelledby="family-title">
+      <nav class="closing-next" aria-labelledby="family-title">
+        <h2 id="family-title" class="closing-label">
+          {model.family.title}
+        </h2>
+        <ul class="tool-links">
+          {model.family.members.map((member) => (
+            <li>
+              {member.current ? (
+                <span class="tool-link" aria-current="page">
+                  <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
+                  <span>{member.name}</span>
+                  <small>{member.role}</small>
+                </span>
+              ) : (
+                <a href={member.href}>
+                  <img class="icon-plate" src={member.icon} alt="" width="28" height="28" loading="lazy" />
+                  <span>{member.name}</span>
+                  <small>{member.role}</small>
                 </a>
-              </li>
-            ))}
-      </ul>
-      <a class="textlink closing-all" href={model.related.all.href}>
-        {model.related.all.label}
-      </a>
-    </nav>
-  </section>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </section>
+  )}
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>
     <script is:inline src="/scripts/video.js" defer></script>

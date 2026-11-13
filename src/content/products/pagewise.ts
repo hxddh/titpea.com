@@ -16,7 +16,7 @@ export default defineProduct({
     title: "PageWise",
     description:
       "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
-    eyebrow: "PDF reading and questions",
+    eyebrow: "PDF questions, with pages",
     headline: "Ask. Check the page.",
     lead: "Ask a PDF a question. Each citation is marked “verified”, “check the page” or “not found”. Scans are read on your computer.",
     catalog: {
@@ -28,7 +28,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/pagewise/releases",
     },
     secondaryCta: {
-      label: "View on GitHub",
+      label: "View source",
       href: "https://github.com/hxddh/pagewise",
     },
     installNote:
@@ -140,7 +140,7 @@ export default defineProduct({
   zh: {
     title: "PageWise",
     description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
-    eyebrow: "PDF 阅读与问答",
+    eyebrow: "PDF 问答，附页码",
     headline: "问过之后，回到原文",
     lead: "向 PDF 提问。每条引用都标为“已核对”、“请看原页”或“未找到”。扫描件在本机识别。",
     catalog: {
@@ -152,7 +152,7 @@ export default defineProduct({
       href: "https://github.com/hxddh/pagewise/releases",
     },
     secondaryCta: {
-      label: "查看 GitHub",
+      label: "查看源码",
       href: "https://github.com/hxddh/pagewise",
     },
     installNote: "macOS 版尚未公证：每装一个新版本，到“系统设置 → 隐私与安全性”点“仍要打开”。",

@@ -42,7 +42,7 @@
     margin-inline: auto;
   }
 
-  .about-hero :is(.about-body, .cols-margin:has(.about-links)) {
+  .about-hero :is(.about-body, .cols-margin:has(.about-links), .about-analytics) {
     text-align: left;
   }
 
