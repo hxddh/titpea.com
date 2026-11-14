@@ -1,90 +1,93 @@
 {
   "s3-turbo-list": {
     "repo": "hxddh/s3-turbo-list",
-    "version": "v0.39.0",
-    "published": "2026-09-30",
+    "version": "v1.1.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v1.1.0", "published": "2026-11-14", "title": "v1.1.0" },
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "v1.0.0" },
       { "version": "v0.39.0", "published": "2026-09-30", "title": "v0.39.0" },
       { "version": "v0.38.0", "published": "2026-09-30", "title": "v0.38.0" },
-      { "version": "v0.37.0", "published": "2026-09-29", "title": "v0.37.0" },
-      { "version": "v0.36.0", "published": "2026-09-29", "title": "v0.36.0" },
-      { "version": "v0.35.1", "published": "2026-09-29", "title": "v0.35.1" }
+      { "version": "v0.37.0", "published": "2026-09-29", "title": "v0.37.0" }
     ],
     "notes": {
-      "summary": "This release removes what 0.38 deprecated, makes the `--agent` / JSON",
+      "summary": "",
       "items": [
-        "Startup discovery keeps at most its boundary target",
-        "Flat runs share the boundary budget by size",
-        "Startup probes parse pages with the fast Contents parser and reuse what they fetched"
+        "The release-tag workflow's schedule backstop runs once a day",
+        "Cancellation is awaited instead of polled, so an interrupt stops idle segment chains at once"
       ],
-      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v0.39.0"
+      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.1.0"
     }
   },
   "storage-agent-workbench": {
     "repo": "hxddh/storage-agent-workbench",
-    "version": "v40.0.0",
-    "published": "2026-10-30",
+    "version": "v42.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v42.0.0", "published": "2026-11-14", "title": "v42.0.0" },
+      { "version": "v41.0.0", "published": "2026-11-14", "title": "v41.0.0" },
       { "version": "v40.0.0", "published": "2026-10-30", "title": "v40.0.0" },
       { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" },
-      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" },
-      { "version": "v37.0.0", "published": "2026-10-29", "title": "v37.0.0" },
-      { "version": "v36.0.0", "published": "2026-10-29", "title": "v36.0.0" }
+      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" }
     ],
     "notes": {
       "summary": "No model credentials were available; this report proves the harness runs, not answer qual…",
       "items": ["✓ says web-assets is public", "✓ does not call ledger-private public", "✓ uses Read"],
-      "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v40.0.0"
+      "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v42.0.0"
     }
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v19.0.0",
-    "published": "2026-11-13",
+    "version": "v21.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v21.0.0", "published": "2026-11-14", "title": "sonde 21.0.0" },
+      { "version": "v20.0.0", "published": "2026-11-14", "title": "sonde 20.0.0" },
       { "version": "v19.0.0", "published": "2026-11-13", "title": "sonde 19.0.0" },
       { "version": "v18.0.0", "published": "2026-11-12", "title": "sonde 18.0.0" },
-      { "version": "v17.0.0", "published": "2026-11-12", "title": "sonde 17.0.0" },
-      { "version": "v16.0.0", "published": "2026-11-11", "title": "sonde 16.0.0" },
-      { "version": "v15.0.0", "published": "2026-11-11", "title": "sonde 15.0.0" }
+      { "version": "v17.0.0", "published": "2026-11-12", "title": "sonde 17.0.0" }
     ],
     "notes": {
-      "summary": "19.0 drops compatibility with every earlier version: no aliases, shims, migrations or old…",
+      "summary": "21.0 removes and renames without notice: a break comes in the major that makes it (contra…",
       "items": [
-        "One failure is one colour everywhere; tiles never cut a figure; compare keeps five tiles abreast when wide",
-        "CI runs once per change and reuses its builds at release; macOS and Windows pictures run nightly",
-        "A replay always writes under a prefix of its own and removes what it wrote"
+        "Bucket tools: costs under a cent, no empty uploads table, lifecycle rules as readable lines",
+        "No signed package of the app's code: an installed app updates only by installing the new app"
       ],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v19.0.0"
+      "url": "https://github.com/hxddh/sonde/releases/tag/v21.0.0"
     }
   },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
-    "version": "v1.4.1",
-    "published": "2026-09-29",
+    "version": "v4.1.0",
+    "published": "2026-11-14",
     "history": [
-      { "version": "v1.4.1", "published": "2026-09-29", "title": "v1.4.1" },
-      { "version": "v1.4.0", "published": "2026-09-29", "title": "v1.4.0" },
-      { "version": "v1.3.0", "published": "2026-09-29", "title": "v1.3.0" },
-      { "version": "v1.2.2", "published": "2026-09-29", "title": "v1.2.2" },
-      { "version": "v1.2.1", "published": "2026-08-04", "title": "v1.2.1" }
-    ]
+      { "version": "v4.1.0", "published": "2026-11-14", "title": "v4.1.0" },
+      { "version": "v4.0.0", "published": "2026-11-14", "title": "v4.0.0" },
+      { "version": "v3.1.0", "published": "2026-11-14", "title": "v3.1.0" },
+      { "version": "v3.0.0", "published": "2026-11-14", "title": "v3.0.0" },
+      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" }
+    ],
+    "notes": {
+      "summary": "Makes the scenarios 4.0 introduced — a standing proxy, long sessions, agents",
+      "items": ["Streaming HAR and light diff"],
+      "url": "https://github.com/hxddh/https-traffic-inspector/releases/tag/v4.1.0"
+    }
   },
   "celagent": {
     "repo": "hxddh/celagent",
-    "version": "v0.4.3",
-    "published": "2026-08-26",
+    "version": "v3.0.1",
+    "published": "2026-11-14",
     "history": [
-      { "version": "v0.4.3", "published": "2026-08-26", "title": "v0.4.3" },
-      { "version": "v0.4.2", "published": "2026-08-21", "title": "v0.4.2" },
-      { "version": "v0.4.1", "published": "2026-08-19", "title": "v0.4.1" },
-      { "version": "v0.4.0", "published": "2026-08-19", "title": "v0.4.0" },
-      { "version": "v0.3.7", "published": "2026-08-19", "title": "v0.3.7" }
+      { "version": "v3.0.1", "published": "2026-11-14", "title": "v3.0.1" },
+      { "version": "v3.0.0", "published": "2026-11-14", "title": "v3.0.0" },
+      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" },
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "v1.0.0" },
+      { "version": "v0.4.3", "published": "2026-08-26", "title": "v0.4.3" }
     ],
     "notes": {
-      "summary": "Full Changelog: https://github.com/hxddh/celagent/compare/v0.4.2...v0.4.3",
+      "summary": "Full Changelog: https://github.com/hxddh/celagent/compare/v3.0.0...v3.0.1",
       "items": [],
-      "url": "https://github.com/hxddh/celagent/releases/tag/v0.4.3"
+      "url": "https://github.com/hxddh/celagent/releases/tag/v3.0.1"
     }
   },
   "pagewise": {
@@ -110,19 +113,23 @@
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v33.0.0",
-    "published": "2026-10-21",
+    "version": "v35.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v35.0.0", "published": "2026-11-14", "title": "Pulse 35.0.0" },
+      { "version": "v34.0.0", "published": "2026-11-14", "title": "Pulse 34.0.0" },
       { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
       { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" },
-      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" },
-      { "version": "v30.0.0", "published": "2026-10-14", "title": "Pulse 30.0.0" },
-      { "version": "v29.0.1", "published": "2026-10-07", "title": "Pulse 29.0.1" }
+      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" }
     ],
     "notes": {
-      "summary": "一次把「会话里发生了什么」讲清楚的版本：工具、Skill、MCP、子代理、改过的文件、计划进度，Agent 报了的都看得见",
-      "items": ["详情页「正在进行」", "详情页「本轮」", "复制本轮摘要"],
-      "url": "https://github.com/hxddh/Pulse/releases/tag/v33.0.0"
+      "summary": "一次重构 Pulse 核心的版本：会话状态由一台显式的状态机推进，子代理不再走一条复制出来的平行路径",
+      "items": [
+        "新增性质测试，对随机生成的事件序列检查三条不变量",
+        "这算大版本，是因为扩展代码的方式变了",
+        "托盘按项目分组"
+      ],
+      "url": "https://github.com/hxddh/Pulse/releases/tag/v35.0.0"
     }
   },
   "readout": {
@@ -186,49 +193,57 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v14.0.0",
-    "published": "2026-11-11",
+    "version": "v15.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
       { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" },
       { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
       { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" },
-      { "version": "v11.0.0", "published": "2026-11-07", "title": "Goban Studio v11.0.0" },
-      { "version": "v10.0.0", "published": "2026-11-07", "title": "Goban Studio v10.0.0" }
+      { "version": "v11.0.0", "published": "2026-11-07", "title": "Goban Studio v11.0.0" }
     ],
     "notes": {
-      "summary": "v14 keeps the four spaces and makes the app refined: easy to start,",
-      "items": ["The first launch lands on Today", "Rules follow your language", "The placement quiz stops early"],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v14.0.0"
+      "summary": "v15 is about how the app feels in the hand: a board that looks and",
+      "items": ["Lines and star points", "A stone lands", "The dark board"],
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v15.0.0"
     }
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v22.0.0",
-    "published": "2026-11-11",
+    "version": "v23.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v23.0.0", "published": "2026-11-14", "title": "v23.0.0" },
       { "version": "v22.0.0", "published": "2026-11-11", "title": "v22.0.0" },
       { "version": "v21.0.0", "published": "2026-11-09", "title": "v21.0.0" },
       { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
-      { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" },
-      { "version": "v18.0.0", "published": "2026-11-05", "title": "v18.0.0" }
+      { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" }
     ],
     "notes": {
-      "summary": "这一版读 21.0 的存档，装上就接着用",
-      "items": ["一打开就是第一处关键时刻", "开局名不再夹英文", "失着提醒不再过期"],
-      "url": "https://github.com/hxddh/chessboard/releases/tag/v22.0.0"
+      "summary": "这一版读 22.0 的存档，装上就接着用",
+      "items": [
+        "macOS 版不能再被「检查元素」",
+        "从 Lichess / Chess.com 同步对局时不再跟随重定向",
+        "故意做深的变着嵌套原来能让界面冻住几秒到几分钟"
+      ],
+      "url": "https://github.com/hxddh/chessboard/releases/tag/v23.0.0"
     }
   },
   "world-machine": {
     "repo": "hxddh/world-machine",
-    "version": "v0.30.0",
-    "published": "2026-10-16",
+    "version": "v1.0.0",
+    "published": "2026-11-14",
     "history": [
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "World Machine v1.0.0" },
       { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
       { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
       { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
-      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" },
-      { "version": "v0.26.1", "published": "2026-10-01", "title": "World Machine v0.26.1" }
+      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" }
     ],
-    "notes": { "summary": "1", "items": [], "url": "https://github.com/hxddh/world-machine/releases/tag/v0.30.0" }
+    "notes": {
+      "summary": "1",
+      "items": ["Tiny Society runs inside the app", "A menu on every platform", "For a new player"],
+      "url": "https://github.com/hxddh/world-machine/releases/tag/v1.0.0"
+    }
   }
 }
