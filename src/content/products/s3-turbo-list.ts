@@ -59,26 +59,16 @@ export default defineProduct({
       ],
     },
     visual: {
-      kind: "s3Benchmark",
-      label: "s3-turbo-list",
-      kicker: "Third-party test · Alibaba Cloud OSS",
-      title: "Eight in parallel, or 64: same speed",
-      body: "The -c option caps how many requests run at once. Past the provider’s request-rate ceiling, more only adds waiting, so s3tl stops adding parallelism there.",
-      points: [
-        {
-          label: "8 in parallel (-c 8)",
-          seconds: 50,
-          display: "~50K objects/s",
-          state: "reference",
-        },
-        {
-          label: "64 in parallel (-c 64)",
-          seconds: 50,
-          display: "~50K objects/s",
-        },
-      ],
-      chartLabel: "Objects listed per second on Alibaba Cloud OSS, at -c 8 and -c 64",
-      chartCaption: "Approximate third-party figures. On AWS S3, well-spread key prefixes raise the ceiling.",
+      kind: "terminalBrief",
+      label: "s3tl",
+      kicker: "s3tl 1.1 · README example",
+      status: "success",
+      command: "s3tl list s3://my-bucket/logs/ -o out/",
+      filesLabel: "WRITTEN",
+      files: ["out/part-00000.parquet", "out/_result.json"],
+      briefLabel: "stdout: one JSON result",
+      brief: '{"schema": "s3tl.result/1", "command": "list", "ok": true, "exit_code": 0, …}',
+      footnotes: ["one result per run", "query out/part-*.parquet in DuckDB"],
     },
     sections: [
       {
@@ -192,26 +182,16 @@ export default defineProduct({
       ],
     },
     visual: {
-      kind: "s3Benchmark",
-      label: "s3-turbo-list",
-      kicker: "第三方测试 · 阿里云 OSS",
-      title: "8 路并行和 64 路，一样快",
-      body: "-c 选项限定最多同时发出几个请求。到了服务商的请求速率上限，再加并行只会多出等待，所以 s3tl 在那里就不再增加并行。",
-      points: [
-        {
-          label: "8 路并行（-c 8）",
-          seconds: 50,
-          display: "约 5 万对象/秒",
-          state: "reference",
-        },
-        {
-          label: "64 路并行（-c 64）",
-          seconds: 50,
-          display: "约 5 万对象/秒",
-        },
-      ],
-      chartLabel: "在阿里云 OSS 上每秒列举的对象数：-c 8 与 -c 64",
-      chartCaption: "第三方测得的近似值。在 AWS S3 上，key 前缀分布越均匀，上限越高。",
+      kind: "terminalBrief",
+      label: "s3tl",
+      kicker: "s3tl 1.1 · README 示例",
+      status: "success",
+      command: "s3tl list s3://my-bucket/logs/ -o out/",
+      filesLabel: "写出",
+      files: ["out/part-00000.parquet", "out/_result.json"],
+      briefLabel: "stdout：一份 JSON 结果",
+      brief: '{"schema": "s3tl.result/1", "command": "list", "ok": true, "exit_code": 0, …}',
+      footnotes: ["每次运行一份结果", "用 DuckDB 查询 out/part-*.parquet"],
     },
     sections: [
       {

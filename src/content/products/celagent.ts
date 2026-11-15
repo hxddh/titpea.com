@@ -158,7 +158,7 @@ export default defineProduct({
       "基于开源终端编码 Agent Pi，跑在不随终端退出的 supervisor 里，会话和工作区检查点存在你自己的 BOS、S3、R2 或 Tigris 存储桶。",
     eyebrow: "持久运行的 Pi Agent",
     headline: "关掉终端，Agent 还在跑",
-    lead: "让 Pi 编码 Agent 跑在不随终端关闭而退出的 supervisor 里，会话和工作区文件都存进你自己的存储桶。",
+    lead: "关掉终端，Pi 编码 Agent 照常运行，会话和工作区文件存进你自己的存储桶。",
     catalog: {
       role: "持久运行的 Agent",
       text: "让 Pi 编码 Agent 在后台一直跑，会话和文件存进你自己的存储桶。",

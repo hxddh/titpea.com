@@ -77,7 +77,7 @@ export default defineProduct({
               chip: "Done",
             },
             {
-              title: "Terminal session running · Pi",
+              title: "Terminal session · no events yet",
               state: "process",
             },
           ],
@@ -103,7 +103,7 @@ export default defineProduct({
               chip: "14m",
             },
             { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
@@ -120,7 +120,7 @@ export default defineProduct({
               chip: "14m",
             },
             { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
@@ -137,7 +137,7 @@ export default defineProduct({
               chip: "14m",
             },
             { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
@@ -153,7 +153,7 @@ export default defineProduct({
               chip: "14m",
             },
             { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
       ],
@@ -277,7 +277,7 @@ export default defineProduct({
               chip: "好了",
             },
             {
-              title: "终端会话正在运行 · Pi",
+              title: "终端会话 · 尚未收到事件",
               state: "process",
             },
           ],
@@ -299,7 +299,7 @@ export default defineProduct({
               chip: "14分钟",
             },
             { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
@@ -316,7 +316,7 @@ export default defineProduct({
               chip: "14分钟",
             },
             { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
@@ -333,7 +333,7 @@ export default defineProduct({
               chip: "14分钟",
             },
             { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
@@ -349,7 +349,7 @@ export default defineProduct({
               chip: "14分钟",
             },
             { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
       ],

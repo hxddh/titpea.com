@@ -15,7 +15,9 @@ const { visual } = Astro.props;
   </div>
   <div class="terminal-brief-command">
     <span>$</span>
-    <strong>{visual.command}</strong>
+    <strong>
+      <code>{visual.command}</code>
+    </strong>
   </div>
   <div class="terminal-brief-files">
     <span>{visual.filesLabel}</span>
