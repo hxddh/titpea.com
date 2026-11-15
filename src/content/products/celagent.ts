@@ -15,13 +15,13 @@ export default defineProduct({
   en: {
     title: "celagent",
     description:
-      "Pi, the open-source terminal coding agent, with sessions saved to Baidu Object Storage (BOS) and restored by ID on another configured machine.",
-    eyebrow: "Session sync for Pi",
-    headline: "Resume on a new machine.",
-    lead: "Saves each Pi coding-agent session to Baidu Object Storage (BOS), turn by turn. Resume it on another machine you have set up.",
+      "Pi, the open-source terminal coding agent, run under a supervisor that outlives your terminal, with sessions and workspace checkpoints in your own BOS, S3, R2 or Tigris bucket.",
+    eyebrow: "Durable Pi coding agent",
+    headline: "Your agent keeps running.",
+    lead: "Runs the Pi coding agent under a supervisor that outlives your terminal, and saves its session and files to your own bucket.",
     catalog: {
-      role: "Session recovery",
-      text: "Save a Pi coding-agent session to Baidu Object Storage, then resume it on another machine.",
+      role: "Durable agent",
+      text: "Run the Pi coding agent in the background and keep its session and files in your own bucket.",
     },
     primaryCta: {
       label: "Install",
@@ -31,65 +31,87 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/celagent",
     },
+    releaseHighlights: {
+      version: "v4.1.0",
+      items: [
+        "Closing the terminal no longer stops the agent: it runs under a tmux supervisor, and `celagent attach` takes you back to it.",
+        "Workspace files are now checkpointed to your bucket too, so `--restore` brings them back when you continue on another machine.",
+        "New `delegate` and `goal` commands: sub-agents work on their own git branches, and a goal retries until your test command passes.",
+      ],
+    },
     privacy: {
       network: "automatic",
-      networkNote: "Each prompt goes to the model you configure; each completed turn is written to your BOS bucket.",
+      networkNote:
+        "Each prompt goes to the model you configure; sessions and workspace checkpoints are written to your bucket.",
       stays:
-        "Sessions in your own BOS bucket, cached by local Celld nodes; storage keys from your environment or ~/.aws/credentials.",
+        "Sessions and file checkpoints in your own bucket, held in a local outbox until each upload succeeds; storage keys from your environment or ~/.aws/credentials.",
     },
-    meta: "Pi · Baidu BOS · MIT · {version}",
+    meta: "Node.js 22.19+ · tmux · MIT · {version}",
     commands: {
       title: "Get started",
-      sub: "After installing, check that celagent can reach your BOS bucket.",
+      sub: "After installing, check that your bucket passes the conditional-write probe, then start a session.",
       items: [
         {
           comment: "Install",
           command: "curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh",
         },
         {
-          comment: "Check configuration, credentials, and BOS access",
+          comment: "Check configuration, aws CLI, tmux and conditional writes",
           command: "celagent doctor",
+        },
+        {
+          comment: "Start a supervised session in a repository and attach",
+          command: "celagent up fix-auth --cwd ~/repo --attach",
         },
       ],
     },
     visual: {
       kind: "terminalBrief",
       label: "celagent",
-      kicker: "celagent · BOS session",
+      kicker: "celagent · durable session",
       status: "command reference",
       command: "celagent",
       filesLabel: "COMMANDS",
-      files: ["celagent", "celagent list", "celagent <id>  # restore from BOS", "celagent task ledger"],
+      files: [
+        "celagent up <id> --attach",
+        "celagent attach <id>",
+        "celagent up <id> --restore",
+        "celagent goal start …",
+      ],
       briefLabel: "persistence",
-      brief: "Completed turns → BOS write queue → restore by session ID after a successful write",
-      footnotes: ["Configure both machines", "Conflicting writes from two machines are caught"],
+      brief: "Each turn → local outbox → segments and manifest in your bucket; changed files → checkpoints",
+      footnotes: ["Same bucket and key on both machines", "One writer at a time"],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "The full Pi session, not a summary.",
+        label: "Close the terminal; the work goes on.",
         items: [
           {
             title: "Pi, unchanged",
-            body: "Pi's own terminal interface, engine and tools. History stays in Pi's JSONL files.",
+            body: "Pi's own terminal interface and tools; `/new`, `/fork` and `/resume` still work.",
           },
           {
-            title: "Saved per turn",
-            body: "Each finished turn is queued and written to BOS; conflicting writes are caught.",
+            title: "Outlives the terminal",
+            body: "A tmux supervisor keeps Pi running; `celagent attach <id>` returns to it.",
           },
           {
-            title: "No silent fallback",
-            body: "A failed write stays queued to retry; a truncated cached copy never replaces history.",
+            title: "Workspace checkpoints",
+            body: "Changed files upload after tool results; `celagent up <id> --restore` rebuilds them elsewhere.",
           },
           {
-            title: "Configure storage",
-            body: "Set up BOS; `celagent doctor` checks access, `celagent cas-probe` checks conflict detection.",
+            title: "Goals with a test",
+            body: "`celagent goal start` retries until your `--accept` command exits 0, or asks you.",
           },
           {
-            title: "Resume by ID",
-            body: "On a configured machine, `celagent list` shows sessions; `celagent <id>` opens one.",
+            title: "Sub-agents in worktrees",
+            body: "`celagent delegate spawn` gives each child its own git branch; you merge.",
+          },
+          {
+            title: "No silent replay",
+            body: "A watchdog restarts a killed agent; an unfinished tool call is marked unknown, not rerun.",
           },
         ],
       },
@@ -99,10 +121,10 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Each completed turn is written to your BOS bucket as Pi JSONL; Celld, a local runtime that celagent starts, caches it.",
-          "Prompts and tool results go to the model you configure, DeepSeek by default.",
-          "Without a model API key, celagent answers with placeholder replies so you can test storage.",
-          "Storage keys come from environment variables or the `[bos]` profile in `~/.aws/credentials`; `celagent rm <id>` deletes a session.",
+          "Sessions and workspace checkpoints go to your own bucket: Baidu BOS by default, or AWS S3, Cloudflare R2 or Tigris.",
+          "Prompts and tool results go to the model you configure, DeepSeek by default; OpenAI, Anthropic or Pi `/login` also work.",
+          "Set `CELAGENT_ENCRYPTION_KEY` to encrypt what celagent writes with AES-256-GCM; without that key the data cannot be read.",
+          "Storage keys come from environment variables or a `~/.aws/credentials` profile, `[bos]` by default; `celagent rm <id> --yes` deletes a session.",
         ],
       },
       {
@@ -112,16 +134,19 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "Does it sync my workspace?",
-            body: "No. Session recovery does not set up the project files or environment on the other machine. Wait for the BOS write to succeed before relying on remote recovery.",
+            title: "Does restore bring back running processes?",
+            body: "No. A checkpoint holds files, not process memory, open sockets or running databases. It skips `.git`, `node_modules`, `dist` and similar folders, and by default caps one file at 128 MB and a workspace at 1 GB.",
+            asOf: "v4.1.0",
           },
           {
-            title: "What if a BOS write fails?",
-            body: "Retryable failures stay queued, and recovery on another machine waits for a successful write. Recovery reads BOS first and uses the local Celld cache only when the session is not in BOS at all. A BOS timeout or permission error never falls back to that cache, which may be truncated.",
+            title: "Can two machines work on one session?",
+            body: "Not at the same time. One machine holds the session's lease; another can take over 15 seconds after it expires, and the old machine's writes are then refused.",
+            asOf: "v4.1.0",
           },
           {
-            title: "How do I install it?",
-            body: "Run the install script under Get started. On Windows, run the README’s `install.ps1` command in PowerShell; it installs celagent without Celld, which has no Windows package upstream. Then run `celagent doctor`.",
+            title: "Does it work on Windows?",
+            body: "Partly. Windows has no tmux supervisor, so `up`, `attach`, `delegate` and `goal` are unavailable; `run`, `list` and `workspace` still work.",
+            asOf: "v4.1.0",
           },
         ],
       },
@@ -129,13 +154,14 @@ export default defineProduct({
   },
   zh: {
     title: "celagent",
-    description: "基于开源终端编码 Agent Pi，把会话保存在百度对象存储（BOS），按 ID 在另一台已配置的机器上恢复。",
-    eyebrow: "Pi 会话同步",
-    headline: "换台机器，接着写",
-    lead: "把 Pi 编码 Agent 的会话逐轮存进百度对象存储（BOS），在另一台配置好的机器上按 ID 接着用。",
+    description:
+      "基于开源终端编码 Agent Pi，跑在不随终端退出的 supervisor 里，会话和工作区检查点存在你自己的 BOS、S3、R2 或 Tigris 存储桶。",
+    eyebrow: "持久运行的 Pi Agent",
+    headline: "关掉终端，Agent 还在跑",
+    lead: "让 Pi 编码 Agent 跑在不随终端关闭而退出的 supervisor 里，会话和工作区文件都存进你自己的存储桶。",
     catalog: {
-      role: "会话恢复",
-      text: "把 Pi 编码会话存进百度对象存储（BOS），换一台机器接着用。",
+      role: "持久运行的 Agent",
+      text: "让 Pi 编码 Agent 在后台一直跑，会话和文件存进你自己的存储桶。",
     },
     primaryCta: {
       label: "安装",
@@ -145,53 +171,72 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/celagent",
     },
+    releaseHighlights: {
+      version: "v4.1.0",
+      items: [
+        "关掉终端不再停掉 Agent：它跑在 tmux supervisor 里，用 `celagent attach` 随时回去。",
+        "工作区文件现在也会做检查点存进存储桶，换一台机器继续时，`--restore` 会把文件一起恢复。",
+        "新增 `delegate` 和 `goal` 命令：子 Agent 各在自己的 git 分支上干活，goal 会一直重试，直到你的测试命令通过。",
+      ],
+    },
     privacy: {
       network: "automatic",
-      networkNote: "每次提问发往你配置的模型，每个完成的轮次写入你自己的 BOS 存储桶。",
-      stays: "会话在你自己的 BOS 存储桶里，本机 Celld 节点留有缓存；存储凭据来自环境变量或 ~/.aws/credentials。",
+      networkNote: "每次提问发往你配置的模型，会话和工作区检查点写入你自己的存储桶。",
+      stays:
+        "会话和文件检查点在你自己的存储桶里，上传成功前先留在本机 outbox；存储凭据来自环境变量或 ~/.aws/credentials。",
     },
-    meta: "Pi · 百度 BOS · MIT · {version}",
+    meta: "Node.js 22.19+ · tmux · MIT · {version}",
     commands: {
       title: "开始使用",
-      sub: "装好后，检查 celagent 能否连上你的 BOS 存储桶。",
+      sub: "装好后，确认存储桶通过条件写探测，再启动会话。",
       items: [
         {
           comment: "一键安装",
           command: "curl -fsSL https://github.com/hxddh/celagent/releases/latest/download/install.sh | sh",
         },
         {
-          comment: "检查配置、凭据和 BOS 连接",
+          comment: "检查配置、aws CLI、tmux 和条件写",
           command: "celagent doctor",
+        },
+        {
+          comment: "在仓库里启动受看护的会话并附着",
+          command: "celagent up fix-auth --cwd ~/repo --attach",
         },
       ],
     },
     visual: {
       kind: "terminalBrief",
       label: "celagent",
-      kicker: "celagent · BOS 会话",
+      kicker: "celagent · 持久会话",
       status: "命令参考",
       command: "celagent",
       filesLabel: "命令",
-      files: ["celagent", "celagent list", "celagent <id>  # 从 BOS 恢复", "celagent task ledger"],
+      files: [
+        "celagent up <id> --attach",
+        "celagent attach <id>",
+        "celagent up <id> --restore",
+        "celagent goal start …",
+      ],
       briefLabel: "持久化",
-      brief: "完成的轮次 → BOS 写入队列 → 写入成功后按会话 ID 恢复",
-      footnotes: ["两台机器均需配置", "两台机器的写入冲突会被发现"],
+      brief: "每轮 → 本机 outbox → 存储桶里的分段和 manifest；改动的文件 → 检查点",
+      footnotes: ["两台机器用同一个存储桶和密钥", "同一时间只有一个写者"],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "完整的 Pi 会话，不是摘要",
+        label: "关掉终端，活接着干",
         items: [
-          { title: "原样的 Pi", body: "终端界面、引擎和工具都是 Pi 自己的，历史仍存为 Pi 的 JSONL 文件。" },
-          { title: "每轮保存", body: "每完成一轮就排队写入 BOS，冲突的写入会被发现。" },
-          { title: "不静默回退", body: "写入失败就留在队列里重试，不拿截断的缓存冒充完整历史。" },
+          { title: "原样的 Pi", body: "终端界面和工具都是 Pi 自己的，`/new`、`/fork`、`/resume` 照常可用。" },
+          { title: "不随终端退出", body: "tmux supervisor 让 Pi 一直跑，`celagent attach <id>` 随时回去。" },
           {
-            title: "先配置存储",
-            body: "配好 BOS 后，`celagent doctor` 检查连接，`celagent cas-probe` 确认能发现写入冲突。",
+            title: "工作区检查点",
+            body: "工具结果之后上传改动的文件，`celagent up <id> --restore` 在别处恢复。",
           },
-          { title: "按 ID 恢复", body: "在已配置的机器上，`celagent list` 列出会话，`celagent <id>` 打开其中一个。" },
+          { title: "带验收的目标", body: "`celagent goal start` 一直重试，直到 `--accept` 命令返回 0，或停下来问你。" },
+          { title: "子 Agent 独立分支", body: "`celagent delegate spawn` 给每个子 Agent 一个 git 分支，由你来合并。" },
+          { title: "不静默重放", body: "Agent 被杀会由 watchdog 拉起；没跑完的工具调用标为 unknown，不会重跑。" },
         ],
       },
       {
@@ -200,10 +245,10 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "每个完成的轮次以 Pi JSONL 写入你自己的 BOS 存储桶；celagent 在本机启动的 Celld 另存一份缓存。",
-          "提问和工具结果发往你配置的模型，默认是 DeepSeek。",
-          "没有模型 API 密钥时，celagent 用占位回复作答，方便先测试存储。",
-          "存储凭据来自环境变量或 `~/.aws/credentials` 里的 `[bos]` profile；`celagent rm <id>` 删除会话。",
+          "会话和工作区检查点存进你自己的存储桶：默认百度 BOS，也可以用 AWS S3、Cloudflare R2 或 Tigris。",
+          "提问和工具结果发往你配置的模型，默认是 DeepSeek；也可以用 OpenAI、Anthropic 或 Pi 的 `/login`。",
+          "设置 `CELAGENT_ENCRYPTION_KEY` 后，celagent 写入的内容用 AES-256-GCM 加密；没有这个密钥就读不出数据。",
+          "存储凭据来自环境变量或 `~/.aws/credentials` 里的 profile（默认 `[bos]`）；`celagent rm <id> --yes` 删除会话。",
         ],
       },
       {
@@ -213,16 +258,19 @@ export default defineProduct({
         label: "常见问题",
         items: [
           {
-            title: "会同步工作区吗？",
-            body: "不会。恢复会话不会在另一台机器上准备项目文件和运行环境。依赖跨机恢复前，先确认 BOS 写入成功。",
+            title: "恢复时会带回运行中的进程吗？",
+            body: "不会。检查点只存文件，不含进程内存、打开的 socket 或运行中的数据库。它跳过 `.git`、`node_modules`、`dist` 等目录，默认单个文件上限 128 MB，整个工作区上限 1 GB。",
+            asOf: "v4.1.0",
           },
           {
-            title: "BOS 写入失败会怎样？",
-            body: "可重试的失败会留在队列里，换机恢复要等写入成功。恢复时先读 BOS，只有 BOS 里根本没有这个会话，才改用本机 Celld 的缓存；BOS 超时或权限出错时不会改用缓存，因为缓存可能被截断。",
+            title: "两台机器能同时用一个会话吗？",
+            body: "不能同时用。会话的租约在一台机器手里；租约过期 15 秒后另一台才能接管，之后旧机器的写入会被拒绝。",
+            asOf: "v4.1.0",
           },
           {
-            title: "怎么安装？",
-            body: "运行“开始使用”里的安装脚本。Windows 上在 PowerShell 里运行 README 中的 `install.ps1` 安装命令；它只装 celagent，不含 Celld，因为上游 Celld 没有 Windows 包。装好后运行 `celagent doctor`。",
+            title: "Windows 上能用吗？",
+            body: "部分可用。Windows 没有 tmux supervisor，`up`、`attach`、`delegate` 和 `goal` 用不了；`run`、`list` 和 `workspace` 仍然可以。",
+            asOf: "v4.1.0",
           },
         ],
       },

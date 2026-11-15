@@ -40,11 +40,11 @@ export default defineProduct({
     },
     meta: "macOS / Windows / Linux · S3-compatible · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v40.0.0",
+      version: "v42.0.0",
       items: [
-        "Imported data keeps every column: a CSV, JSON or Parquet file, or an S3 access log, becomes a local table with nothing dropped, masked or cut.",
-        "Scripts can read whole object contents, up to 1 MiB by default, instead of a 64 KiB preview.",
-        "The agent can read any part of a file you attach, and a model that accepts images sees an attached image.",
+        "Account IDs, access key IDs and ARNs reach the agent unmasked, so it can tell your account from another; secrets stay redacted.",
+        "Nine bundled skills tell the agent which reads settle a question, from public access to cost; you can edit them or add your own.",
+        "Every model saved in Settings keeps its own key, and a local model runs with the context window its server reports.",
       ],
     },
     visual: {
@@ -83,6 +83,10 @@ export default defineProduct({
             title: "Remembers between tasks",
             body: "It saves notes as JSON and looks them up when needed; they survive app updates.",
           },
+          {
+            title: "Knows where to look",
+            body: "Markdown skills on public access, encryption, cost and more; add your own.",
+          },
         ],
       },
       {
@@ -91,7 +95,7 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Keys are sealed in the system keychain, or an encrypted local file; an AWS profile account stores only its name.",
-          "Tasks, datasets and memory stay in SQLite files on this machine. Account IDs never reach the model, the window or a log.",
+          "Tasks, datasets and memory stay in SQLite files here. Secret keys and session tokens are redacted before the model sees them.",
           "Requests go only to the model and endpoints you configure; packaged builds also check GitHub Releases for updates. No telemetry.",
         ],
       },
@@ -103,17 +107,17 @@ export default defineProduct({
           {
             title: "Does it need a model?",
             body: "Yes. Every read goes through the agent, so without a model the window asks for one. OpenAI, Anthropic or any OpenAI-compatible endpoint works; models already running in Ollama or LM Studio are one click away.",
-            asOf: "v40.0.0",
+            asOf: "v42.0.0",
           },
           {
             title: "Will a small local model work?",
-            body: "It runs: the context window and output limit come from what the provider reports, with no fixed caps. How well it investigates depends on the model; the project’s release notes carry a smoke test, not a quality score.",
-            asOf: "v40.0.0",
+            body: "It runs: a local model gets the context window its server reports (4,096 tokens unless loaded with more), and results arrive in smaller pieces to fit. How well it investigates depends on the model; the release notes carry a smoke test, not a quality score.",
+            asOf: "v42.0.0",
           },
           {
             title: "Does it watch my account?",
             body: "No. It reads only while you ask in a task; there is no background or scheduled run.",
-            asOf: "v40.0.0",
+            asOf: "v42.0.0",
           },
         ],
       },
@@ -145,11 +149,11 @@ export default defineProduct({
     },
     meta: "macOS / Windows / Linux · S3 兼容 · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v40.0.0",
+      version: "v42.0.0",
       items: [
-        "导入的数据保留每一列：CSV、JSON、Parquet 文件或 S3 访问日志都变成本地表格，什么都不丢、不遮、不截断。",
-        "脚本可以读取完整的对象内容，默认最多 1 MiB，不再只有 64 KiB 的预览。",
-        "Agent 能读取你附上的文件的任意部分；支持图片的模型能看到附上的图片。",
+        "账号 ID、访问密钥 ID 和 ARN 不再遮蔽，Agent 能分清你的账号和别人的账号；密钥类内容仍会脱敏。",
+        "内置九个技能，告诉 Agent 从公开访问到成本，各类问题该看哪些读取结果；你可以修改，也可以自己添加。",
+        "设置里保存的每个模型都有自己的密钥；本地模型按其服务报告的上下文窗口运行。",
       ],
     },
     visual: {
@@ -176,6 +180,7 @@ export default defineProduct({
           { title: "多对象问题用脚本", body: "沙箱脚本列举、统计、读取对象内容，不能联网。" },
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },
           { title: "跨任务记住", body: "它把要记的内容存成 JSON，需要时自己查；应用升级后仍在。" },
+          { title: "知道从哪查起", body: "Markdown 技能涵盖公开访问、加密、成本等，也可以自己添加。" },
         ],
       },
       {
@@ -184,7 +189,7 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "密钥封存在系统钥匙串或本机加密文件里；AWS profile 账号只存它的名称。",
-          "任务、数据集和记忆存在本机的 SQLite 文件里。账号 ID 不会出现在模型、窗口或日志里。",
+          "任务、数据集和记忆存在本机的 SQLite 文件里。私有密钥、会话令牌和密码在发给模型之前就会脱敏。",
           "请求只发往你配置的模型和端点；安装版还会向 GitHub Releases 检查更新。不收集遥测。",
         ],
       },
@@ -196,17 +201,17 @@ export default defineProduct({
           {
             title: "需要模型吗？",
             body: "需要。所有读取都经由 Agent，没有模型时窗口会提示你配置。OpenAI、Anthropic 或任何兼容 OpenAI 的端点都可以；已在 Ollama 或 LM Studio 里运行的模型一键可选。",
-            asOf: "v40.0.0",
+            asOf: "v42.0.0",
           },
           {
             title: "小的本地模型够用吗？",
-            body: "能运行。上下文窗口和输出上限都取自服务商报告的数值，没有固定上限。排查得好不好取决于模型；项目的发布说明只附冒烟测试结果，不代表模型质量。",
-            asOf: "v40.0.0",
+            body: "能运行。本地模型使用其服务报告的上下文窗口（未加载更大窗口时为 4,096 个 token），结果会切成更小的片段放进去。排查得好不好取决于模型；发布说明只附冒烟测试结果，不代表模型质量。",
+            asOf: "v42.0.0",
           },
           {
             title: "它会在后台巡检吗？",
             body: "不会。只有你在任务里提问时它才读取，没有后台或定时运行。",
-            asOf: "v40.0.0",
+            asOf: "v42.0.0",
           },
         ],
       },
