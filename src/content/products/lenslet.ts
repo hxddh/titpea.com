@@ -14,7 +14,7 @@ export default defineProduct({
   og: "/assets/og-lenslet.png",
   schema: {
     category: "DeveloperApplication",
-    os: "macOS, Linux",
+    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
