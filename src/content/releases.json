@@ -4,31 +4,11 @@
     "version": "v1.1.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v1.1.0",
-        "published": "2026-11-14",
-        "title": "v1.1.0"
-      },
-      {
-        "version": "v1.0.0",
-        "published": "2026-11-14",
-        "title": "v1.0.0"
-      },
-      {
-        "version": "v0.39.0",
-        "published": "2026-09-30",
-        "title": "v0.39.0"
-      },
-      {
-        "version": "v0.38.0",
-        "published": "2026-09-30",
-        "title": "v0.38.0"
-      },
-      {
-        "version": "v0.37.0",
-        "published": "2026-09-29",
-        "title": "v0.37.0"
-      }
+      { "version": "v1.1.0", "published": "2026-11-14", "title": "v1.1.0" },
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "v1.0.0" },
+      { "version": "v0.39.0", "published": "2026-09-30", "title": "v0.39.0" },
+      { "version": "v0.38.0", "published": "2026-09-30", "title": "v0.38.0" },
+      { "version": "v0.37.0", "published": "2026-09-29", "title": "v0.37.0" }
     ],
     "notes": {
       "summary": "",
@@ -44,31 +24,11 @@
     "version": "v42.0.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v42.0.0",
-        "published": "2026-11-14",
-        "title": "v42.0.0"
-      },
-      {
-        "version": "v41.0.0",
-        "published": "2026-11-14",
-        "title": "v41.0.0"
-      },
-      {
-        "version": "v40.0.0",
-        "published": "2026-10-30",
-        "title": "v40.0.0"
-      },
-      {
-        "version": "v39.0.0",
-        "published": "2026-10-29",
-        "title": "v39.0.0"
-      },
-      {
-        "version": "v38.0.0",
-        "published": "2026-10-29",
-        "title": "v38.0.0"
-      }
+      { "version": "v42.0.0", "published": "2026-11-14", "title": "v42.0.0" },
+      { "version": "v41.0.0", "published": "2026-11-14", "title": "v41.0.0" },
+      { "version": "v40.0.0", "published": "2026-10-30", "title": "v40.0.0" },
+      { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" },
+      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" }
     ],
     "notes": {
       "summary": "No model credentials were available; this report proves the harness runs, not answer qual…",
@@ -78,42 +38,23 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v21.0.0",
-    "published": "2026-11-14",
+    "version": "v24.0.0",
+    "published": "2026-11-15",
     "history": [
-      {
-        "version": "v21.0.0",
-        "published": "2026-11-14",
-        "title": "sonde 21.0.0"
-      },
-      {
-        "version": "v20.0.0",
-        "published": "2026-11-14",
-        "title": "sonde 20.0.0"
-      },
-      {
-        "version": "v19.0.0",
-        "published": "2026-11-13",
-        "title": "sonde 19.0.0"
-      },
-      {
-        "version": "v18.0.0",
-        "published": "2026-11-12",
-        "title": "sonde 18.0.0"
-      },
-      {
-        "version": "v17.0.0",
-        "published": "2026-11-12",
-        "title": "sonde 17.0.0"
-      }
+      { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" },
+      { "version": "v23.0.1", "published": "2026-11-15", "title": "sonde 23.0.1" },
+      { "version": "v23.0.0", "published": "2026-11-15", "title": "sonde 23.0.0" },
+      { "version": "v22.0.0", "published": "2026-11-15", "title": "sonde 22.0.0" },
+      { "version": "v21.0.0", "published": "2026-11-14", "title": "sonde 21.0.0" }
     ],
     "notes": {
-      "summary": "21.0 removes and renames without notice: a break comes in the major that makes it (contra…",
+      "summary": "24.0 gives back what 21–23 took from view, finds the S3 mistakes people really make, and…",
       "items": [
-        "Bucket tools: costs under a cent, no empty uploads table, lifecycle rules as readable lines",
-        "No signed package of the app's code: an installed app updates only by installing the new app"
+        "Nothing you read is lost",
+        "The sidebar says what sent each run's requests",
+        "Findings for the mistakes people make"
       ],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v21.0.0"
+      "url": "https://github.com/hxddh/sonde/releases/tag/v24.0.0"
     }
   },
   "httpmon": {
@@ -121,31 +62,11 @@
     "version": "v4.1.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v4.1.0",
-        "published": "2026-11-14",
-        "title": "v4.1.0"
-      },
-      {
-        "version": "v4.0.0",
-        "published": "2026-11-14",
-        "title": "v4.0.0"
-      },
-      {
-        "version": "v3.1.0",
-        "published": "2026-11-14",
-        "title": "v3.1.0"
-      },
-      {
-        "version": "v3.0.0",
-        "published": "2026-11-14",
-        "title": "v3.0.0"
-      },
-      {
-        "version": "v2.0.0",
-        "published": "2026-11-14",
-        "title": "v2.0.0"
-      }
+      { "version": "v4.1.0", "published": "2026-11-14", "title": "v4.1.0" },
+      { "version": "v4.0.0", "published": "2026-11-14", "title": "v4.0.0" },
+      { "version": "v3.1.0", "published": "2026-11-14", "title": "v3.1.0" },
+      { "version": "v3.0.0", "published": "2026-11-14", "title": "v3.0.0" },
+      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" }
     ],
     "notes": {
       "summary": "Makes the scenarios 4.0 introduced — a standing proxy, long sessions, agents",
@@ -159,30 +80,18 @@
     "version": "v4.0.0",
     "published": "2026-11-15",
     "history": [
-      {
-        "version": "v4.0.0",
-        "published": "2026-11-15",
-        "title": "Lenslet 4.0"
-      },
-      {
-        "version": "v3.0.0",
-        "published": "2026-11-15",
-        "title": "Lenslet 3.0"
-      },
-      {
-        "version": "v2.0.0",
-        "published": "2026-11-15",
-        "title": "Lenslet 2.0"
-      },
-      {
-        "version": "v1.0.0",
-        "published": "2026-11-15",
-        "title": "Lenslet 1.0"
-      }
+      { "version": "v4.0.0", "published": "2026-11-15", "title": "Lenslet 4.0.0" },
+      { "version": "v3.0.0", "published": "2026-11-15", "title": "Lenslet 3.0.0" },
+      { "version": "v2.0.0", "published": "2026-11-15", "title": "Lenslet 2.0.0" },
+      { "version": "v1.0.0", "published": "2026-11-15", "title": "Lenslet 1.0.0" }
     ],
     "notes": {
-      "summary": "",
-      "items": [],
+      "summary": "3.0 could work out the AWS access your tests need",
+      "items": [
+        "Reports now list unused access: lines in the lock that the run did not exercise",
+        "CI runs the same packaging scripts as the release, on every pull request",
+        "Real credentials could reach the trace"
+      ],
       "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v4.0.0"
     }
   },
@@ -191,31 +100,11 @@
     "version": "v24.0.0",
     "published": "2026-10-18",
     "history": [
-      {
-        "version": "v24.0.0",
-        "published": "2026-10-18",
-        "title": "v24.0.0"
-      },
-      {
-        "version": "v23.0.0",
-        "published": "2026-10-15",
-        "title": "v23.0.0"
-      },
-      {
-        "version": "v21.1.2",
-        "published": "2026-10-15",
-        "title": "v21.1.2"
-      },
-      {
-        "version": "v21.1.1",
-        "published": "2026-10-15",
-        "title": "v21.1.1"
-      },
-      {
-        "version": "v21.1.0",
-        "published": "2026-10-15",
-        "title": "v21.1.0"
-      }
+      { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
+      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" },
+      { "version": "v21.1.2", "published": "2026-10-15", "title": "v21.1.2" },
+      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" },
+      { "version": "v21.1.0", "published": "2026-10-15", "title": "v21.1.0" }
     ],
     "notes": {
       "summary": "v24, \"answers that hold, a first run that does not break\" (…",
@@ -232,31 +121,11 @@
     "version": "v35.0.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v35.0.0",
-        "published": "2026-11-14",
-        "title": "Pulse 35.0.0"
-      },
-      {
-        "version": "v34.0.0",
-        "published": "2026-11-14",
-        "title": "Pulse 34.0.0"
-      },
-      {
-        "version": "v33.0.0",
-        "published": "2026-10-21",
-        "title": "Pulse 33.0.0"
-      },
-      {
-        "version": "v32.0.0",
-        "published": "2026-10-18",
-        "title": "Pulse 32.0.0"
-      },
-      {
-        "version": "v31.0.0",
-        "published": "2026-10-17",
-        "title": "Pulse 31.0.0"
-      }
+      { "version": "v35.0.0", "published": "2026-11-14", "title": "Pulse 35.0.0" },
+      { "version": "v34.0.0", "published": "2026-11-14", "title": "Pulse 34.0.0" },
+      { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
+      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" },
+      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" }
     ],
     "notes": {
       "summary": "一次重构 Pulse 核心的版本：会话状态由一台显式的状态机推进，子代理不再走一条复制出来的平行路径",
@@ -273,31 +142,11 @@
     "version": "v6.0.0",
     "published": "2026-11-11",
     "history": [
-      {
-        "version": "v6.0.0",
-        "published": "2026-11-11",
-        "title": "Readout 6.0.0"
-      },
-      {
-        "version": "v5.2.0",
-        "published": "2026-11-05",
-        "title": "Readout 5.2.0"
-      },
-      {
-        "version": "v5.1.0",
-        "published": "2026-11-04",
-        "title": "Readout 5.1.0"
-      },
-      {
-        "version": "v5.0.0",
-        "published": "2026-10-31",
-        "title": "Readout 5.0.0"
-      },
-      {
-        "version": "v4.2.0",
-        "published": "2026-10-30",
-        "title": "Readout 4.2.0"
-      }
+      { "version": "v6.0.0", "published": "2026-11-11", "title": "Readout 6.0.0" },
+      { "version": "v5.2.0", "published": "2026-11-05", "title": "Readout 5.2.0" },
+      { "version": "v5.1.0", "published": "2026-11-04", "title": "Readout 5.1.0" },
+      { "version": "v5.0.0", "published": "2026-10-31", "title": "Readout 5.0.0" },
+      { "version": "v4.2.0", "published": "2026-10-30", "title": "Readout 4.2.0" }
     ],
     "notes": {
       "summary": "Readout 6 does less: a file opens without waiting for anything, opening one never runs an…",
@@ -314,31 +163,11 @@
     "version": "v0.26.3",
     "published": "2026-10-07",
     "history": [
-      {
-        "version": "v0.26.3",
-        "published": "2026-10-07",
-        "title": "Agent Radar v0.26.3"
-      },
-      {
-        "version": "v0.26.2",
-        "published": "2026-10-07",
-        "title": "Agent Radar v0.26.2"
-      },
-      {
-        "version": "v0.26.1",
-        "published": "2026-10-02",
-        "title": "Agent Radar v0.26.1"
-      },
-      {
-        "version": "v0.26.0",
-        "published": "2026-09-30",
-        "title": "Agent Radar v0.26.0"
-      },
-      {
-        "version": "v0.25.1",
-        "published": "2026-09-30",
-        "title": "Agent Radar v0.25.1"
-      }
+      { "version": "v0.26.3", "published": "2026-10-07", "title": "Agent Radar v0.26.3" },
+      { "version": "v0.26.2", "published": "2026-10-07", "title": "Agent Radar v0.26.2" },
+      { "version": "v0.26.1", "published": "2026-10-02", "title": "Agent Radar v0.26.1" },
+      { "version": "v0.26.0", "published": "2026-09-30", "title": "Agent Radar v0.26.0" },
+      { "version": "v0.25.1", "published": "2026-09-30", "title": "Agent Radar v0.25.1" }
     ],
     "notes": {
       "summary": "Release date: 2026-10-07",
@@ -355,31 +184,11 @@
     "version": "v3.2.1",
     "published": "2026-11-13",
     "history": [
-      {
-        "version": "v3.2.1",
-        "published": "2026-11-13",
-        "title": "v3.2.1"
-      },
-      {
-        "version": "v3.2.0",
-        "published": "2026-10-18",
-        "title": "v3.2.0"
-      },
-      {
-        "version": "v3.1.0",
-        "published": "2026-10-17",
-        "title": "v3.1.0"
-      },
-      {
-        "version": "v3.0.0",
-        "published": "2026-10-14",
-        "title": "v3.0.0"
-      },
-      {
-        "version": "v2.1.0",
-        "published": "2026-10-10",
-        "title": "v2.1.0"
-      }
+      { "version": "v3.2.1", "published": "2026-11-13", "title": "v3.2.1" },
+      { "version": "v3.2.0", "published": "2026-10-18", "title": "v3.2.0" },
+      { "version": "v3.1.0", "published": "2026-10-17", "title": "v3.1.0" },
+      { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" },
+      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" }
     ],
     "notes": {
       "summary": "照 `docs/REVIEW-v3.2.md` 修",
@@ -389,39 +198,23 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v15.0.0",
+    "version": "v16.0.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v15.0.0",
-        "published": "2026-11-14",
-        "title": "Goban Studio v15.0.0"
-      },
-      {
-        "version": "v14.0.0",
-        "published": "2026-11-11",
-        "title": "Goban Studio v14.0.0"
-      },
-      {
-        "version": "v13.0.0",
-        "published": "2026-11-08",
-        "title": "Goban Studio v13.0.0"
-      },
-      {
-        "version": "v12.0.0",
-        "published": "2026-11-07",
-        "title": "Goban Studio v12.0.0"
-      },
-      {
-        "version": "v11.0.0",
-        "published": "2026-11-07",
-        "title": "Goban Studio v11.0.0"
-      }
+      { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
+      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
+      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" },
+      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
+      { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" }
     ],
     "notes": {
-      "summary": "v15 is about how the app feels in the hand: a board that looks and",
-      "items": ["Lines and star points", "A stone lands", "The dark board"],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v15.0.0"
+      "summary": "v16 checks what v15 built, with the newer KataGo network doing the",
+      "items": [
+        "Settings → Engines says which KataGo build runs",
+        "The strongest opponent was measured again",
+        "The opening book was rebuilt"
+      ],
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v16.0.0"
     }
   },
   "chessboard": {
@@ -429,31 +222,11 @@
     "version": "v23.0.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v23.0.0",
-        "published": "2026-11-14",
-        "title": "v23.0.0"
-      },
-      {
-        "version": "v22.0.0",
-        "published": "2026-11-11",
-        "title": "v22.0.0"
-      },
-      {
-        "version": "v21.0.0",
-        "published": "2026-11-09",
-        "title": "v21.0.0"
-      },
-      {
-        "version": "v19.1.0",
-        "published": "2026-11-08",
-        "title": "v19.1.0"
-      },
-      {
-        "version": "v19.0.0",
-        "published": "2026-11-06",
-        "title": "v19.0.0"
-      }
+      { "version": "v23.0.0", "published": "2026-11-14", "title": "v23.0.0" },
+      { "version": "v22.0.0", "published": "2026-11-11", "title": "v22.0.0" },
+      { "version": "v21.0.0", "published": "2026-11-09", "title": "v21.0.0" },
+      { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
+      { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" }
     ],
     "notes": {
       "summary": "这一版读 22.0 的存档，装上就接着用",
@@ -470,31 +243,11 @@
     "version": "v1.0.0",
     "published": "2026-11-14",
     "history": [
-      {
-        "version": "v1.0.0",
-        "published": "2026-11-14",
-        "title": "World Machine v1.0.0"
-      },
-      {
-        "version": "v0.30.0",
-        "published": "2026-10-16",
-        "title": "World Machine v0.30.0"
-      },
-      {
-        "version": "v0.29.0",
-        "published": "2026-10-10",
-        "title": "World Machine v0.29.0"
-      },
-      {
-        "version": "v0.28.0",
-        "published": "2026-10-08",
-        "title": "World Machine v0.28.0"
-      },
-      {
-        "version": "v0.27.0",
-        "published": "2026-10-07",
-        "title": "World Machine v0.27.0"
-      }
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "World Machine v1.0.0" },
+      { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
+      { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
+      { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
+      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" }
     ],
     "notes": {
       "summary": "1",
