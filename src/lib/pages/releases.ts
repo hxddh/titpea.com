@@ -61,7 +61,8 @@ export function releaseItems(locale: Locale): ReleaseItem[] {
         highlight: [...items, ...(summary ? [summary] : [])][0],
         summary,
         items,
-        notesUrl: notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
+        notesUrl:
+          notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.tagPrefix ?? ""}${release.version}`,
         earlier: (release.history ?? [])
           .filter((entry) => entry.version !== release.version)
           .slice(0, 4)
@@ -175,7 +176,9 @@ export const feedEntries = (): FeedEntry[] =>
         version: release.version,
         published: release.published!,
         pageUrl: absoluteUrl(pathFor("en", product.slug)),
-        notesUrl: release.notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.version}`,
+        notesUrl:
+          release.notes?.url ??
+          `https://github.com/${release.repo}/releases/tag/${release.tagPrefix ?? ""}${release.version}`,
         // Like the product pages: never the release title, only English lines.
         summary: product.en.catalog.text,
         items: (product.en.releaseHighlights?.version === release.version
