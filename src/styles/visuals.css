@@ -228,7 +228,7 @@
     background: var(--paper-raised);
   }
 
-  /* Captured terminal output (httpmon, celagent, Agent Radar), design v5: light
+  /* Captured terminal output (httpmon, Agent Radar), design v5: light
    paper like every other picture on the page, not a black block. Ink for
    what was typed and printed, muted for labels and the frame's own words. */
   .httpmon-terminal-visual,

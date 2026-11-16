@@ -15,13 +15,13 @@ export default defineProduct({
   en: {
     title: "World Machine",
     description:
-      "A small persistent world that grows a day at a time: each day you sit down with it, a morning brings a letter, a choice and a find. An experimental macOS app in pre-alpha.",
-    eyebrow: "Experimental macOS project",
+      "A small harbour town that grows a day at a time: each day you sit down with it, a morning brings a letter, a choice and a find. A game for macOS, now at 1.0.",
+    eyebrow: "Harbour game for macOS",
     headline: "It grows a day at a time.",
     lead: "A small harbour town on your Mac whose people work, marry and grow old. Each morning brings a letter, a choice and a find.",
     catalog: {
-      role: "Pre-alpha",
-      text: "A small world with a morning for every day you visit. macOS, pre-alpha.",
+      role: "Harbour town",
+      text: "A small harbour town with a morning for every day you visit. macOS.",
     },
     primaryCta: {
       label: "Download",
@@ -33,11 +33,11 @@ export default defineProduct({
     },
     installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
     releaseHighlights: {
-      version: "v0.30.0",
+      version: "v1.0.0",
       items: [
-        "A World no longer moves while you are away: each sitting on a new day passes one World day, or three on a World’s very first.",
-        "Each new day starts with a morning: a letter, today’s choice, something looked after overnight, and a find for a new Finds shelf.",
-        "The town is drawn closer, with residents doing what the record says, and every recorded story, such as a festival, a birth or a storm, can play as a scene.",
+        "1.0 starts its own save format: Worlds from the v0.x previews no longer open, and every later release opens 1.0 saves.",
+        "A new harbour’s first sitting is six days, and works rise over several days while residents lend a hand.",
+        "Talking needs no AI: people answer from what they know, and Play freely in Settings lets the next day begin at once.",
       ],
     },
     privacy: {
@@ -45,7 +45,7 @@ export default defineProduct({
       networkNote: "Once per launch it asks `api.github.com` for the latest release; World voice is off by default.",
       stays: "Worlds are files on your Mac; no account, no telemetry, nothing uploaded.",
     },
-    meta: "macOS 14+ · pre-alpha · Apache-2.0 · {version}",
+    meta: "macOS 14+ · Apache-2.0 · {version}",
     visual: {
       kind: "screenshot",
       label: "World Machine",
@@ -66,8 +66,8 @@ export default defineProduct({
         height: 1696,
         asOf: "v0.30.0",
         alt: "Pocket Universe on Ares, sol 35: domes, habitat modules and a greenhouse on red regolith, gauges for trust, tension and stores, and Nia asking whether the grow lights can run an hour longer because the beans are sulking. Captured from the app running in its Linux preview.",
-        title: "Not only a harbour town.",
-        body: "Pocket Universe settles Ares, Maple Street in 1987, or Icebridge, each drawn as itself.",
+        title: "Other places, still inside.",
+        body: "Pocket Universe’s Ares, Maple Street and Icebridge still open, though New offers only the harbour.",
         caption: "From the app’s Linux preview, like the next picture.",
       },
       {
@@ -94,13 +94,13 @@ export default defineProduct({
           { title: "Lives with an arc", body: "People are born, grow up, grow old and die." },
           {
             title: "Build, paint, name",
-            body: "Scaffolding goes up at once; paint a flag, and name boats and babies.",
+            body: "Works rise over days; paint a flag, and name boats and babies.",
           },
-          { title: "Talk with a goal", body: "When someone asks a favour, you do it by talking with them." },
+          { title: "Talk without AI", body: "People answer from what they know; a favour is done by talking." },
           { title: "Three languages", body: "The interface, stories and talk come in English, Chinese or Japanese." },
           {
             title: "Optional World voice",
-            body: "Off by default: an AI model can word the World’s news and people’s replies.",
+            body: "Experimental and off by default: an AI model can word the World’s news and replies.",
           },
         ],
       },
@@ -113,6 +113,7 @@ export default defineProduct({
           "Your Worlds are files on your Mac; there is no account or telemetry, and nothing is uploaded.",
           "Once per launch, the app asks `api.github.com` for the latest release.",
           "World voice is off by default; with your API key, it sends only that World's facts and your words to `api.anthropic.com`.",
+          "A crash writes a report on your Mac; the next launch offers to copy it into a GitHub issue.",
         ],
       },
       {
@@ -122,16 +123,19 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "Is it stable?",
-            body: "No. World Machine is an experimental pre-alpha. It opens Worlds saved by v0.20 or later and carries on with them; Worlds from v0.28 and v0.29 should open too, but no test covers them yet. A World made with a version of its World Pack (the place it is built from, such as Tiny Society) that this app does not include will not open, but the file is left untouched with its whole history. Each save keeps the previous one as a backup, `<name>.world.bak`, and a file from a newer version of the app opens read-only and is never saved over.",
+            title: "Will my old Worlds open?",
+            body: "Not from the v0.x previews: 1.0 starts its own save format, so start a new World; the old file is left as it was. From 1.0 on, every later release opens every release's saves. Each save keeps the one before as `<name>.world.bak`, and once a day a `<name>.world.day.bak`; a World saved by a newer version is refused and never written over.",
+            asOf: "v1.0.0",
           },
           {
             title: "Is there a free demo?",
-            body: "Yes. World Machine Demo, also on GitHub Releases, is 20 to 30 minutes of Tiny Society, up to day 8. Your harbour stays in My Worlds, and the full app opens it and carries on.",
+            body: "Yes. World Machine Demo, also on GitHub Releases, is about half an hour of Tiny Society: the first six days and the next morning. Your harbour stays in My Worlds, and the full app opens it and carries on.",
+            asOf: "v1.0.0",
           },
           {
             title: "Does a World move while I am away?",
-            body: "No, not since v0.30. Opening a World on a new day of this computer's calendar begins a sitting, which passes one World day, or three on a World's very first. A week or a month away still brings one day. A World from v0.29 or earlier gets one day at its next sitting, and the time it was away is not caught up. When the day is spent, a Goodnight card comes up and the World sleeps until tomorrow.",
+            body: "No. Opening a World on a new day of this computer's calendar begins a sitting, which passes one World day; a new World's first sitting is six. A week or a month away still brings one day. When the day is spent, a Goodnight card comes up; Not yet keeps the evening open. With Play freely on in Settings, the next day can begin at once.",
+            asOf: "v1.0.0",
           },
         ],
       },
@@ -140,13 +144,13 @@ export default defineProduct({
   zh: {
     title: "World Machine",
     description:
-      "一个一天一天长大的小世界：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。面向 macOS 的实验性应用，当前为早期预览版。",
-    eyebrow: "macOS 实验项目",
+      "一座一天一天长大的海港小镇：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。macOS 游戏，已到 1.0。",
+    eyebrow: "macOS 海港小镇游戏",
     headline: "世界一天一天地长大",
     lead: "Mac 上的一座海港小镇，居民工作、成家、变老。每天早晨，都有一封信、一个选择和一件新发现等着你。",
     catalog: {
-      role: "早期预览",
-      text: "每天来，都有早晨等你的小世界。macOS，早期预览版。",
+      role: "海港小镇",
+      text: "每天来，都有早晨等你的海港小镇。macOS。",
     },
     primaryCta: {
       label: "下载",
@@ -158,11 +162,11 @@ export default defineProduct({
     },
     installNote: "尚未公证：首次启动需要一次“仍要打开”。",
     releaseHighlights: {
-      version: "v0.30.0",
+      version: "v1.0.0",
       items: [
-        "你不在时，世界不再自己往前走：在新的一天打开，世界走一天，全新世界的第一次走三天。",
-        "每个新的一天都从早晨开始：一封信、今天的选择、昨夜照料了些什么，还有一件放进新“发现”书架的东西。",
-        "小镇画得更近，居民按记录做事；每个记下的故事，比如节庆、出生或暴风雨，都能作为一幕播放。",
+        "1.0 启用自己的存档格式：v0.x 预览版的世界不再能打开，之后的每个版本都能打开 1.0 的存档。",
+        "新港口的第一次到访有六天；工程要盖上好几天，居民也会来搭把手。",
+        "聊天不需要 AI：居民按自己知道的回答；在设置里打开“自由游玩”，第二天可以马上开始。",
       ],
     },
     privacy: {
@@ -170,7 +174,7 @@ export default defineProduct({
       networkNote: "每次启动向 `api.github.com` 查询一次最新版本；世界之声默认关闭。",
       stays: "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
     },
-    meta: "macOS 14+ · 早期预览 · Apache-2.0 · {version}",
+    meta: "macOS 14+ · Apache-2.0 · {version}",
     visual: {
       kind: "screenshot",
       label: "World Machine",
@@ -191,8 +195,8 @@ export default defineProduct({
         height: 1696,
         asOf: "v0.30.0",
         alt: "Pocket Universe 的 Ares 第 35 个火星日：红色风化层上的穹顶、居住舱和温室，信任、紧张与储备三个指标，Nia 问能不能让补光灯多开一小时，因为豆子在闹脾气。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
-        title: "不只是港口",
-        body: "Pocket Universe 可以落在 Ares、1987 年的 Maple Street 或 Icebridge，各有各的样子。",
+        title: "别的地方还在",
+        body: "Pocket Universe 的 Ares、Maple Street 和 Icebridge 仍能打开，只是新建时只提供港口。",
         caption: "此图与下一张截自应用的 Linux 预览环境。",
       },
       {
@@ -214,10 +218,10 @@ export default defineProduct({
         items: [
           { title: "早晨带来什么", body: "一封信、今天的选择、昨夜照料了些什么，还有一件新发现。" },
           { title: "有始有终的一生", body: "居民出生、长大、变老、离世。" },
-          { title: "建造、绘制、命名", body: "一开工就搭起脚手架；画一面旗，给船和新生儿起名。" },
-          { title: "带着目的去聊", body: "有人托你帮忙，聊一聊就能办成。" },
+          { title: "建造、绘制、命名", body: "工程一天天盖起来；画一面旗，给船和新生儿起名。" },
+          { title: "不用 AI 也能聊", body: "居民按自己知道的回答；有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话：中文、英文或日文。" },
-          { title: "可选的世界之声", body: "默认关闭；打开后，可由 AI 模型讲述世界的消息、替居民回答。" },
+          { title: "可选的世界之声", body: "实验功能，默认关闭；打开后，可由 AI 模型讲述世界的消息、替居民回答。" },
         ],
       },
       {
@@ -229,6 +233,7 @@ export default defineProduct({
           "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
           "每次启动，应用向 `api.github.com` 查询一次最新版本。",
           "世界之声默认关闭；使用你的 API 密钥时，只会把该世界已记录的事实和你说的话发给 `api.anthropic.com`。",
+          "应用崩溃时会在你的 Mac 上写一份报告；下次启动时会问你要不要把它复制进一个 GitHub issue。",
         ],
       },
       {
@@ -238,16 +243,19 @@ export default defineProduct({
         label: "常见问题",
         items: [
           {
-            title: "现在稳定吗？",
-            body: "不稳定。World Machine 是实验性的早期预览版。它能打开 v0.20 及以后保存的世界并接着玩；v0.28 和 v0.29 的世界应该也能打开，只是还没有测试覆盖。如果世界所用的 World Pack（构成这个世界的地方，比如 Tiny Society）版本不在这个应用里，它就打不开，但文件原样保留，完整历史都在。每次保存都会把上一份留作备份 `<name>.world.bak`；更新版本应用写的文件会以只读方式打开，绝不会被覆盖。",
+            title: "以前的世界还能打开吗？",
+            body: "v0.x 预览版的世界打不开：1.0 启用了自己的存档格式，请新建一个世界，旧文件原样保留。从 1.0 起，之后的每个版本都能打开以往各版本的存档。每次保存都会把上一份留作 `<name>.world.bak`，每天还会留一份 `<name>.world.day.bak`；更新版本保存的世界会被拒绝打开，绝不会被覆盖。",
+            asOf: "v1.0.0",
           },
           {
             title: "有免费试玩版吗？",
-            body: "有。同样在 GitHub Releases 上的 World Machine Demo 是 Tiny Society 的 20 到 30 分钟，玩到第 8 天。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
+            body: "有。同样在 GitHub Releases 上的 World Machine Demo 是大约半小时的 Tiny Society：头六天，再加第七天的早晨。你的港口会留在“我的世界”里，完整版应用能打开它接着玩。",
+            asOf: "v1.0.0",
           },
           {
             title: "我不在时世界还会走吗？",
-            body: "不会，v0.30 起是这样。在这台电脑日历上的新一天打开世界，就是一次到访：世界走一天，全新世界的第一次走三天。离开一周或一个月，也只走一天。v0.29 及更早版本的世界，下次到访只走一天，离开的时间不会补上。这一天过完后会出现“晚安”卡片，世界睡到明天。",
+            body: "不会。在这台电脑日历上的新一天打开世界，就是一次到访：世界走一天，新世界的第一次到访走六天。离开一周或一个月，也只走一天。这一天过完会出现“晚安”卡片，选“还不睡”，夜晚就继续。在设置里打开“自由游玩”，第二天可以马上开始。",
+            asOf: "v1.0.0",
           },
         ],
       },

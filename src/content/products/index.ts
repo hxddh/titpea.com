@@ -5,7 +5,7 @@ import storageAgentWorkbench from "./storage-agent-workbench";
 import sonde from "./sonde";
 import storageops from "./storageops";
 import httpmon from "./httpmon";
-import celagent from "./celagent";
+import lenslet from "./lenslet";
 import pagewise from "./pagewise";
 import pulse from "./pulse";
 import readout from "./readout";
@@ -26,7 +26,7 @@ export const products: Product[] = [
   sonde,
   storageops,
   httpmon,
-  celagent,
+  lenslet,
   pagewise,
   pulse,
   readout,

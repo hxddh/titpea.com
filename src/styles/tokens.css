@@ -142,8 +142,6 @@
     --ink-agent-radar: #1b7b46;
     --tint-bilingual: #e88828;
     --ink-bilingual: #a05911;
-    --tint-celagent: #9868f8;
-    --ink-celagent: #7d41f6;
     --tint-chessboard: #c87828;
     --ink-chessboard: #9b5d1f;
     --tint-douban-movie-rating: #389858;
@@ -156,6 +154,8 @@
     --ink-goban-studio: #8a5a12;
     --tint-httpmon: #38b8e8;
     --ink-httpmon: #127499;
+    --tint-lenslet: #4a8fd0;
+    --ink-lenslet: #1f5f9e;
     --tint-pagewise: #5868d8;
     --ink-pagewise: #5061d6;
     --tint-paper-sudoku: #d97a5e;
@@ -217,8 +217,6 @@
     --ink-agent-radar: #28b868;
     --tint-bilingual: #e98c30;
     --ink-bilingual: #e88828;
-    --tint-celagent: #9869f7;
-    --ink-celagent: #9b6df8;
     --tint-chessboard: #d98c40;
     --ink-chessboard: #c87828;
     --tint-douban-movie-rating: #57c17b;
@@ -231,6 +229,8 @@
     --ink-goban-studio: #e6b971;
     --tint-httpmon: #38b8e8;
     --ink-httpmon: #38b8e8;
+    --tint-lenslet: #8cbcf0;
+    --ink-lenslet: #8cbcf0;
     --tint-pagewise: #5868d8;
     --ink-pagewise: #7582df;
     --tint-paper-sudoku: #d98a6e;
@@ -295,8 +295,6 @@
       --ink-agent-radar: #28b868;
       --tint-bilingual: #e98c30;
       --ink-bilingual: #e88828;
-      --tint-celagent: #9869f7;
-      --ink-celagent: #9b6df8;
       --tint-chessboard: #d98c40;
       --ink-chessboard: #c87828;
       --tint-douban-movie-rating: #57c17b;
@@ -309,6 +307,8 @@
       --ink-goban-studio: #e6b971;
       --tint-httpmon: #38b8e8;
       --ink-httpmon: #38b8e8;
+      --tint-lenslet: #8cbcf0;
+      --ink-lenslet: #8cbcf0;
       --tint-pagewise: #5868d8;
       --ink-pagewise: #7582df;
       --tint-paper-sudoku: #d98a6e;
@@ -376,10 +376,6 @@
     --product-tint: var(--tint-bilingual);
     --product-ink: var(--ink-bilingual);
   }
-  body[data-product="celagent"] {
-    --product-tint: var(--tint-celagent);
-    --product-ink: var(--ink-celagent);
-  }
   body[data-product="chessboard"] {
     --product-tint: var(--tint-chessboard);
     --product-ink: var(--ink-chessboard);
@@ -403,6 +399,10 @@
   body[data-product="httpmon"] {
     --product-tint: var(--tint-httpmon);
     --product-ink: var(--ink-httpmon);
+  }
+  body[data-product="lenslet"] {
+    --product-tint: var(--tint-lenslet);
+    --product-ink: var(--ink-lenslet);
   }
   body[data-product="pagewise"] {
     --product-tint: var(--tint-pagewise);

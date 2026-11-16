@@ -25,7 +25,15 @@ export type ReleaseNotes = { summary: string; items: string[]; url: string };
 type ReleaseHistoryEntry = { version: string; published: string; title: string };
 export const releaseTags = releases as Record<
   string,
-  { repo: string; version: string; published?: string; notes?: ReleaseNotes; history?: ReleaseHistoryEntry[] }
+  {
+    repo: string;
+    /** A tag prefix for a repository that ships more than one product (`lenslet-`). */
+    tagPrefix?: string;
+    version: string;
+    published?: string;
+    notes?: ReleaseNotes;
+    history?: ReleaseHistoryEntry[];
+  }
 >;
 
 export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;

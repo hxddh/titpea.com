@@ -17,7 +17,7 @@ export default defineProduct({
     description: "Automatic S3-compatible list / diff with analysis-ready Parquet output.",
     eyebrow: "S3 inventory CLI",
     headline: "Know what’s in a bucket.",
-    lead: "Lists a large S3 bucket, or compares two, in parallel with no tuning. The result is a Parquet file, ready to query in DuckDB.",
+    lead: "Lists a large S3 bucket, or compares two, in parallel with no tuning. The result is a Parquet dataset, ready to query in DuckDB.",
     catalog: {
       role: "List / Diff",
       text: "Lists a large S3 bucket, or compares two, into a Parquet file you can query.",
@@ -27,103 +27,79 @@ export default defineProduct({
       href: "https://github.com/hxddh/s3-turbo-list",
     },
     secondaryCta: {
-      label: "Quick start",
-      href: "https://github.com/hxddh/s3-turbo-list#quick-start",
+      label: "Install",
+      href: "https://github.com/hxddh/s3-turbo-list#install",
     },
     privacy: {
       network: "onRequest",
-      networkNote: "Only the S3 endpoints you list or diff; no update check, no telemetry.",
-      stays:
-        "Listings, checkpoints and logs in your output directory; credentials from your AWS profile or environment.",
+      networkNote: "Only the S3 endpoints you list, compare or write to; no update check, no telemetry.",
+      stays: "Datasets and checkpoints in your output directory; credentials from your AWS profile or environment.",
     },
     meta: "Rust · S3-compatible · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v0.39.0",
+      version: "v1.1.0",
       items: [
-        "Buckets with many folders start listing far sooner: in the project’s own test, comparing a bucket of 20 folders with 1,000 subfolders each took 0.7 seconds instead of 30.",
-        "Missing AWS credentials now stop the run at once with a one-line message, instead of being retried as a network error for minutes.",
-        "Option spellings deprecated in 0.38 are gone; using one stops with a message that names its replacement.",
+        "The tool is now the `s3tl` command, with three subcommands: `list`, `diff` and `check`. Command lines, outputs and checkpoints from 0.x no longer work.",
+        "Every run prints one JSON result with a stable error code, and an interrupted listing resumes into the same folder.",
+        "New in 1.1: list every object version, write the Parquet output straight to S3, and compare by size or by stored checksum.",
       ],
     },
     commands: {
       title: "Get started",
-      sub: "Download the binary for your platform from the project’s GitHub Releases page, check it against the `SHA256SUMS` file there, and put it on your `PATH`.",
+      sub: "Download the binary for your platform from the project’s GitHub Releases page, check it against the `SHA256SUMS` file there, and put it on your `PATH` as `s3tl`.",
       items: [
         {
-          comment: "Check your setup locally, without contacting S3",
-          command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.39.0
-OK    working_directory: /tmp/inventory
-OK    config_parse: resolved configuration is valid TOML/CLI state
-OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
-OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
-OK    provider: no provider preset; plain S3 settings apply
-OK    endpoint_url: no endpoint URL: requests go to AWS S3 (pass --endpoint-url or --provider for another service)
-SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
-SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
-Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
-Doctor status: ok`,
-          replay: { label: "s3-turbo-list v0.39.0 · captured output" },
+          comment: "See what a run would use, then probe the endpoint with a few requests",
+          command: "s3tl check s3://my-bucket/",
         },
         {
-          comment: "List every object in the bucket into a Parquet file in `out/`",
-          command: "s3-turbo-list list --bucket my-bucket --region us-east-2 --output-dir out",
+          comment: "List every object under `logs/` into a Parquet dataset in `out/`",
+          command: "s3tl list s3://my-bucket/logs/ -o out/",
         },
       ],
     },
     visual: {
-      kind: "s3Benchmark",
-      label: "s3-turbo-list",
-      kicker: "Third-party benchmark · Alibaba Cloud OSS",
-      title: "One stream, then eight in parallel",
-      body: "A third party listed 1M objects on Alibaba Cloud OSS, as quoted in the README. The -c option caps how many list requests run in parallel; without it, s3-turbo-list sets the parallelism itself.",
-      points: [
-        {
-          label: "Single stream",
-          seconds: 55,
-          display: "~55s",
-        },
-        {
-          label: "8 in parallel (-c 8)",
-          seconds: 19,
-          display: "~19s",
-          state: "reference",
-        },
-      ],
-      chartLabel: "Time to list 1M objects, one stream and eight in parallel",
-      chartCaption:
-        "Approximate times as reported. Results depend on how the bucket’s keys are laid out and on how many requests a second the provider allows.",
+      kind: "terminalBrief",
+      label: "s3tl",
+      kicker: "s3tl 1.1 · README example",
+      status: "success",
+      command: "s3tl list s3://my-bucket/logs/ -o out/",
+      filesLabel: "WRITTEN",
+      files: ["out/part-00000.parquet", "out/_result.json"],
+      briefLabel: "stdout: one JSON result",
+      brief: '{"schema": "s3tl.result/1", "command": "list", "ok": true, "exit_code": 0, …}',
+      footnotes: ["one result per run", "query out/part-*.parquet in DuckDB"],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
         nav: "List and diff",
-        label: "It lists and compares buckets, in parallel from the start.",
+        label: "It lists and compares buckets, versions included.",
         items: [
           {
             title: "What is in a bucket",
-            body: "Every object in one bucket, written to a Parquet file, with nothing to tune first.",
+            body: "Every object under a bucket or prefix, written as Parquet, with nothing to tune first.",
           },
           {
             title: "What changed between two",
-            body: "Both buckets are listed in parallel; each object is marked equal, missing or changed.",
+            body: "Only the keys that differ are written: left only, right only or changed.",
           },
           {
-            title: "Reads the layout first",
-            body: "A few quick probes find the bucket’s real folder boundaries before the full listing.",
+            title: "Every version too",
+            body: "`--versions` lists every object version and delete marker, newest first within a key.",
           },
           {
-            title: "Parallel from the start",
-            body: "Each run splits the keys into segments and lists them together, with no flags.",
+            title: "Settle ETag mismatches",
+            body: "`--compare checksum` checks stored checksums when same-size objects have different ETags.",
           },
           {
-            title: "Rebalance mid-run",
-            body: "A large segment is split across idle workers, up to the provider’s rate limit.",
+            title: "One JSON result",
+            body: "Every run prints one JSON result with a stable error code and exit code.",
           },
           {
             title: "Check the endpoint first",
-            body: "Validated on AWS S3, MinIO and Baidu BOS; for R2, OSS or B2, run `compat-probe` first.",
+            body: "Validated on AWS S3, MinIO and Baidu BOS; elsewhere, run `s3tl check` first.",
           },
         ],
       },
@@ -133,9 +109,10 @@ Doctor status: ok`,
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "S3 requests go only to the endpoint you set or a provider preset fills in; there is no update check or telemetry.",
-          "Credentials come from the standard AWS chain: your profile, environment variables or instance role. Presets never touch them.",
-          "Listings, checkpoints, logs and run manifests are files in your output directory; `doctor` and `--dry-run` contact no S3 endpoint.",
+          "S3 requests go only to the endpoints you list, compare or write to; there is no update check or telemetry.",
+          "Credentials come from the standard AWS chain: your profile, environment variables or instance role.",
+          "Datasets and checkpoints are files in the `-o` directory; with `-o s3://`, the dataset goes to that S3 prefix instead.",
+          "`s3tl check` without a bucket URL, and any `--dry-run`, send no request to S3.",
         ],
       },
       {
@@ -146,11 +123,13 @@ Doctor status: ok`,
         items: [
           {
             title: "Isn’t aws s3 ls enough?",
-            body: "For a quick look at a small bucket, `aws s3 ls` from the AWS command-line tool is often enough. s3-turbo-list is for large inventories and repeatable comparisons, where the output file and resuming after an interruption matter.",
+            body: "For a quick look at a small bucket, often yes. On a large bucket s3tl is several times to an order of magnitude faster than a sequential `aws s3 ls`, and it leaves a file you can query and compare.",
+            asOf: "v1.1.0",
           },
           {
             title: "Can an interrupted run pick up where it stopped?",
-            body: "Yes. Every interrupted `list` run saves a checkpoint on Ctrl-C or SIGTERM. Run it again with `--resume` and the same `--output-dir`, and it lists only the key ranges not yet written; that output covers only those ranges, so combine it with the interrupted run’s. A crash leaves the previous checkpoint unchanged, and `diff` and `--start-after` runs do not checkpoint.",
+            body: "Yes, for `list -o DIR`. Ctrl-C or SIGTERM commits the parts written so far and saves the remaining key ranges in a checkpoint. Run the same command again with `--resume` and the directory ends up holding every key once. `diff` and output to S3 do not checkpoint.",
+            asOf: "v1.1.0",
           },
         ],
       },
@@ -161,7 +140,7 @@ Doctor status: ok`,
     description: "自动分段的 S3 兼容 list / diff，输出可直接分析的 Parquet 结果。",
     eyebrow: "S3 清单命令行工具",
     headline: "存储桶里有什么，一次列清",
-    lead: "并行列出一个大的 S3 存储桶，或对比两个桶，无需调参。结果是 Parquet 文件，可以直接用 DuckDB 查询。",
+    lead: "并行列出一个大的 S3 存储桶，或对比两个桶，无需调参。结果是 Parquet 数据集，可以直接用 DuckDB 查询。",
     catalog: {
       role: "列举 / 对比",
       text: "并行列举和对比 S3 对象，输出可继续分析的 Parquet。",
@@ -171,86 +150,64 @@ Doctor status: ok`,
       href: "https://github.com/hxddh/s3-turbo-list",
     },
     secondaryCta: {
-      label: "快速开始",
-      href: "https://github.com/hxddh/s3-turbo-list#quick-start",
+      label: "安装",
+      href: "https://github.com/hxddh/s3-turbo-list#install",
     },
     privacy: {
       network: "onRequest",
-      networkNote: "只访问你要列举或对比的 S3 端点；不检查更新，没有遥测。",
-      stays: "对象清单、checkpoint 和日志写在你的输出目录；凭据来自你的 AWS profile 或环境变量。",
+      networkNote: "只访问你要列举、对比或写入的 S3 端点；不检查更新，没有遥测。",
+      stays: "数据集和 checkpoint 写在你的输出目录；凭据来自你的 AWS profile 或环境变量。",
     },
     meta: "Rust · S3 兼容 · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v0.39.0",
+      version: "v1.1.0",
       items: [
-        "文件夹很多的桶开始列举快了许多：在项目自己的测试里，对比一个含 20 个文件夹、每个下有 1,000 个子文件夹的桶，从 30 秒缩短到 0.7 秒。",
-        "缺少 AWS 凭据时，运行立即停止并给出一行说明，不再当作网络错误重试好几分钟。",
-        "0.38 里标为弃用的旧写法已移除；再用时会报错，并指出新的写法。",
+        "命令改名为 `s3tl`，只有 `list`、`diff`、`check` 三个子命令；0.x 的命令行、输出和 checkpoint 都不再适用。",
+        "每次运行都输出一份 JSON 结果，带固定的错误码；中断的列举可以接着写进同一个目录。",
+        "1.1 新增：列出对象的所有版本，把 Parquet 结果直接写到 S3，以及按大小或存储的校验和对比。",
       ],
     },
     commands: {
       title: "开始使用",
-      sub: "到项目的 GitHub Releases 页面下载对应平台的二进制文件，用那里的 `SHA256SUMS` 校验，再放进 `PATH`。",
+      sub: "到项目的 GitHub Releases 页面下载对应平台的二进制文件，用那里的 `SHA256SUMS` 校验，再以 `s3tl` 为名放进 `PATH`。",
       items: [
         {
-          comment: "在本地检查配置，不访问 S3",
-          command: "s3-turbo-list doctor",
-          capturedOutput: `OK    binary_version: 0.39.0
-OK    working_directory: /tmp/inventory
-OK    config_parse: resolved configuration is valid TOML/CLI state
-OK    config_file: no config file (searched ./s3-turbo-list.toml and ~/.s3-turbo-list.toml); built-in defaults apply
-OK    aws_profile: AWS_PROFILE is not set; the AWS SDK uses its default credential chain
-OK    provider: no provider preset; plain S3 settings apply
-OK    endpoint_url: no endpoint URL: requests go to AWS S3 (pass --endpoint-url or --provider for another service)
-SKIP  proxy: the request host depends on the bucket and region (virtual-hosted or AWS endpoint), which doctor does not take; the run log names the proxy, if any, for each resolved endpoint
-SKIP  network: doctor is a local preflight and does not contact S3 endpoints; use compat-probe to validate an endpoint
-Resolved: provider -, endpoint -, addressing auto, concurrency 100, threads 4
-Doctor status: ok`,
-          replay: { label: "s3-turbo-list v0.39.0 · 实际输出" },
+          comment: "查看一次运行会用到的配置，再用几个请求探测端点",
+          command: "s3tl check s3://my-bucket/",
         },
         {
-          comment: "列出桶里的全部对象，写成 `out/` 里的 Parquet 文件",
-          command: "s3-turbo-list list --bucket my-bucket --region us-east-2 --output-dir out",
+          comment: "列出 `logs/` 下的全部对象，写成 `out/` 里的 Parquet 数据集",
+          command: "s3tl list s3://my-bucket/logs/ -o out/",
         },
       ],
     },
     visual: {
-      kind: "s3Benchmark",
-      label: "s3-turbo-list",
-      kicker: "第三方基准测试 · 阿里云 OSS",
-      title: "单路列举对比 8 路并行",
-      body: "第三方在阿里云 OSS 上列举 100 万个对象，数据引自项目 README。-c 选项限定最多同时发出几个列举请求；不加时由 s3-turbo-list 自己决定并行度。",
-      points: [
-        {
-          label: "单路",
-          seconds: 55,
-          display: "约 55s",
-        },
-        {
-          label: "8 路并行（-c 8）",
-          seconds: 19,
-          display: "约 19s",
-          state: "reference",
-        },
-      ],
-      chartLabel: "列举 100 万个对象的耗时：单路与 8 路并行",
-      chartCaption: "均为报告中的近似值。实际结果取决于桶里 key 的分布，以及服务商每秒允许多少请求。",
+      kind: "terminalBrief",
+      label: "s3tl",
+      kicker: "s3tl 1.1 · README 示例",
+      status: "success",
+      command: "s3tl list s3://my-bucket/logs/ -o out/",
+      filesLabel: "写出",
+      files: ["out/part-00000.parquet", "out/_result.json"],
+      briefLabel: "stdout：一份 JSON 结果",
+      brief: '{"schema": "s3tl.result/1", "command": "list", "ok": true, "exit_code": 0, …}',
+      footnotes: ["每次运行一份结果", "用 DuckDB 查询 out/part-*.parquet"],
     },
     sections: [
       {
         kind: "cards",
         id: "features",
         nav: "列举与对比",
-        label: "列举和对比存储桶，从一开始就并行",
+        label: "列举和对比存储桶，连历史版本也能列",
         items: [
-          { title: "桶里有什么", body: "一个桶里的全部对象写成一个 Parquet 文件，不必先调参数。" },
-          { title: "两个桶差在哪里", body: "两个桶并行列举，每个对象都标明相同、缺失或有变化。" },
-          { title: "先读懂结构", body: "先用几次快速探测找到桶里真实的文件夹边界，再开始完整列举。" },
-          { title: "一开始就并行", body: "每次运行都把 key 分成若干段同时列举，不用加任何参数。" },
-          { title: "运行中再拆分", body: "某一段数据特别多时，拆给空闲的 worker，直到服务商的请求速率上限。" },
+          { title: "桶里有什么", body: "一个桶或前缀下的全部对象写成 Parquet，不必先调参数。" },
+          { title: "两个桶差在哪里", body: "只写出有差别的 key：只在左边、只在右边，或内容有变化。" },
+          { title: "历史版本也列", body: "`--versions` 列出每个对象的所有版本和删除标记，同一 key 新版本在前。" },
+          { title: "核对 ETag 不一致", body: "大小相同但 ETag 不同时，`--compare checksum` 用存储的校验和来判定。" },
+          { title: "一份 JSON 结果", body: "每次运行都输出一份 JSON 结果，带固定的错误码和退出码。" },
           {
             title: "先确认端点",
-            body: "已在 AWS S3、MinIO 和百度 BOS 上验证；用 R2、OSS 或 B2 前，先运行 `compat-probe`。",
+            body: "已在 AWS S3、MinIO 和百度 BOS 上验证；其他服务先运行 `s3tl check`。",
           },
         ],
       },
@@ -260,9 +217,10 @@ Doctor status: ok`,
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "S3 请求只发往你设置的端点或预设填入的端点；不检查更新，没有遥测。",
-          "凭据来自标准 AWS 凭据链：profile、环境变量或实例角色；预设从不碰凭据。",
-          "对象清单、checkpoint、日志和运行记录都写在输出目录；`doctor` 与 `--dry-run` 不访问任何 S3 端点。",
+          "S3 请求只发往你要列举、对比或写入的端点；不检查更新，没有遥测。",
+          "凭据来自标准 AWS 凭据链：profile、环境变量或实例角色。",
+          "数据集和 checkpoint 都是 `-o` 目录里的文件；用 `-o s3://` 时，数据集改写到那个 S3 前缀。",
+          "不带桶地址的 `s3tl check` 和任何 `--dry-run` 都不向 S3 发请求。",
         ],
       },
       {
@@ -273,11 +231,13 @@ Doctor status: ok`,
         items: [
           {
             title: "aws s3 ls 不够用吗？",
-            body: "临时看一眼小桶时，AWS 命令行工具的 `aws s3 ls` 通常就够了。s3-turbo-list 面向大规模盘点和可重复的对比，这时输出文件和中断后接着跑更重要。",
+            body: "临时看一眼小桶时，通常够用。桶很大时，s3tl 比逐页顺序执行的 `aws s3 ls` 快几倍到一个数量级，而且留下一个可以查询和对比的文件。",
+            asOf: "v1.1.0",
           },
           {
             title: "中断的任务能接着跑吗？",
-            body: "能。每次中断的 `list` 运行都会在 Ctrl-C 或 SIGTERM 时保存 checkpoint。用同一个 `--output-dir` 加上 `--resume` 再跑一次，只列举尚未写出的 key 范围；续跑的输出只含这些范围，需要与中断那次的输出合并。进程崩溃时保留上一次的 checkpoint，`diff` 和 `--start-after` 运行不保存 checkpoint。",
+            body: "`list -o DIR` 可以。按 Ctrl-C 或收到 SIGTERM 时，已写好的部分会提交，剩下的 key 范围存进 checkpoint。加上 `--resume` 再跑同一条命令，目录里最终是完整的清单，每个 key 只出现一次。`diff` 和写到 S3 的输出不保存 checkpoint。",
+            asOf: "v1.1.0",
           },
         ],
       },

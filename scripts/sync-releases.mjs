@@ -25,17 +25,26 @@ const changes = [];
 const problems = [];
 const historyLength = 5;
 
+/**
+ * A repository that ships more than one product names its tags with a prefix
+ * (`tagPrefix: "lenslet-"` for lenslet-v4.0.0): the site keeps the bare version,
+ * and only tags with that prefix count.
+ */
+const bare = (tag, prefix = "") => (prefix && tag?.startsWith(prefix) ? tag.slice(prefix.length) : tag);
+const isVersion = (tag, prefix = "") =>
+  (!prefix || tag?.startsWith(prefix)) && /^v?\d+\.\d+/.test(bare(tag, prefix) ?? "");
+
 /** The repository's last published releases, newest first; drafts and prereleases left out. */
-async function historyOf(repo) {
+async function historyOf(repo, prefix = "") {
   const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=20`, { headers });
   if (!response.ok) throw new Error(`HTTP ${response.status} listing releases`);
   return (await response.json())
-    .filter((release) => !release.draft && !release.prerelease && /^v?\d+\.\d+/.test(release.tag_name ?? ""))
+    .filter((release) => !release.draft && !release.prerelease && isVersion(release.tag_name, prefix))
     .filter((release) => /^\d{4}-\d{2}-\d{2}/.test(release.published_at ?? ""))
     .sort((a, b) => b.published_at.localeCompare(a.published_at))
     .slice(0, historyLength)
     .map((release) => ({
-      version: release.tag_name,
+      version: bare(release.tag_name, prefix),
       published: release.published_at.slice(0, 10),
       title: (release.name ?? "").trim(),
     }));
@@ -45,19 +54,20 @@ for (const [slug, entry] of Object.entries(releases)) {
   try {
     const response = await fetch(`https://api.github.com/repos/${entry.repo}/releases/latest`, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const { tag_name: tag, published_at: publishedAt, name, body, html_url: url } = await response.json();
-    if (!/^v?\d+\.\d+/.test(tag ?? "")) throw new Error(`unexpected tag ${JSON.stringify(tag)}`);
+    const { tag_name: fullTag, published_at: publishedAt, name, body, html_url: url } = await response.json();
+    if (!isVersion(fullTag, entry.tagPrefix)) throw new Error(`unexpected tag ${JSON.stringify(fullTag)}`);
+    const tag = bare(fullTag, entry.tagPrefix);
     const published = /^\d{4}-\d{2}-\d{2}/.test(publishedAt ?? "") ? publishedAt.slice(0, 10) : entry.published;
     const notes = {
       summary: summaryFrom(name ?? "", body ?? "", tag),
       items: highlightsFrom(body ?? ""),
-      url: url ?? `https://github.com/${entry.repo}/releases/tag/${tag}`,
+      url: url ?? `https://github.com/${entry.repo}/releases/tag/${fullTag}`,
     };
     // Keep the committed highlights when a release body yields nothing new.
     const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
     // A failed listing keeps the committed history; the latest tag still updates,
     // so it is merged in: the history always contains the latest release.
-    const listed = await historyOf(entry.repo).catch((error) => {
+    const listed = await historyOf(entry.repo, entry.tagPrefix).catch((error) => {
       problems.push(`${slug} (${entry.repo}): ${error.message}`);
       return entry.history ?? [];
     });

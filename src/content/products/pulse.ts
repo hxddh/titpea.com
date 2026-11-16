@@ -15,7 +15,7 @@ export default defineProduct({
   en: {
     title: "Pulse",
     description:
-      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when it is your turn. Six agents, through their own hooks.",
+      "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when a turn is done. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
     headline: "Which agent needs you.",
     lead: "A lamp in the menu bar for your coding agents. It turns red when one is blocked on you, and tells you why.",
@@ -35,17 +35,17 @@ export default defineProduct({
     privacy: {
       network: "none",
       networkNote: "No network connection: no update check, nothing reported.",
-      stays: "The event log stays on this Mac, readable only by you.",
+      stays: "The event log and its snapshot stay on this Mac, readable only by you.",
     },
     meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
-      version: "v33.0.0",
+      version: "v35.0.0",
       summary:
-        "This release shows what happened in a session. Upgrading clears the old event log, so earlier timelines are lost; hooks are unaffected.",
+        "Upgrading from 33 or earlier clears the old event log once, so earlier timelines are lost; hooks are unaffected.",
       items: [
-        "A new “Now” part of the details lists each tool still running, with its own time, and any subagents still alive.",
-        "A new “This turn” part sums up the turn: your prompt, time and steps, tools, changed files, Skills, MCP servers, subagents and plan progress, whenever the agent reports them.",
-        "“Copy this turn's summary” puts the turn into plain text, prompt and file paths included, to paste into a pull request or a chat.",
+        "New words: “Your turn” is now “Done”, “Stalled” is “Quiet”, and “Process only” is “Detected”.",
+        "⌃⌥⌘P opens the tray on the longest wait; Settings can switch it to ⌥⌘P or ⌃⌥Space.",
+        "A running session's details can ask for one banner when its turn is done, and Settings can mute one agent's banners.",
       ],
     },
     visual: {
@@ -53,7 +53,7 @@ export default defineProduct({
       label: "Pulse",
       menubarLabel: "Illustrative session list",
       glanceTitle: "1 · 4m",
-      headerStatus: "1 needs you · 1 running · 1 your turn",
+      headerStatus: "1 needs you · 1 running · 1 done",
       sections: [
         {
           // One list in lamp order, no group headings; only waiting, stalled and
@@ -74,10 +74,10 @@ export default defineProduct({
             {
               title: "Review failing CI · Codex",
               state: "recent",
-              chip: "Your turn",
+              chip: "Done",
             },
             {
-              title: "Terminal session running · Pi",
+              title: "Terminal session · no events yet",
               state: "process",
             },
           ],
@@ -85,14 +85,14 @@ export default defineProduct({
       ],
       footnotes: ["hook events · processes", "Click a row to go · › for details"],
       // The still above is the third scene. Strings and rules from Pulse 30:
-      // L10n.swift (counts, lamp sentences, "now"), TrayState.swift (the title
+      // L10n.swift (counts, lamp sentences, "now"; "Done" for a finished turn since Pulse 34), TrayState.swift (the title
       // only while something waits; the count alone under a minute) and
       // EXPERIENCE.md §3–4 (one lamp, frozen row order, second lines).
       lampSentence: "Red: an agent is waiting on you.",
       scenes: [
         {
           lamp: "running",
-          headerStatus: "2 running · 1 your turn",
+          headerStatus: "2 running · 1 done",
           lampSentence: "Green: agents are working and nothing needs you.",
           rows: [
             { title: "Add a package · Claude", meta: "Read · package.json · now", state: "running", chip: "1m" },
@@ -102,14 +102,14 @@ export default defineProduct({
               state: "running",
               chip: "14m",
             },
-            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
           lamp: "waiting",
           glanceTitle: "1",
-          headerStatus: "1 needs you · 1 running · 1 your turn",
+          headerStatus: "1 needs you · 1 running · 1 done",
           lampSentence: "Red: an agent is waiting on you.",
           rows: [
             { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "now" },
@@ -119,14 +119,14 @@ export default defineProduct({
               state: "running",
               chip: "14m",
             },
-            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
           lamp: "waiting",
           glanceTitle: "1 · 4m",
-          headerStatus: "1 needs you · 1 running · 1 your turn",
+          headerStatus: "1 needs you · 1 running · 1 done",
           lampSentence: "Red: an agent is waiting on you.",
           rows: [
             { title: "Add a package · Claude", meta: "Bash: npm install", state: "waiting", chip: "4m" },
@@ -136,13 +136,13 @@ export default defineProduct({
               state: "running",
               chip: "14m",
             },
-            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
         {
           lamp: "running",
-          headerStatus: "2 running · 1 your turn",
+          headerStatus: "2 running · 1 done",
           lampSentence: "Green: agents are working and nothing needs you.",
           rows: [
             { title: "Add a package · Claude", meta: "Bash · npm install · now", state: "running", chip: "5m" },
@@ -152,8 +152,8 @@ export default defineProduct({
               state: "running",
               chip: "14m",
             },
-            { title: "Review failing CI · Codex", state: "recent", chip: "Your turn" },
-            { title: "Terminal session running · Pi", state: "process" },
+            { title: "Review failing CI · Codex", state: "recent", chip: "Done" },
+            { title: "Terminal session · no events yet", state: "process" },
           ],
         },
       ],
@@ -171,10 +171,10 @@ export default defineProduct({
             body: "The › button on a row lists this turn's tools, changed files, plan and subagents.",
           },
           {
-            title: "Orange means stalled",
+            title: "Orange means quiet",
             body: "Pi and OpenCode only: twenty minutes with no new events and no tool running.",
           },
-          { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show running and your turn." },
+          { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show only running and done." },
           {
             title: "Click to go",
             body: "A click opens the session's terminal when Pulse can find it, else its app or details.",
@@ -199,14 +199,17 @@ export default defineProduct({
           {
             title: "What does installing the hooks change?",
             body: "Install them from the setup card on first open or with Install all in Settings → Hooks; for Codex, Pulse writes only `~/.codex/hooks.json`, then you run `/hooks` in Codex to trust it. Only observe-only events are added, and removing them restores each file byte for byte; a file changed since then loses only Pulse's entries.",
+            asOf: "v35.0.0",
           },
           {
             title: "Why is an agent not turning red?",
-            body: "Open Settings → Hooks. Each agent on this Mac has a row: installed, needs update, failed with its reason, or not installed; the last event Pulse heard from it and when; the last event it ignored and why; and whether the agent reports waiting. Install all brings every row that needs an update up to date. Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
+            body: "Open Settings → Hooks. Each agent on this Mac has a row: installed, needs update, failed with its reason, or not installed; the last event Pulse heard from it and when; the last event it ignored and why; and whether the agent reports waiting. Install all brings every row that needs an update up to date, and Test connection checks that a hook can reach this Pulse. Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
+            asOf: "v35.0.0",
           },
           {
             title: "How do I remove Pulse?",
             body: "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
+            asOf: "v35.0.0",
           },
         ],
       },
@@ -215,7 +218,7 @@ export default defineProduct({
   zh: {
     title: "Pulse",
     description:
-      "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，轮到你时只安静计数。支持六个 Agent，走它们自己的 hook。",
+      "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，回合好了时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "看看哪个 Agent 需要你",
     lead: "菜单栏里的一盏灯，看着你的编码 Agent。有 Agent 卡住等你时亮红灯，并说明原因。",
@@ -235,16 +238,16 @@ export default defineProduct({
     privacy: {
       network: "none",
       networkNote: "不连网络：不检查更新，不上报任何东西。",
-      stays: "事件日志只在本机，只有你能读。",
+      stays: "事件日志和它的快照只在本机，只有你能读。",
     },
     meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
-      version: "v33.0.0",
-      summary: "这一版把会话里发生了什么讲清楚。升级后旧的事件日志会清空，以前的时间线随之丢失，hook 不受影响。",
+      version: "v35.0.0",
+      summary: "从 33 或更早的版本升级时，旧的事件日志会清空一次，以前的时间线随之丢失，hook 不受影响。",
       items: [
-        "详情页新增“正在进行”：列出每个还在跑的工具和各自的用时，以及还在运行的子 Agent。",
-        "详情页新增“本轮”：你的提示、用时和步数、用到的工具、改过的文件、Skill、MCP 服务、子 Agent 和计划进度，Agent 报了才显示。",
-        "新增“复制本轮摘要”：把这一轮整理成一段纯文本，带上提示和文件路径，方便贴进 PR 或聊天。",
+        "换了说法：“轮到你”改叫“好了”，“停滞”改叫“没动静”，“仅进程”改叫“已发现”。",
+        "按 ⌃⌥⌘P 打开托盘并选中等得最久的那个；设置里可以换成 ⌥⌘P 或 ⌃⌥Space。",
+        "运行中会话的详情页可以勾选“这一轮好了时提醒我”，只发一次横幅；设置里还能单独静音某个 Agent 的横幅。",
       ],
     },
     visual: {
@@ -252,7 +255,7 @@ export default defineProduct({
       label: "Pulse",
       menubarLabel: "会话列表示意",
       glanceTitle: "1·4分钟",
-      headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+      headerStatus: "1 需要你 · 1 运行中 · 1 好了",
       sections: [
         {
           rows: [
@@ -271,10 +274,10 @@ export default defineProduct({
             {
               title: "查看失败的 CI · Codex",
               state: "recent",
-              chip: "轮到你",
+              chip: "好了",
             },
             {
-              title: "终端会话正在运行 · Pi",
+              title: "终端会话 · 尚未收到事件",
               state: "process",
             },
           ],
@@ -285,7 +288,7 @@ export default defineProduct({
       scenes: [
         {
           lamp: "running",
-          headerStatus: "2 运行中 · 1 轮到你",
+          headerStatus: "2 运行中 · 1 好了",
           lampSentence: "绿：Agent 在工作，没有需要你的事。",
           rows: [
             { title: "添加依赖 · Claude", meta: "Read · package.json · 刚刚", state: "running", chip: "1分钟" },
@@ -295,14 +298,14 @@ export default defineProduct({
               state: "running",
               chip: "14分钟",
             },
-            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
           lamp: "waiting",
           glanceTitle: "1",
-          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          headerStatus: "1 需要你 · 1 运行中 · 1 好了",
           lampSentence: "红：有 Agent 在等你。",
           rows: [
             { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "刚刚" },
@@ -312,14 +315,14 @@ export default defineProduct({
               state: "running",
               chip: "14分钟",
             },
-            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
           lamp: "waiting",
           glanceTitle: "1·4分钟",
-          headerStatus: "1 需要你 · 1 运行中 · 1 轮到你",
+          headerStatus: "1 需要你 · 1 运行中 · 1 好了",
           lampSentence: "红：有 Agent 在等你。",
           rows: [
             { title: "添加依赖 · Claude", meta: "Bash: npm install", state: "waiting", chip: "4分钟" },
@@ -329,13 +332,13 @@ export default defineProduct({
               state: "running",
               chip: "14分钟",
             },
-            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
         {
           lamp: "running",
-          headerStatus: "2 运行中 · 1 轮到你",
+          headerStatus: "2 运行中 · 1 好了",
           lampSentence: "绿：Agent 在工作，没有需要你的事。",
           rows: [
             { title: "添加依赖 · Claude", meta: "Bash · npm install · 刚刚", state: "running", chip: "5分钟" },
@@ -345,8 +348,8 @@ export default defineProduct({
               state: "running",
               chip: "14分钟",
             },
-            { title: "查看失败的 CI · Codex", state: "recent", chip: "轮到你" },
-            { title: "终端会话正在运行 · Pi", state: "process" },
+            { title: "查看失败的 CI · Codex", state: "recent", chip: "好了" },
+            { title: "终端会话 · 尚未收到事件", state: "process" },
           ],
         },
       ],
@@ -360,8 +363,8 @@ export default defineProduct({
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
           { title: "详情里的本轮", body: "点每行末尾的“›”，看这一轮用的工具、改过的文件、计划和子 Agent。" },
-          { title: "橙色表示停滞", body: "只用于 Pi 与 OpenCode：没有工具在跑，却二十分钟没有新事件。" },
-          { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只报运行和轮到你。" },
+          { title: "橙色表示没动静", body: "只用于 Pi 与 OpenCode：没有工具在跑，却二十分钟没有新事件。" },
+          { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只显示运行中和好了。" },
           { title: "点一下就去", body: "点一行就打开会话所在的终端；找不到终端时，打开它的应用或详情。" },
         ],
       },
@@ -383,14 +386,17 @@ export default defineProduct({
           {
             title: "安装 hook 会改动什么？",
             body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”点“全部安装”；Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。只装观察型事件，移除时逐字节还原每个文件；之后改过的文件只删掉 Pulse 的条目。",
+            asOf: "v35.0.0",
           },
           {
             title: "Agent 为什么没亮红灯？",
-            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：已安装、需要更新、安装失败及原因，或未安装；最近听到它的哪个事件、多久前；最近未采用的事件及原因；它会不会报告在等你。“全部安装”会更新所有需要更新的 Agent。“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
+            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：已安装、需要更新、安装失败及原因，或未安装；最近听到它的哪个事件、多久前；最近未采用的事件及原因；它会不会报告在等你。“全部安装”会更新所有需要更新的 Agent，“测试连接”确认 hook 能找到这个 Pulse。“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
+            asOf: "v35.0.0",
           },
           {
             title: "怎样卸载 Pulse？",
             body: "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
+            asOf: "v35.0.0",
           },
         ],
       },

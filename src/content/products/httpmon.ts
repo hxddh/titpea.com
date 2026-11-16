@@ -14,10 +14,11 @@ export default defineProduct({
   sectionIndex: true,
   en: {
     title: "httpmon",
-    description: "A terminal inspector for the HTTP and HTTPS traffic from one CLI command.",
+    description:
+      "A terminal inspector for the HTTP and HTTPS traffic of a command, kept in sessions to query, diff and replay.",
     eyebrow: "HTTP traffic CLI",
     headline: "See the HTTP traffic.",
-    lead: "Put httpmon in front of a command that can use a proxy, like curl, to watch its HTTP traffic live. Responses reach it unchanged.",
+    lead: "Put httpmon in front of a command like curl to see its HTTP traffic; keep it in a session to query, diff or replay.",
     catalog: {
       role: "",
       text: "See what a command actually sent.",
@@ -33,25 +34,31 @@ export default defineProduct({
     privacy: {
       network: "onRequest",
       networkNote:
-        "Relays only the wrapped command’s own requests, and replays only when you ask; no update check, no telemetry.",
-      stays: "Traffic shows in your terminal, saved only to a file you name; the temporary CA key never touches disk.",
+        "Relays only the traffic you route through it, and replays only when you ask; no update check, no telemetry.",
+      stays:
+        "Traffic shows in your terminal and is saved only to a session you start; a run’s temporary CA key never touches disk.",
     },
-    meta: "Go · MIT · {version}",
+    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
-      version: "v1.4.1",
+      version: "v4.1.0",
       items: [
-        "Fixed a bug that could make a request go missing from the output, the `--record` file and the HAR file.",
-        "On exit, httpmon waits up to 3 seconds for requests still in flight, so the command’s last request is logged before the HAR file is written.",
-        "Traffic that is not HTTP, such as SSH, MySQL or Redis, now passes through a proxy tunnel uninspected instead of breaking.",
+        "Traffic is kept in named sessions you can query, diff, replay or export as HAR; these replace `--record` and `--har`.",
+        "New `httpmon proxy` captures browsers, phones and containers, and `--mock` and `--fault` make chosen requests fail on purpose.",
+        "`go install` now installs a program named `httpmon`, and httpmon’s output goes to stderr, leaving the command’s stdout untouched.",
       ],
     },
     commands: {
       title: "Get started",
-      sub: "`go install` needs Go 1.24+ and names the program `https-traffic-inspector`; rename it to `httpmon` to run the examples. Or download a ready-built `httpmon` binary from GitHub Releases.",
+      sub: "The install script is for Linux and macOS; `go install` needs Go 1.26+. On Windows, use `install.ps1` or a binary from GitHub Releases.",
       items: [
         {
-          comment: "Install with Go",
-          command: "go install github.com/hxddh/https-traffic-inspector@latest",
+          comment: "Install (Linux, macOS)",
+          command:
+            "curl -fsSL https://github.com/hxddh/https-traffic-inspector/releases/latest/download/install.sh | sh",
+        },
+        {
+          comment: "Or install with Go",
+          command: "go install github.com/hxddh/https-traffic-inspector/v4/cmd/httpmon@latest",
         },
         {
           comment: "Wrap a command and watch its traffic",
@@ -80,31 +87,31 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "It shows each request and response in your terminal.",
+        label: "Watch the traffic, keep it, and test against it.",
         items: [
           {
             title: "Request and response",
-            body: "Method, URL, headers, status and timing; compressed bodies are unpacked for display only.",
+            body: "Headers, status, timing and decoded bodies on a terminal; one line per exchange elsewhere.",
           },
           {
-            title: "WebSocket too",
-            body: "For `wss://` and `ws://`, the handshake is logged and frames pass through both ways.",
+            title: "HTTP/2, gRPC, WebSocket",
+            body: "gRPC messages are decoded without a schema; every WebSocket message shows as it passes.",
           },
           {
-            title: "HTTP/2 and gRPC",
-            body: "Trailers, the headers sent after a body, pass through; gRPC calls show their status.",
+            title: "Sessions to query",
+            body: "`--session` keeps every exchange; `query` searches it, `diff` compares runs, `replay` re-sends.",
           },
           {
-            title: "Start locally",
-            body: "By default it listens only on `127.0.0.1`; your system proxy is never changed.",
+            title: "Mocks and faults",
+            body: "Answer, delay, reset or redirect matching requests to test failure paths without touching the server.",
           },
           {
-            title: "Only that command",
-            body: "The proxy address and a temporary certificate authority (CA) are set for that command alone.",
+            title: "Standing proxy",
+            body: "`httpmon proxy` captures browsers, phones, containers and running services that httpmon does not start.",
           },
           {
-            title: "Save when needed",
-            body: "NDJSON output, a HAR (HTTP Archive) 1.2 file or a recording, to replay or share.",
+            title: "Built for agents",
+            body: "Compact output off a terminal, and `httpmon mcp` serves sessions to an agent’s MCP client.",
           },
         ],
       },
@@ -114,9 +121,10 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "httpmon sends nothing of its own: it relays the wrapped command’s traffic, and `--replay` re-sends recordings only when you ask.",
-          "The CA lives for one run: its private key never touches disk, and the temporary CA bundle is deleted on exit.",
-          "Captures stay in your terminal unless you pass `--record` or `--har`; those files can hold credentials, so treat them as sensitive.",
+          "httpmon sends nothing of its own; it relays traffic you route through it and re-sends requests only when you run replay.",
+          "By default the CA lives only in memory for one run; `httpmon ca` writes a persistent key to disk, mode 0600.",
+          "Traffic is saved only to a session (`--session`, or `httpmon proxy`), readable by you only, with credentials unless you pass `--redact`.",
+          "Output masks credential headers and URL tokens unless you pass `--show-secrets`; bodies are not masked.",
         ],
       },
       {
@@ -127,11 +135,13 @@ export default defineProduct({
         items: [
           {
             title: "Which commands can it wrap?",
-            body: "curl, aws, Python, Node, or any other proxy-aware command. Only that child process gets the proxy address and temporary CA; your system proxy and global network settings stay as they are. Go programs skip the proxy for loopback targets, Node’s built-in `fetch` needs Node 22.21 or 24, and JVM tools are not configured automatically.",
+            body: "curl, aws, Python, Node, Java, git, cargo, Deno, or any other proxy-aware command. Only that child process gets the proxy address and CA; your system settings stay as they are. Go programs skip the proxy for loopback targets, and a JVM already running before httpmon started, such as a Gradle daemon, is not configured.",
+            asOf: "v4.1.0",
           },
           {
-            title: "Can recordings hold secrets?",
-            body: "Yes. Headers, cookies, query parameters, and response bodies may contain credentials or business data. Capture and replay only in authorized environments, and handle NDJSON, HAR, and recording files as sensitive logs.",
+            title: "Does it still check certificates?",
+            body: "Yes. Because httpmon terminates TLS, it verifies each server’s real certificate on the command’s behalf; a failure is a `502` with a `tls_verify` error. `--insecure-upstream` turns that off; use it only against hosts you control.",
+            asOf: "v4.1.0",
           },
           {
             title: "Does it diagnose storage errors?",
@@ -140,6 +150,7 @@ export default defineProduct({
               label: "Open StorageOps",
               href: "/storageops/",
             },
+            asOf: "v4.1.0",
           },
         ],
       },
@@ -147,10 +158,10 @@ export default defineProduct({
   },
   zh: {
     title: "httpmon",
-    description: "在终端查看一条命令发出的 HTTP/HTTPS 请求与响应。",
+    description: "在终端查看一条命令的 HTTP/HTTPS 请求与响应，存进会话后可以查询、对比和重放。",
     eyebrow: "HTTP 流量命令行工具",
     headline: "看清命令的 HTTP 流量",
-    lead: "把 httpmon 放在一条能走代理的命令前面（比如 curl），实时查看它的 HTTP 流量。命令收到的响应保持原样。",
+    lead: "把 httpmon 放在 curl 这类命令前面，就能看到它的 HTTP 流量；存进会话，之后还能查询、对比或重放。",
     catalog: {
       role: "",
       text: "看这条命令实际发出的请求。",
@@ -165,25 +176,30 @@ export default defineProduct({
     },
     privacy: {
       network: "onRequest",
-      networkNote: "只转发被包裹命令自己的请求，只在你要求时重放；不检查更新，没有遥测。",
-      stays: "流量只显示在终端，只有你指定文件时才保存；临时 CA 私钥从不写入磁盘。",
+      networkNote: "只转发你让它经手的流量，只在你要求时重放；不检查更新，没有遥测。",
+      stays: "流量显示在终端，只有你开了会话才保存；每次运行的临时 CA 私钥从不写入磁盘。",
     },
-    meta: "Go · MIT · {version}",
+    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
-      version: "v1.4.1",
+      version: "v4.1.0",
       items: [
-        "修复了一个问题：某个请求可能从输出、`--record` 文件和 HAR 文件里漏掉。",
-        "退出时，httpmon 会等待仍在传输的请求最多 3 秒，确保命令的最后一个请求在写 HAR 文件前记录下来。",
-        "不是 HTTP 的流量，比如 SSH、MySQL 或 Redis，现在经代理隧道原样转发，不再中断。",
+        "流量存进具名会话，可以查询、对比、重放或导出为 HAR；`--record` 和 `--har` 由此取代。",
+        "新增 `httpmon proxy`，能抓浏览器、手机和容器的流量；`--mock` 和 `--fault` 可以让指定请求故意失败。",
+        "`go install` 装好的程序现在就叫 `httpmon`；httpmon 的输出改走 stderr，命令自己的 stdout 不受影响。",
       ],
     },
     commands: {
       title: "开始使用",
-      sub: "`go install` 需要 Go 1.24+，装好的程序名为 `https-traffic-inspector`，改名为 `httpmon` 才能照下面的示例运行。也可以从 GitHub Releases 下载预编译的 `httpmon` 二进制文件。",
+      sub: "安装脚本适用于 Linux 和 macOS；`go install` 需要 Go 1.26+。Windows 用 `install.ps1`，或从 GitHub Releases 下载二进制文件。",
       items: [
         {
-          comment: "用 Go 安装",
-          command: "go install github.com/hxddh/https-traffic-inspector@latest",
+          comment: "安装（Linux、macOS）",
+          command:
+            "curl -fsSL https://github.com/hxddh/https-traffic-inspector/releases/latest/download/install.sh | sh",
+        },
+        {
+          comment: "或用 Go 安装",
+          command: "go install github.com/hxddh/https-traffic-inspector/v4/cmd/httpmon@latest",
         },
         {
           comment: "包住一条命令，看它的流量",
@@ -212,14 +228,23 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "在终端里看每个请求和响应",
+        label: "看流量，留下来，再拿它做测试",
         items: [
-          { title: "请求和响应", body: "方法、URL、请求头与响应头、状态码和耗时；压缩内容解压仅用于显示。" },
-          { title: "也看 WebSocket", body: "`wss://` 和 `ws://` 会记录握手，之后的帧双向照常转发。" },
-          { title: "HTTP/2 与 gRPC", body: "响应末尾的头字段（trailers）原样转发，gRPC 调用会显示状态。" },
-          { title: "本地启动", body: "默认只监听 `127.0.0.1`，系统代理设置不会改动。" },
-          { title: "只影响这条命令", body: "代理地址和临时 CA（证书颁发机构）只设在这条命令的环境变量里。" },
-          { title: "按需留存", body: "NDJSON 输出、HAR（HTTP 存档）1.2 文件或录制文件，用来回放或分享。" },
+          {
+            title: "请求和响应",
+            body: "终端里看头字段、状态码、耗时和解码后的内容；别处每次交换一行。",
+          },
+          {
+            title: "HTTP/2、gRPC、WebSocket",
+            body: "gRPC 消息无需 schema 就能解码；WebSocket 的每条消息经过时都会显示。",
+          },
+          {
+            title: "可查询的会话",
+            body: "`--session` 保存每次交换；`query` 检索，`diff` 对比两次运行，`replay` 重新发送。",
+          },
+          { title: "模拟与故障", body: "对匹配的请求直接应答、延迟、断开或改道，不碰服务器也能测失败路径。" },
+          { title: "常驻代理", body: "`httpmon proxy` 能抓浏览器、手机、容器和已在运行的服务这些不由它启动的流量。" },
+          { title: "为 Agent 设计", body: "不在终端时输出精简；`httpmon mcp` 把会话提供给 Agent 的 MCP 客户端。" },
         ],
       },
       {
@@ -228,9 +253,10 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "httpmon 自己不发请求：它只转发被包裹命令的流量；`--replay` 只在你运行时重发录制的请求。",
-          "CA 只在一次运行中存在：私钥从不写入磁盘，临时 CA 证书包在退出时删除。",
-          "抓到的流量只显示在终端，除非你加 `--record` 或 `--har`；这些文件可能含凭据，请当作敏感日志保管。",
+          "httpmon 自己不发请求：它只转发你让它经手的流量，只在你运行 replay 时重发请求。",
+          "默认情况下 CA 只在一次运行中存在于内存里；`httpmon ca` 会把持久 CA 的私钥写入磁盘，权限 0600。",
+          "流量只保存在会话里（`--session` 或 `httpmon proxy`），只有你能读取；除非加 `--redact`，其中保留凭据。",
+          "输出会遮盖含凭据的请求头和 URL 里的令牌，除非加 `--show-secrets`；请求体和响应体不遮盖。",
         ],
       },
       {
@@ -241,11 +267,13 @@ export default defineProduct({
         items: [
           {
             title: "能包住哪些命令？",
-            body: "curl、aws、Python、Node 或其他支持代理的命令。只有这个子进程拿到代理地址和临时 CA，系统代理和全局网络设置保持不变。Go 程序访问本机回环地址时不走代理；Node 内置的 `fetch` 需要 Node 22.21 或 24；JVM 工具不会自动配置。",
+            body: "curl、aws、Python、Node、Java、git、cargo、Deno，或其他支持代理的命令。只有这个子进程拿到代理地址和 CA，系统设置保持不变。Go 程序访问本机回环地址时不走代理；httpmon 启动前就在运行的 JVM（比如 Gradle 守护进程）不会被配置。",
+            asOf: "v4.1.0",
           },
           {
-            title: "录制会含敏感信息吗？",
-            body: "会。请求头、Cookie、查询参数和响应体可能含有凭据或业务数据。请只在获授权环境采集与回放，并把 NDJSON、HAR 和录制文件按敏感日志保存。",
+            title: "它还会校验证书吗？",
+            body: "会。httpmon 终止了 TLS，所以由它代替命令校验服务器的真实证书；校验失败返回 `502`，错误类型为 `tls_verify`。`--insecure-upstream` 会关掉这项校验，只在你自己管理的主机上用。",
+            asOf: "v4.1.0",
           },
           {
             title: "它能诊断存储故障吗？",
@@ -254,6 +282,7 @@ export default defineProduct({
               label: "打开 StorageOps",
               href: "/zh/storageops/",
             },
+            asOf: "v4.1.0",
           },
         ],
       },

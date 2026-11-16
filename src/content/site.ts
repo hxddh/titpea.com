@@ -24,7 +24,7 @@ export const site = {
  */
 export const familyMembers: Record<FamilyId, string[]> = {
   s3: ["s3-turbo-list", "storage-agent-workbench", "storageops", "httpmon"],
-  agents: ["pulse", "readout", "celagent", "agent-radar"],
+  agents: ["pulse", "readout", "agent-radar"],
 };
 
 export const familyOf = (slug: string) =>
@@ -205,7 +205,6 @@ export const ui: Record<Locale, Ui> = {
         roles: {
           pulse: "Which one needs you",
           readout: "Read what it writes",
-          celagent: "Resume on another machine",
           "agent-radar": "Scheduled research",
         },
       },
@@ -299,7 +298,6 @@ export const ui: Record<Locale, Ui> = {
         roles: {
           pulse: "谁需要你",
           readout: "读它写的",
-          celagent: "换机器继续",
           "agent-radar": "定时调研",
         },
       },

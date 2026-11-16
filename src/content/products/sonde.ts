@@ -2,8 +2,8 @@ import { defineProduct } from "../schema";
 
 // sonde: records a program's S3 traffic and reads it as operations. Facts:
 // the repo's README.md, CHANGELOG.md, docs/security.md, docs/recording.md,
-// docs/configuration.md, docs/cli.md, docs/ci.md and docs/trials.md at v18.0.0.
-// The screenshots were captured at v16.0.0.
+// docs/configuration.md, docs/cli.md, docs/ci.md, docs/trials.md, docs/agents.md and
+// docs/credentials.md at v24.0.0. The screenshots were captured at v16.0.0.
 // The name is not translated (the app says "sonde" in both languages; its
 // Chinese tagline is 对象存储诊断). Pictures: the app's own shots test
 // (app/tests/shots.test.tsx) on macOS at 2x, Nov 2026.
@@ -40,7 +40,7 @@ export default defineProduct({
       "Desktop app, terminal UI and CLI that records what a program does to S3, reads it as operations and findings, and replays it on another store.",
     eyebrow: "S3 traffic recorder",
     headline: "Your S3 traffic, read.",
-    lead: "Run a program through sonde to read its S3 requests as operations, with what stands out and whether it survives when the store misbehaves.",
+    lead: "Run a program through sonde to read its S3 requests as operations: what stands out, what it costs, and whether it survives store faults.",
     catalog: {
       role: "",
       text: "Run a program through it and read its S3 traffic as operations.",
@@ -57,15 +57,15 @@ export default defineProduct({
       network: "onRequest",
       networkNote:
         "No telemetry or background requests: it talks to your S3 endpoints (and STS for an assumed role) for what you start, and checks for updates only when you ask.",
-      stays: "Sessions, scans, probe runs and the audit log, in sonde’s data folder on this computer.",
+      stays: "Runs, their index, bucket size caches and the audit log, in sonde’s data folder on this computer.",
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · S3-compatible",
     releaseHighlights: {
-      version: "v18.0.0",
+      version: "v24.0.0",
       items: [
-        "Run a program again, and each finding reads fixed, less, back or new; a fixed one shows the saving measured beside the one predicted.",
-        "`sonde run --trial --again` runs only the fault scenarios that broke, degraded or were refused, and each says its history.",
-        "A GitHub Action, `hxddh/sonde@v18`, records a pull request’s run, checks it against the base branch’s baseline and keeps one PR comment.",
+        "New findings for common mistakes: many small writes, deletes one at a time, writes back without If-Match, and a missing key polled. Each has fixes for four SDKs and its cost a month.",
+        "The GitHub Action, `hxddh/sonde@v24`, checks from the first pull request: with no stored baseline it records the base in the same job.",
+        "The run header stays in view on every pane, and the sidebar names the client that sent each run’s requests, such as boto3.",
       ],
     },
     visual: {
@@ -103,19 +103,19 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "The terminal binary installs on Linux or macOS with either command. The GitHub Releases page has the terminal binary for Windows and the desktop app for macOS, Linux and Windows.",
+      sub: "The script installs the terminal binary on Linux or macOS. GitHub Releases has terminal binaries for Linux, macOS and Windows, and the desktop app as a macOS .dmg, a Linux tarball and a Windows zip.",
       items: [
         {
-          comment: "Install the terminal binary",
+          comment: "Install the terminal binary (Linux, macOS)",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "Or with Homebrew",
-          command: "brew install hxddh/sonde/sonde",
+          comment: "The tour, on a built-in store with no account",
+          command: "sonde run --demo",
         },
         {
-          comment: "The desktop app on macOS",
-          command: "brew install --cask hxddh/sonde/sonde-app",
+          comment: "Record your program, sent on with your AWS credentials",
+          command: "sonde run -- python etl.py",
         },
       ],
     },
@@ -132,7 +132,7 @@ export default defineProduct({
           },
           {
             title: "Findings with a fix",
-            body: "Each with what fixing it saves. Run again, and each reads fixed, less, back or new.",
+            body: "Each with its monthly saving, a fix for your SDK and the line that sent it.",
           },
           {
             title: "Trials under faults",
@@ -143,12 +143,12 @@ export default defineProduct({
             body: "`sonde check` fails a job over budget or baseline; the GitHub Action keeps one PR comment.",
           },
           {
-            title: "Why slow, why costly",
-            body: "`show --by` splits by prefix, size, caller or SDK, and says where slow, costly requests are.",
+            title: "For coding agents",
+            body: "`show -f json` gives each finding’s file, line and fix; a rerun says if it worked.",
           },
           {
             title: "Replay on another store",
-            body: "`compare --replay` re-enacts a session on another store and shows where answers differ.",
+            body: "`compare --replay` re-enacts a run on another store: where answers differ, and the cost there.",
           },
         ],
       },
@@ -159,9 +159,9 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "Credentials stay in sonde; the recorded program gets throwaway keys. No telemetry, and updates are checked only when you ask.",
-          "Sessions keep each request’s metadata, never object data, with signatures and tokens redacted; the program’s output is kept as printed.",
-          "By default a program may not delete or overwrite objects it did not write. `--allow-writes` lifts this; `--policy read-only` allows only reads.",
-          "sonde’s own destructive actions, like aborting uploads, each need a dry run and a typed confirmation, and go to an audit log.",
+          "Runs keep each request’s metadata, never object data, with signatures and tokens redacted; the program’s output is kept as printed.",
+          "A program may do whatever it would without sonde; trials refuse deleting what they did not write; `--policy read-only` allows only reads.",
+          "sonde’s own destructive actions, like aborting uploads, are a dry run first, run only with `--yes`, and go to an audit log.",
         ],
       },
       {
@@ -172,18 +172,18 @@ export default defineProduct({
         items: [
           {
             title: "Do I need to change my code?",
-            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and throwaway keys, and re-signs each request with your real credentials. It is tested with boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, and object_store, and it points Spark and Flink commands at itself. A client that ignores these variables needs the endpoint set by hand.",
-            asOf: "v18.0.0",
+            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and re-signs each request with your real credentials. CI tests boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, the AWS CLI and polars; sonde sets up Spark, Flink and `docker run` commands itself. When nothing reaches it, it says how to point that program’s client at it.",
+            asOf: "v24.0.0",
           },
           {
             title: "Which stores does it work with?",
-            body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. Its 40 compatibility probes show where a store differs, as one matrix across endpoints. A store that ignores `If-None-Match`, such as older MinIO and Ceph, lets a program overwrite objects anyway, so use `--policy read-only` there.",
-            asOf: "v18.0.0",
+            body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each; `sonde probe` runs all 40 compatibility probes.",
+            asOf: "v24.0.0",
           },
           {
-            title: "Can I try it without an account?",
-            body: "Yes: `sonde demo` gives a tour on a built-in store, with no account needed.",
-            asOf: "v18.0.0",
+            title: "Can it read production traffic?",
+            body: "Yes, without running it through sonde: `sonde import` reads S3 access logs, CloudTrail and HAR files as operations, with the same findings. That is how to read a job on Kubernetes or serverless.",
+            asOf: "v24.0.0",
           },
         ],
       },
@@ -194,7 +194,7 @@ export default defineProduct({
     description: "桌面应用、终端界面和命令行：录下程序对 S3 做了什么，读成操作和发现，还能在另一个存储上重放。",
     eyebrow: "S3 流量记录器",
     headline: "看清你的程序对 S3 做了什么",
-    lead: "让程序经过 sonde 运行，把它发给 S3 的请求读成一个个操作，指出值得一看的地方，并看出存储出故障时它能否扛住。",
+    lead: "让程序经过 sonde 运行，把它发给 S3 的请求读成一个个操作：哪里值得一看，花了多少钱，存储出故障时能否扛住。",
     catalog: {
       role: "",
       text: "让程序经过它运行，把 S3 流量读成操作。",
@@ -211,15 +211,15 @@ export default defineProduct({
       network: "onRequest",
       networkNote:
         "没有遥测，也没有后台请求：它只为你启动的事访问你的 S3 端点（扮演角色时还有 STS），只在你要求时检查更新。",
-      stays: "会话、扫描结果、探测记录和审计日志都存在这台电脑上 sonde 的数据目录里。",
+      stays: "运行记录、它们的索引、存储桶大小的缓存和审计日志，都存在这台电脑上 sonde 的数据目录里。",
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · 兼容 S3",
     releaseHighlights: {
-      version: "v18.0.0",
+      version: "v24.0.0",
       items: [
-        "再运行一次程序，每条发现会标为已修复、减少、又出现或新出现；已修复的会把实际省下的量和预计的并排列出。",
-        "`sonde run --trial --again` 只重跑未通过、降级或被策略拒绝的故障场景，每个场景都会说明它的历史。",
-        "GitHub Action `hxddh/sonde@v18` 录下拉取请求的运行，对照基础分支的基线检查，并在 PR 上只保留一条评论。",
+        "新增几类常见错误的发现：大量小写入、逐个删除、不带 If-Match 的读改写、反复轮询不存在的键。每条都给出四种 SDK 的修法和每月的费用。",
+        "GitHub Action `hxddh/sonde@v24` 从第一个拉取请求起就能检查：还没有存好的基线时，它在同一个任务里先录下基础分支。",
+        "运行的标题栏在每个面板上都保持可见；侧栏会写出每次运行的请求是哪个客户端发出的，比如 boto3。",
       ],
     },
     visual: {
@@ -257,19 +257,19 @@ export default defineProduct({
     ],
     commands: {
       title: "开始使用",
-      sub: "在 Linux 或 macOS 上，用下面任一条命令安装终端版。GitHub Releases 页面有 Windows 终端版，以及 macOS、Linux 和 Windows 的桌面应用。",
+      sub: "这个脚本在 Linux 或 macOS 上安装终端版。GitHub Releases 页面有 Linux、macOS 和 Windows 的终端版，桌面应用则有 macOS 的 .dmg、Linux 的压缩包和 Windows 的 zip。",
       items: [
         {
-          comment: "安装终端版",
+          comment: "安装终端版（Linux、macOS）",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "或者用 Homebrew",
-          command: "brew install hxddh/sonde/sonde",
+          comment: "在内置存储上走一遍导览，不需要账号",
+          command: "sonde run --demo",
         },
         {
-          comment: "macOS 上的桌面应用",
-          command: "brew install --cask hxddh/sonde/sonde-app",
+          comment: "录下你的程序，请求用你的 AWS 凭证发出",
+          command: "sonde run -- python etl.py",
         },
       ],
     },
@@ -286,7 +286,7 @@ export default defineProduct({
           },
           {
             title: "发现，附带修法",
-            body: "每条都算出修好能省多少。再运行一次，它会标为已修复、减少、又出现或新出现。",
+            body: "每条都写明每月能省多少、适合你所用 SDK 的修法，以及发出请求的那行代码。",
           },
           { title: "在故障下试运行", body: "`--trial` 在存储故障下再运行程序，告诉你它是否扛住。" },
           {
@@ -294,10 +294,13 @@ export default defineProduct({
             body: "超出预算或基线时，`sonde check` 让任务失败；GitHub Action 只保留一条 PR 评论。",
           },
           {
-            title: "慢在哪里，贵在哪里",
-            body: "`show --by` 按前缀、大小、调用代码或 SDK 拆分，指出慢和贵的请求在哪里。",
+            title: "给编程智能体用",
+            body: "`show -f json` 给出每条发现的文件、行号和修法；再运行一次就知道改好没有。",
           },
-          { title: "在另一个存储上重放", body: "`compare --replay` 把会话在另一个存储上重演，指出应答哪里不同。" },
+          {
+            title: "在另一个存储上重放",
+            body: "`compare --replay` 在另一个存储上重演一次运行，指出应答的差异和那里的费用。",
+          },
         ],
       },
       {
@@ -307,9 +310,9 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "凭证留在 sonde 里，被录制的程序只拿到一次性密钥。没有遥测，只在你要求时检查更新。",
-          "会话只记每个请求的元数据，从不记对象数据，签名和令牌都会被抹掉；程序的输出按原样保存。",
-          "默认情况下，程序不能删除对象，也不能覆盖不是它写的对象。`--allow-writes` 解除这一限制；`--policy read-only` 只允许读取。",
-          "sonde 自己的破坏性操作（比如中止上传）都要先试运行、再输入确认，并写进审计日志。",
+          "运行记录只记每个请求的元数据，从不记对象数据，签名和令牌都会被抹掉；程序的输出按原样保存。",
+          "程序能做的事和不经过 sonde 时一样；故障试运行时不许删除不是它写的东西；`--policy read-only` 只允许读取。",
+          "sonde 自己的破坏性操作（比如中止上传）都先试运行，加上 `--yes` 才真正执行，并写进审计日志。",
         ],
       },
       {
@@ -320,18 +323,18 @@ export default defineProduct({
         items: [
           {
             title: "需要改代码吗？",
-            body: "一般不用。`sonde run` 用环境变量和一次性密钥把程序指向本地端点，再用你的真实凭证给每个请求重新签名。已用 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK 和 object_store 测试过；Spark 和 Flink 的命令也会由它自动指向自己。不读这些环境变量的客户端，需要手动设置端点。",
-            asOf: "v18.0.0",
+            body: "一般不用。`sonde run` 用环境变量把程序指向本地端点，再用你的真实凭证给每个请求重新签名。CI 测试了 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK、AWS CLI 和 polars；Spark、Flink 和 `docker run` 的命令由 sonde 自己配好。如果没有请求到达，它会说明怎样让这个程序的客户端指向它。",
+            asOf: "v24.0.0",
           },
           {
             title: "支持哪些存储？",
-            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。它的 40 项兼容性探测会把各端点的差异排成一张表。不理会 `If-None-Match` 的存储（比如较旧的 MinIO 和 Ceph）仍会让程序覆盖对象，在那里请用 `--policy read-only`。",
-            asOf: "v18.0.0",
+            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答；`sonde probe` 会跑完全部 40 项兼容性探测。",
+            asOf: "v24.0.0",
           },
           {
-            title: "没有账号能先试试吗？",
-            body: "可以：`sonde demo` 在内置的存储上带你走一遍，不需要账号。",
-            asOf: "v18.0.0",
+            title: "能看生产环境的流量吗？",
+            body: "能，而且不用让它经过 sonde：`sonde import` 把 S3 访问日志、CloudTrail 和 HAR 文件读成操作，给出同样的发现。跑在 Kubernetes 或无服务器平台上的任务就这样看。",
+            asOf: "v24.0.0",
           },
         ],
       },

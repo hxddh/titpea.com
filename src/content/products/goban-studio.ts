@@ -2,7 +2,8 @@ import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
-// to v14.0.0.md, docs/plan.md and docs/strength.md at v14.0.0; macOS 11 from build.zig. The
+// to v16.0.0.md, docs/plan.md and docs/strength.md at v16.0.0; macOS 13 from the
+// README's download table. Pictures were captured at v14.0.0. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
 // with four analysed sample games seeded as its practice-focus test does. The browser
@@ -42,11 +43,11 @@ export default defineProduct({
     installNote:
       "Not notarized yet: on macOS 15 or later, choose “Open Anyway” in System Settings → Privacy & Security; on Windows, choose “More info”, then “Run anyway”.",
     releaseHighlights: {
-      version: "v14.0.0",
+      version: "v16.0.0",
       items: [
-        "The app now opens on Today, where one button starts lesson one, a gentle 9×9 game or a 19×19 game, depending on what you said you know.",
-        "If you are new, the rules follow your language: Chinese rules in Chinese, Korean rules in Korean, Japanese rules otherwise.",
-        "The placement quiz stops early when you miss the first four problems, instead of asking six more.",
+        "The board looks like wood and stone, and each of your moves can get a verdict: good, slack or a mistake, with the points.",
+        "All 20 classics now have at least three key moments, and the opening book was rebuilt with the Chinese opening.",
+        "It now needs macOS 13 or later; Apple Silicon Macs and Windows PCs with AVX2 run a faster KataGo build.",
       ],
     },
     privacy: {
@@ -92,7 +93,7 @@ export default defineProduct({
           },
           {
             title: "A review of every game",
-            body: "It picks up to three key moments, and you can retry each one from its position.",
+            body: "It marks slack moves and mistakes, and picks up to three key moments to retry.",
           },
           {
             title: "This week’s focus",
@@ -103,7 +104,10 @@ export default defineProduct({
             title: "Boards and rules",
             body: "9×9, 13×13 or 19×19 boards; Japanese, Chinese or Korean rules; up to nine handicap stones.",
           },
-          { title: "An opening book", body: "3,874 opening positions evaluated by KataGo, available offline." },
+          {
+            title: "Openings and classics",
+            body: "An offline opening book with the Chinese opening, and 20 classics with key moments.",
+          },
         ],
       },
       {
@@ -111,7 +115,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "KataGo, the Go engine, runs on your computer with its neural network; two larger neural networks download only if you choose them.",
+          "KataGo runs on your computer; two larger neural networks download from GitHub or katagotraining.org only if you choose them.",
           "Games, progress and settings stay on this computer; “Export backup” saves them to one file, and you can undo a restore.",
           "No account or telemetry. “Check for updates” contacts GitHub when you ask; the weekly check is off until you turn it on.",
         ],
@@ -124,17 +128,17 @@ export default defineProduct({
           {
             title: "Can it sit beside Goban, the Gomoku app?",
             body: "Yes. Goban Studio is a separate app with its own name, so the two install and update independently.",
-            asOf: "v14.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "Which computers does it run on?",
-            body: "macOS 11 or later on Apple Silicon or Intel, and Windows 10 or 11 on x64 with WebView2, which they usually include. Windows on ARM runs the x64 build under emulation; analysis is slower there. On macOS 14 or earlier, open it the first time by right-clicking the app and choosing “Open”.",
-            asOf: "v14.0.0",
+            body: "macOS 13 or later on Apple Silicon or Intel, and Windows 10 or 11 on x64 with WebView2, which they usually include. Windows on ARM runs the x64 build under emulation; analysis is slower there. On macOS 14 or earlier, open it the first time by right-clicking the app and choosing “Open”.",
+            asOf: "v16.0.0",
           },
           {
             title: "How strong is the computer?",
-            body: "From about 30 kyu to about 7 dan: you pick a rank and the app picks the closest KataGo setting; without the optional neural networks it stops at about 4 dan. The ranks are approximate: they are calibrated against a model, not against people.",
-            asOf: "v14.0.0",
+            body: "From about 30 kyu to about 7 dan: you pick a rank and the app picks the closest KataGo setting; without the optional neural networks it stops at about 4 dan. The ranks are approximate: they are calibrated against a model, not against people. Settings → Engines shows which KataGo build runs and how fast.",
+            asOf: "v16.0.0",
           },
         ],
       },
@@ -161,11 +165,11 @@ export default defineProduct({
     installNote:
       "目前未经公证：macOS 15 及以上，到“系统设置 → 隐私与安全性”点“仍要打开”；Windows 上点“更多信息”，再点“仍要运行”。",
     releaseHighlights: {
-      version: "v14.0.0",
+      version: "v16.0.0",
       items: [
-        "第一次打开就是“今天”页面：按你说的基础，一个按钮开始第一课、一盘轻松的 9 路对局或一盘 19 路对局。",
-        "新用户的规则跟随界面语言：中文用中国规则，韩文用韩国规则，其他语言用日本规则。",
-        "定级测验如果前四题全错，就提前结束，不再多问六题。",
+        "棋盘有了木纹和棋子的质感；你的每一手都可以得到评语：好棋、缓手或失误，并标出目数。",
+        "20 局名局每局都至少有三个关键时刻；布局库重新生成，收录了中国流。",
+        "现在需要 macOS 13 或更高版本；Apple Silicon Mac 和支持 AVX2 的 Windows 电脑会用更快的 KataGo 版本。",
       ],
     },
     privacy: {
@@ -205,11 +209,11 @@ export default defineProduct({
         label: "从第一颗子到复盘",
         items: [
           { title: "KataGo 陪你下", body: "段位从约 30 级到 7 段任选；让子数按你的棋力建议。" },
-          { title: "每一局都复盘", body: "最多挑出三个关键时刻，每个都能从那个局面再下一次。" },
+          { title: "每一局都复盘", body: "标出缓手和失误，最多挑出三个关键时刻，可以从那个局面再下一次。" },
           { title: "本周重点", body: "从你的对局和做题里挑出一两个主题，并说明为什么。" },
           { title: "从第一颗子学起", body: "23 个单元、104 课，从入门到约 1 段。" },
           { title: "棋盘和规则", body: "9 路、13 路或 19 路；日本、中国或韩国规则；最多让九子。" },
-          { title: "定式和布局库", body: "3,874 个开局局面由 KataGo 评估，离线可用。" },
+          { title: "布局库和名局", body: "离线布局库收录中国流；20 局名局，每局都有关键时刻。" },
         ],
       },
       {
@@ -217,7 +221,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "KataGo 围棋引擎和它的神经网络（权重）在你的电脑上运行；两个更大的神经网络只在你选择时下载。",
+          "KataGo 在你的电脑上运行；两个更大的神经网络（权重）只在你选择时下载，分别来自 GitHub 和 katagotraining.org。",
           "对局、进度、棋力和设置都存在这台电脑上应用自己的存储里；“导出备份”把它们存成一个文件，恢复之后也能撤销。",
           "不要账号，没有遥测。“检查更新”只在你点它时访问 GitHub；每周自动检查默认关闭。",
         ],
@@ -230,17 +234,17 @@ export default defineProduct({
           {
             title: "能和五子棋 Goban 一起装吗？",
             body: "能。Goban Studio 是另一个应用，有自己的名字，两个应用各自安装、各自更新。",
-            asOf: "v14.0.0",
+            asOf: "v16.0.0",
           },
           {
             title: "能在哪些电脑上运行？",
-            body: "macOS 11 或更高版本，Apple Silicon 和 Intel 都行；Windows 10 或 11 的 x64，需要 WebView2，一般已预装。Windows on ARM 通过系统的 x64 模拟运行 x64 版，分析会慢一些。macOS 14 及更早版本第一次打开时，右键点应用，选“打开”。",
-            asOf: "v14.0.0",
+            body: "macOS 13 或更高版本，Apple Silicon 和 Intel 都行；Windows 10 或 11 的 x64，需要 WebView2，一般已预装。Windows on ARM 通过系统的 x64 模拟运行 x64 版，分析会慢一些。macOS 14 及更早版本第一次打开时，右键点应用，选“打开”。",
+            asOf: "v16.0.0",
           },
           {
             title: "电脑有多强？",
-            body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置；不装可选的神经网络（权重）时最高约 4 段。段位是近似值：是对照模型校准的，不是对照真人。",
-            asOf: "v14.0.0",
+            body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置；不装可选的神经网络（权重）时最高约 4 段。段位是近似值：是对照模型校准的，不是对照真人。“设置 → 引擎”会显示正在用哪个 KataGo 版本、速度多快。",
+            asOf: "v16.0.0",
           },
         ],
       },
