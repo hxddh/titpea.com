@@ -38,23 +38,23 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v24.0.0",
-    "published": "2026-11-15",
+    "version": "v24.0.2",
+    "published": "2026-11-16",
     "history": [
+      { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" },
+      { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" },
       { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" },
       { "version": "v23.0.1", "published": "2026-11-15", "title": "sonde 23.0.1" },
-      { "version": "v23.0.0", "published": "2026-11-15", "title": "sonde 23.0.0" },
-      { "version": "v22.0.0", "published": "2026-11-15", "title": "sonde 22.0.0" },
-      { "version": "v21.0.0", "published": "2026-11-14", "title": "sonde 21.0.0" }
+      { "version": "v23.0.0", "published": "2026-11-15", "title": "sonde 23.0.0" }
     ],
     "notes": {
-      "summary": "24.0 gives back what 21–23 took from view, finds the S3 mistakes people really make, and…",
+      "summary": "",
       "items": [
-        "Nothing you read is lost",
-        "The sidebar says what sent each run's requests",
-        "Findings for the mistakes people make"
+        "The docs match what sonde does",
+        "Each thing is said once in the docs, and linked elsewhere",
+        "No signed package of the app's code: an installed app updates only by installing the new app"
       ],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v24.0.0"
+      "url": "https://github.com/hxddh/sonde/releases/tag/v24.0.2"
     }
   },
   "httpmon": {
@@ -198,23 +198,23 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v16.0.0",
-    "published": "2026-11-14",
+    "version": "v16.0.1",
+    "published": "2026-11-16",
     "history": [
+      { "version": "v16.0.1", "published": "2026-11-16", "title": "Goban Studio v16.0.1" },
       { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
       { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
       { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" },
-      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" },
-      { "version": "v12.0.0", "published": "2026-11-07", "title": "Goban Studio v12.0.0" }
+      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" }
     ],
     "notes": {
-      "summary": "v16 checks what v15 built, with the newer KataGo network doing the",
+      "summary": "A fix for macOS",
       "items": [
-        "Settings → Engines says which KataGo build runs",
-        "The strongest opponent was measured again",
-        "The opening book was rebuilt"
+        "macOS: the app reads its own files again",
+        "The packaged app's self-test",
+        "Platform code has not been tried by hand"
       ],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v16.0.0"
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v16.0.1"
     }
   },
   "chessboard": {
