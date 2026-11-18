@@ -1,22 +1,22 @@
 {
   "s3-turbo-list": {
     "repo": "hxddh/s3-turbo-list",
-    "version": "v1.1.0",
-    "published": "2026-11-14",
+    "version": "v1.4.0",
+    "published": "2026-11-17",
     "history": [
-      { "version": "v1.1.0", "published": "2026-11-14", "title": "v1.1.0" },
-      { "version": "v1.0.0", "published": "2026-11-14", "title": "v1.0.0" },
-      { "version": "v0.39.0", "published": "2026-09-30", "title": "v0.39.0" },
-      { "version": "v0.38.0", "published": "2026-09-30", "title": "v0.38.0" },
-      { "version": "v0.37.0", "published": "2026-09-29", "title": "v0.37.0" }
+      { "version": "v1.4.0", "published": "2026-11-17", "title": "v1.4.0" },
+      { "version": "v1.3.1", "published": "2026-11-17", "title": "v1.3.1" },
+      { "version": "v1.3.0", "published": "2026-11-17", "title": "v1.3.0" },
+      { "version": "v1.2.0", "published": "2026-11-17", "title": "v1.2.0" },
+      { "version": "v1.1.0", "published": "2026-11-14", "title": "v1.1.0" }
     ],
     "notes": {
       "summary": "",
       "items": [
-        "The release-tag workflow's schedule backstop runs once a day",
-        "Cancellation is awaited instead of polled, so an interrupt stops idle segment chains at once"
+        "One adaptive request window",
+        "The page timeout is ten typical latencies, at least 10 s (was a fixed 5 s), at most 60 s"
       ],
-      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.1.0"
+      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.4.0"
     }
   },
   "storage-agent-workbench": {
