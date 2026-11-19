@@ -78,10 +78,6 @@ type Ui = {
   copied: string;
   /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
   released: string;
-  /** Under a line's name in Home's index: how many tools it holds. */
-  toolCount: string;
-  /** The count under the Games group: games are not tools. */
-  gameCount: string;
   /** Labels of the product page's spec sheet. */
   spec: { label: string; network: string; source: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
@@ -141,7 +137,6 @@ type Ui = {
   // Catalog vocabulary: one word for each platform and kind, everywhere.
   products: string;
   allLabel: string;
-  filterLine: string;
   filterPlatform: string;
   filterEmpty: string;
   /** Labels a platform tag; `{min}` is the oldest supported version. */
@@ -176,8 +171,6 @@ export const ui: Record<Locale, Ui> = {
     copy: "Copy",
     copied: "Copied",
     released: " ({date})",
-    toolCount: "{count} tools",
-    gameCount: "{count} games",
     spec: {
       label: "Specifications",
       network: "Network",
@@ -257,7 +250,6 @@ export const ui: Record<Locale, Ui> = {
     privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatic" },
     products: "Products",
     allLabel: "All",
-    filterLine: "Kind",
     filterPlatform: "Runs on",
     filterEmpty: "Nothing matches both filters.",
     platforms: {
@@ -299,8 +291,6 @@ export const ui: Record<Locale, Ui> = {
     copy: "复制",
     copied: "已复制",
     released: "（{date}）",
-    toolCount: "{count} 个",
-    gameCount: "{count} 款",
     spec: { label: "规格", network: "联网", source: "源码" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
@@ -372,7 +362,6 @@ export const ui: Record<Locale, Ui> = {
     privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "自动" },
     products: "产品",
     allLabel: "全部",
-    filterLine: "类别",
     filterPlatform: "平台",
     filterEmpty: "没有同时符合两个条件的产品。",
     platforms: {

@@ -162,6 +162,66 @@
     max-width: 820px;
   }
 
+  /* Two showcases side by side: each picture whole, its name and one line
+   under it, as in a gallery. One column on phones. */
+  .showcase-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    align-items: start;
+  }
+
+  /* Each cell spans the pair's two rows, so the two pictures sit on one
+   baseline and the two titles start on one line, whatever the windows' heights. */
+  .showcase-cell {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+
+  .showcase-cell .showcase-figure {
+    align-self: end;
+  }
+
+  .showcase-cell .stage-show > * {
+    max-width: none;
+  }
+
+  .showcase-cell .figure-note {
+    justify-content: flex-start;
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .showcase-cell-head {
+    margin-top: 18px;
+  }
+
+  .showcase-cell-title {
+    margin: 0;
+    font-size: var(--text-heading-s);
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .showcase-cell-head .sub {
+    margin-top: 6px;
+    font-size: var(--text-small);
+  }
+
+  @media (max-width: 900px) {
+    .showcase-pair {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 48px;
+    }
+
+    .showcase-cell {
+      grid-row: auto;
+      grid-template-rows: auto;
+    }
+  }
+
   /* In a frame (.shot) the frame carries the edge and depth, not the image. */
   .stage .shot img {
     border-radius: 0;
