@@ -167,8 +167,20 @@
   .showcase-pair {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 48px var(--col-gap);
+    column-gap: var(--col-gap);
     align-items: start;
+  }
+
+  /* Each cell spans the pair's two rows, so the two pictures sit on one
+   baseline and the two titles start on one line, whatever the windows' heights. */
+  .showcase-cell {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+
+  .showcase-cell .showcase-figure {
+    align-self: end;
   }
 
   .showcase-cell .stage-show > * {
@@ -201,6 +213,12 @@
   @media (max-width: 900px) {
     .showcase-pair {
       grid-template-columns: minmax(0, 1fr);
+      row-gap: 48px;
+    }
+
+    .showcase-cell {
+      grid-row: auto;
+      grid-template-rows: auto;
     }
   }
 
