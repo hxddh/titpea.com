@@ -41,7 +41,7 @@ export default defineProduct({
     description:
       "Desktop app, terminal UI and CLI that records what a program does to S3, reads it as operations and findings, and replays it on another store.",
     eyebrow: "S3 traffic recorder",
-    headline: "Your S3 traffic, read.",
+    headline: "See what your program actually does to S3.",
     lead: "Run a program through sonde to read its S3 requests as operations: what stands out, what it costs, and whether it survives store faults.",
     summary: "Run a program through it and read its S3 traffic as operations.",
     primaryCta: {
@@ -87,8 +87,8 @@ export default defineProduct({
         width: 1270,
         height: 810,
         asOf: "v26.0.0",
-        title: "Run it, watch its requests.",
-        body: "Type a command; its terminal and its S3 requests appear side by side.",
+        title: "Run a command and watch its requests",
+        body: "Its terminal output and the S3 requests it sends appear side by side.",
       },
       {
         src: "/assets/sonde-fix-en.webp",
@@ -96,8 +96,8 @@ export default defineProduct({
         width: 1270,
         height: 810,
         asOf: "v26.0.0",
-        title: "A finding, and what to change.",
-        body: "It names the line that sent the requests; Apply and run again measures the saving.",
+        title: "Each finding says what to change",
+        body: "It gives the monthly saving, the setting or SDK code to change and the line that sent the requests; Apply and run again measures it.",
       },
     ],
     commands: {
@@ -123,15 +123,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "It reads requests as what they did.",
+        label: "What sonde does with a run",
         items: [
           {
             title: "Operations, not requests",
-            body: "Multipart uploads, retries, listings, and commits of Iceberg, Delta Lake, Hudi, Paimon, SlateDB and Lance.",
-          },
-          {
-            title: "Findings with a fix",
-            body: "Its monthly saving, the setting or SDK code to change, and the line that sent it.",
+            body: "It recognises multipart uploads, retries, listings, and commits of Iceberg, Delta Lake, Hudi, Paimon, SlateDB and Lance.",
           },
           {
             title: "Trials under faults",
@@ -147,7 +143,7 @@ export default defineProduct({
           },
           {
             title: "Replay on another store",
-            body: "`compare --replay` re-enacts a run on another store: where answers differ, and the cost there.",
+            body: "`compare --replay` re-enacts a run on another store and shows where its answers differ and what the run costs there.",
           },
         ],
       },
@@ -157,7 +153,7 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Credentials stay in sonde; the recorded program gets throwaway keys. No telemetry, and updates are checked only when you ask.",
+          "Credentials stay in sonde; the recorded program gets throwaway keys.",
           "Runs keep each request’s metadata, never object data, with signatures and tokens redacted; the program’s output is kept as printed.",
           "A program may do whatever it would without sonde; trials refuse deleting what they did not write; `--policy read-only` allows only reads.",
           "sonde’s own destructive actions, like aborting uploads, are a dry run first, run only with `--yes`, and go to an audit log.",
@@ -171,12 +167,22 @@ export default defineProduct({
         items: [
           {
             title: "Do I need to change my code?",
-            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and re-signs each request with your real credentials. CI tests boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, the AWS CLI and polars; sonde sets up Spark, Flink, rclone, the DuckDB CLI and `docker run` commands itself. When nothing reaches it, it says how to point that program’s client at it.",
+            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and re-signs each request with your real credentials.",
+            steps: [
+              "CI tests boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, the AWS CLI and polars.",
+              "sonde sets up Spark, Flink, rclone, the DuckDB CLI and `docker run` commands itself.",
+              "When nothing reaches it, it says how to point that program’s client at it.",
+            ],
             asOf: "v26.0.0",
           },
           {
             title: "Which stores does it work with?",
-            body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each; `sonde probe` runs all 52 compatibility probes.",
+            body: "Any S3-compatible endpoint. A replay or a probe tells you how a particular store answers.",
+            steps: [
+              "Among them: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API.",
+              "A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each.",
+              "`sonde probe` runs all 52 compatibility probes.",
+            ],
             asOf: "v26.0.0",
           },
           {
@@ -238,8 +244,8 @@ export default defineProduct({
         width: 1270,
         height: 810,
         asOf: "v26.0.0",
-        title: "运行它，看它发出的请求",
-        body: "输入一条命令，它的终端和它的 S3 请求并排出现。",
+        title: "运行一条命令，看它发出的请求",
+        body: "命令的终端输出和它发出的 S3 请求并排显示。",
       },
       {
         src: "/assets/sonde-fix-en.webp",
@@ -247,8 +253,8 @@ export default defineProduct({
         width: 1270,
         height: 810,
         asOf: "v26.0.0",
-        title: "一条发现，和要改的地方",
-        body: "它指出发出这些请求的那行代码；“应用并再次运行”会量出省了多少。",
+        title: "每条发现都写明该改什么",
+        body: "它写出每月能省多少、该改的设置或 SDK 代码，以及发出请求的那行代码；“应用并再次运行”会实测省下多少。",
       },
     ],
     commands: {
@@ -274,15 +280,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "把请求读成它们做了什么",
+        label: "sonde 怎样处理一次运行",
         items: [
           {
             title: "按操作看，而不是按请求",
-            body: "分段上传、重试、列举，以及 Iceberg、Delta Lake、Hudi、Paimon、SlateDB 和 Lance 的提交。",
-          },
-          {
-            title: "发现，附带修法",
-            body: "每条都写明每月能省多少、该改的设置或 SDK 代码，以及发出请求的那行代码。",
+            body: "它能认出分段上传、重试、列举，以及 Iceberg、Delta Lake、Hudi、Paimon、SlateDB 和 Lance 的提交。",
           },
           { title: "在故障下试运行", body: "`--trial` 在存储故障下再运行程序，告诉你它是否扛住。" },
           {
@@ -295,7 +297,7 @@ export default defineProduct({
           },
           {
             title: "在另一个存储上重放",
-            body: "`compare --replay` 在另一个存储上重演一次运行，指出应答的差异和那里的费用。",
+            body: "`compare --replay` 在另一个存储上重演一次运行，指出哪里应答不同，以及在那里要花多少钱。",
           },
         ],
       },
@@ -305,7 +307,7 @@ export default defineProduct({
         nav: "数据",
         title: "数据的去向",
         items: [
-          "凭证留在 sonde 里，被录制的程序只拿到一次性密钥。没有遥测，只在你要求时检查更新。",
+          "凭证留在 sonde 里，被录制的程序只拿到一次性密钥。",
           "运行记录只记每个请求的元数据，从不记对象数据，签名和令牌都会被抹掉；程序的输出按原样保存。",
           "程序能做的事和不经过 sonde 时一样；故障试运行时不许删除不是它写的东西；`--policy read-only` 只允许读取。",
           "sonde 自己的破坏性操作（比如中止上传）都先试运行，加上 `--yes` 才真正执行，并写进审计日志。",
@@ -319,12 +321,22 @@ export default defineProduct({
         items: [
           {
             title: "需要改代码吗？",
-            body: "一般不用。`sonde run` 用环境变量把程序指向本地端点，再用你的真实凭证给每个请求重新签名。CI 测试了 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK、AWS CLI 和 polars；Spark、Flink、rclone、DuckDB 命令行和 `docker run` 的命令由 sonde 自己配好。如果没有请求到达，它会说明怎样让这个程序的客户端指向它。",
+            body: "一般不用。`sonde run` 用环境变量把程序指向本地端点，再用你的真实凭证给每个请求重新签名。",
+            steps: [
+              "CI 测试了 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK、AWS CLI 和 polars。",
+              "Spark、Flink、rclone、DuckDB 命令行和 `docker run` 的命令由 sonde 自己配好。",
+              "如果没有请求到达，它会说明怎样让这个程序的客户端指向它。",
+            ],
             asOf: "v26.0.0",
           },
           {
             title: "支持哪些存储？",
-            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答；`sonde probe` 会跑完全部 52 项兼容性探测。",
+            body: "任何兼容 S3 的端点都行。某个存储具体怎样应答，重放或探测一次就知道。",
+            steps: [
+              "例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。",
+              "重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答。",
+              "`sonde probe` 会跑完全部 52 项兼容性探测。",
+            ],
             asOf: "v26.0.0",
           },
           {

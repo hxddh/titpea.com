@@ -19,7 +19,7 @@ export default defineProduct({
     description:
       "A local, read-only desktop agent for S3 storage and the AWS account around it: ask in plain words; it reads, and never writes to your storage.",
     eyebrow: "Object storage agent",
-    headline: "Find what’s wrong in S3.",
+    headline: "Find S3 problems with an agent that only reads.",
     lead: "Ask about your S3 storage in plain words. The agent reads what the services return and never changes anything; fixes are yours to run.",
     summary: "A read-only agent for S3 and the account around it; it writes fixes, you run them.",
     primaryCta: {
@@ -63,28 +63,24 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Every read, shown and kept.",
+        label: "What the agent can do",
         items: [
           {
             title: "Reads the whole account",
-            body: "S3, IAM, KMS, CloudTrail, Config and more: only operations that read.",
+            body: "S3, IAM, KMS, CloudTrail, Config and more, through operations that only read.",
           },
-          { title: "Every step opens", body: "Open any call to see exactly what the agent received." },
+          { title: "Open any call", body: "Each step in a task expands to show exactly what the agent received." },
           {
             title: "Questions over many objects",
-            body: "A sandboxed script lists, counts and reads object bodies, with no network.",
+            body: "The agent writes a sandboxed script, with no network, that lists, counts and reads object bodies.",
           },
           {
             title: "Logs and inventories as tables",
             body: "Access logs, CSV, JSON or Parquet become local SQLite tables, every column kept.",
           },
           {
-            title: "Remembers between tasks",
-            body: "It saves notes as JSON and looks them up when needed; they survive app updates.",
-          },
-          {
             title: "Knows where to look",
-            body: "Markdown skills on public access, encryption, cost and more; add your own.",
+            body: "Markdown skills cover public access, encryption, cost and more, and you can add your own.",
           },
         ],
       },
@@ -93,9 +89,8 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Keys are sealed in the system keychain, or an encrypted local file; an AWS profile account stores only its name.",
-          "Tasks, datasets and memory stay in SQLite files here. Secret keys and session tokens are redacted before the model sees them.",
-          "Requests go only to the model and endpoints you configure; packaged builds also check GitHub Releases for updates. No telemetry.",
+          "An account that uses an AWS profile stores only the profile’s name.",
+          "Secret keys and session tokens are redacted before the model sees them.",
         ],
       },
       {
@@ -105,12 +100,21 @@ export default defineProduct({
         items: [
           {
             title: "Does it need a model?",
-            body: "Yes. Every read goes through the agent, so without a model the window asks for one. OpenAI, Anthropic or any OpenAI-compatible endpoint works; models already running in Ollama or LM Studio are one click away.",
+            body: "Yes. Every read goes through the agent, so without a model the window asks you to set one up.",
+            steps: [
+              "OpenAI, Anthropic or any OpenAI-compatible endpoint works.",
+              "Models already running in Ollama or LM Studio are one click away.",
+            ],
             asOf: "v42.0.0",
           },
           {
             title: "Will a small local model work?",
-            body: "It runs: a local model gets the context window its server reports (4,096 tokens unless loaded with more), and results arrive in smaller pieces to fit. How well it investigates depends on the model; the release notes carry a smoke test, not a quality score.",
+            body: "It runs, but how well it investigates depends on the model.",
+            steps: [
+              "A local model gets the context window its server reports: 4,096 tokens unless loaded with more.",
+              "Results arrive in smaller pieces to fit that window.",
+              "The release notes carry a smoke test, not a quality score.",
+            ],
             asOf: "v42.0.0",
           },
           {
@@ -127,7 +131,7 @@ export default defineProduct({
     description:
       "面向 S3 兼容存储及其所在 AWS 账号的本地只读桌面 Agent：用平常的话提问，它读取各服务返回的内容，从不写入你的存储。",
     eyebrow: "对象存储 Agent",
-    headline: "找出 S3 里的隐患",
+    headline: "用只读的 Agent 排查 S3 问题",
     lead: "用平常的话问你的 S3 存储。它只读取各服务返回的内容，不做任何改动；修复由你来执行。",
     summary: "只读的 S3 排查 Agent，覆盖存储所在的整个账号；修复它来写，你来执行。",
     primaryCta: {
@@ -169,25 +173,20 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "每一次读取都看得见",
+        label: "Agent 能做的事",
         items: [
-          { title: "读遍整个账号", body: "S3、IAM、KMS、CloudTrail、Config 等，只运行读取操作。" },
-          { title: "每一步都能打开", body: "打开任何一次调用，看 Agent 实际收到了什么。" },
-          { title: "多对象问题用脚本", body: "沙箱脚本列举、统计、读取对象内容，不能联网。" },
+          { title: "读遍整个账号", body: "S3、IAM、KMS、CloudTrail、Config 等服务都能查，只用读取类操作。" },
+          { title: "每次调用都能展开", body: "任务里的每一步都可以展开，看 Agent 实际收到了什么。" },
+          { title: "多对象问题用脚本", body: "Agent 写一段不能联网的沙箱脚本，去列举、统计和读取对象内容。" },
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },
-          { title: "跨任务记住", body: "它把要记的内容存成 JSON，需要时自己查；应用升级后仍在。" },
-          { title: "知道从哪查起", body: "Markdown 技能涵盖公开访问、加密、成本等，也可以自己添加。" },
+          { title: "知道从哪查起", body: "Markdown 技能覆盖公开访问、加密、成本等问题，你也可以自己添加。" },
         ],
       },
       {
         kind: "data",
         id: "data",
         title: "数据的去向",
-        items: [
-          "密钥封存在系统钥匙串或本机加密文件里；AWS profile 账号只存它的名称。",
-          "任务、数据集和记忆存在本机的 SQLite 文件里。私有密钥、会话令牌和密码在发给模型之前就会脱敏。",
-          "请求只发往你配置的模型和端点；安装版还会向 GitHub Releases 检查更新。不收集遥测。",
-        ],
+        items: ["使用 AWS profile 的账号只保存 profile 的名称。", "私有密钥、会话令牌和密码在发给模型之前就会脱敏。"],
       },
       {
         kind: "faq",
@@ -196,12 +195,21 @@ export default defineProduct({
         items: [
           {
             title: "需要模型吗？",
-            body: "需要。所有读取都经由 Agent，没有模型时窗口会提示你配置。OpenAI、Anthropic 或任何兼容 OpenAI 的端点都可以；已在 Ollama 或 LM Studio 里运行的模型一键可选。",
+            body: "需要。所有读取都经由 Agent，没有模型时窗口会提示你先配置一个。",
+            steps: [
+              "OpenAI、Anthropic 或任何兼容 OpenAI 的端点都可以。",
+              "已在 Ollama 或 LM Studio 里运行的模型一键可选。",
+            ],
             asOf: "v42.0.0",
           },
           {
             title: "小的本地模型够用吗？",
-            body: "能运行。本地模型使用其服务报告的上下文窗口（未加载更大窗口时为 4,096 个 token），结果会切成更小的片段放进去。排查得好不好取决于模型；发布说明只附冒烟测试结果，不代表模型质量。",
+            body: "能运行，但排查得好不好取决于模型。",
+            steps: [
+              "本地模型使用其服务报告的上下文窗口；没有加载更大的窗口时是 4,096 个 token。",
+              "结果会切成更小的片段，以便放进这个窗口。",
+              "发布说明只附冒烟测试结果，不代表模型质量。",
+            ],
             asOf: "v42.0.0",
           },
           {

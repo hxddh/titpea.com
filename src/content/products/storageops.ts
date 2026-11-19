@@ -17,7 +17,7 @@ export default defineProduct({
     title: "StorageOps",
     description: "A Pi Coding Agent extension and skill pack for diagnosing S3-compatible object storage.",
     eyebrow: "Storage troubleshooting for Pi",
-    headline: "S3 diagnosis for Pi.",
+    headline: "Diagnose object storage problems without leaving Pi.",
     lead: "Troubleshoot object storage inside Pi, the open-source coding agent, using the logs and traces you bring. No cloud account is needed.",
     summary: "S3 troubleshooting in the Pi coding agent, from logs and traces you already have.",
     primaryCta: {
@@ -84,15 +84,15 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Skills set the method; tools read the logs and traces.",
+        label: "What StorageOps adds to Pi",
         items: [
           {
-            title: "Bring the material",
+            title: "What to bring",
             body: "The exact error, a log file attached with `@`, a config excerpt or debug output.",
           },
           {
-            title: "Load a skill",
-            body: "Methods for SigV4 signing, IAM, lifecycle, replication and Spark S3A; scripts parse logs and policies.",
+            title: "Methods for specific stacks",
+            body: "Skills cover SigV4 signing, IAM, lifecycle, replication and Spark S3A, with scripts that parse logs and policies.",
           },
           {
             title: "Failures it covers",
@@ -102,10 +102,9 @@ export default defineProduct({
             title: "Past sessions, searchable",
             body: "`search_memory` finds matching passages in earlier Pi sessions, ranked and redacted.",
           },
-          { title: "Secrets redacted", body: "Credential values are removed before anything reaches the model." },
           {
-            title: "Storage untouched",
-            body: "It traces at most one bounded command you give it; changes are yours to make.",
+            title: "Leaves your storage alone",
+            body: "It traces at most one bounded command you give it, and any change is yours to make.",
           },
         ],
       },
@@ -115,9 +114,8 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Logs, errors and configs you give Pi go to the model provider you configure. StorageOps needs no storage access keys.",
-          "Sessions stay under `~/.storageops/agent/sessions/` and may hold your logs; the optional `api-key` file there is plain text.",
-          "`install`, `doctor` and `--version` check PyPI and npm for newer versions; `STORAGEOPS_SKIP_VERSION_CHECK` turns that off.",
+          "Sessions in `~/.storageops/agent/sessions/` may hold your logs, and the optional `api-key` file there is plain text.",
+          "Set `STORAGEOPS_SKIP_VERSION_CHECK` to stop `install`, `doctor` and `--version` checking for newer versions.",
         ],
       },
       {
@@ -150,7 +148,7 @@ export default defineProduct({
     title: "StorageOps",
     description: "面向 S3 兼容对象存储的 Pi Coding Agent 扩展与技能包。",
     eyebrow: "Pi 存储排障扩展",
-    headline: "在 Pi 里排查对象存储",
+    headline: "不离开 Pi 就能排查对象存储问题",
     lead: "在开源编码 Agent Pi 里，用你提供的日志和 trace 排查对象存储问题，不需要云账号。",
     summary: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
     primaryCta: {
@@ -216,20 +214,19 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "技能包定方法，工具读日志和 trace",
+        label: "StorageOps 给 Pi 加了什么",
         items: [
-          { title: "带上材料", body: "原始报错、用 `@` 附上的日志文件、配置片段或 debug 输出。" },
+          { title: "要带上的材料", body: "原始报错、用 `@` 附上的日志文件、配置片段或 debug 输出。" },
           {
-            title: "加载技能包",
-            body: "SigV4 签名、IAM、生命周期、复制和 Spark S3A 的排查方法；脚本负责解析日志和策略。",
+            title: "针对具体技术栈的方法",
+            body: "技能包涵盖 SigV4 签名、IAM、生命周期、复制和 Spark S3A，附带解析日志和策略的脚本。",
           },
           {
             title: "覆盖的故障",
             body: "AccessDenied、SignatureDoesNotMatch、SlowDown、校验和不匹配，以及读到过期数据。",
           },
           { title: "旧会话可检索", body: "`search_memory` 在以往的 Pi 会话里找出相关片段，按相关度排序并脱敏。" },
-          { title: "先脱敏", body: "任何内容交给模型之前，凭据值都会先被去掉。" },
-          { title: "不改存储", body: "它最多 trace 一条你给的受限命令；改动由你自己来做。" },
+          { title: "不动你的存储", body: "它最多 trace 一条你给的受限命令，任何改动都由你自己来做。" },
         ],
       },
       {
@@ -238,9 +235,8 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "你交给 Pi 的日志、报错和配置会发往你配置的模型服务；StorageOps 不需要对象存储的访问密钥。",
-          "会话保存在本机 `~/.storageops/agent/sessions/`，可能含你的日志；可选的 `api-key` 文件是明文。",
-          "`install`、`doctor` 和 `--version` 会向 PyPI 与 npm 查询新版本，设置 `STORAGEOPS_SKIP_VERSION_CHECK` 可关闭。",
+          "`~/.storageops/agent/sessions/` 里的会话可能含有你的日志；那里可选的 `api-key` 文件是明文。",
+          "设置 `STORAGEOPS_SKIP_VERSION_CHECK` 后，`install`、`doctor` 和 `--version` 不再查询新版本。",
         ],
       },
       {
