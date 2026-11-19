@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { model } = Astro.props;
+const [lead, ...rest] = model.featured.items;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
@@ -27,16 +28,16 @@ const { model } = Astro.props;
     </p>
   </section>
 
-  {/* The picks: three products side by side, each window whole on the same raised paper. */}
+  {/* The picks: one large, two beside it; each its real window, its claim and its tag. */}
   <section class="shell page-section picks-section" aria-labelledby="picks-title">
-    <header class="section-head">
+    <header class="index-head">
       <h2 class="heading" id="picks-title">
         {headingText(model.featured.title)}
       </h2>
     </header>
     <ul class="picks">
-      {model.featured.items.map((item, index) => (
-        <li class="pick">
+      {[lead, ...rest].map((item, index) => (
+        <li class="pick" data-lead={index === 0 ? "" : undefined}>
           <a href={item.href}>
             <span class="pick-stage">
               <img
@@ -49,12 +50,22 @@ const { model } = Astro.props;
               />
             </span>
             <span class="pick-copy">
-              <strong class="pick-name">{item.name}</strong>
-              <span class="pick-text">{item.text}</span>
+              <span class="pick-ident">
+                <img class="icon-plate" src={item.icon} alt="" width="24" height="24" loading="lazy" />
+                <strong class="pick-name">{item.name}</strong>
+                <span class="pick-eyebrow">{item.eyebrow}</span>
+              </span>
+              <span class="pick-text">{item.headline}</span>
               {item.caption && <span class="pick-caption">{item.caption}</span>}
-              <span class="fact">
-                {item.role}
-                {item.version && <span data-visual-live> · {item.version}</span>}
+              <span class="tags">
+                {item.facts.platforms.map((platform) => (
+                  <span class="tag">{platform}</span>
+                ))}
+                {item.facts.version && (
+                  <span class="tag tag-version" data-visual-live>
+                    {item.facts.version}
+                  </span>
+                )}
               </span>
             </span>
           </a>
@@ -63,24 +74,74 @@ const { model } = Astro.props;
     </ul>
   </section>
 
-  {/* The index: every product under its line, as icon, name and one line. */}
-  <section class="shell page-section page-end" id="tools" aria-label={model.more.title}>
+  {/* Everything, by line, as rows: name, one line of value, platform tags, version.
+      The filters are buttons that public/scripts/filter.js wires; without
+      scripts they stay hidden and every row shows. */}
+  <section class="shell page-section page-end index-section" id="tools" aria-labelledby="index-title">
+    <header class="index-head">
+      <h2 class="heading" id="index-title">
+        {headingText(model.more.title)}
+      </h2>
+    </header>
+    <div class="filters" data-filters hidden>
+      <div class="filter-row" role="group" aria-label={model.more.filters.lineLabel}>
+        <span class="filter-label" aria-hidden="true">
+          {model.more.filters.lineLabel}
+        </span>
+        {model.more.filters.lines.map((option) => (
+          <button
+            type="button"
+            class="chip"
+            data-filter-line={option.key}
+            aria-pressed={option.key === "all" ? "true" : "false"}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+      <div class="filter-row" role="group" aria-label={model.more.filters.platformLabel}>
+        <span class="filter-label" aria-hidden="true">
+          {model.more.filters.platformLabel}
+        </span>
+        {model.more.filters.platforms.map((option) => (
+          <button
+            type="button"
+            class="chip"
+            data-filter-platform={option.key}
+            aria-pressed={option.key === "all" ? "true" : "false"}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
     {model.more.groups.map((group) => (
-      <div class="index-group">
-        <header class="index-head">
-          <h2 class="index-title" id={`line-${group.line}-title`}>
-            {group.label}
-          </h2>
-          <p class="fact">{group.count}</p>
-        </header>
-        <ul class="index-grid" aria-labelledby={`line-${group.line}-title`}>
+      <div class="index-group" data-line={group.line}>
+        <h3 class="index-title" id={`line-${group.line}-title`}>
+          {group.label}
+          <span class="fact">{group.count}</span>
+        </h3>
+        <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
-            <li>
-              <a class="index-item" href={item.href}>
-                <img class="icon-plate" src={item.icon} alt="" width="40" height="40" loading="lazy" />
+            <li data-line={item.line} data-platforms={item.filters.join(" ")}>
+              <a class="index-row" href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
                 <span class="index-copy">
                   <strong class="index-name">{item.name}</strong>
-                  <span class="index-text home-catalog-text">{item.text}</span>
+                  <span class="index-text">{item.text}</span>
+                </span>
+                <span class="index-meta">
+                  <span class="tags">
+                    <span class="tag tag-kind">{item.facts.kind}</span>
+                    {item.facts.platforms.map((platform) => (
+                      <span class="tag">{platform}</span>
+                    ))}
+                  </span>
+                  {item.facts.version && (
+                    <span class="index-version" data-visual-live>
+                      {item.facts.version}
+                    </span>
+                  )}
                 </span>
               </a>
             </li>
@@ -88,5 +149,11 @@ const { model } = Astro.props;
         </ul>
       </div>
     ))}
+    <p class="filter-empty" data-filter-empty hidden>
+      {model.more.filters.empty}
+    </p>
   </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/scripts/filter.js" defer></script>
+  </Fragment>
 </SiteLayout>

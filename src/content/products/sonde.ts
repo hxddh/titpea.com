@@ -11,6 +11,8 @@ export default defineProduct({
   slug: "sonde",
   line: "storage",
   type: "desktop",
+  platforms: [{ id: "macos" }, { id: "windows" }, { id: "linux" }],
+  license: "Apache-2.0",
   repo: "hxddh/sonde",
   featured: {
     order: 1,
@@ -41,10 +43,7 @@ export default defineProduct({
     eyebrow: "S3 traffic recorder",
     headline: "Your S3 traffic, read.",
     lead: "Run a program through sonde to read its S3 requests as operations: what stands out, what it costs, and whether it survives store faults.",
-    catalog: {
-      role: "",
-      text: "Run a program through it and read its S3 traffic as operations.",
-    },
+    summary: "Run a program through it and read its S3 traffic as operations.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/sonde/releases/latest",
@@ -59,7 +58,7 @@ export default defineProduct({
         "No telemetry or background requests: it talks to your S3 endpoints (and STS for an assumed role) for what you start, and checks for updates only when you ask.",
       stays: "Runs, their index, bucket size caches and the audit log, in sonde’s data folder on this computer.",
     },
-    meta: "macOS / Linux / Windows · Apache-2.0 · {version} · S3-compatible",
+    stack: ["S3-compatible"],
     releaseHighlights: {
       version: "v26.0.0",
       items: [
@@ -195,10 +194,7 @@ export default defineProduct({
     eyebrow: "S3 流量记录器",
     headline: "看清你的程序对 S3 做了什么",
     lead: "让程序经过 sonde 运行，把它发给 S3 的请求读成一个个操作：哪里值得一看，花了多少钱，存储出故障时能否扛住。",
-    catalog: {
-      role: "",
-      text: "让程序经过它运行，把 S3 流量读成操作。",
-    },
+    summary: "让程序经过它运行，把 S3 流量读成操作。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/sonde/releases/latest",
@@ -213,7 +209,7 @@ export default defineProduct({
         "没有遥测，也没有后台请求：它只为你启动的事访问你的 S3 端点（扮演角色时还有 STS），只在你要求时检查更新。",
       stays: "运行记录、它们的索引、存储桶大小的缓存和审计日志，都存在这台电脑上 sonde 的数据目录里。",
     },
-    meta: "macOS / Linux / Windows · Apache-2.0 · {version} · 兼容 S3",
+    stack: ["S3 兼容"],
     releaseHighlights: {
       version: "v26.0.0",
       items: [

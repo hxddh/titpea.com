@@ -53,15 +53,22 @@ for (const [id, members] of Object.entries(familyMembers)) {
 
 /* ---------- Releases ---------- */
 
-const releaseTags = releases as Record<
+const releaseTags = releases as unknown as Record<
   string,
-  { repo: string; version: string; history?: Array<{ version: string; published: string; title: string }> }
+  {
+    repo?: string;
+    pypi?: string;
+    version: string;
+    history?: Array<{ version: string; published: string; title: string }>;
+  }
 >;
 for (const [slug, entry] of Object.entries(releaseTags)) {
   const product = products.find((item) => item.slug === slug);
   if (!product) fail(`releases.json: ${slug} is not a product`);
-  else if (product.repo !== entry.repo)
+  else if (!entry.pypi && product.repo !== entry.repo)
     fail(`releases.json: ${slug} repo ${entry.repo} differs from product ${product.repo}`);
+  if (Boolean(entry.repo) === Boolean(entry.pypi))
+    fail(`releases.json: ${slug} names one source, a repo or a pypi package`);
   // History (sync-releases.mjs): at most five releases, newest first, the latest among them.
   const history = entry.history ?? [];
   if (history.length > 5) fail(`releases.json: ${slug} history has ${history.length} releases (max 5)`);
@@ -79,11 +86,28 @@ for (const [slug, entry] of Object.entries(releaseTags)) {
   if (history.length > 0 && !history.some((item) => item.version === entry.version))
     fail(`releases.json: ${slug} history does not include the latest release ${entry.version}`);
 }
+// One source per version: a synced release, or the product's own `version`
+// when nothing is synced; never both, never a version written into copy.
+const staleHighlights: string[] = [];
 for (const product of products) {
-  const usesVersion = JSON.stringify(product).includes("{version}");
-  if (usesVersion && !releaseTags[product.slug]) fail(`${product.slug}: uses {version} but has no releases.json entry`);
+  if (JSON.stringify(product).includes("{version}"))
+    fail(`${product.slug}: copy writes {version}; the version is a fact the page adds itself`);
   if (product.repo && !releaseTags[product.slug])
     fail(`${product.slug}: repo ${product.repo} has no releases.json entry`);
+  if (product.version && releaseTags[product.slug])
+    fail(`${product.slug}: version is set in its file and synced in releases.json; keep the synced one`);
+  if (product.version && !/^v\d+(\.\d+)+$/.test(product.version))
+    fail(`${product.slug}: version "${product.version}" is not a tag like v1.2.0`);
+  if (!product.version && !releaseTags[product.slug]) fail(`${product.slug}: has no version (releases.json or file)`);
+  const highlights = product.en.releaseHighlights;
+  const current = releaseTags[product.slug]?.version;
+  if (highlights && current && highlights.version !== current)
+    staleHighlights.push(`${product.slug}: highlights describe ${highlights.version}, the release is ${current}`);
+  for (const locale of locales) {
+    for (const value of product[locale].stack ?? []) {
+      if (value.length > 24) fail(`${product.slug}.${locale}.stack: "${value}" is a feature, not a fact`);
+    }
+  }
 }
 
 /* ---------- Copy ---------- */
@@ -123,8 +147,9 @@ const genericHeadings = new Set(
 const maxCards = 6;
 const maxFaq = 3;
 const maxShown = 2;
-const headlineLimit: Record<Locale, number> = { en: 24, zh: 18 };
-const leadLimit: Record<Locale, number> = { en: 220, zh: 110 };
+// The h1 is one plain sentence (design v7), not a slogan of clipped phrases.
+const headlineLimit: Record<Locale, number> = { en: 52, zh: 24 };
+const leadLimit: Record<Locale, number> = { en: 240, zh: 120 };
 
 /** Every visible string in a product's copy, without links, image paths, or commands. */
 function visibleStrings(value: unknown, key = ""): string[] {
@@ -161,8 +186,10 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
   }
   if (norm(copy.headline) === norm(copy.title)) fail(`${at}: the h1 is the claim, not the product name`);
 
-  // Omni voice: short declarative claims, fragment cards, questions in the FAQ.
+  // One sentence: "Ask. Check the page." is two clipped ones.
   if (locale === "en" && !copy.headline.endsWith(".")) fail(`${at}: the English headline ends with a period`);
+  if (/[.!?]\s+\S/.test(claim) || (locale === "zh" && /[。！？]/.test(claim)))
+    fail(`${at}: the headline is one sentence, not a run of short ones: "${copy.headline}"`);
   if (locale === "zh" && /[。.！!]$/.test(copy.headline))
     fail(`${at}: the Chinese headline has no closing punctuation`);
   const words = (text: string) => text.trim().split(/\s+/).length;
@@ -171,7 +198,7 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
     text.replace(/[A-Za-z0-9][\w.+-]*/g, "x").replace(/[\s，。、；：！？（）“”]/g, "").length;
   const tooLong = (text: string, en: number, zh: number) => (locale === "en" ? words(text) > en : cjk(text) > zh);
   // One or two plain sentences: short, but whole enough that a first-time reader follows them.
-  if (tooLong(copy.lead, 24, 56)) fail(`${at}: lead is longer than two short sentences: "${copy.lead}"`);
+  if (tooLong(copy.lead, 36, 72)) fail(`${at}: lead is longer than two plain sentences: "${copy.lead}"`);
   for (const section of copy.sections) {
     if (product.sectionIndex && !section.nav) fail(`${at}: section "${section.id}" needs a short nav label`);
     if (section.nav && tooLong(section.nav, 4, 8)) fail(`${at}: nav label "${section.nav}" is longer than 4 words`);
@@ -179,23 +206,31 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
       if (section.label !== (locale === "en" ? "FAQ" : "常见问题")) fail(`${at}: the FAQ heading is FAQ / 常见问题`);
       for (const item of section.items) {
         if (!/[?？]$/.test(item.title)) fail(`${at}: FAQ entry is not a question: "${item.title}"`);
+        // A long answer is a sentence or two, then its steps: no wall of text.
+        if (tooLong(item.body, 48, 96))
+          fail(`${at}: FAQ answer "${item.title}" is a wall of text; move its steps or facts into steps`);
+        for (const step of item.steps ?? []) {
+          if (tooLong(step, 36, 72)) fail(`${at}: FAQ step is long: "${step}"`);
+        }
+        if (item.steps && item.steps.length < 2) fail(`${at}: FAQ "${item.title}" has one step; say it in the body`);
       }
     }
     if (section.kind === "data") {
-      if (section.items.length < 2 || section.items.length > 4) fail(`${at}: the data section says two to four things`);
+      if (section.items.length < 1 || section.items.length > 4)
+        fail(`${at}: the data section adds one to four details`);
       for (const item of section.items) {
         if (tooLong(item, 22, 48)) fail(`${at}: data sentence is long: "${item}"`);
       }
     }
     if (section.kind === "cards") {
       for (const item of section.items) {
-        if (tooLong(item.title, 5, 10)) fail(`${at}: card title is long: "${item.title}"`);
-        if (tooLong(item.body, 16, 32)) fail(`${at}: card body is longer than one short line: "${item.body}"`);
+        if (tooLong(item.title, 6, 12)) fail(`${at}: feature title is long: "${item.title}"`);
+        if (tooLong(item.body, 30, 60)) fail(`${at}: feature body is longer than two sentences: "${item.body}"`);
       }
     }
   }
-  // Simplicity: one feature list of at most six items, and a card body adds to
-  // its title instead of repeating it.
+  // One feature list of the product's real highlights (one to six, never a
+  // count to fill), and a body adds to its title instead of repeating it.
   const lists = copy.sections.filter((section) => section.kind === "cards");
   if (lists.length !== 1) fail(`${at}: ${lists.length} feature lists (one per page)`);
   const cards = lists.reduce((count, section) => count + section.items.length, 0);
@@ -250,7 +285,12 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
 
 const shape = (copy: ProductCopy) =>
   JSON.stringify({
-    sections: copy.sections.map((section) => [section.kind, section.id, "items" in section ? section.items.length : 0]),
+    sections: copy.sections.map((section) => [
+      section.kind,
+      section.id,
+      "items" in section ? section.items.length : 0,
+      section.kind === "faq" ? section.items.map((item) => item.steps?.length ?? 0) : [],
+    ]),
     // A demo runs the same thing in both languages: the same position and line.
     demos: copy.sections.flatMap((section) =>
       section.kind !== "demo"
@@ -417,17 +457,6 @@ function asOfRefs(value: unknown, at: string): Array<{ at: string; asOf: string 
   ];
 }
 
-// The facts line (DESIGN.md, "Facts line") never breaks inside a fact, so
-// each segment of the meta line must fit a phone's line at the label size.
-for (const product of products) {
-  for (const locale of locales) {
-    for (const segment of product[locale].meta.split(" · ")) {
-      const width = [...segment].reduce((sum, char) => sum + (/[\u3400-\u9fff\uff00-\uffef]/u.test(char) ? 2 : 1), 0);
-      if (width > 44) fail(`${product.slug}.${locale}.meta: "${segment}" is too long for one fact; split it at " · "`);
-    }
-  }
-}
-
 // A caption says what a picture is (a sample, a demo, real), not how it was
 // made (design v6): one short line, at most 14 English words or 44 characters.
 const captions = (value: unknown, at: string): Array<{ at: string; text: string }> => {
@@ -448,13 +477,8 @@ for (const product of products) {
   }
 }
 
-// A product without GitHub releases (a Chrome extension, an app not yet in a
-// store) writes its version in the meta line; that version stands in.
-const metaVersion = (meta: string) => meta.split(" · ").find((segment) => /^v?\d+\.\d+(\.\d+)?$/.test(segment.trim()));
-
 for (const product of products) {
-  const release =
-    (releases as Record<string, { version?: string }>)[product.slug]?.version ?? metaVersion(product.en.meta);
+  const release = releaseTags[product.slug]?.version ?? product.version;
   for (const locale of locales) {
     for (const ref of asOfRefs(product[locale], `${product.slug}.${locale}`)) {
       if (!tagPattern.test(ref.asOf)) {
@@ -462,7 +486,7 @@ for (const product of products) {
         continue;
       }
       if (!release) {
-        fail(`${ref.at}: asOf ${ref.asOf}, but ${product.slug} has no releases.json entry or version in its meta line`);
+        fail(`${ref.at}: asOf ${ref.asOf}, but ${product.slug} has no version`);
         continue;
       }
       if (majorOf(release) > majorOf(ref.asOf)) staleClaims.push(`${ref.at}: as of ${ref.asOf}, release is ${release}`);
@@ -589,6 +613,12 @@ if (tokenPx("--section-index-mobile-scroll-margin") !== sectionIndexPolicy.mobil
 
 /* ---------- Report ---------- */
 
+if (staleHighlights.length > 0) {
+  console.warn(
+    `Warning: ${staleHighlights.length} product(s) show no "what changed" on Releases until their highlights name the current tag:`,
+  );
+  for (const line of staleHighlights) console.warn(`- ${line}`);
+}
 if (staleClaims.length > 0) {
   console.warn(`Warning: ${staleClaims.length} capture(s) or claim(s) are a major release behind (asOf):`);
   for (const claim of staleClaims) console.warn(`- ${claim}`);

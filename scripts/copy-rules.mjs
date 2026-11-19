@@ -19,6 +19,9 @@ export const zhForbiddenTerms = [
   "无缝",
   "强大",
   "上下文能力",
+  // Translationese the owner asked to drop (November 2026): engineers say PR.
+  "拉取请求",
+  "合并请求",
 ];
 
 // Owner rule (October 2026): English copy is never framed as "evidence" either.

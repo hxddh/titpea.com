@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "bilingual",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome", min: "138" }],
+  version: "v4.0.0",
   icon: "/assets/icons/bilingual.webp",
   og: "/assets/og-bilingual.png",
   schema: {
@@ -18,10 +20,7 @@ export default defineProduct({
     eyebrow: "Translation extension for Chrome",
     headline: "Hold a key to translate.",
     lead: "Leaves pages in their original language. Hold a key to see a paragraph’s translation, or tap it twice to keep both showing.",
-    catalog: {
-      role: "Translation",
-      text: "Read the original; hold a key for the translation.",
-    },
+    summary: "Read the original; hold a key for the translation.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
@@ -40,7 +39,6 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "Bilingual",
@@ -144,10 +142,7 @@ export default defineProduct({
     eyebrow: "Chrome 翻译扩展",
     headline: "按住一个键，看译文",
     lead: "网页默认保持原文。按住一个键，看这一段的译文；连按两下，原文和译文一起保留。",
-    catalog: {
-      role: "网页翻译",
-      text: "默认只看原文，按住一个键看译文。",
-    },
+    summary: "默认只看原文，按住一个键看译文。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
@@ -165,7 +160,6 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "对读",

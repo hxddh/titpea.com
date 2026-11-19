@@ -1,16 +1,11 @@
 // Product pages: copy with its synced version, structured data, local nav.
 import { absoluteUrl, site, ui } from "../../content/site";
 import { type Line, type Locale, type Product, type ProductCopy } from "../../content/schema";
-import { otherLocale, pageTitle, pathFor, plainText, releasedOf, versionOf } from "./shared";
+import { otherLocale, pageTitle, pathFor, plainText, versionOf } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
-import { type Family, familyFor } from "./catalog";
-
-/** Replace `{version}` everywhere in a product's copy with its synced release tag. */
-function withVersion(copy: ProductCopy, version: string | undefined): ProductCopy {
-  if (!version) return copy;
-  return JSON.parse(JSON.stringify(copy).replaceAll("{version}", version)) as ProductCopy;
-}
+import { type CatalogItem, type Family, familyFor, relatedFor } from "./catalog";
+import { firstOpenLines, productFacts, type ProductFacts } from "./facts";
 
 export type ProductPageModel = {
   kind: "product";
@@ -24,9 +19,10 @@ export type ProductPageModel = {
   language: PageLanguageLink;
   copy: ProductCopy;
   icon: string;
-  version?: string;
-  /** Publish date of that release, already formatted for the locale. */
-  released?: string;
+  /** Platforms, stack, licence, version and date, from the catalog and releases.json. */
+  facts: ProductFacts;
+  /** The first-open guide beside the download, for an unnotarized build. */
+  firstOpen?: { summary: string; lines: string[] };
   /** The primary action downloads a release, so the button carries the tag. */
   downloadsRelease: boolean;
   frame: "wide" | "narrow";
@@ -34,6 +30,8 @@ export type ProductPageModel = {
   navItems: Array<{ id: string; label: string }>;
   /** Members of a family see the whole family, with this page marked, at the page's end. */
   family?: Family;
+  /** Otherwise up to three products of the same line. */
+  related?: { title: string; items: CatalogItem[] };
   primaryCta?: string;
   expectedText: string[];
 };
@@ -68,7 +66,7 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     mainEntity: faq.items.map((item) => ({
       "@type": "Question",
       name: item.title,
-      acceptedAnswer: { "@type": "Answer", text: plainText(item.body) },
+      acceptedAnswer: { "@type": "Answer", text: plainText([item.body, ...(item.steps ?? [])].join(" ")) },
     })),
   };
   return { "@context": "https://schema.org", "@graph": faqPage ? [app, faqPage] : [app] };
@@ -76,7 +74,8 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
 
 export function productPage(product: Product, locale: Locale): ProductPageModel {
   const version = versionOf(product.slug);
-  const copy = withVersion(product[locale], version);
+  const copy = product[locale];
+  const family = familyFor(product.slug, locale);
   const path = pathFor(locale, product.slug);
   const alternatePath = pathFor(otherLocale(locale), product.slug);
   // The local nav holds at most four links, in page order (ProductPage): the
@@ -118,13 +117,14 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
     language: languageLink(locale, alternatePath),
     copy,
     icon: product.icon,
-    version,
-    released: releasedOf(product.slug, locale),
+    facts: productFacts(product, locale),
+    firstOpen: firstOpenLines(product, locale),
     downloadsRelease: !copy.primaryCta.soon && Boolean(version) && /\/releases/.test(copy.primaryCta.href),
     frame: copy.visual.frame ?? "narrow",
     sectionIndex: product.sectionIndex,
     navItems,
-    family: familyFor(product.slug, locale),
+    family,
+    related: family ? undefined : relatedFor(product, locale),
     primaryCta: copy.primaryCta.soon ? undefined : copy.primaryCta.href,
     expectedText: [copy.headline, copy.primaryCta.label],
   };

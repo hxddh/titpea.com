@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "httpmon",
   line: "storage",
   type: "cli",
+  platforms: [{ id: "macos" }, { id: "windows" }, { id: "linux" }],
+  license: "MIT",
   repo: "hxddh/https-traffic-inspector",
   icon: "/assets/icons/httpmon.webp",
   og: "/assets/og-httpmon.png",
@@ -19,10 +21,7 @@ export default defineProduct({
     eyebrow: "HTTP traffic CLI",
     headline: "See the HTTP traffic.",
     lead: "Put httpmon in front of a command like curl to see its HTTP traffic; keep it in a session to query, diff or replay.",
-    catalog: {
-      role: "",
-      text: "See what a command actually sent.",
-    },
+    summary: "See what a command actually sent.",
     primaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/https-traffic-inspector",
@@ -38,7 +37,6 @@ export default defineProduct({
       stays:
         "Traffic shows in your terminal and is saved only to a session you start; a run’s temporary CA key never touches disk.",
     },
-    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
       version: "v4.1.0",
       items: [
@@ -162,10 +160,7 @@ export default defineProduct({
     eyebrow: "HTTP 流量命令行工具",
     headline: "看清命令的 HTTP 流量",
     lead: "把 httpmon 放在 curl 这类命令前面，就能看到它的 HTTP 流量；存进会话，之后还能查询、对比或重放。",
-    catalog: {
-      role: "",
-      text: "看这条命令实际发出的请求。",
-    },
+    summary: "看这条命令实际发出的请求。",
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/https-traffic-inspector",
@@ -179,7 +174,6 @@ export default defineProduct({
       networkNote: "只转发你让它经手的流量，只在你要求时重放；不检查更新，没有遥测。",
       stays: "流量显示在终端，只有你开了会话才保存；每次运行的临时 CA 私钥从不写入磁盘。",
     },
-    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
       version: "v4.1.0",
       items: [

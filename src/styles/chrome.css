@@ -68,8 +68,7 @@
   .nav > a,
   .nav-dropdown > summary,
   .language-switch,
-  .theme-toggle,
-  .mobile-menu > summary {
+  .theme-toggle {
     display: inline-flex;
     align-items: center;
     min-height: 34px;
@@ -88,7 +87,6 @@
   .nav-dropdown > summary:hover,
   .language-switch:hover,
   .theme-toggle:hover,
-  .mobile-menu > summary:hover,
   .nav-dropdown[open] > summary {
     background: var(--code-bg);
     text-decoration: none;
@@ -103,16 +101,14 @@
   .nav > a,
   .nav-dropdown > summary,
   .language-switch,
-  .theme-toggle,
-  .mobile-menu > summary {
+  .theme-toggle {
     position: relative;
   }
 
   .nav > a::before,
   .nav-dropdown > summary::before,
   .language-switch::before,
-  .theme-toggle::before,
-  .mobile-menu > summary::before {
+  .theme-toggle::before {
     content: "";
     position: absolute;
     inset: -5px 0;
@@ -122,13 +118,11 @@
     position: relative;
   }
 
-  .nav-dropdown > summary,
-  .mobile-menu > summary {
+  .nav-dropdown > summary {
     list-style: none;
   }
 
-  .nav-dropdown > summary::-webkit-details-marker,
-  .mobile-menu > summary::-webkit-details-marker {
+  .nav-dropdown > summary::-webkit-details-marker {
     display: none;
   }
 
@@ -143,81 +137,80 @@
     transform: rotate(45deg);
   }
 
-  .nav-dropdown-panel,
-  .mobile-menu-panel {
+  /* The Products menu: one panel, the four lines side by side, names only
+   (Home says what each one is). A hairline edge and the panel shadow; no
+   blur behind it. */
+  .nav-dropdown-panel {
     position: absolute;
-    top: calc(100% + 12px);
+    top: calc(100% + 11px);
+    left: 50%;
     z-index: 60;
-    display: grid;
-    padding: 8px;
-    border-radius: 18px;
+    width: min(760px, calc(100vw - 2 * var(--gutter)));
+    padding: 20px 20px 12px;
+    border-radius: var(--radius-media);
     background: var(--menu-bg);
     box-shadow:
       inset 0 0 0 1px var(--line),
-      0 18px 48px -16px var(--glass-shade),
-      0 4px 14px -6px var(--glass-shade);
+      var(--shadow-panel);
+    translate: -50% 0;
   }
 
-  .nav-dropdown-panel {
-    left: -8px;
-    width: 340px;
-  }
-
-  /* A product in a menu: icon, name, and the catalog line under it. */
-  .nav-dropdown-panel a.nav-product {
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 12px;
-  }
-
-  .nav-product img {
-    flex: none;
-    width: 32px;
-    height: 32px;
-    margin-top: 2px;
-  }
-
-  .nav-product-copy {
+  .products-grid {
     display: grid;
-    gap: 2px;
-    min-width: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px 16px;
   }
 
-  .nav-product-name {
+  .products-col ul,
+  .products-panel-pages {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .products-col-label {
+    margin: 0 0 6px;
+    padding-inline: 8px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .products-col a,
+  .products-panel-pages a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 6px 8px;
+    border-radius: 8px;
     color: var(--ink);
     font-size: var(--text-small);
-    font-weight: 600;
     line-height: 1.3;
   }
 
-  .nav-product-text {
-    color: var(--muted);
-    font-size: var(--text-meta);
-    font-weight: 400;
-    line-height: 1.4;
+  .products-col img {
+    flex: none;
+    width: 20px;
+    height: 20px;
   }
 
-  .nav-dropdown-panel a,
-  .mobile-menu-panel a {
-    display: flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    color: var(--ink);
-    font-size: var(--text-small);
-  }
-
-  .nav-dropdown-panel a:hover,
-  .mobile-menu-panel a:hover {
-    background: var(--code-bg);
+  .products-col a:hover,
+  .products-panel-pages a:hover {
+    background: var(--row-hover);
     text-decoration: none;
   }
 
-  .nav-dropdown-panel a[aria-current="page"],
-  .mobile-menu-panel a[aria-current="page"] {
+  .products-col a[aria-current="page"] {
     background: var(--code-bg);
     font-weight: 600;
+  }
+
+  /* Releases, About, GitHub: in the bar on wide screens, in the panel's foot on phones. */
+  .products-panel-pages {
+    display: none;
   }
 
   .theme-toggle[hidden] {
@@ -239,31 +232,6 @@
     border: 1.5px solid currentColor;
     border-radius: 50%;
     box-shadow: var(--glyph-half-fill);
-  }
-
-  .mobile-menu {
-    position: relative;
-    display: none;
-  }
-
-  .mobile-menu-panel {
-    right: -8px;
-    width: min(360px, calc(100vw - 2 * var(--gutter)));
-    max-height: calc(100vh - 90px);
-    overflow-y: auto;
-  }
-
-  .mobile-menu-group + .mobile-menu-group {
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px solid var(--line);
-  }
-
-  .mobile-menu-group p {
-    margin: 6px 12px 2px;
-    color: var(--muted);
-    font-size: var(--text-meta);
-    font-weight: 600;
   }
 
   /* Product local nav: the product name, its own sections, and the primary
@@ -411,8 +379,10 @@
 
   .foot-group-label {
     margin: 0 0 10px;
-    color: var(--ink);
-    font-weight: 600;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .foot-group ul {
@@ -423,9 +393,13 @@
 
   .foot-group a {
     display: inline-block;
-    padding-block: 4px;
-    color: var(--muted);
+    padding-block: 3px;
+    color: var(--ink-2);
     line-height: 1.4;
+  }
+
+  .foot-group a:hover {
+    color: var(--ink);
   }
 
   .site-footer .foot {
@@ -460,26 +434,46 @@
     border-top: 0;
   }
 
-  /* Phones already carry every product in the menu; the footer stays one line. */
+  /* Phones: the same index, two columns. */
   @media (max-width: 640px) {
     .foot-map {
-      display: none;
-    }
-
-    .site-footer .foot {
-      margin-top: 0;
-      padding-top: 0;
-      border-top: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 900px) {
-    .nav {
+    .nav-page {
       display: none;
     }
 
-    .mobile-menu {
-      display: block;
+    .nav-dropdown-panel {
+      position: fixed;
+      top: 64px;
+      left: var(--gutter);
+      right: var(--gutter);
+      width: auto;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      translate: none;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 16px;
+    }
+
+    .products-panel-pages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .products-col a,
+    .products-panel-pages a {
+      min-height: 44px;
     }
 
     .product-section-index-links {

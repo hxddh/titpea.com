@@ -1,5 +1,5 @@
 // Refresh src/content/releases.json from each repository's latest GitHub
-// release (tag and publish date), so download buttons, meta lines, catalog
+// release (or a package's latest PyPI version) (tag and publish date), so download buttons, meta lines, catalog
 // cards, and About carry the current tag and date without hand edits. Each
 // entry also keeps `history`: its last five published releases (tag, date,
 // title), newest first, for the releases page. CI runs this before every build and on a daily
@@ -50,7 +50,44 @@ async function historyOf(repo, prefix = "") {
     }));
 }
 
+/**
+ * A package published to PyPI rather than as GitHub releases (`pypi:
+ * "storageops"`): its latest non-yanked version and upload date, and the last
+ * five as history. PyPI versions carry no `v`; the site writes tags with one.
+ */
+async function syncPypi(slug, entry) {
+  const response = await fetch(`https://pypi.org/pypi/${entry.pypi}/json`, { headers: { Accept: "application/json" } });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  const { releases: files } = await response.json();
+  const history = Object.entries(files)
+    .filter(([version, uploads]) => uploads.length > 0 && !uploads.every((upload) => upload.yanked))
+    .filter(([version]) => /^\d+\.\d+(\.\d+)?$/.test(version))
+    .map(([version, uploads]) => ({
+      version: `v${version}`,
+      uploaded: uploads.map((upload) => upload.upload_time_iso_8601 ?? upload.upload_time).sort()[0],
+    }))
+    .sort((a, b) => b.uploaded.localeCompare(a.uploaded))
+    .slice(0, historyLength)
+    .map(({ version, uploaded }) => ({ version, published: uploaded.slice(0, 10), title: version }));
+  const latest = history[0];
+  if (!latest) throw new Error("no published version");
+  if (
+    latest.version !== entry.version ||
+    latest.published !== entry.published ||
+    JSON.stringify(history) !== JSON.stringify(entry.history ?? [])
+  ) {
+    changes.push(`${slug}: ${entry.version} → ${latest.version} (${latest.published}, PyPI)`);
+    entry.version = latest.version;
+    entry.published = latest.published;
+    entry.history = history;
+  }
+}
+
 for (const [slug, entry] of Object.entries(releases)) {
+  if (entry.pypi) {
+    await syncPypi(slug, entry).catch((error) => problems.push(`${slug} (PyPI ${entry.pypi}): ${error.message}`));
+    continue;
+  }
   try {
     const response = await fetch(`https://api.github.com/repos/${entry.repo}/releases/latest`, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);

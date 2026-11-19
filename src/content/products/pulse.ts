@@ -4,6 +4,9 @@ export default defineProduct({
   slug: "pulse",
   line: "agents",
   type: "mac",
+  platforms: [{ id: "macos", min: "14" }],
+  license: "MIT",
+  firstOpen: { macos: "eachRelease" },
   repo: "hxddh/Pulse",
   icon: "/assets/icons/pulse.webp",
   og: "/assets/og-pulse.png",
@@ -19,10 +22,7 @@ export default defineProduct({
     eyebrow: "Menu-bar status for coding agents",
     headline: "Which agent needs you.",
     lead: "A lamp in the menu bar for your coding agents. It turns red when one is blocked on you, and tells you why.",
-    catalog: {
-      role: "",
-      text: "The menu-bar lamp for coding agents that need you.",
-    },
+    summary: "The menu-bar lamp for coding agents that need you.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/Pulse/releases/latest",
@@ -31,13 +31,11 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/Pulse",
     },
-    installNote: "Not notarized: allow each new build once with Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "none",
       networkNote: "No network connection: no update check, nothing reported.",
       stays: "The event log and its snapshot stay on this Mac, readable only by you.",
     },
-    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v35.0.0",
       summary:
@@ -222,10 +220,7 @@ export default defineProduct({
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "看看哪个 Agent 需要你",
     lead: "菜单栏里的一盏灯，看着你的编码 Agent。有 Agent 卡住等你时亮红灯，并说明原因。",
-    catalog: {
-      role: "",
-      text: "菜单栏上看哪个编码 Agent 需要你。",
-    },
+    summary: "菜单栏上看哪个编码 Agent 需要你。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/Pulse/releases/latest",
@@ -234,13 +229,11 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/Pulse",
     },
-    installNote: "未公证：每个新版本都要在“系统设置 → 隐私与安全性”里点一次“仍要打开”。",
     privacy: {
       network: "none",
       networkNote: "不连网络：不检查更新，不上报任何东西。",
       stays: "事件日志和它的快照只在本机，只有你能读。",
     },
-    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v35.0.0",
       summary: "从 33 或更早的版本升级时，旧的事件日志会清空一次，以前的时间线随之丢失，hook 不受影响。",

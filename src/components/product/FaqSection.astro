@@ -15,19 +15,31 @@ const { section } = Astro.props;
     <h2 class="heading">{headingText(section.label)}</h2>
   </header>
   <div class="section-body faq-list">
-    {/* A disclosure list on hairlines: the first answer open. */}
+    {/* An accordion on hairlines, the first answer open. A long answer is a
+        sentence or two, then its steps or facts as a list. */}
     {section.items.map((item, index) => (
       <details class="faq-item" open={index === 0}>
         <summary>{item.title}</summary>
-        <p class="faq-answer">
-          <Prose text={item.body} />
-          {item.link && (
-            <>
-              {" "}
-              <a href={item.link.href}>{item.link.label}</a>
-            </>
+        <div class="faq-answer">
+          <p>
+            <Prose text={item.body} />
+            {item.link && (
+              <>
+                {" "}
+                <a href={item.link.href}>{item.link.label}</a>
+              </>
+            )}
+          </p>
+          {item.steps && (
+            <ul class="faq-steps">
+              {item.steps.map((step) => (
+                <li>
+                  <Prose text={step} />
+                </li>
+              ))}
+            </ul>
           )}
-        </p>
+        </div>
       </details>
     ))}
   </div>

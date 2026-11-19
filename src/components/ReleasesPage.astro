@@ -1,8 +1,8 @@
 ---
-// Every product's latest release, newest first. Lines are quoted from the
-// release's own notes (scripts/sync-releases.mjs), only in the page's
-// language and never rewritten; the release title is never shown. Under each,
-// up to four earlier releases, tag and date only.
+// Every product's latest release, newest first, from releases.json. What
+// changed comes only from the product's own highlights for exactly that tag,
+// in both languages; without them the entry is its tag, date and notes link.
+// Under each, up to four earlier releases, tag and date only.
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { headingText } from "../lib/heading";
 import "../styles/release-list.css";

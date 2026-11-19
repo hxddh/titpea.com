@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "douban-movie-rating",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome" }],
+  version: "v1.7",
   icon: "/assets/icons/douban-movie-rating.webp",
   og: "/assets/og-douban-movie-rating.png",
   schema: {
@@ -13,16 +15,12 @@ export default defineProduct({
   sectionIndex: false,
   en: {
     title: "Douban Movie Rating Assistant",
-    navLabel: "Douban Ratings",
     description:
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
     eyebrow: "Ratings extension for Douban",
     headline: "Other ratings on Douban.",
     lead: "Adds IMDb, Rotten Tomatoes and Metacritic scores to Douban film pages, and under film links you hover. Scores matched by title alone are marked.",
-    catalog: {
-      role: "On Douban",
-      text: "IMDb, Rotten Tomatoes and Metacritic scores on Douban film pages and film links you hover.",
-    },
+    summary: "IMDb, Rotten Tomatoes and Metacritic scores on Douban film pages and film links you hover.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
@@ -40,7 +38,6 @@ export default defineProduct({
         href: "/douban-movie-rating/privacy/",
       },
     },
-    meta: "Chrome · 1.7",
     visual: {
       kind: "screenshot",
       label: "Douban Movie Rating Assistant",
@@ -104,15 +101,11 @@ export default defineProduct({
   },
   zh: {
     title: "豆瓣电影评分助手",
-    navLabel: "豆瓣电影评分",
     description: "在豆瓣电影页面补充 IMDb、烂番茄和 Metacritic 评分的 Chrome 扩展（非豆瓣官方）。",
     eyebrow: "豆瓣评分扩展",
     headline: "豆瓣页上的其他评分",
     lead: "在豆瓣影片页补上 IMDb、烂番茄和 Metacritic 评分，鼠标停在影片链接上也能看。只按片名匹配到的评分会标注出来。",
-    catalog: {
-      role: "豆瓣页上",
-      text: "在豆瓣影片页和你悬停的影片链接上，显示 IMDb、烂番茄和 Metacritic 评分。",
-    },
+    summary: "在豆瓣影片页和你悬停的影片链接上，显示 IMDb、烂番茄和 Metacritic 评分。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%8A%A9%E6%89%8B/alhcfchcficmeggkhcpkojoipdkkgoif",
@@ -130,7 +123,6 @@ export default defineProduct({
         href: "/zh/douban-movie-rating/privacy/",
       },
     },
-    meta: "Chrome · 1.7",
     visual: {
       kind: "screenshot",
       label: "豆瓣电影评分助手",

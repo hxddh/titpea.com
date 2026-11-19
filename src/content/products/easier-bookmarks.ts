@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "easier-bookmarks",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome" }],
+  version: "v5.0.0",
   icon: "/assets/icons/easier-bookmarks.webp",
   og: "/assets/og-easier-bookmarks.png",
   schema: {
@@ -17,10 +19,7 @@ export default defineProduct({
     eyebrow: "Bookmark search for Chrome",
     headline: "Bookmarks at your side.",
     lead: "Search, save and tidy the bookmarks Chrome already has, from a side panel or the address bar. Nothing is sent to outside servers.",
-    catalog: {
-      role: "Side panel",
-      text: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
-    },
+    summary: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
@@ -38,7 +37,6 @@ export default defineProduct({
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -132,10 +130,7 @@ export default defineProduct({
     eyebrow: "Chrome 书签搜索",
     headline: "书签在侧边，随手整理",
     lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
-    catalog: {
-      role: "侧边栏",
-      text: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
-    },
+    summary: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
@@ -153,7 +148,6 @@ export default defineProduct({
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",

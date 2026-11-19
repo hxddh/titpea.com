@@ -2,7 +2,7 @@
 import SiteHeader from "../components/SiteHeader.astro";
 import { site, ui } from "../content/site";
 import type { Locale } from "../content/schema";
-import { navGroups, pathFor } from "../lib/pages";
+import { navGroups, pathFor, sitePages } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
 import fontFaces from "../styles/fonts.css?raw";
@@ -41,20 +41,19 @@ const preloadFont = locale === "zh" ? fontUrl("noto-serif-sc-display") : undefin
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();
-// The footer maps the whole site: every product line, then Titpea itself.
-const [main, ...rest] = navGroups(locale);
+// The footer is a compact index: each line's product names, then Titpea's pages.
 const footerGroups: Array<{
   label: string;
   items: Array<{ label: string; href: string; external?: boolean; hreflang?: string }>;
 }> = [
-  ...rest.filter((group) => group.line),
+  ...navGroups(locale),
   {
     label: site.brand,
     items: [
-      ...main.items,
+      { label: copy.home, href: pathFor(locale) },
+      ...sitePages(locale),
       { label: copy.privacy, href: pathFor(locale, "privacy") },
       { label: copy.footerFeed, href: "/releases.xml" },
-      { label: "GitHub", href: site.github, external: true },
       { label: language.label, href: language.href, hreflang: language.hreflang },
     ],
   },

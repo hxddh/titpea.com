@@ -110,8 +110,8 @@
     --text-heading-s: 21px;
     --text-heading: clamp(1.625rem, 2.4vw, 2rem);
     --title-display: clamp(2.5rem, 5.2vw, 4rem);
-    /* Reading measure: about 65 Latin characters (34em for Chinese, base.css). */
-    --measure: 65ch;
+    /* Reading measure: about 66 Latin characters (34em for Chinese, locale.css). */
+    --measure: 66ch;
 
     /* Geometry */
     --radius-shot: 12px;
@@ -132,6 +132,17 @@
      sheet, the FAQ) and Home's picks. */
     --surface: #ffffff;
     --row-hover: rgba(0, 0, 0, 0.03);
+    /* Editorial surfaces (design v7): a sunk panel for the one card a page
+     keeps (the data boundary), and the hairline tag for platforms, kinds and
+     versions. Hairlines, not shadows, draw every edge. */
+    --surface-sunk: #f3f3f1;
+    --tag-bg: rgba(0, 0, 0, 0.025);
+    --tag-line: rgba(0, 0, 0, 0.1);
+    /* Reading rhythm: body text at 1.7, a 66ch measure. */
+    --leading-body: 1.7;
+    /* Games and creative apps sit on a warmer paper (body[data-line="games"]). */
+    --paper-warm: #f8f6f1;
+    --measure-body: 66ch;
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
@@ -284,6 +295,10 @@
     --data-alert: #ff7b72;
     --surface: #151517;
     --row-hover: rgba(255, 255, 255, 0.04);
+    --surface-sunk: #121214;
+    --paper-warm: #0e0d0c;
+    --tag-bg: rgba(255, 255, 255, 0.03);
+    --tag-line: rgba(255, 255, 255, 0.12);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -362,6 +377,10 @@
       --data-alert: #ff7b72;
       --surface: #151517;
       --row-hover: rgba(255, 255, 255, 0.04);
+      --surface-sunk: #121214;
+      --paper-warm: #0e0d0c;
+      --tag-bg: rgba(255, 255, 255, 0.03);
+      --tag-line: rgba(255, 255, 255, 0.12);
     }
   }
 
@@ -443,6 +462,12 @@
   body[data-product="world-machine"] {
     --product-tint: var(--tint-world-machine);
     --product-ink: var(--ink-world-machine);
+  }
+
+  /* Games: the same skeleton on warmer paper, so a board reads as a table
+   rather than a terminal. */
+  body[data-line="games"] {
+    --paper: var(--paper-warm);
   }
 
   /* Phones: sections sit closer together. */

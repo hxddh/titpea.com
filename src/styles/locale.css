@@ -11,7 +11,7 @@
   }
 
   /* Reading measure for Chinese: about 34 characters a line. */
-  :lang(zh) :is(.faq-answer, .body-text, .prose, .data-list > li) {
+  :lang(zh) :is(.faq-answer, .body-text, .prose, .boundary-details > li) {
     max-width: var(--measure);
   }
 
@@ -33,12 +33,14 @@
 
   :lang(zh) .sub,
   :lang(zh) .lead,
-  :lang(zh) .data-list li,
+  :lang(zh) .boundary-details li,
+  :lang(zh) .boundary-text,
   :lang(zh) .shot-caption,
   :lang(zh) .prose,
   :lang(zh) .about-body,
-  :lang(zh) .feature-card p,
-  :lang(zh) .home-catalog-text,
+  :lang(zh) .feature-points p,
+  :lang(zh) .feature-spec dd,
+  :lang(zh) .index-text,
   :lang(zh) .body-text,
   :lang(zh) .line-list > li,
   :lang(zh) .faq-answer {
@@ -51,7 +53,7 @@
   /* Short Chinese text: never a one-character last line (pretty), but no
    balancing either: balance halves a line and breaks inside words
    (「工具不/变」, 「下/载」). */
-  :lang(zh) :is(.feature-card p, .home-catalog-text, .sub, .shot-caption, .pick-text) {
+  :lang(zh) :is(.feature-points p, .index-text, .sub, .shot-caption, .pick-text) {
     text-wrap: pretty;
   }
 

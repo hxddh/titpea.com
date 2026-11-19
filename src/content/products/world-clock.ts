@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "world-clock",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome", min: "123" }],
+  version: "v9.0.0",
   icon: "/assets/icons/world-clock.webp",
   og: "/assets/og-world-clock.png",
   schema: {
@@ -18,10 +20,7 @@ export default defineProduct({
     eyebrow: "Time zone extension for Chrome",
     headline: "Your cities, right now.",
     lead: "Shows the time in the cities you choose, in one popup, with working hours lit. Scroll to see any hour.",
-    catalog: {
-      role: "",
-      text: "The time in your cities; scroll to any hour.",
-    },
+    summary: "The time in your cities; scroll to any hour.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
@@ -40,7 +39,6 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "World Clock",
@@ -169,10 +167,7 @@ export default defineProduct({
     eyebrow: "Chrome 时区扩展",
     headline: "几个城市，此刻几点",
     lead: "一个弹窗看你的几个城市，工作时间高亮。滚动就能查看任意时刻。",
-    catalog: {
-      role: "",
-      text: "你的城市此刻几点，滚动看任意时刻。",
-    },
+    summary: "你的城市此刻几点，滚动看任意时刻。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
@@ -190,7 +185,6 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "世界时钟",

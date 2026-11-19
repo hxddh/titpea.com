@@ -10,12 +10,14 @@ export type CurrentPage = "home" | "about" | "releases" | "privacy" | (string & 
 // A field that one language has must exist in the other: the two pages
 // differ in words, never in what they show.
 for (const product of products) {
-  for (const field of ["installNote", "privacy"] as const) {
+  for (const field of ["privacy", "releaseHighlights", "stack"] as const) {
     if (Boolean(product.en[field]) !== Boolean(product.zh[field]))
       throw new Error(`${product.slug}: ${field} is set in one language only`);
   }
-  if (product.en.privacy && product.en.privacy.network !== product.zh.privacy?.network)
+  if (product.en.privacy.network !== product.zh.privacy.network)
     throw new Error(`${product.slug}: privacy.network differs between languages`);
+  if (product.en.releaseHighlights?.version !== product.zh.releaseHighlights?.version)
+    throw new Error(`${product.slug}: releaseHighlights name different tags in the two languages`);
 }
 if (Boolean(about.person.en) !== Boolean(about.person.zh))
   throw new Error("site.ts: about.person is set in one language only");
@@ -26,7 +28,9 @@ type ReleaseHistoryEntry = { version: string; published: string; title: string }
 export const releaseTags = releases as Record<
   string,
   {
-    repo: string;
+    /** A GitHub repository, or a PyPI project (`pypi`) for a package without GitHub releases. */
+    repo?: string;
+    pypi?: string;
     /** A tag prefix for a repository that ships more than one product (`lenslet-`). */
     tagPrefix?: string;
     version: string;
@@ -36,7 +40,13 @@ export const releaseTags = releases as Record<
   }
 >;
 
-export const versionOf = (slug: string): string | undefined => releaseTags[slug]?.version;
+/**
+ * The current version of a product, from one place: its synced release
+ * (releases.json, GitHub or PyPI), or the `version` its file states when no
+ * release is synced. Every page that shows a version reads it here.
+ */
+export const versionOf = (slug: string): string | undefined =>
+  releaseTags[slug]?.version ?? products.find((product) => product.slug === slug)?.version;
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -56,11 +66,6 @@ export const pageTitle = (title: string) => (title === site.brand ? title : `${t
 /** Copy without its `code` markers, for structured data and meta text. */
 export const plainText = (text: string) => text.replaceAll("`", "");
 
-const hasChinese = (text: string) => /[\u4e00-\u9fff]/.test(text);
-/** Release notes are quoted only in the page's own language, line by line. */
-export const inPageLanguage = (line: string | undefined, locale: Locale): line is string =>
-  Boolean(line) && (locale === "zh") === hasChinese(line!);
-
 /** "Oct 17, 2026" / "2026年10月17日" from a YYYY-MM-DD date. */
 export function formatDate(date: string | undefined, locale: Locale) {
   const match = date?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -74,16 +79,3 @@ export const newestRelease = () =>
     .map((entry) => entry.published ?? "")
     .sort()
     .at(-1);
-
-/**
- * A line quoted from a release's own notes that a first-time reader can take
- * alone: a sentence, not a heading ("The fix loop") or a test checklist line
- * ("✓ uses Read"). At least five words in English, eight CJK characters in
- * Chinese. Curated highlights are not filtered.
- */
-export const readableLine = (line: string): boolean => {
-  const text = line.trim();
-  if (/^[✓✔☑✅]/u.test(text)) return false;
-  const cjk = text.match(/[\u3400-\u9fff]/g)?.length ?? 0;
-  return cjk > 0 ? cjk >= 8 : text.split(/\s+/).length >= 5;
-};

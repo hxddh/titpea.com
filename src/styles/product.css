@@ -67,60 +67,80 @@
   /* The facts, one quiet line under the actions (design v5): what it runs on,
    its licence, version and date, how it goes online, and its source. */
   /* Inline items in balanced lines, so a wrap never leaves one item alone. */
-  .hero-facts {
-    display: block;
-    /* The shell's width, not the reading column's, so one line usually holds
-       every fact on a desktop. */
-    width: min(calc(100vw - 2 * var(--gutter)), var(--shell));
-    margin: 20px 0 0 50%;
-    translate: -50% 0;
-    text-align: center;
-    text-wrap: balance;
-    padding: 0;
-    list-style: none;
-    color: var(--muted);
-    font-size: var(--text-meta);
-    line-height: 1.5;
-    font-variant-numeric: tabular-nums;
+  /* The spec line: one hairline tag per fact (platform, stack, licence,
+   version, date), in mono with tabular figures. Gaps, not whitespace, part
+   them, so they never touch and a line breaks only between tags. */
+  .spec-tags {
+    justify-content: center;
+    margin-top: 22px;
   }
 
-  /* Every fact stays whole (check.ts keeps each short enough for a phone);
-   the line breaks only between facts. */
-  .hero-facts li {
-    display: inline;
-    white-space: nowrap;
-  }
-
-  /* The separator ends an item, so a wrapped line never starts with one. */
-  .hero-facts li:not(:last-child)::after {
-    /* The item's own trailing space comes before the dot and the template's
-       space between items after it, so the dot sits evenly between them; a
-       line wraps only after a separator, never before one. */
-    content: "·";
-    margin-inline: 0.45em;
-    color: var(--faint);
-  }
-
-  .hero-facts a {
-    color: var(--ink-2);
+  .spec-tags a {
+    color: inherit;
     text-decoration: underline;
-    text-decoration-color: var(--line);
+    text-decoration-color: var(--tag-line);
     text-underline-offset: 0.2em;
   }
 
-  /* A trust detail under the primary action, from the product's own docs. */
-  .install-note {
-    /* About 70 characters at the label size, like the reading text. */
-    max-width: 36em;
-    margin: 12px auto 0;
-    text-wrap: balance;
+  /* An unnotarized build: a quiet disclosure under the actions, not a
+   paragraph of warning. Open, it is the one step per system. */
+  .first-open {
+    max-width: 34em;
+    margin: 14px auto 0;
     color: var(--muted);
     font-size: var(--text-meta);
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
-  /* The hero object. A photograph lies on the product's colour; a terminal,
-   chart, mock or working demo on the raised paper. */
+  .first-open summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin-block: -10px;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .first-open summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .first-open summary::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--data-caution);
+  }
+
+  .first-open summary::after {
+    content: "›";
+    color: var(--faint);
+    transition: transform 0.2s ease;
+  }
+
+  .first-open[open] summary::after {
+    transform: rotate(90deg);
+  }
+
+  .first-open summary:hover {
+    color: var(--ink-2);
+  }
+
+  .first-open ul {
+    display: grid;
+    gap: 6px;
+    margin: 12px 0 0;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface-sunk);
+    color: var(--ink-2);
+    list-style: none;
+    text-align: left;
+  }
+
   .hero-figure {
     padding-top: 28px;
   }
@@ -193,11 +213,19 @@
     overflow-wrap: anywhere;
     margin: 0;
     padding: 16px 92px 16px 20px;
-    border-radius: 8px;
-    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface-sunk);
     font-family: var(--mono);
     font-size: var(--text-small);
     line-height: 1.6;
+  }
+
+  /* A prompt the reader does not copy: the line is a command to type. */
+  .command-code::before {
+    content: "$ ";
+    color: var(--faint);
+    user-select: none;
   }
 
   .copy-button {
@@ -324,60 +352,162 @@
     }
   }
 
-  /* The feature list (design v6): the page's one wide moment, three across
-   the shell with no rules, its heading on the shell's edge as on Home. Four
-   items go two by two, so no row is left with one. */
-  .features-section .section-head {
-    max-width: none;
-    margin-inline: 0;
+  /* The feature list (design v7): never a grid to fill. Tools read as a spec
+   list: the feature on the left, what it does on the right, rows on
+   hairlines. Apps and games: a few larger points, as many as the product has. */
+  .feature-spec {
+    margin-block: 0;
   }
 
-  .feature-grid {
+  .feature-spec-row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 40px var(--col-gap);
+    grid-template-columns: minmax(0, 13em) minmax(0, 1fr);
+    gap: 6px 28px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
   }
 
-  .feature-grid:is([data-count="2"], [data-count="4"]) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .feature-spec-row:first-child {
+    border-top: 1px solid var(--line);
   }
 
-  .feature-card {
-    display: grid;
-    align-content: start;
-    gap: 6px;
-  }
-
-  .feature-card h3 {
-    margin: 0;
+  .feature-spec dt {
     color: var(--ink);
-    font-size: var(--text-body);
     font-weight: 600;
-    line-height: 1.55;
-    letter-spacing: 0;
+    line-height: 1.5;
   }
 
-  .feature-card p {
+  .feature-spec dd {
     margin: 0;
     color: var(--ink-2);
-    font-size: var(--text-body);
-    line-height: 1.55;
+    line-height: var(--leading-body);
     text-wrap: pretty;
   }
 
-  /* Where the data goes: short statements in the reading column, parted by
-   space, not rules; only the FAQ keeps its hairlines. */
-  .data-list {
+  .feature-points {
     display: grid;
-    gap: 16px;
-    margin-block: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 44px var(--col-gap);
+    margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .data-list > li {
+  .feature-points:is([data-count="1"], [data-count="2"], [data-count="4"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: calc(var(--narrow) + 160px);
+    margin-inline: auto;
+  }
+
+  .feature-points li {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--soft-line);
+  }
+
+  .feature-points h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-heading-s);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .feature-points p {
+    margin: 0;
     color: var(--ink-2);
-    line-height: 1.55;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    text-wrap: pretty;
+  }
+
+  /* The data boundary: the site's one card. Network and where data stays as
+   labelled rows, then the details. Hairline edge, sunk surface, no shadow. */
+  .boundary {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-media);
+    background: var(--surface-sunk);
+  }
+
+  .boundary-rows {
+    margin: 0;
+  }
+
+  .boundary-row {
+    display: grid;
+    grid-template-columns: 8.5em minmax(0, 1fr);
+    gap: 4px 20px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .boundary-rows > .boundary-row:last-child:not(:has(+ *)) {
+    border-bottom: 0;
+  }
+
+  .boundary-row dt {
+    padding-top: 2px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .boundary-row dd {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  .boundary-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .boundary-level::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--data-ref);
+  }
+
+  .boundary-level[data-level="onRequest"]::before {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--data-ref);
+  }
+
+  .boundary-level[data-level="automatic"]::before {
+    background: var(--data-caution);
+  }
+
+  .boundary-rows + .boundary-details {
+    border-top: 1px solid var(--line);
+  }
+
+  .boundary-details {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 18px 22px 20px 40px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  .boundary-details li::marker {
+    color: var(--faint);
+  }
+
+  .boundary-policy {
+    margin: -6px 22px 8px;
   }
 
   /* FAQ: questions on hairlines, the first answer open; phones fold all but
@@ -430,7 +560,68 @@
     padding: 0 0 24px;
     color: var(--ink-2);
     font-size: var(--text-body);
-    line-height: 1.6;
+    line-height: var(--leading-body);
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* A long answer's steps and facts: one line each, beside a thin rule. */
+  .faq-steps {
+    display: grid;
+    gap: 8px;
+    margin: 14px 0 0;
+    padding: 0 0 0 16px;
+    border-left: 2px solid var(--line);
+    list-style: none;
+  }
+
+  /* Products of the same line, at the end of a page outside a family. */
+  .related-section {
+    max-width: var(--narrow);
+    margin-inline: auto;
+  }
+
+  .related-section .closing-label {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+
+  .related-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .related-list a {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .related-list a:hover {
+    text-decoration: none;
+  }
+
+  .related-list a:hover strong {
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+
+  .related-copy {
+    display: grid;
+    gap: 2px;
+  }
+
+  .related-copy span {
+    color: var(--muted);
+    font-size: var(--text-small);
   }
 
   /* A family, when the product belongs to one: its tools side by side with
@@ -527,7 +718,7 @@
   }
 
   @media (max-width: 900px) {
-    .feature-grid {
+    .feature-points {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -551,10 +742,23 @@
       padding-top: 48px;
     }
 
-    .feature-grid,
-    .feature-grid:is([data-count="2"], [data-count="4"]) {
+    .feature-points,
+    .feature-points:is([data-count="1"], [data-count="2"], [data-count="4"]) {
       grid-template-columns: minmax(0, 1fr);
-      gap: 24px;
+      gap: 28px;
+    }
+
+    .feature-spec-row,
+    .boundary-row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .boundary-row {
+      padding-inline: 16px;
+    }
+
+    .boundary-details {
+      padding-inline: 32px 16px;
     }
 
     /* The button under the command, never over it. */
@@ -576,6 +780,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .first-open summary::after,
     .faq-item summary::after {
       transition: none;
     }

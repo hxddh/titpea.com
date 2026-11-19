@@ -4,6 +4,9 @@ export default defineProduct({
   slug: "readout",
   line: "agents",
   type: "mac",
+  platforms: [{ id: "macos", min: "26" }],
+  license: "MIT",
+  firstOpen: { macos: "eachRelease" },
   repo: "hxddh/readout",
   featured: {
     order: 3,
@@ -34,10 +37,7 @@ export default defineProduct({
     eyebrow: "Markdown reader for macOS",
     headline: "Read what agents write.",
     lead: "A Mac reader for the Markdown that coding agents write. It follows the file live, marks what changed, and never edits it.",
-    catalog: {
-      role: "",
-      text: "Read an agent’s Markdown as it changes, with edits marked.",
-    },
+    summary: "Read an agent’s Markdown as it changes, with edits marked.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/readout/releases/latest",
@@ -46,13 +46,11 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/readout",
     },
-    installNote: "Not notarized: for each release, click Open Anyway once in System Settings → Privacy & Security.",
     privacy: {
       network: "automatic",
       networkNote: "A weekly update check against GitHub Releases, which you can turn off.",
       stays: "On your Mac: rendering a document sends no network request.",
     },
-    meta: "macOS 26+ · MIT · {version}",
     releaseHighlights: {
       version: "v6.0.0",
       summary:
@@ -168,10 +166,7 @@ export default defineProduct({
     eyebrow: "macOS Markdown 阅读器",
     headline: "读 Agent 写的文档",
     lead: "Mac 上的 Markdown 阅读器，读编码 Agent 写的文档。实时跟随写入，标出改动，从不修改文件。",
-    catalog: {
-      role: "",
-      text: "边写边读 Agent 的 Markdown，改动处一目了然。",
-    },
+    summary: "边写边读 Agent 的 Markdown，改动处一目了然。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/readout/releases/latest",
@@ -180,13 +175,11 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/readout",
     },
-    installNote: "未经公证：每个新版本首次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     privacy: {
       network: "automatic",
       networkNote: "每周一次 GitHub Releases 更新检查，可在设置中关闭。",
       stays: "在本机：渲染文档时不发出任何网络请求。",
     },
-    meta: "macOS 26+ · MIT · {version}",
     releaseHighlights: {
       version: "v6.0.0",
       summary: "Readout 6 做得更少：打开文件不用等，打开时从不运行任何命令，只标出真正改过的地方。",

@@ -10,6 +10,9 @@ export default defineProduct({
   slug: "lenslet",
   line: "storage",
   type: "cli",
+  platforms: [{ id: "macos" }, { id: "linux" }],
+  license: "Apache-2.0",
+  firstOpen: { macos: "once" },
   repo: "hxddh/lenslet",
   icon: "/assets/icons/lenslet.webp",
   og: "/assets/og-lenslet.png",
@@ -25,20 +28,14 @@ export default defineProduct({
     eyebrow: "AWS access review for CI",
     headline: "AWS access, in every PR.",
     lead: "Run your tests against a local AWS emulator. Lenslet records every call, explains failures, and flags new IAM permissions in the pull request.",
-    catalog: {
-      role: "AWS access review",
-      text: "Shows in each pull request what AWS access your code needs, and why its AWS calls failed.",
-    },
+    summary: "Shows in each pull request what AWS access your code needs, and why its AWS calls failed.",
     primaryCta: { label: "Download", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "View source", href: "https://github.com/hxddh/lenslet" },
-    installNote:
-      "The macOS app is not notarized: the first time, use Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "onRequest",
       networkNote: "It forwards your tests’ AWS calls only to the emulator you point it at.",
       stays: "Run files in ~/.lenslet on this computer, owner-only; the lock file in your repository.",
     },
-    meta: "macOS / Linux · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v7.0.0",
       items: [
@@ -164,19 +161,14 @@ export default defineProduct({
     eyebrow: "CI 里的 AWS 权限审查",
     headline: "在 PR 里看清 AWS 权限",
     lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并在拉取请求里标出新增的 IAM 权限。",
-    catalog: {
-      role: "AWS 权限审查",
-      text: "在每个拉取请求里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
-    },
+    summary: "在每个拉取请求里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
     primaryCta: { label: "下载", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "查看源码", href: "https://github.com/hxddh/lenslet" },
-    installNote: "macOS 应用尚未公证：第一次打开时，到“系统设置 → 隐私与安全性”里点“仍要打开”。",
     privacy: {
       network: "onRequest",
       networkNote: "它只把测试的 AWS 调用转发给你指定的模拟器。",
       stays: "运行记录存在这台电脑的 ~/.lenslet 里，只有你能读；锁文件在你的代码仓库里。",
     },
-    meta: "macOS / Linux · Apache-2.0 · {version}",
     releaseHighlights: {
       version: "v7.0.0",
       items: [

@@ -23,6 +23,9 @@ export default defineProduct({
   slug: "chessboard",
   line: "games",
   type: "game",
+  platforms: [{ id: "macos" }, { id: "windows" }],
+  license: "GPLv3",
+  firstOpen: { macos: "once" },
   featured: {
     order: 2,
     image: {
@@ -53,10 +56,7 @@ export default defineProduct({
     eyebrow: "Desktop chess",
     headline: "Chess you can review.",
     lead: "Play chess on your computer; the Stockfish engine reviews your games and marks your mistakes. Lessons and 40,000 puzzles help you practise.",
-    catalog: {
-      role: "Stockfish + lessons",
-      text: "Learn, solve puzzles, then play the computer or a friend on the same board.",
-    },
+    summary: "Learn, solve puzzles, then play the computer or a friend on the same board.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/chessboard/releases/latest",
@@ -65,8 +65,6 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/chessboard",
     },
-    installNote:
-      "The macOS build is not notarized yet: the first time, click “Open Anyway” in System Settings → Privacy & Security.",
     releaseHighlights: {
       version: "v24.0.0",
       items: [
@@ -81,7 +79,6 @@ export default defineProduct({
         "Sync goes online only after you allow it, and sends only your user name; updates are checked only when you ask.",
       stays: "Games, puzzles, lessons and progress stay on this computer.",
     },
-    meta: "macOS + Windows · GPLv3 · {version}",
     visual: {
       kind: "screenshot",
       label: "Chessboard",
@@ -199,10 +196,7 @@ export default defineProduct({
     eyebrow: "桌面国际象棋",
     headline: "下完一局，复盘失着",
     lead: "在电脑上下国际象棋，Stockfish 引擎复盘你的对局、标出失着；还有课程和四万道谜题供你练习。",
-    catalog: {
-      role: "Stockfish 与课程",
-      text: "学棋、解谜题，再与电脑或同屏好友下一局。",
-    },
+    summary: "学棋、解谜题，再与电脑或同屏好友下一局。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/chessboard/releases/latest",
@@ -211,7 +205,6 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/chessboard",
     },
-    installNote: "macOS 版尚未公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     releaseHighlights: {
       version: "v24.0.0",
       items: [
@@ -225,7 +218,6 @@ export default defineProduct({
       networkNote: "要先在设置里允许联网才会同步，只发送用户名；“检查更新”只在你点它时查询。",
       stays: "对局、谜题、课程与进度都留在这台电脑上。",
     },
-    meta: "macOS + Windows · GPLv3 · {version}",
     visual: {
       kind: "screenshot",
       label: "国际象棋 Chessboard",

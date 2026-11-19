@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "s3-turbo-list",
   line: "storage",
   type: "cli",
+  platforms: [],
+  license: "Apache-2.0",
   repo: "hxddh/s3-turbo-list",
   icon: "/assets/icons/s3-turbo-list.webp",
   og: "/assets/og-s3-turbo-list.png",
@@ -18,10 +20,7 @@ export default defineProduct({
     eyebrow: "S3 inventory CLI",
     headline: "Know what’s in a bucket.",
     lead: "Lists a large S3 bucket, or compares two, in parallel with no tuning. The result is a Parquet dataset, ready to query in DuckDB.",
-    catalog: {
-      role: "List / Diff",
-      text: "Lists a large S3 bucket, or compares two, into a Parquet file you can query.",
-    },
+    summary: "Lists a large S3 bucket, or compares two, into a Parquet file you can query.",
     primaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/s3-turbo-list",
@@ -35,15 +34,7 @@ export default defineProduct({
       networkNote: "Only the S3 endpoints you list, compare or write to; no update check, no telemetry.",
       stays: "Datasets and checkpoints in your output directory; credentials from your AWS profile or environment.",
     },
-    meta: "Rust · S3-compatible · Apache-2.0 · {version}",
-    releaseHighlights: {
-      version: "v1.1.0",
-      items: [
-        "The tool is now the `s3tl` command, with three subcommands: `list`, `diff` and `check`. Command lines, outputs and checkpoints from 0.x no longer work.",
-        "Every run prints one JSON result with a stable error code, and an interrupted listing resumes into the same folder.",
-        "New in 1.1: list every object version, write the Parquet output straight to S3, and compare by size or by stored checksum.",
-      ],
-    },
+    stack: ["Rust", "S3-compatible"],
     commands: {
       title: "Get started",
       sub: "Download the binary for your platform from the project’s GitHub Releases page, check it against the `SHA256SUMS` file there, and put it on your `PATH` as `s3tl`.",
@@ -141,10 +132,7 @@ export default defineProduct({
     eyebrow: "S3 清单命令行工具",
     headline: "存储桶里有什么，一次列清",
     lead: "并行列出一个大的 S3 存储桶，或对比两个桶，无需调参。结果是 Parquet 数据集，可以直接用 DuckDB 查询。",
-    catalog: {
-      role: "列举 / 对比",
-      text: "并行列举和对比 S3 对象，输出可继续分析的 Parquet。",
-    },
+    summary: "并行列举和对比 S3 对象，输出可继续分析的 Parquet。",
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/s3-turbo-list",
@@ -158,15 +146,7 @@ export default defineProduct({
       networkNote: "只访问你要列举、对比或写入的 S3 端点；不检查更新，没有遥测。",
       stays: "数据集和 checkpoint 写在你的输出目录；凭据来自你的 AWS profile 或环境变量。",
     },
-    meta: "Rust · S3 兼容 · Apache-2.0 · {version}",
-    releaseHighlights: {
-      version: "v1.1.0",
-      items: [
-        "命令改名为 `s3tl`，只有 `list`、`diff`、`check` 三个子命令；0.x 的命令行、输出和 checkpoint 都不再适用。",
-        "每次运行都输出一份 JSON 结果，带固定的错误码；中断的列举可以接着写进同一个目录。",
-        "1.1 新增：列出对象的所有版本，把 Parquet 结果直接写到 S3，以及按大小或存储的校验和对比。",
-      ],
-    },
+    stack: ["Rust", "S3 兼容"],
     commands: {
       title: "开始使用",
       sub: "到项目的 GitHub Releases 页面下载对应平台的二进制文件，用那里的 `SHA256SUMS` 校验，再以 `s3tl` 为名放进 `PATH`。",

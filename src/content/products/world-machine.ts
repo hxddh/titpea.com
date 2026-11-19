@@ -3,7 +3,10 @@ import { defineProduct } from "../schema";
 export default defineProduct({
   slug: "world-machine",
   line: "games",
-  type: "experiment",
+  type: "game",
+  platforms: [{ id: "macos", min: "14" }],
+  license: "Apache-2.0",
+  firstOpen: { macos: "once" },
   repo: "hxddh/world-machine",
   icon: "/assets/icons/world-machine.webp",
   og: "/assets/og-world-machine.png",
@@ -19,10 +22,7 @@ export default defineProduct({
     eyebrow: "Harbour game for macOS",
     headline: "It grows a day at a time.",
     lead: "A small harbour town on your Mac whose people work, marry and grow old. Each morning brings a letter, a choice and a find.",
-    catalog: {
-      role: "Harbour town",
-      text: "A small harbour town with a morning for every day you visit. macOS.",
-    },
+    summary: "A small harbour town with a morning for every day you visit. macOS.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/world-machine/releases",
@@ -31,7 +31,6 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/world-machine",
     },
-    installNote: "Not notarized: the first launch needs a one-time Open Anyway step.",
     releaseHighlights: {
       version: "v1.0.0",
       items: [
@@ -45,7 +44,6 @@ export default defineProduct({
       networkNote: "Once per launch it asks `api.github.com` for the latest release; World voice is off by default.",
       stays: "Worlds are files on your Mac; no account, no telemetry, nothing uploaded.",
     },
-    meta: "macOS 14+ · Apache-2.0 · {version}",
     visual: {
       kind: "screenshot",
       label: "World Machine",
@@ -148,10 +146,7 @@ export default defineProduct({
     eyebrow: "macOS 海港小镇游戏",
     headline: "世界一天一天地长大",
     lead: "Mac 上的一座海港小镇，居民工作、成家、变老。每天早晨，都有一封信、一个选择和一件新发现等着你。",
-    catalog: {
-      role: "海港小镇",
-      text: "每天来，都有早晨等你的海港小镇。macOS。",
-    },
+    summary: "每天来，都有早晨等你的海港小镇。macOS。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/world-machine/releases",
@@ -160,7 +155,6 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/world-machine",
     },
-    installNote: "尚未公证：首次启动需要一次“仍要打开”。",
     releaseHighlights: {
       version: "v1.0.0",
       items: [
@@ -174,7 +168,6 @@ export default defineProduct({
       networkNote: "每次启动向 `api.github.com` 查询一次最新版本；世界之声默认关闭。",
       stays: "世界是你 Mac 上的文件；没有账户、没有遥测，什么都不上传。",
     },
-    meta: "macOS 14+ · Apache-2.0 · {version}",
     visual: {
       kind: "screenshot",
       label: "World Machine",

@@ -58,6 +58,18 @@
       "url": "https://github.com/hxddh/sonde/releases/tag/v26.0.0"
     }
   },
+  "storageops": {
+    "pypi": "storageops",
+    "version": "v2.0.0",
+    "published": "2026-11-14",
+    "history": [
+      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" },
+      { "version": "v0.8.0", "published": "2026-06-30", "title": "v0.8.0" },
+      { "version": "v0.7.2", "published": "2026-06-30", "title": "v0.7.2" },
+      { "version": "v0.7.1", "published": "2026-06-30", "title": "v0.7.1" },
+      { "version": "v0.7.0", "published": "2026-06-21", "title": "v0.7.0" }
+    ]
+  },
   "httpmon": {
     "repo": "hxddh/https-traffic-inspector",
     "version": "v4.1.0",
@@ -160,6 +172,23 @@
       "url": "https://github.com/hxddh/readout/releases/tag/v6.0.0"
     }
   },
+  "world-machine": {
+    "repo": "hxddh/world-machine",
+    "version": "v1.0.0",
+    "published": "2026-11-14",
+    "history": [
+      { "version": "v1.0.0", "published": "2026-11-14", "title": "World Machine v1.0.0" },
+      { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
+      { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
+      { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
+      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" }
+    ],
+    "notes": {
+      "summary": "1",
+      "items": ["Tiny Society runs inside the app", "A menu on every platform", "For a new player"],
+      "url": "https://github.com/hxddh/world-machine/releases/tag/v1.0.0"
+    }
+  },
   "agent-radar": {
     "repo": "hxddh/agent-radar",
     "version": "v0.26.3",
@@ -238,23 +267,6 @@
         "看过答案，就不写「解出！」、不画绿勾、不响胜利音，写「看过答案」"
       ],
       "url": "https://github.com/hxddh/chessboard/releases/tag/v24.0.0"
-    }
-  },
-  "world-machine": {
-    "repo": "hxddh/world-machine",
-    "version": "v1.0.0",
-    "published": "2026-11-14",
-    "history": [
-      { "version": "v1.0.0", "published": "2026-11-14", "title": "World Machine v1.0.0" },
-      { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
-      { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
-      { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
-      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" }
-    ],
-    "notes": {
-      "summary": "1",
-      "items": ["Tiny Society runs inside the app", "A menu on every platform", "For a new player"],
-      "url": "https://github.com/hxddh/world-machine/releases/tag/v1.0.0"
     }
   }
 }

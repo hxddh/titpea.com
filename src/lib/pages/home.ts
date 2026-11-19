@@ -1,8 +1,8 @@
 // Home: hero, then the catalog: featured work, then every other product by line.
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
-import { featuredSrc, lines, type Line, type Locale } from "../../content/schema";
-import { formatDate, otherLocale, pathFor, releaseTags } from "./shared";
+import { featuredSrc, lines, platformOrder, type Line, type Locale } from "../../content/schema";
+import { otherLocale, pathFor } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { type CatalogItem, catalogItem } from "./catalog";
 
@@ -22,34 +22,32 @@ export type HomePageModel = {
     lead: string;
     about: { label: string; href: string };
   };
-  /** The picks: up to three products, each with a capture and its latest tag. */
+  /** The picks: three products, each with a capture, its claim and its latest tag. */
   featured: {
     title: string;
     items: Array<
-      IndexItem & {
-        /** The whole window where the page has one: the stage shows its top-left corner at reading scale. */
+      CatalogItem & {
+        eyebrow: string;
+        headline: string;
         image: { src: string; width: number; height: number };
         caption?: string;
       }
     >;
   };
-  /** The index: every product by line, in site order, the picks included. */
+  /** The index: every product by line, in site order, the picks included, with filters. */
   more: {
-    /** Names the index for assistive tech. */
     title: string;
-    groups: Array<{ line: Line; label: string; count: string; items: IndexItem[] }>;
+    filters: {
+      lineLabel: string;
+      platformLabel: string;
+      empty: string;
+      lines: Array<{ key: string; label: string }>;
+      platforms: Array<{ key: string; label: string }>;
+    };
+    groups: Array<{ line: Line; label: string; count: string; items: CatalogItem[] }>;
   };
   expectedText: string[];
 };
-
-/** A product in Home's index: its catalog item, and its latest release tag and date when it has one. */
-export type IndexItem = CatalogItem & { version?: string; released?: string };
-
-const indexItem = (product: (typeof products)[number], locale: Locale): IndexItem => ({
-  ...catalogItem(product, locale),
-  version: releaseTags[product.slug]?.version,
-  released: formatDate(releaseTags[product.slug]?.published, locale),
-});
 
 export function homePage(locale: Locale): HomePageModel {
   const copy = ui[locale];
@@ -93,10 +91,9 @@ export function homePage(locale: Locale): HomePageModel {
         const { image } = product.featured!;
         const visual = product[locale].visual;
         return {
-          ...indexItem(product, locale),
-          // A pick says the product's claim; the index below keeps its catalog
-          // line, so Home never says the same sentence twice.
-          text: product[locale].headline,
+          ...catalogItem(product, locale),
+          eyebrow: product[locale].eyebrow,
+          headline: product[locale].headline,
           image:
             visual.kind === "screenshot" ? visual.image : { ...image, src: featuredSrc(product.featured!, locale) },
           caption: product.featured!.caption?.[locale],
@@ -105,8 +102,26 @@ export function homePage(locale: Locale): HomePageModel {
     },
     more: {
       title: copy.moreToolsTitle,
+      filters: {
+        lineLabel: copy.filterLine,
+        platformLabel: copy.filterPlatform,
+        empty: copy.filterEmpty,
+        lines: [
+          { key: "all", label: copy.allLabel },
+          ...lines.map((line) => ({ key: line, label: copy.groups[line] })),
+        ],
+        platforms: [
+          { key: "all", label: copy.allLabel },
+          ...platformOrder
+            .filter((id) => products.some((product) => product.platforms.some((platform) => platform.id === id)))
+            .map((id) => ({ key: id, label: copy.platforms[id].name })),
+          { key: "cli", label: copy.commandLine },
+        ],
+      },
       groups: lines.map((line) => {
-        const items = products.filter((product) => product.line === line).map((product) => indexItem(product, locale));
+        const items = products
+          .filter((product) => product.line === line)
+          .map((product) => catalogItem(product, locale));
         return {
           line,
           label: copy.groups[line],

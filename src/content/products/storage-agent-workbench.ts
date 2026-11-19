@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "storage-agent-workbench",
   line: "storage",
   type: "desktop",
+  platforms: [{ id: "macos" }, { id: "windows" }, { id: "linux" }],
+  license: "Apache-2.0",
   repo: "hxddh/storage-agent-workbench",
   icon: "/assets/icons/storage-agent-workbench.webp",
   og: "/assets/og-storage-agent-workbench.png",
@@ -19,10 +21,7 @@ export default defineProduct({
     eyebrow: "Object storage agent",
     headline: "Find what’s wrong in S3.",
     lead: "Ask about your S3 storage in plain words. The agent reads what the services return and never changes anything; fixes are yours to run.",
-    catalog: {
-      role: "S3 investigation",
-      text: "A read-only agent for S3 and the account around it; it writes fixes, you run them.",
-    },
+    summary: "A read-only agent for S3 and the account around it; it writes fixes, you run them.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
@@ -38,7 +37,7 @@ export default defineProduct({
       stays:
         "Keys sealed in the system keychain, or an encrypted local file; tasks, datasets and memory in SQLite files on this machine; no telemetry.",
     },
-    meta: "macOS / Windows / Linux · S3-compatible · Apache-2.0 · {version}",
+    stack: ["S3-compatible"],
     releaseHighlights: {
       version: "v42.0.0",
       items: [
@@ -130,10 +129,7 @@ export default defineProduct({
     eyebrow: "对象存储 Agent",
     headline: "找出 S3 里的隐患",
     lead: "用平常的话问你的 S3 存储。它只读取各服务返回的内容，不做任何改动；修复由你来执行。",
-    catalog: {
-      role: "S3 排查",
-      text: "只读的 S3 排查 Agent，覆盖存储所在的整个账号；修复它来写，你来执行。",
-    },
+    summary: "只读的 S3 排查 Agent，覆盖存储所在的整个账号；修复它来写，你来执行。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
@@ -147,7 +143,7 @@ export default defineProduct({
       networkNote: "请求发往你配置的模型和存储端点；安装版会向 GitHub Releases 检查更新。",
       stays: "密钥封存在系统钥匙串或本机加密文件里；任务、数据集和记忆存在本机的 SQLite 文件中；不收集遥测。",
     },
-    meta: "macOS / Windows / Linux · S3 兼容 · Apache-2.0 · {version}",
+    stack: ["S3 兼容"],
     releaseHighlights: {
       version: "v42.0.0",
       items: [

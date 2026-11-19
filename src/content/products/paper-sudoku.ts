@@ -14,6 +14,8 @@ export default defineProduct({
   slug: "paper-sudoku",
   line: "games",
   type: "game",
+  platforms: [{ id: "android", min: "8.0" }],
+  version: "v14.0",
   // The store listing plans a paid app; no price is set yet.
   price: "unannounced",
   icon: "/assets/icons/paper-sudoku.webp",
@@ -30,10 +32,7 @@ export default defineProduct({
     eyebrow: "Sudoku notebook for Android",
     headline: "One page a day.",
     lead: "A Sudoku notebook that opens on today’s page. If you get stuck, a Coach writes hints in the margin. It has no network access.",
-    catalog: {
-      role: "",
-      text: "A Sudoku notebook for Android: one page a day, a Coach in the margin.",
-    },
+    summary: "A Sudoku notebook for Android: one page a day, a Coach in the margin.",
     primaryCta: {
       label: "Coming to Google Play",
       href: "/paper-sudoku/",
@@ -52,7 +51,6 @@ export default defineProduct({
         href: "/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "Paper Sudoku",
@@ -148,10 +146,7 @@ export default defineProduct({
     eyebrow: "Android 数独本",
     headline: "每天一页数独",
     lead: "一本打开就是今天这一页的数独本。卡住时，教练会在页边提示。应用不联网。",
-    catalog: {
-      role: "",
-      text: "Android 上的数独本：每天一页，卡住时教练在页边提示。",
-    },
+    summary: "Android 上的数独本：每天一页，卡住时教练在页边提示。",
     primaryCta: {
       label: "即将上架 Google Play",
       href: "/zh/paper-sudoku/",
@@ -170,7 +165,6 @@ export default defineProduct({
         href: "/zh/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "纸上数独",

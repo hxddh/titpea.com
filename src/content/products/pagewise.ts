@@ -7,6 +7,9 @@ export default defineProduct({
   slug: "pagewise",
   line: "everyday",
   type: "desktop",
+  platforms: [{ id: "macos" }, { id: "windows" }, { id: "linux" }],
+  license: "MIT",
+  firstOpen: { macos: "eachRelease" },
   repo: "hxddh/pagewise",
   icon: "/assets/icons/pagewise.webp",
   og: "/assets/og-pagewise.png",
@@ -22,10 +25,7 @@ export default defineProduct({
     eyebrow: "PDF questions, with pages",
     headline: "Ask. Check the page.",
     lead: "Ask a PDF a question. Each citation is marked “verified”, “check the page” or “not found”. Scans are read on your computer.",
-    catalog: {
-      role: "PDF assistant",
-      text: "Ask a PDF. Follow the citation to the page.",
-    },
+    summary: "Ask a PDF. Follow the citation to the page.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/pagewise/releases",
@@ -34,14 +34,11 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/pagewise",
     },
-    installNote:
-      "The macOS build is not notarized: after each install, click Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "onRequest",
       networkNote: "When you ask a question, extracted text goes to the model you configure, or Ollama.",
       stays: "Files, chats, marks and scan text on your machine; API keys in the system keychain; no telemetry.",
     },
-    meta: "macOS / Windows / Linux · MIT · {version}",
     releaseHighlights: {
       version: "v25.0.0",
       items: [
@@ -148,10 +145,7 @@ export default defineProduct({
     eyebrow: "PDF 问答，附页码",
     headline: "问过之后，回到原文",
     lead: "向 PDF 提问。每条引用都标为“已核对”、“请看原页”或“未找到”。扫描件在本机识别。",
-    catalog: {
-      role: "PDF 助手",
-      text: "向 PDF 提问。顺着引用回到原页。",
-    },
+    summary: "向 PDF 提问。顺着引用回到原页。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/pagewise/releases",
@@ -160,13 +154,11 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/pagewise",
     },
-    installNote: "macOS 版尚未公证：每装一个新版本，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     privacy: {
       network: "onRequest",
       networkNote: "提问时，提取的文本发给你配置的模型或本机 Ollama。",
       stays: "文件、会话、批注和识别出的文字都在本机；API 密钥在系统钥匙串；没有遥测。",
     },
-    meta: "macOS / Windows / Linux · MIT · {version}",
     releaseHighlights: {
       version: "v25.0.0",
       items: [

@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "agent-radar",
   line: "agents",
   type: "actions",
+  platforms: [],
+  license: "MIT",
   repo: "hxddh/agent-radar",
   icon: "/assets/icons/agent-radar.webp",
   og: "/assets/og-agent-radar.png",
@@ -18,10 +20,7 @@ export default defineProduct({
     eyebrow: "Scheduled Markdown research",
     headline: "Agent news, with sources.",
     lead: "Markdown reports on AI agents, drafted by a model from public sources on a GitHub Actions schedule. Every change stays in Git.",
-    catalog: {
-      role: "Scheduled briefs",
-      text: "Sourced Markdown briefs, on a GitHub Actions timer.",
-    },
+    summary: "Sourced Markdown briefs, on a GitHub Actions timer.",
     primaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/agent-radar",
@@ -36,7 +35,7 @@ export default defineProduct({
         "Scheduled GitHub Actions runs fetch public sources and send them to the AI model service you configure.",
       stays: "Reports, telemetry and run logs are committed to your own repository; model keys are repository secrets.",
     },
-    meta: "Python · GitHub Actions · MIT · {version}",
+    stack: ["Python", "GitHub Actions"],
     releaseHighlights: {
       version: "v0.26.3",
       items: [
@@ -131,10 +130,7 @@ export default defineProduct({
     eyebrow: "定时 Markdown 调研",
     headline: "Agent 动态，附来源",
     lead: "GitHub Actions 定时运行，由模型从公开来源起草 AI Agent 调研报告（Markdown）。每次改动都留在 Git 里。",
-    catalog: {
-      role: "定时简报",
-      text: "GitHub Actions 定时跑，生成带来源的 Markdown 报告。",
-    },
+    summary: "GitHub Actions 定时跑，生成带来源的 Markdown 报告。",
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/agent-radar",
@@ -148,7 +144,7 @@ export default defineProduct({
       networkNote: "GitHub Actions 定时运行，抓取公开来源，交给你配置的 AI 模型服务。",
       stays: "报告、遥测和运行日志提交到你自己的仓库；模型密钥存为仓库 secret。",
     },
-    meta: "Python · GitHub Actions · MIT · {version}",
+    stack: ["Python", "GitHub Actions"],
     releaseHighlights: {
       version: "v0.26.3",
       items: [

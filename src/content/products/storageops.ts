@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "storageops",
   line: "storage",
   type: "pi",
+  platforms: [],
+  license: "MIT",
   icon: "/assets/icons/storageops.webp",
   og: "/assets/og-storageops.png",
   schema: {
@@ -17,10 +19,7 @@ export default defineProduct({
     eyebrow: "Storage troubleshooting for Pi",
     headline: "S3 diagnosis for Pi.",
     lead: "Troubleshoot object storage inside Pi, the open-source coding agent, using the logs and traces you bring. No cloud account is needed.",
-    catalog: {
-      role: "Pi extension",
-      text: "S3 troubleshooting in the Pi coding agent, from logs and traces you already have.",
-    },
+    summary: "S3 troubleshooting in the Pi coding agent, from logs and traces you already have.",
     primaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/storageops",
@@ -35,7 +34,7 @@ export default defineProduct({
         "What you give Pi goes to the model you configure; install, doctor and --version check PyPI and npm for updates.",
       stays: "Pi sessions under ~/.storageops on this machine; no object storage access keys needed.",
     },
-    meta: "Python · Pi · S3-compatible · MIT",
+    stack: ["Python", "Pi", "S3-compatible"],
     commands: {
       title: "Get started",
       sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip`, the first command below. Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
@@ -153,10 +152,7 @@ export default defineProduct({
     eyebrow: "Pi 存储排障扩展",
     headline: "在 Pi 里排查对象存储",
     lead: "在开源编码 Agent Pi 里，用你提供的日志和 trace 排查对象存储问题，不需要云账号。",
-    catalog: {
-      role: "Pi 扩展",
-      text: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
-    },
+    summary: "用聊天里已有的日志和 trace，在 Pi 里做存储排查。",
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/storageops",
@@ -170,7 +166,7 @@ export default defineProduct({
       networkNote: "你交给 Pi 的内容发往你配置的模型；install、doctor 和 --version 会向 PyPI 与 npm 查询新版本。",
       stays: "Pi 会话留在本机 ~/.storageops 下；不需要对象存储的访问密钥。",
     },
-    meta: "Python · Pi · S3 兼容 · MIT",
+    stack: ["Python", "Pi", "S3 兼容"],
     commands: {
       title: "开始使用",
       sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用下面第一条 `pip` 命令安装 StorageOps，再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",

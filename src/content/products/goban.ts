@@ -4,6 +4,9 @@ export default defineProduct({
   slug: "goban",
   line: "games",
   type: "game",
+  platforms: [{ id: "macos" }, { id: "windows" }],
+  license: "MIT",
+  firstOpen: { macos: "once" },
   repo: "hxddh/goban",
   icon: "/assets/icons/goban.webp",
   og: "/assets/og-goban.png",
@@ -19,10 +22,7 @@ export default defineProduct({
     eyebrow: "Desktop Gomoku game",
     headline: "Play Gomoku, then review.",
     lead: "Play Gomoku, five in a row on a 15×15 board, against the computer or a friend. Games stay on your computer.",
-    catalog: {
-      role: "",
-      text: "Freestyle, swap2, or Renju. Review a game when you want.",
-    },
+    summary: "Freestyle, swap2, or Renju. Review a game when you want.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/goban/releases/latest",
@@ -31,23 +31,12 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/goban",
     },
-    installNote:
-      "The macOS build is not notarized: the first time, click “Open Anyway” in System Settings → Privacy & Security.",
-    releaseHighlights: {
-      version: "v3.2.0",
-      items: [
-        "Normal and Hard play clearly stronger: the pattern scores now come from self-play.",
-        "Extreme now thinks for 2.5 seconds a move instead of 5.",
-        "In testing, Extreme at 2.5 seconds against Extreme at 5 seconds ended 22 to 24 with 2 draws, no measurable difference.",
-      ],
-    },
     privacy: {
       network: "onRequest",
       networkNote:
         "No account; nothing goes online except “Check for Updates” on macOS, which contacts GitHub only when you click it.",
       stays: "Games, practice progress and settings in the app’s storage on this computer.",
     },
-    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban",
@@ -145,10 +134,7 @@ export default defineProduct({
     eyebrow: "桌面五子棋",
     headline: "下一局，再复盘",
     lead: "在 15×15 的棋盘上下五子棋，对手可以是电脑，也可以是朋友。对局都存在你自己的电脑上。",
-    catalog: {
-      role: "",
-      text: "自由式、swap2 或连珠规则，需要时再复盘。",
-    },
+    summary: "自由式、swap2 或连珠规则，需要时再复盘。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/goban/releases/latest",
@@ -157,21 +143,11 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/goban",
     },
-    installNote: "macOS 版未经公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
-    releaseHighlights: {
-      version: "v3.2.0",
-      items: [
-        "普通和困难明显变强：棋型分值改由自对弈拟合。",
-        "极限每手的思考时间从 5 秒缩短到 2.5 秒。",
-        "实测极限 2.5 秒对极限 5 秒为 22 : 24，另有 2 局和棋，量不出差别。",
-      ],
-    },
     privacy: {
       network: "onRequest",
       networkNote: "不要账号；只有 macOS 上的“检查更新”会联网，而且只在你点它时向 GitHub 查询。",
       stays: "对局、练习进度和设置都存在这台电脑上应用自己的存储里。",
     },
-    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "五子棋 Goban",

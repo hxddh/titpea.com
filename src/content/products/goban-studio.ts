@@ -14,6 +14,9 @@ export default defineProduct({
   slug: "goban-studio",
   line: "games",
   type: "game",
+  platforms: [{ id: "macos" }, { id: "windows" }],
+  license: "MIT",
+  firstOpen: { macos: "once", macosFrom: "15", windows: true },
   repo: "hxddh/goban-studio",
   icon: "/assets/icons/goban-studio.webp",
   og: "/assets/og-goban-studio.png",
@@ -29,10 +32,7 @@ export default defineProduct({
     eyebrow: "Desktop Go game",
     headline: "Learn Go, play, review.",
     lead: "Learn Go from the first stone. The KataGo engine plays you at your chosen rank and reviews each game, all on your computer.",
-    catalog: {
-      role: "",
-      text: "Lessons, problems, and KataGo to play and review, all offline.",
-    },
+    summary: "Lessons, problems, and KataGo to play and review, all offline.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/goban-studio/releases/latest",
@@ -41,8 +41,6 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/goban-studio",
     },
-    installNote:
-      "Not notarized yet: on macOS 15 or later, choose “Open Anyway” in System Settings → Privacy & Security; on Windows, choose “More info”, then “Run anyway”.",
     releaseHighlights: {
       version: "v17.0.0",
       items: [
@@ -57,7 +55,6 @@ export default defineProduct({
         "No account or telemetry; it goes online only when you ask, for updates or to download a neural network you choose.",
       stays: "Games, progress, level and settings in the app’s storage on this computer.",
     },
-    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban Studio",
@@ -151,10 +148,7 @@ export default defineProduct({
     eyebrow: "桌面围棋",
     headline: "学围棋，下棋，复盘",
     lead: "从第一颗子学起。KataGo 围棋引擎按你选的段位陪你下，并在你的电脑上复盘每一局。",
-    catalog: {
-      role: "",
-      text: "围棋课程和题目，加上用来对弈和复盘的 KataGo 引擎，全部离线。",
-    },
+    summary: "围棋课程和题目，加上用来对弈和复盘的 KataGo 引擎，全部离线。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/goban-studio/releases/latest",
@@ -163,8 +157,6 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/goban-studio",
     },
-    installNote:
-      "目前未经公证：macOS 15 及以上，到“系统设置 → 隐私与安全性”点“仍要打开”；Windows 上点“更多信息”，再点“仍要运行”。",
     releaseHighlights: {
       version: "v17.0.0",
       items: [
@@ -178,7 +170,6 @@ export default defineProduct({
       networkNote: "不要账号，没有遥测；只在你要求时联网：检查更新，或下载你选的神经网络（权重）。",
       stays: "对局、进度、棋力和设置都存在这台电脑上应用自己的存储里。",
     },
-    meta: "macOS + Windows · MIT · {version}",
     visual: {
       kind: "screenshot",
       label: "Goban Studio",
