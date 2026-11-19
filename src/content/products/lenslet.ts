@@ -26,9 +26,9 @@ export default defineProduct({
     description:
       "Runs your tests against a local AWS emulator, records every AWS call, and shows in each pull request what AWS access your code needs.",
     eyebrow: "AWS access review for CI",
-    headline: "AWS access, in every PR.",
+    headline: "Each PR shows the AWS access your code needs.",
     lead: "Run your tests against a local AWS emulator. Lenslet records every call, explains failures, and flags new IAM permissions in the pull request.",
-    summary: "Shows in each pull request what AWS access your code needs, and why its AWS calls failed.",
+    summary: "Shows in each pull request what AWS access your code needs and why its AWS calls failed.",
     primaryCta: { label: "Download", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "View source", href: "https://github.com/hxddh/lenslet" },
     privacy: {
@@ -64,8 +64,8 @@ export default defineProduct({
         height: 1396,
         asOf: "v7.0.0",
         alt: "Lenslet 7’s Calls view: the run timeline above a waterfall of AWS calls; a GetObject for a missing key is selected, and the inspector explains the 404 NoSuchKey with its response body.",
-        title: "Why a call failed.",
-        body: "Every call, with the AWS error in its row and the request and response a click away.",
+        title: "Read a failed call in full.",
+        body: "Each call has its AWS error in its row, with a likely cause such as a table created in another region; the request and response are a click away.",
       },
     ],
     commands: {
@@ -91,15 +91,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Why it failed, and what it needs.",
+        label: "What Lenslet does",
         items: [
           {
-            title: "Why it failed",
-            body: "The AWS error, and its likely cause, such as a table created in another region.",
-          },
-          {
-            title: "What it needs",
-            body: "Each call becomes an IAM action on a resource, implied permissions included.",
+            title: "Calls mapped to IAM",
+            body: "Each recorded call becomes an IAM action on a resource, implied permissions included.",
           },
           {
             title: "A lock you commit",
@@ -107,7 +103,7 @@ export default defineProduct({
           },
           {
             title: "The diff in the PR",
-            body: "One comment per pull request; CI fails until someone accepts new access.",
+            body: "Lenslet posts one comment per pull request, and CI fails until someone accepts the new access.",
           },
           {
             title: "Blocked locally",
@@ -125,9 +121,9 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Lenslet listens on loopback and forwards your tests’ AWS calls only to your emulator.",
+          "Lenslet listens on loopback only.",
           "It removes AWS keys, profile and other cloud credentials from the tests’ environment, so they never reach the emulator or a trace.",
-          "Run files in `~/.lenslet/runs` keep headers and bodies unredacted, readable only by you; the last 20 are kept.",
+          "Run files in `~/.lenslet/runs` keep headers and bodies unredacted; the last 20 are kept.",
         ],
       },
       {
@@ -143,7 +139,12 @@ export default defineProduct({
           },
           {
             title: "Which AWS services does it read?",
-            body: "Resources are read for 20 services, among them S3, DynamoDB, SQS, Lambda, Bedrock, KMS, IAM and Step Functions. Other services get `*`; calls it cannot map are reported, not guessed.",
+            body: "It reads resources for 20 services; the rest get `*`.",
+            steps: [
+              "Among the 20: S3, DynamoDB, SQS, Lambda, Bedrock, KMS, IAM and Step Functions.",
+              "Other services get `*` as the resource.",
+              "Calls it cannot map are reported, not guessed.",
+            ],
             asOf: "v7.0.0",
           },
           {
@@ -157,11 +158,11 @@ export default defineProduct({
   },
   zh: {
     title: "Lenslet",
-    description: "让测试跑在本地 AWS 模拟器上，记录每一次 AWS 调用，并在每个拉取请求里指出代码需要哪些 AWS 权限。",
+    description: "让测试跑在本地 AWS 模拟器上，记录每一次 AWS 调用，并在每个 PR 里指出代码需要哪些 AWS 权限。",
     eyebrow: "CI 里的 AWS 权限审查",
-    headline: "在 PR 里看清 AWS 权限",
-    lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并在拉取请求里标出新增的 IAM 权限。",
-    summary: "在每个拉取请求里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
+    headline: "每个 PR 都写明代码要哪些 AWS 权限",
+    lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并在 PR 里标出新增的 IAM 权限。",
+    summary: "在每个 PR 里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
     primaryCta: { label: "下载", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "查看源码", href: "https://github.com/hxddh/lenslet" },
     privacy: {
@@ -197,8 +198,8 @@ export default defineProduct({
         height: 1396,
         asOf: "v7.0.0",
         alt: "Lenslet 7 的调用视图：运行时间线下面是 AWS 调用的瀑布图；选中的 GetObject 找不到键，右侧检查器给出 404 NoSuchKey 的原因和响应正文。",
-        title: "调用为什么失败",
-        body: "每次调用一行，AWS 错误就写在行里，请求和响应点一下就能看。",
+        title: "失败的调用，从头看到尾",
+        body: "每次调用一行，AWS 错误写在行里，并给出可能的原因，比如表建在了另一个区域；请求和响应点一下就能看。",
       },
     ],
     commands: {
@@ -224,15 +225,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "为什么失败，需要什么权限",
+        label: "Lenslet 做什么",
         items: [
           {
-            title: "为什么失败",
-            body: "AWS 的错误和可能的原因，比如表建在了另一个区域。",
-          },
-          {
-            title: "需要什么权限",
-            body: "每次调用都对应到资源上的 IAM 操作，隐含的权限也算在内。",
+            title: "调用对应到 IAM",
+            body: "记录下的每次调用都对应到资源上的 IAM 操作，隐含的权限也算在内。",
           },
           {
             title: "提交一份锁文件",
@@ -240,7 +237,7 @@ export default defineProduct({
           },
           {
             title: "PR 里的权限差异",
-            body: "每个拉取请求一条评论；新增的权限有人认可之前，CI 一直失败。",
+            body: "每个 PR 一条评论；新增的权限有人认可之前，CI 一直失败。",
           },
           {
             title: "在本地就拦下",
@@ -258,9 +255,9 @@ export default defineProduct({
         nav: "你的数据",
         title: "数据的去向",
         items: [
-          "Lenslet 只监听本机回环地址，把测试的 AWS 调用转发给你的模拟器，不发往别处。",
+          "Lenslet 只监听本机回环地址。",
           "它会从测试的环境变量里去掉 AWS 密钥、profile 和其他云端凭证，所以它们不会到达模拟器，也不会进入记录。",
-          "`~/.lenslet/runs` 里的运行记录不做任何脱敏，保留请求头和正文，只有你能读，最多保留最近 20 次。",
+          "`~/.lenslet/runs` 里的运行记录不做任何脱敏，保留请求头和正文，最多保留最近 20 次。",
         ],
       },
       {
@@ -276,7 +273,12 @@ export default defineProduct({
           },
           {
             title: "能识别哪些 AWS 服务？",
-            body: "会读出具体资源的服务有 20 种，包括 S3、DynamoDB、SQS、Lambda、Bedrock、KMS、IAM 和 Step Functions。其他服务的资源记为 `*`；对不上的调用会如实报出，不去猜。",
+            body: "能读出具体资源的服务有 20 种，其余服务记为 `*`。",
+            steps: [
+              "这 20 种包括 S3、DynamoDB、SQS、Lambda、Bedrock、KMS、IAM 和 Step Functions。",
+              "其他服务的资源记为 `*`。",
+              "对不上的调用会如实报出，不去猜。",
+            ],
             asOf: "v7.0.0",
           },
           {

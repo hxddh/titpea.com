@@ -35,7 +35,7 @@ export default defineProduct({
     description:
       "A native, read-only Markdown reader for macOS, made for what AI agents write: it opens their new documents, follows them live and marks what changed since you last read.",
     eyebrow: "Markdown reader for macOS",
-    headline: "Read what agents write.",
+    headline: "Read your agents’ Markdown as it changes.",
     lead: "A Mac reader for the Markdown that coding agents write. It follows the file live, marks what changed, and never edits it.",
     summary: "Read an agent’s Markdown as it changes, with edits marked.",
     primaryCta: {
@@ -99,15 +99,11 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Built for files agents keep rewriting.",
+        label: "What Readout does",
         items: [
           {
             title: "Your place holds",
             body: "Updates arrive block by block; at the end of the file, it follows like a terminal.",
-          },
-          {
-            title: "Which words changed",
-            body: "Press N to reach an edited block and see its changed words, or click its bar.",
           },
           {
             title: "Compare with the last commit",
@@ -130,10 +126,9 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Rendering a document sends no network request; remote images show as placeholders naming the host.",
+          "Remote images show as placeholders naming the host.",
           "A remote image downloads only when you click it, without cookies, and never from your Mac or local network.",
           "After one image loads, one more click loads the others from the same host.",
-          "The only automatic network access is a weekly update check against GitHub Releases, which you can turn off.",
         ],
       },
       {
@@ -144,11 +139,24 @@ export default defineProduct({
         items: [
           {
             title: "Can I open files from the terminal?",
-            body: "Agents need no setup: the folders in Settings are enough. For a `readout` command in Terminal, link the script inside the app once: `mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`, with `~/.local/bin` on your `PATH`. Then `readout plan.md` opens a file, `readout plan.md#risks` opens it at a section, and `readout ~/.claude/plans` opens the newest Markdown file in a folder. `readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps, and `readout --version` prints the version.",
+            body: "Agents need no setup: the folders in Settings are enough. For a `readout` command in Terminal, link the script inside the app once, with `~/.local/bin` on your `PATH`.",
+            steps: [
+              "Link it: `mkdir -p ~/.local/bin && ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`.",
+              "`readout plan.md` opens a file; `readout plan.md#risks` opens it at a section.",
+              "`readout ~/.claude/plans` opens the newest Markdown file in a folder.",
+              "`readout -b plan.md` opens it as a tab behind the one you are reading, without switching apps.",
+              "`readout --version` prints the version.",
+            ],
           },
           {
             title: "Which folders does Readout watch?",
-            body: "The Agent folders you add in Settings, and Claude Code’s `~/.claude/plans`, which is watched from the start, even before it exists. Using Codex? Add your project folder. A new Markdown document there opens as a tab behind the one you are reading, and your terminal keeps focus. Edits to files that were already there open nothing, and when more than three new documents appear at once, only the newest opens. ⌃⌥⌘R opens the newest one from anywhere; Settings can turn that global shortcut off, and it still works inside Readout.",
+            body: "The Agent folders you add in Settings, and Claude Code’s `~/.claude/plans`, which is watched from the start, even before it exists. Using Codex? Add your project folder.",
+            steps: [
+              "A new Markdown document there opens as a tab behind the one you are reading, and your terminal keeps focus.",
+              "Edits to files that were already there open nothing.",
+              "When more than three new documents appear at once, only the newest opens.",
+              "⌃⌥⌘R opens the newest one from anywhere; Settings can turn that global shortcut off, and it still works inside Readout.",
+            ],
             asOf: "v6.0.0",
           },
           {
@@ -164,7 +172,7 @@ export default defineProduct({
     description:
       "为 AI Agent 写的文档打造的 macOS 原生只读 Markdown 阅读器：自动打开 Agent 新建的文档，跟随写入实时更新，标出自你上次阅读以来哪里变了。",
     eyebrow: "macOS Markdown 阅读器",
-    headline: "读 Agent 写的文档",
+    headline: "Agent 改到哪，你就读到哪",
     lead: "Mac 上的 Markdown 阅读器，读编码 Agent 写的文档。实时跟随写入，标出改动，从不修改文件。",
     summary: "边写边读 Agent 的 Markdown，改动处一目了然。",
     primaryCta: {
@@ -227,10 +235,9 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "为 Agent 反复改写的文件而做",
+        label: "Readout 做什么",
         items: [
           { title: "读到哪停在哪", body: "按段落增量更新；读到末尾时，像终端一样跟着走。" },
-          { title: "改了哪些词", body: "按 N 停在修改过的段落，直接显示改动的词；点细线也行。" },
           { title: "与上次提交比较", body: "“显示 ▸ 与上次提交比较”标出提交之后的改动，⌘Z 可撤销。" },
           { title: "带进度的大纲", body: "标题旁显示任务完成数，有未读变更的章节标出圆点。" },
           { title: "GitHub 风格 Markdown", body: "表格、提示块、脚注、代码高亮、KaTeX 公式和 Mermaid 图表。" },
@@ -243,10 +250,9 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "渲染文档时不发出任何网络请求：远程图片只显示为注明来源的占位按钮。",
+          "远程图片只显示为注明来源的占位按钮。",
           "只有你点击时，Readout 才下载远程图片，不携带 cookie，也不从本机或局域网下载。",
           "加载一张后，再点一次就能加载同一来源的其余图片。",
-          "唯一的自动联网是每周一次的 GitHub Releases 更新检查，可在设置中关闭。",
         ],
       },
       {
@@ -257,11 +263,24 @@ export default defineProduct({
         items: [
           {
             title: "能从终端打开文件吗？",
-            body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。如果想在终端里用 `readout` 命令，把 App 里自带的脚本链接出来一次即可，`~/.local/bin` 需要在 `PATH` 中。先建目录：`mkdir -p ~/.local/bin`。再链接：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。之后 `readout plan.md` 打开文件，`readout plan.md#风险` 打开并跳到对应章节。`readout ~/.claude/plans` 打开文件夹中最新的 Markdown 文件；`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。`readout --version` 显示版本号。",
+            body: "配合 Agent 使用无需任何配置，设置里的文件夹就够了。想在终端里用 `readout` 命令，把 App 里自带的脚本链接出来一次即可，`~/.local/bin` 需要在 `PATH` 中。",
+            steps: [
+              "先建目录：`mkdir -p ~/.local/bin`；再链接：`ln -sf /Applications/Readout.app/Contents/Resources/readout ~/.local/bin/readout`。",
+              "`readout plan.md` 打开文件，`readout plan.md#风险` 打开并跳到对应章节。",
+              "`readout ~/.claude/plans` 打开文件夹中最新的 Markdown 文件。",
+              "`readout -b plan.md` 在后台打开，作为标签页排在正在阅读的文档之后，不切换应用。",
+              "`readout --version` 显示版本号。",
+            ],
           },
           {
             title: "Readout 会监视哪些文件夹？",
-            body: "在设置里添加的“Agent 文件夹”，以及 Claude Code 的 `~/.claude/plans`：它从一开始就被监视，即使还不存在。用 Codex 的话，在设置里添加项目文件夹即可。Agent 在这里新建的 Markdown 文档会作为标签页排在正在阅读的文档之后打开，终端保持焦点。修改已有文件不会打开任何文档；同时出现超过三个新文档时，只打开最新的一个。在任何地方按 ⌃⌥⌘R 可打开最新的一个；全局快捷键可以在设置里关闭，在 Readout 里仍然可用。",
+            body: "在设置里添加的“Agent 文件夹”，以及 Claude Code 的 `~/.claude/plans`：它从一开始就被监视，即使还不存在。用 Codex 的话，在设置里添加项目文件夹即可。",
+            steps: [
+              "Agent 在这里新建的 Markdown 文档会作为标签页排在正在阅读的文档之后打开，终端保持焦点。",
+              "修改已有文件不会打开任何文档。",
+              "同时出现超过三个新文档时，只打开最新的一个。",
+              "在任何地方按 ⌃⌥⌘R 可打开最新的一个；全局快捷键可以在设置里关闭，在 Readout 里仍然可用。",
+            ],
             asOf: "v6.0.0",
           },
           {
