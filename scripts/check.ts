@@ -215,13 +215,6 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
         if (item.steps && item.steps.length < 2) fail(`${at}: FAQ "${item.title}" has one step; say it in the body`);
       }
     }
-    if (section.kind === "data") {
-      if (section.items.length < 1 || section.items.length > 4)
-        fail(`${at}: the data section adds one to four details`);
-      for (const item of section.items) {
-        if (tooLong(item, 22, 48)) fail(`${at}: data sentence is long: "${item}"`);
-      }
-    }
     if (section.kind === "cards") {
       for (const item of section.items) {
         if (tooLong(item.title, 6, 12)) fail(`${at}: feature title is long: "${item.title}"`);
@@ -277,7 +270,9 @@ function checkCopy(product: Product, locale: Locale, copy: ProductCopy) {
   if (product.schema.category === "BrowserApplication") {
     const privacy =
       locale === "zh" ? /声明不收集数据|不使用分析服务|没有分析服务|无分析服务/ : /no data collection|analytics/i;
-    if (!privacy.test(visibleStrings(copy).join("\n"))) fail(`${at}: browser extension must state its data posture`);
+    // Said in its privacy summary, which the Privacy index shows.
+    if (!privacy.test(`${copy.privacy.networkNote} ${copy.privacy.stays}`))
+      fail(`${at}: browser extension must state its data posture in privacy.networkNote`);
   }
   if (locale === "zh") for (const issue of copyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);
   for (const issue of enCopyIssues(visibleStrings(copy))) fail(`${at}: ${issue}`);

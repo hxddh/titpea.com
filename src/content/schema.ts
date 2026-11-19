@@ -57,9 +57,6 @@ export type FaqItem = Card & AsOf & { steps?: string[] };
 /** Adoption questions, rendered as a disclosure list and as FAQPage structured data. */
 export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: FaqItem[] };
 
-/** Where the product's data goes: two or three plain, checkable sentences. */
-export type DataSection = { kind: "data"; id: "data"; title: string; items: string[] };
-
 /** A city in the World Clock demo: a real IANA zone, so daylight saving is real. */
 export type DemoCity = { name: string; zone: string; country: string };
 
@@ -158,7 +155,7 @@ export type DemoSection = {
   demo: ChessPuzzleDemo;
 };
 
-export type Section = (CardsSection | FaqSection | DataSection | DemoSection) & SectionNav;
+export type Section = (CardsSection | FaqSection | DemoSection) & SectionNav;
 
 /* ---------- The product object ---------- */
 
@@ -331,7 +328,7 @@ export type ReleaseHighlights = { version: string; summary?: string; items: stri
 
 /**
  * How a product touches the network, for the site's privacy index. Filled only
- * from what the product's own "Where your data goes" section or privacy policy
+ * from what the product's docs or privacy policy
  * says: `network` is the level (none, only when you ask, or on its own),
  * `networkNote` the short phrase beside it, `stays` where the data stays.
  */

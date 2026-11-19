@@ -105,16 +105,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "World voice is off by default; with your API key, it sends only that World's facts and your words to `api.anthropic.com`.",
-          "A crash writes a report on your Mac; the next launch offers to copy it into a GitHub issue.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -224,16 +214,6 @@ export default defineProduct({
           { title: "不用 AI 也能聊", body: "居民按自己知道的回答；有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话都有中文、英文和日文。" },
           { title: "想用再开的世界之声", body: "实验功能，默认关闭。打开后，可由 AI 模型讲述世界的消息、替居民回答。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "世界之声默认关闭；使用你的 API 密钥时，只会把该世界已记录的事实和你说的话发给 `api.anthropic.com`。",
-          "应用崩溃时会在你的 Mac 上写一份报告；下次启动时会问你要不要把它复制进一个 GitHub issue。",
         ],
       },
       {

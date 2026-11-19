@@ -139,7 +139,6 @@ type Ui = {
   privacyLead: string;
   privacyColumns: { tool: string; network: string; stays: string; details: string };
   privacyLevels: Record<PrivacySummary["network"], string>;
-  privacyDataLink: string;
   /** A product whose page has no data section yet. */
   privacyUnstated: string;
   privacyProductPage: string;
@@ -164,8 +163,6 @@ type Ui = {
     macosFrom: string;
     windows: string;
   };
-  /** The data boundary card's rows. */
-  boundary: { network: string; stays: string; label: string };
   /** At the end of a product page without a family: up to three products of its line. */
   moreIn: string;
   latest: string;
@@ -268,7 +265,6 @@ export const ui: Record<Locale, Ui> = {
     privacyLead: "The short version. Each product’s page says it in full.",
     privacyColumns: { tool: "Tool", network: "Network", stays: "Where data stays", details: "Details" },
     privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatic" },
-    privacyDataLink: "Where your data goes",
     privacyUnstated: "Not written up on its page yet.",
     privacyProductPage: "Product page",
     products: "Products",
@@ -301,7 +297,6 @@ export const ui: Record<Locale, Ui> = {
       macosFrom: "macOS {version} or later",
       windows: "Windows: if SmartScreen stops it, choose “More info”, then “Run anyway”.",
     },
-    boundary: { network: "Network", stays: "Your data", label: "Data boundary" },
     moreIn: "Also in {line}",
     latest: "Latest",
   },
@@ -390,7 +385,6 @@ export const ui: Record<Locale, Ui> = {
     privacyLead: "这里是简表，完整说明在每个产品自己的页面上。",
     privacyColumns: { tool: "工具", network: "联网", stays: "数据留在哪里", details: "详情" },
     privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "自动" },
-    privacyDataLink: "数据的去向",
     privacyUnstated: "页面上还没写。",
     privacyProductPage: "产品页",
     products: "产品",
@@ -422,7 +416,6 @@ export const ui: Record<Locale, Ui> = {
       macosFrom: "macOS {version} 及以上",
       windows: "Windows：如果 SmartScreen 拦下，点“更多信息”，再点“仍要运行”。",
     },
-    boundary: { network: "联网", stays: "你的数据", label: "数据边界" },
     moreIn: "{line}类的其他产品",
     latest: "最新",
   },

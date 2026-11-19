@@ -109,15 +109,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "Android’s own backup may copy games, results and settings to your Google account; you can turn that off.",
-          "Sharing sends only the text you see in the share sheet; printing uses Android’s print service.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -208,15 +199,6 @@ export default defineProduct({
           { title: "书上的题", body: "把题输进来，应用会检查、评级，教练照常帮忙。" },
           { title: "回看一页", body: "按顺序重看每个数字，以及当时用的技巧和教练帮过的地方。" },
           { title: "手指下的放大镜", body: "按住滑动时，它显示你瞄准的格子，松手就写。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "Android 自带的备份可能会把对局、成绩和设置存进你的 Google 账号，可以在 Android 设置里关闭。",
-          "分享只发送分享面板里你看到的文字；打印使用 Android 的打印服务。",
         ],
       },
       {

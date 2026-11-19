@@ -109,16 +109,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "Sessions in `~/.storageops/agent/sessions/` may hold your logs, and the optional `api-key` file there is plain text.",
-          "Set `STORAGEOPS_SKIP_VERSION_CHECK` to stop `install`, `doctor` and `--version` checking for newer versions.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -227,16 +217,6 @@ export default defineProduct({
           },
           { title: "旧会话可检索", body: "`search_memory` 在以往的 Pi 会话里找出相关片段，按相关度排序并脱敏。" },
           { title: "不动你的存储", body: "它最多 trace 一条你给的受限命令，任何改动都由你自己来做。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "`~/.storageops/agent/sessions/` 里的会话可能含有你的日志；那里可选的 `api-key` 文件是明文。",
-          "设置 `STORAGEOPS_SKIP_VERSION_CHECK` 后，`install`、`doctor` 和 `--version` 不再查询新版本。",
         ],
       },
       {

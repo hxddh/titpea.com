@@ -93,15 +93,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "The app keeps your unfinished game and the last 100 finished ones.",
-          "Settings › Data: “Back up” saves games, results and practice progress to one file; “Restore” replaces your current data with it.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -201,15 +192,6 @@ export default defineProduct({
           { title: "四档电脑", body: "从入门到极限。困难与极限默认每局轮流执黑白，“再来一局”沿用你的设置。" },
           { title: "做题练习", body: "内置 134 道，另有从你自己的失着生成的题。" },
           { title: "下完的对局都留着", body: "列表最上面一行是你的战绩；点开任意一局就能复盘。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "应用会留着没下完的一局和最近下完的 100 局。",
-          "在“设置 › 数据”里，“备份”把对局、战绩和练习进度存成一个文件；“恢复”用这个文件替换你现有的数据。",
         ],
       },
       {

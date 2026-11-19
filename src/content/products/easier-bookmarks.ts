@@ -89,16 +89,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "Recently opened bookmarks are kept to rank search results, along with the list last shown.",
-          "With tab access, asked at your first save, it reads the current tab’s title and address, or every tab’s when saving all.",
-          "Those addresses, and what you type after `b`, are never stored or sent.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -193,16 +183,6 @@ export default defineProduct({
           },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
           { title: "一键清理", body: "重复保存的网址和空文件夹，一步就能删掉。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "最近打开的书签用于搜索排序；另外还记下上次显示的列表。",
-          "第一次收藏时，如果你允许访问标签页，它会读取当前页的标题和网址；收藏全部标签页时则读取每一个。",
-          "这些网址和你在 `b` 后输入的内容，既不保存也不发送。",
         ],
       },
       {

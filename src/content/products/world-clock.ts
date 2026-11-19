@@ -31,7 +31,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "No network requests, and no web pages read.",
+      networkNote: "No network requests, and no web pages read. No data collection, no analytics, no account.",
       stays:
         "Cities, theme and time format sync through Chrome storage between your own browsers, never to the developer.",
       policy: {
@@ -127,12 +127,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: ["No data collection, no analytics and no account; the only permission it asks for is `storage`."],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -170,7 +164,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "不联网，也不读取网页。",
+      networkNote: "不联网，也不读取网页。不收集数据，没有分析服务，也不需要账号。",
       stays: "城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不发给开发者。",
       policy: {
         label: "隐私说明",
@@ -250,12 +244,6 @@ export default defineProduct({
           { title: "复制时间", body: "点一下复制一个时间，或按 ⌘C / Ctrl+C 复制全部城市。" },
           { title: "五种主题", body: "默认、终端、杂志、纸张、高对比；外观可选自动、浅色或深色。" },
         ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: ["不收集任何数据，没有分析服务，也不需要账号；只申请一项权限 `storage`。"],
       },
       {
         kind: "faq",

@@ -99,18 +99,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "Findings stay local too, and updates are checked only when you click.",
-          "When you ask, only the pages the assistant reads are sent.",
-          "Scans are read locally; a vision model you set is only a fallback.",
-          "A key the keychain refuses waits in a local settings file until the keychain accepts it.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -214,18 +202,6 @@ export default defineProduct({
           { title: "扫描页也能选中", body: "识别出的文字铺在扫描页上，可以选中、批注和提问。" },
           { title: "带引用的表格", body: "每格都有引用，可连同来源导出 CSV。" },
           { title: "带高亮的 PDF 副本", body: "从“导出…”生成一份副本，结论和你的批注都写成高亮。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "记下的结论也保存在本机；只在你点击时才检查更新。",
-          "提问时，只发送助手读取的那些页面。",
-          "扫描页在本机识别；你设置的视觉模型只作后备。",
-          "钥匙串拒绝写入时，密钥暂存在本机设置文件，等钥匙串接受后再移入。",
         ],
       },
       {

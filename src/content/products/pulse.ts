@@ -179,16 +179,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "State comes only from each agent's own hooks; Pulse reads no session files, transcripts or protected app data.",
-          "The event log keeps prompts cut to 200 characters, with credentials redacted.",
-          "The Releases… link in Settings just opens the releases page in your browser.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -377,16 +367,6 @@ export default defineProduct({
             body: "四个会亮红；Codex 与 Cursor 只显示运行中和好了。Pi 与 OpenCode 没有工具在跑、二十分钟没有新事件时亮橙灯。",
           },
           { title: "点一下就去", body: "点一行就打开会话所在的终端；找不到终端时，打开它的应用或详情。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "状态只来自各 Agent 自己的 hook；Pulse 不读取会话文件、transcript 或受 macOS 保护的应用数据。",
-          "事件日志里的提示最多保留 200 字，凭据已抹掉。",
-          "设置里的“版本发布…”只是在浏览器里打开 GitHub 上的发布页。",
         ],
       },
       {

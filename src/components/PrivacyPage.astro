@@ -40,7 +40,7 @@ const { columns } = model;
         </thead>
         <tbody>
           {model.rows.map((row) => (
-            <tr>
+            <tr id={row.slug}>
               <th scope="row">
                 <a class="privacy-tool" href={row.href}>
                   <img src={row.icon} alt="" width="32" height="32" loading="lazy" />
@@ -68,15 +68,9 @@ const { columns } = model;
               )}
               <td data-label={columns.details}>
                 <ul class="privacy-links">
-                  {row.dataHref ? (
-                    <li>
-                      <a href={row.dataHref}>{model.dataLabel}</a>
-                    </li>
-                  ) : (
-                    <li>
-                      <a href={row.href}>{model.productPage}</a>
-                    </li>
-                  )}
+                  <li>
+                    <a href={row.href}>{model.productPage}</a>
+                  </li>
                   {row.privacy?.policy && (
                     <li>
                       <a

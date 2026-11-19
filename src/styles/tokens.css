@@ -134,8 +134,8 @@
      sheet, the FAQ) and Home's picks. */
     --surface: #ffffff;
     --row-hover: rgba(0, 0, 0, 0.03);
-    /* Editorial surfaces (design v7): a sunk panel for the one card a page
-     keeps (the data boundary), and the hairline tag for platforms, kinds and
+    /* Editorial surfaces (design v7): a sunk panel (terminal lines, the first-open
+     guide), and the hairline tag for platforms, kinds and
      versions. Hairlines, not shadows, draw every edge. */
     --surface-sunk: #f3f3f1;
     --tag-bg: rgba(0, 0, 0, 0.025);

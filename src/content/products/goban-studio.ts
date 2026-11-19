@@ -105,16 +105,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "KataGo runs on your computer; two larger neural networks download from GitHub or katagotraining.org only if you choose them.",
-          "“Export backup” saves games, progress and settings to one file, and you can undo a restore.",
-          "“Check for updates” contacts GitHub; the weekly automatic check stays off until you turn it on.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -214,16 +204,6 @@ export default defineProduct({
             body: "9 路、13 路或 19 路；日本、中国或韩国规则；最多让九子，让子数按你的棋力建议。",
           },
           { title: "布局库和名局", body: "离线布局库收录了中国流；另有 20 局名局，每局都标出关键时刻。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "KataGo 在你的电脑上运行；两个更大的神经网络（权重）只在你选择时下载，分别来自 GitHub 和 katagotraining.org。",
-          "“导出备份”把对局、进度和设置存成一个文件；恢复之后也能撤销。",
-          "“检查更新”访问的是 GitHub；每周自动检查默认关闭，要你自己打开。",
         ],
       },
       {

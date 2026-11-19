@@ -79,7 +79,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const path = pathFor(locale, product.slug);
   const alternatePath = pathFor(otherLocale(locale), product.slug);
   // The local nav holds at most four links, in page order (ProductPage): the
-  // demo, the feature list, Get started, the data section, the FAQ. Get started
+  // demo, the feature list, Get started, the FAQ. Get started
   // and FAQ always stay; the others fill the remaining places in that order.
   const sectionItem = (section: (typeof copy.sections)[number]) => ({
     id: section.id,
@@ -88,15 +88,10 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const ofKind = (...kinds: string[]) => copy.sections.filter((section) => kinds.includes(section.kind));
   const start = copy.commands ? [{ id: "start", label: copy.commands.title }] : [];
   const faq = ofKind("faq").map(sectionItem);
-  const others = [...ofKind("demo", "cards"), ...ofKind("data")]
+  const others = ofKind("demo", "cards")
     .map(sectionItem)
     .slice(0, maxNavLinks - start.length - faq.length);
-  const navItems = [
-    ...others.filter((item) => item.id !== "data"),
-    ...start,
-    ...others.filter((item) => item.id === "data"),
-    ...faq,
-  ];
+  const navItems = [...others, ...start, ...faq];
   return {
     kind: "product",
     locale,

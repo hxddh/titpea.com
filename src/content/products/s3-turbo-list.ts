@@ -91,17 +91,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "Credentials come from the standard AWS chain, so an instance role works too.",
-          "With `-o s3://`, the dataset goes to that S3 prefix instead of a local directory.",
-          "`s3tl check` without a bucket URL, and any `--dry-run`, send no request to S3.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         nav: "FAQ",
@@ -187,17 +176,6 @@ export default defineProduct({
             title: "其他 S3 兼容存储",
             body: "已在 AWS S3、MinIO 和百度 BOS 上验证过。用在别的服务上，先运行 `s3tl check`。",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "凭据走标准 AWS 凭据链，所以实例角色也能用。",
-          "用 `-o s3://` 时，数据集写到那个 S3 前缀，而不是本地目录。",
-          "不带桶地址的 `s3tl check` 和任何 `--dry-run` 都不向 S3 发请求。",
         ],
       },
       {

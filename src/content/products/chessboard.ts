@@ -152,16 +152,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "On this computer, that data is kept in the app’s storage and its data folder.",
-          "The switch for sync is in Settings › Data; sync contacts Lichess or Chess.com.",
-          "A pasted Lichess link fetches that one game by its ID; “Check for updates” asks GitHub.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -283,16 +273,6 @@ export default defineProduct({
           { title: "下得像人的对手", body: "最低的十二档用 Maia，一种从 Lichess 真人对局里学出来的神经网络。" },
           { title: "残局与名局", body: "90 个残局和满强度的 Stockfish 下到出结果；40 局名局可以猜着走。" },
           { title: "你的开局书", body: "每方最多 5,000 条线，也可以从内置开局生成。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "这些数据存在应用自己的存储和本机数据文件夹里。",
-          "同步的开关在“设置 › 数据”里，连接的是 Lichess 或 Chess.com。",
-          "粘贴的 Lichess 链接只按编号取那一局；“检查更新”查询的是 GitHub。",
         ],
       },
       {

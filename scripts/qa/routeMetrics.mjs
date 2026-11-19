@@ -103,12 +103,10 @@ export async function checkRoute(page, viewport, route) {
                     `a.button.primary[href^="https://chromewebstore.google.com/detail"], .product-hero .button.primary.is-soon`,
                   ),
                 ),
-                hasPrivacyText:
-                  route.locale === "zh"
-                    ? /声明不收集数据|不收集数据|不收集任何数据|不使用分析服务|没有分析服务|无分析服务/.test(
-                        document.body.innerText ?? "",
-                      )
-                    : /No data collection|does not use analytics|no analytics/i.test(document.body.innerText ?? ""),
+                // The data posture is one tag in the hero, linking to the Privacy index row.
+                hasPrivacyText: Boolean(
+                  document.querySelector('.spec-tags [data-tone="network"] a[href*="/privacy/#"]'),
+                ),
                 images: images.map((image) => ({
                   src: image.getAttribute("src"),
                   alt: image.getAttribute("alt") ?? "",

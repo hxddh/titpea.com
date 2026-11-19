@@ -31,7 +31,8 @@ export default defineProduct({
     },
     privacy: {
       network: "automatic",
-      networkNote: "On Douban film pages, the title, year and IMDb ID go only to OMDb.",
+      networkNote:
+        "On Douban film pages, the title, year and IMDb ID go only to OMDb. No server, no analytics, no tracking.",
       stays: "Settings and your optional key in Chrome sync storage; ratings cached locally for up to 7 days.",
       policy: {
         label: "Privacy policy",
@@ -68,15 +69,6 @@ export default defineProduct({
             title: "Matched by IMDb ID",
             body: "When the page has no IMDb ID, it searches by title and marks that result.",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "For a film link you hover, it fetches that film’s page from Douban to read its title, year and IMDb ID.",
-          "No server, no analytics, no tracking; uninstalling removes it all.",
         ],
       },
       {
@@ -126,7 +118,7 @@ export default defineProduct({
     },
     privacy: {
       network: "automatic",
-      networkNote: "在豆瓣影片页，片名、年份和 IMDb 编号只发送给 OMDb。",
+      networkNote: "在豆瓣影片页，片名、年份和 IMDb 编号只发送给 OMDb。没有服务器，没有分析服务，也没有追踪代码。",
       stays: "设置和你填写的密钥在 Chrome 同步存储；评分在本机缓存，最长 7 天。",
       policy: {
         label: "隐私政策",
@@ -157,15 +149,6 @@ export default defineProduct({
           },
           { title: "Top 250 和排行榜也能看", body: "鼠标在影片链接上停约 0.3 秒，评分就显示在链接下方。" },
           { title: "按 IMDb 编号匹配", body: "页面上没有 IMDb 编号时改按片名查找，并标注这条结果。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "鼠标停在影片链接上时，会向豆瓣请求该片页面，读取片名、年份和 IMDb 编号。",
-          "没有服务器，没有分析服务、广告或追踪代码；卸载即删除全部设置与缓存。",
         ],
       },
       {
