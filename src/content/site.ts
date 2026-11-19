@@ -180,9 +180,6 @@ export const ui: Record<Locale, Ui> = {
     gameCount: "{count} games",
     spec: {
       label: "Specifications",
-      license: "License",
-      version: "Version",
-      released: "Released",
       network: "Network",
       source: "Source",
     },
