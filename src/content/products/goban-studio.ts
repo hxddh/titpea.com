@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
-// to v16.0.0.md, docs/plan.md and docs/strength.md at v16.0.0; macOS 13 from the
+// to v17.0.0.md, docs/plan.md and docs/strength.md at v17.0.0; macOS 13 from the
 // README's download table. Pictures were captured at v14.0.0. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
@@ -43,11 +43,11 @@ export default defineProduct({
     installNote:
       "Not notarized yet: on macOS 15 or later, choose “Open Anyway” in System Settings → Privacy & Security; on Windows, choose “More info”, then “Run anyway”.",
     releaseHighlights: {
-      version: "v16.0.0",
+      version: "v17.0.0",
       items: [
-        "The board looks like wood and stone, and each of your moves can get a verdict: good, slack or a mistake, with the points.",
-        "All 20 classics now have at least three key moments, and the opening book was rebuilt with the Chinese opening.",
-        "It now needs macOS 13 or later; Apple Silicon Macs and Windows PCs with AVX2 run a faster KataGo build.",
+        "The openings explorer has its joseki branches back: about 1,700 corner positions again.",
+        "The whole course was checked again with the stronger KataGo network; the lesson “Urgent points before big points” got a new board.",
+        "On a Mac, the language setting, lessons, problems and classics open again (fixed in v16.0.1); every release now tests this on Mac and Windows.",
       ],
     },
     privacy: {
@@ -128,17 +128,17 @@ export default defineProduct({
           {
             title: "Can it sit beside Goban, the Gomoku app?",
             body: "Yes. Goban Studio is a separate app with its own name, so the two install and update independently.",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
           {
             title: "Which computers does it run on?",
             body: "macOS 13 or later on Apple Silicon or Intel, and Windows 10 or 11 on x64 with WebView2, which they usually include. Windows on ARM runs the x64 build under emulation; analysis is slower there. On macOS 14 or earlier, open it the first time by right-clicking the app and choosing “Open”.",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
           {
             title: "How strong is the computer?",
             body: "From about 30 kyu to about 7 dan: you pick a rank and the app picks the closest KataGo setting; without the optional neural networks it stops at about 4 dan. The ranks are approximate: they are calibrated against a model, not against people. Settings → Engines shows which KataGo build runs and how fast.",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
         ],
       },
@@ -165,11 +165,11 @@ export default defineProduct({
     installNote:
       "目前未经公证：macOS 15 及以上，到“系统设置 → 隐私与安全性”点“仍要打开”；Windows 上点“更多信息”，再点“仍要运行”。",
     releaseHighlights: {
-      version: "v16.0.0",
+      version: "v17.0.0",
       items: [
-        "棋盘有了木纹和棋子的质感；你的每一手都可以得到评语：好棋、缓手或失误，并标出目数。",
-        "20 局名局每局都至少有三个关键时刻；布局库重新生成，收录了中国流。",
-        "现在需要 macOS 13 或更高版本；Apple Silicon Mac 和支持 AVX2 的 Windows 电脑会用更快的 KataGo 版本。",
+        "布局浏览器的定式分支回来了，角部局面又有约 1700 个。",
+        "整套课程用更强的 KataGo 网络重新检查了一遍；“急所先于大场”一课换了新棋盘。",
+        "Mac 上切换语言、打开课程、题目和名局又都正常了（v16.0.1 修复）；现在每次发布前都会在 Mac 和 Windows 上检查这些。",
       ],
     },
     privacy: {
@@ -234,17 +234,17 @@ export default defineProduct({
           {
             title: "能和五子棋 Goban 一起装吗？",
             body: "能。Goban Studio 是另一个应用，有自己的名字，两个应用各自安装、各自更新。",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
           {
             title: "能在哪些电脑上运行？",
             body: "macOS 13 或更高版本，Apple Silicon 和 Intel 都行；Windows 10 或 11 的 x64，需要 WebView2，一般已预装。Windows on ARM 通过系统的 x64 模拟运行 x64 版，分析会慢一些。macOS 14 及更早版本第一次打开时，右键点应用，选“打开”。",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
           {
             title: "电脑有多强？",
             body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置；不装可选的神经网络（权重）时最高约 4 段。段位是近似值：是对照模型校准的，不是对照真人。“设置 → 引擎”会显示正在用哪个 KataGo 版本、速度多快。",
-            asOf: "v16.0.0",
+            asOf: "v17.0.0",
           },
         ],
       },

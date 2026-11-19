@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v23.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v24.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
@@ -66,11 +66,11 @@ export default defineProduct({
     installNote:
       "The macOS build is not notarized yet: the first time, click “Open Anyway” in System Settings → Privacy & Security.",
     releaseHighlights: {
-      version: "v23.0.0",
+      version: "v24.0.0",
       items: [
-        "The macOS app can no longer be opened in Web Inspector, where its pages and saved data could be changed.",
-        "When the library is full, an import first says how many older games it would remove, and lets you decide.",
-        "On a system in a language other than Chinese, English or Japanese, the menus and pages now both start in English.",
+        "Double-clicking a .pgn file now opens that game on macOS and Windows; on Windows, run the bundled register-pgn.cmd once.",
+        "A puzzle you solved after seeing the answer no longer counts as solved, and a wrong move’s hint says what the answer does.",
+        "Your first game rating starts from your placement score, and Today, the result bar and Me show the same number.",
       ],
     },
     privacy: {
@@ -175,17 +175,17 @@ export default defineProduct({
           {
             title: "Can I play online?",
             body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings › Data, imports your games from Lichess or Chess.com into the library.",
-            asOf: "v23.0.0",
+            asOf: "v24.0.0",
           },
           {
             title: "What can I do with a PGN game file?",
-            body: "Choose “Review a game” from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. “Play on from here” continues from any move. To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page; the library holds 10,000 games and asks before an import would push older ones out. Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
-            asOf: "v23.0.0",
+            body: "Double-click it to open the game; on Windows, run the bundled register-pgn.cmd once first. Or choose “Review a game” from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. “Play on from here” continues from any move. To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page; the library holds 10,000 games and asks before an import would push older ones out. Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
+            asOf: "v24.0.0",
           },
           {
             title: "Does it track my progress?",
-            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, “Your level”; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
-            asOf: "v23.0.0",
+            body: "Yes. Games against the engine give you a game rating, which starts from your placement score and is kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, “Your level”; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
+            asOf: "v24.0.0",
           },
         ],
       },
@@ -211,11 +211,11 @@ export default defineProduct({
     },
     installNote: "macOS 版尚未公证：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
     releaseHighlights: {
-      version: "v23.0.0",
+      version: "v24.0.0",
       items: [
-        "macOS 版不能再打开 Web Inspector，页面和存档不会再被随手改动。",
-        "棋谱库满了，导入前会先说要挤掉几局旧对局，由你决定导不导。",
-        "系统语言不是中文、英文或日文时，菜单和页面第一次启动都用英文。",
+        "在 macOS 和 Windows 上双击 .pgn 文件就能打开这局棋；Windows 要先运行一次随包的 register-pgn.cmd。",
+        "看过答案的谜题不再算解出；走错时的提示会说答案那一步是将军、吃子还是安静的一步。",
+        "第一盘的对局等级分从定级分数起算；今天页、终局条和“我的”显示同一个数。",
       ],
     },
     privacy: {
@@ -303,17 +303,17 @@ export default defineProduct({
           {
             title: "能在线对战吗？",
             body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
-            asOf: "v23.0.0",
+            asOf: "v24.0.0",
           },
           {
             title: "PGN 棋谱文件能做什么？",
-            body: "在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”；棋谱库最多收 1 万局，导入会挤掉旧对局时会先问你。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
-            asOf: "v23.0.0",
+            body: "双击就能打开这局棋；Windows 上要先运行一次随包的 register-pgn.cmd。也可以在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”；棋谱库最多收 1 万局，导入会挤掉旧对局时会先问你。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            asOf: "v24.0.0",
           },
           {
             title: "能看到自己的进步吗？",
-            body: "能。与引擎对局有自己的对局等级分，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和一个数：“你的水平”；“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
-            asOf: "v23.0.0",
+            body: "能。与引擎对局有自己的对局等级分，从定级的分数起算，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和一个数：“你的水平”；“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
+            asOf: "v24.0.0",
           },
         ],
       },

@@ -2,9 +2,10 @@ import { defineProduct } from "../schema";
 
 // Lenslet: runs tests against a local AWS emulator and shows, in each pull
 // request, what AWS access the code needs. Facts: the repository's README.md
-// and RELEASE_NOTES.md at lenslet-v4.0.0 (the repository used to be celagent;
-// that project stopped at v4.1.0). Pictures: docs/access.png and
-// docs/lenslet.png from the repository, captured at Lenslet 3.0.0.
+// and RELEASE_NOTES.md at lenslet-v7.0.0 (the repository used to be celagent;
+// that project stopped at v4.1.0; Lenslet's tags are lenslet-v*). Pictures:
+// docs/access.png and docs/lenslet.png from the repository, captured at
+// Lenslet 3.0.0, before the 6.0 window redesign.
 export default defineProduct({
   slug: "lenslet",
   line: "storage",
@@ -39,11 +40,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v4.0.0",
+      version: "v7.0.0",
       items: [
-        "A GitHub Action runs your tests with `--check`, writes the report to the job summary and keeps one PR comment up to date.",
-        "Each new permission names the calls that needed it, so the comment says why, not just which line changed.",
-        "`lenslet init -- npm test` checks the emulator, runs your tests once and writes `lenslet.lock` and the CI workflow.",
+        "Accept a new permission into `lenslet.lock`, or mark it `# test`, from the window’s Access view without rerunning your tests.",
+        "A missing table or bucket error now says why: it was created in another region, or deleted by an earlier call.",
+        "Leave out `--upstream` and Lenslet finds your emulator: a loopback `AWS_ENDPOINT_URL`, or LocalStack and Moto on their usual ports.",
       ],
     },
     visual: {
@@ -97,7 +98,7 @@ export default defineProduct({
         items: [
           {
             title: "Why it failed",
-            body: "The AWS error code and message, with a likely cause for common local failures.",
+            body: "The AWS error, and its likely cause, such as a table created in another region.",
           },
           {
             title: "What it needs",
@@ -105,19 +106,19 @@ export default defineProduct({
           },
           {
             title: "A lock you commit",
-            body: "`lenslet.lock` lists your project’s access, one permission per line, sorted.",
+            body: "`lenslet.lock` lists your access; `lenslet policy` turns it into an IAM policy without test-only lines.",
           },
           {
             title: "The diff in the PR",
             body: "One comment per pull request; CI fails until someone accepts new access.",
           },
           {
-            title: "Unused access too",
-            body: "`--check --strict` also fails on lock lines the run did not use.",
+            title: "Blocked locally",
+            body: "`--enforce` answers calls outside the lock with AWS `AccessDenied` before they reach the emulator.",
           },
           {
-            title: "A policy from the lock",
-            body: "`lenslet policy` writes an IAM policy, leaving out lines only tests need.",
+            title: "Your own policy",
+            body: "`--policy` checks or enforces a real IAM policy, `Condition` blocks included, instead of the lock.",
           },
         ],
       },
@@ -127,9 +128,9 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Lenslet listens on 127.0.0.1 and forwards your tests’ AWS calls only to the emulator you name.",
-          "It removes your real AWS keys and profile from the tests’ environment, so they never reach the emulator or a trace.",
-          "Run files in `~/.lenslet/runs` keep raw headers and bodies, readable only by you; the last 20 are kept.",
+          "Lenslet listens on loopback and forwards your tests’ AWS calls only to your emulator.",
+          "It removes AWS keys, profile and other cloud credentials from the tests’ environment, so they never reach the emulator or a trace.",
+          "Run files in `~/.lenslet/runs` keep headers and bodies unredacted, readable only by you; the last 20 are kept.",
         ],
       },
       {
@@ -141,17 +142,17 @@ export default defineProduct({
           {
             title: "Is the lock a security review?",
             body: "No. It is the access your tests exercised, mapped by rules. Code paths the tests never reach are not in the lock.",
-            asOf: "v4.0.0",
+            asOf: "v7.0.0",
           },
           {
             title: "Which AWS services does it read?",
-            body: "Resources are read for S3, DynamoDB, SQS, SNS, Lambda, Secrets Manager, KMS, STS, IAM, EventBridge and Step Functions. Other services get `*`.",
-            asOf: "v4.0.0",
+            body: "Resources are read for 20 services, among them S3, DynamoDB, SQS, Lambda, Bedrock, KMS, IAM and Step Functions. Other services get `*`; calls it cannot map are reported, not guessed.",
+            asOf: "v7.0.0",
           },
           {
             title: "Does it run on Windows?",
             body: "No. There are builds for macOS (universal) and Linux (x86_64 and aarch64), including a static CLI for Alpine and CI images.",
-            asOf: "v4.0.0",
+            asOf: "v7.0.0",
           },
         ],
       },
@@ -177,11 +178,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux · Apache-2.0 · {version}",
     releaseHighlights: {
-      version: "v4.0.0",
+      version: "v7.0.0",
       items: [
-        "新增 GitHub Action：用 `--check` 跑测试，把报告写进任务摘要，并在 PR 里只保留一条随时更新的评论。",
-        "每个新增权限都写明是哪些调用需要它，评论说清原因，而不只是锁文件多了一行。",
-        "`lenslet init -- npm test` 先检查模拟器，再跑一遍测试，写出 `lenslet.lock` 和 CI 工作流。",
+        "在窗口的权限视图里就能把新权限写进 `lenslet.lock`，或标成 `# test`，不用重跑测试。",
+        "找不到表或存储桶时会说明原因：它建在另一个区域，或者已被更早的调用删掉。",
+        "不写 `--upstream` 时，Lenslet 自己找模拟器：沿用 shell 里已指向本机的 AWS 地址，或探测 LocalStack 和 Moto 的常用端口。",
       ],
     },
     visual: {
@@ -235,7 +236,7 @@ export default defineProduct({
         items: [
           {
             title: "为什么失败",
-            body: "AWS 的错误码和信息，常见的本地失败还附上可能的原因。",
+            body: "AWS 的错误和可能的原因，比如表建在了另一个区域。",
           },
           {
             title: "需要什么权限",
@@ -243,19 +244,19 @@ export default defineProduct({
           },
           {
             title: "提交一份锁文件",
-            body: "`lenslet.lock` 列出项目需要的权限，一行一项，按顺序排好。",
+            body: "`lenslet.lock` 列出所需权限；`lenslet policy` 据此写出 IAM 策略，不含测试专用条目。",
           },
           {
             title: "PR 里的权限差异",
             body: "每个拉取请求一条评论；新增的权限有人认可之前，CI 一直失败。",
           },
           {
-            title: "没用到的也会指出",
-            body: "`--check --strict` 对这次运行没用到的锁文件条目也会失败。",
+            title: "在本地就拦下",
+            body: "`--enforce` 对锁文件之外的调用直接回 AWS `AccessDenied`，请求到不了模拟器。",
           },
           {
-            title: "从锁文件生成策略",
-            body: "`lenslet policy` 输出 IAM 策略，只有测试需要的条目不计入。",
+            title: "用你自己的策略",
+            body: "`--policy` 改按一份真实的 IAM 策略检查或拦截，`Condition` 也会判断。",
           },
         ],
       },
@@ -265,9 +266,9 @@ export default defineProduct({
         nav: "你的数据",
         title: "数据的去向",
         items: [
-          "Lenslet 只监听 127.0.0.1，把测试的 AWS 调用转发给你指定的模拟器，不发往别处。",
-          "它会从测试的环境变量里去掉你真实的 AWS 密钥和 profile，所以密钥不会到达模拟器，也不会进入记录。",
-          "`~/.lenslet/runs` 里的运行记录保留原始请求头和正文，只有你能读，最多保留最近 20 次。",
+          "Lenslet 只监听本机回环地址，把测试的 AWS 调用转发给你的模拟器，不发往别处。",
+          "它会从测试的环境变量里去掉 AWS 密钥、profile 和其他云端凭证，所以它们不会到达模拟器，也不会进入记录。",
+          "`~/.lenslet/runs` 里的运行记录不做任何脱敏，保留请求头和正文，只有你能读，最多保留最近 20 次。",
         ],
       },
       {
@@ -279,17 +280,17 @@ export default defineProduct({
           {
             title: "锁文件等于安全审查吗？",
             body: "不等于。它是测试实际用到的权限，按规则推算出来。测试没跑到的代码路径不在锁文件里。",
-            asOf: "v4.0.0",
+            asOf: "v7.0.0",
           },
           {
             title: "能识别哪些 AWS 服务？",
-            body: "会读出具体资源的服务有 11 种，包括 S3、DynamoDB、SQS、Lambda、KMS 和 IAM。其他服务的资源记为 `*`。",
-            asOf: "v4.0.0",
+            body: "会读出具体资源的服务有 20 种，包括 S3、DynamoDB、SQS、Lambda、Bedrock、KMS、IAM 和 Step Functions。其他服务的资源记为 `*`；对不上的调用会如实报出，不去猜。",
+            asOf: "v7.0.0",
           },
           {
             title: "支持 Windows 吗？",
             body: "不支持。有 macOS（通用版）和 Linux（x86_64、aarch64）的版本，还有适合 Alpine 和 CI 镜像的静态命令行版。",
-            asOf: "v4.0.0",
+            asOf: "v7.0.0",
           },
         ],
       },

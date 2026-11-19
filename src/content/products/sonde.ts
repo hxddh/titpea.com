@@ -3,7 +3,7 @@ import { defineProduct } from "../schema";
 // sonde: records a program's S3 traffic and reads it as operations. Facts:
 // the repo's README.md, CHANGELOG.md, docs/security.md, docs/recording.md,
 // docs/configuration.md, docs/cli.md, docs/ci.md, docs/trials.md, docs/agents.md and
-// docs/credentials.md at v24.0.0. The screenshots were captured at v16.0.0.
+// docs/credentials.md at v26.0.0. The screenshots were captured at v16.0.0.
 // The name is not translated (the app says "sonde" in both languages; its
 // Chinese tagline is 对象存储诊断). Pictures: the app's own shots test
 // (app/tests/shots.test.tsx) on macOS at 2x, Nov 2026.
@@ -61,11 +61,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · S3-compatible",
     releaseHighlights: {
-      version: "v24.0.0",
+      version: "v26.0.0",
       items: [
-        "New findings for common mistakes: many small writes, deletes one at a time, writes back without If-Match, and a missing key polled. Each has fixes for four SDKs and its cost a month.",
-        "The GitHub Action, `hxddh/sonde@v24`, checks from the first pull request: with no stored baseline it records the base in the same job.",
-        "The run header stays in view on every pane, and the sidebar names the client that sent each run’s requests, such as boto3.",
+        "When SlateDB, DuckDB, rclone, s5cmd, Trino or Hadoop s3a sent the requests, a finding names the setting to change and where the program sets it.",
+        "A run’s cost now adds data sent out and the storage it leaves a month to its requests; `sonde check --max-transfer` caps the bytes sent out.",
+        "Requests the program gave up waiting for, and downloads it read only in part, are now recorded as they happened.",
       ],
     },
     visual: {
@@ -103,14 +103,14 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "The script installs the terminal binary on Linux or macOS. GitHub Releases has terminal binaries for Linux, macOS and Windows, and the desktop app as a macOS .dmg, a Linux tarball and a Windows zip.",
+      sub: "The script installs the terminal binary on Linux or macOS. GitHub Releases has terminal binaries for Linux, macOS and Windows, and the desktop app as a macOS .dmg, a Linux tarball and a Windows zip. On Linux the binary needs glibc 2.35 or later, or the static build the script picks.",
       items: [
         {
           comment: "Install the terminal binary (Linux, macOS)",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "The tour, on a built-in store with no account",
+          comment: "The tour, on a built-in store: a finding, its fix, the fix measured",
           command: "sonde run --demo",
         },
         {
@@ -132,7 +132,7 @@ export default defineProduct({
           },
           {
             title: "Findings with a fix",
-            body: "Each with its monthly saving, a fix for your SDK and the line that sent it.",
+            body: "Its monthly saving, the setting or SDK code to change, and the line that sent it.",
           },
           {
             title: "Trials under faults",
@@ -172,18 +172,18 @@ export default defineProduct({
         items: [
           {
             title: "Do I need to change my code?",
-            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and re-signs each request with your real credentials. CI tests boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, the AWS CLI and polars; sonde sets up Spark, Flink and `docker run` commands itself. When nothing reaches it, it says how to point that program’s client at it.",
-            asOf: "v24.0.0",
+            body: "Usually not. `sonde run` points the program at a local endpoint with `AWS_ENDPOINT_URL` and re-signs each request with your real credentials. CI tests boto3, the AWS SDKs for JavaScript v3, Go v2 and Java v2, the AWS CLI and polars; sonde sets up Spark, Flink, rclone, the DuckDB CLI and `docker run` commands itself. When nothing reaches it, it says how to point that program’s client at it.",
+            asOf: "v26.0.0",
           },
           {
             title: "Which stores does it work with?",
-            body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each; `sonde probe` runs all 40 compatibility probes.",
-            asOf: "v24.0.0",
+            body: "Any S3-compatible endpoint: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API among them. A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each; `sonde probe` runs all 52 compatibility probes.",
+            asOf: "v26.0.0",
           },
           {
             title: "Can it read production traffic?",
-            body: "Yes, without running it through sonde: `sonde import` reads S3 access logs, CloudTrail and HAR files as operations, with the same findings. That is how to read a job on Kubernetes or serverless.",
-            asOf: "v24.0.0",
+            body: "Yes, without running it through sonde: `sonde import` reads S3 access logs, CloudTrail and HAR files as operations, with the same findings (CloudTrail has no timings). That is how to read a job on Kubernetes or serverless.",
+            asOf: "v26.0.0",
           },
         ],
       },
@@ -215,11 +215,11 @@ export default defineProduct({
     },
     meta: "macOS / Linux / Windows · Apache-2.0 · {version} · 兼容 S3",
     releaseHighlights: {
-      version: "v24.0.0",
+      version: "v26.0.0",
       items: [
-        "新增几类常见错误的发现：大量小写入、逐个删除、不带 If-Match 的读改写、反复轮询不存在的键。每条都给出四种 SDK 的修法和每月的费用。",
-        "GitHub Action `hxddh/sonde@v24` 从第一个拉取请求起就能检查：还没有存好的基线时，它在同一个任务里先录下基础分支。",
-        "运行的标题栏在每个面板上都保持可见；侧栏会写出每次运行的请求是哪个客户端发出的，比如 boto3。",
+        "请求来自 SlateDB、DuckDB、rclone、s5cmd、Trino 或 Hadoop s3a 时，发现会直接写出该改的设置，以及程序在哪里设置它。",
+        "一次运行的费用除了请求费，还算上出网流量和每月留下的存储；`sonde check --max-transfer` 可以限制出网字节数。",
+        "程序等不及就放弃的请求、只读了一部分的下载，现在都按实际情况记录。",
       ],
     },
     visual: {
@@ -257,14 +257,14 @@ export default defineProduct({
     ],
     commands: {
       title: "开始使用",
-      sub: "这个脚本在 Linux 或 macOS 上安装终端版。GitHub Releases 页面有 Linux、macOS 和 Windows 的终端版，桌面应用则有 macOS 的 .dmg、Linux 的压缩包和 Windows 的 zip。",
+      sub: "这个脚本在 Linux 或 macOS 上安装终端版。GitHub Releases 页面有 Linux、macOS 和 Windows 的终端版，桌面应用则有 macOS 的 .dmg、Linux 的压缩包和 Windows 的 zip。Linux 上的二进制需要 glibc 2.35 或更新版本，不满足时用静态版，安装脚本会自动选它。",
       items: [
         {
           comment: "安装终端版（Linux、macOS）",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "在内置存储上走一遍导览，不需要账号",
+          comment: "在内置存储上走一遍导览：一条发现、它的修法和修好后的实测效果",
           command: "sonde run --demo",
         },
         {
@@ -286,7 +286,7 @@ export default defineProduct({
           },
           {
             title: "发现，附带修法",
-            body: "每条都写明每月能省多少、适合你所用 SDK 的修法，以及发出请求的那行代码。",
+            body: "每条都写明每月能省多少、该改的设置或 SDK 代码，以及发出请求的那行代码。",
           },
           { title: "在故障下试运行", body: "`--trial` 在存储故障下再运行程序，告诉你它是否扛住。" },
           {
@@ -323,18 +323,18 @@ export default defineProduct({
         items: [
           {
             title: "需要改代码吗？",
-            body: "一般不用。`sonde run` 用环境变量把程序指向本地端点，再用你的真实凭证给每个请求重新签名。CI 测试了 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK、AWS CLI 和 polars；Spark、Flink 和 `docker run` 的命令由 sonde 自己配好。如果没有请求到达，它会说明怎样让这个程序的客户端指向它。",
-            asOf: "v24.0.0",
+            body: "一般不用。`sonde run` 用环境变量把程序指向本地端点，再用你的真实凭证给每个请求重新签名。CI 测试了 boto3、JavaScript v3、Go v2、Java v2 的 AWS SDK、AWS CLI 和 polars；Spark、Flink、rclone、DuckDB 命令行和 `docker run` 的命令由 sonde 自己配好。如果没有请求到达，它会说明怎样让这个程序的客户端指向它。",
+            asOf: "v26.0.0",
           },
           {
             title: "支持哪些存储？",
-            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答；`sonde probe` 会跑完全部 40 项兼容性探测。",
-            asOf: "v24.0.0",
+            body: "任何兼容 S3 的端点都行，例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答；`sonde probe` 会跑完全部 52 项兼容性探测。",
+            asOf: "v26.0.0",
           },
           {
             title: "能看生产环境的流量吗？",
-            body: "能，而且不用让它经过 sonde：`sonde import` 把 S3 访问日志、CloudTrail 和 HAR 文件读成操作，给出同样的发现。跑在 Kubernetes 或无服务器平台上的任务就这样看。",
-            asOf: "v24.0.0",
+            body: "能，而且不用让它经过 sonde：`sonde import` 把 S3 访问日志、CloudTrail 和 HAR 文件读成操作，给出同样的发现（CloudTrail 没有耗时）。跑在 Kubernetes 或无服务器平台上的任务就这样看。",
+            asOf: "v26.0.0",
           },
         ],
       },
