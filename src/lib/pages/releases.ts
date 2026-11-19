@@ -3,16 +3,7 @@ import { headingText } from "../heading";
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
 import { type Locale } from "../../content/schema";
-import {
-  formatDate,
-  inPageLanguage,
-  otherLocale,
-  pathFor,
-  releaseTags,
-  releasedOf,
-  versionOf,
-  readableLine,
-} from "./shared";
+import { formatDate, otherLocale, pathFor, releaseTags, releasedOf, versionOf } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 
 export type ReleaseItem = {
@@ -23,10 +14,13 @@ export type ReleaseItem = {
   released?: string;
   /** Machine-readable publish date (YYYY-MM-DD). */
   published?: string;
-  highlight?: string;
   /** A hand-written one-line summary (releaseHighlights) for this tag, or none. */
   summary?: string;
-  /** Up to three lines quoted from the notes, in the page's language only. */
+  /**
+   * What changed, from the product's hand-written highlights for exactly this
+   * tag, in both languages or neither. A tag without them shows its date and
+   * a link to its notes, never lines quoted raw from GitHub.
+   */
   items: string[];
   /** The release's full notes on GitHub. */
   notesUrl: string;
@@ -37,20 +31,13 @@ export type ReleaseItem = {
 /** Every product with a release, newest first, each with one highlight in the page's language or none. */
 export function releaseItems(locale: Locale): ReleaseItem[] {
   return products
-    .filter((product) => versionOf(product.slug))
+    .filter((product) => releaseTags[product.slug])
     .sort((a, b) => (releaseTags[b.slug]?.published ?? "").localeCompare(releaseTags[a.slug]?.published ?? ""))
     .map((product) => {
       const release = releaseTags[product.slug];
-      const notes = release?.notes;
-      const override = product[locale].releaseHighlights;
-      const current = override?.version === versionOf(product.slug) ? override : undefined;
-      // Never the release title: the synced summary comes from it, so only a
-      // curated override carries a summary.
-      // Lines quoted from the notes stay only when they read alone; curated ones always do.
-      const items = (current ? current.items : (notes?.items ?? []).filter(readableLine))
-        .filter((line) => inPageLanguage(line, locale))
-        .slice(0, 3);
-      const summary = current?.summary && inPageLanguage(current.summary, locale) ? current.summary : undefined;
+      const current = currentHighlights(product, locale);
+      const items = current?.items.slice(0, 4) ?? [];
+      const summary = current?.summary;
       return {
         name: product[locale].title,
         href: pathFor(locale, product.slug),
@@ -58,11 +45,9 @@ export function releaseItems(locale: Locale): ReleaseItem[] {
         version: release.version,
         released: releasedOf(product.slug, locale),
         published: release.published,
-        highlight: [...items, ...(summary ? [summary] : [])][0],
         summary,
         items,
-        notesUrl:
-          notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.tagPrefix ?? ""}${release.version}`,
+        notesUrl: notesUrlOf(product.slug),
         earlier: (release.history ?? [])
           .filter((entry) => entry.version !== release.version)
           .slice(0, 4)
@@ -75,20 +60,33 @@ export function releaseItems(locale: Locale): ReleaseItem[] {
     });
 }
 
-/** A product without GitHub releases: the version its own page lists, if any, and no date. */
+/** A product without synced releases: the version its own file states, if any, and no date. */
 export type UndatedReleaseItem = { name: string; href: string; icon: string; version?: string };
-
-const plainVersion = /^v?\d+(?:\.\d+)+$/;
 
 function undatedReleaseItems(locale: Locale): UndatedReleaseItem[] {
   return products
-    .filter((product) => !versionOf(product.slug))
+    .filter((product) => !releaseTags[product.slug])
     .map((product) => ({
       name: product[locale].title,
       href: pathFor(locale, product.slug),
       icon: product.icon,
-      version: product[locale].meta.split(" · ").find((part) => plainVersion.test(part.trim())),
+      version: versionOf(product.slug),
     }));
+}
+
+/** The product's hand-written highlights, only while they describe its current release. */
+export function currentHighlights(product: (typeof products)[number], locale: Locale) {
+  const highlights = product[locale].releaseHighlights;
+  return highlights && highlights.version === versionOf(product.slug) ? highlights : undefined;
+}
+
+/** Where a release's full notes are: its GitHub release, or its PyPI page. */
+export function notesUrlOf(slug: string): string {
+  const release = releaseTags[slug];
+  if (release.pypi) return `https://pypi.org/project/${release.pypi}/${release.version.replace(/^v/, "")}/`;
+  return (
+    release.notes?.url ?? `https://github.com/${release.repo}/releases/tag/${release.tagPrefix ?? ""}${release.version}`
+  );
 }
 
 export type ReleasesPageModel = {
@@ -176,15 +174,9 @@ export const feedEntries = (): FeedEntry[] =>
         version: release.version,
         published: release.published!,
         pageUrl: absoluteUrl(pathFor("en", product.slug)),
-        notesUrl:
-          release.notes?.url ??
-          `https://github.com/${release.repo}/releases/tag/${release.tagPrefix ?? ""}${release.version}`,
-        // Like the product pages: never the release title, only English lines.
-        summary: product.en.catalog.text,
-        items: (product.en.releaseHighlights?.version === release.version
-          ? product.en.releaseHighlights.items
-          : (release.notes?.items ?? [])
-        ).filter((line) => inPageLanguage(line, "en")),
+        notesUrl: notesUrlOf(product.slug),
+        summary: product.en.summary,
+        items: currentHighlights(product, "en")?.items ?? [],
       };
     })
     .sort((a, b) => b.published.localeCompare(a.published));

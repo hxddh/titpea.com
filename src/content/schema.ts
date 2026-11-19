@@ -32,11 +32,27 @@ export type Card = {
   link?: Link;
 };
 
-/** What the product does: one plain list of at most six equal-weight features. */
-export type CardsSection = { kind: "cards"; id: string; label: string; items: Card[] };
+/**
+ * What the product does: its real highlights, one to six, never padded to
+ * fill a grid. The layout follows the product's line (DESIGN.md, "Feature
+ * list"): tools read as a spec list on hairlines, apps and games as a few
+ * larger points. `layout` overrides that when the content asks for it.
+ */
+export type CardsSection = {
+  kind: "cards";
+  id: string;
+  label: string;
+  items: Card[];
+  layout?: "spec" | "points";
+};
 
-/** One adoption question. `asOf` names the release its answer describes. */
-export type FaqItem = Card & AsOf;
+/**
+ * One adoption question. `body` is the answer's first sentence or two;
+ * `steps` holds what would otherwise be a wall of text: one short line per
+ * step, condition or fact, rendered as a list. `asOf` names the release the
+ * answer describes.
+ */
+export type FaqItem = Card & AsOf & { steps?: string[] };
 
 /** Adoption questions, rendered as a disclosure list and as FAQPage structured data. */
 export type FaqSection = { kind: "faq"; id: "faq"; label: string; items: FaqItem[] };
@@ -328,40 +344,56 @@ export type PrivacySummary = {
 };
 
 export type ProductCopy = {
-  /** Name as shown in the catalog, nav, and eyebrow. */
+  /** The product's one name in this language: page, menus, Home, footer, Releases. */
   title: string;
-  /** Shorter header label when the title is long. */
-  navLabel?: string;
   description: string;
   eyebrow: string;
-  /** The hero h1: a short declarative claim, not the name. English ≤ 24 characters plus a closing period, Chinese ≤ 18. */
+  /** The hero h1: one plain sentence saying what changes for the reader, not the name. */
   headline: string;
   lead: string;
-  /** Home: `role` is the featured kicker; `text` is the one line in the index. */
-  catalog: { role: string; text: string };
+  /** One line of value: Home's index, the share image, Releases' feed. */
+  summary: string;
   /** `soon` renders the label as an unlinked, not-yet-available action (a store listing still in review). */
   primaryCta: Link & { soon?: true };
   secondaryCta: Link;
-  /** Mono meta line, segments joined by " · ". `{version}` is replaced by the synced release tag. */
-  meta: string;
+  /**
+   * What it is built with or works against, in this language ("Rust",
+   * "S3-compatible"): shown as tags after the platforms. Never a feature.
+   */
+  stack?: string[];
   commands?: Commands;
   visual: Visual;
   showcases?: Showcase[];
   sections: Section[];
   releaseHighlights?: ReleaseHighlights;
-  /**
-   * One line under the primary action: a trust detail the product's own docs
-   * state (for example a macOS build that is not notarized).
-   */
-  installNote?: string;
-  privacy?: PrivacySummary;
+  privacy: PrivacySummary;
 };
 
 export const featuredSrc = (featured: NonNullable<Product["featured"]>, locale: Locale) =>
   typeof featured.image.src === "string" ? featured.image.src : featured.image.src[locale];
 
+/** Where a product runs; `min` is the oldest supported version ("14", "8.0"). */
+export type Platform = { id: "macos" | "windows" | "linux" | "chrome" | "android"; min?: string };
+export const platformOrder: Platform["id"][] = ["macos", "windows", "linux", "chrome", "android"];
+
+/**
+ * An unsigned or unnotarized build and the one step that opens it, as the
+ * product's docs state it. The words come from site.ts (`ui.firstOpen`), so
+ * every product says it the same way.
+ */
+export type FirstOpen = {
+  /** "once": the first launch only; "eachRelease": after every new version. */
+  macos?: "once" | "eachRelease";
+  /** The step applies from this macOS version on ("15"). */
+  macosFrom?: string;
+  /** Windows SmartScreen warns the first time. */
+  windows?: true;
+};
+
 /** What the product is. Picks the page template (`templateOf`). */
-export type ProductType = "cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game" | "experiment";
+export type ProductType = "cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game";
+/** Kinds a reader can filter Home by: what you install it into. */
+export const isCommandLine = (type: ProductType) => type === "cli" || type === "pi" || type === "actions";
 /** Products that work together; members are listed in site.ts (`familyMembers`), roles in `ui.families`. */
 export type FamilyId = "s3" | "agents";
 /** One body composition per kind of product (DESIGN.md, "Templates"). */
@@ -381,6 +413,17 @@ export type Product = {
   /** Catalog group and header dropdown. */
   line: Line;
   type: ProductType;
+  /** Operating systems or browsers it runs on, in any order (shown in `platformOrder`). Empty for a CLI built from source. */
+  platforms: Platform[];
+  /** SPDX-style licence name, when the source is published. */
+  license?: string;
+  /**
+   * The current version of a product without a synced release (a Chrome Web
+   * Store listing, an app not yet in a store), written as a tag ("v9.0.0").
+   * A product with an entry in releases.json never sets it.
+   */
+  version?: string;
+  firstOpen?: FirstOpen;
   /**
    * Structured data's Offer. Omitted means free (price 0); "unannounced"
    * leaves the Offer out until a price is set, so search engines are not told it is free.

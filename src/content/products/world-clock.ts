@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "world-clock",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome", min: "123" }],
+  version: "v9.0.0",
   icon: "/assets/icons/world-clock.webp",
   og: "/assets/og-world-clock.png",
   schema: {
@@ -16,12 +18,9 @@ export default defineProduct({
     description:
       "Chrome extension that shows the time in the cities you choose: working hours bright, the rest faded, and a scroll to any hour.",
     eyebrow: "Time zone extension for Chrome",
-    headline: "Your cities, right now.",
+    headline: "One popup shows the time in all your cities.",
     lead: "Shows the time in the cities you choose, in one popup, with working hours lit. Scroll to see any hour.",
-    catalog: {
-      role: "",
-      text: "The time in your cities; scroll to any hour.",
-    },
+    summary: "The time in the cities you choose, and a scroll to any hour.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
@@ -40,7 +39,6 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "World Clock",
@@ -88,8 +86,8 @@ export default defineProduct({
         width: 680,
         height: 1200,
         asOf: "v9.0.0",
-        title: "People, not just cities.",
-        body: "Name an entry and set its own working hours; the strips use them.",
+        title: "Name an entry after a person.",
+        body: "Give it its own working hours, even overnight; its strip follows them.",
         caption: "Settings, editing an entry; names and cities are examples.",
       },
       {
@@ -98,8 +96,8 @@ export default defineProduct({
         width: 680,
         height: 1194,
         asOf: "v9.0.0",
-        title: "Find any time zone.",
-        body: "Search 400+ time zones in 9 languages; Enter adds the top result.",
+        title: "Search 400+ time zones.",
+        body: "Type in any of 9 languages; Enter adds the top result.",
         caption: "Settings, searching “san”; cities are examples.",
       },
     ],
@@ -107,7 +105,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "It shows more than the time.",
+        label: "What the popup tells you.",
         items: [
           {
             title: "Who is at work",
@@ -123,10 +121,6 @@ export default defineProduct({
           },
           { title: "Copy the times", body: "Click a time to copy it, or press ⌘C / Ctrl+C to copy every city." },
           {
-            title: "Names and hours",
-            body: "Rename an entry, say “Alice”, and give it its own hours, even overnight.",
-          },
-          {
             title: "Five themes",
             body: "Default, Terminal, Magazine, Paper and Contrast, each in Auto, Light or Dark.",
           },
@@ -136,11 +130,7 @@ export default defineProduct({
         kind: "data",
         id: "data",
         title: "Where your data goes.",
-        items: [
-          "No data collection and no analytics: no network requests, and no web pages read.",
-          "Your cities, theme and time format sync through Chrome’s storage between your own browsers, never to the developer.",
-          "It asks for one permission, `storage`, and needs no account.",
-        ],
+        items: ["No data collection, no analytics and no account; the only permission it asks for is `storage`."],
       },
       {
         kind: "faq",
@@ -157,7 +147,7 @@ export default defineProduct({
           },
           {
             title: "Is it free?",
-            body: "Yes. It is free on the Chrome Web Store, with no account.",
+            body: "Yes, on the Chrome Web Store, and it needs no account.",
           },
         ],
       },
@@ -167,12 +157,9 @@ export default defineProduct({
     title: "世界时钟",
     description: "Chrome 扩展：显示你所选城市的时间，工作时间常亮、其余淡出，滚动查看任意时刻。",
     eyebrow: "Chrome 时区扩展",
-    headline: "几个城市，此刻几点",
+    headline: "一个弹窗看各城市时间",
     lead: "一个弹窗看你的几个城市，工作时间高亮。滚动就能查看任意时刻。",
-    catalog: {
-      role: "",
-      text: "你的城市此刻几点，滚动看任意时刻。",
-    },
+    summary: "你选的几个城市此刻几点，滚动就能看任意时刻。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp",
@@ -190,7 +177,6 @@ export default defineProduct({
         href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
       },
     },
-    meta: "Chrome 123+ · 9.0.0",
     visual: {
       kind: "demo",
       label: "世界时钟",
@@ -237,8 +223,8 @@ export default defineProduct({
         width: 680,
         height: 1200,
         asOf: "v9.0.0",
-        title: "记的是人，不只是城市",
-        body: "给一项起名、单独设工作时间，细条按它来标。",
+        title: "条目可以用人名",
+        body: "还能单独设工作时间，夜班也行；细条按这个时间来标。",
         caption: "设置页，编辑一项；名字和城市为示例。",
       },
       {
@@ -247,8 +233,8 @@ export default defineProduct({
         width: 680,
         height: 1040,
         asOf: "v9.0.0",
-        title: "任意时区，一搜即得",
-        body: "400+ 时区，9 种语言可搜索；回车添加第一个结果。",
+        title: "400 多个时区可搜",
+        body: "用 9 种语言都能搜，回车添加第一个结果。",
         caption: "设置页，搜索“新”；城市为示例。",
       },
     ],
@@ -256,13 +242,12 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "不只告诉你几点",
+        label: "弹窗里能看到什么",
         items: [
           { title: "谁在上班", body: "工作时间高亮，默认 9 点到 18 点，可以自己改；周末按各城市所在国家算。" },
           { title: "相对你的时差", body: "每个城市标出和你相差几小时，如 +7h、−5h，以及是明天还是昨天。" },
           { title: "提前提示夏令时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
           { title: "复制时间", body: "点一下复制一个时间，或按 ⌘C / Ctrl+C 复制全部城市。" },
-          { title: "名字和工作时间", body: "给一项改名，比如“Alice”，再单独设工作时间，夜班也行。" },
           { title: "五种主题", body: "默认、终端、杂志、纸张、高对比；外观可选自动、浅色或深色。" },
         ],
       },
@@ -270,11 +255,7 @@ export default defineProduct({
         kind: "data",
         id: "data",
         title: "数据的去向",
-        items: [
-          "不收集任何数据，没有分析服务：不联网，也不读取网页。",
-          "你的城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不会发送给开发者。",
-          "只申请一项权限 `storage`，无需账号。",
-        ],
+        items: ["不收集任何数据，没有分析服务，也不需要账号；只申请一项权限 `storage`。"],
       },
       {
         kind: "faq",
@@ -291,7 +272,7 @@ export default defineProduct({
           },
           {
             title: "收费吗？",
-            body: "不收费。在 Chrome 网上应用店免费安装，无需账号。",
+            body: "不收费，在 Chrome 网上应用店直接安装，也不需要账号。",
           },
         ],
       },

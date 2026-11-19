@@ -14,6 +14,8 @@ export default defineProduct({
   slug: "paper-sudoku",
   line: "games",
   type: "game",
+  platforms: [{ id: "android", min: "8.0" }],
+  version: "v14.0",
   // The store listing plans a paid app; no price is set yet.
   price: "unannounced",
   icon: "/assets/icons/paper-sudoku.webp",
@@ -28,12 +30,9 @@ export default defineProduct({
     description:
       "A Sudoku notebook for Android: one page a day, a practice stack that grows harder as you learn, and a Coach in the margin. No network.",
     eyebrow: "Sudoku notebook for Android",
-    headline: "One page a day.",
+    headline: "The notebook opens on today’s Sudoku page.",
     lead: "A Sudoku notebook that opens on today’s page. If you get stuck, a Coach writes hints in the margin. It has no network access.",
-    catalog: {
-      role: "",
-      text: "A Sudoku notebook for Android: one page a day, a Coach in the margin.",
-    },
+    summary: "A Sudoku notebook for Android with one page a day and a Coach in the margin when you get stuck.",
     primaryCta: {
       label: "Coming to Google Play",
       href: "/paper-sudoku/",
@@ -52,7 +51,6 @@ export default defineProduct({
         href: "/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "Paper Sudoku",
@@ -72,8 +70,8 @@ export default defineProduct({
         alt: "A 6×6 daily page for Wednesday, October 21: the Coach has outlined the top-right box in oxblood, and its note above the tools reads “Hidden single. Look at the top-right box.”",
         width: 1080,
         height: 1920,
-        title: "The Coach writes in the margin.",
-        body: "First where to look, then why, and the answer only if you ask for it.",
+        title: "Hints come in order.",
+        body: "The Coach writes first where to look, then why, and gives the answer only if you ask for it.",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -81,7 +79,7 @@ export default defineProduct({
         alt: "The notebook: today’s date, 21, set large beside a thumbnail of its page and “Continue today’s page”; then rows for Continue (a 6×6 from October 15), Practice (“Learning: Naked pair · Known: 4 of 11”) and Type in a page, divided by hairlines; below, the October 2026 calendar, 5 pages solved",
         width: 1080,
         height: 1920,
-        title: "Every day stays in the notebook.",
+        title: "Past days stay in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
         asOf: "v14.0.0-sideload",
       },
@@ -90,23 +88,24 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Also in the notebook.",
+        label: "Beyond today’s page",
         items: [
           {
-            title: "A path that knows you",
-            body: "A stack of 9×9 practice pages gets harder after you solve three without help.",
+            title: "Practice that gets harder",
+            body: "A stack of 9×9 practice pages steps up after you solve three without help.",
           },
           {
-            title: "Pages of your own",
-            body: "Type in a puzzle from a book; it is checked and graded, and the Coach helps.",
+            title: "Puzzles from a book",
+            body: "Type one in; the app checks and grades it, and the Coach helps as usual.",
           },
           {
-            title: "Read a page back",
-            body: "Replay every digit in order, with the technique behind it and where the Coach helped.",
+            title: "Replay a page",
+            body: "See every digit again in order, with the technique behind it and where the Coach helped.",
           },
-          { title: "Press and slide", body: "Slide your finger and a loupe shows the cell you aim at; lift to write." },
-          { title: "Today on your home screen", body: "A home-screen widget shows today’s page." },
-          { title: "A quiet clock", body: "The timer is hidden while you play, and pauses when you leave." },
+          {
+            title: "A loupe under your finger",
+            body: "Press and slide, and it shows the cell you aim at; lift to write.",
+          },
         ],
       },
       {
@@ -114,8 +113,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Paper Sudoku does not ask Android for internet access, and has no ads, accounts, analytics or server.",
-          "Games, results and settings stay on your phone. Android’s backup may copy them to your Google account; you can turn that off.",
+          "Android’s own backup may copy games, results and settings to your Google account; you can turn that off.",
           "Sharing sends only the text you see in the share sheet; printing uses Android’s print service.",
         ],
       },
@@ -146,12 +144,9 @@ export default defineProduct({
     title: "纸上数独",
     description: "Android 上的数独本：每天一页，练习本越做越难，卡住时教练在页边提示。不联网。",
     eyebrow: "Android 数独本",
-    headline: "每天一页数独",
+    headline: "打开本子，就是今天这一页数独",
     lead: "一本打开就是今天这一页的数独本。卡住时，教练会在页边提示。应用不联网。",
-    catalog: {
-      role: "",
-      text: "Android 上的数独本：每天一页，卡住时教练在页边提示。",
-    },
+    summary: "Android 上的数独本，每天一页，卡住时有教练在页边提示。",
     primaryCta: {
       label: "即将上架 Google Play",
       href: "/zh/paper-sudoku/",
@@ -170,7 +165,6 @@ export default defineProduct({
         href: "/zh/paper-sudoku/privacy/",
       },
     },
-    meta: "Android 8.0+ · 14.0",
     visual: {
       kind: "screenshot",
       label: "纸上数独",
@@ -190,8 +184,8 @@ export default defineProduct({
         alt: "10 月 21 日星期三的 6×6 每日一页：教练用暗红色框出右上宫，工具上方的提示写着“隐性唯一 · 看看右上宫”，说明 3 在右上宫只能放在一格，下面是“看答案”",
         width: 540,
         height: 1200,
-        title: "教练在页边写字",
-        body: "先说看哪里，再说为什么，你要了才给答案。",
+        title: "提示一步一步来",
+        body: "教练先写看哪里，再写为什么，你要了才给答案。",
         asOf: "v14.0.0-sideload",
       },
       {
@@ -199,7 +193,7 @@ export default defineProduct({
         alt: "数独本首页：大字的今天 21 日，旁边是这一页的缩略图和“接着做今天这一页”；细线隔开的几行：接着做 10 月 15 日的 6×6，练习“正在学：显性数对 · 已掌握 4 个，共 11 个”，抄一页题目；下面是 2026 年 10 月的日历，已完成 5 页",
         width: 540,
         height: 1200,
-        title: "每一天都留在本子里",
+        title: "过去的每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
         asOf: "v14.0.0-sideload",
       },
@@ -208,14 +202,12 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "本子里还有",
+        label: "今天这一页之外",
         items: [
-          { title: "认得你的练习", body: "一叠 9×9 练习页，不看答案连做三页之后就变难一些。" },
-          { title: "自己的题", body: "把书报上的题输进来，应用会检查、评级，教练照常帮忙。" },
+          { title: "越做越难的练习", body: "一叠 9×9 练习页，不看答案连做三页之后就变难一些。" },
+          { title: "书上的题", body: "把题输进来，应用会检查、评级，教练照常帮忙。" },
           { title: "回看一页", body: "按顺序重看每个数字，以及当时用的技巧和教练帮过的地方。" },
-          { title: "按住滑动", body: "手指滑动时，放大镜显示你瞄准的格子，松手就写。" },
-          { title: "桌面上的今天", body: "桌面小组件显示今天这一页。" },
-          { title: "安静的计时", body: "做题时不显示计时，离开时自动暂停。" },
+          { title: "手指下的放大镜", body: "按住滑动时，它显示你瞄准的格子，松手就写。" },
         ],
       },
       {
@@ -223,8 +215,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "纸上数独不向 Android 申请联网权限，没有广告、账号、统计分析，也没有服务器。",
-          "对局、成绩和设置存在应用的本地数据库里。Android 自带的备份可能会把它们存进你的 Google 账号，可以在 Android 设置里关闭。",
+          "Android 自带的备份可能会把对局、成绩和设置存进你的 Google 账号，可以在 Android 设置里关闭。",
           "分享只发送分享面板里你看到的文字；打印使用 Android 的打印服务。",
         ],
       },

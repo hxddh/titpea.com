@@ -14,10 +14,10 @@ export function failureReasons(result) {
   const isBrowserProductPage = !isAsset && result.route?.browserVisual;
   const isPrivacy = result.route?.kind === "privacy";
   const navOk = isDesktop
-    ? result.nav === "flex" && result.mobile === "none"
+    ? result.nav !== "none" && result.mobile === "none"
     : isAsset
       ? true
-      : result.nav === "none" && result.mobile === "block";
+      : result.nav === "none" && result.mobile === "flex";
   const anchorOk = isProductPage ? result.anchorCount === (result.route.sectionLinks ?? 0) : true;
   // Every product page pins its local nav; pages with sections also mark one active.
   const productIndexOk = result.productIndex
@@ -43,7 +43,9 @@ export function failureReasons(result) {
   const isHome = route?.kind === "home";
   const reasons = [];
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
-  if (result.h1Lines > 2) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
+  // A product's title is one sentence (design v7): two lines on wide screens, three on a phone.
+  const h1Limit = result.viewport === "mobile" && result.route?.kind === "product" ? 3 : 2;
+  if (result.h1Lines > h1Limit) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
   // A privacy policy is a document: its lead is a paragraph and it has no actions.
   if (!isAsset && !isAuxCheck && !isPrivacy && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);

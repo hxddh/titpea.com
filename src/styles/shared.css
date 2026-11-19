@@ -293,6 +293,44 @@
     font-size: var(--text-meta);
   }
 
+  /* Tags: a platform, a kind, a licence, a version. Mono, hairline, quiet;
+   the one way a fact is set beside a name, on every page. A run of tags is
+   a flex row with gaps, so tags never touch whatever the markup's spacing. */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags > *,
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 0 8px;
+    border: 1px solid var(--tag-line);
+    border-radius: 6px;
+    color: var(--muted);
+    background: var(--tag-bg);
+    font-family: var(--mono);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tag-kind {
+    border-style: dashed;
+  }
+
+  .tag-version,
+  .tags > [data-tone="version"] {
+    color: var(--ink-2);
+  }
+
   /* `code` spans in product copy and quoted release notes (Prose.astro). */
   .inline-code {
     padding: 1px 5px;

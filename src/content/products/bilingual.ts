@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "bilingual",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome", min: "138" }],
+  version: "v4.0.0",
   icon: "/assets/icons/bilingual.webp",
   og: "/assets/og-bilingual.png",
   schema: {
@@ -16,12 +18,9 @@ export default defineProduct({
     description:
       "Chrome extension that shows the original by default, a paragraph’s translation while you hold a key, or both languages together.",
     eyebrow: "Translation extension for Chrome",
-    headline: "Hold a key to translate.",
+    headline: "Pages stay in their language until you hold a key.",
     lead: "Leaves pages in their original language. Hold a key to see a paragraph’s translation, or tap it twice to keep both showing.",
-    catalog: {
-      role: "Translation",
-      text: "Read the original; hold a key for the translation.",
-    },
+    summary: "Read the original; hold a key for the translation.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
@@ -40,7 +39,6 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "Bilingual",
@@ -69,7 +67,7 @@ export default defineProduct({
         width: 2560,
         height: 1448,
         asOf: "v4.0.0",
-        title: "One sentence, both sides.",
+        title: "Each sentence has its pair.",
         body: "Point at a sentence and its counterpart lights up in the other language.",
         caption: "A sample page; the translation was written for this image.",
       },
@@ -79,7 +77,7 @@ export default defineProduct({
         width: 2560,
         height: 1448,
         asOf: "v4.0.0",
-        title: "A word, in this sentence.",
+        title: "Look up a word in context.",
         body: "Hold the key over a word. With Precise translation, you get its meaning in this sentence, not a dictionary list.",
         caption: "A sample page; the note was written for this image.",
       },
@@ -88,18 +86,16 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Sentence by sentence, word by word.",
+        label: "Layout, sites and languages.",
         items: [
-          { title: "Margin or below", body: "In the margin when there is room, otherwise below each paragraph." },
+          {
+            title: "Margin or below",
+            body: "The translation sits in the margin when there is room, otherwise below each paragraph.",
+          },
           {
             title: "Made for six sites",
-            body: "Translates content, not buttons, on X, Reddit, GitHub, Hacker News, Wikipedia and Stack Overflow.",
+            body: "On X, Reddit, GitHub, Hacker News, Wikipedia and Stack Overflow it translates the content, not the buttons.",
           },
-          {
-            title: "Sentence alignment",
-            body: "Point at a sentence and its counterpart in the other language lights up.",
-          },
-          { title: "Word lookup", body: "Hold the key and rest on a word to see its meaning." },
           {
             title: "38 target languages",
             body: "If on-device translation lacks a language pair, switch to Precise translation.",
@@ -111,8 +107,7 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "By default, translation runs on Chrome’s built-in on-device model, so page text stays on your computer.",
-          "Precise translation sends paragraphs straight to your chosen provider, only when you ask; your key stays in the extension’s IndexedDB.",
+          "On-device translation uses Chrome’s built-in model; Precise translation goes straight to your chosen provider.",
           "It runs only on sites where you turn it on, or on every site once you turn on “Available on every site”.",
           "No account, no analytics, no data collection. In Incognito windows it saves no translations, terminology or per-site layouts.",
         ],
@@ -124,7 +119,12 @@ export default defineProduct({
         items: [
           {
             title: "What do I need to run it?",
-            body: "Desktop Chrome 138 or later. Turning on a language pair downloads Chrome’s language pack once; after that the pair works on every site, because translation runs in the extension’s own hidden document. Local files work too, once you turn on “Allow access to file URLs” for it in `chrome://extensions`.",
+            body: "Desktop Chrome 138 or later.",
+            steps: [
+              "Turning on a language pair downloads Chrome’s language pack once.",
+              "After that the pair works on every site, because translation runs in the extension’s own hidden document.",
+              "Local files work too, once you turn on “Allow access to file URLs” for it in `chrome://extensions`.",
+            ],
           },
           {
             title: "Which key do I hold?",
@@ -142,12 +142,9 @@ export default defineProduct({
     title: "对读",
     description: "Chrome 扩展：默认只显示原文，按住一个键看这一段的译文，也能切到双语对照。",
     eyebrow: "Chrome 翻译扩展",
-    headline: "按住一个键，看译文",
+    headline: "网页保持原文，按住一个键才看译文",
     lead: "网页默认保持原文。按住一个键，看这一段的译文；连按两下，原文和译文一起保留。",
-    catalog: {
-      role: "网页翻译",
-      text: "默认只看原文，按住一个键看译文。",
-    },
+    summary: "默认只看原文，按住一个键看译文。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/fpdeaghfidcmigonjajbmllmcleoklip",
@@ -165,7 +162,6 @@ export default defineProduct({
         href: "https://hxddh.github.io/bilingual-site/",
       },
     },
-    meta: "Chrome 138+ · 4.0.0",
     visual: {
       kind: "demo",
       label: "对读",
@@ -213,15 +209,13 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "按句对齐，按词查义",
+        label: "排版、网站和语言",
         items: [
-          { title: "边注或段下", body: "右侧有空放边注，否则放在每段下方。" },
+          { title: "边注或段下", body: "右侧有空位，译文就放在边注里，否则放在每段下方。" },
           {
             title: "六个网站专门适配",
             body: "在 X、Reddit、GitHub、Hacker News、维基百科和 Stack Overflow 上只译正文，不译按钮。",
           },
-          { title: "句级对齐", body: "指向一句，另一侧的对应句同时高亮。" },
-          { title: "查词", body: "按住键停在词上，看它的意思。" },
           { title: "38 种译文语言", body: "本地翻译不支持的语言组合，可以改用精译。" },
         ],
       },
@@ -230,8 +224,7 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "默认使用 Chrome 内置的本地翻译模型，网页文字不离开你的电脑。",
-          "只有你要看精译时，段落才从浏览器直接发给你选择的服务商；你的密钥存在扩展的 IndexedDB 中。",
+          "本地翻译用的是 Chrome 内置的模型；精译时，段落从浏览器直接发给你选择的服务商。",
           "只在你为它开启的网站上运行；打开“所有网站都能用”后，才在所有网站上运行。",
           "没有账号，没有分析服务，不收集任何数据。无痕窗口里不保存译文、术语和各网站的排版。",
         ],
@@ -243,7 +236,12 @@ export default defineProduct({
         items: [
           {
             title: "需要什么环境？",
-            body: "桌面版 Chrome 138 或更高版本。启用一个语言对时，Chrome 会下载一次语言包，之后这个语言对在所有网站上都能用（翻译在扩展自己的隐藏页面里运行）。在 `chrome://extensions` 里为它打开“允许访问文件网址”后，本地文件也能用。",
+            body: "桌面版 Chrome 138 或更高版本。",
+            steps: [
+              "启用一个语言对时，Chrome 会下载一次语言包。",
+              "之后这个语言对在所有网站上都能用，因为翻译在扩展自己的隐藏页面里运行。",
+              "在 `chrome://extensions` 里为它打开“允许访问文件网址”后，本地文件也能用。",
+            ],
           },
           {
             title: "按哪个键？",

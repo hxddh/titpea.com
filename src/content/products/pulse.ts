@@ -4,6 +4,9 @@ export default defineProduct({
   slug: "pulse",
   line: "agents",
   type: "mac",
+  platforms: [{ id: "macos", min: "14" }],
+  license: "MIT",
+  firstOpen: { macos: "eachRelease" },
   repo: "hxddh/Pulse",
   icon: "/assets/icons/pulse.webp",
   og: "/assets/og-pulse.png",
@@ -17,12 +20,9 @@ export default defineProduct({
     description:
       "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when a turn is done. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
-    headline: "Which agent needs you.",
+    headline: "See which coding agent is waiting on you.",
     lead: "A lamp in the menu bar for your coding agents. It turns red when one is blocked on you, and tells you why.",
-    catalog: {
-      role: "",
-      text: "The menu-bar lamp for coding agents that need you.",
-    },
+    summary: "A menu-bar lamp that turns red when a coding agent needs you.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/Pulse/releases/latest",
@@ -31,13 +31,11 @@ export default defineProduct({
       label: "View source",
       href: "https://github.com/hxddh/Pulse",
     },
-    installNote: "Not notarized: allow each new build once with Open Anyway in System Settings → Privacy & Security.",
     privacy: {
       network: "none",
       networkNote: "No network connection: no update check, nothing reported.",
       stays: "The event log and its snapshot stay on this Mac, readable only by you.",
     },
-    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v35.0.0",
       summary:
@@ -162,7 +160,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "One lamp: red, green, orange or grey.",
+        label: "What Pulse does",
         items: [
           { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
           { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
@@ -171,10 +169,9 @@ export default defineProduct({
             body: "The › button on a row lists this turn's tools, changed files, plan and subagents.",
           },
           {
-            title: "Orange means quiet",
-            body: "Pi and OpenCode only: twenty minutes with no new events and no tool running.",
+            title: "Six agents, through their hooks",
+            body: "Four turn red; Codex and Cursor show only running and done. On Pi and OpenCode, orange means twenty minutes with no new events and no tool running.",
           },
-          { title: "Six agents, own hooks", body: "Four turn red; Codex and Cursor show only running and done." },
           {
             title: "Click to go",
             body: "A click opens the session's terminal when Pulse can find it, else its app or details.",
@@ -187,8 +184,8 @@ export default defineProduct({
         title: "Where your data goes.",
         items: [
           "State comes only from each agent's own hooks; Pulse reads no session files, transcripts or protected app data.",
-          "The event log, readable only by you, keeps prompts cut to 200 characters with credentials redacted, on this Mac.",
-          "Pulse never goes online: no update check, nothing reported. The Releases… link in Settings just opens the releases page in your browser.",
+          "The event log keeps prompts cut to 200 characters, with credentials redacted.",
+          "The Releases… link in Settings just opens the releases page in your browser.",
         ],
       },
       {
@@ -198,17 +195,34 @@ export default defineProduct({
         items: [
           {
             title: "What does installing the hooks change?",
-            body: "Install them from the setup card on first open or with Install all in Settings → Hooks; for Codex, Pulse writes only `~/.codex/hooks.json`, then you run `/hooks` in Codex to trust it. Only observe-only events are added, and removing them restores each file byte for byte; a file changed since then loses only Pulse's entries.",
+            body: "Install them from the setup card on first open, or with Install all in Settings → Hooks. Only observe-only events are added.",
+            steps: [
+              "For Codex, Pulse writes only `~/.codex/hooks.json`; then you run `/hooks` in Codex to trust it.",
+              "Removing the hooks restores each file byte for byte.",
+              "A file changed since then loses only Pulse's entries.",
+            ],
             asOf: "v35.0.0",
           },
           {
             title: "Why is an agent not turning red?",
-            body: "Open Settings → Hooks. Each agent on this Mac has a row: installed, needs update, failed with its reason, or not installed; the last event Pulse heard from it and when; the last event it ignored and why; and whether the agent reports waiting. Install all brings every row that needs an update up to date, and Test connection checks that a hook can reach this Pulse. Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
+            body: "Open Settings → Hooks, where each agent on this Mac has a row.",
+            steps: [
+              "The row says installed, needs update, failed with its reason, or not installed.",
+              "It shows the last event Pulse heard from the agent and when, the last event it ignored and why, and whether the agent reports waiting.",
+              "Install all brings every row that needs an update up to date; Test connection checks that a hook can reach this Pulse.",
+              "Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
+            ],
             asOf: "v35.0.0",
           },
           {
             title: "How do I remove Pulse?",
-            body: "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries. Then choose Quit Pulse from the menu-bar icon's right-click menu, drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`. If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
+            body: "Remove the hooks first, then quit Pulse and delete the app and its data.",
+            steps: [
+              "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries.",
+              "Choose Quit Pulse from the menu-bar icon's right-click menu.",
+              "Drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`.",
+              "If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
+            ],
             asOf: "v35.0.0",
           },
         ],
@@ -220,12 +234,9 @@ export default defineProduct({
     description:
       "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，回合好了时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
-    headline: "看看哪个 Agent 需要你",
+    headline: "一眼看出哪个编码 Agent 在等你",
     lead: "菜单栏里的一盏灯，看着你的编码 Agent。有 Agent 卡住等你时亮红灯，并说明原因。",
-    catalog: {
-      role: "",
-      text: "菜单栏上看哪个编码 Agent 需要你。",
-    },
+    summary: "菜单栏里的状态灯，编码 Agent 需要你时亮红灯。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/Pulse/releases/latest",
@@ -234,13 +245,11 @@ export default defineProduct({
       label: "查看源码",
       href: "https://github.com/hxddh/Pulse",
     },
-    installNote: "未公证：每个新版本都要在“系统设置 → 隐私与安全性”里点一次“仍要打开”。",
     privacy: {
       network: "none",
       networkNote: "不连网络：不检查更新，不上报任何东西。",
       stays: "事件日志和它的快照只在本机，只有你能读。",
     },
-    meta: "macOS 14+ · MIT · {version}",
     releaseHighlights: {
       version: "v35.0.0",
       summary: "从 33 或更早的版本升级时，旧的事件日志会清空一次，以前的时间线随之丢失，hook 不受影响。",
@@ -358,13 +367,15 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "一盏灯：红、绿、橙、灰",
+        label: "Pulse 做什么",
         items: [
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },
           { title: "详情里的本轮", body: "点每行末尾的“›”，看这一轮用的工具、改过的文件、计划和子 Agent。" },
-          { title: "橙色表示没动静", body: "只用于 Pi 与 OpenCode：没有工具在跑，却二十分钟没有新事件。" },
-          { title: "六个 Agent", body: "四个会亮红；Codex 与 Cursor 只显示运行中和好了。" },
+          {
+            title: "六个 Agent，走各自的 hook",
+            body: "四个会亮红；Codex 与 Cursor 只显示运行中和好了。Pi 与 OpenCode 没有工具在跑、二十分钟没有新事件时亮橙灯。",
+          },
           { title: "点一下就去", body: "点一行就打开会话所在的终端；找不到终端时，打开它的应用或详情。" },
         ],
       },
@@ -374,8 +385,8 @@ export default defineProduct({
         title: "数据的去向",
         items: [
           "状态只来自各 Agent 自己的 hook；Pulse 不读取会话文件、transcript 或受 macOS 保护的应用数据。",
-          "事件日志只在本机，只有你能读；其中的提示最多保留 200 字，凭据已抹掉。",
-          "Pulse 不连网络：不检查更新，不上报任何东西。设置里的“版本发布…”只是在浏览器里打开 GitHub 上的发布页。",
+          "事件日志里的提示最多保留 200 字，凭据已抹掉。",
+          "设置里的“版本发布…”只是在浏览器里打开 GitHub 上的发布页。",
         ],
       },
       {
@@ -385,17 +396,34 @@ export default defineProduct({
         items: [
           {
             title: "安装 hook 会改动什么？",
-            body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”点“全部安装”；Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。只装观察型事件，移除时逐字节还原每个文件；之后改过的文件只删掉 Pulse 的条目。",
+            body: "首次打开时在托盘的设置卡里连接，或在“设置 → Hooks”点“全部安装”。只装观察型事件。",
+            steps: [
+              "Codex 只写入 `~/.codex/hooks.json`，之后在 Codex 里运行 `/hooks` 信任 Pulse。",
+              "移除时逐字节还原每个文件。",
+              "之后改过的文件只删掉 Pulse 的条目。",
+            ],
             asOf: "v35.0.0",
           },
           {
             title: "Agent 为什么没亮红灯？",
-            body: "打开“设置 → Hooks”。这台 Mac 上的每个 Agent 一行：已安装、需要更新、安装失败及原因，或未安装；最近听到它的哪个事件、多久前；最近未采用的事件及原因；它会不会报告在等你。“全部安装”会更新所有需要更新的 Agent，“测试连接”确认 hook 能找到这个 Pulse。“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
+            body: "打开“设置 → Hooks”，这台 Mac 上的每个 Agent 都有一行。",
+            steps: [
+              "这一行写明已安装、需要更新、安装失败及原因，或未安装。",
+              "还写明最近听到它的哪个事件、多久前，最近未采用的事件及原因，以及它会不会报告在等你。",
+              "“全部安装”会更新所有需要更新的 Agent，“测试连接”确认 hook 能找到这个 Pulse。",
+              "“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
+            ],
             asOf: "v35.0.0",
           },
           {
             title: "怎样卸载 Pulse？",
-            body: "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。然后右键菜单栏图标选“退出 Pulse”，把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
+            body: "先移除 hook，再退出 Pulse，删掉应用和它的数据。",
+            steps: [
+              "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。",
+              "右键菜单栏图标，选“退出 Pulse”。",
+              "把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。",
+              "开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
+            ],
             asOf: "v35.0.0",
           },
         ],

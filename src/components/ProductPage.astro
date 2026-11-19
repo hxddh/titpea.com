@@ -54,30 +54,20 @@ const commandsProps = {
   replayInHero: heroReplay?.command,
   skipFirst: skipFirstCommand,
 };
-// The facts line (DESIGN.md, "Facts line"): the meta line's own words, then
-// the facts the site knows. The version and its date come from releases.json,
-// so the meta line's own version segment is left out when the release gives one.
-const isVersion = (part: string) => part === model.version || /^v?\d+(\.\d+)+$/.test(part);
-const isLicense = (part: string) => /^(MIT|Apache-|GPL|LGPL|AGPL|BSD|MPL|ISC)/.test(part);
-const metaParts = copy.meta.split(" · ");
-const license = metaParts.find(isLicense);
-const metaVersion = metaParts.find(isVersion);
-// What the product runs on and works with: the meta line's own words, one
-// fact each, so a line breaks between facts and never inside one.
-const platformParts = metaParts.filter((part) => !isVersion(part) && !isLicense(part));
+// The spec line: platforms, stack, licence, version and date, all from the
+// catalog and releases.json (lib/pages/facts.ts). Each is its own tag, so a
+// line breaks between facts and the spacing never depends on whitespace.
+const { facts } = model;
 // The source link is said once: not again when the second action already opens it.
 const repoUrl = product.repo ? `https://github.com/${product.repo}` : undefined;
 const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(/\/$/, "") === repoUrl;
-// Design v5: the facts are one quiet line under the actions, so the product
-// itself starts within the first screen. A value that explains itself (a
-// platform, a licence, a version, a date) goes bare; the network level keeps
-// its label, and the source is a link named by its label.
-const facts: Array<{ value: string; href?: string }> = [
-  ...platformParts.map((value) => ({ value })),
-  ...(license ? [{ value: license }] : []),
+const specTags: Array<{ value: string; href?: string; tone?: "version" }> = [
+  ...facts.platforms.map((value) => ({ value })),
+  ...facts.stack.map((value) => ({ value })),
+  ...(facts.license ? [{ value: facts.license }] : []),
   // The version is said once: not here when the primary action already carries it.
-  ...((model.version || metaVersion) && !model.downloadsRelease ? [{ value: (model.version ?? metaVersion)! }] : []),
-  ...(model.released ? [{ value: model.released }] : []),
+  ...(facts.version && !model.downloadsRelease ? [{ value: facts.version, tone: "version" as const }] : []),
+  ...(facts.released ? [{ value: facts.released }] : []),
   ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
 ];
 // Provenance is said once: under the hero capture, the release it shows; under
@@ -129,31 +119,36 @@ const showcaseLabels = showcases.map((showcase) => {
         ) : (
           <a class="button primary large" href={copy.primaryCta.href} rel="noreferrer">
             {copy.primaryCta.label}
-            {model.downloadsRelease && <span class="button-version">{model.version}</span>}
+            {model.downloadsRelease && <span class="button-version">{facts.version}</span>}
           </a>
         )}
         <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
           {copy.secondaryCta.label}
         </a>
       </div>
-      {copy.installNote && (
-        <p class="install-note">
-          <Prose text={copy.installNote} />
-        </p>
+      {model.firstOpen && (
+        <details class="first-open">
+          <summary>{model.firstOpen.summary}</summary>
+          <ul>
+            {model.firstOpen.lines.map((line) => (
+              <li>
+                <Prose text={line} />
+              </li>
+            ))}
+          </ul>
+        </details>
       )}
-      <ul class="hero-facts">
-        {facts.map((fact) => (
-          <>
-            <li>
-              {fact.href ? (
-                <a href={fact.href} rel="noreferrer">
-                  {fact.value}
-                </a>
-              ) : (
-                fact.value
-              )}
-            </li>{" "}
-          </>
+      <ul class="tags spec-tags" aria-label={copyUi.spec.label}>
+        {specTags.map((tag) => (
+          <li data-tone={tag.tone}>
+            {tag.href ? (
+              <a href={tag.href} rel="noreferrer">
+                {tag.value}
+              </a>
+            ) : (
+              tag.value
+            )}
+          </li>
         ))}
       </ul>
     </div>
@@ -220,13 +215,15 @@ const showcaseLabels = showcases.map((showcase) => {
 
   {/* What it does; then Get started; then where the data goes and the FAQ. The
       latest release's notes are on Releases (design v6). */}
-  {copy.sections.map((section) => (section.kind === "cards" ? <CardsSection section={section} /> : null))}
+  {copy.sections.map((section) =>
+    section.kind === "cards" ? <CardsSection section={section} line={model.line} /> : null,
+  )}
 
   {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
 
   {copy.sections.map((section) =>
     section.kind === "data" ? (
-      <DataSection section={section} />
+      <DataSection section={section} privacy={copy.privacy} locale={model.locale} />
     ) : section.kind === "faq" ? (
       <FaqSection section={section} />
     ) : null,
@@ -261,6 +258,26 @@ const showcaseLabels = showcases.map((showcase) => {
           ))}
         </ul>
       </nav>
+    </section>
+  )}
+  {model.related && (
+    <section class="shell page-section page-end related-section" aria-labelledby="related-title">
+      <h2 id="related-title" class="closing-label">
+        {model.related.title}
+      </h2>
+      <ul class="related-list">
+        {model.related.items.map((item) => (
+          <li>
+            <a href={item.href}>
+              <img class="icon-plate" src={item.icon} alt="" width="32" height="32" loading="lazy" />
+              <span class="related-copy">
+                <strong>{item.name}</strong>
+                <span>{item.text}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   )}
   <Fragment slot="scripts">

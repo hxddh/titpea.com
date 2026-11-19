@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "httpmon",
   line: "storage",
   type: "cli",
+  platforms: [{ id: "macos" }, { id: "windows" }, { id: "linux" }],
+  license: "MIT",
   repo: "hxddh/https-traffic-inspector",
   icon: "/assets/icons/httpmon.webp",
   og: "/assets/og-httpmon.png",
@@ -17,12 +19,9 @@ export default defineProduct({
     description:
       "A terminal inspector for the HTTP and HTTPS traffic of a command, kept in sessions to query, diff and replay.",
     eyebrow: "HTTP traffic CLI",
-    headline: "See the HTTP traffic.",
+    headline: "See what a command sends and gets back over HTTP.",
     lead: "Put httpmon in front of a command like curl to see its HTTP traffic; keep it in a session to query, diff or replay.",
-    catalog: {
-      role: "",
-      text: "See what a command actually sent.",
-    },
+    summary: "See what a command actually sent.",
     primaryCta: {
       label: "View on GitHub",
       href: "https://github.com/hxddh/https-traffic-inspector",
@@ -38,7 +37,6 @@ export default defineProduct({
       stays:
         "Traffic shows in your terminal and is saved only to a session you start; a run’s temporary CA key never touches disk.",
     },
-    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
       version: "v4.1.0",
       items: [
@@ -87,19 +85,15 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "Watch the traffic, keep it, and test against it.",
+        label: "What httpmon can do",
         items: [
-          {
-            title: "Request and response",
-            body: "Headers, status, timing and decoded bodies on a terminal; one line per exchange elsewhere.",
-          },
           {
             title: "HTTP/2, gRPC, WebSocket",
             body: "gRPC messages are decoded without a schema; every WebSocket message shows as it passes.",
           },
           {
             title: "Sessions to query",
-            body: "`--session` keeps every exchange; `query` searches it, `diff` compares runs, `replay` re-sends.",
+            body: "`--session` keeps every exchange; `query` searches it, `diff` compares runs and `replay` re-sends.",
           },
           {
             title: "Mocks and faults",
@@ -110,8 +104,8 @@ export default defineProduct({
             body: "`httpmon proxy` captures browsers, phones, containers and running services that httpmon does not start.",
           },
           {
-            title: "Built for agents",
-            body: "Compact output off a terminal, and `httpmon mcp` serves sessions to an agent’s MCP client.",
+            title: "Output for agents",
+            body: "Off a terminal the output is compact, one line per exchange, and `httpmon mcp` serves sessions to an agent’s MCP client.",
           },
         ],
       },
@@ -121,7 +115,6 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "httpmon sends nothing of its own; it relays traffic you route through it and re-sends requests only when you run replay.",
           "By default the CA lives only in memory for one run; `httpmon ca` writes a persistent key to disk, mode 0600.",
           "Traffic is saved only to a session (`--session`, or `httpmon proxy`), readable by you only, with credentials unless you pass `--redact`.",
           "Output masks credential headers and URL tokens unless you pass `--show-secrets`; bodies are not masked.",
@@ -135,7 +128,12 @@ export default defineProduct({
         items: [
           {
             title: "Which commands can it wrap?",
-            body: "curl, aws, Python, Node, Java, git, cargo, Deno, or any other proxy-aware command. Only that child process gets the proxy address and CA; your system settings stay as they are. Go programs skip the proxy for loopback targets, and a JVM already running before httpmon started, such as a Gradle daemon, is not configured.",
+            body: "Any proxy-aware command, such as curl, aws, Python, Node, Java, git, cargo or Deno.",
+            steps: [
+              "Only that child process gets the proxy address and CA; your system settings stay as they are.",
+              "Go programs skip the proxy for loopback targets.",
+              "A JVM already running before httpmon started, such as a Gradle daemon, is not configured.",
+            ],
             asOf: "v4.1.0",
           },
           {
@@ -160,12 +158,9 @@ export default defineProduct({
     title: "httpmon",
     description: "在终端查看一条命令的 HTTP/HTTPS 请求与响应，存进会话后可以查询、对比和重放。",
     eyebrow: "HTTP 流量命令行工具",
-    headline: "看清命令的 HTTP 流量",
+    headline: "看清一条命令收发的 HTTP 流量",
     lead: "把 httpmon 放在 curl 这类命令前面，就能看到它的 HTTP 流量；存进会话，之后还能查询、对比或重放。",
-    catalog: {
-      role: "",
-      text: "看这条命令实际发出的请求。",
-    },
+    summary: "看这条命令实际发出的请求。",
     primaryCta: {
       label: "查看 GitHub",
       href: "https://github.com/hxddh/https-traffic-inspector",
@@ -179,7 +174,6 @@ export default defineProduct({
       networkNote: "只转发你让它经手的流量，只在你要求时重放；不检查更新，没有遥测。",
       stays: "流量显示在终端，只有你开了会话才保存；每次运行的临时 CA 私钥从不写入磁盘。",
     },
-    meta: "macOS / Linux / Windows · MIT · {version}",
     releaseHighlights: {
       version: "v4.1.0",
       items: [
@@ -228,12 +222,8 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "看流量，留下来，再拿它做测试",
+        label: "httpmon 能做什么",
         items: [
-          {
-            title: "请求和响应",
-            body: "终端里看头字段、状态码、耗时和解码后的内容；别处每次交换一行。",
-          },
           {
             title: "HTTP/2、gRPC、WebSocket",
             body: "gRPC 消息无需 schema 就能解码；WebSocket 的每条消息经过时都会显示。",
@@ -244,7 +234,10 @@ export default defineProduct({
           },
           { title: "模拟与故障", body: "对匹配的请求直接应答、延迟、断开或改道，不碰服务器也能测失败路径。" },
           { title: "常驻代理", body: "`httpmon proxy` 能抓浏览器、手机、容器和已在运行的服务这些不由它启动的流量。" },
-          { title: "为 Agent 设计", body: "不在终端时输出精简；`httpmon mcp` 把会话提供给 Agent 的 MCP 客户端。" },
+          {
+            title: "给 Agent 的输出",
+            body: "不在终端时输出精简，每次交换一行；`httpmon mcp` 把会话提供给 Agent 的 MCP 客户端。",
+          },
         ],
       },
       {
@@ -253,7 +246,6 @@ export default defineProduct({
         nav: "数据去向",
         title: "数据的去向",
         items: [
-          "httpmon 自己不发请求：它只转发你让它经手的流量，只在你运行 replay 时重发请求。",
           "默认情况下 CA 只在一次运行中存在于内存里；`httpmon ca` 会把持久 CA 的私钥写入磁盘，权限 0600。",
           "流量只保存在会话里（`--session` 或 `httpmon proxy`），只有你能读取；除非加 `--redact`，其中保留凭据。",
           "输出会遮盖含凭据的请求头和 URL 里的令牌，除非加 `--show-secrets`；请求体和响应体不遮盖。",
@@ -267,7 +259,12 @@ export default defineProduct({
         items: [
           {
             title: "能包住哪些命令？",
-            body: "curl、aws、Python、Node、Java、git、cargo、Deno，或其他支持代理的命令。只有这个子进程拿到代理地址和 CA，系统设置保持不变。Go 程序访问本机回环地址时不走代理；httpmon 启动前就在运行的 JVM（比如 Gradle 守护进程）不会被配置。",
+            body: "支持代理的命令都可以，比如 curl、aws、Python、Node、Java、git、cargo 和 Deno。",
+            steps: [
+              "只有这个子进程拿到代理地址和 CA，系统设置保持不变。",
+              "Go 程序访问本机回环地址时不走代理。",
+              "httpmon 启动前就在运行的 JVM（比如 Gradle 守护进程）不会被配置。",
+            ],
             asOf: "v4.1.0",
           },
           {

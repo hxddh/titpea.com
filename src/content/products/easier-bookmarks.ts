@@ -4,6 +4,8 @@ export default defineProduct({
   slug: "easier-bookmarks",
   line: "everyday",
   type: "extension",
+  platforms: [{ id: "chrome" }],
+  version: "v5.0.0",
   icon: "/assets/icons/easier-bookmarks.webp",
   og: "/assets/og-easier-bookmarks.png",
   schema: {
@@ -15,12 +17,9 @@ export default defineProduct({
     title: "Easier Bookmarks",
     description: "Chrome side panel and address-bar search for the bookmark tree already in this browser.",
     eyebrow: "Bookmark search for Chrome",
-    headline: "Bookmarks at your side.",
+    headline: "Search and tidy Chrome’s bookmarks in a side panel.",
     lead: "Search, save and tidy the bookmarks Chrome already has, from a side panel or the address bar. Nothing is sent to outside servers.",
-    catalog: {
-      role: "Side panel",
-      text: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
-    },
+    summary: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
     primaryCta: {
       label: "Install",
       href: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
@@ -31,14 +30,13 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "Nothing is sent: no servers, analytics or ads. Chrome Sync, if on, syncs bookmarks.",
+      networkNote: "Nothing is sent: no servers, no analytics, no ads. Chrome Sync, if on, syncs bookmarks.",
       stays: "Open folders, recent opens and the last-picked folder in the extension’s local storage.",
       policy: {
         label: "Privacy policy",
         href: "/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -69,23 +67,19 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "It works with the bookmarks you have.",
+        label: "Finding, saving and tidying.",
         items: [
           {
-            title: "In the address bar",
+            title: "From the address bar",
             body: "Type `b` and a space, then a few letters; Enter opens the best match.",
           },
           {
-            title: "Search as you type",
-            body: "Finds titles, links and folders, despite accents or one typo, and by full pinyin.",
+            title: "Titles, links and folders",
+            body: "Search matches despite accents or one typo, and by full pinyin.",
           },
           {
             title: "Save in one click",
-            body: "It goes in with that site’s other bookmarks, or the folder you last picked.",
-          },
-          {
-            title: "Knows the page you’re on",
-            body: "A filled star means the page is saved; clicking edits it rather than adding a copy.",
+            body: "The page goes in with that site’s other bookmarks, or the folder you last picked. If the star is filled, clicking edits the bookmark instead of adding a copy.",
           },
           {
             title: "Pick several",
@@ -99,10 +93,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "On your computer, it remembers open folders, your last-picked folder, recently opened bookmarks to rank results, and the list last shown.",
+          "Recently opened bookmarks are kept to rank search results, along with the list last shown.",
           "With tab access, asked at your first save, it reads the current tab’s title and address, or every tab’s when saving all.",
-          "Those addresses, and what you type after `b`, are never stored or sent. No servers, no analytics, no ads.",
-          "Your bookmarks remain Chrome’s own; if Chrome Sync is on, it syncs them as usual.",
+          "Those addresses, and what you type after `b`, are never stored or sent.",
         ],
       },
       {
@@ -112,11 +105,21 @@ export default defineProduct({
         items: [
           {
             title: "Can I add a link without opening it?",
-            body: "Yes. Drag a link from any page, or the address from the address bar, onto a folder or between bookmarks, and it is saved there with its link text. ⌘/Ctrl + V with addresses on the clipboard saves them into the selected folder. Links you already have aren’t added twice.",
+            body: "Yes, by dragging or pasting. Links you already have aren’t added twice.",
+            steps: [
+              "Drag a link from any page, or the address from the address bar, onto a folder or between bookmarks; it is saved there with its link text.",
+              "With addresses on the clipboard, ⌘/Ctrl + V saves them into the selected folder.",
+            ],
           },
           {
             title: "How do I save a whole window?",
-            body: "Press ⌘/Ctrl + Shift + D. Every tab goes into a new folder in Other bookmarks, named with the date and the number of tabs. Pages that can’t be bookmarked, such as `chrome://` pages, and repeated addresses are skipped. Change edits the new folder; Undo removes it. To save them somewhere else, choose “Save all tabs here” from that folder’s ⋯ menu; the same menu can open all of a folder’s bookmarks in a new window.",
+            body: "Press ⌘/Ctrl + Shift + D. Every tab goes into a new folder in Other bookmarks, named with the date and the number of tabs.",
+            steps: [
+              "Pages that can’t be bookmarked, such as `chrome://` pages, and repeated addresses are skipped.",
+              "Change edits the new folder; Undo removes it.",
+              "To save the tabs somewhere else, choose “Save all tabs here” from that folder’s ⋯ menu.",
+              "The same menu can open all of a folder’s bookmarks in a new window.",
+            ],
           },
           {
             title: "Which languages does the panel speak?",
@@ -130,12 +133,9 @@ export default defineProduct({
     title: "Easier Bookmarks",
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
     eyebrow: "Chrome 书签搜索",
-    headline: "书签在侧边，随手整理",
+    headline: "在侧边栏搜索整理书签",
     lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
-    catalog: {
-      role: "侧边栏",
-      text: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
-    },
+    summary: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
     primaryCta: {
       label: "安装",
       href: "https://chromewebstore.google.com/detail/easier-bookmarks/polhblfkobplgbnklgkecpkpgollapbp",
@@ -146,14 +146,13 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "不发送任何数据：无服务器、分析服务或广告；开启 Chrome 同步时书签随之同步。",
+      networkNote: "不发送任何数据：没有服务器，没有分析服务，也没有广告；开启 Chrome 同步时书签照常同步。",
       stays: "展开的文件夹、最近打开的书签和上次选的文件夹存在扩展的本地存储里。",
       policy: {
         label: "隐私政策",
         href: "/zh/easier-bookmarks/privacy/",
       },
     },
-    meta: "Chrome · 5.0.0",
     visual: {
       kind: "screenshot",
       label: "Easier Bookmarks",
@@ -184,15 +183,14 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "直接用你已有的书签",
+        label: "查找、收藏和整理",
         items: [
-          { title: "地址栏直接搜", body: "输入 `b` 加空格再打几个字，回车打开最匹配的书签。" },
+          { title: "在地址栏里搜", body: "输入 `b` 加空格再打几个字，回车打开最匹配的书签。" },
+          { title: "标题、网址、文件夹都能搜", body: "认全拼和简繁，错一个字也找得到。" },
           {
-            title: "边输入边找到",
-            body: "搜标题、网址、文件夹，认全拼、简繁和一处错字。",
+            title: "一键收藏",
+            body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。星标已是实心时，点它是编辑原书签，不会重复添加。",
           },
-          { title: "一键收藏", body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。" },
-          { title: "认得当前页", body: "已收藏的页面星标是实心的；这时点它是编辑原书签，不会重复添加。" },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
           { title: "一键清理", body: "重复保存的网址和空文件夹，一步就能删掉。" },
         ],
@@ -202,10 +200,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "本机只记下展开的文件夹、上次选的文件夹、最近打开的书签（用于搜索排序），以及上次显示的列表。",
+          "最近打开的书签用于搜索排序；另外还记下上次显示的列表。",
           "第一次收藏时，如果你允许访问标签页，它会读取当前页的标题和网址；收藏全部标签页时则读取每一个。",
-          "这些网址和你在 `b` 后输入的内容都不保存、不发送。没有服务器，没有分析服务，也没有广告。",
-          "书签仍是 Chrome 自己的数据；开启 Chrome 同步时，照常同步。",
+          "这些网址和你在 `b` 后输入的内容，既不保存也不发送。",
         ],
       },
       {
@@ -215,11 +212,21 @@ export default defineProduct({
         items: [
           {
             title: "不打开网页也能收藏链接吗？",
-            body: "能。把网页上的任意链接、或地址栏里的网址拖到文件夹上或两个书签之间，就会连同链接文字存在那里。剪贴板里有网址时，按 ⌘/Ctrl + V 会存进选中的文件夹。已经收藏过的链接不会重复添加。",
+            body: "能，拖进来或粘贴都行。已经收藏过的链接不会重复添加。",
+            steps: [
+              "把网页上的任意链接、或地址栏里的网址拖到文件夹上或两个书签之间，就会连同链接文字存在那里。",
+              "剪贴板里有网址时，按 ⌘/Ctrl + V 会存进选中的文件夹。",
+            ],
           },
           {
             title: "怎样收藏整个窗口？",
-            body: "按 ⌘/Ctrl + Shift + D，每个标签页都存进“其他书签”里的一个新文件夹，名称是日期和标签页数量。`chrome://` 之类无法收藏的页面和重复的网址会跳过。点“更改”可以编辑这个文件夹，点“撤销”则删除它。想存到别处，就在那个文件夹的 ⋯ 菜单里选“把所有标签页存到这里”；同一个菜单也能在新窗口里打开文件夹内的全部书签。",
+            body: "按 ⌘/Ctrl + Shift + D，每个标签页都存进“其他书签”里的一个新文件夹，名称是日期和标签页数量。",
+            steps: [
+              "`chrome://` 之类无法收藏的页面和重复的网址会跳过。",
+              "点“更改”可以编辑这个文件夹，点“撤销”则删除它。",
+              "想存到别处，就在那个文件夹的 ⋯ 菜单里选“把所有标签页存到这里”。",
+              "同一个菜单也能在新窗口里打开文件夹内的全部书签。",
+            ],
           },
           {
             title: "面板支持哪些语言？",

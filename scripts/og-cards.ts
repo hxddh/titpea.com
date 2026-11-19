@@ -54,7 +54,7 @@ export const cards: Card[] = [
     file: product.og,
     eyebrow: product.en.title,
     title: product.en.headline,
-    body: product.en.catalog.text,
+    body: product.en.summary,
     icons: product.icon ? [product.icon] : undefined,
     screenshot: heroScreenshot(product),
   })),

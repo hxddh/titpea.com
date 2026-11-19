@@ -8,8 +8,8 @@ export async function checkRoute(page, viewport, route) {
   await visit(page, new URL(path, baseUrl), `${viewport.name} route`, { images: true });
   const metrics = await page.evaluate(
     ({ route, zhForbiddenTerms, forbiddenTermQuotes }) => {
-      const nav = document.querySelector(".nav");
-      const mobile = document.querySelector(".mobile-menu");
+      const nav = document.querySelector(".nav-page");
+      const mobile = document.querySelector(".products-panel-pages");
       const h1 = document.querySelector("h1");
       const lead = document.querySelector(".lead");
       const rect = h1?.getBoundingClientRect();
@@ -23,8 +23,8 @@ export async function checkRoute(page, viewport, route) {
       const hero = document.querySelector(".home-hero, .about-hero, .product-hero, .page-hero");
       const heroActions = hero?.querySelectorAll(".actions a, .actions .button.is-soon") ?? [];
       // Height spread among the cards of one grid; the worst grid on the page counts.
-      const gridSpreads = Array.from(document.querySelectorAll(".feature-grid")).map((grid) => {
-        const heights = Array.from(grid.querySelectorAll(":scope > article"), (card) =>
+      const gridSpreads = Array.from(document.querySelectorAll(".feature-points")).map((grid) => {
+        const heights = Array.from(grid.querySelectorAll(":scope > li"), (card) =>
           Math.round(card.getBoundingClientRect().height),
         );
         return heights.length > 1 ? Math.max(...heights) - Math.min(...heights) : 0;
@@ -83,8 +83,8 @@ export async function checkRoute(page, viewport, route) {
             ).size,
           };
         })(),
-        featuresGrid: document.querySelector(".feature-grid")
-          ? getComputedStyle(document.querySelector(".feature-grid")).display
+        featuresGrid: document.querySelector(".feature-points")
+          ? getComputedStyle(document.querySelector(".feature-points")).display
           : null,
         imageCount: document.querySelectorAll("img").length,
         brokenImages: Array.from(document.querySelectorAll("img")).filter(

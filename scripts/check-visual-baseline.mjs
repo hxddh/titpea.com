@@ -62,7 +62,7 @@ for (const target of baseline.targets) {
   });
   await page.locator("[data-theme-toggle]").waitFor({ state: "visible" });
 
-  if (target.state === "menu") await page.locator(".mobile-menu summary").click();
+  if (target.state === "menu") await page.locator(".products-menu summary").click();
   if (target.state === "section") {
     // Pin a section (target.section is its id) just under the sticky chrome.
     await page.evaluate((id) => {
@@ -138,13 +138,14 @@ for (const target of baseline.targets) {
     const index = document.querySelector(".product-section-index");
     const active = index?.querySelector("[data-section-link][aria-current]");
     const faq = document.getElementById("faq");
-    const menu = document.querySelector(".mobile-menu");
+    const menu = document.querySelector(".products-menu");
+    const pages = document.querySelector(".products-panel-pages");
     const maxY = document.documentElement.scrollHeight - window.innerHeight;
     return {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       h1Lines: h1Rect && h1LineHeight ? Math.round(h1Rect.height / h1LineHeight) : 0,
-      navDisplay: getComputedStyle(document.querySelector(".nav")).display,
-      mobileDisplay: getComputedStyle(menu).display,
+      navDisplay: getComputedStyle(document.querySelector(".nav-page")).display,
+      mobileDisplay: getComputedStyle(pages).display,
       menuOpen: menu?.hasAttribute("open") ?? false,
       activeHref: active?.getAttribute("href") ?? null,
       faqTop: faq ? Math.round(faq.getBoundingClientRect().top) : null,
@@ -183,11 +184,12 @@ for (const target of baseline.targets) {
 
   if (metrics.overflow > 1)
     failures.push(`${target.path} ${target.viewport}: horizontal overflow ${metrics.overflow}px`);
-  if (metrics.h1Lines > 2) failures.push(`${target.path} ${target.viewport}: h1 wraps to ${metrics.h1Lines} lines`);
+  if (metrics.h1Lines > (target.viewport === "mobile" ? 3 : 2))
+    failures.push(`${target.path} ${target.viewport}: h1 wraps to ${metrics.h1Lines} lines`);
   if (target.viewport === "mobile" && metrics.navDisplay !== "none")
-    failures.push(`${target.path} mobile: desktop nav visible`);
-  if (target.viewport === "mobile" && metrics.mobileDisplay !== "block")
-    failures.push(`${target.path} mobile: mobile menu hidden`);
+    failures.push(`${target.path} mobile: page links shown in the bar`);
+  if (target.viewport === "mobile" && metrics.mobileDisplay !== "flex")
+    failures.push(`${target.path} mobile: the menu has lost its page links`);
   if (target.state === "menu" && !metrics.menuOpen) failures.push(`${target.path} mobile: menu baseline did not open`);
   if (target.state === "faq" && metrics.activeHref !== "#faq")
     failures.push(`${target.path} ${target.viewport}: FAQ baseline active href is ${metrics.activeHref}`);

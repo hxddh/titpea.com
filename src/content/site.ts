@@ -49,14 +49,14 @@ export const about: { person: Partial<Record<Locale, AboutPerson>> } = {
   person: {
     en: {
       paragraphs: [
-        "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, three board games, a Sudoku notebook for Android, and a small world that is still in pre-alpha.",
+        "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, three board games, a Sudoku notebook for Android, and a small harbour-town game for macOS.",
         "I like reading, good food and digital gadgets. What I love most is making interesting things, and this site is where they live.",
         "Most of the code is on GitHub. Each tool’s page says plainly what it touches on your machine and on the network; they update often, and the releases page shows what shipped and when.",
       ],
     },
     zh: {
       paragraphs: [
-        "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，三款棋类游戏，一本 Android 上的数独本，还有一个仍在早期预览的小世界。",
+        "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，三款棋类游戏，一本 Android 上的数独本，还有一款 macOS 上的海港小镇游戏。",
         "我喜欢读书，喜欢美食，也喜欢数码产品。最热爱的，是做出有趣的东西；这个网站就是它们待的地方。",
         "大部分代码放在 GitHub 上。每个工具的页面都写清楚它在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每次发布的版本和日期。",
       ],
@@ -85,7 +85,7 @@ type Ui = {
   /** The count under the Games group: games are not tools. */
   gameCount: string;
   /** Labels of the product page's spec sheet. */
-  spec: { license: string; version: string; released: string; network: string; source: string };
+  spec: { label: string; license: string; version: string; released: string; network: string; source: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
    hero, and under a showcase only when its release differs. `{version}` is filled in. */
   capturedAt: string;
@@ -143,6 +143,32 @@ type Ui = {
   /** A product whose page has no data section yet. */
   privacyUnstated: string;
   privacyProductPage: string;
+  // Catalog vocabulary: one word for each platform and kind, everywhere.
+  products: string;
+  allLabel: string;
+  filterLine: string;
+  filterPlatform: string;
+  filterEmpty: string;
+  /** Labels a platform tag; `{min}` is the oldest supported version. */
+  platforms: Record<"macos" | "windows" | "linux" | "chrome" | "android", { name: string; min: string }>;
+  /** The command-line filter, and the tag on a CLI, Pi extension or Actions workflow. */
+  commandLine: string;
+  /** What kind of thing it is, by product type. */
+  kinds: Record<"cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game", string>;
+  /** The first-open guide beside the download button for an unnotarized build. */
+  firstOpen: {
+    summary: string;
+    macosOnce: string;
+    macosEachRelease: string;
+    /** `{version}` is the macOS version the step starts at. */
+    macosFrom: string;
+    windows: string;
+  };
+  /** The data boundary card's rows. */
+  boundary: { network: string; stays: string; label: string };
+  /** At the end of a product page without a family: up to three products of its line. */
+  moreIn: string;
+  latest: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -162,7 +188,14 @@ export const ui: Record<Locale, Ui> = {
     released: " ({date})",
     toolCount: "{count} tools",
     gameCount: "{count} games",
-    spec: { license: "License", version: "Version", released: "Released", network: "Network", source: "Source" },
+    spec: {
+      label: "Specifications",
+      license: "License",
+      version: "Version",
+      released: "Released",
+      network: "Network",
+      source: "Source",
+    },
     capturedAt: "Captured at {version}",
     wholeCapture: "Whole window",
     pauseVideo: "Pause",
@@ -187,7 +220,7 @@ export const ui: Record<Locale, Ui> = {
     homeDescription: "Small software by one developer, hxddh: object storage, coding agents, Chrome extensions, games.",
     homeLead: "Object storage, coding agents, Chrome extensions, games.",
     featuredTitle: "Selected work",
-    moreToolsTitle: "Every tool",
+    moreToolsTitle: "Everything",
     families: {
       s3: {
         title: "The S3 kit",
@@ -215,8 +248,8 @@ export const ui: Record<Locale, Ui> = {
     aboutDescription:
       "Titpea is one person’s product shelf: object storage, agents, everyday apps, and games, built and released by hxddh.",
     aboutEyebrow: "About Titpea",
-    aboutHeadline: "One person. {count} tools.",
-    aboutLead: "Storage, agents, everyday, games.",
+    aboutHeadline: "{count} tools, made by one person.",
+    aboutLead: "Object storage, coding agents, everyday apps and games.",
     aboutFeed: "Follow releases (Atom)",
     aboutAnalytics: "Page views are counted by Cloudflare Web Analytics: no cookies, no cross-site tracking.",
     releasesMetaTitle: "Releases — Titpea",
@@ -227,7 +260,7 @@ export const ui: Record<Locale, Ui> = {
     releasesEarlier: "Earlier",
     releasesUndatedTitle: "Without GitHub releases.",
     releasesUndatedSub:
-      "Chrome extensions update through the Chrome Web Store, StorageOps installs from PyPI, and Paper Sudoku is not in a store yet. Versions are the ones on their pages.",
+      "Chrome extensions update through the Chrome Web Store, and Paper Sudoku is not in a store yet. The version is the one each page shows.",
     privacyMetaTitle: "Privacy — Titpea",
     privacyDescription:
       "Which Titpea tools go online, when, and where each keeps your data, with links to every product’s own data section and privacy policy.",
@@ -238,6 +271,39 @@ export const ui: Record<Locale, Ui> = {
     privacyDataLink: "Where your data goes",
     privacyUnstated: "Not written up on its page yet.",
     privacyProductPage: "Product page",
+    products: "Products",
+    allLabel: "All",
+    filterLine: "Kind",
+    filterPlatform: "Runs on",
+    filterEmpty: "Nothing matches both filters.",
+    platforms: {
+      macos: { name: "macOS", min: "macOS {min}+" },
+      windows: { name: "Windows", min: "Windows {min}+" },
+      linux: { name: "Linux", min: "Linux" },
+      chrome: { name: "Chrome", min: "Chrome {min}+" },
+      android: { name: "Android", min: "Android {min}+" },
+    },
+    commandLine: "Command line",
+    kinds: {
+      cli: "CLI",
+      pi: "Pi extension",
+      actions: "GitHub Actions",
+      desktop: "Desktop app",
+      mac: "Mac app",
+      extension: "Chrome extension",
+      game: "Game",
+    },
+    firstOpen: {
+      summary: "Not notarized: how to open it",
+      macosOnce: "macOS: the first time, open System Settings → Privacy & Security and click “Open Anyway”.",
+      macosEachRelease:
+        "macOS: after installing each new version, open System Settings → Privacy & Security and click “Open Anyway” once.",
+      macosFrom: "macOS {version} or later",
+      windows: "Windows: if SmartScreen stops it, choose “More info”, then “Run anyway”.",
+    },
+    boundary: { network: "Network", stays: "Your data", label: "Data boundary" },
+    moreIn: "Also in {line}",
+    latest: "Latest",
   },
   zh: {
     primaryLabel: "主导航",
@@ -255,7 +321,7 @@ export const ui: Record<Locale, Ui> = {
     released: "（{date}）",
     toolCount: "{count} 个",
     gameCount: "{count} 款",
-    spec: { license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
+    spec: { label: "规格", license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
@@ -280,7 +346,7 @@ export const ui: Record<Locale, Ui> = {
     homeDescription: "hxddh 一个人开发的小软件：对象存储、编码 Agent、Chrome 扩展、游戏。",
     homeLead: "对象存储、编码 Agent、Chrome 扩展、游戏。",
     featuredTitle: "主要作品",
-    moreToolsTitle: "全部工具",
+    moreToolsTitle: "全部作品",
     families: {
       s3: {
         title: "S3 工具组",
@@ -307,8 +373,8 @@ export const ui: Record<Locale, Ui> = {
     aboutMetaTitle: "关于 Titpea — hxddh",
     aboutDescription: "Titpea 是一个人的产品架：对象存储、Agent、日常小工具和游戏，由 hxddh 开发并发布。",
     aboutEyebrow: "关于 Titpea",
-    aboutHeadline: "一个人，{count} 个工具",
-    aboutLead: "存储、Agent、日常、游戏。",
+    aboutHeadline: "一个人做的 {count} 个工具",
+    aboutLead: "对象存储、编码 Agent、日常应用和游戏。",
     aboutFeed: "订阅发布（Atom）",
     aboutAnalytics: "访问量由 Cloudflare Web Analytics 统计：不用 cookie，不做跨站追踪。",
     releasesMetaTitle: "发布记录 — Titpea",
@@ -317,8 +383,7 @@ export const ui: Record<Locale, Ui> = {
     releasesLead: "每个工具的最新版本，最新的在前。",
     releasesEarlier: "更早",
     releasesUndatedTitle: "没有 GitHub 发布的工具",
-    releasesUndatedSub:
-      "Chrome 扩展通过 Chrome 网上应用店更新，StorageOps 从 PyPI 安装，纸上数独还未上架应用商店。版本号以各自页面为准。",
+    releasesUndatedSub: "Chrome 扩展通过 Chrome 网上应用店更新，纸上数独还未上架应用商店。版本号与各自页面一致。",
     privacyMetaTitle: "隐私 — Titpea",
     privacyDescription: "Titpea 的各个工具什么时候联网、数据留在哪里，并链接到每个产品自己的数据说明和隐私政策。",
     privacyHeadline: "哪些工具会联网",
@@ -328,5 +393,37 @@ export const ui: Record<Locale, Ui> = {
     privacyDataLink: "数据的去向",
     privacyUnstated: "页面上还没写。",
     privacyProductPage: "产品页",
+    products: "产品",
+    allLabel: "全部",
+    filterLine: "类别",
+    filterPlatform: "平台",
+    filterEmpty: "没有同时符合两个条件的产品。",
+    platforms: {
+      macos: { name: "macOS", min: "macOS {min}+" },
+      windows: { name: "Windows", min: "Windows {min}+" },
+      linux: { name: "Linux", min: "Linux" },
+      chrome: { name: "Chrome", min: "Chrome {min}+" },
+      android: { name: "Android", min: "Android {min}+" },
+    },
+    commandLine: "命令行",
+    kinds: {
+      cli: "命令行工具",
+      pi: "Pi 扩展",
+      actions: "GitHub Actions",
+      desktop: "桌面应用",
+      mac: "Mac 应用",
+      extension: "Chrome 扩展",
+      game: "游戏",
+    },
+    firstOpen: {
+      summary: "未经公证：首次打开方法",
+      macosOnce: "macOS：第一次打开时，到“系统设置 → 隐私与安全性”点“仍要打开”。",
+      macosEachRelease: "macOS：每装一个新版本，到“系统设置 → 隐私与安全性”点一次“仍要打开”。",
+      macosFrom: "macOS {version} 及以上",
+      windows: "Windows：如果 SmartScreen 拦下，点“更多信息”，再点“仍要运行”。",
+    },
+    boundary: { network: "联网", stays: "你的数据", label: "数据边界" },
+    moreIn: "{line}类的其他产品",
+    latest: "最新",
   },
 };
