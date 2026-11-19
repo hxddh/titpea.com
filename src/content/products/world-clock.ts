@@ -157,7 +157,7 @@ export default defineProduct({
     title: "世界时钟",
     description: "Chrome 扩展：显示你所选城市的时间，工作时间常亮、其余淡出，滚动查看任意时刻。",
     eyebrow: "Chrome 时区扩展",
-    headline: "一个弹窗看几个城市的时间",
+    headline: "一个弹窗看各城市时间",
     lead: "一个弹窗看你的几个城市，工作时间高亮。滚动就能查看任意时刻。",
     summary: "你选的几个城市此刻几点，滚动就能看任意时刻。",
     primaryCta: {

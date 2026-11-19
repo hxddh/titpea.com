@@ -133,7 +133,7 @@ export default defineProduct({
     title: "Easier Bookmarks",
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
     eyebrow: "Chrome 书签搜索",
-    headline: "在侧边栏里搜索和整理书签",
+    headline: "在侧边栏搜索整理书签",
     lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
     summary: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
     primaryCta: {
