@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-storageops.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -84,7 +83,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What StorageOps adds to Pi",
+        label: "Skills and tools for Pi",
         items: [
           {
             title: "What to bring",

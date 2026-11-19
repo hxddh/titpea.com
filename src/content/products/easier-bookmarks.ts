@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-easier-bookmarks.png",
   schema: {
     category: "BrowserApplication",
-    os: "Chrome",
   },
   sectionIndex: false,
   en: {
@@ -47,7 +46,7 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 5.0.0 side panel; bookmarks and site icons are examples.",
+      caption: "The side panel; bookmarks and site icons are examples.",
       asOf: "v5.0.0",
     },
     showcases: [
@@ -59,7 +58,7 @@ export default defineProduct({
         dark: { src: "/assets/easier-bookmarks-search-en-dark.webp", width: 1900, height: 1425 },
         title: "Results as you type.",
         body: "Each match shows the folder it lives in; Enter opens the first.",
-        caption: "Easier Bookmarks 5.0.0, searching “plan”; bookmarks are examples.",
+        caption: "Searching “plan”; bookmarks are examples.",
         asOf: "v5.0.0",
       },
     ],
@@ -153,7 +152,7 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 5.0.0 侧边栏；书签和网站图标为示例。",
+      caption: "侧边栏；书签和网站图标为示例。",
       asOf: "v5.0.0",
     },
     showcases: [
@@ -165,7 +164,7 @@ export default defineProduct({
         dark: { src: "/assets/easier-bookmarks-search-zh-dark.webp", width: 1900, height: 1425 },
         title: "打拼音也能搜到",
         body: "每个结果都写明所在文件夹；回车打开第一个。",
-        caption: "Easier Bookmarks 5.0.0，用拼音“jingdu”搜索；书签为示例。",
+        caption: "用拼音“jingdu”搜索；书签为示例。",
         asOf: "v5.0.0",
       },
     ],

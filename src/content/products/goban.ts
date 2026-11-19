@@ -12,7 +12,6 @@ export default defineProduct({
   og: "/assets/og-goban.png",
   schema: {
     category: "GameApplication",
-    os: "macOS, Windows",
   },
   sectionIndex: false,
   en: {

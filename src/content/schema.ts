@@ -445,7 +445,6 @@ export type Product = {
   og: string;
   schema: {
     category: "DeveloperApplication" | "BrowserApplication" | "GameApplication" | "BusinessApplication";
-    os: "Cross-platform" | "Chrome" | "macOS" | "macOS, Windows" | "Android";
   };
   /** Long pages pin their own section links in the local nav. */
   sectionIndex: boolean;

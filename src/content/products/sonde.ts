@@ -33,7 +33,6 @@ export default defineProduct({
   og: "/assets/og-sonde.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -123,7 +122,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What sonde does with a run",
+        label: "From one run to findings",
         items: [
           {
             title: "Operations, not requests",

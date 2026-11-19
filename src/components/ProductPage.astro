@@ -63,8 +63,15 @@ const repoUrl = product.repo ? `https://github.com/${product.repo}` : undefined;
 const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(/\/$/, "") === repoUrl;
 // The network level is the one privacy fact on the page; the Privacy index
 // says the rest, from the same \`privacy\` field.
+const level = copyUi.privacyLevels[copy.privacy.network];
 const networkTag = {
-  value: `${copyUi.spec.network}: ${copyUi.privacyLevels[copy.privacy.network]}`,
+  // "不联网" says itself; otherwise the label and the level, in the page's punctuation.
+  value:
+    model.locale === "zh"
+      ? copy.privacy.network === "none"
+        ? level
+        : `${copyUi.spec.network}：${level}`
+      : `${copyUi.spec.network}: ${level}`,
   href: `${pathFor(model.locale, "privacy")}#${model.slug}`,
   tone: "network" as const,
 };
@@ -150,7 +157,7 @@ const showcaseLabels = showcases.map((showcase) => {
         {specTags.map((tag) => (
           <li data-tone={tag.tone}>
             {tag.href ? (
-              <a href={tag.href} rel="noreferrer">
+              <a href={tag.href} rel={tag.href.startsWith("/") ? undefined : "noreferrer"}>
                 {tag.value}
               </a>
             ) : (

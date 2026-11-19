@@ -68,9 +68,6 @@ const { columns } = model;
               )}
               <td data-label={columns.details}>
                 <ul class="privacy-links">
-                  <li>
-                    <a href={row.href}>{model.productPage}</a>
-                  </li>
                   {row.privacy?.policy && (
                     <li>
                       <a

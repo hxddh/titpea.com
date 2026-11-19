@@ -12,7 +12,6 @@ export default defineProduct({
   og: "/assets/og-world-machine.png",
   schema: {
     category: "GameApplication",
-    os: "macOS",
   },
   sectionIndex: true,
   en: {
@@ -66,7 +65,7 @@ export default defineProduct({
         alt: "Pocket Universe on Ares, sol 35: domes, habitat modules and a greenhouse on red regolith, gauges for trust, tension and stores, and Nia asking whether the grow lights can run an hour longer because the beans are sulking. Captured from the app running in its Linux preview.",
         title: "Other places in Pocket Universe.",
         body: "Ares, Maple Street and Icebridge still open, though New offers only the harbour.",
-        caption: "From the app’s Linux preview, like the next picture.",
+        caption: "Captured from a development build, like the next picture.",
       },
       {
         src: "/assets/world-machine-moment.webp",
@@ -190,7 +189,7 @@ export default defineProduct({
         alt: "Pocket Universe 的 Ares 第 35 个火星日：红色风化层上的穹顶、居住舱和温室，信任、紧张与储备三个指标，Nia 问能不能让补光灯多开一小时，因为豆子在闹脾气。截自应用在 Linux 预览环境中的运行画面，界面为英文。",
         title: "Pocket Universe 里的其他地方",
         body: "Ares、Maple Street 和 Icebridge 仍能打开，只是新建时只提供港口。",
-        caption: "此图与下一张截自应用的 Linux 预览环境。",
+        caption: "此图与下一张截自开发版本。",
       },
       {
         src: "/assets/world-machine-moment.webp",

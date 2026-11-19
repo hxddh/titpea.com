@@ -15,7 +15,6 @@ export default defineProduct({
   og: "/assets/og-pagewise.png",
   schema: {
     category: "BusinessApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {

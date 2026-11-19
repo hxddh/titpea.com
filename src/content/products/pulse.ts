@@ -12,7 +12,6 @@ export default defineProduct({
   og: "/assets/og-pulse.png",
   schema: {
     category: "DeveloperApplication",
-    os: "macOS",
   },
   sectionIndex: false,
   en: {
@@ -160,7 +159,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "What Pulse does",
+        label: "One lamp for every agent",
         items: [
           { title: "One banner per wait", body: "Names the request, like `Bash: npm run build`; gone once answered." },
           { title: "Only lamps", body: "It never answers prompts, dispatches work, or shows tokens or cost." },
@@ -357,7 +356,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Pulse 做什么",
+        label: "一盏灯看所有 Agent",
         items: [
           { title: "每次等待一条横幅", body: "直接写出请求，如 `Bash: npm run build`；回答后撤回。" },
           { title: "只做灯", body: "不替你回答授权，不派活，不显示 token 或费用。" },

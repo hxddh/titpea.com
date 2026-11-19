@@ -22,7 +22,6 @@ export default defineProduct({
   og: "/assets/og-goban-studio.png",
   schema: {
     category: "GameApplication",
-    os: "macOS, Windows",
   },
   sectionIndex: false,
   en: {
@@ -65,7 +64,7 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 17.0; the games and progress shown are samples.",
+      caption: "The games and progress shown are samples.",
       asOf: "v17.0.0",
     },
     showcases: [
@@ -86,7 +85,7 @@ export default defineProduct({
         label: "Lessons, practice and review",
         items: [
           {
-            title: "A review of every game",
+            title: "Mistakes marked by KataGo",
             body: "KataGo marks slack moves and mistakes, and picks up to three key moments for you to retry.",
           },
           {
@@ -176,7 +175,7 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 17.0；图中的对局和进度为示例。",
+      caption: "图中的对局和进度为示例。",
       asOf: "v17.0.0",
     },
     showcases: [
@@ -196,7 +195,7 @@ export default defineProduct({
         id: "features",
         label: "课程、练习和复盘",
         items: [
-          { title: "每一局都复盘", body: "KataGo 标出缓手和失误，最多挑出三个关键时刻，让你从那个局面再下一次。" },
+          { title: "KataGo 标出失着", body: "KataGo 标出缓手和失误，最多挑出三个关键时刻，让你从那个局面再下一次。" },
           { title: "本周重点", body: "从你的对局和做题里挑出一两个主题，并说明为什么挑它。" },
           { title: "从第一颗子学起", body: "23 个单元、104 课，从入门到约 1 段。" },
           {

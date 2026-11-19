@@ -18,7 +18,6 @@ export default defineProduct({
   og: "/assets/og-lenslet.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -91,7 +90,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What Lenslet does",
+        label: "From test run to IAM policy",
         items: [
           {
             title: "Calls mapped to IAM",
@@ -214,7 +213,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Lenslet 做什么",
+        label: "从测试到 IAM 策略",
         items: [
           {
             title: "调用对应到 IAM",

@@ -17,10 +17,10 @@ export const camelCase = (slug) => slug.replace(/-([a-z0-9])/g, (_, char) => cha
 
 /** The schema.org fields a type implies; the author checks them. */
 export function defaultsFor(type) {
-  if (type === "extension") return { category: "BrowserApplication", os: "Chrome" };
-  if (type === "game") return { category: "GameApplication", os: "macOS" };
-  if (type === "mac") return { category: "DeveloperApplication", os: "macOS" };
-  return { category: "DeveloperApplication", os: "Cross-platform" };
+  if (type === "extension") return { category: "BrowserApplication" };
+  if (type === "game") return { category: "GameApplication" };
+  if (type === "mac") return { category: "DeveloperApplication" };
+  return { category: "DeveloperApplication" };
 }
 
 function copyBlock(locale, slug) {
@@ -72,7 +72,6 @@ export default defineProduct({
   og: "/assets/og-${slug}.png",
   schema: {
     category: "${facts.category}",
-    os: "${facts.os}",
   },
   sectionIndex: false,
 ${copyBlock("en", slug)}

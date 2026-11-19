@@ -5,7 +5,7 @@ import { otherLocale, pageTitle, pathFor, plainText, versionOf } from "./shared"
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
 import { type CatalogItem, type Family, familyFor, relatedFor } from "./catalog";
-import { firstOpenLines, productFacts, type ProductFacts } from "./facts";
+import { firstOpenLines, platformLabels, productFacts, type ProductFacts } from "./facts";
 
 export type ProductPageModel = {
   kind: "product";
@@ -50,7 +50,8 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     description: copy.description,
     inLanguage: locale === "zh" ? "zh-CN" : "en",
     applicationCategory: product.schema.category,
-    operatingSystem: product.schema.os,
+    // Derived from \`platforms\`, the one place a product says where it runs.
+    operatingSystem: platformLabels(product, "en").join(", ") || "Cross-platform",
     url: absoluteUrl(path),
     // Every product is free. A store listing installs and a release downloads;
     // a source-only product's repository is only its sameAs, never a download.

@@ -27,7 +27,6 @@ export default defineProduct({
   og: "/assets/og-readout.png",
   schema: {
     category: "DeveloperApplication",
-    os: "macOS",
   },
   sectionIndex: true,
   en: {
@@ -71,7 +70,7 @@ export default defineProduct({
         width: 2489,
         height: 1328,
       },
-      caption: "Readout 6.0 on macOS 26, from its repository’s screenshot gallery.",
+      caption: "On macOS 26, from the repository’s screenshot gallery.",
       asOf: "v6.0.0",
     },
     showcases: [
@@ -99,7 +98,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What Readout does",
+        label: "Reading files as agents change them",
         items: [
           {
             title: "Your place holds",
@@ -196,7 +195,7 @@ export default defineProduct({
         width: 2489,
         height: 1328,
       },
-      caption: "Readout 6.0，macOS 26，取自仓库的截图集；本页截图界面均为英文。",
+      caption: "macOS 26，取自仓库的截图集；本页截图界面均为英文。",
       asOf: "v6.0.0",
     },
     showcases: [
@@ -224,7 +223,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Readout 做什么",
+        label: "边改边读",
         items: [
           { title: "读到哪停在哪", body: "按段落增量更新；读到末尾时，像终端一样跟着走。" },
           { title: "与上次提交比较", body: "“显示 ▸ 与上次提交比较”标出提交之后的改动，⌘Z 可撤销。" },

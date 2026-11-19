@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-agent-radar.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {

@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-storage-agent-workbench.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: false,
   en: {
@@ -63,7 +62,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "What the agent can do",
+        label: "Read-only, account-wide",
         items: [
           {
             title: "Reads the whole account",

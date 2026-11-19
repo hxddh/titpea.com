@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-bilingual.png",
   schema: {
     category: "BrowserApplication",
-    os: "Chrome",
   },
   sectionIndex: false,
   en: {

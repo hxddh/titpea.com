@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-httpmon.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -85,7 +84,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What httpmon can do",
+        label: "Record, compare and replay",
         items: [
           {
             title: "HTTP/2, gRPC, WebSocket",
@@ -211,7 +210,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "httpmon 能做什么",
+        label: "记录、对比和重放",
         items: [
           {
             title: "HTTP/2、gRPC、WebSocket",
