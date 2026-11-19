@@ -3,12 +3,13 @@ import { defineProduct } from "../schema";
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
 // to v17.0.0.md, docs/plan.md and docs/strength.md at v17.0.0; macOS 13 from the
-// README's download table. Pictures were captured at v14.0.0. The
+// README's download table. Pictures were captured at v17.0.0. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
-// with four analysed sample games seeded as its practice-focus test does. The browser
-// harness has no KataGo, so no game or review is shown until a capture of the
-// packaged app exists.
+// with four analysed sample games seeded as its practice-focus test does; the
+// showcase is the same session's first problem. The browser harness has no
+// KataGo, so no game or review is shown until a capture of the packaged app
+// exists.
 export default defineProduct({
   slug: "goban-studio",
   line: "games",
@@ -67,16 +68,16 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 14.0; the games and progress shown are samples.",
-      asOf: "v14.0.0",
+      caption: "Goban Studio 17.0; the games and progress shown are samples.",
+      asOf: "v17.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-en.webp",
-        alt: "A Goban Studio problem, the second of today’s six practice items, chosen for this week’s focus, cutting: Black to play and capture the marked stones, with Hint, Show answer, the difficulty and your record beside the board.",
+        alt: "A Goban Studio problem on a 19×19 board, the second of today’s six practice items, chosen for this week’s focus, cutting: Black to play and capture the marked stones, with Hint, Show answer, the difficulty and your record beside the board.",
         width: 2880,
         height: 1800,
-        asOf: "v14.0.0",
+        asOf: "v17.0.0",
         title: "Problems with proved answers.",
         body: "543 built-in problems, each answer proved by the app’s solver; old ones come back turned, mirrored or recoloured.",
       },
@@ -188,16 +189,16 @@ export default defineProduct({
         width: 2880,
         height: 1800,
       },
-      caption: "Goban Studio 14.0；图中的对局和进度为示例。",
-      asOf: "v14.0.0",
+      caption: "Goban Studio 17.0；图中的对局和进度为示例。",
+      asOf: "v17.0.0",
     },
     showcases: [
       {
         src: "/assets/goban-studio-problem-zh.webp",
-        alt: "Goban Studio 今天练习 6 项中的第 2 项，来自本周重点“切断”：黑先，吃掉标记的棋子，棋盘旁有提示、看答案、难度和记录。",
+        alt: "Goban Studio 19 路棋盘上今天练习 6 项中的第 2 项，来自本周重点“切断”：黑先，吃掉标记的棋子，棋盘旁有提示、看答案、难度和记录。",
         width: 2880,
         height: 1800,
-        asOf: "v14.0.0",
+        asOf: "v17.0.0",
         title: "每道题的答案都经过证明",
         body: "内置 543 道题，答案都由应用的求解器证明；旧题会旋转、镜像或换色再出现。",
       },

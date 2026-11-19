@@ -1,5 +1,8 @@
 import { defineProduct } from "../schema";
 
+// Pictures: the app's UI harness at 25.0.0. The hero closes the assistant
+// panel, asks from the margin bar, and shows the scripted answer's three
+// cards beside page 1; the search showcase was captured at 24.0.0.
 export default defineProduct({
   slug: "pagewise",
   line: "everyday",
@@ -53,12 +56,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/pagewise-analysis.webp",
-        alt: "PageWise with a sample PDF open and the question “What does this page say?” answered from page 1, with a Read page 1 step and a citation",
-        width: 2880,
-        height: 1800,
+        alt: "PageWise with the assistant panel closed: a question asked from the small bar at the foot of the page, and three answer cards in the page margin beside page 1, each marked Verified.",
+        width: 2560,
+        height: 1600,
       },
-      caption: "Illustration: the app's UI harness, with a sample document and a scripted answer.",
-      asOf: "v24.0.0",
+      caption: "Illustration: the UI harness; a sample document and a scripted answer in the margin.",
+      asOf: "v25.0.0",
     },
     showcases: [
       {
@@ -178,12 +181,12 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/pagewise-analysis.webp",
-        alt: "PageWise 打开示例 PDF，回答“What does this page say?”，写明读了第 1 页并给出引用（界面为英文）",
-        width: 2880,
-        height: 1800,
+        alt: "PageWise 收起助手面板后：在页面底部的小输入条里提问，三张回答卡片显示在第 1 页旁的页边，均标为已核实（界面为英文）。",
+        width: 2560,
+        height: 1600,
       },
-      caption: "示意图：应用界面测试工具中的示例文档与脚本回答（界面为英文）。",
-      asOf: "v24.0.0",
+      caption: "示意图：应用界面测试工具中的示例文档与脚本回答，回答显示在页边（界面为英文）。",
+      asOf: "v25.0.0",
     },
     showcases: [
       {
