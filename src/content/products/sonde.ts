@@ -33,7 +33,6 @@ export default defineProduct({
   og: "/assets/og-sonde.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -123,7 +122,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What sonde does with a run",
+        label: "From one run to findings",
         items: [
           {
             title: "Operations, not requests",
@@ -145,18 +144,6 @@ export default defineProduct({
             title: "Replay on another store",
             body: "`compare --replay` re-enacts a run on another store and shows where its answers differ and what the run costs there.",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "Credentials stay in sonde; the recorded program gets throwaway keys.",
-          "Runs keep each request’s metadata, never object data, with signatures and tokens redacted; the program’s output is kept as printed.",
-          "A program may do whatever it would without sonde; trials refuse deleting what they did not write; `--policy read-only` allows only reads.",
-          "sonde’s own destructive actions, like aborting uploads, are a dry run first, run only with `--yes`, and go to an audit log.",
         ],
       },
       {
@@ -299,18 +286,6 @@ export default defineProduct({
             title: "在另一个存储上重放",
             body: "`compare --replay` 在另一个存储上重演一次运行，指出哪里应答不同，以及在那里要花多少钱。",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据",
-        title: "数据的去向",
-        items: [
-          "凭证留在 sonde 里，被录制的程序只拿到一次性密钥。",
-          "运行记录只记每个请求的元数据，从不记对象数据，签名和令牌都会被抹掉；程序的输出按原样保存。",
-          "程序能做的事和不经过 sonde 时一样；故障试运行时不许删除不是它写的东西；`--policy read-only` 只允许读取。",
-          "sonde 自己的破坏性操作（比如中止上传）都先试运行，加上 `--yes` 才真正执行，并写进审计日志。",
         ],
       },
       {

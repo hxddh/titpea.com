@@ -19,14 +19,10 @@ export type PrivacyPageModel = {
     name: string;
     href: string;
     icon: string;
-    /** Absent when the product's page has no data section yet. */
-    privacy?: PrivacySummary & { level: string };
-    /** Its "Where your data goes" section, when the page has one. */
-    dataHref?: string;
+    privacy: PrivacySummary & { level: string };
+    /** The row's anchor: a product page's Network tag links here. */
+    slug: string;
   }>;
-  dataLabel: string;
-  unstated: string;
-  productPage: string;
   /** Shown only while Web Analytics is on, as on About. */
   analytics?: string;
   expectedText: string[];
@@ -55,18 +51,14 @@ export function privacyPage(locale: Locale): PrivacyPageModel {
     columns: copy.privacyColumns,
     rows: products.map((product) => {
       const privacy = product[locale].privacy;
-      const hasData = product[locale].sections.some((section) => section.kind === "data");
       return {
         name: product[locale].title,
         href: pathFor(locale, product.slug),
         icon: product.icon,
-        privacy: privacy && { ...privacy, level: copy.privacyLevels[privacy.network] },
-        dataHref: hasData ? `${pathFor(locale, product.slug)}#data` : undefined,
+        privacy: { ...privacy, level: copy.privacyLevels[privacy.network] },
+        slug: product.slug,
       };
     }),
-    dataLabel: copy.privacyDataLink,
-    unstated: copy.privacyUnstated,
-    productPage: copy.privacyProductPage,
     analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
     expectedText: [copy.privacyHeadline, copy.privacyColumns.network],
   };

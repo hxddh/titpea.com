@@ -22,7 +22,6 @@ export default defineProduct({
   og: "/assets/og-paper-sudoku.png",
   schema: {
     category: "GameApplication",
-    os: "Android",
   },
   sectionIndex: false,
   en: {
@@ -31,7 +30,7 @@ export default defineProduct({
       "A Sudoku notebook for Android: one page a day, a practice stack that grows harder as you learn, and a Coach in the margin. No network.",
     eyebrow: "Sudoku notebook for Android",
     headline: "The notebook opens on today’s Sudoku page.",
-    lead: "A Sudoku notebook that opens on today’s page. If you get stuck, a Coach writes hints in the margin. It has no network access.",
+    lead: "Each day gets a fresh page in the notebook. If you get stuck, a Coach writes hints in the margin. It has no network access.",
     summary: "A Sudoku notebook for Android with one page a day and a Coach in the margin when you get stuck.",
     primaryCta: {
       label: "Coming to Google Play",
@@ -61,8 +60,8 @@ export default defineProduct({
         width: 1080,
         height: 1920,
       },
-      caption: "Drawn by the app’s screenshot test at phone size (14.0)",
-      asOf: "v14.0.0-sideload",
+      caption: "Drawn by the app’s screenshot test at phone size",
+      asOf: "v14.0",
     },
     showcases: [
       {
@@ -72,7 +71,7 @@ export default defineProduct({
         height: 1920,
         title: "Hints come in order.",
         body: "The Coach writes first where to look, then why, and gives the answer only if you ask for it.",
-        asOf: "v14.0.0-sideload",
+        asOf: "v14.0",
       },
       {
         src: "/assets/paper-sudoku-notebook.webp",
@@ -81,7 +80,7 @@ export default defineProduct({
         height: 1920,
         title: "Past days stay in the notebook.",
         body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
-        asOf: "v14.0.0-sideload",
+        asOf: "v14.0",
       },
     ],
     sections: [
@@ -109,15 +108,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "Android’s own backup may copy games, results and settings to your Google account; you can turn that off.",
-          "Sharing sends only the text you see in the share sheet; printing uses Android’s print service.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -125,7 +115,7 @@ export default defineProduct({
           {
             title: "What does it need?",
             body: "Android 8.0 or later, on a phone, a tablet or a foldable. On a wide screen the notebook and the open page sit side by side. It works offline.",
-            asOf: "v14.0.0-sideload",
+            asOf: "v14.0",
           },
           {
             title: "Where can I get it?",
@@ -134,7 +124,7 @@ export default defineProduct({
           {
             title: "Does it work with TalkBack and a keyboard?",
             body: "Yes. With TalkBack each cell can be written or erased from the cell itself, and the keys come straight after the board; a hardware keyboard writes digits too.",
-            asOf: "v14.0.0-sideload",
+            asOf: "v14.0",
           },
         ],
       },
@@ -145,7 +135,7 @@ export default defineProduct({
     description: "Android 上的数独本：每天一页，练习本越做越难，卡住时教练在页边提示。不联网。",
     eyebrow: "Android 数独本",
     headline: "打开本子，就是今天这一页数独",
-    lead: "一本打开就是今天这一页的数独本。卡住时，教练会在页边提示。应用不联网。",
+    lead: "每天一页新数独，写在同一个本子里。卡住时，教练会在页边提示。应用不联网。",
     summary: "Android 上的数独本，每天一页，卡住时有教练在页边提示。",
     primaryCta: {
       label: "即将上架 Google Play",
@@ -175,8 +165,8 @@ export default defineProduct({
         width: 1080,
         height: 1920,
       },
-      caption: "由应用的截图测试按手机尺寸绘制（14.0，界面为英文）",
-      asOf: "v14.0.0-sideload",
+      caption: "由应用的截图测试按手机尺寸绘制，界面为英文",
+      asOf: "v14.0",
     },
     showcases: [
       {
@@ -186,7 +176,7 @@ export default defineProduct({
         height: 1200,
         title: "提示一步一步来",
         body: "教练先写看哪里，再写为什么，你要了才给答案。",
-        asOf: "v14.0.0-sideload",
+        asOf: "v14.0",
       },
       {
         src: "/assets/paper-sudoku-notebook-zh.webp",
@@ -195,7 +185,7 @@ export default defineProduct({
         height: 1200,
         title: "过去的每一天都留在本子里",
         body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
-        asOf: "v14.0.0-sideload",
+        asOf: "v14.0",
       },
     ],
     sections: [
@@ -211,15 +201,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "Android 自带的备份可能会把对局、成绩和设置存进你的 Google 账号，可以在 Android 设置里关闭。",
-          "分享只发送分享面板里你看到的文字；打印使用 Android 的打印服务。",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "常见问题",
@@ -227,7 +208,7 @@ export default defineProduct({
           {
             title: "需要什么设备？",
             body: "Android 8.0 或更高版本的手机、平板或折叠屏。宽屏上，数独本和打开的那一页并排显示。离线也能用。",
-            asOf: "v14.0.0-sideload",
+            asOf: "v14.0",
           },
           {
             title: "在哪里下载？",
@@ -236,7 +217,7 @@ export default defineProduct({
           {
             title: "能用 TalkBack 和键盘吗？",
             body: "能。开启 TalkBack 时，每一格都可以在格子上直接写入或擦除，数字键紧跟在棋盘之后；实体键盘也可以输入数字。",
-            asOf: "v14.0.0-sideload",
+            asOf: "v14.0",
           },
         ],
       },

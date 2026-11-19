@@ -33,7 +33,6 @@ export function failureReasons(result) {
     isAsset || isAuxCheck ? true : result.brokenImages === 0 && (!isBrowserProductPage || result.imageCount > 0);
   const browserVisualOk = result.browserVisual
     ? result.browserVisual.hasChromeCta &&
-      result.browserVisual.hasPrivacyText &&
       (result.browserVisual.imageCount > 0 || result.browserVisual.liveDemo) &&
       result.browserVisual.images.every(
         (image) => image.alt.length > 12 && image.loaded && image.sourceWidth >= 600 && image.sourceHeight >= 600,
@@ -43,8 +42,8 @@ export function failureReasons(result) {
   const isHome = route?.kind === "home";
   const reasons = [];
   if (result.overflow > 1) reasons.push(`horizontal overflow ${result.overflow}px`);
-  // A product's title is one sentence (design v7): two lines on wide screens, three on a phone.
-  const h1Limit = result.viewport === "mobile" && result.route?.kind === "product" ? 3 : 2;
+  // Titles are sentences (design v7): two lines on wide screens, three on a phone (as visual:check).
+  const h1Limit = result.viewport === "mobile" ? 3 : 2;
   if (result.h1Lines > h1Limit) reasons.push(`h1 wraps to ${result.h1Lines} lines`);
   // A privacy policy is a document: its lead is a paragraph and it has no actions.
   if (!isAsset && !isAuxCheck && !isPrivacy && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {

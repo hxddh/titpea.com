@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-world-clock.png",
   schema: {
     category: "BrowserApplication",
-    os: "Chrome",
   },
   sectionIndex: false,
   en: {
@@ -31,7 +30,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "No network requests, and no web pages read.",
+      networkNote: "No network requests, and no web pages read. No data collection, no analytics, no account.",
       stays:
         "Cities, theme and time format sync through Chrome storage between your own browsers, never to the developer.",
       policy: {
@@ -75,7 +74,7 @@ export default defineProduct({
           alt: "The popup shifted three hours ahead, a +3h chip in its header: London 3:00 PM, Paris and Berlin 4:00 PM, New York and Toronto 10:00 AM, all in working hours; under each city a strip shows its own working hours and, brighter, the hours they all share",
           width: 1020,
           height: 1107,
-          caption: "World Clock 9.0.0 popup shifted +3h; cities are examples.",
+          caption: "The popup shifted +3h; cities are examples.",
         },
       },
     },
@@ -127,12 +126,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: ["No data collection, no analytics and no account; the only permission it asks for is `storage`."],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -170,7 +163,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "不联网，也不读取网页。",
+      networkNote: "不联网，也不读取网页。不收集数据，没有分析服务，也不需要账号。",
       stays: "城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不发给开发者。",
       policy: {
         label: "隐私说明",
@@ -212,7 +205,7 @@ export default defineProduct({
           alt: "弹窗时间向后拨了三小时，顶部显示 +3h：北京 12:00，东京和首尔 13:00，新加坡 12:00，悉尼 15:00，都在工作时间内；每个城市下方的细条标出它自己的工作时间，大家都在上班的那几小时更亮",
           width: 1020,
           height: 1107,
-          caption: "世界时钟 9.0.0 弹窗，时间后拨 3 小时；城市为示例。",
+          caption: "弹窗时间后拨 3 小时；城市为示例。",
         },
       },
     },
@@ -250,12 +243,6 @@ export default defineProduct({
           { title: "复制时间", body: "点一下复制一个时间，或按 ⌘C / Ctrl+C 复制全部城市。" },
           { title: "五种主题", body: "默认、终端、杂志、纸张、高对比；外观可选自动、浅色或深色。" },
         ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: ["不收集任何数据，没有分析服务，也不需要账号；只申请一项权限 `storage`。"],
       },
       {
         kind: "faq",

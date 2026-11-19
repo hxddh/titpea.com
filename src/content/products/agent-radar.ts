@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-agent-radar.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -84,18 +83,6 @@ export default defineProduct({
             body: "Real user workflows, complaints, tricks and failures, plus a playbook of reusable patterns.",
           },
           { title: "Storage implications", body: "What agents mean for workspaces, sandboxes, logs, and replay." },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "The sources are free and public, such as Hacker News, Reddit RSS feeds and GitHub.",
-          "X and the Reddit API are used only if you add their keys as repository secrets.",
-          "The model service is GitHub Models with the built-in token, or Vercel AI Gateway with your key.",
-          "Local commands other than `source-refresh` and `trigger` stay offline.",
         ],
       },
       {
@@ -191,18 +178,6 @@ export default defineProduct({
           { title: "观察名单", body: "主流与新兴 Agent，每个来源按强度从 Strong 到 None 分级。" },
           { title: "现场笔记", body: "真实用户的工作流、抱怨、技巧和失败，以及可复用的做法。" },
           { title: "存储影响", body: "Agent 对工作区、沙箱、日志与回放意味着什么。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "来源都是免费公开的，比如 Hacker News、Reddit RSS 和 GitHub。",
-          "X 和 Reddit API 只有在你把它们的密钥加为仓库 secret 后才会启用。",
-          "模型服务可选 GitHub Models（用内置令牌）或 Vercel AI Gateway（用你自己的密钥）。",
-          "除 `source-refresh` 和 `trigger` 外，本地命令都不联网。",
         ],
       },
       {

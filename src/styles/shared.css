@@ -300,6 +300,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+  }
+
+  /* The list reset at zero specificity, so a placed run (.spec-tags) keeps its margin. */
+  :where(.tags) {
     margin: 0;
     padding: 0;
     list-style: none;

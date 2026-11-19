@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-storage-agent-workbench.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: false,
   en: {
@@ -63,7 +62,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "What the agent can do",
+        label: "Read-only, account-wide",
         items: [
           {
             title: "Reads the whole account",
@@ -82,15 +81,6 @@ export default defineProduct({
             title: "Knows where to look",
             body: "Markdown skills cover public access, encryption, cost and more, and you can add your own.",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "An account that uses an AWS profile stores only the profile’s name.",
-          "Secret keys and session tokens are redacted before the model sees them.",
         ],
       },
       {
@@ -181,12 +171,6 @@ export default defineProduct({
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },
           { title: "知道从哪查起", body: "Markdown 技能覆盖公开访问、加密、成本等问题，你也可以自己添加。" },
         ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: ["使用 AWS profile 的账号只保存 profile 的名称。", "私有密钥、会话令牌和密码在发给模型之前就会脱敏。"],
       },
       {
         kind: "faq",

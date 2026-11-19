@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-bilingual.png",
   schema: {
     category: "BrowserApplication",
-    os: "Chrome",
   },
   sectionIndex: false,
   en: {
@@ -32,7 +31,7 @@ export default defineProduct({
     privacy: {
       network: "onRequest",
       networkNote:
-        "On-device translation by default; Precise translation sends paragraphs to your chosen provider only when you ask.",
+        "On-device translation by default; Precise translation sends paragraphs to your chosen provider only when you ask. No account, no analytics, no data collection.",
       stays: "Page text stays on your computer; your own key stays in the extension’s IndexedDB.",
       policy: {
         label: "Privacy policy",
@@ -103,16 +102,6 @@ export default defineProduct({
         ],
       },
       {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "On-device translation uses Chrome’s built-in model; Precise translation goes straight to your chosen provider.",
-          "It runs only on sites where you turn it on, or on every site once you turn on “Available on every site”.",
-          "No account, no analytics, no data collection. In Incognito windows it saves no translations, terminology or per-site layouts.",
-        ],
-      },
-      {
         kind: "faq",
         id: "faq",
         label: "FAQ",
@@ -155,7 +144,7 @@ export default defineProduct({
     },
     privacy: {
       network: "onRequest",
-      networkNote: "默认本地翻译；只有你要看精译时，段落才发给你选择的服务商。",
+      networkNote: "默认本地翻译；只有你要看精译时，段落才发给你选择的服务商。没有账号，没有分析服务，不收集任何数据。",
       stays: "网页文字不离开你的电脑；你的密钥存在扩展的 IndexedDB 中。",
       policy: {
         label: "隐私政策",
@@ -217,16 +206,6 @@ export default defineProduct({
             body: "在 X、Reddit、GitHub、Hacker News、维基百科和 Stack Overflow 上只译正文，不译按钮。",
           },
           { title: "38 种译文语言", body: "本地翻译不支持的语言组合，可以改用精译。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "本地翻译用的是 Chrome 内置的模型；精译时，段落从浏览器直接发给你选择的服务商。",
-          "只在你为它开启的网站上运行；打开“所有网站都能用”后，才在所有网站上运行。",
-          "没有账号，没有分析服务，不收集任何数据。无痕窗口里不保存译文、术语和各网站的排版。",
         ],
       },
       {

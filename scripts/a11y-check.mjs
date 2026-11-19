@@ -84,7 +84,7 @@ const failures = (
         };
         const problems = [];
         for (const element of document.querySelectorAll(
-          ".feature-points p, .feature-spec dd, .faq-answer, .index-text, .boundary-text",
+          ".feature-points p, .feature-spec dd, .faq-answer, .index-text",
         )) {
           if (!visible(element)) continue;
           const [a, b] = [luminance(getComputedStyle(element).color), luminance(background(element))];

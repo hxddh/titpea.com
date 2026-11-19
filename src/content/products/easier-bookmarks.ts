@@ -10,7 +10,6 @@ export default defineProduct({
   og: "/assets/og-easier-bookmarks.png",
   schema: {
     category: "BrowserApplication",
-    os: "Chrome",
   },
   sectionIndex: false,
   en: {
@@ -47,7 +46,7 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 5.0.0 side panel; bookmarks and site icons are examples.",
+      caption: "The side panel; bookmarks and site icons are examples.",
       asOf: "v5.0.0",
     },
     showcases: [
@@ -59,7 +58,7 @@ export default defineProduct({
         dark: { src: "/assets/easier-bookmarks-search-en-dark.webp", width: 1900, height: 1425 },
         title: "Results as you type.",
         body: "Each match shows the folder it lives in; Enter opens the first.",
-        caption: "Easier Bookmarks 5.0.0, searching “plan”; bookmarks are examples.",
+        caption: "Searching “plan”; bookmarks are examples.",
         asOf: "v5.0.0",
       },
     ],
@@ -86,16 +85,6 @@ export default defineProduct({
             body: "Tick a few to drag, move or delete them together; one Undo restores them all.",
           },
           { title: "Tidy up", body: "Removes extra copies of an address, and empty folders, in one step." },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "Where your data goes.",
-        items: [
-          "Recently opened bookmarks are kept to rank search results, along with the list last shown.",
-          "With tab access, asked at your first save, it reads the current tab’s title and address, or every tab’s when saving all.",
-          "Those addresses, and what you type after `b`, are never stored or sent.",
         ],
       },
       {
@@ -163,7 +152,7 @@ export default defineProduct({
         width: 1140,
         height: 1980,
       },
-      caption: "Easier Bookmarks 5.0.0 侧边栏；书签和网站图标为示例。",
+      caption: "侧边栏；书签和网站图标为示例。",
       asOf: "v5.0.0",
     },
     showcases: [
@@ -175,7 +164,7 @@ export default defineProduct({
         dark: { src: "/assets/easier-bookmarks-search-zh-dark.webp", width: 1900, height: 1425 },
         title: "打拼音也能搜到",
         body: "每个结果都写明所在文件夹；回车打开第一个。",
-        caption: "Easier Bookmarks 5.0.0，用拼音“jingdu”搜索；书签为示例。",
+        caption: "用拼音“jingdu”搜索；书签为示例。",
         asOf: "v5.0.0",
       },
     ],
@@ -193,16 +182,6 @@ export default defineProduct({
           },
           { title: "一次处理一批", body: "勾选几项，一起拖动、移动或删除；撤销一次全部恢复。" },
           { title: "一键清理", body: "重复保存的网址和空文件夹，一步就能删掉。" },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        title: "数据的去向",
-        items: [
-          "最近打开的书签用于搜索排序；另外还记下上次显示的列表。",
-          "第一次收藏时，如果你允许访问标签页，它会读取当前页的标题和网址；收藏全部标签页时则读取每一个。",
-          "这些网址和你在 `b` 后输入的内容，既不保存也不发送。",
         ],
       },
       {

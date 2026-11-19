@@ -119,7 +119,9 @@ const [lead, ...rest] = model.featured.items;
       <div class="index-group" data-line={group.line}>
         <div class="index-title">
           <h3 id={`line-${group.line}-title`}>{group.label}</h3>
-          <p class="fact">{group.count}</p>
+          <p class="fact" data-group-count>
+            {group.count}
+          </p>
         </div>
         <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
@@ -149,9 +151,7 @@ const [lead, ...rest] = model.featured.items;
         </ul>
       </div>
     ))}
-    <p class="filter-empty" data-filter-empty hidden>
-      {model.more.filters.empty}
-    </p>
+    <p class="filter-empty" role="status" data-filter-empty data-empty-text={model.more.filters.empty}></p>
   </section>
   <Fragment slot="scripts">
     <script is:inline src="/scripts/filter.js" defer></script>

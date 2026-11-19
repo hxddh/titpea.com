@@ -22,7 +22,8 @@ for (const product of products) {
 if (Boolean(about.person.en) !== Boolean(about.person.zh))
   throw new Error("site.ts: about.person is set in one language only");
 
-export type ReleaseNotes = { summary: string; items: string[]; url: string };
+/** Only the link: the site never quotes GitHub's text (releaseHighlights are written by hand). */
+export type ReleaseNotes = { url: string };
 /** One of a repository's last releases (scripts/sync-releases.mjs); the title is stored, never shown. */
 type ReleaseHistoryEntry = { version: string; published: string; title: string };
 export const releaseTags = releases as Record<

@@ -11,7 +11,6 @@ export default defineProduct({
   og: "/assets/og-httpmon.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -85,7 +84,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What httpmon can do",
+        label: "Record, compare and replay",
         items: [
           {
             title: "HTTP/2, gRPC, WebSocket",
@@ -107,17 +106,6 @@ export default defineProduct({
             title: "Output for agents",
             body: "Off a terminal the output is compact, one line per exchange, and `httpmon mcp` serves sessions to an agent’s MCP client.",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "By default the CA lives only in memory for one run; `httpmon ca` writes a persistent key to disk, mode 0600.",
-          "Traffic is saved only to a session (`--session`, or `httpmon proxy`), readable by you only, with credentials unless you pass `--redact`.",
-          "Output masks credential headers and URL tokens unless you pass `--show-secrets`; bodies are not masked.",
         ],
       },
       {
@@ -222,7 +210,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "httpmon 能做什么",
+        label: "记录、对比和重放",
         items: [
           {
             title: "HTTP/2、gRPC、WebSocket",
@@ -238,17 +226,6 @@ export default defineProduct({
             title: "给 Agent 的输出",
             body: "不在终端时输出精简，每次交换一行；`httpmon mcp` 把会话提供给 Agent 的 MCP 客户端。",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "数据去向",
-        title: "数据的去向",
-        items: [
-          "默认情况下 CA 只在一次运行中存在于内存里；`httpmon ca` 会把持久 CA 的私钥写入磁盘，权限 0600。",
-          "流量只保存在会话里（`--session` 或 `httpmon proxy`），只有你能读取；除非加 `--redact`，其中保留凭据。",
-          "输出会遮盖含凭据的请求头和 URL 里的令牌，除非加 `--show-secrets`；请求体和响应体不遮盖。",
         ],
       },
       {

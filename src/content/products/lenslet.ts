@@ -18,7 +18,6 @@ export default defineProduct({
   og: "/assets/og-lenslet.png",
   schema: {
     category: "DeveloperApplication",
-    os: "Cross-platform",
   },
   sectionIndex: true,
   en: {
@@ -91,7 +90,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "What Lenslet does",
+        label: "From test run to IAM policy",
         items: [
           {
             title: "Calls mapped to IAM",
@@ -113,17 +112,6 @@ export default defineProduct({
             title: "Your own policy",
             body: "`--policy` checks or enforces a real IAM policy, `Condition` blocks included, instead of the lock.",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "Your data",
-        title: "Where your data goes.",
-        items: [
-          "Lenslet listens on loopback only.",
-          "It removes AWS keys, profile and other cloud credentials from the tests’ environment, so they never reach the emulator or a trace.",
-          "Run files in `~/.lenslet/runs` keep headers and bodies unredacted; the last 20 are kept.",
         ],
       },
       {
@@ -225,7 +213,7 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "Lenslet 做什么",
+        label: "从测试到 IAM 策略",
         items: [
           {
             title: "调用对应到 IAM",
@@ -247,17 +235,6 @@ export default defineProduct({
             title: "用你自己的策略",
             body: "`--policy` 改按一份真实的 IAM 策略检查或拦截，`Condition` 也会判断。",
           },
-        ],
-      },
-      {
-        kind: "data",
-        id: "data",
-        nav: "你的数据",
-        title: "数据的去向",
-        items: [
-          "Lenslet 只监听本机回环地址。",
-          "它会从测试的环境变量里去掉 AWS 密钥、profile 和其他云端凭证，所以它们不会到达模拟器，也不会进入记录。",
-          "`~/.lenslet/runs` 里的运行记录不做任何脱敏，保留请求头和正文，最多保留最近 20 次。",
         ],
       },
       {

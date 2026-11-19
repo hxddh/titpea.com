@@ -17,10 +17,15 @@
       row.hidden = !(lineOk && platformOk);
       if (!row.hidden) shown += 1;
     });
+    var filtering = state.line !== "all" || state.platform !== "all";
     groups.forEach(function (group) {
       group.hidden = !group.querySelector(".index-rows > li:not([hidden])");
+      // A group's total stops being true while rows are filtered out.
+      var count = group.querySelector("[data-group-count]");
+      if (count) count.hidden = filtering;
     });
-    if (empty) empty.hidden = shown > 0;
+    // A live region that stays in the DOM, so the empty result is announced.
+    if (empty) empty.textContent = shown > 0 ? "" : empty.dataset.emptyText;
   }
 
   function wire(attribute, key) {

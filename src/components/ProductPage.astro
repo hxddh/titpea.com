@@ -7,11 +7,11 @@ import { ui } from "../content/site";
 import { products } from "../content/products";
 import { templateOf } from "../content/schema";
 import { screenshotSizes, srcsetFor } from "../lib/images";
+import { pathFor } from "../lib/pages";
 import type { ProductPageModel } from "../lib/pages";
 import CardsSection from "./product/CardsSection.astro";
 import CommandReplay from "./product/CommandReplay.astro";
 import CommandsSection from "./product/CommandsSection.astro";
-import DataSection from "./product/DataSection.astro";
 import DemoSection from "./product/DemoSection.astro";
 import FaqSection from "./product/FaqSection.astro";
 import LocalNav from "./product/LocalNav.astro";
@@ -61,13 +61,28 @@ const { facts } = model;
 // The source link is said once: not again when the second action already opens it.
 const repoUrl = product.repo ? `https://github.com/${product.repo}` : undefined;
 const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(/\/$/, "") === repoUrl;
-const specTags: Array<{ value: string; href?: string; tone?: "version" }> = [
+// The network level is the one privacy fact on the page; the Privacy index
+// says the rest, from the same \`privacy\` field.
+const level = copyUi.privacyLevels[copy.privacy.network];
+const networkTag = {
+  // "不联网" says itself; otherwise the label and the level, in the page's punctuation.
+  value:
+    model.locale === "zh"
+      ? copy.privacy.network === "none"
+        ? level
+        : `${copyUi.spec.network}：${level}`
+      : `${copyUi.spec.network}: ${level}`,
+  href: `${pathFor(model.locale, "privacy")}#${model.slug}`,
+  tone: "network" as const,
+};
+const specTags: Array<{ value: string; href?: string; tone?: "version" | "network" }> = [
   ...facts.platforms.map((value) => ({ value })),
   ...facts.stack.map((value) => ({ value })),
   ...(facts.license ? [{ value: facts.license }] : []),
   // The version is said once: not here when the primary action already carries it.
   ...(facts.version && !model.downloadsRelease ? [{ value: facts.version, tone: "version" as const }] : []),
   ...(facts.released ? [{ value: facts.released }] : []),
+  networkTag,
   ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
 ];
 // Provenance is said once: under the hero capture, the release it shows; under
@@ -142,7 +157,7 @@ const showcaseLabels = showcases.map((showcase) => {
         {specTags.map((tag) => (
           <li data-tone={tag.tone}>
             {tag.href ? (
-              <a href={tag.href} rel="noreferrer">
+              <a href={tag.href} rel={tag.href.startsWith("/") ? undefined : "noreferrer"}>
                 {tag.value}
               </a>
             ) : (
@@ -213,21 +228,15 @@ const showcaseLabels = showcases.map((showcase) => {
     />
   ))}
 
-  {/* What it does; then Get started; then where the data goes and the FAQ. The
-      latest release's notes are on Releases (design v6). */}
+  {/* What it does; then Get started; then the FAQ. Release notes are on
+      Releases, privacy facts on the Privacy index. */}
   {copy.sections.map((section) =>
     section.kind === "cards" ? <CardsSection section={section} line={model.line} /> : null,
   )}
 
   {copy.commands && <CommandsSection commands={copy.commands} {...commandsProps} />}
 
-  {copy.sections.map((section) =>
-    section.kind === "data" ? (
-      <DataSection section={section} privacy={copy.privacy} locale={model.locale} />
-    ) : section.kind === "faq" ? (
-      <FaqSection section={section} />
-    ) : null,
-  )}
+  {copy.sections.map((section) => (section.kind === "faq" ? <FaqSection section={section} /> : null))}
 
   {/* Design v5.2: the page ends on its FAQ; the hero and the pinned local nav
       carry the actions, the footer every product. A member of a family shows
@@ -283,6 +292,5 @@ const showcaseLabels = showcases.map((showcase) => {
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>
     <script is:inline src="/scripts/video.js" defer></script>
-    <script is:inline src="/scripts/faq.js" defer></script>
   </Fragment>
 </SiteLayout>

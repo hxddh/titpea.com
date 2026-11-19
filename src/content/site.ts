@@ -51,14 +51,14 @@ export const about: { person: Partial<Record<Locale, AboutPerson>> } = {
       paragraphs: [
         "I’m hxddh, and I make all the software here on my own: tools for object storage and coding agents, a few browser extensions, three board games, a Sudoku notebook for Android, and a small harbour-town game for macOS.",
         "I like reading, good food and digital gadgets. What I love most is making interesting things, and this site is where they live.",
-        "Most of the code is on GitHub. Each tool’s page says plainly what it touches on your machine and on the network; they update often, and the releases page shows what shipped and when.",
+        "Most of the code is on GitHub. The privacy page says plainly what each tool touches on your machine and on the network; they update often, and the releases page shows what shipped and when.",
       ],
     },
     zh: {
       paragraphs: [
         "我是 hxddh，这里的软件都是我一个人做的：对象存储和编码 Agent 的工具，几个浏览器扩展，三款棋类游戏，一本 Android 上的数独本，还有一款 macOS 上的海港小镇游戏。",
         "我喜欢读书，喜欢美食，也喜欢数码产品。最热爱的，是做出有趣的东西；这个网站就是它们待的地方。",
-        "大部分代码放在 GitHub 上。每个工具的页面都写清楚它在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每次发布的版本和日期。",
+        "大部分代码放在 GitHub 上。隐私页写清楚了每个工具在你的电脑上、在网络上碰了什么。它们更新得很勤，发布页上能看到每次发布的版本和日期。",
       ],
     },
   },
@@ -70,9 +70,7 @@ type Ui = {
   footerLabel: string;
   footerFeed: string;
   skipLink: string;
-  menuLabel: string;
   homeLabel: string;
-  menuText: string;
   sectionDirectory: string;
   themeToDark: string;
   themeToLight: string;
@@ -85,7 +83,7 @@ type Ui = {
   /** The count under the Games group: games are not tools. */
   gameCount: string;
   /** Labels of the product page's spec sheet. */
-  spec: { label: string; license: string; version: string; released: string; network: string; source: string };
+  spec: { label: string; network: string; source: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
    hero, and under a showcase only when its release differs. `{version}` is filled in. */
   capturedAt: string;
@@ -109,7 +107,7 @@ type Ui = {
   featuredTitle: string;
   moreToolsTitle: string;
   /** A family's title and one line; `roles` is each member's step, by slug. */
-  families: Record<FamilyId, { title: string; sub: string; roles: Record<string, string> }>;
+  families: Record<FamilyId, { title: string; roles: Record<string, string> }>;
   aboutMore: string;
   // About
   aboutTitle: string;
@@ -139,10 +137,7 @@ type Ui = {
   privacyLead: string;
   privacyColumns: { tool: string; network: string; stays: string; details: string };
   privacyLevels: Record<PrivacySummary["network"], string>;
-  privacyDataLink: string;
   /** A product whose page has no data section yet. */
-  privacyUnstated: string;
-  privacyProductPage: string;
   // Catalog vocabulary: one word for each platform and kind, everywhere.
   products: string;
   allLabel: string;
@@ -164,11 +159,8 @@ type Ui = {
     macosFrom: string;
     windows: string;
   };
-  /** The data boundary card's rows. */
-  boundary: { network: string; stays: string; label: string };
   /** At the end of a product page without a family: up to three products of its line. */
   moreIn: string;
-  latest: string;
 };
 
 export const ui: Record<Locale, Ui> = {
@@ -177,9 +169,7 @@ export const ui: Record<Locale, Ui> = {
     footerLabel: "Footer",
     footerFeed: "Releases feed",
     skipLink: "Skip to content",
-    menuLabel: "Open site menu",
     homeLabel: "Titpea home",
-    menuText: "Menu",
     sectionDirectory: "Sections",
     themeToDark: "Switch to dark theme",
     themeToLight: "Switch to light theme",
@@ -190,9 +180,6 @@ export const ui: Record<Locale, Ui> = {
     gameCount: "{count} games",
     spec: {
       label: "Specifications",
-      license: "License",
-      version: "Version",
-      released: "Released",
       network: "Network",
       source: "Source",
     },
@@ -224,7 +211,6 @@ export const ui: Record<Locale, Ui> = {
     families: {
       s3: {
         title: "The S3 kit",
-        sub: "For migrating and troubleshooting object storage, in this order.",
         roles: {
           "s3-turbo-list": "List the bucket",
           "storage-agent-workbench": "Find what needs attention",
@@ -234,7 +220,6 @@ export const ui: Record<Locale, Ui> = {
       },
       agents: {
         title: "Working with agents",
-        sub: "Once a coding agent is running.",
         roles: {
           pulse: "Which one needs you",
           readout: "Read what it writes",
@@ -263,14 +248,11 @@ export const ui: Record<Locale, Ui> = {
       "Chrome extensions update through the Chrome Web Store, and Paper Sudoku is not in a store yet. The version is the one each page shows.",
     privacyMetaTitle: "Privacy — Titpea",
     privacyDescription:
-      "Which Titpea tools go online, when, and where each keeps your data, with links to every product’s own data section and privacy policy.",
+      "Which Titpea tools go online, when, and to whom, and where each keeps your data, with links to every privacy policy.",
     privacyHeadline: "Which tools go online.",
-    privacyLead: "The short version. Each product’s page says it in full.",
+    privacyLead: "What each tool sends over the network, and where your data stays.",
     privacyColumns: { tool: "Tool", network: "Network", stays: "Where data stays", details: "Details" },
     privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatic" },
-    privacyDataLink: "Where your data goes",
-    privacyUnstated: "Not written up on its page yet.",
-    privacyProductPage: "Product page",
     products: "Products",
     allLabel: "All",
     filterLine: "Kind",
@@ -301,18 +283,14 @@ export const ui: Record<Locale, Ui> = {
       macosFrom: "macOS {version} or later",
       windows: "Windows: if SmartScreen stops it, choose “More info”, then “Run anyway”.",
     },
-    boundary: { network: "Network", stays: "Your data", label: "Data boundary" },
     moreIn: "Also in {line}",
-    latest: "Latest",
   },
   zh: {
     primaryLabel: "主导航",
     footerLabel: "页脚",
     footerFeed: "发布订阅",
     skipLink: "跳到主要内容",
-    menuLabel: "打开站点菜单",
     homeLabel: "Titpea 首页",
-    menuText: "菜单",
     sectionDirectory: "目录",
     themeToDark: "切换到深色主题",
     themeToLight: "切换到浅色主题",
@@ -321,7 +299,7 @@ export const ui: Record<Locale, Ui> = {
     released: "（{date}）",
     toolCount: "{count} 个",
     gameCount: "{count} 款",
-    spec: { label: "规格", license: "许可", version: "版本", released: "发布", network: "联网", source: "源码" },
+    spec: { label: "规格", network: "联网", source: "源码" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
@@ -350,7 +328,6 @@ export const ui: Record<Locale, Ui> = {
     families: {
       s3: {
         title: "S3 工具组",
-        sub: "迁移和排查对象存储时，依次用到。",
         roles: {
           "s3-turbo-list": "列清单",
           "storage-agent-workbench": "找问题",
@@ -360,7 +337,6 @@ export const ui: Record<Locale, Ui> = {
       },
       agents: {
         title: "和 Agent 一起工作",
-        sub: "编码 Agent 跑起来以后。",
         roles: {
           pulse: "谁需要你",
           readout: "读它写的",
@@ -385,14 +361,11 @@ export const ui: Record<Locale, Ui> = {
     releasesUndatedTitle: "没有 GitHub 发布的工具",
     releasesUndatedSub: "Chrome 扩展通过 Chrome 网上应用店更新，纸上数独还未上架应用商店。版本号与各自页面一致。",
     privacyMetaTitle: "隐私 — Titpea",
-    privacyDescription: "Titpea 的各个工具什么时候联网、数据留在哪里，并链接到每个产品自己的数据说明和隐私政策。",
+    privacyDescription: "Titpea 的各个工具什么时候联网、发给谁、数据留在哪里，并链接到各自的隐私政策。",
     privacyHeadline: "哪些工具会联网",
-    privacyLead: "这里是简表，完整说明在每个产品自己的页面上。",
+    privacyLead: "每个工具通过网络发送什么，你的数据留在哪里。",
     privacyColumns: { tool: "工具", network: "联网", stays: "数据留在哪里", details: "详情" },
     privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "自动" },
-    privacyDataLink: "数据的去向",
-    privacyUnstated: "页面上还没写。",
-    privacyProductPage: "产品页",
     products: "产品",
     allLabel: "全部",
     filterLine: "类别",
@@ -422,8 +395,6 @@ export const ui: Record<Locale, Ui> = {
       macosFrom: "macOS {version} 及以上",
       windows: "Windows：如果 SmartScreen 拦下，点“更多信息”，再点“仍要运行”。",
     },
-    boundary: { network: "联网", stays: "你的数据", label: "数据边界" },
     moreIn: "{line}类的其他产品",
-    latest: "最新",
   },
 };

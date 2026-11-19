@@ -22,7 +22,6 @@ export type CatalogItem = {
 export type Family = {
   id: FamilyId;
   title: string;
-  sub: string;
   members: Array<{ slug: string; name: string; href: string; icon: string; role: string; current: boolean }>;
 };
 
@@ -64,7 +63,6 @@ function familyModel(id: FamilyId, locale: Locale, current?: string): Family {
   return {
     id,
     title: copy.title,
-    sub: copy.sub,
     members: familyMembers[id].map((member) => {
       const product = products.find((candidate) => candidate.slug === member)!;
       return {

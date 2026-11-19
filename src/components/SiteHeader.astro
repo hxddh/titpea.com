@@ -36,11 +36,11 @@ const onProduct = groups.some((group) => group.items.some((item) => item.current
         <div class="nav-dropdown-panel products-panel">
           <div class="products-grid">
             {groups.map((group) => (
-              <section class="products-col" aria-labelledby={`menu-${group.line}`}>
+              <div class="products-col">
                 <p class="products-col-label" id={`menu-${group.line}`}>
                   {group.label}
                 </p>
-                <ul>
+                <ul aria-labelledby={`menu-${group.line}`}>
                   {group.items.map((item) => (
                     <li>
                       <a href={item.href} aria-current={item.current === current ? "page" : undefined}>
@@ -50,7 +50,7 @@ const onProduct = groups.some((group) => group.items.some((item) => item.current
                     </li>
                   ))}
                 </ul>
-              </section>
+              </div>
             ))}
           </div>
           <ul class="products-panel-pages">

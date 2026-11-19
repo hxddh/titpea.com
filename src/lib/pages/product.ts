@@ -1,11 +1,11 @@
 // Product pages: copy with its synced version, structured data, local nav.
-import { absoluteUrl, site, ui } from "../../content/site";
+import { absoluteUrl, site } from "../../content/site";
 import { type Line, type Locale, type Product, type ProductCopy } from "../../content/schema";
 import { otherLocale, pageTitle, pathFor, plainText, versionOf } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { maxNavLinks } from "./nav";
 import { type CatalogItem, type Family, familyFor, relatedFor } from "./catalog";
-import { firstOpenLines, productFacts, type ProductFacts } from "./facts";
+import { firstOpenLines, platformLabels, productFacts, type ProductFacts } from "./facts";
 
 export type ProductPageModel = {
   kind: "product";
@@ -50,7 +50,8 @@ function productStructuredData(product: Product, copy: ProductCopy, path: string
     description: copy.description,
     inLanguage: locale === "zh" ? "zh-CN" : "en",
     applicationCategory: product.schema.category,
-    operatingSystem: product.schema.os,
+    // Derived from \`platforms\`, the one place a product says where it runs.
+    operatingSystem: platformLabels(product, "en").join(", ") || "Cross-platform",
     url: absoluteUrl(path),
     // Every product is free. A store listing installs and a release downloads;
     // a source-only product's repository is only its sameAs, never a download.
@@ -79,7 +80,7 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const path = pathFor(locale, product.slug);
   const alternatePath = pathFor(otherLocale(locale), product.slug);
   // The local nav holds at most four links, in page order (ProductPage): the
-  // demo, the feature list, Get started, the data section, the FAQ. Get started
+  // demo, the feature list, Get started, the FAQ. Get started
   // and FAQ always stay; the others fill the remaining places in that order.
   const sectionItem = (section: (typeof copy.sections)[number]) => ({
     id: section.id,
@@ -88,15 +89,10 @@ export function productPage(product: Product, locale: Locale): ProductPageModel 
   const ofKind = (...kinds: string[]) => copy.sections.filter((section) => kinds.includes(section.kind));
   const start = copy.commands ? [{ id: "start", label: copy.commands.title }] : [];
   const faq = ofKind("faq").map(sectionItem);
-  const others = [...ofKind("demo", "cards"), ...ofKind("data")]
+  const others = ofKind("demo", "cards")
     .map(sectionItem)
     .slice(0, maxNavLinks - start.length - faq.length);
-  const navItems = [
-    ...others.filter((item) => item.id !== "data"),
-    ...start,
-    ...others.filter((item) => item.id === "data"),
-    ...faq,
-  ];
+  const navItems = [...others, ...start, ...faq];
   return {
     kind: "product",
     locale,

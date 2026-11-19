@@ -210,7 +210,8 @@
   }
 
   /* The index: each line under a hairline label, its products as rows. */
-  .index-group + .index-group {
+  /* Only between groups that show, so a filtered list starts at the top. */
+  .index-group:not([hidden]) ~ .index-group:not([hidden]) {
     margin-top: 48px;
   }
 
@@ -303,7 +304,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: 14px;
-    max-width: 340px;
+    max-width: 420px;
   }
 
   .index-meta .tags {
@@ -317,6 +318,10 @@
     font-size: var(--text-meta);
     font-variant-numeric: tabular-nums;
     text-align: right;
+  }
+
+  .filter-empty:empty {
+    display: none;
   }
 
   .filter-empty {
@@ -338,14 +343,21 @@
       grid-template-columns: 36px minmax(0, 1fr);
     }
 
+    /* Tags and version flow as one run, wherever the line breaks. */
     .index-meta {
       grid-column: 2;
+      flex-wrap: wrap;
       justify-content: flex-start;
+      gap: 6px;
       max-width: none;
     }
 
     .index-meta .tags {
-      justify-content: flex-start;
+      display: contents;
+    }
+
+    .index-version {
+      margin-left: 4px;
     }
 
     .index-version {
