@@ -4,8 +4,8 @@ import { defineProduct } from "../schema";
 // request, what AWS access the code needs. Facts: the repository's README.md
 // and RELEASE_NOTES.md at lenslet-v7.0.0 (the repository used to be celagent;
 // that project stopped at v4.1.0; Lenslet's tags are lenslet-v*). Pictures:
-// docs/access.png and docs/lenslet.png from the repository, captured at
-// Lenslet 3.0.0, before the 6.0 window redesign.
+// the 7.0 window, captured on macOS at 2x with LENSLET_DEMO=1: the Access
+// view with the new DeleteItem selected, and the Calls view on a 404.
 export default defineProduct({
   slug: "lenslet",
   line: "storage",
@@ -53,20 +53,20 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/lenslet-access-en.webp",
-        alt: "Lenslet’s Access view after a test run: seventeen permissions, each with its resource and call count; dynamodb:DeleteItem is marked new.",
-        width: 1280,
-        height: 800,
+        alt: "Lenslet 7’s Access view after a demo run: seventeen permissions with their resources and call counts; dynamodb:DeleteItem is marked new and selected, with its IAM statement, lock entry and triggering call in the inspector.",
+        width: 2448,
+        height: 1396,
       },
       caption: "The Access view after a demo run; one permission is new.",
-      asOf: "v3.0.0",
+      asOf: "v7.0.0",
     },
     showcases: [
       {
         src: "/assets/lenslet-calls-en.webp",
-        width: 1280,
-        height: 800,
-        asOf: "v3.0.0",
-        alt: "Lenslet’s Calls view: each AWS call with its service, status and latency; an S3 NoSuchKey and an SQS QueueDoesNotExist error show in their rows.",
+        width: 2448,
+        height: 1396,
+        asOf: "v7.0.0",
+        alt: "Lenslet 7’s Calls view: the run timeline above a waterfall of AWS calls; a GetObject for a missing key is selected, and the inspector explains the 404 NoSuchKey with its response body.",
         title: "Why a call failed.",
         body: "Every call, with the AWS error in its row and the request and response a click away.",
       },
@@ -191,20 +191,20 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/lenslet-access-en.webp",
-        alt: "一次测试运行后 Lenslet 的权限视图：十七项权限，各自的资源和调用次数；dynamodb:DeleteItem 标为新增。",
-        width: 1280,
-        height: 800,
+        alt: "示例运行后 Lenslet 7 的权限视图：十七项权限，各自的资源和调用次数；dynamodb:DeleteItem 标为新增并选中，右侧检查器显示它的 IAM 语句、锁文件条目和触发调用。",
+        width: 2448,
+        height: 1396,
       },
       caption: "示例运行后的权限视图，其中一项是新增；界面为英文。",
-      asOf: "v3.0.0",
+      asOf: "v7.0.0",
     },
     showcases: [
       {
         src: "/assets/lenslet-calls-en.webp",
-        width: 1280,
-        height: 800,
-        asOf: "v3.0.0",
-        alt: "Lenslet 的调用视图：每次 AWS 调用的服务、状态和耗时；S3 的 NoSuchKey 和 SQS 的 QueueDoesNotExist 错误直接显示在行里。",
+        width: 2448,
+        height: 1396,
+        asOf: "v7.0.0",
+        alt: "Lenslet 7 的调用视图：运行时间线下面是 AWS 调用的瀑布图；选中的 GetObject 找不到键，右侧检查器给出 404 NoSuchKey 的原因和响应正文。",
         title: "调用为什么失败",
         body: "每次调用一行，AWS 错误就写在行里，请求和响应点一下就能看。",
       },

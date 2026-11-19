@@ -5,7 +5,7 @@
  * Nothing is scripted inside the apps; the recording only clicks their UI.
  * Each loop is recorded twice, with the app in English and in Chinese, and
  * written as public/assets/<name>-<en|zh>.mp4 (H.264) and .webm (VP9), with
- * its first frame as the .webp poster.
+ * a 2x still of its first frame as the .webp poster.
  *
  *   Check out the pinned releases (scripts/board-apps.mjs), then
  *   pip install imageio-ffmpeg
@@ -44,6 +44,7 @@ async function record(browser, name, root, init, act, trimStart) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), "board-video-"));
   const context = await browser.newContext({
     viewport: VIEWPORT,
+    deviceScaleFactor: 2,
     recordVideo: { dir, size: VIEWPORT },
     locale: init.arg.lang === "en" ? "en-US" : "zh-CN",
     permissions: ["clipboard-read", "clipboard-write"],
@@ -52,7 +53,8 @@ async function record(browser, name, root, init, act, trimStart) {
   const page = await context.newPage();
   await page.goto(`${server.origin}/`, { waitUntil: "networkidle" });
   await page.waitForSelector("#board");
-  const markStart = await act(page);
+  const posterPath = path.join(dir, "poster.png");
+  const markStart = await act(page, posterPath);
   // The take is the last part of the recording, which ends when the context
   // closes. Its start is measured back from that end: the recorder's frames
   // can trail the page by seconds while the apps' engines run, so an offset
@@ -86,11 +88,8 @@ async function record(browser, name, root, init, act, trimStart) {
   execFileSync(ffmpeg, [...common, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "40", "-row-mt", "1", webm], {
     stdio: "ignore",
   });
-  // The poster (the showcase image and the fallback) is the recording's first frame.
-  const frame = path.join(dir, "poster.png");
-  execFileSync(ffmpeg, ["-y", "-i", mp4, "-frames:v", "1", frame], { stdio: "ignore" });
   const poster = path.join(outDir, `${name}.webp`);
-  await sharp(frame).webp({ quality: 82 }).toFile(poster);
+  await sharp(posterPath).webp({ quality: 82 }).toFile(poster);
   for (const file of [mp4, webm, poster])
     console.log(`${path.basename(file)} ${Math.round((await fs.stat(file)).size / 1024)} KB`);
 }
@@ -117,7 +116,7 @@ async function recordGoban(browser, lang) {
         );
       },
     },
-    async (page) => {
+    async (page, posterPath) => {
       await pasteGoban(page, GOMOKU_SGF);
       await page.waitForTimeout(700);
       await quiet(page);
@@ -144,6 +143,8 @@ async function recordGoban(browser, lang) {
       await page.waitForTimeout(2000);
       await quiet(page);
       const start = Date.now();
+      // A 2x still of the frame the take starts on; the video itself stays 1222 wide.
+      await page.screenshot({ path: posterPath, type: "png" });
       await page.waitForTimeout(1800);
       for (let index = 1; index < count; index += 1) {
         await chips.nth(index).click();
@@ -163,7 +164,7 @@ async function recordChessboard(browser, lang) {
     `chessboard-review-${lang}`,
     assertPinned("chessboard"),
     { script: chessboardInit, arg: { pgn: CHESS_PGN, langId: lang === "en" ? "en" : "zh-CN", lang } },
-    async (page) => {
+    async (page, posterPath) => {
       await page.waitForTimeout(800);
       await quiet(page);
       if (!(await page.evaluate(() => document.getElementById("app")?.classList.contains("panel-open")))) {
@@ -181,6 +182,8 @@ async function recordChessboard(browser, lang) {
       while (await prev.isEnabled()) await prev.click();
       await page.waitForTimeout(600);
       const start = Date.now();
+      // A 2x still of the frame the take starts on; the video itself stays 1222 wide.
+      await page.screenshot({ path: posterPath, type: "png" });
       await page.waitForTimeout(1800);
       while (await next.isEnabled()) {
         await next.click();

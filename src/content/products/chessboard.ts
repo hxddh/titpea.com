@@ -8,6 +8,8 @@ import { defineProduct } from "../schema";
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
 // in two, Bxf2 is White's only legal reply, and Rxf2# is the only mate after it.
 // (The earlier demo, 6kxUl, left the shipped set with the 8.4 puzzle refresh.)
+// Pictures and the review recording were captured at v24.0.0 by
+// scripts/capture-board-screenshots.mjs and scripts/record-board-demos.mjs.
 const puzzle = {
   fen: "5rk1/1p5p/3p2pb/P2P1r2/4pq2/R3B2Q/1P3P2/4RKN1 b - - 4 27",
   line: [
@@ -86,11 +88,11 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-en.webp",
-        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Me and Settings, a game at move 17, the full move list from 1. e4 in the side panel, and Offer draw, Resign, Review and More below it",
+        alt: "Chessboard in light appearance with the wood board: the rail with Today, Play, Train, Me and Settings, a finished game at move 17 of 33, the full move list from 1. e4 in the side panel, and Offer draw, Resign, Review and More below it",
         width: 2446,
         height: 1536,
       },
-      asOf: "v22.0.0",
+      asOf: "v24.0.0",
     },
     showcases: [
       {
@@ -98,7 +100,7 @@ export default defineProduct({
         alt: "Chessboard after a Stockfish review of a 17-move game: a one-line summary and the win-chance curve, stepping through six key moments with the moves 1500-rated players choose under the engine line, then the full report with each side's accuracy",
         width: 2446,
         height: 1536,
-        asOf: "v22.0.0",
+        asOf: "v24.0.0",
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "Key moments first.",
@@ -230,11 +232,11 @@ export default defineProduct({
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
-        alt: "Chessboard 浅色外观、木色棋盘：左侧是今天、下棋、训练、我的与设置，棋盘停在第 17 回合，侧栏列出从 1. e4 起的全部着法，下方是提和、认输、复盘与更多",
+        alt: "Chessboard 浅色外观、木色棋盘：左侧是今天、下棋、训练、我的与设置，棋盘停在第 17 回合（共 33 回合），侧栏列出从 1. e4 起的全部着法，下方是提和、认输、复盘与更多",
         width: 2446,
         height: 1536,
       },
-      asOf: "v22.0.0",
+      asOf: "v24.0.0",
     },
     showcases: [
       {
@@ -242,7 +244,7 @@ export default defineProduct({
         alt: "Chessboard 用 Stockfish 复盘完一局 17 回合的棋：一句总结和胜率曲线，逐个翻看六个关键时刻，引擎线下列着 1500 分棋手常走的几步，再展开写着双方精准度的完整报告",
         width: 2446,
         height: 1536,
-        asOf: "v22.0.0",
+        asOf: "v24.0.0",
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "先看关键时刻",
         body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。",

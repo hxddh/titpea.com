@@ -55,10 +55,10 @@ export default defineProduct({
         src: "/assets/storage-agent-run.webp",
         alt: "A Storage Agent task on its Prod profile: the question “Which buckets are public?”, then each read listed with its time (S3 ListBuckets, then GetBucketPolicyStatus and GetBucketAcl for web-assets and data-lake, one failing with NoSuchBucketPolicy, HTTP 404) and the answer “web-assets is public” with a citation.",
         width: 2360,
-        height: 1396,
+        height: 1410,
       },
-      caption: "Storage Agent 40 on a test S3 server, answered by a demo model.",
-      asOf: "v40.0.0",
+      caption: "Storage Agent 42 on a test S3 server, answered by a demo model.",
+      asOf: "v42.0.0",
     },
     sections: [
       {
@@ -164,10 +164,10 @@ export default defineProduct({
         src: "/assets/storage-agent-run.webp",
         alt: "Storage Agent 在 Prod 配置下的一次任务：问“哪些桶是公开的？”，下面逐条列出每次读取的 S3 操作和用时，其中一次返回 404；回答是 web-assets 公开，带引用。",
         width: 2360,
-        height: 1396,
+        height: 1410,
       },
-      caption: "Storage Agent 40，连接测试用 S3 服务，由演示模型作答；界面为英文。",
-      asOf: "v40.0.0",
+      caption: "Storage Agent 42，连接测试用 S3 服务，由演示模型作答；界面为英文。",
+      asOf: "v42.0.0",
     },
     sections: [
       {
