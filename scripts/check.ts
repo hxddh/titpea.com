@@ -45,7 +45,7 @@ for (const [id, members] of Object.entries(familyMembers)) {
     if (!slugs.includes(slug)) fail(`site.ts familyMembers.${id}: ${slug} is not a product`);
     for (const locale of locales) {
       const family = ui[locale].families[id as keyof typeof familyMembers];
-      if (!family?.title || !family.sub) fail(`site.ts ${locale}: family ${id} needs a title and a line`);
+      if (!family?.title) fail(`site.ts ${locale}: family ${id} needs a title`);
       if (!family?.roles[slug]) fail(`site.ts ${locale}: family ${id} has no role for ${slug}`);
     }
   }

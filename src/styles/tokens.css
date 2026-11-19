@@ -144,7 +144,6 @@
     --leading-body: 1.7;
     /* Games and creative apps sit on a warmer paper (body[data-line="games"]). */
     --paper-warm: #f8f6f1;
-    --measure-body: 66ch;
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
      does not write these; re-sample by hand when an icon changes). tint is
@@ -470,7 +469,7 @@
 
   /* Games: the same skeleton on warmer paper, so a board reads as a table
    rather than a terminal. */
-  body[data-line="games"] {
+  :root:has(body[data-line="games"]) {
     --paper: var(--paper-warm);
   }
 

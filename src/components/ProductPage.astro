@@ -228,8 +228,8 @@ const showcaseLabels = showcases.map((showcase) => {
     />
   ))}
 
-  {/* What it does; then Get started; then where the data goes and the FAQ. The
-      latest release's notes are on Releases (design v6). */}
+  {/* What it does; then Get started; then the FAQ. Release notes are on
+      Releases, privacy facts on the Privacy index. */}
   {copy.sections.map((section) =>
     section.kind === "cards" ? <CardsSection section={section} line={model.line} /> : null,
   )}
@@ -292,6 +292,5 @@ const showcaseLabels = showcases.map((showcase) => {
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>
     <script is:inline src="/scripts/video.js" defer></script>
-    <script is:inline src="/scripts/faq.js" defer></script>
   </Fragment>
 </SiteLayout>

@@ -100,10 +100,6 @@
     margin-top: 2px;
   }
 
-  .privacy-unstated {
-    color: var(--muted);
-  }
-
   .privacy-links {
     display: grid;
     gap: 2px;

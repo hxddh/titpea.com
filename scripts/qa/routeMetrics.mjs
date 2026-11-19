@@ -103,10 +103,6 @@ export async function checkRoute(page, viewport, route) {
                     `a.button.primary[href^="https://chromewebstore.google.com/detail"], .product-hero .button.primary.is-soon`,
                   ),
                 ),
-                // The data posture is one tag in the hero, linking to the Privacy index row.
-                hasPrivacyText: Boolean(
-                  document.querySelector('.spec-tags [data-tone="network"] a[href*="/privacy/#"]'),
-                ),
                 images: images.map((image) => ({
                   src: image.getAttribute("src"),
                   alt: image.getAttribute("alt") ?? "",

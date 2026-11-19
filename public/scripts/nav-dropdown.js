@@ -12,6 +12,9 @@ dropdowns.forEach((dropdown) => {
   dropdown.addEventListener("focusout", (event) => {
     if (!dropdown.open) return;
     const next = event.relatedTarget;
+    // A click on a non-focusable spot inside the panel (a column label, the
+    // padding) moves focus to nothing: the document click handler decides.
+    if (next === null) return;
     if (next instanceof Node && dropdown.contains(next)) return;
     // Defer so a click on a panel link can still register first.
     window.requestAnimationFrame(() => {

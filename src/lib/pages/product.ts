@@ -1,5 +1,5 @@
 // Product pages: copy with its synced version, structured data, local nav.
-import { absoluteUrl, site, ui } from "../../content/site";
+import { absoluteUrl, site } from "../../content/site";
 import { type Line, type Locale, type Product, type ProductCopy } from "../../content/schema";
 import { otherLocale, pageTitle, pathFor, plainText, versionOf } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";

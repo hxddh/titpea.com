@@ -1,6 +1,6 @@
 // Did a release sync move any tag or publish date? The scheduled workflow run
-// redeploys only when it did. Notes are refilled at every build and never
-// committed, so they never count; comparing the whole file redeployed daily.
+// redeploys only when it did. Only tags and dates count: the notes link
+// follows the tag.
 //
 //   node scripts/release-tags-changed.mjs [before.json] [after.json]
 //

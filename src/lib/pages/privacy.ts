@@ -19,12 +19,10 @@ export type PrivacyPageModel = {
     name: string;
     href: string;
     icon: string;
-    privacy?: PrivacySummary & { level: string };
+    privacy: PrivacySummary & { level: string };
     /** The row's anchor: a product page's Network tag links here. */
     slug: string;
   }>;
-  unstated: string;
-  productPage: string;
   /** Shown only while Web Analytics is on, as on About. */
   analytics?: string;
   expectedText: string[];
@@ -57,12 +55,10 @@ export function privacyPage(locale: Locale): PrivacyPageModel {
         name: product[locale].title,
         href: pathFor(locale, product.slug),
         icon: product.icon,
-        privacy: privacy && { ...privacy, level: copy.privacyLevels[privacy.network] },
+        privacy: { ...privacy, level: copy.privacyLevels[privacy.network] },
         slug: product.slug,
       };
     }),
-    unstated: copy.privacyUnstated,
-    productPage: copy.privacyProductPage,
     analytics: site.analyticsAutoInjected || site.analyticsToken ? copy.aboutAnalytics : undefined,
     expectedText: [copy.privacyHeadline, copy.privacyColumns.network],
   };

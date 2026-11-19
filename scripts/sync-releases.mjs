@@ -22,6 +22,8 @@ const headers = {
 };
 
 const changes = [];
+/** Lines parsed from each latest release's notes, for the CI summary only. */
+const quoted = {};
 const problems = [];
 const historyLength = 5;
 
@@ -58,9 +60,9 @@ async function historyOf(repo, prefix = "") {
 async function syncPypi(slug, entry) {
   const response = await fetch(`https://pypi.org/pypi/${entry.pypi}/json`, { headers: { Accept: "application/json" } });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  const { releases: files } = await response.json();
+  const { info, releases: files } = await response.json();
   const history = Object.entries(files)
-    .filter(([version, uploads]) => uploads.length > 0 && !uploads.every((upload) => upload.yanked))
+    .filter(([, uploads]) => uploads.length > 0 && !uploads.every((upload) => upload.yanked))
     .filter(([version]) => /^\d+\.\d+(\.\d+)?$/.test(version))
     .map(([version, uploads]) => ({
       version: `v${version}`,
@@ -69,7 +71,9 @@ async function syncPypi(slug, entry) {
     .sort((a, b) => b.uploaded.localeCompare(a.uploaded))
     .slice(0, historyLength)
     .map(({ version, uploaded }) => ({ version, published: uploaded.slice(0, 10), title: version }));
-  const latest = history[0];
+  // The latest is PyPI's own current version (the highest non-pre-release),
+  // not the newest upload: a maintenance 1.9.1 after 2.0.0 is not current.
+  const latest = history.find((release) => release.version === `v${info?.version}`) ?? history[0];
   if (!latest) throw new Error("no published version");
   if (
     latest.version !== entry.version ||
@@ -95,13 +99,11 @@ for (const [slug, entry] of Object.entries(releases)) {
     if (!isVersion(fullTag, entry.tagPrefix)) throw new Error(`unexpected tag ${JSON.stringify(fullTag)}`);
     const tag = bare(fullTag, entry.tagPrefix);
     const published = /^\d{4}-\d{2}-\d{2}/.test(publishedAt ?? "") ? publishedAt.slice(0, 10) : entry.published;
-    const notes = {
-      summary: summaryFrom(name ?? "", body ?? "", tag),
-      items: highlightsFrom(body ?? ""),
-      url: url ?? `https://github.com/${entry.repo}/releases/tag/${fullTag}`,
-    };
-    // Keep the committed highlights when a release body yields nothing new.
-    const nextNotes = notes.summary || notes.items.length > 0 ? notes : tag === entry.version ? entry.notes : undefined;
+    // The site links the notes and never quotes them (releaseHighlights are
+    // written by hand); the parsed lines go only to the CI summary below,
+    // where the owner reads them when writing highlights.
+    quoted[slug] = { summary: summaryFrom(name ?? "", body ?? "", tag), items: highlightsFrom(body ?? "") };
+    const nextNotes = { url: url ?? `https://github.com/${entry.repo}/releases/tag/${fullTag}` };
     // A failed listing keeps the committed history; the latest tag still updates,
     // so it is merged in: the history always contains the latest release.
     const listed = await historyOf(entry.repo, entry.tagPrefix).catch((error) => {
@@ -123,8 +125,7 @@ for (const [slug, entry] of Object.entries(releases)) {
       entry.version = tag;
       entry.published = published;
       delete entry.releaseCount;
-      if (nextNotes) entry.notes = nextNotes;
-      else delete entry.notes;
+      entry.notes = nextNotes;
     }
   } catch (error) {
     problems.push(`${slug} (${entry.repo}): ${error.message}`);
@@ -137,12 +138,12 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   const cell = (text = "") => String(text).replaceAll("|", "\\|").replaceAll("\n", " ");
   const rows = Object.entries(releases).map(
     ([slug, entry]) =>
-      `| ${slug} | ${cell(entry.version)} | ${cell(entry.published)} | ${cell(entry.notes?.summary)} | ${cell((entry.notes?.items ?? []).join(" · "))} |`,
+      `| ${slug} | ${cell(entry.version)} | ${cell(entry.published)} | ${cell(quoted[slug]?.summary)} | ${cell((quoted[slug]?.items ?? []).join(" · "))} |`,
   );
   fs.appendFileSync(
     process.env.GITHUB_STEP_SUMMARY,
     [
-      "### Release notes quoted on titpea.com",
+      "### Latest release notes (for writing releaseHighlights; the site only links them)",
       "",
       "| Product | Tag | Date | Summary | Highlights |",
       "| --- | --- | --- | --- | --- |",

@@ -426,8 +426,7 @@
     text-wrap: pretty;
   }
 
-  /* FAQ: questions on hairlines, the first answer open; phones fold all but
-   the first (faq.js). */
+  /* FAQ: an accordion on hairlines, the first answer open. */
   .faq-item {
     border-bottom: 1px solid var(--line);
   }

@@ -47,25 +47,17 @@ const { columns } = model;
                   <span>{row.name}</span>
                 </a>
               </th>
-              {row.privacy ? (
-                <>
-                  <td data-label={columns.network}>
-                    <span class="privacy-level" data-level={row.privacy.network}>
-                      {row.privacy.level}
-                    </span>
-                    <span class="privacy-note">
-                      <Prose text={row.privacy.networkNote} />
-                    </span>
-                  </td>
-                  <td data-label={columns.stays}>
-                    <Prose text={row.privacy.stays} />
-                  </td>
-                </>
-              ) : (
-                <td class="privacy-unstated" colspan="2" data-label={columns.network}>
-                  {model.unstated}
-                </td>
-              )}
+              <td data-label={columns.network}>
+                <span class="privacy-level" data-level={row.privacy.network}>
+                  {row.privacy.level}
+                </span>
+                <span class="privacy-note">
+                  <Prose text={row.privacy.networkNote} />
+                </span>
+              </td>
+              <td data-label={columns.stays}>
+                <Prose text={row.privacy.stays} />
+              </td>
               <td data-label={columns.details}>
                 <ul class="privacy-links">
                   {row.privacy?.policy && (

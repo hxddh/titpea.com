@@ -4,19 +4,33 @@
     "version": "v1.6.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v1.6.0", "published": "2026-11-19", "title": "v1.6.0" },
-      { "version": "v1.5.0", "published": "2026-11-18", "title": "v1.5.0" },
-      { "version": "v1.4.0", "published": "2026-11-17", "title": "v1.4.0" },
-      { "version": "v1.3.1", "published": "2026-11-17", "title": "v1.3.1" },
-      { "version": "v1.3.0", "published": "2026-11-17", "title": "v1.3.0" }
+      {
+        "version": "v1.6.0",
+        "published": "2026-11-19",
+        "title": "v1.6.0"
+      },
+      {
+        "version": "v1.5.0",
+        "published": "2026-11-18",
+        "title": "v1.5.0"
+      },
+      {
+        "version": "v1.4.0",
+        "published": "2026-11-17",
+        "title": "v1.4.0"
+      },
+      {
+        "version": "v1.3.1",
+        "published": "2026-11-17",
+        "title": "v1.3.1"
+      },
+      {
+        "version": "v1.3.0",
+        "published": "2026-11-17",
+        "title": "v1.3.0"
+      }
     ],
     "notes": {
-      "summary": "",
-      "items": [
-        "A large diff no longer degrades to one page per round trip",
-        "The default concurrency follows the endpoint's latency",
-        "Runtime cuts of a flat run are read off the segment's own pages"
-      ],
       "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.6.0"
     }
   },
@@ -25,15 +39,33 @@
     "version": "v42.0.0",
     "published": "2026-11-14",
     "history": [
-      { "version": "v42.0.0", "published": "2026-11-14", "title": "v42.0.0" },
-      { "version": "v41.0.0", "published": "2026-11-14", "title": "v41.0.0" },
-      { "version": "v40.0.0", "published": "2026-10-30", "title": "v40.0.0" },
-      { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" },
-      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" }
+      {
+        "version": "v42.0.0",
+        "published": "2026-11-14",
+        "title": "v42.0.0"
+      },
+      {
+        "version": "v41.0.0",
+        "published": "2026-11-14",
+        "title": "v41.0.0"
+      },
+      {
+        "version": "v40.0.0",
+        "published": "2026-10-30",
+        "title": "v40.0.0"
+      },
+      {
+        "version": "v39.0.0",
+        "published": "2026-10-29",
+        "title": "v39.0.0"
+      },
+      {
+        "version": "v38.0.0",
+        "published": "2026-10-29",
+        "title": "v38.0.0"
+      }
     ],
     "notes": {
-      "summary": "No model credentials were available; this report proves the harness runs, not answer qual…",
-      "items": ["✓ says web-assets is public", "✓ does not call ledger-private public", "✓ uses Read"],
       "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v42.0.0"
     }
   },
@@ -42,19 +74,33 @@
     "version": "v26.0.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" },
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "sonde 25.0.0" },
-      { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" },
-      { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" },
-      { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" }
+      {
+        "version": "v26.0.0",
+        "published": "2026-11-19",
+        "title": "sonde 26.0.0"
+      },
+      {
+        "version": "v25.0.0",
+        "published": "2026-11-19",
+        "title": "sonde 25.0.0"
+      },
+      {
+        "version": "v24.0.2",
+        "published": "2026-11-16",
+        "title": "sonde 24.0.2"
+      },
+      {
+        "version": "v24.0.1",
+        "published": "2026-11-16",
+        "title": "sonde 24.0.1"
+      },
+      {
+        "version": "v24.0.0",
+        "published": "2026-11-15",
+        "title": "sonde 24.0.0"
+      }
     ],
     "notes": {
-      "summary": "sonde now records what the program really got, guards deletes more strictly, and looks at…",
-      "items": [
-        "The app, refined on each system",
-        "Restoring a key with another delete marker under its latest one says the key stays deleted",
-        "A lifecycle plan is refused when the bucket's lifecycle changed since it was made"
-      ],
       "url": "https://github.com/hxddh/sonde/releases/tag/v26.0.0"
     }
   },
@@ -63,11 +109,31 @@
     "version": "v2.0.0",
     "published": "2026-11-14",
     "history": [
-      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" },
-      { "version": "v0.8.0", "published": "2026-06-30", "title": "v0.8.0" },
-      { "version": "v0.7.2", "published": "2026-06-30", "title": "v0.7.2" },
-      { "version": "v0.7.1", "published": "2026-06-30", "title": "v0.7.1" },
-      { "version": "v0.7.0", "published": "2026-06-21", "title": "v0.7.0" }
+      {
+        "version": "v2.0.0",
+        "published": "2026-11-14",
+        "title": "v2.0.0"
+      },
+      {
+        "version": "v0.8.0",
+        "published": "2026-06-30",
+        "title": "v0.8.0"
+      },
+      {
+        "version": "v0.7.2",
+        "published": "2026-06-30",
+        "title": "v0.7.2"
+      },
+      {
+        "version": "v0.7.1",
+        "published": "2026-06-30",
+        "title": "v0.7.1"
+      },
+      {
+        "version": "v0.7.0",
+        "published": "2026-06-21",
+        "title": "v0.7.0"
+      }
     ]
   },
   "httpmon": {
@@ -75,15 +141,33 @@
     "version": "v4.1.0",
     "published": "2026-11-14",
     "history": [
-      { "version": "v4.1.0", "published": "2026-11-14", "title": "v4.1.0" },
-      { "version": "v4.0.0", "published": "2026-11-14", "title": "v4.0.0" },
-      { "version": "v3.1.0", "published": "2026-11-14", "title": "v3.1.0" },
-      { "version": "v3.0.0", "published": "2026-11-14", "title": "v3.0.0" },
-      { "version": "v2.0.0", "published": "2026-11-14", "title": "v2.0.0" }
+      {
+        "version": "v4.1.0",
+        "published": "2026-11-14",
+        "title": "v4.1.0"
+      },
+      {
+        "version": "v4.0.0",
+        "published": "2026-11-14",
+        "title": "v4.0.0"
+      },
+      {
+        "version": "v3.1.0",
+        "published": "2026-11-14",
+        "title": "v3.1.0"
+      },
+      {
+        "version": "v3.0.0",
+        "published": "2026-11-14",
+        "title": "v3.0.0"
+      },
+      {
+        "version": "v2.0.0",
+        "published": "2026-11-14",
+        "title": "v2.0.0"
+      }
     ],
     "notes": {
-      "summary": "Makes the scenarios 4.0 introduced — a standing proxy, long sessions, agents",
-      "items": ["Streaming HAR and light diff"],
       "url": "https://github.com/hxddh/https-traffic-inspector/releases/tag/v4.1.0"
     }
   },
@@ -93,15 +177,33 @@
     "version": "v8.0.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v8.0.0", "published": "2026-11-19", "title": "Lenslet 8.0.0" },
-      { "version": "v7.0.0", "published": "2026-11-19", "title": "Lenslet 7.0.0" },
-      { "version": "v6.0.0", "published": "2026-11-18", "title": "Lenslet 6.0.0" },
-      { "version": "v5.0.0", "published": "2026-11-18", "title": "Lenslet 5.0.0" },
-      { "version": "v4.1.0", "published": "2026-11-18", "title": "Lenslet 4.1.0" }
+      {
+        "version": "v8.0.0",
+        "published": "2026-11-19",
+        "title": "Lenslet 8.0.0"
+      },
+      {
+        "version": "v7.0.0",
+        "published": "2026-11-19",
+        "title": "Lenslet 7.0.0"
+      },
+      {
+        "version": "v6.0.0",
+        "published": "2026-11-18",
+        "title": "Lenslet 6.0.0"
+      },
+      {
+        "version": "v5.0.0",
+        "published": "2026-11-18",
+        "title": "Lenslet 5.0.0"
+      },
+      {
+        "version": "v4.1.0",
+        "published": "2026-11-18",
+        "title": "Lenslet 4.1.0"
+      }
     ],
     "notes": {
-      "summary": "Lenslet 8.0 is a rebuild around one idea: every fact is computed once, in one",
-      "items": ["Replay through the proxy", "Two views, Calls and Access", "Findings at the top of Calls"],
       "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v8.0.0"
     }
   },
@@ -110,19 +212,33 @@
     "version": "v25.0.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
-      { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
-      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" },
-      { "version": "v21.1.2", "published": "2026-10-15", "title": "v21.1.2" },
-      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" }
+      {
+        "version": "v25.0.0",
+        "published": "2026-11-19",
+        "title": "v25.0.0"
+      },
+      {
+        "version": "v24.0.0",
+        "published": "2026-10-18",
+        "title": "v24.0.0"
+      },
+      {
+        "version": "v23.0.0",
+        "published": "2026-10-15",
+        "title": "v23.0.0"
+      },
+      {
+        "version": "v21.1.2",
+        "published": "2026-10-15",
+        "title": "v21.1.2"
+      },
+      {
+        "version": "v21.1.1",
+        "published": "2026-10-15",
+        "title": "v21.1.1"
+      }
     ],
     "notes": {
-      "summary": "v25, \"the living margin, scans you can touch, and verification without false penalties\" (…",
-      "items": [
-        "Region selection asks or marks in one drag",
-        "Scanned pages have a selectable, highlightable text layer",
-        "Internal PDF links & printed page labels"
-      ],
       "url": "https://github.com/hxddh/pagewise/releases/tag/v25.0.0"
     }
   },
@@ -131,19 +247,33 @@
     "version": "v35.0.0",
     "published": "2026-11-14",
     "history": [
-      { "version": "v35.0.0", "published": "2026-11-14", "title": "Pulse 35.0.0" },
-      { "version": "v34.0.0", "published": "2026-11-14", "title": "Pulse 34.0.0" },
-      { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
-      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" },
-      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" }
+      {
+        "version": "v35.0.0",
+        "published": "2026-11-14",
+        "title": "Pulse 35.0.0"
+      },
+      {
+        "version": "v34.0.0",
+        "published": "2026-11-14",
+        "title": "Pulse 34.0.0"
+      },
+      {
+        "version": "v33.0.0",
+        "published": "2026-10-21",
+        "title": "Pulse 33.0.0"
+      },
+      {
+        "version": "v32.0.0",
+        "published": "2026-10-18",
+        "title": "Pulse 32.0.0"
+      },
+      {
+        "version": "v31.0.0",
+        "published": "2026-10-17",
+        "title": "Pulse 31.0.0"
+      }
     ],
     "notes": {
-      "summary": "一次重构 Pulse 核心的版本：会话状态由一台显式的状态机推进，子代理不再走一条复制出来的平行路径",
-      "items": [
-        "新增性质测试，对随机生成的事件序列检查三条不变量",
-        "这算大版本，是因为扩展代码的方式变了",
-        "托盘按项目分组"
-      ],
       "url": "https://github.com/hxddh/Pulse/releases/tag/v35.0.0"
     }
   },
@@ -152,19 +282,33 @@
     "version": "v6.0.0",
     "published": "2026-11-11",
     "history": [
-      { "version": "v6.0.0", "published": "2026-11-11", "title": "Readout 6.0.0" },
-      { "version": "v5.2.0", "published": "2026-11-05", "title": "Readout 5.2.0" },
-      { "version": "v5.1.0", "published": "2026-11-04", "title": "Readout 5.1.0" },
-      { "version": "v5.0.0", "published": "2026-10-31", "title": "Readout 5.0.0" },
-      { "version": "v4.2.0", "published": "2026-10-30", "title": "Readout 4.2.0" }
+      {
+        "version": "v6.0.0",
+        "published": "2026-11-11",
+        "title": "Readout 6.0.0"
+      },
+      {
+        "version": "v5.2.0",
+        "published": "2026-11-05",
+        "title": "Readout 5.2.0"
+      },
+      {
+        "version": "v5.1.0",
+        "published": "2026-11-04",
+        "title": "Readout 5.1.0"
+      },
+      {
+        "version": "v5.0.0",
+        "published": "2026-10-31",
+        "title": "Readout 5.0.0"
+      },
+      {
+        "version": "v4.2.0",
+        "published": "2026-10-30",
+        "title": "Readout 4.2.0"
+      }
     ],
     "notes": {
-      "summary": "Readout 6 does less: a file opens without waiting for anything, opening one never runs an…",
-      "items": [
-        "Files in a git repository open sooner the first time",
-        "A document an agent writes again from the top marks only what changed",
-        "A build or a package install in an agent folder no longer wakes Readout"
-      ],
       "url": "https://github.com/hxddh/readout/releases/tag/v6.0.0"
     }
   },
@@ -173,15 +317,33 @@
     "version": "v1.0.0",
     "published": "2026-11-14",
     "history": [
-      { "version": "v1.0.0", "published": "2026-11-14", "title": "World Machine v1.0.0" },
-      { "version": "v0.30.0", "published": "2026-10-16", "title": "World Machine v0.30.0" },
-      { "version": "v0.29.0", "published": "2026-10-10", "title": "World Machine v0.29.0" },
-      { "version": "v0.28.0", "published": "2026-10-08", "title": "World Machine v0.28.0" },
-      { "version": "v0.27.0", "published": "2026-10-07", "title": "World Machine v0.27.0" }
+      {
+        "version": "v1.0.0",
+        "published": "2026-11-14",
+        "title": "World Machine v1.0.0"
+      },
+      {
+        "version": "v0.30.0",
+        "published": "2026-10-16",
+        "title": "World Machine v0.30.0"
+      },
+      {
+        "version": "v0.29.0",
+        "published": "2026-10-10",
+        "title": "World Machine v0.29.0"
+      },
+      {
+        "version": "v0.28.0",
+        "published": "2026-10-08",
+        "title": "World Machine v0.28.0"
+      },
+      {
+        "version": "v0.27.0",
+        "published": "2026-10-07",
+        "title": "World Machine v0.27.0"
+      }
     ],
     "notes": {
-      "summary": "1",
-      "items": ["Tiny Society runs inside the app", "A menu on every platform", "For a new player"],
       "url": "https://github.com/hxddh/world-machine/releases/tag/v1.0.0"
     }
   },
@@ -190,19 +352,33 @@
     "version": "v0.26.3",
     "published": "2026-10-07",
     "history": [
-      { "version": "v0.26.3", "published": "2026-10-07", "title": "Agent Radar v0.26.3" },
-      { "version": "v0.26.2", "published": "2026-10-07", "title": "Agent Radar v0.26.2" },
-      { "version": "v0.26.1", "published": "2026-10-02", "title": "Agent Radar v0.26.1" },
-      { "version": "v0.26.0", "published": "2026-09-30", "title": "Agent Radar v0.26.0" },
-      { "version": "v0.25.1", "published": "2026-09-30", "title": "Agent Radar v0.25.1" }
+      {
+        "version": "v0.26.3",
+        "published": "2026-10-07",
+        "title": "Agent Radar v0.26.3"
+      },
+      {
+        "version": "v0.26.2",
+        "published": "2026-10-07",
+        "title": "Agent Radar v0.26.2"
+      },
+      {
+        "version": "v0.26.1",
+        "published": "2026-10-02",
+        "title": "Agent Radar v0.26.1"
+      },
+      {
+        "version": "v0.26.0",
+        "published": "2026-09-30",
+        "title": "Agent Radar v0.26.0"
+      },
+      {
+        "version": "v0.25.1",
+        "published": "2026-09-30",
+        "title": "Agent Radar v0.25.1"
+      }
     ],
     "notes": {
-      "summary": "Release date: 2026-10-07",
-      "items": [
-        "A 401 from the AI Gateway means the key itself is invalid",
-        "Every model in the chain is called with the same key, so a fallback cannot help",
-        "401 now stops the chain wherever it occurs"
-      ],
       "url": "https://github.com/hxddh/agent-radar/releases/tag/v0.26.3"
     }
   },
@@ -211,15 +387,33 @@
     "version": "v3.2.1",
     "published": "2026-11-13",
     "history": [
-      { "version": "v3.2.1", "published": "2026-11-13", "title": "v3.2.1" },
-      { "version": "v3.2.0", "published": "2026-10-18", "title": "v3.2.0" },
-      { "version": "v3.1.0", "published": "2026-10-17", "title": "v3.1.0" },
-      { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" },
-      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" }
+      {
+        "version": "v3.2.1",
+        "published": "2026-11-13",
+        "title": "v3.2.1"
+      },
+      {
+        "version": "v3.2.0",
+        "published": "2026-10-18",
+        "title": "v3.2.0"
+      },
+      {
+        "version": "v3.1.0",
+        "published": "2026-10-17",
+        "title": "v3.1.0"
+      },
+      {
+        "version": "v3.0.0",
+        "published": "2026-10-14",
+        "title": "v3.0.0"
+      },
+      {
+        "version": "v2.1.0",
+        "published": "2026-10-10",
+        "title": "v2.1.0"
+      }
     ],
     "notes": {
-      "summary": "照 `docs/REVIEW-v3.2.md` 修",
-      "items": ["第六节第 1 项", "第 2 项", "第 3 项"],
       "url": "https://github.com/hxddh/goban/releases/tag/v3.2.1"
     }
   },
@@ -228,19 +422,33 @@
     "version": "v17.0.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v17.0.0", "published": "2026-11-19", "title": "Goban Studio v17.0.0" },
-      { "version": "v16.0.1", "published": "2026-11-16", "title": "Goban Studio v16.0.1" },
-      { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
-      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
-      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" }
+      {
+        "version": "v17.0.0",
+        "published": "2026-11-19",
+        "title": "Goban Studio v17.0.0"
+      },
+      {
+        "version": "v16.0.1",
+        "published": "2026-11-16",
+        "title": "Goban Studio v16.0.1"
+      },
+      {
+        "version": "v16.0.0",
+        "published": "2026-11-14",
+        "title": "Goban Studio v16.0.0"
+      },
+      {
+        "version": "v15.0.0",
+        "published": "2026-11-14",
+        "title": "Goban Studio v15.0.0"
+      },
+      {
+        "version": "v14.0.0",
+        "published": "2026-11-11",
+        "title": "Goban Studio v14.0.0"
+      }
     ],
     "notes": {
-      "summary": "v17 adds nothing new",
-      "items": [
-        "The openings explorer has its branches back",
-        "The whole course was checked with the stronger network",
-        "The notes on the classics' key moments"
-      ],
       "url": "https://github.com/hxddh/goban-studio/releases/tag/v17.0.0"
     }
   },
@@ -249,15 +457,33 @@
     "version": "v25.0.0",
     "published": "2026-11-19",
     "history": [
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
-      { "version": "v24.0.0", "published": "2026-11-18", "title": "v24.0.0" },
-      { "version": "v23.0.0", "published": "2026-11-14", "title": "v23.0.0" },
-      { "version": "v22.0.0", "published": "2026-11-11", "title": "v22.0.0" },
-      { "version": "v21.0.0", "published": "2026-11-09", "title": "v21.0.0" }
+      {
+        "version": "v25.0.0",
+        "published": "2026-11-19",
+        "title": "v25.0.0"
+      },
+      {
+        "version": "v24.0.0",
+        "published": "2026-11-18",
+        "title": "v24.0.0"
+      },
+      {
+        "version": "v23.0.0",
+        "published": "2026-11-14",
+        "title": "v23.0.0"
+      },
+      {
+        "version": "v22.0.0",
+        "published": "2026-11-11",
+        "title": "v22.0.0"
+      },
+      {
+        "version": "v21.0.0",
+        "published": "2026-11-09",
+        "title": "v21.0.0"
+      }
     ],
     "notes": {
-      "summary": "这一版读 24.0 的存档，装上就接着用",
-      "items": ["macOS", "一次选几个 .pgn 打开", "Windows 只开一个窗口", "重试和复盘用同一把尺子（胜率）"],
       "url": "https://github.com/hxddh/chessboard/releases/tag/v25.0.0"
     }
   }

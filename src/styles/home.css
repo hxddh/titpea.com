@@ -210,7 +210,8 @@
   }
 
   /* The index: each line under a hairline label, its products as rows. */
-  .index-group + .index-group {
+  /* Only between groups that show, so a filtered list starts at the top. */
+  .index-group:not([hidden]) ~ .index-group:not([hidden]) {
     margin-top: 48px;
   }
 
@@ -317,6 +318,10 @@
     font-size: var(--text-meta);
     font-variant-numeric: tabular-nums;
     text-align: right;
+  }
+
+  .filter-empty:empty {
+    display: none;
   }
 
   .filter-empty {

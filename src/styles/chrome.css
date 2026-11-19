@@ -35,11 +35,6 @@
     height: 56px;
     margin: 0 auto;
     padding: 0 var(--gutter);
-    border-radius: 0;
-    background: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    box-shadow: none;
   }
 
   /* The wordmark: "Titpea" in the sans, semibold and tight, beside the
