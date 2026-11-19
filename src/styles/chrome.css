@@ -113,6 +113,15 @@
     position: relative;
   }
 
+  /* The Products panel hangs from the bar, its right edge on the content edge. */
+  .site-header-bar {
+    position: relative;
+  }
+
+  .products-menu {
+    position: static;
+  }
+
   .nav-dropdown > summary {
     list-style: none;
   }
@@ -137,10 +146,10 @@
    blur behind it. */
   .nav-dropdown-panel {
     position: absolute;
-    top: calc(100% + 11px);
-    left: 50%;
+    top: calc(100% - 1px);
+    right: var(--gutter);
     z-index: 60;
-    width: min(760px, calc(100vw - 2 * var(--gutter)));
+    width: min(860px, calc(100vw - 2 * var(--gutter)));
     padding: 20px 20px 12px;
     border-radius: var(--radius-media);
     /* Solid paper: under the header's backdrop blur, a translucent panel lets
@@ -149,7 +158,6 @@
     box-shadow:
       inset 0 0 0 1px var(--line),
       var(--shadow-panel);
-    translate: -50% 0;
   }
 
   .products-grid {
@@ -487,7 +495,7 @@
       gap: 2px;
       padding: 8px;
       border-radius: 18px;
-      background: var(--menu-bg);
+      background: var(--paper);
       box-shadow:
         inset 0 0 0 1px var(--line),
         0 18px 48px -16px var(--glass-shade);

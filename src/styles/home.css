@@ -304,7 +304,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: 14px;
-    max-width: 340px;
+    max-width: 420px;
   }
 
   .index-meta .tags {
@@ -343,14 +343,21 @@
       grid-template-columns: 36px minmax(0, 1fr);
     }
 
+    /* Tags and version flow as one run, wherever the line breaks. */
     .index-meta {
       grid-column: 2;
+      flex-wrap: wrap;
       justify-content: flex-start;
+      gap: 6px;
       max-width: none;
     }
 
     .index-meta .tags {
-      justify-content: flex-start;
+      display: contents;
+    }
+
+    .index-version {
+      margin-left: 4px;
     }
 
     .index-version {

@@ -64,4 +64,10 @@
     word-break: keep-all;
     overflow-wrap: anywhere;
   }
+
+  /* Chinese words in a tag take the sans: mono spacing before a CJK glyph
+   leaves a hole. Versions stay mono. */
+  :lang(zh) :is(.tag, .tags > *):not(.tag-version, [data-tone="version"]) {
+    font-family: var(--sans);
+  }
 }
