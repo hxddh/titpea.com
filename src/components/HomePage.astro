@@ -57,16 +57,6 @@ const [lead, ...rest] = model.featured.items;
               </span>
               <span class="pick-text">{item.headline}</span>
               {item.caption && <span class="pick-caption">{item.caption}</span>}
-              <span class="tags">
-                {item.facts.platforms.map((platform) => (
-                  <span class="tag">{platform}</span>
-                ))}
-                {item.facts.version && (
-                  <span class="tag tag-version" data-visual-live>
-                    {item.facts.version}
-                  </span>
-                )}
-              </span>
             </span>
           </a>
         </li>
@@ -84,21 +74,6 @@ const [lead, ...rest] = model.featured.items;
       </h2>
     </header>
     <div class="filters" data-filters hidden>
-      <div class="filter-row" role="group" aria-label={model.more.filters.lineLabel}>
-        <span class="filter-label" aria-hidden="true">
-          {model.more.filters.lineLabel}
-        </span>
-        {model.more.filters.lines.map((option) => (
-          <button
-            type="button"
-            class="chip"
-            data-filter-line={option.key}
-            aria-pressed={option.key === "all" ? "true" : "false"}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
       <div class="filter-row" role="group" aria-label={model.more.filters.platformLabel}>
         <span class="filter-label" aria-hidden="true">
           {model.more.filters.platformLabel}
@@ -119,9 +94,6 @@ const [lead, ...rest] = model.featured.items;
       <div class="index-group" data-line={group.line}>
         <div class="index-title">
           <h3 id={`line-${group.line}-title`}>{group.label}</h3>
-          <p class="fact" data-group-count>
-            {group.count}
-          </p>
         </div>
         <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
@@ -134,7 +106,8 @@ const [lead, ...rest] = model.featured.items;
                 </span>
                 <span class="index-meta">
                   <span class="tags">
-                    <span class="tag tag-kind">{item.facts.kind}</span>
+                    {/* The kind only where no platform says it: a command-line tool. */}
+                    {item.filters.includes("cli") && <span class="tag tag-kind">{item.facts.kind}</span>}
                     {item.facts.platforms.map((platform) => (
                       <span class="tag">{platform}</span>
                     ))}

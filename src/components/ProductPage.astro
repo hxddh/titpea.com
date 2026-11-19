@@ -81,13 +81,16 @@ const specTags: Array<{ value: string; href?: string; tone?: "version" | "networ
   ...(facts.license ? [{ value: facts.license }] : []),
   // The version is said once: not here when the primary action already carries it.
   ...(facts.version && !model.downloadsRelease ? [{ value: facts.version, tone: "version" as const }] : []),
-  ...(facts.released ? [{ value: facts.released }] : []),
   networkTag,
   ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
 ];
+const pairShowcases =
+  showcases.length === 2 && showcases.every((showcase) => showcase.width > showcase.height && !showcase.focus);
 // Provenance is said once: under the hero capture, the release it shows; under
 // a showcase only when its release differs from the hero's.
-const capturedAt = (asOf?: string) => (asOf ? copyUi.capturedAt.replace("{version}", asOf) : undefined);
+// A capture of the current release needs no note: the version is on the button and in Releases.
+const capturedAt = (asOf?: string) =>
+  asOf && asOf !== facts.version ? copyUi.capturedAt.replace("{version}", asOf) : undefined;
 const screenshot = copy.visual.kind === "screenshot" && !heroReplay ? copy.visual : undefined;
 const heroAsOf = screenshot?.asOf;
 // Each showcase says its release only when it differs from the last one said,
@@ -218,15 +221,32 @@ const showcaseLabels = showcases.map((showcase) => {
     <DemoSection section={section} controls={controls} />
   ))}
 
-  {showcases.map((showcase, index) => (
-    <ShowcaseSection
-      showcase={showcase}
-      label={showcaseLabels[index]}
-      wholeLabel={copyUi.wholeCapture}
-      pauseLabel={copyUi.pauseVideo}
-      playLabel={copyUi.playVideo}
-    />
-  ))}
+  {/* Two landscape showcases stand side by side, a gallery row rather than
+      two more full-width windows after the hero. */}
+  {pairShowcases ? (
+    <section class="shell page-section product-section showcase-pair">
+      {showcases.map((showcase, index) => (
+        <ShowcaseSection
+          showcase={showcase}
+          label={showcaseLabels[index]}
+          wholeLabel={copyUi.wholeCapture}
+          pauseLabel={copyUi.pauseVideo}
+          playLabel={copyUi.playVideo}
+          paired
+        />
+      ))}
+    </section>
+  ) : (
+    showcases.map((showcase, index) => (
+      <ShowcaseSection
+        showcase={showcase}
+        label={showcaseLabels[index]}
+        wholeLabel={copyUi.wholeCapture}
+        pauseLabel={copyUi.pauseVideo}
+        playLabel={copyUi.playVideo}
+      />
+    ))
+  )}
 
   {/* What it does; then Get started; then the FAQ. Release notes are on
       Releases, privacy facts on the Privacy index. */}

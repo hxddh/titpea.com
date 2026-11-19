@@ -38,13 +38,11 @@ export type HomePageModel = {
   more: {
     title: string;
     filters: {
-      lineLabel: string;
       platformLabel: string;
       empty: string;
-      lines: Array<{ key: string; label: string }>;
       platforms: Array<{ key: string; label: string }>;
     };
-    groups: Array<{ line: Line; label: string; count: string; items: CatalogItem[] }>;
+    groups: Array<{ line: Line; label: string; items: CatalogItem[] }>;
   };
   expectedText: string[];
 };
@@ -103,13 +101,8 @@ export function homePage(locale: Locale): HomePageModel {
     more: {
       title: copy.moreToolsTitle,
       filters: {
-        lineLabel: copy.filterLine,
         platformLabel: copy.filterPlatform,
         empty: copy.filterEmpty,
-        lines: [
-          { key: "all", label: copy.allLabel },
-          ...lines.map((line) => ({ key: line, label: copy.groups[line] })),
-        ],
         platforms: [
           { key: "all", label: copy.allLabel },
           ...platformOrder
@@ -125,7 +118,6 @@ export function homePage(locale: Locale): HomePageModel {
         return {
           line,
           label: copy.groups[line],
-          count: (line === "games" ? copy.gameCount : copy.toolCount).replace("{count}", String(items.length)),
           items,
         };
       }),

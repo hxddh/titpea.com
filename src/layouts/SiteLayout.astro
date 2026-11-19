@@ -2,7 +2,7 @@
 import SiteHeader from "../components/SiteHeader.astro";
 import { site, ui } from "../content/site";
 import type { Locale } from "../content/schema";
-import { navGroups, pathFor, sitePages } from "../lib/pages";
+import { pathFor } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
 import fontFaces from "../styles/fonts.css?raw";
@@ -41,22 +41,10 @@ const preloadFont = locale === "zh" ? fontUrl("noto-serif-sc-display") : undefin
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();
-// The footer is a compact index: each line's product names, then Titpea's pages.
-const footerGroups: Array<{
-  label: string;
-  items: Array<{ label: string; href: string; external?: boolean; hreflang?: string }>;
-}> = [
-  ...navGroups(locale),
-  {
-    label: site.brand,
-    items: [
-      { label: copy.home, href: pathFor(locale) },
-      ...sitePages(locale),
-      { label: copy.privacy, href: pathFor(locale, "privacy") },
-      { label: copy.footerFeed, href: "/releases.xml" },
-      { label: language.label, href: language.href, hreflang: language.hreflang },
-    ],
-  },
+// The footer holds only what the header does not: Privacy, the feed, email.
+const footerLinks: Array<{ label: string; href: string }> = [
+  { label: copy.privacy, href: pathFor(locale, "privacy") },
+  { label: copy.footerFeed, href: "/releases.xml" },
 ];
 ---
 
@@ -129,29 +117,16 @@ const footerGroups: Array<{
       <slot />
     </main>
     <footer class="site-footer">
-      <nav class="shell foot-map" aria-label={copy.footerLabel}>
-        {footerGroups.map((group) => (
-          <div class="foot-group">
-            <p class="foot-group-label">{group.label}</p>
-            <ul>
-              {group.items.map((item) => (
-                <li>
-                  <a href={item.href} rel={item.external ? "noreferrer" : undefined} hreflang={item.hreflang}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </nav>
-      <div class="shell">
-        <div class="foot">
-          <span>
-            © {year} {site.brand}
-          </span>
+      <div class="shell foot">
+        <span>
+          © {year} {site.brand}
+        </span>
+        <nav class="foot-links" aria-label={copy.footerLabel}>
+          {footerLinks.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
           <a href={`mailto:${site.email}`}>{site.email}</a>
-        </div>
+        </nav>
       </div>
     </footer>
     <slot name="scripts" />

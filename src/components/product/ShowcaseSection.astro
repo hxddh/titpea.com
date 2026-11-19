@@ -2,7 +2,7 @@
 import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import type { Showcase } from "../../content/schema";
-import { columnShotSizes, screenshotSizes, srcsetFor } from "../../lib/images";
+import { columnShotSizes, pairedShotSizes, screenshotSizes, srcsetFor } from "../../lib/images";
 
 interface Props {
   showcase: Showcase;
@@ -12,9 +12,11 @@ interface Props {
   wholeLabel: string;
   pauseLabel: string;
   playLabel: string;
+  /** One of two showcases set side by side: the picture first, then its name and line. */
+  paired?: boolean;
 }
 
-const { showcase, label, wholeLabel, pauseLabel, playLabel } = Astro.props;
+const { showcase, label, wholeLabel, pauseLabel, playLabel, paired = false } = Astro.props;
 // The heading and its line sit in the reading column; the picture lies on the
 // product's colour across the whole shell, as the hero's does. A wide window
 // capture (3:2 or wider) fills the block; a narrower one keeps product scale;
@@ -23,20 +25,23 @@ const { showcase, label, wholeLabel, pauseLabel, playLabel } = Astro.props;
 const portrait = showcase.height > showcase.width;
 const detail = Boolean(showcase.focus) && !showcase.video;
 const wide = !detail && showcase.width >= showcase.height * 1.5;
-const sizes = wide ? screenshotSizes : portrait ? "280px" : columnShotSizes;
+const sizes = paired ? pairedShotSizes : wide ? screenshotSizes : portrait ? "280px" : columnShotSizes;
+const Tag = paired ? "article" : "section";
 ---
 
-<section
-  class="shell page-section product-section product-screenshot-showcase"
+<Tag
+  class:list={[paired ? "showcase-cell" : "shell page-section product-section", "product-screenshot-showcase"]}
   data-portrait={portrait ? "" : undefined}
-  data-wide={wide ? "" : undefined}
+  data-wide={wide && !paired ? "" : undefined}
 >
-  <header class="section-head">
-    <h2 class="heading">{headingText(showcase.title)}</h2>
-    <p class="sub">
-      <Prose text={showcase.body} />
-    </p>
-  </header>
+  {!paired && (
+    <header class="section-head">
+      <h2 class="heading">{headingText(showcase.title)}</h2>
+      <p class="sub">
+        <Prose text={showcase.body} />
+      </p>
+    </header>
+  )}
   <figure class="showcase-figure">
     <div class="stage stage-show">
       {showcase.video ? (
@@ -128,4 +133,12 @@ const sizes = wide ? screenshotSizes : portrait ? "280px" : columnShotSizes;
       </figcaption>
     )}
   </figure>
-</section>
+  {paired && (
+    <header class="showcase-cell-head">
+      <h2 class="showcase-cell-title">{headingText(showcase.title)}</h2>
+      <p class="sub">
+        <Prose text={showcase.body} />
+      </p>
+    </header>
+  )}
+</Tag>
