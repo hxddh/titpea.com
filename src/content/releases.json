@@ -1,22 +1,23 @@
 {
   "s3-turbo-list": {
     "repo": "hxddh/s3-turbo-list",
-    "version": "v1.4.0",
-    "published": "2026-11-17",
+    "version": "v1.5.0",
+    "published": "2026-11-18",
     "history": [
+      { "version": "v1.5.0", "published": "2026-11-18", "title": "v1.5.0" },
       { "version": "v1.4.0", "published": "2026-11-17", "title": "v1.4.0" },
       { "version": "v1.3.1", "published": "2026-11-17", "title": "v1.3.1" },
       { "version": "v1.3.0", "published": "2026-11-17", "title": "v1.3.0" },
-      { "version": "v1.2.0", "published": "2026-11-17", "title": "v1.2.0" },
-      { "version": "v1.1.0", "published": "2026-11-14", "title": "v1.1.0" }
+      { "version": "v1.2.0", "published": "2026-11-17", "title": "v1.2.0" }
     ],
     "notes": {
-      "summary": "",
+      "summary": "No scenario of the local benchmark is slower (three within ±1%)",
       "items": [
-        "One adaptive request window",
-        "The page timeout is ten typical latencies, at least 10 s (was a fixed 5 s), at most 60 s"
+        "One request window per side",
+        "Startup partitioning reaches the listing round by round",
+        "Fewer partitioning probes"
       ],
-      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.4.0"
+      "url": "https://github.com/hxddh/s3-turbo-list/releases/tag/v1.5.0"
     }
   },
   "storage-agent-workbench": {
@@ -77,22 +78,19 @@
   "lenslet": {
     "repo": "hxddh/lenslet",
     "tagPrefix": "lenslet-",
-    "version": "v4.0.0",
-    "published": "2026-11-15",
+    "version": "v6.0.0",
+    "published": "2026-11-18",
     "history": [
+      { "version": "v6.0.0", "published": "2026-11-18", "title": "Lenslet 6.0.0" },
+      { "version": "v5.0.0", "published": "2026-11-18", "title": "Lenslet 5.0.0" },
+      { "version": "v4.1.0", "published": "2026-11-18", "title": "Lenslet 4.1.0" },
       { "version": "v4.0.0", "published": "2026-11-15", "title": "Lenslet 4.0.0" },
-      { "version": "v3.0.0", "published": "2026-11-15", "title": "Lenslet 3.0.0" },
-      { "version": "v2.0.0", "published": "2026-11-15", "title": "Lenslet 2.0.0" },
-      { "version": "v1.0.0", "published": "2026-11-15", "title": "Lenslet 1.0.0" }
+      { "version": "v3.0.0", "published": "2026-11-15", "title": "Lenslet 3.0.0" }
     ],
     "notes": {
-      "summary": "3.0 could work out the AWS access your tests need",
-      "items": [
-        "Reports now list unused access: lines in the lock that the run did not exercise",
-        "CI runs the same packaging scripts as the release, on every pull request",
-        "Real credentials could reach the trace"
-      ],
-      "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v4.0.0"
+      "summary": "Lenslet 6.0 redesigns the desktop application into a focused 3-Zone Workbench",
+      "items": ["6 contrast-calibrated accent colors", "Display & storage controls", "Finer AWS resource ARNs"],
+      "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v6.0.0"
     }
   },
   "pagewise": {
@@ -219,23 +217,23 @@
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v23.0.0",
-    "published": "2026-11-14",
+    "version": "v24.0.0",
+    "published": "2026-11-18",
     "history": [
+      { "version": "v24.0.0", "published": "2026-11-18", "title": "v24.0.0" },
       { "version": "v23.0.0", "published": "2026-11-14", "title": "v23.0.0" },
       { "version": "v22.0.0", "published": "2026-11-11", "title": "v22.0.0" },
       { "version": "v21.0.0", "published": "2026-11-09", "title": "v21.0.0" },
-      { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" },
-      { "version": "v19.0.0", "published": "2026-11-06", "title": "v19.0.0" }
+      { "version": "v19.1.0", "published": "2026-11-08", "title": "v19.1.0" }
     ],
     "notes": {
-      "summary": "这一版读 22.0 的存档，装上就接着用",
+      "summary": "这一版读 23.0 的存档，装上就接着用",
       "items": [
-        "macOS 版不能再被「检查元素」",
-        "从 Lichess / Chess.com 同步对局时不再跟随重定向",
-        "故意做深的变着嵌套原来能让界面冻住几秒到几分钟"
+        "双击 .pgn 真的打开这局棋",
+        "Windows 版不能再打开开发者工具",
+        "看过答案，就不写「解出！」、不画绿勾、不响胜利音，写「看过答案」"
       ],
-      "url": "https://github.com/hxddh/chessboard/releases/tag/v23.0.0"
+      "url": "https://github.com/hxddh/chessboard/releases/tag/v24.0.0"
     }
   },
   "world-machine": {
