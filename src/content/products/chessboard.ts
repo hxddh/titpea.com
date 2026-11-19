@@ -54,9 +54,9 @@ export default defineProduct({
     description:
       "A desktop chess app for macOS and Windows, with Stockfish 19 and Maia opponents, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
-    headline: "Chess you can review.",
+    headline: "Play chess, and Stockfish marks your mistakes.",
     lead: "Play chess on your computer; the Stockfish engine reviews your games and marks your mistakes. Lessons and 40,000 puzzles help you practise.",
-    summary: "Learn, solve puzzles, then play the computer or a friend on the same board.",
+    summary: "Lessons and puzzles, then games against the computer or a friend on the same board.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/chessboard/releases/latest",
@@ -100,8 +100,8 @@ export default defineProduct({
         asOf: "v24.0.0",
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
-        title: "Key moments first.",
-        body: "A Stockfish pass gives a one-line summary, the win-chance curve, and key moments you can try again.",
+        title: "The review starts with key moments.",
+        body: "One Stockfish pass over the game gives a one-line summary, the win-chance curve, and moments you can try again.",
       },
     ],
     sections: [
@@ -131,17 +131,16 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Practice built from your games.",
+        label: "Practice from your own games",
         items: [
           {
-            title: "Hints in two steps",
-            body: "The first press circles the piece to move; the second shows the move.",
+            title: "Your mistakes come back",
+            body: "Moves marked ? or ?? return after 1, 3, 7 and 21 days.",
           },
           {
-            title: "What to do next",
-            body: "Today shows the one thing to do next; the “Something else” button swaps it.",
+            title: "Opponents that play like people",
+            body: "The twelve easiest levels use Maia, a neural network that learned from human games on Lichess.",
           },
-          { title: "Your own mistakes", body: "Your mistakes (? and ??) come back after 1, 3, 7 and 21 days." },
           {
             title: "Endgames and classics",
             body: "Play out 90 endgames against full-strength Stockfish, or guess the moves of 40 master games.",
@@ -150,10 +149,6 @@ export default defineProduct({
             title: "Your opening book",
             body: "Keep up to 5,000 lines a side, or build it from the built-in openings.",
           },
-          {
-            title: "Opponents like people",
-            body: "The twelve easiest levels use Maia, a neural network that learned from human Lichess games.",
-          },
         ],
       },
       {
@@ -161,9 +156,9 @@ export default defineProduct({
         id: "data",
         title: "Where your data goes.",
         items: [
-          "Games, puzzles, lessons, and progress stay on this computer, in the app’s storage and its data folder.",
-          "Sync goes online only after you allow it in Settings › Data, and sends Lichess or Chess.com only your user name.",
-          "A pasted Lichess link fetches that one game by its ID; “Check for updates” asks GitHub only when you press it.",
+          "On this computer, that data is kept in the app’s storage and its data folder.",
+          "The switch for sync is in Settings › Data; sync contacts Lichess or Chess.com.",
+          "A pasted Lichess link fetches that one game by its ID; “Check for updates” asks GitHub.",
         ],
       },
       {
@@ -173,17 +168,30 @@ export default defineProduct({
         items: [
           {
             title: "Can I play online?",
-            body: "No. Online matchmaking is not included; play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings › Data, imports your games from Lichess or Chess.com into the library.",
+            body: "No. There is no online matchmaking: you play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings › Data, imports your Lichess or Chess.com games into the library.",
             asOf: "v24.0.0",
           },
           {
             title: "What can I do with a PGN game file?",
-            body: "Double-click it to open the game; on Windows, run the bundled register-pgn.cmd once first. Or choose “Review a game” from the ⋯ menu on Today: paste a PGN, open a file, or paste a Lichess game link, and the game opens in the review. “Play on from here” continues from any move. To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page; the library holds 10,000 games and asks before an import would push older ones out. Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
+            body: "Double-click it to open the game; on Windows, run the bundled register-pgn.cmd once first.",
+            steps: [
+              "To review one, choose “Review a game” from the ⋯ menu on Today, then paste a PGN, open a file, or paste a Lichess game link.",
+              "“Play on from here” continues the game from any move.",
+              "To keep a whole PGN, use “Import to library” or “Paste PGN” on the Me page.",
+              "The library holds 10,000 games and asks before an import would push older ones out.",
+              "Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
+            ],
             asOf: "v24.0.0",
           },
           {
             title: "Does it track my progress?",
-            body: "Yes. Games against the engine give you a game rating, which starts from your placement score and is kept apart from your puzzle rating, and the result bar under the board shows each change. Today shows your streak and one number, “Your level”; the Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
+            body: "Yes. Games against the engine give you a game rating, kept apart from your puzzle rating.",
+            steps: [
+              "The game rating starts from your placement score.",
+              "The result bar under the board shows each change.",
+              "Today shows your streak and one number, “Your level”.",
+              "The Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
+            ],
             asOf: "v24.0.0",
           },
         ],
@@ -191,12 +199,12 @@ export default defineProduct({
     ],
   },
   zh: {
-    title: "国际象棋 Chessboard",
+    title: "Chessboard",
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19 与 Maia 对手、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
-    headline: "下完一局，复盘失着",
+    headline: "下完一局，Stockfish 标出你的失着",
     lead: "在电脑上下国际象棋，Stockfish 引擎复盘你的对局、标出失着；还有课程和四万道谜题供你练习。",
-    summary: "学棋、解谜题，再与电脑或同屏好友下一局。",
+    summary: "先学棋、解谜题，再和电脑或同屏的朋友下一局。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/chessboard/releases/latest",
@@ -220,7 +228,7 @@ export default defineProduct({
     },
     visual: {
       kind: "screenshot",
-      label: "国际象棋 Chessboard",
+      label: "Chessboard",
       frame: "wide",
       image: {
         src: "/assets/chessboard-game-board-zh.webp",
@@ -238,8 +246,8 @@ export default defineProduct({
         height: 1536,
         asOf: "v24.0.0",
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
-        title: "先看关键时刻",
-        body: "Stockfish 跑完整局，先给一句总结、胜率曲线和关键时刻，每个都能再试一次。",
+        title: "复盘先看关键时刻",
+        body: "Stockfish 把整局过一遍，给出一句总结、胜率曲线，以及能再试一次的局面。",
       },
     ],
     sections: [
@@ -269,14 +277,12 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "练习从你的对局里来",
+        label: "从你自己的对局里练",
         items: [
-          { title: "提示分两步", body: "第一下圈出要动的子，第二下给出着法。" },
-          { title: "接下来练什么", body: "今天页最上面是接下来最该做的一件事；点“换一件事”换下一件。" },
-          { title: "自己的失着", body: "你的失着（? 和 ??）会在 1、3、7、21 天后再出现。" },
-          { title: "残局与名局", body: "90 个残局和满强度的 Stockfish 下到出结果；40 局名局可以猜着。" },
+          { title: "失着会再回来", body: "标了 ? 或 ?? 的着法，会在 1、3、7、21 天后再出现。" },
+          { title: "下得像人的对手", body: "最低的十二档用 Maia，一种从 Lichess 真人对局里学出来的神经网络。" },
+          { title: "残局与名局", body: "90 个残局和满强度的 Stockfish 下到出结果；40 局名局可以猜着走。" },
           { title: "你的开局书", body: "每方最多 5,000 条线，也可以从内置开局生成。" },
-          { title: "像人的对手", body: "最低的十二档用 Maia：一种从 Lichess 真人对局学来的神经网络。" },
         ],
       },
       {
@@ -284,9 +290,9 @@ export default defineProduct({
         id: "data",
         title: "数据的去向",
         items: [
-          "对局、谜题、课程与进度都留在这台电脑上，存在应用自己的存储和本机数据文件夹里。",
-          "要先在“设置 › 数据”里允许联网，才能从 Lichess 或 Chess.com 同步，只发送用户名。",
-          "粘贴的 Lichess 链接只按编号取那一局；“检查更新”只在你点它时向 GitHub 查询。",
+          "这些数据存在应用自己的存储和本机数据文件夹里。",
+          "同步的开关在“设置 › 数据”里，连接的是 Lichess 或 Chess.com。",
+          "粘贴的 Lichess 链接只按编号取那一局；“检查更新”查询的是 GitHub。",
         ],
       },
       {
@@ -296,17 +302,30 @@ export default defineProduct({
         items: [
           {
             title: "能在线对战吗？",
-            body: "不能，不提供在线匹配。可以与引擎或同屏好友下棋。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
+            body: "不能，没有在线匹配，对手是引擎或同屏的朋友。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
             asOf: "v24.0.0",
           },
           {
             title: "PGN 棋谱文件能做什么？",
-            body: "双击就能打开这局棋；Windows 上要先运行一次随包的 register-pgn.cmd。也可以在今天页右上角的 ⋯ 里选“复盘一局”：粘贴 PGN、打开文件，或粘贴 Lichess 对局链接，直接进到复盘。任意一手都能“从这里续下”。要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”；棋谱库最多收 1 万局，导入会挤掉旧对局时会先问你。Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            body: "双击就能打开这局棋；Windows 上要先运行一次随包的 register-pgn.cmd。",
+            steps: [
+              "要复盘，在今天页右上角的 ⋯ 里选“复盘一局”，再粘贴 PGN、打开文件，或粘贴 Lichess 对局链接。",
+              "任意一手都能“从这里续下”。",
+              "要把整份 PGN 收进棋谱库，用“我的”页的“导入到库”或“粘贴 PGN”。",
+              "棋谱库最多收 1 万局；导入会挤掉旧对局时，会先问你。",
+              "Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
+            ],
             asOf: "v24.0.0",
           },
           {
             title: "能看到自己的进步吗？",
-            body: "能。与引擎对局有自己的对局等级分，从定级的分数起算，和谜题等级分分开记，棋盘下沿的结果条显示每次涨跌。今天页有连续练习的天数和一个数：“你的水平”；“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
+            body: "能。和引擎下的对局有自己的对局等级分，和谜题等级分分开记。",
+            steps: [
+              "对局等级分从定级的分数起算。",
+              "棋盘下沿的结果条显示每次涨跌。",
+              "今天页有连续练习的天数和一个数：“你的水平”。",
+              "“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
+            ],
             asOf: "v24.0.0",
           },
         ],
