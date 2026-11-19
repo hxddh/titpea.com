@@ -14,10 +14,10 @@ export function failureReasons(result) {
   const isBrowserProductPage = !isAsset && result.route?.browserVisual;
   const isPrivacy = result.route?.kind === "privacy";
   const navOk = isDesktop
-    ? result.nav === "flex" && result.mobile === "none"
+    ? result.nav !== "none" && result.mobile === "none"
     : isAsset
       ? true
-      : result.nav === "none" && result.mobile === "block";
+      : result.nav === "none" && result.mobile === "flex";
   const anchorOk = isProductPage ? result.anchorCount === (result.route.sectionLinks ?? 0) : true;
   // Every product page pins its local nav; pages with sections also mark one active.
   const productIndexOk = result.productIndex

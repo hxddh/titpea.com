@@ -5,11 +5,11 @@ import { visit } from "./browser.mjs";
 export async function checkMobileMenu(page, routes) {
   const route = routes.find((route) => route.kind === "product" && route.locale === "zh") ?? routes[0];
   await visit(page, new URL(route.path, baseUrl), "mobile menu", { images: false });
-  await page.locator(".mobile-menu summary").click();
+  await page.locator(".products-menu summary").click();
   const menuState = await page.evaluate(() => ({
-    open: document.querySelector(".mobile-menu")?.hasAttribute("open") ?? false,
-    linkCount: document.querySelectorAll(".mobile-menu-panel a").length,
-    currentCount: document.querySelectorAll(".mobile-menu-panel a[aria-current='page']").length,
+    open: document.querySelector(".products-menu")?.hasAttribute("open") ?? false,
+    linkCount: document.querySelectorAll(".products-panel a").length,
+    currentCount: document.querySelectorAll(".products-panel a[aria-current='page']").length,
   }));
   await page.screenshot({ path: `${outDir}/mobile-menu-open.png`, fullPage: false });
   return {
@@ -17,7 +17,7 @@ export async function checkMobileMenu(page, routes) {
     path: `${route.path} menu`,
     overflow: 0,
     nav: "none",
-    mobile: "block",
+    mobile: "flex",
     h1: "menu",
     h1Lines: 1,
     anchorCount: 0,

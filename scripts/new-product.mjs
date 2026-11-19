@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 import * as prettier from "prettier";
 
 export const MARKER = "TODO(new-product)";
-export const types = ["cli", "pi", "actions", "desktop", "mac", "extension", "game", "experiment"];
+export const types = ["cli", "pi", "actions", "desktop", "mac", "extension", "game"];
 export const lines = ["storage", "agents", "everyday", "games"];
 
 export const camelCase = (slug) => slug.replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
@@ -18,7 +18,7 @@ export const camelCase = (slug) => slug.replace(/-([a-z0-9])/g, (_, char) => cha
 /** The schema.org fields a type implies; the author checks them. */
 export function defaultsFor(type) {
   if (type === "extension") return { category: "BrowserApplication", os: "Chrome" };
-  if (type === "game" || type === "experiment") return { category: "GameApplication", os: "macOS" };
+  if (type === "game") return { category: "GameApplication", os: "macOS" };
   if (type === "mac") return { category: "DeveloperApplication", os: "macOS" };
   return { category: "DeveloperApplication", os: "Cross-platform" };
 }
@@ -29,12 +29,16 @@ function copyBlock(locale, slug) {
     title: ${t(locale === "zh" ? "中文名" : "Name")},
     description: ${t("one sentence for search results and share cards, 70–160 characters")},
     eyebrow: ${t("what it is, in a few words")},
-    headline: ${t("the claim")},
-    lead: ${t("three short sentences")},
-    catalog: { role: "", text: ${t("the one line in the catalog")} },
+    headline: ${t("one plain sentence: what changes for the reader")},
+    lead: ${t("one or two plain sentences")},
+    summary: ${t("the one line of value on Home")},
     primaryCta: { label: ${t("Download")}, href: "https://github.com/hxddh/${slug}/releases/latest" },
     secondaryCta: { label: ${t("View source")}, href: "https://github.com/hxddh/${slug}" },
-    meta: ${t("platform · licence · version")},
+    privacy: {
+      network: "none",
+      networkNote: ${t("when it goes online, and to whom")},
+      stays: ${t("where its data stays")},
+    },
     visual: {
       kind: "screenshot",
       label: ${t("name")},
@@ -60,6 +64,10 @@ export default defineProduct({
   slug: "${slug}",
   line: "${line}",
   type: "${type}",
+  // Where it runs (macos, windows, linux, chrome, android), its licence, and
+  // its version when no release is synced (releases.json): all shown from here.
+  platforms: [{ id: ${JSON.stringify(type === "extension" ? "chrome" : "macos")} }],
+  license: ${JSON.stringify(`${MARKER}: licence, e.g. MIT`)},
   icon: "/assets/icons/${slug}.webp",
   og: "/assets/og-${slug}.png",
   schema: {
@@ -204,7 +212,7 @@ Still to do (npm run check lists every ${MARKER} left):
   2. Colours in src/styles/tokens.css, sampled from the icon.
   3. Icon: design/icons/${slug}-official.png or design/icons/${slug}.svg, then npm run assets:icons.
   4. Screenshots as WebP under public/assets/, then npm run assets:images.
-  5. If it ships GitHub releases: set repo, add it to src/content/releases.json, write {version} in meta.
+  5. If it ships GitHub releases: set repo and add it to src/content/releases.json; otherwise set version.
   6. npm run assets:og ${slug} for its share image.`);
   } catch (error) {
     console.error(`new:product: ${error.message}`);

@@ -55,7 +55,7 @@ const results = (
           path: `${task.route?.path ?? ""} ${task.kind}${task.index !== undefined ? `:${task.index}` : ""}`,
           overflow: 0,
           nav: task.viewport.name === "desktop" ? "flex" : "none",
-          mobile: task.viewport.name === "desktop" ? "none" : "block",
+          mobile: task.viewport.name === "desktop" ? "none" : "flex",
           h1: task.kind,
           h1Lines: 1,
           anchorCount: 0,

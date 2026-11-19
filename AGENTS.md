@@ -4,37 +4,40 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — the page shape (design v6: text in one centred reading column on every page, pictures across the shell, each section under its heading; the facts as one short line under the actions so the product starts on the first screen, up to two showcases or a demo, one feature list three across the shell, commands, data, at most three FAQ; each claim said once), measurable floors, and review order.
+- [DESIGN.md](DESIGN.md) — design v7: which file owns each fact (the table under "One source per fact"), the page shapes, voice, type, colour, and review order.
 - `src/content/schema.ts` — the whole content model.
 - `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
 
-Settled design decisions in DESIGN.md (for example the index home and the centred reading column) are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
+Settled design decisions in DESIGN.md are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
+
+**One source per fact.** A product's platforms, licence, type and line are fields of its file; its version comes from `releases.json` (GitHub or PyPI, synced) or, when nothing syncs, its `version` field; never write a version, platform or licence into copy. Pages read facts through `src/lib/pages/facts.ts` (`productFacts`, `versionOf`).
 
 ## Where things live
 
-| Path                             | What it holds                                                           |
-| -------------------------------- | ----------------------------------------------------------------------- |
-| `src/content/products/<slug>.ts` | Everything one product page shows, English and Chinese                  |
-| `src/content/products/index.ts`  | Site order: one import and one list entry per product                   |
-| `src/content/site.ts`            | Site facts and interface copy (nav, Home, About)                        |
-| `src/content/releases.json`      | Latest release tag per repository; `npm run releases:sync` refreshes it |
-| `src/lib/pages.ts`               | Page models, SEO, nav, routes — derived, never hand-written             |
-| `src/components/product/`        | One component per section kind, plus `visuals/` for hero objects        |
-| `src/styles/`                    | Cascade layers; each page loads only its own sheets (below)             |
+| Path                             | What it holds                                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `src/content/products/<slug>.ts` | Everything one product page shows, English and Chinese                                          |
+| `src/content/products/index.ts`  | Site order: one import and one list entry per product                                           |
+| `src/content/site.ts`            | Site facts and interface copy (nav, Home, About)                                                |
+| `src/content/releases.json`      | Latest release per product (GitHub `repo` or PyPI `pypi`); `npm run releases:sync` refreshes it |
+| `src/lib/pages.ts`               | Page models, SEO, nav, routes — derived, never hand-written                                     |
+| `src/lib/pages/facts.ts`         | Platforms, kind, licence, version, first-open lines for every view                              |
+| `src/components/product/`        | One component per section kind, plus `visuals/` for hero objects                                |
+| `src/styles/`                    | Cascade layers; each page loads only its own sheets (below)                                     |
 
 ### Styles
 
-`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (the page language every page uses: the section head and body, the one-column `.cols`, the title and heading roles, facts, text links, the stage under a capture, code spans), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
+`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (the page language every page uses: the section head and body, the one-column `.cols`, the title and heading roles, facts, text links, the stage under a capture, code spans, the mono `.tag`), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
 
 Everything else is imported by the component that renders it: `home` (HomePage), `about` (AboutPage), `release-list` and `releases` (ReleasesPage), `privacy` (PrivacyPage), `document` (the hand-written privacy policies and the 404), and `visuals`, `demo` and `product` (ProductPage). One route renders every product, so a live demo's sheet (`demo-<name>.css`) is linked by `src/components/product/demo-styles.ts` only on the pages that play it. A stylesheet that is not imported by `global.css` starts with the same `@layer` statement; `npm run check:dist` fails when a page's sheets set the layers up in another order, or when a page off the product pages loads more than 40 KB of CSS.
 
 ### Add a product
 
-1. `npm run new:product <slug> -- --type <cli|pi|actions|desktop|mac|extension|game|experiment> --line <storage|agents|everyday|games>` writes `src/content/products/<slug>.ts` from a template, adds it to `src/content/products/index.ts` after the last product of its line, and adds placeholder colours to `tokens.css`. Every placeholder is marked `TODO(new-product)`, and `npm run check` fails while one is left.
+1. `npm run new:product <slug> -- --type <cli|pi|actions|desktop|mac|extension|game> --line <storage|agents|everyday|games>` writes `src/content/products/<slug>.ts` from a template, adds it to `src/content/products/index.ts` after the last product of its line, and adds placeholder colours to `tokens.css`. Every placeholder is marked `TODO(new-product)`, and `npm run check` fails while one is left.
 2. Write both locales (the closest existing product is the best model; keep the section ids identical across locales) and sample the colours from the icon.
-3. If it ships GitHub releases, set `repo` and add an entry to `releases.json` (`npm run releases:sync` fills the tag), and write `{version}` in its meta line.
+3. Set `platforms`, `license` and, for an unsigned macOS or Windows build, `firstOpen`. If it ships GitHub releases, set `repo` and add an entry to `releases.json` (`npm run releases:sync` fills the tag); a PyPI package gets `{ "pypi": "<name>" }`; otherwise set `version: "v1.2.0"`. Write `releaseHighlights` for the current tag in both languages, or Releases shows only the tag and its notes link.
 4. Give it an icon: official artwork as `design/icons/<slug>-official.png`, or a site-designed `design/icons/<slug>.svg` (see `design/icons/README.md`), then `npm run assets:icons`.
-5. `npm run assets:og <slug>` renders its share image and records its inputs in `design/og-manifest.json`; `npm run check` fails when a product's title, headline, catalog line, icon or hero screenshot changes without a redraw.
+5. `npm run assets:og <slug>` renders its share image and records its inputs in `design/og-manifest.json`; `npm run check` fails when a product's title, headline, summary, icon or hero screenshot changes without a redraw.
 6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
 
 New or changed Chinese headings may need characters the Chinese display font lacks: `npm run build` recuts it and builds again when the set changed (`scripts/build.mjs`); commit the new font file and `design/fonts/zh-display-chars.txt` it writes (`check:dist` names any missing character).

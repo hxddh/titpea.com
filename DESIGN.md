@@ -1,96 +1,102 @@
-# Titpea Design Principles
+# Titpea Design Principles (v7)
 
-Titpea is one developer's shelf of tools, and it reads as a quiet, exact catalogue. Each product page is a spec sheet with pictures: one claim, its facts, the product shown large, a short run of what it does, then what a reader needs to adopt it. Home is the index. Order comes from type and space, not boxes: text keeps one centred reading column, pictures stand straight on the page, each section opens on its heading, lists sit on hairlines. One neutral canvas, one ink voice for every control; the only colour is the products' own, in their icons and screenshots.
+Titpea is one developer's shelf of software. It should read like an independent software workshop's catalogue: exact, quiet, warm. Hairlines and type do the work; colour comes from the products themselves. Every fact about a product is written once, as data, and every page reads it from there.
 
-**Owner decisions (settled; propose changes in a pull request, never push them to `main`):** the index Home (PR #236); one centred reading column on every page and frameless pictures (v4–v5, PRs #238–#245); the three-tile site mark (restored November 2026); no "依据" / evidence framing in copy (October 2026). History: v2 centred launch page → v3 two columns → v4 one edge, hairlines → v4.1 centred column → v4.2 no frames → v5 the product on the first screen → v6 each thing said once, shorter pages.
+History: v2 launch page → v4 one centred column → v6 each thing said once → **v7 (November 2026)**: the catalog as the single source of facts, a Products menu instead of three product lists per page, Home's index with filters, spec tags, the data boundary card, feature lists sized to the product, plain-sentence headlines. Owner decisions stay the owner's; change them in a pull request, never straight on `main`.
 
 ## When rules compete
 
-1. Facts and CI floors: contrast, 44px targets, CSP, headline limits, release tags from `releases.json`.
-2. The reader's job: what the tool changes, how it runs, what remains.
-3. The page shape below.
+1. Facts and CI floors: contrast, 44px targets, CSP, one source per fact.
+2. The reader's job: what the tool changes, where it runs, what it touches.
+3. The page shapes below.
 4. Craft: type, spacing, depth, bilingual density.
 
-When a principle and a constraint disagree, keep the constraint and rework the design.
+## One source per fact
 
-## Page Shape
+| Fact                                | Lives in                                                        | Read by                                                 |
+| ----------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------- |
+| Name, summary, eyebrow, copy        | `products/<slug>.ts` (`en`, `zh`)                               | every page, menus, footer, share images                 |
+| Line, type, platforms, licence      | `products/<slug>.ts` (product level)                            | spec tags, Home rows and filters, structured data       |
+| Version and date                    | `releases.json` (GitHub or PyPI, synced), else `version`        | `versionOf()`: hero, Home, Releases, feed, sitemap      |
+| What changed                        | `releaseHighlights` for exactly the current tag, both languages | Releases, feed; none when stale (never raw GitHub text) |
+| First-open step for unsigned builds | `firstOpen` (product) + `ui.firstOpen` (wording)                | the guide beside the download                           |
+| Network level, where data stays     | `privacy`                                                       | the data boundary card and the Privacy index            |
+| Platform and kind words             | `ui.platforms`, `ui.kinds`                                      | everywhere a tag appears                                |
 
-- **Chrome.** A full-width bar under a hairline: the site mark (22px) and wordmark, the four product lines as dropdowns (icon, name, catalog line), About, GitHub, language, a theme toggle. On product pages a **local nav** replaces it once the header scrolls away (`data-pinned`): the product name, at most four section links, one primary action; on narrow screens the links fold behind `Sections` / `目录`.
-- **One axis, two widths.** Text keeps the reading column (`--narrow`, 680px: about 75 Latin characters a line) centred in the shell (1120px), left-aligned inside it. Pictures and Home's grids take the shell. Sections are parted by 96px of space; hairlines (`--line`) open and part the rows of a list. A list is never a box. `.cols` is one column: a label or link stacks above its content.
-- **Hero.** Centred: an identity line (icon at 40px, name, eyebrow: what it is in 2–4 words, not the platform alone), the `h1` claim, the lede, two actions, the install note, the facts line; then the product object, which starts at or under 520px at 1440×900.
-- **Facts line.** `ul.hero-facts`, one muted line across the shell, items inline in balanced lines, wrapping after a separator, never before one: the meta line's platform segments (what it runs on or needs, never features), licence, version (unless the primary action shows it), date, `Source` (only when the second action is not the repository). The network level is said once, under data. A fact never breaks inside itself (`check` caps its length). Version and date come from `releases.json`.
-- **Product object.** A real screenshot across the shell, 12px corners, the window's hairline and `--shadow-shot`; no block, tint or padding around it. Under it one line: the caption (what it shows, ≤14 words or 44 characters, never how it was made), then `Captured at v…` (from `asOf`), said once a page; a later picture repeats it only when its release differs from the last one said. A tall capture stays near its real width (380px). Mocks, terminals, charts and live demos stand the same way at product scale (820px); captured terminal output is light paper, never a black block. A live demo of the main job is the product object when one exists: it behaves as the product does, labels sample text, shows from first paint, and has a stand-in without scripts. An animated mock is labelled illustrative, has Pause / Play, and stands still under reduced motion.
-- **Section.** A heading (`h2.heading`, one size, `--text-heading`) and, for a showcase or demo, one line (`.sub`), then the section's one object. Headings are labels: the copy may end in a period, the page drops it (`headingText`). Each section has a 1–4 word `nav` label. A small label above text is only a fact (`.fact`, 13px, muted).
-- **Showcase.** Heading and line in the column, the picture under them across the shell (`.stage-show`): a capture 3:2 or wider fills it, a narrower one keeps 820px, a phone capture 280px. Windows are shown whole (no `focus` crops). A `dark` capture replaces the light one on a dark page (the hidden one never loads). A short muted `video` plays only in view, with Pause / Play, never under reduced motion. Captures and recordings are real app output; anything else is captioned `Illustration: …` / `示意图：…`. Board captures and recordings are pinned to a release (`scripts/board-apps.mjs`, `scripts/record-board-demos.mjs`).
-- **Feature list.** One per page, at most six items: the page's one wide moment, three across the shell (four go two by two; one column on phones), its heading on the shell's edge, no rules: title (600) over body, both 18px. A body adds to its title, never repeats it.
-- **Commands.** `Get started` / `开始使用`: every command, verbatim from the README, each with Copy; a download-only app has none. A command may carry `capturedOutput` at a named version, shown behind `Show real output` or played as a `replay` that types it once in view. A tool whose command has a replay shows that terminal as its hero object; it is not repeated under Get started.
-- **Where your data goes.** Two to four plain sentences parted by space, no rules, each checkable in the README or privacy policy: where keys live, where data stays, what is sent and to whom.
-- **FAQ.** At most three adoption blockers the page does not already answer (each claim is made once a page), a disclosure list on hairlines, the first open.
-- **Actions.** Primary: `Download` / `下载` (an app), `Install` / `安装` (extension or installer), `View on GitHub` / `查看 GitHub` (source-only), a filled ink pill carrying the release tag when it downloads one; secondary: an outlined pill. `primaryCta.soon` renders a muted, unlinked button. The **install note** is one muted line with a trust detail the docs state (an unnotarized build and the one step that opens it).
-- **Ending.** The page ends on its FAQ: the hero and the local nav carry the actions, the footer every product, so neither repeats at the end. A member of a family adds the family under a hairline (each member's step, itself marked): said nowhere else.
-- **Footer.** A site map on desktop (each line's products, then Titpea's pages, the feed, GitHub, the other language), then copyright and email; phones show only the last row.
-- **Code in copy.** Write `` `code` ``; it renders as a chip, and `check:dist` fails if a raw backtick reaches the page.
+Copy never contains a version, a platform list or a licence: those are facts the page adds. `npm run check` fails on `{version}`, on a product with both a synced and a written version, on highlights in one language only, and warns while highlights describe an older tag.
 
-## Product Pages
+## Page shape
 
-In order, both languages: (1) the hero; (2) up to two showcases, a live demo counting as one; (3) the feature list; (4) Get started; (5) Where your data goes; (6) FAQ; (7) the family, if any. Release notes are on Releases, not here. Every product type (`cli`, `pi`, `actions`, `desktop`, `mac`, `extension`, `game`, `experiment`) uses this skeleton (`templateOf` only chooses the hero object).
+- **Header.** The mark and wordmark; `Products` (one panel: the four lines side by side, icon and name only); `Releases`, `About`, `GitHub`; language; theme. Under 900px the three page links move to the panel's foot. Nothing else lists products in the header. Product pages pin a local nav (name, up to four section links, the primary action) once the header scrolls away.
+- **Footer.** A compact index: each line's product names in a column, then Titpea's pages, the feed and the other language; two columns on phones; then copyright and email.
+- **One axis, two widths.** Text sits in the reading column (`--narrow`, 680px) centred in the shell (1120px); pictures and Home's lists take the shell. Sections are parted by space; hairlines open lists.
 
-- The `h1` is a claim, not the product name: EN ≤ 24 characters plus a period, ZH ≤ 18 with no closing punctuation, two lines at most at every width.
-- Earn every section; say each fact once. No pricing, blogs, testimonials, newsletters, comparison tables or tracking beyond the disclosed analytics.
-- `npm run check` enforces the counts above and English/Chinese structure parity.
+### Home
 
-## Home, About, Releases, Privacy
+Title, lede, the byline. `Selected work`: three picks (`featured.order`), the first large and two beside it, each its real window, icon, name, eyebrow, claim, platform tags and version. `Everything`: filter chips by kind (line) and platform (macOS, Windows, Linux, Chrome, Android, Command line) wired by `filter.js`; without scripts the chips stay hidden and every row shows. Rows: icon, name, summary, kind and platform tags, version in mono.
 
-- **Home**: the title (`Small software, made with care.` / `认真做的小软件`), a lede naming the four kinds of software, one line with `One developer` / `一个人开发` and `About hxddh →`; then `Selected work`: three equal picks (`featured.order`, the owner's), each a 16:10 crop of its window with name, the product's claim (its `h1`, so Home never says the catalog line twice) and role · tag; then every product grouped by line (Storage, Agents, Everyday, Games) as icon, name and catalog line, three across. No versions or dates; Releases has them.
-- **About**: `One person. {count} tools.`, the owner's own paragraphs (`about.person`, only what the owner has said), GitHub and Email links, then the analytics disclosure. No tool list: the header and footer have it.
-- **Releases**: the title, lede and feed link; every product's latest release, newest first, with its What's new lines and up to four earlier tags; then the tools without GitHub releases.
-- **Privacy**: the title, lede and analytics disclosure; one table across the shell, a row per product from its `privacy` field (network level, where data stays, links to its data section and policy).
-- **Feeds**: `/releases.xml` (Atom, newest first) and `sitemap.xml` with each page's latest release as `lastmod`, never the build date. 404 lists every product.
+### Product pages
+
+In order, both languages identical in structure:
+
+1. **Hero**: identity line (icon, name, eyebrow), the `h1`, the lede, two actions, the first-open guide (a disclosure, only for unsigned builds), the spec tags (platforms, stack, licence, version unless the button carries it, date, Source).
+2. **Product object**: a real capture across the shell, or a demo, mock, terminal or replay at product scale; captioned with what it shows and `Captured at v…`.
+3. **Up to two showcases** (a live demo counts as one).
+4. **Feature list**: the product's real highlights, one to six, never padded. Storage and Agents lines read as a spec list (feature left, what it does right, rows on hairlines); Everyday and Games as larger points. `layout` overrides.
+5. **Get started**: commands verbatim from the README, each with Copy, set as a terminal line with a `$` prompt.
+6. **Where your data goes**: the data boundary card — `Network` (level and note) and `Your data` (where it stays) from `privacy`, then the section's details (anything repeating a row is dropped), and the policy link.
+7. **FAQ**: at most three, an accordion; an answer is a sentence or two, then `steps` as a list.
+8. **Ending**: a family's members with their steps, or up to three other products of the same line.
+
+Games sit on warmer paper (`--paper-warm`, `body[data-line="games"]`); tools keep the neutral canvas and terminal lines. Same skeleton, different temperament.
+
+### About, Releases, Privacy
+
+- **About**: `{count} tools, made by one person.`, the owner's own paragraphs (`about.person`), links, the analytics disclosure.
+- **Releases**: every product with a synced release, newest first: tag, date, notes link, current highlights, four earlier tags; then the products without synced releases and their versions.
+- **Privacy**: one table from each product's `privacy`.
 
 ## Voice
 
-- Plain sentences for someone who has never used this kind of tool. The lede's first sentence says what the product does; a tool, service or format is named in full where it first appears. No telegraph style.
-- Lede: one or two sentences, EN ≤ 24 words, ZH about ≤ 56 characters. Cards: a 2–4 word title, a 3–16 word body. Data sentences EN ≤ 22 words. FAQ headed `FAQ` / `常见问题`; answers are full sentences.
-- Never drop a qualifier (pre-alpha, "only when you ask", conditions on data). Never add a claim the docs lack: no "fast", "only", "seamless", no numbers not in the docs. Never sell the work as "evidence" or "依据".
-- Chinese: natural Chinese, full-width punctuation, “” quotes, code in backticks. UI names are quoted. A Chinese page with an English capture says 界面为英文.
+- Write like an engineer telling a peer what the tool does. Plain sentences; name a tool, service or format in full where it first appears.
+- `h1`: one sentence saying what changes for the reader. EN ≤ 52 characters with a period; ZH ≤ 24, no closing punctuation. Never a run of clipped fragments ("Ask. Check the page.").
+- Lede: one or two sentences. Feature: a title of ≤ 6 words, a body that adds to it. FAQ answers: full sentences, steps as a list.
+- Never drop a qualifier ("only when you ask", conditions); never add a claim the docs lack: no "fast", "seamless", "powerful", no numbers not in the docs, no "evidence" / 依据.
+- Chinese: natural Chinese, full-width punctuation, “” quotes, code in backticks. Say PR, not 拉取请求. A brand keeps one name in both languages (Goban, Chessboard); a product with its own Chinese name uses it (世界时钟, 对读).
 
 ## Type
 
-| Step            | Token              | Size    | Use                                             |
-| --------------- | ------------------ | ------- | ----------------------------------------------- |
-| Label           | `--text-meta`      | 13px    | facts, captions, dates: the floor               |
-| Secondary       | `--text-small`     | 15px    | catalog lines, UI, the facts line, install note |
-| Reading         | `--text-body`      | 18px    | bodies, answers, lists, feature titles          |
-| Lede            | `--text-lede`      | 19–21px | the hero's lede                                 |
-| Group heading   | `--text-heading-s` | 21px    | a group or a consulted section                  |
-| Section heading | `--text-heading`   | 26–32px | a showcase, demo or feature list                |
-| Title           | `--title-display`  | 40–64px | the page title                                  |
+| Step            | Token              | Size    | Use                                       |
+| --------------- | ------------------ | ------- | ----------------------------------------- |
+| Label           | `--text-meta`      | 13px    | tags, captions, dates, column labels      |
+| Secondary       | `--text-small`     | 15px    | summaries, UI, menus                      |
+| Reading         | `--text-body`      | 18px    | bodies, answers, lists                    |
+| Lede            | `--text-lede`      | 19–21px | the hero's lede                           |
+| Group heading   | `--text-heading-s` | 21px    | a line's heading, a feature point's title |
+| Section heading | `--text-heading`   | 26–32px | each section                              |
+| Title           | `--title-display`  | 40–64px | the page title                            |
 
-- These seven steps are the only font sizes a page stylesheet may set (`npm run check` fails on any other; `em` is allowed). The title's Chinese and phone values are the same token redefined in `tokens.css`. Product mocks (`visuals.css`, `demo-*.css`) keep their app's sizes, never under 12px.
-- English is the sans throughout (system face, then Inter): titles at 650, tracked `-0.038em`; section headings 600, `-0.024em`. Chinese titles use Noto Serif SC SemiBold (subset to the headings' characters; `npm run build` recuts it, `check:dist` fails on a missing character) with Fraunces for Latin letters, and half-width punctuation (`halt`). No CJK webfont for reading text; no tracking on Chinese.
-- Mono is only for what is typed: commands, code, terminals. Facts are the sans with tabular figures.
-- Reading text is `--ink-2` (7:1), 18px (Chinese 17px), line-height 1.55–1.6 (Chinese 1.75), measure 65ch (Chinese 34em). Chinese short text wraps `pretty`; a Chinese lede wraps only between phrases.
+- Only these steps may set a page's font size (`em` allowed). Product mocks keep their app's sizes, never under 12px.
+- **Sans** for reading and headings (system face, then Inter); English titles 650 at `-0.038em`. Chinese titles: Noto Serif SC SemiBold subset (`npm run build` recuts it) with Fraunces for Latin.
+- **Mono** for what is typed and for technical facts: commands, code, versions, platform and kind tags, column labels, dates in lists. Numbers use `tabular-nums`.
+- Reading text `--ink-2` (7:1), `--leading-body` 1.7 (Chinese 1.75), measure 66ch (Chinese 34em).
 
-## Colour and Depth
+## Colour and depth
 
-- Tokens live in `tokens.css` only (`npm run check` fails on a raw colour in a shadow, or any gradient, in a page stylesheet): `--paper` / `--paper-raised`; `--ink`, `--ink-2`, `--muted` (labels), `--faint` (decoration); `--accent-fill` / `--on-accent` (the primary action), `--accent` (focus rings only); `--glass`, `--menu-bg` (chrome); `--surface` (light paper of terminals and mocks); `--product-tint` / `--product-ink` and `--tint-<slug>` / `--ink-<slug>` (sampled from each icon, used in mocks).
-- One voice for controls: the primary action is filled ink; links are ink, underlined in running text; a standalone link carries an arrow.
-- Depth: the paper, and `--shadow-shot` under a picture. Translucency is for chrome only. Radii: media 12px (`--radius-media`, `--radius-window`) and the pill.
-- Dark mode is first-class (OS or toggle): a near-black `#0b0b0c` canvas; captures are never dimmed; a `dark` capture replaces a light one.
-- Icons: every product has one, on the same plate (hairline and soft shadow, `--plate-s`): official artwork where it exists, else a site-designed tile from `design/icons/<slug>.svg` (`npm run assets:icons`). The site mark is three tiles in the accent gradient (`design/brand/titpea-mark.svg`, `npm run assets:favicon`).
+- Tokens only, in `tokens.css` (check fails on a raw colour in a shadow or any gradient in a page stylesheet): `--paper`, `--paper-warm`, `--surface-sunk` (the one card a page has), `--ink`, `--ink-2`, `--muted`, `--faint`, `--line`, `--soft-line`, `--tag-bg`, `--tag-line`, `--accent-fill` (the primary action), `--accent` (focus rings only), product `--tint-*` / `--ink-*` for mocks.
+- Edges are 1px hairlines. Shadows: `--shadow-shot` under a capture, `--shadow-panel` under the menu; nothing else floats. Translucency only on the header.
+- No gradients, glow, glass panels, floating badges, emoji or decorative icons on headings. Dark mode is first-class; captures are never dimmed.
 
 ## Interaction
 
-Dropdowns and the mobile menu are `<details>` that close on outside click and Escape. The local nav marks the section in view. Copy buttons say `Copied` / `已复制`. Buttons press to `scale(0.98)`; a pick lifts 3px; a list row tints. Screenshots open full size in a `<dialog>` (`zoom.js`). Showcases below the fold rise in once (`reveal.js`); text never waits. `prefers-reduced-motion` turns motion off. No inline script or style: CSP is `script-src 'self'; style-src 'self'`.
+Menus are `<details>` that close on outside click and Escape. Filter chips are `aria-pressed` buttons. The local nav marks the section in view. Copy says `Copied` / `已复制`. Captures open full size in a `<dialog>`. Showcases below the fold rise in once; text never waits. `prefers-reduced-motion` stops motion. No inline script or style (CSP `script-src 'self'; style-src 'self'`).
 
 ## Floors
 
-- Contrast 4.5:1 (3:1 for 18px+ and non-text); targets 44×44px; every image has `alt` (`""` if decorative).
-- Images: WebP with declared `width` / `height`, originals at least twice their shown width, `-900w` / `-1200w` variants (`npm run assets:images`); the hero `fetchpriority="high"`, the rest lazy.
-- A page loads only its own CSS; non-product pages stay under 40 KB (`check:dist`). Breakpoints: 900px and 640px (16px gutter).
-- Analytics: Cloudflare Web Analytics, cookieless, injected at the edge (`site.analyticsAutoInjected`); never with `analyticsToken` too; About discloses it.
-- Share images: `npm run assets:og` renders each 1200×630 card from the page copy and records its inputs (`design/og-manifest.json`).
+- Contrast 4.5:1 (3:1 for large text and UI), reading text 7:1; targets 44×44px; every image has `alt`.
+- WebP with declared size, `-900w` / `-1200w` variants. Non-product pages under 40 KB of CSS. Breakpoints 900px and 640px (16px gutter).
+- Share images are drawn from the page copy (`npm run assets:og`); a changed title, headline or summary needs a redraw.
 
 ## Review
 
-`check` (source rules, including the type scale and this file staying under 15 KB), `check:dist` (built output), `qa:pages` (overflow, lines, CTAs, nav, anchors), `a11y:check` (axe on every page, theme and viewport) and `visual:check` (eleven baseline screens, taken from CI's own captures) run on every pull request and push to `main`; a failing push does not deploy. Then review by eye: (1) from the first screen alone, does a reader know what the product changes? (2) did every qualifier survive? (3) one dominant object per section, one centred axis; (4) one owner per gap; (5) remove whatever can go without losing meaning. Every claim, figure and command must be traceable to the product's documentation, a capture, or its source.
+`check`, `check:dist`, `qa:pages`, `a11y:check` and `visual:check` run on every pull request. Then by eye: does the first screen say what the product changes and where it runs? did every qualifier survive? is each fact said once? would anything go without losing meaning?
