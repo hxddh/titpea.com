@@ -23,7 +23,7 @@ export const site = {
  * Each member's page ends on its family.
  */
 export const familyMembers: Record<FamilyId, string[]> = {
-  s3: ["s3-turbo-list", "storage-agent-workbench", "storageops", "httpmon"],
+  s3: ["s3-turbo-list", "storage-agent-workbench", "sonde", "storageops", "httpmon", "lenslet"],
   agents: ["pulse", "readout", "agent-radar"],
 };
 
@@ -214,8 +214,10 @@ export const ui: Record<Locale, Ui> = {
         roles: {
           "s3-turbo-list": "List the bucket",
           "storage-agent-workbench": "Find what needs attention",
+          sonde: "See what a program does to S3",
           storageops: "Diagnose in Pi",
           httpmon: "See the real requests",
+          lenslet: "Check AWS access in CI",
         },
       },
       agents: {
@@ -331,8 +333,10 @@ export const ui: Record<Locale, Ui> = {
         roles: {
           "s3-turbo-list": "列清单",
           "storage-agent-workbench": "找问题",
+          sonde: "看程序对 S3 做了什么",
           storageops: "在 Pi 里排查",
           httpmon: "看实际请求",
+          lenslet: "在 CI 里查 AWS 权限",
         },
       },
       agents: {
