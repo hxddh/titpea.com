@@ -66,15 +66,16 @@ Games sit on warmer paper (`--paper-warm`, `body[data-line="games"]`); tools kee
 
 ## Type
 
-| Step            | Token              | Size    | Use                                       |
-| --------------- | ------------------ | ------- | ----------------------------------------- |
-| Label           | `--text-meta`      | 13px    | tags, captions, dates, column labels      |
-| Secondary       | `--text-small`     | 15px    | summaries, UI, menus                      |
-| Reading         | `--text-body`      | 18px    | bodies, answers, lists                    |
-| Lede            | `--text-lede`      | 19–21px | the hero's lede                           |
-| Group heading   | `--text-heading-s` | 21px    | a line's heading, a feature point's title |
-| Section heading | `--text-heading`   | 26–32px | each section                              |
-| Title           | `--title-display`  | 40–64px | the page title                            |
+| Step            | Token              | Size    | Use                                                        |
+| --------------- | ------------------ | ------- | ---------------------------------------------------------- |
+| Label           | `--text-meta`      | 13px    | tags, captions, dates, column labels                       |
+| Secondary       | `--text-small`     | 15px    | summaries, UI, menus                                       |
+| Reading         | `--text-body`      | 18px    | bodies, answers, lists                                     |
+| Lede            | `--text-lede`      | 19–21px | the hero's lede                                            |
+| Group heading   | `--text-heading-s` | 21px    | a line's heading, a feature point's title                  |
+| Section heading | `--text-heading`   | 26–32px | each section                                               |
+| Title           | `--title-display`  | 40–64px | the page title                                             |
+| Product title   | `--title-product`  | 30–56px | a product page's sentence headline (3 lines max on phones) |
 
 - Only these steps may set a page's font size (`em` allowed). Product mocks keep their app's sizes, never under 12px.
 - **Sans** for reading and headings (system face, then Inter); English titles 650 at `-0.038em`. Chinese titles: Noto Serif SC SemiBold subset (`npm run build` recuts it) with Fraunces for Latin.

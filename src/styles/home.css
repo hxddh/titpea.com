@@ -225,6 +225,10 @@
     margin: 0;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
+  }
+
+  .index-title h3 {
+    margin: 0;
     font-size: var(--text-heading-s);
     font-weight: 600;
     line-height: 1.3;

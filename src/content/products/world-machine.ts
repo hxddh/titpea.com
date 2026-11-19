@@ -154,7 +154,7 @@ export default defineProduct({
     description:
       "一座一天一天长大的海港小镇：每天陪它坐一会儿，早晨会带来一封信、一个选择和一件新发现。macOS 游戏，已到 1.0。",
     eyebrow: "macOS 海港小镇游戏",
-    headline: "一座一天一天长大的海港小镇",
+    headline: "一天天长大的海港小镇",
     lead: "Mac 上的一座海港小镇，居民工作、成家、变老。每天早晨，都有一封信、一个选择和一件新发现等着你。",
     summary: "一座海港小镇，你哪天来，哪天就有一个新的早晨。",
     primaryCta: {

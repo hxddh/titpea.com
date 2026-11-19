@@ -442,7 +442,7 @@
   }
 
   @media (max-width: 900px) {
-    .nav-page {
+    .nav > .nav-page {
       display: none;
     }
 

@@ -110,6 +110,8 @@
     --text-heading-s: 21px;
     --text-heading: clamp(1.625rem, 2.4vw, 2rem);
     --title-display: clamp(2.5rem, 5.2vw, 4rem);
+    /* A product page's title is a sentence, not a slogan: one step smaller. */
+    --title-product: clamp(2.25rem, 4.4vw, 3.5rem);
     /* Reading measure: about 66 Latin characters (34em for Chinese, locale.css). */
     --measure: 66ch;
 
@@ -198,10 +200,12 @@
   @media (max-width: 640px) {
     :root {
       --title-display: clamp(2.5rem, 11.5vw, 3rem);
+      --title-product: clamp(1.875rem, 8vw, 2.25rem);
     }
 
     html:lang(zh) {
       --title-display: clamp(2.125rem, 9.6vw, 2.5rem);
+      --title-product: clamp(1.75rem, 7.6vw, 2.125rem);
     }
   }
 

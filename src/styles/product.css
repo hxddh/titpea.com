@@ -11,7 +11,10 @@
   }
 
   .product-hero .display {
+    max-width: 18em;
     margin-inline: auto;
+    font-size: var(--title-product);
+    line-height: 1.08;
   }
 
   /* Who it is, above the claim. */

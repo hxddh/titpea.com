@@ -30,7 +30,7 @@ export default defineProduct({
     },
     privacy: {
       network: "none",
-      networkNote: "Nothing is sent: no servers, analytics or ads. Chrome Sync, if on, syncs bookmarks.",
+      networkNote: "Nothing is sent: no servers, no analytics, no ads. Chrome Sync, if on, syncs bookmarks.",
       stays: "Open folders, recent opens and the last-picked folder in the extension’s local storage.",
       policy: {
         label: "Privacy policy",

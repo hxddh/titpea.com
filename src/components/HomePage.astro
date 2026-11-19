@@ -117,10 +117,10 @@ const [lead, ...rest] = model.featured.items;
     </div>
     {model.more.groups.map((group) => (
       <div class="index-group" data-line={group.line}>
-        <h3 class="index-title" id={`line-${group.line}-title`}>
-          {group.label}
-          <span class="fact">{group.count}</span>
-        </h3>
+        <div class="index-title">
+          <h3 id={`line-${group.line}-title`}>{group.label}</h3>
+          <p class="fact">{group.count}</p>
+        </div>
         <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
             <li data-line={item.line} data-platforms={item.filters.join(" ")}>

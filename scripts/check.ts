@@ -557,6 +557,7 @@ const typeTokens = new Set([
   "--text-heading-s",
   "--text-heading",
   "--title-display",
+  "--title-product",
 ]);
 for (const file of styleFiles.filter((file) => !/\/(tokens|visuals|demo(-[a-z-]+)?)\.css$/.test(file))) {
   read(file)
