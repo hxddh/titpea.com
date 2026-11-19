@@ -39,23 +39,23 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v24.0.2",
-    "published": "2026-11-16",
+    "version": "v26.0.0",
+    "published": "2026-11-19",
     "history": [
+      { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" },
+      { "version": "v25.0.0", "published": "2026-11-19", "title": "sonde 25.0.0" },
       { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" },
       { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" },
-      { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" },
-      { "version": "v23.0.1", "published": "2026-11-15", "title": "sonde 23.0.1" },
-      { "version": "v23.0.0", "published": "2026-11-15", "title": "sonde 23.0.0" }
+      { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" }
     ],
     "notes": {
-      "summary": "",
+      "summary": "sonde now records what the program really got, guards deletes more strictly, and looks at…",
       "items": [
-        "The docs match what sonde does",
-        "Each thing is said once in the docs, and linked elsewhere",
-        "No signed package of the app's code: an installed app updates only by installing the new app"
+        "The app, refined on each system",
+        "Restoring a key with another delete marker under its latest one says the key stays deleted",
+        "A lifecycle plan is refused when the bucket's lifecycle changed since it was made"
       ],
-      "url": "https://github.com/hxddh/sonde/releases/tag/v24.0.2"
+      "url": "https://github.com/hxddh/sonde/releases/tag/v26.0.0"
     }
   },
   "httpmon": {
@@ -78,40 +78,44 @@
   "lenslet": {
     "repo": "hxddh/lenslet",
     "tagPrefix": "lenslet-",
-    "version": "v6.0.0",
-    "published": "2026-11-18",
+    "version": "v7.0.0",
+    "published": "2026-11-19",
     "history": [
+      { "version": "v7.0.0", "published": "2026-11-19", "title": "Lenslet 7.0.0" },
       { "version": "v6.0.0", "published": "2026-11-18", "title": "Lenslet 6.0.0" },
       { "version": "v5.0.0", "published": "2026-11-18", "title": "Lenslet 5.0.0" },
       { "version": "v4.1.0", "published": "2026-11-18", "title": "Lenslet 4.1.0" },
-      { "version": "v4.0.0", "published": "2026-11-15", "title": "Lenslet 4.0.0" },
-      { "version": "v3.0.0", "published": "2026-11-15", "title": "Lenslet 3.0.0" }
+      { "version": "v4.0.0", "published": "2026-11-15", "title": "Lenslet 4.0.0" }
     ],
     "notes": {
-      "summary": "Lenslet 6.0 redesigns the desktop application into a focused 3-Zone Workbench",
-      "items": ["6 contrast-calibrated accent colors", "Display & storage controls", "Finer AWS resource ARNs"],
-      "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v6.0.0"
+      "summary": "Lenslet 7.0 delivers a full-stack leap across zero-config ease of use,",
+      "items": [
+        "Stateful cross-call root-cause correlation",
+        "Clickable SDK Retry Chains",
+        "100% canonical S3 subresource IAM action names"
+      ],
+      "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v7.0.0"
     }
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v24.0.0",
-    "published": "2026-10-18",
+    "version": "v25.0.0",
+    "published": "2026-11-19",
     "history": [
+      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
       { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
       { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" },
       { "version": "v21.1.2", "published": "2026-10-15", "title": "v21.1.2" },
-      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" },
-      { "version": "v21.1.0", "published": "2026-10-15", "title": "v21.1.0" }
+      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" }
     ],
     "notes": {
-      "summary": "v24, \"answers that hold, a first run that does not break\" (…",
+      "summary": "v25, \"the living margin, scans you can touch, and verification without false penalties\" (…",
       "items": [
-        "A long answer can quote its first pages again",
-        "A quote that keeps the page's Markdown is found",
-        "A file that won't open says why, in the reader's language, and what to do next"
+        "Region selection asks or marks in one drag",
+        "Scanned pages have a selectable, highlightable text layer",
+        "Internal PDF links & printed page labels"
       ],
-      "url": "https://github.com/hxddh/pagewise/releases/tag/v24.0.0"
+      "url": "https://github.com/hxddh/pagewise/releases/tag/v25.0.0"
     }
   },
   "pulse": {
@@ -196,23 +200,23 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v16.0.1",
-    "published": "2026-11-16",
+    "version": "v17.0.0",
+    "published": "2026-11-19",
     "history": [
+      { "version": "v17.0.0", "published": "2026-11-19", "title": "Goban Studio v17.0.0" },
       { "version": "v16.0.1", "published": "2026-11-16", "title": "Goban Studio v16.0.1" },
       { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
       { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
-      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" },
-      { "version": "v13.0.0", "published": "2026-11-08", "title": "Goban Studio v13.0.0" }
+      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" }
     ],
     "notes": {
-      "summary": "A fix for macOS",
+      "summary": "v17 adds nothing new",
       "items": [
-        "macOS: the app reads its own files again",
-        "The packaged app's self-test",
-        "Platform code has not been tried by hand"
+        "The openings explorer has its branches back",
+        "The whole course was checked with the stronger network",
+        "The notes on the classics' key moments"
       ],
-      "url": "https://github.com/hxddh/goban-studio/releases/tag/v16.0.1"
+      "url": "https://github.com/hxddh/goban-studio/releases/tag/v17.0.0"
     }
   },
   "chessboard": {
