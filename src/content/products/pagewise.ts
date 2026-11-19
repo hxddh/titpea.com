@@ -108,7 +108,7 @@ export default defineProduct({
         nav: "Your data",
         title: "Where your data goes.",
         items: [
-          "Files, chats, marks, findings and scan text stay on your machine; there is no telemetry, and updates are checked only when you click.",
+          "Files, chats, marks, findings and scan text stay local; there is no telemetry, and updates are checked only when you click.",
           "When you ask, only the pages the assistant reads go to your AI model, or to Ollama on your computer.",
           "Scans are read locally; a vision model you set is only a fallback.",
           "API keys stay in the system keychain; a key the keychain refuses waits in a local settings file until accepted.",
