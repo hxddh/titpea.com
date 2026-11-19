@@ -62,7 +62,14 @@ for (const target of baseline.targets) {
   });
   await page.locator("[data-theme-toggle]").waitFor({ state: "visible" });
 
-  if (target.state === "menu") await page.locator(".products-menu summary").click();
+  if (target.state === "menu") {
+    await page.locator(".products-menu summary").click();
+    // The menu's icons load lazily once it opens: wait for every one, so the
+    // capture never depends on how fast they arrived.
+    await page.waitForFunction(() =>
+      Array.from(document.querySelectorAll(".products-panel img")).every((img) => img.complete && img.naturalWidth > 0),
+    );
+  }
   if (target.state === "section") {
     // Pin a section (target.section is its id) just under the sticky chrome.
     await page.evaluate((id) => {
