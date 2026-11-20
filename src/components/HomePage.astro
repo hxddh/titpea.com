@@ -37,7 +37,7 @@ const [lead, ...rest] = model.featured.items;
     </header>
     <ul class="picks">
       {[lead, ...rest].map((item, index) => (
-        <li class="pick" data-lead={index === 0 ? "" : undefined}>
+        <li class="pick" data-lead={index === 0 ? "" : undefined} data-product={item.slug}>
           <a href={item.href}>
             <span class="pick-stage">
               <img
@@ -65,7 +65,7 @@ const [lead, ...rest] = model.featured.items;
   </section>
 
   {/* Everything, by line, as rows: name, one line of value, platform tags, version.
-      The filters are buttons that public/scripts/filter.js wires; without
+      The category chips are buttons that public/scripts/filter.js wires; without
       scripts they stay hidden and every row shows. */}
   <section class="shell page-section page-end index-section" id="tools" aria-labelledby="index-title">
     <header class="index-head">
@@ -73,31 +73,26 @@ const [lead, ...rest] = model.featured.items;
         {headingText(model.more.title)}
       </h2>
     </header>
-    <div class="filters" data-filters hidden>
-      <div class="filter-row" role="group" aria-label={model.more.filters.platformLabel}>
-        <span class="filter-label" aria-hidden="true">
-          {model.more.filters.platformLabel}
-        </span>
-        {model.more.filters.platforms.map((option) => (
-          <button
-            type="button"
-            class="chip"
-            data-filter-platform={option.key}
-            aria-pressed={option.key === "all" ? "true" : "false"}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
+    <div class="filters" role="group" aria-label={model.more.filters.label} data-filters hidden>
+      {model.more.filters.options.map((option) => (
+        <button
+          type="button"
+          class="chip"
+          data-filter-line={option.key}
+          aria-pressed={option.key === "all" ? "true" : "false"}
+        >
+          {option.label}
+        </button>
+      ))}
     </div>
     {model.more.groups.map((group) => (
       <div class="index-group" data-line={group.line}>
         <div class="index-title">
-          <h3 id={`line-${group.line}-title`}>{group.label}</h3>
+          <h2 id={`line-${group.line}-title`}>{group.label}</h2>
         </div>
         <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
-            <li data-line={item.line} data-platforms={item.filters.join(" ")}>
+            <li data-line={item.line}>
               <a class="index-row" href={item.href}>
                 <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
                 <span class="index-copy">
@@ -124,7 +119,6 @@ const [lead, ...rest] = model.featured.items;
         </ul>
       </div>
     ))}
-    <p class="filter-empty" role="status" data-filter-empty data-empty-text={model.more.filters.empty}></p>
   </section>
   <Fragment slot="scripts">
     <script is:inline src="/scripts/filter.js" defer></script>

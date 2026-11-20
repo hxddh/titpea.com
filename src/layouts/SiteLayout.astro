@@ -71,8 +71,8 @@ const footerLinks: Array<{ label: string; href: string }> = [
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
     {seo.robots && <meta name="robots" content={seo.robots} />}
-    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)" />
     {
       /* A noindex page (the 404) has no canonical address and no translations. */
       !seo.robots?.includes("noindex") && (
