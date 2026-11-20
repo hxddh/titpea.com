@@ -46,7 +46,7 @@ export default defineProduct({
     },
     commands: {
       title: "Get started",
-      sub: "The install script is for Linux and macOS; `go install` needs Go 1.26+. On Windows, use `install.ps1` or a binary from GitHub Releases.",
+      sub: "`go install` needs Go 1.26+. On Windows, use `install.ps1` or a binary from GitHub Releases.",
       items: [
         {
           comment: "Install (Linux, macOS)",
@@ -92,7 +92,7 @@ export default defineProduct({
           },
           {
             title: "Sessions to query",
-            body: "`--session` keeps every exchange; `query` searches it, `diff` compares runs and `replay` re-sends.",
+            body: "`--session` keeps every exchange for `query` to search, `diff` to compare across runs and `replay` to re-send.",
           },
           {
             title: "Mocks and faults",
@@ -172,7 +172,7 @@ export default defineProduct({
     },
     commands: {
       title: "开始使用",
-      sub: "安装脚本适用于 Linux 和 macOS；`go install` 需要 Go 1.26+。Windows 用 `install.ps1`，或从 GitHub Releases 下载二进制文件。",
+      sub: "`go install` 需要 Go 1.26+。Windows 用 `install.ps1`，或从 GitHub Releases 下载二进制文件。",
       items: [
         {
           comment: "安装（Linux、macOS）",
@@ -218,7 +218,7 @@ export default defineProduct({
           },
           {
             title: "可查询的会话",
-            body: "`--session` 保存每次交换；`query` 检索，`diff` 对比两次运行，`replay` 重新发送。",
+            body: "`--session` 保存每次交换，供 `query` 检索、`diff` 对比两次运行、`replay` 重新发送。",
           },
           { title: "模拟与故障", body: "对匹配的请求直接应答、延迟、断开或改道，不碰服务器也能测失败路径。" },
           { title: "常驻代理", body: "`httpmon proxy` 能抓浏览器、手机、容器和已在运行的服务这些不由它启动的流量。" },

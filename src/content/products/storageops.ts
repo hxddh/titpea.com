@@ -36,7 +36,7 @@ export default defineProduct({
     stack: ["Python", "Pi", "S3-compatible"],
     commands: {
       title: "Get started",
-      sub: "Needs Node.js 22.19+ and Python 3.11+. First install the package with `pip`, the first command below. Then `storageops install` adds the skills and tools to Pi, and installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
+      sub: "Needs Node.js 22.19+ and Python 3.11+; `storageops install` also installs Pi Coding Agent if it is missing. Configure a model key before your first diagnosis.",
       items: [
         {
           comment: "Install the StorageOps package",
@@ -91,7 +91,7 @@ export default defineProduct({
           },
           {
             title: "Methods for specific stacks",
-            body: "Skills cover SigV4 signing, IAM, lifecycle, replication and Spark S3A, with scripts that parse logs and policies.",
+            body: "Skills cover SigV4 signing, IAM, replication and Spark S3A, with scripts that parse logs and policies.",
           },
           {
             title: "Failures it covers",
@@ -103,7 +103,7 @@ export default defineProduct({
           },
           {
             title: "Leaves your storage alone",
-            body: "It traces at most one bounded command you give it, and any change is yours to make.",
+            body: "It traces at most one command, the one you give it; any change is yours to make.",
           },
         ],
       },
@@ -115,11 +115,11 @@ export default defineProduct({
         items: [
           {
             title: "Is it a second agent?",
-            body: "No. StorageOps adds storage skills, tools and helper scripts to Pi; Pi is still the agent. It is not a cloud console either.",
+            body: "No, Pi is still the agent. StorageOps isn’t a cloud console either.",
           },
           {
             title: "Does it need my cloud account?",
-            body: "No. It works from the logs, errors, config and traces you bring. It does not take cloud credentials or open its own cloud session.",
+            body: "No. It does not take cloud credentials or open its own cloud session.",
           },
           {
             title: "When should I open Storage Agent?",
@@ -156,7 +156,7 @@ export default defineProduct({
     stack: ["Python", "Pi", "S3 兼容"],
     commands: {
       title: "开始使用",
-      sub: "需要 Node.js 22.19+ 和 Python 3.11+。先用下面第一条 `pip` 命令安装 StorageOps，再运行 `storageops install`，把技能包和工具装进 Pi；没装 Pi Coding Agent 时会一并安装。第一次排查前，先配置模型密钥。",
+      sub: "需要 Node.js 22.19+ 和 Python 3.11+；没装 Pi Coding Agent 时，`storageops install` 会一并安装。第一次排查前，先配置模型密钥。",
       items: [
         {
           comment: "安装 StorageOps 软件包",
@@ -208,14 +208,14 @@ export default defineProduct({
           { title: "要带上的材料", body: "原始报错、用 `@` 附上的日志文件、配置片段或 debug 输出。" },
           {
             title: "针对具体技术栈的方法",
-            body: "技能包涵盖 SigV4 签名、IAM、生命周期、复制和 Spark S3A，附带解析日志和策略的脚本。",
+            body: "技能包涵盖 SigV4 签名、IAM、复制和 Spark S3A，附带解析日志和策略的脚本。",
           },
           {
             title: "覆盖的故障",
             body: "AccessDenied、SignatureDoesNotMatch、SlowDown、校验和不匹配，以及读到过期数据。",
           },
           { title: "旧会话可检索", body: "`search_memory` 在以往的 Pi 会话里找出相关片段，按相关度排序并脱敏。" },
-          { title: "不动你的存储", body: "它最多 trace 一条你给的受限命令，任何改动都由你自己来做。" },
+          { title: "不动你的存储", body: "它最多 trace 一条你给的命令，任何改动都由你自己来做。" },
         ],
       },
       {
@@ -226,11 +226,11 @@ export default defineProduct({
         items: [
           {
             title: "它是另一个 Agent 吗？",
-            body: "不是。StorageOps 给 Pi 加上对象存储技能包、工具和辅助脚本，干活的仍然是 Pi。它也不是云控制台。",
+            body: "不是，干活的仍然是 Pi。StorageOps 也不是云控制台。",
           },
           {
             title: "需要接入云账号吗？",
-            body: "不需要。它用你提供的日志、报错、配置和 trace 排查，不接收云凭据，也不会自己登录云账号。",
+            body: "不需要。它不接收云凭据，也不会自己登录云账号。",
           },
           {
             title: "什么时候改用 Storage Agent？",

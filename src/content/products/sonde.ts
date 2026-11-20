@@ -101,18 +101,18 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "The script installs the terminal binary on Linux or macOS. GitHub Releases has terminal binaries for Linux, macOS and Windows, and the desktop app as a macOS .dmg, a Linux tarball and a Windows zip. On Linux the binary needs glibc 2.35 or later, or the static build the script picks.",
+      sub: "GitHub Releases has terminal binaries for Linux, macOS and Windows, and the desktop app as a macOS .dmg, a Linux tarball and a Windows zip. On Linux the binary needs glibc 2.35 or later, or the static build the script picks.",
       items: [
         {
           comment: "Install the terminal binary (Linux, macOS)",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "The tour, on a built-in store: a finding, its fix, the fix measured",
+          comment: "Take the tour on a built-in store",
           command: "sonde run --demo",
         },
         {
-          comment: "Record your program, sent on with your AWS credentials",
+          comment: "Record your own program",
           command: "sonde run -- python etl.py",
         },
       ],
@@ -129,8 +129,8 @@ export default defineProduct({
             body: "It recognises multipart uploads, retries, listings, and commits of Iceberg, Delta Lake, Hudi, Paimon, SlateDB and Lance.",
           },
           {
-            title: "Trials under faults",
-            body: "`--trial` runs the program again under store faults and says whether it survived.",
+            title: "Fault trials",
+            body: "`--trial` runs the program again under store faults.",
           },
           {
             title: "A budget in CI",
@@ -138,7 +138,7 @@ export default defineProduct({
           },
           {
             title: "For coding agents",
-            body: "`show -f json` gives each finding’s file, line and fix; a rerun says if it worked.",
+            body: "`show -f json` gives every finding, with its file and line, as JSON; a rerun says if the fix worked.",
           },
           {
             title: "Replay on another store",
@@ -164,7 +164,7 @@ export default defineProduct({
           },
           {
             title: "Which stores does it work with?",
-            body: "Any S3-compatible endpoint. A replay or a probe tells you how a particular store answers.",
+            body: "Any S3-compatible endpoint.",
             steps: [
               "Among them: AWS, Cloudflare R2, MinIO, Ceph RGW, Aliyun OSS, Tigris, Backblaze B2, Wasabi and Google Cloud Storage’s XML API.",
               "A replay ends with what the program relies on, such as checksums, conditional writes and ranges, and how that store answers each.",
@@ -246,18 +246,18 @@ export default defineProduct({
     ],
     commands: {
       title: "开始使用",
-      sub: "这个脚本在 Linux 或 macOS 上安装终端版。GitHub Releases 页面有 Linux、macOS 和 Windows 的终端版，桌面应用则有 macOS 的 .dmg、Linux 的压缩包和 Windows 的 zip。Linux 上的二进制需要 glibc 2.35 或更新版本，不满足时用静态版，安装脚本会自动选它。",
+      sub: "GitHub Releases 页面有 Linux、macOS 和 Windows 的终端版，桌面应用则有 macOS 的 .dmg、Linux 的压缩包和 Windows 的 zip。Linux 上的二进制需要 glibc 2.35 或更新版本，不满足时用静态版，安装脚本会自动选它。",
       items: [
         {
           comment: "安装终端版（Linux、macOS）",
           command: "curl -fsSL https://raw.githubusercontent.com/hxddh/sonde/main/install.sh | sh",
         },
         {
-          comment: "在内置存储上走一遍导览：一条发现、它的修法和修好后的实测效果",
+          comment: "在内置存储上走一遍导览",
           command: "sonde run --demo",
         },
         {
-          comment: "录下你的程序，请求用你的 AWS 凭证发出",
+          comment: "录下你自己的程序",
           command: "sonde run -- python etl.py",
         },
       ],
@@ -273,14 +273,14 @@ export default defineProduct({
             title: "按操作看，而不是按请求",
             body: "它能认出分段上传、重试、列举，以及 Iceberg、Delta Lake、Hudi、Paimon、SlateDB 和 Lance 的提交。",
           },
-          { title: "在故障下试运行", body: "`--trial` 在存储故障下再运行程序，告诉你它是否扛住。" },
+          { title: "故障试运行", body: "`--trial` 在存储故障下再运行一次程序。" },
           {
             title: "在 CI 里守住预算",
             body: "超出预算或基线时，`sonde check` 让任务失败；GitHub Action 只保留一条 PR 评论。",
           },
           {
             title: "给编程智能体用",
-            body: "`show -f json` 给出每条发现的文件、行号和修法；再运行一次就知道改好没有。",
+            body: "`show -f json` 以 JSON 给出每条发现及其文件和行号；再运行一次就知道改好没有。",
           },
           {
             title: "在另一个存储上重放",
@@ -306,7 +306,7 @@ export default defineProduct({
           },
           {
             title: "支持哪些存储？",
-            body: "任何兼容 S3 的端点都行。某个存储具体怎样应答，重放或探测一次就知道。",
+            body: "任何兼容 S3 的端点都行。",
             steps: [
               "例如 AWS、Cloudflare R2、MinIO、Ceph RGW、阿里云 OSS 和 Tigris；Backblaze B2、Wasabi 和 Google Cloud Storage 的 XML API 也在其中。",
               "重放结束时会列出程序依赖的功能（比如校验和、条件写入和范围读取），以及那个存储对每项的应答。",
