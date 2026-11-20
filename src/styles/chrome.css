@@ -11,15 +11,12 @@
   }
 
   /* Header */
+  /* The header is a floating capsule of glass, inset from the page edge. */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: 0;
-    background: var(--glass);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--line);
+    padding: 10px var(--gutter);
   }
 
   .site-header[data-static] {
@@ -31,10 +28,15 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    max-width: calc(var(--shell) + 2 * var(--gutter));
-    height: 56px;
+    max-width: var(--shell);
+    height: 48px;
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding: 0 8px 0 14px;
+    border-radius: var(--radius-pill);
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-glass);
   }
 
   /* The wordmark: "Titpea" in the sans, semibold and tight, beside the
@@ -146,15 +148,15 @@
    blur behind it. */
   .nav-dropdown-panel {
     position: absolute;
-    top: calc(100% - 1px);
-    right: var(--gutter);
+    top: calc(100% + 8px);
+    right: 0;
     z-index: 60;
     width: min(860px, calc(100vw - 2 * var(--gutter)));
     padding: 20px 20px 12px;
-    border-radius: var(--radius-media);
-    /* Solid paper: under the header's backdrop blur, a translucent panel lets
-     the page show through. */
-    background: var(--paper);
+    border-radius: var(--radius-card);
+    /* Solid: under the header's backdrop blur, a translucent panel lets the
+     page show through. */
+    background: var(--surface);
     box-shadow:
       inset 0 0 0 1px var(--line),
       var(--shadow-panel);
@@ -254,17 +256,17 @@
     height: 0;
   }
 
+  /* The product's own capsule, the same glass as the site header. */
   .local-nav-bar {
     position: relative;
     display: flex;
     align-items: center;
     gap: 6px;
-    height: 56px;
-    margin: 0;
-    padding: 0 max(var(--gutter), calc((100% - var(--shell)) / 2));
-    border-radius: 0;
-    border-bottom: 1px solid var(--line);
-    box-shadow: none;
+    width: min(var(--shell), calc(100% - 2 * var(--gutter)));
+    height: 48px;
+    margin: 10px auto 0;
+    padding: 0 8px 0 14px;
+    border-radius: var(--radius-pill);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease,
@@ -274,7 +276,7 @@
   html.js .product-section-index:not([data-pinned]) .local-nav-bar {
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-140%);
   }
 
   .product-section-index-name {

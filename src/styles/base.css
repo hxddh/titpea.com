@@ -132,20 +132,21 @@
   .eyebrow,
   .section-kicker {
     margin: 0 0 10px;
-    color: var(--muted);
-    font-size: var(--text-meta);
-    font-weight: 500;
-    letter-spacing: 0;
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
-  /* The lede is the page's first explanation: reading ink, not label grey. */
+  /* The lede: the page's first explanation, large and soft (design v8). */
   .lead {
-    max-width: 32em;
+    max-width: 34ch;
     margin: 0;
-    color: var(--ink);
+    color: var(--ink-2);
     font-size: var(--text-lede);
-    line-height: 1.45;
-    text-wrap: pretty;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   /* The line under a section heading, in the margin column. */
@@ -213,11 +214,12 @@
 
   .button.large {
     min-height: 50px;
-    padding: 0 28px;
+    padding: 0 26px;
+    font-size: var(--text-body);
   }
 
   .button.ghost {
-    padding: 0 8px;
+    padding: 0 18px;
     color: var(--link);
   }
 

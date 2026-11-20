@@ -22,41 +22,32 @@
     box-shadow: var(--plate-s);
   }
 
-  /* Display lines (the page title): in
-   English the sans, heavy and tight (design v4); on Chinese pages
-   --display-face is Noto Serif SC, cut to the headings' characters. */
+  /* Display lines (the page title): the one sans (--display-face). */
   .display,
   main h1 {
     font-family: var(--display-face);
     font-optical-sizing: auto;
   }
 
-  /* English display lines: Fraunces at a middle optical size (the largest
-   is a poster face: hairline contrast, letters touching), a book weight,
-   tracked in only slightly. */
+  /* Display lines (v8, after Omni): the system sans, bold and tight. */
   html:lang(en) :is(.display, main h1) {
-    font-weight: 450;
-    font-variation-settings: "opsz" 60;
-    letter-spacing: -0.008em;
+    font-weight: 700;
+    letter-spacing: -0.035em;
   }
 
-  /* Section headings share the display face in both languages (the Chinese
-   subset carries every h1 and h2), one step lighter than the title. */
+  /* Section headings: the same voice, one size down. */
   :is(.heading, main h2) {
     font-family: var(--display-face);
-    font-optical-sizing: auto;
+    font-weight: 700;
   }
 
   html:lang(en) :is(.heading, main h2) {
-    font-weight: 500;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.03em;
   }
 
-  /* The wordmark is set like a title. */
   .brand {
-    font-family: var(--display-face);
-    font-weight: 560;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   /* Selected text takes the accent, quietly. */
@@ -64,10 +55,11 @@
     background: var(--selection);
   }
 
-  /* Chinese display lines: the serif's one weight (SemiBold), never a
-   synthesised bold, and no negative tracking, which crowds CJK. */
+  /* Chinese display lines: the system face's own bold (PingFang, YaHei and
+   the like), never a synthesised one, and no negative tracking, which
+   crowds CJK. */
   html:lang(zh) :is(.display, main h1) {
-    font-weight: 600;
+    font-weight: 700;
     font-synthesis: none;
     letter-spacing: 0;
     word-break: keep-all;
@@ -80,7 +72,7 @@
   }
 
   html:lang(zh) :is(.heading, main h2) {
-    font-weight: 600;
+    font-weight: 700;
     font-synthesis: none;
     letter-spacing: 0;
     word-break: keep-all;

@@ -17,8 +17,8 @@ export const screenshotSizes = "(max-width: 1164px) calc(100vw - 44px), 1120px";
 
 /** A capture in the main column: two thirds of the shell on desktop, the whole width below 900px. */
 /** One of two showcases side by side: half the shell, the whole width on phones. */
-export const pairedShotSizes = "(max-width: 900px) calc(100vw - 44px), 544px";
-export const columnShotSizes = "(max-width: 900px) calc(100vw - 44px), (max-width: 1164px) 64vw, 736px";
+/** A gallery card: min(860px, 84vw), less the tile's inset. */
+export const galleryShotSizes = "(max-width: 1024px) 80vw, 820px";
 
 /** A tall hero capture (a side panel) renders at most 380px wide (product.css). */
 export const portraitShotSizes = "380px";

@@ -2,9 +2,9 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Home (HomePage.astro): the title and lede centred; the picks, one large
-   and two beside it; then every product as a row with its tags and version,
-   with category chips. */
+  /* Home (HomePage.astro), design v8: a centred title on soft washes; the
+   picks as a gallery of tiles; then every product as a card, by line, with a
+   segmented control. */
   .home-hero {
     text-align: center;
   }
@@ -14,92 +14,50 @@
   }
 
   .home-hero .lead {
-    max-width: 30em;
     margin-inline: auto;
   }
 
-  .home-byline {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  .home-hero .actions {
     justify-content: center;
-    gap: 0 20px;
-    margin: 20px 0 0;
+    margin-top: 28px;
   }
 
-  /* Section heads sit on the shell's edge, over what they name. */
-  .index-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
-  /* The picks: the first takes two thirds of the shell, the other two stack
-   beside it. Each is its real window, cropped at its top left. */
-  .picks {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    gap: 40px var(--col-gap);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .pick {
-    min-width: 0;
-  }
-
-  .pick[data-lead] {
-    grid-row: span 2;
-  }
-
+  /* A pick: the tile, then the icon, name and eyebrow, then the claim. */
   .pick a {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    height: 100%;
+    display: block;
     color: var(--ink);
-  }
-
-  .pick a:hover {
     text-decoration: none;
   }
 
-  /* The window itself is the picture: its top left, cut to 16:10 by its own
-   edge and shadow. No plate or frame around it. */
-  .pick-stage {
-    display: block;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    border-radius: var(--radius-media);
-    box-shadow:
-      0 0 0 1px var(--line),
-      var(--shadow-shot);
+  /* The window rises from the tile's foot: its top left, whole width, cut
+   by the tile's lower edge. */
+  .g-tile.pick-tile {
+    aspect-ratio: 16 / 10.5;
+    padding: 6% 6% 0;
+    place-items: stretch;
     transition: transform 0.35s ease;
   }
 
-  .pick[data-lead] .pick-stage {
-    aspect-ratio: 16 / 11;
+  .pick-tile .shot {
+    height: 100%;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
   }
 
-  .pick-stage img {
-    display: block;
+  .pick-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left top;
   }
 
-  .pick a:hover .pick-stage {
+  .pick a:hover .pick-tile {
     transform: translateY(-2px);
   }
 
-  .pick-copy {
+  .pick .g-caption {
     display: grid;
-    gap: 8px;
+    gap: 6px;
   }
 
   .pick-ident {
@@ -110,50 +68,40 @@
   }
 
   .pick-ident img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .pick-name {
-    font-size: var(--text-body);
-    font-weight: 600;
-    line-height: 1.35;
+    width: 28px;
+    height: 28px;
   }
 
   .pick-eyebrow {
     color: var(--muted);
-    font-size: var(--text-meta);
+    font-size: var(--text-small);
   }
 
-  .pick a:hover .pick-name {
+  .pick a:hover .g-title {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.22em;
+    text-underline-offset: 0.2em;
   }
 
   .pick-text {
     color: var(--ink-2);
     font-size: var(--text-small);
-    line-height: 1.5;
+    line-height: 1.47;
     text-wrap: pretty;
   }
 
-  .pick[data-lead] .pick-text {
-    font-size: var(--text-body);
-  }
-
-  .pick-caption {
-    color: var(--muted);
-    font-size: var(--text-meta);
-    line-height: 1.45;
-  }
-
-  /* Filters: two rows of chips, a kind and a platform. */
+  /* The segmented control: one line at a time. */
   .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 32px;
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    margin: -24px auto 48px;
+    padding: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--code-bg);
+    box-shadow: inset 0 0 0 1px var(--line);
   }
 
   .filters[hidden] {
@@ -164,41 +112,43 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    min-height: 32px;
-    padding: 0 12px;
-    border: 1px solid var(--tag-line);
+    min-height: 36px;
+    padding: 0 16px;
+    border: 0;
     border-radius: var(--radius-pill);
     color: var(--ink-2);
     background: transparent;
     font: inherit;
-    font-size: var(--text-meta);
+    font-size: var(--text-small);
+    font-weight: 500;
+    letter-spacing: -0.01em;
     cursor: pointer;
     transition:
       background-color 0.15s ease,
       color 0.15s ease;
   }
 
-  /* 44px hit area around the 32px chip. */
+  /* 44px hit area around the 36px segment. */
   .chip::before {
     content: "";
     position: absolute;
-    inset: -6px -2px;
+    inset: -4px 0;
   }
 
   .chip:hover {
-    background: var(--row-hover);
+    color: var(--ink);
   }
 
   .chip[aria-pressed="true"] {
-    border-color: var(--accent-fill);
-    color: var(--on-accent);
-    background: var(--accent-fill);
+    color: var(--ink);
+    background: var(--glass-strong);
+    box-shadow: var(--shadow-glass);
   }
 
-  /* The index: each line under a hairline label, its products as rows. */
-  /* Only between groups that show, so a filtered list starts at the top. */
+  /* The index: each line's label, then its products as cards. Only between
+   groups that show, so a filtered list starts at the top. */
   .index-group:not([hidden]) ~ .index-group:not([hidden]) {
-    margin-top: 48px;
+    margin-top: 56px;
   }
 
   .index-group[hidden] {
@@ -206,158 +156,101 @@
   }
 
   .index-title {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .index-title h2 {
-    margin: 0;
-    font-size: var(--text-heading-s);
+    margin: 0 0 16px;
+    color: var(--ink-2);
+    font-family: var(--sans);
+    font-size: var(--text-small);
     font-weight: 600;
-    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
-  .index-title .fact {
-    font-family: var(--mono);
-    font-weight: 400;
-  }
-
-  .index-rows {
+  .index-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .index-rows > li {
-    border-bottom: 1px solid var(--line);
-  }
-
-  .index-rows > li[hidden] {
-    display: none;
-  }
-
-  .index-row {
+  .index-card {
     display: grid;
-    grid-template-columns: 36px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 18px;
-    padding: 16px 10px;
-    margin-inline: -10px;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 6px;
+    height: 100%;
+    padding: 24px 24px 22px;
+    border-radius: var(--radius-card);
     color: var(--ink);
-    transition: background-color 0.15s ease;
-  }
-
-  .index-row:hover {
+    background: var(--paper-raised);
     text-decoration: none;
-    background: var(--row-hover);
+    transition: transform 0.25s ease;
   }
 
-  .index-row img {
-    width: 36px;
-    height: 36px;
+  .index-card:hover {
+    transform: translateY(-2px);
   }
 
-  .index-copy {
-    display: grid;
-    gap: 2px;
-    min-width: 0;
+  .index-card img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
   }
 
   .index-name {
+    font-size: var(--text-heading-s);
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
   }
 
-  .index-row:hover .index-name {
+  .index-card:hover .index-name {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.22em;
+    text-underline-offset: 0.2em;
   }
 
   .index-text {
     color: var(--ink-2);
     font-size: var(--text-small);
-    line-height: 1.5;
+    line-height: 1.47;
     text-wrap: pretty;
   }
 
   .index-meta {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 14px;
-    max-width: 420px;
-  }
-
-  .index-meta .tags {
-    justify-content: flex-end;
-  }
-
-  .index-version {
-    min-width: 64px;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: var(--text-meta);
-    font-variant-numeric: tabular-nums;
-    text-align: right;
+    margin-top: 12px;
   }
 
   @media (max-width: 900px) {
-    .picks {
+    .index-cards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .pick[data-lead] {
-      grid-column: 1 / -1;
-      grid-row: auto;
-    }
-
-    .index-row {
-      grid-template-columns: 36px minmax(0, 1fr);
-    }
-
-    /* Tags and version flow as one run, wherever the line breaks. */
-    .index-meta {
-      grid-column: 2;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 6px;
-      max-width: none;
-    }
-
-    .index-meta .tags {
-      display: contents;
-    }
-
-    .index-version {
-      margin-left: 4px;
-    }
-
-    .index-version {
-      min-width: 0;
-      text-align: left;
     }
   }
 
   @media (max-width: 640px) {
-    .picks {
+    .index-cards {
       grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .index-card {
+      padding: 18px 18px 20px;
+      border-radius: 18px;
+    }
+
+    .filters {
+      margin-top: -12px;
+      margin-bottom: 32px;
+    }
+
+    .chip {
+      padding: 0 12px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pick-stage,
-    .index-row,
-    .chip {
+    .pick-tile,
+    .index-card {
       transition: none;
-    }
-
-    .pick a:hover .pick-stage {
-      transform: none;
     }
   }
 }

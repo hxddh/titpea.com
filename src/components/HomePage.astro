@@ -9,66 +9,83 @@ interface Props {
 }
 
 const { model } = Astro.props;
-const [lead, ...rest] = model.featured.items;
 ---
 
 <SiteLayout seo={model.seo} current={model.current} locale={model.locale} language={model.language}>
-  <section class="shell home-hero">
-    <h1 class="display">
-      {model.hero.titleParts.map((part) => (
-        <span class="display-line">{part}</span>
-      ))}
-    </h1>
-    <p class="lead">{model.hero.lead}</p>
-    <p class="home-byline">
-      <span class="fact">{model.hero.eyebrow}</span>
-      <a class="textlink" href={model.hero.about.href}>
-        {model.hero.about.label}
-      </a>
-    </p>
+  <section class="home-hero">
+    <div class="shell">
+      <p class="eyebrow">{model.hero.eyebrow}</p>
+      <h1 class="display">
+        {model.hero.titleParts.map((part) => (
+          <span class="display-line">{part}</span>
+        ))}
+      </h1>
+      <p class="lead">{model.hero.lead}</p>
+      <div class="actions">
+        <a class="button ghost large" href={model.hero.about.href}>
+          {model.hero.about.label}
+        </a>
+      </div>
+    </div>
   </section>
 
-  {/* The picks: one large, two beside it; each its real window, its claim and its tag. */}
-  <section class="shell page-section picks-section" aria-labelledby="picks-title">
-    <header class="index-head">
+  {/* The picks, as a gallery: each product's real window on a tile of its own
+      colour, its name and claim under it. */}
+  <section class="page-section picks-section gallery-section">
+    <header class="shell section-head">
       <h2 class="heading" id="picks-title">
         {headingText(model.featured.title)}
       </h2>
     </header>
-    <ul class="picks">
-      {[lead, ...rest].map((item, index) => (
-        <li class="pick" data-lead={index === 0 ? "" : undefined}>
-          <a href={item.href}>
-            <span class="pick-stage">
-              <img
-                src={item.image.src}
-                alt=""
-                width={item.image.width}
-                height={item.image.height}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-              />
-            </span>
-            <span class="pick-copy">
-              <span class="pick-ident">
-                <img class="icon-plate" src={item.icon} alt="" width="24" height="24" loading="lazy" />
-                <strong class="pick-name">{item.name}</strong>
-                <span class="pick-eyebrow">{item.eyebrow}</span>
+    <div class="gallery" tabindex="0" role="region" aria-labelledby="picks-title" data-gallery>
+      <ul class="g-track">
+        {model.featured.items.map((item, index) => (
+          <li class="g-card pick" data-product={item.slug}>
+            <a href={item.href}>
+              <span class="g-tile pick-tile">
+                <span class="shot">
+                  <img
+                    src={item.image.src}
+                    alt=""
+                    width={item.image.width}
+                    height={item.image.height}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </span>
               </span>
-              <span class="pick-text">{item.headline}</span>
-              {item.caption && <span class="pick-caption">{item.caption}</span>}
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
+              <span class="g-caption">
+                <span class="pick-ident">
+                  <img class="icon-plate" src={item.icon} alt="" width="28" height="28" loading="lazy" />
+                  <strong class="g-title">{item.name}</strong>
+                  <span class="pick-eyebrow">{item.eyebrow}</span>
+                </span>
+                <span class="pick-text">{item.headline}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="shell g-paddles" data-gallery-paddles hidden>
+      <button class="g-paddle" type="button" data-gallery-prev aria-label={model.gallery.previous}>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" />
+        </svg>
+      </button>
+      <button class="g-paddle" type="button" data-gallery-next aria-label={model.gallery.next}>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m6 3 5 5-5 5" />
+        </svg>
+      </button>
+    </div>
   </section>
 
-  {/* Everything, by line, as rows: name, one line of value, platform tags, version.
-      The category chips are buttons that public/scripts/filter.js wires; without
-      scripts they stay hidden and every row shows. */}
+  {/* Everything, by line, as cards: icon, name, one line of value, platforms,
+      version. The segmented control is wired by public/scripts/filter.js;
+      without scripts it stays hidden and every line shows. */}
   <section class="shell page-section page-end index-section" id="tools" aria-labelledby="index-title">
-    <header class="index-head">
+    <header class="section-head">
       <h2 class="heading" id="index-title">
         {headingText(model.more.title)}
       </h2>
@@ -87,28 +104,24 @@ const [lead, ...rest] = model.featured.items;
     </div>
     {model.more.groups.map((group) => (
       <div class="index-group" data-line={group.line}>
-        <div class="index-title">
-          <h2 id={`line-${group.line}-title`}>{group.label}</h2>
-        </div>
-        <ul class="index-rows" aria-labelledby={`line-${group.line}-title`}>
+        <h3 class="index-title" id={`line-${group.line}-title`}>
+          {group.label}
+        </h3>
+        <ul class="index-cards" aria-labelledby={`line-${group.line}-title`}>
           {group.items.map((item) => (
             <li data-line={item.line}>
-              <a class="index-row" href={item.href}>
-                <img class="icon-plate" src={item.icon} alt="" width="36" height="36" loading="lazy" />
-                <span class="index-copy">
-                  <strong class="index-name">{item.name}</strong>
-                  <span class="index-text">{item.text}</span>
-                </span>
-                <span class="index-meta">
-                  <span class="tags">
-                    {/* The kind only where no platform says it: a command-line tool. */}
-                    {item.filters.includes("cli") && <span class="tag tag-kind">{item.facts.kind}</span>}
-                    {item.facts.platforms.map((platform) => (
-                      <span class="tag">{platform}</span>
-                    ))}
-                  </span>
+              <a class="index-card" href={item.href}>
+                <img class="icon-plate" src={item.icon} alt="" width="48" height="48" loading="lazy" />
+                <strong class="index-name">{item.name}</strong>
+                <span class="index-text">{item.text}</span>
+                <span class="index-meta tags">
+                  {/* The kind only where no platform says it: a command-line tool. */}
+                  {item.filters.includes("cli") && <span>{item.facts.kind}</span>}
+                  {item.facts.platforms.map((platform) => (
+                    <span>{platform}</span>
+                  ))}
                   {item.facts.version && (
-                    <span class="index-version" data-visual-live>
+                    <span class="tag-version" data-visual-live>
                       {item.facts.version}
                     </span>
                   )}
@@ -122,5 +135,6 @@ const [lead, ...rest] = model.featured.items;
   </section>
   <Fragment slot="scripts">
     <script is:inline src="/scripts/filter.js" defer></script>
+    <script is:inline src="/scripts/gallery.js" defer></script>
   </Fragment>
 </SiteLayout>

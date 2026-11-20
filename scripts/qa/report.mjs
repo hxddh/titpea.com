@@ -49,11 +49,13 @@ export function failureReasons(result) {
   if (!isAsset && !isAuxCheck && !isPrivacy && result.leadLines > (result.viewport === "mobile" ? 5 : 4)) {
     reasons.push(`lead wraps to ${result.leadLines} lines`);
   }
-  // Home's and About's heroes have no actions (their links are text), and nor
-  // do the Releases and Privacy index pages, whose hero only names the list.
+  // About's hero has no actions (its links are text), nor do the Releases and
+  // Privacy index pages, whose hero only names the list. Home has one: the
+  // link to About (design v8).
   const isAbout = ["home", "about", "releases", "privacy"].includes(route?.kind);
-  if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount !== 0) {
-    reasons.push(`about hero should have no CTAs, got ${result.heroCtaCount}`);
+  const ctaLimit = route?.kind === "home" ? 1 : 0;
+  if (!isAsset && !isAuxCheck && isAbout && result.heroCtaCount > ctaLimit) {
+    reasons.push(`about hero should have at most ${ctaLimit} CTAs, got ${result.heroCtaCount}`);
   }
   if (
     !isAsset &&

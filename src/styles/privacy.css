@@ -23,8 +23,8 @@
     border-top: 1px solid var(--line);
   }
 
-  .privacy-table tbody tr:last-child {
-    border-bottom: 1px solid var(--line);
+  .privacy-panel {
+    padding-top: 20px;
   }
 
   .privacy-table tbody th,

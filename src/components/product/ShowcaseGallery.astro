@@ -1,0 +1,157 @@
+---
+import { headingText } from "../../lib/heading";
+import Prose from "./Prose.astro";
+import type { Showcase } from "../../content/schema";
+import { galleryShotSizes, srcsetFor } from "../../lib/images";
+
+interface Props {
+  showcases: Showcase[];
+  /** Per showcase: the release it was captured at, when it differs from the last one said. */
+  labels: Array<string | undefined>;
+  wholeLabel: string;
+  pauseLabel: string;
+  playLabel: string;
+  /** Names the row and its paddles for assistive tech. */
+  galleryLabel: string;
+  previousLabel: string;
+  nextLabel: string;
+}
+
+const { showcases, labels, wholeLabel, pauseLabel, playLabel, galleryLabel, previousLabel, nextLabel } = Astro.props;
+// Design v8: the App Store's screenshot row. Each capture sits whole on a
+// soft tile washed in the product's colour, its name and one line under it.
+// The first card lines up with the shell; the row runs off the right edge to
+// say there is more, and scrolls by swipe, trackpad, keys or the paddles.
+const single = showcases.length === 1;
+---
+
+<section class="page-section product-section gallery-section" data-count={showcases.length}>
+  <div
+    class="gallery"
+    tabindex={single ? undefined : "0"}
+    role={single ? undefined : "region"}
+    aria-label={single ? undefined : galleryLabel}
+    data-gallery={single ? undefined : ""}
+  >
+    <ul class="g-track">
+      {showcases.map((showcase, index) => {
+        const portrait = showcase.height > showcase.width;
+        const detail = Boolean(showcase.focus) && !showcase.video;
+        return (
+          <li class="g-card">
+            <figure>
+              <div class="g-tile" data-portrait={portrait ? "" : undefined} data-detail={detail ? "" : undefined}>
+                {showcase.video ? (
+                  <div class="shot show-shot show-video">
+                    <video
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      poster={showcase.src}
+                      width={showcase.width}
+                      height={showcase.height}
+                      aria-label={showcase.alt}
+                      data-autoplay
+                    >
+                      <source src={showcase.video.mp4} type="video/mp4" />
+                      {showcase.video.webm && <source src={showcase.video.webm} type="video/webm" />}
+                    </video>
+                    <button
+                      class="video-toggle"
+                      type="button"
+                      hidden
+                      data-video-toggle
+                      data-pause-label={pauseLabel}
+                      data-play-label={playLabel}
+                    >
+                      {pauseLabel}
+                    </button>
+                  </div>
+                ) : detail ? (
+                  <div class="crop" data-focus={showcase.focus}>
+                    {/* No srcset: the detail is the capture at its own pixel size. */}
+                    <img
+                      src={showcase.src}
+                      alt={showcase.alt}
+                      width={showcase.width}
+                      height={showcase.height}
+                      loading="lazy"
+                      data-appearance={showcase.dark ? "light" : undefined}
+                    />
+                    {showcase.dark && (
+                      <img
+                        src={showcase.dark.src}
+                        alt={showcase.alt}
+                        width={showcase.dark.width}
+                        height={showcase.dark.height}
+                        loading="lazy"
+                        data-appearance="dark"
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <div class="shot show-shot">
+                    <img
+                      src={showcase.src}
+                      srcset={srcsetFor(showcase.src, showcase.width)}
+                      sizes={portrait ? "320px" : galleryShotSizes}
+                      alt={showcase.alt}
+                      width={showcase.width}
+                      height={showcase.height}
+                      loading="lazy"
+                      data-appearance={showcase.dark ? "light" : undefined}
+                    />
+                    {showcase.dark && (
+                      <img
+                        src={showcase.dark.src}
+                        srcset={srcsetFor(showcase.dark.src, showcase.dark.width)}
+                        sizes={portrait ? "320px" : galleryShotSizes}
+                        alt={showcase.alt}
+                        width={showcase.dark.width}
+                        height={showcase.dark.height}
+                        loading="lazy"
+                        data-appearance="dark"
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+              <figcaption class="g-caption">
+                <h2 class="g-title">{headingText(showcase.title)}</h2>
+                <p>
+                  <Prose text={showcase.body} />
+                </p>
+                {(labels[index] || showcase.caption || detail) && (
+                  <p class="figure-note">
+                    {showcase.caption && <span>{showcase.caption}</span>}
+                    {labels[index] && <span class="fact">{labels[index]}</span>}
+                    {detail && (
+                      <a class="fact" href={showcase.src}>
+                        {wholeLabel} →
+                      </a>
+                    )}
+                  </p>
+                )}
+              </figcaption>
+            </figure>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+  {!single && (
+    <div class="shell g-paddles" data-gallery-paddles hidden>
+      <button class="g-paddle" type="button" data-gallery-prev aria-label={previousLabel}>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M10 3 5 8l5 5" />
+        </svg>
+      </button>
+      <button class="g-paddle" type="button" data-gallery-next aria-label={nextLabel}>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m6 3 5 5-5 5" />
+        </svg>
+      </button>
+    </div>
+  )}
+</section>

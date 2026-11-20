@@ -4,9 +4,9 @@ Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/
 
 ## Read first
 
-- [DESIGN.md](DESIGN.md) — design v7: which file owns each fact (the table under "One source per fact"), the page shapes, voice, type, colour, and review order.
+- [DESIGN.md](DESIGN.md) — design v8: which file owns each fact (the table under "One source per fact"), the page shapes, voice, type, colour, and review order.
 - `src/content/schema.ts` — the whole content model.
-- `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur, and gradients come only from here.
+- `src/styles/tokens.css` — spacing, type, color, depth. Do not invent parallel tokens; shadows, blur and gradients (`--wash`, `--tile-fill`) come only from here.
 
 Settled design decisions in DESIGN.md are the owner's. Do not reverse them, and do not push design changes straight to `main`: open a pull request so CI and the owner review them.
 
@@ -27,7 +27,7 @@ Settled design decisions in DESIGN.md are the owner's. Do not reverse them, and 
 
 ### Styles
 
-`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (the page language every page uses: the section head and body, the one-column `.cols`, the title and heading roles, facts, text links, the stage under a capture, code spans, the mono `.tag`), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
+`global.css` declares the cascade layers, lowest first — `tokens, base, chrome, components, demos, templates, locale, identity` — and loads on every page: `fonts`, `tokens`, `base`, `chrome`, `shared` (the page language every page uses: the title washes, the section head and body, the one-column `.cols`, the title and heading roles, facts, text links, tiles and galleries, the list panel, code spans), `locale` (Chinese optics) and `identity` (icon plates, display lines, product colour). Layer order, not specificity, decides between files, so do not prefix a selector (`html `, a doubled class) to win; put the rule in the right layer.
 
 Everything else is imported by the component that renders it: `home` (HomePage), `about` (AboutPage), `release-list` and `releases` (ReleasesPage), `privacy` (PrivacyPage), `document` (the hand-written privacy policies and the 404), and `visuals`, `demo` and `product` (ProductPage). One route renders every product, so a live demo's sheet (`demo-<name>.css`) is linked by `src/components/product/demo-styles.ts` only on the pages that play it. A stylesheet that is not imported by `global.css` starts with the same `@layer` statement; `npm run check:dist` fails when a page's sheets set the layers up in another order, or when a page off the product pages loads more than 40 KB of CSS.
 
@@ -39,8 +39,6 @@ Everything else is imported by the component that renders it: `home` (HomePage),
 4. Give it an icon: official artwork as `design/icons/<slug>-official.png`, or a site-designed `design/icons/<slug>.svg` (see `design/icons/README.md`), then `npm run assets:icons`.
 5. `npm run assets:og <slug>` renders its share image and records its inputs in `design/og-manifest.json`; `npm run check` fails when a product's title, headline, summary, icon or hero screenshot changes without a redraw.
 6. New or replaced screenshots: save as WebP, then `npm run assets:images` writes the `-900w.webp` and `-1200w.webp` variants that `srcset` uses.
-
-New or changed Chinese headings may need characters the Chinese display font lacks: `npm run build` recuts it and builds again when the set changed (`scripts/build.mjs`); commit the new font file and `design/fonts/zh-display-chars.txt` it writes (`check:dist` names any missing character).
 
 Replacing an image under the same file name is fine: the build appends `?v=<content hash>` to every `/assets/` URL (`src/integrations/asset-versions.mjs`), so browsers and the CDN fetch the new bytes.
 

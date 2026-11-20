@@ -62,11 +62,47 @@
   .about-hero,
   .product-hero,
   .page-hero {
-    padding-top: 56px;
+    padding-top: 72px;
   }
 
+  /* Positioned, so a section paints over the title's washes above it. */
   .page-section {
-    padding-top: 96px;
+    position: relative;
+    padding-top: 120px;
+  }
+
+  /* Three soft washes behind every page's title (design v8); on a product
+   page the first takes the product's colour (tokens.css). Decoration only:
+   the text keeps its contrast on the bare page. */
+  :is(.home-hero, .product-hero, .about-hero, .page-hero) {
+    position: relative;
+    isolation: isolate;
+  }
+
+  :is(.home-hero, .product-hero, .about-hero, .page-hero)::before {
+    content: "";
+    position: absolute;
+    inset: -160px 0 auto;
+    z-index: -1;
+    height: 1000px;
+    background: var(--wash);
+    pointer-events: none;
+  }
+
+  /* A list that follows a title, and a list's own panel: one soft grey
+   surface with rounded corners, its rows on hairlines inside. */
+  .about-hero + .page-section {
+    padding-top: 72px;
+  }
+
+  .list-panel {
+    padding: 4px 28px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
+  }
+
+  .list-panel > :last-child {
+    border-bottom: 0;
   }
 
   /* The footer's own margin parts the last section from it. */
@@ -77,7 +113,7 @@
   /* The title. */
   .display {
     max-width: 15em;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     font-size: var(--title-display);
     line-height: 1.04;
     text-wrap: balance;
@@ -91,20 +127,23 @@
   .heading {
     margin: 0;
     font-size: var(--text-heading);
-    font-weight: 600;
-    line-height: 1.2;
+    font-weight: 700;
+    line-height: 1.07;
     text-wrap: balance;
   }
 
-  /* A section opens on its heading and one line, above its content, in the
-   reading column: centred in the shell, the text left-aligned within it. */
+  /* A section opens on its heading and one line, centred above its content
+   (design v8). */
   .section-head {
-    max-width: var(--narrow);
-    margin: 0 auto 36px;
+    max-width: 46em;
+    margin: 0 auto 56px;
+    text-align: center;
   }
 
   .section-head .sub {
-    margin-top: 10px;
+    max-width: 40em;
+    margin: 16px auto 0;
+    font-size: var(--text-heading-s);
   }
 
   .section-head > .heading + .fact {
@@ -350,6 +389,182 @@
     white-space: nowrap;
   }
 
+  /* The tile: a capture whole on a soft field of the product's colour, the
+   App Store's way of showing a window (design v8). */
+  .g-tile {
+    display: grid;
+    place-items: center;
+    padding: 4.4% 5.6% 5.6%;
+    overflow: hidden;
+    border-radius: var(--radius-tile);
+    background: var(--tile-fill);
+  }
+
+  .g-tile > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .g-tile .shot {
+    padding: 0;
+    border-radius: var(--radius-window);
+  }
+
+  .g-tile .shot img {
+    display: block;
+    border-radius: 0;
+  }
+
+  /* A tall capture (an extension's popup, a phone) at about its real width. */
+  .g-tile[data-portrait] > * {
+    width: auto;
+    max-width: min(380px, 100%);
+  }
+
+  /* The gallery (ShowcaseGallery.astro, Home's picks): the first card on
+   the shell's edge, the row running off the right to say there is more. */
+  .gallery {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gallery-inset);
+    scrollbar-width: none;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery:focus-visible {
+    outline: none;
+  }
+
+  .gallery:focus-visible .g-tile {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .g-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 4px var(--gallery-inset) 8px;
+    list-style: none;
+  }
+
+  .g-card {
+    width: min(860px, 84vw);
+    scroll-snap-align: start;
+  }
+
+  .g-card figure {
+    margin: 0;
+  }
+
+  .g-card .g-tile {
+    aspect-ratio: 16 / 10.5;
+  }
+
+  .g-card .g-tile[data-portrait] .shot {
+    height: 100%;
+  }
+
+  .g-card .g-tile[data-portrait] img {
+    width: auto;
+    height: 100%;
+  }
+
+  /* One showcase: the whole shell, no row. */
+  .gallery-section[data-count="1"] .g-track {
+    width: auto;
+    max-width: calc(var(--shell) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .gallery-section[data-count="1"] .g-card {
+    width: 100%;
+  }
+
+  .g-caption {
+    max-width: 56ch;
+    padding: 18px 6px 0;
+  }
+
+  .g-title {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: var(--text-heading-s);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .g-caption > p {
+    margin: 4px 0 0;
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    line-height: 1.47;
+    text-wrap: pretty;
+  }
+
+  .g-caption .figure-note {
+    justify-content: flex-start;
+    margin: 8px 0 0;
+    text-align: left;
+  }
+
+  .g-paddles {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .g-paddles[hidden] {
+    display: none;
+  }
+
+  .g-paddle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    background: var(--code-bg);
+    cursor: pointer;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .g-paddle:active {
+    transform: scale(0.94);
+  }
+
+  .g-paddle:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .g-paddle svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (hover: none) {
+    .g-paddles {
+      display: none;
+    }
+  }
+
   @media (max-width: 900px) {
     .cols-margin,
     .cols-main {
@@ -357,7 +572,7 @@
     }
 
     .page-section {
-      padding-top: 72px;
+      padding-top: 88px;
     }
   }
 
@@ -370,11 +585,24 @@
     }
 
     .display {
-      margin-bottom: 28px;
+      margin-bottom: 16px;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
     }
 
     .shot {
       border-radius: 10px;
+    }
+
+    .g-tile {
+      border-radius: 20px;
+    }
+
+    .list-panel {
+      padding-inline: 18px;
+      border-radius: 18px;
     }
   }
 }

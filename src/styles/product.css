@@ -2,99 +2,62 @@
 @layer tokens, base, chrome, components, demos, templates, locale, identity;
 
 @layer templates {
-  /* Product pages (ProductPage.astro), design v4.1: the hero centred (who it
-   is, the claim, the lede, the actions, the facts), the capture on the
-   product's colour, then sections whose text keeps the reading column and
-   whose pictures take the whole shell on the same colour. */
+  /* Product pages (ProductPage.astro), design v8: a centred hero on soft
+   colour washes (the icon, the name, the claim, the lede, the actions), the
+   capture on a tile of the product's colour, a band of figures; then a
+   gallery, the features as cards, Get started and the FAQ. */
   .product-hero {
     text-align: center;
+  }
+
+  .product-hero .app-icon {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 20px;
+  }
+
+  .product-hero .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.5em;
+    margin-bottom: 14px;
+  }
+
+  .product-hero .eyebrow strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .product-hero .eyebrow strong::after {
+    content: "·";
+    margin-left: 0.5em;
+    color: var(--faint);
   }
 
   .product-hero .display {
     max-width: 14em;
     margin-inline: auto;
     font-size: var(--title-product);
-    line-height: 1.08;
+    line-height: 1.05;
   }
 
-  /* Who it is, above the claim. */
-  .ident {
-    display: flex;
-    align-items: center;
+  .product-hero .lead {
+    margin-inline: auto;
+  }
+
+  .product-hero .actions {
     justify-content: center;
     gap: 12px;
-    margin: 0 0 16px;
-    color: var(--muted);
-    font-size: var(--text-small);
+    margin-top: 34px;
   }
 
-  @media (max-width: 640px) {
-    .ident {
-      flex-wrap: wrap;
-      row-gap: 2px;
-    }
-
-    .ident > span {
-      flex-basis: 100%;
-    }
-  }
-
-  .ident strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .app-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .product-copy {
-    max-width: var(--narrow);
-    margin-inline: auto;
-  }
-
-  .product-copy .lead {
-    margin-inline: auto;
-  }
-
-  .product-copy .actions {
-    justify-content: center;
-    margin-top: 26px;
-  }
-
-  .product-hero .display {
-    margin-bottom: 18px;
-  }
-
-  /* The facts, one quiet line under the actions (design v5): what it runs on,
-   its licence, version and date, how it goes online, and its source. */
-  /* Inline items in balanced lines, so a wrap never leaves one item alone. */
-  /* The spec line: one hairline tag per fact (platform, stack, licence,
-   version, date), in mono with tabular figures. Gaps, not whitespace, part
-   them, so they never touch and a line breaks only between tags. */
-  .spec-tags {
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .spec-tags a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--line);
-    text-underline-offset: 0.25em;
-  }
-
-  .spec-tags a:hover {
-    color: var(--ink);
-    text-decoration-color: currentColor;
-  }
-
-  /* An unnotarized build: a quiet disclosure under the actions, not a
-   paragraph of warning. Open, it is the one step per system. */
+  /* An unnotarized build: a quiet note under the actions. Open, it is the
+   one step per system. */
   .first-open {
     max-width: 34em;
-    margin: 14px auto 0;
+    margin: 16px auto 0;
     color: var(--muted);
     font-size: var(--text-meta);
     line-height: 1.5;
@@ -112,14 +75,6 @@
 
   .first-open summary::-webkit-details-marker {
     display: none;
-  }
-
-  .first-open summary::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--data-caution);
   }
 
   .first-open summary::after {
@@ -140,9 +95,8 @@
     display: grid;
     gap: 6px;
     margin: 12px 0 0;
-    padding: 12px 16px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
+    padding: 14px 18px;
+    border-radius: 14px;
     background: var(--surface-sunk);
     color: var(--ink-2);
     list-style: none;
@@ -150,93 +104,86 @@
   }
 
   .hero-figure {
-    padding-top: 28px;
+    margin-top: 56px;
   }
 
   .hero-figure figure {
     margin-block: 0;
   }
 
-  /* A showcase stands like the hero's picture. A capture narrower than 3:2
-   keeps product scale; a phone capture, phone size. */
-  .stage-show > * {
-    margin-inline: auto;
+  .hero-figure .figure-note {
+    margin-top: 16px;
   }
 
-  .product-screenshot-showcase:not([data-wide], [data-portrait]) .stage-show > * {
-    max-width: 820px;
-  }
-
-  /* Two showcases side by side: each picture whole, its name and one line
-   under it, as in a gallery. One column on phones. */
-  .showcase-pair {
+  /* The band of figures: each a fact, a few words under it. */
+  .stats {
     display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 64px;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  .stats[data-count="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stats[data-count="2"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--col-gap);
-    align-items: start;
   }
 
-  /* Each cell spans the pair's two rows, so the two pictures sit on one
-   baseline and the two titles start on one line, whatever the windows' heights. */
-  .showcase-cell {
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
+  .stat {
+    min-width: 0;
+    padding: 8px 6px;
+    text-align: center;
   }
 
-  .showcase-cell .showcase-figure {
-    align-self: end;
+  .stat a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
   }
 
-  .showcase-cell .stage-show > * {
-    max-width: none;
+  .stat b {
+    display: block;
+    color: var(--ink);
+    font-size: var(--text-stat);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
   }
 
-  .showcase-cell .figure-note {
-    justify-content: flex-start;
+  /* Tabular figures only on the version: in Inter they also widen the hyphen. */
+  .stat[data-tone="version"] b {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A word, not a number: one step down, so it holds its column. */
+  .stat[data-long] b {
+    font-size: var(--text-heading);
+    line-height: 1.15;
+  }
+
+  .stat span {
+    display: block;
     margin-top: 12px;
-    text-align: left;
-  }
-
-  .showcase-cell-head {
-    margin-top: 18px;
-  }
-
-  .showcase-cell-title {
-    margin: 0;
-    font-size: var(--text-heading-s);
-    font-weight: 600;
-    line-height: 1.3;
+    color: var(--ink-2);
+    font-size: var(--text-small);
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
-  .showcase-cell-head .sub {
-    margin-top: 6px;
-    font-size: var(--text-small);
+  .stat a:hover span {
+    color: var(--link);
   }
 
-  @media (max-width: 900px) {
-    .showcase-pair {
-      grid-template-columns: minmax(0, 1fr);
-      row-gap: 48px;
-    }
-
-    .showcase-cell {
-      grid-row: auto;
-      grid-template-rows: auto;
-    }
-  }
-
-  /* In a frame (.shot) the frame carries the edge and depth, not the image. */
-  .stage .shot img {
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  /* A tall capture (an extension's popup) at about its real width. */
-  .stage-hero[data-portrait] img {
-    max-width: 380px;
-    margin-inline: auto;
+  /* A detail of a capture keeps its own pixels inside the tile. */
+  .g-tile[data-detail] .crop {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
   }
 
   /* The object keeps its product scale (820px), centred on its paper. */
@@ -280,10 +227,10 @@
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     margin: 0;
-    padding: 16px 92px 16px 20px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--surface-sunk);
+    padding: 18px 92px 18px 20px;
+    border-radius: 16px;
+    background: var(--code-bg);
+    box-shadow: inset 0 0 0 1px var(--line);
     font-family: var(--mono);
     font-size: var(--text-small);
     line-height: 1.6;
@@ -304,9 +251,10 @@
     min-height: 44px;
     padding: 0 14px;
     border: 0;
-    border-radius: 6px;
+    border-radius: var(--radius-pill);
     color: var(--ink);
-    background: var(--paper);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--line);
     font-family: var(--mono);
     font-size: var(--text-meta);
     transform: translateY(-50%);
@@ -324,26 +272,6 @@
   /* Sections */
   .product-section {
     scroll-margin-top: var(--section-index-desktop-scroll-margin);
-  }
-
-  /* A showcase: the heading and its line above the picture. A wide window
-   capture is read, not glanced at: it takes the whole width. A phone capture
-   stays at phone size. */
-  .showcase-figure {
-    margin: 0;
-  }
-
-  .product-screenshot-showcase[data-portrait] .shot {
-    max-width: 280px;
-  }
-
-  .product-screenshot-showcase[data-portrait] .figure-note {
-    flex-direction: column;
-  }
-
-  .show-shot,
-  .show-figure {
-    margin-block: 0;
   }
 
   /* A detail of a capture at its own pixel size (Showcase.focus): the app's
@@ -429,9 +357,9 @@
 
   .feature-spec-row {
     display: grid;
-    grid-template-columns: minmax(0, 13em) minmax(0, 1fr);
-    gap: 6px 28px;
-    padding: 18px 0;
+    grid-template-columns: minmax(0, 12em) minmax(0, 1fr);
+    gap: 6px 24px;
+    padding: 16px 2px;
     border-bottom: 1px solid var(--line);
   }
 
@@ -445,10 +373,15 @@
     line-height: 1.5;
   }
 
+  .feature-spec dt {
+    font-size: var(--text-small);
+  }
+
   .feature-spec dd {
     margin: 0;
     color: var(--ink-2);
-    line-height: var(--leading-body);
+    font-size: var(--text-small);
+    line-height: 1.55;
     text-wrap: pretty;
   }
 
@@ -458,10 +391,12 @@
     margin-inline: 0;
   }
 
+  /* Feature cards (design v8): soft grey cards, three across; two across
+   when the count would leave one alone. */
   .feature-points {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 44px var(--col-gap);
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -469,7 +404,7 @@
 
   .feature-points:is([data-count="1"], [data-count="2"], [data-count="4"]) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: calc(var(--narrow) + 160px);
+    max-width: calc(var(--narrow) + 200px);
     margin-inline: auto;
   }
 
@@ -477,8 +412,9 @@
     display: grid;
     align-content: start;
     gap: 8px;
-    padding-top: 18px;
-    border-top: 1px solid var(--soft-line);
+    padding: 26px 26px 28px;
+    border-radius: var(--radius-card);
+    background: var(--paper-raised);
   }
 
   .feature-points h3 {
@@ -486,14 +422,16 @@
     color: var(--ink);
     font-size: var(--text-heading-s);
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
   }
 
   .feature-points p {
     margin: 0;
     color: var(--ink-2);
-    font-size: var(--text-body);
-    line-height: var(--leading-body);
+    font-size: var(--text-small);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
     text-wrap: pretty;
   }
 
@@ -502,17 +440,14 @@
     border-bottom: 1px solid var(--line);
   }
 
-  .faq-item:first-child {
-    border-top: 1px solid var(--line);
-  }
-
   .faq-item summary {
     position: relative;
     min-height: 44px;
-    padding: 20px 40px 20px 0;
+    padding: 16px 32px 16px 0;
     font-size: var(--text-body);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.4;
+    letter-spacing: -0.02em;
     list-style: none;
     cursor: pointer;
   }
@@ -543,10 +478,10 @@
   .faq-answer {
     max-width: var(--measure);
     margin: -4px 0 0;
-    padding: 0 0 24px;
+    padding: 0 0 20px;
     color: var(--ink-2);
-    font-size: var(--text-body);
-    line-height: var(--leading-body);
+    font-size: var(--text-small);
+    line-height: 1.55;
   }
 
   .faq-answer p {
@@ -724,14 +659,36 @@
   }
 
   @media (max-width: 640px) {
+    .product-hero .app-icon {
+      width: 88px;
+      height: 88px;
+    }
+
+    .product-hero .actions .button {
+      width: 100%;
+      max-width: 360px;
+    }
+
     .hero-figure {
-      padding-top: 48px;
+      margin-top: 40px;
+    }
+
+    .stats,
+    .stats[data-count] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 12px;
+      margin-top: 40px;
     }
 
     .feature-points,
     .feature-points:is([data-count="1"], [data-count="2"], [data-count="4"]) {
       grid-template-columns: minmax(0, 1fr);
-      gap: 28px;
+      gap: 10px;
+    }
+
+    .feature-points li {
+      padding: 18px 18px 20px;
+      border-radius: 18px;
     }
 
     .feature-spec-row {

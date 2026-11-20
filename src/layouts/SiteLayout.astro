@@ -5,7 +5,6 @@ import type { Locale } from "../content/schema";
 import { pathFor } from "../lib/pages";
 import type { CurrentPage, PageLanguageLink, PageSeo } from "../lib/pages";
 import "../styles/global.css";
-import fontFaces from "../styles/fonts.css?raw";
 
 interface Props {
   current?: CurrentPage;
@@ -32,12 +31,6 @@ const {
   styles = [],
 } = Astro.props;
 const htmlLang = locale === "zh" ? "zh-CN" : "en";
-// Chinese pages set their title in the heading subset of Noto Serif SC: fetch
-// it with the HTML instead of after the CSS, so the title does not reflow from
-// a fallback face. English titles are the sans (design v4) and need nothing.
-// The URL comes from fonts.css, so a recut never goes stale.
-const fontUrl = (name: string) => fontFaces.match(new RegExp(`/fonts/${name}\\.[0-9a-f]+\\.woff2`))?.[0];
-const preloadFont = locale === "zh" ? fontUrl("noto-serif-sc-display") : undefined;
 const imageUrl = seo.ogImageUrl;
 const copy = ui[locale];
 const year = new Date().getFullYear();
@@ -71,8 +64,8 @@ const footerLinks: Array<{ label: string; href: string }> = [
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={imageUrl} />
     {seo.robots && <meta name="robots" content={seo.robots} />}
-    <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0f0e0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     {
       /* A noindex page (the 404) has no canonical address and no translations. */
       !seo.robots?.includes("noindex") && (
@@ -96,7 +89,6 @@ const footerLinks: Array<{ label: string; href: string }> = [
       />
     )}
     <title>{seo.title}</title>
-    {preloadFont && <link rel="preload" href={preloadFont} as="font" type="font/woff2" crossorigin />}
     {styles.map((href) => (
       <link rel="stylesheet" href={href} />
     ))}

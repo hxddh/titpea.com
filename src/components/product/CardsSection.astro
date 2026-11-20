@@ -12,7 +12,7 @@ const { section, line } = Astro.props;
 // Tools read as a spec list: the feature on the left, what it does on the
 // right, rows on hairlines. Apps and games get a few larger points. Neither
 // is a grid to fill: a list holds as many items as the product has.
-const layout = section.layout ?? (line === "storage" || line === "agents" ? "spec" : "points");
+const layout = section.layout ?? "points";
 ---
 
 <section id={section.id} class={`shell page-section product-section features-section`}>
