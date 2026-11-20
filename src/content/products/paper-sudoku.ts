@@ -30,7 +30,7 @@ export default defineProduct({
       "A Sudoku notebook for Android: one page a day, a practice stack that grows harder as you learn, and a Coach in the margin. No network.",
     eyebrow: "Sudoku notebook for Android",
     headline: "The notebook opens on today’s Sudoku page.",
-    lead: "Each day gets a fresh page in the notebook. If you get stuck, a Coach writes hints in the margin. It has no network access.",
+    lead: "Each day gets a fresh page. If you get stuck, a Coach writes hints in the margin. It has no network access.",
     summary: "A Sudoku notebook for Android with one page a day and a Coach in the margin when you get stuck.",
     primaryCta: {
       label: "Coming to Google Play",
@@ -79,7 +79,7 @@ export default defineProduct({
         width: 1080,
         height: 1920,
         title: "Past days stay in the notebook.",
-        body: "Today’s page is on top: a 6×6 on weekdays, a 9×9 at the weekend.",
+        body: "Each day’s page is a 6×6 on weekdays and a 9×9 at the weekend.",
         asOf: "v14.0",
       },
     ],
@@ -114,12 +114,12 @@ export default defineProduct({
         items: [
           {
             title: "What does it need?",
-            body: "Android 8.0 or later, on a phone, a tablet or a foldable. On a wide screen the notebook and the open page sit side by side. It works offline.",
+            body: "Android 8.0 or later, on a phone, a tablet or a foldable. On a wide screen the notebook and the open page sit side by side.",
             asOf: "v14.0",
           },
           {
             title: "Where can I get it?",
-            body: "It is not on Google Play yet. A Play build is being prepared; until then the builds are sideload builds, installed by hand for testing outside Play.",
+            body: "Until the Google Play release, the builds are sideload builds, installed by hand for testing outside Play.",
           },
           {
             title: "Does it work with TalkBack and a keyboard?",
@@ -135,7 +135,7 @@ export default defineProduct({
     description: "Android 上的数独本：每天一页，练习本越做越难，卡住时教练在页边提示。不联网。",
     eyebrow: "Android 数独本",
     headline: "打开本子，就是今天这一页数独",
-    lead: "每天一页新数独，写在同一个本子里。卡住时，教练会在页边提示。应用不联网。",
+    lead: "每天一页新数独。卡住时，教练会在页边提示。应用不联网。",
     summary: "Android 上的数独本，每天一页，卡住时有教练在页边提示。",
     primaryCta: {
       label: "即将上架 Google Play",
@@ -184,7 +184,7 @@ export default defineProduct({
         width: 540,
         height: 1200,
         title: "过去的每一天都留在本子里",
-        body: "最上面是今天这一页：工作日 6×6，周末 9×9。",
+        body: "每天的一页，工作日是 6×6，周末是 9×9。",
         asOf: "v14.0",
       },
     ],
@@ -207,12 +207,12 @@ export default defineProduct({
         items: [
           {
             title: "需要什么设备？",
-            body: "Android 8.0 或更高版本的手机、平板或折叠屏。宽屏上，数独本和打开的那一页并排显示。离线也能用。",
+            body: "Android 8.0 或更高版本的手机、平板或折叠屏。宽屏上，数独本和打开的那一页并排显示。",
             asOf: "v14.0",
           },
           {
             title: "在哪里下载？",
-            body: "还没有上架 Google Play，上架版本正在准备中；在那之前的版本都是侧载版，即在 Play 之外手动安装、用于测试的版本。",
+            body: "上架 Google Play 之前，版本都是侧载版，即在 Play 之外手动安装、用于测试的版本。",
           },
           {
             title: "能用 TalkBack 和键盘吗？",

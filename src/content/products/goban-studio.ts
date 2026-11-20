@@ -30,7 +30,7 @@ export default defineProduct({
       "An offline Go app for macOS and Windows: lessons and problems, a KataGo opponent at your level, and a review of every game.",
     eyebrow: "Desktop Go game",
     headline: "Learn Go, play KataGo, and review every game.",
-    lead: "Learn Go from the first stone. The KataGo engine plays you at your chosen rank and reviews each game, all on your computer.",
+    lead: "Lessons start from the first stone, and the KataGo engine plays at the rank you choose, all on your computer.",
     summary: "Go lessons and problems, with KataGo to play and review your games, all offline.",
     primaryCta: {
       label: "Download",
@@ -86,13 +86,13 @@ export default defineProduct({
         items: [
           {
             title: "Mistakes marked by KataGo",
-            body: "KataGo marks slack moves and mistakes, and picks up to three key moments for you to retry.",
+            body: "Slack moves as well as mistakes, and up to three key moments picked for you to retry.",
           },
           {
             title: "This week’s focus",
             body: "One or two themes drawn from your games and problems, with the reason for each.",
           },
-          { title: "Lessons from the first stone", body: "23 units and 104 lessons, from beginner to about 1 dan." },
+          { title: "Lessons", body: "23 units and 104 lessons, from beginner to about 1 dan." },
           {
             title: "Boards, rules and handicaps",
             body: "9×9, 13×13 or 19×19; Japanese, Chinese or Korean rules; up to nine handicap stones, with a handicap suggested from your level.",
@@ -125,7 +125,7 @@ export default defineProduct({
           },
           {
             title: "How strong is the computer?",
-            body: "From about 30 kyu to about 7 dan: you pick a rank, and the app picks the closest KataGo setting.",
+            body: "From about 30 kyu to about 7 dan; the app picks the KataGo setting closest to your rank.",
             steps: [
               "Without the optional neural networks it stops at about 4 dan.",
               "The ranks are approximate: they are calibrated against a model, not against people.",
@@ -142,7 +142,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的离线围棋应用：课程和题目，按你的水平对弈的 KataGo，以及每一局的复盘。",
     eyebrow: "桌面围棋",
     headline: "学围棋，和 KataGo 下，每局都复盘",
-    lead: "从第一颗子学起。KataGo 围棋引擎按你选的段位陪你下，并在你的电脑上复盘每一局。",
+    lead: "课程从第一颗子教起；KataGo 围棋引擎按你选的段位陪你下，全在你的电脑上。",
     summary: "围棋课程和题目，再加上陪你对弈、帮你复盘的 KataGo，全部离线。",
     primaryCta: {
       label: "下载",
@@ -195,9 +195,9 @@ export default defineProduct({
         id: "features",
         label: "课程、练习和复盘",
         items: [
-          { title: "KataGo 标出失着", body: "KataGo 标出缓手和失误，最多挑出三个关键时刻，让你从那个局面再下一次。" },
+          { title: "KataGo 标出失着", body: "缓手和失误都会标出，并最多挑出三个关键时刻，让你从那个局面再下一次。" },
           { title: "本周重点", body: "从你的对局和做题里挑出一两个主题，并说明为什么挑它。" },
-          { title: "从第一颗子学起", body: "23 个单元、104 课，从入门到约 1 段。" },
+          { title: "课程", body: "23 个单元、104 课，从入门到约 1 段。" },
           {
             title: "棋盘、规则和让子",
             body: "9 路、13 路或 19 路；日本、中国或韩国规则；最多让九子，让子数按你的棋力建议。",
@@ -227,7 +227,7 @@ export default defineProduct({
           },
           {
             title: "电脑有多强？",
-            body: "约 30 级到约 7 段：你选段位，应用选最接近的 KataGo 设置。",
+            body: "约 30 级到约 7 段；应用会选最接近你所选段位的 KataGo 设置。",
             steps: [
               "不装可选的神经网络（权重）时，最高约 4 段。",
               "段位是近似值：对照模型校准，而不是对照真人。",
