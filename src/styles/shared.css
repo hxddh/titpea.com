@@ -393,21 +393,33 @@
    App Store's way of showing a window (design v8). */
   .g-tile {
     display: grid;
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
     place-items: center;
-    padding: 4.4% 5.6% 5.6%;
+    padding: 5%;
     overflow: hidden;
     border-radius: var(--radius-tile);
     background: var(--tile-fill);
+    box-shadow: var(--tile-edge);
   }
 
+  /* The capture whole, centred, with equal margins: it fills the width, or,
+   when it is taller than the tile's opening (data-fit="height"), the height. */
   .g-tile > * {
+    display: block;
     width: 100%;
     min-width: 0;
+  }
+
+  .g-tile[data-fit="height"] > * {
+    width: auto;
+    height: 100%;
   }
 
   .g-tile .shot {
     padding: 0;
     border-radius: var(--radius-window);
+    background: none;
+    box-shadow: var(--shadow-tile-shot);
   }
 
   .g-tile .shot img {
@@ -415,8 +427,13 @@
     border-radius: 0;
   }
 
-  /* A tall capture (an extension's popup, a phone) at about its real width. */
-  .g-tile[data-portrait] > * {
+  .g-tile[data-fit="height"] .shot :is(img, video) {
+    width: auto;
+    height: 100%;
+  }
+
+  /* A tall capture in a tile of its own height (the hero): about its real width. */
+  .g-tile[data-portrait]:not([data-fit]) > * {
     width: auto;
     max-width: min(380px, 100%);
   }
@@ -463,15 +480,6 @@
 
   .g-card .g-tile {
     aspect-ratio: 16 / 10.5;
-  }
-
-  .g-card .g-tile[data-portrait] .shot {
-    height: 100%;
-  }
-
-  .g-card .g-tile[data-portrait] img {
-    width: auto;
-    height: 100%;
   }
 
   /* One showcase: the whole shell, no row. */

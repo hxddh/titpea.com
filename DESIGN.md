@@ -41,13 +41,13 @@ Eyebrow, title, lede, one action (About). `Selected work`: the picks (`featured.
 In order, both languages identical in structure:
 
 1. **Hero**, centred: the icon (112px), the eyebrow line (name · eyebrow), the `h1`, the lede, the blue download (carrying the version) and a blue text action, the first-open note (a disclosure, only for unsigned builds).
-2. **Product object**: a capture whole on a tile (`--tile-fill`, the product's colour), or a demo, mock, terminal or replay at product scale; captioned with what it shows, and `Captured at v…` only when that release is not the current one.
+2. **Product object**: a capture whole on a tile (`--tile-fill`, the product's colour), or a demo, mock, terminal or replay at product scale on the same tile; captioned with what it shows, and `Captured at v…` only when that release is not the current one.
 3. **Stats band**: up to four figures, each a fact with a few words under it: platforms (one platform by name with its kind; several as a count with their names; a tool with none by its kind), the network level (`0` network connections, `Opt-in`, `Online`, linking to its Privacy row), the licence, the version when the button does not carry it, the source when no action opens it.
 4. **Gallery**: the showcases, each on its tile with its name and line under it; paddles page it (`gallery.js`), and it scrolls by swipe or keys without them. One showcase takes the shell.
 5. **Features** as grey cards (three across; two when four or fewer would leave one alone), one to six, never padded. `layout: "spec"` keeps a two-column list for a product that needs it.
 6. **Get started**: commands verbatim from the README, each in a rounded code panel with Copy and a `$` prompt.
 7. **FAQ**: at most three, an accordion on hairlines; an answer is a sentence or two, then `steps` as a list.
-8. **Ending**: a family's members with their steps, or up to three other products of the same line.
+8. **Ending**: a family's members with their steps, or up to three other products of the same line, as small grey cards under a quiet label (the current page outlined in blue).
 
 ### About, Releases, Privacy
 
@@ -84,7 +84,7 @@ Each opens on its title on the washes. **About**: `{count} tools, made by one pe
 
 - Tokens only, in `tokens.css`: `--paper` (#fbfbfd; dark #000), `--paper-raised` (cards, tiles, panels), `--surface` (menus), `--ink`, `--ink-2`, `--muted`, `--faint`, `--line`, `--link` (#0066cc), `--accent-fill` (#0071e3, the primary action), `--accent` (focus rings), `--wash-1..3`, product `--tint-*` / `--ink-*`.
 - Gradients only through `--wash` and `--tile-fill` (check fails on a gradient in a page stylesheet); shadows only through tokens. Radii: `--radius-tile` 28px (tiles), `--radius-card` 22px (cards, panels), `--radius-window` 14px (captures), pills for buttons and capsules.
-- Captures are never cropped inside a frame of the site's making, padded with chrome or dimmed; the tile is a field around the whole window. Translucency (`--glass`, `--glass-blur`) only on the two capsules.
+- **Tiles** (hero captures and objects, gallery, Home's picks) follow one rule: an even field of the product's colour (`--tile-fill`, never a fade to grey) with a faint edge (`--tile-edge`), 5% margins on every side, and the whole window centred in it, filling the opening's width or, when narrower (`tileFit`), its height, under `--shadow-tile-shot`. A detail keeps its own pixels, framed the same way. Captures are never cropped by the tile, padded with chrome or dimmed. Translucency (`--glass`, `--glass-blur`) only on the two capsules.
 - No glow, floating badges, emoji or decorative icons on headings. Dark mode is first-class.
 
 ## Interaction

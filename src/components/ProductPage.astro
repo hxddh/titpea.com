@@ -197,7 +197,7 @@ const showcaseLabels = showcases.map((showcase) => {
           )}
         </figure>
       ) : (
-        <div class="stage stage-hero" data-plain>
+        <div class="g-tile stage-hero hero-object">
           <div class="hero-visual-frame">
             {heroReplay ? (
               <CommandReplay item={heroReplay} controls={controls} />
@@ -231,7 +231,7 @@ const showcaseLabels = showcases.map((showcase) => {
   {/* A captured replay takes the hero; the product's own object follows it. */}
   {heroReplay && (
     <section class="shell page-section product-section hero-visual-section">
-      <div class="stage stage-hero" data-plain>
+      <div class="g-tile stage-hero hero-object">
         <div class="hero-visual-frame">
           <Visual visual={copy.visual} controls={controls} />
         </div>

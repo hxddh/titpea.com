@@ -2,7 +2,7 @@
 import { headingText } from "../../lib/heading";
 import Prose from "./Prose.astro";
 import type { Showcase } from "../../content/schema";
-import { galleryShotSizes, srcsetFor } from "../../lib/images";
+import { galleryShotSizes, srcsetFor, tileFit } from "../../lib/images";
 
 interface Props {
   showcases: Showcase[];
@@ -40,7 +40,12 @@ const single = showcases.length === 1;
         return (
           <li class="g-card">
             <figure>
-              <div class="g-tile" data-portrait={portrait ? "" : undefined} data-detail={detail ? "" : undefined}>
+              <div
+                class="g-tile"
+                data-portrait={portrait ? "" : undefined}
+                data-detail={detail ? "" : undefined}
+                data-fit={detail ? tileFit(16, 10) : tileFit(showcase.width, showcase.height)}
+              >
                 {showcase.video ? (
                   <div class="shot show-shot show-video">
                     <video
