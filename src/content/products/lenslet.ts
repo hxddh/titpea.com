@@ -26,7 +26,7 @@ export default defineProduct({
       "Runs your tests against a local AWS emulator, records every AWS call, and shows in each pull request what AWS access your code needs.",
     eyebrow: "AWS access review for CI",
     headline: "Each PR shows the AWS access your code needs.",
-    lead: "Run your tests against a local AWS emulator. Lenslet records every call, explains failures, and flags new IAM permissions in the pull request.",
+    lead: "Run your tests against a local AWS emulator. Lenslet records every call, explains failures, and flags new IAM permissions.",
     summary: "Shows in each pull request what AWS access your code needs and why its AWS calls failed.",
     primaryCta: { label: "Download", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "View source", href: "https://github.com/hxddh/lenslet" },
@@ -69,7 +69,7 @@ export default defineProduct({
     ],
     commands: {
       title: "Get started",
-      sub: "Start your emulator first: AWS Emulator, moto and LocalStack all work. `lenslet init` writes the lock and a CI workflow; commit both.",
+      sub: "Start your emulator first: AWS Emulator, moto and LocalStack all work. Commit both files `lenslet init` writes.",
       items: [
         {
           comment: "Install (Linux, macOS)",
@@ -80,7 +80,7 @@ export default defineProduct({
           command: "lenslet init -- npm test",
         },
         {
-          comment: "Fail when the code needs access the lock lacks",
+          comment: "Fail on access missing from the lock",
           command: "lenslet run --check -- npm test",
         },
       ],
@@ -130,7 +130,6 @@ export default defineProduct({
             body: "It reads resources for 20 services; the rest get `*`.",
             steps: [
               "Among the 20: S3, DynamoDB, SQS, Lambda, Bedrock, KMS, IAM and Step Functions.",
-              "Other services get `*` as the resource.",
               "Calls it cannot map are reported, not guessed.",
             ],
             asOf: "v7.0.0",
@@ -149,7 +148,7 @@ export default defineProduct({
     description: "让测试跑在本地 AWS 模拟器上，记录每一次 AWS 调用，并在每个 PR 里指出代码需要哪些 AWS 权限。",
     eyebrow: "CI 里的 AWS 权限审查",
     headline: "每个 PR 都写明代码要哪些 AWS 权限",
-    lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并在 PR 里标出新增的 IAM 权限。",
+    lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并标出新增的 IAM 权限。",
     summary: "在每个 PR 里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
     primaryCta: { label: "下载", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "查看源码", href: "https://github.com/hxddh/lenslet" },
@@ -192,7 +191,7 @@ export default defineProduct({
     ],
     commands: {
       title: "开始使用",
-      sub: "先启动模拟器：AWS Emulator、moto 和 LocalStack 都可以。`lenslet init` 会写出锁文件和 CI 工作流，两者都要提交。",
+      sub: "先启动模拟器：AWS Emulator、moto 和 LocalStack 都可以。`lenslet init` 写出的两个文件都要提交。",
       items: [
         {
           comment: "安装（Linux、macOS）",
@@ -203,7 +202,7 @@ export default defineProduct({
           command: "lenslet init -- npm test",
         },
         {
-          comment: "代码需要锁文件里没有的权限时，让检查失败",
+          comment: "权限超出锁文件时让检查失败",
           command: "lenslet run --check -- npm test",
         },
       ],
@@ -253,7 +252,6 @@ export default defineProduct({
             body: "能读出具体资源的服务有 20 种，其余服务记为 `*`。",
             steps: [
               "这 20 种包括 S3、DynamoDB、SQS、Lambda、Bedrock、KMS、IAM 和 Step Functions。",
-              "其他服务的资源记为 `*`。",
               "对不上的调用会如实报出，不去猜。",
             ],
             asOf: "v7.0.0",

@@ -20,7 +20,7 @@ export default defineProduct({
       "Check local coding-agent sessions in the macOS menu bar: red when one is blocked, a quiet count when a turn is done. Six agents, through their own hooks.",
     eyebrow: "Menu-bar status for coding agents",
     headline: "See which coding agent is waiting on you.",
-    lead: "A lamp in the menu bar for your coding agents. It turns red when one is blocked on you, and tells you why.",
+    lead: "A lamp in the menu bar that turns red when an agent is blocked, and tells you why.",
     summary: "A menu-bar lamp that turns red when a coding agent needs you.",
     primaryCta: {
       label: "Download",
@@ -207,7 +207,7 @@ export default defineProduct({
             title: "How do I remove Pulse?",
             body: "Remove the hooks first, then quit Pulse and delete the app and its data.",
             steps: [
-              "In Settings → Hooks, Remove all restores each agent's untouched files byte for byte; a file you edited since loses only Pulse's entries.",
+              "In Settings → Hooks, choose Remove all.",
               "Choose Quit Pulse from the menu-bar icon's right-click menu.",
               "Drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`.",
               "If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
@@ -224,7 +224,7 @@ export default defineProduct({
       "本机编码 Agent 会话的 macOS 菜单栏状态灯：阻塞时亮红灯，回合好了时只安静计数。支持六个 Agent，走它们自己的 hook。",
     eyebrow: "编码 Agent 的菜单栏状态灯",
     headline: "一眼看出哪个编码 Agent 在等你",
-    lead: "菜单栏里的一盏灯，看着你的编码 Agent。有 Agent 卡住等你时亮红灯，并说明原因。",
+    lead: "菜单栏里的一盏灯：有 Agent 卡住时亮红灯，并说明原因。",
     summary: "菜单栏里的状态灯，编码 Agent 需要你时亮红灯。",
     primaryCta: {
       label: "下载",
@@ -398,7 +398,7 @@ export default defineProduct({
             title: "怎样卸载 Pulse？",
             body: "先移除 hook，再退出 Pulse，删掉应用和它的数据。",
             steps: [
-              "在“设置 → Hooks”点“全部移除”：没改过的配置逐字节还原，之后改过的只删掉 Pulse 的条目。",
+              "在“设置 → Hooks”点“全部移除”。",
               "右键菜单栏图标，选“退出 Pulse”。",
               "把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。",
               "开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",

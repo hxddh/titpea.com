@@ -20,7 +20,7 @@ export default defineProduct({
       "A desktop Gomoku board for macOS and Windows: freestyle, swap2, or Renju, with review and practice puzzles.",
     eyebrow: "Desktop Gomoku game",
     headline: "Play Gomoku, then review your mistakes.",
-    lead: "Play Gomoku, five in a row on a 15×15 board, against the computer or a friend. Games stay on your computer.",
+    lead: "Five in a row on a 15×15 board, against the computer or a friend. Games stay on your computer.",
     summary: "Gomoku under freestyle, swap2 or Renju rules, with a review whenever you want one.",
     primaryCta: {
       label: "Download",
@@ -87,7 +87,7 @@ export default defineProduct({
           { title: "Practice puzzles", body: "134 come built in, and more are made from your own mistakes." },
           {
             title: "Finished games are kept",
-            body: "They are listed under a line with your record; open one to review it.",
+            body: "They are listed under a line with your record, ready to open again.",
           },
         ],
       },
@@ -130,7 +130,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的桌面五子棋：自由式、swap2 或连珠，需要时再复盘与做题。",
     eyebrow: "桌面五子棋",
     headline: "下完五子棋，复盘你的失着",
-    lead: "在 15×15 的棋盘上下五子棋，对手可以是电脑，也可以是朋友。对局都存在你自己的电脑上。",
+    lead: "在 15×15 的棋盘上连五，对手可以是电脑，也可以是朋友。对局都存在你自己的电脑上。",
     summary: "按自由式、swap2 或连珠规则下五子棋，想复盘时随时复盘。",
     primaryCta: {
       label: "下载",
@@ -190,7 +190,7 @@ export default defineProduct({
           },
           { title: "四档电脑", body: "从入门到极限。困难与极限默认每局轮流执黑白，“再来一局”沿用你的设置。" },
           { title: "做题练习", body: "内置 134 道，另有从你自己的失着生成的题。" },
-          { title: "下完的对局都留着", body: "列表最上面一行是你的战绩；点开任意一局就能复盘。" },
+          { title: "下完的对局都留着", body: "列表最上面一行是你的战绩；任意一局都能再点开。" },
         ],
       },
       {

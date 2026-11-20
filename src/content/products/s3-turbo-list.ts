@@ -39,11 +39,11 @@ export default defineProduct({
       sub: "Download the binary for your platform from the project’s GitHub Releases page, check it against the `SHA256SUMS` file there, and put it on your `PATH` as `s3tl`.",
       items: [
         {
-          comment: "See what a run would use, then probe the endpoint with a few requests",
+          comment: "Show settings, then probe with a few requests",
           command: "s3tl check s3://my-bucket/",
         },
         {
-          comment: "List every object under `logs/` into a Parquet dataset in `out/`",
+          comment: "List everything under `logs/` into `out/`",
           command: "s3tl list s3://my-bucket/logs/ -o out/",
         },
       ],
@@ -80,8 +80,8 @@ export default defineProduct({
             body: "`--compare checksum` checks stored checksums when same-size objects have different ETags.",
           },
           {
-            title: "One JSON result per run",
-            body: "Scripts read a single JSON object from stdout, with a stable error code and exit code.",
+            title: "Stable for scripts",
+            body: "The JSON result carries a stable error code and exit code.",
           },
           {
             title: "Other S3-compatible stores",
@@ -97,7 +97,7 @@ export default defineProduct({
         items: [
           {
             title: "Isn’t aws s3 ls enough?",
-            body: "For a quick look at a small bucket, often yes. On a large bucket s3tl is several times to an order of magnitude faster than a sequential `aws s3 ls`, and it leaves a file you can query and compare.",
+            body: "For a quick look at a small bucket, often yes. On a large bucket s3tl is several times to an order of magnitude faster than a sequential `aws s3 ls`.",
             asOf: "v1.1.0",
           },
           {
@@ -139,11 +139,11 @@ export default defineProduct({
       sub: "到项目的 GitHub Releases 页面下载对应平台的二进制文件，用那里的 `SHA256SUMS` 校验，再以 `s3tl` 为名放进 `PATH`。",
       items: [
         {
-          comment: "查看一次运行会用到的配置，再用几个请求探测端点",
+          comment: "查看配置，再用几个请求探测端点",
           command: "s3tl check s3://my-bucket/",
         },
         {
-          comment: "列出 `logs/` 下的全部对象，写成 `out/` 里的 Parquet 数据集",
+          comment: "把 `logs/` 下的全部对象列进 `out/`",
           command: "s3tl list s3://my-bucket/logs/ -o out/",
         },
       ],
@@ -170,7 +170,7 @@ export default defineProduct({
           { title: "两个桶差在哪里", body: "diff 只写出有差别的 key：只在左边、只在右边，或内容有变化。" },
           { title: "历史版本也列", body: "`--versions` 列出每个对象的所有版本和删除标记，同一 key 新版本在前。" },
           { title: "核对 ETag 不一致", body: "大小相同但 ETag 不同时，`--compare checksum` 用存储的校验和来判定。" },
-          { title: "每次运行一份 JSON 结果", body: "脚本只需从 stdout 读一个 JSON 对象，错误码和退出码都是固定的。" },
+          { title: "方便脚本处理", body: "JSON 结果里的错误码和退出码都是固定的。" },
           {
             title: "其他 S3 兼容存储",
             body: "已在 AWS S3、MinIO 和百度 BOS 上验证过。用在别的服务上，先运行 `s3tl check`。",
@@ -185,7 +185,7 @@ export default defineProduct({
         items: [
           {
             title: "aws s3 ls 不够用吗？",
-            body: "临时看一眼小桶时，通常够用。桶很大时，s3tl 比逐页顺序执行的 `aws s3 ls` 快几倍到一个数量级，而且留下一个可以查询和对比的文件。",
+            body: "临时看一眼小桶时，通常够用。桶很大时，s3tl 比逐页顺序执行的 `aws s3 ls` 快几倍到一个数量级。",
             asOf: "v1.1.0",
           },
           {

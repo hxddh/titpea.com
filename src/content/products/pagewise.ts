@@ -23,7 +23,7 @@ export default defineProduct({
       "Read and annotate PDFs on your desktop, ask questions, and check each citation and its numbers on the page, scanned pages included.",
     eyebrow: "PDF questions, with pages",
     headline: "Ask a PDF, then check each answer on its page.",
-    lead: "Ask a PDF a question. Each citation is marked “verified”, “check the page” or “not found”. Scans are read on your computer.",
+    lead: "Each citation is marked “verified”, “check the page” or “not found”. Scans are read on your computer.",
     summary: "Ask a PDF a question and follow each citation to its page.",
     primaryCta: {
       label: "Download",
@@ -67,7 +67,7 @@ export default defineProduct({
         alt: "PageWise searching a PDF for “byte miss ratio”: “This document, 4 matches”, each snippet labelled with its page, p. 1, p. 1 and p. 2, over the dimmed page",
         title: "Search the whole document.",
         body: "Every match names its page; search runs on your computer, with no model.",
-        caption: "PageWise 24, searching a sample PDF; the paper is fictional.",
+        caption: "PageWise 24 on a sample PDF; the paper is fictional.",
         asOf: "v24.0.0",
       },
     ],
@@ -105,7 +105,7 @@ export default defineProduct({
         items: [
           {
             title: "Do I need an API key?",
-            body: "Not to read: reading, search and recognising scanned pages work on your computer without one. Questions need a model.",
+            body: "Not to read. Questions need a model.",
             steps: [
               "Use a key for OpenAI, DeepSeek, OpenRouter, or another OpenAI-compatible service.",
               "Or use Ollama on your machine.",
@@ -141,7 +141,7 @@ export default defineProduct({
     description: "在桌面阅读和批注 PDF，围绕文档提问，逐条对照原页核对引用和其中的数字，扫描页也不例外。",
     eyebrow: "PDF 问答，附页码",
     headline: "向 PDF 提问，再到原页核对回答",
-    lead: "向 PDF 提问。每条引用都标为“已核对”、“请看原页”或“未找到”。扫描件在本机识别。",
+    lead: "每条引用都标为“已核对”、“请看原页”或“未找到”。扫描件在本机识别。",
     summary: "向 PDF 提问，顺着每条引用回到原页。",
     primaryCta: {
       label: "下载",
@@ -185,7 +185,7 @@ export default defineProduct({
         alt: "PageWise 在 PDF 中搜索“违约金”：显示“本文档 9 处匹配”，每段摘录都标明页码（第 2 页、第 3 页），背后是调暗的页面",
         title: "整份文档都能搜",
         body: "每处匹配都标明页码；搜索在本机进行，不需要模型。",
-        caption: "PageWise 24，搜索示例 PDF；内容为虚构。",
+        caption: "PageWise 24，示例 PDF；内容为虚构。",
         asOf: "v24.0.0",
       },
     ],
@@ -211,7 +211,7 @@ export default defineProduct({
         items: [
           {
             title: "需要 API 密钥吗？",
-            body: "阅读不需要：阅读、搜索和扫描页识别都在本机完成，不用密钥。提问需要模型。",
+            body: "阅读不需要。提问需要模型。",
             steps: [
               "OpenAI、DeepSeek、OpenRouter 或其他兼容 OpenAI 的服务，需要密钥。",
               "也可以用本机的 Ollama。",

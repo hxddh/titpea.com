@@ -66,7 +66,7 @@ export default defineProduct({
         items: [
           {
             title: "Reads the whole account",
-            body: "S3, IAM, KMS, CloudTrail, Config and more, through operations that only read.",
+            body: "S3, IAM, KMS, CloudTrail, Config and more.",
           },
           { title: "Open any call", body: "Each step in a task expands to show exactly what the agent received." },
           {
@@ -165,7 +165,7 @@ export default defineProduct({
         id: "features",
         label: "Agent 能做的事",
         items: [
-          { title: "读遍整个账号", body: "S3、IAM、KMS、CloudTrail、Config 等服务都能查，只用读取类操作。" },
+          { title: "读遍整个账号", body: "S3、IAM、KMS、CloudTrail、Config 等服务都能查。" },
           { title: "每次调用都能展开", body: "任务里的每一步都可以展开，看 Agent 实际收到了什么。" },
           { title: "多对象问题用脚本", body: "Agent 写一段不能联网的沙箱脚本，去列举、统计和读取对象内容。" },
           { title: "日志和清单变成表", body: "访问日志、CSV、JSON、Parquet 导入本地 SQLite，每一列都保留。" },

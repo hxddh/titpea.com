@@ -54,7 +54,7 @@ export default defineProduct({
       "A desktop chess app for macOS and Windows, with Stockfish 19 and Maia opponents, lessons, 40,000 puzzles, and a searchable game library.",
     eyebrow: "Desktop chess",
     headline: "Play chess, and Stockfish marks your mistakes.",
-    lead: "Play chess on your computer; the Stockfish engine reviews your games and marks your mistakes. Lessons and 40,000 puzzles help you practise.",
+    lead: "The Stockfish engine reviews your games on your computer. Lessons and 40,000 puzzles help you practise.",
     summary: "Lessons and puzzles, then games against the computer or a friend on the same board.",
     primaryCta: {
       label: "Download",
@@ -100,7 +100,7 @@ export default defineProduct({
         // Recorded from the app's own review (scripts/record-board-demos.mjs).
         video: { mp4: "/assets/chessboard-review-en.mp4", webm: "/assets/chessboard-review-en.webm" },
         title: "The review starts with key moments.",
-        body: "One Stockfish pass over the game gives a one-line summary, the win-chance curve, and moments you can try again.",
+        body: "One pass over the game gives a one-line summary, the win-chance curve, and moments you can try again.",
       },
     ],
     sections: [
@@ -192,7 +192,7 @@ export default defineProduct({
     description: "面向 macOS 与 Windows 的桌面国际象棋：Stockfish 19 与 Maia 对手、课程、四万道谜题与可搜索的棋谱库。",
     eyebrow: "桌面国际象棋",
     headline: "下完一局，Stockfish 标出你的失着",
-    lead: "在电脑上下国际象棋，Stockfish 引擎复盘你的对局、标出失着；还有课程和四万道谜题供你练习。",
+    lead: "在电脑上下国际象棋，由 Stockfish 引擎为你复盘；还有课程和四万道谜题供你练习。",
     summary: "先学棋、解谜题，再和电脑或同屏的朋友下一局。",
     primaryCta: {
       label: "下载",
@@ -236,7 +236,7 @@ export default defineProduct({
         asOf: "v24.0.0",
         video: { mp4: "/assets/chessboard-review-zh.mp4", webm: "/assets/chessboard-review-zh.webm" },
         title: "复盘先看关键时刻",
-        body: "Stockfish 把整局过一遍，给出一句总结、胜率曲线，以及能再试一次的局面。",
+        body: "引擎把整局过一遍，给出一句总结、胜率曲线，以及能再试一次的局面。",
       },
     ],
     sections: [

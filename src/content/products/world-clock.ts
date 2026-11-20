@@ -18,7 +18,7 @@ export default defineProduct({
       "Chrome extension that shows the time in the cities you choose: working hours bright, the rest faded, and a scroll to any hour.",
     eyebrow: "Time zone extension for Chrome",
     headline: "One popup shows the time in all your cities.",
-    lead: "Shows the time in the cities you choose, in one popup, with working hours lit. Scroll to see any hour.",
+    lead: "You choose the cities, and their working hours are lit. Scroll to see any hour.",
     summary: "The time in the cities you choose, and a scroll to any hour.",
     primaryCta: {
       label: "Install",
@@ -41,7 +41,7 @@ export default defineProduct({
     visual: {
       kind: "demo",
       label: "World Clock",
-      caption: "Try it, on your clock: scroll, drag or press arrows; Esc returns to now.",
+      caption: "Try it, on your clock: arrow keys work too; Esc returns to now.",
       demo: {
         kind: "worldClock",
         appTitle: "World Clock",
@@ -108,7 +108,7 @@ export default defineProduct({
         items: [
           {
             title: "Who is at work",
-            body: "Working hours are lit, 9:00–18:00 unless you change them; weekends follow each city’s country.",
+            body: "Working hours run 9:00–18:00 unless you change them; weekends follow each city’s country.",
           },
           {
             title: "Offsets from you",
@@ -151,7 +151,7 @@ export default defineProduct({
     description: "Chrome 扩展：显示你所选城市的时间，工作时间常亮、其余淡出，滚动查看任意时刻。",
     eyebrow: "Chrome 时区扩展",
     headline: "一个弹窗看各城市时间",
-    lead: "一个弹窗看你的几个城市，工作时间高亮。滚动就能查看任意时刻。",
+    lead: "城市由你来选，各自的工作时间高亮。滚动就能查看任意时刻。",
     summary: "你选的几个城市此刻几点，滚动就能看任意时刻。",
     primaryCta: {
       label: "安装",
@@ -173,7 +173,7 @@ export default defineProduct({
     visual: {
       kind: "demo",
       label: "世界时钟",
-      caption: "试一试，用你电脑的时间：滚动、拖动或按方向键，Esc 回到现在。",
+      caption: "试一试，用你电脑的时间：方向键也能调，Esc 回到现在。",
       demo: {
         kind: "worldClock",
         appTitle: "世界时钟",
@@ -237,7 +237,7 @@ export default defineProduct({
         id: "features",
         label: "弹窗里能看到什么",
         items: [
-          { title: "谁在上班", body: "工作时间高亮，默认 9 点到 18 点，可以自己改；周末按各城市所在国家算。" },
+          { title: "谁在上班", body: "工作时间默认 9 点到 18 点，可以自己改；周末按各城市所在国家算。" },
           { title: "相对你的时差", body: "每个城市标出和你相差几小时，如 +7h、−5h，以及是明天还是昨天。" },
           { title: "提前提示夏令时", body: "夏令时带来的时差变化提前两周标出，如 −7h → −8h。" },
           { title: "复制时间", body: "点一下复制一个时间，或按 ⌘C / Ctrl+C 复制全部城市。" },

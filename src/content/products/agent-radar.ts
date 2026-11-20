@@ -18,7 +18,7 @@ export default defineProduct({
     description: "Scheduled research on the agent industry, with sourced Markdown briefs and watchlists saved in Git.",
     eyebrow: "Scheduled Markdown research",
     headline: "Get sourced briefs on AI agents, kept in Git.",
-    lead: "Markdown reports on AI agents, drafted by a model from public sources on a GitHub Actions schedule. Every change stays in Git.",
+    lead: "A model drafts the Markdown reports from public sources on a GitHub Actions schedule.",
     summary: "Sourced Markdown briefs on AI agents, drafted on a GitHub Actions schedule.",
     primaryCta: {
       label: "View on GitHub",
@@ -117,7 +117,7 @@ export default defineProduct({
     description: "定时整理 Agent 产业动态，把带来源的 Markdown 报告与观察名单保存在 Git 中。",
     eyebrow: "定时 Markdown 调研",
     headline: "定时生成带来源的 Agent 调研报告",
-    lead: "GitHub Actions 定时运行，由模型从公开来源起草 AI Agent 调研报告（Markdown）。每次改动都留在 Git 里。",
+    lead: "模型在 GitHub Actions 上按计划从公开来源起草 Markdown 报告，每次改动都留在 Git 里。",
     summary: "GitHub Actions 定时跑，生成带来源的 Markdown 报告。",
     primaryCta: {
       label: "查看 GitHub",

@@ -84,7 +84,7 @@ export default defineProduct({
         nav: "Features",
         label: "The town lives on its own.",
         items: [
-          { title: "Whole lives", body: "Residents are born, grow up, grow old and die." },
+          { title: "Whole lives", body: "Residents are born, grow up and, in the end, die." },
           {
             title: "Build, paint, name",
             body: "Works rise over several days. You can paint a flag and name boats and babies.",
@@ -208,7 +208,7 @@ export default defineProduct({
         nav: "功能",
         label: "小镇自己过日子",
         items: [
-          { title: "完整的一生", body: "居民会出生、长大、变老，最后离世。" },
+          { title: "完整的一生", body: "居民会出生、长大，最后离世。" },
           { title: "建造、绘制、命名", body: "工程要盖上好几天。你可以画一面旗，给船和新生儿起名。" },
           { title: "不用 AI 也能聊", body: "居民按自己知道的回答；有人托你帮忙，聊一聊就能办成。" },
           { title: "三种语言", body: "界面、故事和对话都有中文、英文和日文。" },

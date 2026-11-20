@@ -18,7 +18,7 @@ export default defineProduct({
       "An unofficial Chrome extension that adds IMDb, Rotten Tomatoes, and Metacritic ratings to Douban movie pages.",
     eyebrow: "Ratings extension for Douban",
     headline: "See IMDb and other scores on Douban film pages.",
-    lead: "Adds IMDb, Rotten Tomatoes and Metacritic scores to Douban film pages, and under film links you hover. Scores matched by title alone are marked.",
+    lead: "Rotten Tomatoes and Metacritic scores join IMDb’s, and film links you hover get them too. Scores matched by title alone are marked.",
     summary: "IMDb, Rotten Tomatoes and Metacritic scores on Douban film pages and film links you hover.",
     primaryCta: {
       label: "Install",
@@ -66,7 +66,7 @@ export default defineProduct({
           },
           {
             title: "Matched by IMDb ID",
-            body: "When the page has no IMDb ID, it searches by title and marks that result.",
+            body: "When the page has no IMDb ID, it falls back to searching by title.",
           },
         ],
       },
@@ -81,11 +81,7 @@ export default defineProduct({
           },
           {
             title: "Which pages does it run on?",
-            body: "Only on movie.douban.com, and you can switch it off in the toolbar popup.",
-            steps: [
-              "Film detail pages get the ratings line.",
-              "Elsewhere, such as Top 250, the charts and a detail page’s recommendations, it looks a film up only when you rest the pointer on its link.",
-            ],
+            body: "Only on movie.douban.com, and you can switch it off in the toolbar popup. Away from a film’s own info panel, as in a detail page’s recommendations, it looks a film up only when you rest the pointer on its link.",
           },
           {
             title: "Why are ratings sometimes missing?",
@@ -105,7 +101,7 @@ export default defineProduct({
     description: "在豆瓣电影页面补充 IMDb、烂番茄和 Metacritic 评分的 Chrome 扩展（非豆瓣官方）。",
     eyebrow: "豆瓣评分扩展",
     headline: "在豆瓣影片页看到 IMDb 等评分",
-    lead: "在豆瓣影片页补上 IMDb、烂番茄和 Metacritic 评分，鼠标停在影片链接上也能看。只按片名匹配到的评分会标注出来。",
+    lead: "除了 IMDb，还补上烂番茄和 Metacritic 评分；鼠标停在影片链接上也能看。只按片名匹配到的评分会标注出来。",
     summary: "在豆瓣影片页和你悬停的影片链接上，显示 IMDb、烂番茄和 Metacritic 评分。",
     primaryCta: {
       label: "安装",
@@ -147,7 +143,7 @@ export default defineProduct({
             body: "多出的一行“其他评分”和导演、主演行写法一样，IMDb 附评分人数；点评分可打开对应网站。",
           },
           { title: "Top 250 和排行榜也能看", body: "鼠标在影片链接上停约 0.3 秒，评分就显示在链接下方。" },
-          { title: "按 IMDb 编号匹配", body: "页面上没有 IMDb 编号时改按片名查找，并标注这条结果。" },
+          { title: "按 IMDb 编号匹配", body: "页面上没有 IMDb 编号时，改按片名查找。" },
         ],
       },
       {
@@ -161,11 +157,7 @@ export default defineProduct({
           },
           {
             title: "在哪些页面上运行？",
-            body: "只在 movie.douban.com 上运行，也可以在工具栏弹窗里关掉。",
-            steps: [
-              "电影详情页的影片信息末尾多一行“其他评分”。",
-              "在 Top 250、排行榜、详情页的推荐等处，只有鼠标停在影片链接上时才查询该片。",
-            ],
+            body: "只在 movie.douban.com 上运行，也可以在工具栏弹窗里关掉。影片信息以外的地方，比如详情页的推荐，只有鼠标停在影片链接上时才查询该片。",
           },
           {
             title: "为什么有时看不到评分？",

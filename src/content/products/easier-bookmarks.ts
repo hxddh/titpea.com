@@ -17,7 +17,7 @@ export default defineProduct({
     description: "Chrome side panel and address-bar search for the bookmark tree already in this browser.",
     eyebrow: "Bookmark search for Chrome",
     headline: "Search and tidy Chrome’s bookmarks in a side panel.",
-    lead: "Search, save and tidy the bookmarks Chrome already has, from a side panel or the address bar. Nothing is sent to outside servers.",
+    lead: "Save bookmarks there too, or search from the address bar, all in the bookmarks Chrome already has. Nothing is sent to outside servers.",
     summary: "Search the bookmarks Chrome already has, from the side panel or the address bar.",
     primaryCta: {
       label: "Install",
@@ -123,7 +123,7 @@ export default defineProduct({
     description: "Chrome 侧边栏和地址栏里的书签工具，在本地搜索、收藏和整理书签。",
     eyebrow: "Chrome 书签搜索",
     headline: "在侧边栏搜索整理书签",
-    lead: "在侧边栏或地址栏里，搜索、收藏和整理 Chrome 已有的书签。数据不发往任何外部服务器。",
+    lead: "也能在那里收藏，或在地址栏里搜，用的就是 Chrome 已有的书签。数据不发往任何外部服务器。",
     summary: "在侧边栏或地址栏搜索 Chrome 里已有的书签。",
     primaryCta: {
       label: "安装",
@@ -162,9 +162,9 @@ export default defineProduct({
         width: 1900,
         height: 1425,
         dark: { src: "/assets/easier-bookmarks-search-zh-dark.webp", width: 1900, height: 1425 },
-        title: "打拼音也能搜到",
+        title: "打全拼也能搜到",
         body: "每个结果都写明所在文件夹；回车打开第一个。",
-        caption: "用拼音“jingdu”搜索；书签为示例。",
+        caption: "搜索“jingdu”；书签为示例。",
         asOf: "v5.0.0",
       },
     ],
@@ -175,7 +175,7 @@ export default defineProduct({
         label: "查找、收藏和整理",
         items: [
           { title: "在地址栏里搜", body: "输入 `b` 加空格再打几个字，回车打开最匹配的书签。" },
-          { title: "标题、网址、文件夹都能搜", body: "认全拼和简繁，错一个字也找得到。" },
+          { title: "标题、网址、文件夹都能搜", body: "认简繁，错一个字也找得到。" },
           {
             title: "一键收藏",
             body: "存进同一网站书签所在的文件夹，或你上次选的文件夹。星标已是实心时，点它是编辑原书签，不会重复添加。",
