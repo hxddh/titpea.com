@@ -2,7 +2,7 @@
 
 Titpea is one developer's shelf of software. It should read like an independent software workshop's catalogue: exact, quiet, warm. Hairlines and type do the work; colour comes from the products themselves. Every fact about a product is written once, as data, and every page reads it from there.
 
-History: v2 launch page → v4 one centred column → v6 each thing said once → **v7 (November 2026)**: the catalog as the single source of facts, a Products menu instead of three product lists per page, Home's index with filters, spec tags, feature lists sized to the product, plain-sentence headlines. **v7.2**: serif display in both languages, warm paper, product-tinted plates, Home filtered by category. **v7.1**: no data section (privacy facts live on the Privacy index, one network tag in the hero), one product list per page (the menu; the footer is one line), showcases paired as a gallery row, no fact said twice in a hero. Owner decisions stay the owner's; change them in a pull request, never straight on `main`.
+History: v2 launch page → v4 one centred column → v6 each thing said once → **v7 (November 2026)**: the catalog as the single source of facts, a Products menu instead of three product lists per page, Home's index with filters, spec tags, feature lists sized to the product, plain-sentence headlines. **v7.2**: serif display in both languages (mid optical size), warm paper, Home filtered by category, facts as text lines not chips, no frames around captures. **v7.1**: no data section (privacy facts live on the Privacy index, one network tag in the hero), one product list per page (the menu; the footer is one line), showcases paired as a gallery row, no fact said twice in a hero. Owner decisions stay the owner's; change them in a pull request, never straight on `main`.
 
 ## When rules compete
 
@@ -33,13 +33,13 @@ Copy never contains a version, a platform list or a licence: those are facts the
 
 ### Home
 
-Title, lede, the byline. `Selected work`: three picks (`featured.order`), the first large and two beside it, each its real window, icon, name, eyebrow and claim (its tags are in the index below, not repeated). `Everything`: category chips (All and the four lines) wired by `filter.js`, each showing one line's group; without scripts the chips stay hidden and every group shows. Each pick's window rises from a plate in its product's colour. Rows: icon, name, summary, platform tags (a kind tag only for command-line tools, which name no platform), version in mono. No counts.
+Title, lede, the byline. `Selected work`: three picks (`featured.order`), the first large and two beside it, each its real window, icon, name, eyebrow and claim (its tags are in the index below, not repeated). `Everything`: category chips (All and the four lines) wired by `filter.js`, each showing one line's group; without scripts the chips stay hidden and every group shows. Rows: icon, name, summary, a facts line of platforms (a kind only for command-line tools, which name no platform), version in mono. No counts.
 
 ### Product pages
 
 In order, both languages identical in structure:
 
-1. **Hero**: identity line (icon, name, eyebrow), the `h1`, the lede, two actions, the first-open guide (a disclosure, only for unsigned builds), the spec tags (platforms, stack, licence, version unless the button carries it, Source, the network level linking to its Privacy row). Dates live on Releases.
+1. **Hero**: identity line (icon, name, eyebrow), the `h1`, the lede, two actions, the first-open guide (a disclosure, only for unsigned builds), the facts line (platforms, stack, licence, version unless the button carries it, Source, the network level linking to its Privacy row): one muted line of text parted by thin dots, never boxed chips. Dates live on Releases.
 2. **Product object**: a real capture across the shell, or a demo, mock, terminal or replay at product scale; captioned with what it shows, and `Captured at v…` only when that release is not the current one.
 3. **Up to two showcases** (a live demo counts as one). Two landscape showcases stand side by side as one gallery row, each picture with its name and line under it; one stays full width.
 4. **Feature list**: the product's real highlights, one to six, never padded. Storage and Agents lines read as a spec list (feature left, what it does right, rows on hairlines); Everyday and Games as larger points. `layout` overrides.
@@ -78,13 +78,13 @@ Games sit on warmer paper (`--paper-warm`, set on the root when `body[data-line=
 
 - Only these steps may set a page's font size (`em` allowed). Product mocks keep their app's sizes, never under 12px.
 - **Serif display** for every h1 and h2, the same voice in both languages: English in Fraunces (book weight, display optical size, lightly tracked), Chinese in the Noto Serif SC SemiBold subset (`npm run build` recuts it from every h1 and h2) with Fraunces for Latin. The wordmark is set the same way. **Sans** (system face, then Inter) for everything read.
-- **Mono** for what is typed and for technical facts: commands, code, versions, platform and kind tags, column labels, dates in lists. Numbers use `tabular-nums`.
+- **Mono** for what is typed and for versions: commands, code, version tags, column labels. Facts lines are the sans at the label size. Numbers use `tabular-nums`.
 - Reading text `--ink-2` (7:1), `--leading-body` 1.7 (Chinese 1.75), measure 66ch (Chinese 34em).
 
 ## Colour and depth
 
-- Tokens only, in `tokens.css` (check fails on a raw colour in a shadow or any gradient in a page stylesheet): `--paper`, `--paper-warm`, `--surface-sunk` (terminal lines, the first-open guide), `--ink`, `--ink-2`, `--muted`, `--faint`, `--line`, `--soft-line`, `--tag-bg`, `--tag-line`, `--accent-fill` (the primary action), `--accent` (focus rings only), product `--tint-*` / `--ink-*` for mocks.
-- Paper is warm (ivory light, warm black dark), hairlines carry a little brown. A product's hero capture and Home's picks rise from a **plate**: the paper mixed with the product's tint (`--plate-mix`), a hairline, the window cut by its lower edge. Edges are 1px hairlines. Shadows: `--shadow-shot` under a capture, `--shadow-panel` under the menu; nothing else floats. Translucency only on the header.
+- Tokens only, in `tokens.css` (check fails on a raw colour in a shadow or any gradient in a page stylesheet): `--paper`, `--paper-warm`, `--surface-sunk` (terminal lines, the first-open guide), `--ink`, `--ink-2`, `--muted`, `--faint`, `--line`, `--soft-line`, `--tag-line` (chips), `--accent-fill` (the primary action), `--accent` (focus rings only), product `--tint-*` / `--ink-*` for mocks.
+- Paper is warm (ivory light, warm black dark), hairlines carry a little brown. Captures stand straight on the paper, whole, with only their own hairline and `--shadow-shot`: never a plate, tinted card, frame or padding around them (tried in v7.2 and withdrawn: it shrank the window, cut its edge and read as a template). Edges are 1px hairlines. Shadows: `--shadow-shot` under a capture, `--shadow-panel` under the menu; nothing else floats. Translucency only on the header.
 - No gradients, glow, glass panels, floating badges, emoji or decorative icons on headings. Dark mode is first-class; captures are never dimmed.
 
 ## Interaction

@@ -37,7 +37,7 @@ const [lead, ...rest] = model.featured.items;
     </header>
     <ul class="picks">
       {[lead, ...rest].map((item, index) => (
-        <li class="pick" data-lead={index === 0 ? "" : undefined} data-product={item.slug}>
+        <li class="pick" data-lead={index === 0 ? "" : undefined}>
           <a href={item.href}>
             <span class="pick-stage">
               <img

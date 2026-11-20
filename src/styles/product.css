@@ -11,7 +11,7 @@
   }
 
   .product-hero .display {
-    max-width: 18em;
+    max-width: 14em;
     margin-inline: auto;
     font-size: var(--title-product);
     line-height: 1.08;
@@ -75,14 +75,19 @@
    them, so they never touch and a line breaks only between tags. */
   .spec-tags {
     justify-content: center;
-    margin-top: 22px;
+    margin-top: 20px;
   }
 
   .spec-tags a {
     color: inherit;
     text-decoration: underline;
-    text-decoration-color: var(--tag-line);
-    text-underline-offset: 0.2em;
+    text-decoration-color: var(--line);
+    text-underline-offset: 0.25em;
+  }
+
+  .spec-tags a:hover {
+    color: var(--ink);
+    text-decoration-color: currentColor;
   }
 
   /* An unnotarized build: a quiet disclosure under the actions, not a
@@ -150,29 +155,6 @@
 
   .hero-figure figure {
     margin-block: 0;
-  }
-
-  /* The capture rises from a plate in the product's own colour: a quiet
-   tint of the paper, a hairline, the window cut by the plate's lower edge. */
-  .hero-figure .stage-hero:not([data-plain]) {
-    padding: clamp(18px, 5vw, 64px) clamp(18px, 5vw, 64px) 0;
-    overflow: hidden;
-    border-radius: 22px;
-    background: color-mix(in oklab, var(--product-tint) var(--plate-mix), var(--paper-raised));
-    box-shadow: inset 0 0 0 1px var(--line);
-  }
-
-  .hero-figure .stage-hero:not([data-plain]) > img {
-    border-radius: var(--radius-media) var(--radius-media) 0 0;
-  }
-
-  /* A phone capture keeps its whole frame on the plate. */
-  .hero-figure .stage-hero[data-portrait]:not([data-plain]) {
-    padding-bottom: clamp(18px, 5vw, 64px);
-  }
-
-  .hero-figure .stage-hero[data-portrait]:not([data-plain]) > img {
-    border-radius: var(--radius-media);
   }
 
   /* A showcase stands like the hero's picture. A capture narrower than 3:2

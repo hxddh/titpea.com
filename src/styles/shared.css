@@ -293,46 +293,41 @@
     font-size: var(--text-meta);
   }
 
-  /* Tags: a platform, a kind, a licence, a version. Mono, hairline, quiet;
-   the one way a fact is set beside a name, on every page. A run of tags is
-   a flex row with gaps, so tags never touch whatever the markup's spacing. */
+  /* Facts beside a name (platform, licence, version, network): one quiet
+   line of text, parted by thin dots, never boxed. The separator ends an item,
+   so a wrapped line never starts with one; gaps, not markup whitespace, set
+   the spacing. Versions are mono. */
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    align-items: baseline;
+    row-gap: 2px;
+    color: var(--muted);
+    font-size: var(--text-meta);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
   }
 
-  /* The list reset at zero specificity, so a placed run (.spec-tags) keeps its margin. */
   :where(.tags) {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .tags > *,
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    min-height: 22px;
-    padding: 0 8px;
-    border: 1px solid var(--tag-line);
-    border-radius: 6px;
-    color: var(--muted);
-    background: var(--tag-bg);
-    font-family: var(--mono);
-    font-size: var(--text-meta);
-    line-height: 1.4;
+  .tags > * {
     white-space: nowrap;
-    font-variant-numeric: tabular-nums;
   }
 
-  .tag-kind {
-    border-style: dashed;
+  .tags > *:not(:last-child)::after {
+    content: "·";
+    margin-inline: 0.6em;
+    color: var(--faint);
   }
 
   .tag-version,
   .tags > [data-tone="version"] {
     color: var(--ink-2);
+    font-family: var(--mono);
   }
 
   /* `code` spans in product copy and quoted release notes (Prose.astro). */

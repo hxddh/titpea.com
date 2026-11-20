@@ -14,7 +14,7 @@ export type PrivacyPageModel = {
   seo: PageSeo;
   language: PageLanguageLink;
   hero: { eyebrow: string; title: string; lead: string };
-  columns: { tool: string; network: string; stays: string; details: string };
+  columns: { tool: string; network: string; stays: string };
   rows: Array<{
     name: string;
     href: string;
