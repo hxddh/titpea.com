@@ -67,11 +67,11 @@ const level = copyUi.privacyLevels[copy.privacy.network];
 const networkTag = {
   // "不联网" says itself; otherwise the label and the level, in the page's punctuation.
   value:
-    model.locale === "zh"
-      ? copy.privacy.network === "none"
-        ? level
-        : `${copyUi.spec.network}：${level}`
-      : `${copyUi.spec.network}: ${level}`,
+    copy.privacy.network === "none"
+      ? copyUi.spec.offline
+      : model.locale === "zh"
+        ? `${copyUi.spec.network}：${level}`
+        : `${copyUi.spec.network}: ${level}`,
   href: `${pathFor(model.locale, "privacy")}#${model.slug}`,
   tone: "network" as const,
 };

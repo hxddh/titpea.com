@@ -495,7 +495,7 @@ const tokens = read("src/styles/tokens.css");
 
 // Each product page wears its own color pair (DESIGN.md): --tint-<slug> and
 // --ink-<slug> in the light :root, in both dark blocks (the toggle and the OS
-// preference), and the body[data-product] rule that maps them.
+// preference), and the [data-product] rule that maps them.
 function cssBlock(css: string, selector: string): string | undefined {
   const start = css.indexOf(`${selector} {`);
   if (start === -1) return undefined;
@@ -520,12 +520,12 @@ for (const product of products) {
       if (!new RegExp(`${token}:\\s*[^;]+;`).test(block)) fail(`tokens.css: ${token} is missing in the ${name} block`);
     }
   }
-  const mapping = cssBlock(tokens, `body[data-product="${product.slug}"]`);
+  const mapping = cssBlock(tokens, `[data-product="${product.slug}"]`);
   if (
     !mapping?.includes(`--product-tint: var(--tint-${product.slug})`) ||
     !mapping.includes(`--product-ink: var(--ink-${product.slug})`)
   ) {
-    fail(`tokens.css: body[data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
+    fail(`tokens.css: [data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
   }
 }
 const defined = new Set([...tokens.matchAll(/(--[a-z0-9-]+):/g)].map((match) => match[1]));

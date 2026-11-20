@@ -79,7 +79,7 @@ type Ui = {
   /** Follows the version in the meta line; `{date}` is the latest release's publish date. */
   released: string;
   /** Labels of the product page's spec sheet. */
-  spec: { label: string; network: string; source: string };
+  spec: { label: string; network: string; offline: string; source: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
    hero, and under a showcase only when its release differs. `{version}` is filled in. */
   capturedAt: string;
@@ -137,12 +137,10 @@ type Ui = {
   // Catalog vocabulary: one word for each platform and kind, everywhere.
   products: string;
   allLabel: string;
-  filterPlatform: string;
-  filterEmpty: string;
+  /** Names the category chips on Home for assistive tech. */
+  filterLabel: string;
   /** Labels a platform tag; `{min}` is the oldest supported version. */
   platforms: Record<"macos" | "windows" | "linux" | "chrome" | "android", { name: string; min: string }>;
-  /** The command-line filter, and the tag on a CLI, Pi extension or Actions workflow. */
-  commandLine: string;
   /** What kind of thing it is, by product type. */
   kinds: Record<"cli" | "pi" | "actions" | "desktop" | "mac" | "extension" | "game", string>;
   /** The first-open guide beside the download button for an unnotarized build. */
@@ -174,6 +172,7 @@ export const ui: Record<Locale, Ui> = {
     spec: {
       label: "Specifications",
       network: "Network",
+      offline: "No network",
       source: "Source",
     },
     capturedAt: "Captured at {version}",
@@ -250,8 +249,7 @@ export const ui: Record<Locale, Ui> = {
     privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatic" },
     products: "Products",
     allLabel: "All",
-    filterPlatform: "Runs on",
-    filterEmpty: "Nothing matches both filters.",
+    filterLabel: "Show",
     platforms: {
       macos: { name: "macOS", min: "macOS {min}+" },
       windows: { name: "Windows", min: "Windows {min}+" },
@@ -259,7 +257,6 @@ export const ui: Record<Locale, Ui> = {
       chrome: { name: "Chrome", min: "Chrome {min}+" },
       android: { name: "Android", min: "Android {min}+" },
     },
-    commandLine: "Command line",
     kinds: {
       cli: "CLI",
       pi: "Pi extension",
@@ -291,7 +288,7 @@ export const ui: Record<Locale, Ui> = {
     copy: "复制",
     copied: "已复制",
     released: "（{date}）",
-    spec: { label: "规格", network: "联网", source: "源码" },
+    spec: { label: "规格", network: "联网", offline: "不联网", source: "源码" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
@@ -362,8 +359,7 @@ export const ui: Record<Locale, Ui> = {
     privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "自动" },
     products: "产品",
     allLabel: "全部",
-    filterPlatform: "平台",
-    filterEmpty: "没有同时符合两个条件的产品。",
+    filterLabel: "显示",
     platforms: {
       macos: { name: "macOS", min: "macOS {min}+" },
       windows: { name: "Windows", min: "Windows {min}+" },
@@ -371,7 +367,6 @@ export const ui: Record<Locale, Ui> = {
       chrome: { name: "Chrome", min: "Chrome {min}+" },
       android: { name: "Android", min: "Android {min}+" },
     },
-    commandLine: "命令行",
     kinds: {
       cli: "命令行工具",
       pi: "Pi 扩展",

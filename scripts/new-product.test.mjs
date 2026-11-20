@@ -35,10 +35,10 @@ const tokens = `:root {
     --ink-world-clock: #888888;
   }
 }
-body[data-product="alpha"] {
+[data-product="alpha"] {
   --product-tint: var(--tint-alpha);
 }
-body[data-product="world-clock"] {
+[data-product="world-clock"] {
   --product-tint: var(--tint-world-clock);
 }
 
@@ -76,17 +76,14 @@ test("tokens: pairs and mapping land in alphabetical order, in every block", () 
   assert.equal(css.split("--tint-beta:").length - 1, 2);
   assert.match(css, /--ink-alpha: #222222;\n {2}--tint-beta: [^\n]*\n {2}--ink-beta: [^\n]*\n {2}--tint-world-clock/);
   assert.match(css, /--ink-alpha: #666666;\n {4}--tint-beta: [^\n]*\n {4}--ink-beta: [^\n]*\n {4}--tint-world-clock/);
-  assert.match(css, /\}\nbody\[data-product="beta"\] \{\n[\s\S]*?\n\}\nbody\[data-product="world-clock"\]/);
+  assert.match(css, /\}\n\[data-product="beta"\] \{\n[\s\S]*?\n\}\n\[data-product="world-clock"\]/);
   assert.equal(css.split(MARKER).length - 1, 4);
 });
 
 test("tokens: a slug that sorts last follows the last entry of each run", () => {
   const css = insertTokens(tokens, "zulu");
   assert.match(css, /--ink-world-clock: #444444;\n {2}--tint-zulu: [^\n]*\n {2}--ink-zulu: [^\n]*\n\}/);
-  assert.match(
-    css,
-    /--tint-world-clock\);\n\}\nbody\[data-product="zulu"\] \{\n[\s\S]*?\n\}\n\nbody\[data-product\] \{/,
-  );
+  assert.match(css, /--tint-world-clock\);\n\}\n\[data-product="zulu"\] \{\n[\s\S]*?\n\}\n\nbody\[data-product\] \{/);
 });
 
 test("the product template marks every field to write, in both locales", () => {
@@ -102,6 +99,6 @@ test("the product template marks every field to write, in both locales", () => {
 test("tokens: the real tokens.css, whose rules sit indented inside @layer", () => {
   const real = fs.readFileSync(new URL("../src/styles/tokens.css", import.meta.url), "utf8");
   const css = insertTokens(real, "zz-sample");
-  assert.match(css, /\n {2}body\[data-product="zz-sample"\] \{\n {4}--product-tint: var\(--tint-zz-sample\);/);
+  assert.match(css, /\n {2}\[data-product="zz-sample"\] \{\n {4}--product-tint: var\(--tint-zz-sample\);/);
   assert.equal(css.split("--tint-zz-sample:").length - 1, 3);
 });

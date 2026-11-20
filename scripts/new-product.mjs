@@ -151,14 +151,14 @@ export function insertTokens(tokensSource, slug) {
   // The rules sit inside @layer tokens, indented: match any indent and keep it.
   const heads = rows
     .map((row, index) => {
-      const match = row.match(/^(\s*)body\[data-product="([\w-]+)"\] \{$/);
+      const match = row.match(/^(\s*)\[data-product="([\w-]+)"\] \{$/);
       return { index, indent: match?.[1] ?? "", slug: match?.[2] };
     })
     .filter((row) => row.slug);
-  if (heads.length === 0) throw new Error('tokens.css has no body[data-product="…"] rules');
+  if (heads.length === 0) throw new Error('tokens.css has no [data-product="…"] rules');
   const indent = heads[0].indent;
   const block = [
-    `${indent}body[data-product="${slug}"] {`,
+    `${indent}[data-product="${slug}"] {`,
     `${indent}  --product-tint: var(--tint-${slug});`,
     `${indent}  --product-ink: var(--ink-${slug});`,
     `${indent}}`,

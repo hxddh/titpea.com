@@ -31,14 +31,36 @@
     font-optical-sizing: auto;
   }
 
+  /* English display lines: Fraunces at its display optical size, a book
+   weight rather than a poster one, tracked in only slightly. */
   html:lang(en) :is(.display, main h1) {
-    font-weight: 650;
-    letter-spacing: -0.038em;
+    font-weight: 460;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.014em;
   }
 
-  /* Section headings: the sans, semibold and tight. */
+  /* Section headings share the display face in both languages (the Chinese
+   subset carries every h1 and h2), one step lighter than the title. */
+  :is(.heading, main h2) {
+    font-family: var(--display-face);
+    font-optical-sizing: auto;
+  }
+
   html:lang(en) :is(.heading, main h2) {
-    letter-spacing: -0.024em;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+  }
+
+  /* The wordmark is set like a title. */
+  .brand {
+    font-family: var(--display-face);
+    font-weight: 560;
+    letter-spacing: -0.01em;
+  }
+
+  /* Selected text takes the accent, quietly. */
+  ::selection {
+    background: var(--selection);
   }
 
   /* Chinese display lines: the serif's one weight (SemiBold), never a
@@ -57,6 +79,8 @@
   }
 
   html:lang(zh) :is(.heading, main h2) {
+    font-weight: 600;
+    font-synthesis: none;
     letter-spacing: 0;
     word-break: keep-all;
   }

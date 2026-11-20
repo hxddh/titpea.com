@@ -1,7 +1,7 @@
 // Home: hero, then the catalog: featured work, then every other product by line.
 import { products } from "../../content/products";
 import { absoluteUrl, site, ui } from "../../content/site";
-import { featuredSrc, lines, platformOrder, type Line, type Locale } from "../../content/schema";
+import { featuredSrc, lines, type Line, type Locale } from "../../content/schema";
 import { otherLocale, pathFor } from "./shared";
 import { type PageLanguageLink, type PageSeo, buildSeo, languageLink } from "./seo";
 import { type CatalogItem, catalogItem } from "./catalog";
@@ -37,11 +37,8 @@ export type HomePageModel = {
   /** The index: every product by line, in site order, the picks included, with filters. */
   more: {
     title: string;
-    filters: {
-      platformLabel: string;
-      empty: string;
-      platforms: Array<{ key: string; label: string }>;
-    };
+    /** One chip per line, and All: the groups below are the lines. */
+    filters: { label: string; options: Array<{ key: string; label: string }> };
     groups: Array<{ line: Line; label: string; items: CatalogItem[] }>;
   };
   expectedText: string[];
@@ -101,14 +98,10 @@ export function homePage(locale: Locale): HomePageModel {
     more: {
       title: copy.moreToolsTitle,
       filters: {
-        platformLabel: copy.filterPlatform,
-        empty: copy.filterEmpty,
-        platforms: [
+        label: copy.filterLabel,
+        options: [
           { key: "all", label: copy.allLabel },
-          ...platformOrder
-            .filter((id) => products.some((product) => product.platforms.some((platform) => platform.id === id)))
-            .map((id) => ({ key: id, label: copy.platforms[id].name })),
-          { key: "cli", label: copy.commandLine },
+          ...lines.map((line) => ({ key: line, label: copy.groups[line] })),
         ],
       },
       groups: lines.map((line) => {
