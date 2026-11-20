@@ -305,7 +305,6 @@
     color: var(--muted);
     font-size: var(--text-meta);
     line-height: 1.5;
-    font-variant-numeric: tabular-nums;
   }
 
   :where(.tags) {
@@ -324,10 +323,13 @@
     color: var(--faint);
   }
 
+  /* Tabular figures only on the version: in Inter they also widen the
+   hyphen, which split "Apache-2.0" and "S3-compatible". */
   .tag-version,
   .tags > [data-tone="version"] {
     color: var(--ink-2);
     font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
   }
 
   /* `code` spans in product copy and quoted release notes (Prose.astro). */
