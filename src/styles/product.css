@@ -160,10 +160,29 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* A word, not a number: one step down, so it holds its column. */
+  /* A word, not a number: one step down, on one line, its foot on the
+   numbers' line. */
   .stat[data-long] b {
+    padding-top: calc(var(--text-stat) - var(--text-heading));
     font-size: var(--text-heading);
-    line-height: 1.15;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Four across leaves narrower columns: every figure steps down to the
+   heading size, and a word a little further. */
+  .stats[data-count="4"] .stat {
+    font-size: var(--text-heading);
+  }
+
+  .stats[data-count="4"] .stat b {
+    padding-top: 0;
+    font-size: 1em;
+  }
+
+  .stats[data-count="4"] .stat[data-long] b {
+    padding-top: 0.22em;
+    font-size: 0.78em;
   }
 
   .stat span {
@@ -190,7 +209,13 @@
     aspect-ratio: 16 / 10;
   }
 
-  /* The object keeps its product scale (820px), centred on its paper. */
+  /* A demo, mock or terminal on its tile: more air above and below than a
+   window needs, so the object does not crowd the tile's edge. */
+  .hero-object {
+    padding-block: 6%;
+  }
+
+  /* The object keeps its product scale (820px), centred on its tile. */
   .hero-visual-frame {
     max-width: 820px;
     margin-inline: auto;
@@ -502,85 +527,95 @@
     list-style: none;
   }
 
-  /* Products of the same line, at the end of a page outside a family. */
-  .related-section {
-    max-width: var(--narrow);
-    margin-inline: auto;
+  /* The page's end (design v8): the family's tools, or other products of
+   the same line, as small grey cards like Home's, under a quiet label. */
+  .related-section .closing-label,
+  .family-section .closing-label {
+    margin: 0 0 16px;
+    color: var(--ink-2);
+    font-family: var(--sans);
+    font-size: var(--text-small);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
   }
 
-  .related-section .closing-label {
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-  }
-
-  .related-list {
+  :is(.related-list, .family-section .tool-links) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .related-list a {
+  :is(.related-list a, .family-section .tool-links :is(a, span.tool-link)) {
     display: grid;
-    grid-template-columns: 32px minmax(0, 1fr);
+    grid-template-columns: 40px minmax(0, 1fr);
     align-items: center;
-    gap: 14px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
+    gap: 2px 14px;
+    height: 100%;
+    min-height: 44px;
+    padding: 18px 20px;
+    border-radius: var(--radius-card);
     color: var(--ink);
-  }
-
-  .related-list a:hover {
+    background: var(--paper-raised);
     text-decoration: none;
+    transition: transform 0.25s ease;
   }
 
-  .related-list a:hover strong {
+  :is(.related-list a, .family-section .tool-links a):hover {
+    transform: translateY(-2px);
+  }
+
+  :is(.related-list a, .family-section .tool-links a):hover :is(strong, span:first-of-type) {
     text-decoration: underline;
-    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  :is(.related-list, .family-section .tool-links) img {
+    grid-row: span 2;
+    width: 40px;
+    height: 40px;
   }
 
   .related-copy {
-    display: grid;
-    gap: 2px;
+    display: contents;
   }
 
-  .related-copy span {
-    color: var(--muted);
+  :is(.related-list, .family-section .tool-links) strong,
+  .family-section .tool-links span:not(.tool-link) {
+    align-self: end;
     font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
-  /* A family, when the product belongs to one: its tools side by side with
-   their steps, on one hairline. */
-  .closing-next {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 4px 32px;
-    max-width: var(--narrow);
-    margin: 0 auto;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    text-align: center;
-  }
-
-  .closing-next .tool-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0 28px;
-    margin: 0;
-  }
-
-  .closing-label {
-    flex-basis: 100%;
-    margin: 0;
-    color: var(--muted);
-    font-family: var(--sans);
+  .related-copy span,
+  .family-section .tool-links small {
+    align-self: start;
+    color: var(--ink-2);
     font-size: var(--text-meta);
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0;
+    line-height: 1.45;
+  }
+
+  /* The page you are on, among its family: marked, not a link. */
+  .family-section .tool-links span.tool-link[aria-current] {
+    box-shadow: inset 0 0 0 1.5px var(--accent-fill);
+  }
+
+  @media (max-width: 900px) {
+    :is(.related-list, .family-section .tool-links) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    :is(.related-list, .family-section .tool-links) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
   }
 
   /* Showcase recording (public/scripts/video.js). */
