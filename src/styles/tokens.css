@@ -144,8 +144,6 @@
     --leading-body: 1.7;
     /* Games and creative apps sit on a warmer paper (body[data-line="games"]). */
     --paper-warm: #f3eee3;
-    /* The plate under a product's capture: its own tint, barely. */
-    --plate-mix: 13%;
     --selection: rgba(0, 113, 227, 0.16);
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
@@ -304,7 +302,6 @@
     --surface-sunk: #141210;
     --paper-warm: #130f0a;
     --selection: rgba(10, 132, 255, 0.3);
-    --plate-mix: 16%;
     --tag-bg: rgba(255, 255, 255, 0.03);
     --tag-line: rgba(255, 240, 215, 0.13);
   }
@@ -388,7 +385,6 @@
       --surface-sunk: #141210;
       --paper-warm: #130f0a;
       --selection: rgba(10, 132, 255, 0.3);
-      --plate-mix: 16%;
       --tag-bg: rgba(255, 255, 255, 0.03);
       --tag-line: rgba(255, 240, 215, 0.13);
     }

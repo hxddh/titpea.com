@@ -31,12 +31,13 @@
     font-optical-sizing: auto;
   }
 
-  /* English display lines: Fraunces at its display optical size, a book
-   weight rather than a poster one, tracked in only slightly. */
+  /* English display lines: Fraunces at a middle optical size (the largest
+   is a poster face: hairline contrast, letters touching), a book weight,
+   tracked in only slightly. */
   html:lang(en) :is(.display, main h1) {
-    font-weight: 460;
-    font-variation-settings: "opsz" 144;
-    letter-spacing: -0.014em;
+    font-weight: 450;
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.008em;
   }
 
   /* Section headings share the display face in both languages (the Chinese

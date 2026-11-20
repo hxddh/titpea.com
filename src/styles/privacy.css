@@ -51,7 +51,6 @@
   }
 
   .privacy-table td:last-child {
-    width: 18%;
     padding-right: 0;
   }
 
@@ -100,23 +99,16 @@
     margin-top: 2px;
   }
 
-  .privacy-links {
-    display: grid;
-    gap: 2px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .privacy-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
+  /* A product with its own policy links it under where its data stays. */
+  .privacy-policy-link {
+    margin-top: 2px;
+    font-size: var(--text-small);
   }
 
   .privacy-site-note {
     max-width: 60ch;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
     color: var(--muted);
     font-size: var(--text-meta);
     text-wrap: pretty;
@@ -165,12 +157,6 @@
       color: var(--muted);
       font-size: var(--text-meta);
       font-weight: 600;
-    }
-
-    .privacy-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0 18px;
     }
   }
 }

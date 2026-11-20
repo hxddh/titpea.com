@@ -35,7 +35,6 @@ const { columns } = model;
             <th scope="col">{columns.tool}</th>
             <th scope="col">{columns.network}</th>
             <th scope="col">{columns.stays}</th>
-            <th scope="col">{columns.details}</th>
           </tr>
         </thead>
         <tbody>
@@ -57,20 +56,15 @@ const { columns } = model;
               </td>
               <td data-label={columns.stays}>
                 <Prose text={row.privacy.stays} />
-              </td>
-              <td data-label={columns.details}>
-                <ul class="privacy-links">
-                  {row.privacy?.policy && (
-                    <li>
-                      <a
-                        href={row.privacy.policy.href}
-                        rel={/^https?:/.test(row.privacy.policy.href) ? "noreferrer" : undefined}
-                      >
-                        {row.privacy.policy.label}
-                      </a>
-                    </li>
-                  )}
-                </ul>
+                {row.privacy.policy && (
+                  <a
+                    class="textlink privacy-policy-link"
+                    href={row.privacy.policy.href}
+                    rel={/^https?:/.test(row.privacy.policy.href) ? "noreferrer" : undefined}
+                  >
+                    {row.privacy.policy.label}
+                  </a>
+                )}
               </td>
             </tr>
           ))}

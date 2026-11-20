@@ -131,7 +131,7 @@ type Ui = {
   privacyDescription: string;
   privacyHeadline: string;
   privacyLead: string;
-  privacyColumns: { tool: string; network: string; stays: string; details: string };
+  privacyColumns: { tool: string; network: string; stays: string };
   privacyLevels: Record<PrivacySummary["network"], string>;
   /** A product whose page has no data section yet. */
   // Catalog vocabulary: one word for each platform and kind, everywhere.
@@ -245,7 +245,7 @@ export const ui: Record<Locale, Ui> = {
       "Which Titpea tools go online, when, and to whom, and where each keeps your data, with links to every privacy policy.",
     privacyHeadline: "Which tools go online.",
     privacyLead: "What each tool sends over the network, and where your data stays.",
-    privacyColumns: { tool: "Tool", network: "Network", stays: "Where data stays", details: "Details" },
+    privacyColumns: { tool: "Tool", network: "Network", stays: "Where data stays" },
     privacyLevels: { none: "None", onRequest: "Only when you ask", automatic: "Automatic" },
     products: "Products",
     allLabel: "All",
@@ -355,7 +355,7 @@ export const ui: Record<Locale, Ui> = {
     privacyDescription: "Titpea 的各个工具什么时候联网、发给谁、数据留在哪里，并链接到各自的隐私政策。",
     privacyHeadline: "哪些工具会联网",
     privacyLead: "每个工具通过网络发送什么，你的数据留在哪里。",
-    privacyColumns: { tool: "工具", network: "联网", stays: "数据留在哪里", details: "详情" },
+    privacyColumns: { tool: "工具", network: "联网", stays: "数据留在哪里" },
     privacyLevels: { none: "不联网", onRequest: "只在你要求时", automatic: "自动" },
     products: "产品",
     allLabel: "全部",
