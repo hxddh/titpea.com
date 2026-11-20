@@ -34,7 +34,7 @@ const { model } = Astro.props;
 
   <section class="shell page-section releases-timeline" aria-label={model.hero.title}>
     <div class="cols">
-      <ol class="cols-main release-feed" data-visual-live>
+      <ol class="cols-main release-feed list-panel" data-visual-live>
         {model.items.map((item) => (
           <li class="release-entry">
             <a class="release-entry-product" href={item.href}>
@@ -89,7 +89,7 @@ const { model } = Astro.props;
         </h2>
         <p class="sub">{model.undated.sub}</p>
       </header>
-      <ul class="cols-main release-list">
+      <ul class="cols-main release-list list-panel">
         {model.undated.items.map((item) => (
           <li>
             <a href={item.href}>

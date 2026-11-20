@@ -41,6 +41,7 @@ export type HomePageModel = {
     filters: { label: string; options: Array<{ key: string; label: string }> };
     groups: Array<{ line: Line; label: string; items: CatalogItem[] }>;
   };
+  gallery: { previous: string; next: string };
   expectedText: string[];
 };
 
@@ -115,6 +116,7 @@ export function homePage(locale: Locale): HomePageModel {
         };
       }),
     },
+    gallery: { previous: copy.gallery.previous, next: copy.gallery.next },
     expectedText: [copy.homeLead, copy.featuredTitle, copy.groups.storage],
   };
 }

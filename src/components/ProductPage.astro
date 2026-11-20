@@ -16,7 +16,7 @@ import DemoSection from "./product/DemoSection.astro";
 import FaqSection from "./product/FaqSection.astro";
 import LocalNav from "./product/LocalNav.astro";
 import Prose from "./product/Prose.astro";
-import ShowcaseSection from "./product/ShowcaseSection.astro";
+import ShowcaseGallery from "./product/ShowcaseGallery.astro";
 import Visual from "./product/Visual.astro";
 import { demoStyles } from "./product/demo-styles";
 
@@ -61,31 +61,43 @@ const { facts } = model;
 // The source link is said once: not again when the second action already opens it.
 const repoUrl = product.repo ? `https://github.com/${product.repo}` : undefined;
 const sourceInActions = repoUrl !== undefined && copy.secondaryCta.href.replace(/\/$/, "") === repoUrl;
-// The network level is the one privacy fact on the page; the Privacy index
-// says the rest, from the same \`privacy\` field.
-const level = copyUi.privacyLevels[copy.privacy.network];
-const networkTag = {
-  // "不联网" says itself; otherwise the label and the level, in the page's punctuation.
-  value:
-    copy.privacy.network === "none"
-      ? copyUi.spec.offline
-      : model.locale === "zh"
-        ? `${copyUi.spec.network}：${level}`
-        : `${copyUi.spec.network}: ${level}`,
-  href: `${pathFor(model.locale, "privacy")}#${model.slug}`,
-  tone: "network" as const,
-};
-const specTags: Array<{ value: string; href?: string; tone?: "version" | "network" }> = [
-  ...facts.platforms.map((value) => ({ value })),
-  ...facts.stack.map((value) => ({ value })),
-  ...(facts.license ? [{ value: facts.license }] : []),
+// Design v8: a band of figures under the hero picture, each one a fact from
+// the catalog (lib/pages/facts.ts), releases.json or \`privacy\`; the words
+// under a figure come from \`ui.stats\`. At most four, never padded.
+const stats = copyUi.stats;
+const list = (items: string[]) => items.join(model.locale === "zh" ? "、" : ", ");
+type Stat = { figure: string; caption: string; href?: string; tone?: "version" };
+const platformStat: Stat | undefined =
+  facts.platforms.length > 1
+    ? {
+        figure: String(facts.platforms.length),
+        caption:
+          model.locale === "zh"
+            ? `${stats.platforms}：${list(facts.platforms)}`
+            : `${stats.platforms}: ${list(facts.platforms)}`,
+      }
+    : facts.platforms.length === 1
+      ? { figure: facts.platforms[0], caption: facts.kind }
+      : { figure: facts.kind, caption: list(facts.stack) };
+const privacyHref = `${pathFor(model.locale, "privacy")}#${model.slug}`;
+const networkStat: Stat =
+  copy.privacy.network === "none"
+    ? { figure: "0", caption: stats.networkNone, href: privacyHref }
+    : copy.privacy.network === "onRequest"
+      ? { ...stats.networkOnRequest, href: privacyHref }
+      : { ...stats.networkAutomatic, href: privacyHref };
+const statBand: Stat[] = [
+  platformStat,
+  networkStat,
+  ...(facts.license ? [{ figure: facts.license, caption: stats.license }] : []),
   // The version is said once: not here when the primary action already carries it.
-  ...(facts.version && !model.downloadsRelease ? [{ value: facts.version, tone: "version" as const }] : []),
-  networkTag,
-  ...(repoUrl && !sourceInActions ? [{ value: copyUi.spec.source, href: repoUrl }] : []),
-];
-const pairShowcases =
-  showcases.length === 2 && showcases.every((showcase) => showcase.width > showcase.height && !showcase.focus);
+  ...(facts.version && !model.downloadsRelease
+    ? [{ figure: facts.version, caption: stats.version, tone: "version" as const }]
+    : []),
+  ...(repoUrl && !sourceInActions ? [{ figure: "GitHub", caption: copyUi.spec.source, href: repoUrl }] : []),
+]
+  .filter((stat): stat is Stat => Boolean(stat))
+  .slice(0, 4);
 // Provenance is said once: under the hero capture, the release it shows; under
 // a showcase only when its release differs from the hero's.
 // A capture of the current release needs no note: the version is on the button and in Releases.
@@ -120,14 +132,14 @@ const showcaseLabels = showcases.map((showcase) => {
     cta={copy.primaryCta}
   />
 
-  <section class="shell product-hero" data-template={template}>
-    <p class="ident eyebrow">
-      <img class="app-icon" src={model.icon} alt="" width="80" height="80" />
-      <strong class="eyebrow-name">{copy.title}</strong>
-      <span>{copy.eyebrow}</span>
-    </p>
-    <h1 class="display">{copy.headline}</h1>
-    <div class="product-copy">
+  <section class="product-hero" data-template={template}>
+    <div class="shell">
+      <img class="app-icon" src={model.icon} alt="" width="112" height="112" />
+      <p class="eyebrow">
+        <strong>{copy.title}</strong>
+        <span>{copy.eyebrow}</span>
+      </p>
+      <h1 class="display">{copy.headline}</h1>
       <p class="lead">{copy.lead}</p>
       <div class="actions">
         {copy.primaryCta.soon ? (
@@ -140,7 +152,7 @@ const showcaseLabels = showcases.map((showcase) => {
             {model.downloadsRelease && <span class="button-version">{facts.version}</span>}
           </a>
         )}
-        <a class="textlink" href={copy.secondaryCta.href} rel="noreferrer">
+        <a class="button ghost large" href={copy.secondaryCta.href} rel="noreferrer">
           {copy.secondaryCta.label}
         </a>
       </div>
@@ -156,54 +168,64 @@ const showcaseLabels = showcases.map((showcase) => {
           </ul>
         </details>
       )}
-      <ul class="tags spec-tags" aria-label={copyUi.spec.label}>
-        {specTags.map((tag) => (
-          <li data-tone={tag.tone}>
-            {tag.href ? (
-              <a href={tag.href} rel={tag.href.startsWith("/") ? undefined : "noreferrer"}>
-                {tag.value}
-              </a>
-            ) : (
-              tag.value
-            )}
-          </li>
-        ))}
-      </ul>
     </div>
-  </section>
 
-  <section class="shell hero-figure">
-    {screenshot ? (
-      <figure class="product-scene product-screenshot-visual">
-        <div class="stage stage-hero" data-portrait={screenshot.image.height > screenshot.image.width ? "" : undefined}>
-          <img
-            src={screenshot.image.src}
-            srcset={srcsetFor(screenshot.image.src, screenshot.image.width)}
-            sizes={screenshot.image.height > screenshot.image.width ? "380px" : screenshotSizes}
-            alt={screenshot.image.alt}
-            width={screenshot.image.width}
-            height={screenshot.image.height}
-            fetchpriority="high"
-          />
-        </div>
-        {(screenshot.asOf || screenshot.caption) && (
-          <figcaption class="figure-note">
-            {screenshot.caption && <span>{screenshot.caption}</span>}
-            {screenshot.asOf && <span class="fact">{capturedAt(screenshot.asOf)}</span>}
-          </figcaption>
-        )}
-      </figure>
-    ) : (
-      <div class="stage stage-hero" data-plain>
-        <div class="hero-visual-frame">
-          {heroReplay ? (
-            <CommandReplay item={heroReplay} controls={controls} />
-          ) : (
-            <Visual visual={copy.visual} controls={controls} />
+    <div class="shell hero-figure">
+      {screenshot ? (
+        <figure class="product-scene product-screenshot-visual">
+          <div
+            class="g-tile stage-hero"
+            data-portrait={screenshot.image.height > screenshot.image.width ? "" : undefined}
+          >
+            <div class="shot">
+              <img
+                src={screenshot.image.src}
+                srcset={srcsetFor(screenshot.image.src, screenshot.image.width)}
+                sizes={screenshot.image.height > screenshot.image.width ? "380px" : screenshotSizes}
+                alt={screenshot.image.alt}
+                width={screenshot.image.width}
+                height={screenshot.image.height}
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+          {(screenshot.asOf || screenshot.caption) && (
+            <figcaption class="figure-note">
+              {screenshot.caption && <span>{screenshot.caption}</span>}
+              {screenshot.asOf && <span class="fact">{capturedAt(screenshot.asOf)}</span>}
+            </figcaption>
           )}
+        </figure>
+      ) : (
+        <div class="stage stage-hero" data-plain>
+          <div class="hero-visual-frame">
+            {heroReplay ? (
+              <CommandReplay item={heroReplay} controls={controls} />
+            ) : (
+              <Visual visual={copy.visual} controls={controls} />
+            )}
+          </div>
         </div>
-      </div>
-    )}
+      )}
+    </div>
+
+    <ul class="shell stats" aria-label={copyUi.spec.label} data-count={statBand.length}>
+      {statBand.map((stat) => (
+        <li class="stat" data-tone={stat.tone} data-long={stat.figure.length > 6 ? "" : undefined}>
+          {stat.href ? (
+            <a href={stat.href} rel={stat.href.startsWith("/") ? undefined : "noreferrer"}>
+              <b>{stat.figure}</b>
+              <span>{stat.caption}</span>
+            </a>
+          ) : (
+            <>
+              <b>{stat.figure}</b>
+              <span>{stat.caption}</span>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
   </section>
 
   {/* A captured replay takes the hero; the product's own object follows it. */}
@@ -221,31 +243,17 @@ const showcaseLabels = showcases.map((showcase) => {
     <DemoSection section={section} controls={controls} />
   ))}
 
-  {/* Two landscape showcases stand side by side, a gallery row rather than
-      two more full-width windows after the hero. */}
-  {pairShowcases ? (
-    <section class="shell page-section product-section showcase-pair">
-      {showcases.map((showcase, index) => (
-        <ShowcaseSection
-          showcase={showcase}
-          label={showcaseLabels[index]}
-          wholeLabel={copyUi.wholeCapture}
-          pauseLabel={copyUi.pauseVideo}
-          playLabel={copyUi.playVideo}
-          paired
-        />
-      ))}
-    </section>
-  ) : (
-    showcases.map((showcase, index) => (
-      <ShowcaseSection
-        showcase={showcase}
-        label={showcaseLabels[index]}
-        wholeLabel={copyUi.wholeCapture}
-        pauseLabel={copyUi.pauseVideo}
-        playLabel={copyUi.playVideo}
-      />
-    ))
+  {showcases.length > 0 && (
+    <ShowcaseGallery
+      showcases={showcases}
+      labels={showcaseLabels}
+      wholeLabel={copyUi.wholeCapture}
+      pauseLabel={copyUi.pauseVideo}
+      playLabel={copyUi.playVideo}
+      galleryLabel={copyUi.gallery.label}
+      previousLabel={copyUi.gallery.previous}
+      nextLabel={copyUi.gallery.next}
+    />
   )}
 
   {/* What it does; then Get started; then the FAQ. Release notes are on
@@ -312,5 +320,6 @@ const showcaseLabels = showcases.map((showcase) => {
   <Fragment slot="scripts">
     <script is:inline src="/scripts/zoom.js" defer></script>
     <script is:inline src="/scripts/video.js" defer></script>
+    <script is:inline src="/scripts/gallery.js" defer></script>
   </Fragment>
 </SiteLayout>

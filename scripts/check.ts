@@ -541,7 +541,7 @@ for (const file of styleFiles) {
 }
 
 // Type is a token decision (design v5): a page stylesheet sets a font size
-// only from the seven steps in tokens.css, or relative to its parent (em).
+// only from the steps in tokens.css, or relative to its parent (em).
 // Product mocks (visuals.css, demo-*.css) draw an app's own interface and
 // keep its sizes.
 const typeTokens = new Set([
@@ -553,6 +553,7 @@ const typeTokens = new Set([
   "--text-heading",
   "--title-display",
   "--title-product",
+  "--text-stat",
 ]);
 for (const file of styleFiles.filter((file) => !/\/(tokens|visuals|demo(-[a-z-]+)?)\.css$/.test(file))) {
   read(file)
@@ -585,7 +586,7 @@ for (const file of styleFiles.filter((file) => file !== "src/styles/tokens.css")
       if (/rgba?\(|#[0-9a-f]{3,8}\b/i.test(value)) fail(`${file}:${index + 1}: raw color in ${declaration[1]}`);
     }
     if (/(linear|radial|conic)-gradient/.test(line) && !/mask-image|#000/.test(line)) {
-      fail(`${file}:${index + 1}: gradient in a page stylesheet (colour is flat; see DESIGN.md)`);
+      fail(`${file}:${index + 1}: gradient in a page stylesheet (use --wash or --tile-fill from tokens.css)`);
     }
   });
 }

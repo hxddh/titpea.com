@@ -9,42 +9,42 @@
     --section-index-mobile-scroll-margin: 56px;
 
     /* Canvas and text */
-    --paper: #f6f4ef;
-    --paper-raised: #edeae3;
-    --ink: #1d1b18;
-    --muted: #69655d;
+    --paper: #fbfbfd;
+    --paper-raised: #f5f5f7;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
     /* Reading text (card bodies, answers): 10:1, where --muted is for labels. */
-    --ink-2: #3a3732;
-    --label: #69655d;
-    --faint: #8e897f;
+    --ink-2: #515154;
+    --label: #6e6e73;
+    --faint: #86868b;
     --on-ink: #ffffff;
 
     /* Lines */
-    --line: rgba(70, 50, 20, 0.11);
-    --soft-line: rgba(70, 50, 20, 0.17);
-    --code-bg: rgba(70, 50, 20, 0.055);
+    --line: rgba(0, 0, 0, 0.08);
+    --soft-line: rgba(0, 0, 0, 0.13);
+    --code-bg: rgba(0, 0, 0, 0.035);
 
     /* One voice for every control: the primary action is filled with ink and
      links are ink (underlined inside running text). Blue stays only on the
      focus ring, where it has to stand apart from everything else. */
     --accent: #0071e3;
-    --link: #1d1b18;
-    --accent-fill: #1d1b18;
-    --accent-fill-hover: #000000;
+    --link: #0066cc;
+    --accent-fill: #0071e3;
+    --accent-fill-hover: #0077ed;
     --on-accent: #ffffff;
     --link-underline: rgba(0, 0, 0, 0.3);
 
     /* Glass chrome */
-    --glass: rgba(246, 244, 239, 0.86);
-    --glass-strong: rgba(246, 244, 239, 0.94);
-    --menu-bg: rgba(246, 244, 239, 0.98);
+    --glass: rgba(255, 255, 255, 0.66);
+    --glass-strong: rgba(255, 255, 255, 0.82);
+    --menu-bg: rgba(255, 255, 255, 0.97);
     --glass-edge: rgba(255, 255, 255, 0.85);
     --glass-shade: rgba(0, 0, 0, 0.06);
-    --glass-blur: saturate(140%) blur(16px);
+    --glass-blur: saturate(180%) blur(24px);
 
     /* Shadows */
     /* Two depths only: a photograph resting on the page, and a panel above it. */
-    --shadow-shot: 0 1px 2px rgba(20, 20, 30, 0.04), 0 24px 56px -28px rgba(20, 20, 30, 0.26);
+    --shadow-shot: 0 40px 90px -30px rgba(20, 30, 60, 0.35), 0 12px 30px -12px rgba(20, 30, 60, 0.18);
     --shadow-panel: 0 18px 50px -24px rgba(20, 30, 60, 0.28);
     --shadow-glass: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--line), 0 8px 24px -12px var(--glass-shade);
     --zoom-backdrop: rgba(251, 251, 253, 0.82);
@@ -63,9 +63,8 @@
     --button-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
     /* The theme toggle's half-filled disc (chrome.css): the left half in the text colour. */
     --glyph-half-fill: inset 5.5px 0 currentColor;
-    /* Design v4: English titles are the sans, heavy and tight (identity.css);
-     the serif stays only in Chinese titles' own face below. */
-    --display-face: Fraunces, Georgia, var(--sans);
+    /* Titles and headings: the one sans, bold and tight (identity.css). */
+    --display-face: var(--sans);
     /* A capture stands on the page in both themes: no grey pad around a light
      window on the dark canvas (its hairline keeps the edge). Never dimmed. */
     --stage: transparent;
@@ -105,25 +104,38 @@
      40-64 the page title (Chinese and phone values below) */
     --text-meta: 13px;
     --text-small: 15px;
-    --text-body: 18px;
-    --text-lede: clamp(1.1875rem, 1.8vw, 1.3125rem);
-    --text-heading-s: 21px;
-    --text-heading: clamp(1.625rem, 2.4vw, 2rem);
-    --title-display: clamp(2.5rem, 5.2vw, 4rem);
+    --text-body: 17px;
+    --text-lede: clamp(1.1875rem, 2.2vw, 1.5rem);
+    --text-heading-s: 19px;
+    --text-heading: clamp(2.125rem, 5vw, 3.5rem);
+    --title-display: clamp(2.75rem, 7.4vw, 5.25rem);
     /* A product page's title is a sentence, not a slogan: one step smaller. */
-    --title-product: clamp(2.25rem, 4.4vw, 3.5rem);
+    --title-product: clamp(2.5rem, 5.6vw, 4.5rem);
     /* Reading measure: about 66 Latin characters (34em for Chinese, locale.css). */
     --measure: 66ch;
 
     /* Geometry */
     --radius-shot: 12px;
     /* Two radii: media 12 and the pill. */
-    --radius-media: 12px;
-    --radius-window: 12px;
+    --radius-media: 14px;
+    --radius-window: 14px;
     --radius-pill: 999px;
+    /* Omni's two rounded surfaces: a card (features, panels) and a tile (the
+     coloured ground a capture stands on). */
+    --radius-card: 22px;
+    --radius-tile: 28px;
+    /* The stats band's figures. */
+    --text-stat: clamp(2.5rem, 5.4vw, 4rem);
+    /* The soft colour wash behind a hero: three blurred lights. A product page
+     tints the first with its own colour. */
+    --wash-1: rgba(0, 113, 227, 0.1);
+    --wash-2: rgba(255, 55, 95, 0.07);
+    --wash-3: rgba(52, 199, 89, 0.07);
     --shell: 1120px;
     --narrow: 680px;
     --gutter: 22px;
+    /* A gallery's first card lines up with the shell's edge. */
+    --gallery-inset: max(var(--gutter), calc((100vw - var(--shell)) / 2));
     --section-y: 128px;
     /* A section heading sits closer to its content than to the section above. */
 
@@ -132,18 +144,18 @@
     --col-gap: 32px;
     /* A surface above the paper: panels that hold a list (the index, the spec
      sheet, the FAQ) and Home's picks. */
-    --surface: #fbfaf7;
-    --row-hover: rgba(70, 50, 20, 0.04);
+    --surface: #ffffff;
+    --row-hover: rgba(0, 0, 0, 0.03);
     /* Editorial surfaces (design v7): a sunk panel (terminal lines, the first-open
      guide), and the hairline tag for platforms, kinds and
      versions. Hairlines, not shadows, draw every edge. */
-    --surface-sunk: #efece5;
-    --tag-bg: rgba(70, 50, 20, 0.03);
-    --tag-line: rgba(70, 50, 20, 0.14);
+    --surface-sunk: #f5f5f7;
+    --tag-bg: rgba(0, 0, 0, 0.03);
+    --tag-line: rgba(0, 0, 0, 0.12);
     /* Reading rhythm: body text at 1.7, a 66ch measure. */
     --leading-body: 1.7;
     /* Games and creative apps sit on a warmer paper (body[data-line="games"]). */
-    --paper-warm: #f3eee3;
+    --paper-warm: #fbfbfd;
     --selection: rgba(0, 113, 227, 0.16);
 
     /* Product colors, sampled from each product's icon (npm run assets:icons
@@ -194,7 +206,7 @@
   /* The page title's one size step, per language and screen: Chinese titles
    run taller and narrower (nine characters fit a phone line). */
   html:lang(zh) {
-    --title-display: clamp(2.25rem, 5vw, 4.25rem);
+    --title-display: clamp(2.5rem, 6.4vw, 4.75rem);
   }
 
   @media (max-width: 640px) {
@@ -215,10 +227,7 @@
     --sans:
       -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Latin", "Segoe UI", "Helvetica Neue",
       "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
-    /* Chinese display lines: Noto Serif SC (cut to the headings' characters)
-     with Fraunces for their Latin letters, so one heading has one voice and
-     reads as kin to the English pages. */
-    --display-face: "Fraunces Latin", "Noto Serif SC Display", var(--sans);
+    --display-face: var(--sans);
   }
 
   /* Dark theme. Applied when the OS prefers dark (unless the visitor forced
@@ -226,8 +235,8 @@
    selectors share the same declarations; keep them in sync. */
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --paper: #0f0e0c;
-    --paper-raised: #1a1815;
+    --paper: #000000;
+    --paper-raised: #0d0d0f;
     --tint-agent-radar: #42d684;
     --ink-agent-radar: #28b868;
     --tint-bilingual: #e98c30;
@@ -266,27 +275,27 @@
     --ink-world-clock: #18a858;
     --tint-world-machine: #e8a858;
     --ink-world-machine: #e8a858;
-    --ink: #ede9e1;
-    --muted: #a19b90;
-    --ink-2: #d2ccc1;
-    --label: #a19b90;
-    --faint: #736d63;
+    --ink: #f5f5f7;
+    --muted: #a1a1a6;
+    --ink-2: #c7c7cc;
+    --label: #a1a1a6;
+    --faint: #6e6e73;
     --on-ink: #ffffff;
-    --line: rgba(255, 240, 215, 0.1);
-    --soft-line: rgba(255, 240, 215, 0.15);
+    --line: rgba(255, 255, 255, 0.1);
+    --soft-line: rgba(255, 255, 255, 0.15);
     --code-bg: rgba(255, 255, 255, 0.06);
     --accent: #0a84ff;
-    --link: #ede9e1;
-    --accent-fill: #ede9e1;
-    --accent-fill-hover: #ffffff;
-    --on-accent: #0f0e0c;
+    --link: #2997ff;
+    --accent-fill: #0071e3;
+    --accent-fill-hover: #0077ed;
+    --on-accent: #ffffff;
     --link-underline: rgba(255, 255, 255, 0.36);
-    --glass: rgba(15, 14, 12, 0.84);
+    --glass: rgba(30, 30, 32, 0.6);
     --glass-strong: rgba(28, 28, 30, 0.94);
     --menu-bg: rgba(28, 28, 30, 0.98);
     --glass-edge: rgba(255, 255, 255, 0.14);
     --glass-shade: rgba(0, 0, 0, 0.4);
-    --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
+    --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
     --plate-edge: rgba(255, 255, 255, 0.14);
@@ -297,20 +306,23 @@
     --data-caution: #e3a44f;
     --data-caution-ink: #edb472;
     --data-alert: #ff7b72;
-    --surface: #171512;
+    --surface: #1c1c1e;
     --row-hover: rgba(255, 255, 255, 0.04);
-    --surface-sunk: #141210;
-    --paper-warm: #130f0a;
+    --surface-sunk: #0d0d0f;
+    --paper-warm: #000000;
     --selection: rgba(10, 132, 255, 0.3);
+    --wash-1: rgba(10, 132, 255, 0.16);
+    --wash-2: rgba(255, 55, 95, 0.1);
+    --wash-3: rgba(48, 209, 88, 0.08);
     --tag-bg: rgba(255, 255, 255, 0.03);
-    --tag-line: rgba(255, 240, 215, 0.13);
+    --tag-line: rgba(255, 255, 255, 0.13);
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
-      --paper: #0f0e0c;
-      --paper-raised: #1a1815;
+      --paper: #000000;
+      --paper-raised: #0d0d0f;
       --tint-agent-radar: #42d684;
       --ink-agent-radar: #28b868;
       --tint-bilingual: #e98c30;
@@ -349,27 +361,27 @@
       --ink-world-clock: #18a858;
       --tint-world-machine: #e8a858;
       --ink-world-machine: #e8a858;
-      --ink: #ede9e1;
-      --muted: #a19b90;
-      --ink-2: #d2ccc1;
-      --label: #a19b90;
-      --faint: #736d63;
+      --ink: #f5f5f7;
+      --muted: #a1a1a6;
+      --ink-2: #c7c7cc;
+      --label: #a1a1a6;
+      --faint: #6e6e73;
       --on-ink: #ffffff;
-      --line: rgba(255, 240, 215, 0.1);
-      --soft-line: rgba(255, 240, 215, 0.15);
+      --line: rgba(255, 255, 255, 0.1);
+      --soft-line: rgba(255, 255, 255, 0.15);
       --code-bg: rgba(255, 255, 255, 0.06);
       --accent: #0a84ff;
-      --link: #ede9e1;
-      --accent-fill: #ede9e1;
-      --accent-fill-hover: #ffffff;
-      --on-accent: #0f0e0c;
+      --link: #2997ff;
+      --accent-fill: #0071e3;
+      --accent-fill-hover: #0077ed;
+      --on-accent: #ffffff;
       --link-underline: rgba(255, 255, 255, 0.36);
-      --glass: rgba(15, 14, 12, 0.84);
+      --glass: rgba(30, 30, 32, 0.6);
       --glass-strong: rgba(28, 28, 30, 0.94);
       --menu-bg: rgba(28, 28, 30, 0.98);
       --glass-edge: rgba(255, 255, 255, 0.14);
       --glass-shade: rgba(0, 0, 0, 0.4);
-      --shadow-shot: 0 24px 56px -28px rgba(0, 0, 0, 0.8);
+      --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
       --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
       --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
       --plate-edge: rgba(255, 255, 255, 0.14);
@@ -380,13 +392,19 @@
       --data-caution: #e3a44f;
       --data-caution-ink: #edb472;
       --data-alert: #ff7b72;
-      --surface: #171512;
+      --surface: #1c1c1e;
       --row-hover: rgba(255, 255, 255, 0.04);
-      --surface-sunk: #141210;
-      --paper-warm: #130f0a;
+      --surface-sunk: #0d0d0f;
+      --paper-warm: #000000;
       --selection: rgba(10, 132, 255, 0.3);
+      --wash-1: rgba(10, 132, 255, 0.16);
+      --wash-2: rgba(255, 55, 95, 0.1);
+      --wash-3: rgba(48, 209, 88, 0.08);
+      --wash-1: rgba(10, 132, 255, 0.16);
+      --wash-2: rgba(255, 55, 95, 0.1);
+      --wash-3: rgba(48, 209, 88, 0.08);
       --tag-bg: rgba(255, 255, 255, 0.03);
-      --tag-line: rgba(255, 240, 215, 0.13);
+      --tag-line: rgba(255, 255, 255, 0.13);
     }
   }
 
@@ -472,8 +490,34 @@
 
   /* Games: the same skeleton on warmer paper, so a board reads as a table
    rather than a terminal. */
-  :root:has(body[data-line="games"]) {
-    --paper: var(--paper-warm);
+  /* A product page's first light is its own colour. */
+  body[data-product] {
+    --wash-1: color-mix(in srgb, var(--product-tint) 22%, transparent);
+  }
+
+  /* The two gradients the site draws (design v8), set here so light, dark and
+   each product's colour stay in step. They are recomputed on any element that
+   names a product, so a tile on Home takes that product's colour.
+   --wash: three soft fields behind a hero. --tile-fill: the field a capture
+   sits on. */
+  :root,
+  [data-product] {
+    --wash:
+      radial-gradient(40% 36% at 22% 42%, var(--wash-1), transparent 70%),
+      radial-gradient(38% 34% at 80% 36%, var(--wash-2), transparent 70%),
+      radial-gradient(44% 38% at 55% 78%, var(--wash-3), transparent 72%);
+    --tile-fill:
+      radial-gradient(
+        120% 90% at 15% 0%,
+        color-mix(in srgb, var(--product-tint, var(--accent-fill)) 26%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        110% 90% at 100% 100%,
+        color-mix(in srgb, var(--product-tint, var(--accent-fill)) 14%, transparent),
+        transparent 62%
+      ),
+      var(--paper-raised);
   }
 
   /* Phones: sections sit closer together. */

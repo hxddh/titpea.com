@@ -80,6 +80,17 @@ type Ui = {
   released: string;
   /** Labels of the product page's spec sheet. */
   spec: { label: string; network: string; offline: string; source: string };
+  /** The hero's band of figures (design v8). Each figure is a fact from the
+   catalog; these are only the words under it. */
+  stats: {
+    platforms: string;
+    license: string;
+    networkNone: string;
+    networkOnRequest: { figure: string; caption: string };
+    networkAutomatic: { figure: string; caption: string };
+    version: string;
+  };
+  gallery: { label: string; previous: string; next: string };
   /** The release a capture shows: "Captured at v15.0.0". Said once under the
    hero, and under a showcase only when its release differs. `{version}` is filled in. */
   capturedAt: string;
@@ -175,6 +186,15 @@ export const ui: Record<Locale, Ui> = {
       offline: "No network",
       source: "Source",
     },
+    stats: {
+      platforms: "platforms",
+      license: "open-source licence",
+      networkNone: "network connections",
+      networkOnRequest: { figure: "Opt-in", caption: "online only when you ask" },
+      networkAutomatic: { figure: "Online", caption: "connects on its own, see Privacy" },
+      version: "latest release",
+    },
+    gallery: { label: "Screenshots", previous: "Previous", next: "Next" },
     capturedAt: "Captured at {version}",
     wholeCapture: "Whole window",
     pauseVideo: "Pause",
@@ -289,6 +309,15 @@ export const ui: Record<Locale, Ui> = {
     copied: "已复制",
     released: "（{date}）",
     spec: { label: "规格", network: "联网", offline: "不联网", source: "源码" },
+    stats: {
+      platforms: "个平台",
+      license: "开源许可",
+      networkNone: "次联网",
+      networkOnRequest: { figure: "按需", caption: "只在你要求时联网" },
+      networkAutomatic: { figure: "联网", caption: "会自动联网，详见隐私页" },
+      version: "最新版本",
+    },
+    gallery: { label: "截图", previous: "上一张", next: "下一张" },
     capturedAt: "截自 {version}",
     wholeCapture: "看整窗截图",
     pauseVideo: "暂停",
