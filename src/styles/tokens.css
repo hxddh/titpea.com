@@ -45,6 +45,10 @@
     /* Shadows */
     /* Two depths only: a photograph resting on the page, and a panel above it. */
     --shadow-shot: 0 40px 90px -30px rgba(20, 30, 60, 0.35), 0 12px 30px -12px rgba(20, 30, 60, 0.18);
+    /* A window on a tile: lifted a little, its edge drawn, no long drop. */
+    --shadow-tile-shot:
+      0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(20, 30, 60, 0.06), 0 18px 40px -16px rgba(20, 30, 60, 0.28);
+    --tile-edge: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
     --shadow-panel: 0 18px 50px -24px rgba(20, 30, 60, 0.28);
     --shadow-glass: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--line), 0 8px 24px -12px var(--glass-shade);
     --zoom-backdrop: rgba(251, 251, 253, 0.82);
@@ -296,6 +300,8 @@
     --glass-edge: rgba(255, 255, 255, 0.14);
     --glass-shade: rgba(0, 0, 0, 0.4);
     --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+    --shadow-tile-shot: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 18px 40px -16px rgba(0, 0, 0, 0.7);
+    --tile-edge: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
     --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
     --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
     --plate-edge: rgba(255, 255, 255, 0.14);
@@ -382,6 +388,8 @@
       --glass-edge: rgba(255, 255, 255, 0.14);
       --glass-shade: rgba(0, 0, 0, 0.4);
       --shadow-shot: 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+      --shadow-tile-shot: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 18px 40px -16px rgba(0, 0, 0, 0.7);
+      --tile-edge: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
       --shadow-panel: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
       --icon-ring: 0 0 0 1px rgba(255, 255, 255, 0.18);
       --plate-edge: rgba(255, 255, 255, 0.14);
@@ -506,18 +514,15 @@
       radial-gradient(40% 36% at 22% 42%, var(--wash-1), transparent 70%),
       radial-gradient(38% 34% at 80% 36%, var(--wash-2), transparent 70%),
       radial-gradient(44% 38% at 55% 78%, var(--wash-3), transparent 72%);
+    /* One even field of the product's colour, lighter at the top left:
+     a tint of the paper, never a fade to grey. */
     --tile-fill:
       radial-gradient(
-        120% 90% at 15% 0%,
-        color-mix(in srgb, var(--product-tint, var(--accent-fill)) 26%, transparent),
-        transparent 60%
+        120% 100% at 0% 0%,
+        color-mix(in srgb, var(--product-tint, var(--accent-fill)) 22%, transparent),
+        transparent 65%
       ),
-      radial-gradient(
-        110% 90% at 100% 100%,
-        color-mix(in srgb, var(--product-tint, var(--accent-fill)) 14%, transparent),
-        transparent 62%
-      ),
-      var(--paper-raised);
+      color-mix(in srgb, var(--product-tint, var(--accent-fill)) 9%, var(--paper-raised));
   }
 
   /* Phones: sections sit closer together. */

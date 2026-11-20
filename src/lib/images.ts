@@ -22,3 +22,8 @@ export const galleryShotSizes = "(max-width: 1024px) 80vw, 820px";
 
 /** A tall hero capture (a side panel) renders at most 380px wide (product.css). */
 export const portraitShotSizes = "380px";
+
+/** A gallery tile is 16:10.5 with 5% margins, so its opening is about 1.62:1.
+ * A capture narrower than that fills the opening's height, not its width. */
+export const tileFit = (width: number, height: number): "height" | undefined =>
+  width / height < 1.62 ? "height" : undefined;

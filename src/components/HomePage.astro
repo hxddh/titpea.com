@@ -2,6 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import "../styles/home.css";
 import { headingText } from "../lib/heading";
+import { tileFit } from "../lib/images";
 import type { HomePageModel } from "../lib/pages";
 
 interface Props {
@@ -42,7 +43,7 @@ const { model } = Astro.props;
         {model.featured.items.map((item, index) => (
           <li class="g-card pick" data-product={item.slug}>
             <a href={item.href}>
-              <span class="g-tile pick-tile">
+              <span class="g-tile pick-tile" data-fit={tileFit(item.image.width, item.image.height)}>
                 <span class="shot">
                   <img
                     src={item.image.src}

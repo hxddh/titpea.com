@@ -180,10 +180,14 @@
   }
 
   /* A detail of a capture keeps its own pixels inside the tile. */
-  .g-tile[data-detail] .crop {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
+  /* A detail keeps its own pixels, framed like a window inside the tile. */
+  .g-tile .crop {
+    border-radius: var(--radius-window);
+    box-shadow: var(--shadow-tile-shot);
+  }
+
+  .g-tile[data-fit="height"] .crop {
+    aspect-ratio: 16 / 10;
   }
 
   /* The object keeps its product scale (820px), centred on its paper. */

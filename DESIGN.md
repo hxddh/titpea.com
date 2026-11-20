@@ -84,7 +84,7 @@ Each opens on its title on the washes. **About**: `{count} tools, made by one pe
 
 - Tokens only, in `tokens.css`: `--paper` (#fbfbfd; dark #000), `--paper-raised` (cards, tiles, panels), `--surface` (menus), `--ink`, `--ink-2`, `--muted`, `--faint`, `--line`, `--link` (#0066cc), `--accent-fill` (#0071e3, the primary action), `--accent` (focus rings), `--wash-1..3`, product `--tint-*` / `--ink-*`.
 - Gradients only through `--wash` and `--tile-fill` (check fails on a gradient in a page stylesheet); shadows only through tokens. Radii: `--radius-tile` 28px (tiles), `--radius-card` 22px (cards, panels), `--radius-window` 14px (captures), pills for buttons and capsules.
-- Captures are never cropped inside a frame of the site's making, padded with chrome or dimmed; the tile is a field around the whole window. Translucency (`--glass`, `--glass-blur`) only on the two capsules.
+- **Tiles** (hero, gallery, Home's picks) follow one rule: an even field of the product's colour (`--tile-fill`, never a fade to grey) with a faint edge (`--tile-edge`), 5% margins on every side, and the whole window centred in it, filling the opening's width or, when narrower (`tileFit`), its height, under `--shadow-tile-shot`. A detail keeps its own pixels, framed the same way. Captures are never cropped by the tile, padded with chrome or dimmed. Translucency (`--glass`, `--glass-blur`) only on the two capsules.
 - No glow, floating badges, emoji or decorative icons on headings. Dark mode is first-class.
 
 ## Interaction
