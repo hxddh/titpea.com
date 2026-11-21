@@ -27,16 +27,16 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v26.0.0",
-    "published": "2026-11-19",
+    "version": "v27.0.0",
+    "published": "2026-11-20",
     "history": [
+      { "version": "v27.0.0", "published": "2026-11-20", "title": "sonde 27.0.0" },
       { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" },
       { "version": "v25.0.0", "published": "2026-11-19", "title": "sonde 25.0.0" },
       { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" },
-      { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" },
-      { "version": "v24.0.0", "published": "2026-11-15", "title": "sonde 24.0.0" }
+      { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" }
     ],
-    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v26.0.0" }
+    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v27.0.0" }
   },
   "storageops": {
     "pypi": "storageops",
@@ -66,16 +66,16 @@
   "lenslet": {
     "repo": "hxddh/lenslet",
     "tagPrefix": "lenslet-",
-    "version": "v8.0.0",
-    "published": "2026-11-19",
+    "version": "v11.0.0",
+    "published": "2026-11-20",
     "history": [
+      { "version": "v11.0.0", "published": "2026-11-20", "title": "Lenslet 11.0.0" },
+      { "version": "v10.0.0", "published": "2026-11-20", "title": "Lenslet 10.0.0" },
+      { "version": "v9.0.0", "published": "2026-11-20", "title": "Lenslet 9.0.0" },
       { "version": "v8.0.0", "published": "2026-11-19", "title": "Lenslet 8.0.0" },
-      { "version": "v7.0.0", "published": "2026-11-19", "title": "Lenslet 7.0.0" },
-      { "version": "v6.0.0", "published": "2026-11-18", "title": "Lenslet 6.0.0" },
-      { "version": "v5.0.0", "published": "2026-11-18", "title": "Lenslet 5.0.0" },
-      { "version": "v4.1.0", "published": "2026-11-18", "title": "Lenslet 4.1.0" }
+      { "version": "v7.0.0", "published": "2026-11-19", "title": "Lenslet 7.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v8.0.0" }
+    "notes": { "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v11.0.0" }
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
@@ -92,16 +92,16 @@
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v35.0.0",
-    "published": "2026-11-14",
+    "version": "v36.0.0",
+    "published": "2026-11-20",
     "history": [
+      { "version": "v36.0.0", "published": "2026-11-20", "title": "Pulse 36.0.0" },
       { "version": "v35.0.0", "published": "2026-11-14", "title": "Pulse 35.0.0" },
       { "version": "v34.0.0", "published": "2026-11-14", "title": "Pulse 34.0.0" },
       { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
-      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" },
-      { "version": "v31.0.0", "published": "2026-10-17", "title": "Pulse 31.0.0" }
+      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/Pulse/releases/tag/v35.0.0" }
+    "notes": { "url": "https://github.com/hxddh/Pulse/releases/tag/v36.0.0" }
   },
   "readout": {
     "repo": "hxddh/readout",
