@@ -27,16 +27,16 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v27.0.0",
-    "published": "2026-11-20",
+    "version": "v28.0.0",
+    "published": "2026-11-21",
     "history": [
+      { "version": "v28.0.0", "published": "2026-11-21", "title": "sonde 28.0.0" },
       { "version": "v27.0.0", "published": "2026-11-20", "title": "sonde 27.0.0" },
       { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" },
       { "version": "v25.0.0", "published": "2026-11-19", "title": "sonde 25.0.0" },
-      { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" },
-      { "version": "v24.0.1", "published": "2026-11-16", "title": "sonde 24.0.1" }
+      { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" }
     ],
-    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v27.0.0" }
+    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v28.0.0" }
   },
   "storageops": {
     "pypi": "storageops",
@@ -79,29 +79,29 @@
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v25.0.0",
-    "published": "2026-11-19",
+    "version": "v27.0.0",
+    "published": "2026-11-21",
     "history": [
+      { "version": "v27.0.0", "published": "2026-11-21", "title": "v27.0.0" },
+      { "version": "v26.0.0", "published": "2026-11-21", "title": "v26.0.0" },
       { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
       { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
-      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" },
-      { "version": "v21.1.2", "published": "2026-10-15", "title": "v21.1.2" },
-      { "version": "v21.1.1", "published": "2026-10-15", "title": "v21.1.1" }
+      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/pagewise/releases/tag/v25.0.0" }
+    "notes": { "url": "https://github.com/hxddh/pagewise/releases/tag/v27.0.0" }
   },
   "pulse": {
     "repo": "hxddh/Pulse",
-    "version": "v36.0.0",
-    "published": "2026-11-20",
+    "version": "v40.0.0",
+    "published": "2026-11-21",
     "history": [
-      { "version": "v36.0.0", "published": "2026-11-20", "title": "Pulse 36.0.0" },
-      { "version": "v35.0.0", "published": "2026-11-14", "title": "Pulse 35.0.0" },
-      { "version": "v34.0.0", "published": "2026-11-14", "title": "Pulse 34.0.0" },
-      { "version": "v33.0.0", "published": "2026-10-21", "title": "Pulse 33.0.0" },
-      { "version": "v32.0.0", "published": "2026-10-18", "title": "Pulse 32.0.0" }
+      { "version": "v40.0.0", "published": "2026-11-21", "title": "Pulse 40.0.0" },
+      { "version": "v39.0.0", "published": "2026-11-21", "title": "Pulse 39.0.0" },
+      { "version": "v38.0.0", "published": "2026-11-21", "title": "Pulse 38.0.0" },
+      { "version": "v37.0.0", "published": "2026-11-21", "title": "Pulse 37.0.0" },
+      { "version": "v36.0.0", "published": "2026-11-20", "title": "Pulse 36.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/Pulse/releases/tag/v36.0.0" }
+    "notes": { "url": "https://github.com/hxddh/Pulse/releases/tag/v40.0.0" }
   },
   "readout": {
     "repo": "hxddh/readout",
