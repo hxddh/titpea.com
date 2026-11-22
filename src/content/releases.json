@@ -14,29 +14,29 @@
   },
   "storage-agent-workbench": {
     "repo": "hxddh/storage-agent-workbench",
-    "version": "v42.0.0",
-    "published": "2026-11-14",
+    "version": "v43.0.0",
+    "published": "2026-11-22",
     "history": [
+      { "version": "v43.0.0", "published": "2026-11-22", "title": "v43.0.0" },
       { "version": "v42.0.0", "published": "2026-11-14", "title": "v42.0.0" },
       { "version": "v41.0.0", "published": "2026-11-14", "title": "v41.0.0" },
       { "version": "v40.0.0", "published": "2026-10-30", "title": "v40.0.0" },
-      { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" },
-      { "version": "v38.0.0", "published": "2026-10-29", "title": "v38.0.0" }
+      { "version": "v39.0.0", "published": "2026-10-29", "title": "v39.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v42.0.0" }
+    "notes": { "url": "https://github.com/hxddh/storage-agent-workbench/releases/tag/v43.0.0" }
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v28.0.0",
-    "published": "2026-11-21",
+    "version": "v30.0.0",
+    "published": "2026-11-22",
     "history": [
+      { "version": "v30.0.0", "published": "2026-11-22", "title": "sonde 30.0.0" },
+      { "version": "v29.0.0", "published": "2026-11-22", "title": "sonde 29.0.0" },
       { "version": "v28.0.0", "published": "2026-11-21", "title": "sonde 28.0.0" },
       { "version": "v27.0.0", "published": "2026-11-20", "title": "sonde 27.0.0" },
-      { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" },
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "sonde 25.0.0" },
-      { "version": "v24.0.2", "published": "2026-11-16", "title": "sonde 24.0.2" }
+      { "version": "v26.0.0", "published": "2026-11-19", "title": "sonde 26.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v28.0.0" }
+    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v30.0.0" }
   },
   "storageops": {
     "pypi": "storageops",
@@ -66,29 +66,29 @@
   "lenslet": {
     "repo": "hxddh/lenslet",
     "tagPrefix": "lenslet-",
-    "version": "v11.0.0",
-    "published": "2026-11-20",
+    "version": "v13.0.0",
+    "published": "2026-11-22",
     "history": [
+      { "version": "v13.0.0", "published": "2026-11-22", "title": "Lenslet 13.0.0" },
+      { "version": "v12.0.0", "published": "2026-11-22", "title": "Lenslet 12.0.0" },
       { "version": "v11.0.0", "published": "2026-11-20", "title": "Lenslet 11.0.0" },
       { "version": "v10.0.0", "published": "2026-11-20", "title": "Lenslet 10.0.0" },
-      { "version": "v9.0.0", "published": "2026-11-20", "title": "Lenslet 9.0.0" },
-      { "version": "v8.0.0", "published": "2026-11-19", "title": "Lenslet 8.0.0" },
-      { "version": "v7.0.0", "published": "2026-11-19", "title": "Lenslet 7.0.0" }
+      { "version": "v9.0.0", "published": "2026-11-20", "title": "Lenslet 9.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v11.0.0" }
+    "notes": { "url": "https://github.com/hxddh/lenslet/releases/tag/lenslet-v13.0.0" }
   },
   "pagewise": {
     "repo": "hxddh/pagewise",
-    "version": "v27.0.0",
-    "published": "2026-11-21",
+    "version": "v29.0.0",
+    "published": "2026-11-22",
     "history": [
+      { "version": "v29.0.0", "published": "2026-11-22", "title": "v29.0.0" },
+      { "version": "v28.0.0", "published": "2026-11-22", "title": "v28.0.0" },
       { "version": "v27.0.0", "published": "2026-11-21", "title": "v27.0.0" },
       { "version": "v26.0.0", "published": "2026-11-21", "title": "v26.0.0" },
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
-      { "version": "v24.0.0", "published": "2026-10-18", "title": "v24.0.0" },
-      { "version": "v23.0.0", "published": "2026-10-15", "title": "v23.0.0" }
+      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/pagewise/releases/tag/v27.0.0" }
+    "notes": { "url": "https://github.com/hxddh/pagewise/releases/tag/v29.0.0" }
   },
   "pulse": {
     "repo": "hxddh/Pulse",
@@ -157,16 +157,16 @@
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v17.0.0",
-    "published": "2026-11-19",
+    "version": "v18.0.0",
+    "published": "2026-11-22",
     "history": [
+      { "version": "v18.0.0", "published": "2026-11-22", "title": "Goban Studio v18.0.0" },
       { "version": "v17.0.0", "published": "2026-11-19", "title": "Goban Studio v17.0.0" },
       { "version": "v16.0.1", "published": "2026-11-16", "title": "Goban Studio v16.0.1" },
       { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
-      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" },
-      { "version": "v14.0.0", "published": "2026-11-11", "title": "Goban Studio v14.0.0" }
+      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/goban-studio/releases/tag/v17.0.0" }
+    "notes": { "url": "https://github.com/hxddh/goban-studio/releases/tag/v18.0.0" }
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
