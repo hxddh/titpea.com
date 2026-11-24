@@ -36,14 +36,15 @@ export default defineProduct({
     privacy: {
       network: "onRequest",
       networkNote: "When you ask a question, extracted text goes to the model you configure, or Ollama.",
-      stays: "Files, chats, marks and scan text on your machine; API keys in the system keychain; no telemetry.",
+      stays:
+        "Files, chats, marks and scan text on your machine; API keys in the system credential store or an owner-only local file; no telemetry.",
     },
     releaseHighlights: {
-      version: "v25.0.0",
+      version: "v30.0.0",
       items: [
-        "With the side panel closed, or in Zen, ask from a small bar; answers appear as cards in the page margin beside the passages they cite.",
-        "Text on scanned pages can be selected, highlighted and asked about, as on a digital PDF; dragging a box offers Ask about this or Mark.",
-        "Numbers written as −12.5%, (12.5%) or $1.2M are now checked correctly against the page.",
+        "When the open PDF is rewritten on disk, for example by a LaTeX or Typst recompile, PageWise reloads it in place and keeps your page, scroll position and zoom; during an answer it waits until the answer finishes.",
+        "Resting the pointer on a link within the document shows a card with the target page before you jump, and Alt+← takes you back to the exact spot you left.",
+        "Numbers in a sentence or table row that cites several passages are now checked against all of those passages together, not one citation at a time.",
       ],
     },
     visual: {
@@ -111,7 +112,7 @@ export default defineProduct({
               "Or use Ollama on your machine.",
               "A question typed before you connect a model is kept and sent once you do.",
             ],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
           {
             title: "Can it miss something?",
@@ -120,17 +121,17 @@ export default defineProduct({
               "In the background, PageWise reads at most 50 pages that have no text.",
               "The rest are read when needed, or all at once with “Read pages with no text”.",
             ],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
           {
             title: "Can a found citation still be wrong?",
-            body: "Yes. PageWise checks the quoted words and the numbers in the sentence; other mistakes, such as who owes what, are checked only when you ask your model to review the passages.",
+            body: "Yes. PageWise checks the quoted words, whether they are struck out, and the numbers and a few explicit opposites in the sentence, such as “shall not” against “may”; other mistakes are checked only when you ask your model to review the passages.",
             steps: [
               "Ask for a review from More, under the answer; it covers up to eight citations per call, and the model can misread too.",
               "A review that disagrees lowers the chip to not found; one that agrees never makes it verified.",
               "A number the model rounded may show “check the page” even when the answer is right.",
             ],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
         ],
       },
@@ -154,14 +155,14 @@ export default defineProduct({
     privacy: {
       network: "onRequest",
       networkNote: "提问时，提取的文本发给你配置的模型或本机 Ollama。",
-      stays: "文件、会话、批注和识别出的文字都在本机；API 密钥在系统钥匙串；没有遥测。",
+      stays: "文件、会话、批注和识别出的文字都在本机；API 密钥存在系统凭据库或只有本人可读的本地文件里；没有遥测。",
     },
     releaseHighlights: {
-      version: "v25.0.0",
+      version: "v30.0.0",
       items: [
-        "关闭侧栏或进入 Zen 时，可以在浮动的小输入条里提问，回答以卡片形式出现在页边，挨着它引用的段落。",
-        "扫描页上的文字也能选中、高亮和提问，和普通 PDF 一样；框选一块区域后可以直接提问或做批注。",
-        "−12.5%、(12.5%)、$1.2M 这类写法的数字，现在能和原页正确核对。",
+        "打开的 PDF 在磁盘上被改写后（比如 LaTeX 或 Typst 重新编译），PageWise 会就地重新载入，停在原来的页、滚动位置和缩放；正在生成回答时，会等回答结束再载入。",
+        "鼠标停在文档内部的链接上，会先弹出卡片显示目标页；跳过去之后按 Alt+← 能回到刚才的确切位置。",
+        "一句话或表格的一行引用了多段原文时，句中的数字会对照这几段原文一起核对，不再逐条引用分开核对。",
       ],
     },
     visual: {
@@ -217,23 +218,23 @@ export default defineProduct({
               "也可以用本机的 Ollama。",
               "连接模型之前输入的问题会保留，连接后自动发出。",
             ],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
           {
             title: "会漏掉内容吗？",
             body: "可能。每次回答的读取受 token 和步数预算限制，搜索未命中不等于文档没有相关内容。",
             steps: ["后台最多读取 50 个没有文字的页。", "其余的按需读取，也可以用“读取没有文字的页”一次读完。"],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
           {
             title: "找到原文的引用还会错吗？",
-            body: "会。PageWise 核对引文原话和句中的数字；其他错误（比如谁承担什么义务）只有在你让模型复核时才检查。",
+            body: "会。PageWise 核对引文原话、原话是否被删除线划掉，以及句中的数字和少数明确相反的说法（比如“不得”和“可以”）；其他错误只有在你让模型复核时才检查。",
             steps: [
               "复核从回答下的“更多操作”发起，每次调用最多复核八条引用，模型也可能读错。",
               "复核认为原文说法不同时，引用降为“未找到”；复核认同也不会把引用升为“已核对”。",
               "模型把数字取整或换算时，即使回答正确也可能显示“请看原页”。",
             ],
-            asOf: "v25.0.0",
+            asOf: "v30.0.0",
           },
         ],
       },

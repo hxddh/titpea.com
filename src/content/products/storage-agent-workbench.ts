@@ -16,11 +16,11 @@ export default defineProduct({
   en: {
     title: "Storage Agent",
     description:
-      "A local, read-only desktop agent for S3 storage and the AWS account around it: ask in plain words; it reads, and never writes to your storage.",
+      "A local desktop agent for S3 storage and the AWS account around it: ask in plain words; it reads, and changes a bucket setting only when you approve.",
     eyebrow: "Object storage agent",
-    headline: "Find S3 problems with an agent that only reads.",
-    lead: "Ask about your S3 storage in plain words. The agent reads what the services return and never changes anything; fixes are yours to run.",
-    summary: "A read-only agent for S3 and the account around it; it writes fixes, you run them.",
+    headline: "Find S3 problems; nothing changes until you approve.",
+    lead: "Ask about your S3 storage in plain words. The agent reads what the services return; it changes a bucket setting only when you approve, and other fixes are yours to run.",
+    summary: "An agent for S3 and the account around it; it reads, and a change runs only when you approve it.",
     primaryCta: {
       label: "Download",
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
@@ -32,17 +32,18 @@ export default defineProduct({
     privacy: {
       network: "automatic",
       networkNote:
-        "Requests go to the model and storage endpoints you configure; packaged builds check GitHub Releases for updates.",
+        "Requests go to the model and storage endpoints you configure, and to a public host the agent probes; packaged builds check GitHub Releases for updates.",
       stays:
-        "Keys sealed in the system keychain, or an encrypted local file; tasks, datasets and memory in SQLite files on this machine; no telemetry.",
+        "Keys sealed in the system keychain, or an encrypted local file; tasks in SQLite and the agent's workspace of notes, datasets and scripts in a folder on this machine; no telemetry.",
     },
     stack: ["S3-compatible"],
     releaseHighlights: {
-      version: "v42.0.0",
+      version: "v43.0.0",
       items: [
-        "Account IDs, access key IDs and ARNs reach the agent unmasked, so it can tell your account from another; secrets stay redacted.",
-        "Nine bundled skills tell the agent which reads settle a question, from public access to cost; you can edit them or add your own.",
-        "Every model saved in Settings keeps its own key, and a local model runs with the context window its server reports.",
+        "The agent keeps a workspace across tasks, with notes, skills, datasets, scripts and a board pinned on Home, and you can open and edit it.",
+        "Ask it to watch something and it runs on a schedule in a task of its own, telling you through a system notification and Home's inbox.",
+        "On an account where you allow changes, it can propose one reversible bucket-configuration write that runs only when you approve, and can be rolled back.",
+        "Tasks and accounts now survive upgrades, and the memory and skills from the previous release move into the workspace on first launch.",
       ],
     },
     visual: {
@@ -62,7 +63,7 @@ export default defineProduct({
       {
         kind: "cards",
         id: "features",
-        label: "Read-only, account-wide",
+        label: "Account-wide, changes on approval",
         items: [
           {
             title: "Reads the whole account",
@@ -95,22 +96,23 @@ export default defineProduct({
               "OpenAI, Anthropic or any OpenAI-compatible endpoint works.",
               "Models already running in Ollama or LM Studio are one click away.",
             ],
-            asOf: "v42.0.0",
+            asOf: "v43.0.0",
           },
           {
             title: "Will a small local model work?",
-            body: "It runs, but how well it investigates depends on the model.",
+            body: "It runs if its window holds at least 16,384 tokens, but how well it investigates depends on the model.",
             steps: [
               "A local model gets the context window its server reports: 4,096 tokens unless loaded with more.",
+              "A window under 16,384 tokens is refused, with how to load the model with more.",
               "Results arrive in smaller pieces to fit that window.",
               "The release notes carry a smoke test, not a quality score.",
             ],
-            asOf: "v42.0.0",
+            asOf: "v43.0.0",
           },
           {
             title: "Does it watch my account?",
-            body: "No. It reads only while you ask in a task; there is no background or scheduled run.",
-            asOf: "v42.0.0",
+            body: "Only when you ask it to. A watch you ask for is a schedule that runs in its own task, and a run nobody is watching stops at its token budget; otherwise it reads only while you ask.",
+            asOf: "v43.0.0",
           },
         ],
       },
@@ -119,11 +121,11 @@ export default defineProduct({
   zh: {
     title: "Storage Agent",
     description:
-      "面向 S3 兼容存储及其所在 AWS 账号的本地只读桌面 Agent：用平常的话提问，它读取各服务返回的内容，从不写入你的存储。",
+      "面向 S3 兼容存储及其所在 AWS 账号的本地桌面 Agent：用平常的话提问，它读取各服务返回的内容；只有你批准，它才会改动存储桶设置。",
     eyebrow: "对象存储 Agent",
-    headline: "用只读的 Agent 排查 S3 问题",
-    lead: "用平常的话问你的 S3 存储。它只读取各服务返回的内容，不做任何改动；修复由你来执行。",
-    summary: "只读的 S3 排查 Agent，覆盖存储所在的整个账号；修复它来写，你来执行。",
+    headline: "排查 S3 问题，任何改动都等你批准",
+    lead: "用平常的话问你的 S3 存储。它读取各服务返回的内容，自己从不改动存储；存储桶设置要经你批准才改，其他修复由你来执行。",
+    summary: "S3 排查 Agent，覆盖存储所在的整个账号；它负责读取，改动要你批准才执行。",
     primaryCta: {
       label: "下载",
       href: "https://github.com/hxddh/storage-agent-workbench/releases",
@@ -134,16 +136,18 @@ export default defineProduct({
     },
     privacy: {
       network: "automatic",
-      networkNote: "请求发往你配置的模型和存储端点；安装版会向 GitHub Releases 检查更新。",
-      stays: "密钥封存在系统钥匙串或本机加密文件里；任务、数据集和记忆存在本机的 SQLite 文件中；不收集遥测。",
+      networkNote: "请求发往你配置的模型和存储端点，以及 Agent 探测的公网地址；安装版会向 GitHub Releases 检查更新。",
+      stays:
+        "密钥封存在系统钥匙串或本机加密文件里；任务存在本机的 SQLite 中，Agent 的笔记、数据集和脚本放在本机的工作区文件夹里；不收集遥测。",
     },
     stack: ["S3 兼容"],
     releaseHighlights: {
-      version: "v42.0.0",
+      version: "v43.0.0",
       items: [
-        "账号 ID、访问密钥 ID 和 ARN 不再遮蔽，Agent 能分清你的账号和别人的账号；密钥类内容仍会脱敏。",
-        "内置九个技能，告诉 Agent 从公开访问到成本，各类问题该看哪些读取结果；你可以修改，也可以自己添加。",
-        "设置里保存的每个模型都有自己的密钥；本地模型按其服务报告的上下文窗口运行。",
+        "Agent 有了跨任务的工作区，存放笔记、技能、数据集、脚本和固定在首页的看板，你可以打开、修改。",
+        "让它盯着什么，它就按计划定时运行，每个计划有自己的任务，有情况会发系统通知，也会进首页收件箱。",
+        "在你允许改动的账号上，它可以提议一次可回滚的存储桶配置写入，你批准后才执行，执行后也能回滚。",
+        "任务和账号从此能跨版本升级保留；上一版的记忆和技能会在首次启动时移进工作区。",
       ],
     },
     visual: {
@@ -184,22 +188,23 @@ export default defineProduct({
               "OpenAI、Anthropic 或任何兼容 OpenAI 的端点都可以。",
               "已在 Ollama 或 LM Studio 里运行的模型一键可选。",
             ],
-            asOf: "v42.0.0",
+            asOf: "v43.0.0",
           },
           {
             title: "小的本地模型够用吗？",
-            body: "能运行，但排查得好不好取决于模型。",
+            body: "窗口不少于 16,384 个 token 就能运行，但排查得好不好取决于模型。",
             steps: [
               "本地模型使用其服务报告的上下文窗口；没有加载更大的窗口时是 4,096 个 token。",
+              "窗口不足 16,384 个 token 会被拒绝，并提示如何加载更大的窗口。",
               "结果会切成更小的片段，以便放进这个窗口。",
               "发布说明只附冒烟测试结果，不代表模型质量。",
             ],
-            asOf: "v42.0.0",
+            asOf: "v43.0.0",
           },
           {
             title: "它会在后台巡检吗？",
-            body: "不会。只有你在任务里提问时它才读取，没有后台或定时运行。",
-            asOf: "v42.0.0",
+            body: "会，但只在你要求时。你让它盯着的事会变成一个计划，在自己的任务里运行；没人看着的运行用完 token 预算就停。除此之外，它只在你提问时读取。",
+            asOf: "v43.0.0",
           },
         ],
       },

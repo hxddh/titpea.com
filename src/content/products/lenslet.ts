@@ -1,15 +1,17 @@
 import { defineProduct } from "../schema";
 
-// Lenslet: runs tests against a local AWS emulator and shows, in each pull
-// request, what AWS access the code needs. Facts: the repository's README.md
-// and RELEASE_NOTES.md at lenslet-v7.0.0 (the repository used to be celagent;
-// that project stopped at v4.1.0; Lenslet's tags are lenslet-v*). Pictures:
-// the 7.0 window, captured on macOS at 2x with LENSLET_DEMO=1: the Access
-// view with the new DeleteItem selected, and the Calls view on a 404.
+// Lenslet: a desktop app with an emulated AWS account inside it and a
+// terminal pointed at it; it shows each command's calls, what AWS did because
+// of them, and the IAM policy they needed. Facts: the repository's README.md
+// and RELEASE_NOTES.md at lenslet-v16.0.0, plus RELEASE_NOTES.md at
+// lenslet-v14.0.0 (the CLI, the lock and PR comments were removed there) and
+// scripts/ and .github/workflows/release.yml for the builds. The repository
+// used to be celagent; that project stopped at v4.1.0; Lenslet's tags are
+// lenslet-v*. Picture: the repository's docs/lenslet.png at v16.0.0 (1x).
 export default defineProduct({
   slug: "lenslet",
   line: "storage",
-  type: "cli",
+  type: "desktop",
   platforms: [{ id: "macos" }, { id: "linux" }],
   license: "Apache-2.0",
   firstOpen: { macos: "once" },
@@ -23,24 +25,27 @@ export default defineProduct({
   en: {
     title: "Lenslet",
     description:
-      "Runs your tests against a local AWS emulator, records every AWS call, and shows in each pull request what AWS access your code needs.",
-    eyebrow: "AWS access review for CI",
-    headline: "Each PR shows the AWS access your code needs.",
-    lead: "Run your tests against a local AWS emulator. Lenslet records every call, explains failures, and flags new IAM permissions.",
-    summary: "Shows in each pull request what AWS access your code needs and why its AWS calls failed.",
+      "A desktop app with an emulated AWS account inside it: run your code in its terminal and see every call, what AWS did because of it, and the IAM policy it needed.",
+    eyebrow: "A local AWS account in a window",
+    headline: "See what AWS did with each command you run.",
+    lead: "It opens on an empty AWS account and a terminal pointed at it. Each command you run shows its calls, what AWS did because of them and the IAM policy it needed.",
+    summary: "A local AWS account in a window: each command’s calls, and what AWS did because of them.",
     primaryCta: { label: "Download", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "View source", href: "https://github.com/hxddh/lenslet" },
     privacy: {
       network: "onRequest",
-      networkNote: "It forwards your tests’ AWS calls only to the emulator you point it at.",
-      stays: "Run files in ~/.lenslet on this computer, owner-only; the lock file in your repository.",
+      networkNote:
+        "The AWS account is emulated inside the app; only commands you run in its terminal reach further, and the terminal leaves out your real AWS credentials.",
+      stays:
+        "The account lives in memory and is gone when you quit; an IAM policy or session export is saved only where you choose.",
     },
     releaseHighlights: {
-      version: "v7.0.0",
+      version: "v16.0.0",
       items: [
-        "Accept a new permission into `lenslet.lock`, or mark it `# test`, from the window’s Access view without rerunning your tests.",
-        "A missing table or bucket error now says why: it was created in another region, or deleted by an earlier call.",
-        "Leave out `--upstream` and Lenslet finds your emulator: a loopback `AWS_ENDPOINT_URL`, or LocalStack and Moto on their usual ports.",
+        "The calls are a tree: under an S3 upload sits the function its notification invoked, and under the function its own DynamoDB calls and why one was denied.",
+        "Each command you run in the terminal is a run, with how it ended, the first failure and why, what it changed and the IAM policy it needed.",
+        "When a function is denied by its role, Allow for role grants exactly what the call needed; Rewind puts the account back as it was before a run, and Run Again repeats it.",
+        "The Overview and Permissions pages are gone: the sidebar has two groups, Runs and Resources.",
       ],
     },
     visual: {
@@ -48,40 +53,25 @@ export default defineProduct({
       label: "Lenslet",
       frame: "wide",
       image: {
-        src: "/assets/lenslet-access-en.webp",
-        alt: "Lenslet 7’s Access view after a demo run: seventeen permissions with their resources and call counts; dynamodb:DeleteItem is marked new and selected, with its IAM statement, lock entry and triggering call in the inspector.",
-        width: 2448,
-        height: 1396,
+        src: "/assets/lenslet-app-en.webp",
+        alt: "Lenslet after python upload.py: the run succeeded with 4 calls, 2 of them made by AWS; the calls tree shows an S3 PutObject, the Lambda Invoke it triggered and that function’s DynamoDB PutItem, selected, with the inspector saying AWS made the call; the terminal is below.",
+        width: 1260,
+        height: 780,
       },
-      caption: "The Access view after a demo run; one permission is new.",
-      asOf: "v7.0.0",
+      caption: "A run in Lenslet’s window, from its repository.",
+      asOf: "v16.0.0",
     },
-    showcases: [
-      {
-        src: "/assets/lenslet-calls-en.webp",
-        width: 2448,
-        height: 1396,
-        asOf: "v7.0.0",
-        alt: "Lenslet 7’s Calls view: the run timeline above a waterfall of AWS calls; a GetObject for a missing key is selected, and the inspector explains the 404 NoSuchKey with its response body.",
-        title: "Read a failed call in full.",
-        body: "Each call has its AWS error in its row, with a likely cause such as a table created in another region; the request and response are a click away.",
-      },
-    ],
     commands: {
       title: "Get started",
-      sub: "Start your emulator first: AWS Emulator, moto and LocalStack all work. Commit both files `lenslet init` writes.",
+      sub: "Download the build for your system from the latest release; on Linux it needs GTK 4.14 or newer. Lenslet’s terminal already has `AWS_ENDPOINT_URL`, the region and placeholder keys set; for another shell, File → Copy Environment copies them.",
       items: [
         {
-          comment: "Install (Linux, macOS)",
-          command: "curl -fsSL https://github.com/hxddh/lenslet/releases/latest/download/install.sh | sh",
+          comment: "In Lenslet’s terminal: make a queue",
+          command: "aws sqs create-queue --queue-name orders",
         },
         {
-          comment: "First run: the lock and the CI workflow",
-          command: "lenslet init -- npm test",
-        },
-        {
-          comment: "Fail on access missing from the lock",
-          command: "lenslet run --check -- npm test",
+          comment: "Or run any program that uses an AWS SDK",
+          command: "pytest",
         },
       ],
     },
@@ -90,27 +80,27 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "Features",
-        label: "From test run to IAM policy",
+        label: "From a command to what AWS did",
         items: [
           {
-            title: "Calls mapped to IAM",
-            body: "Each recorded call becomes an IAM action on a resource, implied permissions included.",
+            title: "Every command is a run",
+            body: "Each command in the terminal shows how it ended, its calls, the first failure and why, what it changed and the IAM policy it needed.",
           },
           {
-            title: "A lock you commit",
-            body: "`lenslet.lock` lists your access; `lenslet policy` turns it into an IAM policy without test-only lines.",
+            title: "What AWS did because of it",
+            body: "Deliveries, triggers and your functions’ own calls hang under the call that caused them. On AWS this takes CloudTrail, X-Ray and CloudWatch together.",
           },
           {
-            title: "The diff in the PR",
-            body: "Lenslet posts one comment per pull request, and CI fails until someone accepts the new access.",
+            title: "Fix it, run it again",
+            body: "Allow for role gives a denied function’s role what it needed; Rewind puts the account back as it was before a run; Run Again repeats the command.",
           },
           {
-            title: "Blocked locally",
-            body: "`--enforce` answers calls outside the lock with AWS `AccessDenied` before they reach the emulator.",
+            title: "Every resource, opened",
+            body: "Buckets, tables, queues, topics, functions, log groups, secrets and parameters: what each holds and every call that touched it.",
           },
           {
-            title: "Your own policy",
-            body: "`--policy` checks or enforces a real IAM policy, `Condition` blocks included, instead of the lock.",
+            title: "Every call, in full",
+            body: "Request and response, the client and its retry attempt, the request ID; copy any call as an AWS CLI command, curl or boto3.",
           },
         ],
       },
@@ -121,23 +111,23 @@ export default defineProduct({
         label: "FAQ",
         items: [
           {
-            title: "Is the lock a security review?",
-            body: "No. It is the access your tests exercised, mapped by rules. Code paths the tests never reach are not in the lock.",
-            asOf: "v7.0.0",
+            title: "Is it a real AWS account?",
+            body: "No. It is AWS Emulator running inside Lenslet: account `000000000000` in `us-east-1`, kept in memory. Quitting or starting a new empty account throws it away, and request signatures are not checked, so any credentials work.",
+            asOf: "v16.0.0",
           },
           {
-            title: "Which AWS services does it read?",
-            body: "It reads resources for 20 services; the rest get `*`.",
+            title: "Which AWS services are there?",
+            body: "S3, DynamoDB, SQS, SNS, STS, IAM, KMS, Lambda, Secrets Manager, SSM Parameter Store, EventBridge, CloudWatch Logs, Step Functions and Kinesis. A call the emulator does not support is marked “not emulated”, so a gap in the emulator does not look like a bug in your code.",
+            asOf: "v16.0.0",
+          },
+          {
+            title: "Does my code need changes?",
+            body: "No, if its SDK honours `AWS_ENDPOINT_URL`: boto3, the AWS SDKs for JavaScript, Go, Rust, Java and .NET, and the AWS CLI v2 do.",
             steps: [
-              "Among the 20: S3, DynamoDB, SQS, Lambda, Bedrock, KMS, IAM and Step Functions.",
-              "Calls it cannot map are reported, not guessed.",
+              "The AWS CLI v1 sends SQS commands to AWS whatever the endpoint says; the terminal’s placeholder keys keep those away from your account.",
+              "Runs come from the terminal’s bash or zsh; calls from other shells and programs appear under All Activity.",
             ],
-            asOf: "v7.0.0",
-          },
-          {
-            title: "Does it run on Windows?",
-            body: "No. There are builds for macOS (universal) and Linux (x86_64 and aarch64), including a static CLI for Alpine and CI images.",
-            asOf: "v7.0.0",
+            asOf: "v16.0.0",
           },
         ],
       },
@@ -145,24 +135,26 @@ export default defineProduct({
   },
   zh: {
     title: "Lenslet",
-    description: "让测试跑在本地 AWS 模拟器上，记录每一次 AWS 调用，并在每个 PR 里指出代码需要哪些 AWS 权限。",
-    eyebrow: "CI 里的 AWS 权限审查",
-    headline: "每个 PR 都写明代码要哪些 AWS 权限",
-    lead: "让测试跑在本地 AWS 模拟器上。Lenslet 记录每次调用，解释失败原因，并标出新增的 IAM 权限。",
-    summary: "在每个 PR 里指出代码需要哪些 AWS 权限，以及 AWS 调用为什么失败。",
+    description:
+      "内置模拟 AWS 账户的桌面应用：在它的终端里运行代码，就能看到每次调用、AWS 因此做了什么，以及所需的 IAM 策略。",
+    eyebrow: "窗口里的本地 AWS 账户",
+    headline: "看清每条命令在 AWS 里引发了什么",
+    lead: "打开它，就有一个空的 AWS 账户，和一个已经指向它的终端。在终端里运行的每条命令，都能看到它的调用、AWS 因此做了什么，以及它需要的 IAM 策略。",
+    summary: "窗口里的本地 AWS 账户：看清每条命令的调用，以及 AWS 因此做了什么。",
     primaryCta: { label: "下载", href: "https://github.com/hxddh/lenslet/releases/latest" },
     secondaryCta: { label: "查看源码", href: "https://github.com/hxddh/lenslet" },
     privacy: {
       network: "onRequest",
-      networkNote: "它只把测试的 AWS 调用转发给你指定的模拟器。",
-      stays: "运行记录存在这台电脑的 ~/.lenslet 里，只有你能读；锁文件在你的代码仓库里。",
+      networkNote: "AWS 账户在应用内部模拟；只有你在它的终端里运行的命令会连到别处，终端里也不带你真实的 AWS 凭证。",
+      stays: "账户只在内存里，退出即清空；IAM 策略和会话导出只存到你选的位置。",
     },
     releaseHighlights: {
-      version: "v7.0.0",
+      version: "v16.0.0",
       items: [
-        "在窗口的权限视图里就能把新权限写进 `lenslet.lock`，或标成 `# test`，不用重跑测试。",
-        "找不到表或存储桶时会说明原因：它建在另一个区域，或者已被更早的调用删掉。",
-        "不写 `--upstream` 时，Lenslet 自己找模拟器：沿用 shell 里已指向本机的 AWS 地址，或探测 LocalStack 和 Moto 的常用端口。",
+        "调用现在排成一棵树：S3 上传下面是它的通知触发的函数，函数下面是它自己对 DynamoDB 的调用，以及其中一次为什么被拒。",
+        "在终端里运行的每条命令都算一次运行：怎么结束的、第一个失败及原因、改了什么，以及需要的 IAM 策略。",
+        "函数被自己的角色拒绝时，“允许角色”只补上这次调用需要的权限；“回到这次运行之前”把账户恢复原样，“再运行一次”重跑命令。",
+        "去掉了概览页和权限页：侧栏只剩“运行”和“资源”两组。",
       ],
     },
     visual: {
@@ -170,40 +162,25 @@ export default defineProduct({
       label: "Lenslet",
       frame: "wide",
       image: {
-        src: "/assets/lenslet-access-en.webp",
-        alt: "示例运行后 Lenslet 7 的权限视图：十七项权限，各自的资源和调用次数；dynamodb:DeleteItem 标为新增并选中，右侧检查器显示它的 IAM 语句、锁文件条目和触发调用。",
-        width: 2448,
-        height: 1396,
+        src: "/assets/lenslet-app-en.webp",
+        alt: "运行 python upload.py 之后的 Lenslet：这次运行成功，共 4 次调用，其中 2 次由 AWS 发起；调用树里是 S3 PutObject、它触发的 Lambda Invoke，以及那个函数的 DynamoDB PutItem（已选中），检查器写明这次调用由 AWS 发起；下方是终端。",
+        width: 1260,
+        height: 780,
       },
-      caption: "示例运行后的权限视图，其中一项是新增；界面为英文。",
-      asOf: "v7.0.0",
+      caption: "Lenslet 窗口里的一次运行，取自它的仓库；界面为英文。",
+      asOf: "v16.0.0",
     },
-    showcases: [
-      {
-        src: "/assets/lenslet-calls-en.webp",
-        width: 2448,
-        height: 1396,
-        asOf: "v7.0.0",
-        alt: "Lenslet 7 的调用视图：运行时间线下面是 AWS 调用的瀑布图；选中的 GetObject 找不到键，右侧检查器给出 404 NoSuchKey 的原因和响应正文。",
-        title: "失败的调用，从头看到尾",
-        body: "每次调用一行，AWS 错误写在行里，并给出可能的原因，比如表建在了另一个区域；请求和响应点一下就能看。",
-      },
-    ],
     commands: {
       title: "开始使用",
-      sub: "先启动模拟器：AWS Emulator、moto 和 LocalStack 都可以。`lenslet init` 写出的两个文件都要提交。",
+      sub: "从最新发布里下载对应系统的版本；Linux 上需要 GTK 4.14 或更新。Lenslet 的终端里已经设好指向它的 AWS 地址、区域和占位密钥；别的 shell 要用，可以通过“文件 → 复制环境变量”拷过去。",
       items: [
         {
-          comment: "安装（Linux、macOS）",
-          command: "curl -fsSL https://github.com/hxddh/lenslet/releases/latest/download/install.sh | sh",
+          comment: "在 Lenslet 的终端里建一个队列",
+          command: "aws sqs create-queue --queue-name orders",
         },
         {
-          comment: "第一次运行：生成锁文件和 CI 工作流",
-          command: "lenslet init -- npm test",
-        },
-        {
-          comment: "权限超出锁文件时让检查失败",
-          command: "lenslet run --check -- npm test",
+          comment: "或者运行任何用到 AWS SDK 的程序",
+          command: "pytest",
         },
       ],
     },
@@ -212,27 +189,27 @@ export default defineProduct({
         kind: "cards",
         id: "features",
         nav: "功能",
-        label: "从测试到 IAM 策略",
+        label: "从一条命令到 AWS 做了什么",
         items: [
           {
-            title: "调用对应到 IAM",
-            body: "记录下的每次调用都对应到资源上的 IAM 操作，隐含的权限也算在内。",
+            title: "每条命令都是一次运行",
+            body: "终端里的每条命令都能看到它怎么结束、发了哪些调用、第一个失败及原因、改了什么，以及需要的 IAM 策略。",
           },
           {
-            title: "提交一份锁文件",
-            body: "`lenslet.lock` 列出所需权限；`lenslet policy` 据此写出 IAM 策略，不含测试专用条目。",
+            title: "AWS 因此做了什么",
+            body: "投递、触发器和你的函数自己发出的调用，都挂在引发它们的那次调用下面。在 AWS 上，这要把 CloudTrail、X-Ray 和 CloudWatch 合起来看。",
           },
           {
-            title: "PR 里的权限差异",
-            body: "每个 PR 一条评论；新增的权限有人认可之前，CI 一直失败。",
+            title: "改好再跑一次",
+            body: "“允许角色”给被拒的函数角色补上它需要的权限；“回到这次运行之前”把账户恢复原样；“再运行一次”重跑命令。",
           },
           {
-            title: "在本地就拦下",
-            body: "`--enforce` 对锁文件之外的调用直接回 AWS `AccessDenied`，请求到不了模拟器。",
+            title: "每个资源都能打开",
+            body: "存储桶、表、队列、主题、函数、日志组、密钥和参数：各自装着什么，以及碰过它的每次调用。",
           },
           {
-            title: "用你自己的策略",
-            body: "`--policy` 改按一份真实的 IAM 策略检查或拦截，`Condition` 也会判断。",
+            title: "每次调用的全貌",
+            body: "请求和响应、客户端和它的重试次数、请求 ID；任何一次调用都能复制成 AWS CLI 命令、curl 或 boto3 代码。",
           },
         ],
       },
@@ -243,23 +220,23 @@ export default defineProduct({
         label: "常见问题",
         items: [
           {
-            title: "锁文件等于安全审查吗？",
-            body: "不等于。它是测试实际用到的权限，按规则推算出来。测试没跑到的代码路径不在锁文件里。",
-            asOf: "v7.0.0",
+            title: "这是真的 AWS 账户吗？",
+            body: "不是。它是在 Lenslet 内部运行的 AWS Emulator：账户 `000000000000`，区域 `us-east-1`，只存在内存里。退出应用或新建空账户，它就没了；请求签名不做校验，任何凭证都能用。",
+            asOf: "v16.0.0",
           },
           {
-            title: "能识别哪些 AWS 服务？",
-            body: "能读出具体资源的服务有 20 种，其余服务记为 `*`。",
+            title: "有哪些 AWS 服务？",
+            body: "S3、DynamoDB、SQS、SNS、STS、IAM、KMS 和 Lambda。另外还有 Secrets Manager、SSM Parameter Store、EventBridge、CloudWatch Logs、Step Functions 和 Kinesis。模拟器不支持的调用会标成“未模拟”，免得把模拟器的空缺当成你代码的问题。",
+            asOf: "v16.0.0",
+          },
+          {
+            title: "代码要改吗？",
+            body: "只要 SDK 会读环境变量里的 AWS 端点地址，就不用改。boto3、JavaScript、Go、Rust、Java 和 .NET 的 AWS SDK，以及 AWS CLI v2 都会读。",
             steps: [
-              "这 20 种包括 S3、DynamoDB、SQS、Lambda、Bedrock、KMS、IAM 和 Step Functions。",
-              "对不上的调用会如实报出，不去猜。",
+              "AWS CLI v1 不管端点怎么设，SQS 命令都发往 AWS；终端里的占位密钥让这些请求碰不到你的账户。",
+              "运行来自终端里的 bash 或 zsh；其他 shell 和程序的调用归在“全部活动”下。",
             ],
-            asOf: "v7.0.0",
-          },
-          {
-            title: "支持 Windows 吗？",
-            body: "不支持。有 macOS（通用版）和 Linux（x86_64、aarch64）的版本，还有适合 Alpine 和 CI 镜像的静态命令行版。",
-            asOf: "v7.0.0",
+            asOf: "v16.0.0",
           },
         ],
       },

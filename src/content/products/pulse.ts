@@ -36,13 +36,12 @@ export default defineProduct({
       stays: "The event log and its snapshot stay on this Mac, readable only by you.",
     },
     releaseHighlights: {
-      version: "v35.0.0",
-      summary:
-        "Upgrading from 33 or earlier clears the old event log once, so earlier timelines are lost; hooks are unaffected.",
+      version: "v40.0.0",
       items: [
-        "New words: “Your turn” is now “Done”, “Stalled” is “Quiet”, and “Process only” is “Detected”.",
-        "⌃⌥⌘P opens the tray on the longest wait; Settings can switch it to ⌥⌘P or ⌃⌥Space.",
-        "A running session's details can ask for one banner when its turn is done, and Settings can mute one agent's banners.",
+        "Waits that arrive while notifications are quieted get their banner when the quiet ends, if still unanswered; ones answered or ignored meanwhile are dropped.",
+        "The floating beacon can be dragged without jumping, shows Open tray and Ignore on hover, and Settings → General has Preview for 5s to place it.",
+        "When two active sessions edit the same file, the details page lists the other session with Go to jump to it, and the tray's marker no longer squeezes the title.",
+        "In the tray, ⇧Tab cycles waits backwards and ⌘K opens the filter; in details, ⌘C copies the blocked command or question when nothing is selected.",
       ],
     },
     visual: {
@@ -190,7 +189,7 @@ export default defineProduct({
               "Removing the hooks restores each file byte for byte.",
               "A file changed since then loses only Pulse's entries.",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
           {
             title: "Why is an agent not turning red?",
@@ -201,7 +200,7 @@ export default defineProduct({
               "Install all brings every row that needs an update up to date; Test connection checks that a hook can reach this Pulse.",
               "Copy report gives the same as plain text, plus each session's last three events, without paths, prompts, sessions or projects.",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
           {
             title: "How do I remove Pulse?",
@@ -212,7 +211,7 @@ export default defineProduct({
               "Drag Pulse.app to the Trash, and delete `~/Library/Application Support/Pulse`.",
               "If you turned on Open at login, also remove Pulse in System Settings → General → Login Items.",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
         ],
       },
@@ -240,12 +239,12 @@ export default defineProduct({
       stays: "事件日志和它的快照只在本机，只有你能读。",
     },
     releaseHighlights: {
-      version: "v35.0.0",
-      summary: "从 33 或更早的版本升级时，旧的事件日志会清空一次，以前的时间线随之丢失，hook 不受影响。",
+      version: "v40.0.0",
       items: [
-        "换了说法：“轮到你”改叫“好了”，“停滞”改叫“没动静”，“仅进程”改叫“已发现”。",
-        "按 ⌃⌥⌘P 打开托盘并选中等得最久的那个；设置里可以换成 ⌥⌘P 或 ⌃⌥Space。",
-        "运行中会话的详情页可以勾选“这一轮好了时提醒我”，只发一次横幅；设置里还能单独静音某个 Agent 的横幅。",
+        "静音通知期间新来的等待，静音结束时如果还没解决，会补发横幅；期间已回答或已忽略的不再补发。",
+        "悬浮灯塔拖动时不会误触跳转，悬停时显示“展开托盘”和“忽略”，“设置 → 通用”里的“预览 5 秒”方便摆好位置。",
+        "两个活跃会话改同一个文件时，详情页列出对方会话，点“前往”直接跳过去；托盘里的标记不再挤占标题。",
+        "托盘里按 ⇧Tab 反向循环等待行，⌘K 打开筛选；详情页没有选中文字时，⌘C 复制阻塞的命令或问题。",
       ],
     },
     visual: {
@@ -381,7 +380,7 @@ export default defineProduct({
               "移除时逐字节还原每个文件。",
               "之后改过的文件只删掉 Pulse 的条目。",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
           {
             title: "Agent 为什么没亮红灯？",
@@ -392,7 +391,7 @@ export default defineProduct({
               "“全部安装”会更新所有需要更新的 Agent，“测试连接”确认 hook 能找到这个 Pulse。",
               "“复制报告”给出同样内容的纯文本，另加每个会话最近 3 个事件，不含路径、提示、会话或项目。",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
           {
             title: "怎样卸载 Pulse？",
@@ -403,7 +402,7 @@ export default defineProduct({
               "把 Pulse.app 拖进废纸篓，再删除 `~/Library/Application Support/Pulse`。",
               "开过“登录时打开”的话，也在“系统设置 → 通用 → 登录项”里移除 Pulse。",
             ],
-            asOf: "v35.0.0",
+            asOf: "v40.0.0",
           },
         ],
       },

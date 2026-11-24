@@ -123,7 +123,7 @@ export default defineProduct({
           },
           {
             title: "When should I open Storage Agent?",
-            body: "Choose StorageOps when you already use Pi and want help with storage problems there. Choose Storage Agent when you want a complete desktop app with built-in read-only tools, local analysis, and memory it keeps between tasks.",
+            body: "Choose StorageOps when you already use Pi and want help with storage problems there. Choose Storage Agent when you want a complete desktop app that reads the whole account, analyses locally, keeps a workspace between tasks and changes a bucket setting only when you approve.",
             link: {
               label: "Open Storage Agent",
               href: "/storage-agent-workbench/",
@@ -234,7 +234,7 @@ export default defineProduct({
           },
           {
             title: "什么时候改用 Storage Agent？",
-            body: "已经在用 Pi、想在里面排查对象存储问题时，选 StorageOps；想要完整的桌面应用、内置只读工具和本地分析，并能跨任务记住内容时，选 Storage Agent。",
+            body: "已经在用 Pi、想在里面排查对象存储问题时，选 StorageOps；想要完整的桌面应用，能读整个账户、在本地分析、跨任务保留工作区，并且只在你批准后才改存储桶设置时，选 Storage Agent。",
             link: {
               label: "打开 Storage Agent",
               href: "/zh/storage-agent-workbench/",
