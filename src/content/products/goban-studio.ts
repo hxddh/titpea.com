@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // Goban Studio, the Go app (围棋 · 바둑 · 囲碁), a separate app from Goban, the
 // Gomoku game. Facts: the repo's README, .github/release-notes/v7.0.0.md
-// to v17.0.0.md, docs/plan.md and docs/strength.md at v17.0.0; macOS 13 from the
+// to v18.0.0.md, docs/plan.md and docs/strength.md, rechecked at v18.0.0; macOS 13 from the
 // README's download table. Pictures were captured at v17.0.0. The
 // brand is not translated (docs/feasibility-zh.md §10). Pictures: the app's
 // own interface rendered by its UI test harness (scripts/ui-test.mjs) at 2x,
@@ -41,11 +41,11 @@ export default defineProduct({
       href: "https://github.com/hxddh/goban-studio",
     },
     releaseHighlights: {
-      version: "v17.0.0",
+      version: "v18.0.0",
       items: [
-        "The openings explorer has its joseki branches back: about 1,700 corner positions again.",
-        "The whole course was checked again with the stronger KataGo network; the lesson “Urgent points before big points” got a new board.",
-        "On a Mac, the language setting, lessons, problems and classics open again (fixed in v16.0.1); every release now tests this on Mac and Windows.",
+        "The board is a pale kaya wood with cleaner stones, and in the dark theme it stays light, so stones, lines and coordinates read as well as by day.",
+        "Windows has an installer: it installs for your Windows user without an administrator, opens SGF files and keeps in-app updates; the zip stays as the portable download.",
+        "Whatever you answer at the start, your first stone is three clicks away; if you play and give a rank, your 19×19 game starts from that step.",
       ],
     },
     privacy: {
@@ -111,7 +111,7 @@ export default defineProduct({
           {
             title: "Can it sit beside Goban, the Gomoku app?",
             body: "Yes. Goban Studio is a separate app with its own name, so the two install and update independently.",
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
           {
             title: "Which computers does it run on?",
@@ -121,7 +121,7 @@ export default defineProduct({
               "Windows on ARM runs the x64 build under emulation; analysis is slower there.",
               "On macOS 14 or earlier, open it the first time by right-clicking the app and choosing “Open”.",
             ],
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
           {
             title: "How strong is the computer?",
@@ -131,7 +131,7 @@ export default defineProduct({
               "The ranks are approximate: they are calibrated against a model, not against people.",
               "Settings → Engines shows which KataGo build runs and how fast.",
             ],
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
         ],
       },
@@ -153,11 +153,11 @@ export default defineProduct({
       href: "https://github.com/hxddh/goban-studio",
     },
     releaseHighlights: {
-      version: "v17.0.0",
+      version: "v18.0.0",
       items: [
-        "布局浏览器的定式分支回来了，角部局面又有约 1700 个。",
-        "整套课程用更强的 KataGo 网络重新检查了一遍；“急所先于大场”一课换了新棋盘。",
-        "Mac 上切换语言、打开课程、题目和名局又都正常了（v16.0.1 修复）；现在每次发布前都会在 Mac 和 Windows 上检查这些。",
+        "棋盘换成了浅色榧木，棋子也更干净；深色主题下棋盘仍是浅色，黑子、棋盘线和坐标跟白天一样清楚。",
+        "Windows 有了安装程序：不需要管理员权限，装在你自己的 Windows 用户下，SGF 文件用它打开，应用内更新照常可用；zip 仍作为免安装版提供。",
+        "不管开头怎么回答，三次点击就能落下第一颗子；会下棋并给出段位的话，直接从这一步开始一盘 19 路对局。",
       ],
     },
     privacy: {
@@ -213,7 +213,7 @@ export default defineProduct({
           {
             title: "能和五子棋应用 Goban 一起装吗？",
             body: "能。Goban Studio 是另一个应用，有自己的名字，两个应用各自安装、各自更新。",
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
           {
             title: "能在哪些电脑上运行？",
@@ -223,7 +223,7 @@ export default defineProduct({
               "Windows on ARM 靠系统的 x64 模拟运行 x64 版，分析会慢一些。",
               "macOS 14 及更早版本第一次打开时，右键点应用，选“打开”。",
             ],
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
           {
             title: "电脑有多强？",
@@ -233,7 +233,7 @@ export default defineProduct({
               "段位是近似值：对照模型校准，而不是对照真人。",
               "“设置 → 引擎”会显示正在用哪个 KataGo 版本、速度多快。",
             ],
-            asOf: "v17.0.0",
+            asOf: "v18.0.0",
           },
         ],
       },

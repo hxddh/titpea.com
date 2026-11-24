@@ -2,7 +2,7 @@ import { defineProduct } from "../schema";
 
 // The demo puzzle: Lichess puzzle GJsTC (lichess.org/training/GJsTC, CC0),
 // one of the 40,000 Chessboard ships, row "GJsTC" in src/web/js/lichess/band-0600.js
-// (line 18 at hxddh/chessboard v24.0.0, unchanged since v10.0.0; rated 600, themes
+// (line 18 at hxddh/chessboard v25.0.0, unchanged since v10.0.0; rated 600, themes
 // "sacrifice m2"). The FEN is the
 // puzzle position (puzzle-db.js decodeRow; Black to move, so the app turns the
 // board). Checked with python-chess: no mate in one, Qxf2+ is Black's only mate
@@ -65,11 +65,12 @@ export default defineProduct({
       href: "https://github.com/hxddh/chessboard",
     },
     releaseHighlights: {
-      version: "v24.0.0",
+      version: "v25.0.0",
       items: [
-        "Double-clicking a .pgn file now opens that game on macOS and Windows; on Windows, run the bundled register-pgn.cmd once.",
-        "A puzzle you solved after seeing the answer no longer counts as solved, and a wrong move’s hint says what the answer does.",
-        "Your first game rating starts from your placement score, and Today, the result bar and Me show the same number.",
+        "Opening several .pgn files at once puts the first on the board and the rest in the library, and on Windows a second double-click hands the file to the window already open.",
+        "Retrying a review moment is judged by win chance, as the review itself is, so a move that keeps a clear advantage is no longer called wrong.",
+        "The blunder alert now sits at the foot of the board, so it no longer covers your opponent’s name, rating and captures or the Undo and Hint buttons.",
+        "In untimed games, opponents answer sooner with only one legal move, a check to meet, a recapture or the first few moves, and take longer in complex positions; their moves are unchanged.",
       ],
     },
     privacy: {
@@ -158,7 +159,7 @@ export default defineProduct({
           {
             title: "Can I play online?",
             body: "No. There is no online matchmaking: you play the engine or a friend on the same screen. Optional sync, off until you allow the network in Settings › Data, imports your Lichess or Chess.com games into the library.",
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
           {
             title: "What can I do with a PGN game file?",
@@ -170,7 +171,7 @@ export default defineProduct({
               "The library holds 10,000 games and asks before an import would push older ones out.",
               "Chess.com has no single-game link to fetch, so copy the PGN from its “Share” menu.",
             ],
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
           {
             title: "Does it track my progress?",
@@ -181,7 +182,7 @@ export default defineProduct({
               "Today shows your streak and one number, “Your level”.",
               "The Me page has both ratings with their curves, a practice calendar, and your strengths and weaknesses.",
             ],
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
         ],
       },
@@ -203,11 +204,12 @@ export default defineProduct({
       href: "https://github.com/hxddh/chessboard",
     },
     releaseHighlights: {
-      version: "v24.0.0",
+      version: "v25.0.0",
       items: [
-        "在 macOS 和 Windows 上双击 .pgn 文件就能打开这局棋；Windows 要先运行一次随包的 register-pgn.cmd。",
-        "看过答案的谜题不再算解出；走错时的提示会说答案那一步是将军、吃子还是安静的一步。",
-        "第一盘的对局等级分从定级分数起算；今天页、终局条和“我的”显示同一个数。",
+        "一次打开几个 .pgn，第一个上棋盘，其余收进棋谱库；Windows 上应用开着时再双击，文件交给已开的窗口，不再另起一个。",
+        "复盘里的“再试一次”改按胜率判，和复盘本身同一把尺子，仍然大优的一步不再被说成不对。",
+        "失着提醒挪到棋盘下沿，不再盖住对手的名字、等级分和吃子，也不压着“悔棋”“提示”。",
+        "不计时的对局里，只有一步可走、应将、回吃或开局头几步时对手走得快，复杂局面想得久；走哪一步不变。",
       ],
     },
     privacy: {
@@ -282,7 +284,7 @@ export default defineProduct({
           {
             title: "能在线对战吗？",
             body: "不能，没有在线匹配，对手是引擎或同屏的朋友。可选的同步要先在“设置 › 数据”里允许联网，能把你在 Lichess 或 Chess.com 的对局导入棋谱库。",
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
           {
             title: "PGN 棋谱文件能做什么？",
@@ -294,7 +296,7 @@ export default defineProduct({
               "棋谱库最多收 1 万局；导入会挤掉旧对局时，会先问你。",
               "Chess.com 没有单局接口，要去它的“分享”里复制 PGN。",
             ],
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
           {
             title: "能看到自己的进步吗？",
@@ -305,7 +307,7 @@ export default defineProduct({
               "今天页有连续练习的天数和一个数：“你的水平”。",
               "“我的”页有两个等级分和各自的曲线、练习日历，以及强项与弱项。",
             ],
-            asOf: "v24.0.0",
+            asOf: "v25.0.0",
           },
         ],
       },

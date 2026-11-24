@@ -32,6 +32,7 @@ export const forbiddenTermQuotes = [
   "“PDF with evidence”", // PageWise's export, quoted by its menu name
   "“带证据的 PDF”", // the same export in PageWise's Chinese interface
   "Evidence: Strong (official blog)", // a line quoted verbatim from Agent Radar's radar.md
+  "`sonde endpoints test --probes`", // sonde's command, typed as it is
 ];
 
 const withoutQuotes = (text) => forbiddenTermQuotes.reduce((rest, quote) => rest.split(quote).join(""), text);

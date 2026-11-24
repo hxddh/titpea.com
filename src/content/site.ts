@@ -229,7 +229,7 @@ export const ui: Record<Locale, Ui> = {
           sonde: "See what a program does to S3",
           storageops: "Diagnose in Pi",
           httpmon: "See the real requests",
-          lenslet: "Check AWS access in CI",
+          lenslet: "Try AWS calls locally",
         },
       },
       agents: {
@@ -352,7 +352,7 @@ export const ui: Record<Locale, Ui> = {
           sonde: "看程序对 S3 做了什么",
           storageops: "在 Pi 里排查",
           httpmon: "看实际请求",
-          lenslet: "在 CI 里查 AWS 权限",
+          lenslet: "在本机试 AWS 调用",
         },
       },
       agents: {

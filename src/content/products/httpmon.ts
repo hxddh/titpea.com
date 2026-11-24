@@ -37,11 +37,12 @@ export default defineProduct({
         "Traffic shows in your terminal and is saved only to a session you start; a run’s temporary CA key never touches disk.",
     },
     releaseHighlights: {
-      version: "v4.1.0",
+      version: "v5.0.0",
       items: [
-        "Traffic is kept in named sessions you can query, diff, replay or export as HAR; these replace `--record` and `--har`.",
-        "New `httpmon proxy` captures browsers, phones and containers, and `--mock` and `--fault` make chosen requests fail on purpose.",
-        "`go install` now installs a program named `httpmon`, and httpmon’s output goes to stderr, leaving the command’s stdout untouched.",
+        "Each upstream request records its DNS, TCP, TLS, send, wait and receive times and its connection and certificate details, shown by `query --id`, the TUI and HAR export.",
+        "SSE and NDJSON streams are decoded, with LLM text, tool calls and usage assembled; an error inside a `200` (SSE, GraphQL, JSON-RPC) shows on the summary line and counts for `--fail-on app_error`.",
+        "Redirect chains, retries, unreused connections and N+1 bursts are linked and flagged, and `query --diagnose` or MCP’s `diagnose_session` reports on a session in one call.",
+        "`go install` takes the `/v5` module path, and a project’s `.httpmon.toml` can no longer read files outside the project, use `mock_from` or set credential headers.",
       ],
     },
     commands: {
@@ -55,7 +56,7 @@ export default defineProduct({
         },
         {
           comment: "Or install with Go",
-          command: "go install github.com/hxddh/https-traffic-inspector/v4/cmd/httpmon@latest",
+          command: "go install github.com/hxddh/https-traffic-inspector/v5/cmd/httpmon@latest",
         },
         {
           comment: "Wrap a command and watch its traffic",
@@ -122,12 +123,12 @@ export default defineProduct({
               "Go programs skip the proxy for loopback targets.",
               "A JVM already running before httpmon started, such as a Gradle daemon, is not configured.",
             ],
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
           {
             title: "Does it still check certificates?",
             body: "Yes. Because httpmon terminates TLS, it verifies each server’s real certificate on the command’s behalf; a failure is a `502` with a `tls_verify` error. `--insecure-upstream` turns that off; use it only against hosts you control.",
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
           {
             title: "Does it diagnose storage errors?",
@@ -136,7 +137,7 @@ export default defineProduct({
               label: "Open StorageOps",
               href: "/storageops/",
             },
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
         ],
       },
@@ -163,11 +164,12 @@ export default defineProduct({
       stays: "流量显示在终端，只有你开了会话才保存；每次运行的临时 CA 私钥从不写入磁盘。",
     },
     releaseHighlights: {
-      version: "v4.1.0",
+      version: "v5.0.0",
       items: [
-        "流量存进具名会话，可以查询、对比、重放或导出为 HAR；`--record` 和 `--har` 由此取代。",
-        "新增 `httpmon proxy`，能抓浏览器、手机和容器的流量；`--mock` 和 `--fault` 可以让指定请求故意失败。",
-        "`go install` 装好的程序现在就叫 `httpmon`；httpmon 的输出改走 stderr，命令自己的 stdout 不受影响。",
+        "每个发往上游的请求都会记下 DNS、TCP、TLS、发送、等待和接收各阶段的耗时，以及连接和证书信息，`query --id`、TUI 和 HAR 导出里都能看到。",
+        "SSE 和 NDJSON 流会被解码，LLM 的文本、工具调用和用量会拼合起来；`200` 响应里藏着的错误（SSE、GraphQL、JSON-RPC）直接显示在摘要行，`--fail-on app_error` 也能匹配。",
+        "重定向链、重试、没复用的连接和 N+1 串行请求会被自动关联并标出；`query --diagnose` 或 MCP 的 `diagnose_session` 一次调用就给出会话的诊断报告。",
+        "`go install` 改用 `/v5` 模块路径；项目里的 `.httpmon.toml` 不能再读取项目目录外的文件、使用 `mock_from` 或设置凭据请求头。",
       ],
     },
     commands: {
@@ -181,7 +183,7 @@ export default defineProduct({
         },
         {
           comment: "或用 Go 安装",
-          command: "go install github.com/hxddh/https-traffic-inspector/v4/cmd/httpmon@latest",
+          command: "go install github.com/hxddh/https-traffic-inspector/v5/cmd/httpmon@latest",
         },
         {
           comment: "包住一条命令，看它的流量",
@@ -242,12 +244,12 @@ export default defineProduct({
               "Go 程序访问本机回环地址时不走代理。",
               "httpmon 启动前就在运行的 JVM（比如 Gradle 守护进程）不会被配置。",
             ],
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
           {
             title: "它还会校验证书吗？",
             body: "会。httpmon 终止了 TLS，所以由它代替命令校验服务器的真实证书；校验失败返回 `502`，错误类型为 `tls_verify`。`--insecure-upstream` 会关掉这项校验，只在你自己管理的主机上用。",
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
           {
             title: "它能诊断存储故障吗？",
@@ -256,7 +258,7 @@ export default defineProduct({
               label: "打开 StorageOps",
               href: "/zh/storageops/",
             },
-            asOf: "v4.1.0",
+            asOf: "v5.0.0",
           },
         ],
       },
