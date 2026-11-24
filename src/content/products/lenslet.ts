@@ -40,12 +40,12 @@ export default defineProduct({
         "The account lives in memory and is gone when you quit; an IAM policy or session export is saved only where you choose.",
     },
     releaseHighlights: {
-      version: "v16.0.0",
+      version: "v16.0.1",
+      summary: "A bug-fix release.",
       items: [
-        "The calls are a tree: under an S3 upload sits the function its notification invoked, and under the function its own DynamoDB calls and why one was denied.",
-        "Each command you run in the terminal is a run, with how it ended, the first failure and why, what it changed and the IAM policy it needed.",
-        "When a function is denied by its role, Allow for role grants exactly what the call needed; Rewind puts the account back as it was before a run, and Run Again repeats it.",
-        "The Overview and Permissions pages are gone: the sidebar has two groups, Runs and Resources.",
+        "On macOS Lenslet opens one window; on Linux and Windows, Ctrl+R, Ctrl+K, Ctrl+F, Ctrl+E and Ctrl+Shift+C reach your shell again, and Lenslet’s own commands moved to Ctrl+Shift.",
+        "Hiding and showing the terminal keeps what it showed, and a run ends when its shell does instead of staying open.",
+        "Rewinding, exporting, saving a policy and allowing a role from a context menu now finish, and the call list stays where you scrolled.",
       ],
     },
     visual: {
@@ -149,12 +149,12 @@ export default defineProduct({
       stays: "账户只在内存里，退出即清空；IAM 策略和会话导出只存到你选的位置。",
     },
     releaseHighlights: {
-      version: "v16.0.0",
+      version: "v16.0.1",
+      summary: "修复问题的版本。",
       items: [
-        "调用现在排成一棵树：S3 上传下面是它的通知触发的函数，函数下面是它自己对 DynamoDB 的调用，以及其中一次为什么被拒。",
-        "在终端里运行的每条命令都算一次运行：怎么结束的、第一个失败及原因、改了什么，以及需要的 IAM 策略。",
-        "函数被自己的角色拒绝时，“允许角色”只补上这次调用需要的权限；“回到这次运行之前”把账户恢复原样，“再运行一次”重跑命令。",
-        "去掉了概览页和权限页：侧栏只剩“运行”和“资源”两组。",
+        "macOS 上启动只开一个窗口。Linux 和 Windows 上，Ctrl+R、Ctrl+K 等快捷键又能用在 shell 里了；Lenslet 自己的命令改用 Ctrl+Shift。",
+        "隐藏再显示终端，内容不再丢失；shell 退出时，正在进行的运行也随之结束，不会一直开着。",
+        "从右键菜单回退、导出、保存策略和允许角色，现在都能完成；调用列表也会停在你滚到的位置。",
       ],
     },
     visual: {
