@@ -121,10 +121,46 @@ export async function checkRoute(page, viewport, route) {
     { route, zhForbiddenTerms, forbiddenTermQuotes },
   );
 
+  metrics.appearancePairs = await appearancePairs(page);
+
   const filename = screenshotName(viewport.name, path);
   await page.screenshot({ path: `${outDir}/${filename}`, fullPage: false });
   const screenshotSize = fs.statSync(`${outDir}/${filename}`).size;
   const textOk = route.expectedText.every((text) => metrics.text.includes(text));
   delete metrics.text;
   return { viewport: viewport.name, path, textOk, route, screenshotSize, ...metrics };
+}
+
+/**
+ * Every capture with a dark twin (Showcase.dark) shows exactly one image and at
+ * most one zoom button in each theme, set the way the header toggle sets it.
+ * Returns the frames that break this, empty when all hold (or none exist).
+ */
+async function appearancePairs(page) {
+  if ((await page.locator("img[data-appearance]").count()) === 0) return [];
+  const failures = [];
+  const before = await page.evaluate(() => document.documentElement.dataset.theme ?? null);
+  for (const theme of ["light", "dark"]) {
+    failures.push(
+      ...(await page.evaluate((theme) => {
+        document.documentElement.dataset.theme = theme;
+        const shown = (element) => element.getClientRects().length > 0;
+        const frames = new Set(
+          [...document.querySelectorAll("img[data-appearance]")].map((image) => image.closest(".shot, .crop")),
+        );
+        return [...frames].flatMap((frame) => {
+          const images = [...frame.querySelectorAll("img[data-appearance]")].filter(shown);
+          const buttons = [...frame.querySelectorAll(".zoom-trigger")].filter(shown);
+          return images.length === 1 && images[0].dataset.appearance === theme && buttons.length <= 1
+            ? []
+            : [{ theme, shown: images.map((image) => image.dataset.appearance), buttons: buttons.length }];
+        });
+      }, theme)),
+    );
+  }
+  await page.evaluate((before) => {
+    if (before === null) delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = before;
+  }, before);
+  return failures;
 }

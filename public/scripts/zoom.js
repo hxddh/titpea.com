@@ -32,6 +32,8 @@
     trigger.type = "button";
     trigger.className = "zoom-trigger";
     trigger.setAttribute("aria-label", (zh ? "放大查看：" : "Enlarge: ") + shot.alt);
+    // A light/dark pair: the button shows and hides with its image (base.css).
+    if (shot.dataset.appearance) trigger.dataset.appearance = shot.dataset.appearance;
     shot.replaceWith(trigger);
     trigger.append(shot);
     trigger.addEventListener("click", function () {

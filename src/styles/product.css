@@ -313,7 +313,6 @@
   }
 
   .crop img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: none;
@@ -353,28 +352,6 @@
 
   .crop[data-focus="bottom-right"] img {
     object-position: 100% 100%;
-  }
-
-  .crop img[data-appearance="dark"] {
-    display: none;
-  }
-
-  :root[data-theme="dark"] .crop img[data-appearance="dark"] {
-    display: block;
-  }
-
-  :root[data-theme="dark"] .crop img[data-appearance="light"] {
-    display: none;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .crop img[data-appearance="dark"] {
-      display: block;
-    }
-
-    :root:not([data-theme="light"]) .crop img[data-appearance="light"] {
-      display: none;
-    }
   }
 
   /* The feature list (design v7): never a grid to fill. Tools read as a spec
