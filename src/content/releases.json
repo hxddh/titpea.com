@@ -27,16 +27,16 @@
   },
   "sonde": {
     "repo": "hxddh/sonde",
-    "version": "v34.1.1",
-    "published": "2026-11-27",
+    "version": "v34.1.2",
+    "published": "2026-11-28",
     "history": [
+      { "version": "v34.1.2", "published": "2026-11-28", "title": "sonde 34.1.2" },
       { "version": "v34.1.1", "published": "2026-11-27", "title": "sonde 34.1.1" },
       { "version": "v34.1.0", "published": "2026-11-26", "title": "sonde 34.1.0" },
       { "version": "v34.0.0", "published": "2026-11-26", "title": "sonde 34.0.0" },
-      { "version": "v33.0.0", "published": "2026-11-26", "title": "sonde 33.0.0" },
-      { "version": "v32.0.0", "published": "2026-11-25", "title": "sonde 32.0.0" }
+      { "version": "v33.0.0", "published": "2026-11-26", "title": "sonde 33.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v34.1.1" }
+    "notes": { "url": "https://github.com/hxddh/sonde/releases/tag/v34.1.2" }
   },
   "storageops": {
     "pypi": "storageops",
@@ -144,41 +144,41 @@
   },
   "goban": {
     "repo": "hxddh/goban",
-    "version": "v3.2.1",
-    "published": "2026-11-13",
+    "version": "v3.3.0",
+    "published": "2026-11-28",
     "history": [
+      { "version": "v3.3.0", "published": "2026-11-28", "title": "v3.3.0" },
       { "version": "v3.2.1", "published": "2026-11-13", "title": "v3.2.1" },
       { "version": "v3.2.0", "published": "2026-10-18", "title": "v3.2.0" },
       { "version": "v3.1.0", "published": "2026-10-17", "title": "v3.1.0" },
-      { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" },
-      { "version": "v2.1.0", "published": "2026-10-10", "title": "v2.1.0" }
+      { "version": "v3.0.0", "published": "2026-10-14", "title": "v3.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/goban/releases/tag/v3.2.1" }
+    "notes": { "url": "https://github.com/hxddh/goban/releases/tag/v3.3.0" }
   },
   "goban-studio": {
     "repo": "hxddh/goban-studio",
-    "version": "v18.0.0",
-    "published": "2026-11-22",
+    "version": "v18.1.0",
+    "published": "2026-11-28",
     "history": [
+      { "version": "v18.1.0", "published": "2026-11-28", "title": "Goban Studio v18.1.0" },
       { "version": "v18.0.0", "published": "2026-11-22", "title": "Goban Studio v18.0.0" },
       { "version": "v17.0.0", "published": "2026-11-19", "title": "Goban Studio v17.0.0" },
       { "version": "v16.0.1", "published": "2026-11-16", "title": "Goban Studio v16.0.1" },
-      { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" },
-      { "version": "v15.0.0", "published": "2026-11-14", "title": "Goban Studio v15.0.0" }
+      { "version": "v16.0.0", "published": "2026-11-14", "title": "Goban Studio v16.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/goban-studio/releases/tag/v18.0.0" }
+    "notes": { "url": "https://github.com/hxddh/goban-studio/releases/tag/v18.1.0" }
   },
   "chessboard": {
     "repo": "hxddh/chessboard",
-    "version": "v25.3.0",
-    "published": "2026-11-27",
+    "version": "v25.4.0",
+    "published": "2026-11-28",
     "history": [
+      { "version": "v25.4.0", "published": "2026-11-28", "title": "v25.4.0" },
       { "version": "v25.3.0", "published": "2026-11-27", "title": "v25.3.0" },
       { "version": "v25.2.0", "published": "2026-11-26", "title": "v25.2.0" },
       { "version": "v25.1.0", "published": "2026-11-26", "title": "v25.1.0" },
-      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" },
-      { "version": "v24.0.0", "published": "2026-11-18", "title": "v24.0.0" }
+      { "version": "v25.0.0", "published": "2026-11-19", "title": "v25.0.0" }
     ],
-    "notes": { "url": "https://github.com/hxddh/chessboard/releases/tag/v25.3.0" }
+    "notes": { "url": "https://github.com/hxddh/chessboard/releases/tag/v25.4.0" }
   }
 }
