@@ -1,0 +1,87 @@
+---
+// The page an unknown address gets (public/_redirects): /404.html for the
+// site, /zh/404.html under /zh/, each in its own language with a way across.
+import SiteLayout from "../layouts/SiteLayout.astro";
+import "../styles/document.css";
+import { site } from "../content/site";
+import { products } from "../content/products";
+import { type Locale } from "../content/schema";
+import { buildSeo, languageLink, pathFor } from "../lib/pages";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = {
+  en: {
+    path: "/404.html",
+    home: "/",
+    other: "/zh/",
+    title: "Page not found — Titpea",
+    description: "This address does not match a Titpea product or page.",
+    heading: "Page not found.",
+    // An unknown address outside /zh/ may be either reader's: one line each.
+    leads: ["Try the home page, or switch language below.", "回首页，或切换到另一语言。"],
+    homeLabel: "Home",
+    otherLabel: "中文首页",
+    otherLang: "zh-CN",
+    products: "Products · 产品",
+  },
+  zh: {
+    path: "/zh/404.html",
+    home: "/zh/",
+    other: "/",
+    title: "页面不存在 — Titpea",
+    description: "这个地址不对应 Titpea 的任何作品或页面。",
+    heading: "页面不存在",
+    leads: ["回首页，或从下面的作品里找。"],
+    homeLabel: "首页",
+    otherLabel: "English home",
+    otherLang: "en",
+    products: "作品",
+  },
+}[locale];
+const seo = buildSeo({
+  title: copy.title,
+  description: copy.description,
+  path: copy.path,
+  alternatePath: copy.other,
+  locale,
+  ogImage: site.og.home,
+  robots: "noindex",
+});
+---
+
+<SiteLayout seo={seo} locale={locale} language={languageLink(locale, copy.other)} pageClass="page-notfound">
+  <article class="privacy-page shell">
+    <header class="privacy-header">
+      <p class="eyebrow">Titpea</p>
+      <h1>{copy.heading}</h1>
+      {copy.leads.map((lead) => (
+        <p class="lead">{lead}</p>
+      ))}
+      <div class="actions">
+        <a class="button primary" href={copy.home}>
+          {copy.homeLabel}
+        </a>
+        <a class="textlink" href={copy.other} hreflang={copy.otherLang}>
+          {copy.otherLabel}
+        </a>
+      </div>
+    </header>
+    <nav class="notfound-products" aria-label={copy.products}>
+      <p class="section-kicker">{copy.products}</p>
+      <ul>
+        {products.map((product) => (
+          <li>
+            <a href={pathFor(locale, product.slug)}>
+              <img src={product.icon} alt="" width="28" height="28" />
+              <span>{product[locale].title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </article>
+</SiteLayout>
