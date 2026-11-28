@@ -252,26 +252,34 @@
     border-radius: calc(var(--radius-shot) - var(--stage-pad) / 2);
   }
 
-  /* A showcase with a dark capture (Showcase.dark) shows the one that matches
-   the page; the other stays undisplayed, and lazy, so it is never fetched. */
-  .shot img[data-appearance="dark"] {
+  /* A capture with a dark twin (Showcase.dark) shows the one that matches the
+   page; the other stays undisplayed, and lazy, so it is never fetched. The
+   switch reads data-appearance on the image and on the zoom button wrapped
+   around it (zoom.js copies it), so the hidden twin leaves no second button in
+   the tab order. No later layer sets display on these images: a templates rule
+   that did showed both captures at once. */
+  :is(.shot, .crop) img {
+    display: block;
+  }
+
+  :is(.shot, .crop) [data-appearance="dark"] {
     display: none;
   }
 
-  :root[data-theme="dark"] .shot img[data-appearance="light"] {
+  :root[data-theme="dark"] :is(.shot, .crop) [data-appearance="light"] {
     display: none;
   }
 
-  :root[data-theme="dark"] .shot img[data-appearance="dark"] {
+  :root[data-theme="dark"] :is(.shot, .crop) [data-appearance="dark"] {
     display: block;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .shot img[data-appearance="light"] {
+    :root:not([data-theme="light"]) :is(.shot, .crop) [data-appearance="light"] {
       display: none;
     }
 
-    :root:not([data-theme="light"]) .shot img[data-appearance="dark"] {
+    :root:not([data-theme="light"]) :is(.shot, .crop) [data-appearance="dark"] {
       display: block;
     }
   }

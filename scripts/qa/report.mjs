@@ -96,6 +96,9 @@ export function failureReasons(result) {
   if (!productIndexOk) reasons.push(`product index state invalid: ${JSON.stringify(result.productIndex)}`);
   if (!featuresGridOk) reasons.push(`feature grid display mismatch: ${result.featuresGrid}`);
   if (!imagesOk) reasons.push(`image check failed: imageCount=${result.imageCount}, broken=${result.brokenImages}`);
+  if (result.appearancePairs?.length) {
+    reasons.push(`light/dark capture shows the wrong image or buttons: ${JSON.stringify(result.appearancePairs)}`);
+  }
   if (!browserVisualOk) reasons.push(`browser visual invalid: ${JSON.stringify(result.browserVisual)}`);
 
   return reasons;

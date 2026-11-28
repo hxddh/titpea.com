@@ -26,7 +26,7 @@ export default defineProduct({
     },
     secondaryCta: {
       label: "Privacy details",
-      href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+      href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp/privacy",
     },
     privacy: {
       network: "none",
@@ -35,7 +35,7 @@ export default defineProduct({
         "Cities, theme and time format sync through Chrome storage between your own browsers, never to the developer.",
       policy: {
         label: "Privacy details",
-        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp/privacy",
       },
     },
     visual: {
@@ -159,7 +159,7 @@ export default defineProduct({
     },
     secondaryCta: {
       label: "隐私说明",
-      href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+      href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp/privacy",
     },
     privacy: {
       network: "none",
@@ -167,7 +167,7 @@ export default defineProduct({
       stays: "城市、主题和时间格式通过 Chrome 存储在你自己的浏览器之间同步，不发给开发者。",
       policy: {
         label: "隐私说明",
-        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp#privacy",
+        href: "https://chromewebstore.google.com/detail/world-clock/mghphbjnicggehnhbjbpjddfidkepnfp/privacy",
       },
     },
     visual: {

@@ -27,7 +27,7 @@ export default defineProduct({
     summary: "Ask a PDF a question and follow each citation to its page.",
     primaryCta: {
       label: "Download",
-      href: "https://github.com/hxddh/pagewise/releases",
+      href: "https://github.com/hxddh/pagewise/releases/latest",
     },
     secondaryCta: {
       label: "View source",
@@ -146,7 +146,7 @@ export default defineProduct({
     summary: "向 PDF 提问，顺着每条引用回到原页。",
     primaryCta: {
       label: "下载",
-      href: "https://github.com/hxddh/pagewise/releases",
+      href: "https://github.com/hxddh/pagewise/releases/latest",
     },
     secondaryCta: {
       label: "查看源码",

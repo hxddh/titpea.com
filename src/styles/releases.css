@@ -3,18 +3,10 @@
 
 @layer templates {
   /* Releases: every product's latest release, newest first. */
-  /* The feed sits in the main column, under the lede; the margin stays empty. */
   .release-feed {
-    grid-column: 5 / -1;
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-
-  @media (max-width: 900px) {
-    .release-feed {
-      grid-column: 1 / -1;
-    }
   }
 
   .release-entry {

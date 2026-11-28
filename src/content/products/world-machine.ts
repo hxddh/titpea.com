@@ -24,7 +24,7 @@ export default defineProduct({
     summary: "A small harbour town with a new morning for every day you visit.",
     primaryCta: {
       label: "Download",
-      href: "https://github.com/hxddh/world-machine/releases",
+      href: "https://github.com/hxddh/world-machine/releases/latest",
     },
     secondaryCta: {
       label: "View source",
@@ -148,7 +148,7 @@ export default defineProduct({
     summary: "一座海港小镇，你哪天来，哪天就有一个新的早晨。",
     primaryCta: {
       label: "下载",
-      href: "https://github.com/hxddh/world-machine/releases",
+      href: "https://github.com/hxddh/world-machine/releases/latest",
     },
     secondaryCta: {
       label: "查看源码",

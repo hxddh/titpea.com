@@ -5,7 +5,7 @@
 // Home shows the row of app icons. `npm run assets:og [slug ...]` rewrites them
 // and records their input fingerprints in design/og-manifest.json (og-cards.ts).
 import fs from "node:fs/promises";
-import sharp from "sharp";
+import sharp, { type OverlayOptions } from "sharp";
 import { cards, ogFingerprint, ogManifestPath, readOgManifest, type Card } from "./og-cards.ts";
 
 const escape = (value: string) =>
@@ -85,7 +85,7 @@ async function splitCard(card: Card) {
 </svg>`;
   const shot = await roundedImage(card.screenshot!, shotWidth, shotHeight, 18);
   const visible = await sharp(shot).extract({ left: 0, top: 0, width: visibleWidth, height: visibleHeight }).toBuffer();
-  const layers: sharp.OverlayOptions[] = [{ input: visible, left: shotX, top: shotY }];
+  const layers: OverlayOptions[] = [{ input: visible, left: shotX, top: shotY }];
   if (hasIcon) layers.push({ input: await roundedImage(card.icons![0], 96, 96, 22), left: 72, top: 96 });
   return sharp(Buffer.from(svg)).composite(layers).png().toBuffer();
 }

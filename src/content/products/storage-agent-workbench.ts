@@ -23,7 +23,7 @@ export default defineProduct({
     summary: "An agent for S3 and the account around it; it reads, and a change runs only when you approve it.",
     primaryCta: {
       label: "Download",
-      href: "https://github.com/hxddh/storage-agent-workbench/releases",
+      href: "https://github.com/hxddh/storage-agent-workbench/releases/latest",
     },
     secondaryCta: {
       label: "View source",
@@ -128,7 +128,7 @@ export default defineProduct({
     summary: "S3 排查 Agent，覆盖存储所在的整个账号；它负责读取，改动要你批准才执行。",
     primaryCta: {
       label: "下载",
-      href: "https://github.com/hxddh/storage-agent-workbench/releases",
+      href: "https://github.com/hxddh/storage-agent-workbench/releases/latest",
     },
     secondaryCta: {
       label: "查看源码",

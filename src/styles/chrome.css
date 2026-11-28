@@ -246,9 +246,10 @@
   }
 
   /* Product local nav: the product name, its own sections, and the primary
-   action. It takes no room in the flow (height 0) and, with scripts, stays out
-   of sight until the site header has scrolled away (section-index.ts sets
-   data-pinned), so the page never shows two bars at once. */
+   action. It takes no room in the flow (height 0) and stays out of sight until
+   the site header has scrolled away (section-index.ts sets data-pinned), so the
+   page never shows two bars at once. Without scripts it is never pinned, so it
+   never shows: its phone menu needs a script, and the hero carries the action. */
   .product-section-index {
     position: sticky;
     top: 0;
@@ -273,7 +274,7 @@
       visibility 0.2s;
   }
 
-  html.js .product-section-index:not([data-pinned]) .local-nav-bar {
+  .product-section-index:not([data-pinned]) .local-nav-bar {
     visibility: hidden;
     opacity: 0;
     transform: translateY(-140%);
