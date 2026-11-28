@@ -65,12 +65,12 @@ export default defineProduct({
       href: "https://github.com/hxddh/chessboard",
     },
     releaseHighlights: {
-      version: "v25.0.0",
+      version: "v25.3.0",
       items: [
-        "Opening several .pgn files at once puts the first on the board and the rest in the library, and on Windows a second double-click hands the file to the window already open.",
-        "Retrying a review moment is judged by win chance, as the review itself is, so a move that keeps a clear advantage is no longer called wrong.",
-        "The blunder alert now sits at the foot of the board, so it no longer covers your opponent’s name, rating and captures or the Undo and Hint buttons.",
-        "In untimed games, opponents answer sooner with only one legal move, a check to meet, a recapture or the first few moves, and take longer in complex positions; their moves are unchanged.",
+        "The first time Guess the move or the Endgame camp loads, the top bar keeps the section you chose, and choosing Lessons while it loads is no longer undone when it finishes.",
+        "If that load fails, the lesson you bookmarked opens instead of a blank page.",
+        "Under a clock, when a Maia opponent gives up, Stockfish at the same level moves with only the time left, not a whole new allowance.",
+        "On macOS, closing the main window while About is open and then opening a .pgn from Finder brings the window back with the game.",
       ],
     },
     privacy: {
@@ -204,12 +204,12 @@ export default defineProduct({
       href: "https://github.com/hxddh/chessboard",
     },
     releaseHighlights: {
-      version: "v25.0.0",
+      version: "v25.3.0",
       items: [
-        "一次打开几个 .pgn，第一个上棋盘，其余收进棋谱库；Windows 上应用开着时再双击，文件交给已开的窗口，不再另起一个。",
-        "复盘里的“再试一次”改按胜率判，和复盘本身同一把尺子，仍然大优的一步不再被说成不对。",
-        "失着提醒挪到棋盘下沿，不再盖住对手的名字、等级分和吃子，也不压着“悔棋”“提示”。",
-        "不计时的对局里，只有一步可走、应将、回吃或开局头几步时对手走得快，复杂局面想得久；走哪一步不变。",
+        "名局猜着、残局营第一次打开要先载入；载入期间顶栏亮的就是你点的那一段，这时改点“课程”，载入完也不会把你拉走。",
+        "载入失败时打开书签上的那一课，不再是一片空白。",
+        "读秒时，Maia 档的对手放弃后由同一档的 Stockfish 出棋，只用剩下的时间，不再另给一整份。",
+        "macOS 上开着“关于”面板时关掉主窗口，再从访达打开 .pgn，主窗口照样回来并载入。",
       ],
     },
     privacy: {
