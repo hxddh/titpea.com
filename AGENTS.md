@@ -1,6 +1,6 @@
 # Agent notes for Titpea
 
-Bilingual (`en` / `zh`) Astro 6 static site for [titpea.com](https://titpea.com/). No React. Cloudflare Pages. CSP `script-src 'self'; style-src 'self'` — no inline scripts or CSS.
+Bilingual (`en` / `zh`) Astro 7 static site for [titpea.com](https://titpea.com/). No React. Cloudflare Pages. CSP `script-src 'self'; style-src 'self'` — no inline scripts or CSS.
 
 ## Read first
 

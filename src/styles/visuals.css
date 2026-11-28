@@ -56,15 +56,11 @@
 
   .agent-manifest-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     overflow: visible;
     border: 0;
     background: transparent;
     gap: 32px;
-  }
-
-  .agent-manifest-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .agent-manifest-grid div {
