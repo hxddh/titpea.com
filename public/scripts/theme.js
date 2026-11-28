@@ -32,7 +32,8 @@
   // The two media-based <meta name="theme-color"> tags follow the OS when no
   // manual choice is stored. When a choice IS stored, append an override tag
   // (no media query, last in <head>) so the browser chrome matches the chosen
-  // theme instead of the OS preference.
+  // theme instead of the OS preference. Its colour is copied from the matching
+  // media tag (SiteLayout.astro), so the page paper is written in one place.
   function paintMeta() {
     var ATTR = "data-theme-color-override";
     var pref = stored();
@@ -44,7 +45,10 @@
         override.setAttribute(ATTR, "");
         document.head.appendChild(override);
       }
-      override.setAttribute("content", pref === "dark" ? "#0b0b0c" : "#fafaf9");
+      var source = document.head.querySelector(
+        'meta[name="theme-color"][media="(prefers-color-scheme: ' + pref + ')"]',
+      );
+      if (source) override.setAttribute("content", source.getAttribute("content"));
     } else if (override) {
       override.parentNode.removeChild(override);
     }

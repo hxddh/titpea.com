@@ -29,6 +29,14 @@ if (new Set(slugs).size !== slugs.length) fail("products/index.ts lists a produc
 for (const file of files) if (!slugs.includes(file)) fail(`products/${file}.ts is not listed in products/index.ts`);
 for (const product of products) {
   if (!files.includes(product.slug)) fail(`${product.slug}: slug must match its file name`);
+  // A download from the product's own GitHub releases opens the latest one, as
+  // every product does, never the list (where a pre-release can sit on top).
+  for (const locale of ["en", "zh"] as const) {
+    const href = product[locale].primaryCta.href;
+    if (product.repo && href.replace(/\/$/, "") === `https://github.com/${product.repo}/releases`) {
+      fail(`${product.slug}.${locale}.primaryCta: link to ${href}/latest, not the release list`);
+    }
+  }
 }
 const featuredCount = products.filter((product) => product.featured).length;
 if (featuredCount < 2 || featuredCount > 3) fail("two or three products lead Home as featured");
@@ -491,6 +499,30 @@ for (const product of products) {
 
 /* ---------- Style ---------- */
 
+// Every capture, recording and share image under public/assets/ (not its
+// subfolders) is named somewhere in the source; a replaced screenshot's old
+// file and its -900w/-1200w variants go with it.
+{
+  const sourceDirs = ["src", "scripts", "public/scripts"];
+  const corpus = sourceDirs
+    .flatMap((dir) =>
+      fs
+        .readdirSync(dir, { recursive: true, withFileTypes: true })
+        .filter((entry) => entry.isFile())
+        .map((entry) => `${entry.parentPath}/${entry.name}`),
+    )
+    .filter((file) => /\.(ts|mjs|js|astro|json|css)$/.test(file))
+    .map(read)
+    .join("\n");
+  for (const entry of fs.readdirSync("public/assets", { withFileTypes: true })) {
+    if (!entry.isFile()) continue;
+    const stem = entry.name.replace(/\.[a-z0-9]+$/, "").replace(/-(900|1200)w$/, "");
+    if (!stem.startsWith("og-") && !corpus.includes(`/assets/${stem}`)) {
+      fail(`public/assets/${entry.name}: no source names it; delete it or use it`);
+    }
+  }
+}
+
 const tokens = read("src/styles/tokens.css");
 
 // Each product page wears its own color pair (DESIGN.md): --tint-<slug> and
@@ -526,6 +558,32 @@ for (const product of products) {
     !mapping.includes(`--product-ink: var(--ink-${product.slug})`)
   ) {
     fail(`tokens.css: [data-product="${product.slug}"] must map --product-tint/--product-ink to its pair`);
+  }
+}
+// The browser's toolbar colour (<meta name="theme-color">) is the page paper:
+// SiteLayout writes one tag per scheme and theme.js copies the matching one for
+// a manual choice, so these two values must stay --paper's.
+{
+  const layout = read("src/layouts/SiteLayout.astro");
+  const paperOf = (block: string | undefined) => block?.match(/--paper:\s*(#[0-9a-f]{3,8})\s*;/i)?.[1];
+  for (const [scheme, block] of [
+    ["light", colorBlocks[0][1]],
+    ["dark", colorBlocks[1][1]],
+  ] as const) {
+    const meta = layout.match(
+      new RegExp(
+        `<meta name="theme-color" content="(#[0-9a-f]{3,8})" media="\\(prefers-color-scheme: ${scheme}\\)"`,
+        "i",
+      ),
+    )?.[1];
+    const paper = paperOf(block);
+    if (!meta) fail(`SiteLayout.astro: missing <meta name="theme-color"> for prefers-color-scheme: ${scheme}`);
+    else if (!paper || norm(meta) !== norm(paper)) {
+      fail(`SiteLayout.astro: theme-color ${meta} (${scheme}) is not tokens.css --paper ${paper ?? "(not found)"}`);
+    }
+  }
+  if (/#[0-9a-f]{6}\b/i.test(read("public/scripts/theme.js"))) {
+    fail("public/scripts/theme.js: write no colour; copy it from SiteLayout's theme-color tags");
   }
 }
 const defined = new Set([...tokens.matchAll(/(--[a-z0-9-]+):/g)].map((match) => match[1]));
